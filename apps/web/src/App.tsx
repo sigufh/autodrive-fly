@@ -13,7 +13,7 @@ export default function App() {
   const [loading, setLoading] = useState(true), [running, setRunning] = useState(false)
   const [learning, setLearning] = useState(false), [explore, setExplore] = useState(false)
   const [safetyConstraints, setSafetyConstraints] = useState(true)
-  const [scenario, setScenario] = useState<'highway' | 'city'>('highway')
+  const [controlMode, setControlMode] = useState<'assisted' | 'neural'>('assisted')
   const [error, setError] = useState('')
   const generation = useRef(0), run = useRef<AbortController | null>(null)
   const selectNeuron = useCallback((bodyId: number) => {
@@ -23,8 +23,9 @@ export default function App() {
   }, [])
   useEffect(() => {
     let live = true
-    Promise.all([fetchOverview(), fetchPathways(), fetchDrivingState()]).then(([o, p, d]) => {
-      if (live) { setOverview(o); setPathways(p); setDriving(d) }
+    Promise.all([fetchOverview(), fetchPathways(), fetchDrivingState()]).then(async ([o, p, d]) => {
+      const drivingState = d.scenario === 'highway' ? d : await resetDriving(0, false, 'highway', 'assisted')
+      if (live) { setOverview(o); setPathways(p); setDriving(drivingState) }
     }).catch(e => { if (live) setError(String(e)) })
     fetchSkeleton(10059).then(s => { if (live) setSkeleton(s) })
       .catch(e => { if (live) setError(String(e)) }).finally(() => { if (live) setLoading(false) })
@@ -33,13 +34,13 @@ export default function App() {
   async function toggleRun() {
     if (running) { run.current?.abort(); setRunning(false); return }
     const controller = new AbortController(); run.current = controller; setRunning(true); setError('')
-    try { await streamDriving(learning, explore, safetyConstraints, state => setDriving(state), controller.signal) }
+    try { await streamDriving(learning, explore, safetyConstraints, controlMode, state => setDriving(state), controller.signal) }
     catch (reason) { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : '仿真失败') }
     finally { setRunning(false) }
   }
-  async function step() { try { setDriving(await stepDriving(1, learning, explore, safetyConstraints)) } catch (reason) { setError(String(reason)) } }
-  async function reset(keep: boolean, targetScenario = scenario) {
-    try { setDriving(await resetDriving(Math.floor(Math.random() * 1_000_000), keep, targetScenario)) }
+  async function step() { try { setDriving(await stepDriving(1, learning, explore, safetyConstraints, controlMode)) } catch (reason) { setError(String(reason)) } }
+  async function reset(keep: boolean, targetControlMode = controlMode) {
+    try { setDriving(await resetDriving(Math.floor(Math.random() * 1_000_000), keep, 'highway', targetControlMode)) }
     catch (reason) { setError(String(reason)) }
   }
   return <main>
@@ -47,6 +48,6 @@ export default function App() {
       {error && <p role="alert" className="error global-error">{error}</p>}
       <CnsViewer overview={overview} pathways={pathways} skeleton={skeleton} loading={loading} activity={driving?.activity} phase={running ? 'closed-loop' : 'paused'} onSelect={selectNeuron} />
     </div>
-    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} scenario={scenario} onScenario={value => { setScenario(value); reset(true, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
+    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} controlMode={controlMode} onControlMode={value => { setControlMode(value); reset(true, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
   </main>
 }

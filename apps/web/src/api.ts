@@ -8,16 +8,16 @@ export function fetchSkeleton(bodyId: number) { return fetch(`/api/skeleton/${bo
 export function fetchOverview() { return fetch('/api/connectome/overview').then(checked<CnsOverview>) }
 export function fetchPathways() { return fetch('/api/connectome/pathways').then(checked<PathwayOverview>) }
 export function fetchDrivingState() { return fetch('/api/driving/state').then(checked<DrivingState>) }
-export function resetDriving(seed: number, keepLearning: boolean, scenario: 'highway' | 'city' = 'highway') {
-  return fetch('/api/driving/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seed, keep_learning: keepLearning, scenario }) }).then(checked<DrivingState>)
+export function resetDriving(seed: number, keepLearning: boolean, scenario: 'highway' | 'city' = 'highway', controlMode: 'assisted' | 'neural' = 'assisted') {
+  return fetch('/api/driving/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seed, keep_learning: keepLearning, scenario, control_mode: controlMode }) }).then(checked<DrivingState>)
 }
-export function stepDriving(steps: number, learning: boolean, explore: boolean, safetyConstraints: boolean) {
-  return fetch('/api/driving/step', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ steps, learning, explore, safety_constraints: safetyConstraints }) }).then(checked<DrivingState>)
+export function stepDriving(steps: number, learning: boolean, explore: boolean, safetyConstraints: boolean, controlMode: 'assisted' | 'neural' = 'assisted') {
+  return fetch('/api/driving/step', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ steps, learning, explore, safety_constraints: safetyConstraints, control_mode: controlMode }) }).then(checked<DrivingState>)
 }
-export async function streamDriving(learning: boolean, explore: boolean, safetyConstraints: boolean, onState: (state: DrivingState) => void, signal?: AbortSignal) {
+export async function streamDriving(learning: boolean, explore: boolean, safetyConstraints: boolean, controlMode: 'assisted' | 'neural', onState: (state: DrivingState) => void, signal?: AbortSignal) {
   const response = await fetch('/api/driving/run-stream', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ max_steps: 500, learning, explore, safety_constraints: safetyConstraints }), signal,
+    body: JSON.stringify({ max_steps: 500, learning, explore, safety_constraints: safetyConstraints, control_mode: controlMode }), signal,
   })
   if (!response.ok || !response.body) throw new Error(`${response.status}: ${await response.text()}`)
   const reader = response.body.getReader(), decoder = new TextDecoder()

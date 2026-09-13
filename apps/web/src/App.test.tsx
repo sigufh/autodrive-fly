@@ -19,6 +19,6 @@ test('renders connectome and visual driving workspaces', () => {
   expect(screen.getByLabelText('在线可塑性（实验）')).not.toBeChecked()
   expect(screen.getByLabelText('探索噪声')).not.toBeChecked()
   expect(screen.getByLabelText('道路安全约束')).toBeChecked()
-  expect(screen.getByLabelText('驾驶场景')).toHaveValue('highway')
+  expect(screen.getByLabelText('控制模式')).toHaveValue('assisted')
   expect(screen.queryByText('情绪解码')).not.toBeInTheDocument()
 })

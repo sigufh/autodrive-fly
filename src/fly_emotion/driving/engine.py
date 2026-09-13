@@ -24,14 +24,14 @@ MAX_PLASTIC_GAIN = 1.03
 POLICY_VERSION = 5
 
 
-def closed_loop_steering(
+def assisted_steering(
     neural_residual: float,
     *,
     obstacle_danger: float,
     obstacle_asymmetry: float,
     road_target: float,
 ) -> float:
-    """Fuse a DNp20 residual with explicit obstacle avoidance and recovery.
+    """Legacy engineering baseline, not a neural-driver action map.
 
     Positive steering is rightward in the simulator.  An obstacle on the left
     makes ``obstacle_asymmetry`` positive, so the visual term deliberately
@@ -41,6 +41,21 @@ def closed_loop_steering(
     visual_avoidance = 2.0 * obstacle_danger * obstacle_asymmetry
     road_recovery = 2.0 * road_target
     return float(np.tanh(visual_avoidance + road_recovery + 0.20 * neural_residual))
+
+
+def map_neural_motor_output(
+    steering: float, throttle: float, reverse: float
+) -> tuple[float, float, float]:
+    """Map DNp20/DNpe017/MDN motor primitives to vehicle actuators only.
+
+    This adapter enforces the actuator domain but never reads obstacle rays,
+    lane position, route geometry, traffic light state or reward.
+    """
+    return (
+        float(np.clip(steering, -1.0, 1.0)),
+        float(np.clip(throttle, 0.0, 1.0)),
+        float(np.clip(reverse, 0.0, 1.0)),
+    )
 
 
 class DopaminePolicy:
@@ -219,6 +234,7 @@ class DopaminePolicy:
         reverse_target: float,
         danger: float,
         enabled: bool,
+        teacher_enabled: bool = True,
     ) -> float:
         self.reward_baseline = 0.995 * self.reward_baseline + 0.005 * modulation
         self.dopamine = float(np.clip(modulation - self.reward_baseline, -2.0, 2.0))
@@ -230,30 +246,37 @@ class DopaminePolicy:
             # existing presynaptic partners of the left/right DNp20 cells. The
             # ray-derived target is a training-only aversive signal and never
             # overrides the neural action at inference.
-            error = avoidance_target - self._last_steering_mean
-            gradient = danger * error * (1.0 - self._last_steering_mean**2) * 3.0
-            self.lateral_dopamine = [float(gradient), float(-gradient)]
-            self.gains[0] -= self.learning_rate * gradient * self.base[0] * self._last_centered[0]
-            self.gains[1] += self.learning_rate * gradient * self.base[1] * self._last_centered[1]
-            speed_error = speed_target - self._last_throttle_mean
-            speed_gradient = danger * speed_error * 0.36
-            for index in (2, 3):
-                self.gains[index] += (
-                    self.learning_rate
-                    * speed_gradient
-                    * self.base[index]
-                    * self._last_centered[index]
+            if teacher_enabled:
+                error = avoidance_target - self._last_steering_mean
+                gradient = danger * error * (1.0 - self._last_steering_mean**2) * 3.0
+                self.lateral_dopamine = [float(gradient), float(-gradient)]
+                self.gains[0] -= (
+                    self.learning_rate * gradient * self.base[0] * self._last_centered[0]
                 )
-            reverse_error = reverse_target - self._last_reverse_mean
-            reverse_gradient = danger * reverse_error
-            for index in range(4, 8):
-                self.gains[index] -= (
-                    self.learning_rate
-                    * reverse_gradient
-                    * self.base[index]
-                    * self._last_centered[index]
-                    / 4.0
+                self.gains[1] += (
+                    self.learning_rate * gradient * self.base[1] * self._last_centered[1]
                 )
+                speed_error = speed_target - self._last_throttle_mean
+                speed_gradient = danger * speed_error * 0.36
+                for index in (2, 3):
+                    self.gains[index] += (
+                        self.learning_rate
+                        * speed_gradient
+                        * self.base[index]
+                        * self._last_centered[index]
+                    )
+                reverse_error = reverse_target - self._last_reverse_mean
+                reverse_gradient = danger * reverse_error
+                for index in range(4, 8):
+                    self.gains[index] -= (
+                        self.learning_rate
+                        * reverse_gradient
+                        * self.base[index]
+                        * self._last_centered[index]
+                        / 4.0
+                    )
+            else:
+                self.lateral_dopamine = [0.0, 0.0]
             for gains, trace in zip(self.gains, self.eligibility, strict=True):
                 gains += self.global_eligibility_scale * self.learning_rate * self.dopamine * trace
                 gains += self.gain_decay * (1.0 - gains)
@@ -383,6 +406,7 @@ class DrivingEngine:
         brain_substeps: int = 4,
         load_checkpoint: bool = True,
         scenario: str = "highway",
+        control_mode: str = "assisted",
     ):
         self.root = root
         processed = root / "data/processed/malecns-v1.0"
@@ -402,8 +426,10 @@ class DrivingEngine:
         if not np.array_equal(self.graph.body_ids[self.dopamine_nodes], DOPAMINE_BODY_IDS):
             raise ValueError("configured PPL101 dopamine cells are absent from MaleCNS")
         self.scenario = ""
+        self.control_mode = ""
         self.env: DrivingEnvironment | CityDrivingEnvironment
         self.set_scenario(scenario)
+        self.set_control_mode(control_mode)
         self.activity = np.zeros(self.graph.node_count, dtype=np.float32)
         self.mirrored_activity = np.zeros_like(self.activity)
         self.visual_drive = np.zeros_like(self.activity)
@@ -443,6 +469,11 @@ class DrivingEngine:
         self.scenario = scenario
         self.env = CityDrivingEnvironment() if scenario == "city" else DrivingEnvironment()
 
+    def set_control_mode(self, control_mode: str) -> None:
+        if control_mode not in {"assisted", "neural"}:
+            raise ValueError(f"unknown driving control mode: {control_mode}")
+        self.control_mode = control_mode
+
     def _load_published_policy(self) -> None:
         with np.load(self.policy_checkpoint, allow_pickle=False) as payload:
             if payload["format_version"].tolist() != [POLICY_VERSION]:
@@ -474,9 +505,12 @@ class DrivingEngine:
         *,
         keep_learning: bool = True,
         scenario: str | None = None,
+        control_mode: str | None = None,
     ) -> dict:
         if scenario is not None:
             self.set_scenario(scenario)
+        if control_mode is not None:
+            self.set_control_mode(control_mode)
         self.env.reset(seed)
         self.activity.fill(0)
         self.mirrored_activity.fill(0)
@@ -564,7 +598,11 @@ class DrivingEngine:
         )
         forward_clearance = float(np.min(obstacle_rays[quarter : 3 * quarter]))
         guidance = self.env.traffic_guidance() if self.scenario == "city" else None
-        target_lateral = float(guidance["target_lateral_offset"]) if guidance else 0.0
+        target_lateral = (
+            float(guidance["target_lateral_offset"])
+            if guidance and self.control_mode == "assisted"
+            else 0.0
+        )
         road_pressure = np.clip(
             abs(self.env.x - target_lateral) / (self.env.road_half_width - self.env.vehicle_radius),
             0.0,
@@ -584,47 +622,59 @@ class DrivingEngine:
             adapt=learning or explore,
             mirrored_activity=self.mirrored_activity,
         )
-        # The connectome supplies a signed steering residual. The two explicit
-        # engineering terms close the behaviour loop: visual avoidance selects
-        # the free side, and road recovery returns the vehicle after passing.
+        # Assisted mode is the preserved v5 engineering baseline. Neural mode
+        # maps the three documented motor outputs directly to vehicle actuators.
         visual_avoidance = 2.0 * obstacle_danger * obstacle_asymmetry
         road_recovery = 2.0 * road_target
-        behavioral_steering = closed_loop_steering(
-            raw_steering,
-            obstacle_danger=obstacle_danger,
-            obstacle_asymmetry=obstacle_asymmetry,
-            road_target=road_target,
-        )
-        if guidance:
-            # The route layer supplies legal geometry; obstacle-side selection
-            # remains exclusively in the local visual controller above.
-            behavioral_steering = float(
-                np.tanh(
-                    np.arctanh(np.clip(behavioral_steering, -0.999, 0.999))
-                    + 1.35 * float(guidance["desired_steering"])
-                )
+        if self.control_mode == "assisted":
+            behavioral_steering = assisted_steering(
+                raw_steering,
+                obstacle_danger=obstacle_danger,
+                obstacle_asymmetry=obstacle_asymmetry,
+                road_target=road_target,
             )
-        steering, constraint = self.apply_lane_constraint(
-            behavioral_steering, enabled=safety_constraints
-        )
+            if guidance:
+                behavioral_steering = float(
+                    np.tanh(
+                        np.arctanh(np.clip(behavioral_steering, -0.999, 0.999))
+                        + 1.35 * float(guidance["desired_steering"])
+                    )
+                )
+            steering, constraint = self.apply_lane_constraint(
+                behavioral_steering, enabled=safety_constraints
+            )
+            throttle = raw_throttle
+            speed_target = float(0.25 + 0.37 * np.clip((forward_clearance - 2.0) / 6.0, 0.0, 1.0))
+            if guidance:
+                speed_target = min(speed_target, float(guidance["speed_cap"]))
+            throttle = float(min(raw_throttle, speed_target))
+        else:
+            steering, throttle, reverse = map_neural_motor_output(
+                raw_steering, raw_throttle, raw_reverse
+            )
+            constraint = {"active": False, "blend": 0.0, "correction": 0.0}
+            speed_target = raw_throttle
         constraint.update(
             {
                 "neural_steering": raw_steering,
-                "visual_avoidance": float(visual_avoidance),
-                "road_recovery": float(road_recovery),
-                "route_steering": float(guidance["desired_steering"]) if guidance else 0.0,
+                "visual_avoidance": float(visual_avoidance)
+                if self.control_mode == "assisted"
+                else 0.0,
+                "road_recovery": float(road_recovery) if self.control_mode == "assisted" else 0.0,
+                "route_steering": (
+                    float(guidance["desired_steering"])
+                    if guidance and self.control_mode == "assisted"
+                    else 0.0
+                ),
             }
         )
-        speed_target = float(0.25 + 0.37 * np.clip((forward_clearance - 2.0) / 6.0, 0.0, 1.0))
-        if guidance:
-            speed_target = min(speed_target, float(guidance["speed_cap"]))
-        throttle = float(min(raw_throttle, speed_target))
-        if forward_clearance < 1.5:
+        if self.control_mode == "assisted" and forward_clearance < 1.5:
             self.close_hazard_streak += 1
-        else:
+        elif self.control_mode == "assisted":
             self.close_hazard_streak = 0
-        reverse_gate = self.close_hazard_streak >= 4
-        reverse = float(raw_reverse if reverse_gate else 0.0)
+        reverse_gate = self.control_mode == "assisted" and self.close_hazard_streak >= 4
+        if self.control_mode == "assisted":
+            reverse = float(raw_reverse if reverse_gate else 0.0)
         if reverse_gate:
             stats = self.control_statistics
             stats["reverse_gate_steps"] += 1
@@ -664,13 +714,14 @@ class DrivingEngine:
             0.8 * np.clip((1.5 - forward_clearance) / 0.75, 0.0, 1.0) if reverse_gate else 0.0
         )
         dopamine = self.policy.learn(
-            reward + safety_signal,
+            reward + safety_signal if self.control_mode == "assisted" else reward,
             features,
             avoidance_target=avoidance_target,
             speed_target=speed_target,
             reverse_target=reverse_target,
             danger=float(max(obstacle_danger, lane_danger)),
             enabled=learning,
+            teacher_enabled=self.control_mode == "assisted",
         )
         for _ in range(self.brain_substeps):
             self._advance_brain(image, dopamine=dopamine)
@@ -753,6 +804,7 @@ class DrivingEngine:
         state = {
             "environment": self.env.snapshot(),
             "scenario": self.scenario,
+            "control_mode": self.control_mode,
             "action": self.last_action,
             "raw_action": self.last_raw_action,
             "lane_constraint": self.last_constraint,

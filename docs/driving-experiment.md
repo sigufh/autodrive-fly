@@ -46,6 +46,28 @@ dopamine prediction error. MDN is a separate escape primitive: it is gated by
 four consecutive readings below 1.5 m, has a finite variance prior and has no
 positive-clipped action noise. It is not used as routine braking.
 
+## Assisted baseline versus neural-decision experiment
+
+The published v5 checkpoint and its 100% completion result are preserved as an
+**assisted engineering baseline**. In this mode, obstacle asymmetry, road
+recovery, route geometry and a road-only safety layer are explicitly allowed to
+shape the executed action. This is useful for simulator and UI regression, but
+does not demonstrate autonomous connectome learning.
+
+The random-obstacle UI also exposes a `neural` mode. It uses the same retinal
+input and full MaleCNS graph, but maps DNp20/DNpe017/MDN output directly to
+steering/throttle/reverse after domain clipping. It does not call the lane
+constraint, obstacle-side steering, road recovery, route steering, speed cap
+or hand-crafted side-target teacher. It receives only environment reward in its
+RPE update.
+
+On frozen seeds 400–407, the assisted baseline completes 8/8 roads (120.33 m,
+9.0 obstacles), while direct neural decision completes 0/8 (27.43 m, 1.25
+obstacles and 100% obstacle collision). Neural-mode constraint rate and mean
+action correction are both zero. This is a negative result, retained in
+`artifacts/neural-decision-baseline.json`; it establishes the actual training
+target rather than claiming that the connectome has already learned avoidance.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

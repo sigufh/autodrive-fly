@@ -10,10 +10,16 @@ from scipy import sparse
 
 import fly_emotion.driving.evaluate as evaluation_module
 from fly_emotion.driving.city import CityDrivingEnvironment
-from fly_emotion.driving.engine import DopaminePolicy, DrivingEngine, closed_loop_steering
+from fly_emotion.driving.engine import (
+    DopaminePolicy,
+    DrivingEngine,
+    assisted_steering,
+    map_neural_motor_output,
+)
 from fly_emotion.driving.environment import DrivingEnvironment, Obstacle
 from fly_emotion.driving.evaluate import (
     evaluate_city_alpha,
+    evaluate_neural_decision_baseline,
     mirror_summary,
     paired_statistics,
     usability_gates,
@@ -157,6 +163,59 @@ def test_city_alpha_evaluation_reports_integration_boundary(monkeypatch, tmp_pat
     assert report["summary"]["success_rate"] == 1
     assert report["summary"]["traffic_violation_rate"] == 0
     assert "not a city generalization" in report["protocol"]["claim_boundary"]
+
+
+def test_neural_decision_evaluation_requires_zero_action_override(
+    monkeypatch, tmp_path: Path
+) -> None:
+    checkpoint = tmp_path / "artifacts/checkpoints/driving-policy.npz"
+    checkpoint.parent.mkdir(parents=True)
+    checkpoint.write_bytes(b"policy")
+
+    class FakeEngine:
+        def __init__(self, *_args, **_kwargs):
+            self.policy_checkpoint = checkpoint
+
+    def fake_episode(_engine, value, *, control_mode, **_kwargs):
+        return {
+            "seed": value,
+            "pair_seed": value // 2,
+            "mirror": 1,
+            "first_obstacle_side": "left",
+            "steps": 1,
+            "distance": 10.0,
+            "return": 1.0,
+            "success": control_mode == "assisted",
+            "terminal_reason": "success" if control_mode == "assisted" else "obstacle",
+            "obstacles_passed": 1,
+            "first_obstacle_passed": True,
+            "mean_abs_steering": 0.0,
+            "mean_abs_steering_change": 0.0,
+            "far_mean_abs_steering": 0.0,
+            "steering_sign_changes": 0,
+            "max_abs_lateral": 0.0,
+            "constraint_rate": 0.0,
+            "mean_abs_constraint": 0.0,
+            "mean_signed_raw_steering": 0.0,
+            "mean_signed_steering": 0.0,
+            "right_turn_fraction": 0.0,
+            "left_turn_fraction": 0.0,
+            "pre_first_mean_signed_steering": 0.0,
+            "mean_drive": 0.5,
+            "mean_reverse": 0.0,
+            "reverse_fraction": 0.0,
+            "negative_speed_fraction": 0.0,
+            "reverse_gate_fraction": 0.0,
+            "collision_before_first_pass": False,
+            "control_trace": [[0, 0, 0, 10, 0.5, 0]],
+            "control_mode": control_mode,
+        }
+
+    monkeypatch.setattr(evaluation_module, "DrivingEngine", FakeEngine)
+    monkeypatch.setattr(evaluation_module, "run_episode", fake_episode)
+    report = evaluate_neural_decision_baseline(tmp_path, start=400, count=2)
+    assert report["neural_decision"]["constraint_rate"] == 0
+    assert report["delta_neural_minus_assisted"]["success_rate"] == -1
 
 
 def test_lane_constraint_only_intervenes_near_boundary_or_outward_heading() -> None:
@@ -360,16 +419,16 @@ def test_policy_is_odd_for_steering_even_for_longitudinal_actions() -> None:
     assert neutral[0] == 0
 
 
-def test_closed_loop_steering_chooses_the_free_side_and_recovers() -> None:
+def test_assisted_baseline_steering_chooses_the_free_side_and_recovers() -> None:
     # Positive steering moves right.  Thus the left obstacle has a positive
     # asymmetry and must produce a positive (rightward) response.
-    left_obstacle = closed_loop_steering(
+    left_obstacle = assisted_steering(
         0,
         obstacle_danger=0.8,
         obstacle_asymmetry=0.5,
         road_target=0,
     )
-    right_obstacle = closed_loop_steering(
+    right_obstacle = assisted_steering(
         0,
         obstacle_danger=0.8,
         obstacle_asymmetry=-0.5,
@@ -377,7 +436,28 @@ def test_closed_loop_steering_chooses_the_free_side_and_recovers() -> None:
     )
     assert left_obstacle > 0 > right_obstacle
     assert np.isclose(left_obstacle, -right_obstacle)
-    assert closed_loop_steering(0, obstacle_danger=0, obstacle_asymmetry=0, road_target=-0.5) < 0
+    assert assisted_steering(0, obstacle_danger=0, obstacle_asymmetry=0, road_target=-0.5) < 0
+
+
+def test_neural_motor_adapter_only_clips_motor_outputs() -> None:
+    assert map_neural_motor_output(1.4, -0.2, 1.5) == (1.0, 0.0, 1.0)
+    assert map_neural_motor_output(-0.35, 0.62, 0.2) == (-0.35, 0.62, 0.2)
+
+
+def test_neural_mode_bypasses_environment_action_overrides() -> None:
+    engine = DrivingEngine(Path(__file__).parents[1], top_k=1, load_checkpoint=False)
+    engine.reset(400, control_mode="neural")
+    features = [np.zeros_like(values) for values in engine.policy.gains]
+    engine.policy.action = lambda *_args, **_kwargs: (0.4, 0.5, 0.2, features)
+    engine.apply_lane_constraint = lambda *_args, **_kwargs: (_ for _ in ()).throw(
+        AssertionError("neural mode must not invoke the road safety controller")
+    )
+    state = engine.step(learning=False, safety_constraints=True, include_activity=False)
+    assert state["control_mode"] == "neural"
+    assert state["action"] == {"steering": 0.4, "throttle": 0.5, "reverse": 0.2, "drive": 0.2}
+    assert state["lane_constraint"]["blend"] == 0
+    assert state["lane_constraint"]["visual_avoidance"] == 0
+    assert state["lane_constraint"]["road_recovery"] == 0
 
 
 def test_mirror_protocol_rejects_incomplete_or_leaking_pairs() -> None:

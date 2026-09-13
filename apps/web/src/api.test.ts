@@ -12,12 +12,12 @@ test('handles split UTF-8 NDJSON driving chunks and completion', async () => {
     for (let i = 0; i < payload.length; i += 2) controller.enqueue(payload.slice(i, i + 2))
     controller.close()
   } }))))
-  await streamDriving(true, true, true, event => events.push(event))
+  await streamDriving(true, true, true, 'assisted', event => events.push(event))
   expect(events[0].environment.step).toBe(1)
 })
 test('rejects a truncated driving stream', async () => {
   vi.stubGlobal('fetch', vi.fn(async () => new Response(`${JSON.stringify({ type: 'driving_state', ...state })}\n`)))
-  await expect(streamDriving(true, true, true, () => {})).rejects.toThrow('驾驶数据流中断')
+  await expect(streamDriving(true, true, true, 'assisted', () => {})).rejects.toThrow('驾驶数据流中断')
 })
 test('execution mode sends no learning or exploration by default contract', async () => {
   let body = ''
@@ -25,8 +25,8 @@ test('execution mode sends no learning or exploration by default contract', asyn
     body = String(init?.body)
     return new Response('{"type":"done"}')
   }))
-  await streamDriving(false, false, true, () => {})
-  expect(JSON.parse(body)).toMatchObject({ learning: false, explore: false, safety_constraints: true })
+  await streamDriving(false, false, true, 'neural', () => {})
+  expect(JSON.parse(body)).toMatchObject({ learning: false, explore: false, safety_constraints: true, control_mode: 'neural' })
 })
 test('colors reflect sign and magnitude', () => {
   expect(stateColor(1, 1)).not.toEqual(stateColor(-1, 1))

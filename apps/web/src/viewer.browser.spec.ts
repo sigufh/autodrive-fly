@@ -59,13 +59,12 @@ test('driving controls expose learning, stepping and reset', async ({ page }) =>
   await expect(page.locator('.telemetry').getByText(/[1-9]\d*\/4383$/)).toBeVisible({ timeout: 120000 })
 })
 
-test('city alpha exposes route and traffic-rule telemetry', async ({ page }) => {
+test('neural decision experiment keeps the random-obstacle map', async ({ page }) => {
   await page.goto(webUrl)
-  await page.getByLabel('驾驶场景').selectOption('city')
-  await expect(page.getByText('城市路线驾驶 · Alpha')).toBeVisible({ timeout: 120000 })
-  await expect(page.getByText('当前道路', { exact: true })).toBeVisible()
-  await expect(page.getByText('交通灯 / 规则', { exact: true })).toBeVisible()
-  await expect(page.getByText('Harbor Avenue', { exact: true })).toBeVisible()
+  await page.getByLabel('控制模式').selectOption('neural')
+  await expect(page.getByText('纯神经决策：DNp20/DNpe017/MDN 输出直接映射为车辆动作；障碍、道路和规则仅作为视觉刺激、奖励与结果反馈。')).toBeVisible({ timeout: 120000 })
+  await expect(page.getByText('障碍驾驶实验')).toBeVisible()
+  await expect(page.locator('.road-canvas')).toBeVisible()
 })
 
 test('mirror telemetry stays visible on mobile with nonblank road and retina', async ({ page }, testInfo) => {

@@ -27,6 +27,21 @@ checkpoint is published and default-loadable. Its path-planning performance is
 an operational simulator result with explicit engineered visual/recovery terms,
 not a claim that the biological graph alone produced the behaviour.
 
+## Neural-decision audit
+
+| Requirement | Evidence | Status |
+|---|---|---|
+| Preserve original random-obstacle front end | Default API/UI reset is `highway` with random mirrored obstacles | Complete |
+| Preserve useful v5 demonstration | `assisted` mode retains the published v5 checkpoint and regression route | Complete |
+| Map neural output directly to vehicle | `neural` mode maps DNp20/DNpe017/MDN only; actuator adapter only clips ranges | Complete |
+| Prevent hidden action assistance | Neural mode bypasses lane constraint, visual-avoidance, road-recovery and route steering; regression test enforces zero override | Complete |
+| Avoid hidden supervised teaching | Neural training uses environment reward only; side-target teacher is disabled | Complete |
+| Quantify present neural capability | Seeds 400–407: 0% completion, 27.43 m, 1.25 obstacles, 100% collision | Complete negative result |
+
+The two modes must not be compared as equivalent claims. `assisted` is an
+engineering baseline; `neural` is the scientific experiment that still needs
+dedicated training and ablation.
+
 ## Historical v2 Audit
 
 The statements below refer only to the earlier generator and checkpoint.

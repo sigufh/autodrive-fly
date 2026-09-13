@@ -32,6 +32,7 @@ class ResetRequest(BaseModel):
     seed: int = Field(default=0, ge=0, le=2**31 - 1)
     keep_learning: bool = True
     scenario: Literal["highway", "city"] = "highway"
+    control_mode: Literal["assisted", "neural"] = "assisted"
 
 
 class StepRequest(BaseModel):
@@ -39,6 +40,7 @@ class StepRequest(BaseModel):
     learning: bool = False
     explore: bool = False
     safety_constraints: bool = True
+    control_mode: Literal["assisted", "neural"] | None = None
 
 
 class RunRequest(BaseModel):
@@ -46,6 +48,7 @@ class RunRequest(BaseModel):
     learning: bool = False
     explore: bool = False
     safety_constraints: bool = True
+    control_mode: Literal["assisted", "neural"] | None = None
 
 
 def engine() -> DrivingEngine:
@@ -77,8 +80,10 @@ def health():
         except (OSError, ValueError, KeyError, IndexError):
             pass
     return {
-        "status": "ok", "connectome": "male-cns:v1.0",
-        "task": "visual-obstacle-and-city-driving", "language_model": "retired",
+        "status": "ok",
+        "connectome": "male-cns:v1.0",
+        "task": "visual-obstacle-and-city-driving",
+        "language_model": "retired",
         "scenarios": ["highway", "city"],
         "brain_ready": (ROOT / "data/processed/malecns-v1.0/adjacency_target_norm.npz").exists(),
         "policy_checkpoint_ready": checkpoint_version == POLICY_VERSION,
@@ -114,9 +119,12 @@ def skeleton(body_id: int, max_edges: int = 20_000):
         raise HTTPException(status_code=404, detail=str(error)) from error
     segments = skeleton_segments(source, max_edges=max_edges)
     return {
-        "body_id": body_id, "units": "micrometres",
-        "source_vertices": len(source.vertices), "source_edges": len(source.edges),
-        "display_edges": len(segments), "segments": segments.tolist(),
+        "body_id": body_id,
+        "units": "micrometres",
+        "source_vertices": len(source.vertices),
+        "source_edges": len(source.edges),
+        "display_edges": len(segments),
+        "segments": segments.tolist(),
     }
 
 
@@ -130,13 +138,18 @@ def driving_state():
 def driving_reset(request: ResetRequest):
     with _STEP_LOCK:
         return engine().reset(
-            request.seed, keep_learning=request.keep_learning, scenario=request.scenario
+            request.seed,
+            keep_learning=request.keep_learning,
+            scenario=request.scenario,
+            control_mode=request.control_mode,
         )
 
 
 @app.post("/api/driving/step")
 def driving_step(request: StepRequest):
     with _STEP_LOCK:
+        if request.control_mode is not None:
+            engine().set_control_mode(request.control_mode)
         result = None
         for _ in range(request.steps):
             result = engine().step(
@@ -163,6 +176,8 @@ def driving_event_lines(request: RunRequest):
         for _ in range(request.max_steps):
             started = time.perf_counter()
             with _STEP_LOCK:
+                if request.control_mode is not None:
+                    engine().set_control_mode(request.control_mode)
                 state = engine().step(
                     learning=request.learning,
                     explore=request.explore,

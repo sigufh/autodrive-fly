@@ -17,6 +17,7 @@ export type ActivityFrame = {
 }
 export type DrivingState = {
   scenario: 'highway' | 'city';
+  control_mode: 'assisted' | 'neural';
   environment: {
     road_half_width: number; road_length: number; pair_seed: number; mirror: number;
     vehicle: { x: number; y: number; heading: number; speed: number; steering: number; world_x?: number; world_y?: number; world_heading?: number };

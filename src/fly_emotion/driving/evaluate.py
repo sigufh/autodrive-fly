@@ -101,8 +101,9 @@ def run_episode(
     learning: bool,
     explore: bool,
     safety_constraints: bool = True,
+    control_mode: str = "assisted",
 ) -> dict:
-    engine.reset(seed, keep_learning=True)
+    engine.reset(seed, keep_learning=True, control_mode=control_mode)
     controls = []
     while not engine.env.done:
         engine.step(
@@ -157,7 +158,65 @@ def run_episode(
             )
         ),
         "control_trace": controls,
+        "control_mode": control_mode,
         **engine.control_summary(),
+    }
+
+
+def evaluate_neural_decision_baseline(
+    root: Path, *, start: int = 400, count: int = 8, seed: int = 20260912
+) -> dict:
+    """Compare the preserved v5 assisted baseline to direct neural control.
+
+    Both arms use the same frozen learned-v5 checkpoint and exact road seeds.
+    In the neural arm, vehicle actions come only from DNp20/DNpe017/MDN output
+    through the actuator adapter; no obstacle, road or rule controller may
+    override those outputs.
+    """
+    if count < 1 or start < 0:
+        raise ValueError("neural-decision comparison requires a positive seed range")
+    seeds = range(start, start + count)
+    arms = {}
+    for mode in ("assisted", "neural"):
+        engine = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=True)
+        episodes = [
+            run_episode(
+                engine,
+                value,
+                learning=False,
+                explore=False,
+                safety_constraints=True,
+                control_mode=mode,
+            )
+            for value in seeds
+        ]
+        arms[mode] = summarize(episodes)
+    neural = arms["neural"]
+    if neural["constraint_rate"] != 0 or neural["mean_abs_constraint"] != 0:
+        raise AssertionError("neural decision evidence contains an action override")
+    return {
+        "protocol": {
+            "scenario": "highway_random_obstacles",
+            "seeds": list(seeds),
+            "learning": False,
+            "explore": False,
+            "checkpoint_sha256": hashlib.sha256(
+                (root / "artifacts/checkpoints/driving-policy.npz").read_bytes()
+            ).hexdigest(),
+            "claim_boundary": (
+                "Assisted is a preserved engineering baseline; neural actions are direct "
+                "DNp20/DNpe017/MDN-to-vehicle mappings and are not claimed to be trained avoidance."
+            ),
+        },
+        "assisted_baseline": arms["assisted"],
+        "neural_decision": arms["neural"],
+        "delta_neural_minus_assisted": {
+            "mean_distance": neural["mean_distance"] - arms["assisted"]["mean_distance"],
+            "mean_obstacles_passed": (
+                neural["mean_obstacles_passed"] - arms["assisted"]["mean_obstacles_passed"]
+            ),
+            "success_rate": neural["success_rate"] - arms["assisted"]["success_rate"],
+        },
     }
 
 
