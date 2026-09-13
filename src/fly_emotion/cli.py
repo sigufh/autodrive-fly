@@ -34,14 +34,17 @@ def _parser() -> argparse.ArgumentParser:
     evaluate_driving = subparsers.add_parser("evaluate-driving")
     evaluate_driving.add_argument("--train-episodes", type=int, default=48)
     evaluate_driving.add_argument("--evaluation-seeds", type=int, default=32)
-    evaluate_driving.add_argument("--evaluation-start", type=int, default=200)
+    evaluate_driving.add_argument("--evaluation-start", type=int, default=400)
     calibrate = subparsers.add_parser("calibrate-policy")
     calibrate.add_argument("--episodes", type=int, default=48)
     calibrate.add_argument("--evaluation-seeds", type=int, default=32)
-    calibrate.add_argument("--evaluation-start", type=int, default=200)
+    calibrate.add_argument("--evaluation-start", type=int, default=400)
     constraints = subparsers.add_parser("evaluate-constraints")
     constraints.add_argument("--evaluation-seeds", type=int, default=32)
-    constraints.add_argument("--evaluation-start", type=int, default=200)
+    constraints.add_argument("--evaluation-start", type=int, default=400)
+    constraints.add_argument("--checkpoint", type=Path)
+    constraints.add_argument("--output", type=Path)
+    constraints.add_argument("--reference-report", type=Path)
     return parser
 
 
@@ -77,8 +80,11 @@ def main() -> None:
             root,
             evaluation_seeds=args.evaluation_seeds,
             evaluation_start=args.evaluation_start,
+            checkpoint=root / args.checkpoint if args.checkpoint else None,
+            reference_report=root / args.reference_report if args.reference_report else None,
         )
-        target = root / "artifacts/behavior-constraint-ablation.json"
+        target = args.output or root / "artifacts/behavior-constraint-ablation.json"
+        target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         delta = report["paired"]["distance"]["delta_mean"]
         print(f"lane-constraint distance delta {delta:+.2f} m -> {target}")

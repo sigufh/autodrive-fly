@@ -33,8 +33,9 @@ unknown predictions are positive; GABA, glutamate and histamine are negative;
 monoamines are excluded from the fast recurrent term. Receptor-level exceptions
 are not modeled.
 
-Signed inputs to bilateral DNp20 produce steering. Bilateral DNpe017 produce
-throttle. These are real cells but engineering readouts. No obstacle rule or
+Forward travel is the default longitudinal primitive. Signed inputs to bilateral
+DNp20 produce a deadbanded steering residual, bilateral DNpe017 adjust speed,
+and four MDNs can trigger reverse. These are real cells but engineering readouts. No obstacle rule or
 geometric planner overrides their actions.
 
 ## Learning and checkpoint
@@ -44,14 +45,14 @@ policy-gradient eligibility trace. Collision/completion events and training-only
 left/right clearance shaping provide global and opponent dopamine-like factors.
 Only the 1,571 existing connections entering the four motor cells can change.
 
-The compact v2 checkpoint records target motor IDs, every presynaptic body ID,
-gain, running mean/variance, reward baseline and steering zero point. Loading
+The compact v4 checkpoint records target and reverse motor IDs, every presynaptic
+body ID, gain, running mean/variance, reward baseline and longitudinal calibration. Loading
 rejects graph/order mismatch, non-finite gains and values beyond the configured
-0.97–1.03 bounds. The evaluator publishes a learned checkpoint only after
-both distance and raw-return gains are positive and both paired bootstrap 95%
-intervals exclude zero, road exits are at most 10%, and far-field steering is
-bounded. The shipped checkpoint is currently `frozen_calibrated`, because online
-plasticity did not pass these gates.
+0.97–1.03 bounds. Publication also requires exact mirror response plus completion,
+first-obstacle pass, total-obstacle progress, early-collision, timeout, road-exit
+and smoothness gates. The retained v4 candidate failed task gates and is not the
+default; the historical tracked v2 checkpoint is rejected, so the application
+starts uncalibrated rather than claiming a usable policy.
 
 An optional lane constraint is a separate execution layer. It reads lateral road
 position and heading but never obstacle geometry. It only intervenes near a road

@@ -11,6 +11,19 @@ def test_health_reports_driving_task() -> None:
     assert response.json()["language_model"] == "retired"
 
 
+def test_health_does_not_mark_obsolete_checkpoint_ready(tmp_path, monkeypatch) -> None:
+    import numpy as np
+
+    monkeypatch.setattr(api_module, "ROOT", tmp_path)
+    target = tmp_path / "artifacts/checkpoints/driving-policy.npz"
+    target.parent.mkdir(parents=True)
+    np.savez(target, format_version=np.asarray([2]))
+    response = TestClient(app).get("/api/health")
+    assert response.json()["policy_checkpoint_ready"] is False
+    assert response.json()["policy_checkpoint_version"] == 2
+    assert response.json()["required_policy_version"] == 4
+
+
 def test_real_cached_skeleton_endpoint() -> None:
     response = TestClient(app).get("/api/skeleton/10001?max_edges=20000")
     assert response.status_code == 200

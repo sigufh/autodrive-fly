@@ -16,6 +16,7 @@ artifacts/*
 !artifacts/checkpoints/
 artifacts/checkpoints/*
 !artifacts/checkpoints/driving-policy.npz
+!artifacts/checkpoints/driving-policy.calibrated-candidate.npz
 data/raw/*
 !data/raw/.gitkeep
 !data/raw/README.md

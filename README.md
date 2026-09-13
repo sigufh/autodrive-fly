@@ -9,8 +9,9 @@ reward-modulated learning. The primary connectome is **Janelia MaleCNS v1.0**.
 ```text
 ray-cast road camera -> 3,344 mapped R1--R6 photoreceptors
                      -> four persistent full-connectome CNS microsteps per action
-                     -> bilateral DNp20 and DNpe017 readout
-                     -> steering/throttle -> road reward -> bilateral PPL101 RPE state
+                     -> forward-default longitudinal primitive
+                     -> DNp20 steering residual / DNpe017 speed / MDN reverse
+                     -> vehicle action -> road reward -> bilateral PPL101 RPE state
                      -> eligibility-gated gain on 1,571 existing motor-input synapses
 ```
 
@@ -47,12 +48,20 @@ The report is written to `artifacts/driving-evaluation.json`. Always compare the
 same held-out seeds and report failures; synapse changes alone are not evidence
 of learned obstacle avoidance.
 
-The currently shipped policy is a **frozen calibrated policy**, not a learned
-policy. On 32 unseen scenes, enabling the explicit lane constraint reduces road
-exits from 25% to 0%, increases mean distance by 3.53 m and raw return by 0.84;
-paired bootstrap intervals exclude zero. Online dopamine plasticity did not add
-task benefit after stabilization (distance delta -1.21 m), so no learned
-checkpoint is published. Obstacle completion remains unsolved.
+The v4 mirror evaluation uses 48 calibration episodes and 32 unseen scenes
+(16 exact left/right road pairs, seeds 400–431). Raw/executed steering mirror
+error and pair distance gaps are exactly zero. However, the candidate completes
+0% of roads, passes 2.5 obstacles on average and travels 41.55 m, below the
+49.15 m zero-steering baseline. First-obstacle pass is 81.25%; early collision
+is 18.75%. No candidate is published: stability is not obstacle avoidance.
+
+The tracked v2 checkpoint is historical and is explicitly disabled by v4.
+The application starts an **uncalibrated experimental policy**, not the failed
+candidate. The retained candidate is
+`artifacts/checkpoints/driving-policy.calibrated-candidate.npz`.
+See [mirror protocol and evidence](docs/driving-experiment.md).
+Earlier +3.53 m constraint and -1.21 m plasticity results apply only to the old
+generator/readout, not this version.
 
 ## Scientific scope
 
@@ -63,9 +72,13 @@ checkpoint is published. Obstacle completion remains unsolved.
   dimensionless model state rather than measured membrane voltage. Glutamate is
   treated as inhibitory as an explicit fly-CNS prior; receptor-level exceptions
   are not modeled. Monoamines are excluded from fast transmission.
-- DNp20 and DNpe017 are real bilateral descending neurons and all plastic edges
-  are real connectome edges. Their steering/throttle interpretation is an
+- DNp20, DNpe017 and MDN are real descending neurons and all plastic edges are
+  real connectome edges. Their steering/speed/reverse interpretation is an
   engineered readout inspired by Doomfly, not an established natural function.
+- Mirror symmetry is imposed by two persistent full-graph visual states with
+  shared gains, odd steering and even longitudinal readout. MDN reverse is also
+  an engineered interpretation. Symmetry does not prove useful avoidance or a
+  connectome-specific advantage.
 - “Dopamine” in the UI is a scalar reward-prediction error used by a three-factor
   eligibility rule. It is not a measured dopamine concentration and is not a
   claim about happiness or consciousness.

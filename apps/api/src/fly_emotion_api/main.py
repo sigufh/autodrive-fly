@@ -7,6 +7,7 @@ from pathlib import Path
 from threading import Lock
 from typing import Literal
 
+import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -14,6 +15,7 @@ from pydantic import BaseModel, Field
 
 from fly_emotion.connectome.skeleton import fetch_skeleton, skeleton_segments
 from fly_emotion.driving import DrivingEngine
+from fly_emotion.driving.engine import POLICY_VERSION
 
 ROOT = Path(
     os.getenv(
@@ -65,13 +67,21 @@ app.add_middleware(
 
 @app.get("/api/health")
 def health():
+    checkpoint = ROOT / "artifacts/checkpoints/driving-policy.npz"
+    checkpoint_version = None
+    if checkpoint.exists():
+        try:
+            with np.load(checkpoint, allow_pickle=False) as payload:
+                checkpoint_version = int(payload["format_version"][0])
+        except (OSError, ValueError, KeyError, IndexError):
+            pass
     return {
         "status": "ok", "connectome": "male-cns:v1.0",
         "task": "visual-obstacle-driving", "language_model": "retired",
         "brain_ready": (ROOT / "data/processed/malecns-v1.0/adjacency_target_norm.npz").exists(),
-        "policy_checkpoint_ready": (
-            ROOT / "artifacts/checkpoints/driving-policy.npz"
-        ).exists(),
+        "policy_checkpoint_ready": checkpoint_version == POLICY_VERSION,
+        "policy_checkpoint_version": checkpoint_version,
+        "required_policy_version": POLICY_VERSION,
     }
 
 

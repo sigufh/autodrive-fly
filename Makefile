@@ -18,7 +18,8 @@ calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
 evaluate-constraints:
-	.venv/bin/autodrive-fly evaluate-constraints
+	.venv/bin/autodrive-fly evaluate-constraints \
+		--checkpoint artifacts/checkpoints/driving-policy.calibrated-candidate.npz
 
 api:
 	./scripts/run-api.sh

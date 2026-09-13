@@ -17,17 +17,17 @@ export type ActivityFrame = {
 }
 export type DrivingState = {
   environment: {
-    road_half_width: number; road_length: number;
+    road_half_width: number; road_length: number; pair_seed: number; mirror: number;
     vehicle: { x: number; y: number; heading: number; speed: number; steering: number };
     obstacles: { x: number; y: number; radius: number }[]; sensor_rays: number[]; obstacle_rays: number[]; wall_rays: number[];
     trajectory: [number, number][]; projected_trajectory: [number, number][];
-    step: number; done: boolean; success: boolean; total_reward: number; terminal_reason: string | null;
+    step: number; done: boolean; success: boolean; total_reward: number; terminal_reason: string | null; obstacles_passed: number; first_obstacle_passed: boolean; first_obstacle_side: 'left' | 'right' | null;
   };
-  action: { steering: number; throttle: number }; reward: number; safety_signal: number; learning: boolean; elapsed_ms?: number;
-  raw_action: { steering: number; throttle: number };
+  action: { steering: number; throttle: number; reverse: number; drive: number }; reward: number; safety_signal: number; learning: boolean; elapsed_ms?: number;
+  raw_action: { steering: number; throttle: number; reverse: number; drive: number };
   lane_constraint: { active: boolean; blend: number; correction: number };
   control_statistics: { mean_abs_steering: number; mean_abs_steering_change: number; far_mean_abs_steering: number; far_steps: number; steering_sign_changes: number; max_abs_lateral: number; constraint_rate: number; mean_abs_constraint: number };
-  policy_checkpoint: { loaded: boolean; path: string; kind: string };
+  policy_checkpoint: { loaded: boolean; path: string; kind: string; rejection: string | null };
   dopamine: { rule: string; dopamine: number; lateral_dopamine: [number, number]; plastic_synapses: number; changed_synapses: number; mean_gain: number; min_gain: number; max_gain: number; updates: number };
   retina: { mapped_receptors: number; source_type: string; mapping: string; width: number; height: number; stimulus: number[][] };
   motor: { body_ids: number[]; names: string[]; mapping: string; brain_substeps_per_action: number };

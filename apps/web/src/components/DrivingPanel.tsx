@@ -35,16 +35,23 @@ export function DrivingPanel({ state, running, learning, explore, safetyConstrai
     <div className="telemetry">
       <div><small>里程</small><strong>{fmt(state?.environment.vehicle.y ?? 0, 1)} m</strong></div>
       <div><small>速度</small><strong>{fmt(state?.environment.vehicle.speed ?? 0, 1)}</strong></div>
+      <div><small>纵向指令</small><strong>{fmt(state?.action.drive ?? 0)}</strong></div>
+      <div><small>MDN 后退</small><strong>{fmt(state?.action.reverse ?? 0)}</strong></div>
       <div><small>转向</small><strong>{fmt(state?.action.steering ?? 0)}</strong></div>
       <div><small>神经原始转向</small><strong>{fmt(state?.raw_action.steering ?? 0)}</strong></div>
       <div><small>安全介入</small><strong>{fmt(state?.lane_constraint.blend ?? 0)}</strong></div>
       <div><small>累计介入率</small><strong>{fmt((state?.control_statistics.constraint_rate ?? 0) * 100, 1)}%</strong></div>
       <div><small>奖励</small><strong>{fmt(state?.reward ?? 0, 3)}</strong></div>
+      <div><small>已通过障碍</small><strong>{state?.environment.obstacles_passed ?? 0}/{state?.environment.obstacles.length ?? 0}</strong></div>
+      <div><small>道路配对</small><strong>{state?.environment.pair_seed ?? '—'} / {state?.environment.mirror === -1 ? '镜像' : '原向'}</strong></div>
+      <div><small>首障碍侧别</small><strong>{state?.environment.first_obstacle_side === 'left' ? '左' : state?.environment.first_obstacle_side === 'right' ? '右' : '—'}</strong></div>
+      <div><small>首障碍通过</small><strong>{state?.environment.first_obstacle_passed ? '已通过' : '未通过'}</strong></div>
+      <div><small>终止原因</small><strong>{({ obstacle: '碰撞障碍', road_boundary: '驶出道路', success: '通关', timeout: '超时' } as Record<string, string>)[state?.environment.terminal_reason ?? ''] ?? '—'}</strong></div>
       <div><small>多巴胺 RPE</small><strong className={(state?.dopamine.dopamine ?? 0) < 0 ? 'negative' : ''}>{fmt(state?.dopamine.dopamine ?? 0, 3)}</strong></div>
       <div><small>已变突触</small><strong>{state?.dopamine.changed_synapses ?? 0}/{state?.dopamine.plastic_synapses ?? 0}</strong></div>
       <div><small>双侧 PPL101</small><strong>{fmt(state?.dopamine.lateral_dopamine?.[0] ?? 0, 2)} / {fmt(state?.dopamine.lateral_dopamine?.[1] ?? 0, 2)}</strong></div>
     </div>
     <div className="driving-controls"><label><input type="checkbox" checked={learning} onChange={e => onLearning(e.target.checked)} /> 在线可塑性（实验）</label><label><input type="checkbox" checked={explore} onChange={e => onExplore(e.target.checked)} /> 探索噪声</label><label><input type="checkbox" checked={safetyConstraints} onChange={e => onSafetyConstraints(e.target.checked)} /> 道路安全约束</label><button onClick={onRun}>{running ? '暂停' : '连续运行'}</button><button disabled={running} onClick={onStep}>单步</button><button disabled={running} onClick={() => onReset(true)}>新场景</button><button disabled={running} onClick={() => onReset(false)}>恢复发布策略</button></div>
-    <p className="scientific-note">{state?.policy_checkpoint.loaded ? `已加载 ${state.policy_checkpoint.kind === 'frozen_calibrated' ? '冻结校准' : '实验学习'}策略。` : '当前为未训练策略。'} 道路安全约束是透明、可关闭的执行层，不代表神经网络学会车道保持。每个车辆动作前运行 {state?.motor.brain_substeps_per_action ?? 4} 个 CNS 微步。DNp20 / DNpe017 的车辆控制含义是工程读出。</p>
+    <p className="scientific-note">{state?.policy_checkpoint.loaded ? `已加载 ${state.policy_checkpoint.kind === 'frozen_calibrated' ? '冻结校准' : '实验学习'}策略。` : state?.policy_checkpoint.rejection ? '旧检查点已停用，当前策略未校准。' : '当前为未训练策略。'}</p>
   </section>
 }

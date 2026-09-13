@@ -30,18 +30,23 @@ class DrivingEnvironment:
         self.reset(0)
 
     def reset(self, seed: int = 0) -> np.ndarray:
-        rng = np.random.default_rng(seed)
+        # Adjacent seeds form an exact left/right mirror pair. This prevents the
+        # first obstacle from teaching one globally preferred turn direction.
+        pair_seed = seed // 2
+        mirror = 1.0 if seed % 2 == 0 else -1.0
+        rng = np.random.default_rng(pair_seed)
         self.seed = int(seed)
+        self.pair_seed = int(pair_seed)
+        self.mirror = int(mirror)
         self.x, self.y, self.heading, self.speed = 0.0, 2.0, 0.0, 0.0
         self.steering = 0.0
         self.previous_steering = 0.0
         self.steps, self.total_reward, self.done = 0, 0.0, False
         self.trajectory = [(self.x, self.y)]
         ys = np.arange(15.0, 112.0, 11.0) + rng.uniform(-2.0, 2.0, 9)
-        xs = rng.uniform(-4.35, 4.35, len(ys))
-        # Alternate broad placement to prevent one constant steering bias from succeeding.
-        xs[1::2] = np.abs(xs[1::2])
-        xs[::2] = -np.abs(xs[::2])
+        magnitudes = rng.uniform(0.35, 4.35, len(ys))
+        signs = np.where(np.arange(len(ys)) % 2 == 0, -1.0, 1.0)
+        xs = magnitudes * signs * mirror
         self.obstacles = [
             Obstacle(float(x), float(y), float(rng.uniform(0.75, 1.25)))
             for x, y in zip(xs, ys, strict=True)
@@ -52,6 +57,8 @@ class DrivingEnvironment:
         self.last_wall_rays = self.last_rays.copy()
         self.last_obstacle_rays = self.last_rays.copy()
         self.terminal_reason: str | None = None
+        self.obstacles_passed = 0
+        self.passed_obstacle_indices: set[int] = set()
         return self.observe()
 
     def _ray_distances(self, angle: float) -> tuple[float, float]:
@@ -101,17 +108,20 @@ class DrivingEnvironment:
             value = 0.98 if obstacle <= wall else 0.48
             image[-height:, column] = value
         # A dim road centre marker gives the network optic-flow and heading cues.
-        centre = self.image_width // 2 + int(np.clip(-self.x * 1.7, -12, 12))
-        image[horizon:, max(0, centre - 1) : min(self.image_width, centre + 1)] = 0.3
+        centre = (self.image_width - 1) / 2 + int(np.clip(-self.x * 1.7, -12, 12))
+        image[horizon:, np.abs(np.arange(self.image_width) - centre) <= 0.5] = 0.3
         return image
 
-    def step(self, steering: float, throttle: float) -> tuple[np.ndarray, float, bool]:
+    def step(
+        self, steering: float, throttle: float, reverse: float = 0.0
+    ) -> tuple[np.ndarray, float, bool]:
         if self.done:
             return self.observe(), 0.0, True
         steering_command = float(np.clip(steering, -1.0, 1.0))
         if abs(steering_command) < self.steering_deadband:
             steering_command = 0.0
         throttle = float(np.clip(throttle, 0.0, 1.0))
+        reverse = float(np.clip(reverse, 0.0, 1.0))
         previous_y = self.y
         self.previous_steering = self.steering
         steering_delta = np.clip(
@@ -120,7 +130,8 @@ class DrivingEnvironment:
             self.steering_rate_limit,
         )
         self.steering = float(np.clip(self.steering + steering_delta, -1.0, 1.0))
-        target_speed = 1.0 + 5.0 * throttle
+        forward_target = 1.0 + 5.0 * throttle
+        target_speed = (1.0 - reverse) * forward_target - 2.0 * reverse
         self.speed += (target_speed - self.speed) * 0.24
         yaw_rate = self.speed / self.wheelbase * np.tan(
             self.max_steering_angle * self.steering
@@ -130,13 +141,20 @@ class DrivingEnvironment:
         self.y += float(np.cos(self.heading) * self.speed * self.dt)
         self.steps += 1
         self.trajectory.append((self.x, self.y))
+        previous_passed = self.obstacles_passed
         collision = abs(self.x) + self.vehicle_radius >= self.road_half_width
         collision = collision or any(
             np.hypot(self.x - obstacle.x, self.y - obstacle.y)
             <= self.vehicle_radius + obstacle.radius
             for obstacle in self.obstacles
         )
-        success = self.y >= self.road_length
+        if not collision:
+            self.passed_obstacle_indices.update(
+                index for index, obstacle in enumerate(self.obstacles)
+                if self.y - self.vehicle_radius > obstacle.y + obstacle.radius
+            )
+        self.obstacles_passed = len(self.passed_obstacle_indices)
+        success = self.y >= self.road_length and not collision
         timeout = self.steps >= 500
         self.terminal_reason = (
             "road_boundary" if abs(self.x) + self.vehicle_radius >= self.road_half_width
@@ -146,6 +164,7 @@ class DrivingEnvironment:
             else None
         )
         reward = (self.y - previous_y) / 4.0 - 0.006
+        reward += 0.35 * (self.obstacles_passed - previous_passed)
         if collision:
             reward -= 1.5
         if success:
@@ -164,6 +183,7 @@ class DrivingEnvironment:
         return {
             "road_half_width": self.road_half_width,
             "road_length": self.road_length,
+            "pair_seed": self.pair_seed, "mirror": self.mirror,
             "vehicle": {
                 "x": self.x, "y": self.y, "heading": self.heading,
                 "speed": self.speed, "steering": self.steering,
@@ -175,6 +195,11 @@ class DrivingEnvironment:
             "obstacle_rays": self.last_obstacle_rays.tolist(),
             "wall_rays": self.last_wall_rays.tolist(),
             "step": self.steps, "done": self.done,
-            "success": self.y >= self.road_length, "total_reward": self.total_reward,
+            "success": self.terminal_reason == "success", "total_reward": self.total_reward,
             "terminal_reason": self.terminal_reason,
+            "obstacles_passed": self.obstacles_passed,
+            "first_obstacle_passed": 0 in self.passed_obstacle_indices,
+            "first_obstacle_side": (
+                "left" if self.obstacles[0].x < 0 else "right"
+            ) if self.obstacles else None,
         }

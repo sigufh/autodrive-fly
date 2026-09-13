@@ -13,11 +13,14 @@ from fly_emotion.driving.retina import load_or_build_retina_map
 
 MOTOR_BODY_IDS = np.asarray([10059, 10162, 10527, 555871], dtype=np.int64)
 MOTOR_NAMES = ("turn_right_DNp20", "turn_left_DNp20", "drive_left_DNpe017", "drive_right_DNpe017")
+REVERSE_BODY_IDS = np.asarray([10763, 11288, 11332, 12348], dtype=np.int64)
+REVERSE_NAMES = ("reverse_MDN_R1", "reverse_MDN_L1", "reverse_MDN_R2", "reverse_MDN_L2")
 DOPAMINE_BODY_IDS = np.asarray([11327, 11900], dtype=np.int64)
 INHIBITORY_TRANSMITTERS = {"gaba", "glutamate", "histamine"}
 MODULATORY_TRANSMITTERS = {"dopamine", "octopamine", "serotonin"}
 MIN_PLASTIC_GAIN = 0.97
 MAX_PLASTIC_GAIN = 1.03
+POLICY_VERSION = 4
 
 
 class DopaminePolicy:
@@ -38,6 +41,11 @@ class DopaminePolicy:
             body_ids[self.motor_nodes], MOTOR_BODY_IDS
         ):
             raise ValueError("configured motor neurons are absent from the MaleCNS graph")
+        self.reverse_nodes = np.searchsorted(body_ids, REVERSE_BODY_IDS).astype(np.int32)
+        if np.any(self.reverse_nodes >= len(body_ids)) or not np.array_equal(
+            body_ids[self.reverse_nodes], REVERSE_BODY_IDS
+        ):
+            raise ValueError("configured MDN reverse neurons are absent from MaleCNS")
         self.sources: list[np.ndarray] = []
         self.base: list[np.ndarray] = []
         self.gains: list[np.ndarray] = []
@@ -56,8 +64,9 @@ class DopaminePolicy:
             self.running_variance.append(np.full_like(base, 1e-5))
         self.reward_baseline = 0.0
         self.steering_bias: float | None = None
-        self.episode_steering_bias: float | None = None
-        self.episode_bias_rate = 0.20
+        self.speed_bias: float | None = None
+        self.reverse_mean: float | None = None
+        self.reverse_variance = 1e-8
         self.dopamine = 0.0
         self.lateral_dopamine = [0.0, 0.0]
         self.updates = 0
@@ -78,7 +87,6 @@ class DopaminePolicy:
             self.rng = np.random.default_rng(episode_seed)
         self.dopamine = 0.0
         self.lateral_dopamine = [0.0, 0.0]
-        self.episode_steering_bias = None
 
     def action(
         self,
@@ -87,39 +95,62 @@ class DopaminePolicy:
         *,
         explore: bool,
         adapt: bool,
-    ) -> tuple[float, float, list[np.ndarray]]:
-        inputs = []
+        mirrored_activity: np.ndarray,
+    ) -> tuple[float, float, float, list[np.ndarray]]:
         scores = []
         centered = []
         for index, (sources, base, gains) in enumerate(
             zip(self.sources, self.base, self.gains, strict=True)
         ):
-            values = activity[sources] * source_sign[sources]
+            # Odd visual response controls yaw; even response controls speed.
+            # Both states traverse the same full graph with shared synaptic gains.
+            values = 0.5 * (
+                activity[sources]
+                + (-1 if index < 2 else 1) * mirrored_activity[sources]
+            ) * source_sign[sources]
             if self.running_mean[index] is None:
-                self.running_mean[index] = values.copy()
+                self.running_mean[index] = (
+                    np.zeros_like(values) if index < 2 else values.copy()
+                )
             delta = values - self.running_mean[index]
             if adapt:
-                self.running_mean[index] += 0.03 * delta
+                if index >= 2:
+                    self.running_mean[index] += 0.03 * delta
                 self.running_variance[index] *= 0.995
                 self.running_variance[index] += 0.005 * delta * delta
             normalized = np.clip(
                 delta / np.sqrt(self.running_variance[index] + 1e-6), -5.0, 5.0
             )
-            inputs.append(values)
             centered.append(normalized)
             scores.append(float(np.dot(base * gains, normalized)))
         steering_drive = scores[0] - scores[1]
-        if self.steering_bias is None:
-            self.steering_bias = steering_drive
-        centered_steering_drive = steering_drive - self.steering_bias
+        self.steering_bias = 0.0
+        steering_activation = float(np.tanh(steering_drive * 3.0))
+        steering_threshold = 0.08
+        steering_mean = float(
+            np.sign(steering_activation)
+            * max(0.0, abs(steering_activation) - steering_threshold)
+            / (1.0 - steering_threshold)
+        )
+        speed_drive = scores[2] + scores[3]
+        if self.speed_bias is None:
+            self.speed_bias = speed_drive
+        centered_speed = speed_drive - self.speed_bias
         if adapt:
-            self.steering_bias += 0.01 * centered_steering_drive
-        if self.episode_steering_bias is None:
-            self.episode_steering_bias = centered_steering_drive
-        episode_delta = centered_steering_drive - self.episode_steering_bias
-        self.episode_steering_bias += self.episode_bias_rate * episode_delta
-        steering_mean = float(np.tanh(episode_delta * 3.0))
-        throttle_mean = float(1 / (1 + np.exp(-((scores[2] + scores[3]) * 2.0 + 0.2))))
+            self.speed_bias += 0.01 * centered_speed
+        # Forward is the default motor primitive. DNpe017 only adjusts its speed.
+        throttle_mean = float(np.clip(0.62 + 0.18 * np.tanh(centered_speed * 2.0), 0.25, 0.85))
+        reverse_signal = float(-np.mean(
+            0.5 * (activity[self.reverse_nodes] + mirrored_activity[self.reverse_nodes])
+        ))
+        if self.reverse_mean is None:
+            self.reverse_mean = reverse_signal
+        reverse_delta = reverse_signal - self.reverse_mean
+        if adapt:
+            self.reverse_mean += 0.01 * reverse_delta
+            self.reverse_variance = 0.995 * self.reverse_variance + 0.005 * reverse_delta**2
+        reverse_z = reverse_delta / np.sqrt(self.reverse_variance + 1e-10)
+        reverse = float(np.clip((reverse_z - 2.5) / 2.0, 0.0, 1.0))
         steering_noise = self.rng.normal(0, self.exploration_sigma) if explore else 0.0
         steering = float(
             np.clip(steering_mean + steering_noise, -1, 1)
@@ -144,7 +175,7 @@ class DopaminePolicy:
         self._last_centered = centered
         self._last_steering_drive = steering_drive
         self._last_steering_mean = steering_mean
-        return steering, throttle, features
+        return steering, throttle, reverse, features
 
     def learn(
         self,
@@ -174,14 +205,6 @@ class DopaminePolicy:
                 gains += self.global_eligibility_scale * self.learning_rate * self.dopamine * trace
                 gains += self.gain_decay * (1.0 - gains)
                 np.clip(gains, MIN_PLASTIC_GAIN, MAX_PLASTIC_GAIN, out=gains)
-            new_drive = float(
-                np.dot(self.base[0] * self.gains[0], self._last_centered[0])
-                - np.dot(self.base[1] * self.gains[1], self._last_centered[1])
-            )
-            # Preserve the current operating point while changing sensitivity to
-            # future visual patterns. This prevents a local plastic update from
-            # becoming a permanent left/right motor bias.
-            self.steering_bias += new_drive - self._last_steering_drive
             self.updates += 1
         return self.dopamine
 
@@ -202,18 +225,27 @@ class DopaminePolicy:
             "exploration_sigma": self.exploration_sigma,
             "global_eligibility_scale": self.global_eligibility_scale,
             "gain_decay": self.gain_decay,
-            "episode_bias_rate": self.episode_bias_rate,
-            "centering": "running_mean_and_variance",
+            "centering": "odd_steering_even_speed_shared_graph",
         }
 
     def save(
         self, path: Path, body_ids: np.ndarray, *, checkpoint_kind: str = "learned"
     ) -> None:
+        scalars = [
+            self.reward_baseline, self.steering_bias, self.speed_bias,
+            self.reverse_mean, self.reverse_variance,
+        ]
+        if any(value is None or not np.isfinite(value) for value in scalars):
+            raise ValueError("cannot save policy without finite calibration state")
         payload = {
-            "format_version": np.asarray([2], dtype=np.int32),
+            "format_version": np.asarray([POLICY_VERSION], dtype=np.int32),
             "motor_body_ids": MOTOR_BODY_IDS,
+            "reverse_body_ids": REVERSE_BODY_IDS,
             "reward_baseline": np.asarray([self.reward_baseline], dtype=np.float64),
             "steering_bias": np.asarray([self.steering_bias], dtype=np.float64),
+            "speed_bias": np.asarray([self.speed_bias], dtype=np.float64),
+            "reverse_mean": np.asarray([self.reverse_mean], dtype=np.float64),
+            "reverse_variance": np.asarray([self.reverse_variance], dtype=np.float64),
             "checkpoint_kind": np.asarray([checkpoint_kind]),
         }
         for index, (sources, gains) in enumerate(
@@ -230,10 +262,12 @@ class DopaminePolicy:
 
     def load(self, path: Path, body_ids: np.ndarray) -> None:
         payload = np.load(path, allow_pickle=False)
-        if payload["format_version"].tolist() != [2]:
+        if payload["format_version"].tolist() != [POLICY_VERSION]:
             raise ValueError("unsupported driving policy checkpoint")
         if not np.array_equal(payload["motor_body_ids"], MOTOR_BODY_IDS):
             raise ValueError("driving policy motor-neuron contract mismatch")
+        if not np.array_equal(payload["reverse_body_ids"], REVERSE_BODY_IDS):
+            raise ValueError("driving policy reverse-neuron contract mismatch")
         loaded = []
         loaded_means = []
         loaded_variances = []
@@ -254,13 +288,29 @@ class DopaminePolicy:
                 raise ValueError("invalid driving policy adaptation state")
             if np.any(variance < 0):
                 raise ValueError("negative driving policy variance")
+            if index < 2 and np.any(mean != 0):
+                raise ValueError("odd steering normalization must have zero mean")
             loaded_means.append(mean)
             loaded_variances.append(variance)
+        scalar_names = (
+            "reward_baseline", "steering_bias", "speed_bias",
+            "reverse_mean", "reverse_variance",
+        )
+        if any(
+            payload[name].shape != (1,) or not np.isfinite(payload[name][0])
+            for name in scalar_names
+        ):
+            raise ValueError("invalid driving policy scalar state")
+        if payload["steering_bias"][0] != 0 or payload["reverse_variance"][0] < 0:
+            raise ValueError("invalid symmetric driving policy calibration")
         self.gains = loaded
         self.running_mean = loaded_means
         self.running_variance = loaded_variances
         self.reward_baseline = float(payload["reward_baseline"][0])
         self.steering_bias = float(payload["steering_bias"][0])
+        self.speed_bias = float(payload["speed_bias"][0])
+        self.reverse_mean = float(payload["reverse_mean"][0])
+        self.reverse_variance = float(payload["reverse_variance"][0])
         self.checkpoint_kind = (
             str(payload["checkpoint_kind"][0])
             if "checkpoint_kind" in payload.files
@@ -289,14 +339,15 @@ class DrivingEngine:
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
         self.policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
         self.checkpoint_loaded = False
+        self.checkpoint_rejection: str | None = None
         if load_checkpoint and self.policy_checkpoint.exists():
-            self.policy.load(self.policy_checkpoint, self.graph.body_ids)
-            self.checkpoint_loaded = True
+            self._load_published_policy()
         self.dopamine_nodes = np.searchsorted(self.graph.body_ids, DOPAMINE_BODY_IDS)
         if not np.array_equal(self.graph.body_ids[self.dopamine_nodes], DOPAMINE_BODY_IDS):
             raise ValueError("configured PPL101 dopamine cells are absent from MaleCNS")
         self.env = DrivingEnvironment()
         self.activity = np.zeros(self.graph.node_count, dtype=np.float32)
+        self.mirrored_activity = np.zeros_like(self.activity)
         self.visual_drive = np.zeros_like(self.activity)
         self.top_k = top_k
         if brain_substeps < 1:
@@ -305,8 +356,8 @@ class DrivingEngine:
         overview = json.loads((processed / "overview.json").read_text())
         self.visible_mask = np.isin(self.graph.body_ids, overview["body_ids"])
         self.visible = np.flatnonzero(self.visible_mask)
-        self.last_action = {"steering": 0.0, "throttle": 0.0}
-        self.last_raw_action = {"steering": 0.0, "throttle": 0.0}
+        self.last_action = {"steering": 0.0, "throttle": 0.0, "reverse": 0.0, "drive": 0.0}
+        self.last_raw_action = {"steering": 0.0, "throttle": 0.0, "reverse": 0.0, "drive": 0.0}
         self.last_constraint = {"active": False, "blend": 0.0, "correction": 0.0}
         self.last_reward = 0.0
         self.last_safety_signal = 0.0
@@ -323,6 +374,16 @@ class DrivingEngine:
         }
         self.learning = False
         self.reset(seed)
+
+    def _load_published_policy(self) -> None:
+        with np.load(self.policy_checkpoint, allow_pickle=False) as payload:
+            if payload["format_version"].tolist() != [POLICY_VERSION]:
+                self.checkpoint_loaded = False
+                self.checkpoint_rejection = "obsolete_format_requires_recalibration"
+                return
+        self.policy.load(self.policy_checkpoint, self.graph.body_ids)
+        self.checkpoint_loaded = True
+        self.checkpoint_rejection = None
 
     def _source_sign(self, path: Path) -> np.ndarray:
         table = feather.read_table(path, columns=["body", "consensus_nt"], memory_map=True)
@@ -342,17 +403,18 @@ class DrivingEngine:
     def reset(self, seed: int = 0, *, keep_learning: bool = True) -> dict:
         self.env.reset(seed)
         self.activity.fill(0)
+        self.mirrored_activity.fill(0)
         self.visual_drive.fill(0)
         self.policy.reset_traces(episode_seed=seed)
         if not keep_learning:
             self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
             if self.policy_checkpoint.exists():
-                self.policy.load(self.policy_checkpoint, self.graph.body_ids)
-                self.checkpoint_loaded = True
+                self._load_published_policy()
             else:
                 self.checkpoint_loaded = False
-        self.last_action = {"steering": 0.0, "throttle": 0.0}
-        self.last_raw_action = {"steering": 0.0, "throttle": 0.0}
+                self.checkpoint_rejection = None
+        self.last_action = {"steering": 0.0, "throttle": 0.0, "reverse": 0.0, "drive": 0.0}
+        self.last_raw_action = {"steering": 0.0, "throttle": 0.0, "reverse": 0.0, "drive": 0.0}
         self.last_constraint = {"active": False, "blend": 0.0, "correction": 0.0}
         self.last_reward = 0.0
         self.last_safety_signal = 0.0
@@ -373,6 +435,14 @@ class DrivingEngine:
         return self.state(include_activity=True)
 
     def _advance_brain(self, image: np.ndarray, *, dopamine: float) -> None:
+        self.activity = self._advance_state(self.activity, image, dopamine=dopamine)
+        self.mirrored_activity = self._advance_state(
+            self.mirrored_activity, image[:, ::-1], dopamine=dopamine
+        )
+
+    def _advance_state(
+        self, activity: np.ndarray, image: np.ndarray, *, dopamine: float
+    ) -> np.ndarray:
         self.visual_drive.fill(0)
         # Photoreceptor activity follows local contrast plus luminance.
         receptor_values = self.retina.encode(image)
@@ -380,16 +450,17 @@ class DrivingEngine:
             receptor_values - float(receptor_values.mean())
         )
         self.visual_drive[self.retina.node_indices] = receptor_values
-        recurrent = self.graph.adjacency @ (self.activity * self.source_sign)
-        self.activity = (
-            0.72 * self.activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)
+        recurrent = self.graph.adjacency @ (activity * self.source_sign)
+        activity = (
+            0.72 * activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)
         ).astype(np.float32)
         # The current image is clamped at the sensory boundary for this time step.
-        self.activity[self.retina.node_indices] = receptor_values
+        activity[self.retina.node_indices] = receptor_values
         # Reward prediction error is represented on the two annotated PPL101
         # dopamine cells as a signed model signal. It gates plasticity below but
         # is excluded from the fast transmitter-weighted recurrent current.
-        self.activity[self.dopamine_nodes] = np.tanh(dopamine)
+        activity[self.dopamine_nodes] = np.tanh(dopamine)
+        return activity
 
     def step(
         self,
@@ -421,13 +492,14 @@ class DrivingEngine:
             np.clip(0.18 + 0.62 * road_pressure + 0.20 * heading_pressure, 0.0, 1.0)
         )
         road_target = np.tanh(-1.5 * self.env.x / self.env.road_half_width - self.env.heading)
-        raw_steering, throttle, features = self.policy.action(
-            self.activity, self.source_sign, explore=explore, adapt=learning or explore
+        raw_steering, throttle, reverse, features = self.policy.action(
+            self.activity, self.source_sign, explore=explore, adapt=learning or explore,
+            mirrored_activity=self.mirrored_activity,
         )
         steering, constraint = self.apply_lane_constraint(
             raw_steering, enabled=safety_constraints
         )
-        image, reward, done = self.env.step(steering, throttle)
+        image, reward, done = self.env.step(steering, throttle, reverse)
         stats = self.control_statistics
         current_sign = int(np.sign(self.env.steering))
         if current_sign and stats["previous_sign"] and current_sign != stats["previous_sign"]:
@@ -463,7 +535,9 @@ class DrivingEngine:
         safety_signal = float(
             obstacle_danger * steering * obstacle_asymmetry - behavior_cost
         )
-        terminal_signal = 3.0 if self.env.y >= self.env.road_length else (-1.5 if done else 0.0)
+        terminal_signal = (
+            3.0 if self.env.terminal_reason == "success" else (-1.5 if done else 0.0)
+        )
         dopamine = self.policy.learn(
             terminal_signal + safety_signal,
             features,
@@ -473,8 +547,15 @@ class DrivingEngine:
         )
         for _ in range(self.brain_substeps):
             self._advance_brain(image, dopamine=dopamine)
-        self.last_raw_action = {"steering": raw_steering, "throttle": throttle}
-        self.last_action = {"steering": steering, "throttle": throttle}
+        drive = float((1.0 - reverse) * throttle - reverse)
+        self.last_raw_action = {
+            "steering": raw_steering, "throttle": throttle,
+            "reverse": reverse, "drive": drive,
+        }
+        self.last_action = {
+            "steering": steering, "throttle": throttle,
+            "reverse": reverse, "drive": drive,
+        }
         self.last_constraint = constraint
         self.last_reward = reward
         self.last_safety_signal = safety_signal
@@ -543,6 +624,7 @@ class DrivingEngine:
                 "loaded": self.checkpoint_loaded,
                 "path": str(self.policy_checkpoint.relative_to(self.root)),
                 "kind": self.policy.checkpoint_kind,
+                "rejection": self.checkpoint_rejection,
             },
             "dopamine": self.policy.summary(),
             "retina": {
@@ -552,8 +634,10 @@ class DrivingEngine:
                 "stimulus": self.env.observe().tolist(),
             },
             "motor": {
-                "body_ids": MOTOR_BODY_IDS.tolist(), "names": list(MOTOR_NAMES),
-                "mapping": "engineered_bilateral_DN_readout",
+                "body_ids": np.concatenate([MOTOR_BODY_IDS, REVERSE_BODY_IDS]).tolist(),
+                "names": list(MOTOR_NAMES + REVERSE_NAMES),
+                "mapping": "mirror_odd_DNp20_even_DNpe017_MDN",
+                "symmetry": "shared_full_graph_original_and_mirrored_visual_states",
                 "brain_substeps_per_action": self.brain_substeps,
             },
             "dopamine_neurons": {
@@ -593,17 +677,24 @@ class DrivingEngine:
             return steering, {"active": False, "blend": 0.0, "correction": 0.0}
         usable_half_width = self.env.road_half_width - self.env.vehicle_radius
         lateral = self.env.x / usable_half_width
-        outward_heading = np.sign(lateral) * self.env.heading
+        projected_lateral = (
+            self.env.x + np.sin(self.env.heading) * self.env.speed * 1.2
+        ) / usable_half_width
+        outward_heading = np.sign(lateral) * self.env.heading * np.sign(self.env.speed)
         lateral_pressure = np.clip((abs(lateral) - 0.45) / 0.40, 0.0, 1.0)
+        projected_pressure = np.clip((abs(projected_lateral) - 0.45) / 0.40, 0.0, 1.0)
         heading_pressure = (
             np.clip((outward_heading - 0.12) / 0.45, 0.0, 1.0)
             if abs(lateral) > 0.20
             else 0.0
         )
-        blend = float(max(lateral_pressure, heading_pressure))
+        blend = float(max(lateral_pressure, projected_pressure, heading_pressure))
         if blend <= 0:
             return steering, {"active": False, "blend": 0.0, "correction": 0.0}
-        correction = float(np.clip(-0.85 * lateral - 0.75 * self.env.heading, -1.0, 1.0))
+        direction = -1.0 if self.env.speed < 0 else 1.0
+        correction = float(np.clip(
+            -0.85 * lateral * direction - 0.75 * self.env.heading, -1.0, 1.0
+        ))
         constrained = float(np.clip((1.0 - blend) * steering + blend * correction, -1.0, 1.0))
         return constrained, {
             "active": True, "blend": blend, "correction": correction

@@ -7,7 +7,45 @@ from statistics import mean
 
 import numpy as np
 
-from fly_emotion.driving.engine import DrivingEngine
+from fly_emotion.driving.engine import POLICY_VERSION, DrivingEngine
+from fly_emotion.driving.environment import DrivingEnvironment
+
+EVALUATION_PROTOCOL_VERSION = 4
+
+
+def validate_mirror_protocol(count: int, start: int, *, train_episodes: int = 0) -> None:
+    if count < 2 or count % 2 or start < 0 or start % 2:
+        raise ValueError("evaluation requires complete adjacent even/odd mirror pairs")
+    if train_episodes < 0 or train_episodes % 2:
+        raise ValueError("calibration/training requires complete mirror pairs")
+    if set(range(start // 2, (start + count) // 2)) & set(
+        range(5_000, 5_000 + train_episodes // 2)
+    ):
+        raise ValueError("training and evaluation pair identities overlap")
+
+
+def evaluation_contract(root: Path) -> dict:
+    sources = Path(__file__).parent
+    return {
+        "policy_version": POLICY_VERSION,
+        "evaluation_protocol_version": EVALUATION_PROTOCOL_VERSION,
+        "brain_substeps": 4,
+        "learning": False,
+        "explore": False,
+        "implementation_sha256": {
+            name: hashlib.sha256((sources / name).read_bytes()).hexdigest()
+            for name in ("engine.py", "environment.py", "retina.py")
+        },
+        "asset_sha256": {
+            name: hashlib.sha256((root / name).read_bytes()).hexdigest()
+            for name in (
+                "data/processed/malecns-v1.0/body_ids.npy",
+                "data/processed/malecns-v1.0/adjacency_target_norm.npz",
+                "data/processed/malecns-v1.0/retina_map.npz",
+                "data/raw/malecns-v1.0/body-neurotransmitters.feather",
+            )
+        },
+    }
 
 
 def run_episode(
@@ -19,6 +57,7 @@ def run_episode(
     safety_constraints: bool = True,
 ) -> dict:
     engine.reset(seed, keep_learning=True)
+    controls = []
     while not engine.env.done:
         engine.step(
             learning=learning,
@@ -26,13 +65,37 @@ def run_episode(
             safety_constraints=safety_constraints,
             include_activity=False,
         )
+        controls.append([
+            engine.last_raw_action["steering"], engine.env.steering,
+            engine.env.x, engine.env.y,
+        ])
+    trace = np.asarray(controls)
+    first = engine.env.obstacles[0]
+    before_first = trace[:, 3] < first.y - first.radius - engine.env.vehicle_radius
     return {
         "seed": seed,
+        "pair_seed": engine.env.pair_seed,
+        "mirror": engine.env.mirror,
+        "first_obstacle_side": "left" if first.x < 0 else "right",
         "distance": engine.env.y,
         "return": engine.env.total_reward,
         "steps": engine.env.steps,
-        "success": engine.env.y >= engine.env.road_length,
+        "success": engine.env.terminal_reason == "success",
         "terminal_reason": engine.env.terminal_reason,
+        "obstacles_passed": engine.env.obstacles_passed,
+        "first_obstacle_passed": 0 in engine.env.passed_obstacle_indices,
+        "mean_signed_raw_steering": float(trace[:, 0].mean()),
+        "mean_signed_steering": float(trace[:, 1].mean()),
+        "right_turn_fraction": float(np.mean(trace[:, 1] > 0.055)),
+        "left_turn_fraction": float(np.mean(trace[:, 1] < -0.055)),
+        "pre_first_mean_signed_steering": (
+            float(trace[before_first, 1].mean()) if np.any(before_first) else 0.0
+        ),
+        "collision_before_first_pass": (
+            engine.env.terminal_reason in {"obstacle", "road_boundary"}
+            and 0 not in engine.env.passed_obstacle_indices
+        ),
+        "control_trace": controls,
         **engine.control_summary(),
     }
 
@@ -53,6 +116,11 @@ def summarize(episodes: list[dict]) -> dict:
         "max_abs_lateral",
         "constraint_rate",
         "mean_abs_constraint",
+        "mean_signed_raw_steering",
+        "mean_signed_steering",
+        "right_turn_fraction",
+        "left_turn_fraction",
+        "pre_first_mean_signed_steering",
     ):
         summary[key] = mean(item[key] for item in episodes)
     summary["road_exit_rate"] = mean(
@@ -61,10 +129,75 @@ def summarize(episodes: list[dict]) -> dict:
     summary["obstacle_collision_rate"] = mean(
         float(item["terminal_reason"] == "obstacle") for item in episodes
     )
+    summary["mean_obstacles_passed"] = mean(
+        item["obstacles_passed"] for item in episodes
+    )
+    summary["first_obstacle_pass_rate"] = mean(
+        float(item["first_obstacle_passed"]) for item in episodes
+    )
+    summary["collision_before_first_pass_rate"] = mean(
+        float(item["collision_before_first_pass"]) for item in episodes
+    )
+    summary["mean_steps"] = mean(item["steps"] for item in episodes)
+    summary["timeout_rate"] = mean(
+        float(item["terminal_reason"] == "timeout") for item in episodes
+    )
     return summary
 
 
+def mirror_summary(episodes: list[dict]) -> dict:
+    by_seed = {item["seed"]: item for item in episodes}
+    if len(by_seed) != len(episodes) or any(seed ^ 1 not in by_seed for seed in by_seed):
+        raise ValueError("mirror summary requires unique complete pairs")
+    pairs = []
+    for seed in sorted(by_seed):
+        if seed % 2:
+            continue
+        left, right = by_seed[seed], by_seed[seed + 1]
+        length = min(left["steps"], right["steps"])
+        a = np.asarray(left["control_trace"])[:length]
+        b = np.asarray(right["control_trace"])[:length]
+        pairs.append({
+            "pair_seed": seed // 2,
+            "common_steps": length,
+            "raw_steering_mirror_mae": float(np.mean(np.abs(a[:, 0] + b[:, 0]))),
+            "steering_mirror_mae": float(np.mean(np.abs(a[:, 1] + b[:, 1]))),
+            "lateral_mirror_mae": float(np.mean(np.abs(a[:, 2] + b[:, 2]))),
+            "distance_gap": abs(left["distance"] - right["distance"]),
+            "steps_gap": abs(left["steps"] - right["steps"]),
+            "first_pass_agrees": left["first_obstacle_passed"] == right["first_obstacle_passed"],
+        })
+    return {
+        "pair_count": len(pairs),
+        "raw_steering_mirror_mae": mean(p["raw_steering_mirror_mae"] for p in pairs),
+        "steering_mirror_mae": mean(p["steering_mirror_mae"] for p in pairs),
+        "mean_distance_gap": mean(p["distance_gap"] for p in pairs),
+        "max_steps_gap": max(p["steps_gap"] for p in pairs),
+        "by_first_obstacle_side": {
+            side: summarize([item for item in episodes if item["first_obstacle_side"] == side])
+            for side in ("left", "right")
+        },
+        "details": pairs,
+    }
+
+
+def usability_gates(summary: dict) -> dict:
+    # Absolute task gates prevent early collision or stopping from looking stable.
+    return {
+        "completion_at_least_50pct": summary["success_rate"] >= 0.5,
+        "first_pass_at_least_75pct": summary["first_obstacle_pass_rate"] >= 0.75,
+        "mean_obstacles_passed_at_least_4_5": summary["mean_obstacles_passed"] >= 4.5,
+        "early_collision_at_most_25pct": summary["collision_before_first_pass_rate"] <= 0.25,
+        "timeout_at_most_10pct": summary["timeout_rate"] <= 0.1,
+        "road_exit_at_most_10pct": summary["road_exit_rate"] <= 0.1,
+    }
+
+
 def paired_statistics(frozen: list[dict], learned: list[dict], seed: int) -> dict:
+    if not frozen or len(frozen) != len(learned):
+        raise ValueError("paired statistics require equally sized nonempty episodes")
+    if any(a.get("seed") != b.get("seed") for a, b in zip(frozen, learned, strict=True)):
+        raise ValueError("paired statistics require identical ordered seeds")
     frozen_distance = np.asarray([item["distance"] for item in frozen])
     learned_distance = np.asarray([item["distance"] for item in learned])
     frozen_return = np.asarray([item["return"] for item in frozen])
@@ -72,13 +205,18 @@ def paired_statistics(frozen: list[dict], learned: list[dict], seed: int) -> dic
     distance_delta = learned_distance - frozen_distance
     return_delta = learned_return - frozen_return
     rng = np.random.default_rng(seed)
-    samples = rng.integers(0, len(frozen), size=(50_000, len(frozen)))
+    pair_ids = [item.get("pair_seed", index) for index, item in enumerate(frozen)]
+    clusters = [np.flatnonzero(np.asarray(pair_ids) == key) for key in sorted(set(pair_ids))]
+    samples = rng.integers(0, len(clusters), size=(50_000, len(clusters)))
 
     def interval(values: np.ndarray) -> list[float]:
-        means = values[samples].mean(axis=1)
+        cluster_values = np.asarray([values[indices].mean() for indices in clusters])
+        means = cluster_values[samples].mean(axis=1)
         return np.quantile(means, [0.025, 0.975]).tolist()
 
     return {
+        "bootstrap_unit": "road_pair",
+        "independent_units": len(clusters),
         "distance": {
             "frozen_mean": float(frozen_distance.mean()),
             "learned_mean": float(learned_distance.mean()),
@@ -103,9 +241,12 @@ def evaluate(
     *,
     train_episodes: int = 48,
     evaluation_seeds: int = 32,
-    evaluation_start: int = 200,
+    evaluation_start: int = 400,
     seed: int = 20260912,
 ) -> dict:
+    validate_mirror_protocol(evaluation_seeds, evaluation_start, train_episodes=train_episodes)
+    if train_episodes == 0:
+        raise ValueError("training exposure must be positive")
     frozen = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=False)
     learned = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=False)
     frozen_exposure = []
@@ -154,6 +295,7 @@ def evaluate(
         "delta_mean_return": paired["return"]["delta_mean"],
         "paired_statistics": paired,
         "success_gate": {
+            **usability_gates(summarize(learned_eval)),
             "distance_positive": paired["distance"]["delta_mean"] > 0,
             "return_positive": paired["return"]["delta_mean"] > 0,
             "distance_ci_excludes_zero": distance_interval[0] > 0,
@@ -178,6 +320,8 @@ def evaluate(
             ),
         },
         "plasticity": deployed.policy.summary(),
+        "frozen_mirror": mirror_summary(baseline),
+        "learned_mirror": mirror_summary(learned_eval),
         "interpretation": (
             "This report evaluates dopamine plasticity after behavioural stabilization. "
             "A checkpoint is published only when every task, uncertainty and stability "
@@ -202,8 +346,11 @@ def write_evaluation(root: Path, output: Path, **kwargs) -> dict:
 
 def calibrate_stable_policy(
     root: Path, *, episodes: int = 48, evaluation_seeds: int = 32,
-    evaluation_start: int = 200, seed: int = 20260912
+    evaluation_start: int = 400, seed: int = 20260912
 ) -> dict:
+    validate_mirror_protocol(evaluation_seeds, evaluation_start, train_episodes=episodes)
+    if episodes == 0:
+        raise ValueError("calibration exposure must be positive")
     engine = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=False)
     exposure = [
         run_episode(
@@ -227,6 +374,7 @@ def calibrate_stable_policy(
         for value in test_seeds
     ]
     summary = summarize(evaluation)
+    mirrored = mirror_summary(evaluation)
     gates = {
         "road_exit_rate_at_most_10pct": summary["road_exit_rate"] <= 0.10,
         "far_mean_abs_steering_at_most_0_15": (
@@ -235,37 +383,111 @@ def calibrate_stable_policy(
         "mean_abs_steering_change_at_most_0_03": (
             summary["mean_abs_steering_change"] <= 0.03
         ),
+        "raw_mirror_error_at_most_1e_6": mirrored["raw_steering_mirror_mae"] <= 1e-6,
+        **usability_gates(summary),
     }
     published = all(gates.values())
     if published:
         candidate.replace(checkpoint)
-    else:
-        candidate.unlink(missing_ok=True)
     checkpoint_sha256 = (
         hashlib.sha256(checkpoint.read_bytes()).hexdigest() if published else None
     )
     return {
         "calibration_seed_range": [10_000, 10_000 + episodes - 1],
         "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
-        "learning": False,
-        "explore": True,
+        "protocol_version": POLICY_VERSION,
+        "evaluation_contract": evaluation_contract(root),
+        "calibration_explore": True,
+        "evaluation_learning": False,
+        "evaluation_explore": False,
+        "evaluation_safety_constraints": True,
         "checkpoint": str(checkpoint.relative_to(root)) if published else None,
         "checkpoint_sha256": checkpoint_sha256,
         "checkpoint_kind": deployed.policy.checkpoint_kind,
+        "candidate_checkpoint": str(candidate.relative_to(root)) if not published else None,
+        "candidate_sha256": hashlib.sha256(
+            (checkpoint if published else candidate).read_bytes()
+        ).hexdigest(),
         "fresh_engine_loaded": True,
         "published": published,
         "gates": gates,
         "deployed": summary,
+        "mirror": mirrored,
+        "straight_baseline": straight_baseline(evaluation_start, evaluation_seeds),
+        "interpretation": (
+            "Complete held-out mirror pairs; no held-out tuning. Stability alone "
+            "does not establish obstacle avoidance. Failed candidates are retained "
+            "for reproducibility but are not published as the default policy."
+        ),
         "exposure": summarize(exposure),
     }
 
 
+def straight_baseline(start: int, count: int) -> dict:
+    episodes = []
+    env = DrivingEnvironment()
+    for seed in range(start, start + count):
+        env.reset(seed)
+        while not env.done:
+            env.step(0.0, 0.62)
+        episodes.append({
+            "seed": seed, "distance": env.y,
+            "success": env.terminal_reason == "success",
+            "obstacles_passed": env.obstacles_passed,
+            "first_obstacle_passed": 0 in env.passed_obstacle_indices,
+        })
+    return {
+        "controller": "zero_steering_constant_0_62_throttle",
+        "mean_distance": mean(item["distance"] for item in episodes),
+        "success_rate": mean(float(item["success"]) for item in episodes),
+        "first_obstacle_pass_rate": mean(float(item["first_obstacle_passed"]) for item in episodes),
+        "mean_obstacles_passed": mean(item["obstacles_passed"] for item in episodes),
+        "details": episodes,
+    }
+
+
 def evaluate_constraints(
-    root: Path, *, evaluation_seeds: int = 32, evaluation_start: int = 200,
+    root: Path, *, evaluation_seeds: int = 32, evaluation_start: int = 400,
     seed: int = 20260913,
+    checkpoint: Path | None = None,
+    reference_report: Path | None = None,
 ) -> dict:
-    disabled = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=True)
-    enabled = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=True)
+    validate_mirror_protocol(evaluation_seeds, evaluation_start)
+    test_seeds = range(evaluation_start, evaluation_start + evaluation_seeds)
+    cached = None
+    selected_checkpoint = checkpoint or root / "artifacts/checkpoints/driving-policy.npz"
+    checkpoint_hash = hashlib.sha256(selected_checkpoint.read_bytes()).hexdigest()
+    if reference_report is not None:
+        reference = json.loads(reference_report.read_text())
+        if (
+            reference.get("protocol_version") != POLICY_VERSION
+            or reference.get("evaluation_contract") != evaluation_contract(root)
+            or reference.get("candidate_sha256") != checkpoint_hash
+            or reference.get("evaluation_learning") is not False
+            or reference.get("evaluation_explore") is not False
+            or reference.get("evaluation_safety_constraints") is not True
+            or reference.get("test_seed_range") != [evaluation_start, test_seeds.stop - 1]
+            or [item["seed"] for item in reference["deployed"]["details"]] != list(test_seeds)
+        ):
+            raise ValueError("reference report does not match checkpoint and evaluation protocol")
+        cached = reference["deployed"]["details"]
+        for item in cached:
+            trace = np.asarray(item["control_trace"], dtype=float)
+            if (
+                item["pair_seed"] != item["seed"] // 2
+                or item["mirror"] != (1 if item["seed"] % 2 == 0 else -1)
+                or item["first_obstacle_side"] != ("left" if item["seed"] % 2 == 0 else "right")
+                or item["steps"] < 1
+                or trace.shape != (item["steps"], 4)
+                or not np.isfinite(trace).all()
+                or trace[-1, 3] != item["distance"]
+            ):
+                raise ValueError("reference report contains invalid episode evidence")
+    disabled = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=checkpoint is None)
+    enabled = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=checkpoint is None)
+    if checkpoint is not None:
+        for engine in (disabled, enabled):
+            engine.policy.load(checkpoint, engine.graph.body_ids)
     if (
         disabled.policy.checkpoint_kind != "frozen_calibrated"
         or enabled.policy.checkpoint_kind != "frozen_calibrated"
@@ -273,14 +495,13 @@ def evaluate_constraints(
         raise ValueError(
             "constraint evaluation requires a frozen_calibrated checkpoint"
         )
-    test_seeds = range(evaluation_start, evaluation_start + evaluation_seeds)
     without_constraint = [
         run_episode(
             disabled, value, learning=False, explore=False, safety_constraints=False
         )
         for value in test_seeds
     ]
-    with_constraint = [
+    with_constraint = cached if cached is not None else [
         run_episode(
             enabled, value, learning=False, explore=False, safety_constraints=True
         )
@@ -290,13 +511,21 @@ def evaluate_constraints(
         "protocol": {
             "checkpoint_kind": enabled.policy.checkpoint_kind,
             "checkpoint_sha256": hashlib.sha256(
-                enabled.policy_checkpoint.read_bytes()
+                (checkpoint or enabled.policy_checkpoint).read_bytes()
             ).hexdigest(),
             "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
             "learning": False, "explore": False,
             "only_variable": "lane_constraint",
+            "evaluation_contract": evaluation_contract(root),
+            "constraint_on_reference": str(reference_report) if cached is not None else None,
+            "reference_report_sha256": (
+                hashlib.sha256(reference_report.read_bytes()).hexdigest()
+                if cached is not None else None
+            ),
         },
         "constraint_off": summarize(without_constraint),
         "constraint_on": summarize(with_constraint),
+        "constraint_off_mirror": mirror_summary(without_constraint),
+        "constraint_on_mirror": mirror_summary(with_constraint),
         "paired": paired_statistics(without_constraint, with_constraint, seed),
     }

@@ -1,5 +1,32 @@
 # Behaviour-stability completion audit
 
+## Current v4 Audit
+
+| Requirement | Evidence | Status |
+|---|---|---|
+| Mirror road and camera generation | Adjacent seeds have reflected obstacles, images and dynamics; tests cover odd/even image widths | Complete |
+| Separate first-obstacle side and early collision | Per-side groups, full-clearance pass identities, early collision and episode duration in calibration report | Complete |
+| Remove fixed steering preference | Shared full-graph odd/even readout; raw/executed mirror MAE 0 on 16 unseen pairs | Complete |
+| Symmetric road-only safety layer | Position/heading/speed projection; forward/reverse mirror tests | Complete |
+| Fresh calibration and unseen evaluation | 48 calibration episodes (10000–10047), fresh checkpoint load, 32 test episodes (400–431) | Complete |
+| Avoid early-stop stability claims | Completion/pass/early-collision/timeout publication gates; candidate rejected | Complete |
+| Demonstrate useful obstacle avoidance | 0% completion, 2.5 obstacles passed, 41.55 m versus straight baseline 49.15 m | **Not achieved** |
+| Preserve reproducibility | Retained v4 candidate SHA-256 in calibration report; historical v2 is explicitly disabled | Complete |
+| Regression coverage | 49 driving-mainline Python tests, 6 frontend tests, 3 desktop/mobile browser tests | Complete |
+
+The old language-experiment `test_sklearn_declared` still fails in the full
+workspace suite because the public driving package intentionally does not depend
+on scikit-learn. It is unrelated to this change and was not modified.
+
+Current evidence: `stable-policy-calibration.json` and
+`mirror-constraint-ablation.json`. Mirrored episode pairs are correlated, so
+bootstrap operates on the 16 independent road pairs. Symmetry and smoothness
+are not a release-quality controller: the candidate remains unpublished.
+
+## Historical v2 Audit
+
+The statements below refer only to the earlier generator and checkpoint.
+
 Objective: confirm the behavioural-control evidence, implement stability fixes,
 and retain only claims reproduced by a freshly loaded deployment checkpoint.
 

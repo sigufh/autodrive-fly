@@ -24,6 +24,7 @@ class RetinaMap:
     u: np.ndarray
     v: np.ndarray
     side: np.ndarray
+    mapping_version: int = 2
 
     @property
     def size(self) -> int:
@@ -101,16 +102,23 @@ def build_retina_map(
 
     node_indices = np.asarray(mapped_nodes, dtype=np.int32)
     side = np.asarray(mapped_side, dtype=np.int8)
-    local_u = _normalized(np.asarray(mapped_h1, dtype=np.float32))
-    # Keep the two anatomical eyes in separate visual hemifields. This is a
-    # documented stimulus proxy, not a calibrated fly compound-eye model.
-    u = np.where(side < 0, local_u * 0.5, 0.5 + local_u * 0.5).astype(np.float32)
+    h1 = np.asarray(mapped_h1, dtype=np.float32)
+    local_u = np.zeros_like(h1)
+    for eye in (-1, 1):
+        mask = side == eye
+        local_u[mask] = _normalized(h1[mask])
+    # This proxy chooses mirrored hemifields, not a calibrated eye orientation.
+    # Normalize each eye and reverse the left axis before joining the camera plane.
+    u = np.where(
+        side < 0, (1.0 - local_u) * 0.5, 0.5 + local_u * 0.5
+    ).astype(np.float32)
     v = (1.0 - _normalized(np.asarray(mapped_h2, dtype=np.float32))).astype(np.float32)
     result = RetinaMap(node_indices, np.asarray(mapped_ids, dtype=np.int64), u, v, side)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         output_path, node_indices=result.node_indices, body_ids=result.body_ids,
         u=result.u, v=result.v, side=result.side,
+        mapping_version=np.asarray([result.mapping_version], dtype=np.int32),
     )
     return result
 
@@ -120,6 +128,7 @@ def load_retina_map(path: Path) -> RetinaMap:
     return RetinaMap(
         payload["node_indices"], payload["body_ids"], payload["u"],
         payload["v"], payload["side"],
+        int(payload["mapping_version"][0]) if "mapping_version" in payload.files else 1,
     )
 
 
@@ -128,7 +137,11 @@ def load_or_build_retina_map(
 ) -> RetinaMap:
     if path.exists():
         retina = load_retina_map(path)
-        if np.all(graph.body_ids[retina.node_indices] == retina.body_ids):
+        if (
+            retina.mapping_version == 2
+            and np.all((retina.node_indices >= 0) & (retina.node_indices < graph.node_count))
+            and np.all(graph.body_ids[retina.node_indices] == retina.body_ids)
+        ):
             return retina
     # Raw contact counts preserve the relative evidence used for coordinate inference.
     raw_graph = ConnectomeGraph(

@@ -1,12 +1,29 @@
+import copy
+import hashlib
+import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
+import pytest
 from scipy import sparse
 
+import fly_emotion.driving.evaluate as evaluation_module
 from fly_emotion.driving.engine import DopaminePolicy, DrivingEngine
-from fly_emotion.driving.environment import DrivingEnvironment
-from fly_emotion.driving.evaluate import paired_statistics
+from fly_emotion.driving.environment import DrivingEnvironment, Obstacle
+from fly_emotion.driving.evaluate import (
+    mirror_summary,
+    paired_statistics,
+    usability_gates,
+    validate_mirror_protocol,
+)
 from fly_emotion.driving.retina import RetinaMap
+
+
+def motor_fixture():
+    body_ids = np.array([10059, 10162, 10527, 10763, 11288, 11332, 12348, 555871])
+    adjacency = sparse.eye(8, format="csr", dtype=np.float32)
+    return body_ids, adjacency
 
 
 def test_retina_samples_image_at_mapped_coordinates() -> None:
@@ -18,6 +35,14 @@ def test_retina_samples_image_at_mapped_coordinates() -> None:
     assert np.allclose(retina.encode(image), [0.2, 0.8])
 
 
+def test_retina_mapping_version_is_explicit() -> None:
+    retina = RetinaMap(
+        np.array([2]), np.array([12]), np.array([0.5]),
+        np.array([0.5]), np.array([-1]),
+    )
+    assert retina.mapping_version == 2
+
+
 def test_environment_reward_and_collision_are_closed_loop() -> None:
     environment = DrivingEnvironment()
     _, reward, done = environment.step(0.0, 1.0)
@@ -27,6 +52,20 @@ def test_environment_reward_and_collision_are_closed_loop() -> None:
     _, reward, done = environment.step(0.0, 1.0)
     assert reward < 0
     assert done
+
+
+def test_adjacent_environment_seeds_are_exact_mirrors() -> None:
+    left = DrivingEnvironment()
+    right = DrivingEnvironment()
+    left.reset(200)
+    right.reset(201)
+    assert [item.y for item in left.obstacles] == [item.y for item in right.obstacles]
+    assert [item.radius for item in left.obstacles] == [item.radius for item in right.obstacles]
+    assert np.allclose(
+        [item.x for item in left.obstacles],
+        [-item.x for item in right.obstacles],
+    )
+    assert left.obstacles[0].x < 0 < right.obstacles[0].x
 
 
 def test_steering_actuator_has_deadband_and_rate_limit() -> None:
@@ -62,16 +101,19 @@ def test_lane_constraint_only_intervenes_near_boundary_or_outward_heading() -> N
 
 
 def test_dopamine_policy_only_changes_existing_motor_inputs() -> None:
-    body_ids = np.array([10059, 10162, 10527, 555871])
-    adjacency = sparse.eye(4, format="csr", dtype=np.float32)
+    body_ids, adjacency = motor_fixture()
     policy = DopaminePolicy(adjacency, body_ids, seed=1)
-    activity = np.ones(4, dtype=np.float32)
-    policy.action(activity, np.ones(4, dtype=np.float32), explore=True, adapt=True)
-    _, _, features = policy.action(
-        activity * np.array([1.00001, 0.99999, 1.0, 1.0]),
-        np.ones(4, dtype=np.float32),
+    activity = np.ones(8, dtype=np.float32)
+    policy.action(
+        activity, np.ones(8, dtype=np.float32), explore=True, adapt=True,
+        mirrored_activity=np.zeros(8, dtype=np.float32),
+    )
+    _, _, _, features = policy.action(
+        activity * np.array([1.00001, 0.99999, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]),
+        np.ones(8, dtype=np.float32),
         explore=True,
         adapt=True,
+        mirrored_activity=np.zeros(8, dtype=np.float32),
     )
     policy.learn(
         1.0, features, avoidance_target=0.5, danger=1.0, enabled=True
@@ -88,25 +130,14 @@ def test_real_driving_engine_preserves_full_graph_and_maps_retina() -> None:
     assert engine.graph.node_count == 166_700
     assert engine.graph.edge_count == 25_582_938
     assert state["retina"]["mapped_receptors"] == 3_344
-    assert len(state["motor"]["body_ids"]) == 4
+    assert len(state["motor"]["body_ids"]) == 8
+    assert state["motor"]["body_ids"][-4:] == [10763, 11288, 11332, 12348]
     assert state["motor"]["brain_substeps_per_action"] == 4
     assert state["dopamine_neurons"]["body_ids"] == [11327, 11900]
     assert len(state["environment"]["trajectory"]) == 2
     assert len(state["environment"]["projected_trajectory"]) == 12
     assert state["activity"]["units"] == "simulated_activation_not_millivolts"
     assert state["environment"]["step"] == 1
-
-
-def test_reset_without_keep_learning_restores_published_policy() -> None:
-    root = Path(__file__).parents[1]
-    engine = DrivingEngine(root, seed=5, top_k=1, load_checkpoint=True)
-    assert engine.policy.checkpoint_kind == "frozen_calibrated"
-    published = engine.policy.gains[0].copy()
-    engine.policy.gains[0].fill(1.03)
-    engine.reset(6, keep_learning=False)
-    assert engine.checkpoint_loaded
-    assert engine.policy.checkpoint_kind == "frozen_calibrated"
-    assert np.array_equal(engine.policy.gains[0], published)
 
 
 def test_paired_statistics_measure_learning_gain() -> None:
@@ -125,12 +156,13 @@ def test_paired_statistics_measure_learning_gain() -> None:
 
 
 def test_policy_checkpoint_validates_synapse_identity(tmp_path: Path) -> None:
-    body_ids = np.array([10059, 10162, 10527, 555871])
-    adjacency = sparse.eye(4, format="csr", dtype=np.float32)
+    body_ids, adjacency = motor_fixture()
     original = DopaminePolicy(adjacency, body_ids, seed=1)
     original.gains[0][0] = 1.02
     original.running_mean = [np.zeros_like(gain) for gain in original.gains]
-    original.steering_bias = 0.25
+    original.steering_bias = 0.0
+    original.speed_bias = 0.0
+    original.reverse_mean = 0.0
     path = tmp_path / "policy.npz"
     original.save(path, body_ids)
     restored = DopaminePolicy(adjacency, body_ids, seed=2)
@@ -139,22 +171,23 @@ def test_policy_checkpoint_validates_synapse_identity(tmp_path: Path) -> None:
     assert restored.running_mean[0] is not None
     assert np.array_equal(restored.running_mean[0], original.running_mean[0])
     assert np.array_equal(restored.running_variance[0], original.running_variance[0])
-    assert restored.steering_bias == 0.25
+    assert restored.steering_bias == 0.0
     assert restored.checkpoint_kind == "learned"
 
 
 def test_policy_checkpoint_reproduces_frozen_actions(tmp_path: Path) -> None:
-    body_ids = np.array([10059, 10162, 10527, 555871])
-    adjacency = sparse.eye(4, format="csr", dtype=np.float32)
+    body_ids, adjacency = motor_fixture()
     original = DopaminePolicy(adjacency, body_ids, seed=1)
-    signs = np.ones(4, dtype=np.float32)
+    signs = np.ones(8, dtype=np.float32)
     original.action(
-        np.array([0.2, 0.1, 0.3, 0.4], dtype=np.float32),
+        np.array([0.2, 0.1, 0.3, 0.0, 0.0, 0.0, 0.0, 0.4], dtype=np.float32),
         signs, explore=False, adapt=True,
+        mirrored_activity=np.zeros(8, dtype=np.float32),
     )
     original.action(
-        np.array([0.4, 0.2, 0.3, 0.4], dtype=np.float32),
+        np.array([0.4, 0.2, 0.3, 0.0, 0.0, 0.0, 0.0, 0.4], dtype=np.float32),
         signs, explore=False, adapt=True,
+        mirrored_activity=np.zeros(8, dtype=np.float32),
     )
     path = tmp_path / "complete-policy.npz"
     original.save(path, body_ids, checkpoint_kind="frozen_calibrated")
@@ -162,18 +195,237 @@ def test_policy_checkpoint_reproduces_frozen_actions(tmp_path: Path) -> None:
     restored.load(path, body_ids)
     original.reset_traces(episode_seed=7)
     restored.reset_traces(episode_seed=7)
-    stimulus = np.array([0.35, 0.16, 0.31, 0.39], dtype=np.float32)
-    original_action = original.action(stimulus, signs, explore=False, adapt=False)[:2]
-    restored_action = restored.action(stimulus, signs, explore=False, adapt=False)[:2]
+    stimulus = np.array(
+        [0.35, 0.16, 0.31, 0.0, 0.0, 0.0, 0.0, 0.39], dtype=np.float32
+    )
+    original_action = original.action(
+        stimulus, signs, explore=False, adapt=False, mirrored_activity=stimulus[::-1]
+    )[:3]
+    restored_action = restored.action(
+        stimulus, signs, explore=False, adapt=False, mirrored_activity=stimulus[::-1]
+    )[:3]
     assert np.allclose(original_action, restored_action, atol=0, rtol=0)
     assert restored.checkpoint_kind == "frozen_calibrated"
 
 
 def test_legacy_checkpoint_is_rejected(tmp_path: Path) -> None:
-    body_ids = np.array([10059, 10162, 10527, 555871])
-    adjacency = sparse.eye(4, format="csr", dtype=np.float32)
+    body_ids, adjacency = motor_fixture()
     path = tmp_path / "legacy.npz"
     np.savez(path, format_version=np.array([1]), motor_body_ids=body_ids)
     policy = DopaminePolicy(adjacency, body_ids)
     with np.testing.assert_raises_regex(ValueError, "unsupported"):
         policy.load(path, body_ids)
+
+
+@pytest.mark.parametrize("width", [47, 48])
+def test_mirrored_camera_and_dynamics(width: int) -> None:
+    left, right = DrivingEnvironment(width=width), DrivingEnvironment(width=width)
+    left.reset(200)
+    right.reset(201)
+    for steering in [0.3] * 15 + [-0.4] * 15:
+        a, reward_a, done_a = left.step(steering, 0.6)
+        b, reward_b, done_b = right.step(-steering, 0.6)
+        np.testing.assert_array_equal(a, b[:, ::-1])
+        assert left.x == -right.x
+        assert left.y == right.y
+        assert reward_a == reward_b and done_a == done_b
+
+
+def test_obstacle_pass_is_full_clearance_unique_and_not_collision() -> None:
+    env = DrivingEnvironment()
+    env.obstacles = [Obstacle(4.0, 4.0, 1.0)]
+    env.y = 5.5
+    env.step(0, 0)
+    assert env.obstacles_passed == 0
+    env.step(0, 0)
+    assert env.obstacles_passed == 1
+    env.y = 3
+    env.speed = 0
+    env.step(0, 0)
+    assert env.obstacles_passed == 1
+    env.y = 5.6
+    _, reward, _ = env.step(0, 0)
+    assert env.obstacles_passed == 1
+    assert reward < 0.35
+    env.reset()
+    env.obstacles = [Obstacle(4.0, 4.0, 1.0)]
+    env.y, env.x = 6, 6
+    env.step(0, 0)
+    assert env.obstacles_passed == 0
+    assert not env.snapshot()["success"]
+
+
+@pytest.mark.parametrize("speed", [-2.0, 0.0, 6.0])
+def test_lane_constraint_is_odd_under_mirroring(speed: float) -> None:
+    engine = object.__new__(DrivingEngine)
+    engine.env = DrivingEnvironment()
+    for x, heading in [(0, 0), (0, 0.8), (2, 0.5), (4.5, -0.3)]:
+        engine.env.x, engine.env.heading, engine.env.speed = x, heading, speed
+        a, status_a = engine.apply_lane_constraint(0.4, enabled=True)
+        engine.env.x, engine.env.heading = -x, -heading
+        b, status_b = engine.apply_lane_constraint(-0.4, enabled=True)
+        assert a == -b
+        assert status_a["blend"] == status_b["blend"]
+
+
+def test_policy_is_odd_for_steering_even_for_longitudinal_actions() -> None:
+    ids, graph = motor_fixture()
+    policy = DopaminePolicy(graph, ids)
+    signs = np.ones(8, dtype=np.float32)
+    a = np.asarray([0.4, 0.1, 0.3, 0.2, 0.2, 0.2, 0.2, 0.1], dtype=np.float32)
+    b = a[::-1].copy()
+    policy.action(a, signs, mirrored_activity=b, explore=False, adapt=True)
+    for _ in range(5):
+        left = policy.action(a, signs, mirrored_activity=b, explore=False, adapt=False)
+        right = policy.action(b, signs, mirrored_activity=a, explore=False, adapt=False)
+        assert left[0] != 0
+        assert left[0] == -right[0]
+        assert left[1:3] == right[1:3]
+    neutral = policy.action(a, signs, mirrored_activity=a, explore=False, adapt=False)
+    assert neutral[0] == 0
+
+
+def test_mirror_protocol_rejects_incomplete_or_leaking_pairs() -> None:
+    for count, start, exposure in [(3, 200, 4), (4, 201, 4), (4, 10002, 4)]:
+        with pytest.raises(ValueError):
+            validate_mirror_protocol(count, start, train_episodes=exposure)
+    validate_mirror_protocol(32, 200, train_episodes=48)
+    with pytest.raises(ValueError):
+        mirror_summary([{"seed": 200}])
+
+
+def test_early_collision_cannot_pass_usability_gate() -> None:
+    gates = usability_gates({
+        "success_rate": 0, "first_obstacle_pass_rate": 0,
+        "mean_obstacles_passed": 0, "collision_before_first_pass_rate": 1,
+        "timeout_rate": 0, "road_exit_rate": 0,
+    })
+    assert not all(gates.values())
+    assert gates["road_exit_at_most_10pct"]
+    assert not gates["early_collision_at_most_25pct"]
+
+
+def test_bootstrap_clusters_mirror_pairs_and_rejects_misalignment() -> None:
+    baseline = [
+        {"seed": seed, "pair_seed": seed // 2, "distance": 1.0, "return": 1.0}
+        for seed in range(200, 204)
+    ]
+    result = paired_statistics(baseline, baseline, seed=7)
+    assert result["independent_units"] == 2
+    with pytest.raises(ValueError):
+        paired_statistics(baseline, baseline[::-1], seed=7)
+
+
+def test_real_engine_mirror_replay_and_checkpoint_reset(tmp_path: Path) -> None:
+    engine = DrivingEngine(Path(__file__).parents[1], top_k=1, load_checkpoint=False)
+    engine.step(explore=True, include_activity=False)
+    engine.root = tmp_path
+    engine.policy_checkpoint = tmp_path / "policy.npz"
+    engine.policy.save(
+        engine.policy_checkpoint, engine.graph.body_ids, checkpoint_kind="frozen_calibrated"
+    )
+    runs = []
+    for seed in (200, 201, 200):
+        engine.policy.gains[0].fill(1.03)
+        engine.reset(seed, keep_learning=False)
+        assert engine.checkpoint_loaded
+        assert np.all(engine.policy.gains[0] == 1)
+        trace = []
+        for _ in range(12):
+            state = engine.step(include_activity=False)
+            trace.append([
+                state["raw_action"]["steering"], engine.env.x, engine.env.y,
+                state["action"]["throttle"], state["action"]["reverse"],
+            ])
+        runs.append(np.asarray(trace))
+    np.testing.assert_allclose(runs[0], runs[1] * [-1, -1, 1, 1, 1], atol=1e-7)
+    np.testing.assert_array_equal(runs[0], runs[2])
+
+
+def test_checkpoint_rejects_nonfinite_scalar_state(tmp_path: Path) -> None:
+    ids, graph = motor_fixture()
+    policy = DopaminePolicy(graph, ids)
+    policy.action(
+        np.zeros(8), np.ones(8), mirrored_activity=np.zeros(8),
+        explore=False, adapt=True,
+    )
+    path = tmp_path / "policy.npz"
+    policy.save(path, ids)
+    with np.load(path) as source:
+        payload = dict(source)
+    payload["reverse_mean"] = np.asarray([np.nan])
+    np.savez(path, **payload)
+    with pytest.raises(ValueError, match="scalar"):
+        policy.load(path, ids)
+
+
+def test_constraint_report_reuse_is_strict_and_skips_only_enabled_runs(tmp_path, monkeypatch):
+    checkpoint = tmp_path / "candidate.npz"
+    checkpoint.write_bytes(b"fixture checkpoint")
+    reference_path = tmp_path / "reference.json"
+    contract = {"policy_version": 4, "implementation_sha256": {"engine.py": "one"}}
+    monkeypatch.setattr(evaluation_module, "evaluation_contract", lambda _root: contract)
+    episodes = [
+        {
+            "seed": seed, "pair_seed": seed // 2, "mirror": 1 if seed % 2 == 0 else -1,
+            "first_obstacle_side": "left" if seed % 2 == 0 else "right",
+            "steps": 1, "distance": 12.0, "return": 1.0,
+            "control_trace": [[0.0, 0.0, 0.0, 12.0]],
+        }
+        for seed in (400, 401)
+    ]
+    reference = {
+        "protocol_version": 4,
+        "candidate_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+        "evaluation_contract": contract, "test_seed_range": [400, 401],
+        "evaluation_learning": False, "evaluation_explore": False,
+        "evaluation_safety_constraints": True, "deployed": {"details": episodes},
+    }
+    calls = []
+    monkeypatch.setattr(evaluation_module, "DrivingEngine", lambda *_args, **_kwargs: (
+        SimpleNamespace(
+            policy=SimpleNamespace(checkpoint_kind="frozen_calibrated", load=lambda *_: None),
+            graph=SimpleNamespace(body_ids=np.array([])), policy_checkpoint=checkpoint,
+        )
+    ))
+
+    def run(_engine, seed, **options):
+        calls.append((seed, options))
+        return copy.deepcopy(episodes[seed - 400])
+
+    monkeypatch.setattr(evaluation_module, "run_episode", run)
+    monkeypatch.setattr(evaluation_module, "summarize", lambda rows: {"details": rows})
+    monkeypatch.setattr(evaluation_module, "mirror_summary", lambda _rows: {})
+    reference_path.write_text(json.dumps(reference))
+    result = evaluation_module.evaluate_constraints(
+        tmp_path, evaluation_start=400, evaluation_seeds=2,
+        checkpoint=checkpoint, reference_report=reference_path,
+    )
+    assert [seed for seed, _ in calls] == [400, 401]
+    assert all(options == {
+        "learning": False, "explore": False, "safety_constraints": False,
+    } for _, options in calls)
+    assert result["constraint_on"]["details"] == episodes
+    assert result["protocol"]["reference_report_sha256"] == hashlib.sha256(
+        reference_path.read_bytes()
+    ).hexdigest()
+
+    mismatches = [
+        {"candidate_sha256": "wrong"}, {"protocol_version": 3},
+        {"evaluation_contract": {"policy_version": 4}},
+        {"evaluation_learning": True}, {"evaluation_explore": True},
+        {"evaluation_safety_constraints": False}, {"test_seed_range": [402, 403]},
+        {"deployed": {"details": list(reversed(episodes))}},
+    ]
+    invalid_trace = copy.deepcopy(episodes)
+    invalid_trace[0]["control_trace"] = [[0, 0, 0, 13]]
+    mismatches.append({"deployed": {"details": invalid_trace}})
+    for change in mismatches:
+        calls.clear()
+        reference_path.write_text(json.dumps({**reference, **change}))
+        with pytest.raises(ValueError, match="reference report"):
+            evaluation_module.evaluate_constraints(
+                tmp_path, evaluation_start=400, evaluation_seeds=2,
+                checkpoint=checkpoint, reference_report=reference_path,
+            )
+        assert calls == []
