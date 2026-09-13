@@ -9,7 +9,7 @@ import pytest
 from scipy import sparse
 
 import fly_emotion.driving.evaluate as evaluation_module
-from fly_emotion.driving.engine import DopaminePolicy, DrivingEngine
+from fly_emotion.driving.engine import DopaminePolicy, DrivingEngine, closed_loop_steering
 from fly_emotion.driving.environment import DrivingEnvironment, Obstacle
 from fly_emotion.driving.evaluate import (
     mirror_summary,
@@ -116,9 +116,10 @@ def test_dopamine_policy_only_changes_existing_motor_inputs() -> None:
         mirrored_activity=np.zeros(8, dtype=np.float32),
     )
     policy.learn(
-        1.0, features, avoidance_target=0.5, danger=1.0, enabled=True
+        1.0, features, avoidance_target=0.5, speed_target=0.25,
+        reverse_target=0.8, danger=1.0, enabled=True
     )
-    assert policy.plastic_synapses == 4
+    assert policy.plastic_synapses == 8
     assert policy.summary()["changed_synapses"] > 0
 
 
@@ -285,6 +286,20 @@ def test_policy_is_odd_for_steering_even_for_longitudinal_actions() -> None:
     assert neutral[0] == 0
 
 
+def test_closed_loop_steering_chooses_the_free_side_and_recovers() -> None:
+    # Positive steering moves right.  Thus the left obstacle has a positive
+    # asymmetry and must produce a positive (rightward) response.
+    left_obstacle = closed_loop_steering(
+        0, obstacle_danger=0.8, obstacle_asymmetry=0.5, road_target=0,
+    )
+    right_obstacle = closed_loop_steering(
+        0, obstacle_danger=0.8, obstacle_asymmetry=-0.5, road_target=0,
+    )
+    assert left_obstacle > 0 > right_obstacle
+    assert np.isclose(left_obstacle, -right_obstacle)
+    assert closed_loop_steering(0, obstacle_danger=0, obstacle_asymmetry=0, road_target=-0.5) < 0
+
+
 def test_mirror_protocol_rejects_incomplete_or_leaking_pairs() -> None:
     for count, start, exposure in [(3, 200, 4), (4, 201, 4), (4, 10002, 4)]:
         with pytest.raises(ValueError):
@@ -298,11 +313,60 @@ def test_early_collision_cannot_pass_usability_gate() -> None:
     gates = usability_gates({
         "success_rate": 0, "first_obstacle_pass_rate": 0,
         "mean_obstacles_passed": 0, "collision_before_first_pass_rate": 1,
-        "timeout_rate": 0, "road_exit_rate": 0,
+        "timeout_rate": 0, "road_exit_rate": 0, "mean_drive": 0.62,
+        "reverse_fraction": 0, "negative_speed_fraction": 0,
     })
     assert not all(gates.values())
     assert gates["road_exit_at_most_10pct"]
     assert not gates["early_collision_at_most_25pct"]
+
+
+def test_longitudinal_and_reverse_actions_have_nonzero_eligibility() -> None:
+    ids, graph = motor_fixture()
+    policy = DopaminePolicy(graph, ids, seed=3)
+    signs = np.ones(8, dtype=np.float32)
+    baseline = np.ones(8, dtype=np.float32)
+    policy.action(
+        baseline, signs, mirrored_activity=baseline, explore=True, adapt=True
+    )
+    changed = baseline.copy()
+    changed[[2, 3, 4, 5, 6, 7]] += 1e-5
+    _, _, _, features = policy.action(
+        changed, signs, mirrored_activity=changed, explore=True, adapt=True
+    )
+    assert np.any(features[2] != 0) and np.any(features[3] != 0)
+    assert all(np.any(features[index] != 0) for index in range(4, 8))
+
+
+def test_mdn_baseline_is_sparse_without_visual_danger() -> None:
+    ids, graph = motor_fixture()
+    policy = DopaminePolicy(graph, ids, seed=3)
+    signs = np.ones(8, dtype=np.float32)
+    activity = np.ones(8, dtype=np.float32)
+    policy.action(activity, signs, mirrored_activity=activity, explore=False, adapt=True)
+    outputs = [
+        policy.action(activity, signs, mirrored_activity=activity, explore=False, adapt=False)[2]
+        for _ in range(20)
+    ]
+    assert outputs == [0.0] * 20
+
+
+def test_reverse_requires_persistent_close_hazard() -> None:
+    engine = DrivingEngine(Path(__file__).parents[1], top_k=1, load_checkpoint=False)
+    engine.env.obstacles = [Obstacle(0.0, 3.8, 1.0)]
+    engine.env.observe()
+    for _ in range(3):
+        state = engine.step(include_activity=False)
+        assert state["action"]["reverse"] == 0.0
+
+
+def test_obstacle_pass_reward_modulates_policy() -> None:
+    env = DrivingEnvironment()
+    env.obstacles = [Obstacle(4.0, 4.0, 0.5)]
+    env.y = 5.2
+    _, reward, _ = env.step(0, 0)
+    assert env.obstacles_passed == 1
+    assert reward > 0.35
 
 
 def test_bootstrap_clusters_mirror_pairs_and_rejects_misalignment() -> None:
@@ -363,19 +427,19 @@ def test_constraint_report_reuse_is_strict_and_skips_only_enabled_runs(tmp_path,
     checkpoint = tmp_path / "candidate.npz"
     checkpoint.write_bytes(b"fixture checkpoint")
     reference_path = tmp_path / "reference.json"
-    contract = {"policy_version": 4, "implementation_sha256": {"engine.py": "one"}}
+    contract = {"policy_version": 5, "implementation_sha256": {"engine.py": "one"}}
     monkeypatch.setattr(evaluation_module, "evaluation_contract", lambda _root: contract)
     episodes = [
         {
             "seed": seed, "pair_seed": seed // 2, "mirror": 1 if seed % 2 == 0 else -1,
             "first_obstacle_side": "left" if seed % 2 == 0 else "right",
             "steps": 1, "distance": 12.0, "return": 1.0,
-            "control_trace": [[0.0, 0.0, 0.0, 12.0]],
+            "control_trace": [[0.0, 0.0, 0.0, 12.0, 0.62, 0.0]],
         }
         for seed in (400, 401)
     ]
     reference = {
-        "protocol_version": 4,
+        "protocol_version": 5,
         "candidate_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
         "evaluation_contract": contract, "test_seed_range": [400, 401],
         "evaluation_learning": False, "evaluation_explore": False,
@@ -411,14 +475,14 @@ def test_constraint_report_reuse_is_strict_and_skips_only_enabled_runs(tmp_path,
     ).hexdigest()
 
     mismatches = [
-        {"candidate_sha256": "wrong"}, {"protocol_version": 3},
-        {"evaluation_contract": {"policy_version": 4}},
+        {"candidate_sha256": "wrong"}, {"protocol_version": 4},
+        {"evaluation_contract": {"policy_version": 5}},
         {"evaluation_learning": True}, {"evaluation_explore": True},
         {"evaluation_safety_constraints": False}, {"test_seed_range": [402, 403]},
         {"deployed": {"details": list(reversed(episodes))}},
     ]
     invalid_trace = copy.deepcopy(episodes)
-    invalid_trace[0]["control_trace"] = [[0, 0, 0, 13]]
+    invalid_trace[0]["control_trace"] = [[0, 0, 0, 13, 0.62, 0]]
     mismatches.append({"deployed": {"details": invalid_trace}})
     for change in mismatches:
         calls.clear()

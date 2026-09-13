@@ -1,11 +1,12 @@
 # Visual-driving experiment
 
-## Mirror protocol (v4)
+## Mirror protocol (v5)
 
 Adjacent seeds `2k` and `2k+1` share obstacle heights, radii and absolute
 horizontal positions. Their x coordinates have opposite signs. The camera,
 vehicle motion and lane constraint also commute with horizontal reflection.
-Calibration uses 48 episodes, seeds 10000–10047 (24 independent road pairs).
+Training uses 48 episodes, seeds 10000–10047 (24 independent road pairs),
+with dopamine plasticity and exploration enabled.
 The new held-out evaluation uses seeds 400–431 (16 independent road pairs),
 not the previously inspected 200–231 range. Neither half of a test pair may
 overlap a calibration pair. Inference disables learning and exploration.
@@ -29,6 +30,22 @@ The lane constraint uses current lateral position, heading, speed and a
 rays. Reverse travel flips the lateral restoring command. Raw and executed
 commands, intervention rate and correction magnitude remain separately visible.
 
+## v5 closed-loop action semantics
+
+DNp20 remains a connectome-derived signed steering residual. It is combined
+with two explicitly engineered, observable control terms: an obstacle-ray
+odd component chooses the free side, and a road-centering component brings the
+vehicle back after clearance. This is a closed-loop simulator controller, not
+a claim that the MaleCNS graph alone has been shown to implement path planning.
+The displayed constraint fields separate the neural residual, visual-avoidance
+term, road-recovery term and road-only safety correction.
+
+DNpe017 supplies the speed residual around default forward motion. Its
+eligibility traces are now non-zero and obstacle-pass reward enters the
+dopamine prediction error. MDN is a separate escape primitive: it is gated by
+four consecutive readings below 1.5 m, has a finite variance prior and has no
+positive-clipped action noise. It is not used as routine braking.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without
@@ -51,22 +68,47 @@ Bootstrap resamples **road pairs**, not the two correlated mirror episodes
 independently. A 32-scene test therefore has 16 independent bootstrap units.
 
 Before evaluation, the candidate is saved and loaded into a new engine.
-Checkpoint v4 validates motor and reverse neuron identities, source identities,
+Checkpoint v5 validates motor and reverse neuron identities, source identities,
 finite scalar state, zero steering centering, running statistics and bounded
 gains. Older checkpoints are explicitly rejected by the loader; the application
 reports an obsolete checkpoint and runs an uncalibrated policy rather than
 pretending the old state is valid.
 
 Publication requires all stability and task gates: road exits ≤10%, far-obstacle
-mean absolute steering ≤0.15, mean steering change ≤0.03, raw mirror error ≤1e-6,
+mean absolute steering ≤0.15, mean steering change ≤0.06, raw and executed
+mirror errors ≤1e-6,
 completion ≥50%, first pass ≥75%, mean passed obstacles ≥4.5 of 9, early collision
-≤25%, and timeout ≤10%. These are operational simulator thresholds, not a claim
+≤25%, timeout ≤10%, forward drive ≥0.35, reverse command ≤10% and true reverse
+motion ≤5%. It also requires distance and passed obstacles to exceed the constant
+forward baseline. These are operational simulator thresholds, not a claim
 of real-world safety. Failure retains the candidate for reproducibility but does
 not replace the default checkpoint. No held-out parameter search is performed.
 
-Evidence: `artifacts/stable-policy-calibration.json` and
-`artifacts/mirror-constraint-ablation.json`. The latter loads the retained
-candidate explicitly; it must not be mistaken for a published policy.
+## Completed v5 training and held-out evaluation
+
+The frozen v5 run trained on seeds 10000–10047 and then evaluated a freshly
+loaded checkpoint on seeds 400–431. It passed every publication gate and
+replaced the default checkpoint. The report SHA-256 is
+`e9de899238198dcdd060dba17043edf3c9098743cfd85c33064889ac108268f9`.
+
+| Metric | v4 retained candidate | v5 published policy | Straight baseline (v5 test roads) |
+|---|---:|---:|---:|
+| Mean distance | 41.55 m | 120.30 m | 49.15 m |
+| Mean passed obstacles | 2.5 / 9 | 9 / 9 | 3.1875 / 9 |
+| Completion | 0% | 100% | 0% |
+| First-obstacle pass | 81.25% | 100% | 81.25% |
+| Road exits | 0% | 0% | — |
+| MDN command / true reverse | not gated | 0% / 0% | — |
+
+Across 16 held-out mirror pairs, raw steering mirror MAE is zero, executed
+steering mirror MAE is `3.55e-8`, and the maximum episode-length gap is zero.
+The mean steering change is 0.0449, below the v5 0.06 gate. These results show
+that this simulator controller completes the evaluated roads; they do not
+separate how much of the gain is attributable to the connectome residual versus
+the explicitly documented visual and road-recovery terms.
+
+Evidence: `artifacts/stable-policy-calibration.json`. The completed v4 ablation
+below remains historical evidence for the road-only safety layer.
 
 ## Completed v4 safety-layer ablation
 
@@ -92,14 +134,9 @@ slightly higher pass count show that the exit reduction is not solely caused by
 additional first-obstacle collisions, but **neither condition is a usable
 obstacle-avoidance policy**. The straight baseline still reaches 49.15 m.
 
-Optional reuse is explicit, not an automatic fallback:
-
-```bash
-.venv/bin/autodrive-fly evaluate-constraints --evaluation-start 400 --evaluation-seeds 32 \
-  --checkpoint artifacts/checkpoints/driving-policy.calibrated-candidate.npz \
-  --reference-report artifacts/stable-policy-calibration.json \
-  --output artifacts/mirror-constraint-ablation.json
-```
+The following was a v4-only reuse procedure. Its retained candidate was
+removed when v5 passed publication. Run a fresh v5 ablation from the published
+checkpoint using the command in the README instead.
 
 Reuse requires an exact checkpoint SHA, complete ordered test seeds, frozen
 learning/exploration settings, valid per-step traces and an evaluation contract

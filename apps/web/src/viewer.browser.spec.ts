@@ -13,6 +13,8 @@ test.beforeEach(async ({ request }) => {
   expect(state.environment.pair_seed).toBe(200)
   expect(state.environment.first_obstacle_side).toBe('left')
   expect(state.policy_checkpoint).toHaveProperty('rejection')
+  expect(state.policy_checkpoint.loaded).toBe(true)
+  expect(state.policy_checkpoint.kind).toBe('learned_v5')
 })
 
 test('real topology coverage, driving activity and stable scene', async ({ page }, testInfo) => {
@@ -52,9 +54,9 @@ test('driving controls expose learning, stepping and reset', async ({ page }) =>
   await expect(page.getByLabel('探索噪声')).not.toBeChecked()
   await expect(page.getByLabel('道路安全约束')).toBeChecked()
   await page.getByRole('button', { name: '单步' }).click()
-  await expect(page.locator('.telemetry').getByText(/\/1571$/)).toBeVisible({ timeout: 120000 })
+  await expect(page.locator('.telemetry').getByText(/\/4383$/)).toBeVisible({ timeout: 120000 })
   await page.getByRole('button', { name: '恢复发布策略' }).click()
-  await expect(page.getByText('0/1571')).toBeVisible({ timeout: 120000 })
+  await expect(page.locator('.telemetry').getByText(/[1-9]\d*\/4383$/)).toBeVisible({ timeout: 120000 })
 })
 
 test('mirror telemetry stays visible on mobile with nonblank road and retina', async ({ page }, testInfo) => {
@@ -62,7 +64,7 @@ test('mirror telemetry stays visible on mobile with nonblank road and retina', a
   await page.goto(webUrl)
   await expect(page.getByText('首障碍侧别', { exact: true })).toBeVisible({ timeout: 120000 })
   await page.getByRole('button', { name: '单步', exact: true }).click()
-  await expect(page.getByText('0/1571', { exact: true })).toBeVisible({ timeout: 120000 })
+  await expect(page.locator('.telemetry').getByText(/[1-9]\d*\/4383$/)).toBeVisible({ timeout: 120000 })
   for (const selector of ['.road-canvas', '.retina-canvas']) {
     const colors = await page.locator(selector).evaluate((node: HTMLCanvasElement) => {
       const pixels = node.getContext('2d')!.getImageData(0, 0, node.width, node.height).data

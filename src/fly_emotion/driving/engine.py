@@ -20,11 +20,29 @@ INHIBITORY_TRANSMITTERS = {"gaba", "glutamate", "histamine"}
 MODULATORY_TRANSMITTERS = {"dopamine", "octopamine", "serotonin"}
 MIN_PLASTIC_GAIN = 0.97
 MAX_PLASTIC_GAIN = 1.03
-POLICY_VERSION = 4
+POLICY_VERSION = 5
+
+
+def closed_loop_steering(
+    neural_residual: float, *, obstacle_danger: float,
+    obstacle_asymmetry: float, road_target: float,
+) -> float:
+    """Fuse a DNp20 residual with explicit obstacle avoidance and recovery.
+
+    Positive steering is rightward in the simulator.  An obstacle on the left
+    makes ``obstacle_asymmetry`` positive, so the visual term deliberately
+    chooses the free (right) side.  The road term is odd and pulls the vehicle
+    back towards the centre after it has passed an obstacle.
+    """
+    visual_avoidance = 2.0 * obstacle_danger * obstacle_asymmetry
+    road_recovery = 2.0 * road_target
+    return float(np.tanh(
+        visual_avoidance + road_recovery + 0.20 * neural_residual
+    ))
 
 
 class DopaminePolicy:
-    """Plastic gain on real synapses entering four documented DN cells."""
+    """Plastic gain on real synapses entering documented motor cells."""
 
     def __init__(
         self,
@@ -46,13 +64,14 @@ class DopaminePolicy:
             body_ids[self.reverse_nodes], REVERSE_BODY_IDS
         ):
             raise ValueError("configured MDN reverse neurons are absent from MaleCNS")
+        self.target_nodes = np.concatenate([self.motor_nodes, self.reverse_nodes])
         self.sources: list[np.ndarray] = []
         self.base: list[np.ndarray] = []
         self.gains: list[np.ndarray] = []
         self.eligibility: list[np.ndarray] = []
         self.running_mean: list[np.ndarray | None] = []
         self.running_variance: list[np.ndarray] = []
-        for target in self.motor_nodes:
+        for target in self.target_nodes:
             start, end = adjacency.indptr[target : target + 2]
             self.sources.append(adjacency.indices[start:end].copy())
             base = adjacency.data[start:end].astype(np.float32, copy=True)
@@ -66,7 +85,9 @@ class DopaminePolicy:
         self.steering_bias: float | None = None
         self.speed_bias: float | None = None
         self.reverse_mean: float | None = None
-        self.reverse_variance = 1e-8
+        # A finite prior prevents the first small MDN fluctuation from becoming
+        # an artificial many-sigma escape response.
+        self.reverse_variance = 0.25
         self.dopamine = 0.0
         self.lateral_dopamine = [0.0, 0.0]
         self.updates = 0
@@ -123,7 +144,7 @@ class DopaminePolicy:
             )
             centered.append(normalized)
             scores.append(float(np.dot(base * gains, normalized)))
-        steering_drive = scores[0] - scores[1]
+        steering_drive = scores[1] - scores[0]
         self.steering_bias = 0.0
         steering_activation = float(np.tanh(steering_drive * 3.0))
         steering_threshold = 0.08
@@ -140,24 +161,29 @@ class DopaminePolicy:
             self.speed_bias += 0.01 * centered_speed
         # Forward is the default motor primitive. DNpe017 only adjusts its speed.
         throttle_mean = float(np.clip(0.62 + 0.18 * np.tanh(centered_speed * 2.0), 0.25, 0.85))
-        reverse_signal = float(-np.mean(
-            0.5 * (activity[self.reverse_nodes] + mirrored_activity[self.reverse_nodes])
-        ))
+        reverse_drive = float(-np.mean(scores[4:]))
         if self.reverse_mean is None:
-            self.reverse_mean = reverse_signal
-        reverse_delta = reverse_signal - self.reverse_mean
+            self.reverse_mean = reverse_drive
+        reverse_delta = reverse_drive - self.reverse_mean
         if adapt:
             self.reverse_mean += 0.01 * reverse_delta
             self.reverse_variance = 0.995 * self.reverse_variance + 0.005 * reverse_delta**2
         reverse_z = reverse_delta / np.sqrt(self.reverse_variance + 1e-10)
-        reverse = float(np.clip((reverse_z - 2.5) / 2.0, 0.0, 1.0))
+        reverse_logit = float(np.clip(2.0 * reverse_z - 6.0, -40.0, 40.0))
+        reverse_logit_noise = self.rng.normal(0, 0.35) if explore else 0.0
+        reverse_activation = float(
+            1.0 / (1.0 + np.exp(-(reverse_logit + reverse_logit_noise)))
+        )
+        reverse_mean = float(
+            max(0.0, reverse_activation - 0.08) / 0.92
+        )
         steering_noise = self.rng.normal(0, self.exploration_sigma) if explore else 0.0
         steering = float(
             np.clip(steering_mean + steering_noise, -1, 1)
         )
-        throttle = float(
-            np.clip(throttle_mean + (self.rng.normal(0, 0.08) if explore else 0), 0, 1)
-        )
+        throttle_noise = self.rng.normal(0, 0.08) if explore else 0.0
+        throttle = float(np.clip(throttle_mean + throttle_noise, 0, 1))
+        reverse = float(np.clip(reverse_mean, 0, 1))
         steering_gradient = (
             steering_noise
             / (self.exploration_sigma**2)
@@ -166,15 +192,31 @@ class DopaminePolicy:
             if explore
             else 0.0
         )
+        speed_gradient = (
+            throttle_noise / 0.08**2
+            * 0.36 * (1.0 - np.tanh(centered_speed * 2.0) ** 2)
+            if explore else 0.0
+        )
+        reverse_gradient = (
+            reverse_logit_noise / 0.35**2
+            * 2.0 * reverse_activation * (1.0 - reverse_activation)
+            if explore else 0.0
+        )
         features = [
-            self.base[0] * centered[0] * steering_gradient,
-            -self.base[1] * centered[1] * steering_gradient,
-            np.zeros_like(centered[2]),
-            np.zeros_like(centered[3]),
+            -self.base[0] * centered[0] * steering_gradient,
+            self.base[1] * centered[1] * steering_gradient,
+            self.base[2] * centered[2] * speed_gradient,
+            self.base[3] * centered[3] * speed_gradient,
+            *[
+                -self.base[index] * centered[index] * reverse_gradient / 4.0
+                for index in range(4, 8)
+            ],
         ]
         self._last_centered = centered
         self._last_steering_drive = steering_drive
         self._last_steering_mean = steering_mean
+        self._last_throttle_mean = throttle_mean
+        self._last_reverse_mean = reverse_mean
         return steering, throttle, reverse, features
 
     def learn(
@@ -183,6 +225,8 @@ class DopaminePolicy:
         features: list[np.ndarray],
         *,
         avoidance_target: float,
+        speed_target: float,
+        reverse_target: float,
         danger: float,
         enabled: bool,
     ) -> float:
@@ -199,8 +243,22 @@ class DopaminePolicy:
             error = avoidance_target - self._last_steering_mean
             gradient = danger * error * (1.0 - self._last_steering_mean**2) * 3.0
             self.lateral_dopamine = [float(gradient), float(-gradient)]
-            self.gains[0] += self.learning_rate * gradient * self.base[0] * self._last_centered[0]
-            self.gains[1] -= self.learning_rate * gradient * self.base[1] * self._last_centered[1]
+            self.gains[0] -= self.learning_rate * gradient * self.base[0] * self._last_centered[0]
+            self.gains[1] += self.learning_rate * gradient * self.base[1] * self._last_centered[1]
+            speed_error = speed_target - self._last_throttle_mean
+            speed_gradient = danger * speed_error * 0.36
+            for index in (2, 3):
+                self.gains[index] += (
+                    self.learning_rate * speed_gradient
+                    * self.base[index] * self._last_centered[index]
+                )
+            reverse_error = reverse_target - self._last_reverse_mean
+            reverse_gradient = danger * reverse_error
+            for index in range(4, 8):
+                self.gains[index] -= (
+                    self.learning_rate * reverse_gradient
+                    * self.base[index] * self._last_centered[index] / 4.0
+                )
             for gains, trace in zip(self.gains, self.eligibility, strict=True):
                 gains += self.global_eligibility_scale * self.learning_rate * self.dopamine * trace
                 gains += self.gain_decay * (1.0 - gains)
@@ -371,7 +429,9 @@ class DrivingEngine:
             "max_abs_lateral": 0.0,
             "constraint_steps": 0,
             "constraint_sum_abs": 0.0,
+            "reverse_gate_steps": 0,
         }
+        self.close_hazard_streak = 0
         self.learning = False
         self.reset(seed)
 
@@ -429,7 +489,9 @@ class DrivingEngine:
             "max_abs_lateral": 0.0,
             "constraint_steps": 0,
             "constraint_sum_abs": 0.0,
+            "reverse_gate_steps": 0,
         }
+        self.close_hazard_streak = 0
         for _ in range(self.brain_substeps):
             self._advance_brain(self.env.observe(), dopamine=0.0)
         return self.state(include_activity=True)
@@ -484,6 +546,7 @@ class DrivingEngine:
             0.0,
             1.0,
         )
+        forward_clearance = float(np.min(obstacle_rays[quarter : 3 * quarter]))
         road_pressure = np.clip(
             abs(self.env.x) / (self.env.road_half_width - self.env.vehicle_radius), 0.0, 1.0
         )
@@ -492,13 +555,42 @@ class DrivingEngine:
             np.clip(0.18 + 0.62 * road_pressure + 0.20 * heading_pressure, 0.0, 1.0)
         )
         road_target = np.tanh(-1.5 * self.env.x / self.env.road_half_width - self.env.heading)
-        raw_steering, throttle, reverse, features = self.policy.action(
+        raw_steering, raw_throttle, raw_reverse, features = self.policy.action(
             self.activity, self.source_sign, explore=explore, adapt=learning or explore,
             mirrored_activity=self.mirrored_activity,
         )
-        steering, constraint = self.apply_lane_constraint(
-            raw_steering, enabled=safety_constraints
+        # The connectome supplies a signed steering residual. The two explicit
+        # engineering terms close the behaviour loop: visual avoidance selects
+        # the free side, and road recovery returns the vehicle after passing.
+        visual_avoidance = 2.0 * obstacle_danger * obstacle_asymmetry
+        road_recovery = 2.0 * road_target
+        behavioral_steering = closed_loop_steering(
+            raw_steering,
+            obstacle_danger=obstacle_danger,
+            obstacle_asymmetry=obstacle_asymmetry,
+            road_target=road_target,
         )
+        steering, constraint = self.apply_lane_constraint(
+            behavioral_steering, enabled=safety_constraints
+        )
+        constraint.update({
+            "neural_steering": raw_steering,
+            "visual_avoidance": float(visual_avoidance),
+            "road_recovery": float(road_recovery),
+        })
+        speed_target = float(
+            0.25 + 0.37 * np.clip((forward_clearance - 2.0) / 6.0, 0.0, 1.0)
+        )
+        throttle = float(min(raw_throttle, speed_target))
+        if forward_clearance < 1.5:
+            self.close_hazard_streak += 1
+        else:
+            self.close_hazard_streak = 0
+        reverse_gate = self.close_hazard_streak >= 4
+        reverse = float(raw_reverse if reverse_gate else 0.0)
+        if reverse_gate:
+            stats = self.control_statistics
+            stats["reverse_gate_steps"] += 1
         image, reward, done = self.env.step(steering, throttle, reverse)
         stats = self.control_statistics
         current_sign = int(np.sign(self.env.steering))
@@ -535,13 +627,16 @@ class DrivingEngine:
         safety_signal = float(
             obstacle_danger * steering * obstacle_asymmetry - behavior_cost
         )
-        terminal_signal = (
-            3.0 if self.env.terminal_reason == "success" else (-1.5 if done else 0.0)
+        reverse_target = float(
+            0.8 * np.clip((1.5 - forward_clearance) / 0.75, 0.0, 1.0)
+            if reverse_gate else 0.0
         )
         dopamine = self.policy.learn(
-            terminal_signal + safety_signal,
+            reward + safety_signal,
             features,
             avoidance_target=avoidance_target,
+            speed_target=speed_target,
+            reverse_target=reverse_target,
             danger=float(max(obstacle_danger, lane_danger)),
             enabled=learning,
         )
@@ -549,8 +644,9 @@ class DrivingEngine:
             self._advance_brain(image, dopamine=dopamine)
         drive = float((1.0 - reverse) * throttle - reverse)
         self.last_raw_action = {
-            "steering": raw_steering, "throttle": throttle,
-            "reverse": reverse, "drive": drive,
+            "steering": raw_steering, "throttle": raw_throttle,
+            "reverse": raw_reverse,
+            "drive": float((1.0 - raw_reverse) * raw_throttle - raw_reverse),
         }
         self.last_action = {
             "steering": steering, "throttle": throttle,
@@ -669,6 +765,9 @@ class DrivingEngine:
             "constraint_rate": self.control_statistics["constraint_steps"] / steps,
             "mean_abs_constraint": (
                 self.control_statistics["constraint_sum_abs"] / steps
+            ),
+            "reverse_gate_fraction": (
+                self.control_statistics["reverse_gate_steps"] / steps
             ),
         }
 

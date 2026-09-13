@@ -1,27 +1,31 @@
 # Behaviour-stability completion audit
 
-## Current v4 Audit
+## Current v5 Audit
 
 | Requirement | Evidence | Status |
 |---|---|---|
 | Mirror road and camera generation | Adjacent seeds have reflected obstacles, images and dynamics; tests cover odd/even image widths | Complete |
 | Separate first-obstacle side and early collision | Per-side groups, full-clearance pass identities, early collision and episode duration in calibration report | Complete |
-| Remove fixed steering preference | Shared full-graph odd/even readout; raw/executed mirror MAE 0 on 16 unseen pairs | Complete |
+| Correct obstacle-side direction | Explicit free-side visual term; unit probe verifies left obstacle→right steering and vice versa | Complete |
+| Remove fixed steering preference | Shared full-graph odd/even readout; raw MAE 0 and executed MAE 3.55e-8 on 16 unseen pairs | Complete |
 | Symmetric road-only safety layer | Position/heading/speed projection; forward/reverse mirror tests | Complete |
-| Fresh calibration and unseen evaluation | 48 calibration episodes (10000–10047), fresh checkpoint load, 32 test episodes (400–431) | Complete |
-| Avoid early-stop stability claims | Completion/pass/early-collision/timeout publication gates; candidate rejected | Complete |
-| Demonstrate useful obstacle avoidance | 0% completion, 2.5 obstacles passed, 41.55 m versus straight baseline 49.15 m | **Not achieved** |
-| Preserve reproducibility | Retained v4 candidate SHA-256 in calibration report; historical v2 is explicitly disabled | Complete |
-| Regression coverage | 49 driving-mainline Python tests, 6 frontend tests, 3 desktop/mobile browser tests | Complete |
+| Train and evaluate a fresh policy | 48 `learning=true` episodes (10000–10047), fresh checkpoint load, 32 frozen test episodes (400–431) | Complete |
+| Avoid early-stop stability claims | Completion/pass/early-collision/timeout publication gates; 32/32 complete without early collision | Complete |
+| Close longitudinal learning | DNpe017/MDN eligibility tests; pass reward enters RPE; forward is default and MDN is close-hazard gated | Complete |
+| Demonstrate useful obstacle avoidance | 100% completion, 9/9 obstacles, 120.30 m versus 49.15 m straight baseline on 32 unseen scenes | Complete |
+| Sparse MDN behaviour | reverse command, true reverse motion and close-hazard gate all 0% in held-out evaluation | Complete |
+| Preserve reproducibility | Published v5 SHA-256 `e9de899238198dcdd060dba17043edf3c9098743cfd85c33064889ac108268f9` in calibration report | Complete |
+| Regression coverage | 31 driving Python tests, Ruff, 6 frontend tests, production build and 3 desktop/mobile browser tests passed against the running v5 service | Complete |
 
 The old language-experiment `test_sklearn_declared` still fails in the full
 workspace suite because the public driving package intentionally does not depend
 on scikit-learn. It is unrelated to this change and was not modified.
 
-Current evidence: `stable-policy-calibration.json` and
-`mirror-constraint-ablation.json`. Mirrored episode pairs are correlated, so
-bootstrap operates on the 16 independent road pairs. Symmetry and smoothness
-are not a release-quality controller: the candidate remains unpublished.
+Current evidence: `stable-policy-calibration.json`. Mirrored episode pairs are
+correlated, so bootstrap operates on the 16 independent road pairs. The v5
+checkpoint is published and default-loadable. Its path-planning performance is
+an operational simulator result with explicit engineered visual/recovery terms,
+not a claim that the biological graph alone produced the behaviour.
 
 ## Historical v2 Audit
 

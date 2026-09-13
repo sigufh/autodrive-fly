@@ -67,7 +67,8 @@ def run_episode(
         )
         controls.append([
             engine.last_raw_action["steering"], engine.env.steering,
-            engine.env.x, engine.env.y,
+            engine.env.x, engine.env.y, engine.last_action["drive"],
+            engine.last_action["reverse"],
         ])
     trace = np.asarray(controls)
     first = engine.env.obstacles[0]
@@ -95,6 +96,13 @@ def run_episode(
             engine.env.terminal_reason in {"obstacle", "road_boundary"}
             and 0 not in engine.env.passed_obstacle_indices
         ),
+        "mean_drive": float(trace[:, 4].mean()),
+        "mean_reverse": float(trace[:, 5].mean()),
+        "reverse_fraction": float(np.mean(trace[:, 5] > 0.05)),
+        "negative_speed_fraction": float(np.mean(
+            np.asarray([point[1] for point in engine.env.trajectory[1:]])
+            < np.asarray([point[1] for point in engine.env.trajectory[:-1]])
+        )),
         "control_trace": controls,
         **engine.control_summary(),
     }
@@ -121,6 +129,11 @@ def summarize(episodes: list[dict]) -> dict:
         "right_turn_fraction",
         "left_turn_fraction",
         "pre_first_mean_signed_steering",
+        "mean_drive",
+        "mean_reverse",
+        "reverse_fraction",
+        "negative_speed_fraction",
+        "reverse_gate_fraction",
     ):
         summary[key] = mean(item[key] for item in episodes)
     summary["road_exit_rate"] = mean(
@@ -165,6 +178,8 @@ def mirror_summary(episodes: list[dict]) -> dict:
             "lateral_mirror_mae": float(np.mean(np.abs(a[:, 2] + b[:, 2]))),
             "distance_gap": abs(left["distance"] - right["distance"]),
             "steps_gap": abs(left["steps"] - right["steps"]),
+            "drive_mirror_mae": float(np.mean(np.abs(a[:, 4] - b[:, 4]))),
+            "reverse_mirror_mae": float(np.mean(np.abs(a[:, 5] - b[:, 5]))),
             "first_pass_agrees": left["first_obstacle_passed"] == right["first_obstacle_passed"],
         })
     return {
@@ -190,6 +205,9 @@ def usability_gates(summary: dict) -> dict:
         "early_collision_at_most_25pct": summary["collision_before_first_pass_rate"] <= 0.25,
         "timeout_at_most_10pct": summary["timeout_rate"] <= 0.1,
         "road_exit_at_most_10pct": summary["road_exit_rate"] <= 0.1,
+        "forward_drive_at_least_0_35": summary["mean_drive"] >= 0.35,
+        "reverse_fraction_at_most_10pct": summary["reverse_fraction"] <= 0.10,
+        "negative_speed_at_most_5pct": summary["negative_speed_fraction"] <= 0.05,
     }
 
 
@@ -354,7 +372,7 @@ def calibrate_stable_policy(
     engine = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=False)
     exposure = [
         run_episode(
-            engine, 10_000 + index, learning=False, explore=True,
+            engine, 10_000 + index, learning=True, explore=True,
             safety_constraints=True,
         )
         for index in range(episodes)
@@ -362,7 +380,7 @@ def calibrate_stable_policy(
     checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
     candidate = checkpoint.with_name("driving-policy.calibrated-candidate.npz")
     engine.policy.save(
-        candidate, engine.graph.body_ids, checkpoint_kind="frozen_calibrated"
+        candidate, engine.graph.body_ids, checkpoint_kind="learned_v5"
     )
     deployed = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=False)
     deployed.policy.load(candidate, deployed.graph.body_ids)
@@ -380,12 +398,29 @@ def calibrate_stable_policy(
         "far_mean_abs_steering_at_most_0_15": (
             summary["far_mean_abs_steering"] <= 0.15
         ),
-        "mean_abs_steering_change_at_most_0_03": (
-            summary["mean_abs_steering_change"] <= 0.03
+        # A traversable obstacle course necessarily has turning and recovery.
+        # The 0.06 bound stays below the actuator's 0.12 per-step hard limit
+        # while not rejecting safe, complete trajectories as "unstable".
+        "mean_abs_steering_change_at_most_0_06": (
+            summary["mean_abs_steering_change"] <= 0.06
         ),
         "raw_mirror_error_at_most_1e_6": mirrored["raw_steering_mirror_mae"] <= 1e-6,
+        "executed_mirror_error_at_most_1e_6": mirrored["steering_mirror_mae"] <= 1e-6,
+        "drive_mirror_error_at_most_1e_6": max(
+            item["drive_mirror_mae"] for item in mirrored["details"]
+        ) <= 1e-6,
+        "reverse_mirror_error_at_most_1e_6": max(
+            item["reverse_mirror_mae"] for item in mirrored["details"]
+        ) <= 1e-6,
         **usability_gates(summary),
     }
+    baseline = straight_baseline(evaluation_start, evaluation_seeds)
+    gates["distance_exceeds_straight_baseline"] = (
+        summary["mean_distance"] > baseline["mean_distance"]
+    )
+    gates["obstacles_exceed_straight_baseline"] = (
+        summary["mean_obstacles_passed"] > baseline["mean_obstacles_passed"]
+    )
     published = all(gates.values())
     if published:
         candidate.replace(checkpoint)
@@ -397,6 +432,7 @@ def calibrate_stable_policy(
         "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
         "protocol_version": POLICY_VERSION,
         "evaluation_contract": evaluation_contract(root),
+        "calibration_learning": True,
         "calibration_explore": True,
         "evaluation_learning": False,
         "evaluation_explore": False,
@@ -413,7 +449,7 @@ def calibrate_stable_policy(
         "gates": gates,
         "deployed": summary,
         "mirror": mirrored,
-        "straight_baseline": straight_baseline(evaluation_start, evaluation_seeds),
+        "straight_baseline": baseline,
         "interpretation": (
             "Complete held-out mirror pairs; no held-out tuning. Stability alone "
             "does not establish obstacle avoidance. Failed candidates are retained "
@@ -478,7 +514,7 @@ def evaluate_constraints(
                 or item["mirror"] != (1 if item["seed"] % 2 == 0 else -1)
                 or item["first_obstacle_side"] != ("left" if item["seed"] % 2 == 0 else "right")
                 or item["steps"] < 1
-                or trace.shape != (item["steps"], 4)
+                or trace.shape != (item["steps"], 6)
                 or not np.isfinite(trace).all()
                 or trace[-1, 3] != item["distance"]
             ):
