@@ -12,6 +12,7 @@ from .data.download import download_file
 from .data.manifest import iter_files, load_manifest
 from .driving.evaluate import (
     calibrate_stable_policy,
+    evaluate_city_alpha,
     evaluate_constraints,
     write_evaluation,
 )
@@ -45,6 +46,8 @@ def _parser() -> argparse.ArgumentParser:
     constraints.add_argument("--checkpoint", type=Path)
     constraints.add_argument("--output", type=Path)
     constraints.add_argument("--reference-report", type=Path)
+    city = subparsers.add_parser("evaluate-city-alpha")
+    city.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 7])
     return parser
 
 
@@ -67,7 +70,8 @@ def main() -> None:
         return
     if args.command == "calibrate-policy":
         report = calibrate_stable_policy(
-            root, episodes=args.episodes,
+            root,
+            episodes=args.episodes,
             evaluation_seeds=args.evaluation_seeds,
             evaluation_start=args.evaluation_start,
         )
@@ -88,6 +92,12 @@ def main() -> None:
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         delta = report["paired"]["distance"]["delta_mean"]
         print(f"lane-constraint distance delta {delta:+.2f} m -> {target}")
+        return
+    if args.command == "evaluate-city-alpha":
+        report = evaluate_city_alpha(root, seeds=tuple(args.seeds))
+        target = root / "artifacts/city-alpha-evaluation.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
         return
     manifest = load_manifest(root / args.manifest)
     if args.command in {"verify", "download"}:

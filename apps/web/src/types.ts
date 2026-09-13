@@ -16,16 +16,18 @@ export type ActivityFrame = {
   statistics: { all_nodes: number; active_nodes: number; positioned_nodes: number; unpositioned_active_nodes: number; displayed_nodes: number; displayed_edges: number; max_abs_state: number; display_max_abs_state: number }
 }
 export type DrivingState = {
+  scenario: 'highway' | 'city';
   environment: {
     road_half_width: number; road_length: number; pair_seed: number; mirror: number;
-    vehicle: { x: number; y: number; heading: number; speed: number; steering: number };
+    vehicle: { x: number; y: number; heading: number; speed: number; steering: number; world_x?: number; world_y?: number; world_heading?: number };
     obstacles: { x: number; y: number; radius: number }[]; sensor_rays: number[]; obstacle_rays: number[]; wall_rays: number[];
     trajectory: [number, number][]; projected_trajectory: [number, number][];
     step: number; done: boolean; success: boolean; total_reward: number; terminal_reason: string | null; obstacles_passed: number; first_obstacle_passed: boolean; first_obstacle_side: 'left' | 'right' | null;
+    city?: { scenario: string; name: string; map_bounds: [number, number, number, number]; centerline: [number, number][]; world_trajectory: [number, number][]; actors: { id: number; x: number; y: number; route_progress: number; lane_offset: number; radius: number }[]; road: string; next_maneuver: string; speed_limit_mps: number; traffic_light: 'red' | 'green'; stop_line_progress: number | null; distance_to_stop_line: number | null; rule_status: string; violations: string[]; intersections: { name: string; progress: number; signal: 'red' | 'green' }[] };
   };
   action: { steering: number; throttle: number; reverse: number; drive: number }; reward: number; safety_signal: number; learning: boolean; elapsed_ms?: number;
   raw_action: { steering: number; throttle: number; reverse: number; drive: number };
-  lane_constraint: { active: boolean; blend: number; correction: number };
+  lane_constraint: { active: boolean; blend: number; correction: number; neural_steering?: number; visual_avoidance?: number; road_recovery?: number; route_steering?: number };
   control_statistics: { mean_abs_steering: number; mean_abs_steering_change: number; far_mean_abs_steering: number; far_steps: number; steering_sign_changes: number; max_abs_lateral: number; constraint_rate: number; mean_abs_constraint: number };
   policy_checkpoint: { loaded: boolean; path: string; kind: string; rejection: string | null };
   dopamine: { rule: string; dopamine: number; lateral_dopamine: [number, number]; plastic_synapses: number; changed_synapses: number; mean_gain: number; min_gain: number; max_gain: number; updates: number };

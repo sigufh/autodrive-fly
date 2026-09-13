@@ -31,6 +31,7 @@ _STEP_LOCK = Lock()
 class ResetRequest(BaseModel):
     seed: int = Field(default=0, ge=0, le=2**31 - 1)
     keep_learning: bool = True
+    scenario: Literal["highway", "city"] = "highway"
 
 
 class StepRequest(BaseModel):
@@ -77,7 +78,8 @@ def health():
             pass
     return {
         "status": "ok", "connectome": "male-cns:v1.0",
-        "task": "visual-obstacle-driving", "language_model": "retired",
+        "task": "visual-obstacle-and-city-driving", "language_model": "retired",
+        "scenarios": ["highway", "city"],
         "brain_ready": (ROOT / "data/processed/malecns-v1.0/adjacency_target_norm.npz").exists(),
         "policy_checkpoint_ready": checkpoint_version == POLICY_VERSION,
         "policy_checkpoint_version": checkpoint_version,
@@ -127,7 +129,9 @@ def driving_state():
 @app.post("/api/driving/reset")
 def driving_reset(request: ResetRequest):
     with _STEP_LOCK:
-        return engine().reset(request.seed, keep_learning=request.keep_learning)
+        return engine().reset(
+            request.seed, keep_learning=request.keep_learning, scenario=request.scenario
+        )
 
 
 @app.post("/api/driving/step")

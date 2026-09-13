@@ -1,0 +1,48 @@
+{
+  "protocol": {
+    "scenario": "city_alpha",
+    "seeds": [
+      0,
+      1,
+      7
+    ],
+    "learning": false,
+    "explore": false,
+    "checkpoint_kind": "learned_v5",
+    "checkpoint_sha256": "e9de899238198dcdd060dba17043edf3c9098743cfd85c33064889ac108268f9",
+    "claim_boundary": "integration smoke protocol; not a city generalization benchmark"
+  },
+  "summary": {
+    "success_rate": 1,
+    "mean_distance": 282.85204410733775,
+    "mean_actors_passed": 2,
+    "traffic_violation_rate": 0,
+    "mean_abs_steering_change": 0.021871993239524296
+  },
+  "episodes": [
+    {
+      "seed": 0,
+      "terminal_reason": "success",
+      "distance": 282.74738093506915,
+      "actors_passed": 2,
+      "traffic_violations": [],
+      "mean_abs_steering_change": 0.02171852600290093
+    },
+    {
+      "seed": 1,
+      "terminal_reason": "success",
+      "distance": 282.9066630049405,
+      "actors_passed": 2,
+      "traffic_violations": [],
+      "mean_abs_steering_change": 0.02184096683812817
+    },
+    {
+      "seed": 7,
+      "terminal_reason": "success",
+      "distance": 282.9020883820036,
+      "actors_passed": 2,
+      "traffic_violations": [],
+      "mean_abs_steering_change": 0.02205648687754378
+    }
+  ]
+}

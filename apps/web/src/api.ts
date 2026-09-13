@@ -8,8 +8,8 @@ export function fetchSkeleton(bodyId: number) { return fetch(`/api/skeleton/${bo
 export function fetchOverview() { return fetch('/api/connectome/overview').then(checked<CnsOverview>) }
 export function fetchPathways() { return fetch('/api/connectome/pathways').then(checked<PathwayOverview>) }
 export function fetchDrivingState() { return fetch('/api/driving/state').then(checked<DrivingState>) }
-export function resetDriving(seed: number, keepLearning: boolean) {
-  return fetch('/api/driving/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seed, keep_learning: keepLearning }) }).then(checked<DrivingState>)
+export function resetDriving(seed: number, keepLearning: boolean, scenario: 'highway' | 'city' = 'highway') {
+  return fetch('/api/driving/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seed, keep_learning: keepLearning, scenario }) }).then(checked<DrivingState>)
 }
 export function stepDriving(steps: number, learning: boolean, explore: boolean, safetyConstraints: boolean) {
   return fetch('/api/driving/step', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ steps, learning, explore, safety_constraints: safetyConstraints }) }).then(checked<DrivingState>)

@@ -8,6 +8,7 @@ import numpy as np
 import pyarrow.feather as feather
 
 from fly_emotion.connectome.graph import load_graph
+from fly_emotion.driving.city import CityDrivingEnvironment
 from fly_emotion.driving.environment import DrivingEnvironment
 from fly_emotion.driving.retina import load_or_build_retina_map
 
@@ -24,8 +25,11 @@ POLICY_VERSION = 5
 
 
 def closed_loop_steering(
-    neural_residual: float, *, obstacle_danger: float,
-    obstacle_asymmetry: float, road_target: float,
+    neural_residual: float,
+    *,
+    obstacle_danger: float,
+    obstacle_asymmetry: float,
+    road_target: float,
 ) -> float:
     """Fuse a DNp20 residual with explicit obstacle avoidance and recovery.
 
@@ -36,9 +40,7 @@ def closed_loop_steering(
     """
     visual_avoidance = 2.0 * obstacle_danger * obstacle_asymmetry
     road_recovery = 2.0 * road_target
-    return float(np.tanh(
-        visual_avoidance + road_recovery + 0.20 * neural_residual
-    ))
+    return float(np.tanh(visual_avoidance + road_recovery + 0.20 * neural_residual))
 
 
 class DopaminePolicy:
@@ -125,23 +127,20 @@ class DopaminePolicy:
         ):
             # Odd visual response controls yaw; even response controls speed.
             # Both states traverse the same full graph with shared synaptic gains.
-            values = 0.5 * (
-                activity[sources]
-                + (-1 if index < 2 else 1) * mirrored_activity[sources]
-            ) * source_sign[sources]
+            values = (
+                0.5
+                * (activity[sources] + (-1 if index < 2 else 1) * mirrored_activity[sources])
+                * source_sign[sources]
+            )
             if self.running_mean[index] is None:
-                self.running_mean[index] = (
-                    np.zeros_like(values) if index < 2 else values.copy()
-                )
+                self.running_mean[index] = np.zeros_like(values) if index < 2 else values.copy()
             delta = values - self.running_mean[index]
             if adapt:
                 if index >= 2:
                     self.running_mean[index] += 0.03 * delta
                 self.running_variance[index] *= 0.995
                 self.running_variance[index] += 0.005 * delta * delta
-            normalized = np.clip(
-                delta / np.sqrt(self.running_variance[index] + 1e-6), -5.0, 5.0
-            )
+            normalized = np.clip(delta / np.sqrt(self.running_variance[index] + 1e-6), -5.0, 5.0)
             centered.append(normalized)
             scores.append(float(np.dot(base * gains, normalized)))
         steering_drive = scores[1] - scores[0]
@@ -171,36 +170,27 @@ class DopaminePolicy:
         reverse_z = reverse_delta / np.sqrt(self.reverse_variance + 1e-10)
         reverse_logit = float(np.clip(2.0 * reverse_z - 6.0, -40.0, 40.0))
         reverse_logit_noise = self.rng.normal(0, 0.35) if explore else 0.0
-        reverse_activation = float(
-            1.0 / (1.0 + np.exp(-(reverse_logit + reverse_logit_noise)))
-        )
-        reverse_mean = float(
-            max(0.0, reverse_activation - 0.08) / 0.92
-        )
+        reverse_activation = float(1.0 / (1.0 + np.exp(-(reverse_logit + reverse_logit_noise))))
+        reverse_mean = float(max(0.0, reverse_activation - 0.08) / 0.92)
         steering_noise = self.rng.normal(0, self.exploration_sigma) if explore else 0.0
-        steering = float(
-            np.clip(steering_mean + steering_noise, -1, 1)
-        )
+        steering = float(np.clip(steering_mean + steering_noise, -1, 1))
         throttle_noise = self.rng.normal(0, 0.08) if explore else 0.0
         throttle = float(np.clip(throttle_mean + throttle_noise, 0, 1))
         reverse = float(np.clip(reverse_mean, 0, 1))
         steering_gradient = (
-            steering_noise
-            / (self.exploration_sigma**2)
-            * (1.0 - steering_mean**2)
-            * 3.0
+            steering_noise / (self.exploration_sigma**2) * (1.0 - steering_mean**2) * 3.0
             if explore
             else 0.0
         )
         speed_gradient = (
-            throttle_noise / 0.08**2
-            * 0.36 * (1.0 - np.tanh(centered_speed * 2.0) ** 2)
-            if explore else 0.0
+            throttle_noise / 0.08**2 * 0.36 * (1.0 - np.tanh(centered_speed * 2.0) ** 2)
+            if explore
+            else 0.0
         )
         reverse_gradient = (
-            reverse_logit_noise / 0.35**2
-            * 2.0 * reverse_activation * (1.0 - reverse_activation)
-            if explore else 0.0
+            reverse_logit_noise / 0.35**2 * 2.0 * reverse_activation * (1.0 - reverse_activation)
+            if explore
+            else 0.0
         )
         features = [
             -self.base[0] * centered[0] * steering_gradient,
@@ -249,15 +239,20 @@ class DopaminePolicy:
             speed_gradient = danger * speed_error * 0.36
             for index in (2, 3):
                 self.gains[index] += (
-                    self.learning_rate * speed_gradient
-                    * self.base[index] * self._last_centered[index]
+                    self.learning_rate
+                    * speed_gradient
+                    * self.base[index]
+                    * self._last_centered[index]
                 )
             reverse_error = reverse_target - self._last_reverse_mean
             reverse_gradient = danger * reverse_error
             for index in range(4, 8):
                 self.gains[index] -= (
-                    self.learning_rate * reverse_gradient
-                    * self.base[index] * self._last_centered[index] / 4.0
+                    self.learning_rate
+                    * reverse_gradient
+                    * self.base[index]
+                    * self._last_centered[index]
+                    / 4.0
                 )
             for gains, trace in zip(self.gains, self.eligibility, strict=True):
                 gains += self.global_eligibility_scale * self.learning_rate * self.dopamine * trace
@@ -286,12 +281,13 @@ class DopaminePolicy:
             "centering": "odd_steering_even_speed_shared_graph",
         }
 
-    def save(
-        self, path: Path, body_ids: np.ndarray, *, checkpoint_kind: str = "learned"
-    ) -> None:
+    def save(self, path: Path, body_ids: np.ndarray, *, checkpoint_kind: str = "learned") -> None:
         scalars = [
-            self.reward_baseline, self.steering_bias, self.speed_bias,
-            self.reverse_mean, self.reverse_variance,
+            self.reward_baseline,
+            self.steering_bias,
+            self.speed_bias,
+            self.reverse_mean,
+            self.reverse_variance,
         ]
         if any(value is None or not np.isfinite(value) for value in scalars):
             raise ValueError("cannot save policy without finite calibration state")
@@ -306,9 +302,7 @@ class DopaminePolicy:
             "reverse_variance": np.asarray([self.reverse_variance], dtype=np.float64),
             "checkpoint_kind": np.asarray([checkpoint_kind]),
         }
-        for index, (sources, gains) in enumerate(
-            zip(self.sources, self.gains, strict=True)
-        ):
+        for index, (sources, gains) in enumerate(zip(self.sources, self.gains, strict=True)):
             payload[f"source_body_ids_{index}"] = body_ids[sources]
             payload[f"gains_{index}"] = gains
             if self.running_mean[index] is None:
@@ -351,8 +345,11 @@ class DopaminePolicy:
             loaded_means.append(mean)
             loaded_variances.append(variance)
         scalar_names = (
-            "reward_baseline", "steering_bias", "speed_bias",
-            "reverse_mean", "reverse_variance",
+            "reward_baseline",
+            "steering_bias",
+            "speed_bias",
+            "reverse_mean",
+            "reverse_variance",
         )
         if any(
             payload[name].shape != (1,) or not np.isfinite(payload[name][0])
@@ -385,6 +382,7 @@ class DrivingEngine:
         top_k: int = 220,
         brain_substeps: int = 4,
         load_checkpoint: bool = True,
+        scenario: str = "highway",
     ):
         self.root = root
         processed = root / "data/processed/malecns-v1.0"
@@ -403,7 +401,9 @@ class DrivingEngine:
         self.dopamine_nodes = np.searchsorted(self.graph.body_ids, DOPAMINE_BODY_IDS)
         if not np.array_equal(self.graph.body_ids[self.dopamine_nodes], DOPAMINE_BODY_IDS):
             raise ValueError("configured PPL101 dopamine cells are absent from MaleCNS")
-        self.env = DrivingEnvironment()
+        self.scenario = ""
+        self.env: DrivingEnvironment | CityDrivingEnvironment
+        self.set_scenario(scenario)
         self.activity = np.zeros(self.graph.node_count, dtype=np.float32)
         self.mirrored_activity = np.zeros_like(self.activity)
         self.visual_drive = np.zeros_like(self.activity)
@@ -435,6 +435,14 @@ class DrivingEngine:
         self.learning = False
         self.reset(seed)
 
+    def set_scenario(self, scenario: str) -> None:
+        if scenario not in {"highway", "city"}:
+            raise ValueError(f"unknown driving scenario: {scenario}")
+        if scenario == self.scenario:
+            return
+        self.scenario = scenario
+        self.env = CityDrivingEnvironment() if scenario == "city" else DrivingEnvironment()
+
     def _load_published_policy(self) -> None:
         with np.load(self.policy_checkpoint, allow_pickle=False) as payload:
             if payload["format_version"].tolist() != [POLICY_VERSION]:
@@ -460,7 +468,15 @@ class DrivingEngine:
                 signs[node] = 0.0
         return signs
 
-    def reset(self, seed: int = 0, *, keep_learning: bool = True) -> dict:
+    def reset(
+        self,
+        seed: int = 0,
+        *,
+        keep_learning: bool = True,
+        scenario: str | None = None,
+    ) -> dict:
+        if scenario is not None:
+            self.set_scenario(scenario)
         self.env.reset(seed)
         self.activity.fill(0)
         self.mirrored_activity.fill(0)
@@ -513,9 +529,9 @@ class DrivingEngine:
         )
         self.visual_drive[self.retina.node_indices] = receptor_values
         recurrent = self.graph.adjacency @ (activity * self.source_sign)
-        activity = (
-            0.72 * activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)
-        ).astype(np.float32)
+        activity = (0.72 * activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)).astype(
+            np.float32
+        )
         # The current image is clamped at the sensory boundary for this time step.
         activity[self.retina.node_indices] = receptor_values
         # Reward prediction error is represented on the two annotated PPL101
@@ -541,22 +557,31 @@ class DrivingEngine:
         obstacle_right = float(np.mean(obstacle_rays[2 * quarter : 3 * quarter]))
         obstacle_asymmetry = (obstacle_right - obstacle_left) / self.env.max_sensor_distance
         obstacle_danger = np.clip(
-            1.0 - float(np.min(obstacle_rays[quarter : 3 * quarter]))
-            / self.env.max_sensor_distance,
+            1.0
+            - float(np.min(obstacle_rays[quarter : 3 * quarter])) / self.env.max_sensor_distance,
             0.0,
             1.0,
         )
         forward_clearance = float(np.min(obstacle_rays[quarter : 3 * quarter]))
+        guidance = self.env.traffic_guidance() if self.scenario == "city" else None
+        target_lateral = float(guidance["target_lateral_offset"]) if guidance else 0.0
         road_pressure = np.clip(
-            abs(self.env.x) / (self.env.road_half_width - self.env.vehicle_radius), 0.0, 1.0
+            abs(self.env.x - target_lateral) / (self.env.road_half_width - self.env.vehicle_radius),
+            0.0,
+            1.0,
         )
         heading_pressure = np.clip(abs(self.env.heading) / 0.6, 0.0, 1.0)
         lane_danger = float(
             np.clip(0.18 + 0.62 * road_pressure + 0.20 * heading_pressure, 0.0, 1.0)
         )
-        road_target = np.tanh(-1.5 * self.env.x / self.env.road_half_width - self.env.heading)
+        road_target = np.tanh(
+            -1.5 * (self.env.x - target_lateral) / self.env.road_half_width - self.env.heading
+        )
         raw_steering, raw_throttle, raw_reverse, features = self.policy.action(
-            self.activity, self.source_sign, explore=explore, adapt=learning or explore,
+            self.activity,
+            self.source_sign,
+            explore=explore,
+            adapt=learning or explore,
             mirrored_activity=self.mirrored_activity,
         )
         # The connectome supplies a signed steering residual. The two explicit
@@ -570,17 +595,29 @@ class DrivingEngine:
             obstacle_asymmetry=obstacle_asymmetry,
             road_target=road_target,
         )
+        if guidance:
+            # The route layer supplies legal geometry; obstacle-side selection
+            # remains exclusively in the local visual controller above.
+            behavioral_steering = float(
+                np.tanh(
+                    np.arctanh(np.clip(behavioral_steering, -0.999, 0.999))
+                    + 1.35 * float(guidance["desired_steering"])
+                )
+            )
         steering, constraint = self.apply_lane_constraint(
             behavioral_steering, enabled=safety_constraints
         )
-        constraint.update({
-            "neural_steering": raw_steering,
-            "visual_avoidance": float(visual_avoidance),
-            "road_recovery": float(road_recovery),
-        })
-        speed_target = float(
-            0.25 + 0.37 * np.clip((forward_clearance - 2.0) / 6.0, 0.0, 1.0)
+        constraint.update(
+            {
+                "neural_steering": raw_steering,
+                "visual_avoidance": float(visual_avoidance),
+                "road_recovery": float(road_recovery),
+                "route_steering": float(guidance["desired_steering"]) if guidance else 0.0,
+            }
         )
+        speed_target = float(0.25 + 0.37 * np.clip((forward_clearance - 2.0) / 6.0, 0.0, 1.0))
+        if guidance:
+            speed_target = min(speed_target, float(guidance["speed_cap"]))
         throttle = float(min(raw_throttle, speed_target))
         if forward_clearance < 1.5:
             self.close_hazard_streak += 1
@@ -599,9 +636,7 @@ class DrivingEngine:
         if current_sign:
             stats["previous_sign"] = current_sign
         stats["steering_sum_abs"] += abs(self.env.steering)
-        stats["steering_change_sum_abs"] += abs(
-            self.env.steering - self.env.previous_steering
-        )
+        stats["steering_change_sum_abs"] += abs(self.env.steering - self.env.previous_steering)
         if float(np.min(obstacle_rays)) > 10.0:
             stats["far_steps"] += 1
             stats["far_steering_sum_abs"] += abs(self.env.steering)
@@ -624,12 +659,9 @@ class DrivingEngine:
             + 0.006 * self.env.steering**2
             + 0.08 * steering_change**2
         )
-        safety_signal = float(
-            obstacle_danger * steering * obstacle_asymmetry - behavior_cost
-        )
+        safety_signal = float(obstacle_danger * steering * obstacle_asymmetry - behavior_cost)
         reverse_target = float(
-            0.8 * np.clip((1.5 - forward_clearance) / 0.75, 0.0, 1.0)
-            if reverse_gate else 0.0
+            0.8 * np.clip((1.5 - forward_clearance) / 0.75, 0.0, 1.0) if reverse_gate else 0.0
         )
         dopamine = self.policy.learn(
             reward + safety_signal,
@@ -644,13 +676,16 @@ class DrivingEngine:
             self._advance_brain(image, dopamine=dopamine)
         drive = float((1.0 - reverse) * throttle - reverse)
         self.last_raw_action = {
-            "steering": raw_steering, "throttle": raw_throttle,
+            "steering": raw_steering,
+            "throttle": raw_throttle,
             "reverse": raw_reverse,
             "drive": float((1.0 - raw_reverse) * raw_throttle - raw_reverse),
         }
         self.last_action = {
-            "steering": steering, "throttle": throttle,
-            "reverse": reverse, "drive": drive,
+            "steering": steering,
+            "throttle": throttle,
+            "reverse": reverse,
+            "drive": drive,
         }
         self.last_constraint = constraint
         self.last_reward = reward
@@ -668,7 +703,8 @@ class DrivingEngine:
         selected = selected[np.argsort(-np.abs(self.activity[selected]), kind="stable")]
         neurons = [
             {"body_id": int(self.graph.body_ids[node]), "value": float(self.activity[node])}
-            for node in selected if self.activity[node] != 0
+            for node in selected
+            if self.activity[node] != 0
         ]
         pathways = []
         selected_set = set(map(int, selected))
@@ -683,16 +719,22 @@ class DrivingEngine:
             for index in np.argsort(-np.abs(values), kind="stable")[:4]:
                 source = int(sources[index])
                 if source in selected_set and values[index] != 0:
-                    pathways.append({
-                        "pre": int(self.graph.body_ids[source]),
-                        "post": int(self.graph.body_ids[target]),
-                        "value": float(values[index]),
-                    })
+                    pathways.append(
+                        {
+                            "pre": int(self.graph.body_ids[source]),
+                            "post": int(self.graph.body_ids[target]),
+                            "value": float(values[index]),
+                        }
+                    )
         pathways.sort(key=lambda edge: abs(edge["value"]), reverse=True)
         return {
-            "type": "activity", "step": self.env.steps, "total_steps": 500,
-            "elapsed_ms": 0.0, "units": "simulated_activation_not_millivolts",
-            "neurons": neurons, "pathways": pathways[:320],
+            "type": "activity",
+            "step": self.env.steps,
+            "total_steps": 500,
+            "elapsed_ms": 0.0,
+            "units": "simulated_activation_not_millivolts",
+            "neurons": neurons,
+            "pathways": pathways[:320],
             "statistics": {
                 "all_nodes": self.graph.node_count,
                 "active_nodes": int(np.count_nonzero(self.activity)),
@@ -700,7 +742,8 @@ class DrivingEngine:
                 "unpositioned_active_nodes": int(
                     np.count_nonzero(self.activity[~self.visible_mask])
                 ),
-                "displayed_nodes": len(neurons), "displayed_edges": min(len(pathways), 320),
+                "displayed_nodes": len(neurons),
+                "displayed_edges": min(len(pathways), 320),
                 "max_abs_state": float(np.abs(self.activity).max()),
                 "display_max_abs_state": max((abs(n["value"]) for n in neurons), default=0.0),
             },
@@ -709,6 +752,7 @@ class DrivingEngine:
     def state(self, *, include_activity: bool = False) -> dict:
         state = {
             "environment": self.env.snapshot(),
+            "scenario": self.scenario,
             "action": self.last_action,
             "raw_action": self.last_raw_action,
             "lane_constraint": self.last_constraint,
@@ -724,9 +768,11 @@ class DrivingEngine:
             },
             "dopamine": self.policy.summary(),
             "retina": {
-                "mapped_receptors": self.retina.size, "source_type": "R1-R6",
+                "mapped_receptors": self.retina.size,
+                "source_type": "R1-R6",
                 "mapping": "contact_weighted_postsynaptic_optic_hex_proxy",
-                "width": self.env.image_width, "height": self.env.image_height,
+                "width": self.env.image_width,
+                "height": self.env.image_height,
                 "stimulus": self.env.observe().tolist(),
             },
             "motor": {
@@ -755,20 +801,14 @@ class DrivingEngine:
                 self.control_statistics["steering_change_sum_abs"] / steps
             ),
             "far_mean_abs_steering": (
-                self.control_statistics["far_steering_sum_abs"] / far_steps
-                if far_steps
-                else 0.0
+                self.control_statistics["far_steering_sum_abs"] / far_steps if far_steps else 0.0
             ),
             "far_steps": far_steps,
             "steering_sign_changes": self.control_statistics["sign_changes"],
             "max_abs_lateral": self.control_statistics["max_abs_lateral"],
             "constraint_rate": self.control_statistics["constraint_steps"] / steps,
-            "mean_abs_constraint": (
-                self.control_statistics["constraint_sum_abs"] / steps
-            ),
-            "reverse_gate_fraction": (
-                self.control_statistics["reverse_gate_steps"] / steps
-            ),
+            "mean_abs_constraint": (self.control_statistics["constraint_sum_abs"] / steps),
+            "reverse_gate_fraction": (self.control_statistics["reverse_gate_steps"] / steps),
         }
 
     def apply_lane_constraint(self, steering: float, *, enabled: bool) -> tuple[float, dict]:
@@ -783,18 +823,14 @@ class DrivingEngine:
         lateral_pressure = np.clip((abs(lateral) - 0.45) / 0.40, 0.0, 1.0)
         projected_pressure = np.clip((abs(projected_lateral) - 0.45) / 0.40, 0.0, 1.0)
         heading_pressure = (
-            np.clip((outward_heading - 0.12) / 0.45, 0.0, 1.0)
-            if abs(lateral) > 0.20
-            else 0.0
+            np.clip((outward_heading - 0.12) / 0.45, 0.0, 1.0) if abs(lateral) > 0.20 else 0.0
         )
         blend = float(max(lateral_pressure, projected_pressure, heading_pressure))
         if blend <= 0:
             return steering, {"active": False, "blend": 0.0, "correction": 0.0}
         direction = -1.0 if self.env.speed < 0 else 1.0
-        correction = float(np.clip(
-            -0.85 * lateral * direction - 0.75 * self.env.heading, -1.0, 1.0
-        ))
+        correction = float(
+            np.clip(-0.85 * lateral * direction - 0.75 * self.env.heading, -1.0, 1.0)
+        )
         constrained = float(np.clip((1.0 - blend) * steering + blend * correction, -1.0, 1.0))
-        return constrained, {
-            "active": True, "blend": blend, "correction": correction
-        }
+        return constrained, {"active": True, "blend": blend, "correction": correction}

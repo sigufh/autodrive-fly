@@ -13,6 +13,7 @@ export default function App() {
   const [loading, setLoading] = useState(true), [running, setRunning] = useState(false)
   const [learning, setLearning] = useState(false), [explore, setExplore] = useState(false)
   const [safetyConstraints, setSafetyConstraints] = useState(true)
+  const [scenario, setScenario] = useState<'highway' | 'city'>('highway')
   const [error, setError] = useState('')
   const generation = useRef(0), run = useRef<AbortController | null>(null)
   const selectNeuron = useCallback((bodyId: number) => {
@@ -37,8 +38,8 @@ export default function App() {
     finally { setRunning(false) }
   }
   async function step() { try { setDriving(await stepDriving(1, learning, explore, safetyConstraints)) } catch (reason) { setError(String(reason)) } }
-  async function reset(keep: boolean) {
-    try { setDriving(await resetDriving(Math.floor(Math.random() * 1_000_000), keep)) }
+  async function reset(keep: boolean, targetScenario = scenario) {
+    try { setDriving(await resetDriving(Math.floor(Math.random() * 1_000_000), keep, targetScenario)) }
     catch (reason) { setError(String(reason)) }
   }
   return <main>
@@ -46,6 +47,6 @@ export default function App() {
       {error && <p role="alert" className="error global-error">{error}</p>}
       <CnsViewer overview={overview} pathways={pathways} skeleton={skeleton} loading={loading} activity={driving?.activity} phase={running ? 'closed-loop' : 'paused'} onSelect={selectNeuron} />
     </div>
-    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
+    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} scenario={scenario} onScenario={value => { setScenario(value); reset(true, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
   </main>
 }

@@ -59,6 +59,15 @@ test('driving controls expose learning, stepping and reset', async ({ page }) =>
   await expect(page.locator('.telemetry').getByText(/[1-9]\d*\/4383$/)).toBeVisible({ timeout: 120000 })
 })
 
+test('city alpha exposes route and traffic-rule telemetry', async ({ page }) => {
+  await page.goto(webUrl)
+  await page.getByLabel('驾驶场景').selectOption('city')
+  await expect(page.getByText('城市路线驾驶 · Alpha')).toBeVisible({ timeout: 120000 })
+  await expect(page.getByText('当前道路', { exact: true })).toBeVisible()
+  await expect(page.getByText('交通灯 / 规则', { exact: true })).toBeVisible()
+  await expect(page.getByText('Harbor Avenue', { exact: true })).toBeVisible()
+})
+
 test('mirror telemetry stays visible on mobile with nonblank road and retina', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(webUrl)
