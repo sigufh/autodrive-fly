@@ -20,6 +20,10 @@ class DrivingEnvironment:
     vehicle_radius = 0.55
     max_sensor_distance = 24.0
     dt = 0.12
+    wheelbase = 2.5
+    max_steering_angle = 0.42
+    steering_rate_limit = 0.12
+    steering_deadband = 0.055
 
     def __init__(self, *, width: int = 48, height: int = 24):
         self.image_width, self.image_height = width, height
@@ -29,6 +33,8 @@ class DrivingEnvironment:
         rng = np.random.default_rng(seed)
         self.seed = int(seed)
         self.x, self.y, self.heading, self.speed = 0.0, 2.0, 0.0, 0.0
+        self.steering = 0.0
+        self.previous_steering = 0.0
         self.steps, self.total_reward, self.done = 0, 0.0, False
         self.trajectory = [(self.x, self.y)]
         ys = np.arange(15.0, 112.0, 11.0) + rng.uniform(-2.0, 2.0, 9)
@@ -43,18 +49,22 @@ class DrivingEnvironment:
         self.last_rays = np.full(
             self.image_width, self.max_sensor_distance, dtype=np.float32
         )
+        self.last_wall_rays = self.last_rays.copy()
+        self.last_obstacle_rays = self.last_rays.copy()
+        self.terminal_reason: str | None = None
         return self.observe()
 
-    def _ray_distance(self, angle: float) -> tuple[float, int]:
+    def _ray_distances(self, angle: float) -> tuple[float, float]:
         dx, dy = np.sin(angle), np.cos(angle)
-        distances: list[tuple[float, int]] = []
+        wall_distances: list[float] = []
         if abs(dx) > 1e-8:
             for wall in (-self.road_half_width, self.road_half_width):
                 t = (wall - self.x) / dx
                 if t > 0:
-                    distances.append((t, 1))
+                    wall_distances.append(float(t))
         if dy > 1e-8:
-            distances.append(((self.road_length - self.y) / dy, 1))
+            wall_distances.append(float((self.road_length - self.y) / dy))
+        obstacle_distances: list[float] = []
         for obstacle in self.obstacles:
             ox, oy = self.x - obstacle.x, self.y - obstacle.y
             b = ox * dx + oy * dy
@@ -63,21 +73,23 @@ class DrivingEnvironment:
             if discriminant >= 0:
                 t = -b - np.sqrt(discriminant)
                 if t > 0:
-                    distances.append((float(t), 2))
-        if not distances:
-            return self.max_sensor_distance, 0
-        distance, kind = min(distances, key=lambda pair: pair[0])
-        return min(float(distance), self.max_sensor_distance), kind
+                    obstacle_distances.append(float(t))
+        wall = min(wall_distances, default=self.max_sensor_distance)
+        obstacle = min(obstacle_distances, default=self.max_sensor_distance)
+        return min(wall, self.max_sensor_distance), min(obstacle, self.max_sensor_distance)
 
     def observe(self) -> np.ndarray:
         image = np.full((self.image_height, self.image_width), 0.035, dtype=np.float32)
         angles = self.heading + np.linspace(-1.25, 1.25, self.image_width)
-        rays = [self._ray_distance(float(angle)) for angle in angles]
-        self.last_rays = np.asarray([ray[0] for ray in rays], dtype=np.float32)
+        components = [self._ray_distances(float(angle)) for angle in angles]
+        self.last_wall_rays = np.asarray([ray[0] for ray in components], dtype=np.float32)
+        self.last_obstacle_rays = np.asarray([ray[1] for ray in components], dtype=np.float32)
+        self.last_rays = np.minimum(self.last_wall_rays, self.last_obstacle_rays)
         horizon = self.image_height // 3
         image[horizon:, :] = 0.12
-        for column, (distance, kind) in enumerate(rays):
-            if kind == 0 or distance >= self.max_sensor_distance:
+        for column, (wall, obstacle) in enumerate(components):
+            distance = min(wall, obstacle)
+            if distance >= self.max_sensor_distance:
                 continue
             height = max(
                 1,
@@ -86,7 +98,7 @@ class DrivingEnvironment:
                     * (self.image_height - horizon)
                 ),
             )
-            value = 0.98 if kind == 2 else 0.48
+            value = 0.98 if obstacle <= wall else 0.48
             image[-height:, column] = value
         # A dim road centre marker gives the network optic-flow and heading cues.
         centre = self.image_width // 2 + int(np.clip(-self.x * 1.7, -12, 12))
@@ -96,12 +108,24 @@ class DrivingEnvironment:
     def step(self, steering: float, throttle: float) -> tuple[np.ndarray, float, bool]:
         if self.done:
             return self.observe(), 0.0, True
-        steering = float(np.clip(steering, -1.0, 1.0))
+        steering_command = float(np.clip(steering, -1.0, 1.0))
+        if abs(steering_command) < self.steering_deadband:
+            steering_command = 0.0
         throttle = float(np.clip(throttle, 0.0, 1.0))
         previous_y = self.y
+        self.previous_steering = self.steering
+        steering_delta = np.clip(
+            steering_command - self.steering,
+            -self.steering_rate_limit,
+            self.steering_rate_limit,
+        )
+        self.steering = float(np.clip(self.steering + steering_delta, -1.0, 1.0))
         target_speed = 1.0 + 5.0 * throttle
         self.speed += (target_speed - self.speed) * 0.24
-        self.heading = float(np.clip(self.heading + steering * 0.10, -1.15, 1.15))
+        yaw_rate = self.speed / self.wheelbase * np.tan(
+            self.max_steering_angle * self.steering
+        )
+        self.heading = float(np.clip(self.heading + yaw_rate * self.dt, -1.15, 1.15))
         self.x += float(np.sin(self.heading) * self.speed * self.dt)
         self.y += float(np.cos(self.heading) * self.speed * self.dt)
         self.steps += 1
@@ -114,6 +138,13 @@ class DrivingEnvironment:
         )
         success = self.y >= self.road_length
         timeout = self.steps >= 500
+        self.terminal_reason = (
+            "road_boundary" if abs(self.x) + self.vehicle_radius >= self.road_half_width
+            else "obstacle" if collision
+            else "success" if success
+            else "timeout" if timeout
+            else None
+        )
         reward = (self.y - previous_y) / 4.0 - 0.006
         if collision:
             reward -= 1.5
@@ -134,12 +165,16 @@ class DrivingEnvironment:
             "road_half_width": self.road_half_width,
             "road_length": self.road_length,
             "vehicle": {
-                "x": self.x, "y": self.y, "heading": self.heading, "speed": self.speed,
+                "x": self.x, "y": self.y, "heading": self.heading,
+                "speed": self.speed, "steering": self.steering,
             },
             "obstacles": [obstacle.__dict__ for obstacle in self.obstacles],
             "trajectory": [list(point) for point in self.trajectory[-250:]],
             "projected_trajectory": projected,
             "sensor_rays": self.last_rays.tolist(),
+            "obstacle_rays": self.last_obstacle_rays.tolist(),
+            "wall_rays": self.last_wall_rays.tolist(),
             "step": self.steps, "done": self.done,
             "success": self.y >= self.road_length, "total_reward": self.total_reward,
+            "terminal_reason": self.terminal_reason,
         }

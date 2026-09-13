@@ -26,8 +26,9 @@ npm_config_cache=.npm-cache npm --prefix apps/web run dev -- --host 127.0.0.1 --
 ```
 
 Open <http://127.0.0.1:5174>. Use single-step mode to inspect the causal loop, or
-continuous mode to run until collision, success, or 500 steps. “New scene” keeps
-learned gains; “Clear learning” restores all plastic gains to 1.
+continuous mode to run until collision, success, or 500 steps. Execution defaults
+to frozen/no-exploration with the lane constraint enabled. “Restore published
+policy” discards in-process experimental updates and reloads the calibrated state.
 
 Run paired frozen/learning evaluation with:
 
@@ -35,15 +36,23 @@ Run paired frozen/learning evaluation with:
 make evaluate-driving
 ```
 
+Reproduce the deployed stable policy and lane-constraint ablation with:
+
+```bash
+make calibrate-policy
+.venv/bin/autodrive-fly evaluate-constraints
+```
+
 The report is written to `artifacts/driving-evaluation.json`. Always compare the
 same held-out seeds and report failures; synapse changes alone are not evidence
 of learned obstacle avoidance.
 
-The frozen final protocol uses 48 matched training-exposure scenes and 32 unseen
-test scenes. Mean distance improves from 16.53 m to 58.32 m (+41.79 m), mean raw
-return from 1.90 to 12.77, and completion from 0% to 21.9%. Paired bootstrap 95%
-intervals exclude zero for distance and return. The one-CNS-step ablation gains
-only +2.87 m, supporting the Doomfly-style neural/environment time separation.
+The currently shipped policy is a **frozen calibrated policy**, not a learned
+policy. On 32 unseen scenes, enabling the explicit lane constraint reduces road
+exits from 25% to 0%, increases mean distance by 3.53 m and raw return by 0.84;
+paired bootstrap intervals exclude zero. Online dopamine plasticity did not add
+task benefit after stabilization (distance delta -1.21 m), so no learned
+checkpoint is published. Obstacle completion remains unsolved.
 
 ## Scientific scope
 

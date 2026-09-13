@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from .connectome.graph import build_canonical_graph, load_graph
@@ -9,7 +10,11 @@ from .connectome.pathways import build_pathways
 from .data.audit import audit_annotations, audit_connections, audit_neurotransmitters, write_json
 from .data.download import download_file
 from .data.manifest import iter_files, load_manifest
-from .driving.evaluate import write_evaluation
+from .driving.evaluate import (
+    calibrate_stable_policy,
+    evaluate_constraints,
+    write_evaluation,
+)
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -30,6 +35,13 @@ def _parser() -> argparse.ArgumentParser:
     evaluate_driving.add_argument("--train-episodes", type=int, default=48)
     evaluate_driving.add_argument("--evaluation-seeds", type=int, default=32)
     evaluate_driving.add_argument("--evaluation-start", type=int, default=200)
+    calibrate = subparsers.add_parser("calibrate-policy")
+    calibrate.add_argument("--episodes", type=int, default=48)
+    calibrate.add_argument("--evaluation-seeds", type=int, default=32)
+    calibrate.add_argument("--evaluation-start", type=int, default=200)
+    constraints = subparsers.add_parser("evaluate-constraints")
+    constraints.add_argument("--evaluation-seeds", type=int, default=32)
+    constraints.add_argument("--evaluation-start", type=int, default=200)
     return parser
 
 
@@ -49,6 +61,27 @@ def main() -> None:
             f"learned {report['learned']['mean_distance']:.2f} m "
             f"(delta {report['delta_mean_distance']:+.2f} m)"
         )
+        return
+    if args.command == "calibrate-policy":
+        report = calibrate_stable_policy(
+            root, episodes=args.episodes,
+            evaluation_seeds=args.evaluation_seeds,
+            evaluation_start=args.evaluation_start,
+        )
+        target = root / "artifacts/stable-policy-calibration.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-constraints":
+        report = evaluate_constraints(
+            root,
+            evaluation_seeds=args.evaluation_seeds,
+            evaluation_start=args.evaluation_start,
+        )
+        target = root / "artifacts/behavior-constraint-ablation.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        delta = report["paired"]["distance"]["delta_mean"]
+        print(f"lane-constraint distance delta {delta:+.2f} m -> {target}")
         return
     manifest = load_manifest(root / args.manifest)
     if args.command in {"verify", "download"}:

@@ -1,4 +1,4 @@
-.PHONY: verify audit prepare evaluate-driving api web test
+.PHONY: verify audit prepare calibrate-policy evaluate-constraints evaluate-driving api web test
 
 verify:
 	.venv/bin/autodrive-fly verify --dataset malecns
@@ -13,6 +13,12 @@ prepare:
 
 evaluate-driving:
 	.venv/bin/autodrive-fly evaluate-driving
+
+calibrate-policy:
+	.venv/bin/autodrive-fly calibrate-policy
+
+evaluate-constraints:
+	.venv/bin/autodrive-fly evaluate-constraints
 
 api:
 	./scripts/run-api.sh

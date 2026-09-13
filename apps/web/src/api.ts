@@ -11,13 +11,13 @@ export function fetchDrivingState() { return fetch('/api/driving/state').then(ch
 export function resetDriving(seed: number, keepLearning: boolean) {
   return fetch('/api/driving/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seed, keep_learning: keepLearning }) }).then(checked<DrivingState>)
 }
-export function stepDriving(steps: number, learning: boolean) {
-  return fetch('/api/driving/step', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ steps, learning }) }).then(checked<DrivingState>)
+export function stepDriving(steps: number, learning: boolean, explore: boolean, safetyConstraints: boolean) {
+  return fetch('/api/driving/step', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ steps, learning, explore, safety_constraints: safetyConstraints }) }).then(checked<DrivingState>)
 }
-export async function streamDriving(learning: boolean, onState: (state: DrivingState) => void, signal?: AbortSignal) {
+export async function streamDriving(learning: boolean, explore: boolean, safetyConstraints: boolean, onState: (state: DrivingState) => void, signal?: AbortSignal) {
   const response = await fetch('/api/driving/run-stream', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ max_steps: 500, learning }), signal,
+    body: JSON.stringify({ max_steps: 500, learning, explore, safety_constraints: safetyConstraints }), signal,
   })
   if (!response.ok || !response.body) throw new Error(`${response.status}: ${await response.text()}`)
   const reader = response.body.getReader(), decoder = new TextDecoder()

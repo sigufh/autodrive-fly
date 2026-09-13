@@ -1,26 +1,23 @@
-# Doomfly-inspired positive-gain completion audit
+# Behaviour-stability completion audit
 
-Objective: optimize the MaleCNS driving structure using relevant Doomfly methods
-until learning produces reproducible positive task gain.
+Objective: confirm the behavioural-control evidence, implement stability fixes,
+and retain only claims reproduced by a freshly loaded deployment checkpoint.
 
-| Requirement | Artifact and direct evidence | Status |
+| Requirement | Direct evidence | Status |
 |---|---|---|
-| Doomfly-style persistent neural/environment time separation | `DrivingEngine.brain_substeps=4`; every action follows four full 166,700-node, 25,582,938-edge recurrent updates | Complete |
-| Slow centered activity and eligibility-based modulation | `DopaminePolicy.running_mean`, `running_variance`, and decaying eligibility traces in `engine.py` | Complete |
-| Bilateral dopamine-like opponent compartments | MaleCNS PPL101 11327/11900 states and lateral modulation of existing left/right DNp20 inputs | Complete |
-| No runtime heuristic planner | `DrivingEngine.step` obtains steering/throttle from `DopaminePolicy.action`; clearance is training-only teaching and cannot override evaluation actions | Complete |
-| Plasticity only on existing structural edges | 1,571 CSR entries entering DNp20/DNpe017; checkpoint verifies every presynaptic body ID and target contract | Complete |
-| Fair baseline | Frozen and learned policies receive identical seeds 10000--10047 and exploration; only the update flag differs | Complete |
-| Unseen evaluation | Seeds 200--231 are disjoint from training and run without exploration or learning | Complete |
-| Positive distance and raw-return gain | 16.53 to 58.32 m (+41.79); 1.90 to 12.77 return (+10.87) | Complete |
-| Gain is not only an outlier mean | Median 14.58 to 51.66 m; 20/32 paired wins; completion 0% to 21.9% | Complete |
-| Uncertainty gate | Paired bootstrap 95% CI: distance [25.68, 58.40], return [6.59, 15.31], both above zero | Complete |
-| Time-scale ablation | One-substep matched experiment gains only +2.87 m versus +41.79 m with four substeps | Complete |
-| Deployable learned state | `artifacts/checkpoints/driving-policy.npz`, SHA-256 `06b61da6ae25c9a804a29d3711dd3cc505a8610f2a9c3fb360cf0bda69efb117`; exact 32-scene replay error 0.0 m | Complete |
-| Automated and browser verification | 27 public-mainline Python tests, 5 web unit tests, production build, and 2 real-browser tests pass | Complete |
+| Diagnose road exits and oscillation | Frozen/no-exploration and empty-road probes separated persistent bias from exploration sign flips | Complete |
+| Separate execution, plasticity and exploration | API and UI have independent flags; execution defaults to learning=false, explore=false | Complete |
+| Preserve full policy state | Checkpoint v2 stores gains, running means/variances, reward baseline, steering bias and source IDs | Complete |
+| Evaluate a fresh process-equivalent policy | Candidate checkpoint is saved and loaded into a new `DrivingEngine` before evaluation | Complete |
+| Stabilize vehicle execution | Deadband, steering-rate limit and bicycle yaw dynamics replace direct heading accumulation | Complete |
+| Separate obstacle and road sensing | Environment exports independent obstacle and wall ray arrays | Complete |
+| Prevent low-frequency bilateral drift | Global and per-episode DN steering baselines remove common-mode motor bias | Complete |
+| Make road constraint explicit | Optional lane constraint exposes raw action, executed action, blend and correction; it never reads obstacles | Complete |
+| Quantify constraint benefit | `behavior-constraint-ablation.json`: road exits 25%→0%, distance +3.53 m, return +0.84 on seeds 200–231 | Complete |
+| Do not misattribute benefit to learning | Final plasticity test is negative: distance −1.21 m with 95% CI below/at zero; no learned checkpoint published | Complete |
+| Disclose remaining failure | Stable policy has 0% road exits but 100% obstacle-collision failure and 0% completion on the evaluated seeds | Complete |
 
-Primary evidence is `artifacts/driving-evaluation.json`; the one-step control is
-`artifacts/driving-ablation-one-substep.json`. The result establishes positive
-gain in this simulator. It does not establish biological learning fidelity,
-general autonomous-driving competence, or a natural steering role for the chosen
-descending neurons.
+The previous v1 checkpoint omitted running normalization state. Its claimed zero
+reload error was invalid because evaluation reused the training object. The v1
+positive-learning claim is superseded. The shipped v2 checkpoint is explicitly
+`frozen_calibrated`; it does not claim dopamine-learning benefit.

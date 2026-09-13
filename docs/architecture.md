@@ -44,11 +44,19 @@ policy-gradient eligibility trace. Collision/completion events and training-only
 left/right clearance shaping provide global and opponent dopamine-like factors.
 Only the 1,571 existing connections entering the four motor cells can change.
 
-The compact checkpoint records target motor IDs, every presynaptic body ID and
-its gain. Loading rejects graph/order mismatch, non-finite gains and values beyond
-the configured 0.2–3.0 bounds. The evaluator publishes a checkpoint only after
+The compact v2 checkpoint records target motor IDs, every presynaptic body ID,
+gain, running mean/variance, reward baseline and steering zero point. Loading
+rejects graph/order mismatch, non-finite gains and values beyond the configured
+0.97–1.03 bounds. The evaluator publishes a learned checkpoint only after
 both distance and raw-return gains are positive and both paired bootstrap 95%
-intervals exclude zero.
+intervals exclude zero, road exits are at most 10%, and far-field steering is
+bounded. The shipped checkpoint is currently `frozen_calibrated`, because online
+plasticity did not pass these gates.
+
+An optional lane constraint is a separate execution layer. It reads lateral road
+position and heading but never obstacle geometry. It only intervenes near a road
+edge or while heading outward. Raw neural action, executed action and intervention
+strength are all exposed, and evaluation includes an on/off ablation.
 
 ## Visualization levels
 

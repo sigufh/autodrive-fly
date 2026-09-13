@@ -33,14 +33,16 @@ class ResetRequest(BaseModel):
 
 class StepRequest(BaseModel):
     steps: int = Field(default=1, ge=1, le=50)
-    learning: bool = True
-    explore: bool | None = None
+    learning: bool = False
+    explore: bool = False
+    safety_constraints: bool = True
 
 
 class RunRequest(BaseModel):
     max_steps: int = Field(default=500, ge=1, le=500)
-    learning: bool = True
-    explore: bool | None = None
+    learning: bool = False
+    explore: bool = False
+    safety_constraints: bool = True
 
 
 def engine() -> DrivingEngine:
@@ -67,7 +69,7 @@ def health():
         "status": "ok", "connectome": "male-cns:v1.0",
         "task": "visual-obstacle-driving", "language_model": "retired",
         "brain_ready": (ROOT / "data/processed/malecns-v1.0/adjacency_target_norm.npz").exists(),
-        "validated_policy_ready": (
+        "policy_checkpoint_ready": (
             ROOT / "artifacts/checkpoints/driving-policy.npz"
         ).exists(),
     }
@@ -123,7 +125,11 @@ def driving_step(request: StepRequest):
     with _STEP_LOCK:
         result = None
         for _ in range(request.steps):
-            result = engine().step(learning=request.learning, explore=request.explore)
+            result = engine().step(
+                learning=request.learning,
+                explore=request.explore,
+                safety_constraints=request.safety_constraints,
+            )
             if result["environment"]["done"]:
                 break
         return result
@@ -143,7 +149,11 @@ def driving_event_lines(request: RunRequest):
         for _ in range(request.max_steps):
             started = time.perf_counter()
             with _STEP_LOCK:
-                state = engine().step(learning=request.learning, explore=request.explore)
+                state = engine().step(
+                    learning=request.learning,
+                    explore=request.explore,
+                    safety_constraints=request.safety_constraints,
+                )
             yield json.dumps({"type": "driving_state", **state}, ensure_ascii=False) + "\n"
             if state["environment"]["done"]:
                 break

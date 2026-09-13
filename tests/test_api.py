@@ -36,8 +36,8 @@ def test_driving_endpoints_are_stateful(monkeypatch) -> None:
             calls.append(("reset", seed, keep_learning))
             return self.state()
 
-        def step(self, *, learning, explore, include_activity=True):
-            calls.append(("step", learning, explore))
+        def step(self, *, learning, explore, safety_constraints=True, include_activity=True):
+            calls.append(("step", learning, explore, safety_constraints))
             return {"environment": {"step": len(calls), "done": False}}
 
     monkeypatch.setattr(api_module, "engine", lambda: FakeEngine())
@@ -48,7 +48,25 @@ def test_driving_endpoints_are_stateful(monkeypatch) -> None:
     assert reset.status_code == 200
     response = client.post("/api/driving/step", json={"steps": 2, "learning": True})
     assert response.json()["environment"]["step"] == 3
-    assert calls == [("reset", 9, False), ("step", True, None), ("step", True, None)]
+    assert calls == [
+        ("reset", 9, False),
+        ("step", True, False, True),
+        ("step", True, False, True),
+    ]
+
+
+def test_driving_step_defaults_to_frozen_execution(monkeypatch) -> None:
+    calls = []
+
+    class FakeEngine:
+        def step(self, *, learning, explore, safety_constraints=True, include_activity=True):
+            calls.append((learning, explore, safety_constraints))
+            return {"environment": {"done": True}}
+
+    monkeypatch.setattr(api_module, "engine", lambda: FakeEngine())
+    response = TestClient(app).post("/api/driving/step", json={})
+    assert response.status_code == 200
+    assert calls == [(False, False, True)]
 
 
 def test_engine_is_singleton_under_concurrent_first_load(monkeypatch) -> None:

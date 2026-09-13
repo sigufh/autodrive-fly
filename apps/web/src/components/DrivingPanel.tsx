@@ -3,8 +3,8 @@ import type { DrivingState } from '../types'
 
 function fmt(value: number, digits = 2) { return Number.isFinite(value) ? value.toFixed(digits) : '—' }
 
-export function DrivingPanel({ state, running, learning, onLearning, onRun, onStep, onReset }: {
-  state?: DrivingState; running: boolean; learning: boolean; onLearning: (value: boolean) => void;
+export function DrivingPanel({ state, running, learning, explore, safetyConstraints, onLearning, onExplore, onSafetyConstraints, onRun, onStep, onReset }: {
+  state?: DrivingState; running: boolean; learning: boolean; explore: boolean; safetyConstraints: boolean; onLearning: (value: boolean) => void; onExplore: (value: boolean) => void; onSafetyConstraints: (value: boolean) => void;
   onRun: () => void; onStep: () => void; onReset: (keep: boolean) => void;
 }) {
   const road = useRef<HTMLCanvasElement>(null), retina = useRef<HTMLCanvasElement>(null)
@@ -36,12 +36,15 @@ export function DrivingPanel({ state, running, learning, onLearning, onRun, onSt
       <div><small>里程</small><strong>{fmt(state?.environment.vehicle.y ?? 0, 1)} m</strong></div>
       <div><small>速度</small><strong>{fmt(state?.environment.vehicle.speed ?? 0, 1)}</strong></div>
       <div><small>转向</small><strong>{fmt(state?.action.steering ?? 0)}</strong></div>
+      <div><small>神经原始转向</small><strong>{fmt(state?.raw_action.steering ?? 0)}</strong></div>
+      <div><small>安全介入</small><strong>{fmt(state?.lane_constraint.blend ?? 0)}</strong></div>
+      <div><small>累计介入率</small><strong>{fmt((state?.control_statistics.constraint_rate ?? 0) * 100, 1)}%</strong></div>
       <div><small>奖励</small><strong>{fmt(state?.reward ?? 0, 3)}</strong></div>
       <div><small>多巴胺 RPE</small><strong className={(state?.dopamine.dopamine ?? 0) < 0 ? 'negative' : ''}>{fmt(state?.dopamine.dopamine ?? 0, 3)}</strong></div>
       <div><small>已变突触</small><strong>{state?.dopamine.changed_synapses ?? 0}/{state?.dopamine.plastic_synapses ?? 0}</strong></div>
       <div><small>双侧 PPL101</small><strong>{fmt(state?.dopamine.lateral_dopamine?.[0] ?? 0, 2)} / {fmt(state?.dopamine.lateral_dopamine?.[1] ?? 0, 2)}</strong></div>
     </div>
-    <div className="driving-controls"><label><input type="checkbox" checked={learning} onChange={e => onLearning(e.target.checked)} /> 多巴胺可塑性</label><button onClick={onRun}>{running ? '暂停' : '连续运行'}</button><button disabled={running} onClick={onStep}>单步</button><button disabled={running} onClick={() => onReset(true)}>新场景</button><button disabled={running} onClick={() => onReset(false)}>清除学习</button></div>
-    <p className="scientific-note">{state?.policy_checkpoint.loaded ? '已加载通过正收益门槛的策略检查点。' : '当前为未训练策略。'} 每个车辆动作前运行 {state?.motor.brain_substeps_per_action ?? 4} 个 CNS 微步。活动是持续的无量纲模型状态；双侧 PPL101 是训练调制信号。DNp20 / DNpe017 的车辆控制含义是工程读出，不是已验证的天然驾驶功能。</p>
+    <div className="driving-controls"><label><input type="checkbox" checked={learning} onChange={e => onLearning(e.target.checked)} /> 在线可塑性（实验）</label><label><input type="checkbox" checked={explore} onChange={e => onExplore(e.target.checked)} /> 探索噪声</label><label><input type="checkbox" checked={safetyConstraints} onChange={e => onSafetyConstraints(e.target.checked)} /> 道路安全约束</label><button onClick={onRun}>{running ? '暂停' : '连续运行'}</button><button disabled={running} onClick={onStep}>单步</button><button disabled={running} onClick={() => onReset(true)}>新场景</button><button disabled={running} onClick={() => onReset(false)}>恢复发布策略</button></div>
+    <p className="scientific-note">{state?.policy_checkpoint.loaded ? `已加载 ${state.policy_checkpoint.kind === 'frozen_calibrated' ? '冻结校准' : '实验学习'}策略。` : '当前为未训练策略。'} 道路安全约束是透明、可关闭的执行层，不代表神经网络学会车道保持。每个车辆动作前运行 {state?.motor.brain_substeps_per_action ?? 4} 个 CNS 微步。DNp20 / DNpe017 的车辆控制含义是工程读出。</p>
   </section>
 }
