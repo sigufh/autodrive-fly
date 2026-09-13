@@ -48,6 +48,6 @@ export default function App() {
       {error && <p role="alert" className="error global-error">{error}</p>}
       <CnsViewer overview={overview} pathways={pathways} skeleton={skeleton} loading={loading} activity={driving?.activity} phase={running ? 'closed-loop' : 'paused'} onSelect={selectNeuron} />
     </div>
-    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} controlMode={controlMode} onControlMode={value => { setControlMode(value); reset(true, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
+    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} controlMode={controlMode} onControlMode={value => { setControlMode(value); reset(false, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
   </main>
 }

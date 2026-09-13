@@ -439,9 +439,13 @@ def test_assisted_baseline_steering_chooses_the_free_side_and_recovers() -> None
     assert assisted_steering(0, obstacle_danger=0, obstacle_asymmetry=0, road_target=-0.5) < 0
 
 
-def test_neural_motor_adapter_only_clips_motor_outputs() -> None:
-    assert map_neural_motor_output(1.4, -0.2, 1.5) == (1.0, 0.0, 1.0)
-    assert map_neural_motor_output(-0.35, 0.62, 0.2) == (-0.35, 0.62, 0.2)
+def test_neural_motor_adapter_is_fixed_and_environment_independent() -> None:
+    first = map_neural_motor_output(1.4, -0.2, 1.5)
+    assert np.isclose(first[0], np.tanh(5.6))
+    assert first[1:] == (0.0, 1.0)
+    second = map_neural_motor_output(-0.35, 0.62, 0.2)
+    assert np.isclose(second[0], np.tanh(-1.4))
+    assert second[1:] == (0.31, 0.2)
 
 
 def test_neural_mode_bypasses_environment_action_overrides() -> None:
@@ -454,10 +458,44 @@ def test_neural_mode_bypasses_environment_action_overrides() -> None:
     )
     state = engine.step(learning=False, safety_constraints=True, include_activity=False)
     assert state["control_mode"] == "neural"
-    assert state["action"] == {"steering": 0.4, "throttle": 0.5, "reverse": 0.2, "drive": 0.2}
+    assert np.isclose(state["action"]["steering"], np.tanh(1.6))
+    assert state["action"]["throttle"] == 0.25
+    assert state["action"]["reverse"] == 0.2
+    assert state["action"]["drive"] == 0.0
     assert state["lane_constraint"]["blend"] == 0
     assert state["lane_constraint"]["visual_avoidance"] == 0
     assert state["lane_constraint"]["road_recovery"] == 0
+
+
+def test_single_obstacle_curriculum_is_mirrored_and_resettable() -> None:
+    left, right = DrivingEnvironment(), DrivingEnvironment()
+    left.reset(600)
+    right.reset(601)
+    left.configure_curriculum("single")
+    right.configure_curriculum("single")
+    assert left.obstacles[0].x == -right.obstacles[0].x
+    assert left.obstacles[0].y == right.obstacles[0].y
+    assert left.obstacles[0].radius == right.obstacles[0].radius
+    assert left.pass_reward == 1.5 and left.collision_penalty == 8.0
+    assert left.progress_reward_scale == 0.02
+    left.reset(600)
+    assert left.curriculum_stage == "full"
+    assert left.road_length == 120.0 and len(left.obstacles) == 9
+
+
+def test_neural_v6_checkpoint_keeps_independent_learning_contract(tmp_path: Path) -> None:
+    ids, graph = motor_fixture()
+    policy = DopaminePolicy(graph, ids)
+    policy.configure_neural_curriculum()
+    policy.action(np.zeros(8), np.ones(8), mirrored_activity=np.zeros(8), explore=False, adapt=True)
+    path = tmp_path / "neural-v6.npz"
+    policy.save(path, ids, checkpoint_kind="neural_curriculum_v6", format_version=6)
+    restored = DopaminePolicy(graph, ids)
+    restored.load(path, ids)
+    assert restored.checkpoint_kind == "neural_curriculum_v6"
+    assert restored.eligibility_decay == 0.995
+    assert restored.min_gain == 0.65 and restored.max_gain == 1.35
+    assert restored.exploration_sigma == 0.16
 
 
 def test_mirror_protocol_rejects_incomplete_or_leaking_pairs() -> None:

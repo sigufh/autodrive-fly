@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 
 from fly_emotion.connectome.skeleton import fetch_skeleton, skeleton_segments
 from fly_emotion.driving import DrivingEngine
-from fly_emotion.driving.engine import POLICY_VERSION
+from fly_emotion.driving.engine import NEURAL_POLICY_VERSION, POLICY_VERSION
 
 ROOT = Path(
     os.getenv(
@@ -72,11 +72,19 @@ app.add_middleware(
 @app.get("/api/health")
 def health():
     checkpoint = ROOT / "artifacts/checkpoints/driving-policy.npz"
+    neural_checkpoint = ROOT / "artifacts/checkpoints/driving-policy.neural-v6.npz"
     checkpoint_version = None
+    neural_checkpoint_version = None
     if checkpoint.exists():
         try:
             with np.load(checkpoint, allow_pickle=False) as payload:
                 checkpoint_version = int(payload["format_version"][0])
+        except (OSError, ValueError, KeyError, IndexError):
+            pass
+    if neural_checkpoint.exists():
+        try:
+            with np.load(neural_checkpoint, allow_pickle=False) as payload:
+                neural_checkpoint_version = int(payload["format_version"][0])
         except (OSError, ValueError, KeyError, IndexError):
             pass
     return {
@@ -89,6 +97,10 @@ def health():
         "policy_checkpoint_ready": checkpoint_version == POLICY_VERSION,
         "policy_checkpoint_version": checkpoint_version,
         "required_policy_version": POLICY_VERSION,
+        "neural_policy_checkpoint_ready": (
+            neural_checkpoint_version == NEURAL_POLICY_VERSION
+        ),
+        "neural_policy_checkpoint_version": neural_checkpoint_version,
     }
 
 

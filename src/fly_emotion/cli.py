@@ -15,6 +15,8 @@ from .driving.evaluate import (
     evaluate_city_alpha,
     evaluate_constraints,
     evaluate_neural_decision_baseline,
+    evaluate_neural_transfer,
+    train_neural_curriculum,
     write_evaluation,
 )
 
@@ -52,6 +54,14 @@ def _parser() -> argparse.ArgumentParser:
     neural = subparsers.add_parser("evaluate-neural-decision")
     neural.add_argument("--start", type=int, default=400)
     neural.add_argument("--count", type=int, default=8)
+    train_neural = subparsers.add_parser("train-neural-v6")
+    train_neural.add_argument("--train-episodes", type=int, default=24)
+    train_neural.add_argument("--evaluation-start", type=int, default=600)
+    train_neural.add_argument("--evaluation-seeds", type=int, default=8)
+    train_neural.add_argument("--stage", choices=["single", "triple", "nine"], default="single")
+    train_neural.add_argument("--resume", action="store_true")
+    subparsers.add_parser("evaluate-neural-transfer")
+    train_neural.add_argument("--publish", action="store_true")
     return parser
 
 
@@ -105,7 +115,27 @@ def main() -> None:
         return
     if args.command == "evaluate-neural-decision":
         report = evaluate_neural_decision_baseline(root, start=args.start, count=args.count)
-        target = root / "artifacts/neural-decision-baseline.json"
+        target = root / "artifacts/neural-decision-current.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "train-neural-v6":
+        report = train_neural_curriculum(
+            root,
+            train_episodes=args.train_episodes,
+            evaluation_start=args.evaluation_start,
+            evaluation_seeds=args.evaluation_seeds,
+            publish=args.publish,
+            stage=args.stage,
+            resume=args.resume,
+        )
+        target = root / f"artifacts/neural-v6-{args.stage}-curriculum.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-neural-transfer":
+        report = evaluate_neural_transfer(root)
+        target = root / "artifacts/neural-v6-transfer.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

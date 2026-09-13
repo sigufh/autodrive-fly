@@ -38,6 +38,7 @@ class DrivingEnvironment:
         self.seed = int(seed)
         self.pair_seed = int(pair_seed)
         self.mirror = int(mirror)
+        self.road_length = 120.0
         self.x, self.y, self.heading, self.speed = 0.0, 2.0, 0.0, 0.0
         self.steering = 0.0
         self.previous_steering = 0.0
@@ -51,14 +52,57 @@ class DrivingEnvironment:
             Obstacle(float(x), float(y), float(rng.uniform(0.75, 1.25)))
             for x, y in zip(xs, ys, strict=True)
         ]
-        self.last_rays = np.full(
-            self.image_width, self.max_sensor_distance, dtype=np.float32
-        )
+        self.last_rays = np.full(self.image_width, self.max_sensor_distance, dtype=np.float32)
         self.last_wall_rays = self.last_rays.copy()
         self.last_obstacle_rays = self.last_rays.copy()
         self.terminal_reason: str | None = None
         self.obstacles_passed = 0
         self.passed_obstacle_indices: set[int] = set()
+        self.pass_reward = 0.35
+        self.collision_penalty = 1.5
+        self.success_reward = 3.0
+        self.progress_reward_scale = 0.25
+        self.max_steps = 500
+        self.curriculum_stage = "full"
+        return self.observe()
+
+    def configure_curriculum(self, stage: str) -> np.ndarray:
+        """Configure a reward-only neural curriculum after deterministic reset."""
+        rng = np.random.default_rng(70_000 + self.pair_seed)
+        if stage == "single":
+            side = -1.0 if self.mirror == 1 else 1.0
+            obstacle_y = float(rng.uniform(16.0, 20.0))
+            self.road_length = obstacle_y + 18.0
+            self.obstacles = [
+                Obstacle(
+                    float(rng.uniform(0.9, 1.7) * side), obstacle_y, float(rng.uniform(1.0, 1.25))
+                )
+            ]
+            self.pass_reward, self.collision_penalty, self.success_reward = 1.5, 8.0, 6.0
+            self.progress_reward_scale = 0.02
+            self.max_steps = 260
+        elif stage == "triple":
+            side = -1.0 if self.mirror == 1 else 1.0
+            self.road_length = 68.0
+            self.obstacles = [
+                Obstacle(float(rng.uniform(1.1, 1.8) * side), 18.0, 1.1),
+                Obstacle(float(rng.uniform(1.1, 1.8) * -side), 36.0, 1.05),
+                Obstacle(float(rng.uniform(1.1, 1.8) * side), 54.0, 1.1),
+            ]
+            self.pass_reward, self.collision_penalty, self.success_reward = 1.25, 4.0, 5.0
+            self.progress_reward_scale = 0.05
+            self.max_steps = 420
+        elif stage == "nine":
+            # Keep the deterministic nine-obstacle geometry created by reset,
+            # but use the stronger sparse curriculum rewards.
+            self.pass_reward, self.collision_penalty, self.success_reward = 0.8, 8.0, 8.0
+            self.progress_reward_scale = 0.03
+            self.max_steps = 650
+        elif stage != "full":
+            raise ValueError(f"unknown neural curriculum stage: {stage}")
+        self.curriculum_stage = stage
+        self.passed_obstacle_indices.clear()
+        self.obstacles_passed = 0
         return self.observe()
 
     def _ray_distances(self, angle: float) -> tuple[float, float]:
@@ -100,10 +144,7 @@ class DrivingEnvironment:
                 continue
             height = max(
                 1,
-                int(
-                    (1.0 - distance / self.max_sensor_distance)
-                    * (self.image_height - horizon)
-                ),
+                int((1.0 - distance / self.max_sensor_distance) * (self.image_height - horizon)),
             )
             value = 0.98 if obstacle <= wall else 0.48
             image[-height:, column] = value
@@ -133,9 +174,7 @@ class DrivingEnvironment:
         forward_target = 1.0 + 5.0 * throttle
         target_speed = (1.0 - reverse) * forward_target - 2.0 * reverse
         self.speed += (target_speed - self.speed) * 0.24
-        yaw_rate = self.speed / self.wheelbase * np.tan(
-            self.max_steering_angle * self.steering
-        )
+        yaw_rate = self.speed / self.wheelbase * np.tan(self.max_steering_angle * self.steering)
         self.heading = float(np.clip(self.heading + yaw_rate * self.dt, -1.15, 1.15))
         self.x += float(np.sin(self.heading) * self.speed * self.dt)
         self.y += float(np.cos(self.heading) * self.speed * self.dt)
@@ -150,25 +189,30 @@ class DrivingEnvironment:
         )
         if not collision:
             self.passed_obstacle_indices.update(
-                index for index, obstacle in enumerate(self.obstacles)
+                index
+                for index, obstacle in enumerate(self.obstacles)
                 if self.y - self.vehicle_radius > obstacle.y + obstacle.radius
             )
         self.obstacles_passed = len(self.passed_obstacle_indices)
         success = self.y >= self.road_length and not collision
-        timeout = self.steps >= 500
+        timeout = self.steps >= self.max_steps
         self.terminal_reason = (
-            "road_boundary" if abs(self.x) + self.vehicle_radius >= self.road_half_width
-            else "obstacle" if collision
-            else "success" if success
-            else "timeout" if timeout
+            "road_boundary"
+            if abs(self.x) + self.vehicle_radius >= self.road_half_width
+            else "obstacle"
+            if collision
+            else "success"
+            if success
+            else "timeout"
+            if timeout
             else None
         )
-        reward = (self.y - previous_y) / 4.0 - 0.006
-        reward += 0.35 * (self.obstacles_passed - previous_passed)
+        reward = self.progress_reward_scale * (self.y - previous_y) - 0.006
+        reward += self.pass_reward * (self.obstacles_passed - previous_passed)
         if collision:
-            reward -= 1.5
+            reward -= self.collision_penalty
         if success:
-            reward += 3.0
+            reward += self.success_reward
         self.done = bool(collision or success or timeout)
         self.total_reward += reward
         return self.observe(), float(reward), self.done
@@ -183,10 +227,14 @@ class DrivingEnvironment:
         return {
             "road_half_width": self.road_half_width,
             "road_length": self.road_length,
-            "pair_seed": self.pair_seed, "mirror": self.mirror,
+            "pair_seed": self.pair_seed,
+            "mirror": self.mirror,
             "vehicle": {
-                "x": self.x, "y": self.y, "heading": self.heading,
-                "speed": self.speed, "steering": self.steering,
+                "x": self.x,
+                "y": self.y,
+                "heading": self.heading,
+                "speed": self.speed,
+                "steering": self.steering,
             },
             "obstacles": [obstacle.__dict__ for obstacle in self.obstacles],
             "trajectory": [list(point) for point in self.trajectory[-250:]],
@@ -194,12 +242,15 @@ class DrivingEnvironment:
             "sensor_rays": self.last_rays.tolist(),
             "obstacle_rays": self.last_obstacle_rays.tolist(),
             "wall_rays": self.last_wall_rays.tolist(),
-            "step": self.steps, "done": self.done,
-            "success": self.terminal_reason == "success", "total_reward": self.total_reward,
+            "step": self.steps,
+            "done": self.done,
+            "success": self.terminal_reason == "success",
+            "total_reward": self.total_reward,
             "terminal_reason": self.terminal_reason,
             "obstacles_passed": self.obstacles_passed,
             "first_obstacle_passed": 0 in self.passed_obstacle_indices,
-            "first_obstacle_side": (
-                "left" if self.obstacles[0].x < 0 else "right"
-            ) if self.obstacles else None,
+            "first_obstacle_side": ("left" if self.obstacles[0].x < 0 else "right")
+            if self.obstacles
+            else None,
+            "curriculum_stage": self.curriculum_stage,
         }

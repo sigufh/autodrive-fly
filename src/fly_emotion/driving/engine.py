@@ -22,6 +22,7 @@ MODULATORY_TRANSMITTERS = {"dopamine", "octopamine", "serotonin"}
 MIN_PLASTIC_GAIN = 0.97
 MAX_PLASTIC_GAIN = 1.03
 POLICY_VERSION = 5
+NEURAL_POLICY_VERSION = 6
 
 
 def assisted_steering(
@@ -44,7 +45,12 @@ def assisted_steering(
 
 
 def map_neural_motor_output(
-    steering: float, throttle: float, reverse: float
+    steering: float,
+    throttle: float,
+    reverse: float,
+    *,
+    steering_gain: float = 4.0,
+    throttle_scale: float = 0.5,
 ) -> tuple[float, float, float]:
     """Map DNp20/DNpe017/MDN motor primitives to vehicle actuators only.
 
@@ -52,8 +58,8 @@ def map_neural_motor_output(
     lane position, route geometry, traffic light state or reward.
     """
     return (
-        float(np.clip(steering, -1.0, 1.0)),
-        float(np.clip(throttle, 0.0, 1.0)),
+        float(np.tanh(steering_gain * steering)),
+        float(np.clip(throttle_scale * throttle, 0.0, 1.0)),
         float(np.clip(reverse, 0.0, 1.0)),
     )
 
@@ -110,8 +116,12 @@ class DopaminePolicy:
         self.updates = 0
         self.learning_rate = learning_rate
         self.exploration_sigma = exploration_sigma
+        self.exploration_sign = 1.0
         self.global_eligibility_scale = 0.02
         self.gain_decay = 0.0002
+        self.eligibility_decay = 0.96
+        self.min_gain = MIN_PLASTIC_GAIN
+        self.max_gain = MAX_PLASTIC_GAIN
         self.checkpoint_kind = "untrained"
 
     @property
@@ -125,6 +135,15 @@ class DopaminePolicy:
             self.rng = np.random.default_rng(episode_seed)
         self.dopamine = 0.0
         self.lateral_dopamine = [0.0, 0.0]
+
+    def configure_neural_curriculum(self) -> None:
+        """Use longer reward credit and wider, still bounded real-synapse gains."""
+        self.learning_rate = 0.01
+        self.global_eligibility_scale = 0.35
+        self.eligibility_decay = 0.995
+        self.gain_decay = 0.00005
+        self.exploration_sigma = 0.16
+        self.min_gain, self.max_gain = 0.65, 1.35
 
     def action(
         self,
@@ -187,7 +206,9 @@ class DopaminePolicy:
         reverse_logit_noise = self.rng.normal(0, 0.35) if explore else 0.0
         reverse_activation = float(1.0 / (1.0 + np.exp(-(reverse_logit + reverse_logit_noise))))
         reverse_mean = float(max(0.0, reverse_activation - 0.08) / 0.92)
-        steering_noise = self.rng.normal(0, self.exploration_sigma) if explore else 0.0
+        steering_noise = (
+            self.exploration_sign * self.rng.normal(0, self.exploration_sigma) if explore else 0.0
+        )
         steering = float(np.clip(steering_mean + steering_noise, -1, 1))
         throttle_noise = self.rng.normal(0, 0.08) if explore else 0.0
         throttle = float(np.clip(throttle_mean + throttle_noise, 0, 1))
@@ -239,7 +260,7 @@ class DopaminePolicy:
         self.reward_baseline = 0.995 * self.reward_baseline + 0.005 * modulation
         self.dopamine = float(np.clip(modulation - self.reward_baseline, -2.0, 2.0))
         for trace, feature in zip(self.eligibility, features, strict=True):
-            trace *= 0.96
+            trace *= self.eligibility_decay
             trace += feature
         if enabled:
             # Compartment-like opponent teaching: both updates remain confined to
@@ -280,7 +301,7 @@ class DopaminePolicy:
             for gains, trace in zip(self.gains, self.eligibility, strict=True):
                 gains += self.global_eligibility_scale * self.learning_rate * self.dopamine * trace
                 gains += self.gain_decay * (1.0 - gains)
-                np.clip(gains, MIN_PLASTIC_GAIN, MAX_PLASTIC_GAIN, out=gains)
+                np.clip(gains, self.min_gain, self.max_gain, out=gains)
             self.updates += 1
         return self.dopamine
 
@@ -301,10 +322,19 @@ class DopaminePolicy:
             "exploration_sigma": self.exploration_sigma,
             "global_eligibility_scale": self.global_eligibility_scale,
             "gain_decay": self.gain_decay,
+            "eligibility_decay": self.eligibility_decay,
+            "gain_bounds": [self.min_gain, self.max_gain],
             "centering": "odd_steering_even_speed_shared_graph",
         }
 
-    def save(self, path: Path, body_ids: np.ndarray, *, checkpoint_kind: str = "learned") -> None:
+    def save(
+        self,
+        path: Path,
+        body_ids: np.ndarray,
+        *,
+        checkpoint_kind: str = "learned",
+        format_version: int = POLICY_VERSION,
+    ) -> None:
         scalars = [
             self.reward_baseline,
             self.steering_bias,
@@ -315,7 +345,7 @@ class DopaminePolicy:
         if any(value is None or not np.isfinite(value) for value in scalars):
             raise ValueError("cannot save policy without finite calibration state")
         payload = {
-            "format_version": np.asarray([POLICY_VERSION], dtype=np.int32),
+            "format_version": np.asarray([format_version], dtype=np.int32),
             "motor_body_ids": MOTOR_BODY_IDS,
             "reverse_body_ids": REVERSE_BODY_IDS,
             "reward_baseline": np.asarray([self.reward_baseline], dtype=np.float64),
@@ -324,6 +354,18 @@ class DopaminePolicy:
             "reverse_mean": np.asarray([self.reverse_mean], dtype=np.float64),
             "reverse_variance": np.asarray([self.reverse_variance], dtype=np.float64),
             "checkpoint_kind": np.asarray([checkpoint_kind]),
+            "learning_config": np.asarray(
+                [
+                    self.learning_rate,
+                    self.global_eligibility_scale,
+                    self.eligibility_decay,
+                    self.gain_decay,
+                    self.min_gain,
+                    self.max_gain,
+                    self.exploration_sigma,
+                ],
+                dtype=np.float64,
+            ),
         }
         for index, (sources, gains) in enumerate(zip(self.sources, self.gains, strict=True)):
             payload[f"source_body_ids_{index}"] = body_ids[sources]
@@ -337,8 +379,15 @@ class DopaminePolicy:
 
     def load(self, path: Path, body_ids: np.ndarray) -> None:
         payload = np.load(path, allow_pickle=False)
-        if payload["format_version"].tolist() != [POLICY_VERSION]:
+        format_version = int(payload["format_version"][0])
+        if format_version not in {POLICY_VERSION, NEURAL_POLICY_VERSION}:
             raise ValueError("unsupported driving policy checkpoint")
+        if format_version == NEURAL_POLICY_VERSION:
+            if "learning_config" not in payload.files or payload["learning_config"].shape != (7,):
+                raise ValueError("invalid neural curriculum configuration")
+            config = payload["learning_config"].astype(float)
+            self.learning_rate, self.global_eligibility_scale, self.eligibility_decay = config[:3]
+            self.gain_decay, self.min_gain, self.max_gain, self.exploration_sigma = config[3:]
         if not np.array_equal(payload["motor_body_ids"], MOTOR_BODY_IDS):
             raise ValueError("driving policy motor-neuron contract mismatch")
         if not np.array_equal(payload["reverse_body_ids"], REVERSE_BODY_IDS):
@@ -352,7 +401,7 @@ class DopaminePolicy:
             gains = payload[f"gains_{index}"].astype(np.float32)
             if gains.shape != self.gains[index].shape or not np.all(np.isfinite(gains)):
                 raise ValueError("invalid driving policy gains")
-            if np.any((gains < MIN_PLASTIC_GAIN) | (gains > MAX_PLASTIC_GAIN)):
+            if np.any((gains < self.min_gain) | (gains > self.max_gain)):
                 raise ValueError("driving policy gains exceed configured bounds")
             loaded.append(gains)
             mean = payload[f"running_mean_{index}"].astype(np.float32)
@@ -417,11 +466,11 @@ class DrivingEngine:
         )
         self.source_sign = self._source_sign(raw / "body-neurotransmitters.feather")
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
-        self.policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
+        self.assisted_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
+        self.neural_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+        self.policy_checkpoint = self.assisted_policy_checkpoint
         self.checkpoint_loaded = False
         self.checkpoint_rejection: str | None = None
-        if load_checkpoint and self.policy_checkpoint.exists():
-            self._load_published_policy()
         self.dopamine_nodes = np.searchsorted(self.graph.body_ids, DOPAMINE_BODY_IDS)
         if not np.array_equal(self.graph.body_ids[self.dopamine_nodes], DOPAMINE_BODY_IDS):
             raise ValueError("configured PPL101 dopamine cells are absent from MaleCNS")
@@ -430,6 +479,8 @@ class DrivingEngine:
         self.env: DrivingEnvironment | CityDrivingEnvironment
         self.set_scenario(scenario)
         self.set_control_mode(control_mode)
+        if load_checkpoint and self.policy_checkpoint.exists():
+            self._load_published_policy()
         self.activity = np.zeros(self.graph.node_count, dtype=np.float32)
         self.mirrored_activity = np.zeros_like(self.activity)
         self.visual_drive = np.zeros_like(self.activity)
@@ -473,10 +524,20 @@ class DrivingEngine:
         if control_mode not in {"assisted", "neural"}:
             raise ValueError(f"unknown driving control mode: {control_mode}")
         self.control_mode = control_mode
+        self.policy_checkpoint = (
+            self.neural_policy_checkpoint
+            if control_mode == "neural"
+            else self.assisted_policy_checkpoint
+        )
 
     def _load_published_policy(self) -> None:
         with np.load(self.policy_checkpoint, allow_pickle=False) as payload:
-            if payload["format_version"].tolist() != [POLICY_VERSION]:
+            expected = (
+                NEURAL_POLICY_VERSION
+                if self.policy_checkpoint == self.neural_policy_checkpoint
+                else POLICY_VERSION
+            )
+            if payload["format_version"].tolist() != [expected]:
                 self.checkpoint_loaded = False
                 self.checkpoint_rejection = "obsolete_format_requires_recalibration"
                 return
@@ -506,16 +567,20 @@ class DrivingEngine:
         keep_learning: bool = True,
         scenario: str | None = None,
         control_mode: str | None = None,
+        curriculum_stage: str = "full",
     ) -> dict:
         if scenario is not None:
             self.set_scenario(scenario)
         if control_mode is not None:
             self.set_control_mode(control_mode)
         self.env.reset(seed)
+        if curriculum_stage != "full":
+            if not isinstance(self.env, DrivingEnvironment):
+                raise ValueError("neural curriculum requires the random-obstacle environment")
+            self.env.configure_curriculum(curriculum_stage)
         self.activity.fill(0)
         self.mirrored_activity.fill(0)
         self.visual_drive.fill(0)
-        self.policy.reset_traces(episode_seed=seed)
         if not keep_learning:
             self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
             if self.policy_checkpoint.exists():
@@ -523,6 +588,12 @@ class DrivingEngine:
             else:
                 self.checkpoint_loaded = False
                 self.checkpoint_rejection = None
+        self.policy.reset_traces(
+            episode_seed=self.env.pair_seed if self.control_mode == "neural" else seed
+        )
+        self.policy.exploration_sign = (
+            float(self.env.mirror) if self.control_mode == "neural" else 1.0
+        )
         self.last_action = {"steering": 0.0, "throttle": 0.0, "reverse": 0.0, "drive": 0.0}
         self.last_raw_action = {"steering": 0.0, "throttle": 0.0, "reverse": 0.0, "drive": 0.0}
         self.last_constraint = {"active": False, "blend": 0.0, "correction": 0.0}

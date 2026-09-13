@@ -1,0 +1,140 @@
+{
+  "protocol": {
+    "learning": false,
+    "explore": false,
+    "action_override": false,
+    "checkpoint_sha256": "6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437",
+    "triple_seed_range": [
+      700,
+      707
+    ],
+    "full_seed_range": [
+      420,
+      427
+    ]
+  },
+  "triple": {
+    "episodes": 8,
+    "mean_distance": 68.16683777599587,
+    "success_rate": 1.0,
+    "mean_obstacles_passed": 3,
+    "first_obstacle_pass_rate": 1.0,
+    "road_exit_rate": 0.0,
+    "obstacle_collision_rate": 0.0,
+    "timeout_rate": 0.0,
+    "constraint_rate": 0.0,
+    "mean_abs_constraint": 0.0,
+    "details": [
+      {
+        "seed": 700,
+        "terminal_reason": "success",
+        "distance": 68.17303413165905,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 701,
+        "terminal_reason": "success",
+        "distance": 68.17303413165905,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 702,
+        "terminal_reason": "success",
+        "distance": 68.12914277227314,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 703,
+        "terminal_reason": "success",
+        "distance": 68.12914277227314,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 704,
+        "terminal_reason": "success",
+        "distance": 68.22025211663615,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 705,
+        "terminal_reason": "success",
+        "distance": 68.22025211663615,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 706,
+        "terminal_reason": "success",
+        "distance": 68.14492208341512,
+        "obstacles_passed": 3
+      },
+      {
+        "seed": 707,
+        "terminal_reason": "success",
+        "distance": 68.14492208341512,
+        "obstacles_passed": 3
+      }
+    ]
+  },
+  "full": {
+    "episodes": 8,
+    "mean_distance": 44.28618809058605,
+    "success_rate": 0.0,
+    "mean_obstacles_passed": 2.75,
+    "first_obstacle_pass_rate": 0.75,
+    "road_exit_rate": 0.75,
+    "obstacle_collision_rate": 0.25,
+    "timeout_rate": 0.0,
+    "constraint_rate": 0.0,
+    "mean_abs_constraint": 0.0,
+    "details": [
+      {
+        "seed": 420,
+        "terminal_reason": "obstacle",
+        "distance": 102.80722443380014,
+        "obstacles_passed": 8
+      },
+      {
+        "seed": 421,
+        "terminal_reason": "obstacle",
+        "distance": 102.80722443380014,
+        "obstacles_passed": 8
+      },
+      {
+        "seed": 422,
+        "terminal_reason": "road_boundary",
+        "distance": 21.399743456844007,
+        "obstacles_passed": 1
+      },
+      {
+        "seed": 423,
+        "terminal_reason": "road_boundary",
+        "distance": 21.399743456844007,
+        "obstacles_passed": 1
+      },
+      {
+        "seed": 424,
+        "terminal_reason": "road_boundary",
+        "distance": 35.742104622748215,
+        "obstacles_passed": 2
+      },
+      {
+        "seed": 425,
+        "terminal_reason": "road_boundary",
+        "distance": 35.742104622748215,
+        "obstacles_passed": 2
+      },
+      {
+        "seed": 426,
+        "terminal_reason": "road_boundary",
+        "distance": 17.195679848951848,
+        "obstacles_passed": 0
+      },
+      {
+        "seed": 427,
+        "terminal_reason": "road_boundary",
+        "distance": 17.195679848951848,
+        "obstacles_passed": 0
+      }
+    ]
+  }
+}

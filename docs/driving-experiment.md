@@ -68,6 +68,20 @@ action correction are both zero. This is a negative result, retained in
 `artifacts/neural-decision-baseline.json`; it establishes the actual training
 target rather than claiming that the connectome has already learned avoidance.
 
+The subsequent v6 reward-only curriculum preserves the same direct neural
+action boundary. A 24-episode mirrored single-obstacle course produced a
+separate format-v6 checkpoint. On unseen seeds 640–647 it improved completion
+from 0% frozen to 50%, distance from 23.86 m to 27.53 m, while a time-shuffled
+equal-amplitude action baseline completed 0% and reached 19.89 m. The learned
+checkpoint then completed all eight unseen three-obstacle transfer scenes
+without additional training.
+
+Nine-obstacle continuation improved mean distance from 47.00 m to 56.69 m and
+passed obstacles from 3.25 to 4.0, but did not improve the 25% completion or 75%
+road-exit rates. It was therefore rejected, leaving the single-obstacle v6
+checkpoint published. This is evidence for an early curriculum learning effect,
+not evidence of complete random-road driving.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

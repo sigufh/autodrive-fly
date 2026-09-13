@@ -42,6 +42,16 @@ The two modes must not be compared as equivalent claims. `assisted` is an
 engineering baseline; `neural` is the scientific experiment that still needs
 dedicated training and ablation.
 
+### v6 curriculum status
+
+- Published independently of v5: `driving-policy.neural-v6.npz`, SHA-256
+  `6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437`.
+- Single-obstacle unseen completion: frozen 0%, learned 50%, shuffled actions 0%.
+- Zero-shot three-obstacle transfer: 100% completion on seeds 700–707.
+- Nine-obstacle continuation rejected: no completion-rate or road-exit gain.
+- Evidence files: `neural-v6-single-curriculum.json`, `neural-v6-transfer.json`,
+  and rejected continuation `neural-v6-nine-curriculum.json`.
+
 ## Historical v2 Audit
 
 The statements below refer only to the earlier generator and checkpoint.

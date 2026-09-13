@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from pathlib import Path
 from statistics import mean
 
 import numpy as np
 
-from fly_emotion.driving.engine import POLICY_VERSION, DrivingEngine
+from fly_emotion.driving.engine import NEURAL_POLICY_VERSION, POLICY_VERSION, DrivingEngine
 from fly_emotion.driving.environment import DrivingEnvironment
 
 EVALUATION_PROTOCOL_VERSION = 4
@@ -102,8 +103,14 @@ def run_episode(
     explore: bool,
     safety_constraints: bool = True,
     control_mode: str = "assisted",
+    curriculum_stage: str = "full",
 ) -> dict:
-    engine.reset(seed, keep_learning=True, control_mode=control_mode)
+    engine.reset(
+        seed,
+        keep_learning=True,
+        control_mode=control_mode,
+        curriculum_stage=curriculum_stage,
+    )
     controls = []
     while not engine.env.done:
         engine.step(
@@ -159,7 +166,180 @@ def run_episode(
         ),
         "control_trace": controls,
         "control_mode": control_mode,
+        "curriculum_stage": curriculum_stage,
         **engine.control_summary(),
+    }
+
+
+def train_neural_curriculum(
+    root: Path,
+    *,
+    train_episodes: int = 24,
+    evaluation_start: int = 600,
+    evaluation_seeds: int = 8,
+    seed: int = 20260914,
+    publish: bool = False,
+    stage: str = "single",
+    resume: bool = False,
+) -> dict:
+    """Train direct neural control on a mirrored reward-only curriculum."""
+    if stage not in {"single", "triple", "nine"}:
+        raise ValueError(f"unknown neural curriculum stage: {stage}")
+    validate_mirror_protocol(evaluation_seeds, evaluation_start, train_episodes=train_episodes)
+    frozen = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=resume, control_mode="neural")
+    learned = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=resume, control_mode="neural")
+    if resume and (not frozen.checkpoint_loaded or not learned.checkpoint_loaded):
+        raise ValueError("resume requested without a compatible neural-v6 checkpoint")
+    for policy in (frozen.policy, learned.policy):
+        policy.configure_neural_curriculum()
+
+    frozen_exposure, training = [], []
+    for index in range(train_episodes):
+        training_seed = 10_000 + index
+        frozen_exposure.append(
+            run_episode(
+                frozen,
+                training_seed,
+                learning=False,
+                explore=True,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage=stage,
+            )
+        )
+        training.append(
+            run_episode(
+                learned,
+                training_seed,
+                learning=True,
+                explore=True,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage=stage,
+            )
+        )
+
+    test_seeds = range(evaluation_start, evaluation_start + evaluation_seeds)
+    baseline = [
+        run_episode(
+            frozen,
+            value,
+            learning=False,
+            explore=False,
+            safety_constraints=False,
+            control_mode="neural",
+            curriculum_stage=stage,
+        )
+        for value in test_seeds
+    ]
+    candidate = root / "artifacts/checkpoints/driving-policy.neural-v6.candidate.npz"
+    published = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    learned.policy.save(
+        candidate,
+        learned.graph.body_ids,
+        checkpoint_kind="neural_curriculum_v6",
+        format_version=NEURAL_POLICY_VERSION,
+    )
+    deployed = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=False, control_mode="neural")
+    deployed.policy.load(candidate, deployed.graph.body_ids)
+    learned_eval = [
+        run_episode(
+            deployed,
+            value,
+            learning=False,
+            explore=False,
+            safety_constraints=False,
+            control_mode="neural",
+            curriculum_stage=stage,
+        )
+        for value in test_seeds
+    ]
+    frozen_summary, learned_summary = summarize(baseline), summarize(learned_eval)
+    shuffled_episodes = []
+    for item in learned_eval:
+        env = DrivingEnvironment()
+        env.reset(item["seed"])
+        env.configure_curriculum(stage)
+        trace = np.asarray(item["control_trace"], dtype=float)
+        rng = np.random.default_rng(seed + item["pair_seed"])
+        order = rng.permutation(len(trace))
+        step = 0
+        while not env.done:
+            row = trace[order[step % len(order)]]
+            reverse = float(row[5])
+            drive = float(row[4])
+            throttle = float(np.clip((drive + reverse) / max(1.0 - reverse, 1e-6), 0, 1))
+            env.step(float(row[1]), throttle, reverse)
+            step += 1
+        shuffled_episodes.append(
+            {
+                "seed": item["seed"],
+                "terminal_reason": env.terminal_reason,
+                "distance": env.y,
+                "obstacles_passed": env.obstacles_passed,
+                "success": env.terminal_reason == "success",
+            }
+        )
+    shuffled_summary = {
+        "controller": "learned_action_trace_time_shuffled",
+        "success_rate": mean(float(item["success"]) for item in shuffled_episodes),
+        "mean_distance": mean(item["distance"] for item in shuffled_episodes),
+        "mean_obstacles_passed": mean(item["obstacles_passed"] for item in shuffled_episodes),
+        "details": shuffled_episodes,
+    }
+    gates = {
+        "first_pass_at_least_70pct": learned_summary["first_obstacle_pass_rate"] >= 0.70,
+        "completion_meets_stage_target": learned_summary["success_rate"]
+        >= (0.50 if stage == "single" else 0.25),
+        "completion_exceeds_frozen": (
+            learned_summary["success_rate"] > frozen_summary["success_rate"]
+        ),
+        "distance_exceeds_frozen": learned_summary["mean_distance"]
+        > frozen_summary["mean_distance"],
+        "obstacles_exceed_frozen": (
+            learned_summary["mean_obstacles_passed"] > frozen_summary["mean_obstacles_passed"]
+        ),
+        "road_exit_below_frozen": (
+            learned_summary["road_exit_rate"] < frozen_summary["road_exit_rate"]
+        ),
+        "completion_exceeds_shuffled_actions": (
+            learned_summary["success_rate"] > shuffled_summary["success_rate"]
+        ),
+        "distance_exceeds_shuffled_actions": (
+            learned_summary["mean_distance"] > shuffled_summary["mean_distance"]
+        ),
+        "zero_action_override": (
+            learned_summary["constraint_rate"] == 0 and learned_summary["mean_abs_constraint"] == 0
+        ),
+    }
+    released = bool(publish and all(gates.values()))
+    if released:
+        if resume and published.exists():
+            previous = published.with_name("driving-policy.neural-v6.single.npz")
+            if not previous.exists():
+                shutil.copy2(published, previous)
+        candidate.replace(published)
+    return {
+        "protocol_version": NEURAL_POLICY_VERSION,
+        "curriculum_stage": stage,
+        "resumed_from_published_v6": resume,
+        "training_seed_range": [10_000, 10_000 + train_episodes - 1],
+        "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
+        "learning_signal": "environment_reward_only",
+        "action_override": False,
+        "published": released,
+        "checkpoint": str(published.relative_to(root)) if released else None,
+        "candidate_checkpoint": str(candidate.relative_to(root)) if not released else None,
+        "candidate_sha256": hashlib.sha256(
+            (published if released else candidate).read_bytes()
+        ).hexdigest(),
+        "gates": gates,
+        "frozen": frozen_summary,
+        "frozen_exposure": summarize(frozen_exposure),
+        "training": summarize(training),
+        "learned": learned_summary,
+        "shuffled_action_baseline": shuffled_summary,
+        "plasticity": deployed.policy.summary(),
     }
 
 
@@ -178,7 +358,9 @@ def evaluate_neural_decision_baseline(
     seeds = range(start, start + count)
     arms = {}
     for mode in ("assisted", "neural"):
-        engine = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=True)
+        engine = DrivingEngine(
+            root, seed=seed, top_k=1, load_checkpoint=True, control_mode=mode
+        )
         episodes = [
             run_episode(
                 engine,
@@ -217,6 +399,72 @@ def evaluate_neural_decision_baseline(
             ),
             "success_rate": neural["success_rate"] - arms["assisted"]["success_rate"],
         },
+    }
+
+
+def evaluate_neural_transfer(
+    root: Path,
+    *,
+    count: int = 8,
+    triple_start: int = 700,
+    full_start: int = 420,
+) -> dict:
+    """Evaluate the published v6 checkpoint without further learning."""
+    results = {}
+    for stage, start in (("triple", triple_start), ("full", full_start)):
+        engine = DrivingEngine(
+            root, seed=20260914, top_k=1, load_checkpoint=True, control_mode="neural"
+        )
+        if not engine.checkpoint_loaded or engine.policy.checkpoint_kind != "neural_curriculum_v6":
+            raise ValueError("neural transfer requires the published v6 checkpoint")
+        episodes = [
+            run_episode(
+                engine,
+                value,
+                learning=False,
+                explore=False,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage=stage,
+            )
+            for value in range(start, start + count)
+        ]
+        summary = summarize(episodes)
+        results[stage] = {
+            key: summary[key]
+            for key in (
+                "episodes",
+                "mean_distance",
+                "success_rate",
+                "mean_obstacles_passed",
+                "first_obstacle_pass_rate",
+                "road_exit_rate",
+                "obstacle_collision_rate",
+                "timeout_rate",
+                "constraint_rate",
+                "mean_abs_constraint",
+            )
+        }
+        results[stage]["details"] = [
+            {
+                "seed": item["seed"],
+                "terminal_reason": item["terminal_reason"],
+                "distance": item["distance"],
+                "obstacles_passed": item["obstacles_passed"],
+            }
+            for item in episodes
+        ]
+    checkpoint = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    return {
+        "protocol": {
+            "learning": False,
+            "explore": False,
+            "action_override": False,
+            "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+            "triple_seed_range": [triple_start, triple_start + count - 1],
+            "full_seed_range": [full_start, full_start + count - 1],
+        },
+        **results,
     }
 
 
