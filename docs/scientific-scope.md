@@ -148,6 +148,14 @@ perturbations; smaller perturbations expose float32 rounding. These are local
 input-to-T4 row-sum bounds, not the recurrent Jacobian or a proof of instability.
 No normalizer, model parameter or release gate was changed.
 
+Full mixed-update tangent propagation and paired nonlinear replays were compared
+for two fixed source-perturbation directions, two amplitudes, and 32 microsteps
+from two frozen gray-background states. All tested end-to-initial L2 ratios are
+below one (about 0.020–0.069), despite large local interface bounds. This neither
+proves global stability nor rules out growth in untested directions. The unit-slope
+tangent comparison changes only a derivative factor along the original trajectory,
+not a deployable model; finite differences retain threshold and float32 errors.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
