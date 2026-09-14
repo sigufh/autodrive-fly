@@ -34,6 +34,7 @@ from .driving.v7 import (
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_fit import fit_v7_t4_conductance
+from .driving.v7_local_input_audit import evaluate_v7_local_input_audit
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
@@ -119,6 +120,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-retina-columns")
     subparsers.add_parser("v7-audit-layer-mirror")
     subparsers.add_parser("v7-audit-temporal-input")
+    subparsers.add_parser("v7-audit-local-input")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -310,6 +312,12 @@ def main() -> None:
     if args.command == "v7-audit-temporal-input":
         report = evaluate_v7_temporal_input_audit(root)
         target = root / "artifacts/v7-temporal-input-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-local-input":
+        report = evaluate_v7_local_input_audit(root)
+        target = root / "artifacts/v7-local-input-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

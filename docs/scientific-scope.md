@@ -58,6 +58,16 @@ ON steps produce the expected negative Mi9 peak in only about half the cells;
 these are qualitative proxy measurements, not matched local electrophysiology.
 See `artifacts/v7-temporal-input-audit.json`; it cannot authorize stage advancement.
 
+An anatomy-selected local-input audit samples three bilaterally covered columns
+(24 cells). All six sampled Mi9 cells show ON-negative centre and ON-positive
+annulus responses under both encodings, but those same cells are also ON-negative
+under full-screen steps. This does not overturn the all-cell result or establish
+population-wide recovery: coverage selection and unequal receptor drive remain
+confounds. Local Mi4 polarity is not uniformly correct, and linear-luminance Mi9
+peaks hit the observation boundary. Left L3 and bilateral Tm3 lack direct column
+annotations and are excluded, not assigned guessed positions. The diagnostic is
+not a T4 direction, navigation or learning validation.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
