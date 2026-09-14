@@ -104,12 +104,14 @@ def run_episode(
     safety_constraints: bool = True,
     control_mode: str = "assisted",
     curriculum_stage: str = "full",
+    sensory_profile: str | None = None,
 ) -> dict:
     engine.reset(
         seed,
         keep_learning=True,
         control_mode=control_mode,
         curriculum_stage=curriculum_stage,
+        sensory_profile=sensory_profile,
     )
     controls = []
     while not engine.env.done:
@@ -184,6 +186,7 @@ def run_episode(
         "control_trace": controls,
         "control_mode": control_mode,
         "curriculum_stage": curriculum_stage,
+        "sensory_profile": engine.sensory_profile,
         **engine.control_summary(),
     }
 
@@ -198,13 +201,28 @@ def train_neural_curriculum(
     publish: bool = False,
     stage: str = "single",
     resume: bool = False,
+    sensory_profile: str = "front",
 ) -> dict:
     """Train direct neural control on a mirrored reward-only curriculum."""
     if stage not in {"single", "triple", "nine"}:
         raise ValueError(f"unknown neural curriculum stage: {stage}")
     validate_mirror_protocol(evaluation_seeds, evaluation_start, train_episodes=train_episodes)
-    frozen = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=resume, control_mode="neural")
-    learned = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=resume, control_mode="neural")
+    frozen = DrivingEngine(
+        root,
+        seed=seed,
+        top_k=1,
+        load_checkpoint=resume,
+        control_mode="neural",
+        sensory_profile=sensory_profile,
+    )
+    learned = DrivingEngine(
+        root,
+        seed=seed,
+        top_k=1,
+        load_checkpoint=resume,
+        control_mode="neural",
+        sensory_profile=sensory_profile,
+    )
     if resume and (not frozen.checkpoint_loaded or not learned.checkpoint_loaded):
         raise ValueError("resume requested without a compatible neural-v6 checkpoint")
     for policy in (frozen.policy, learned.policy):
@@ -229,6 +247,7 @@ def train_neural_curriculum(
                 safety_constraints=False,
                 control_mode="neural",
                 curriculum_stage=stage,
+                sensory_profile=sensory_profile,
             )
         )
         training.append(
@@ -240,6 +259,7 @@ def train_neural_curriculum(
                 safety_constraints=False,
                 control_mode="neural",
                 curriculum_stage=stage,
+                sensory_profile=sensory_profile,
             )
         )
 
@@ -253,10 +273,13 @@ def train_neural_curriculum(
             safety_constraints=False,
             control_mode="neural",
             curriculum_stage=stage,
+            sensory_profile=sensory_profile,
         )
         for value in test_seeds
     ]
-    candidate = root / "artifacts/checkpoints/driving-policy.neural-v6.candidate.npz"
+    candidate = root / (
+        f"artifacts/checkpoints/driving-policy.neural-v6.{stage}.{sensory_profile}.candidate.npz"
+    )
     published = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
     learned.policy.save(
         candidate,
@@ -275,6 +298,7 @@ def train_neural_curriculum(
             safety_constraints=False,
             control_mode="neural",
             curriculum_stage=stage,
+            sensory_profile=sensory_profile,
         )
         for value in test_seeds
     ]
@@ -354,6 +378,7 @@ def train_neural_curriculum(
     return {
         "protocol_version": NEURAL_POLICY_VERSION,
         "curriculum_stage": stage,
+        "sensory_profile": sensory_profile,
         "resumed_from_published_v6": resume,
         "training_seed_range": [10_000, 10_000 + train_episodes - 1],
         "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
@@ -549,6 +574,81 @@ def evaluate_neural_motor_adaptation(root: Path, *, start: int = 900, count: int
         },
         "gates": gates,
         **arms,
+    }
+
+
+def evaluate_sensory_ablation(
+    root: Path,
+    *,
+    train_episodes: int = 4,
+    evaluation_start: int = 960,
+    evaluation_seeds: int = 4,
+    seed: int = 20260914,
+) -> dict:
+    """Matched small-sample screen of anatomy-backed sensory profiles."""
+    published = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    if not published.exists():
+        raise FileNotFoundError("sensory ablation requires the published neural-v6 checkpoint")
+    profiles = ("front", "panorama", "panorama_flow", "panorama_flow_body")
+    arms = {}
+    metrics = (
+        "mean_distance",
+        "success_rate",
+        "mean_obstacles_passed",
+        "road_exit_rate",
+        "obstacle_collision_rate",
+        "post_pass_mean_abs_steering",
+        "post_pass_mean_lateral_drift",
+        "constraint_rate",
+    )
+    for profile in profiles:
+        report = train_neural_curriculum(
+            root,
+            train_episodes=train_episodes,
+            evaluation_start=evaluation_start,
+            evaluation_seeds=evaluation_seeds,
+            seed=seed,
+            publish=False,
+            stage="nine",
+            resume=True,
+            sensory_profile=profile,
+        )
+        arms[profile] = {
+            "candidate_sha256": report["candidate_sha256"],
+            "gates": report["gates"],
+            "frozen": {key: report["frozen"][key] for key in metrics},
+            "learned": {key: report["learned"][key] for key in metrics},
+        }
+    front = arms["front"]["learned"]
+    for profile in profiles[1:]:
+        learned = arms[profile]["learned"]
+        arms[profile]["versus_front"] = {
+            "completion_delta": learned["success_rate"] - front["success_rate"],
+            "distance_delta": learned["mean_distance"] - front["mean_distance"],
+            "obstacles_delta": (learned["mean_obstacles_passed"] - front["mean_obstacles_passed"]),
+            "post_pass_steering_delta": (
+                learned["post_pass_mean_abs_steering"] - front["post_pass_mean_abs_steering"]
+            ),
+            "post_pass_drift_delta": (
+                learned["post_pass_mean_lateral_drift"] - front["post_pass_mean_lateral_drift"]
+            ),
+        }
+    return {
+        "protocol": {
+            "starting_checkpoint": str(published.relative_to(root)),
+            "starting_checkpoint_sha256": hashlib.sha256(published.read_bytes()).hexdigest(),
+            "training_seed_range": [10_000, 10_000 + train_episodes - 1],
+            "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
+            "matched_training_and_test_seeds": True,
+            "learning_signal": "environment_reward_only",
+            "action_override": False,
+            "claim_boundary": (
+                "two-pair screening ablation; no sensory profile is deployed "
+                "without a larger held-out confirmation"
+            ),
+        },
+        "anatomy": DrivingEngine(root, top_k=1, load_checkpoint=False).sensory_projection.summary(),
+        "arms": arms,
     }
 
 

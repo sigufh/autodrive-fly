@@ -17,6 +17,7 @@ from .driving.evaluate import (
     evaluate_neural_decision_baseline,
     evaluate_neural_motor_adaptation,
     evaluate_neural_transfer,
+    evaluate_sensory_ablation,
     train_neural_curriculum,
     write_evaluation,
 )
@@ -65,8 +66,17 @@ def _parser() -> argparse.ArgumentParser:
         default="single",
     )
     train_neural.add_argument("--resume", action="store_true")
+    train_neural.add_argument(
+        "--sensory-profile",
+        choices=["front", "panorama", "panorama_flow", "panorama_flow_body"],
+        default="front",
+    )
     subparsers.add_parser("evaluate-neural-transfer")
     subparsers.add_parser("evaluate-neural-motor-adaptation")
+    sensory = subparsers.add_parser("evaluate-sensory-ablation")
+    sensory.add_argument("--train-episodes", type=int, default=4)
+    sensory.add_argument("--evaluation-start", type=int, default=960)
+    sensory.add_argument("--evaluation-seeds", type=int, default=4)
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -134,8 +144,10 @@ def main() -> None:
             publish=args.publish,
             stage=args.stage,
             resume=args.resume,
+            sensory_profile=args.sensory_profile,
         )
-        target = root / f"artifacts/neural-v6-{args.stage}-curriculum.json"
+        profile_suffix = "" if args.sensory_profile == "front" else f"-{args.sensory_profile}"
+        target = root / f"artifacts/neural-v6-{args.stage}{profile_suffix}-curriculum.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return
@@ -148,6 +160,17 @@ def main() -> None:
     if args.command == "evaluate-neural-motor-adaptation":
         report = evaluate_neural_motor_adaptation(root)
         target = root / "artifacts/neural-v6-motor-adaptation.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-sensory-ablation":
+        report = evaluate_sensory_ablation(
+            root,
+            train_episodes=args.train_episodes,
+            evaluation_start=args.evaluation_start,
+            evaluation_seeds=args.evaluation_seeds,
+        )
+        target = root / "artifacts/neural-v6-sensory-ablation.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

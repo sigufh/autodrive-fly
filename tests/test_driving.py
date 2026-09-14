@@ -27,6 +27,10 @@ from fly_emotion.driving.evaluate import (
     validate_mirror_protocol,
 )
 from fly_emotion.driving.retina import RetinaMap
+from fly_emotion.driving.sensory import (
+    SensoryFrame,
+    horizontal_flow_proxy,
+)
 
 
 def motor_fixture():
@@ -56,6 +60,37 @@ def test_retina_mapping_version_is_explicit() -> None:
         np.array([-1]),
     )
     assert retina.mapping_version == 2
+
+
+def test_horizontal_flow_proxy_is_signed_and_mirror_equivariant() -> None:
+    previous = np.zeros((8, 24), dtype=np.float32)
+    previous[:, 6:10] = 1
+    shifted = np.roll(previous, 3, axis=1)
+    flow = horizontal_flow_proxy(previous, shifted)
+    mirrored = horizontal_flow_proxy(previous[:, ::-1], shifted[:, ::-1])
+    assert flow != 0
+    assert np.isclose(flow, -mirrored)
+
+
+def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
+    root = Path(__file__).parents[1]
+    engine = DrivingEngine(root, top_k=1, load_checkpoint=False)
+    projection = engine.sensory_projection
+    summary = projection.summary()
+    assert summary["T4_T5_horizontal_flow"] > 6000
+    assert summary["haltere_yaw_rate"] == 205
+    assert summary["ascending_proprioception"] == 424
+    assert all(value > 90 for value in summary["haltere_by_side"])
+    drive = np.zeros(engine.graph.node_count, dtype=np.float32)
+    projection.add_drive(
+        drive,
+        SensoryFrame(flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0),
+        optic_flow=True,
+        body=True,
+    )
+    assert np.any(drive[projection.flow_positive] > 0)
+    assert np.any(drive[projection.haltere_right] > 0)
+    assert np.any(drive[projection.proprio_right] > 0)
 
 
 def test_environment_reward_and_collision_are_closed_loop() -> None:
@@ -475,6 +510,24 @@ def test_neural_mode_bypasses_environment_action_overrides() -> None:
     assert state["action"]["throttle"] == 0.25
     assert state["action"]["reverse"] == 0.2
     assert state["action"]["drive"] == 0.0
+    assert state["lane_constraint"]["blend"] == 0
+    assert state["lane_constraint"]["visual_avoidance"] == 0
+    assert state["lane_constraint"]["road_recovery"] == 0
+
+
+@pytest.mark.parametrize(
+    "profile", ["front", "panorama", "panorama_flow", "panorama_flow_body"]
+)
+def test_sensory_profiles_cannot_bypass_fixed_neural_action(profile: str) -> None:
+    engine = DrivingEngine(
+        Path(__file__).parents[1], top_k=1, load_checkpoint=False,
+        control_mode="neural", sensory_profile=profile,
+    )
+    engine.reset(400, control_mode="neural", sensory_profile=profile)
+    features = [np.zeros_like(values) for values in engine.policy.gains]
+    engine.policy.action = lambda *_args, **_kwargs: (0.2, 0.5, 0.0, features)
+    state = engine.step(learning=False, safety_constraints=True, include_activity=False)
+    assert np.isclose(state["action"]["steering"], np.tanh(0.8))
     assert state["lane_constraint"]["blend"] == 0
     assert state["lane_constraint"]["visual_avoidance"] == 0
     assert state["lane_constraint"]["road_recovery"] == 0

@@ -1,0 +1,198 @@
+{
+  "protocol": {
+    "starting_checkpoint": "artifacts/checkpoints/driving-policy.neural-v6.npz",
+    "starting_checkpoint_sha256": "6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437",
+    "training_seed_range": [
+      10000,
+      10003
+    ],
+    "test_seed_range": [
+      960,
+      963
+    ],
+    "matched_training_and_test_seeds": true,
+    "learning_signal": "environment_reward_only",
+    "action_override": false,
+    "claim_boundary": "two-pair screening ablation; no sensory profile is deployed without a larger held-out confirmation"
+  },
+  "anatomy": {
+    "T4_T5_horizontal_flow": 6753,
+    "haltere_yaw_rate": 205,
+    "ascending_proprioception": 424,
+    "haltere_by_side": [
+      104,
+      101
+    ],
+    "proprioception_by_side": [
+      210,
+      214
+    ]
+  },
+  "arms": {
+    "front": {
+      "candidate_sha256": "6e0052e9bab61fecd6ad721d6d100fcbbf87b10ddc2c7507d179dfa393be8214",
+      "gates": {
+        "first_pass_at_least_70pct": true,
+        "completion_meets_stage_target": true,
+        "completion_exceeds_frozen": false,
+        "distance_exceeds_frozen": true,
+        "obstacles_exceed_frozen": false,
+        "post_pass_steering_below_frozen": true,
+        "post_pass_drift_below_frozen": false,
+        "road_exit_below_frozen": false,
+        "completion_exceeds_shuffled_actions": true,
+        "distance_exceeds_shuffled_actions": true,
+        "zero_action_override": true
+      },
+      "frozen": {
+        "mean_distance": 120.07318689300267,
+        "success_rate": 1.0,
+        "mean_obstacles_passed": 9,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 0.0,
+        "post_pass_mean_abs_steering": 0.14121830506347216,
+        "post_pass_mean_lateral_drift": 0.5556279287705148,
+        "constraint_rate": 0.0
+      },
+      "learned": {
+        "mean_distance": 120.23091764671503,
+        "success_rate": 1.0,
+        "mean_obstacles_passed": 9,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 0.0,
+        "post_pass_mean_abs_steering": 0.1330566285075221,
+        "post_pass_mean_lateral_drift": 0.6073514371003517,
+        "constraint_rate": 0.0
+      }
+    },
+    "panorama": {
+      "candidate_sha256": "980b99d4c1df5310bc172e6ab8660b9d0d15a6130be3833e36d71864434e86ee",
+      "gates": {
+        "first_pass_at_least_70pct": true,
+        "completion_meets_stage_target": true,
+        "completion_exceeds_frozen": false,
+        "distance_exceeds_frozen": false,
+        "obstacles_exceed_frozen": false,
+        "post_pass_steering_below_frozen": true,
+        "post_pass_drift_below_frozen": true,
+        "road_exit_below_frozen": false,
+        "completion_exceeds_shuffled_actions": true,
+        "distance_exceeds_shuffled_actions": true,
+        "zero_action_override": true
+      },
+      "frozen": {
+        "mean_distance": 91.63324821702044,
+        "success_rate": 0.5,
+        "mean_obstacles_passed": 7,
+        "road_exit_rate": 0.5,
+        "obstacle_collision_rate": 0.0,
+        "post_pass_mean_abs_steering": 0.2937474585298363,
+        "post_pass_mean_lateral_drift": 1.0091814725231134,
+        "constraint_rate": 0.0
+      },
+      "learned": {
+        "mean_distance": 91.522061713965,
+        "success_rate": 0.5,
+        "mean_obstacles_passed": 7,
+        "road_exit_rate": 0.5,
+        "obstacle_collision_rate": 0.0,
+        "post_pass_mean_abs_steering": 0.2671869803338969,
+        "post_pass_mean_lateral_drift": 0.9145384100198025,
+        "constraint_rate": 0.0
+      },
+      "versus_front": {
+        "completion_delta": -0.5,
+        "distance_delta": -28.708855932750026,
+        "obstacles_delta": -2,
+        "post_pass_steering_delta": 0.13413035182637478,
+        "post_pass_drift_delta": 0.30718697291945085
+      }
+    },
+    "panorama_flow": {
+      "candidate_sha256": "d8a8ae036a259fab44a60e168202dedb8f0649351935783dcbe7c559050e7c7a",
+      "gates": {
+        "first_pass_at_least_70pct": true,
+        "completion_meets_stage_target": true,
+        "completion_exceeds_frozen": true,
+        "distance_exceeds_frozen": true,
+        "obstacles_exceed_frozen": true,
+        "post_pass_steering_below_frozen": false,
+        "post_pass_drift_below_frozen": false,
+        "road_exit_below_frozen": false,
+        "completion_exceeds_shuffled_actions": true,
+        "distance_exceeds_shuffled_actions": true,
+        "zero_action_override": true
+      },
+      "frozen": {
+        "mean_distance": 25.583851964514864,
+        "success_rate": 0.0,
+        "mean_obstacles_passed": 1,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 1.0,
+        "post_pass_mean_abs_steering": 0.0851862912382329,
+        "post_pass_mean_lateral_drift": 0.4838996760362661,
+        "constraint_rate": 0.0
+      },
+      "learned": {
+        "mean_distance": 77.61775154470295,
+        "success_rate": 0.5,
+        "mean_obstacles_passed": 5.5,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 0.5,
+        "post_pass_mean_abs_steering": 0.17830988559398225,
+        "post_pass_mean_lateral_drift": 0.7454676442362391,
+        "constraint_rate": 0.0
+      },
+      "versus_front": {
+        "completion_delta": -0.5,
+        "distance_delta": -42.61316610201207,
+        "obstacles_delta": -3.5,
+        "post_pass_steering_delta": 0.045253257086460164,
+        "post_pass_drift_delta": 0.13811620713588746
+      }
+    },
+    "panorama_flow_body": {
+      "candidate_sha256": "13844844d2b407c4a576b42f75d8cc41932f0f50c634012320edbd127ce79c09",
+      "gates": {
+        "first_pass_at_least_70pct": false,
+        "completion_meets_stage_target": false,
+        "completion_exceeds_frozen": false,
+        "distance_exceeds_frozen": true,
+        "obstacles_exceed_frozen": false,
+        "post_pass_steering_below_frozen": false,
+        "post_pass_drift_below_frozen": true,
+        "road_exit_below_frozen": false,
+        "completion_exceeds_shuffled_actions": false,
+        "distance_exceeds_shuffled_actions": false,
+        "zero_action_override": true
+      },
+      "frozen": {
+        "mean_distance": 25.298550740503785,
+        "success_rate": 0.0,
+        "mean_obstacles_passed": 1,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 1.0,
+        "post_pass_mean_abs_steering": 0.07725847784002808,
+        "post_pass_mean_lateral_drift": 0.45969607321141986,
+        "constraint_rate": 0.0
+      },
+      "learned": {
+        "mean_distance": 25.507170248759323,
+        "success_rate": 0.0,
+        "mean_obstacles_passed": 1,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 1.0,
+        "post_pass_mean_abs_steering": 0.1095857490217125,
+        "post_pass_mean_lateral_drift": 0.2395501198468476,
+        "constraint_rate": 0.0
+      },
+      "versus_front": {
+        "completion_delta": -1.0,
+        "distance_delta": -94.7237473979557,
+        "obstacles_delta": -8,
+        "post_pass_steering_delta": -0.023470879485809587,
+        "post_pass_drift_delta": -0.36780131725350407
+      }
+    }
+  }
+}

@@ -11,6 +11,12 @@ from fly_emotion.connectome.graph import load_graph
 from fly_emotion.driving.city import CityDrivingEnvironment
 from fly_emotion.driving.environment import DrivingEnvironment
 from fly_emotion.driving.retina import load_or_build_retina_map
+from fly_emotion.driving.sensory import (
+    SENSORY_PROFILES,
+    AnatomySensoryProjection,
+    SensoryFrame,
+    horizontal_flow_proxy,
+)
 
 MOTOR_BODY_IDS = np.asarray([10059, 10162, 10527, 555871], dtype=np.int64)
 MOTOR_NAMES = ("turn_right_DNp20", "turn_left_DNp20", "drive_left_DNpe017", "drive_right_DNpe017")
@@ -480,6 +486,7 @@ class DrivingEngine:
         load_checkpoint: bool = True,
         scenario: str = "highway",
         control_mode: str = "assisted",
+        sensory_profile: str = "front",
     ):
         self.root = root
         processed = root / "data/processed/malecns-v1.0"
@@ -489,6 +496,9 @@ class DrivingEngine:
             self.graph, raw / "body-annotations.feather", processed / "retina_map.npz"
         )
         self.source_sign = self._source_sign(raw / "body-neurotransmitters.feather")
+        self.sensory_projection = AnatomySensoryProjection.from_annotations(
+            self.graph.body_ids, raw / "body-annotations.feather"
+        )
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
         self.neural_motor_adapter = NeuralMotorAdapter()
         self.assisted_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
@@ -504,6 +514,7 @@ class DrivingEngine:
         self.env: DrivingEnvironment | CityDrivingEnvironment
         self.set_scenario(scenario)
         self.set_control_mode(control_mode)
+        self.set_sensory_profile(sensory_profile)
         if load_checkpoint and self.policy_checkpoint.exists():
             self._load_published_policy()
         self.activity = np.zeros(self.graph.node_count, dtype=np.float32)
@@ -535,6 +546,8 @@ class DrivingEngine:
         }
         self.close_hazard_streak = 0
         self.learning = False
+        self.previous_sensory_image: np.ndarray | None = None
+        self.last_sensory_frame = SensoryFrame(0.0, 0.0, 0.0, 0.0)
         self.reset(seed)
 
     def set_scenario(self, scenario: str) -> None:
@@ -553,6 +566,16 @@ class DrivingEngine:
             self.neural_policy_checkpoint
             if control_mode == "neural"
             else self.assisted_policy_checkpoint
+        )
+
+    def set_sensory_profile(self, sensory_profile: str) -> None:
+        if sensory_profile not in SENSORY_PROFILES:
+            raise ValueError(f"unknown sensory profile: {sensory_profile}")
+        self.sensory_profile = sensory_profile
+
+    def _sensory_image(self) -> np.ndarray:
+        return (
+            self.env.observe() if self.sensory_profile == "front" else self.env.observe_panorama()
         )
 
     def _load_published_policy(self) -> None:
@@ -593,11 +616,14 @@ class DrivingEngine:
         scenario: str | None = None,
         control_mode: str | None = None,
         curriculum_stage: str = "full",
+        sensory_profile: str | None = None,
     ) -> dict:
         if scenario is not None:
             self.set_scenario(scenario)
         if control_mode is not None:
             self.set_control_mode(control_mode)
+        if sensory_profile is not None:
+            self.set_sensory_profile(sensory_profile)
         self.env.reset(seed)
         if curriculum_stage != "full":
             if not isinstance(self.env, DrivingEnvironment):
@@ -639,18 +665,39 @@ class DrivingEngine:
             "reverse_gate_steps": 0,
         }
         self.close_hazard_streak = 0
+        sensory_image = self._sensory_image()
+        self.previous_sensory_image = sensory_image.copy()
+        self.last_sensory_frame = SensoryFrame(0.0, 0.0, 0.0, 0.0)
         for _ in range(self.brain_substeps):
-            self._advance_brain(self.env.observe(), dopamine=0.0)
+            self._advance_brain(sensory_image, dopamine=0.0, sensory_frame=self.last_sensory_frame)
         return self.state(include_activity=True)
 
-    def _advance_brain(self, image: np.ndarray, *, dopamine: float) -> None:
-        self.activity = self._advance_state(self.activity, image, dopamine=dopamine)
+    def _advance_brain(
+        self, image: np.ndarray, *, dopamine: float, sensory_frame: SensoryFrame
+    ) -> None:
+        self.activity = self._advance_state(
+            self.activity, image, dopamine=dopamine, sensory_frame=sensory_frame
+        )
+        mirrored_frame = SensoryFrame(
+            -sensory_frame.flow,
+            -sensory_frame.yaw_rate,
+            -sensory_frame.steering,
+            sensory_frame.speed,
+        )
         self.mirrored_activity = self._advance_state(
-            self.mirrored_activity, image[:, ::-1], dopamine=dopamine
+            self.mirrored_activity,
+            image[:, ::-1],
+            dopamine=dopamine,
+            sensory_frame=mirrored_frame,
         )
 
     def _advance_state(
-        self, activity: np.ndarray, image: np.ndarray, *, dopamine: float
+        self,
+        activity: np.ndarray,
+        image: np.ndarray,
+        *,
+        dopamine: float,
+        sensory_frame: SensoryFrame,
     ) -> np.ndarray:
         self.visual_drive.fill(0)
         # Photoreceptor activity follows local contrast plus luminance.
@@ -659,6 +706,12 @@ class DrivingEngine:
             receptor_values - float(receptor_values.mean())
         )
         self.visual_drive[self.retina.node_indices] = receptor_values
+        self.sensory_projection.add_drive(
+            self.visual_drive,
+            sensory_frame,
+            optic_flow=self.sensory_profile in {"panorama_flow", "panorama_flow_body"},
+            body=self.sensory_profile == "panorama_flow_body",
+        )
         recurrent = self.graph.adjacency @ (activity * self.source_sign)
         activity = (0.72 * activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)).astype(
             np.float32
@@ -775,7 +828,23 @@ class DrivingEngine:
         if reverse_gate:
             stats = self.control_statistics
             stats["reverse_gate_steps"] += 1
-        image, reward, done = self.env.step(steering, throttle, reverse)
+        _, reward, done = self.env.step(steering, throttle, reverse)
+        image = self._sensory_image()
+        previous_image = self.previous_sensory_image
+        flow = (
+            horizontal_flow_proxy(previous_image, image)
+            if previous_image is not None
+            and self.sensory_profile in {"panorama_flow", "panorama_flow_body"}
+            else 0.0
+        )
+        sensory_frame = SensoryFrame(
+            flow=flow,
+            yaw_rate=float(getattr(self.env, "last_yaw_rate", 0.0)),
+            steering=self.env.steering,
+            speed=self.env.speed,
+        )
+        self.last_sensory_frame = sensory_frame
+        self.previous_sensory_image = image.copy()
         stats = self.control_statistics
         current_sign = int(np.sign(self.env.steering))
         if current_sign and stats["previous_sign"] and current_sign != stats["previous_sign"]:
@@ -821,7 +890,7 @@ class DrivingEngine:
             teacher_enabled=self.control_mode == "assisted",
         )
         for _ in range(self.brain_substeps):
-            self._advance_brain(image, dopamine=dopamine)
+            self._advance_brain(image, dopamine=dopamine, sensory_frame=sensory_frame)
         drive = float((1.0 - reverse) * throttle - reverse)
         self.last_raw_action = {
             "steering": raw_steering,
@@ -902,6 +971,7 @@ class DrivingEngine:
             "environment": self.env.snapshot(),
             "scenario": self.scenario,
             "control_mode": self.control_mode,
+            "sensory_profile": self.sensory_profile,
             "action": self.last_action,
             "raw_action": self.last_raw_action,
             "lane_constraint": self.last_constraint,
@@ -923,6 +993,14 @@ class DrivingEngine:
                 "width": self.env.image_width,
                 "height": self.env.image_height,
                 "stimulus": self.env.observe().tolist(),
+                "neural_stimulus_width": int(
+                    self.env.image_width
+                    if self.sensory_profile == "front"
+                    else self.env.panorama_width
+                ),
+                "horizontal_fov_degrees": float(
+                    np.degrees(2.5 if self.sensory_profile == "front" else self.env.panorama_fov)
+                ),
             },
             "motor": {
                 "body_ids": np.concatenate([MOTOR_BODY_IDS, REVERSE_BODY_IDS]).tolist(),
@@ -935,6 +1013,12 @@ class DrivingEngine:
                     "steering_gain": self.neural_motor_adapter.steering_gain,
                     "adaptation_rate": self.neural_motor_adapter.adaptation_rate,
                     "steering_baseline": self.neural_motor_adapter.steering_baseline,
+                },
+                "sensory_projection": {
+                    "profile": self.sensory_profile,
+                    "last_flow": self.last_sensory_frame.flow,
+                    "last_yaw_rate": self.last_sensory_frame.yaw_rate,
+                    **self.sensory_projection.summary(),
                 },
             },
             "dopamine_neurons": {

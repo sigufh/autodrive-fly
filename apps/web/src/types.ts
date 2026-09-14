@@ -18,6 +18,7 @@ export type ActivityFrame = {
 export type DrivingState = {
   scenario: 'highway' | 'city';
   control_mode: 'assisted' | 'neural';
+  sensory_profile: 'front' | 'panorama' | 'panorama_flow' | 'panorama_flow_body';
   environment: {
     road_half_width: number; road_length: number; pair_seed: number; mirror: number;
     vehicle: { x: number; y: number; heading: number; speed: number; steering: number; world_x?: number; world_y?: number; world_heading?: number };
@@ -32,8 +33,8 @@ export type DrivingState = {
   control_statistics: { mean_abs_steering: number; mean_abs_steering_change: number; far_mean_abs_steering: number; far_steps: number; steering_sign_changes: number; max_abs_lateral: number; constraint_rate: number; mean_abs_constraint: number };
   policy_checkpoint: { loaded: boolean; path: string; kind: string; rejection: string | null };
   dopamine: { rule: string; dopamine: number; lateral_dopamine: [number, number]; plastic_synapses: number; changed_synapses: number; mean_gain: number; min_gain: number; max_gain: number; updates: number };
-  retina: { mapped_receptors: number; source_type: string; mapping: string; width: number; height: number; stimulus: number[][] };
-  motor: { body_ids: number[]; names: string[]; mapping: string; brain_substeps_per_action: number; neural_adapter?: { type: string; steering_gain: number; adaptation_rate: number; steering_baseline: number } };
+  retina: { mapped_receptors: number; source_type: string; mapping: string; width: number; height: number; stimulus: number[][]; neural_stimulus_width?: number; horizontal_fov_degrees?: number };
+  motor: { body_ids: number[]; names: string[]; mapping: string; brain_substeps_per_action: number; neural_adapter?: { type: string; steering_gain: number; adaptation_rate: number; steering_baseline: number }; sensory_projection?: { profile: string; last_flow: number; last_yaw_rate: number; T4_T5_horizontal_flow: number; haltere_yaw_rate: number; ascending_proprioception: number; haltere_by_side: [number, number]; proprioception_by_side: [number, number] } };
   dopamine_neurons: { body_ids: number[]; type: string; signal: string };
   activity: ActivityFrame;
 }

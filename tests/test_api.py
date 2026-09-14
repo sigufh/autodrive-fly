@@ -7,7 +7,7 @@ def test_health_reports_driving_task() -> None:
     response = TestClient(app).get("/api/health")
     assert response.status_code == 200
     assert response.json()["connectome"] == "male-cns:v1.0"
-    assert response.json()["task"] == "visual-obstacle-driving"
+    assert response.json()["task"] == "visual-obstacle-and-city-driving"
     assert response.json()["language_model"] == "retired"
 
 
@@ -21,7 +21,7 @@ def test_health_does_not_mark_obsolete_checkpoint_ready(tmp_path, monkeypatch) -
     response = TestClient(app).get("/api/health")
     assert response.json()["policy_checkpoint_ready"] is False
     assert response.json()["policy_checkpoint_version"] == 2
-    assert response.json()["required_policy_version"] == 4
+    assert response.json()["required_policy_version"] == 5
 
 
 def test_real_cached_skeleton_endpoint() -> None:
@@ -45,9 +45,12 @@ def test_driving_endpoints_are_stateful(monkeypatch) -> None:
         def state(self, **_):
             return {"environment": {"step": len(calls)}}
 
-        def reset(self, seed, *, keep_learning):
-            calls.append(("reset", seed, keep_learning))
+        def reset(self, seed, *, keep_learning, scenario, control_mode):
+            calls.append(("reset", seed, keep_learning, scenario, control_mode))
             return self.state()
+
+        def set_control_mode(self, control_mode):
+            calls.append(("control_mode", control_mode))
 
         def step(self, *, learning, explore, safety_constraints=True, include_activity=True):
             calls.append(("step", learning, explore, safety_constraints))
@@ -62,7 +65,7 @@ def test_driving_endpoints_are_stateful(monkeypatch) -> None:
     response = client.post("/api/driving/step", json={"steps": 2, "learning": True})
     assert response.json()["environment"]["step"] == 3
     assert calls == [
-        ("reset", 9, False),
+        ("reset", 9, False, "highway", "assisted"),
         ("step", True, False, True),
         ("step", True, False, True),
     ]

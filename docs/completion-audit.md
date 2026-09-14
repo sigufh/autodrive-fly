@@ -55,6 +55,11 @@ dedicated training and ablation.
 - Post-pass overreaction: environment-blind 8% DNp20 motor adaptation reduced
   30-step lateral drift 2.00→0.88 m and improved held-out completion 0→75%;
   `neural-v6-motor-adaptation.json`, with zero action override in both arms.
+- Anatomy-backed sensation implemented and screened: 6,753 T4/T5, 205 haltere
+  and 424 ascending proprioceptors; matched four-profile ablation found no
+  profile that improved both task and stability, so deployment remains `front`.
+- Sensory-screen evidence: `neural-v6-sensory-ablation.json`; two independent
+  test pairs, explicitly screening-level rather than a release claim.
 
 ## Historical v2 Audit
 

@@ -24,6 +24,8 @@ class DrivingEnvironment:
     max_steering_angle = 0.42
     steering_rate_limit = 0.12
     steering_deadband = 0.055
+    panorama_fov = 5.76
+    panorama_width = 96
 
     def __init__(self, *, width: int = 48, height: int = 24):
         self.image_width, self.image_height = width, height
@@ -42,6 +44,7 @@ class DrivingEnvironment:
         self.x, self.y, self.heading, self.speed = 0.0, 2.0, 0.0, 0.0
         self.steering = 0.0
         self.previous_steering = 0.0
+        self.last_yaw_rate = 0.0
         self.steps, self.total_reward, self.done = 0, 0.0, False
         self.trajectory = [(self.x, self.y)]
         ys = np.arange(15.0, 112.0, 11.0) + rng.uniform(-2.0, 2.0, 9)
@@ -131,13 +134,19 @@ class DrivingEnvironment:
         obstacle = min(obstacle_distances, default=self.max_sensor_distance)
         return min(wall, self.max_sensor_distance), min(obstacle, self.max_sensor_distance)
 
-    def observe(self) -> np.ndarray:
-        image = np.full((self.image_height, self.image_width), 0.035, dtype=np.float32)
-        angles = self.heading + np.linspace(-1.25, 1.25, self.image_width)
+    def _render_view(
+        self, *, relative_angles: np.ndarray, update_front_sensors: bool
+    ) -> np.ndarray:
+        width = len(relative_angles)
+        image = np.full((self.image_height, width), 0.035, dtype=np.float32)
+        angles = self.heading + relative_angles
         components = [self._ray_distances(float(angle)) for angle in angles]
-        self.last_wall_rays = np.asarray([ray[0] for ray in components], dtype=np.float32)
-        self.last_obstacle_rays = np.asarray([ray[1] for ray in components], dtype=np.float32)
-        self.last_rays = np.minimum(self.last_wall_rays, self.last_obstacle_rays)
+        wall_rays = np.asarray([ray[0] for ray in components], dtype=np.float32)
+        obstacle_rays = np.asarray([ray[1] for ray in components], dtype=np.float32)
+        if update_front_sensors:
+            self.last_wall_rays = wall_rays
+            self.last_obstacle_rays = obstacle_rays
+            self.last_rays = np.minimum(wall_rays, obstacle_rays)
         horizon = self.image_height // 3
         image[horizon:, :] = 0.12
         for column, (wall, obstacle) in enumerate(components):
@@ -151,9 +160,32 @@ class DrivingEnvironment:
             value = 0.98 if obstacle <= wall else 0.48
             image[-height:, column] = value
         # A dim road centre marker gives the network optic-flow and heading cues.
-        centre = (self.image_width - 1) / 2 + int(np.clip(-self.x * 1.7, -12, 12))
-        image[horizon:, np.abs(np.arange(self.image_width) - centre) <= 0.5] = 0.3
+        if update_front_sensors:
+            centre = (width - 1) / 2 + int(np.clip(-self.x * 1.7, -12, 12))
+        else:
+            marker_angle = float(
+                np.clip(
+                    -self.heading - np.arctan2(self.x, 8.0), relative_angles[0], relative_angles[-1]
+                )
+            )
+            centre = float(np.interp(marker_angle, relative_angles, np.arange(width)))
+        image[horizon:, np.abs(np.arange(width) - centre) <= 0.5] = 0.3
         return image
+
+    def observe(self) -> np.ndarray:
+        return self._render_view(
+            relative_angles=np.linspace(-1.25, 1.25, self.image_width),
+            update_front_sensors=True,
+        )
+
+    def observe_panorama(self) -> np.ndarray:
+        """Near-panoramic compound-eye proxy with a 30-degree rear blind zone."""
+        return self._render_view(
+            relative_angles=np.linspace(
+                -self.panorama_fov / 2, self.panorama_fov / 2, self.panorama_width
+            ),
+            update_front_sensors=False,
+        )
 
     def step(
         self, steering: float, throttle: float, reverse: float = 0.0
@@ -177,6 +209,7 @@ class DrivingEnvironment:
         target_speed = (1.0 - reverse) * forward_target - 2.0 * reverse
         self.speed += (target_speed - self.speed) * 0.24
         yaw_rate = self.speed / self.wheelbase * np.tan(self.max_steering_angle * self.steering)
+        self.last_yaw_rate = float(yaw_rate)
         self.heading = float(np.clip(self.heading + yaw_rate * self.dt, -1.15, 1.15))
         self.x += float(np.sin(self.heading) * self.speed * self.dt)
         self.y += float(np.cos(self.heading) * self.speed * self.dt)

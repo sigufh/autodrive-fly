@@ -97,6 +97,23 @@ dropped from 0.230 to 0.193 and lateral drift from 2.00 m to 0.88 m. Constraint
 rate and action correction were zero in both arms. Evidence is retained in
 `artifacts/neural-v6-motor-adaptation.json`.
 
+## Panoramic, optic-flow and body-sensory screen
+
+Anatomy-backed experimental inputs were implemented without changing the motor
+path: 6,753 T4/T5 direction-selective neurons, 205 haltere sensory neurons and
+424 ascending proprioceptors. A 330-degree panoramic image drives the existing
+R1–R6 map; image displacement drives T4a/T5a versus T4b/T5b; yaw rate drives
+left/right haltere groups; steering and speed drive ascending proprioceptors.
+Mirrored states reverse flow, yaw and steering signs.
+
+A matched four-profile screen used training seeds 10000–10003 and test seeds
+960–963. Learned front, panorama, panorama+flow and panorama+flow+body profiles
+completed 100%, 50%, 50% and 0%, respectively. Post-pass drift was 0.607,
+0.915, 0.746 and 0.240 m. Body feedback reduced drift most but destroyed task
+performance; no experimental profile simultaneously improved task and stability.
+All profiles retained zero action override. Consequently none is deployed; the
+screen is retained in `artifacts/neural-v6-sensory-ablation.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without
