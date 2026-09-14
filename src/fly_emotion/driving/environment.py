@@ -179,13 +179,21 @@ class DrivingEnvironment:
         )
 
     def observe_panorama(self) -> np.ndarray:
-        """Near-panoramic compound-eye proxy with a 30-degree rear blind zone."""
-        return self._render_view(
+        """Near panorama whose centre is exactly the deployed front view."""
+        peripheral_width = (self.panorama_width - self.image_width) // 2
+        left = self._render_view(
             relative_angles=np.linspace(
-                -self.panorama_fov / 2, self.panorama_fov / 2, self.panorama_width
+                -self.panorama_fov / 2, -1.25, peripheral_width, endpoint=False
             ),
             update_front_sensors=False,
         )
+        right = self._render_view(
+            relative_angles=np.linspace(
+                1.25, self.panorama_fov / 2, peripheral_width + 1
+            )[1:],
+            update_front_sensors=False,
+        )
+        return np.concatenate([left, self.observe(), right], axis=1)
 
     def step(
         self, steering: float, throttle: float, reverse: float = 0.0

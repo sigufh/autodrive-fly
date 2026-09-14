@@ -107,10 +107,42 @@ def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
 
 def test_sensory_gains_scale_flow_and_body_independently() -> None:
     gains = SensoryGains().scaled(optic_flow=0.25, body=0.5)
+    assert gains.peripheral_visual == 0.001
     assert gains.optic_flow == 0.075
     assert gains.haltere_yaw == 0.2
     assert gains.proprio_steering == 0.125
     assert gains.proprio_speed == 0.02
+
+
+def test_panorama_preserves_front_pixels_in_centre_band() -> None:
+    environment = DrivingEnvironment()
+    environment.reset(960)
+    environment.x, environment.heading = 1.2, -0.2
+    front = environment.observe()
+    panorama = environment.observe_panorama()
+    start = (environment.panorama_width - environment.image_width) // 2
+    assert panorama.shape == (environment.image_height, environment.panorama_width)
+    assert np.array_equal(panorama[:, start : start + environment.image_width], front)
+
+
+def test_zero_peripheral_gain_preserves_front_retinal_code() -> None:
+    root = Path(__file__).parents[1]
+    front = DrivingEngine(
+        root, top_k=1, load_checkpoint=False, sensory_profile="front"
+    )
+    panorama = DrivingEngine(
+        root,
+        top_k=1,
+        load_checkpoint=False,
+        sensory_profile="panorama",
+        sensory_gains=SensoryGains().scaled(peripheral_visual=0.0),
+    )
+    front.env.reset(960)
+    panorama.env.reset(960)
+    assert np.array_equal(
+        front._retinal_values(front.env.observe()),
+        panorama._retinal_values(panorama.env.observe_panorama()),
+    )
 
 
 def test_environment_reward_and_collision_are_closed_loop() -> None:

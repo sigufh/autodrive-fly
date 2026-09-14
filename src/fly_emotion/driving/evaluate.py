@@ -810,16 +810,21 @@ def evaluate_sensory_gain_audit(
         )
 
     variants = [
-        ("front", "front", 0.0, 0.0),
-        ("panorama", "panorama", 0.0, 0.0),
+        ("front", "front", 0.0, 0.0, 0.0),
+        ("panorama_core", "panorama", 0.0, 0.0, 0.0),
         *[
-            (f"panorama_flow_{factor:g}", "panorama_flow", factor, 0.0)
+            (f"panorama_{factor:g}", "panorama", factor, 0.0, 0.0)
+            for factor in (0.10, 0.25, 0.50, 1.00)
+        ],
+        *[
+            (f"panorama_flow_{factor:g}", "panorama_flow", 1.0, factor, 0.0)
             for factor in (0.05, 0.10, 0.25, 0.50, 1.00)
         ],
         *[
             (
                 f"panorama_flow_body_{factor:g}",
                 "panorama_flow_body",
+                1.0,
                 1.0,
                 factor,
             )
@@ -828,8 +833,10 @@ def evaluate_sensory_gain_audit(
     ]
     arms = {}
     raw_traces: dict[str, np.ndarray] = {}
-    for name, profile, flow_scale, body_scale in variants:
-        gains = SensoryGains().scaled(optic_flow=flow_scale, body=body_scale)
+    for name, profile, peripheral_scale, flow_scale, body_scale in variants:
+        gains = SensoryGains().scaled(
+            peripheral_visual=peripheral_scale, optic_flow=flow_scale, body=body_scale
+        )
         replay = DrivingEngine(
             root,
             seed=20260914,
@@ -871,7 +878,7 @@ def evaluate_sensory_gain_audit(
                 mirrored_activity=replay.mirrored_activity,
             )
             executed, _, _ = replay.neural_motor_adapter.step(raw, throttle, reverse)
-            receptor_values = replay.retina.encode(image)
+            receptor_values = replay._retinal_values(image)
             raw_steering.append(raw)
             executed_steering.append(executed)
             steering_drive.append(float(replay.policy._last_steering_drive))
@@ -904,6 +911,7 @@ def evaluate_sensory_gain_audit(
         raw_traces[name] = raw_array
         arms[name] = {
             "sensory_profile": profile,
+            "peripheral_visual_gain_scale": peripheral_scale,
             "flow_gain_scale": flow_scale,
             "body_gain_scale": body_scale,
             "steps": len(raw_array),

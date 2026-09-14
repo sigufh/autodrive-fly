@@ -1,0 +1,69 @@
+{
+  "protocol": {
+    "checkpoint_sha256": "6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437",
+    "test_seed_range": [960, 963],
+    "learning": false,
+    "explore": false,
+    "action_override": false,
+    "central_view": "the centre 48 columns are pixel-identical to the deployed 143-degree front view",
+    "claim_boundary": "two-pair engineering screen; panorama remains experimental"
+  },
+  "front": {
+    "success_rate": 1.0,
+    "mean_distance": 120.21114088920743,
+    "mean_obstacles_passed": 9.0,
+    "post_pass_complete_window_rate": 1.0,
+    "post_pass_30_step_early_failure_rate": 0.0,
+    "post_pass_complete_mean_abs_steering": 0.13871922647964308,
+    "post_pass_complete_mean_lateral_drift_per_metre": 0.07055786215675544
+  },
+  "arms": {
+    "panorama_core_0": {
+      "peripheral_visual_gain": 0.0,
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.13871922647964308,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.07055786215675544
+    },
+    "peripheral_0.0005": {
+      "peripheral_visual_gain": 0.0005,
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.1374456060681442,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.06932626852840748
+    },
+    "peripheral_0.001": {
+      "peripheral_visual_gain": 0.001,
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.1359984727179241,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.06384909219247153
+    },
+    "peripheral_0.0025": {
+      "peripheral_visual_gain": 0.0025,
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.14214384121095552,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.07113572535753696
+    },
+    "peripheral_0.005": {
+      "peripheral_visual_gain": 0.005,
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.13730031960491731,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.07204421450841997
+    }
+  },
+  "selected_experimental_gain": 0.001,
+  "deployed": false
+}

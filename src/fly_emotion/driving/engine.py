@@ -581,6 +581,36 @@ class DrivingEngine:
             self.env.observe() if self.sensory_profile == "front" else self.env.observe_panorama()
         )
 
+    @staticmethod
+    def _contrast_code(values: np.ndarray) -> np.ndarray:
+        return 0.25 * values + 0.75 * np.abs(values - float(values.mean()))
+
+    def _retinal_values(self, image: np.ndarray) -> np.ndarray:
+        """Keep deployed front coordinates fixed; add panorama as a weak side channel."""
+        if self.sensory_profile == "front":
+            return self._contrast_code(self.retina.encode(image))
+        peripheral_width = (image.shape[1] - self.env.image_width) // 2
+        if peripheral_width <= 0 or image.shape[1] != self.env.image_width + 2 * peripheral_width:
+            raise ValueError("panoramic stimulus must contain equal side bands around front view")
+        front = image[:, peripheral_width : peripheral_width + self.env.image_width]
+        receptor_values = self._contrast_code(self.retina.encode(front))
+        height = image.shape[0]
+        y = np.clip(np.rint(self.retina.v * (height - 1)).astype(np.int32), 0, height - 1)
+        for side, band in (
+            (-1, image[:, :peripheral_width]),
+            (1, image[:, -peripheral_width:]),
+        ):
+            mask = self.retina.side == side
+            local_u = self.retina.u[mask] * 2.0 if side < 0 else (self.retina.u[mask] - 0.5) * 2.0
+            x = np.clip(
+                np.rint(local_u * (peripheral_width - 1)).astype(np.int32),
+                0,
+                peripheral_width - 1,
+            )
+            peripheral = self._contrast_code(np.asarray(band[y[mask], x], dtype=np.float32))
+            receptor_values[mask] += self.sensory_gains.peripheral_visual * peripheral
+        return receptor_values
+
     def _load_published_policy(self) -> None:
         with np.load(self.policy_checkpoint, allow_pickle=False) as payload:
             expected = (
@@ -704,10 +734,7 @@ class DrivingEngine:
     ) -> np.ndarray:
         self.visual_drive.fill(0)
         # Photoreceptor activity follows local contrast plus luminance.
-        receptor_values = self.retina.encode(image)
-        receptor_values = 0.25 * receptor_values + 0.75 * np.abs(
-            receptor_values - float(receptor_values.mean())
-        )
+        receptor_values = self._retinal_values(image)
         self.visual_drive[self.retina.node_indices] = receptor_values
         self.sensory_projection.add_drive(
             self.visual_drive,

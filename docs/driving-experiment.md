@@ -136,6 +136,18 @@ drive and to the changed panoramic coordinate distribution. Flow at 0.05–0.10
 of the original gain limits its additional effect but cannot repair panorama's
 existing sign mismatch. Evidence: `artifacts/neural-v6-sensory-gain-audit.json`.
 
+The corrected panorama is now composed as 24 left-peripheral columns, the
+original 48-column front image, and 24 right-peripheral columns. The centre is
+pixel-identical to the deployed 143-degree view; peripheral samples enter only
+as a low-gain residual on the outer half of each eye. With peripheral gain zero,
+both fixed-state DNp20 output and closed-loop trajectories exactly match front.
+Frozen-v6 screening on seeds 960–963 retained 100% completion, 9/9 obstacles
+and zero 30-step early failures for gains 0.0005 through 0.005. Gain 0.001
+reduced complete-window steering from 0.1387 to 0.1360 and drift per metre from
+0.0706 to 0.0638. It is selected only as the next experimental baseline; front
+remains deployed because this screen contains two independent mirror pairs.
+Evidence: `artifacts/neural-v6-peripheral-visual-ablation.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

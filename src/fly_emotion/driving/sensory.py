@@ -51,13 +51,17 @@ class SensoryFrame:
 class SensoryGains:
     """Explicit simulator-to-neuron scaling, kept separate from anatomy."""
 
+    peripheral_visual: float = 0.001
     optic_flow: float = 0.30
     haltere_yaw: float = 0.40
     proprio_steering: float = 0.25
     proprio_speed: float = 0.04
 
-    def scaled(self, *, optic_flow: float = 1.0, body: float = 1.0) -> SensoryGains:
+    def scaled(
+        self, *, peripheral_visual: float = 1.0, optic_flow: float = 1.0, body: float = 1.0
+    ) -> SensoryGains:
         return SensoryGains(
+            peripheral_visual=self.peripheral_visual * peripheral_visual,
             optic_flow=self.optic_flow * optic_flow,
             haltere_yaw=self.haltere_yaw * body,
             proprio_steering=self.proprio_steering * body,
