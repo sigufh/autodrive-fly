@@ -99,6 +99,14 @@ association, not proof that coverage is irrelevant, since other inputs may remai
 uncovered or unlocated and whole-window scoring retains temporal confounds.
 No subset score authorizes stage advancement.
 
+A sign-only comparator identifies an inverted monotonicity in the legacy
+three-branch Mi9 term: -max(-state,0) increases inhibition when Mi9 becomes more
+negative. Replacing it with -max(state,0) corrects this monotonicity but does not
+supply tonic inhibition below the arbitrary proxy zero. Both tested encodings
+still fail direction and mirror gates. The independent comparator changes no
+published candidate, default policy or release threshold and is not a validated
+conductance-based disinhibition mechanism.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
