@@ -5,9 +5,10 @@
 The isolated `v7-experimental` path must pass controlled R1–R6 visual-response
 tests before central-complex navigation, descending readout, mushroom-body
 learning or city integration may begin. Linear luminance and signed frame
-difference recover the aggregate ON/OFF gate, but every tested retinal encoding
-still fails T4/T5 direction, looming and mirror gates, and none consistently
-beats the preliminary shuffled controls. v5/v6
+difference with type-specific time constants recover aggregate ON/OFF and some
+looming timing, but the tested full-graph and visual-subgraph candidates still
+fail T4/T5 direction and mirror gates. The legacy backend also fails all response
+gates and does not consistently beat preliminary shuffled controls. v5/v6
 remain frozen and v7 deployment is disabled. See `docs/driving-v7.zh-CN.md`.
 
 ## Supported claims

@@ -83,7 +83,7 @@ class VisualStimulus:
         return hashlib.sha256(self.frames.astype(np.float32, copy=False).tobytes()).hexdigest()
 
 
-def _moving_bar(
+def _moving_edge(
     *, width: int, height: int, frames: int, axis: str, direction: int, bright: bool
 ) -> np.ndarray:
     background, foreground = (0.08, 0.92) if bright else (0.92, 0.08)
@@ -95,9 +95,15 @@ def _moving_bar(
     for index, position in enumerate(positions):
         centre = int(round(float(position)))
         if axis == "x":
-            output[index, :, max(0, centre - 1) : min(width, centre + 2)] = foreground
+            if direction > 0:
+                output[index, :, : centre + 1] = foreground
+            else:
+                output[index, :, centre:] = foreground
         else:
-            output[index, max(0, centre - 1) : min(height, centre + 2), :] = foreground
+            if direction > 0:
+                output[index, : centre + 1, :] = foreground
+            else:
+                output[index, centre:, :] = foreground
     return output
 
 
@@ -160,18 +166,18 @@ def build_controlled_stimuli(
         ),
     ]
     for polarity, bright in (("on", True), ("off", False)):
-        horizontal = _moving_bar(
+        horizontal = _moving_edge(
             width=width, height=height, frames=frames, axis="x", direction=1, bright=bright
         )
         for direction, image, mirror in (
-            ("right", horizontal, f"{polarity}_bar_left"),
-            ("left", horizontal[:, :, ::-1].copy(), f"{polarity}_bar_right"),
+            ("right", horizontal, f"{polarity}_edge_left"),
+            ("left", horizontal[:, :, ::-1].copy(), f"{polarity}_edge_right"),
         ):
-            name = f"{polarity}_bar_{direction}"
+            name = f"{polarity}_edge_{direction}"
             stimuli.append(
                 VisualStimulus(
                     name,
-                    "moving_bar",
+                    "moving_edge",
                     polarity,
                     direction,
                     image,
@@ -179,14 +185,14 @@ def build_controlled_stimuli(
                 )
             )
         for direction, sign in (("down", 1), ("up", -1)):
-            name = f"{polarity}_bar_{direction}"
+            name = f"{polarity}_edge_{direction}"
             stimuli.append(
                 VisualStimulus(
                     name,
-                    "moving_bar",
+                    "moving_edge",
                     polarity,
                     direction,
-                    _moving_bar(
+                    _moving_edge(
                         width=width,
                         height=height,
                         frames=frames,
@@ -269,8 +275,6 @@ def build_controlled_stimuli(
 class V7VisualProbe:
     """Read-only population probe driven exclusively through mapped R1-R6 input."""
 
-    backend = "legacy_uniform_tanh_v1_unvalidated"
-
     def __init__(
         self,
         root: Path,
@@ -278,6 +282,7 @@ class V7VisualProbe:
         brain_substeps: int = 4,
         baseline_frames: int = 8,
         retinal_backend: str = "legacy_absolute_contrast",
+        dynamics_backend: str = "legacy_uniform_tanh_v1",
         control: str = "real_malecns",
         control_seed: int = 20260914,
     ):
@@ -292,6 +297,8 @@ class V7VisualProbe:
         )
         self.source_sign = self._source_sign(raw / "body-neurotransmitters.feather")
         self.populations = self._populations(raw / "body-annotations.feather")
+        self.node_types = self._node_types(raw / "body-annotations.feather")
+        self.node_superclasses = self._node_labels(raw / "body-annotations.feather", "superclass")
         self.brain_substeps = brain_substeps
         self.baseline_frames = baseline_frames
         if retinal_backend not in {
@@ -301,6 +308,13 @@ class V7VisualProbe:
         }:
             raise ValueError(f"unknown v7 retinal backend: {retinal_backend}")
         self.retinal_backend = retinal_backend
+        if dynamics_backend not in self.contract.payload["controlled_vision"]["dynamics_backends"]:
+            raise ValueError(f"unknown v7 dynamics backend: {dynamics_backend}")
+        self.dynamics_backend = dynamics_backend
+        self.leak = self._leak_vector()
+        self.visual_subgraph_mask = np.ones(self.graph.node_count, dtype=bool)
+        if dynamics_backend == "typed_visual_subgraph_v1":
+            self.adjacency, self.visual_subgraph_mask = self._visual_subgraph_adjacency(processed)
         self.control = control
         self.control_seed = control_seed
         self.retinal_permutation = np.arange(self.retina.size, dtype=np.int32)
@@ -350,6 +364,92 @@ class V7VisualProbe:
                     populations[f"{cell_type}_{side}"] = nodes[valid]
         return populations
 
+    def _node_labels(self, path: Path, column: str) -> np.ndarray:
+        table = feather.read_table(path, columns=["bodyId", column], memory_map=True)
+        ids = table["bodyId"].to_numpy(zero_copy_only=False).astype(np.int64)
+        names = np.asarray(table[column].to_pylist(), dtype=object)
+        nodes = np.searchsorted(self.graph.body_ids, ids)
+        valid = nodes < self.graph.node_count
+        valid[valid] &= self.graph.body_ids[nodes[valid]] == ids[valid]
+        result = np.full(self.graph.node_count, "", dtype=object)
+        result[nodes[valid]] = np.asarray(
+            [name if isinstance(name, str) else "" for name in names[valid]], dtype=object
+        )
+        return result
+
+    def _node_types(self, path: Path) -> np.ndarray:
+        return self._node_labels(path, "type")
+
+    def _visual_subgraph_adjacency(self, processed: Path) -> tuple[sparse.csr_matrix, np.ndarray]:
+        allowed = np.isin(
+            self.node_superclasses,
+            ("ol_sensory", "ol_intrinsic", "visual_projection", "visual_projection_tbc"),
+        )
+        raw = load_graph(processed, normalized=False).adjacency.tocoo()
+        keep = allowed[raw.row] & allowed[raw.col]
+        induced = sparse.csr_matrix(
+            (raw.data[keep].astype(np.float32), (raw.row[keep], raw.col[keep])),
+            shape=raw.shape,
+        )
+        incoming = np.asarray(induced.sum(axis=1)).ravel().astype(np.float32)
+        scale = np.zeros_like(incoming)
+        np.divide(1.0, incoming, out=scale, where=incoming > 0)
+        normalized = (sparse.diags(scale, format="csr") @ induced).astype(np.float32)
+        if not np.all(allowed[self.retina.node_indices]):
+            raise ValueError("visual subgraph excludes mapped R1-R6 inputs")
+        target_nodes = np.unique(np.concatenate(list(self.populations.values())))
+        if not np.all(allowed[target_nodes]):
+            raise ValueError("visual subgraph excludes requested target populations")
+        return normalized.tocsr(), allowed
+
+    def _leak_vector(self) -> np.ndarray:
+        if self.dynamics_backend == "legacy_uniform_tanh_v1":
+            return np.full(self.graph.node_count, 0.28, dtype=np.float32)
+        config = self.contract.payload["controlled_vision"]["typed_visual_leak_v1"]
+        leak = np.full(self.graph.node_count, config["default"], dtype=np.float32)
+        exact_types = (
+            "R1-R6",
+            "L1",
+            "L2",
+            "L3",
+            "L5",
+            "Mi1",
+            "Tm3",
+            "Mi4",
+            "Mi9",
+            "CT1",
+            "C3",
+            "Tm1",
+            "Tm2",
+            "Tm4",
+            "Tm9",
+        )
+        for cell_type in exact_types:
+            leak[self.node_types == cell_type] = config[cell_type]
+        for prefix in ("T4", "T5", "LPLC"):
+            mask = np.fromiter(
+                (name.startswith(prefix) for name in self.node_types),
+                dtype=bool,
+                count=self.graph.node_count,
+            )
+            leak[mask] = config[prefix]
+        lc_mask = np.fromiter(
+            (
+                name.startswith("LC") and not name.startswith(("LPLC", "LLPC"))
+                for name in self.node_types
+            ),
+            dtype=bool,
+            count=self.graph.node_count,
+        )
+        leak[lc_mask] = config["LC"]
+        return leak
+
+    def _advance(self, state: np.ndarray, drive: np.ndarray) -> np.ndarray:
+        recurrent = self.adjacency @ (state * self.source_sign)
+        return ((1.0 - self.leak) * state + self.leak * np.tanh(1.8 * recurrent + drive)).astype(
+            np.float32
+        )
+
     def _retinal_code(
         self, values: np.ndarray, baseline: np.ndarray, previous: np.ndarray
     ) -> np.ndarray:
@@ -365,16 +465,14 @@ class V7VisualProbe:
         state = np.zeros(self.graph.node_count, dtype=np.float32)
         traces = {name: [] for name in self.populations}
         retinal_hash = hashlib.sha256()
-        background = float(np.median(stimulus.frames[0]))
-        baseline_image = np.full(stimulus.frames.shape[1:], background, dtype=np.float32)
+        baseline_image = stimulus.frames[0].copy()
         baseline_values = self.retina.encode(baseline_image)[self.retinal_permutation]
         baseline_drive = self._retinal_code(baseline_values, baseline_values, baseline_values)
         for _ in range(self.baseline_frames):
             drive = np.zeros_like(state)
             drive[self.retina.node_indices] = baseline_drive
             for _ in range(self.brain_substeps):
-                recurrent = self.adjacency @ (state * self.source_sign)
-                state = (0.72 * state + 0.28 * np.tanh(1.8 * recurrent + drive)).astype(np.float32)
+                state = self._advance(state, drive)
                 state[self.retina.node_indices] = baseline_drive
         population_baseline = {
             name: float(np.mean(state[nodes])) for name, nodes in self.populations.items()
@@ -388,8 +486,7 @@ class V7VisualProbe:
             drive = np.zeros_like(state)
             drive[self.retina.node_indices] = receptor_values
             for _ in range(self.brain_substeps):
-                recurrent = self.adjacency @ (state * self.source_sign)
-                state = (0.72 * state + 0.28 * np.tanh(1.8 * recurrent + drive)).astype(np.float32)
+                state = self._advance(state, drive)
                 state[self.retina.node_indices] = receptor_values
             for name, nodes in self.populations.items():
                 traces[name].append(float(np.mean(state[nodes])))
@@ -402,7 +499,10 @@ class V7VisualProbe:
             "stimulus_sha256": stimulus.sha256,
             "retinal_drive_sha256": retinal_hash.hexdigest(),
             "retinal_backend": self.retinal_backend,
+            "dynamics_backend": self.dynamics_backend,
             "topology_control": self.control,
+            "visual_subgraph_nodes": int(np.count_nonzero(self.visual_subgraph_mask)),
+            "visual_subgraph_edges": int(self.adjacency.nnz),
             "baseline_frames": self.baseline_frames,
             "population_trace": traces,
             "population_response_trace": {
@@ -449,10 +549,10 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
                     "down": "up",
                 }[preferred]
                 preferred_energy = _response_energy(
-                    responses[f"{polarity}_bar_{preferred}"], population
+                    responses[f"{polarity}_edge_{preferred}"], population
                 )
                 opposite_energy = _response_energy(
-                    responses[f"{polarity}_bar_{opposite}"], population
+                    responses[f"{polarity}_edge_{opposite}"], population
                 )
                 direction_scores[population] = {
                     "expected_direction": preferred,
@@ -461,7 +561,7 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
                     "contrast": _contrast(preferred_energy, opposite_energy),
                 }
                 matched_other = _response_energy(
-                    responses[f"{opposite_polarity}_bar_{preferred}"], population
+                    responses[f"{opposite_polarity}_edge_{preferred}"], population
                 )
                 polarity_scores[population] = {
                     "expected_polarity": polarity,
@@ -700,21 +800,112 @@ def evaluate_v7_controlled_vision(root: Path) -> dict:
     }
 
 
+def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
+    """Screen type-specific visual time constants before topology controls."""
+    contract = V7Contract.load(root)
+    visual = contract.payload["controlled_vision"]
+    stimuli = build_controlled_stimuli(
+        width=visual["width"], height=visual["height"], frames=visual["frames_per_stimulus"]
+    )
+    thresholds = visual["gates"]
+    backends = {}
+    for dynamics_backend in ("typed_visual_leak_v1", "typed_visual_subgraph_v1"):
+        backends[dynamics_backend] = {}
+        for retinal_backend in visual["retinal_backends"]:
+            probe = V7VisualProbe(
+                root,
+                brain_substeps=visual["brain_substeps_per_frame"],
+                baseline_frames=visual["baseline_frames"],
+                retinal_backend=retinal_backend,
+                dynamics_backend=dynamics_backend,
+                control="real_malecns",
+                control_seed=visual["topology_control_seed"],
+            )
+            responses = {item.name: probe.run(item) for item in stimuli}
+            scores = score_v7_visual_responses(responses)
+            gates = {
+                "cardinal_direction_contrast": (
+                    scores["summary"]["median_cardinal_direction_contrast"]
+                    >= thresholds["minimum_cardinal_direction_contrast"]
+                ),
+                "on_off_specialization": (
+                    scores["summary"]["median_on_off_specialization"]
+                    >= thresholds["minimum_on_off_specialization"]
+                ),
+                "looming_contrast": (
+                    scores["summary"]["median_known_looming_contrast"]
+                    >= thresholds["minimum_looming_contrast"]
+                ),
+                "mirror_response_error": (
+                    scores["summary"]["maximum_mirror_response_error"]
+                    <= thresholds["maximum_mirror_response_error"]
+                ),
+            }
+            backends[dynamics_backend][retinal_backend] = {
+                "scores": scores,
+                "gates": gates,
+                "controlled_response_gates_pass": all(gates.values()),
+                "responses": responses,
+                "visual_subgraph_nodes": int(np.count_nonzero(probe.visual_subgraph_mask)),
+                "visual_subgraph_edges": int(probe.adjacency.nnz),
+            }
+    passing = [
+        {"dynamics": dynamics, "retina": retina}
+        for dynamics, retinal_results in backends.items()
+        for retina, result in retinal_results.items()
+        if result["controlled_response_gates_pass"]
+    ]
+    return {
+        "protocol": {
+            "version": 7,
+            "mode": "v7-experimental",
+            "deployment_enabled": False,
+            "config_sha256": contract.sha256,
+            "dynamics_backends": ["typed_visual_leak_v1", "typed_visual_subgraph_v1"],
+            "retinal_backends": visual["retinal_backends"],
+            "direct_input_type": "R1-R6",
+            "target_direct_input_overlap": 0,
+            "topology_control": "real_malecns",
+            "topology_controls_deferred_until_response_gate": True,
+            "parameter_source": "literature-constrained ordering; not fitted to driving",
+        },
+        "typed_leak": visual["typed_visual_leak_v1"],
+        "backends": backends,
+        "passing_retinal_backends": passing,
+        "controlled_response_gates_pass": bool(passing),
+        "advance_to_topology_controls": bool(passing),
+        "advance_to_central_complex": False,
+        "stop_reason": (
+            "typed visual response gates failed"
+            if not passing
+            else "topology controls required before central-complex stage"
+        ),
+    }
+
+
 def write_v7_manifest(root: Path) -> dict:
     contract = V7Contract.load(root)
-    evidence_path = root / "artifacts/v7-controlled-vision.json"
+    evidence_paths = (
+        root / "artifacts/v7-typed-visual-candidate.json",
+        root / "artifacts/v7-controlled-vision.json",
+    )
     stage_status = "in_progress"
     advance = False
     blockers: list[str] = []
-    if evidence_path.exists():
+    evidence_used = None
+    for evidence_path in evidence_paths:
+        if not evidence_path.exists():
+            continue
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
         if evidence.get("protocol", {}).get("config_sha256") == contract.sha256:
             advance = bool(evidence.get("advance_to_central_complex"))
             stage_status = "passed" if advance else "blocked_on_visual_dynamics"
+            evidence_used = str(evidence_path.relative_to(root))
             if not evidence.get("controlled_response_gates_pass"):
                 blockers.append("controlled_visual_response_gates_failed")
             if not evidence.get("real_topology_advantage"):
                 blockers.append("real_topology_advantage_not_demonstrated")
+            break
     return {
         "version": contract.payload["version"],
         "name": contract.payload["name"],
@@ -727,5 +918,6 @@ def write_v7_manifest(root: Path) -> dict:
         "stage_status": stage_status,
         "advance_to_central_complex": advance,
         "blockers": blockers,
+        "current_evidence": evidence_used,
         "default_runtime_changed": False,
     }

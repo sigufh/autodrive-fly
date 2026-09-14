@@ -3,7 +3,7 @@
   "name": "v7-experimental",
   "deployment_enabled": false,
   "city_expansion_enabled": false,
-  "config_sha256": "5e13dcb113e3c076b30fec06dbf1b5b63ed9391f90a7abe537a63b55f2a54bc1",
+  "config_sha256": "5d5e8846d4691f460bd8fdcf8172cb826142f401b4dc373018d4404ce5f09b7e",
   "baseline_contracts": {
     "assisted_v5": {
       "path": "artifacts/checkpoints/driving-policy.npz",
@@ -30,5 +30,6 @@
     "controlled_visual_response_gates_failed",
     "real_topology_advantage_not_demonstrated"
   ],
+  "current_evidence": "artifacts/v7-typed-visual-candidate.json",
   "default_runtime_changed": false
 }

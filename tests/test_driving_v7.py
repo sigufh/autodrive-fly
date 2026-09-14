@@ -45,7 +45,7 @@ def test_v7_controlled_stimuli_are_deterministic_and_exactly_mirrored() -> None:
     assert [item.sha256 for item in first] == [item.sha256 for item in second]
     assert {item.family for item in first} == {
         "uniform",
-        "moving_bar",
+        "moving_edge",
         "looming",
         "receding",
         "static",
@@ -100,6 +100,28 @@ def test_v7_topology_controls_are_deterministic_and_preserve_declared_contracts(
     )
     assert np.array_equal(np.sort(real.source_sign), np.sort(sign_shuffle.source_sign))
     assert not np.array_equal(real.source_sign, sign_shuffle.source_sign)
+
+
+def test_v7_typed_visual_leak_is_cell_type_specific() -> None:
+    legacy = V7VisualProbe(ROOT, brain_substeps=1, dynamics_backend="legacy_uniform_tanh_v1")
+    typed = V7VisualProbe(ROOT, brain_substeps=1, dynamics_backend="typed_visual_leak_v1")
+    assert np.all(legacy.leak == 0.28)
+    assert np.all(typed.leak[typed.node_types == "R1-R6"] == 1.0)
+    assert np.all(typed.leak[typed.node_types == "Tm3"] == 0.62)
+    assert np.all(typed.leak[typed.node_types == "Mi9"] == 0.12)
+    assert np.all(typed.leak[typed.node_types == "T4a"] == 0.50)
+    assert not np.array_equal(legacy.leak, typed.leak)
+
+
+def test_v7_visual_subgraph_uses_only_annotated_visual_nodes_and_real_edges() -> None:
+    probe = V7VisualProbe(ROOT, brain_substeps=1, dynamics_backend="typed_visual_subgraph_v1")
+    assert 100_000 < np.count_nonzero(probe.visual_subgraph_mask) < probe.graph.node_count
+    assert 0 < probe.adjacency.nnz < probe.graph.adjacency.nnz
+    rows, columns = probe.adjacency.nonzero()
+    assert np.all(probe.visual_subgraph_mask[rows])
+    assert np.all(probe.visual_subgraph_mask[columns])
+    incoming = np.asarray(probe.adjacency.sum(axis=1)).ravel()
+    assert np.allclose(incoming[incoming > 0], 1.0, atol=1e-5)
 
 
 def test_v7_manifest_is_isolated_and_in_progress() -> None:

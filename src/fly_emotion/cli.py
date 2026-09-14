@@ -25,7 +25,11 @@ from .driving.evaluate import (
     train_sensory_pathway_curriculum,
     write_evaluation,
 )
-from .driving.v7 import evaluate_v7_controlled_vision, write_v7_manifest
+from .driving.v7 import (
+    evaluate_v7_controlled_vision,
+    evaluate_v7_typed_visual_candidate,
+    write_v7_manifest,
+)
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -98,6 +102,7 @@ def _parser() -> argparse.ArgumentParser:
     panorama_release.add_argument("--count", type=int, default=16)
     subparsers.add_parser("v7-init")
     subparsers.add_parser("v7-evaluate-vision")
+    subparsers.add_parser("v7-evaluate-typed-vision")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -235,6 +240,12 @@ def main() -> None:
     if args.command == "v7-evaluate-vision":
         report = evaluate_v7_controlled_vision(root)
         target = root / "artifacts/v7-controlled-vision.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-typed-vision":
+        report = evaluate_v7_typed_visual_candidate(root)
+        target = root / "artifacts/v7-typed-visual-candidate.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

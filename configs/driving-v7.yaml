@@ -23,10 +23,35 @@ controlled_vision:
   frames_per_stimulus: 16
   baseline_frames: 8
   brain_substeps_per_frame: 4
+  dynamics_backends:
+    - legacy_uniform_tanh_v1
+    - typed_visual_leak_v1
+    - typed_visual_subgraph_v1
   retinal_backends:
     - legacy_absolute_contrast
     - linear_luminance
     - signed_frame_difference
+  typed_visual_leak_v1:
+    default: 0.28
+    R1-R6: 1.0
+    L1: 0.45
+    L2: 0.55
+    L3: 0.30
+    L5: 0.35
+    Mi1: 0.24
+    Tm3: 0.62
+    Mi4: 0.14
+    Mi9: 0.12
+    CT1: 0.10
+    C3: 0.16
+    Tm1: 0.28
+    Tm2: 0.55
+    Tm4: 0.34
+    Tm9: 0.16
+    T4: 0.50
+    T5: 0.50
+    LPLC: 0.38
+    LC: 0.38
   direct_input_type: R1-R6
   target_populations:
     - T4a
