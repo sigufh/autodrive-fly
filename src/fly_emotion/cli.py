@@ -37,6 +37,7 @@ from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
+from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -117,6 +118,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-fit-t4-conductance")
     subparsers.add_parser("v7-audit-retina-columns")
     subparsers.add_parser("v7-audit-layer-mirror")
+    subparsers.add_parser("v7-audit-temporal-input")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -303,6 +305,12 @@ def main() -> None:
         report = evaluate_v7_layerwise_mirror_audit(root)
         target = root / "artifacts/v7-layerwise-mirror-audit.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-temporal-input":
+        report = evaluate_v7_temporal_input_audit(root)
+        target = root / "artifacts/v7-temporal-input-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
     manifest = load_manifest(root / args.manifest)

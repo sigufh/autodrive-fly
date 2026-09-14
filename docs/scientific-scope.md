@@ -49,6 +49,15 @@ Balancing total eye drive reduces but does not pass this revised gate. The
 Selection changes both count and spatial coverage, so their causal contributions
 are not isolated. The default 3,344-receptor mapping remains unchanged.
 
+The supplementary temporal-input audit leaves scoring and model parameters
+unchanged. Independent pixel filters generate position-dependent whole-window
+edge contrasts without any spatial motion detector: median absolute contrast is
+0.4373 for sustained luminance and 0.00207 for frame differences. Local alignment
+removes the control's contrast, but does not explain all neural failures. Uniform
+ON steps produce the expected negative Mi9 peak in only about half the cells;
+these are qualitative proxy measurements, not matched local electrophysiology.
+See `artifacts/v7-temporal-input-audit.json`; it cannot authorize stage advancement.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
