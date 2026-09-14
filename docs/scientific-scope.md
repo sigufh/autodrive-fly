@@ -116,6 +116,14 @@ verified equilibria; frame-difference encoding yields identical states for all
 three constant brightness levels. Nonzero normalized Mi9 conductance therefore
 does not establish a physiological, light-dependent resting baseline.
 
+A fixed-horizon background audit shows persistent changes after 2,048 microsteps:
+with constant gray luminance, the largest tail-window step change is about 0.174
+in the original conductance model versus 0.000042 in the typed visual model.
+Large conductance-model residuals are concentrated in left T4 populations, but
+ranking does not identify a causal loop. A zero-state, zero-drive frame-difference
+control remains zero by construction. Finite windows, one initialization, and
+lag tests do not establish asymptotic stability or biological oscillations.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
