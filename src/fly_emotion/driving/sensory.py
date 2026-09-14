@@ -48,6 +48,24 @@ class SensoryFrame:
 
 
 @dataclass(frozen=True)
+class SensoryGains:
+    """Explicit simulator-to-neuron scaling, kept separate from anatomy."""
+
+    optic_flow: float = 0.30
+    haltere_yaw: float = 0.40
+    proprio_steering: float = 0.25
+    proprio_speed: float = 0.04
+
+    def scaled(self, *, optic_flow: float = 1.0, body: float = 1.0) -> SensoryGains:
+        return SensoryGains(
+            optic_flow=self.optic_flow * optic_flow,
+            haltere_yaw=self.haltere_yaw * body,
+            proprio_steering=self.proprio_steering * body,
+            proprio_speed=self.proprio_speed * body,
+        )
+
+
+@dataclass(frozen=True)
 class AnatomySensoryProjection:
     flow_positive: np.ndarray
     flow_negative: np.ndarray
@@ -85,21 +103,85 @@ class AnatomySensoryProjection:
         )
 
     def add_drive(
-        self, drive: np.ndarray, frame: SensoryFrame, *, optic_flow: bool, body: bool
+        self,
+        drive: np.ndarray,
+        frame: SensoryFrame,
+        *,
+        optic_flow: bool,
+        body: bool,
+        gains: SensoryGains | None = None,
     ) -> None:
+        gains = gains or SensoryGains()
         if optic_flow:
             positive = max(frame.flow, 0.0)
             negative = max(-frame.flow, 0.0)
-            drive[self.flow_positive] += 0.30 * positive
-            drive[self.flow_negative] += 0.30 * negative
+            drive[self.flow_positive] += gains.optic_flow * positive
+            drive[self.flow_negative] += gains.optic_flow * negative
         if body:
             yaw = float(np.clip(frame.yaw_rate / 1.2, -1.0, 1.0))
             steering = float(np.clip(frame.steering, -1.0, 1.0))
             speed = float(np.clip(abs(frame.speed) / 6.0, 0.0, 1.0))
-            drive[self.haltere_left] += 0.40 * max(-yaw, 0.0)
-            drive[self.haltere_right] += 0.40 * max(yaw, 0.0)
-            drive[self.proprio_left] += 0.25 * max(-steering, 0.0) + 0.04 * speed
-            drive[self.proprio_right] += 0.25 * max(steering, 0.0) + 0.04 * speed
+            drive[self.haltere_left] += gains.haltere_yaw * max(-yaw, 0.0)
+            drive[self.haltere_right] += gains.haltere_yaw * max(yaw, 0.0)
+            drive[self.proprio_left] += (
+                gains.proprio_steering * max(-steering, 0.0) + gains.proprio_speed * speed
+            )
+            drive[self.proprio_right] += (
+                gains.proprio_steering * max(steering, 0.0) + gains.proprio_speed * speed
+            )
+
+    def diagnostics(
+        self,
+        activity: np.ndarray,
+        frame: SensoryFrame,
+        *,
+        optic_flow: bool,
+        body: bool,
+        gains: SensoryGains | None = None,
+    ) -> dict:
+        """Report direct-drive scale and resulting activity by sensory group."""
+        gains = gains or SensoryGains()
+        yaw = float(np.clip(frame.yaw_rate / 1.2, -1.0, 1.0))
+        steering = float(np.clip(frame.steering, -1.0, 1.0))
+        speed = float(np.clip(abs(frame.speed) / 6.0, 0.0, 1.0))
+        drives = {
+            "flow_positive": gains.optic_flow * max(frame.flow, 0.0) if optic_flow else 0.0,
+            "flow_negative": gains.optic_flow * max(-frame.flow, 0.0) if optic_flow else 0.0,
+            "haltere_left": gains.haltere_yaw * max(-yaw, 0.0) if body else 0.0,
+            "haltere_right": gains.haltere_yaw * max(yaw, 0.0) if body else 0.0,
+            "proprio_left": (
+                gains.proprio_steering * max(-steering, 0.0) + gains.proprio_speed * speed
+                if body
+                else 0.0
+            ),
+            "proprio_right": (
+                gains.proprio_steering * max(steering, 0.0) + gains.proprio_speed * speed
+                if body
+                else 0.0
+            ),
+        }
+        groups = {
+            "flow_positive": self.flow_positive,
+            "flow_negative": self.flow_negative,
+            "haltere_left": self.haltere_left,
+            "haltere_right": self.haltere_right,
+            "proprio_left": self.proprio_left,
+            "proprio_right": self.proprio_right,
+        }
+        result = {}
+        for name, nodes in groups.items():
+            values = np.abs(activity[nodes])
+            result[name] = {
+                "neurons": int(len(nodes)),
+                "direct_drive": float(drives[name]),
+                "mean_abs_activity": float(values.mean()) if len(values) else 0.0,
+                "p95_abs_activity": float(np.quantile(values, 0.95)) if len(values) else 0.0,
+                "saturated_fraction": float(np.mean(values >= 0.95)) if len(values) else 0.0,
+            }
+        result["total_direct_drive_l1"] = float(
+            sum(drives[name] * len(nodes) for name, nodes in groups.items())
+        )
+        return result
 
     def summary(self) -> dict:
         return {

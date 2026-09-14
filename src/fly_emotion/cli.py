@@ -18,6 +18,7 @@ from .driving.evaluate import (
     evaluate_neural_motor_adaptation,
     evaluate_neural_transfer,
     evaluate_sensory_ablation,
+    evaluate_sensory_gain_audit,
     train_neural_curriculum,
     write_evaluation,
 )
@@ -77,6 +78,9 @@ def _parser() -> argparse.ArgumentParser:
     sensory.add_argument("--train-episodes", type=int, default=4)
     sensory.add_argument("--evaluation-start", type=int, default=960)
     sensory.add_argument("--evaluation-seeds", type=int, default=4)
+    gain_audit = subparsers.add_parser("evaluate-sensory-gains")
+    gain_audit.add_argument("--seed", type=int, default=960)
+    gain_audit.add_argument("--steps", type=int, default=120)
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -171,6 +175,12 @@ def main() -> None:
             evaluation_seeds=args.evaluation_seeds,
         )
         target = root / "artifacts/neural-v6-sensory-ablation.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-sensory-gains":
+        report = evaluate_sensory_gain_audit(root, seed=args.seed, steps=args.steps)
+        target = root / "artifacts/neural-v6-sensory-gain-audit.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

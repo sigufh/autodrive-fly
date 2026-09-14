@@ -15,6 +15,7 @@ from fly_emotion.driving.sensory import (
     SENSORY_PROFILES,
     AnatomySensoryProjection,
     SensoryFrame,
+    SensoryGains,
     horizontal_flow_proxy,
 )
 
@@ -487,6 +488,7 @@ class DrivingEngine:
         scenario: str = "highway",
         control_mode: str = "assisted",
         sensory_profile: str = "front",
+        sensory_gains: SensoryGains | None = None,
     ):
         self.root = root
         processed = root / "data/processed/malecns-v1.0"
@@ -499,6 +501,7 @@ class DrivingEngine:
         self.sensory_projection = AnatomySensoryProjection.from_annotations(
             self.graph.body_ids, raw / "body-annotations.feather"
         )
+        self.sensory_gains = sensory_gains or SensoryGains()
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
         self.neural_motor_adapter = NeuralMotorAdapter()
         self.assisted_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
@@ -711,6 +714,7 @@ class DrivingEngine:
             sensory_frame,
             optic_flow=self.sensory_profile in {"panorama_flow", "panorama_flow_body"},
             body=self.sensory_profile == "panorama_flow_body",
+            gains=self.sensory_gains,
         )
         recurrent = self.graph.adjacency @ (activity * self.source_sign)
         activity = (0.72 * activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)).astype(
@@ -1019,6 +1023,14 @@ class DrivingEngine:
                     "last_flow": self.last_sensory_frame.flow,
                     "last_yaw_rate": self.last_sensory_frame.yaw_rate,
                     **self.sensory_projection.summary(),
+                    "diagnostics": self.sensory_projection.diagnostics(
+                        self.activity,
+                        self.last_sensory_frame,
+                        optic_flow=self.sensory_profile
+                        in {"panorama_flow", "panorama_flow_body"},
+                        body=self.sensory_profile == "panorama_flow_body",
+                        gains=self.sensory_gains,
+                    ),
                 },
             },
             "dopamine_neurons": {

@@ -10,6 +10,7 @@ import numpy as np
 
 from fly_emotion.driving.engine import NEURAL_POLICY_VERSION, POLICY_VERSION, DrivingEngine
 from fly_emotion.driving.environment import DrivingEnvironment
+from fly_emotion.driving.sensory import SensoryFrame, SensoryGains, horizontal_flow_proxy
 
 EVALUATION_PROTOCOL_VERSION = 4
 POST_PASS_WINDOW_STEPS = 30
@@ -761,6 +762,192 @@ def evaluate_sensory_ablation(
             ),
         },
         "anatomy": DrivingEngine(root, top_k=1, load_checkpoint=False).sensory_projection.summary(),
+        "arms": arms,
+    }
+
+
+def evaluate_sensory_gain_audit(
+    root: Path, *, seed: int = 960, steps: int = 120
+) -> dict:
+    """Replay one fixed front-v6 trajectory through sensory gain variants."""
+    if seed < 0 or steps < 2:
+        raise ValueError("sensory gain audit requires a non-negative seed and at least two steps")
+    published = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    reference_engine = DrivingEngine(
+        root, seed=20260914, top_k=1, load_checkpoint=True, control_mode="neural"
+    )
+    if not reference_engine.checkpoint_loaded:
+        raise ValueError("sensory gain audit requires the published neural-v6 checkpoint")
+    reference_engine.reset(seed, keep_learning=False, control_mode="neural")
+
+    def capture() -> dict:
+        return {
+            "front": reference_engine.env.observe().copy(),
+            "panorama": reference_engine.env.observe_panorama().copy(),
+            "yaw_rate": float(reference_engine.env.last_yaw_rate),
+            "steering": float(reference_engine.env.steering),
+            "speed": float(reference_engine.env.speed),
+        }
+
+    reference = [capture()]
+    while len(reference) <= steps and not reference_engine.env.done:
+        reference_engine.step(
+            learning=False, explore=False, safety_constraints=False, include_activity=False
+        )
+        reference.append(capture())
+    if len(reference) < 3:
+        raise ValueError("reference trajectory ended before sensory replay could be measured")
+
+    replay_digest = hashlib.sha256()
+    for frame in reference:
+        replay_digest.update(frame["front"].tobytes())
+        replay_digest.update(frame["panorama"].tobytes())
+        replay_digest.update(
+            np.asarray(
+                [frame["yaw_rate"], frame["steering"], frame["speed"]],
+                dtype=np.float64,
+            ).tobytes()
+        )
+
+    variants = [
+        ("front", "front", 0.0, 0.0),
+        ("panorama", "panorama", 0.0, 0.0),
+        *[
+            (f"panorama_flow_{factor:g}", "panorama_flow", factor, 0.0)
+            for factor in (0.05, 0.10, 0.25, 0.50, 1.00)
+        ],
+        *[
+            (
+                f"panorama_flow_body_{factor:g}",
+                "panorama_flow_body",
+                1.0,
+                factor,
+            )
+            for factor in (0.05, 0.10, 0.25, 0.50, 1.00)
+        ],
+    ]
+    arms = {}
+    raw_traces: dict[str, np.ndarray] = {}
+    for name, profile, flow_scale, body_scale in variants:
+        gains = SensoryGains().scaled(optic_flow=flow_scale, body=body_scale)
+        replay = DrivingEngine(
+            root,
+            seed=20260914,
+            top_k=1,
+            load_checkpoint=True,
+            control_mode="neural",
+            sensory_profile=profile,
+            sensory_gains=gains,
+        )
+        replay.reset(seed, keep_learning=False, control_mode="neural", sensory_profile=profile)
+        raw_steering: list[float] = []
+        executed_steering: list[float] = []
+        steering_drive: list[float] = []
+        retinal_mean: list[float] = []
+        retinal_p95: list[float] = []
+        network_saturation: list[float] = []
+        sensory_rows: list[dict] = []
+        previous_image = reference[0]["front" if profile == "front" else "panorama"]
+        for sample in reference[1:]:
+            image = sample["front" if profile == "front" else "panorama"]
+            flow = (
+                horizontal_flow_proxy(previous_image, image)
+                if profile in {"panorama_flow", "panorama_flow_body"}
+                else 0.0
+            )
+            frame = SensoryFrame(
+                flow=flow,
+                yaw_rate=sample["yaw_rate"],
+                steering=sample["steering"],
+                speed=sample["speed"],
+            )
+            for _ in range(replay.brain_substeps):
+                replay._advance_brain(image, dopamine=0.0, sensory_frame=frame)
+            raw, throttle, reverse, _ = replay.policy.action(
+                replay.activity,
+                replay.source_sign,
+                explore=False,
+                adapt=False,
+                mirrored_activity=replay.mirrored_activity,
+            )
+            executed, _, _ = replay.neural_motor_adapter.step(raw, throttle, reverse)
+            receptor_values = replay.retina.encode(image)
+            raw_steering.append(raw)
+            executed_steering.append(executed)
+            steering_drive.append(float(replay.policy._last_steering_drive))
+            retinal_mean.append(float(np.mean(receptor_values)))
+            retinal_p95.append(float(np.quantile(receptor_values, 0.95)))
+            network_saturation.append(float(np.mean(np.abs(replay.activity) >= 0.95)))
+            sensory_rows.append(
+                replay.sensory_projection.diagnostics(
+                    replay.activity,
+                    frame,
+                    optic_flow=profile in {"panorama_flow", "panorama_flow_body"},
+                    body=profile == "panorama_flow_body",
+                    gains=gains,
+                )
+            )
+            previous_image = image
+
+        def sensory_group_summary(group: str, rows: list[dict] = sensory_rows) -> dict:
+            return {
+                key: float(mean(row[group][key] for row in rows))
+                for key in (
+                    "direct_drive",
+                    "mean_abs_activity",
+                    "p95_abs_activity",
+                    "saturated_fraction",
+                )
+            }
+
+        raw_array = np.asarray(raw_steering)
+        raw_traces[name] = raw_array
+        arms[name] = {
+            "sensory_profile": profile,
+            "flow_gain_scale": flow_scale,
+            "body_gain_scale": body_scale,
+            "steps": len(raw_array),
+            "mean_abs_raw_steering": float(np.mean(np.abs(raw_array))),
+            "p95_abs_raw_steering": float(np.quantile(np.abs(raw_array), 0.95)),
+            "mean_abs_executed_steering": float(np.mean(np.abs(executed_steering))),
+            "mean_abs_steering_drive": float(np.mean(np.abs(steering_drive))),
+            "mean_retinal_value": float(mean(retinal_mean)),
+            "mean_retinal_p95": float(mean(retinal_p95)),
+            "mean_network_saturated_fraction": float(mean(network_saturation)),
+            "mean_total_direct_drive_l1": float(
+                mean(row["total_direct_drive_l1"] for row in sensory_rows)
+            ),
+            "sensory_groups": {
+                group: sensory_group_summary(group)
+                for group in (
+                    "flow_positive",
+                    "flow_negative",
+                    "haltere_left",
+                    "haltere_right",
+                    "proprio_left",
+                    "proprio_right",
+                )
+            },
+        }
+    front_trace = raw_traces["front"]
+    for name, trace in raw_traces.items():
+        arms[name]["raw_steering_mae_vs_front"] = float(np.mean(np.abs(trace - front_trace)))
+        arms[name]["raw_steering_sign_disagreement_vs_front"] = float(
+            np.mean(np.sign(trace) != np.sign(front_trace))
+        )
+    return {
+        "protocol": {
+            "checkpoint_sha256": hashlib.sha256(published.read_bytes()).hexdigest(),
+            "reference_seed": seed,
+            "requested_steps": steps,
+            "replayed_steps": len(reference) - 1,
+            "reference_trajectory_sha256": replay_digest.hexdigest(),
+            "learning": False,
+            "explore": False,
+            "fixed_reference_states": True,
+            "claim_boundary": "diagnostic gain screen; no arm is a deployment candidate",
+        },
+        "default_gains": SensoryGains().__dict__,
         "arms": arms,
     }
 

@@ -124,6 +124,18 @@ stability benefit. New release gates require complete windows, compare steering
 and drift per metre only on those windows, and reject a higher early-failure
 rate. Evidence: `artifacts/neural-v6-post-pass-metric-audit.json`.
 
+A fixed-state gain audit then separates encoding effects from divergent vehicle
+trajectories. Front v6 generated one 80-step seed-960 reference sequence; every
+arm replayed the same front image, panorama, yaw rate, steering and speed with
+learning and exploration disabled. Panorama alone disagreed with front DNp20
+steering sign on 45% of steps (raw MAE 0.069). Default flow raised mean raw
+steering from 0.076 to 0.244 and sign disagreement to 75%; default body input
+raised it further to 0.346. Network saturation remained zero, so the failure is
+not numeric clipping: the motor readout is sensitive to coherent population
+drive and to the changed panoramic coordinate distribution. Flow at 0.05–0.10
+of the original gain limits its additional effect but cannot repair panorama's
+existing sign mismatch. Evidence: `artifacts/neural-v6-sensory-gain-audit.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

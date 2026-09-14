@@ -30,6 +30,7 @@ from fly_emotion.driving.evaluate import (
 from fly_emotion.driving.retina import RetinaMap
 from fly_emotion.driving.sensory import (
     SensoryFrame,
+    SensoryGains,
     horizontal_flow_proxy,
 )
 
@@ -92,6 +93,24 @@ def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
     assert np.any(drive[projection.flow_positive] > 0)
     assert np.any(drive[projection.haltere_right] > 0)
     assert np.any(drive[projection.proprio_right] > 0)
+    diagnostics = projection.diagnostics(
+        drive,
+        SensoryFrame(flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0),
+        optic_flow=True,
+        body=True,
+    )
+    assert diagnostics["flow_positive"]["neurons"] == len(projection.flow_positive)
+    assert diagnostics["flow_positive"]["direct_drive"] == 0.15
+    assert diagnostics["haltere_right"]["direct_drive"] == 0.2
+    assert diagnostics["total_direct_drive_l1"] > 0
+
+
+def test_sensory_gains_scale_flow_and_body_independently() -> None:
+    gains = SensoryGains().scaled(optic_flow=0.25, body=0.5)
+    assert gains.optic_flow == 0.075
+    assert gains.haltere_yaw == 0.2
+    assert gains.proprio_steering == 0.125
+    assert gains.proprio_speed == 0.02
 
 
 def test_environment_reward_and_collision_are_closed_loop() -> None:
