@@ -148,6 +148,18 @@ reduced complete-window steering from 0.1387 to 0.1360 and drift per metre from
 remains deployed because this screen contains two independent mirror pairs.
 Evidence: `artifacts/neural-v6-peripheral-visual-ablation.json`.
 
+Optic flow is now six-region, non-circular correlation rather than one wrapped
+global shift. T4/T5 soma side is annotated for all 6,753 cells; weighted real
+presynaptic connections to optic-hex-annotated partners infer a local position
+for 6,752. The one unmapped cell is not stimulated. Subtypes a/b retain their
+front-to-back/back-to-front meaning, which reverses global image-axis sign
+between the two eyes. This fixes the anatomical and mirror semantics but does
+not make flow useful to frozen v6: absolute gain 0.0003 reduced completion from
+100% to 50%, obstacles from 9 to 6 and increased drift/metre from 0.0638 to
+0.0810 on seeds 960–963. Default flow gain is therefore zero. The encoder is
+retained for later sensory-pathway plasticity, not deployed as a claimed gain.
+Evidence: `artifacts/neural-v6-regional-flow-ablation.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

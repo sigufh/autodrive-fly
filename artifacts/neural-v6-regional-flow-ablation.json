@@ -1,0 +1,62 @@
+{
+  "protocol": {
+    "checkpoint_sha256": "6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437",
+    "test_seed_range": [960, 963],
+    "learning": false,
+    "explore": false,
+    "action_override": false,
+    "peripheral_visual_gain": 0.001,
+    "flow_encoding": "six-region non-circular correlation",
+    "spatial_mapping": "T4/T5 somaSide plus weighted annotated presynaptic optic-hex partners",
+    "direction_mapping": "a=front-to-back and b=back-to-front with opposite global image signs in left and right eyes",
+    "claim_boundary": "two-pair frozen screen; no nonzero optic-flow gain passed"
+  },
+  "anatomy": {
+    "T4_T5_total": 6753,
+    "spatially_mapped": 6752,
+    "spatially_unmapped_and_unstimulated": 1,
+    "spatial_bin_counts": [1001, 1421, 944, 949, 1423, 1014]
+  },
+  "fixed_state_screen": {
+    "panorama_without_flow": {
+      "mean_abs_raw_steering": 0.07579281474399265,
+      "raw_steering_mae_vs_front": 0.00010756005906383513,
+      "raw_steering_sign_disagreement_vs_front": 0.0
+    },
+    "regional_flow_scale_0.005": {
+      "absolute_flow_gain": 0.0015,
+      "mean_abs_raw_steering": 0.06902461243044991,
+      "raw_steering_mae_vs_front": 0.007031758131453078,
+      "raw_steering_sign_disagreement_vs_front": 0.0875
+    },
+    "regional_flow_scale_0.01": {
+      "absolute_flow_gain": 0.003,
+      "mean_abs_raw_steering": 0.06541316956349405,
+      "raw_steering_mae_vs_front": 0.011117623487813439,
+      "raw_steering_sign_disagreement_vs_front": 0.1375
+    }
+  },
+  "closed_loop": {
+    "panorama_without_flow": {
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.1359984727179241,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.06384909219247153
+    },
+    "regional_flow_absolute_gain_0.0003": {
+      "success_rate": 0.5,
+      "mean_obstacles_passed": 6.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.13835501432012196,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.0810274159087632
+    }
+  },
+  "decision": {
+    "default_optic_flow_gain": 0.0,
+    "deployed": false,
+    "reason": "Even the lowest closed-loop gain reduced completion and increased drift; retain the anatomical encoder for later sensory-pathway learning but disable stimulation by default."
+  }
+}

@@ -200,6 +200,11 @@ MaleCNS 注释中确认并接入了真实感觉入口：`6,753` 个 T4a/T5a/T4b/
 后续局部光流实验底座，尚未替换默认 front。证据：
 `artifacts/neural-v6-peripheral-visual-ablation.json`。
 
+T4/T5 光流现已改为 6 区域非循环估计，并通过真实上游连接和 optic-hex 注释为
+6,752/6,753 个神经元推断局部位置。但冻结 v6 即使在绝对增益 0.0003 下仍退化为
+50% 通关，因此实验默认光流增益为 0：保留编码，等待后续感觉通路学习，不部署。
+证据：`artifacts/neural-v6-regional-flow-ablation.json`。
+
 ## 城市交通场景 Alpha
 
 在不替换 v5 直路基准的前提下，项目新增独立的 `city` 场景，用于把“局部视觉

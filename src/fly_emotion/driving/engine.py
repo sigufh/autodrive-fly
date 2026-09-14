@@ -17,6 +17,7 @@ from fly_emotion.driving.sensory import (
     SensoryFrame,
     SensoryGains,
     horizontal_flow_proxy,
+    regional_horizontal_flow_proxy,
 )
 
 MOTOR_BODY_IDS = np.asarray([10059, 10162, 10527, 555871], dtype=np.int64)
@@ -499,7 +500,9 @@ class DrivingEngine:
         )
         self.source_sign = self._source_sign(raw / "body-neurotransmitters.feather")
         self.sensory_projection = AnatomySensoryProjection.from_annotations(
-            self.graph.body_ids, raw / "body-annotations.feather"
+            self.graph.body_ids,
+            raw / "body-annotations.feather",
+            adjacency=self.graph.adjacency,
         )
         self.sensory_gains = sensory_gains or SensoryGains()
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
@@ -716,6 +719,7 @@ class DrivingEngine:
             -sensory_frame.yaw_rate,
             -sensory_frame.steering,
             sensory_frame.speed,
+            tuple(-value for value in reversed(sensory_frame.flow_regions)),
         )
         self.mirrored_activity = self._advance_state(
             self.mirrored_activity,
@@ -868,11 +872,18 @@ class DrivingEngine:
             and self.sensory_profile in {"panorama_flow", "panorama_flow_body"}
             else 0.0
         )
+        flow_regions = (
+            regional_horizontal_flow_proxy(previous_image, image)
+            if previous_image is not None
+            and self.sensory_profile in {"panorama_flow", "panorama_flow_body"}
+            else ()
+        )
         sensory_frame = SensoryFrame(
             flow=flow,
             yaw_rate=float(getattr(self.env, "last_yaw_rate", 0.0)),
             steering=self.env.steering,
             speed=self.env.speed,
+            flow_regions=flow_regions,
         )
         self.last_sensory_frame = sensory_frame
         self.previous_sensory_image = image.copy()
@@ -1048,6 +1059,7 @@ class DrivingEngine:
                 "sensory_projection": {
                     "profile": self.sensory_profile,
                     "last_flow": self.last_sensory_frame.flow,
+                    "last_flow_regions": list(self.last_sensory_frame.flow_regions),
                     "last_yaw_rate": self.last_sensory_frame.yaw_rate,
                     **self.sensory_projection.summary(),
                     "diagnostics": self.sensory_projection.diagnostics(

@@ -10,7 +10,12 @@ import numpy as np
 
 from fly_emotion.driving.engine import NEURAL_POLICY_VERSION, POLICY_VERSION, DrivingEngine
 from fly_emotion.driving.environment import DrivingEnvironment
-from fly_emotion.driving.sensory import SensoryFrame, SensoryGains, horizontal_flow_proxy
+from fly_emotion.driving.sensory import (
+    SensoryFrame,
+    SensoryGains,
+    horizontal_flow_proxy,
+    regional_horizontal_flow_proxy,
+)
 
 EVALUATION_PROTOCOL_VERSION = 4
 POST_PASS_WINDOW_STEPS = 30
@@ -818,7 +823,7 @@ def evaluate_sensory_gain_audit(
         ],
         *[
             (f"panorama_flow_{factor:g}", "panorama_flow", 1.0, factor, 0.0)
-            for factor in (0.05, 0.10, 0.25, 0.50, 1.00)
+            for factor in (0.005, 0.01, 0.02, 0.05, 0.10, 0.25, 0.50, 1.00)
         ],
         *[
             (
@@ -834,8 +839,13 @@ def evaluate_sensory_gain_audit(
     arms = {}
     raw_traces: dict[str, np.ndarray] = {}
     for name, profile, peripheral_scale, flow_scale, body_scale in variants:
-        gains = SensoryGains().scaled(
-            peripheral_visual=peripheral_scale, optic_flow=flow_scale, body=body_scale
+        defaults = SensoryGains()
+        gains = SensoryGains(
+            peripheral_visual=defaults.peripheral_visual * peripheral_scale,
+            optic_flow=0.30 * flow_scale,
+            haltere_yaw=defaults.haltere_yaw * body_scale,
+            proprio_steering=defaults.proprio_steering * body_scale,
+            proprio_speed=defaults.proprio_speed * body_scale,
         )
         replay = DrivingEngine(
             root,
@@ -862,11 +872,17 @@ def evaluate_sensory_gain_audit(
                 if profile in {"panorama_flow", "panorama_flow_body"}
                 else 0.0
             )
+            flow_regions = (
+                regional_horizontal_flow_proxy(previous_image, image)
+                if profile in {"panorama_flow", "panorama_flow_body"}
+                else ()
+            )
             frame = SensoryFrame(
                 flow=flow,
                 yaw_rate=sample["yaw_rate"],
                 steering=sample["steering"],
                 speed=sample["speed"],
+                flow_regions=flow_regions,
             )
             for _ in range(replay.brain_substeps):
                 replay._advance_brain(image, dopamine=0.0, sensory_frame=frame)
@@ -956,6 +972,7 @@ def evaluate_sensory_gain_audit(
             "claim_boundary": "diagnostic gain screen; no arm is a deployment candidate",
         },
         "default_gains": SensoryGains().__dict__,
+        "audit_reference_optic_flow_gain": 0.30,
         "arms": arms,
     }
 

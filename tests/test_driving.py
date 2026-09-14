@@ -32,6 +32,7 @@ from fly_emotion.driving.sensory import (
     SensoryFrame,
     SensoryGains,
     horizontal_flow_proxy,
+    regional_horizontal_flow_proxy,
 )
 
 
@@ -74,12 +75,37 @@ def test_horizontal_flow_proxy_is_signed_and_mirror_equivariant() -> None:
     assert np.isclose(flow, -mirrored)
 
 
+def test_regional_flow_is_local_non_wrapping_and_mirror_equivariant() -> None:
+    previous = np.zeros((8, 24), dtype=np.float32)
+    previous[:, 2:4] = 1
+    previous[:, 10:12] = 0.7
+    shifted = previous.copy()
+    shifted[:, :8] = np.roll(previous[:, :8], 2, axis=1)
+    shifted[:, 8:16] = np.roll(previous[:, 8:16], -2, axis=1)
+    flow = regional_horizontal_flow_proxy(previous, shifted, regions=3, max_shift=2)
+    mirrored = regional_horizontal_flow_proxy(
+        previous[:, ::-1], shifted[:, ::-1], regions=3, max_shift=2
+    )
+    assert flow[0] > 0 and flow[1] < 0
+    assert flow[2] == 0
+    assert np.allclose(flow, tuple(-value for value in reversed(mirrored)))
+
+
 def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
     root = Path(__file__).parents[1]
     engine = DrivingEngine(root, top_k=1, load_checkpoint=False)
     projection = engine.sensory_projection
     summary = projection.summary()
     assert summary["T4_T5_horizontal_flow"] > 6000
+    assert summary["T4_T5_spatially_mapped"] == 6752
+    assert summary["T4_T5_spatially_unmapped"] == 1
+    assert sum(summary["T4_T5_spatial_bin_counts"]) == 6752
+    for region in range(len(projection.flow_positive_bins)):
+        mirrored = len(projection.flow_positive_bins) - 1 - region
+        assert abs(
+            len(projection.flow_positive_bins[region])
+            - len(projection.flow_negative_bins[mirrored])
+        ) < 80
     assert summary["haltere_yaw_rate"] == 205
     assert summary["ascending_proprioception"] == 424
     assert all(value > 90 for value in summary["haltere_by_side"])
@@ -89,6 +115,7 @@ def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
         SensoryFrame(flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0),
         optic_flow=True,
         body=True,
+        gains=SensoryGains(optic_flow=0.30),
     )
     assert np.any(drive[projection.flow_positive] > 0)
     assert np.any(drive[projection.haltere_right] > 0)
@@ -98,6 +125,7 @@ def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
         SensoryFrame(flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0),
         optic_flow=True,
         body=True,
+        gains=SensoryGains(optic_flow=0.30),
     )
     assert diagnostics["flow_positive"]["neurons"] == len(projection.flow_positive)
     assert diagnostics["flow_positive"]["direct_drive"] == 0.15
@@ -106,7 +134,7 @@ def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
 
 
 def test_sensory_gains_scale_flow_and_body_independently() -> None:
-    gains = SensoryGains().scaled(optic_flow=0.25, body=0.5)
+    gains = SensoryGains(optic_flow=0.30).scaled(optic_flow=0.25, body=0.5)
     assert gains.peripheral_visual == 0.001
     assert gains.optic_flow == 0.075
     assert gains.haltere_yaw == 0.2

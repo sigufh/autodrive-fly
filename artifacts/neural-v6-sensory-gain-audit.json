@@ -11,7 +11,7 @@
     "claim_boundary": "diagnostic gain screen; no arm is a deployment candidate"
   },
   "default_gains": {
-    "peripheral_visual": 0.05,
+    "peripheral_visual": 0.001,
     "optic_flow": 0.3,
     "haltere_yaw": 0.4,
     "proprio_steering": 0.25,
@@ -134,53 +134,53 @@
       "flow_gain_scale": 0.0,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.07540253046792289,
-      "p95_abs_raw_steering": 0.35080526805706874,
-      "mean_abs_executed_steering": 0.22141585552886553,
-      "mean_abs_steering_drive": 0.04439503080793657,
-      "mean_retinal_value": 0.1138841143809259,
-      "mean_retinal_p95": 0.5175356031395495,
+      "mean_abs_raw_steering": 0.07588118889641919,
+      "p95_abs_raw_steering": 0.3523344107673659,
+      "mean_abs_executed_steering": 0.2221473956316013,
+      "mean_abs_steering_drive": 0.044574359542457385,
+      "mean_retinal_value": 0.1131664221175015,
+      "mean_retinal_p95": 0.5161642568185926,
       "mean_network_saturated_fraction": 0.0,
       "mean_total_direct_drive_l1": 0.0,
       "sensory_groups": {
         "flow_positive": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.015559422818478197,
-          "p95_abs_activity": 0.04858437984948978,
+          "mean_abs_activity": 0.015471788166905753,
+          "p95_abs_activity": 0.0483413047157228,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.015458186733303592,
-          "p95_abs_activity": 0.04710543646360747,
+          "mean_abs_activity": 0.015369592182105407,
+          "p95_abs_activity": 0.046856509119970725,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004229090386754919,
-          "p95_abs_activity": 0.007059132080998154,
+          "mean_abs_activity": 0.0042272507693258635,
+          "p95_abs_activity": 0.007056410916559485,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004193323427708862,
-          "p95_abs_activity": 0.007394344686150589,
+          "mean_abs_activity": 0.004191521365994077,
+          "p95_abs_activity": 0.0073916245041061755,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036325036898588793,
-          "p95_abs_activity": 0.00693546591897416,
+          "mean_abs_activity": 0.003630813520568843,
+          "p95_abs_activity": 0.006932419983528604,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003617863461141013,
-          "p95_abs_activity": 0.007208630852042574,
+          "mean_abs_activity": 0.0036161603176914523,
+          "p95_abs_activity": 0.007205655083292584,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.0005350601002085096,
+      "raw_steering_mae_vs_front": 1.0772498070918591e-05,
       "raw_steering_sign_disagreement_vs_front": 0.0
     },
     "panorama_0.25": {
@@ -189,54 +189,54 @@
       "flow_gain_scale": 0.0,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.07468781427755519,
-      "p95_abs_raw_steering": 0.3485315811862819,
-      "mean_abs_executed_steering": 0.22030496840029318,
-      "mean_abs_steering_drive": 0.04412587183469441,
-      "mean_retinal_value": 0.1149826223962009,
-      "mean_retinal_p95": 0.5196345888078213,
+      "mean_abs_raw_steering": 0.07586643856403699,
+      "p95_abs_raw_steering": 0.35228642818547296,
+      "mean_abs_executed_steering": 0.22212509323077717,
+      "mean_abs_steering_drive": 0.0445688572479412,
+      "mean_retinal_value": 0.11318839350715279,
+      "mean_retinal_p95": 0.5162062427960337,
       "mean_network_saturated_fraction": 0.0,
       "mean_total_direct_drive_l1": 0.0,
       "sensory_groups": {
         "flow_positive": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.015693683398421854,
-          "p95_abs_activity": 0.04901330067659728,
+          "mean_abs_activity": 0.015474469782202505,
+          "p95_abs_activity": 0.048348011705093084,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.015593916157376953,
-          "p95_abs_activity": 0.047513326560147104,
+          "mean_abs_activity": 0.015372302816831506,
+          "p95_abs_activity": 0.0468637288082391,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004231861336575804,
-          "p95_abs_activity": 0.007063233888188592,
+          "mean_abs_activity": 0.004227307412594428,
+          "p95_abs_activity": 0.007056494878469266,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004196036182490204,
-          "p95_abs_activity": 0.007399148579585813,
+          "mean_abs_activity": 0.004191576875357228,
+          "p95_abs_activity": 0.007391708403332586,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036350542910033924,
-          "p95_abs_activity": 0.006940053937776724,
+          "mean_abs_activity": 0.003630865619291157,
+          "p95_abs_activity": 0.006932513585888955,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036204312469497067,
-          "p95_abs_activity": 0.0072130386510394825,
+          "mean_abs_activity": 0.0036162127412154633,
+          "p95_abs_activity": 0.007205746900220333,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.001318973426249613,
-      "raw_steering_sign_disagreement_vs_front": 0.0125
+      "raw_steering_mae_vs_front": 2.691797714464303e-05,
+      "raw_steering_sign_disagreement_vs_front": 0.0
     },
     "panorama_0.5": {
       "sensory_profile": "panorama",
@@ -244,54 +244,54 @@
       "flow_gain_scale": 0.0,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.0735750303124107,
-      "p95_abs_raw_steering": 0.3449657397433519,
-      "mean_abs_executed_steering": 0.21855076265411136,
-      "mean_abs_steering_drive": 0.04369815042009577,
-      "mean_retinal_value": 0.11681346567347646,
-      "mean_retinal_p95": 0.5231328988447785,
+      "mean_abs_raw_steering": 0.07584195004116674,
+      "p95_abs_raw_steering": 0.35220780837156035,
+      "mean_abs_executed_steering": 0.2220877759483672,
+      "mean_abs_steering_drive": 0.0445596668170765,
+      "mean_retinal_value": 0.11322501068934798,
+      "mean_retinal_p95": 0.5162762054242194,
       "mean_network_saturated_fraction": 0.0,
       "mean_total_direct_drive_l1": 0.0,
       "sensory_groups": {
         "flow_positive": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.01591762720781844,
-          "p95_abs_activity": 0.04971325336955488,
+          "mean_abs_activity": 0.01547893967363052,
+          "p95_abs_activity": 0.04835948253166862,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.015820352867012843,
-          "p95_abs_activity": 0.048190084559610116,
+          "mean_abs_activity": 0.015376820578239858,
+          "p95_abs_activity": 0.04687609138782136,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004236368338080965,
-          "p95_abs_activity": 0.0070699631320295,
+          "mean_abs_activity": 0.00422740182644823,
+          "p95_abs_activity": 0.007056634426599828,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.00420044040210108,
-          "p95_abs_activity": 0.007407661784505137,
+          "mean_abs_activity": 0.004191669349176053,
+          "p95_abs_activity": 0.007391848235405974,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003639209557797862,
-          "p95_abs_activity": 0.006947556802134614,
+          "mean_abs_activity": 0.003630952275802457,
+          "p95_abs_activity": 0.006932669934684554,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003624608870864776,
-          "p95_abs_activity": 0.007220212996438135,
+          "mean_abs_activity": 0.0036163001160076647,
+          "p95_abs_activity": 0.007205900224857942,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.002581961526543562,
-      "raw_steering_sign_disagreement_vs_front": 0.025
+      "raw_steering_mae_vs_front": 5.3781753488953644e-05,
+      "raw_steering_sign_disagreement_vs_front": 0.0
     },
     "panorama_1": {
       "sensory_profile": "panorama",
@@ -299,54 +299,219 @@
       "flow_gain_scale": 0.0,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.07238168767733713,
-      "p95_abs_raw_steering": 0.33857044138373876,
-      "mean_abs_executed_steering": 0.21551941104822978,
-      "mean_abs_steering_drive": 0.0432783398515312,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.07579281474399265,
+      "p95_abs_raw_steering": 0.3520508740377648,
+      "mean_abs_executed_steering": 0.22201279055531695,
+      "mean_abs_steering_drive": 0.04454123734030872,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
       "mean_total_direct_drive_l1": 0.0,
       "sensory_groups": {
         "flow_positive": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.016365921651595273,
-          "p95_abs_activity": 0.051200922369025646,
+          "mean_abs_activity": 0.015487879220745526,
+          "p95_abs_activity": 0.04838275355868973,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.016273704188643025,
-          "p95_abs_activity": 0.049647332035237926,
+          "mean_abs_activity": 0.015385858461377211,
+          "p95_abs_activity": 0.04690104633336887,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004245012611635346,
-          "p95_abs_activity": 0.0070876006636908075,
+          "mean_abs_activity": 0.004227590296109441,
+          "p95_abs_activity": 0.007056912876559096,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004208838693786987,
-          "p95_abs_activity": 0.0074229199699203715,
+          "mean_abs_activity": 0.004191854113542703,
+          "p95_abs_activity": 0.007392126825870093,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003647184519518021,
-          "p95_abs_activity": 0.0069620358918001555,
+          "mean_abs_activity": 0.003631125362672272,
+          "p95_abs_activity": 0.006932981686308182,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036326095169837203,
-          "p95_abs_activity": 0.007233904025709137,
+          "mean_abs_activity": 0.00361647459504546,
+          "p95_abs_activity": 0.007206205493882578,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.004114531802252218,
-      "raw_steering_sign_disagreement_vs_front": 0.025
+      "raw_steering_mae_vs_front": 0.00010756005906383513,
+      "raw_steering_sign_disagreement_vs_front": 0.0
+    },
+    "panorama_flow_0.005": {
+      "sensory_profile": "panorama_flow",
+      "peripheral_visual_gain_scale": 1.0,
+      "flow_gain_scale": 0.005,
+      "body_gain_scale": 0.0,
+      "steps": 80,
+      "mean_abs_raw_steering": 0.06902461243044991,
+      "p95_abs_raw_steering": 0.346575693300912,
+      "mean_abs_executed_steering": 0.21799705873284275,
+      "mean_abs_steering_drive": 0.04017579900973942,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
+      "mean_network_saturated_fraction": 0.0,
+      "mean_total_direct_drive_l1": 0.26695,
+      "sensory_groups": {
+        "flow_positive": {
+          "direct_drive": 3.5444668458781364e-05,
+          "mean_abs_activity": 0.015515923671773634,
+          "p95_abs_activity": 0.04842688385979273,
+          "saturated_fraction": 0.0
+        },
+        "flow_negative": {
+          "direct_drive": 4.354809104258444e-05,
+          "mean_abs_activity": 0.015387532280874439,
+          "p95_abs_activity": 0.04690339100779965,
+          "saturated_fraction": 0.0
+        },
+        "haltere_left": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.004227510967753289,
+          "p95_abs_activity": 0.0070568759608967465,
+          "saturated_fraction": 0.0
+        },
+        "haltere_right": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.004191790380701476,
+          "p95_abs_activity": 0.0073920495260964,
+          "saturated_fraction": 0.0
+        },
+        "proprio_left": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.0036310461878160893,
+          "p95_abs_activity": 0.006932933151214371,
+          "saturated_fraction": 0.0
+        },
+        "proprio_right": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.003616379518834023,
+          "p95_abs_activity": 0.007206170326996641,
+          "saturated_fraction": 0.0
+        }
+      },
+      "raw_steering_mae_vs_front": 0.007031758131453078,
+      "raw_steering_sign_disagreement_vs_front": 0.0875
+    },
+    "panorama_flow_0.01": {
+      "sensory_profile": "panorama_flow",
+      "peripheral_visual_gain_scale": 1.0,
+      "flow_gain_scale": 0.01,
+      "body_gain_scale": 0.0,
+      "steps": 80,
+      "mean_abs_raw_steering": 0.06541316956349405,
+      "p95_abs_raw_steering": 0.34107439063100004,
+      "mean_abs_executed_steering": 0.21362914286530765,
+      "mean_abs_steering_drive": 0.03884532240626868,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
+      "mean_network_saturated_fraction": 0.0,
+      "mean_total_direct_drive_l1": 0.5339,
+      "sensory_groups": {
+        "flow_positive": {
+          "direct_drive": 7.088933691756273e-05,
+          "mean_abs_activity": 0.015546687654568814,
+          "p95_abs_activity": 0.04846735604223795,
+          "saturated_fraction": 0.0
+        },
+        "flow_negative": {
+          "direct_drive": 8.709618208516888e-05,
+          "mean_abs_activity": 0.015389604357187637,
+          "p95_abs_activity": 0.04690451092319563,
+          "saturated_fraction": 0.0
+        },
+        "haltere_left": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.004227431941303905,
+          "p95_abs_activity": 0.007056838885981876,
+          "saturated_fraction": 0.0
+        },
+        "haltere_right": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.004191726691879794,
+          "p95_abs_activity": 0.007391972194217544,
+          "saturated_fraction": 0.0
+        },
+        "proprio_left": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.0036309718916941237,
+          "p95_abs_activity": 0.006932892147737135,
+          "saturated_fraction": 0.0
+        },
+        "proprio_right": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.003616285599226998,
+          "p95_abs_activity": 0.007206135782568878,
+          "saturated_fraction": 0.0
+        }
+      },
+      "raw_steering_mae_vs_front": 0.011117623487813439,
+      "raw_steering_sign_disagreement_vs_front": 0.1375
+    },
+    "panorama_flow_0.02": {
+      "sensory_profile": "panorama_flow",
+      "peripheral_visual_gain_scale": 1.0,
+      "flow_gain_scale": 0.02,
+      "body_gain_scale": 0.0,
+      "steps": 80,
+      "mean_abs_raw_steering": 0.06961956140650656,
+      "p95_abs_raw_steering": 0.3299940163256059,
+      "mean_abs_executed_steering": 0.24661409807926385,
+      "mean_abs_steering_drive": 0.04219784916494973,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
+      "mean_network_saturated_fraction": 0.0,
+      "mean_total_direct_drive_l1": 1.0678,
+      "sensory_groups": {
+        "flow_positive": {
+          "direct_drive": 0.00014177867383512546,
+          "mean_abs_activity": 0.01561207087652292,
+          "p95_abs_activity": 0.048506529588485135,
+          "saturated_fraction": 0.0
+        },
+        "flow_negative": {
+          "direct_drive": 0.00017419236417033775,
+          "mean_abs_activity": 0.015394815456238576,
+          "p95_abs_activity": 0.0469055927474983,
+          "saturated_fraction": 0.0
+        },
+        "haltere_left": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.004227273842111856,
+          "p95_abs_activity": 0.00705676456662232,
+          "saturated_fraction": 0.0
+        },
+        "haltere_right": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.004191599488813935,
+          "p95_abs_activity": 0.0073918175669305695,
+          "saturated_fraction": 0.0
+        },
+        "proprio_left": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.0036308307343420054,
+          "p95_abs_activity": 0.006932825196194159,
+          "saturated_fraction": 0.0
+        },
+        "proprio_right": {
+          "direct_drive": 0.0,
+          "mean_abs_activity": 0.0036161459610038805,
+          "p95_abs_activity": 0.0072060506173940555,
+          "saturated_fraction": 0.0
+        }
+      },
+      "raw_steering_mae_vs_front": 0.027455374088477785,
+      "raw_steering_sign_disagreement_vs_front": 0.2
     },
     "panorama_flow_0.05": {
       "sensory_profile": "panorama_flow",
@@ -354,54 +519,54 @@
       "flow_gain_scale": 0.05,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.05936691160329666,
-      "p95_abs_raw_steering": 0.2727555644554291,
-      "mean_abs_executed_steering": 0.16610158380778706,
-      "mean_abs_steering_drive": 0.039504115702584386,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.12350338497307153,
+      "p95_abs_raw_steering": 0.4885404915463739,
+      "mean_abs_executed_steering": 0.3374154294339748,
+      "mean_abs_steering_drive": 0.0613804823893588,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 2.4277499999999996,
+      "mean_total_direct_drive_l1": 2.6694999999999998,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.0003437499999999999,
-          "mean_abs_activity": 0.016497210404486394,
-          "p95_abs_activity": 0.051321743265725674,
+          "direct_drive": 0.0003544466845878136,
+          "mean_abs_activity": 0.01582646120514255,
+          "p95_abs_activity": 0.04861998789128848,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.00037499999999999995,
-          "mean_abs_activity": 0.016432267980417237,
-          "p95_abs_activity": 0.049541140213841574,
+          "direct_drive": 0.0004354809104258443,
+          "mean_abs_activity": 0.015416422547423281,
+          "p95_abs_activity": 0.046927952591795476,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004244866160205518,
-          "p95_abs_activity": 0.0070881886872129485,
+          "mean_abs_activity": 0.0042268021004431946,
+          "p95_abs_activity": 0.007056540818556556,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004208644591155775,
-          "p95_abs_activity": 0.0074225982528133725,
+          "mean_abs_activity": 0.004191217858970831,
+          "p95_abs_activity": 0.007391353480342389,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036470637036060795,
-          "p95_abs_activity": 0.006961871024057586,
+          "mean_abs_activity": 0.0036305539130312425,
+          "p95_abs_activity": 0.00693257167963921,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003632318524108413,
-          "p95_abs_activity": 0.007234175480682836,
+          "mean_abs_activity": 0.003615970479594566,
+          "p95_abs_activity": 0.007205912128999614,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.02103604710476319,
-      "raw_steering_sign_disagreement_vs_front": 0.075
+      "raw_steering_mae_vs_front": 0.098421105348005,
+      "raw_steering_sign_disagreement_vs_front": 0.2875
     },
     "panorama_flow_0.1": {
       "sensory_profile": "panorama_flow",
@@ -409,54 +574,54 @@
       "flow_gain_scale": 0.1,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.047852355099176444,
-      "p95_abs_raw_steering": 0.21358237439262148,
-      "mean_abs_executed_steering": 0.12608743172815334,
-      "mean_abs_steering_drive": 0.03659373353002593,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.2017091856169369,
+      "p95_abs_raw_steering": 0.8362858881310145,
+      "mean_abs_executed_steering": 0.38652993448399736,
+      "mean_abs_steering_drive": 0.10024530112277716,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 4.855499999999999,
+      "mean_total_direct_drive_l1": 5.3389999999999995,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.0006874999999999999,
-          "mean_abs_activity": 0.016654519646544942,
-          "p95_abs_activity": 0.051451443880796435,
+          "direct_drive": 0.0007088933691756272,
+          "mean_abs_activity": 0.016223385892226362,
+          "p95_abs_activity": 0.049113361729541796,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0007499999999999999,
-          "mean_abs_activity": 0.01661405139020644,
-          "p95_abs_activity": 0.049593973910668866,
+          "direct_drive": 0.0008709618208516886,
+          "mean_abs_activity": 0.015463957589236087,
+          "p95_abs_activity": 0.04703251792816445,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004244765580641641,
-          "p95_abs_activity": 0.0070887741425949,
+          "mean_abs_activity": 0.004226031013827481,
+          "p95_abs_activity": 0.007056155668650632,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.00420848521739785,
-          "p95_abs_activity": 0.007422275880415441,
+          "mean_abs_activity": 0.00419058386890434,
+          "p95_abs_activity": 0.00739058187940742,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036469499450547003,
-          "p95_abs_activity": 0.00696175696550938,
+          "mean_abs_activity": 0.003630650834812066,
+          "p95_abs_activity": 0.00693225230066119,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036321288851862477,
-          "p95_abs_activity": 0.007234422208223634,
+          "mean_abs_activity": 0.0036165764887382324,
+          "p95_abs_activity": 0.00720559934249394,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.03758600299613657,
-      "raw_steering_sign_disagreement_vs_front": 0.1125
+      "raw_steering_mae_vs_front": 0.1933335573255917,
+      "raw_steering_sign_disagreement_vs_front": 0.3125
     },
     "panorama_flow_0.25": {
       "sensory_profile": "panorama_flow",
@@ -464,54 +629,54 @@
       "flow_gain_scale": 0.25,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.04237225635070228,
-      "p95_abs_raw_steering": 0.20352032926193603,
-      "mean_abs_executed_steering": 0.15816656505691026,
-      "mean_abs_steering_drive": 0.03263993669534102,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.27683903546955424,
+      "p95_abs_raw_steering": 0.9931956078253894,
+      "mean_abs_executed_steering": 0.4310932739640715,
+      "mean_abs_steering_drive": 0.21240856004005765,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 12.13875,
+      "mean_total_direct_drive_l1": 13.347499999999998,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.0017187499999999998,
-          "mean_abs_activity": 0.01719180434301961,
-          "p95_abs_activity": 0.051773725636303426,
+          "direct_drive": 0.0017722334229390681,
+          "mean_abs_activity": 0.017616552134859374,
+          "p95_abs_activity": 0.05218555492465384,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.001875,
-          "mean_abs_activity": 0.017223466833820568,
-          "p95_abs_activity": 0.05035559163079597,
+          "direct_drive": 0.0021774045521292217,
+          "mean_abs_activity": 0.015655014806543476,
+          "p95_abs_activity": 0.047610781958792356,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004244633786901275,
-          "p95_abs_activity": 0.00708858160174799,
+          "mean_abs_activity": 0.00422378730867905,
+          "p95_abs_activity": 0.007055041603852175,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0042081512591288115,
-          "p95_abs_activity": 0.007421287269133358,
+          "mean_abs_activity": 0.0041887082126603305,
+          "p95_abs_activity": 0.0073882901629431785,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036467024775717503,
-          "p95_abs_activity": 0.006961575031280631,
+          "mean_abs_activity": 0.003633111531890343,
+          "p95_abs_activity": 0.006931715332351729,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036319467537335726,
-          "p95_abs_activity": 0.007235366020888989,
+          "mean_abs_activity": 0.0036201462653561835,
+          "p95_abs_activity": 0.0072047435756459775,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.08011408913184928,
-      "raw_steering_sign_disagreement_vs_front": 0.4
+      "raw_steering_mae_vs_front": 0.3055282130076117,
+      "raw_steering_sign_disagreement_vs_front": 0.525
     },
     "panorama_flow_0.5": {
       "sensory_profile": "panorama_flow",
@@ -519,54 +684,54 @@
       "flow_gain_scale": 0.5,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.09332585382607403,
-      "p95_abs_raw_steering": 0.2849627039909719,
-      "mean_abs_executed_steering": 0.33462136185095975,
-      "mean_abs_steering_drive": 0.05190680543892086,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.3228516626362073,
+      "p95_abs_raw_steering": 0.999065263883268,
+      "mean_abs_executed_steering": 0.5349352493451492,
+      "mean_abs_steering_drive": 0.3254970606940333,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 24.2775,
+      "mean_total_direct_drive_l1": 26.694999999999997,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.0034374999999999996,
-          "mean_abs_activity": 0.01821373668790329,
-          "p95_abs_activity": 0.05253457217477262,
+          "direct_drive": 0.0035444668458781362,
+          "mean_abs_activity": 0.020394139594282025,
+          "p95_abs_activity": 0.060989250132115556,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.00375,
-          "mean_abs_activity": 0.018406995135592297,
-          "p95_abs_activity": 0.05209391737007536,
+          "direct_drive": 0.004354809104258443,
+          "mean_abs_activity": 0.01608888680639211,
+          "p95_abs_activity": 0.04893850792432204,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004244869339571622,
-          "p95_abs_activity": 0.007088291876208075,
+          "mean_abs_activity": 0.004220293301337108,
+          "p95_abs_activity": 0.00705335616246785,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004207802285284145,
-          "p95_abs_activity": 0.007420093159524299,
+          "mean_abs_activity": 0.0041856711991211885,
+          "p95_abs_activity": 0.007385509362337927,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003646553768480487,
-          "p95_abs_activity": 0.006961483032344518,
+          "mean_abs_activity": 0.003639999722754972,
+          "p95_abs_activity": 0.006930998866713623,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.003632775853833081,
-          "p95_abs_activity": 0.007236591631392742,
+          "mean_abs_activity": 0.0036287480089495006,
+          "p95_abs_activity": 0.0072040638129394095,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.14438339228133118,
-      "raw_steering_sign_disagreement_vs_front": 0.4875
+      "raw_steering_mae_vs_front": 0.37588458292477595,
+      "raw_steering_sign_disagreement_vs_front": 0.7
     },
     "panorama_flow_1": {
       "sensory_profile": "panorama_flow",
@@ -574,54 +739,54 @@
       "flow_gain_scale": 1.0,
       "body_gain_scale": 0.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.19752038380175346,
-      "p95_abs_raw_steering": 0.515623178245346,
-      "mean_abs_executed_steering": 0.5558317252528646,
-      "mean_abs_steering_drive": 0.08979678360628895,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.4441875128566036,
+      "p95_abs_raw_steering": 0.9998557859865567,
+      "mean_abs_executed_steering": 0.656063966617483,
+      "mean_abs_steering_drive": 0.46195811905199663,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 48.555,
+      "mean_total_direct_drive_l1": 53.38999999999999,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.006874999999999999,
-          "mean_abs_activity": 0.02061939450504724,
-          "p95_abs_activity": 0.05453916240949184,
+          "direct_drive": 0.0070889336917562724,
+          "mean_abs_activity": 0.026552227439242414,
+          "p95_abs_activity": 0.08323986100149341,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0075,
-          "mean_abs_activity": 0.021545692899962887,
-          "p95_abs_activity": 0.05587031858158298,
+          "direct_drive": 0.008709618208516887,
+          "mean_abs_activity": 0.017150087785557842,
+          "p95_abs_activity": 0.05227269738679752,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.004246050128402956,
-          "p95_abs_activity": 0.007090845653566191,
+          "mean_abs_activity": 0.004213628060183794,
+          "p95_abs_activity": 0.0070500330646417805,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0042074763751791975,
-          "p95_abs_activity": 0.007418491817205108,
+          "mean_abs_activity": 0.004179961872869953,
+          "p95_abs_activity": 0.007378607518548108,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036476228858234095,
-          "p95_abs_activity": 0.006961643960156039,
+          "mean_abs_activity": 0.003657047569659433,
+          "p95_abs_activity": 0.006929842826460942,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0,
-          "mean_abs_activity": 0.0036361136639182943,
-          "p95_abs_activity": 0.007238268314161189,
+          "mean_abs_activity": 0.003650576277240347,
+          "p95_abs_activity": 0.00720062269207773,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.24883919602111634,
-      "raw_steering_sign_disagreement_vs_front": 0.5125
+      "raw_steering_mae_vs_front": 0.5175493397498865,
+      "raw_steering_sign_disagreement_vs_front": 0.775
     },
     "panorama_flow_body_0.05": {
       "sensory_profile": "panorama_flow_body",
@@ -629,54 +794,54 @@
       "flow_gain_scale": 1.0,
       "body_gain_scale": 0.05,
       "steps": 80,
-      "mean_abs_raw_steering": 0.21829966031332196,
-      "p95_abs_raw_steering": 0.5626293043465077,
-      "mean_abs_executed_steering": 0.5939567750111313,
-      "mean_abs_steering_drive": 0.09813150581030641,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.45819501026067916,
+      "p95_abs_raw_steering": 0.9998521383595607,
+      "mean_abs_executed_steering": 0.6422559276596049,
+      "mean_abs_steering_drive": 0.4681315350200748,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 49.566960909989476,
+      "mean_total_direct_drive_l1": 54.40196090998948,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.006874999999999999,
-          "mean_abs_activity": 0.02061893738573417,
-          "p95_abs_activity": 0.05453948320937343,
+          "direct_drive": 0.0070889336917562724,
+          "mean_abs_activity": 0.026551985621335917,
+          "p95_abs_activity": 0.0832397214428056,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0075,
-          "mean_abs_activity": 0.021545754140242936,
-          "p95_abs_activity": 0.055870679579675196,
+          "direct_drive": 0.008709618208516887,
+          "mean_abs_activity": 0.017150298377964647,
+          "p95_abs_activity": 0.05227331924252212,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0009733015401094786,
-          "mean_abs_activity": 0.0036666770583906327,
-          "p95_abs_activity": 0.00660647974236781,
+          "mean_abs_activity": 0.0036528972295855056,
+          "p95_abs_activity": 0.0065753264638260586,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.00043800500145963785,
-          "mean_abs_activity": 0.00420294359937543,
-          "p95_abs_activity": 0.00744630274730298,
+          "mean_abs_activity": 0.004190239637136983,
+          "p95_abs_activity": 0.007438119746075245,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.0025122556433106956,
-          "mean_abs_activity": 0.0036777407602130554,
-          "p95_abs_activity": 0.007435311575864034,
+          "mean_abs_activity": 0.003697235138133692,
+          "p95_abs_activity": 0.0075210076443909205,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0015837633625019872,
-          "mean_abs_activity": 0.0038345068789567447,
-          "p95_abs_activity": 0.007581578503777564,
+          "mean_abs_activity": 0.003845500033276039,
+          "p95_abs_activity": 0.0075737222263342115,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.2775249909566,
-      "raw_steering_sign_disagreement_vs_front": 0.575
+      "raw_steering_mae_vs_front": 0.5324777814864481,
+      "raw_steering_sign_disagreement_vs_front": 0.775
     },
     "panorama_flow_body_0.1": {
       "sensory_profile": "panorama_flow_body",
@@ -684,54 +849,54 @@
       "flow_gain_scale": 1.0,
       "body_gain_scale": 0.1,
       "steps": 80,
-      "mean_abs_raw_steering": 0.23741453628448256,
-      "p95_abs_raw_steering": 0.6010685792549938,
-      "mean_abs_executed_steering": 0.6190746227154369,
-      "mean_abs_steering_drive": 0.1058638475544285,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.47308982560547025,
+      "p95_abs_raw_steering": 0.9998521417773121,
+      "mean_abs_executed_steering": 0.6350510532783931,
+      "mean_abs_steering_drive": 0.474392298492603,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 50.57892181997896,
+      "mean_total_direct_drive_l1": 55.41392181997896,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.006874999999999999,
-          "mean_abs_activity": 0.020618454704526813,
-          "p95_abs_activity": 0.054539776651654395,
+          "direct_drive": 0.0070889336917562724,
+          "mean_abs_activity": 0.026551726489560678,
+          "p95_abs_activity": 0.08323955778032541,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0075,
-          "mean_abs_activity": 0.021545759993023238,
-          "p95_abs_activity": 0.05587101835408248,
+          "direct_drive": 0.008709618208516887,
+          "mean_abs_activity": 0.0171504620637279,
+          "p95_abs_activity": 0.05227372362278402,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.0019466030802189572,
-          "mean_abs_activity": 0.005758578460518038,
-          "p95_abs_activity": 0.00984096193642472,
+          "mean_abs_activity": 0.005757199608706287,
+          "p95_abs_activity": 0.009836975982034346,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.0008760100029192757,
-          "mean_abs_activity": 0.005095453259855276,
-          "p95_abs_activity": 0.008787520667465288,
+          "mean_abs_activity": 0.005088577836795593,
+          "p95_abs_activity": 0.008777870413905476,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.005024511286621391,
-          "mean_abs_activity": 0.006133654242148623,
-          "p95_abs_activity": 0.011220253465580754,
+          "mean_abs_activity": 0.00616123902182153,
+          "p95_abs_activity": 0.011348845152679133,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.0031675267250039743,
-          "mean_abs_activity": 0.0049013190109690186,
-          "p95_abs_activity": 0.009070791347039631,
+          "mean_abs_activity": 0.004909372094334685,
+          "p95_abs_activity": 0.009099529093509773,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.30434067807080906,
-      "raw_steering_sign_disagreement_vs_front": 0.6
+      "raw_steering_mae_vs_front": 0.5483905217170597,
+      "raw_steering_sign_disagreement_vs_front": 0.7875
     },
     "panorama_flow_body_0.25": {
       "sensory_profile": "panorama_flow_body",
@@ -739,54 +904,54 @@
       "flow_gain_scale": 1.0,
       "body_gain_scale": 0.25,
       "steps": 80,
-      "mean_abs_raw_steering": 0.2541829074295198,
-      "p95_abs_raw_steering": 0.632853816087154,
-      "mean_abs_executed_steering": 0.627733143421038,
-      "mean_abs_steering_drive": 0.11222732148016804,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.4785039755126488,
+      "p95_abs_raw_steering": 0.9998502406625679,
+      "mean_abs_executed_steering": 0.650128882487663,
+      "mean_abs_steering_drive": 0.4765328975074226,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 53.6148045499474,
+      "mean_total_direct_drive_l1": 58.4498045499474,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.006874999999999999,
-          "mean_abs_activity": 0.02061713058210444,
-          "p95_abs_activity": 0.054540563380578534,
+          "direct_drive": 0.0070889336917562724,
+          "mean_abs_activity": 0.026551110483705998,
+          "p95_abs_activity": 0.08323916916851885,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0075,
-          "mean_abs_activity": 0.021546025207499042,
-          "p95_abs_activity": 0.05587237131549046,
+          "direct_drive": 0.008709618208516887,
+          "mean_abs_activity": 0.017151180680957622,
+          "p95_abs_activity": 0.05227478581946343,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.004866507700547393,
-          "mean_abs_activity": 0.013902059975953307,
-          "p95_abs_activity": 0.023030077821749727,
+          "mean_abs_activity": 0.01402789948915597,
+          "p95_abs_activity": 0.023099876692140243,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.002190025007298189,
-          "mean_abs_activity": 0.008509921752556692,
-          "p95_abs_activity": 0.014501668197044636,
+          "mean_abs_activity": 0.008572353905765339,
+          "p95_abs_activity": 0.014531136377627263,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.012561278216553477,
-          "mean_abs_activity": 0.01534902170096757,
-          "p95_abs_activity": 0.025688017682841745,
+          "mean_abs_activity": 0.015398441487923265,
+          "p95_abs_activity": 0.025808595136913935,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.007918816812509936,
-          "mean_abs_activity": 0.008988796850462676,
-          "p95_abs_activity": 0.015793834274518304,
+          "mean_abs_activity": 0.008991132514347555,
+          "p95_abs_activity": 0.015928499729488975,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.3246910509714544,
-      "raw_steering_sign_disagreement_vs_front": 0.6375
+      "raw_steering_mae_vs_front": 0.5538046909359118,
+      "raw_steering_sign_disagreement_vs_front": 0.8
     },
     "panorama_flow_body_0.5": {
       "sensory_profile": "panorama_flow_body",
@@ -794,54 +959,54 @@
       "flow_gain_scale": 1.0,
       "body_gain_scale": 0.5,
       "steps": 80,
-      "mean_abs_raw_steering": 0.25862869785591425,
-      "p95_abs_raw_steering": 0.6239984564917608,
-      "mean_abs_executed_steering": 0.6181794680034243,
-      "mean_abs_steering_drive": 0.11489806490426417,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.4812448311714026,
+      "p95_abs_raw_steering": 0.9998365391483267,
+      "mean_abs_executed_steering": 0.64436568337361,
+      "mean_abs_steering_drive": 0.47725968575978184,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 58.6746090998948,
+      "mean_total_direct_drive_l1": 63.5096090998948,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.006874999999999999,
-          "mean_abs_activity": 0.020615755807375534,
-          "p95_abs_activity": 0.054542050824966284,
+          "direct_drive": 0.0070889336917562724,
+          "mean_abs_activity": 0.02655075314687565,
+          "p95_abs_activity": 0.08323985975584947,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0075,
-          "mean_abs_activity": 0.021547167023527436,
-          "p95_abs_activity": 0.05587362230871804,
+          "direct_drive": 0.008709618208516887,
+          "mean_abs_activity": 0.017152807101956567,
+          "p95_abs_activity": 0.052277027314994486,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.009733015401094785,
-          "mean_abs_activity": 0.02962392827030271,
-          "p95_abs_activity": 0.04754166065249592,
+          "mean_abs_activity": 0.029666769765026402,
+          "p95_abs_activity": 0.04760454362112796,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.004380050014596378,
-          "mean_abs_activity": 0.01629910453048069,
-          "p95_abs_activity": 0.026413023770146538,
+          "mean_abs_activity": 0.01633015536936,
+          "p95_abs_activity": 0.026493037494947202,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.025122556433106954,
-          "mean_abs_activity": 0.03257018960430287,
-          "p95_abs_activity": 0.052485515116131864,
+          "mean_abs_activity": 0.032628769245638976,
+          "p95_abs_activity": 0.0525922191576683,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.015837633625019873,
-          "mean_abs_activity": 0.018090114924416412,
-          "p95_abs_activity": 0.030616243268013932,
+          "mean_abs_activity": 0.018124822159006727,
+          "p95_abs_activity": 0.030567332328064366,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.329222419162577,
-      "raw_steering_sign_disagreement_vs_front": 0.6375
+      "raw_steering_mae_vs_front": 0.5565456140346681,
+      "raw_steering_sign_disagreement_vs_front": 0.8375
     },
     "panorama_flow_body_1": {
       "sensory_profile": "panorama_flow_body",
@@ -849,54 +1014,54 @@
       "flow_gain_scale": 1.0,
       "body_gain_scale": 1.0,
       "steps": 80,
-      "mean_abs_raw_steering": 0.274762006955659,
-      "p95_abs_raw_steering": 0.6720319608181161,
-      "mean_abs_executed_steering": 0.5962015527661985,
-      "mean_abs_steering_drive": 0.12168171223893295,
-      "mean_retinal_value": 0.12047515679150819,
-      "mean_retinal_p95": 0.5301295234821737,
+      "mean_abs_raw_steering": 0.4797608812265892,
+      "p95_abs_raw_steering": 0.999830575533684,
+      "mean_abs_executed_steering": 0.6297273067885456,
+      "mean_abs_steering_drive": 0.47612364327069373,
+      "mean_retinal_value": 0.11329824524000287,
+      "mean_retinal_p95": 0.5164161374792456,
       "mean_network_saturated_fraction": 0.0,
-      "mean_total_direct_drive_l1": 68.79421819978961,
+      "mean_total_direct_drive_l1": 73.6292181997896,
       "sensory_groups": {
         "flow_positive": {
-          "direct_drive": 0.006874999999999999,
-          "mean_abs_activity": 0.020615049422485755,
-          "p95_abs_activity": 0.054548355686711146,
+          "direct_drive": 0.0070889336917562724,
+          "mean_abs_activity": 0.02655078522802796,
+          "p95_abs_activity": 0.08324413821683266,
           "saturated_fraction": 0.0
         },
         "flow_negative": {
-          "direct_drive": 0.0075,
-          "mean_abs_activity": 0.02155129049788229,
-          "p95_abs_activity": 0.05588000018615276,
+          "direct_drive": 0.008709618208516887,
+          "mean_abs_activity": 0.017157731257611886,
+          "p95_abs_activity": 0.052285702113294974,
           "saturated_fraction": 0.0
         },
         "haltere_left": {
           "direct_drive": 0.01946603080218957,
-          "mean_abs_activity": 0.06346164079150185,
-          "p95_abs_activity": 0.09985018229635897,
+          "mean_abs_activity": 0.06354471425584052,
+          "p95_abs_activity": 0.09996882502746303,
           "saturated_fraction": 0.0
         },
         "haltere_right": {
           "direct_drive": 0.008760100029192756,
-          "mean_abs_activity": 0.037073487453744745,
-          "p95_abs_activity": 0.05778290042362642,
+          "mean_abs_activity": 0.037145729080657476,
+          "p95_abs_activity": 0.05794512483698781,
           "saturated_fraction": 0.0
         },
         "proprio_left": {
           "direct_drive": 0.05024511286621391,
-          "mean_abs_activity": 0.06944283260672819,
-          "p95_abs_activity": 0.10543378897709772,
+          "mean_abs_activity": 0.06953822842333465,
+          "p95_abs_activity": 0.10556567055173219,
           "saturated_fraction": 0.0
         },
         "proprio_right": {
           "direct_drive": 0.031675267250039746,
-          "mean_abs_activity": 0.04152932700526435,
-          "p95_abs_activity": 0.06385179361095653,
+          "mean_abs_activity": 0.04161197869398166,
+          "p95_abs_activity": 0.0638839278370142,
           "saturated_fraction": 0.0
         }
       },
-      "raw_steering_mae_vs_front": 0.3455801309873845,
-      "raw_steering_sign_disagreement_vs_front": 0.675
+      "raw_steering_mae_vs_front": 0.5550617693989057,
+      "raw_steering_sign_disagreement_vs_front": 0.775
     }
   }
 }
