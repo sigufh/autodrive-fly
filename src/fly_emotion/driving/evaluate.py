@@ -1009,6 +1009,145 @@ def evaluate_sensory_gain_audit(
     }
 
 
+def evaluate_body_motor_interaction(
+    root: Path, *, start: int = 960, count: int = 4, body_gain: float = 0.0003
+) -> dict:
+    """Factorial ablation of split body sensation and DNp20 adaptation."""
+    validate_mirror_protocol(count, start)
+    if body_gain < 0:
+        raise ValueError("body gain must be non-negative")
+    published = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    if not published.exists():
+        raise FileNotFoundError("body interaction requires the published neural-v6 checkpoint")
+    body_gains = SensoryGains(
+        haltere_yaw_rate=body_gain,
+        haltere_yaw_acceleration=body_gain,
+        campaniform_lateral=body_gain,
+        campaniform_longitudinal=body_gain,
+        chordotonal_steering_rate=body_gain,
+    )
+    variants = (
+        ("body_off_adapter_off", SensoryGains(), 0.0),
+        ("body_off_adapter_0_08", SensoryGains(), 0.08),
+        ("body_on_adapter_off", body_gains, 0.0),
+        ("body_on_adapter_0_08", body_gains, 0.08),
+    )
+    arms = {}
+    for name, gains, adaptation_rate in variants:
+        engine = DrivingEngine(
+            root,
+            seed=20260914,
+            top_k=1,
+            load_checkpoint=True,
+            control_mode="neural",
+            sensory_profile="panorama_flow_body",
+            sensory_gains=gains,
+        )
+        if not engine.checkpoint_loaded:
+            raise ValueError("body interaction requires a compatible neural-v6 checkpoint")
+        engine.neural_motor_adapter.adaptation_rate = adaptation_rate
+        episodes = [
+            run_episode(
+                engine,
+                seed,
+                learning=False,
+                explore=False,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage="nine",
+                sensory_profile="panorama_flow_body",
+            )
+            for seed in range(start, start + count)
+        ]
+        arms[name] = summarize(episodes)
+        arms[name]["body_gains"] = gains.__dict__
+        arms[name]["motor_adaptation_rate"] = adaptation_rate
+    metrics = (
+        "success_rate",
+        "mean_distance",
+        "mean_obstacles_passed",
+        "road_exit_rate",
+        "obstacle_collision_rate",
+        "post_pass_complete_window_rate",
+        "post_pass_30_step_early_failure_rate",
+        "post_pass_complete_mean_abs_steering",
+        "post_pass_complete_mean_lateral_drift_per_metre",
+    )
+
+    def delta(left: str, right: str) -> dict:
+        return {metric: arms[right][metric] - arms[left][metric] for metric in metrics}
+
+    body_without_adapter = delta("body_off_adapter_off", "body_on_adapter_off")
+    body_with_adapter = delta("body_off_adapter_0_08", "body_on_adapter_0_08")
+    interaction = {
+        metric: body_with_adapter[metric] - body_without_adapter[metric] for metric in metrics
+    }
+    gates = {
+        "adapter_improves_completion_without_body": (
+            arms["body_off_adapter_0_08"]["success_rate"]
+            > arms["body_off_adapter_off"]["success_rate"]
+        ),
+        "adapter_improves_completion_with_body": (
+            arms["body_on_adapter_0_08"]["success_rate"]
+            > arms["body_on_adapter_off"]["success_rate"]
+        ),
+        "body_replaces_adapter": (
+            arms["body_on_adapter_off"]["success_rate"]
+            >= arms["body_off_adapter_0_08"]["success_rate"]
+        ),
+        "body_with_adapter_task_not_worse": (
+            arms["body_on_adapter_0_08"]["success_rate"]
+            >= arms["body_off_adapter_0_08"]["success_rate"]
+            and arms["body_on_adapter_0_08"]["mean_obstacles_passed"]
+            >= arms["body_off_adapter_0_08"]["mean_obstacles_passed"]
+        ),
+        "body_with_adapter_steering_lower": (
+            body_with_adapter["post_pass_complete_mean_abs_steering"] < 0
+        ),
+        "body_with_adapter_drift_lower": (
+            body_with_adapter["post_pass_complete_mean_lateral_drift_per_metre"] < 0
+        ),
+    }
+    gates["body_with_adapter_simultaneously_improves_stability"] = (
+        gates["body_with_adapter_steering_lower"]
+        and gates["body_with_adapter_drift_lower"]
+    )
+    return {
+        "protocol": {
+            "checkpoint_sha256": hashlib.sha256(published.read_bytes()).hexdigest(),
+            "test_seed_range": [start, start + count - 1],
+            "independent_mirror_pairs": count // 2,
+            "learning": False,
+            "explore": False,
+            "action_override": False,
+            "sensory_profile": "panorama_flow_body",
+            "peripheral_visual_gain": SensoryGains().peripheral_visual,
+            "optic_flow_gain": 0.0,
+            "factorial_variables": ["split_body_sensation", "DNp20_adaptation_rate"],
+            "claim_boundary": "two-factor interaction screen; no arm is auto-deployed",
+        },
+        "anatomy": DrivingEngine(
+            root, top_k=1, load_checkpoint=False
+        ).sensory_projection.summary(),
+        "arms": arms,
+        "effects": {
+            "body_without_adapter": body_without_adapter,
+            "body_with_adapter": body_with_adapter,
+            "difference_in_differences": interaction,
+        },
+        "gates": gates,
+        "decision": {
+            "retain_motor_adaptation_rate": 0.08,
+            "default_body_gains": 0.0,
+            "deploy_body_sensation": False,
+            "reason": (
+                "body sensation cannot replace DNp20 adaptation and, with adaptation enabled, "
+                "reduces steering but increases drift per metre"
+            ),
+        },
+    }
+
+
 def summarize(episodes: list[dict]) -> dict:
     summary = {
         "episodes": len(episodes),

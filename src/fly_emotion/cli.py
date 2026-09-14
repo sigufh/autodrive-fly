@@ -12,6 +12,7 @@ from .data.download import download_file
 from .data.manifest import iter_files, load_manifest
 from .driving.evaluate import (
     calibrate_stable_policy,
+    evaluate_body_motor_interaction,
     evaluate_city_alpha,
     evaluate_constraints,
     evaluate_neural_decision_baseline,
@@ -81,6 +82,10 @@ def _parser() -> argparse.ArgumentParser:
     gain_audit = subparsers.add_parser("evaluate-sensory-gains")
     gain_audit.add_argument("--seed", type=int, default=960)
     gain_audit.add_argument("--steps", type=int, default=120)
+    body_interaction = subparsers.add_parser("evaluate-body-motor-interaction")
+    body_interaction.add_argument("--start", type=int, default=960)
+    body_interaction.add_argument("--count", type=int, default=4)
+    body_interaction.add_argument("--body-gain", type=float, default=0.0003)
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -181,6 +186,14 @@ def main() -> None:
     if args.command == "evaluate-sensory-gains":
         report = evaluate_sensory_gain_audit(root, seed=args.seed, steps=args.steps)
         target = root / "artifacts/neural-v6-sensory-gain-audit.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-body-motor-interaction":
+        report = evaluate_body_motor_interaction(
+            root, start=args.start, count=args.count, body_gain=args.body_gain
+        )
+        target = root / "artifacts/neural-v6-body-motor-interaction.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

@@ -173,6 +173,16 @@ steering 0.1360→0.1319, but raised drift/metre 0.0638→0.0673 versus correcte
 panorama. Body gains remain zero pending motor-adapter interaction ablation.
 Evidence: `artifacts/neural-v6-body-sensory-ablation.json`.
 
+A 2×2 factorial ablation separates split body sensation from the DNp20 slow
+adapter. With adaptation disabled, body-off and body-on both completed 0%,
+exited the road in every episode and had complete-window steering 0.4062 and
+0.3996; body feedback cannot replace adaptation. At adaptation 0.08 both arms
+completed 100%, while body feedback reduced steering 0.1360→0.1319 but increased
+drift/metre 0.0638→0.0673. The drift difference-in-differences is +0.00455/m.
+A one-pair 0.06–0.09 rate screen was strongly non-monotonic and is not release
+evidence. The retained configuration is adaptation 0.08 with body gains zero.
+Evidence: `artifacts/neural-v6-body-motor-interaction.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without
