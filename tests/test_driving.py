@@ -23,6 +23,7 @@ from fly_emotion.driving.evaluate import (
     evaluate_neural_decision_baseline,
     mirror_summary,
     paired_statistics,
+    panorama_release_gates,
     summarize_post_pass_windows,
     usability_gates,
     validate_mirror_protocol,
@@ -896,6 +897,32 @@ def test_post_pass_short_success_window_is_censored_not_failed() -> None:
     assert metrics["post_pass_complete_window_count"] == 0
     assert metrics["post_pass_failure_truncated_window_count"] == 0
     assert metrics["post_pass_censored_window_count"] == 1
+
+
+def test_panorama_release_requires_task_and_both_stability_metrics() -> None:
+    front = {
+        "success_rate": 1.0,
+        "mean_obstacles_passed": 9.0,
+        "road_exit_rate": 0.0,
+        "obstacle_collision_rate": 0.0,
+        "post_pass_complete_window_rate": 1.0,
+        "post_pass_30_step_early_failure_rate": 0.0,
+        "post_pass_complete_mean_abs_steering": 0.14,
+        "post_pass_complete_mean_lateral_drift_per_metre": 0.07,
+    }
+    panorama = {
+        **front,
+        "post_pass_complete_mean_abs_steering": 0.13,
+        "post_pass_complete_mean_lateral_drift_per_metre": 0.06,
+        "constraint_rate": 0.0,
+        "mean_abs_constraint": 0.0,
+    }
+    gates = panorama_release_gates(front, panorama)
+    assert all(gates.values())
+    panorama["post_pass_complete_mean_lateral_drift_per_metre"] = 0.08
+    gates = panorama_release_gates(front, panorama)
+    assert gates["post_pass_steering_lower"]
+    assert not gates["post_pass_drift_per_metre_lower"]
 
 
 def test_bootstrap_clusters_mirror_pairs_and_rejects_misalignment() -> None:

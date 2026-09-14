@@ -62,7 +62,7 @@ test('driving controls expose learning, stepping and reset', async ({ page }) =>
 test('neural decision experiment keeps the random-obstacle map', async ({ page }) => {
   await page.goto(webUrl)
   await page.getByLabel('控制模式').selectOption('neural')
-  await expect(page.getByText('已加载 MaleCNS v6：当前保留已验证的 143° 前视与 DNp20 慢基线适应。近全景、T4/T5 光流和平衡器/本体感觉已实现并完成消融，但尚未同时保持任务和稳定性，因此未部署。')).toBeVisible({ timeout: 120000 })
+  await expect(page.getByText('已加载 MaleCNS v6：当前保留 143° 前视与 DNp20 8% 慢基线适应。坐标保持全景虽降低转向和漂移，但在 8 对全新道路上通关率 50%→37.5%、出界率 0%→12.5%；光流、身体感觉和感觉通路学习也未通过门槛，因此均未部署。')).toBeVisible({ timeout: 120000 })
   await expect(page.getByText('障碍驾驶实验')).toBeVisible()
   await expect(page.locator('.road-canvas')).toBeVisible()
   await expect(page.getByText('MaleCNS v6', { exact: true })).toBeVisible()

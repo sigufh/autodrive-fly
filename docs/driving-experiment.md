@@ -195,6 +195,16 @@ obstacles remained 100% and 9/9, but complete-window steering worsened
 gates, is not promoted to larger evaluation, and cannot replace v6. Evidence:
 `artifacts/neural-v6-sensory-pathway-curriculum.json`.
 
+Only the coordinate-preserving panorama passed the small screen, so it alone
+advanced to 16 fresh roads (seeds 1000–1015, eight mirror pairs). Flow, body
+stimulation and the rejected sensory-learning candidate were disabled. Front
+completed 50%, passed 6.0 obstacles and exited the road 0%; panorama completed
+37.5%, passed 6.125 and exited 12.5%. Panorama reduced complete-window steering
+0.2194→0.2156 and drift/metre 0.1133→0.1009, but failed completion and road-exit
+gates. Raw and executed steering mirror MAE remained zero in both arms, ruling
+out recurrent fixed-side bias. Deployment therefore remains front + v6 + 8%
+DNp20 adaptation. Evidence: `artifacts/neural-v6-panorama-release.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

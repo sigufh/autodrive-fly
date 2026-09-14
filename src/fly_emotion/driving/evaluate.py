@@ -1336,6 +1336,123 @@ def train_sensory_pathway_curriculum(
     }
 
 
+def panorama_release_gates(front: dict, panorama: dict) -> dict:
+    """Conservative gates for replacing front with peripheral panorama."""
+    gates = {
+        "completion_not_worse": panorama["success_rate"] >= front["success_rate"],
+        "obstacles_not_worse": (
+            panorama["mean_obstacles_passed"] >= front["mean_obstacles_passed"]
+        ),
+        "road_exit_not_higher": panorama["road_exit_rate"] <= front["road_exit_rate"],
+        "collision_not_higher": (
+            panorama["obstacle_collision_rate"] <= front["obstacle_collision_rate"]
+        ),
+        "complete_window_rate_not_lower": (
+            panorama["post_pass_complete_window_rate"]
+            >= front["post_pass_complete_window_rate"]
+        ),
+        "early_failure_rate_not_higher": (
+            panorama["post_pass_30_step_early_failure_rate"]
+            <= front["post_pass_30_step_early_failure_rate"]
+        ),
+        "post_pass_steering_lower": (
+            panorama["post_pass_complete_mean_abs_steering"]
+            < front["post_pass_complete_mean_abs_steering"]
+        ),
+        "post_pass_drift_per_metre_lower": (
+            panorama["post_pass_complete_mean_lateral_drift_per_metre"]
+            < front["post_pass_complete_mean_lateral_drift_per_metre"]
+        ),
+        "zero_action_override": (
+            panorama["constraint_rate"] == 0 and panorama["mean_abs_constraint"] == 0
+        ),
+    }
+    return gates
+
+
+def evaluate_panorama_release(
+    root: Path, *, start: int = 1000, count: int = 16
+) -> dict:
+    """Held-out mirror evaluation of coordinate-preserving panorama."""
+    validate_mirror_protocol(count, start)
+    checkpoint = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    arms = {}
+    mirrors = {}
+    for profile in ("front", "panorama"):
+        engine = DrivingEngine(
+            root,
+            seed=20260914,
+            top_k=1,
+            load_checkpoint=True,
+            control_mode="neural",
+            sensory_profile=profile,
+        )
+        if not engine.checkpoint_loaded:
+            raise ValueError("panorama release evaluation requires published neural-v6")
+        episodes = [
+            run_episode(
+                engine,
+                seed,
+                learning=False,
+                explore=False,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage="nine",
+                sensory_profile=profile,
+            )
+            for seed in range(start, start + count)
+        ]
+        arms[profile] = summarize(episodes)
+        mirrors[profile] = mirror_summary(episodes)
+    gates = panorama_release_gates(arms["front"], arms["panorama"])
+    gates["raw_steering_mirror_mae_below_1e_6"] = (
+        mirrors["panorama"]["raw_steering_mirror_mae"] <= 1e-6
+    )
+    gates["steering_mirror_mae_below_1e_6"] = (
+        mirrors["panorama"]["steering_mirror_mae"] <= 1e-6
+    )
+    metrics = (
+        "success_rate",
+        "mean_distance",
+        "mean_obstacles_passed",
+        "road_exit_rate",
+        "obstacle_collision_rate",
+        "post_pass_complete_window_rate",
+        "post_pass_30_step_early_failure_rate",
+        "post_pass_complete_mean_abs_steering",
+        "post_pass_complete_mean_lateral_drift_per_metre",
+    )
+    return {
+        "protocol": {
+            "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+            "test_seed_range": [start, start + count - 1],
+            "independent_mirror_pairs": count // 2,
+            "previously_used_for_training_or_screening": False,
+            "learning": False,
+            "explore": False,
+            "action_override": False,
+            "motor_adaptation_rate": 0.08,
+            "peripheral_visual_gain": SensoryGains().peripheral_visual,
+            "optic_flow_gain": SensoryGains().optic_flow,
+            "body_gains": {
+                key: value
+                for key, value in SensoryGains().__dict__.items()
+                if key not in {"peripheral_visual", "optic_flow"}
+            },
+            "only_variable": "coordinate_preserving_peripheral_panorama",
+        },
+        "front": arms["front"],
+        "panorama": arms["panorama"],
+        "delta_panorama_minus_front": {
+            metric: arms["panorama"][metric] - arms["front"][metric]
+            for metric in metrics
+        },
+        "mirror": mirrors,
+        "gates": gates,
+        "approved_for_deployment": all(gates.values()),
+    }
+
+
 def summarize(episodes: list[dict]) -> dict:
     summary = {
         "episodes": len(episodes),

@@ -60,6 +60,12 @@ dedicated training and ablation.
   profile that improved both task and stability, so deployment remains `front`.
 - Sensory-screen evidence: `neural-v6-sensory-ablation.json`; two independent
   test pairs, explicitly screening-level rather than a release claim.
+- Corrected panorama release check: on eight fresh mirror pairs it reduced
+  steering and drift but completion fell 50%→37.5% and road exits rose 0→12.5%;
+  deployment remains `front` (`neural-v6-panorama-release.json`).
+- Local flow and split body stimulation remain at zero default gain. Sensory-
+  pathway multipliers remain at the neutral value 1 with learning disabled.
+  None replaced v6 or bypassed the fixed DNp20/DNpe017/MDN action path.
 
 ## Historical v2 Audit
 

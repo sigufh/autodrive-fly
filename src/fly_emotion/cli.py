@@ -18,6 +18,7 @@ from .driving.evaluate import (
     evaluate_neural_decision_baseline,
     evaluate_neural_motor_adaptation,
     evaluate_neural_transfer,
+    evaluate_panorama_release,
     evaluate_sensory_ablation,
     evaluate_sensory_gain_audit,
     train_neural_curriculum,
@@ -91,6 +92,9 @@ def _parser() -> argparse.ArgumentParser:
     sensory_train.add_argument("--episodes-per-stage", type=int, default=2)
     sensory_train.add_argument("--evaluation-start", type=int, default=980)
     sensory_train.add_argument("--evaluation-seeds", type=int, default=4)
+    panorama_release = subparsers.add_parser("evaluate-panorama-release")
+    panorama_release.add_argument("--start", type=int, default=1000)
+    panorama_release.add_argument("--count", type=int, default=16)
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -210,6 +214,12 @@ def main() -> None:
             evaluation_seeds=args.evaluation_seeds,
         )
         target = root / "artifacts/neural-v6-sensory-pathway-curriculum.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-panorama-release":
+        report = evaluate_panorama_release(root, start=args.start, count=args.count)
+        target = root / "artifacts/neural-v6-panorama-release.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return
