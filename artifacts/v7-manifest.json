@@ -4,7 +4,7 @@
   "deployment_enabled": false,
   "city_expansion_enabled": false,
   "config_sha256": "26cd9a32ce53a609fd0cc53ef5579c54474e9dbe94826e49c23f3df01a2788ca",
-  "implementation_sha256": "ad798a97b4a8665648c3cf7adad4b8f9cf1c19306f9c45860619db38bc5bae56",
+  "implementation_sha256": "1c28d65994f10a24c3fa5e23e903346f8d412a558790a73db2da1a3caa809b6e",
   "baseline_contracts": {
     "assisted_v5": {
       "path": "artifacts/checkpoints/driving-policy.npz",
@@ -29,16 +29,19 @@
   "advance_to_central_complex": false,
   "blockers": [
     "branched_T4_response_gates_failed",
+    "published_T4_conductance_response_gates_failed",
     "controlled_visual_response_gates_failed",
     "real_topology_advantage_not_demonstrated"
   ],
   "stage_findings": {
     "historical_aggregate_optic_hex_axis_passed": false,
     "nested_T4_branch_axis_validation_passed": true,
-    "branched_T4_controlled_response_passed": false
+    "branched_T4_controlled_response_passed": false,
+    "published_T4_conductance_response_passed": false
   },
-  "current_evidence": "artifacts/v7-branched-t4-candidate.json",
+  "current_evidence": "artifacts/v7-t4-conductance-candidate.json",
   "evidence": [
+    "artifacts/v7-t4-conductance-candidate.json",
     "artifacts/v7-branched-t4-candidate.json",
     "artifacts/v7-t4-source-audit.json",
     "artifacts/v7-optic-hex-axis-calibration.json",

@@ -1571,6 +1571,7 @@ def write_v7_manifest(root: Path) -> dict:
     contract = V7Contract.load(root)
     implementation_sha256 = _sha256(root / V7_IMPLEMENTATION)
     evidence_paths = (
+        root / "artifacts/v7-t4-conductance-candidate.json",
         root / "artifacts/v7-branched-t4-candidate.json",
         root / "artifacts/v7-t4-source-audit.json",
         root / "artifacts/v7-optic-hex-axis-calibration.json",
@@ -1587,7 +1588,21 @@ def write_v7_manifest(root: Path) -> dict:
             continue
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
         protocol = evidence.get("protocol", {})
-        if evidence_path.name == "v7-t4-source-audit.json":
+        if evidence_path.name == "v7-t4-conductance-candidate.json":
+            source_audit_path = root / "artifacts/v7-t4-source-audit.json"
+            valid_evidence = (
+                protocol.get("v7_config_sha256") == contract.sha256
+                and protocol.get("v7_implementation_sha256") == implementation_sha256
+                and protocol.get("branched_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_branched.py")
+                and protocol.get("candidate_config_sha256")
+                == _sha256(root / "configs/driving-v7-t4-conductance.yaml")
+                and protocol.get("candidate_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_conductance.py")
+                and source_audit_path.exists()
+                and protocol.get("source_audit_sha256") == _sha256(source_audit_path)
+            )
+        elif evidence_path.name == "v7-t4-source-audit.json":
             valid_evidence = protocol.get("config_sha256") == _sha256(
                 root / "configs/driving-v7-t4-source-audit.yaml"
             ) and protocol.get("implementation_sha256") == _sha256(
@@ -1618,6 +1633,7 @@ def write_v7_manifest(root: Path) -> dict:
     axis = current_evidence.get("v7-optic-hex-axis-calibration.json")
     source_audit = current_evidence.get("v7-t4-source-audit.json")
     branched = current_evidence.get("v7-branched-t4-candidate.json")
+    conductance = current_evidence.get("v7-t4-conductance-candidate.json")
     controlled = current_evidence.get("v7-typed-visual-candidate.json") or (
         current_evidence.get("v7-controlled-vision.json")
     )
@@ -1629,6 +1645,10 @@ def write_v7_manifest(root: Path) -> dict:
         blockers.append("branched_T4_response_evidence_stale_or_missing")
     elif not branched.get("controlled_response_gates_pass"):
         blockers.append("branched_T4_response_gates_failed")
+    if conductance is None:
+        blockers.append("published_T4_conductance_evidence_stale_or_missing")
+    elif not conductance.get("controlled_response_gates_pass"):
+        blockers.append("published_T4_conductance_response_gates_failed")
     if controlled is None:
         blockers.append("controlled_visual_response_evidence_stale_or_missing")
     else:
@@ -1642,6 +1662,9 @@ def write_v7_manifest(root: Path) -> dict:
         and branched is not None
         and branched.get("controlled_response_gates_pass")
         and branched.get("topology_controls_complete")
+        and conductance is not None
+        and conductance.get("controlled_response_gates_pass")
+        and conductance.get("topology_controls_complete")
         and controlled is not None
         and controlled.get("advance_to_central_complex")
     )
@@ -1670,6 +1693,9 @@ def write_v7_manifest(root: Path) -> dict:
             ),
             "branched_T4_controlled_response_passed": bool(
                 branched and branched.get("controlled_response_gates_pass")
+            ),
+            "published_T4_conductance_response_passed": bool(
+                conductance and conductance.get("controlled_response_gates_pass")
             ),
         },
         "current_evidence": evidence_used[0] if evidence_used else None,

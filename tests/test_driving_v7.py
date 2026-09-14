@@ -224,10 +224,13 @@ def test_v7_manifest_is_isolated_and_in_progress() -> None:
         "historical_aggregate_optic_hex_axis_passed": False,
         "nested_T4_branch_axis_validation_passed": True,
         "branched_T4_controlled_response_passed": False,
+        "published_T4_conductance_response_passed": False,
     }
     assert "branched_T4_response_gates_failed" in manifest["blockers"]
-    assert manifest["current_evidence"] == "artifacts/v7-branched-t4-candidate.json"
+    assert "published_T4_conductance_response_gates_failed" in manifest["blockers"]
+    assert manifest["current_evidence"] == "artifacts/v7-t4-conductance-candidate.json"
     assert set(manifest["evidence"]) >= {
+        "artifacts/v7-t4-conductance-candidate.json",
         "artifacts/v7-branched-t4-candidate.json",
         "artifacts/v7-t4-source-audit.json",
         "artifacts/v7-typed-visual-candidate.json",

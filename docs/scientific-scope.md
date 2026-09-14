@@ -20,6 +20,11 @@ offsets with 96.38% outer-fold cardinal accuracy. This is anatomy-only evidence:
 the frozen three-branch functional candidate still has 0.0024 median T4
 direction contrast and 0.5053 mirror error on its best partial condition. It
 therefore does not establish a functioning T4 circuit or authorize stage 2.
+The published single-compartment conductance equation and parameter values were
+also evaluated without tuning. All five input populations had dynamic activity,
+but no retinal backend passed T4 direction or mirror gates. This tests transfer
+to the current dimensionless proxy; it is not a refutation or reproduction of
+the original electrophysiology.
 
 ## Supported claims
 

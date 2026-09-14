@@ -32,6 +32,7 @@ from .driving.v7 import (
     write_v7_manifest,
 )
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
+from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 
 
@@ -109,6 +110,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-optic-axis")
     subparsers.add_parser("v7-audit-t4-sources")
     subparsers.add_parser("v7-evaluate-branched-t4")
+    subparsers.add_parser("v7-evaluate-t4-conductance")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -270,6 +272,12 @@ def main() -> None:
     if args.command == "v7-evaluate-branched-t4":
         report = evaluate_v7_branched_t4_candidate(root)
         target = root / "artifacts/v7-branched-t4-candidate.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-conductance":
+        report = evaluate_v7_published_conductance(root)
+        target = root / "artifacts/v7-t4-conductance-candidate.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return
