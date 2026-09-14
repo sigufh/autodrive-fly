@@ -132,6 +132,14 @@ the window-range criterion. Removing all outputs also destroys feedforward
 signalling. This demonstrates output dependence in the tested model, not a
 localized feedback mechanism, biological stability or usable vision.
 
+A timing-only conductance comparator makes T4 read the previous state instead of
+same-step upstream updates, preserving all weights and input normalization. It
+passes one-step causality tests but does not improve functional gates; with
+frame-difference encoding the final background step change rises from 0.000148 to
+0.16056 and mirror error reaches 0.9835. Synchronous scheduling is not validated
+biological timing, and its altered feedback phase does not identify a causal
+microcircuit or justify deployment.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
