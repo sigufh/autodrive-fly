@@ -15,6 +15,7 @@ from .driving.evaluate import (
     evaluate_city_alpha,
     evaluate_constraints,
     evaluate_neural_decision_baseline,
+    evaluate_neural_motor_adaptation,
     evaluate_neural_transfer,
     train_neural_curriculum,
     write_evaluation,
@@ -58,9 +59,14 @@ def _parser() -> argparse.ArgumentParser:
     train_neural.add_argument("--train-episodes", type=int, default=24)
     train_neural.add_argument("--evaluation-start", type=int, default=600)
     train_neural.add_argument("--evaluation-seeds", type=int, default=8)
-    train_neural.add_argument("--stage", choices=["single", "triple", "nine"], default="single")
+    train_neural.add_argument(
+        "--stage",
+        choices=["single", "triple", "nine"],
+        default="single",
+    )
     train_neural.add_argument("--resume", action="store_true")
     subparsers.add_parser("evaluate-neural-transfer")
+    subparsers.add_parser("evaluate-neural-motor-adaptation")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -136,6 +142,12 @@ def main() -> None:
     if args.command == "evaluate-neural-transfer":
         report = evaluate_neural_transfer(root)
         target = root / "artifacts/neural-v6-transfer.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "evaluate-neural-motor-adaptation":
+        report = evaluate_neural_motor_adaptation(root)
+        target = root / "artifacts/neural-v6-motor-adaptation.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

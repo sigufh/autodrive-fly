@@ -64,6 +64,30 @@ def map_neural_motor_output(
     )
 
 
+class NeuralMotorAdapter:
+    """Environment-blind conversion from descending activity to actuators.
+
+    A slow DNp20 baseline makes a sustained neural deflection fade while
+    preserving changes in turn intent. The adapter has no access to vision,
+    obstacle geometry, road position, heading, reward or route state.
+    """
+
+    def __init__(self, *, steering_gain: float = 4.0, adaptation_rate: float = 0.08):
+        self.steering_gain = steering_gain
+        self.adaptation_rate = adaptation_rate
+        self.steering_baseline = 0.0
+
+    def reset(self) -> None:
+        self.steering_baseline = 0.0
+
+    def step(self, steering: float, throttle: float, reverse: float) -> tuple[float, float, float]:
+        residual = steering - self.steering_baseline
+        self.steering_baseline += self.adaptation_rate * residual
+        return map_neural_motor_output(
+            residual, throttle, reverse, steering_gain=self.steering_gain
+        )
+
+
 class DopaminePolicy:
     """Plastic gain on real synapses entering documented motor cells."""
 
@@ -466,6 +490,7 @@ class DrivingEngine:
         )
         self.source_sign = self._source_sign(raw / "body-neurotransmitters.feather")
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
+        self.neural_motor_adapter = NeuralMotorAdapter()
         self.assisted_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
         self.neural_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
         self.policy_checkpoint = self.assisted_policy_checkpoint
@@ -591,6 +616,7 @@ class DrivingEngine:
         self.policy.reset_traces(
             episode_seed=self.env.pair_seed if self.control_mode == "neural" else seed
         )
+        self.neural_motor_adapter.reset()
         self.policy.exploration_sign = (
             float(self.env.mirror) if self.control_mode == "neural" else 1.0
         )
@@ -720,7 +746,7 @@ class DrivingEngine:
                 speed_target = min(speed_target, float(guidance["speed_cap"]))
             throttle = float(min(raw_throttle, speed_target))
         else:
-            steering, throttle, reverse = map_neural_motor_output(
+            steering, throttle, reverse = self.neural_motor_adapter.step(
                 raw_steering, raw_throttle, raw_reverse
             )
             constraint = {"active": False, "blend": 0.0, "correction": 0.0}
@@ -904,6 +930,12 @@ class DrivingEngine:
                 "mapping": "mirror_odd_DNp20_even_DNpe017_MDN",
                 "symmetry": "shared_full_graph_original_and_mirrored_visual_states",
                 "brain_substeps_per_action": self.brain_substeps,
+                "neural_adapter": {
+                    "type": "environment_blind_DNp20_slow_baseline",
+                    "steering_gain": self.neural_motor_adapter.steering_gain,
+                    "adaptation_rate": self.neural_motor_adapter.adaptation_rate,
+                    "steering_baseline": self.neural_motor_adapter.steering_baseline,
+                },
             },
             "dopamine_neurons": {
                 "body_ids": DOPAMINE_BODY_IDS.tolist(),

@@ -130,6 +130,16 @@ def run_episode(
             ]
         )
     trace = np.asarray(controls)
+    post_pass_steering = []
+    post_pass_raw_steering = []
+    post_pass_lateral_drift = []
+    for step in engine.env.obstacle_pass_steps.values():
+        start = max(step - 1, 0)
+        window = trace[start : min(len(trace), start + 30)]
+        if len(window):
+            post_pass_raw_steering.append(float(np.mean(np.abs(window[:, 0]))))
+            post_pass_steering.append(float(np.mean(np.abs(window[:, 1]))))
+            post_pass_lateral_drift.append(float(abs(window[-1, 2] - window[0, 2])))
     first = engine.env.obstacles[0]
     before_first = trace[:, 3] < first.y - first.radius - engine.env.vehicle_radius
     return {
@@ -164,6 +174,13 @@ def run_episode(
                 < np.asarray([point[1] for point in engine.env.trajectory[:-1]])
             )
         ),
+        "post_pass_mean_abs_raw_steering": mean(post_pass_raw_steering)
+        if post_pass_raw_steering
+        else 0.0,
+        "post_pass_mean_abs_steering": mean(post_pass_steering) if post_pass_steering else 0.0,
+        "post_pass_mean_lateral_drift": mean(post_pass_lateral_drift)
+        if post_pass_lateral_drift
+        else 0.0,
         "control_trace": controls,
         "control_mode": control_mode,
         "curriculum_stage": curriculum_stage,
@@ -192,6 +209,13 @@ def train_neural_curriculum(
         raise ValueError("resume requested without a compatible neural-v6 checkpoint")
     for policy in (frozen.policy, learned.policy):
         policy.configure_neural_curriculum()
+        if stage == "nine":
+            # Long single-obstacle credit encouraged prolonged turns. On the
+            # full road, faster traces let immediate stability cost terminate
+            # the turn while still spanning obstacle clearance.
+            policy.learning_rate = 0.006
+            policy.exploration_sigma = 0.12
+            policy.eligibility_decay = 0.98
 
     frozen_exposure, training = [], []
     for index in range(train_episodes):
@@ -299,6 +323,14 @@ def train_neural_curriculum(
         "obstacles_exceed_frozen": (
             learned_summary["mean_obstacles_passed"] > frozen_summary["mean_obstacles_passed"]
         ),
+        "post_pass_steering_below_frozen": (
+            learned_summary["post_pass_mean_abs_steering"]
+            < frozen_summary["post_pass_mean_abs_steering"]
+        ),
+        "post_pass_drift_below_frozen": (
+            learned_summary["post_pass_mean_lateral_drift"]
+            < frozen_summary["post_pass_mean_lateral_drift"]
+        ),
         "road_exit_below_frozen": (
             learned_summary["road_exit_rate"] < frozen_summary["road_exit_rate"]
         ),
@@ -358,9 +390,7 @@ def evaluate_neural_decision_baseline(
     seeds = range(start, start + count)
     arms = {}
     for mode in ("assisted", "neural"):
-        engine = DrivingEngine(
-            root, seed=seed, top_k=1, load_checkpoint=True, control_mode=mode
-        )
+        engine = DrivingEngine(root, seed=seed, top_k=1, load_checkpoint=True, control_mode=mode)
         episodes = [
             run_episode(
                 engine,
@@ -468,6 +498,60 @@ def evaluate_neural_transfer(
     }
 
 
+def evaluate_neural_motor_adaptation(root: Path, *, start: int = 900, count: int = 8) -> dict:
+    """Pair frozen v6 roads with/without environment-blind DNp20 adaptation."""
+    arms = {}
+    for name, rate in (("no_adaptation", 0.0), ("adaptation_0_08", 0.08)):
+        engine = DrivingEngine(
+            root, seed=20260914, top_k=1, load_checkpoint=True, control_mode="neural"
+        )
+        engine.neural_motor_adapter.adaptation_rate = rate
+        episodes = [
+            run_episode(
+                engine,
+                seed,
+                learning=False,
+                explore=False,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage="nine",
+            )
+            for seed in range(start, start + count)
+        ]
+        arms[name] = summarize(episodes)
+    baseline, adapted = arms["no_adaptation"], arms["adaptation_0_08"]
+    gates = {
+        "completion_not_worse": adapted["success_rate"] >= baseline["success_rate"],
+        "obstacles_not_worse": (
+            adapted["mean_obstacles_passed"] >= baseline["mean_obstacles_passed"]
+        ),
+        "post_pass_steering_lower": (
+            adapted["post_pass_mean_abs_steering"] < baseline["post_pass_mean_abs_steering"]
+        ),
+        "post_pass_drift_lower": (
+            adapted["post_pass_mean_lateral_drift"] < baseline["post_pass_mean_lateral_drift"]
+        ),
+        "max_lateral_lower": adapted["max_abs_lateral"] < baseline["max_abs_lateral"],
+        "zero_action_override": (
+            adapted["constraint_rate"] == 0 and adapted["mean_abs_constraint"] == 0
+        ),
+    }
+    return {
+        "protocol": {
+            "seed_range": [start, start + count - 1],
+            "learning": False,
+            "explore": False,
+            "action_override": False,
+            "only_variable": "environment_blind_DNp20_motor_adaptation_rate",
+            "checkpoint_sha256": hashlib.sha256(
+                (root / "artifacts/checkpoints/driving-policy.neural-v6.npz").read_bytes()
+            ).hexdigest(),
+        },
+        "gates": gates,
+        **arms,
+    }
+
+
 def summarize(episodes: list[dict]) -> dict:
     summary = {
         "episodes": len(episodes),
@@ -494,6 +578,9 @@ def summarize(episodes: list[dict]) -> dict:
         "reverse_fraction",
         "negative_speed_fraction",
         "reverse_gate_fraction",
+        "post_pass_mean_abs_raw_steering",
+        "post_pass_mean_abs_steering",
+        "post_pass_mean_lateral_drift",
     ):
         summary[key] = mean(item[key] for item in episodes)
     summary["road_exit_rate"] = mean(

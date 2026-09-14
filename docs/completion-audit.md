@@ -48,9 +48,13 @@ dedicated training and ablation.
   `6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437`.
 - Single-obstacle unseen completion: frozen 0%, learned 50%, shuffled actions 0%.
 - Zero-shot three-obstacle transfer: 100% completion on seeds 700–707.
-- Nine-obstacle continuation rejected: no completion-rate or road-exit gain.
+- Nine-obstacle stability-reward continuation rejected: steering fell but
+  post-pass drift increased and completion/road-exit rates did not improve.
 - Evidence files: `neural-v6-single-curriculum.json`, `neural-v6-transfer.json`,
   and rejected continuation `neural-v6-nine-curriculum.json`.
+- Post-pass overreaction: environment-blind 8% DNp20 motor adaptation reduced
+  30-step lateral drift 2.00→0.88 m and improved held-out completion 0→75%;
+  `neural-v6-motor-adaptation.json`, with zero action override in both arms.
 
 ## Historical v2 Audit
 

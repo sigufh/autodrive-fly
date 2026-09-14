@@ -33,7 +33,7 @@ export type DrivingState = {
   policy_checkpoint: { loaded: boolean; path: string; kind: string; rejection: string | null };
   dopamine: { rule: string; dopamine: number; lateral_dopamine: [number, number]; plastic_synapses: number; changed_synapses: number; mean_gain: number; min_gain: number; max_gain: number; updates: number };
   retina: { mapped_receptors: number; source_type: string; mapping: string; width: number; height: number; stimulus: number[][] };
-  motor: { body_ids: number[]; names: string[]; mapping: string; brain_substeps_per_action: number };
+  motor: { body_ids: number[]; names: string[]; mapping: string; brain_substeps_per_action: number; neural_adapter?: { type: string; steering_gain: number; adaptation_rate: number; steering_baseline: number } };
   dopamine_neurons: { body_ids: number[]; type: string; signal: string };
   activity: ActivityFrame;
 }

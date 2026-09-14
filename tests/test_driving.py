@@ -13,6 +13,7 @@ from fly_emotion.driving.city import CityDrivingEnvironment
 from fly_emotion.driving.engine import (
     DopaminePolicy,
     DrivingEngine,
+    NeuralMotorAdapter,
     assisted_steering,
     map_neural_motor_output,
 )
@@ -206,6 +207,9 @@ def test_neural_decision_evaluation_requires_zero_action_override(
             "reverse_fraction": 0.0,
             "negative_speed_fraction": 0.0,
             "reverse_gate_fraction": 0.0,
+            "post_pass_mean_abs_raw_steering": 0.0,
+            "post_pass_mean_abs_steering": 0.0,
+            "post_pass_mean_lateral_drift": 0.0,
             "collision_before_first_pass": False,
             "control_trace": [[0, 0, 0, 10, 0.5, 0]],
             "control_mode": control_mode,
@@ -448,6 +452,15 @@ def test_neural_motor_adapter_is_fixed_and_environment_independent() -> None:
     assert second[1:] == (0.31, 0.2)
 
 
+def test_neural_motor_adapter_attenuates_sustained_turn_without_environment_input() -> None:
+    adapter = NeuralMotorAdapter(steering_gain=4.0, adaptation_rate=0.08)
+    outputs = [adapter.step(0.2, 0.5, 0.0)[0] for _ in range(40)]
+    assert outputs[0] > 0.6
+    assert outputs[-1] < 0.05
+    adapter.reset()
+    assert adapter.step(0.2, 0.5, 0.0)[0] == outputs[0]
+
+
 def test_neural_mode_bypasses_environment_action_overrides() -> None:
     engine = DrivingEngine(Path(__file__).parents[1], top_k=1, load_checkpoint=False)
     engine.reset(400, control_mode="neural")
@@ -570,6 +583,25 @@ def test_obstacle_pass_reward_modulates_policy() -> None:
     _, reward, _ = env.step(0, 0)
     assert env.obstacles_passed == 1
     assert reward > 0.35
+
+
+def test_episode_reports_post_pass_steering_and_lateral_drift() -> None:
+    engine = DrivingEngine(
+        Path(__file__).parents[1], top_k=1, load_checkpoint=True, control_mode="neural"
+    )
+    episode = evaluation_module.run_episode(
+        engine,
+        700,
+        learning=False,
+        explore=False,
+        safety_constraints=False,
+        control_mode="neural",
+        curriculum_stage="triple",
+    )
+    assert episode["obstacles_passed"] == 3
+    assert episode["post_pass_mean_abs_steering"] >= 0
+    assert episode["post_pass_mean_abs_raw_steering"] >= 0
+    assert episode["post_pass_mean_lateral_drift"] >= 0
 
 
 def test_bootstrap_clusters_mirror_pairs_and_rejects_misalignment() -> None:

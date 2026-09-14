@@ -76,11 +76,26 @@ equal-amplitude action baseline completed 0% and reached 19.89 m. The learned
 checkpoint then completed all eight unseen three-obstacle transfer scenes
 without additional training.
 
-Nine-obstacle continuation improved mean distance from 47.00 m to 56.69 m and
-passed obstacles from 3.25 to 4.0, but did not improve the 25% completion or 75%
-road-exit rates. It was therefore rejected, leaving the single-obstacle v6
-checkpoint published. This is evidence for an early curriculum learning effect,
-not evidence of complete random-road driving.
+Nine-obstacle stability-reward continuation reduced post-pass steering from
+0.161 to 0.128 but increased lateral drift from 0.876 m to 0.980 m, with no
+completion or road-exit improvement. It was rejected, leaving the single-
+obstacle v6 checkpoint published. This is evidence for an early curriculum
+learning effect, not evidence of complete random-road driving.
+
+## DNp20 motor-adaptation ablation
+
+Post-pass traces showed that sustained DNp20 output was amplified by the fixed
+actuator into a long steering tail. Reward shaping and a stable-finish course
+failed held-out gates and were discarded. The retained fix is an environment-
+blind motor adapter: an 8%-per-step slow baseline is subtracted from DNp20 before
+the fixed steering map. It sees no image, ray, obstacle, road, position, heading,
+reward or route state.
+
+On paired unseen seeds 900–907, frozen v6 improved from 0% to 75% completion,
+3.25 to 8.0 obstacles, and 46.02 m to 107.38 m. Mean 30-step post-pass steering
+dropped from 0.230 to 0.193 and lateral drift from 2.00 m to 0.88 m. Constraint
+rate and action correction were zero in both arms. Evidence is retained in
+`artifacts/neural-v6-motor-adaptation.json`.
 
 ## Metrics and Publication
 

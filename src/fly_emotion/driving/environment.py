@@ -58,6 +58,7 @@ class DrivingEnvironment:
         self.terminal_reason: str | None = None
         self.obstacles_passed = 0
         self.passed_obstacle_indices: set[int] = set()
+        self.obstacle_pass_steps: dict[int, int] = {}
         self.pass_reward = 0.35
         self.collision_penalty = 1.5
         self.success_reward = 3.0
@@ -102,6 +103,7 @@ class DrivingEnvironment:
             raise ValueError(f"unknown neural curriculum stage: {stage}")
         self.curriculum_stage = stage
         self.passed_obstacle_indices.clear()
+        self.obstacle_pass_steps.clear()
         self.obstacles_passed = 0
         return self.observe()
 
@@ -181,6 +183,7 @@ class DrivingEnvironment:
         self.steps += 1
         self.trajectory.append((self.x, self.y))
         previous_passed = self.obstacles_passed
+        previous_indices = self.passed_obstacle_indices.copy()
         collision = abs(self.x) + self.vehicle_radius >= self.road_half_width
         collision = collision or any(
             np.hypot(self.x - obstacle.x, self.y - obstacle.y)
@@ -194,6 +197,9 @@ class DrivingEnvironment:
                 if self.y - self.vehicle_radius > obstacle.y + obstacle.radius
             )
         self.obstacles_passed = len(self.passed_obstacle_indices)
+        newly_passed = self.passed_obstacle_indices - previous_indices
+        for index in newly_passed:
+            self.obstacle_pass_steps[index] = self.steps
         success = self.y >= self.road_length and not collision
         timeout = self.steps >= self.max_steps
         self.terminal_reason = (
@@ -207,8 +213,9 @@ class DrivingEnvironment:
             if timeout
             else None
         )
-        reward = self.progress_reward_scale * (self.y - previous_y) - 0.006
-        reward += self.pass_reward * (self.obstacles_passed - previous_passed)
+        progress_reward = self.progress_reward_scale * (self.y - previous_y)
+        pass_reward = self.pass_reward * (self.obstacles_passed - previous_passed)
+        reward = progress_reward + pass_reward - 0.006
         if collision:
             reward -= self.collision_penalty
         if success:
