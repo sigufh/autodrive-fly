@@ -25,6 +25,7 @@ from .driving.evaluate import (
     train_sensory_pathway_curriculum,
     write_evaluation,
 )
+from .driving.v7 import evaluate_v7_controlled_vision, write_v7_manifest
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -95,6 +96,8 @@ def _parser() -> argparse.ArgumentParser:
     panorama_release = subparsers.add_parser("evaluate-panorama-release")
     panorama_release.add_argument("--start", type=int, default=1000)
     panorama_release.add_argument("--count", type=int, default=16)
+    subparsers.add_parser("v7-init")
+    subparsers.add_parser("v7-evaluate-vision")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -220,6 +223,18 @@ def main() -> None:
     if args.command == "evaluate-panorama-release":
         report = evaluate_panorama_release(root, start=args.start, count=args.count)
         target = root / "artifacts/neural-v6-panorama-release.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-init":
+        report = write_v7_manifest(root)
+        target = root / "artifacts/v7-manifest.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-vision":
+        report = evaluate_v7_controlled_vision(root)
+        target = root / "artifacts/v7-controlled-vision.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return
