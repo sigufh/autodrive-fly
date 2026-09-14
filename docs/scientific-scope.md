@@ -84,6 +84,13 @@ are unchanged. This establishes a contribution of those inputs in the tested
 model, not a biological lesion result or a rescue of missing retinal coverage.
 Controls match receptor count, not synaptic weight, and T4 direction remains unvalidated.
 
+Raw T4 input-weight auditing retains all 6,861 T4a–d targets and all unknown
+coverage denominators. Covered Mi9 sources contribute 31.7% of left and 57.5% of
+right Mi9-to-T4 synapse weight; Tm3/CT1 remain unlocated rather than uncovered.
+Declared branches plus explicitly omitted inputs reconstruct total raw weights.
+These are anatomy-only constraints on interpretation, not evidence that inputs
+are inactive or that a covered T4 subset has passed functional gates.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

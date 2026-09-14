@@ -37,6 +37,7 @@ from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
     evaluate_v7_receptor_mask_audit,
+    evaluate_v7_t4_input_coverage,
 )
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
@@ -125,6 +126,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-temporal-input")
     subparsers.add_parser("v7-audit-local-input")
     subparsers.add_parser("v7-audit-receptor-mask")
+    subparsers.add_parser("v7-audit-t4-input-coverage")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -328,6 +330,12 @@ def main() -> None:
     if args.command == "v7-audit-receptor-mask":
         report = evaluate_v7_receptor_mask_audit(root)
         target = root / "artifacts/v7-receptor-mask-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-input-coverage":
+        report = evaluate_v7_t4_input_coverage(root)
+        target = root / "artifacts/v7-t4-input-coverage.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

@@ -5,7 +5,9 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from scipy import sparse
 
+from fly_emotion.connectome.graph import load_graph
 from fly_emotion.driving.v7 import V7VisualProbe
 from fly_emotion.driving.v7_local_input_audit import (
     LOCAL_TYPES,
@@ -17,10 +19,75 @@ from fly_emotion.driving.v7_local_input_audit import (
     local_step,
     select_local_sites,
     select_receptor_masks,
+    summarize_input_coverage,
 )
 from fly_emotion.driving.v7_retina_audit import infer_retinal_columns
 
 ROOT = Path(__file__).parents[1]
+
+
+def test_input_coverage_preserves_unknown_weights_and_absent_targets() -> None:
+    matrix = sparse.csr_matrix([[2, 3, 5, 7], [0, 0, 0, 0], [4, 0, 0, 0]])
+    labels = np.array(["covered", "uncovered", "missing_coordinate", "missing_side"])
+    result = summarize_input_coverage(matrix, labels)
+    assert result["total_synapse_weight"] == 21
+    assert result["synapse_weight_by_coverage"] == {
+        "covered": 6,
+        "uncovered": 3,
+        "missing_coordinate": 5,
+        "missing_side": 7,
+    }
+    assert result["covered_weight_fraction"] == pytest.approx(6 / 21)
+    assert result["targets_without_input"] == 1
+    assert result["targets_with_all_weight_covered"] == 1
+    assert result["targets_without_covered_input"] == 0
+    empty = summarize_input_coverage(sparse.csr_matrix((3, 0), dtype=int), np.array([]))
+    assert empty["targets_without_input"] == 3
+    assert empty["covered_weight_fraction"] is None
+    with pytest.raises(ValueError, match="declared coverage"):
+        summarize_input_coverage(matrix, np.array(["covered"] * 3 + ["invalid"]))
+
+
+def test_t4_input_coverage_retains_all_targets_and_conserves_raw_weights() -> None:
+    report = json.loads((ROOT / "artifacts/v7-t4-input-coverage.json").read_text())
+    assert report["protocol"]["neural_responses_used"] is False
+    assert report["advance_to_central_complex"] is False
+    targets = report["targets"]
+    assert len(targets["body_ids"]) == len(set(targets["body_ids"])) == 6861
+    assert sum(report["target_counts"].values()) == 6861
+    types, sides = np.asarray(targets["types"]), np.asarray(targets["sides"])
+    sources = targets["synapse_weights_by_source_and_coverage"]
+    declared_weight = 0
+    for population, groups in report["populations"].items():
+        kind, eye = population.split("_")
+        mask = (types == kind) & (sides == (-1 if eye == "L" else 1))
+        for source, arrays in sources.items():
+            row = groups[source]
+            assert row["target_count"] == int(mask.sum())
+            assert row["total_synapse_weight"] == sum(row["synapse_weight_by_coverage"].values())
+            for label, values in arrays.items():
+                assert len(values) == 6861
+                assert (
+                    int(np.asarray(values)[mask].sum()) == row["synapse_weight_by_coverage"][label]
+                )
+            declared_weight += row["total_synapse_weight"]
+        for branch, members in report["branches"].items():
+            assert groups[branch]["total_synapse_weight"] == sum(
+                groups[x]["total_synapse_weight"] for x in members
+            )
+        for unknown in ("Tm3", "CT1"):
+            assert (
+                groups[unknown]["synapse_weight_by_coverage"]["missing_coordinate"]
+                == groups[unknown]["total_synapse_weight"]
+            )
+    graph = load_graph(ROOT / "data/processed/malecns-v1.0", normalized=False)
+    nodes = np.searchsorted(graph.body_ids, targets["body_ids"])
+    assert declared_weight + report["omitted_from_declared_branches"]["synapse_weight"] == int(
+        graph.adjacency[nodes].sum(dtype=np.int64)
+    )
+    for relative, expected in report["protocol"]["dependencies_sha256"].items():
+        with (ROOT / relative).open("rb") as source:
+            assert hashlib.file_digest(source, "sha256").hexdigest() == expected
 
 
 def test_receptor_masks_match_count_side_and_are_disjoint() -> None:

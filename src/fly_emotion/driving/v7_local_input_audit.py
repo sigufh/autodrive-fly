@@ -6,7 +6,9 @@ from pathlib import Path
 
 import numpy as np
 import pyarrow.feather as feather
+from scipy import sparse
 
+from fly_emotion.connectome.graph import load_graph
 from fly_emotion.driving.v7 import V7Contract, V7VisualProbe, VisualStimulus
 from fly_emotion.driving.v7_retina_audit import infer_retinal_columns
 from fly_emotion.driving.v7_temporal_audit import (
@@ -418,6 +420,164 @@ def evaluate_v7_receptor_mask_audit(root: Path) -> dict:
             "Modal hex assignments and index distances are proxies, not measured visual geometry.",
             "Matched receptor counts do not match synapse weights or total downstream effects.",
             "No rescue of missing columns and no validation of T4 direction or driving is tested.",
+        ],
+        "advance_to_central_complex": False,
+    }
+
+
+def summarize_input_coverage(matrix: sparse.csr_matrix, labels: np.ndarray) -> dict:
+    categories = ("covered", "uncovered", "missing_coordinate", "missing_side")
+    if matrix.shape[1] != len(labels) or not np.all(np.isin(labels, categories)):
+        raise ValueError("every source must have a declared coverage category")
+    totals = np.asarray(matrix.sum(axis=1, dtype=np.int64)).ravel()
+    by_category = {
+        label: np.asarray(matrix[:, labels == label].sum(axis=1, dtype=np.int64)).ravel()
+        for label in categories
+    }
+    if not np.array_equal(sum(by_category.values()), totals):
+        raise ValueError("input weights do not partition by coverage")
+    present = totals > 0
+    fractions = np.divide(
+        by_category["covered"], totals, out=np.zeros(len(totals), dtype=float), where=present
+    )
+    return {
+        "target_count": matrix.shape[0],
+        "targets_with_input": int(present.sum()),
+        "targets_without_input": int((~present).sum()),
+        "edge_count": matrix.nnz,
+        "total_synapse_weight": int(totals.sum()),
+        "synapse_weight_by_coverage": {
+            label: int(values.sum()) for label, values in by_category.items()
+        },
+        "source_count_by_coverage": {
+            label: int(np.count_nonzero(np.diff(matrix[:, labels == label].tocsc().indptr)))
+            for label in categories
+        },
+        "covered_weight_fraction": float(by_category["covered"].sum() / totals.sum())
+        if totals.sum()
+        else None,
+        "covered_fraction_quantiles_among_present_targets": {
+            str(q): float(np.quantile(fractions[present], q)) if present.any() else None
+            for q in (0.0, 0.25, 0.5, 0.75, 1.0)
+        },
+        "targets_without_covered_input": int(
+            np.count_nonzero(present & (by_category["covered"] == 0))
+        ),
+        "targets_with_all_weight_covered": int(
+            np.count_nonzero(present & (by_category["covered"] == totals))
+        ),
+    }
+
+
+def evaluate_v7_t4_input_coverage(root: Path) -> dict:
+    contract = V7Contract.load(root)
+    retina, assignments = infer_retinal_columns(root)
+    graph = load_graph(root / "data/processed/malecns-v1.0", normalized=False)
+    table = feather.read_table(
+        root / "data/raw/malecns-v1.0/body-annotations.feather",
+        columns=["bodyId", "type", "somaSide", "assignedOlHex1", "assignedOlHex2"],
+        memory_map=True,
+    ).to_pandas()
+    ids = table["bodyId"].to_numpy(dtype=np.int64)
+    nodes = np.searchsorted(graph.body_ids, ids)
+    valid = nodes < graph.node_count
+    valid[valid] &= graph.body_ids[nodes[valid]] == ids[valid]
+    table = table.iloc[np.flatnonzero(valid)]
+    nodes = nodes[valid]
+    types = np.full(graph.node_count, "", dtype=object)
+    sides = np.zeros(graph.node_count, dtype=np.int8)
+    coordinates = np.full((graph.node_count, 2), np.nan)
+    types[nodes] = table["type"].fillna("").to_numpy()
+    sides[nodes] = table["somaSide"].map({"L": -1, "R": 1}).fillna(0).to_numpy(dtype=np.int8)
+    coordinates[nodes] = table[["assignedOlHex1", "assignedOlHex2"]].to_numpy(dtype=float)
+    labels, _ = classify_column_coverage(coordinates, sides, assignments.coordinates, retina.side)
+    branches = {
+        "centre": ("Mi1", "Tm3"),
+        "proximal": ("Mi4", "C3", "CT1"),
+        "distal": ("Mi9",),
+    }
+    source_types = ("Mi1", "Tm3", "Mi4", "C3", "CT1", "Mi9")
+    source_nodes = np.flatnonzero(np.isin(types, source_types))
+    targets = np.flatnonzero(np.isin(types, ("T4a", "T4b", "T4c", "T4d")))
+    matrix = graph.adjacency[targets][:, source_nodes]
+    source_groups = {kind: (kind,) for kind in source_types} | branches
+    populations = {}
+    target_counts = {}
+    for subtype in ("T4a", "T4b", "T4c", "T4d"):
+        for eye, side in (("L", -1), ("R", 1), ("unknown", 0)):
+            mask = (types[targets] == subtype) & (sides[targets] == side)
+            if not mask.any():
+                continue
+            name = f"{subtype}_{eye}"
+            populations[name] = {}
+            target_counts[name] = int(mask.sum())
+            for group, members in source_groups.items():
+                included = np.isin(types[source_nodes], members)
+                populations[name][group] = summarize_input_coverage(
+                    matrix[mask][:, included], labels[source_nodes[included]]
+                )
+    target_weights = {}
+    for kind in source_types:
+        included = types[source_nodes] == kind
+        weights = matrix[:, included]
+        target_weights[kind] = {
+            label: np.asarray(weights[:, labels[source_nodes[included]] == label].sum(axis=1))
+            .ravel()
+            .astype(int)
+            .tolist()
+            for label in ("covered", "uncovered", "missing_coordinate", "missing_side")
+        }
+    dependencies = [
+        IMPLEMENTATION,
+        Path("src/fly_emotion/driving/v7.py"),
+        Path("src/fly_emotion/driving/v7_retina_audit.py"),
+        Path("src/fly_emotion/driving/retina.py"),
+        Path("src/fly_emotion/connectome/graph.py"),
+        Path("configs/driving-v7.yaml"),
+        Path("data/raw/malecns-v1.0/body-annotations.feather"),
+        Path("data/processed/malecns-v1.0/body_ids.npy"),
+        Path("data/processed/malecns-v1.0/adjacency_raw.npz"),
+        Path("data/processed/malecns-v1.0/retina_map.npz"),
+    ]
+    hashes = {}
+    for path in dependencies:
+        with (root / path).open("rb") as source:
+            hashes[str(path)] = hashlib.file_digest(source, "sha256").hexdigest()
+    return {
+        "protocol": {
+            "name": "v7-t4-input-coverage-v1",
+            "exploratory": True,
+            "advance_allowed": False,
+            "v7_config_sha256": contract.sha256,
+            "dependencies_sha256": hashes,
+            "input_weights": "raw synapse counts; no row renormalization or sign filtering",
+            "coverage": "source soma-side and optic-hex matched to retained modal receptor columns",
+            "denominator": "all edges of each declared source group, including unlocated sources",
+            "parameter_fitting": False,
+            "neural_responses_used": False,
+            "driving_data_used": False,
+        },
+        "branches": {name: list(members) for name, members in branches.items()},
+        "target_counts": target_counts,
+        "populations": populations,
+        "targets": {
+            "body_ids": graph.body_ids[targets].tolist(),
+            "types": types[targets].tolist(),
+            "sides": sides[targets].tolist(),
+            "synapse_weights_by_source_and_coverage": target_weights,
+        },
+        "omitted_from_declared_branches": {
+            "synapse_weight": int(
+                graph.adjacency[targets].sum(dtype=np.int64) - matrix.sum(dtype=np.int64)
+            ),
+            "edge_count": graph.adjacency[targets].nnz - matrix.nnz,
+        },
+        "limitations": [
+            "Source-column coverage does not prove visual response or pathway reachability.",
+            "Tm3 and CT1 coordinates are unknown; their edges remain in all denominators.",
+            "Branch grouping is an experimental model hypothesis, not a full T4 dendritic model.",
+            "All targets remain included; no covered-subset functional pass is claimed.",
+            "This anatomy-only audit cannot establish direction selectivity or allow deployment.",
         ],
         "advance_to_central_complex": False,
     }
