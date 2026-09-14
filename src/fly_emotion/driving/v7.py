@@ -346,8 +346,7 @@ def load_v7_optic_hex_offsets(root: Path) -> OpticHexOffsetDataset:
         for subtype in ("a", "b", "c", "d"):
             for side in ("L", "R"):
                 rows = annotations.loc[
-                    annotations["type"].eq(f"{family}{subtype}")
-                    & annotations["somaSide"].eq(side),
+                    annotations["type"].eq(f"{family}{subtype}") & annotations["somaSide"].eq(side),
                     ["bodyId", "node"],
                 ]
                 expected = (
@@ -406,9 +405,7 @@ def _stratified_axis_split(
     for subtype in ("a", "b", "c", "d"):
         for side in ("L", "R"):
             group = np.flatnonzero(
-                (dataset.families == "T4")
-                & (dataset.subtypes == subtype)
-                & (dataset.sides == side)
+                (dataset.families == "T4") & (dataset.subtypes == subtype) & (dataset.sides == side)
             )
             hashes = np.asarray(
                 [
@@ -446,22 +443,20 @@ def _axis_metrics(
         predicted[local] = dataset.offsets[indices[local]] @ transforms[side]
     norms = np.linalg.norm(predicted, axis=1, keepdims=True)
     predicted = predicted / np.maximum(norms, 1e-12)
-    expected = np.stack(
-        [_DIRECTION_VECTORS[name] for name in dataset.expected_directions[indices]]
-    )
+    expected = np.stack([_DIRECTION_VECTORS[name] for name in dataset.expected_directions[indices]])
     cardinal = np.stack([_DIRECTION_VECTORS[name] for name in _DIRECTION_ORDER])
     predicted_labels = np.argmax(predicted @ cardinal.T, axis=1)
     expected_labels = np.argmax(expected @ cardinal.T, axis=1)
-    angles = np.degrees(
-        np.arccos(np.clip(np.sum(predicted * expected, axis=1), -1.0, 1.0))
-    )
+    angles = np.degrees(np.arccos(np.clip(np.sum(predicted * expected, axis=1), -1.0, 1.0)))
     by_group = {}
     for family in sorted(set(dataset.families[indices])):
         for subtype in ("a", "b", "c", "d"):
             for side in ("L", "R"):
-                group = (dataset.families[indices] == family) & (
-                    dataset.subtypes[indices] == subtype
-                ) & (dataset.sides[indices] == side)
+                group = (
+                    (dataset.families[indices] == family)
+                    & (dataset.subtypes[indices] == subtype)
+                    & (dataset.sides[indices] == side)
+                )
                 if np.any(group):
                     by_group[f"{family}{subtype}_{side}"] = {
                         "count": int(np.count_nonzero(group)),
@@ -490,8 +485,10 @@ def _cross_eye_axis_error(
         for subtype in ("a", "b", "c", "d"):
             means = {}
             for side in ("L", "R"):
-                mask = (dataset.families == family) & (dataset.subtypes == subtype) & (
-                    dataset.sides == side
+                mask = (
+                    (dataset.families == family)
+                    & (dataset.subtypes == subtype)
+                    & (dataset.sides == side)
                 )
                 vectors = dataset.offsets[mask] @ transforms[side]
                 vectors /= np.maximum(np.linalg.norm(vectors, axis=1, keepdims=True), 1e-12)
@@ -549,9 +546,7 @@ def evaluate_v7_optic_hex_axis_calibration(root: Path) -> dict:
     baseline_results = {}
     for name, transforms in deterministic_baselines.items():
         baseline_results[name] = {
-            "held_out_T4": _serializable_axis_metrics(
-                _axis_metrics(dataset, held_out, transforms)
-            ),
+            "held_out_T4": _serializable_axis_metrics(_axis_metrics(dataset, held_out, transforms)),
             "zero_shot_T5": _serializable_axis_metrics(_axis_metrics(dataset, t5, transforms)),
             "cross_eye_mirror": _cross_eye_axis_error(dataset, transforms),
         }
@@ -1576,6 +1571,8 @@ def write_v7_manifest(root: Path) -> dict:
     contract = V7Contract.load(root)
     implementation_sha256 = _sha256(root / V7_IMPLEMENTATION)
     evidence_paths = (
+        root / "artifacts/v7-branched-t4-candidate.json",
+        root / "artifacts/v7-t4-source-audit.json",
         root / "artifacts/v7-optic-hex-axis-calibration.json",
         root / "artifacts/v7-typed-visual-candidate.json",
         root / "artifacts/v7-controlled-vision.json",
@@ -1590,20 +1587,48 @@ def write_v7_manifest(root: Path) -> dict:
             continue
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
         protocol = evidence.get("protocol", {})
-        if (
-            protocol.get("config_sha256") == contract.sha256
-            and protocol.get("implementation_sha256") == implementation_sha256
-        ):
+        if evidence_path.name == "v7-t4-source-audit.json":
+            valid_evidence = protocol.get("config_sha256") == _sha256(
+                root / "configs/driving-v7-t4-source-audit.yaml"
+            ) and protocol.get("implementation_sha256") == _sha256(
+                root / "src/fly_emotion/driving/v7_source_audit.py"
+            )
+        elif evidence_path.name == "v7-branched-t4-candidate.json":
+            source_audit_path = root / "artifacts/v7-t4-source-audit.json"
+            valid_evidence = (
+                protocol.get("v7_config_sha256") == contract.sha256
+                and protocol.get("v7_implementation_sha256") == implementation_sha256
+                and protocol.get("candidate_config_sha256")
+                == _sha256(root / "configs/driving-v7-branched-t4.yaml")
+                and protocol.get("candidate_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_branched.py")
+                and source_audit_path.exists()
+                and protocol.get("source_audit_sha256") == _sha256(source_audit_path)
+            )
+        else:
+            valid_evidence = (
+                protocol.get("config_sha256") == contract.sha256
+                and protocol.get("implementation_sha256") == implementation_sha256
+            )
+        if valid_evidence:
             relative = str(evidence_path.relative_to(root))
             evidence_used.append(relative)
             current_evidence[evidence_path.name] = evidence
 
     axis = current_evidence.get("v7-optic-hex-axis-calibration.json")
+    source_audit = current_evidence.get("v7-t4-source-audit.json")
+    branched = current_evidence.get("v7-branched-t4-candidate.json")
     controlled = current_evidence.get("v7-typed-visual-candidate.json") or (
         current_evidence.get("v7-controlled-vision.json")
     )
-    if axis is not None and not axis.get("axis_calibration_pass"):
-        blockers.append("optic_hex_axis_cross_validation_failed")
+    if source_audit is None:
+        blockers.append("T4_source_audit_evidence_stale_or_missing")
+    elif not source_audit.get("nested_branch_validation", {}).get("nested_validation_pass"):
+        blockers.append("nested_T4_branch_axis_validation_failed")
+    if branched is None:
+        blockers.append("branched_T4_response_evidence_stale_or_missing")
+    elif not branched.get("controlled_response_gates_pass"):
+        blockers.append("branched_T4_response_gates_failed")
     if controlled is None:
         blockers.append("controlled_visual_response_evidence_stale_or_missing")
     else:
@@ -1612,8 +1637,11 @@ def write_v7_manifest(root: Path) -> dict:
         if not controlled.get("real_topology_advantage"):
             blockers.append("real_topology_advantage_not_demonstrated")
     advance = bool(
-        axis is not None
-        and axis.get("axis_calibration_pass")
+        source_audit is not None
+        and source_audit.get("nested_branch_validation", {}).get("nested_validation_pass")
+        and branched is not None
+        and branched.get("controlled_response_gates_pass")
+        and branched.get("topology_controls_complete")
         and controlled is not None
         and controlled.get("advance_to_central_complex")
     )
@@ -1632,6 +1660,18 @@ def write_v7_manifest(root: Path) -> dict:
         "stage_status": stage_status,
         "advance_to_central_complex": advance,
         "blockers": blockers,
+        "stage_findings": {
+            "historical_aggregate_optic_hex_axis_passed": bool(
+                axis and axis.get("axis_calibration_pass")
+            ),
+            "nested_T4_branch_axis_validation_passed": bool(
+                source_audit
+                and source_audit.get("nested_branch_validation", {}).get("nested_validation_pass")
+            ),
+            "branched_T4_controlled_response_passed": bool(
+                branched and branched.get("controlled_response_gates_pass")
+            ),
+        },
         "current_evidence": evidence_used[0] if evidence_used else None,
         "evidence": evidence_used,
         "default_runtime_changed": False,

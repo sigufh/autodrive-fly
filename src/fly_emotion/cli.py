@@ -31,6 +31,8 @@ from .driving.v7 import (
     evaluate_v7_typed_visual_candidate,
     write_v7_manifest,
 )
+from .driving.v7_branched import evaluate_v7_branched_t4_candidate
+from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -105,6 +107,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-vision")
     subparsers.add_parser("v7-evaluate-typed-vision")
     subparsers.add_parser("v7-evaluate-optic-axis")
+    subparsers.add_parser("v7-audit-t4-sources")
+    subparsers.add_parser("v7-evaluate-branched-t4")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -254,6 +258,18 @@ def main() -> None:
     if args.command == "v7-evaluate-optic-axis":
         report = evaluate_v7_optic_hex_axis_calibration(root)
         target = root / "artifacts/v7-optic-hex-axis-calibration.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-sources":
+        report = evaluate_v7_t4_source_audit(root)
+        target = root / "artifacts/v7-t4-source-audit.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-branched-t4":
+        report = evaluate_v7_branched_t4_candidate(root)
+        target = root / "artifacts/v7-branched-t4-candidate.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

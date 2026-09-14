@@ -1,0 +1,846 @@
+{
+  "protocol": {
+    "version": 7,
+    "name": "v7-t4-source-audit",
+    "exploratory": true,
+    "advance_allowed": false,
+    "config_sha256": "39eb4a38f2400af3a7e03687454020818a0909dbc476010eba6dd0eefa503a9f",
+    "implementation_sha256": "e400a4fd630adf7ecab2916d2cdda06cf0a4a8ccae38f803d947c5a0dec9b9dd",
+    "driving_data_used": false,
+    "visual_stimulus_responses_used": false,
+    "selection_bias": "all T4 cells participate across five folds and candidate branches are ranked on the same audit; scores are retrospective diagnostics, not fresh validation"
+  },
+  "source_roles": {
+    "T4": {
+      "centre_direct": [
+        "Mi1",
+        "Tm3"
+      ],
+      "proximal_suppressor": [
+        "Mi4",
+        "C3",
+        "CT1"
+      ],
+      "distal_context": [
+        "Mi9"
+      ]
+    },
+    "T5": {
+      "centre_direct": [
+        "Tm1",
+        "Tm2",
+        "Tm4"
+      ],
+      "proximal_suppressor": [
+        "CT1"
+      ],
+      "distal_context": [
+        "Tm9"
+      ]
+    }
+  },
+  "source_metadata": {
+    "Mi1": {
+      "cells": 1773,
+      "optic_hex_coordinate_cells": 1762,
+      "optic_hex_coordinate_fraction": 0.9937958262831359,
+      "soma_side_counts": {
+        "L": 886,
+        "R": 887,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "acetylcholine": 1773
+      }
+    },
+    "Tm3": {
+      "cells": 2054,
+      "optic_hex_coordinate_cells": 0,
+      "optic_hex_coordinate_fraction": 0.0,
+      "soma_side_counts": {
+        "L": 1017,
+        "R": 1037,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "acetylcholine": 2054
+      }
+    },
+    "Mi4": {
+      "cells": 1772,
+      "optic_hex_coordinate_cells": 1758,
+      "optic_hex_coordinate_fraction": 0.9920993227990971,
+      "soma_side_counts": {
+        "L": 883,
+        "R": 889,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "gaba": 1772
+      }
+    },
+    "C3": {
+      "cells": 1779,
+      "optic_hex_coordinate_cells": 1770,
+      "optic_hex_coordinate_fraction": 0.9949409780775716,
+      "soma_side_counts": {
+        "L": 887,
+        "R": 892,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "gaba": 1779
+      }
+    },
+    "CT1": {
+      "cells": 2,
+      "optic_hex_coordinate_cells": 0,
+      "optic_hex_coordinate_fraction": 0.0,
+      "soma_side_counts": {
+        "L": 1,
+        "R": 1,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "gaba": 2
+      }
+    },
+    "Mi9": {
+      "cells": 1775,
+      "optic_hex_coordinate_cells": 1760,
+      "optic_hex_coordinate_fraction": 0.9915492957746479,
+      "soma_side_counts": {
+        "L": 886,
+        "R": 889,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "glutamate": 1775
+      }
+    },
+    "Tm1": {
+      "cells": 1777,
+      "optic_hex_coordinate_cells": 1767,
+      "optic_hex_coordinate_fraction": 0.9943725379853686,
+      "soma_side_counts": {
+        "L": 887,
+        "R": 890,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "acetylcholine": 1777
+      }
+    },
+    "Tm2": {
+      "cells": 1766,
+      "optic_hex_coordinate_cells": 1758,
+      "optic_hex_coordinate_fraction": 0.9954699886749717,
+      "soma_side_counts": {
+        "L": 883,
+        "R": 883,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "acetylcholine": 1766
+      }
+    },
+    "Tm4": {
+      "cells": 1670,
+      "optic_hex_coordinate_cells": 833,
+      "optic_hex_coordinate_fraction": 0.49880239520958086,
+      "soma_side_counts": {
+        "L": 837,
+        "R": 833,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "acetylcholine": 1670
+      }
+    },
+    "Tm9": {
+      "cells": 1771,
+      "optic_hex_coordinate_cells": 1743,
+      "optic_hex_coordinate_fraction": 0.9841897233201581,
+      "soma_side_counts": {
+        "L": 884,
+        "R": 887,
+        "": 0
+      },
+      "root_side_nonempty_fraction": 0.0,
+      "consensus_neurotransmitters": {
+        "acetylcholine": 1771
+      }
+    }
+  },
+  "T4_target_connectivity": {
+    "Mi1": {
+      "target_presence_fraction": 1.0,
+      "median_synapse_weight_when_present": 62.0,
+      "weighted_opposite_soma_side_fraction": 0.0
+    },
+    "Tm3": {
+      "target_presence_fraction": 0.9995627459554001,
+      "median_synapse_weight_when_present": 28.0,
+      "weighted_opposite_soma_side_fraction": 0.0
+    },
+    "Mi4": {
+      "target_presence_fraction": 0.9991254919108001,
+      "median_synapse_weight_when_present": 12.0,
+      "weighted_opposite_soma_side_fraction": 0.0
+    },
+    "C3": {
+      "target_presence_fraction": 0.9857163678764028,
+      "median_synapse_weight_when_present": 5.0,
+      "weighted_opposite_soma_side_fraction": 0.0
+    },
+    "CT1": {
+      "target_presence_fraction": 0.9946072001166011,
+      "median_synapse_weight_when_present": 12.0,
+      "weighted_opposite_soma_side_fraction": 0.999566526471174
+    },
+    "Mi9": {
+      "target_presence_fraction": 0.9988339892144003,
+      "median_synapse_weight_when_present": 23.0,
+      "weighted_opposite_soma_side_fraction": 0.0
+    }
+  },
+  "coordinate_branch_screen": {
+    "folds": 5,
+    "candidate_count": 7,
+    "ranked_candidates": [
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "Mi4",
+          "C3"
+        ],
+        "valid_cells": 6860,
+        "five_fold_accuracy": 0.9638483965014577,
+        "five_fold_median_angle_error_degrees": 12.615032508143312,
+        "by_population": {
+          "T4a_L": {
+            "count": 835,
+            "accuracy": 0.9305389221556887,
+            "median_angle_error_degrees": 18.844060816299994
+          },
+          "T4a_R": {
+            "count": 849,
+            "accuracy": 0.9375736160188457,
+            "median_angle_error_degrees": 18.498956785887533
+          },
+          "T4b_L": {
+            "count": 844,
+            "accuracy": 0.9419431279620853,
+            "median_angle_error_degrees": 16.748226789509538
+          },
+          "T4b_R": {
+            "count": 846,
+            "accuracy": 0.9468085106382979,
+            "median_angle_error_degrees": 15.210337129082962
+          },
+          "T4c_L": {
+            "count": 894,
+            "accuracy": 0.9876957494407159,
+            "median_angle_error_degrees": 8.982405371270051
+          },
+          "T4c_R": {
+            "count": 883,
+            "accuracy": 0.9886749716874292,
+            "median_angle_error_degrees": 9.539418100472982
+          },
+          "T4d_L": {
+            "count": 850,
+            "accuracy": 0.9858823529411764,
+            "median_angle_error_degrees": 10.710579555112911
+          },
+          "T4d_R": {
+            "count": 859,
+            "accuracy": 0.9883585564610011,
+            "median_angle_error_degrees": 10.455120728580061
+          }
+        }
+      },
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "Mi4"
+        ],
+        "valid_cells": 6855,
+        "five_fold_accuracy": 0.9458789204959883,
+        "five_fold_median_angle_error_degrees": 13.793237699473424,
+        "by_population": {
+          "T4a_L": {
+            "count": 834,
+            "accuracy": 0.8920863309352518,
+            "median_angle_error_degrees": 21.44540439626961
+          },
+          "T4a_R": {
+            "count": 849,
+            "accuracy": 0.8975265017667845,
+            "median_angle_error_degrees": 20.74012071341361
+          },
+          "T4b_L": {
+            "count": 843,
+            "accuracy": 0.9122182680901542,
+            "median_angle_error_degrees": 17.969846616652465
+          },
+          "T4b_R": {
+            "count": 845,
+            "accuracy": 0.9349112426035503,
+            "median_angle_error_degrees": 16.427936301457503
+          },
+          "T4c_L": {
+            "count": 893,
+            "accuracy": 0.9820828667413214,
+            "median_angle_error_degrees": 9.953133788644111
+          },
+          "T4c_R": {
+            "count": 883,
+            "accuracy": 0.9830124575311439,
+            "median_angle_error_degrees": 10.187695504625527
+          },
+          "T4d_L": {
+            "count": 849,
+            "accuracy": 0.9729093050647821,
+            "median_angle_error_degrees": 11.527097137104883
+          },
+          "T4d_R": {
+            "count": 859,
+            "accuracy": 0.9871944121071012,
+            "median_angle_error_degrees": 11.843477149475547
+          }
+        }
+      },
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "C3"
+        ],
+        "valid_cells": 6761,
+        "five_fold_accuracy": 0.9210176009466056,
+        "five_fold_median_angle_error_degrees": 14.647358902417759,
+        "by_population": {
+          "T4a_L": {
+            "count": 835,
+            "accuracy": 0.8646706586826347,
+            "median_angle_error_degrees": 21.96316482466448
+          },
+          "T4a_R": {
+            "count": 848,
+            "accuracy": 0.8950471698113207,
+            "median_angle_error_degrees": 21.89368512543941
+          },
+          "T4b_L": {
+            "count": 839,
+            "accuracy": 0.8820023837902264,
+            "median_angle_error_degrees": 21.595326818912945
+          },
+          "T4b_R": {
+            "count": 846,
+            "accuracy": 0.9018912529550828,
+            "median_angle_error_degrees": 18.757235425121912
+          },
+          "T4c_L": {
+            "count": 854,
+            "accuracy": 0.9437939110070258,
+            "median_angle_error_degrees": 11.853668811605418
+          },
+          "T4c_R": {
+            "count": 868,
+            "accuracy": 0.9447004608294931,
+            "median_angle_error_degrees": 11.198073368812675
+          },
+          "T4d_L": {
+            "count": 825,
+            "accuracy": 0.9551515151515152,
+            "median_angle_error_degrees": 10.190893894912069
+          },
+          "T4d_R": {
+            "count": 846,
+            "accuracy": 0.9799054373522459,
+            "median_angle_error_degrees": 9.319641787865649
+          }
+        }
+      },
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "Mi9"
+        ],
+        "valid_cells": 6848,
+        "five_fold_accuracy": 0.9154497663551402,
+        "five_fold_median_angle_error_degrees": 15.051840298914975,
+        "by_population": {
+          "T4a_L": {
+            "count": 831,
+            "accuracy": 0.8038507821901324,
+            "median_angle_error_degrees": 23.6315991836333
+          },
+          "T4a_R": {
+            "count": 849,
+            "accuracy": 0.8916372202591284,
+            "median_angle_error_degrees": 18.367685135122226
+          },
+          "T4b_L": {
+            "count": 841,
+            "accuracy": 0.8763376932223543,
+            "median_angle_error_degrees": 20.037397754703385
+          },
+          "T4b_R": {
+            "count": 846,
+            "accuracy": 0.9137115839243499,
+            "median_angle_error_degrees": 18.668570132557782
+          },
+          "T4c_L": {
+            "count": 892,
+            "accuracy": 0.9327354260089686,
+            "median_angle_error_degrees": 13.120945297256558
+          },
+          "T4c_R": {
+            "count": 883,
+            "accuracy": 0.9773499433748585,
+            "median_angle_error_degrees": 9.763455151193217
+          },
+          "T4d_L": {
+            "count": 847,
+            "accuracy": 0.9515938606847698,
+            "median_angle_error_degrees": 13.508810939644208
+          },
+          "T4d_R": {
+            "count": 859,
+            "accuracy": 0.969732246798603,
+            "median_angle_error_degrees": 12.061443585020758
+          }
+        }
+      },
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "Mi9",
+          "C3"
+        ],
+        "valid_cells": 6860,
+        "five_fold_accuracy": 0.7978134110787172,
+        "five_fold_median_angle_error_degrees": 19.868623153252276,
+        "by_population": {
+          "T4a_L": {
+            "count": 835,
+            "accuracy": 0.577245508982036,
+            "median_angle_error_degrees": 37.62930913602899
+          },
+          "T4a_R": {
+            "count": 849,
+            "accuracy": 0.7726737338044759,
+            "median_angle_error_degrees": 25.491925750045016
+          },
+          "T4b_L": {
+            "count": 843,
+            "accuracy": 0.6868327402135231,
+            "median_angle_error_degrees": 28.76737194832293
+          },
+          "T4b_R": {
+            "count": 846,
+            "accuracy": 0.7955082742316785,
+            "median_angle_error_degrees": 23.909034987174007
+          },
+          "T4c_L": {
+            "count": 895,
+            "accuracy": 0.8435754189944135,
+            "median_angle_error_degrees": 16.642882997416432
+          },
+          "T4c_R": {
+            "count": 883,
+            "accuracy": 0.9433748584371461,
+            "median_angle_error_degrees": 11.396163176717504
+          },
+          "T4d_L": {
+            "count": 850,
+            "accuracy": 0.8294117647058824,
+            "median_angle_error_degrees": 17.061247173096326
+          },
+          "T4d_R": {
+            "count": 859,
+            "accuracy": 0.919674039580908,
+            "median_angle_error_degrees": 14.47535337131016
+          }
+        }
+      },
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "Mi4",
+          "Mi9"
+        ],
+        "valid_cells": 6861,
+        "five_fold_accuracy": 0.6137589272700773,
+        "five_fold_median_angle_error_degrees": 31.730094541455372,
+        "by_population": {
+          "T4a_L": {
+            "count": 835,
+            "accuracy": 0.41437125748502995,
+            "median_angle_error_degrees": 54.2642829578731
+          },
+          "T4a_R": {
+            "count": 849,
+            "accuracy": 0.6277974087161367,
+            "median_angle_error_degrees": 34.94376993299149
+          },
+          "T4b_L": {
+            "count": 844,
+            "accuracy": 0.46445497630331756,
+            "median_angle_error_degrees": 49.2537373772661
+          },
+          "T4b_R": {
+            "count": 846,
+            "accuracy": 0.5921985815602837,
+            "median_angle_error_degrees": 35.892432834868345
+          },
+          "T4c_L": {
+            "count": 895,
+            "accuracy": 0.605586592178771,
+            "median_angle_error_degrees": 30.755192507001514
+          },
+          "T4c_R": {
+            "count": 883,
+            "accuracy": 0.8052095130237825,
+            "median_angle_error_degrees": 17.038091071552532
+          },
+          "T4d_L": {
+            "count": 850,
+            "accuracy": 0.6223529411764706,
+            "median_angle_error_degrees": 28.186196485805596
+          },
+          "T4d_R": {
+            "count": 859,
+            "accuracy": 0.7648428405122235,
+            "median_angle_error_degrees": 20.404334683783574
+          }
+        }
+      },
+      {
+        "direct_sources": [
+          "Mi1"
+        ],
+        "offset_sources": [
+          "Mi4",
+          "Mi9",
+          "C3"
+        ],
+        "valid_cells": 6861,
+        "five_fold_accuracy": 0.4611572657047078,
+        "five_fold_median_angle_error_degrees": 50.60607698099693,
+        "by_population": {
+          "T4a_L": {
+            "count": 835,
+            "accuracy": 0.24910179640718563,
+            "median_angle_error_degrees": 81.24414824842556
+          },
+          "T4a_R": {
+            "count": 849,
+            "accuracy": 0.4299175500588928,
+            "median_angle_error_degrees": 52.75716332817668
+          },
+          "T4b_L": {
+            "count": 844,
+            "accuracy": 0.2713270142180095,
+            "median_angle_error_degrees": 77.33952854560243
+          },
+          "T4b_R": {
+            "count": 846,
+            "accuracy": 0.41252955082742315,
+            "median_angle_error_degrees": 55.51157931971457
+          },
+          "T4c_L": {
+            "count": 895,
+            "accuracy": 0.4670391061452514,
+            "median_angle_error_degrees": 49.728355347271794
+          },
+          "T4c_R": {
+            "count": 883,
+            "accuracy": 0.7146092865232163,
+            "median_angle_error_degrees": 22.7716784738879
+          },
+          "T4d_L": {
+            "count": 850,
+            "accuracy": 0.4929411764705882,
+            "median_angle_error_degrees": 45.70145096769258
+          },
+          "T4d_R": {
+            "count": 859,
+            "accuracy": 0.6344586728754366,
+            "median_angle_error_degrees": 27.60070807649766
+          }
+        }
+      }
+    ],
+    "reference_all_coordinate_bearing_delayed_sources": {
+      "direct_sources": [
+        "Mi1"
+      ],
+      "offset_sources": [
+        "Mi4",
+        "Mi9",
+        "C3"
+      ],
+      "valid_cells": 6861,
+      "five_fold_accuracy": 0.4611572657047078,
+      "five_fold_median_angle_error_degrees": 50.60607698099693,
+      "by_population": {
+        "T4a_L": {
+          "count": 835,
+          "accuracy": 0.24910179640718563,
+          "median_angle_error_degrees": 81.24414824842556
+        },
+        "T4a_R": {
+          "count": 849,
+          "accuracy": 0.4299175500588928,
+          "median_angle_error_degrees": 52.75716332817668
+        },
+        "T4b_L": {
+          "count": 844,
+          "accuracy": 0.2713270142180095,
+          "median_angle_error_degrees": 77.33952854560243
+        },
+        "T4b_R": {
+          "count": 846,
+          "accuracy": 0.41252955082742315,
+          "median_angle_error_degrees": 55.51157931971457
+        },
+        "T4c_L": {
+          "count": 895,
+          "accuracy": 0.4670391061452514,
+          "median_angle_error_degrees": 49.728355347271794
+        },
+        "T4c_R": {
+          "count": 883,
+          "accuracy": 0.7146092865232163,
+          "median_angle_error_degrees": 22.7716784738879
+        },
+        "T4d_L": {
+          "count": 850,
+          "accuracy": 0.4929411764705882,
+          "median_angle_error_degrees": 45.70145096769258
+        },
+        "T4d_R": {
+          "count": 859,
+          "accuracy": 0.6344586728754366,
+          "median_angle_error_degrees": 27.60070807649766
+        }
+      }
+    },
+    "best_exploratory_candidate": {
+      "direct_sources": [
+        "Mi1"
+      ],
+      "offset_sources": [
+        "Mi4",
+        "C3"
+      ],
+      "valid_cells": 6860,
+      "five_fold_accuracy": 0.9638483965014577,
+      "five_fold_median_angle_error_degrees": 12.615032508143312,
+      "by_population": {
+        "T4a_L": {
+          "count": 835,
+          "accuracy": 0.9305389221556887,
+          "median_angle_error_degrees": 18.844060816299994
+        },
+        "T4a_R": {
+          "count": 849,
+          "accuracy": 0.9375736160188457,
+          "median_angle_error_degrees": 18.498956785887533
+        },
+        "T4b_L": {
+          "count": 844,
+          "accuracy": 0.9419431279620853,
+          "median_angle_error_degrees": 16.748226789509538
+        },
+        "T4b_R": {
+          "count": 846,
+          "accuracy": 0.9468085106382979,
+          "median_angle_error_degrees": 15.210337129082962
+        },
+        "T4c_L": {
+          "count": 894,
+          "accuracy": 0.9876957494407159,
+          "median_angle_error_degrees": 8.982405371270051
+        },
+        "T4c_R": {
+          "count": 883,
+          "accuracy": 0.9886749716874292,
+          "median_angle_error_degrees": 9.539418100472982
+        },
+        "T4d_L": {
+          "count": 850,
+          "accuracy": 0.9858823529411764,
+          "median_angle_error_degrees": 10.710579555112911
+        },
+        "T4d_R": {
+          "count": 859,
+          "accuracy": 0.9883585564610011,
+          "median_angle_error_degrees": 10.455120728580061
+        }
+      }
+    },
+    "accuracy_improvement_over_reference": 0.5026911307967499
+  },
+  "nested_branch_validation": {
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "outer_cells": 6860,
+    "outer_accuracy": 0.9638483965014577,
+    "outer_median_angle_error_degrees": 12.642595657655349,
+    "selected_source_by_outer_fold": [
+      "Mi4+C3",
+      "Mi4+C3",
+      "Mi4+C3",
+      "Mi4+C3",
+      "Mi4+C3"
+    ],
+    "selection_consensus": [
+      "Mi4",
+      "C3"
+    ],
+    "selection_consensus_fraction": 1.0,
+    "folds": [
+      {
+        "fold": 0,
+        "selected_offset_sources": [
+          "Mi4",
+          "C3"
+        ],
+        "inner_selection_accuracy": 0.9663514005092761,
+        "outer_cells": 1362,
+        "outer_accuracy": 0.9544787077826725,
+        "outer_median_angle_error_degrees": 12.341382248350861
+      },
+      {
+        "fold": 1,
+        "selected_offset_sources": [
+          "Mi4",
+          "C3"
+        ],
+        "inner_selection_accuracy": 0.9633546034639927,
+        "outer_cells": 1375,
+        "outer_accuracy": 0.9665454545454546,
+        "outer_median_angle_error_degrees": 12.726473983644025
+      },
+      {
+        "fold": 2,
+        "selected_offset_sources": [
+          "Mi4",
+          "C3"
+        ],
+        "inner_selection_accuracy": 0.9618528610354223,
+        "outer_cells": 1355,
+        "outer_accuracy": 0.9734317343173432,
+        "outer_median_angle_error_degrees": 12.88198651515618
+      },
+      {
+        "fold": 3,
+        "selected_offset_sources": [
+          "Mi4",
+          "C3"
+        ],
+        "inner_selection_accuracy": 0.9633726201269266,
+        "outer_cells": 1345,
+        "outer_accuracy": 0.966542750929368,
+        "outer_median_angle_error_degrees": 11.976182508251464
+      },
+      {
+        "fold": 4,
+        "selected_offset_sources": [
+          "Mi4",
+          "C3"
+        ],
+        "inner_selection_accuracy": 0.9652381828214088,
+        "outer_cells": 1423,
+        "outer_accuracy": 0.9585382993675334,
+        "outer_median_angle_error_degrees": 12.980287047001179
+      }
+    ],
+    "preregistered_gates": {
+      "outer_accuracy": true,
+      "outer_angle": true,
+      "selection_consensus": true
+    },
+    "nested_validation_pass": true
+  },
+  "frozen_axis_calibration": {
+    "direct_sources": [
+      "Mi1"
+    ],
+    "offset_sources": [
+      "Mi4",
+      "C3"
+    ],
+    "fit_cells": 6861,
+    "transforms_by_eye": {
+      "L": [
+        [
+          -0.6194412209769726,
+          0.7850430394281301
+        ],
+        [
+          0.7850430394281301,
+          0.6194412209769727
+        ]
+      ],
+      "R": [
+        [
+          0.6116104248615877,
+          0.7911590789472295
+        ],
+        [
+          -0.7911590789472294,
+          0.6116104248615875
+        ]
+      ]
+    },
+    "usage_boundary": "allowed only as an experimental retinal geometry; controlled visual response and mirror gates remain independent requirements"
+  },
+  "diagnosis": {
+    "Tm3_has_no_optic_hex_coordinates": true,
+    "CT1_has_no_optic_hex_coordinates": true,
+    "mixed_delayed_neurotransmitter_classes": true,
+    "branch_aggregation_degrades_T4_direction_geometry": true,
+    "interpretation": "The v1 delayed pool merges proximal GABAergic Mi4/C3, distal glutamatergic Mi9 and unlocated CT1. This destroys source-specific spatial roles and the correlator also discards transmitter sign."
+  },
+  "next_candidate_contract": {
+    "name": "columnar_branched_correlator_v2",
+    "selection_status": "frozen_after_exploratory_anatomy_audit",
+    "may_read_driving_state": false,
+    "may_inject_direction_labels": false,
+    "may_advance_without_fresh_controlled_vision_evidence": false,
+    "preserve_branches_separately": true
+  },
+  "literature": {
+    "on_off_pathway_review": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6338461/",
+    "t4_connectome": "https://elifesciences.org/articles/24394",
+    "biophysical_multiplication": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8891015/"
+  },
+  "advance_to_columnar_branched_correlator_v2": false,
+  "advance_to_central_complex": false,
+  "stop_reason": "retrospective anatomy audit supports branch separation, but a frozen candidate requires fresh controlled-vision evidence"
+}

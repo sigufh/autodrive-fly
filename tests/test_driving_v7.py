@@ -216,6 +216,19 @@ def test_v7_manifest_is_isolated_and_in_progress() -> None:
     assert manifest["stage_status"] in {"in_progress", "blocked_on_visual_dynamics"}
     assert manifest["advance_to_central_complex"] is False
     assert manifest["default_runtime_changed"] is False
-    assert manifest["implementation_sha256"] == hashlib.sha256(
-        (ROOT / "src/fly_emotion/driving/v7.py").read_bytes()
-    ).hexdigest()
+    assert (
+        manifest["implementation_sha256"]
+        == hashlib.sha256((ROOT / "src/fly_emotion/driving/v7.py").read_bytes()).hexdigest()
+    )
+    assert manifest["stage_findings"] == {
+        "historical_aggregate_optic_hex_axis_passed": False,
+        "nested_T4_branch_axis_validation_passed": True,
+        "branched_T4_controlled_response_passed": False,
+    }
+    assert "branched_T4_response_gates_failed" in manifest["blockers"]
+    assert manifest["current_evidence"] == "artifacts/v7-branched-t4-candidate.json"
+    assert set(manifest["evidence"]) >= {
+        "artifacts/v7-branched-t4-candidate.json",
+        "artifacts/v7-t4-source-audit.json",
+        "artifacts/v7-typed-visual-candidate.json",
+    }

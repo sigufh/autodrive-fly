@@ -15,6 +15,11 @@ generalizes to zero-shot T5 (83.5% cardinal accuracy) but fails disjoint T4
 validation (46.6%, 50.8-degree median error) and the preregistered cross-eye
 mirror gate. This is evidence for a partial T5 spatial-offset signal, not a
 validated retinal coordinate system or functional motion circuit.
+A nested 5x4-fold T4 source audit subsequently identifies Mi1 versus Mi4+C3
+offsets with 96.38% outer-fold cardinal accuracy. This is anatomy-only evidence:
+the frozen three-branch functional candidate still has 0.0024 median T4
+direction contrast and 0.5053 mirror error on its best partial condition. It
+therefore does not establish a functioning T4 circuit or authorize stage 2.
 
 ## Supported claims
 

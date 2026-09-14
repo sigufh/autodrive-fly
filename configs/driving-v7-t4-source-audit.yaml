@@ -1,0 +1,37 @@
+version: 1
+name: v7-t4-source-audit
+exploratory: true
+advance_allowed: false
+cross_validation:
+  folds: 5
+  split_seed: v7-t4-source-audit-20260914
+  nested_outer_folds: 5
+  nested_inner_folds: 4
+  nested_gates:
+    minimum_outer_accuracy: 0.85
+    maximum_outer_median_angle_error_degrees: 25.0
+    minimum_selection_consensus_fraction: 0.80
+source_roles:
+  T4:
+    centre_direct: [Mi1, Tm3]
+    proximal_suppressor: [Mi4, C3, CT1]
+    distal_context: [Mi9]
+  T5:
+    centre_direct: [Tm1, Tm2, Tm4]
+    proximal_suppressor: [CT1]
+    distal_context: [Tm9]
+coordinate_screen:
+  T4_direct_anchor: Mi1
+  T4_candidate_offset_sources: [Mi4, Mi9, C3]
+  T4_reference_offset_sources: [Mi4, Mi9, C3]
+next_candidate_contract:
+  name: columnar_branched_correlator_v2
+  selection_status: frozen_after_exploratory_anatomy_audit
+  may_read_driving_state: false
+  may_inject_direction_labels: false
+  may_advance_without_fresh_controlled_vision_evidence: false
+  preserve_branches_separately: true
+literature:
+  on_off_pathway_review: https://pmc.ncbi.nlm.nih.gov/articles/PMC6338461/
+  t4_connectome: https://elifesciences.org/articles/24394
+  biophysical_multiplication: https://pmc.ncbi.nlm.nih.gov/articles/PMC8891015/

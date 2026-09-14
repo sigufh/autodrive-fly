@@ -1,0 +1,43 @@
+version: 1
+name: columnar-branched-t4-v2
+deployment_enabled: false
+parameter_scan_allowed: false
+retinal_backends:
+  - legacy_absolute_contrast
+  - linear_luminance
+  - signed_frame_difference
+retinal_geometries:
+  - legacy_proxy_v2
+  - nested_t4_axis_v1
+brain_substeps_per_frame: 4
+baseline_frames: 8
+history_substeps: 3
+gain: 1.0
+branches:
+  centre_fast_excitatory:
+    source_types: [Mi1, Tm3]
+    delay_substeps: 0
+    polarity: positive
+    operation: add
+  proximal_delayed_on_inhibitory:
+    source_types: [Mi4, C3, CT1]
+    delay_substeps: 2
+    polarity: positive
+    operation: subtract
+  distal_delayed_off_inhibitory:
+    source_types: [Mi9]
+    delay_substeps: 3
+    polarity: negative
+    operation: subtract
+gates:
+  minimum_T4_cardinal_direction_contrast: 0.10
+  minimum_all_T4_populations_positive: 1.0
+  minimum_overall_cardinal_direction_contrast: 0.10
+  minimum_on_off_specialization: 0.10
+  minimum_looming_contrast: 0.10
+  maximum_mirror_response_error: 0.20
+provenance:
+  frozen_from_source_audit: artifacts/v7-t4-source-audit.json
+  on_off_pathway_review: https://pmc.ncbi.nlm.nih.gov/articles/PMC6338461/
+  minimal_synaptic_model: https://jov.arvojournals.org/article.aspx?articleid=2761144
+  t4_connectome: https://elifesciences.org/articles/24394
