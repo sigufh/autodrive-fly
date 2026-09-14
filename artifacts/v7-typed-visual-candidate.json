@@ -3,8 +3,8 @@
     "version": 7,
     "mode": "v7-experimental",
     "deployment_enabled": false,
-    "config_sha256": "26cd9a32ce53a609fd0cc53ef5579c54474e9dbe94826e49c23f3df01a2788ca",
-    "implementation_sha256": "ab50fc293fd337ab64cadb8417a2d465e800c3de42397073f0c635fb384dcb7a",
+    "config_sha256": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+    "implementation_sha256": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
     "dynamics_backends": [
       "typed_visual_leak_v1",
       "typed_visual_subgraph_v1",
@@ -439,13 +439,102 @@
             "grating_left<->grating_right": 0.5068910111618327,
             "rotation_ccw<->rotation_cw": 0.34683052168321366
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.19546275865885981,
+            "on_edge_down<->on_edge_down": 0.42559835323508305,
+            "on_edge_up<->on_edge_up": 0.4061107541229877,
+            "on_looming<->on_looming": 0.4522694807206954,
+            "on_receding<->on_receding": 0.39155213744465284,
+            "on_static_disc<->on_static_disc": 0.21705855008170535,
+            "off_edge_left<->off_edge_right": 0.2522606372733714,
+            "off_edge_down<->off_edge_down": 0.2957822808082175,
+            "off_edge_up<->off_edge_up": 0.28707255474164006,
+            "off_looming<->off_looming": 0.34559885606416335,
+            "off_receding<->off_receding": 0.28091751606271476,
+            "off_static_disc<->off_static_disc": 0.1914289648241223,
+            "grating_left<->grating_right": 0.5477891769603023,
+            "rotation_ccw<->rotation_cw": 0.3824129791452678
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.03728457056660658,
+              "maximum_population_scale": 0.06319313868980272,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.024198860642175857,
+              "maximum_population_scale": 0.036488242215545606,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.02828513913159347,
+              "maximum_population_scale": 0.044005224715055656,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.018088971503162136,
+              "maximum_population_scale": 0.028121240059680995,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.021929973643559073,
+              "maximum_population_scale": 0.03454094016442424,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0010524315407748732,
+              "maximum_population_scale": 0.002164951293797923,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.017917732253315614,
+              "maximum_population_scale": 0.034782764386454355,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.01592879160476434,
+              "maximum_population_scale": 0.02610145550088374,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.014402107158510409,
+              "maximum_population_scale": 0.02231152751583023,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.012735474704889007,
+              "maximum_population_scale": 0.019796806621433925,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.011856412686032268,
+              "maximum_population_scale": 0.019378551748649907,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0011532443379070766,
+              "maximum_population_scale": 0.002305123199311776,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0016279261549711323,
+              "maximum_population_scale": 0.0035707367361278663,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.0017456434972245845,
+              "maximum_population_scale": 0.0031881240439356694,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": -0.007629682031428851,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.11466276403085815,
             "fraction_expected_polarity_positive": 0.625,
             "median_known_looming_contrast": -0.967926588419299,
-            "maximum_mirror_response_error": 0.5068910111618327
+            "maximum_mirror_response_error": 0.5068910111618327,
+            "maximum_energy_weighted_mirror_response_error": 0.5477891769603023
           }
         },
         "gates": {
@@ -2348,13 +2437,102 @@
             "grating_left<->grating_right": 0.26679172439922516,
             "rotation_ccw<->rotation_cw": 0.4291140924572468
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.31668066899950137,
+            "on_edge_down<->on_edge_down": 0.19604491538055221,
+            "on_edge_up<->on_edge_up": 0.5789024332679129,
+            "on_looming<->on_looming": 0.6613882316357598,
+            "on_receding<->on_receding": 0.6115764855642549,
+            "on_static_disc<->on_static_disc": 0.3589445837554548,
+            "off_edge_left<->off_edge_right": 0.32364195879567625,
+            "off_edge_down<->off_edge_down": 0.2000128574143058,
+            "off_edge_up<->off_edge_up": 0.5980244451969655,
+            "off_looming<->off_looming": 0.7140425742726989,
+            "off_receding<->off_receding": 0.5718387208937797,
+            "off_static_disc<->off_static_disc": 0.29109241922043294,
+            "grating_left<->grating_right": 0.191069775270801,
+            "rotation_ccw<->rotation_cw": 0.4577415592800068
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.03970712858410596,
+              "maximum_population_scale": 0.10158408107336028,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.05291402583451504,
+              "maximum_population_scale": 0.08427372214018716,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.02264055980120994,
+              "maximum_population_scale": 0.034262169269913566,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.009970674080253372,
+              "maximum_population_scale": 0.01656462191122001,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.014179041695680229,
+              "maximum_population_scale": 0.022089369246804845,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.00069082906865717,
+              "maximum_population_scale": 0.0015698648358916322,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.037676592402781435,
+              "maximum_population_scale": 0.09690012119344785,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.049565666543800006,
+              "maximum_population_scale": 0.0792755315788777,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.021181257643498305,
+              "maximum_population_scale": 0.033108913573505115,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.00900933109760575,
+              "maximum_population_scale": 0.015178433387608959,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.015886465833409157,
+              "maximum_population_scale": 0.02469887677680118,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0008048065901881168,
+              "maximum_population_scale": 0.002071899828569723,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0041708537803545895,
+              "maximum_population_scale": 0.0106402225802408,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.004163060745000054,
+              "maximum_population_scale": 0.00843607634405954,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.006966014752737077,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.6183198096647543,
             "fraction_expected_polarity_positive": 0.8125,
             "median_known_looming_contrast": 0.479117113007402,
-            "maximum_mirror_response_error": 0.6892005961727601
+            "maximum_mirror_response_error": 0.6892005961727601,
+            "maximum_energy_weighted_mirror_response_error": 0.7140425742726989
           }
         },
         "gates": {
@@ -4257,13 +4435,102 @@
             "grating_left<->grating_right": 0.3321559875220364,
             "rotation_ccw<->rotation_cw": 0.2884781330541114
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.33236627432372506,
+            "on_edge_down<->on_edge_down": 0.2948412954987343,
+            "on_edge_up<->on_edge_up": 0.35372033488421767,
+            "on_looming<->on_looming": 0.7008750893377174,
+            "on_receding<->on_receding": 0.6457920468304336,
+            "on_static_disc<->on_static_disc": 0.0,
+            "off_edge_left<->off_edge_right": 0.3325414918845689,
+            "off_edge_down<->off_edge_down": 0.2955996876919156,
+            "off_edge_up<->off_edge_up": 0.354633103769181,
+            "off_looming<->off_looming": 0.7036815227662355,
+            "off_receding<->off_receding": 0.6434626951604928,
+            "off_static_disc<->off_static_disc": 0.0,
+            "grating_left<->grating_right": 0.27529727371682455,
+            "rotation_ccw<->rotation_cw": 0.2757705518472045
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.006808841572424298,
+              "maximum_population_scale": 0.012158152052597427,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.007010652914140146,
+              "maximum_population_scale": 0.0109667237075878,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.005955200280308728,
+              "maximum_population_scale": 0.009403358098834769,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.0020887266703597663,
+              "maximum_population_scale": 0.0032942227111102617,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.002255268632865434,
+              "maximum_population_scale": 0.0035067254067139507,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.006423494893642424,
+              "maximum_population_scale": 0.011466361033034911,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.006612094675006988,
+              "maximum_population_scale": 0.010335274563748964,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.005610682105628258,
+              "maximum_population_scale": 0.008847405644206408,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.0019651872037634733,
+              "maximum_population_scale": 0.0031053758186540214,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.0023978870624528728,
+              "maximum_population_scale": 0.003721274711187572,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.016130602336727015,
+              "maximum_population_scale": 0.0312687257074681,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.014769078919476996,
+              "maximum_population_scale": 0.02532497521321444,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.010870823498826915,
             "fraction_expected_direction_positive": 0.5625,
             "median_on_off_specialization": 0.9277453966616183,
             "fraction_expected_polarity_positive": 0.75,
             "median_known_looming_contrast": 0.4324092544295145,
-            "maximum_mirror_response_error": 0.7021198507767754
+            "maximum_mirror_response_error": 0.7021198507767754,
+            "maximum_energy_weighted_mirror_response_error": 0.7036815227662355
           }
         },
         "gates": {
@@ -6168,13 +6435,102 @@
             "grating_left<->grating_right": 0.46387658399756165,
             "rotation_ccw<->rotation_cw": 0.33761666309711796
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.19263995970468153,
+            "on_edge_down<->on_edge_down": 0.41539974471544694,
+            "on_edge_up<->on_edge_up": 0.40193837619062894,
+            "on_looming<->on_looming": 0.44666264263286565,
+            "on_receding<->on_receding": 0.38999179474804263,
+            "on_static_disc<->on_static_disc": 0.19059875691610306,
+            "off_edge_left<->off_edge_right": 0.24999709034984763,
+            "off_edge_down<->off_edge_down": 0.2947339466686674,
+            "off_edge_up<->off_edge_up": 0.2796655626008802,
+            "off_looming<->off_looming": 0.3365106431914385,
+            "off_receding<->off_receding": 0.2814654855855112,
+            "off_static_disc<->off_static_disc": 0.1638822067373149,
+            "grating_left<->grating_right": 0.49138576591587724,
+            "rotation_ccw<->rotation_cw": 0.3515083516747531
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.04014639974624069,
+              "maximum_population_scale": 0.06558965967369615,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.026366720800230205,
+              "maximum_population_scale": 0.03939229913621558,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.030303174261867443,
+              "maximum_population_scale": 0.04565083686711615,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.019319148346820518,
+              "maximum_population_scale": 0.02915455879801767,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.023274641214342525,
+              "maximum_population_scale": 0.035744881811387595,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0014006093091032022,
+              "maximum_population_scale": 0.004306078016360982,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.0192665875539201,
+              "maximum_population_scale": 0.03586671338516636,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.01694875177881796,
+              "maximum_population_scale": 0.026970436884857472,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.015628412220134936,
+              "maximum_population_scale": 0.023088293616728615,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.013788736888223558,
+              "maximum_population_scale": 0.020487020608106386,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.012498804073562889,
+              "maximum_population_scale": 0.01991902256950153,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0015403587804235833,
+              "maximum_population_scale": 0.004692737654385848,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.001989659604168547,
+              "maximum_population_scale": 0.004798506736824049,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.00203273157430841,
+              "maximum_population_scale": 0.00387105462241335,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": -0.008696598311938301,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.11065797095930774,
             "fraction_expected_polarity_positive": 0.625,
             "median_known_looming_contrast": -0.9732860638599302,
-            "maximum_mirror_response_error": 0.4646577471062398
+            "maximum_mirror_response_error": 0.4646577471062398,
+            "maximum_energy_weighted_mirror_response_error": 0.49138576591587724
           }
         },
         "gates": {
@@ -8077,13 +8433,102 @@
             "grating_left<->grating_right": 0.2508192588672263,
             "rotation_ccw<->rotation_cw": 0.4105328394702112
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.31267014240802604,
+            "on_edge_down<->on_edge_down": 0.1922955925096971,
+            "on_edge_up<->on_edge_up": 0.5737919967766033,
+            "on_looming<->on_looming": 0.6488489380640239,
+            "on_receding<->on_receding": 0.6085429958232897,
+            "on_static_disc<->on_static_disc": 0.31324188417295845,
+            "off_edge_left<->off_edge_right": 0.3222705349944715,
+            "off_edge_down<->off_edge_down": 0.19831171773065617,
+            "off_edge_up<->off_edge_up": 0.5963359697744012,
+            "off_looming<->off_looming": 0.7016094934388116,
+            "off_receding<->off_receding": 0.5565311887639749,
+            "off_static_disc<->off_static_disc": 0.22152415230751663,
+            "grating_left<->grating_right": 0.18959865913384333,
+            "rotation_ccw<->rotation_cw": 0.4416047370258034
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.04231358769729442,
+              "maximum_population_scale": 0.10439102980408235,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.056666117487271954,
+              "maximum_population_scale": 0.08664203889302327,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.024074341514998668,
+              "maximum_population_scale": 0.03554293295119306,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.01064422763330018,
+              "maximum_population_scale": 0.017156669871018958,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.014950580697333411,
+              "maximum_population_scale": 0.022760478722465914,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0009386766672723507,
+              "maximum_population_scale": 0.0031360753065196255,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.039776807179826026,
+              "maximum_population_scale": 0.09929200081487535,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.05247502758163024,
+              "maximum_population_scale": 0.08124126918946742,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.022321758656240184,
+              "maximum_population_scale": 0.03398530220247222,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.009590279240861187,
+              "maximum_population_scale": 0.01570031466062529,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.01719120519040214,
+              "maximum_population_scale": 0.025486110943438244,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.001140111618972322,
+              "maximum_population_scale": 0.0034718133984820375,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.004672632582787184,
+              "maximum_population_scale": 0.01144949346880777,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.004620237366368387,
+              "maximum_population_scale": 0.008771187626825406,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.006805536776394203,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.6207953269822416,
             "fraction_expected_polarity_positive": 0.8125,
             "median_known_looming_contrast": 0.09687597081811643,
-            "maximum_mirror_response_error": 0.6569057847877752
+            "maximum_mirror_response_error": 0.6569057847877752,
+            "maximum_energy_weighted_mirror_response_error": 0.7016094934388116
           }
         },
         "gates": {
@@ -9986,13 +10431,102 @@
             "grating_left<->grating_right": 0.30954800235369195,
             "rotation_ccw<->rotation_cw": 0.29287664265677504
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.32926582796306736,
+            "on_edge_down<->on_edge_down": 0.28827862079328864,
+            "on_edge_up<->on_edge_up": 0.35305609620667466,
+            "on_looming<->on_looming": 0.6946458319170152,
+            "on_receding<->on_receding": 0.637767546351119,
+            "on_static_disc<->on_static_disc": 0.0,
+            "off_edge_left<->off_edge_right": 0.3294724777907493,
+            "off_edge_down<->off_edge_down": 0.28909579954913706,
+            "off_edge_up<->off_edge_up": 0.35400072050469844,
+            "off_looming<->off_looming": 0.6975060766048002,
+            "off_receding<->off_receding": 0.6353998680031713,
+            "off_static_disc<->off_static_disc": 0.0,
+            "grating_left<->grating_right": 0.27355859872572086,
+            "rotation_ccw<->rotation_cw": 0.2762723589226445
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.007313046402114266,
+              "maximum_population_scale": 0.012647160844698658,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.007605815671610986,
+              "maximum_population_scale": 0.011408710353043272,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.006367804340423198,
+              "maximum_population_scale": 0.009729273895615531,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.002238007129193365,
+              "maximum_population_scale": 0.003434185279138102,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.002429879410730299,
+              "maximum_population_scale": 0.0036582638395880273,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.00690078380909565,
+              "maximum_population_scale": 0.01193401465488888,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.007174791575405287,
+              "maximum_population_scale": 0.010757701530655606,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.006000551361062586,
+              "maximum_population_scale": 0.009158374395415248,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.0021060634156177373,
+              "maximum_population_scale": 0.0032378173169486323,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.0025831616317702746,
+              "maximum_population_scale": 0.0038815861754296853,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.017087822323412664,
+              "maximum_population_scale": 0.033369766767554675,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.015569902310005181,
+              "maximum_population_scale": 0.02587497731938084,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.0037753593469418527,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.921270467871335,
             "fraction_expected_polarity_positive": 0.75,
             "median_known_looming_contrast": 0.34347869206133136,
-            "maximum_mirror_response_error": 0.6895067196056393
+            "maximum_mirror_response_error": 0.6895067196056393,
+            "maximum_energy_weighted_mirror_response_error": 0.6975060766048002
           }
         },
         "gates": {
@@ -11897,13 +12431,102 @@
             "grating_left<->grating_right": 0.4720920295376417,
             "rotation_ccw<->rotation_cw": 0.34867743764387915
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.19032433005316884,
+            "on_edge_down<->on_edge_down": 0.41363005413911763,
+            "on_edge_up<->on_edge_up": 0.40632206878460764,
+            "on_looming<->on_looming": 0.4477841197762086,
+            "on_receding<->on_receding": 0.38984646610696416,
+            "on_static_disc<->on_static_disc": 0.27748795831040657,
+            "off_edge_left<->off_edge_right": 0.245522206020071,
+            "off_edge_down<->off_edge_down": 0.3017157484402442,
+            "off_edge_up<->off_edge_up": 0.27683917007217007,
+            "off_looming<->off_looming": 0.3373839255882663,
+            "off_receding<->off_receding": 0.28110678817246676,
+            "off_static_disc<->off_static_disc": 0.22647308359896318,
+            "grating_left<->grating_right": 0.49567024204499344,
+            "rotation_ccw<->rotation_cw": 0.35505438122273075
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.03939862415074344,
+              "maximum_population_scale": 0.06476685183688416,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.026168961865851343,
+              "maximum_population_scale": 0.039252277464674544,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.029364498041120696,
+              "maximum_population_scale": 0.043856534001951795,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.01851336080011247,
+              "maximum_population_scale": 0.027919171386292428,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.022355515549952097,
+              "maximum_population_scale": 0.0344589261813776,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.001507911998438126,
+              "maximum_population_scale": 0.004334533646305783,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.018906442347703372,
+              "maximum_population_scale": 0.03556208638574345,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.016124155795806516,
+              "maximum_population_scale": 0.025408200542278346,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.015505724400050587,
+              "maximum_population_scale": 0.022771294346147906,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.01332832437459544,
+              "maximum_population_scale": 0.019527344965444636,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.011962432676388227,
+              "maximum_population_scale": 0.019200969604843986,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0016911486666261748,
+              "maximum_population_scale": 0.0047277834392839505,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0019981958031862037,
+              "maximum_population_scale": 0.004813031119828804,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.002010818665040506,
+              "maximum_population_scale": 0.003891166067750884,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": -0.004627096104682968,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.07388409205536309,
             "fraction_expected_polarity_positive": 0.8125,
             "median_known_looming_contrast": -0.9112160912273249,
-            "maximum_mirror_response_error": 0.4720920295376417
+            "maximum_mirror_response_error": 0.4720920295376417,
+            "maximum_energy_weighted_mirror_response_error": 0.49567024204499344
           }
         },
         "gates": {
@@ -13806,13 +14429,102 @@
             "grating_left<->grating_right": 0.2640028975479484,
             "rotation_ccw<->rotation_cw": 0.4114790209443837
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.3115878985211222,
+            "on_edge_down<->on_edge_down": 0.1889276393531265,
+            "on_edge_up<->on_edge_up": 0.585724149390757,
+            "on_looming<->on_looming": 0.6486414556066621,
+            "on_receding<->on_receding": 0.6098977332096371,
+            "on_static_disc<->on_static_disc": 0.42445503929605655,
+            "off_edge_left<->off_edge_right": 0.32080536743154003,
+            "off_edge_down<->off_edge_down": 0.1946862085141886,
+            "off_edge_up<->off_edge_up": 0.6065357754176098,
+            "off_looming<->off_looming": 0.6943784679713475,
+            "off_receding<->off_receding": 0.5571316996225453,
+            "off_static_disc<->off_static_disc": 0.22211045210774572,
+            "grating_left<->grating_right": 0.19535914088181733,
+            "rotation_ccw<->rotation_cw": 0.43454403045314566
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.04094195175005973,
+              "maximum_population_scale": 0.10164917213942273,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.055254417908585436,
+              "maximum_population_scale": 0.08414988115064218,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.022867390472792355,
+              "maximum_population_scale": 0.03409265462059876,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.010236992155213672,
+              "maximum_population_scale": 0.016672758939511832,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.014452464978514757,
+              "maximum_population_scale": 0.022290754656841737,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0010938708555652912,
+              "maximum_population_scale": 0.0031506762908061424,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.03850326852585663,
+              "maximum_population_scale": 0.09704925009382306,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.05099718659741021,
+              "maximum_population_scale": 0.07927434932307689,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.021148109774863463,
+              "maximum_population_scale": 0.03319209988794638,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.009310032529166911,
+              "maximum_population_scale": 0.015672146110864114,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.016754923980393563,
+              "maximum_population_scale": 0.025651070290313792,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0015061840440672206,
+              "maximum_population_scale": 0.0034829179067851434,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.004668534757302297,
+              "maximum_population_scale": 0.012036178029210998,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.0045885977987797245,
+              "maximum_population_scale": 0.008940560278551413,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.017419435948732798,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.5337906970826081,
             "fraction_expected_polarity_positive": 0.8125,
             "median_known_looming_contrast": 0.10666266927479,
-            "maximum_mirror_response_error": 0.6566806305316425
+            "maximum_mirror_response_error": 0.6566806305316425,
+            "maximum_energy_weighted_mirror_response_error": 0.6943784679713475
           }
         },
         "gates": {
@@ -15715,13 +16427,102 @@
             "grating_left<->grating_right": 0.30623810521190464,
             "rotation_ccw<->rotation_cw": 0.2930515577004301
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.3341132824495194,
+            "on_edge_down<->on_edge_down": 0.28327885782324747,
+            "on_edge_up<->on_edge_up": 0.36571719816661796,
+            "on_looming<->on_looming": 0.7008430165368933,
+            "on_receding<->on_receding": 0.6398770660758311,
+            "on_static_disc<->on_static_disc": 0.0,
+            "off_edge_left<->off_edge_right": 0.33436092537665574,
+            "off_edge_down<->off_edge_down": 0.2840856573909498,
+            "off_edge_up<->off_edge_up": 0.3667479350169133,
+            "off_looming<->off_looming": 0.7037011131304218,
+            "off_receding<->off_receding": 0.6376365751036123,
+            "off_static_disc<->off_static_disc": 0.0,
+            "grating_left<->grating_right": 0.2724146304719877,
+            "rotation_ccw<->rotation_cw": 0.2775996213614836
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.0071464053622331885,
+              "maximum_population_scale": 0.012691139394609774,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.0075584110941681795,
+              "maximum_population_scale": 0.011355516845560043,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.006033894003996579,
+              "maximum_population_scale": 0.009122407081386808,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.002191540879219275,
+              "maximum_population_scale": 0.0033564878898228122,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.002416116600461632,
+              "maximum_population_scale": 0.003617631692213319,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.006742110990382585,
+              "maximum_population_scale": 0.011972047071230474,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.007129052129216421,
+              "maximum_population_scale": 0.010704373898169717,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.005683907376424201,
+              "maximum_population_scale": 0.008582236270408128,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.002062350641113602,
+              "maximum_population_scale": 0.00316499955235896,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.002568549422577215,
+              "maximum_population_scale": 0.003838308654485001,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.016490211107889556,
+              "maximum_population_scale": 0.03225514780851837,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.014954177315290168,
+              "maximum_population_scale": 0.024760396102100922,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.0,
             "fraction_expected_direction_positive": 0.4375,
             "median_on_off_specialization": 0.8874860104502442,
             "fraction_expected_polarity_positive": 0.75,
             "median_known_looming_contrast": 0.3565875369094932,
-            "maximum_mirror_response_error": 0.6958441794907857
+            "maximum_mirror_response_error": 0.6958441794907857,
+            "maximum_energy_weighted_mirror_response_error": 0.7037011131304218
           }
         },
         "gates": {
@@ -17626,13 +18427,102 @@
             "grating_left<->grating_right": 0.32535088641868987,
             "rotation_ccw<->rotation_cw": 0.2998967518817838
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.1347010931044083,
+            "on_edge_down<->on_edge_down": 0.3070829924847547,
+            "on_edge_up<->on_edge_up": 0.3537227046492561,
+            "on_looming<->on_looming": 0.3886870845339063,
+            "on_receding<->on_receding": 0.374837457795945,
+            "on_static_disc<->on_static_disc": 0.11878399326838524,
+            "off_edge_left<->off_edge_right": 0.20461893421554245,
+            "off_edge_down<->off_edge_down": 0.3353766953475541,
+            "off_edge_up<->off_edge_up": 0.19493845530449352,
+            "off_looming<->off_looming": 0.22740654841707844,
+            "off_receding<->off_receding": 0.2892736509903319,
+            "off_static_disc<->off_static_disc": 0.10677426650583978,
+            "grating_left<->grating_right": 0.2532897105847637,
+            "rotation_ccw<->rotation_cw": 0.2121132642833623
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.004486004166621415,
+              "maximum_population_scale": 0.023431873182834816,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.003276748783876717,
+              "maximum_population_scale": 0.016344020144151282,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.003036758413669141,
+              "maximum_population_scale": 0.014331324187059647,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.0017943854971506218,
+              "maximum_population_scale": 0.008263490192893653,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.001991334809357516,
+              "maximum_population_scale": 0.010785137406036949,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0006271783417901884,
+              "maximum_population_scale": 0.0042975500701682105,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.002322705717260453,
+              "maximum_population_scale": 0.014236568357864155,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.0017025354475392847,
+              "maximum_population_scale": 0.008527315048103912,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.002070080538335475,
+              "maximum_population_scale": 0.01001168874890892,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.00170333018786445,
+              "maximum_population_scale": 0.00869180224353796,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.0010476477294927254,
+              "maximum_population_scale": 0.005795721547746791,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0006994450063075146,
+              "maximum_population_scale": 0.00468151830236776,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0007986937503338513,
+              "maximum_population_scale": 0.004780608812415732,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.000725888349419203,
+              "maximum_population_scale": 0.0038565321020537446,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.0,
             "fraction_expected_direction_positive": 0.4375,
             "median_on_off_specialization": 0.0,
             "fraction_expected_polarity_positive": 0.3125,
             "median_known_looming_contrast": -0.951674149421512,
-            "maximum_mirror_response_error": 0.6305723886810763
+            "maximum_mirror_response_error": 0.6305723886810763,
+            "maximum_energy_weighted_mirror_response_error": 0.3886870845339063
           }
         },
         "gates": {
@@ -19535,13 +20425,102 @@
             "grating_left<->grating_right": 0.3003356846746631,
             "rotation_ccw<->rotation_cw": 0.2975043432476464
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.24713463563043078,
+            "on_edge_down<->on_edge_down": 0.16008836095877038,
+            "on_edge_up<->on_edge_up": 0.5198174404441852,
+            "on_looming<->on_looming": 0.533586040132521,
+            "on_receding<->on_receding": 0.6041475595554263,
+            "on_static_disc<->on_static_disc": 0.1872547310464144,
+            "off_edge_left<->off_edge_right": 0.279716662737654,
+            "off_edge_down<->off_edge_down": 0.1857619971832719,
+            "off_edge_up<->off_edge_up": 0.5988698986551888,
+            "off_looming<->off_looming": 0.633282139413275,
+            "off_receding<->off_receding": 0.4036942261359087,
+            "off_static_disc<->off_static_disc": 0.10270653759696398,
+            "grating_left<->grating_right": 0.2657897148965155,
+            "rotation_ccw<->rotation_cw": 0.29700919955947025
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.00476592968891584,
+              "maximum_population_scale": 0.036213653948925194,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.006818950785335767,
+              "maximum_population_scale": 0.03135494820990017,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.0024447752253119164,
+              "maximum_population_scale": 0.01310510333960293,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.0010887540058536213,
+              "maximum_population_scale": 0.005748661250526777,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.0013001449688329792,
+              "maximum_population_scale": 0.0063832335882575645,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.00045516674852231164,
+              "maximum_population_scale": 0.003136099346283583,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.0040600141869282826,
+              "maximum_population_scale": 0.03333436770581057,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.005467137281469377,
+              "maximum_population_scale": 0.028017623467439544,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.0019546690880316367,
+              "maximum_population_scale": 0.008862590767511858,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.0008904550601014326,
+              "maximum_population_scale": 0.003965156735921039,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.0022496786719266504,
+              "maximum_population_scale": 0.011521942099625005,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0005704798739214444,
+              "maximum_population_scale": 0.003467492527397109,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0011297380649269702,
+              "maximum_population_scale": 0.0073448148333223,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.0012030658119193264,
+              "maximum_population_scale": 0.005902479811174555,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.0,
             "fraction_expected_direction_positive": 0.3125,
             "median_on_off_specialization": 0.041231172170904024,
             "fraction_expected_polarity_positive": 0.5,
             "median_known_looming_contrast": 0.0,
-            "maximum_mirror_response_error": 0.7027240217568502
+            "maximum_mirror_response_error": 0.7027240217568502,
+            "maximum_energy_weighted_mirror_response_error": 0.633282139413275
           }
         },
         "gates": {
@@ -21444,13 +22423,102 @@
             "grating_left<->grating_right": 0.25900201580900445,
             "rotation_ccw<->rotation_cw": 0.3236889336179157
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.2826702489273109,
+            "on_edge_down<->on_edge_down": 0.22169412636608246,
+            "on_edge_up<->on_edge_up": 0.37033768548667223,
+            "on_looming<->on_looming": 0.679470044312291,
+            "on_receding<->on_receding": 0.5863588031037498,
+            "on_static_disc<->on_static_disc": 0.0,
+            "off_edge_left<->off_edge_right": 0.28324235684670396,
+            "off_edge_down<->off_edge_down": 0.22003505778533566,
+            "off_edge_up<->off_edge_up": 0.3680244544304687,
+            "off_looming<->off_looming": 0.675789677827526,
+            "off_receding<->off_receding": 0.5942128841547972,
+            "off_static_disc<->off_static_disc": 0.0,
+            "grating_left<->grating_right": 0.25233560703953456,
+            "rotation_ccw<->rotation_cw": 0.25591992761661864
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.0008654815780366975,
+              "maximum_population_scale": 0.00491448271904984,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.0009591778908694438,
+              "maximum_population_scale": 0.0041578306860169615,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.0006905377609965682,
+              "maximum_population_scale": 0.0030037947961910837,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.00023691834988203515,
+              "maximum_population_scale": 0.0010787997657985215,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.00027331288544864485,
+              "maximum_population_scale": 0.0013204303755055768,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.0008221388172347727,
+              "maximum_population_scale": 0.004601696697227009,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.0009025572670407606,
+              "maximum_population_scale": 0.0038931400017413686,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.0006467702056797044,
+              "maximum_population_scale": 0.002814638470299524,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.00022042507900099377,
+              "maximum_population_scale": 0.001008607521033955,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.00028945986924220387,
+              "maximum_population_scale": 0.0014121571481719108,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0018766645820404155,
+              "maximum_population_scale": 0.009578383980715,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.002005746792474995,
+              "maximum_population_scale": 0.008891397932620304,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": -0.058296613237113944,
             "fraction_expected_direction_positive": 0.4375,
             "median_on_off_specialization": 0.5954404749213226,
             "fraction_expected_polarity_positive": 0.75,
             "median_known_looming_contrast": 0.5048445823671622,
-            "maximum_mirror_response_error": 0.7297807385983414
+            "maximum_mirror_response_error": 0.7297807385983414,
+            "maximum_energy_weighted_mirror_response_error": 0.679470044312291
           }
         },
         "gates": {
@@ -23355,13 +24423,102 @@
             "grating_left<->grating_right": 0.4596903914232688,
             "rotation_ccw<->rotation_cw": 0.4382654660480299
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.1535245583965375,
+            "on_edge_down<->on_edge_down": 0.3541496036915718,
+            "on_edge_up<->on_edge_up": 0.33196293497274015,
+            "on_looming<->on_looming": 0.6055913933055669,
+            "on_receding<->on_receding": 0.5288311974765771,
+            "on_static_disc<->on_static_disc": 0.3635964208490606,
+            "off_edge_left<->off_edge_right": 0.26813472183586473,
+            "off_edge_down<->off_edge_down": 0.24578535129095846,
+            "off_edge_up<->off_edge_up": 0.44895891384745484,
+            "off_looming<->off_looming": 0.3819835269146586,
+            "off_receding<->off_receding": 0.43112061622954756,
+            "off_static_disc<->off_static_disc": 0.2364916434086976,
+            "grating_left<->grating_right": 0.4296669558537795,
+            "rotation_ccw<->rotation_cw": 0.40558326283764146
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.0423313609625504,
+              "maximum_population_scale": 0.06922738207604154,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.03770643065291646,
+              "maximum_population_scale": 0.056706333242891115,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.0343713209639361,
+              "maximum_population_scale": 0.05080179416208876,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.004312678869333164,
+              "maximum_population_scale": 0.006422034356637152,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.02042798501896684,
+              "maximum_population_scale": 0.030864399203982894,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0009498933509729061,
+              "maximum_population_scale": 0.0029213311509916017,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.020514702398471966,
+              "maximum_population_scale": 0.04234713246214552,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.017700146196728356,
+              "maximum_population_scale": 0.026201153989949953,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.012490727356655575,
+              "maximum_population_scale": 0.01820096926630823,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.004163456540362625,
+              "maximum_population_scale": 0.006145700347678496,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.012751047113452884,
+              "maximum_population_scale": 0.020025480190360677,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0015778009926315426,
+              "maximum_population_scale": 0.004468739266576005,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.0019613716533543606,
+              "maximum_population_scale": 0.004869085853988065,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.0024534086680218343,
+              "maximum_population_scale": 0.004204676429344101,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.0021220485185592074,
             "fraction_expected_direction_positive": 0.5,
             "median_on_off_specialization": 0.06700011089404659,
             "fraction_expected_polarity_positive": 0.6875,
             "median_known_looming_contrast": -0.9804805186870279,
-            "maximum_mirror_response_error": 0.5802009710772382
+            "maximum_mirror_response_error": 0.5802009710772382,
+            "maximum_energy_weighted_mirror_response_error": 0.6055913933055669
           }
         },
         "gates": {
@@ -25265,13 +26422,102 @@
             "grating_left<->grating_right": 0.3313125455452258,
             "rotation_ccw<->rotation_cw": 0.3900191698890688
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.2929980055995317,
+            "on_edge_down<->on_edge_down": 0.49123836942824506,
+            "on_edge_up<->on_edge_up": 0.164712336715813,
+            "on_looming<->on_looming": 0.759794855888103,
+            "on_receding<->on_receding": 0.8626706011143842,
+            "on_static_disc<->on_static_disc": 0.473415544873916,
+            "off_edge_left<->off_edge_right": 0.3008019551052351,
+            "off_edge_down<->off_edge_down": 0.5064798390353858,
+            "off_edge_up<->off_edge_up": 0.1666290916618184,
+            "off_looming<->off_looming": 0.6747909445507856,
+            "off_receding<->off_receding": 0.7649390437335589,
+            "off_static_disc<->off_static_disc": 0.19940977660137824,
+            "grating_left<->grating_right": 0.3216100911468009,
+            "rotation_ccw<->rotation_cw": 0.3832212367294732
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.04109771304821423,
+              "maximum_population_scale": 0.10829248256150051,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.031909591897622325,
+              "maximum_population_scale": 0.04676695936459465,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.04933101061661293,
+              "maximum_population_scale": 0.07569003407943412,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.0027242696188990844,
+              "maximum_population_scale": 0.004060659966034575,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.010589244999562627,
+              "maximum_population_scale": 0.016159297782996428,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 0.0007678092735095316,
+              "maximum_population_scale": 0.0023672068647097254,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.03854912429920755,
+              "maximum_population_scale": 0.10267745552218868,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.029623224104348686,
+              "maximum_population_scale": 0.04617301165226264,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.04563617598182952,
+              "maximum_population_scale": 0.07184575370147242,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.0031124194786146817,
+              "maximum_population_scale": 0.004991176306338741,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.01273894723819702,
+              "maximum_population_scale": 0.02030105562980635,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 0.0018173298666340472,
+              "maximum_population_scale": 0.004330915632726385,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.004861065040396916,
+              "maximum_population_scale": 0.008388201707111432,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.005477408852500235,
+              "maximum_population_scale": 0.010921813548611237,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": -0.057185607137520356,
             "fraction_expected_direction_positive": 0.4375,
             "median_on_off_specialization": 0.611139956319841,
             "fraction_expected_polarity_positive": 0.8125,
             "median_known_looming_contrast": 0.0,
-            "maximum_mirror_response_error": 0.8447089143797749
+            "maximum_mirror_response_error": 0.8447089143797749,
+            "maximum_energy_weighted_mirror_response_error": 0.8626706011143842
           }
         },
         "gates": {
@@ -27175,13 +28421,102 @@
             "grating_left<->grating_right": 0.34944697245539297,
             "rotation_ccw<->rotation_cw": 0.3279434106101464
           },
+          "energy_weighted_mirror_response_error": {
+            "on_edge_left<->on_edge_right": 0.3400298776367477,
+            "on_edge_down<->on_edge_down": 0.3182102429037262,
+            "on_edge_up<->on_edge_up": 0.25506694151346365,
+            "on_looming<->on_looming": 0.8990513806535088,
+            "on_receding<->on_receding": 0.8500733366560574,
+            "on_static_disc<->on_static_disc": 0.0,
+            "off_edge_left<->off_edge_right": 0.3408363152874498,
+            "off_edge_down<->off_edge_down": 0.3184030245110249,
+            "off_edge_up<->off_edge_up": 0.2550608984811369,
+            "off_looming<->off_looming": 0.9010470349654474,
+            "off_receding<->off_receding": 0.8476526966234489,
+            "off_static_disc<->off_static_disc": 0.0,
+            "grating_left<->grating_right": 0.3161112762998587,
+            "rotation_ccw<->rotation_cw": 0.3554271440977411
+          },
+          "mirror_response_scale": {
+            "on_edge_left<->on_edge_right": {
+              "mean_population_scale": 0.006430865714169778,
+              "maximum_population_scale": 0.01245836438156358,
+              "populations": 26
+            },
+            "on_edge_down<->on_edge_down": {
+              "mean_population_scale": 0.006797124864652791,
+              "maximum_population_scale": 0.010171442089420437,
+              "populations": 26
+            },
+            "on_edge_up<->on_edge_up": {
+              "mean_population_scale": 0.00757378643957447,
+              "maximum_population_scale": 0.011405114743956358,
+              "populations": 26
+            },
+            "on_looming<->on_looming": {
+              "mean_population_scale": 0.0007845708196845228,
+              "maximum_population_scale": 0.0012093957776017849,
+              "populations": 26
+            },
+            "on_receding<->on_receding": {
+              "mean_population_scale": 0.001303663961108726,
+              "maximum_population_scale": 0.0019313024330517513,
+              "populations": 26
+            },
+            "on_static_disc<->on_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "off_edge_left<->off_edge_right": {
+              "mean_population_scale": 0.006060406145188491,
+              "maximum_population_scale": 0.011744999139500134,
+              "populations": 26
+            },
+            "off_edge_down<->off_edge_down": {
+              "mean_population_scale": 0.006411051803829839,
+              "maximum_population_scale": 0.009584672341910894,
+              "populations": 26
+            },
+            "off_edge_up<->off_edge_up": {
+              "mean_population_scale": 0.007146647480655801,
+              "maximum_population_scale": 0.010756833623508566,
+              "populations": 26
+            },
+            "off_looming<->off_looming": {
+              "mean_population_scale": 0.0007376545049236367,
+              "maximum_population_scale": 0.0011403819933069824,
+              "populations": 26
+            },
+            "off_receding<->off_receding": {
+              "mean_population_scale": 0.0013852926149175613,
+              "maximum_population_scale": 0.00204921343834199,
+              "populations": 26
+            },
+            "off_static_disc<->off_static_disc": {
+              "mean_population_scale": 1e-12,
+              "maximum_population_scale": 1e-12,
+              "populations": 26
+            },
+            "grating_left<->grating_right": {
+              "mean_population_scale": 0.016603560924716012,
+              "maximum_population_scale": 0.029693670733740428,
+              "populations": 26
+            },
+            "rotation_ccw<->rotation_cw": {
+              "mean_population_scale": 0.01346643991353033,
+              "maximum_population_scale": 0.027075478648020644,
+              "populations": 26
+            }
+          },
           "summary": {
             "median_cardinal_direction_contrast": 0.0,
             "fraction_expected_direction_positive": 0.375,
             "median_on_off_specialization": 0.8833875970647913,
             "fraction_expected_polarity_positive": 0.75,
             "median_known_looming_contrast": -0.10725851304060495,
-            "maximum_mirror_response_error": 0.8962057014184148
+            "maximum_mirror_response_error": 0.8962057014184148,
+            "maximum_energy_weighted_mirror_response_error": 0.9010470349654474
           }
         },
         "gates": {

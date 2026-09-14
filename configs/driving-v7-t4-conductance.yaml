@@ -41,6 +41,7 @@ gates:
   minimum_on_off_specialization: 0.10
   minimum_looming_contrast: 0.10
   maximum_mirror_response_error: 0.20
+  mirror_metric: maximum_energy_weighted_mirror_response_error
 provenance:
   paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC8891015/
   equation: single-compartment steady-state conductance model, equation 3

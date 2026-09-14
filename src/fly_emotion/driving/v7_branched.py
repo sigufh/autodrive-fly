@@ -19,6 +19,7 @@ from fly_emotion.driving.v7 import (
     build_controlled_stimuli,
     score_v7_visual_responses,
 )
+from fly_emotion.driving.v7_retina_audit import build_balanced_retina_control
 from fly_emotion.driving.v7_source_audit import AUDIT_CONFIG, AUDIT_IMPLEMENTATION
 
 BRANCHED_CONFIG = Path("configs/driving-v7-branched-t4.yaml")
@@ -58,8 +59,39 @@ class V7BranchedT4Probe(V7VisualProbe):
             dynamics_backend="columnar_correlator_v1",
             control="real_malecns",
         )
-        if retinal_geometry == "nested_t4_axis_v1":
+        if retinal_geometry in {
+            "nested_t4_axis_v1",
+            "full_retina_eye_mass_normalized_v1",
+            "balanced_count_nested_axis_v1",
+        }:
             self.retinal_u, self.retinal_v = self._nested_t4_retinal_coordinates()
+        self._retinal_drive_gain = np.ones(self.retina.size, dtype=np.float32)
+        if retinal_geometry == "full_retina_eye_mass_normalized_v1":
+            gains = self.branched_config["eye_mass_normalization"]
+            self._retinal_drive_gain[self.retina.side < 0] = float(gains["left_gain"])
+            self._retinal_drive_gain[self.retina.side > 0] = float(gains["right_gain"])
+        if retinal_geometry in {
+            "balanced_count_nested_axis_v1",
+            "balanced_exact_mirror_v1",
+        }:
+            balanced = build_balanced_retina_control(root)
+            self._retinal_drive_gain = self._retinal_drive_gain[balanced.source_indices]
+            if retinal_geometry == "balanced_count_nested_axis_v1":
+                self.retinal_u = self.retinal_u[balanced.source_indices]
+                self.retinal_v = self.retinal_v[balanced.source_indices]
+                self.retina = type(self.retina)(
+                    node_indices=self.retina.node_indices[balanced.source_indices],
+                    body_ids=self.retina.body_ids[balanced.source_indices],
+                    u=self.retinal_u,
+                    v=self.retinal_v,
+                    side=self.retina.side[balanced.source_indices],
+                    mapping_version=3,
+                )
+            else:
+                self.retina = balanced.retina
+                self.retinal_u = balanced.retina.u
+                self.retinal_v = balanced.retina.v
+            self.retinal_permutation = np.arange(self.retina.size, dtype=np.int32)
         self.retinal_geometry = retinal_geometry
         all_t4 = np.flatnonzero(np.isin(self.node_types, ("T4a", "T4b", "T4c", "T4d"))).astype(
             np.int32
@@ -93,6 +125,12 @@ class V7BranchedT4Probe(V7VisualProbe):
             "history_substeps": self.branched["history_substeps"],
         }
         self.dynamics_backend = self.branched_config["name"]
+
+    def _retinal_code(
+        self, values: np.ndarray, baseline: np.ndarray, previous: np.ndarray
+    ) -> np.ndarray:
+        encoded = super()._retinal_code(values, baseline, previous)
+        return encoded * self._retinal_drive_gain
 
     def _nested_t4_retinal_coordinates(self) -> tuple[np.ndarray, np.ndarray]:
         audit_path = self.root / SOURCE_AUDIT
@@ -239,7 +277,13 @@ def evaluate_v7_branched_t4_candidate(root: Path) -> dict:
     )
     results = {}
     for retinal_geometry in config["retinal_geometries"]:
-        for retinal_backend in config["retinal_backends"]:
+        retinal_backends = (
+            config["balanced_ablation_retinal_backends"]
+            if retinal_geometry.startswith("balanced_")
+            or retinal_geometry == "full_retina_eye_mass_normalized_v1"
+            else config["retinal_backends"]
+        )
+        for retinal_backend in retinal_backends:
             result_name = f"{retinal_geometry}:{retinal_backend}"
             probe = V7BranchedT4Probe(
                 root,
@@ -271,7 +315,7 @@ def evaluate_v7_branched_t4_candidate(root: Path) -> dict:
                 >= thresholds["minimum_on_off_specialization"],
                 "looming_contrast": scores["summary"]["median_known_looming_contrast"]
                 >= thresholds["minimum_looming_contrast"],
-                "mirror_response_error": scores["summary"]["maximum_mirror_response_error"]
+                "mirror_response_error": scores["summary"][thresholds["mirror_metric"]]
                 <= thresholds["maximum_mirror_response_error"],
             }
             results[result_name] = {

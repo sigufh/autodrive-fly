@@ -13,6 +13,7 @@ from fly_emotion.driving.v7 import (
     evaluate_v7_optic_hex_axis_calibration,
     evaluate_v7_typed_visual_candidate,
     load_v7_optic_hex_offsets,
+    score_v7_visual_responses,
     write_v7_manifest,
 )
 
@@ -209,6 +210,60 @@ def test_v7_persisted_visual_candidate_drops_private_per_neuron_scratch() -> Non
     assert "_scratch" not in public["edge"]
 
 
+def _synthetic_visual_responses() -> dict:
+    populations = [f"{cell_type}_{side}" for cell_type in V7_TARGET_TYPES for side in ("L", "R")]
+    return {
+        stimulus.name: {
+            "mirror_of": stimulus.mirror_of,
+            "population_trace": {name: [0.0, 0.0] for name in populations},
+            "population_response_trace": {name: [0.0, 0.0] for name in populations},
+            "_population_neuron_positive_mean": {name: [0.0] for name in populations},
+        }
+        for stimulus in build_controlled_stimuli()
+    }
+
+
+def test_v7_energy_weighted_mirror_metric_does_not_let_silent_population_dominate() -> None:
+    responses = _synthetic_visual_responses()
+    for name in ("on_edge_left", "on_edge_right"):
+        traces = responses[name]["population_response_trace"]
+        traces["T4a_L"] = [1.0, -1.0]
+        traces["T4a_R"] = [1.0, -1.0]
+        traces["T4b_L"] = [1e-6, -1e-6]
+    scores = score_v7_visual_responses(responses)
+    pair = "on_edge_left<->on_edge_right"
+    assert scores["mirror_response_error"][pair] == pytest.approx(1 / len(V7_TARGET_TYPES))
+    assert scores["energy_weighted_mirror_response_error"][pair] == pytest.approx(
+        2e-6 / (4.0 + 2e-6)
+    )
+    assert scores["mirror_response_scale"][pair]["populations"] == 2 * len(V7_TARGET_TYPES)
+
+
+@pytest.mark.parametrize(
+    ("left", "right", "expected_error"),
+    [
+        ([0.0, 0.0], [0.0, 0.0], 0.0),
+        ([1.0, -1.0], [1.0, -1.0], 0.0),
+        ([1.0, -1.0], [0.0, 0.0], 1.0),
+        ([1.0, -1.0], [-1.0, 1.0], 1.0),
+    ],
+)
+def test_v7_mirror_metric_handles_silence_one_sided_activity_and_signed_traces(
+    left: list[float], right: list[float], expected_error: float
+) -> None:
+    responses = _synthetic_visual_responses()
+    for name in ("on_edge_left", "on_edge_right"):
+        responses[name]["population_response_trace"]["T4a_L"] = left
+        responses[name]["population_response_trace"]["T4a_R"] = right
+    scores = score_v7_visual_responses(responses)
+    assert scores["summary"]["maximum_energy_weighted_mirror_response_error"] == pytest.approx(
+        expected_error
+    )
+    assert scores["summary"]["median_cardinal_direction_contrast"] == 0.0
+    assert scores["summary"]["median_on_off_specialization"] == 0.0
+    assert scores["summary"]["median_known_looming_contrast"] == 0.0
+
+
 def test_v7_manifest_is_isolated_and_in_progress() -> None:
     manifest = write_v7_manifest(ROOT)
     assert manifest["version"] == 7
@@ -227,12 +282,20 @@ def test_v7_manifest_is_isolated_and_in_progress() -> None:
         "published_T4_conductance_response_passed": False,
         "fitted_T4_conductance_validation_passed": False,
         "fitted_T4_one_time_test_evaluated": False,
+        "legacy_retinal_input_count_balanced": False,
+        "paired_retinal_input_exactly_mirrored": True,
+        "active_layer_mirror_error_above_gate": False,
+        "full_retina_eye_mass_normalized_mirror_passed": False,
+        "balanced_count_mirror_passed": True,
+        "balanced_exact_input_mirror_passed": True,
     }
     assert "branched_T4_response_gates_failed" in manifest["blockers"]
     assert "published_T4_conductance_response_gates_failed" in manifest["blockers"]
     assert "fitted_T4_conductance_validation_failed" in manifest["blockers"]
-    assert manifest["current_evidence"] == "artifacts/v7-t4-conductance-fit.json"
+    assert manifest["current_evidence"] == "artifacts/v7-layerwise-mirror-audit.json"
     assert set(manifest["evidence"]) >= {
+        "artifacts/v7-layerwise-mirror-audit.json",
+        "artifacts/v7-retina-column-audit.json",
         "artifacts/v7-t4-conductance-fit.json",
         "artifacts/v7-t4-conductance-candidate.json",
         "artifacts/v7-branched-t4-candidate.json",

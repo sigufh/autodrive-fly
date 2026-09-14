@@ -112,6 +112,7 @@ controlled_vision:
     minimum_on_off_specialization: 0.10
     minimum_looming_contrast: 0.10
     maximum_mirror_response_error: 0.20
+    mirror_metric: maximum_energy_weighted_mirror_response_error
   stop_if_failed: true
   topology_controls:
     - shuffled_retina_coordinates

@@ -1,0 +1,58 @@
+{
+  "protocol": {
+    "version": 7,
+    "name": "v7-retina-column-audit",
+    "exploratory": true,
+    "advance_allowed": false,
+    "config_sha256": "be82842332be48809b990b43cc51ff07093b92b4538920d3e4c583326ccdd2ef",
+    "implementation_sha256": "1d2b5685124fe632730fd0187f804ef2d73e64cf7c294ef482f73a9fffa65f33",
+    "role": "input_balance_ablation_not_biological_eye_reconstruction"
+  },
+  "legacy_mapping": {
+    "total_receptors": 3344,
+    "eye_counts": {
+      "left": 1107,
+      "right": 2237
+    },
+    "right_to_left_receptor_ratio": 2.020776874435411,
+    "unique_columns": {
+      "left": 300,
+      "right": 526
+    },
+    "weighted_mean_differs_from_modal_column_fraction": 0.016148325358851676,
+    "ambiguous_column_fraction": 0.016148325358851676,
+    "spread_quantiles": {
+      "0.5": 0.0,
+      "0.9": 0.0,
+      "0.95": 0.0,
+      "0.99": 0.14517450065581705,
+      "1.0": 2.2906212537071338
+    },
+    "dominant_position_partner_types": {
+      "L2": 2210,
+      "L1": 1101,
+      "L3": 21,
+      "T1": 10,
+      "C2": 1,
+      "L5": 1
+    }
+  },
+  "balanced_common_column_control": {
+    "common_columns": 270,
+    "pairs": 957,
+    "receptors_per_eye": 957,
+    "total_receptors": 1914,
+    "discarded_left_receptors": 150,
+    "discarded_right_receptors": 1280,
+    "exact_mirror_drive": true,
+    "maximum_mirror_drive_error": 0.0,
+    "mapping_sha256": "b702bef4a28bb2af0b246430d2fb4340db7da659c868059b9d185e716dc01bca"
+  },
+  "diagnosis": {
+    "contact_weighted_blur_is_common": false,
+    "legacy_eye_input_count_is_balanced": false,
+    "balanced_control_is_biological_reconstruction": false,
+    "interpretation": "Most retained receptors map unambiguously to one optic-hex column, but MaleCNS receptor coverage is strongly right-heavy. The paired subset is an engineering ablation that changes both input count and spatial coverage."
+  },
+  "advance_to_central_complex": false
+}

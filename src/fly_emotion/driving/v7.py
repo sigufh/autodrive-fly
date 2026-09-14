@@ -1193,6 +1193,8 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
             looming_scores[population] = by_polarity
 
     mirror_errors = {}
+    weighted_mirror_errors = {}
+    mirror_response_scales = {}
     stimulus_by_name = {name: response for name, response in responses.items()}
     for name, response in responses.items():
         mirror_name = response["mirror_of"]
@@ -1200,6 +1202,8 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
             continue
         mirrored = stimulus_by_name[mirror_name]
         errors = []
+        absolute_errors = []
+        scales = []
         for population in response["population_trace"]:
             if not population.endswith(("_L", "_R")):
                 continue
@@ -1209,8 +1213,20 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
             a = np.asarray(response["population_response_trace"][population], dtype=np.float64)
             b = np.asarray(mirrored["population_response_trace"][counterpart], dtype=np.float64)
             scale = float(np.mean(np.abs(a)) + np.mean(np.abs(b)) + 1e-12)
-            errors.append(float(np.mean(np.abs(a - b)) / scale))
-        mirror_errors[f"{name}<->{mirror_name}"] = float(np.mean(errors))
+            absolute_error = float(np.mean(np.abs(a - b)))
+            errors.append(absolute_error / scale)
+            absolute_errors.append(absolute_error)
+            scales.append(scale)
+        pair_name = f"{name}<->{mirror_name}"
+        mirror_errors[pair_name] = float(np.mean(errors))
+        weighted_mirror_errors[pair_name] = float(
+            np.sum(absolute_errors) / (np.sum(scales) + 1e-12)
+        )
+        mirror_response_scales[pair_name] = {
+            "mean_population_scale": float(np.mean(scales)),
+            "maximum_population_scale": float(np.max(scales)),
+            "populations": len(scales),
+        }
 
     known_looming = [
         max(values["on"]["contrast"], values["off"]["contrast"])
@@ -1222,6 +1238,8 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
         "on_off_specialization": polarity_scores,
         "looming_vs_static": looming_scores,
         "mirror_response_error": mirror_errors,
+        "energy_weighted_mirror_response_error": weighted_mirror_errors,
+        "mirror_response_scale": mirror_response_scales,
         "summary": {
             "median_cardinal_direction_contrast": float(
                 np.median([value["contrast"] for value in direction_scores.values()])
@@ -1237,6 +1255,9 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
             ),
             "median_known_looming_contrast": float(np.median(known_looming)),
             "maximum_mirror_response_error": max(mirror_errors.values(), default=0.0),
+            "maximum_energy_weighted_mirror_response_error": max(
+                weighted_mirror_errors.values(), default=0.0
+            ),
         },
     }
 
@@ -1308,7 +1329,7 @@ def evaluate_v7_controlled_vision(root: Path) -> dict:
                 >= thresholds["minimum_looming_contrast"]
             ),
             "mirror_response_error": (
-                scores["summary"]["maximum_mirror_response_error"]
+                scores["summary"][thresholds["mirror_metric"]]
                 <= thresholds["maximum_mirror_response_error"]
             ),
         }
@@ -1367,8 +1388,7 @@ def evaluate_v7_controlled_vision(root: Path) -> dict:
                     > shuffled["median_known_looming_contrast"]
                 ),
                 "mirror_error_lower": (
-                    real["maximum_mirror_response_error"]
-                    < shuffled["maximum_mirror_response_error"]
+                    real[thresholds["mirror_metric"]] < shuffled[thresholds["mirror_metric"]]
                 ),
             }
             comparisons[control]["all_metrics_better"] = all(comparisons[control].values())
@@ -1471,7 +1491,7 @@ def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
                     >= thresholds["minimum_looming_contrast"]
                 ),
                 "mirror_response_error": (
-                    scores["summary"]["maximum_mirror_response_error"]
+                    scores["summary"][thresholds["mirror_metric"]]
                     <= thresholds["maximum_mirror_response_error"]
                 ),
             }
@@ -1512,7 +1532,7 @@ def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
                 >= thresholds["minimum_looming_contrast"]
             ),
             "mirror_response_error": (
-                scores["summary"]["maximum_mirror_response_error"]
+                scores["summary"][thresholds["mirror_metric"]]
                 <= thresholds["maximum_mirror_response_error"]
             ),
         }
@@ -1571,6 +1591,8 @@ def write_v7_manifest(root: Path) -> dict:
     contract = V7Contract.load(root)
     implementation_sha256 = _sha256(root / V7_IMPLEMENTATION)
     evidence_paths = (
+        root / "artifacts/v7-layerwise-mirror-audit.json",
+        root / "artifacts/v7-retina-column-audit.json",
         root / "artifacts/v7-t4-conductance-fit.json",
         root / "artifacts/v7-t4-conductance-candidate.json",
         root / "artifacts/v7-branched-t4-candidate.json",
@@ -1589,7 +1611,28 @@ def write_v7_manifest(root: Path) -> dict:
             continue
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
         protocol = evidence.get("protocol", {})
-        if evidence_path.name == "v7-t4-conductance-fit.json":
+        if evidence_path.name == "v7-layerwise-mirror-audit.json":
+            valid_evidence = (
+                protocol.get("v7_config_sha256") == contract.sha256
+                and protocol.get("v7_implementation_sha256") == implementation_sha256
+                and protocol.get("implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_mirror_audit.py")
+                and protocol.get("branched_config_sha256")
+                == _sha256(root / "configs/driving-v7-branched-t4.yaml")
+                and protocol.get("branched_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_branched.py")
+                and protocol.get("retina_audit_config_sha256")
+                == _sha256(root / "configs/driving-v7-retina-audit.yaml")
+                and protocol.get("retina_audit_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_retina_audit.py")
+            )
+        elif evidence_path.name == "v7-retina-column-audit.json":
+            valid_evidence = protocol.get("config_sha256") == _sha256(
+                root / "configs/driving-v7-retina-audit.yaml"
+            ) and protocol.get("implementation_sha256") == _sha256(
+                root / "src/fly_emotion/driving/v7_retina_audit.py"
+            )
+        elif evidence_path.name == "v7-t4-conductance-fit.json":
             source_audit_path = root / "artifacts/v7-t4-source-audit.json"
             valid_evidence = (
                 protocol.get("v7_config_sha256") == contract.sha256
@@ -1652,6 +1695,8 @@ def write_v7_manifest(root: Path) -> dict:
     branched = current_evidence.get("v7-branched-t4-candidate.json")
     conductance = current_evidence.get("v7-t4-conductance-candidate.json")
     fitted = current_evidence.get("v7-t4-conductance-fit.json")
+    retina_audit = current_evidence.get("v7-retina-column-audit.json")
+    mirror_audit = current_evidence.get("v7-layerwise-mirror-audit.json")
     controlled = current_evidence.get("v7-typed-visual-candidate.json") or (
         current_evidence.get("v7-controlled-vision.json")
     )
@@ -1671,6 +1716,10 @@ def write_v7_manifest(root: Path) -> dict:
         blockers.append("fitted_T4_conductance_evidence_stale_or_missing")
     elif not fitted.get("validation_passed"):
         blockers.append("fitted_T4_conductance_validation_failed")
+    if retina_audit is None:
+        blockers.append("retina_column_audit_evidence_stale_or_missing")
+    if mirror_audit is None:
+        blockers.append("layerwise_mirror_audit_evidence_stale_or_missing")
     if controlled is None:
         blockers.append("controlled_visual_response_evidence_stale_or_missing")
     else:
@@ -1727,6 +1776,39 @@ def write_v7_manifest(root: Path) -> dict:
             ),
             "fitted_T4_one_time_test_evaluated": bool(
                 fitted and fitted.get("test", {}).get("evaluated")
+            ),
+            "legacy_retinal_input_count_balanced": bool(
+                retina_audit
+                and retina_audit.get("diagnosis", {}).get("legacy_eye_input_count_is_balanced")
+            ),
+            "paired_retinal_input_exactly_mirrored": bool(
+                retina_audit
+                and retina_audit.get("balanced_common_column_control", {}).get("exact_mirror_drive")
+            ),
+            "active_layer_mirror_error_above_gate": bool(
+                mirror_audit
+                and mirror_audit.get("first_active_layer_above_0_20_mean_error") is not None
+            ),
+            "full_retina_eye_mass_normalized_mirror_passed": bool(
+                branched
+                and branched.get("retinal_results", {})
+                .get("full_retina_eye_mass_normalized_v1:signed_frame_difference", {})
+                .get("gates", {})
+                .get("mirror_response_error")
+            ),
+            "balanced_count_mirror_passed": bool(
+                branched
+                and branched.get("retinal_results", {})
+                .get("balanced_count_nested_axis_v1:signed_frame_difference", {})
+                .get("gates", {})
+                .get("mirror_response_error")
+            ),
+            "balanced_exact_input_mirror_passed": bool(
+                branched
+                and branched.get("retinal_results", {})
+                .get("balanced_exact_mirror_v1:signed_frame_difference", {})
+                .get("gates", {})
+                .get("mirror_response_error")
             ),
         },
         "current_evidence": evidence_used[0] if evidence_used else None,

@@ -16,9 +16,11 @@ validation (46.6%, 50.8-degree median error) and the preregistered cross-eye
 mirror gate. This is evidence for a partial T5 spatial-offset signal, not a
 validated retinal coordinate system or functional motion circuit.
 A nested 5x4-fold T4 source audit subsequently identifies Mi1 versus Mi4+C3
-offsets with 96.38% outer-fold cardinal accuracy. This is anatomy-only evidence:
-the frozen three-branch functional candidate still has 0.0024 median T4
-direction contrast and 0.5053 mirror error on its best partial condition. It
+offsets with 96.38% outer-fold cardinal accuracy. These cells were already used
+in exploration: nested folds do not undo prior analyst exposure or establish
+fresh independent validation. This is anatomy-only evidence. The frozen
+three-branch candidate still has 0.0024 median T4 direction contrast and 0.5053
+legacy mirror error (0.4346 under the revised weighted metric). It
 therefore does not establish a functioning T4 circuit or authorize stage 2.
 The published single-compartment conductance equation and parameter values were
 also evaluated without tuning. All five input populations had dynamic activity,
@@ -27,8 +29,25 @@ to the current dimensionless proxy; it is not a refutation or reproduction of
 the original electrophysiology.
 A strictly split phenotype-constrained fit (published T4 direction and ON labels,
 not measured voltage traces) reaches only 51.7% train and 51.6% validation
-direction accuracy while retaining 79.9% ON/OFF validation accuracy. The one-time
-test cells and original release battery remain sealed after validation failure.
+direction accuracy while retaining 79.9% ON/OFF validation accuracy. Fitted
+parameters were not evaluated on that fit's test stimuli or the original
+battery after validation failure. The cells' anatomy and the original battery
+were used previously; neither is a project-wide untouched final test. A single
+failed optimization does not establish a model-capacity limit.
+The retained R1--R6 coverage is asymmetric (1,107 left versus 2,237 right). An
+exactly paired 957-per-eye ablation produces zero receptor-level mirror error,
+but discards 1,430 receptors and is not a biological eye reconstruction. A
+legacy relative-error metric was inflated by near-silent OFF responses. The
+experimental mirror gate now uses summed absolute mismatch divided by summed
+absolute response amplitude of population means, retaining the old diagnostic.
+This is a post-result protocol revision, not a pass of the original preregistered
+gate. Strong populations can mask weak mismatches; silence also scores zero,
+so this metric alone cannot establish circuit function or cell-level equivariance.
+The layerwise audit covers only four stimulus pairs, not the entire battery.
+Balancing total eye drive reduces but does not pass this revised gate. The
+957-per-eye subset passes it while all T5 polarity contrasts become negative.
+Selection changes both count and spatial coverage, so their causal contributions
+are not isolated. The default 3,344-receptor mapping remains unchanged.
 
 ## Supported claims
 

@@ -1,0 +1,12 @@
+version: 1
+name: v7-retina-column-audit
+exploratory: true
+advance_allowed: false
+image_width: 48
+image_height: 24
+column_assignment: maximum_outgoing_weight_to_position_annotated_partners
+pairing:
+  scope: optic_hex_columns_present_in_both_eyes
+  selection: equal_count_per_column_then_lowest_body_id
+  role: input_balance_ablation_not_biological_eye_reconstruction
+  require_exact_mirrored_pixel_pairs: true

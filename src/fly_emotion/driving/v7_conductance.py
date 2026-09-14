@@ -297,7 +297,7 @@ def evaluate_v7_published_conductance(root: Path) -> dict:
             >= thresholds["minimum_on_off_specialization"],
             "looming_contrast": scores["summary"]["median_known_looming_contrast"]
             >= thresholds["minimum_looming_contrast"],
-            "mirror_response_error": scores["summary"]["maximum_mirror_response_error"]
+            "mirror_response_error": scores["summary"][thresholds["mirror_metric"]]
             <= thresholds["maximum_mirror_response_error"],
         }
         results[retinal_backend] = {
