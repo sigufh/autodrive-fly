@@ -10,12 +10,29 @@ from fly_emotion.driving.v7_local_input_audit import (
     LOCAL_TYPES,
     OUTER_RADIUS,
     SITE_COUNT,
+    classify_column_coverage,
     local_masks,
     local_step,
     select_local_sites,
 )
 
 ROOT = Path(__file__).parents[1]
+
+
+def test_coverage_classification_keeps_missing_separate_and_respects_eye() -> None:
+    coordinates = np.array([[1, 2], [1, 2], [2, 3], [np.nan, np.nan], [1, 2]])
+    sides = np.array([-1, 1, -1, -1, 0])
+    receptors = np.array([[1, 2], [1, 2], [2, 3]])
+    receptor_sides = np.array([-1, -1, 1])
+    labels, counts = classify_column_coverage(coordinates, sides, receptors, receptor_sides)
+    assert labels.tolist() == [
+        "covered",
+        "uncovered",
+        "uncovered",
+        "missing_coordinate",
+        "missing_side",
+    ]
+    assert counts.tolist() == [2, 0, 0, -1, -1]
 
 
 def test_local_masks_are_disjoint_within_eye_and_no_clipped_ring() -> None:
@@ -106,3 +123,47 @@ def test_saved_local_audit_covers_all_sites_conditions_and_frozen_dependencies()
                 assert len(summary["population_mean_trace"]) == 48
                 if row["region"] != "centre":
                     assert summary["expected_peak_sign"] is None
+
+
+def test_mi9_coverage_groups_partition_cells_and_reconstruct_response_statistics() -> None:
+    report = json.loads((ROOT / "artifacts/v7-local-input-audit.json").read_text())
+    coverage = report["mi9_coverage"]
+    assert report["protocol"]["coverage_uses_response_labels"] is False
+    assert len(coverage["body_ids"]) == len(set(coverage["body_ids"])) == 1775
+    sides = np.asarray(coverage["sides"])
+    labels = np.asarray(coverage["labels"])
+    for index, label in enumerate(labels):
+        count = coverage["same_column_receptor_count"][index]
+        assert (count is None) == (label in {"missing_coordinate", "missing_side"})
+        if label == "covered":
+            assert count > 0
+        elif label == "uncovered":
+            assert count == 0
+    for backend in coverage["responses"].values():
+        for eye, side in (("L", -1), ("R", 1)):
+            groups = backend["groups"][eye]
+            assert (
+                sum(group["on"]["cells"] for name, group in groups.items() if name != "all")
+                == groups["all"]["on"]["cells"]
+            )
+            for label, group in groups.items():
+                mask = sides == side
+                if label != "all":
+                    mask &= labels == label
+                for polarity in ("on", "off"):
+                    peaks = np.asarray(backend["per_cell_responses"][polarity]["signed_peak"])[mask]
+                    assert len(peaks) == group[polarity]["cells"]
+                    assert np.isclose(
+                        np.mean(peaks < -1e-6), group[polarity]["negative_peak_fraction"]
+                    )
+                    assert np.isclose(np.median(peaks), group[polarity]["median_signed_peak"])
+
+
+def test_coverage_extension_reproduces_previous_all_mi9_response_statistics() -> None:
+    report = json.loads((ROOT / "artifacts/v7-local-input-audit.json").read_text())
+    previous = json.loads((ROOT / "artifacts/v7-temporal-input-audit.json").read_text())
+    for backend, responses in report["mi9_coverage"]["responses"].items():
+        for eye in ("L", "R"):
+            assert responses["groups"][eye]["all"] == previous["step_responses"][backend][
+                "populations"
+            ][f"Mi9_{eye}"]

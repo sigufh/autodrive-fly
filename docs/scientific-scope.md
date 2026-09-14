@@ -68,6 +68,14 @@ peaks hit the observation boundary. Left L3 and bilateral Tm3 lack direct column
 annotations and are excluded, not assigned guessed positions. The diagnostic is
 not a T4 direction, navigation or learning validation.
 
+The same audit now stratifies all 1,775 Mi9 cells using anatomy-only same-eye
+receptor-column coverage. Under ON steps, covered cells have negative peaks in
+84–94% of cases, versus 5–26% without same-column receptors across the two tested
+encodings and eyes. All-cell statistics exactly reproduce the earlier audit.
+Missing coordinates remain separate. This is an association, not a causal lesion:
+no same-column receptor does not imply no neighbouring or recurrent input, and
+neither the model nor its release gates were changed.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

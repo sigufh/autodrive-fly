@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -147,9 +148,91 @@ def select_local_sites(root: Path, probe: V7VisualProbe) -> tuple[list[dict], di
     }
 
 
+def classify_column_coverage(
+    coordinates: np.ndarray,
+    sides: np.ndarray,
+    receptor_coordinates: np.ndarray,
+    receptor_sides: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    counts = Counter(
+        (int(side), *map(int, coordinate))
+        for side, coordinate in zip(receptor_sides, receptor_coordinates, strict=True)
+    )
+    labels = np.full(len(coordinates), "missing_coordinate", dtype=object)
+    coverage = np.full(len(coordinates), -1, dtype=np.int32)
+    for index, (coordinate, side) in enumerate(zip(coordinates, sides, strict=True)):
+        if side not in (-1, 1):
+            labels[index] = "missing_side"
+        elif np.all(np.isfinite(coordinate)):
+            coverage[index] = counts[(int(side), *map(int, coordinate))]
+            labels[index] = "covered" if coverage[index] > 0 else "uncovered"
+    return labels, coverage
+
+
+def mi9_column_coverage(root: Path, probe: V7VisualProbe) -> dict:
+    retina, assignments = infer_retinal_columns(root)
+    annotations = feather.read_table(
+        root / "data/raw/malecns-v1.0/body-annotations.feather",
+        columns=["bodyId", "type", "somaSide", "assignedOlHex1", "assignedOlHex2"],
+        memory_map=True,
+    ).to_pandas()
+    rows = annotations.loc[annotations["type"].eq("Mi9")].sort_values("bodyId")
+    ids = rows["bodyId"].to_numpy(dtype=np.int64)
+    nodes = np.searchsorted(probe.graph.body_ids, ids)
+    valid = nodes < probe.graph.node_count
+    valid[valid] &= probe.graph.body_ids[nodes[valid]] == ids[valid]
+    rows = rows.iloc[np.flatnonzero(valid)]
+    nodes = nodes[valid]
+    sides = rows["somaSide"].map({"L": -1, "R": 1}).fillna(0).to_numpy(dtype=np.int8)
+    coordinates = rows[["assignedOlHex1", "assignedOlHex2"]].to_numpy(dtype=float)
+    labels, counts = classify_column_coverage(
+        coordinates, sides, assignments.coordinates, retina.side
+    )
+    return {
+        "nodes": nodes,
+        "body_ids": probe.graph.body_ids[nodes],
+        "sides": sides,
+        "coordinates": coordinates,
+        "labels": labels,
+        "receptor_counts": counts,
+    }
+
+
+def summarize_mi9_coverage(
+    coverage: dict, traces: dict[str, np.ndarray], node_order: np.ndarray
+) -> dict:
+    indices = np.searchsorted(node_order, coverage["nodes"])
+    delta = {name: traces[name][:, indices] - traces["sham"][:, indices] for name in ("on", "off")}
+    groups = {}
+    for eye, side in (("L", -1), ("R", 1), ("unknown", 0)):
+        groups[eye] = {}
+        for label in ("all", "covered", "uncovered", "missing_coordinate", "missing_side"):
+            mask = coverage["sides"] == side
+            if label != "all":
+                mask &= coverage["labels"] == label
+            if mask.any():
+                groups[eye][label] = {
+                    name: summarize_step_response(
+                        values[:, mask], onset=16, expected_sign=-1 if name == "on" else None
+                    )
+                    for name, values in delta.items()
+                }
+    cell_responses = {}
+    for name, values in delta.items():
+        post = values[16:]
+        peaks = np.argmax(np.abs(post), axis=0)
+        cell_responses[name] = {
+            "signed_peak": post[peaks, np.arange(len(indices))].tolist(),
+            "peak_frame_after_onset": peaks.tolist(),
+        }
+    return {"groups": groups, "per_cell_responses": cell_responses}
+
+
 def evaluate_v7_local_input_audit(root: Path) -> dict:
     contract = V7Contract.load(root)
     results = {}
+    coverage_results = {}
+    coverage = None
     sites = None
     selection = None
     for backend in ("linear_luminance", "signed_frame_difference"):
@@ -163,6 +246,7 @@ def evaluate_v7_local_input_audit(root: Path) -> dict:
         )
         if sites is None:
             sites, selection = select_local_sites(root, probe)
+            coverage = mi9_column_coverage(root, probe)
         nodes = np.unique(
             np.concatenate(
                 [
@@ -173,10 +257,12 @@ def evaluate_v7_local_input_audit(root: Path) -> dict:
                 ]
             )
         )
+        nodes = np.union1d(nodes, coverage["nodes"])
         if np.intersect1d(nodes, probe.retina.node_indices).size:
             raise ValueError("readout cells must not receive direct stimulus")
         uniform_stimuli = build_step_stimuli(48, 24)
         uniform = {item.polarity: _step_trace(probe, item, nodes) for item in uniform_stimuli}
+        coverage_results[backend] = summarize_mi9_coverage(coverage, uniform, nodes)
         rows = []
         for site in sites:
             for eye in site["eyes"]:
@@ -266,7 +352,9 @@ def evaluate_v7_local_input_audit(root: Path) -> dict:
             hashes[str(path)] = hashlib.file_digest(source, "sha256").hexdigest()
     return {
         "protocol": {
-            "name": "v7-local-input-audit-v1",
+            "name": "v7-local-input-audit-v2",
+            "coverage_definition": "same-eye modal receptor column, not synaptic reachability",
+            "coverage_uses_response_labels": False,
             "exploratory": True,
             "advance_allowed": False,
             "v7_config_sha256": contract.sha256,
@@ -295,12 +383,26 @@ def evaluate_v7_local_input_audit(root: Path) -> dict:
         },
         "sites": sites,
         "responses": results,
+        "mi9_coverage": {
+            "body_ids": coverage["body_ids"].tolist(),
+            "sides": coverage["sides"].tolist(),
+            "coordinates": [
+                coordinate.tolist() if np.all(np.isfinite(coordinate)) else None
+                for coordinate in coverage["coordinates"]
+            ],
+            "labels": coverage["labels"].tolist(),
+            "same_column_receptor_count": [
+                int(count) if count >= 0 else None for count in coverage["receptor_counts"]
+            ],
+            "responses": coverage_results,
+        },
         "limitations": [
             "Three anatomy-selected columns are exploratory samples, not independent animals.",
             "Optic-hex and legacy camera coordinates are proxies, not measured receptive fields.",
             "Centre and annulus have unequal areas and stimulated receptor counts.",
             "whole_eye means camera hemifield; boundary receptors may belong to the other eye.",
             "Anatomy-covered site selection is not representative of all Mi9 cells.",
+            "Coverage strata are observational; uncovered cells may receive neighbouring input.",
             "Latencies are simulation frames and late peaks can be window-censored.",
             "Tm3 and left-eye L3 lack optic-hex annotations and are excluded from local readout.",
             "This audit does not modify candidate parameters, visual gates or default runtime.",
