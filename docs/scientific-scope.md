@@ -140,6 +140,14 @@ frame-difference encoding the final background step change rises from 0.000148 t
 biological timing, and its altered feedback phase does not identify a causal
 microcircuit or justify deployment.
 
+A fixed-state interface Jacobian audit finds large inverse calibration spans
+(e.g. median Mi1 normalization slope about 156 left versus 6.8 right for linear
+luminance). Normalization, threshold and output clipping are included, and a
+fixed-direction finite-difference check agrees within about 6e-5 at 1e-3-span
+perturbations; smaller perturbations expose float32 rounding. These are local
+input-to-T4 row-sum bounds, not the recurrent Jacobian or a proof of instability.
+No normalizer, model parameter or release gate was changed.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
