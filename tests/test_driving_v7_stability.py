@@ -4,10 +4,72 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from scipy import sparse
 
-from fly_emotion.driving.v7_stability import CHECKPOINTS, classify_trace, summarize_tail
+from fly_emotion.driving.v7_stability import (
+    CHECKPOINTS,
+    TypedBackgroundProbe,
+    classify_trace,
+    cut_t4_feedback,
+    summarize_tail,
+)
 
 ROOT = Path(__file__).parents[1]
+
+
+def test_feedback_cut_uses_presynaptic_columns_without_renormalizing() -> None:
+    types = np.array(["T4a", "Mi9", "T4b", "LC4", "Tm3", "T4_unknown"])
+    values = np.arange(1, 37, dtype=np.float32).reshape(6, 6) / 100
+    adjacency = sparse.csr_matrix(values)
+    direct, metadata = cut_t4_feedback(adjacency, types, "direct_inputs")
+    expected = values.copy()
+    expected[np.ix_([1, 4], [0, 2])] = 0
+    np.testing.assert_array_equal(direct.toarray(), expected)
+    np.testing.assert_array_equal(adjacency.toarray(), values)
+    assert metadata["removed_edges"] == 4
+    assert metadata["postsynaptic_type_edge_counts"] == {"Mi9": 2, "Tm3": 2}
+    assert metadata["remaining_weights_renormalized"] is False
+    all_outputs, all_metadata = cut_t4_feedback(adjacency, types, "all_outputs")
+    expected[:, [0, 2]] = 0
+    np.testing.assert_array_equal(all_outputs.toarray(), expected)
+    assert all_metadata["removed_edges"] == 12
+    with pytest.raises(ValueError, match="unknown"):
+        cut_t4_feedback(adjacency, types, "invalid")
+
+
+def test_saved_feedback_cuts_reproduce_real_masks_and_preserve_frozen_baseline() -> None:
+    report = json.loads((ROOT / "artifacts/v7-feedback-cut.json").read_text())
+    prior = json.loads((ROOT / "artifacts/v7-background-stability.json").read_text())
+    assert report["advance_to_central_complex"] is False
+    for path, expected in report["protocol"]["dependencies_sha256"].items():
+        with (ROOT / path).open("rb") as source:
+            assert hashlib.file_digest(source, "sha256").hexdigest() == expected
+    probe = TypedBackgroundProbe(ROOT, retinal_backend="linear_luminance")
+    expected_cuts = {}
+    for mode in ("direct_inputs", "all_outputs"):
+        cut, metadata = cut_t4_feedback(probe.adjacency, probe.node_types, mode)
+        assert metadata["removed_edges"] == probe.adjacency.nnz - cut.nnz
+        assert metadata["removed_edges"] == sum(metadata["postsynaptic_type_edge_counts"].values())
+        expected_cuts[mode] = metadata
+    for backend, row in report["results"].items():
+        assert row["intact_matches_frozen_baseline"] is True
+        assert row["normalization_sha256"] == prior["results"][backend]["normalization_sha256"]
+        baseline = prior["results"][backend]["models"]["V7PublishedConductanceProbe"]
+        for mode, model in row["models"].items():
+            assert model["trajectory"]["retinal_drive_sha256"] == baseline["retinal_drive_sha256"]
+            assert set(model["trajectory"]["checkpoints"]) == set(map(str, CHECKPOINTS))
+            if mode != "intact":
+                assert model["cut"] == expected_cuts[mode]
+            for step, checkpoint in model["trajectory"]["checkpoints"].items():
+                assert len(checkpoint["T4_population_residuals"]) == 8
+                if mode == "intact":
+                    assert (
+                        checkpoint["state_sha256"] == baseline["checkpoints"][step]["state_sha256"]
+                    )
+                    assert (
+                        checkpoint["maximum_peak_to_peak"]
+                        == baseline["checkpoints"][step]["maximum_peak_to_peak"]
+                    )
 
 
 def test_trace_classifier_distinguishes_constant_periodic_and_drift() -> None:

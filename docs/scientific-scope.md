@@ -124,6 +124,14 @@ ranking does not identify a causal loop. A zero-state, zero-drive frame-differen
 control remains zero by construction. Finite windows, one initialization, and
 lag tests do not establish asymptotic stability or biological oscillations.
 
+Fixed-parameter feedback ablations zero 20,623 direct T4-to-input edges or all
+476,323 T4 output edges without renormalizing surviving weights. Under constant
+gray luminance, the final tail-window maximum step change falls from 0.1744 to
+0.1126 or 0.00000739, respectively; the latter still has 1,128 varying cells by
+the window-range criterion. Removing all outputs also destroys feedforward
+signalling. This demonstrates output dependence in the tested model, not a
+localized feedback mechanism, biological stability or usable vision.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

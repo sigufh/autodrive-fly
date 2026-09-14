@@ -1,16 +1,19 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from collections import deque
 from pathlib import Path
 
 import numpy as np
 import yaml
+from scipy import sparse
 
 from fly_emotion.driving.v7 import V7Contract, V7VisualProbe
 from fly_emotion.driving.v7_branched import V7BranchedT4Probe
 from fly_emotion.driving.v7_conductance import (
     CONDUCTANCE_CONFIG,
+    SOURCE_TYPES,
     V7PublishedConductanceProbe,
     _collect_source_normalization,
 )
@@ -144,6 +147,133 @@ def run_constant_background(probe: V7VisualProbe, *, level: float = 0.5) -> dict
         "external_drive_is_zero": bool(np.all(receptor_drive == 0)),
         "retinal_drive_sha256": hashlib.sha256(receptor_drive.tobytes()).hexdigest(),
         "checkpoints": checkpoints,
+    }
+
+
+def cut_t4_feedback(
+    adjacency: sparse.csr_matrix, node_types: np.ndarray, mode: str
+) -> tuple[sparse.csr_matrix, dict]:
+    if mode not in {"direct_inputs", "all_outputs"}:
+        raise ValueError("unknown T4 feedback cut")
+    source_t4 = np.isin(node_types, ("T4a", "T4b", "T4c", "T4d"))
+    target_mask = (
+        np.isin(node_types, SOURCE_TYPES)
+        if mode == "direct_inputs"
+        else np.ones(len(node_types), dtype=bool)
+    )
+    result = adjacency.copy()
+    rows = np.repeat(np.arange(adjacency.shape[0]), np.diff(adjacency.indptr))
+    removed = source_t4[adjacency.indices] & target_mask[rows]
+    counts = {}
+    removed_rows = rows[removed]
+    for kind in np.unique(node_types[removed_rows]):
+        selected = node_types[removed_rows] == kind
+        counts[str(kind) or "<untyped>"] = int(selected.sum())
+    metadata = {
+        "mode": mode,
+        "removed_edges": int(removed.sum()),
+        "removed_normalized_weight_sum": float(np.sum(adjacency.data[removed], dtype=np.float64)),
+        "postsynaptic_type_edge_counts": counts,
+        "removed_edge_sha256": hashlib.sha256(
+            removed_rows.astype(np.int32).tobytes()
+            + adjacency.indices[removed].tobytes()
+            + adjacency.data[removed].tobytes()
+        ).hexdigest(),
+        "remaining_weights_renormalized": False,
+    }
+    result.data[removed] = 0
+    result.eliminate_zeros()
+    return result, metadata
+
+
+def _compact_checkpoints(result: dict) -> dict:
+    checkpoints = {}
+    for step, values in result["checkpoints"].items():
+        groups = values["populations_ranked_by_step_change"]
+        groups_hash = hashlib.sha256(json.dumps(groups, sort_keys=True).encode()).hexdigest()
+        checkpoints[step] = {
+            key: value
+            for key, value in values.items()
+            if key != "populations_ranked_by_step_change"
+        } | {
+            "population_summary_sha256": groups_hash,
+            "top_population_residuals": groups[:10],
+            "T4_population_residuals": [
+                group
+                for group in groups
+                if group["population"].startswith(("T4a_", "T4b_", "T4c_", "T4d_"))
+            ],
+        }
+    return result | {"checkpoints": checkpoints}
+
+
+def evaluate_v7_feedback_cut(root: Path) -> dict:
+    contract = V7Contract.load(root)
+    config = yaml.safe_load((root / CONDUCTANCE_CONFIG).read_text())
+    prior_path = root / "artifacts/v7-background-stability.json"
+    reference = json.loads(prior_path.read_text())
+    for relative, expected in reference["protocol"]["dependencies_sha256"].items():
+        with (root / relative).open("rb") as source:
+            if hashlib.file_digest(source, "sha256").hexdigest() != expected:
+                raise ValueError(f"stale stability baseline: {relative}")
+    results = {}
+    for backend in ("linear_luminance", "signed_frame_difference"):
+        normalization = _collect_source_normalization(
+            root, retinal_backend=backend, retinal_geometry="nested_t4_axis_v1", config=config
+        )
+        probe = V7PublishedConductanceProbe(
+            root, retinal_backend=backend, normalization=normalization
+        )
+        adjacency = probe.adjacency
+        models = {}
+        for mode in ("intact", "direct_inputs", "all_outputs"):
+            if mode == "intact":
+                probe.adjacency = adjacency
+                cut = {"mode": mode, "removed_edges": 0, "remaining_weights_renormalized": False}
+            else:
+                probe.adjacency, cut = cut_t4_feedback(adjacency, probe.node_types, mode)
+            outcome = run_constant_background(probe)
+            if mode == "intact":
+                previous = reference["results"][backend]["models"]["V7PublishedConductanceProbe"]
+                if outcome != previous:
+                    raise ValueError("intact model failed exact frozen background replay")
+            models[mode] = {"cut": cut, "trajectory": _compact_checkpoints(outcome)}
+        probe.adjacency = adjacency
+        results[backend] = {
+            "normalization_sha256": normalization.sha256,
+            "intact_matches_frozen_baseline": True,
+            "models": models,
+        }
+    hashes = dict(reference["protocol"]["dependencies_sha256"])
+    with prior_path.open("rb") as source:
+        hashes[str(prior_path.relative_to(root))] = hashlib.file_digest(
+            source, "sha256"
+        ).hexdigest()
+    return {
+        "protocol": {
+            "name": "v7-t4-feedback-cut-v1",
+            "advance_allowed": False,
+            "v7_config_sha256": contract.sha256,
+            "dependencies_sha256": hashes,
+            "cut_rule": "zero T4a-d source edges into Mi9/Tm3/Mi1/Mi4/C3, or every T4a-d output",
+            "normalization": "same uncut calibration; remaining adjacency weights unchanged",
+            "background": 0.5,
+            "initial_state": "all zeros",
+            "parameter_fitting": False,
+            "checkpoints_substeps": list(CHECKPOINTS),
+            "window_substeps": WINDOW,
+            "driving_data_used": False,
+            "population_ranking": "diagnostic, not used to select cuts",
+        },
+        "results": results,
+        "limitations": [
+            "All-output cuts also remove feedforward signalling; stability is not task competence.",
+            "One constant background and one initial state do not establish general stability.",
+            "Direct cuts test only one-hop T4 inputs; indirect feedback can remain.",
+            "Removing edges is an explicit causal ablation, not an improved biological model.",
+            "No motion battery, driving release, or biological oscillation claim is made.",
+        ],
+        "advance_to_central_complex": False,
     }
 
 

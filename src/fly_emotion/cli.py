@@ -44,7 +44,7 @@ from .driving.v7_local_input_audit import (
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
-from .driving.v7_stability import evaluate_v7_background_stability
+from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 
 
@@ -134,6 +134,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-mi9-sign")
     subparsers.add_parser("v7-evaluate-conductance-order")
     subparsers.add_parser("v7-audit-background-stability")
+    subparsers.add_parser("v7-audit-feedback-cut")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -367,6 +368,12 @@ def main() -> None:
     if args.command == "v7-audit-background-stability":
         report = evaluate_v7_background_stability(root)
         target = root / "artifacts/v7-background-stability.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-feedback-cut":
+        report = evaluate_v7_feedback_cut(root)
+        target = root / "artifacts/v7-feedback-cut.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
