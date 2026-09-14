@@ -76,6 +76,14 @@ Missing coordinates remain separate. This is an association, not a causal lesion
 no same-column receptor does not imply no neighbouring or recurrent input, and
 neither the model nor its release gates were changed.
 
+A follow-up within-model intervention holds only the external code of same-column
+R1–R6 receptors at baseline. For all six previously inspected Mi9 cells and both
+encodings, ON dominant peaks switch from negative to positive; matched-count
+nearest-column and far-column controls retain negative peaks. Sham trajectories
+are unchanged. This establishes a contribution of those inputs in the tested
+model, not a biological lesion result or a rescue of missing retinal coverage.
+Controls match receptor count, not synaptic weight, and T4 direction remains unvalidated.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

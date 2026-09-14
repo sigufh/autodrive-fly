@@ -228,6 +228,201 @@ def summarize_mi9_coverage(
     return {"groups": groups, "per_cell_responses": cell_responses}
 
 
+def select_receptor_masks(
+    coordinates: np.ndarray,
+    sides: np.ndarray,
+    body_ids: np.ndarray,
+    target_coordinate: np.ndarray,
+    target_side: int,
+) -> dict[str, np.ndarray]:
+    distance = np.linalg.norm(coordinates - target_coordinate, axis=1)
+    same = np.flatnonzero((sides == target_side) & (distance == 0))
+    if not len(same):
+        raise ValueError("mask target must have same-column receptors")
+    candidates = np.flatnonzero((sides == target_side) & (distance > 0))
+    order = np.lexsort((body_ids[candidates], distance[candidates]))
+    near = candidates[order[: len(same)]]
+    far_candidates = np.setdiff1d(candidates[distance[candidates] >= 6.0], near)
+    ordered_far = sorted(
+        far_candidates,
+        key=lambda index: hashlib.sha256(
+            f"v7-mask-20260915:{int(body_ids[index])}".encode()
+        ).digest(),
+    )
+    far = np.asarray(ordered_far[: len(same)], dtype=np.int32)
+    if len(near) != len(same) or len(far) != len(same):
+        raise ValueError("insufficient same-eye matched-count control receptors")
+    return {"same_column": same, "nearest_other_columns": near, "far_other_columns": far}
+
+
+class BaselineHeldRetinaProbe(V7VisualProbe):
+    def __init__(self, root: Path, *, retinal_backend: str):
+        super().__init__(
+            root,
+            retinal_backend=retinal_backend,
+            retinal_geometry="legacy_proxy_v2",
+            dynamics_backend="typed_visual_subgraph_v1",
+            brain_substeps=4,
+            baseline_frames=32,
+        )
+        self.held_receptor_positions = np.empty(0, dtype=np.int32)
+
+    def _retinal_code(
+        self, values: np.ndarray, baseline: np.ndarray, previous: np.ndarray
+    ) -> np.ndarray:
+        encoded = super()._retinal_code(values, baseline, previous).copy()
+        baseline_code = super()._retinal_code(baseline, baseline, baseline)
+        encoded[self.held_receptor_positions] = baseline_code[self.held_receptor_positions]
+        return encoded
+
+
+def evaluate_v7_receptor_mask_audit(root: Path) -> dict:
+    contract = V7Contract.load(root)
+    retina, assignment = infer_retinal_columns(root)
+    stimuli = {item.polarity: item for item in build_step_stimuli(48, 24)}
+    results = {}
+    sites = None
+    for backend in ("linear_luminance", "signed_frame_difference"):
+        probe = BaselineHeldRetinaProbe(root, retinal_backend=backend)
+        if sites is None:
+            sites, selection = select_local_sites(root, probe)
+        targets = np.unique(
+            np.concatenate(
+                [
+                    np.asarray(eye["target_nodes"]["Mi9"], dtype=np.int32)
+                    for site in sites
+                    for eye in site["eyes"]
+                ]
+            )
+        )
+        if np.intersect1d(targets, probe.retina.node_indices).size:
+            raise ValueError("Mi9 readout overlaps external receptor input")
+        intact = {name: _step_trace(probe, stimulus, targets) for name, stimulus in stimuli.items()}
+        rows = []
+        for site in sites:
+            for eye in site["eyes"]:
+                masks = select_receptor_masks(
+                    assignment.coordinates,
+                    retina.side,
+                    retina.body_ids,
+                    np.asarray(site["optic_hex"]),
+                    eye["side"],
+                )
+                indices = np.searchsorted(targets, eye["target_nodes"]["Mi9"])
+                row = {
+                    "optic_hex": site["optic_hex"],
+                    "eye": eye["eye"],
+                    "target_body_ids": eye["target_body_ids"]["Mi9"],
+                    "conditions": {},
+                }
+                for condition, positions in {
+                    "intact": np.empty(0, dtype=np.int32),
+                    **masks,
+                }.items():
+                    probe.held_receptor_positions = positions
+                    traces = (
+                        intact
+                        if condition == "intact"
+                        else {
+                            name: _step_trace(probe, stimulus, targets)
+                            for name, stimulus in stimuli.items()
+                        }
+                    )
+                    if not np.array_equal(traces["sham"], intact["sham"]):
+                        raise ValueError("baseline-hold mask changed the sham trajectory")
+                    values = {}
+                    for polarity in ("on", "off"):
+                        delta = (traces[polarity] - traces["sham"])[:, indices]
+                        reference = (intact[polarity] - intact["sham"])[:, indices]
+                        summary = summarize_step_response(
+                            delta, onset=16, expected_sign=-1 if polarity == "on" else None
+                        )
+                        summary["mean_post_step_shift_vs_intact"] = float(
+                            np.mean(delta[16:] - reference[16:])
+                        )
+                        summary["mean_negative_response_magnitude"] = float(
+                            np.mean(np.maximum(-delta[16:], 0.0))
+                        )
+                        summary["negative_response_loss_vs_intact"] = float(
+                            np.mean(np.maximum(-reference[16:], 0.0))
+                            - summary["mean_negative_response_magnitude"]
+                        )
+                        values[polarity] = summary
+                    distance = np.linalg.norm(
+                        assignment.coordinates[positions] - site["optic_hex"], axis=1
+                    )
+                    row["conditions"][condition] = {
+                        "held_receptor_count": int(len(positions)),
+                        "held_receptor_body_ids": retina.body_ids[positions].tolist(),
+                        "held_receptor_columns": assignment.coordinates[positions].tolist(),
+                        "hex_index_distance": distance.tolist(),
+                        "ambiguous_modal_assignments": int(
+                            np.count_nonzero(assignment.ambiguity[positions] > 0)
+                        ),
+                        "sham_matches_intact": True,
+                        "responses": values,
+                    }
+                probe.held_receptor_positions = np.empty(0, dtype=np.int32)
+                rows.append(row)
+        results[backend] = rows
+    dependencies = [
+        IMPLEMENTATION,
+        Path("src/fly_emotion/driving/v7.py"),
+        Path("src/fly_emotion/driving/v7_temporal_audit.py"),
+        Path("src/fly_emotion/driving/v7_retina_audit.py"),
+        Path("src/fly_emotion/driving/retina.py"),
+        Path("src/fly_emotion/connectome/graph.py"),
+        Path("src/fly_emotion/driving/engine.py"),
+        Path("configs/driving-v7.yaml"),
+        Path("data/raw/malecns-v1.0/body-annotations.feather"),
+        Path("data/raw/malecns-v1.0/body-neurotransmitters.feather"),
+        Path("data/processed/malecns-v1.0/body_ids.npy"),
+        Path("data/processed/malecns-v1.0/adjacency_raw.npz"),
+        Path("data/processed/malecns-v1.0/adjacency_target_norm.npz"),
+        Path("data/processed/malecns-v1.0/retina_map.npz"),
+    ]
+    hashes = {}
+    for path in dependencies:
+        with (root / path).open("rb") as source:
+            hashes[str(path)] = hashlib.file_digest(source, "sha256").hexdigest()
+    return {
+        "protocol": {
+            "name": "v7-receptor-baseline-hold-audit-v1",
+            "exploratory": True,
+            "advance_allowed": False,
+            "parameter_fitting": False,
+            "v7_config_sha256": contract.sha256,
+            "dependencies_sha256": hashes,
+            "dynamics": "typed_visual_subgraph_v1",
+            "geometry": "legacy_proxy_v2",
+            "baseline_frames": 32,
+            "pre_step_frames": 16,
+            "post_step_frames": 32,
+            "substeps_per_frame": 4,
+            "direct_input": "R1-R6 only",
+            "intervention": "hold selected receptor external code at first-frame baseline",
+            "selection": selection,
+            "control_selection": (
+                "same-eye equal receptor count; nearest by hex-index distance, far >=6 then hash"
+            ),
+            "count_matched_not_synapse_matched": True,
+            "sites_previously_observed": True,
+            "driving_data_used": False,
+        },
+        "stimuli": {name: item.sha256 for name, item in stimuli.items()},
+        "sites": sites,
+        "responses": results,
+        "limitations": [
+            "Within-model intervention on six previously observed Mi9 cells, not new animals.",
+            "Baseline holding removes visual modulation, not neurons or synapses.",
+            "Modal hex assignments and index distances are proxies, not measured visual geometry.",
+            "Matched receptor counts do not match synapse weights or total downstream effects.",
+            "No rescue of missing columns and no validation of T4 direction or driving is tested.",
+        ],
+        "advance_to_central_complex": False,
+    }
+
+
 def evaluate_v7_local_input_audit(root: Path) -> dict:
     contract = V7Contract.load(root)
     results = {}

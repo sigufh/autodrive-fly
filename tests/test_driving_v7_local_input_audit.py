@@ -4,19 +4,71 @@ from itertools import combinations
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from fly_emotion.driving.v7 import V7VisualProbe
 from fly_emotion.driving.v7_local_input_audit import (
     LOCAL_TYPES,
     OUTER_RADIUS,
     SITE_COUNT,
+    BaselineHeldRetinaProbe,
     classify_column_coverage,
     local_masks,
     local_step,
     select_local_sites,
+    select_receptor_masks,
 )
+from fly_emotion.driving.v7_retina_audit import infer_retinal_columns
 
 ROOT = Path(__file__).parents[1]
+
+
+def test_receptor_masks_match_count_side_and_are_disjoint() -> None:
+    coordinates = np.array([[0, 0], [0, 0], [1, 0], [2, 0], [6, 0], [7, 0], [0, 0]])
+    sides = np.array([-1, -1, -1, -1, -1, -1, 1])
+    ids = np.array([70, 60, 50, 40, 30, 20, 10])
+    masks = select_receptor_masks(coordinates, sides, ids, np.array([0, 0]), -1)
+    assert masks["same_column"].tolist() == [0, 1]
+    assert masks["nearest_other_columns"].tolist() == [2, 3]
+    assert set(masks["far_other_columns"]) == {4, 5}
+    for mask in masks.values():
+        assert len(mask) == 2
+        assert np.all(sides[mask] == -1)
+    assert len(np.unique(np.concatenate(list(masks.values())))) == 6
+    perm = np.array([3, 6, 4, 0, 5, 1, 2])
+    reordered = select_receptor_masks(
+        coordinates[perm], sides[perm], ids[perm], np.array([0, 0]), -1
+    )
+    for name in masks:
+        assert set(ids[masks[name]]) == set(ids[perm][reordered[name]])
+
+
+def test_receptor_masks_reject_uncovered_target_and_insufficient_controls() -> None:
+    with pytest.raises(ValueError, match="same-column"):
+        select_receptor_masks(
+            np.array([[1, 1]]), np.array([-1]), np.array([1]), np.array([0, 0]), -1
+        )
+    with pytest.raises(ValueError, match="insufficient"):
+        select_receptor_masks(
+            np.array([[0, 0]]), np.array([-1]), np.array([1]), np.array([0, 0]), -1
+        )
+
+
+@pytest.mark.parametrize("backend", ["linear_luminance", "signed_frame_difference"])
+def test_baseline_hold_changes_only_selected_external_receptor_drive(backend: str) -> None:
+    probe = BaselineHeldRetinaProbe(ROOT, retinal_backend=backend)
+    baseline = np.full(probe.retina.size, 0.5, dtype=np.float32)
+    values = np.full(probe.retina.size, 0.8, dtype=np.float32)
+    original = probe._retinal_code(values, baseline, baseline)
+    original_baseline = probe._retinal_code(baseline, baseline, baseline)
+    probe.held_receptor_positions = np.array([0, 2, 5])
+    masked = probe._retinal_code(values, baseline, baseline)
+    expected = original.copy()
+    expected[[0, 2, 5]] = original_baseline[[0, 2, 5]]
+    assert np.array_equal(masked, expected)
+    assert np.array_equal(probe._retinal_code(baseline, baseline, baseline), original_baseline)
+    probe.held_receptor_positions = np.empty(0, dtype=np.int32)
+    assert np.array_equal(probe._retinal_code(values, baseline, baseline), original)
 
 
 def test_coverage_classification_keeps_missing_separate_and_respects_eye() -> None:
@@ -164,6 +216,59 @@ def test_coverage_extension_reproduces_previous_all_mi9_response_statistics() ->
     previous = json.loads((ROOT / "artifacts/v7-temporal-input-audit.json").read_text())
     for backend, responses in report["mi9_coverage"]["responses"].items():
         for eye in ("L", "R"):
-            assert responses["groups"][eye]["all"] == previous["step_responses"][backend][
-                "populations"
-            ][f"Mi9_{eye}"]
+            assert (
+                responses["groups"][eye]["all"]
+                == previous["step_responses"][backend]["populations"][f"Mi9_{eye}"]
+            )
+
+
+def test_saved_mask_audit_binds_dependencies_and_matched_receptor_sets() -> None:
+    report = json.loads((ROOT / "artifacts/v7-receptor-mask-audit.json").read_text())
+    local = json.loads((ROOT / "artifacts/v7-local-input-audit.json").read_text())
+    protocol = report["protocol"]
+    assert protocol["advance_allowed"] is False
+    assert protocol["sites_previously_observed"] is True
+    assert report["advance_to_central_complex"] is False
+    assert report["sites"] == local["sites"]
+    for relative, expected in protocol["dependencies_sha256"].items():
+        with (ROOT / relative).open("rb") as source:
+            assert hashlib.file_digest(source, "sha256").hexdigest() == expected
+    retina, assignments = infer_retinal_columns(ROOT)
+    for backend, rows in report["responses"].items():
+        assert len(rows) == 6
+        for row in rows:
+            masks = select_receptor_masks(
+                assignments.coordinates,
+                retina.side,
+                retina.body_ids,
+                np.asarray(row["optic_hex"]),
+                -1 if row["eye"] == "L" else 1,
+            )
+            assert set(row["conditions"]) == {"intact", *masks}
+            for name, values in row["conditions"].items():
+                assert values["sham_matches_intact"] is True
+                if name != "intact":
+                    assert values["held_receptor_body_ids"] == retina.body_ids[masks[name]].tolist()
+                    assert values["held_receptor_count"] == len(masks["same_column"])
+                for polarity, response in values["responses"].items():
+                    assert response["maximum_pre_step_difference"] == 0.0
+                    trace = np.asarray(response["population_mean_trace"])[16:]
+                    reference = np.asarray(
+                        row["conditions"]["intact"]["responses"][polarity]["population_mean_trace"]
+                    )[16:]
+                    assert np.isclose(
+                        response["mean_post_step_shift_vs_intact"], np.mean(trace - reference)
+                    )
+                    if name == "intact":
+                        previous = next(
+                            v
+                            for v in local["responses"][backend]
+                            if v["optic_hex"] == row["optic_hex"]
+                            and v["eye"] == row["eye"]
+                            and v["region"] == "whole_screen"
+                            and v["polarity"] == polarity
+                        )
+                        assert (
+                            response["population_mean_trace"]
+                            == previous["populations"]["Mi9"]["population_mean_trace"]
+                        )
