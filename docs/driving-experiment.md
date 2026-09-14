@@ -114,6 +114,16 @@ performance; no experimental profile simultaneously improved task and stability.
 All profiles retained zero action override. Consequently none is deployed; the
 screen is retained in `artifacts/neural-v6-sensory-ablation.json`.
 
+The follow-up metric audit replays the same candidates and seeds without
+retraining. A post-pass sample now counts as a stability window only when all
+30 control steps are observed. Obstacle or road-boundary termination before
+that horizon is an early failure; success/timeout truncation is censored. The
+body-feedback arm completed only 2/4 windows and failed within 30 steps on the
+other two, so its former low variable-window drift cannot be treated as a
+stability benefit. New release gates require complete windows, compare steering
+and drift per metre only on those windows, and reject a higher early-failure
+rate. Evidence: `artifacts/neural-v6-post-pass-metric-audit.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

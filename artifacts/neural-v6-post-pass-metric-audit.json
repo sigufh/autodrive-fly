@@ -1,0 +1,71 @@
+{
+  "protocol": {
+    "version": 2,
+    "window_steps": 30,
+    "test_seed_range": [960, 963],
+    "candidate_source": "artifacts/neural-v6-sensory-ablation.json",
+    "checkpoint_retraining": false,
+    "complete_window_definition": "30 recorded control steps beginning at obstacle pass",
+    "failure_truncation_definition": "window ends before 30 steps because of obstacle or road-boundary termination",
+    "censoring_definition": "window ends before 30 steps because of success or timeout"
+  },
+  "profiles": {
+    "front": {
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "window_count": 36,
+      "complete_window_count": 36,
+      "complete_window_rate": 1.0,
+      "early_failure_count": 0,
+      "early_failure_rate": 0.0,
+      "legacy_mean_abs_steering": 0.1330566285075221,
+      "complete_mean_abs_steering": 0.1330566285075221,
+      "legacy_mean_lateral_drift": 0.6073514371003517,
+      "complete_mean_lateral_drift": 0.6073514371003517,
+      "complete_mean_lateral_drift_per_metre": 0.07047379934283672
+    },
+    "panorama": {
+      "success_rate": 0.5,
+      "mean_obstacles_passed": 7.0,
+      "window_count": 28,
+      "complete_window_count": 26,
+      "complete_window_rate": 0.9285714285714286,
+      "early_failure_count": 2,
+      "early_failure_rate": 0.07142857142857142,
+      "legacy_mean_abs_steering": 0.2671869803338969,
+      "complete_mean_abs_steering": 0.2368359984547102,
+      "legacy_mean_lateral_drift": 0.9145384100198025,
+      "complete_mean_lateral_drift": 0.8238249549467332,
+      "complete_mean_lateral_drift_per_metre": 0.0957635362826264
+    },
+    "panorama_flow": {
+      "success_rate": 0.5,
+      "mean_obstacles_passed": 5.5,
+      "window_count": 22,
+      "complete_window_count": 20,
+      "complete_window_rate": 0.9090909090909091,
+      "early_failure_count": 2,
+      "early_failure_rate": 0.09090909090909091,
+      "legacy_mean_abs_steering": 0.17830988559398225,
+      "complete_mean_abs_steering": 0.1367114477986264,
+      "legacy_mean_lateral_drift": 0.7454676442362391,
+      "complete_mean_lateral_drift": 0.6514301952960376,
+      "complete_mean_lateral_drift_per_metre": 0.0752969022084243
+    },
+    "panorama_flow_body": {
+      "success_rate": 0.0,
+      "mean_obstacles_passed": 1.0,
+      "window_count": 4,
+      "complete_window_count": 2,
+      "complete_window_rate": 0.5,
+      "early_failure_count": 2,
+      "early_failure_rate": 0.5,
+      "legacy_mean_abs_steering": 0.1095857490217125,
+      "complete_mean_abs_steering": 0.15651571464332747,
+      "legacy_mean_lateral_drift": 0.2395501198468476,
+      "complete_mean_lateral_drift": 0.2537573713543647,
+      "complete_mean_lateral_drift_per_metre": 0.03370455825247563
+    }
+  },
+  "conclusion": "The apparent low body-feedback drift was partly caused by early collision: only half of its post-pass windows survived 30 steps. Future gates use complete-window steering, drift per metre, complete-window coverage and early-failure rate together."
+}

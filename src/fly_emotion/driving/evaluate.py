@@ -12,6 +12,8 @@ from fly_emotion.driving.engine import NEURAL_POLICY_VERSION, POLICY_VERSION, Dr
 from fly_emotion.driving.environment import DrivingEnvironment
 
 EVALUATION_PROTOCOL_VERSION = 4
+POST_PASS_WINDOW_STEPS = 30
+POST_PASS_METRIC_PROTOCOL_VERSION = 2
 
 
 def validate_mirror_protocol(count: int, start: int, *, train_episodes: int = 0) -> None:
@@ -23,6 +25,86 @@ def validate_mirror_protocol(count: int, start: int, *, train_episodes: int = 0)
         range(5_000, 5_000 + train_episodes // 2)
     ):
         raise ValueError("training and evaluation pair identities overlap")
+
+
+def summarize_post_pass_windows(
+    trace: np.ndarray,
+    pass_steps: list[int] | tuple[int, ...],
+    terminal_reason: str | None,
+    *,
+    window_steps: int = POST_PASS_WINDOW_STEPS,
+) -> dict:
+    """Measure post-pass control without treating early crashes as stability."""
+    if trace.ndim != 2 or trace.shape[1] < 4:
+        raise ValueError("control trace must have at least four columns")
+    if window_steps < 2:
+        raise ValueError("post-pass window must contain at least two steps")
+    all_raw_steering: list[float] = []
+    all_steering: list[float] = []
+    all_lateral_drift: list[float] = []
+    complete_raw_steering: list[float] = []
+    complete_steering: list[float] = []
+    complete_lateral_drift: list[float] = []
+    complete_drift_per_metre: list[float] = []
+    failure_truncated_windows = 0
+    censored_windows = 0
+    for step in pass_steps:
+        start = max(int(step) - 1, 0)
+        window = trace[start : min(len(trace), start + window_steps)]
+        if not len(window):
+            continue
+        raw_steering = float(np.mean(np.abs(window[:, 0])))
+        steering = float(np.mean(np.abs(window[:, 1])))
+        lateral_drift = float(abs(window[-1, 2] - window[0, 2]))
+        all_raw_steering.append(raw_steering)
+        all_steering.append(steering)
+        all_lateral_drift.append(lateral_drift)
+        if len(window) == window_steps:
+            complete_raw_steering.append(raw_steering)
+            complete_steering.append(steering)
+            complete_lateral_drift.append(lateral_drift)
+            forward_distance = float(max(window[-1, 3] - window[0, 3], 0.0))
+            if forward_distance > 1e-6:
+                complete_drift_per_metre.append(lateral_drift / forward_distance)
+        elif terminal_reason in {"obstacle", "road_boundary"}:
+            failure_truncated_windows += 1
+        else:
+            censored_windows += 1
+    window_count = len(all_steering)
+    complete_windows = len(complete_steering)
+    return {
+        # Legacy variable-length metrics are retained for report compatibility.
+        "post_pass_mean_abs_raw_steering": (
+            mean(all_raw_steering) if all_raw_steering else 0.0
+        ),
+        "post_pass_mean_abs_steering": mean(all_steering) if all_steering else 0.0,
+        "post_pass_mean_lateral_drift": (
+            mean(all_lateral_drift) if all_lateral_drift else 0.0
+        ),
+        "post_pass_window_count": window_count,
+        "post_pass_complete_window_count": complete_windows,
+        "post_pass_failure_truncated_window_count": failure_truncated_windows,
+        "post_pass_censored_window_count": censored_windows,
+        "post_pass_complete_window_rate": (
+            complete_windows / window_count if window_count else 0.0
+        ),
+        "post_pass_30_step_early_failure_rate": (
+            failure_truncated_windows / window_count if window_count else 0.0
+        ),
+        "post_pass_complete_mean_abs_raw_steering": (
+            mean(complete_raw_steering) if complete_raw_steering else 0.0
+        ),
+        "post_pass_complete_mean_abs_steering": (
+            mean(complete_steering) if complete_steering else 0.0
+        ),
+        "post_pass_complete_mean_lateral_drift": (
+            mean(complete_lateral_drift) if complete_lateral_drift else 0.0
+        ),
+        "post_pass_complete_mean_lateral_drift_per_metre": (
+            mean(complete_drift_per_metre) if complete_drift_per_metre else 0.0
+        ),
+        "post_pass_complete_drift_per_metre_count": len(complete_drift_per_metre),
+    }
 
 
 def evaluate_city_alpha(root: Path, *, seeds: tuple[int, ...] = (0, 1, 7)) -> dict:
@@ -132,16 +214,9 @@ def run_episode(
             ]
         )
     trace = np.asarray(controls)
-    post_pass_steering = []
-    post_pass_raw_steering = []
-    post_pass_lateral_drift = []
-    for step in engine.env.obstacle_pass_steps.values():
-        start = max(step - 1, 0)
-        window = trace[start : min(len(trace), start + 30)]
-        if len(window):
-            post_pass_raw_steering.append(float(np.mean(np.abs(window[:, 0]))))
-            post_pass_steering.append(float(np.mean(np.abs(window[:, 1]))))
-            post_pass_lateral_drift.append(float(abs(window[-1, 2] - window[0, 2])))
+    post_pass = summarize_post_pass_windows(
+        trace, list(engine.env.obstacle_pass_steps.values()), engine.env.terminal_reason
+    )
     first = engine.env.obstacles[0]
     before_first = trace[:, 3] < first.y - first.radius - engine.env.vehicle_radius
     return {
@@ -176,13 +251,7 @@ def run_episode(
                 < np.asarray([point[1] for point in engine.env.trajectory[:-1]])
             )
         ),
-        "post_pass_mean_abs_raw_steering": mean(post_pass_raw_steering)
-        if post_pass_raw_steering
-        else 0.0,
-        "post_pass_mean_abs_steering": mean(post_pass_steering) if post_pass_steering else 0.0,
-        "post_pass_mean_lateral_drift": mean(post_pass_lateral_drift)
-        if post_pass_lateral_drift
-        else 0.0,
+        **post_pass,
         "control_trace": controls,
         "control_mode": control_mode,
         "curriculum_stage": curriculum_stage,
@@ -348,12 +417,24 @@ def train_neural_curriculum(
             learned_summary["mean_obstacles_passed"] > frozen_summary["mean_obstacles_passed"]
         ),
         "post_pass_steering_below_frozen": (
-            learned_summary["post_pass_mean_abs_steering"]
-            < frozen_summary["post_pass_mean_abs_steering"]
+            learned_summary["post_pass_complete_mean_abs_steering"]
+            < frozen_summary["post_pass_complete_mean_abs_steering"]
         ),
         "post_pass_drift_below_frozen": (
-            learned_summary["post_pass_mean_lateral_drift"]
-            < frozen_summary["post_pass_mean_lateral_drift"]
+            learned_summary["post_pass_complete_mean_lateral_drift_per_metre"]
+            < frozen_summary["post_pass_complete_mean_lateral_drift_per_metre"]
+        ),
+        "post_pass_complete_window_rate_not_lower": (
+            learned_summary["post_pass_complete_window_rate"]
+            >= frozen_summary["post_pass_complete_window_rate"]
+        ),
+        "post_pass_early_failure_rate_not_higher": (
+            learned_summary["post_pass_30_step_early_failure_rate"]
+            <= frozen_summary["post_pass_30_step_early_failure_rate"]
+        ),
+        "post_pass_complete_windows_available": (
+            learned_summary["post_pass_complete_window_count"] > 0
+            and frozen_summary["post_pass_complete_window_count"] > 0
         ),
         "road_exit_below_frozen": (
             learned_summary["road_exit_rate"] < frozen_summary["road_exit_rate"]
@@ -377,6 +458,8 @@ def train_neural_curriculum(
         candidate.replace(published)
     return {
         "protocol_version": NEURAL_POLICY_VERSION,
+        "post_pass_metric_protocol_version": POST_PASS_METRIC_PROTOCOL_VERSION,
+        "post_pass_window_steps": POST_PASS_WINDOW_STEPS,
         "curriculum_stage": stage,
         "sensory_profile": sensory_profile,
         "resumed_from_published_v6": resume,
@@ -551,10 +634,24 @@ def evaluate_neural_motor_adaptation(root: Path, *, start: int = 900, count: int
             adapted["mean_obstacles_passed"] >= baseline["mean_obstacles_passed"]
         ),
         "post_pass_steering_lower": (
-            adapted["post_pass_mean_abs_steering"] < baseline["post_pass_mean_abs_steering"]
+            adapted["post_pass_complete_mean_abs_steering"]
+            < baseline["post_pass_complete_mean_abs_steering"]
         ),
         "post_pass_drift_lower": (
-            adapted["post_pass_mean_lateral_drift"] < baseline["post_pass_mean_lateral_drift"]
+            adapted["post_pass_complete_mean_lateral_drift_per_metre"]
+            < baseline["post_pass_complete_mean_lateral_drift_per_metre"]
+        ),
+        "post_pass_complete_window_rate_not_lower": (
+            adapted["post_pass_complete_window_rate"]
+            >= baseline["post_pass_complete_window_rate"]
+        ),
+        "post_pass_early_failure_rate_not_higher": (
+            adapted["post_pass_30_step_early_failure_rate"]
+            <= baseline["post_pass_30_step_early_failure_rate"]
+        ),
+        "post_pass_complete_windows_available": (
+            adapted["post_pass_complete_window_count"] > 0
+            and baseline["post_pass_complete_window_count"] > 0
         ),
         "max_lateral_lower": adapted["max_abs_lateral"] < baseline["max_abs_lateral"],
         "zero_action_override": (
@@ -567,6 +664,8 @@ def evaluate_neural_motor_adaptation(root: Path, *, start: int = 900, count: int
             "learning": False,
             "explore": False,
             "action_override": False,
+            "post_pass_metric_protocol_version": POST_PASS_METRIC_PROTOCOL_VERSION,
+            "post_pass_window_steps": POST_PASS_WINDOW_STEPS,
             "only_variable": "environment_blind_DNp20_motor_adaptation_rate",
             "checkpoint_sha256": hashlib.sha256(
                 (root / "artifacts/checkpoints/driving-policy.neural-v6.npz").read_bytes()
@@ -599,6 +698,12 @@ def evaluate_sensory_ablation(
         "obstacle_collision_rate",
         "post_pass_mean_abs_steering",
         "post_pass_mean_lateral_drift",
+        "post_pass_complete_window_count",
+        "post_pass_complete_window_rate",
+        "post_pass_30_step_early_failure_rate",
+        "post_pass_complete_mean_abs_steering",
+        "post_pass_complete_mean_lateral_drift",
+        "post_pass_complete_mean_lateral_drift_per_metre",
         "constraint_rate",
     )
     for profile in profiles:
@@ -626,11 +731,17 @@ def evaluate_sensory_ablation(
             "completion_delta": learned["success_rate"] - front["success_rate"],
             "distance_delta": learned["mean_distance"] - front["mean_distance"],
             "obstacles_delta": (learned["mean_obstacles_passed"] - front["mean_obstacles_passed"]),
-            "post_pass_steering_delta": (
-                learned["post_pass_mean_abs_steering"] - front["post_pass_mean_abs_steering"]
+            "post_pass_complete_steering_delta": (
+                learned["post_pass_complete_mean_abs_steering"]
+                - front["post_pass_complete_mean_abs_steering"]
             ),
-            "post_pass_drift_delta": (
-                learned["post_pass_mean_lateral_drift"] - front["post_pass_mean_lateral_drift"]
+            "post_pass_complete_drift_per_metre_delta": (
+                learned["post_pass_complete_mean_lateral_drift_per_metre"]
+                - front["post_pass_complete_mean_lateral_drift_per_metre"]
+            ),
+            "post_pass_early_failure_rate_delta": (
+                learned["post_pass_30_step_early_failure_rate"]
+                - front["post_pass_30_step_early_failure_rate"]
             ),
         }
     return {
@@ -642,6 +753,8 @@ def evaluate_sensory_ablation(
             "matched_training_and_test_seeds": True,
             "learning_signal": "environment_reward_only",
             "action_override": False,
+            "post_pass_metric_protocol_version": POST_PASS_METRIC_PROTOCOL_VERSION,
+            "post_pass_window_steps": POST_PASS_WINDOW_STEPS,
             "claim_boundary": (
                 "two-pair screening ablation; no sensory profile is deployed "
                 "without a larger held-out confirmation"
@@ -698,6 +811,56 @@ def summarize(episodes: list[dict]) -> dict:
     )
     summary["mean_steps"] = mean(item["steps"] for item in episodes)
     summary["timeout_rate"] = mean(float(item["terminal_reason"] == "timeout") for item in episodes)
+    post_pass_windows = sum(item.get("post_pass_window_count", 0) for item in episodes)
+    complete_windows = sum(item.get("post_pass_complete_window_count", 0) for item in episodes)
+    failure_windows = sum(
+        item.get("post_pass_failure_truncated_window_count", 0) for item in episodes
+    )
+    censored_windows = sum(item.get("post_pass_censored_window_count", 0) for item in episodes)
+    drift_per_metre_windows = sum(
+        item.get("post_pass_complete_drift_per_metre_count", 0) for item in episodes
+    )
+
+    def weighted_post_pass(key: str, count_key: str, count: int) -> float:
+        if not count:
+            return 0.0
+        return sum(item.get(key, 0.0) * item.get(count_key, 0) for item in episodes) / count
+
+    summary.update(
+        {
+            "post_pass_window_count": post_pass_windows,
+            "post_pass_complete_window_count": complete_windows,
+            "post_pass_failure_truncated_window_count": failure_windows,
+            "post_pass_censored_window_count": censored_windows,
+            "post_pass_complete_window_rate": (
+                complete_windows / post_pass_windows if post_pass_windows else 0.0
+            ),
+            "post_pass_30_step_early_failure_rate": (
+                failure_windows / post_pass_windows if post_pass_windows else 0.0
+            ),
+            "post_pass_complete_mean_abs_raw_steering": weighted_post_pass(
+                "post_pass_complete_mean_abs_raw_steering",
+                "post_pass_complete_window_count",
+                complete_windows,
+            ),
+            "post_pass_complete_mean_abs_steering": weighted_post_pass(
+                "post_pass_complete_mean_abs_steering",
+                "post_pass_complete_window_count",
+                complete_windows,
+            ),
+            "post_pass_complete_mean_lateral_drift": weighted_post_pass(
+                "post_pass_complete_mean_lateral_drift",
+                "post_pass_complete_window_count",
+                complete_windows,
+            ),
+            "post_pass_complete_mean_lateral_drift_per_metre": weighted_post_pass(
+                "post_pass_complete_mean_lateral_drift_per_metre",
+                "post_pass_complete_drift_per_metre_count",
+                drift_per_metre_windows,
+            ),
+            "post_pass_complete_drift_per_metre_count": drift_per_metre_windows,
+        }
+    )
     return summary
 
 

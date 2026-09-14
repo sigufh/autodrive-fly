@@ -23,6 +23,7 @@ from fly_emotion.driving.evaluate import (
     evaluate_neural_decision_baseline,
     mirror_summary,
     paired_statistics,
+    summarize_post_pass_windows,
     usability_gates,
     validate_mirror_protocol,
 )
@@ -655,6 +656,40 @@ def test_episode_reports_post_pass_steering_and_lateral_drift() -> None:
     assert episode["post_pass_mean_abs_steering"] >= 0
     assert episode["post_pass_mean_abs_raw_steering"] >= 0
     assert episode["post_pass_mean_lateral_drift"] >= 0
+    assert episode["post_pass_window_count"] == episode["obstacles_passed"]
+    assert (
+        episode["post_pass_complete_window_count"]
+        + episode["post_pass_failure_truncated_window_count"]
+        + episode["post_pass_censored_window_count"]
+        == episode["post_pass_window_count"]
+    )
+    assert 0 <= episode["post_pass_complete_window_rate"] <= 1
+    assert 0 <= episode["post_pass_30_step_early_failure_rate"] <= 1
+
+
+def test_post_pass_metrics_do_not_treat_early_collision_as_stability() -> None:
+    trace = np.zeros((40, 6), dtype=float)
+    trace[:, 0] = 0.4
+    trace[:, 1] = 0.2
+    trace[:, 2] = np.arange(40) * 0.1
+    trace[:, 3] = np.arange(40) * 0.2
+    metrics = summarize_post_pass_windows(trace, [1, 31], "obstacle")
+    assert metrics["post_pass_window_count"] == 2
+    assert metrics["post_pass_complete_window_count"] == 1
+    assert metrics["post_pass_failure_truncated_window_count"] == 1
+    assert metrics["post_pass_censored_window_count"] == 0
+    assert metrics["post_pass_complete_window_rate"] == 0.5
+    assert metrics["post_pass_30_step_early_failure_rate"] == 0.5
+    assert np.isclose(metrics["post_pass_complete_mean_abs_steering"], 0.2)
+    assert np.isclose(metrics["post_pass_complete_mean_lateral_drift_per_metre"], 0.5)
+
+
+def test_post_pass_short_success_window_is_censored_not_failed() -> None:
+    trace = np.zeros((12, 6), dtype=float)
+    metrics = summarize_post_pass_windows(trace, [5], "success")
+    assert metrics["post_pass_complete_window_count"] == 0
+    assert metrics["post_pass_failure_truncated_window_count"] == 0
+    assert metrics["post_pass_censored_window_count"] == 1
 
 
 def test_bootstrap_clusters_mirror_pairs_and_rejects_misalignment() -> None:
