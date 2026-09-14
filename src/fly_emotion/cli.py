@@ -34,7 +34,7 @@ from .driving.v7 import (
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
-from .driving.v7_disinhibition import evaluate_v7_disinhibition
+from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
@@ -131,6 +131,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-input-coverage")
     subparsers.add_parser("v7-audit-coverage-response")
     subparsers.add_parser("v7-evaluate-mi9-sign")
+    subparsers.add_parser("v7-evaluate-conductance-order")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -352,6 +353,12 @@ def main() -> None:
     if args.command == "v7-evaluate-mi9-sign":
         report = evaluate_v7_disinhibition(root)
         target = root / "artifacts/v7-mi9-sign-comparison.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-conductance-order":
+        report = evaluate_v7_conductance_order(root)
+        target = root / "artifacts/v7-conductance-order-comparison.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

@@ -107,6 +107,15 @@ still fail direction and mirror gates. The independent comparator changes no
 published candidate, default policy or release threshold and is not a validated
 conductance-based disinhibition mechanism.
 
+A threshold-order comparator holds source matrices, normalization and published
+parameters fixed while moving rectification before weighted source aggregation.
+Both equations pass a synthetic tonic-inhibition/disinhibition interaction table,
+but neither passes direction or mirror gates in the connectome model. Constant
+background probes after 128 substeps are finite-adaptation measurements, not
+verified equilibria; frame-difference encoding yields identical states for all
+three constant brightness levels. Nonzero normalized Mi9 conductance therefore
+does not establish a physiological, light-dependent resting baseline.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

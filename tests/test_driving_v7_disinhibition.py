@@ -4,15 +4,56 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+import yaml
+from scipy import sparse
 
 from fly_emotion.driving.v7_branched import V7BranchedT4Probe
+from fly_emotion.driving.v7_conductance import V7PublishedConductanceProbe
 from fly_emotion.driving.v7_disinhibition import (
     DISTAL_BRANCH,
     MonotoneMi9Probe,
+    PresynapticThresholdProbe,
+    conductance_truth_table,
     synthetic_mi9_sweep,
 )
 
 ROOT = Path(__file__).parents[1]
+
+
+def test_conductance_truth_table_has_tonic_inhibition_release_and_supralinearity() -> None:
+    model = yaml.safe_load((ROOT / "configs/driving-v7-t4-conductance.yaml").read_text())[
+        "published_single_compartment_model"
+    ]
+    table = conductance_truth_table(model)
+    for row in table["models"].values():
+        assert row["rest_inhibited"] < row["release_only"]
+        assert row["excitation_only"] < row["release_and_excitation"]
+        assert row["interaction_excess_millivolts"] > 0
+    assert (
+        table["models"]["V7PublishedConductanceProbe"]
+        == table["models"]["PresynapticThresholdProbe"]
+    )
+
+
+def test_presynaptic_threshold_retains_active_source_lost_by_mean_threshold() -> None:
+    model = {
+        "leak_conductance": 1.0,
+        "reversal_potentials_millivolts": {"leak": -65.0, "exc": -21.0},
+        "source_parameters": {"example": {"gain": 1.0, "threshold": 0.6, "reversal": "exc"}},
+    }
+    voltages = []
+    for cls in (V7PublishedConductanceProbe, PresynapticThresholdProbe):
+        probe = object.__new__(cls)
+        probe.conductance = {
+            "targets": np.array([0]),
+            "model": model,
+            "matrices": {"example": sparse.csr_matrix([[0.5, 0.5]])},
+        }
+        voltage = probe._conductance_voltage(np.array([0.0, 1.0]))[0]
+        voltages.append(voltage)
+        assert probe._conductance_voltage(np.array([0.2, 0.2]))[0] == -65
+    assert voltages[0] == -65
+    assert voltages[1] == pytest.approx((-65 + 0.2 * -21) / 1.2)
 
 
 @pytest.fixture(scope="module")
@@ -81,6 +122,27 @@ def test_distal_branch_uses_only_configured_history_slot(probes) -> None:
     )
     history[2][mi9] = -0.2
     assert np.all(probe._branch_activity(DISTAL_BRANCH, state, history) == 0)
+
+
+def test_conductance_order_report_preserves_inputs_and_uses_finite_adaptation() -> None:
+    report = json.loads((ROOT / "artifacts/v7-conductance-order-comparison.json").read_text())
+    assert report["advance_to_central_complex"] is False
+    assert report["protocol"]["published_parameters_modified"] is False
+    for path, expected in report["protocol"]["dependencies_sha256"].items():
+        with (ROOT / path).open("rb") as source:
+            assert hashlib.file_digest(source, "sha256").hexdigest() == expected
+    for backend, result in report["results"].items():
+        old = result["models"]["V7PublishedConductanceProbe"]
+        revised = result["models"]["PresynapticThresholdProbe"]
+        assert result["original_scores_reproduced"] is True
+        assert old["source_matrices_sha256"] == revised["source_matrices_sha256"]
+        assert old["target_ids_sha256"] == revised["target_ids_sha256"]
+        assert old["stimuli"] == revised["stimuli"]
+        for model in (old, revised):
+            assert [row["background_level"] for row in model["rest"]] == [0.08, 0.5, 0.92]
+            assert model["all_response_gates_pass"] == all(model["gates"].values())
+            if backend == "signed_frame_difference":
+                assert len({row["state_sha256"] for row in model["rest"]}) == 1
 
 
 def test_sign_comparison_artifact_is_hash_bound_and_keeps_input_hashes() -> None:
