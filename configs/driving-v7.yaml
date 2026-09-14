@@ -27,10 +27,15 @@ controlled_vision:
     - legacy_uniform_tanh_v1
     - typed_visual_leak_v1
     - typed_visual_subgraph_v1
+    - columnar_delay_v1
+    - columnar_correlator_v1
   retinal_backends:
     - legacy_absolute_contrast
     - linear_luminance
     - signed_frame_difference
+  retinal_geometries:
+    - legacy_proxy_v2
+    - axial_hex_cartesian_v1
   typed_visual_leak_v1:
     default: 0.28
     R1-R6: 1.0
@@ -52,6 +57,41 @@ controlled_vision:
     T5: 0.50
     LPLC: 0.38
     LC: 0.38
+  columnar_delay_v1:
+    max_delay_substeps: 3
+    source_delays:
+      Tm3: 0
+      Tm2: 0
+      Mi1: 1
+      Tm1: 1
+      Tm4: 1
+      C3: 2
+      Mi4: 2
+      CT1: 2
+      Mi9: 3
+      Tm9: 3
+  columnar_correlator_v1:
+    history_substeps: 3
+    gain: 12.0
+    T4_fast_sources: [Mi1, Tm3]
+    T4_delayed_sources: [Mi4, Mi9, C3, CT1]
+    T5_fast_sources: [Tm1, Tm2, Tm4]
+    T5_delayed_sources: [Tm9, CT1]
+  optic_hex_axis_calibration_v1:
+    split_seed: 20260914
+    fit_fraction: 0.50
+    random_orthogonal_baselines: 256
+    T4_fast_sources: [Mi1, Tm3]
+    T4_delayed_sources: [Mi4, Mi9, C3, CT1]
+    T5_fast_sources: [Tm1, Tm2, Tm4]
+    T5_delayed_sources: [Tm9, CT1]
+    gates:
+      minimum_held_out_T4_accuracy: 0.75
+      minimum_zero_shot_T5_accuracy: 0.70
+      maximum_held_out_T4_median_angle_error_degrees: 35.0
+      maximum_zero_shot_T5_median_angle_error_degrees: 40.0
+      maximum_cross_eye_mirror_angle_error_degrees: 30.0
+      require_accuracy_above_random_p95: true
   direct_input_type: R1-R6
   target_populations:
     - T4a

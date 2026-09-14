@@ -10,6 +10,11 @@ looming timing, but the tested full-graph and visual-subgraph candidates still
 fail T4/T5 direction and mirror gates. The legacy backend also fails all response
 gates and does not consistently beat preliminary shuffled controls. v5/v6
 remain frozen and v7 deployment is disabled. See `docs/driving-v7.zh-CN.md`.
+An anatomy-only optic-hex calibration fitted on 3,428 stratified T4 cells
+generalizes to zero-shot T5 (83.5% cardinal accuracy) but fails disjoint T4
+validation (46.6%, 50.8-degree median error) and the preregistered cross-eye
+mirror gate. This is evidence for a partial T5 spatial-offset signal, not a
+validated retinal coordinate system or functional motion circuit.
 
 ## Supported claims
 

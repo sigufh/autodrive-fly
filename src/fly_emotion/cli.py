@@ -27,6 +27,7 @@ from .driving.evaluate import (
 )
 from .driving.v7 import (
     evaluate_v7_controlled_vision,
+    evaluate_v7_optic_hex_axis_calibration,
     evaluate_v7_typed_visual_candidate,
     write_v7_manifest,
 )
@@ -103,6 +104,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-init")
     subparsers.add_parser("v7-evaluate-vision")
     subparsers.add_parser("v7-evaluate-typed-vision")
+    subparsers.add_parser("v7-evaluate-optic-axis")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -246,6 +248,12 @@ def main() -> None:
     if args.command == "v7-evaluate-typed-vision":
         report = evaluate_v7_typed_visual_candidate(root)
         target = root / "artifacts/v7-typed-visual-candidate.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-optic-axis":
+        report = evaluate_v7_optic_hex_axis_calibration(root)
+        target = root / "artifacts/v7-optic-hex-axis-calibration.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

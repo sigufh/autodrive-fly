@@ -17,6 +17,7 @@ from fly_emotion.driving.engine import INHIBITORY_TRANSMITTERS, MODULATORY_TRANS
 from fly_emotion.driving.retina import load_or_build_retina_map
 
 V7_CONFIG = Path("configs/driving-v7.yaml")
+V7_IMPLEMENTATION = Path("src/fly_emotion/driving/v7.py")
 V7_TARGET_TYPES = (
     "T4a",
     "T4b",
@@ -81,6 +82,35 @@ class VisualStimulus:
     @property
     def sha256(self) -> str:
         return hashlib.sha256(self.frames.astype(np.float32, copy=False).tobytes()).hexdigest()
+
+
+@dataclass(frozen=True)
+class OpticHexOffsetDataset:
+    """Per-cell fast-minus-delayed input offsets from real MaleCNS edges."""
+
+    body_ids: np.ndarray
+    node_indices: np.ndarray
+    families: np.ndarray
+    subtypes: np.ndarray
+    sides: np.ndarray
+    offsets: np.ndarray
+    expected_directions: np.ndarray
+
+    @property
+    def size(self) -> int:
+        return int(self.body_ids.size)
+
+    @property
+    def sha256(self) -> str:
+        digest = hashlib.sha256()
+        for values in (
+            self.body_ids.astype(np.int64, copy=False),
+            self.offsets.astype(np.float64, copy=False),
+        ):
+            digest.update(values.tobytes())
+        for values in (self.families, self.subtypes, self.sides, self.expected_directions):
+            digest.update("\n".join(values.tolist()).encode("utf-8"))
+        return digest.hexdigest()
 
 
 def _moving_edge(
@@ -272,6 +302,379 @@ def build_controlled_stimuli(
     return stimuli
 
 
+_DIRECTION_ORDER = ("left", "right", "up", "down")
+_DIRECTION_VECTORS = {
+    "left": np.asarray((-1.0, 0.0), dtype=np.float64),
+    "right": np.asarray((1.0, 0.0), dtype=np.float64),
+    "up": np.asarray((0.0, -1.0), dtype=np.float64),
+    "down": np.asarray((0.0, 1.0), dtype=np.float64),
+}
+
+
+def load_v7_optic_hex_offsets(root: Path) -> OpticHexOffsetDataset:
+    """Extract target-specific spatial offsets without using stimulus or driving labels."""
+    contract = V7Contract.load(root)
+    config = contract.payload["controlled_vision"]["optic_hex_axis_calibration_v1"]
+    processed = root / "data/processed/malecns-v1.0"
+    annotations_path = root / "data/raw/malecns-v1.0/body-annotations.feather"
+    graph = load_graph(processed, normalized=False)
+    annotations = feather.read_table(
+        annotations_path,
+        columns=["bodyId", "type", "somaSide", "assignedOlHex1", "assignedOlHex2"],
+        memory_map=True,
+    ).to_pandas()
+    body_ids = annotations["bodyId"].to_numpy(dtype=np.int64)
+    nodes = np.searchsorted(graph.body_ids, body_ids)
+    valid = nodes < graph.node_count
+    valid[valid] &= graph.body_ids[nodes[valid]] == body_ids[valid]
+    annotations = annotations.iloc[np.flatnonzero(valid)].copy()
+    annotations["node"] = nodes[valid]
+
+    node_types = np.full(graph.node_count, "", dtype=object)
+    node_types[annotations["node"].to_numpy(dtype=np.int32)] = (
+        annotations["type"].fillna("").to_numpy(dtype=object)
+    )
+    coordinates = np.full((graph.node_count, 2), np.nan, dtype=np.float64)
+    annotated_nodes = annotations["node"].to_numpy(dtype=np.int32)
+    coordinates[annotated_nodes, 0] = annotations["assignedOlHex1"].to_numpy(dtype=float)
+    coordinates[annotated_nodes, 1] = annotations["assignedOlHex2"].to_numpy(dtype=float)
+
+    records: list[tuple[int, int, str, str, str, np.ndarray, str]] = []
+    for family in ("T4", "T5"):
+        fast_types = tuple(config[f"{family}_fast_sources"])
+        delayed_types = tuple(config[f"{family}_delayed_sources"])
+        for subtype in ("a", "b", "c", "d"):
+            for side in ("L", "R"):
+                rows = annotations.loc[
+                    annotations["type"].eq(f"{family}{subtype}")
+                    & annotations["somaSide"].eq(side),
+                    ["bodyId", "node"],
+                ]
+                expected = (
+                    HORIZONTAL_PREFERENCE[(subtype, side)]
+                    if subtype in {"a", "b"}
+                    else VERTICAL_PREFERENCE[subtype]
+                )
+                for body_id, target in rows.itertuples(index=False, name=None):
+                    row = graph.adjacency.getrow(int(target))
+                    sources = row.indices
+                    weights = np.abs(row.data).astype(np.float64)
+
+                    def centroid(
+                        source_types: tuple[str, ...],
+                        source_nodes: np.ndarray = sources,
+                        source_weights: np.ndarray = weights,
+                    ) -> np.ndarray:
+                        keep = np.isin(node_types[source_nodes], source_types)
+                        keep &= np.all(np.isfinite(coordinates[source_nodes]), axis=1)
+                        if not np.any(keep):
+                            return np.full(2, np.nan, dtype=np.float64)
+                        return np.average(
+                            coordinates[source_nodes[keep]],
+                            axis=0,
+                            weights=source_weights[keep],
+                        )
+
+                    offset = centroid(fast_types) - centroid(delayed_types)
+                    if np.all(np.isfinite(offset)) and np.linalg.norm(offset) > 1e-12:
+                        records.append(
+                            (
+                                int(body_id),
+                                int(target),
+                                family,
+                                subtype,
+                                side,
+                                offset,
+                                expected,
+                            )
+                        )
+    return OpticHexOffsetDataset(
+        body_ids=np.asarray([item[0] for item in records], dtype=np.int64),
+        node_indices=np.asarray([item[1] for item in records], dtype=np.int32),
+        families=np.asarray([item[2] for item in records], dtype=str),
+        subtypes=np.asarray([item[3] for item in records], dtype=str),
+        sides=np.asarray([item[4] for item in records], dtype=str),
+        offsets=np.asarray([item[5] for item in records], dtype=np.float64),
+        expected_directions=np.asarray([item[6] for item in records], dtype=str),
+    )
+
+
+def _stratified_axis_split(
+    dataset: OpticHexOffsetDataset, *, seed: int, fit_fraction: float
+) -> tuple[np.ndarray, np.ndarray]:
+    fit = np.zeros(dataset.size, dtype=bool)
+    for subtype in ("a", "b", "c", "d"):
+        for side in ("L", "R"):
+            group = np.flatnonzero(
+                (dataset.families == "T4")
+                & (dataset.subtypes == subtype)
+                & (dataset.sides == side)
+            )
+            hashes = np.asarray(
+                [
+                    hashlib.sha256(f"{seed}:{int(dataset.body_ids[index])}".encode()).digest()
+                    for index in group
+                ],
+                dtype="S32",
+            )
+            order = np.argsort(hashes, kind="stable")
+            count = max(1, min(len(group) - 1, int(np.floor(len(group) * fit_fraction))))
+            fit[group[order[:count]]] = True
+    held_out = (dataset.families == "T4") & ~fit
+    return fit, held_out
+
+
+def _orthogonal_axis_transform(
+    offsets: np.ndarray, targets: np.ndarray, strata: np.ndarray
+) -> np.ndarray:
+    normalized = offsets / np.maximum(np.linalg.norm(offsets, axis=1, keepdims=True), 1e-12)
+    covariance = np.zeros((2, 2), dtype=np.float64)
+    for stratum in sorted(set(strata)):
+        group = strata == stratum
+        covariance += normalized[group].T @ targets[group] / np.count_nonzero(group)
+    left, _, right = np.linalg.svd(covariance, full_matrices=False)
+    return left @ right
+
+
+def _axis_metrics(
+    dataset: OpticHexOffsetDataset, mask: np.ndarray, transforms: dict[str, np.ndarray]
+) -> dict:
+    indices = np.flatnonzero(mask)
+    predicted = np.empty((len(indices), 2), dtype=np.float64)
+    for side in ("L", "R"):
+        local = dataset.sides[indices] == side
+        predicted[local] = dataset.offsets[indices[local]] @ transforms[side]
+    norms = np.linalg.norm(predicted, axis=1, keepdims=True)
+    predicted = predicted / np.maximum(norms, 1e-12)
+    expected = np.stack(
+        [_DIRECTION_VECTORS[name] for name in dataset.expected_directions[indices]]
+    )
+    cardinal = np.stack([_DIRECTION_VECTORS[name] for name in _DIRECTION_ORDER])
+    predicted_labels = np.argmax(predicted @ cardinal.T, axis=1)
+    expected_labels = np.argmax(expected @ cardinal.T, axis=1)
+    angles = np.degrees(
+        np.arccos(np.clip(np.sum(predicted * expected, axis=1), -1.0, 1.0))
+    )
+    by_group = {}
+    for family in sorted(set(dataset.families[indices])):
+        for subtype in ("a", "b", "c", "d"):
+            for side in ("L", "R"):
+                group = (dataset.families[indices] == family) & (
+                    dataset.subtypes[indices] == subtype
+                ) & (dataset.sides[indices] == side)
+                if np.any(group):
+                    by_group[f"{family}{subtype}_{side}"] = {
+                        "count": int(np.count_nonzero(group)),
+                        "accuracy": float(
+                            np.mean(predicted_labels[group] == expected_labels[group])
+                        ),
+                        "median_angle_error_degrees": float(np.median(angles[group])),
+                    }
+    return {
+        "count": int(len(indices)),
+        "accuracy": float(np.mean(predicted_labels == expected_labels)),
+        "median_angle_error_degrees": float(np.median(angles)),
+        "mean_angle_error_degrees": float(np.mean(angles)),
+        "by_group": by_group,
+        "_indices": indices,
+        "_predicted": predicted,
+    }
+
+
+def _cross_eye_axis_error(
+    dataset: OpticHexOffsetDataset, transforms: dict[str, np.ndarray]
+) -> dict:
+    values = {}
+    errors = []
+    for family in ("T4", "T5"):
+        for subtype in ("a", "b", "c", "d"):
+            means = {}
+            for side in ("L", "R"):
+                mask = (dataset.families == family) & (dataset.subtypes == subtype) & (
+                    dataset.sides == side
+                )
+                vectors = dataset.offsets[mask] @ transforms[side]
+                vectors /= np.maximum(np.linalg.norm(vectors, axis=1, keepdims=True), 1e-12)
+                means[side] = np.mean(vectors, axis=0)
+                means[side] /= max(np.linalg.norm(means[side]), 1e-12)
+            mirrored_left = means["L"] * np.asarray((-1.0, 1.0))
+            error = float(
+                np.degrees(np.arccos(np.clip(np.dot(mirrored_left, means["R"]), -1.0, 1.0)))
+            )
+            values[f"{family}{subtype}"] = error
+            errors.append(error)
+    return {
+        "by_population_degrees": values,
+        "median_degrees": float(np.median(errors)),
+        "maximum_degrees": float(np.max(errors)),
+    }
+
+
+def _serializable_axis_metrics(metrics: dict) -> dict:
+    return {key: value for key, value in metrics.items() if not key.startswith("_")}
+
+
+def evaluate_v7_optic_hex_axis_calibration(root: Path) -> dict:
+    """Fit on half of T4 and test held-out T4 plus zero-shot T5."""
+    contract = V7Contract.load(root)
+    config = contract.payload["controlled_vision"]["optic_hex_axis_calibration_v1"]
+    dataset = load_v7_optic_hex_offsets(root)
+    fit, held_out = _stratified_axis_split(
+        dataset, seed=int(config["split_seed"]), fit_fraction=float(config["fit_fraction"])
+    )
+    expected = np.stack([_DIRECTION_VECTORS[name] for name in dataset.expected_directions])
+    fitted = {}
+    for side in ("L", "R"):
+        mask = fit & (dataset.sides == side)
+        fitted[side] = _orthogonal_axis_transform(
+            dataset.offsets[mask], expected[mask], dataset.subtypes[mask]
+        )
+
+    t5 = dataset.families == "T5"
+    fit_metrics = _axis_metrics(dataset, fit, fitted)
+    held_out_metrics = _axis_metrics(dataset, held_out, fitted)
+    t5_metrics = _axis_metrics(dataset, t5, fitted)
+    mirror = _cross_eye_axis_error(dataset, fitted)
+
+    standard_axial = np.asarray(
+        ((0.0, -np.sqrt(3.0)), (1.5, -np.sqrt(3.0) / 2.0)), dtype=np.float64
+    )
+    deterministic_baselines = {
+        "standard_axial_same_both_eyes": {"L": standard_axial, "R": standard_axial},
+        "legacy_proxy_eye_mirrored": {
+            "L": np.asarray(((-1.0, 0.0), (0.0, -1.0))),
+            "R": np.asarray(((1.0, 0.0), (0.0, -1.0))),
+        },
+    }
+    baseline_results = {}
+    for name, transforms in deterministic_baselines.items():
+        baseline_results[name] = {
+            "held_out_T4": _serializable_axis_metrics(
+                _axis_metrics(dataset, held_out, transforms)
+            ),
+            "zero_shot_T5": _serializable_axis_metrics(_axis_metrics(dataset, t5, transforms)),
+            "cross_eye_mirror": _cross_eye_axis_error(dataset, transforms),
+        }
+
+    signed_permutations = []
+    for swap in (False, True):
+        for first_sign in (-1.0, 1.0):
+            for second_sign in (-1.0, 1.0):
+                base = (
+                    np.asarray(((0.0, first_sign), (second_sign, 0.0)))
+                    if swap
+                    else np.asarray(((first_sign, 0.0), (0.0, second_sign)))
+                )
+                signed_permutations.append(base)
+    permutation_scores = []
+    for left in signed_permutations:
+        for right in signed_permutations:
+            transforms = {"L": left, "R": right}
+            permutation_scores.append(
+                (
+                    _axis_metrics(dataset, held_out, transforms)["accuracy"],
+                    _axis_metrics(dataset, t5, transforms)["accuracy"],
+                )
+            )
+    permutation_scores_array = np.asarray(permutation_scores)
+
+    rng = np.random.default_rng(int(config["split_seed"]))
+    random_scores = []
+    for _ in range(int(config["random_orthogonal_baselines"])):
+        transforms = {}
+        for side in ("L", "R"):
+            angle = rng.uniform(-np.pi, np.pi)
+            reflection = rng.choice((-1.0, 1.0))
+            transforms[side] = np.asarray(
+                (
+                    (np.cos(angle), -reflection * np.sin(angle)),
+                    (np.sin(angle), reflection * np.cos(angle)),
+                )
+            )
+        random_scores.append(
+            (
+                _axis_metrics(dataset, held_out, transforms)["accuracy"],
+                _axis_metrics(dataset, t5, transforms)["accuracy"],
+            )
+        )
+    random_scores_array = np.asarray(random_scores)
+    random_p95 = {
+        "held_out_T4_accuracy": float(np.quantile(random_scores_array[:, 0], 0.95)),
+        "zero_shot_T5_accuracy": float(np.quantile(random_scores_array[:, 1], 0.95)),
+    }
+
+    thresholds = config["gates"]
+    gates = {
+        "held_out_T4_accuracy": held_out_metrics["accuracy"]
+        >= thresholds["minimum_held_out_T4_accuracy"],
+        "zero_shot_T5_accuracy": t5_metrics["accuracy"]
+        >= thresholds["minimum_zero_shot_T5_accuracy"],
+        "held_out_T4_angle": held_out_metrics["median_angle_error_degrees"]
+        <= thresholds["maximum_held_out_T4_median_angle_error_degrees"],
+        "zero_shot_T5_angle": t5_metrics["median_angle_error_degrees"]
+        <= thresholds["maximum_zero_shot_T5_median_angle_error_degrees"],
+        "cross_eye_mirror": mirror["maximum_degrees"]
+        <= thresholds["maximum_cross_eye_mirror_angle_error_degrees"],
+        "held_out_T4_above_random_p95": held_out_metrics["accuracy"]
+        > random_p95["held_out_T4_accuracy"],
+        "zero_shot_T5_above_random_p95": t5_metrics["accuracy"]
+        > random_p95["zero_shot_T5_accuracy"],
+    }
+    passed = all(gates.values())
+    return {
+        "protocol": {
+            "version": 7,
+            "mode": "v7-experimental",
+            "deployment_enabled": False,
+            "config_sha256": contract.sha256,
+            "implementation_sha256": _sha256(root / V7_IMPLEMENTATION),
+            "fit_source": "T4 only, stratified by subtype and eye",
+            "fit_objective": "unit offsets; equal weight per T4 subtype within each eye",
+            "validation_source": "disjoint T4 bodyIds plus all T5 bodyIds",
+            "driving_data_used": False,
+            "stimulus_direction_labels_used": False,
+            "T5_used_for_fit_or_model_selection": False,
+        },
+        "dataset": {
+            "sha256": dataset.sha256,
+            "total_cells": dataset.size,
+            "T4_fit_cells": int(np.count_nonzero(fit)),
+            "T4_held_out_cells": int(np.count_nonzero(held_out)),
+            "T5_zero_shot_cells": int(np.count_nonzero(t5)),
+            "fit_held_out_body_id_overlap": int(
+                np.intersect1d(dataset.body_ids[fit], dataset.body_ids[held_out]).size
+            ),
+        },
+        "fitted_transforms": {side: fitted[side].tolist() for side in ("L", "R")},
+        "fit_T4": _serializable_axis_metrics(fit_metrics),
+        "held_out_T4": _serializable_axis_metrics(held_out_metrics),
+        "zero_shot_T5": _serializable_axis_metrics(t5_metrics),
+        "cross_eye_mirror": mirror,
+        "deterministic_baselines": baseline_results,
+        "signed_axis_permutation_baseline": {
+            "count": int(len(permutation_scores_array)),
+            "best_held_out_T4_accuracy": float(np.max(permutation_scores_array[:, 0])),
+            "best_zero_shot_T5_accuracy": float(np.max(permutation_scores_array[:, 1])),
+            "selection_note": "diagnostic exhaustive baseline; not used to choose fitted transform",
+        },
+        "random_orthogonal_baseline": {
+            "count": int(len(random_scores_array)),
+            "p95": random_p95,
+            "mean_held_out_T4_accuracy": float(np.mean(random_scores_array[:, 0])),
+            "mean_zero_shot_T5_accuracy": float(np.mean(random_scores_array[:, 1])),
+        },
+        "preregistered_gates": gates,
+        "axis_calibration_pass": passed,
+        "advance_to_columnar_correlator_v2": passed,
+        "advance_to_central_complex": False,
+        "stop_reason": (
+            "axis cross-validation passed; controlled visual response gates still required"
+            if passed
+            else "optic-hex axis calibration failed cross-validation"
+        ),
+    }
+
+
 class V7VisualProbe:
     """Read-only population probe driven exclusively through mapped R1-R6 input."""
 
@@ -282,6 +685,7 @@ class V7VisualProbe:
         brain_substeps: int = 4,
         baseline_frames: int = 8,
         retinal_backend: str = "legacy_absolute_contrast",
+        retinal_geometry: str = "legacy_proxy_v2",
         dynamics_backend: str = "legacy_uniform_tanh_v1",
         control: str = "real_malecns",
         control_seed: int = 20260914,
@@ -294,6 +698,12 @@ class V7VisualProbe:
         self.adjacency = self.graph.adjacency
         self.retina = load_or_build_retina_map(
             self.graph, raw / "body-annotations.feather", processed / "retina_map.npz"
+        )
+        if retinal_geometry not in self.contract.payload["controlled_vision"]["retinal_geometries"]:
+            raise ValueError(f"unknown v7 retinal geometry: {retinal_geometry}")
+        self.retinal_geometry = retinal_geometry
+        self.retinal_u, self.retinal_v = self._retinal_coordinates(
+            raw / "body-annotations.feather", processed
         )
         self.source_sign = self._source_sign(raw / "body-neurotransmitters.feather")
         self.populations = self._populations(raw / "body-annotations.feather")
@@ -312,9 +722,15 @@ class V7VisualProbe:
             raise ValueError(f"unknown v7 dynamics backend: {dynamics_backend}")
         self.dynamics_backend = dynamics_backend
         self.leak = self._leak_vector()
+        self.source_delays = self._source_delay_vector()
         self.visual_subgraph_mask = np.ones(self.graph.node_count, dtype=bool)
-        if dynamics_backend == "typed_visual_subgraph_v1":
+        if dynamics_backend in {
+            "typed_visual_subgraph_v1",
+            "columnar_delay_v1",
+            "columnar_correlator_v1",
+        }:
             self.adjacency, self.visual_subgraph_mask = self._visual_subgraph_adjacency(processed)
+        self.correlator = self._build_correlator()
         self.control = control
         self.control_seed = control_seed
         self.retinal_permutation = np.arange(self.retina.size, dtype=np.int32)
@@ -402,6 +818,64 @@ class V7VisualProbe:
             raise ValueError("visual subgraph excludes requested target populations")
         return normalized.tocsr(), allowed
 
+    def _retinal_coordinates(
+        self, annotations_path: Path, processed: Path
+    ) -> tuple[np.ndarray, np.ndarray]:
+        if self.retinal_geometry == "legacy_proxy_v2":
+            return self.retina.u.copy(), self.retina.v.copy()
+        table = feather.read_table(
+            annotations_path,
+            columns=["bodyId", "assignedOlHex1", "assignedOlHex2"],
+            memory_map=True,
+        ).to_pandas()
+        coordinates = table.dropna(subset=["assignedOlHex1", "assignedOlHex2"])
+        ids = coordinates["bodyId"].to_numpy(dtype=np.int64)
+        nodes = np.searchsorted(self.graph.body_ids, ids)
+        valid = nodes < self.graph.node_count
+        valid[valid] &= self.graph.body_ids[nodes[valid]] == ids[valid]
+        hex1 = np.full(self.graph.node_count, np.nan, dtype=np.float64)
+        hex2 = np.full(self.graph.node_count, np.nan, dtype=np.float64)
+        rows = coordinates.iloc[np.flatnonzero(valid)]
+        hex1[nodes[valid]] = rows["assignedOlHex1"].to_numpy(dtype=np.float64)
+        hex2[nodes[valid]] = rows["assignedOlHex2"].to_numpy(dtype=np.float64)
+        raw = load_graph(processed, normalized=False).adjacency[:, self.retina.node_indices].tocsc()
+        inferred1 = np.full(self.retina.size, np.nan, dtype=np.float64)
+        inferred2 = np.full(self.retina.size, np.nan, dtype=np.float64)
+        for column in range(self.retina.size):
+            start, end = raw.indptr[column : column + 2]
+            targets = raw.indices[start:end]
+            weights = np.abs(raw.data[start:end]).astype(np.float64)
+            known = np.isfinite(hex1[targets]) & np.isfinite(hex2[targets])
+            if np.any(known):
+                inferred1[column] = np.average(hex1[targets[known]], weights=weights[known])
+                inferred2[column] = np.average(hex2[targets[known]], weights=weights[known])
+        if not np.all(np.isfinite(inferred1) & np.isfinite(inferred2)):
+            raise ValueError("axial retinal geometry cannot map every retained receptor")
+        cartesian_x = 1.5 * inferred2
+        cartesian_y = -np.sqrt(3.0) * (inferred1 + inferred2 / 2.0)
+        u = np.zeros(self.retina.size, dtype=np.float32)
+        v = np.zeros(self.retina.size, dtype=np.float32)
+        for side in (-1, 1):
+            mask = self.retina.side == side
+            local_x = self._normalized(cartesian_x[mask])
+            local_y = self._normalized(cartesian_y[mask])
+            u[mask] = (1.0 - local_x) * 0.5 if side < 0 else 0.5 + local_x * 0.5
+            v[mask] = 1.0 - local_y
+        return u, v
+
+    @staticmethod
+    def _normalized(values: np.ndarray) -> np.ndarray:
+        low, high = float(values.min()), float(values.max())
+        if high <= low:
+            return np.full(values.shape, 0.5, dtype=np.float32)
+        return ((values - low) / (high - low)).astype(np.float32)
+
+    def _sample_retina(self, image: np.ndarray) -> np.ndarray:
+        height, width = image.shape
+        x = np.clip(np.rint(self.retinal_u * (width - 1)).astype(np.int32), 0, width - 1)
+        y = np.clip(np.rint(self.retinal_v * (height - 1)).astype(np.int32), 0, height - 1)
+        return np.asarray(image[y, x], dtype=np.float32)
+
     def _leak_vector(self) -> np.ndarray:
         if self.dynamics_backend == "legacy_uniform_tanh_v1":
             return np.full(self.graph.node_count, 0.28, dtype=np.float32)
@@ -444,11 +918,110 @@ class V7VisualProbe:
         leak[lc_mask] = config["LC"]
         return leak
 
-    def _advance(self, state: np.ndarray, drive: np.ndarray) -> np.ndarray:
-        recurrent = self.adjacency @ (state * self.source_sign)
-        return ((1.0 - self.leak) * state + self.leak * np.tanh(1.8 * recurrent + drive)).astype(
+    def _source_delay_vector(self) -> np.ndarray:
+        delays = np.zeros(self.graph.node_count, dtype=np.int8)
+        if self.dynamics_backend != "columnar_delay_v1":
+            return delays
+        config = self.contract.payload["controlled_vision"]["columnar_delay_v1"]
+        for cell_type, delay in config["source_delays"].items():
+            delays[self.node_types == cell_type] = int(delay)
+        if int(delays.max()) > int(config["max_delay_substeps"]):
+            raise ValueError("v7 source delay exceeds configured history")
+        return delays
+
+    def _normalized_target_inputs(
+        self, target_nodes: np.ndarray, source_types: tuple[str, ...]
+    ) -> sparse.csr_matrix:
+        source_mask = np.isin(self.node_types, source_types).astype(np.float32)
+        matrix = self.adjacency[target_nodes, :].multiply(source_mask).tocsr()
+        totals = np.asarray(np.abs(matrix).sum(axis=1)).ravel().astype(np.float32)
+        scale = np.zeros_like(totals)
+        np.divide(1.0, totals, out=scale, where=totals > 0)
+        return (sparse.diags(scale, format="csr") @ matrix).tocsr()
+
+    def _build_correlator(self) -> dict | None:
+        if self.dynamics_backend != "columnar_correlator_v1":
+            return None
+        config = self.contract.payload["controlled_vision"]["columnar_correlator_v1"]
+        all_targets = np.flatnonzero(
+            np.fromiter(
+                (name.startswith(("T4", "T5")) for name in self.node_types),
+                dtype=bool,
+                count=self.graph.node_count,
+            )
+        ).astype(np.int32)
+        t4_mask = np.fromiter(
+            (self.node_types[node].startswith("T4") for node in all_targets),
+            dtype=bool,
+            count=len(all_targets),
+        )
+        targets = np.concatenate([all_targets[t4_mask], all_targets[~t4_mask]])
+        fast = sparse.vstack(
+            (
+                self._normalized_target_inputs(
+                    all_targets[t4_mask], tuple(config["T4_fast_sources"])
+                ),
+                self._normalized_target_inputs(
+                    all_targets[~t4_mask], tuple(config["T5_fast_sources"])
+                ),
+            ),
+            format="csr",
+        )
+        delayed = sparse.vstack(
+            (
+                self._normalized_target_inputs(
+                    all_targets[t4_mask], tuple(config["T4_delayed_sources"])
+                ),
+                self._normalized_target_inputs(
+                    all_targets[~t4_mask], tuple(config["T5_delayed_sources"])
+                ),
+            ),
+            format="csr",
+        )
+        valid = (np.diff(fast.indptr) > 0) & (np.diff(delayed.indptr) > 0)
+        return {
+            "targets": targets[valid].astype(np.int32),
+            "fast": fast[valid],
+            "delayed": delayed[valid],
+            "gain": float(config["gain"]),
+            "history_substeps": int(config["history_substeps"]),
+            "all_targets": int(len(targets)),
+        }
+
+    def _advance(
+        self, state: np.ndarray, drive: np.ndarray, history: list[np.ndarray]
+    ) -> np.ndarray:
+        transmitted = state.copy()
+        if self.dynamics_backend == "columnar_delay_v1":
+            for delay in range(1, int(self.source_delays.max()) + 1):
+                mask = self.source_delays == delay
+                transmitted[mask] = history[min(delay - 1, len(history) - 1)][mask]
+        recurrent = self.adjacency @ (transmitted * self.source_sign)
+        updated = ((1.0 - self.leak) * state + self.leak * np.tanh(1.8 * recurrent + drive)).astype(
             np.float32
         )
+        if self.correlator is not None:
+            previous = history[min(self.correlator["history_substeps"] - 1, len(history) - 1)]
+            current_positive = np.maximum(state, 0.0)
+            previous_positive = np.maximum(previous, 0.0)
+            fast_now = self.correlator["fast"] @ current_positive
+            delayed_now = self.correlator["delayed"] @ current_positive
+            fast_then = self.correlator["fast"] @ previous_positive
+            delayed_then = self.correlator["delayed"] @ previous_positive
+            correlation = np.maximum(fast_now * delayed_then - fast_then * delayed_now, 0.0)
+            targets = self.correlator["targets"]
+            target_drive = np.tanh(self.correlator["gain"] * correlation).astype(np.float32)
+            updated[targets] = (1.0 - self.leak[targets]) * state[targets] + self.leak[
+                targets
+            ] * target_drive
+        history.insert(0, state.copy())
+        history_length = max(
+            1,
+            int(self.source_delays.max()),
+            int(self.correlator["history_substeps"]) if self.correlator is not None else 0,
+        )
+        del history[history_length:]
+        return updated
 
     def _retinal_code(
         self, values: np.ndarray, baseline: np.ndarray, previous: np.ndarray
@@ -463,33 +1036,44 @@ class V7VisualProbe:
 
     def run(self, stimulus: VisualStimulus) -> dict:
         state = np.zeros(self.graph.node_count, dtype=np.float32)
+        history_length = max(
+            1,
+            int(self.source_delays.max()),
+            int(self.correlator["history_substeps"]) if self.correlator is not None else 0,
+        )
+        history = [state.copy() for _ in range(history_length)]
         traces = {name: [] for name in self.populations}
+        neuron_positive_sum = {
+            name: np.zeros(len(nodes), dtype=np.float64) for name, nodes in self.populations.items()
+        }
         retinal_hash = hashlib.sha256()
         baseline_image = stimulus.frames[0].copy()
-        baseline_values = self.retina.encode(baseline_image)[self.retinal_permutation]
+        baseline_values = self._sample_retina(baseline_image)[self.retinal_permutation]
         baseline_drive = self._retinal_code(baseline_values, baseline_values, baseline_values)
         for _ in range(self.baseline_frames):
             drive = np.zeros_like(state)
             drive[self.retina.node_indices] = baseline_drive
             for _ in range(self.brain_substeps):
-                state = self._advance(state, drive)
+                state = self._advance(state, drive, history)
                 state[self.retina.node_indices] = baseline_drive
+        neuron_baseline = {name: state[nodes].copy() for name, nodes in self.populations.items()}
         population_baseline = {
-            name: float(np.mean(state[nodes])) for name, nodes in self.populations.items()
+            name: float(np.mean(values)) for name, values in neuron_baseline.items()
         }
         previous_values = baseline_values.copy()
         for image in stimulus.frames:
-            sampled = self.retina.encode(image)[self.retinal_permutation]
+            sampled = self._sample_retina(image)[self.retinal_permutation]
             receptor_values = self._retinal_code(sampled, baseline_values, previous_values)
             previous_values = sampled
             retinal_hash.update(receptor_values.tobytes())
             drive = np.zeros_like(state)
             drive[self.retina.node_indices] = receptor_values
             for _ in range(self.brain_substeps):
-                state = self._advance(state, drive)
+                state = self._advance(state, drive, history)
                 state[self.retina.node_indices] = receptor_values
             for name, nodes in self.populations.items():
                 traces[name].append(float(np.mean(state[nodes])))
+                neuron_positive_sum[name] += np.maximum(state[nodes] - neuron_baseline[name], 0.0)
         return {
             "name": stimulus.name,
             "family": stimulus.family,
@@ -499,15 +1083,24 @@ class V7VisualProbe:
             "stimulus_sha256": stimulus.sha256,
             "retinal_drive_sha256": retinal_hash.hexdigest(),
             "retinal_backend": self.retinal_backend,
+            "retinal_geometry": self.retinal_geometry,
             "dynamics_backend": self.dynamics_backend,
             "topology_control": self.control,
             "visual_subgraph_nodes": int(np.count_nonzero(self.visual_subgraph_mask)),
             "visual_subgraph_edges": int(self.adjacency.nnz),
+            "correlator_targets": (
+                int(len(self.correlator["targets"])) if self.correlator is not None else 0
+            ),
+            "maximum_source_delay_substeps": int(self.source_delays.max()),
             "baseline_frames": self.baseline_frames,
             "population_trace": traces,
             "population_response_trace": {
                 name: [float(value - population_baseline[name]) for value in values]
                 for name, values in traces.items()
+            },
+            "_population_neuron_positive_mean": {
+                name: (values / len(stimulus.frames)).tolist()
+                for name, values in neuron_positive_sum.items()
             },
             "population_mean_abs": {
                 name: float(np.mean(np.abs(values))) for name, values in traces.items()
@@ -519,12 +1112,24 @@ class V7VisualProbe:
 
 
 def _response_energy(response: dict, population: str) -> float:
-    values = np.asarray(response["population_response_trace"][population], dtype=np.float64)
-    return float(np.mean(np.maximum(values, 0.0)))
+    values = np.asarray(response["_population_neuron_positive_mean"][population])
+    return float(np.mean(values))
 
 
 def _contrast(preferred: float, opposite: float) -> float:
     return float((preferred - opposite) / (abs(preferred) + abs(opposite) + 1e-12))
+
+
+def _neuron_contrasts(
+    preferred_response: dict, opposite_response: dict, population: str
+) -> np.ndarray:
+    preferred = np.asarray(
+        preferred_response["_population_neuron_positive_mean"][population], dtype=np.float64
+    )
+    opposite = np.asarray(
+        opposite_response["_population_neuron_positive_mean"][population], dtype=np.float64
+    )
+    return (preferred - opposite) / (np.abs(preferred) + np.abs(opposite) + 1e-12)
 
 
 def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
@@ -548,26 +1153,29 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
                     "up": "down",
                     "down": "up",
                 }[preferred]
-                preferred_energy = _response_energy(
-                    responses[f"{polarity}_edge_{preferred}"], population
-                )
-                opposite_energy = _response_energy(
-                    responses[f"{polarity}_edge_{opposite}"], population
-                )
+                preferred_response = responses[f"{polarity}_edge_{preferred}"]
+                opposite_response = responses[f"{polarity}_edge_{opposite}"]
+                preferred_energy = _response_energy(preferred_response, population)
+                opposite_energy = _response_energy(opposite_response, population)
+                neuron_dsi = _neuron_contrasts(preferred_response, opposite_response, population)
                 direction_scores[population] = {
                     "expected_direction": preferred,
                     "preferred_energy": preferred_energy,
                     "opposite_energy": opposite_energy,
-                    "contrast": _contrast(preferred_energy, opposite_energy),
+                    "contrast": float(np.median(neuron_dsi)),
+                    "fraction_cells_expected_direction": float(np.mean(neuron_dsi > 0)),
                 }
-                matched_other = _response_energy(
-                    responses[f"{opposite_polarity}_edge_{preferred}"], population
+                matched_other_response = responses[f"{opposite_polarity}_edge_{preferred}"]
+                matched_other = _response_energy(matched_other_response, population)
+                neuron_osi = _neuron_contrasts(
+                    preferred_response, matched_other_response, population
                 )
                 polarity_scores[population] = {
                     "expected_polarity": polarity,
                     "preferred_polarity_energy": preferred_energy,
                     "opposite_polarity_energy": matched_other,
-                    "contrast": _contrast(preferred_energy, matched_other),
+                    "contrast": float(np.median(neuron_osi)),
+                    "fraction_cells_expected_polarity": float(np.mean(neuron_osi > 0)),
                 }
 
     looming_scores = {}
@@ -576,12 +1184,16 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
             population = f"{cell_type}_{side}"
             by_polarity = {}
             for polarity in ("on", "off"):
-                looming = _response_energy(responses[f"{polarity}_looming"], population)
-                receding = _response_energy(responses[f"{polarity}_receding"], population)
+                looming_response = responses[f"{polarity}_looming"]
+                receding_response = responses[f"{polarity}_receding"]
+                looming = _response_energy(looming_response, population)
+                receding = _response_energy(receding_response, population)
+                neuron_looming = _neuron_contrasts(looming_response, receding_response, population)
                 by_polarity[polarity] = {
                     "looming_energy": looming,
                     "receding_energy": receding,
-                    "contrast": _contrast(looming, receding),
+                    "contrast": float(np.median(neuron_looming)),
+                    "fraction_cells_looming_preferred": float(np.mean(neuron_looming > 0)),
                 }
             looming_scores[population] = by_polarity
 
@@ -632,6 +1244,27 @@ def score_v7_visual_responses(responses: dict[str, dict]) -> dict:
             "maximum_mirror_response_error": max(mirror_errors.values(), default=0.0),
         },
     }
+
+
+def _public_visual_responses(responses: dict[str, dict]) -> dict[str, dict]:
+    """Persist hashes and summaries, not repeated per-frame/per-neuron scratch arrays."""
+    compact = {}
+    for stimulus, response in responses.items():
+        traces = response["population_response_trace"]
+        trace_hash = hashlib.sha256(
+            b"".join(
+                np.asarray(traces[population], dtype=np.float32).tobytes()
+                for population in sorted(traces)
+            )
+        ).hexdigest()
+        compact[stimulus] = {
+            key: value
+            for key, value in response.items()
+            if not key.startswith("_")
+            and key not in {"population_trace", "population_response_trace"}
+        }
+        compact[stimulus]["population_response_trace_sha256"] = trace_hash
+    return compact
 
 
 def evaluate_v7_controlled_vision(root: Path) -> dict:
@@ -688,7 +1321,7 @@ def evaluate_v7_controlled_vision(root: Path) -> dict:
             "scores": scores,
             "gates": gates,
             "controlled_response_gates_pass": all(gates.values()),
-            "responses": responses,
+            "responses": _public_visual_responses(responses),
         }
     control_results = {}
     for control in visual["topology_controls"]:
@@ -756,7 +1389,8 @@ def evaluate_v7_controlled_vision(root: Path) -> dict:
             "mode": "v7-experimental",
             "deployment_enabled": False,
             "config_sha256": contract.sha256,
-            "dynamics_backend": V7VisualProbe.backend,
+            "implementation_sha256": _sha256(root / V7_IMPLEMENTATION),
+            "dynamics_backend": "legacy_uniform_tanh_v1",
             "retinal_backends": visual["retinal_backends"],
             "direct_input_type": "R1-R6",
             "direct_input_nodes": int(V7VisualProbe(root, brain_substeps=1).retina.size),
@@ -809,7 +1443,12 @@ def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
     )
     thresholds = visual["gates"]
     backends = {}
-    for dynamics_backend in ("typed_visual_leak_v1", "typed_visual_subgraph_v1"):
+    for dynamics_backend in (
+        "typed_visual_leak_v1",
+        "typed_visual_subgraph_v1",
+        "columnar_delay_v1",
+        "columnar_correlator_v1",
+    ):
         backends[dynamics_backend] = {}
         for retinal_backend in visual["retinal_backends"]:
             probe = V7VisualProbe(
@@ -845,10 +1484,52 @@ def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
                 "scores": scores,
                 "gates": gates,
                 "controlled_response_gates_pass": all(gates.values()),
-                "responses": responses,
+                "responses": _public_visual_responses(responses),
                 "visual_subgraph_nodes": int(np.count_nonzero(probe.visual_subgraph_mask)),
                 "visual_subgraph_edges": int(probe.adjacency.nnz),
             }
+    axial_name = "columnar_delay_axial_hex_v1"
+    backends[axial_name] = {}
+    for retinal_backend in visual["retinal_backends"]:
+        probe = V7VisualProbe(
+            root,
+            brain_substeps=visual["brain_substeps_per_frame"],
+            baseline_frames=visual["baseline_frames"],
+            retinal_backend=retinal_backend,
+            retinal_geometry="axial_hex_cartesian_v1",
+            dynamics_backend="columnar_delay_v1",
+            control="real_malecns",
+            control_seed=visual["topology_control_seed"],
+        )
+        responses = {item.name: probe.run(item) for item in stimuli}
+        scores = score_v7_visual_responses(responses)
+        gates = {
+            "cardinal_direction_contrast": (
+                scores["summary"]["median_cardinal_direction_contrast"]
+                >= thresholds["minimum_cardinal_direction_contrast"]
+            ),
+            "on_off_specialization": (
+                scores["summary"]["median_on_off_specialization"]
+                >= thresholds["minimum_on_off_specialization"]
+            ),
+            "looming_contrast": (
+                scores["summary"]["median_known_looming_contrast"]
+                >= thresholds["minimum_looming_contrast"]
+            ),
+            "mirror_response_error": (
+                scores["summary"]["maximum_mirror_response_error"]
+                <= thresholds["maximum_mirror_response_error"]
+            ),
+        }
+        backends[axial_name][retinal_backend] = {
+            "scores": scores,
+            "gates": gates,
+            "controlled_response_gates_pass": all(gates.values()),
+            "responses": _public_visual_responses(responses),
+            "retinal_geometry": probe.retinal_geometry,
+            "visual_subgraph_nodes": int(np.count_nonzero(probe.visual_subgraph_mask)),
+            "visual_subgraph_edges": int(probe.adjacency.nnz),
+        }
     passing = [
         {"dynamics": dynamics, "retina": retina}
         for dynamics, retinal_results in backends.items()
@@ -861,7 +1542,15 @@ def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
             "mode": "v7-experimental",
             "deployment_enabled": False,
             "config_sha256": contract.sha256,
-            "dynamics_backends": ["typed_visual_leak_v1", "typed_visual_subgraph_v1"],
+            "implementation_sha256": _sha256(root / V7_IMPLEMENTATION),
+            "dynamics_backends": [
+                "typed_visual_leak_v1",
+                "typed_visual_subgraph_v1",
+                "columnar_delay_v1",
+                "columnar_correlator_v1",
+                axial_name,
+            ],
+            "retinal_geometries": visual["retinal_geometries"],
             "retinal_backends": visual["retinal_backends"],
             "direct_input_type": "R1-R6",
             "target_direct_input_overlap": 0,
@@ -885,39 +1574,65 @@ def evaluate_v7_typed_visual_candidate(root: Path) -> dict:
 
 def write_v7_manifest(root: Path) -> dict:
     contract = V7Contract.load(root)
+    implementation_sha256 = _sha256(root / V7_IMPLEMENTATION)
     evidence_paths = (
+        root / "artifacts/v7-optic-hex-axis-calibration.json",
         root / "artifacts/v7-typed-visual-candidate.json",
         root / "artifacts/v7-controlled-vision.json",
     )
     stage_status = "in_progress"
     advance = False
     blockers: list[str] = []
-    evidence_used = None
+    evidence_used: list[str] = []
+    current_evidence: dict[str, dict] = {}
     for evidence_path in evidence_paths:
         if not evidence_path.exists():
             continue
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
-        if evidence.get("protocol", {}).get("config_sha256") == contract.sha256:
-            advance = bool(evidence.get("advance_to_central_complex"))
-            stage_status = "passed" if advance else "blocked_on_visual_dynamics"
-            evidence_used = str(evidence_path.relative_to(root))
-            if not evidence.get("controlled_response_gates_pass"):
-                blockers.append("controlled_visual_response_gates_failed")
-            if not evidence.get("real_topology_advantage"):
-                blockers.append("real_topology_advantage_not_demonstrated")
-            break
+        protocol = evidence.get("protocol", {})
+        if (
+            protocol.get("config_sha256") == contract.sha256
+            and protocol.get("implementation_sha256") == implementation_sha256
+        ):
+            relative = str(evidence_path.relative_to(root))
+            evidence_used.append(relative)
+            current_evidence[evidence_path.name] = evidence
+
+    axis = current_evidence.get("v7-optic-hex-axis-calibration.json")
+    controlled = current_evidence.get("v7-typed-visual-candidate.json") or (
+        current_evidence.get("v7-controlled-vision.json")
+    )
+    if axis is not None and not axis.get("axis_calibration_pass"):
+        blockers.append("optic_hex_axis_cross_validation_failed")
+    if controlled is None:
+        blockers.append("controlled_visual_response_evidence_stale_or_missing")
+    else:
+        if not controlled.get("controlled_response_gates_pass"):
+            blockers.append("controlled_visual_response_gates_failed")
+        if not controlled.get("real_topology_advantage"):
+            blockers.append("real_topology_advantage_not_demonstrated")
+    advance = bool(
+        axis is not None
+        and axis.get("axis_calibration_pass")
+        and controlled is not None
+        and controlled.get("advance_to_central_complex")
+    )
+    if evidence_used:
+        stage_status = "passed" if advance else "blocked_on_visual_dynamics"
     return {
         "version": contract.payload["version"],
         "name": contract.payload["name"],
         "deployment_enabled": contract.payload["deployment_enabled"],
         "city_expansion_enabled": contract.payload["city_expansion_enabled"],
         "config_sha256": contract.sha256,
+        "implementation_sha256": implementation_sha256,
         "baseline_contracts": contract.payload["baseline_contracts"],
         "stage_order": contract.payload["stage_order"],
         "current_stage": "controlled_vision",
         "stage_status": stage_status,
         "advance_to_central_complex": advance,
         "blockers": blockers,
-        "current_evidence": evidence_used,
+        "current_evidence": evidence_used[0] if evidence_used else None,
+        "evidence": evidence_used,
         "default_runtime_changed": False,
     }

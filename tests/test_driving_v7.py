@@ -10,6 +10,9 @@ from fly_emotion.driving.v7 import (
     V7Contract,
     V7VisualProbe,
     build_controlled_stimuli,
+    evaluate_v7_optic_hex_axis_calibration,
+    evaluate_v7_typed_visual_candidate,
+    load_v7_optic_hex_offsets,
     write_v7_manifest,
 )
 
@@ -124,6 +127,88 @@ def test_v7_visual_subgraph_uses_only_annotated_visual_nodes_and_real_edges() ->
     assert np.allclose(incoming[incoming > 0], 1.0, atol=1e-5)
 
 
+def test_v7_columnar_delay_uses_only_declared_visual_source_types() -> None:
+    probe = V7VisualProbe(ROOT, brain_substeps=1, dynamics_backend="columnar_delay_v1")
+    assert int(probe.source_delays.max()) == 3
+    assert np.all(probe.source_delays[probe.node_types == "Tm3"] == 0)
+    assert np.all(probe.source_delays[probe.node_types == "Mi1"] == 1)
+    assert np.all(probe.source_delays[probe.node_types == "Mi4"] == 2)
+    assert np.all(probe.source_delays[probe.node_types == "Mi9"] == 3)
+    delayed = probe.source_delays > 0
+    assert np.all(probe.visual_subgraph_mask[delayed])
+
+
+def test_v7_columnar_correlator_uses_real_t4_t5_inputs() -> None:
+    probe = V7VisualProbe(ROOT, brain_substeps=1, dynamics_backend="columnar_correlator_v1")
+    correlator = probe.correlator
+    assert correlator is not None
+    assert 13_000 < correlator["all_targets"] < 14_000
+    assert len(correlator["targets"]) > 13_000
+    assert correlator["fast"].nnz > 100_000
+    assert correlator["delayed"].nnz > 100_000
+    assert correlator["history_substeps"] == 3
+    assert np.all(probe.visual_subgraph_mask[correlator["targets"]])
+
+
+def test_v7_axial_hex_retinal_geometry_is_bounded_and_eye_separated() -> None:
+    legacy = V7VisualProbe(ROOT, brain_substeps=1, retinal_geometry="legacy_proxy_v2")
+    axial = V7VisualProbe(ROOT, brain_substeps=1, retinal_geometry="axial_hex_cartesian_v1")
+    assert np.all((axial.retinal_u >= 0) & (axial.retinal_u <= 1))
+    assert np.all((axial.retinal_v >= 0) & (axial.retinal_v <= 1))
+    assert np.all(axial.retinal_u[axial.retina.side < 0] <= 0.5)
+    assert np.all(axial.retinal_u[axial.retina.side > 0] >= 0.5)
+    assert not np.array_equal(axial.retinal_u, legacy.retinal_u)
+    assert not np.array_equal(axial.retinal_v, legacy.retinal_v)
+
+
+def test_v7_optic_hex_offsets_use_real_target_specific_fast_and_delayed_inputs() -> None:
+    dataset = load_v7_optic_hex_offsets(ROOT)
+    assert dataset.size > 13_000
+    assert len(np.unique(dataset.body_ids)) == dataset.size
+    assert set(dataset.families) == {"T4", "T5"}
+    assert set(dataset.subtypes) == {"a", "b", "c", "d"}
+    assert set(dataset.sides) == {"L", "R"}
+    assert np.all(np.isfinite(dataset.offsets))
+    assert np.all(np.linalg.norm(dataset.offsets, axis=1) > 0)
+
+
+def test_v7_optic_hex_axis_report_has_disjoint_held_out_and_zero_shot_evidence() -> None:
+    report = evaluate_v7_optic_hex_axis_calibration(ROOT)
+    implementation_hash = hashlib.sha256(
+        (ROOT / "src/fly_emotion/driving/v7.py").read_bytes()
+    ).hexdigest()
+    assert report["protocol"]["driving_data_used"] is False
+    assert report["protocol"]["implementation_sha256"] == implementation_hash
+    assert report["protocol"]["T5_used_for_fit_or_model_selection"] is False
+    assert report["dataset"]["fit_held_out_body_id_overlap"] == 0
+    assert report["dataset"]["T4_fit_cells"] > 3_000
+    assert report["dataset"]["T4_held_out_cells"] > 3_000
+    assert report["dataset"]["T5_zero_shot_cells"] > 6_000
+    assert report["random_orthogonal_baseline"]["count"] == 256
+    assert report["advance_to_central_complex"] is False
+
+
+def test_v7_persisted_visual_candidate_drops_private_per_neuron_scratch() -> None:
+    # Keep this assertion structural; the expensive full candidate is covered by the CLI artifact.
+    source = evaluate_v7_typed_visual_candidate.__globals__["_public_visual_responses"]
+    response = {
+        "edge": {
+            "name": "edge",
+            "population_trace": {"T4a_L": [0.2]},
+            "population_response_trace": {"T4a_L": [0.1]},
+            "population_mean_abs": {"T4a_L": 0.2},
+            "_scratch": [1.0],
+        }
+    }
+    public = source(response)
+    assert public["edge"]["name"] == "edge"
+    assert public["edge"]["population_mean_abs"] == {"T4a_L": 0.2}
+    assert len(public["edge"]["population_response_trace_sha256"]) == 64
+    assert "population_trace" not in public["edge"]
+    assert "population_response_trace" not in public["edge"]
+    assert "_scratch" not in public["edge"]
+
+
 def test_v7_manifest_is_isolated_and_in_progress() -> None:
     manifest = write_v7_manifest(ROOT)
     assert manifest["version"] == 7
@@ -131,3 +216,6 @@ def test_v7_manifest_is_isolated_and_in_progress() -> None:
     assert manifest["stage_status"] in {"in_progress", "blocked_on_visual_dynamics"}
     assert manifest["advance_to_central_complex"] is False
     assert manifest["default_runtime_changed"] is False
+    assert manifest["implementation_sha256"] == hashlib.sha256(
+        (ROOT / "src/fly_emotion/driving/v7.py").read_bytes()
+    ).hexdigest()
