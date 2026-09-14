@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -329,6 +330,33 @@ class AnatomySensoryProjection:
             "chordotonal_rate_right": self.chordotonal_rate_right,
         }
 
+    def pathway_groups(self) -> dict[str, np.ndarray]:
+        """Mirror-tied sensory source groups whose existing outputs may adapt."""
+        groups = {
+            f"flow_region_{region}": np.unique(
+                np.concatenate(
+                    [
+                        self.flow_positive_bins[region],
+                        self.flow_negative_bins[len(self.flow_negative_bins) - 1 - region],
+                    ]
+                )
+            )
+            for region in range(len(self.flow_positive_bins))
+        }
+        for channel in (
+            "haltere_rate",
+            "haltere_acceleration",
+            "campaniform_lateral",
+            "campaniform_longitudinal",
+            "chordotonal_rate",
+        ):
+            groups[channel] = np.unique(
+                np.concatenate(
+                    [getattr(self, f"{channel}_left"), getattr(self, f"{channel}_right")]
+                )
+            )
+        return groups
+
     @staticmethod
     def _body_drives(frame: SensoryFrame, gains: SensoryGains) -> dict[str, float]:
         yaw_rate = float(np.clip(frame.yaw_rate / 1.2, -1.0, 1.0))
@@ -460,4 +488,155 @@ class AnatomySensoryProjection:
             "body_group_counts": {
                 name: int(len(nodes)) for name, nodes in self._body_groups().items()
             },
+        }
+
+
+class SensoryPathwayPlasticity:
+    """Reward-modulated gains on existing outgoing sensory synapses."""
+
+    format_version = 1
+
+    def __init__(
+        self,
+        node_count: int,
+        groups: dict[str, np.ndarray],
+        *,
+        adjacency: sparse.csr_matrix | None = None,
+        seed: int = 0,
+        learning_rate: float = 0.0005,
+        exploration_sigma: float = 0.08,
+        eligibility_decay: float = 0.97,
+        min_gain: float = 0.25,
+        max_gain: float = 1.75,
+    ):
+        self.group_names = tuple(groups)
+        self.groups = tuple(np.asarray(groups[name], dtype=np.int32) for name in self.group_names)
+        if not self.group_names or any(len(nodes) == 0 for nodes in self.groups):
+            raise ValueError("sensory pathway groups must be non-empty")
+        combined = np.concatenate(self.groups)
+        if len(np.unique(combined)) != len(combined):
+            raise ValueError("sensory pathway groups must not overlap")
+        if np.any((combined < 0) | (combined >= node_count)):
+            raise ValueError("sensory pathway node is outside the connectome")
+        self.node_count = node_count
+        if adjacency is not None:
+            outgoing = adjacency.tocsc()
+            self.existing_synapses = int(
+                sum(
+                    outgoing.indptr[node + 1] - outgoing.indptr[node]
+                    for node in np.unique(combined)
+                )
+            )
+        else:
+            self.existing_synapses = 0
+        self.gains = np.ones(len(self.groups), dtype=np.float32)
+        self.perturbation = np.zeros_like(self.gains)
+        self.eligibility = np.zeros_like(self.gains)
+        self.learning_rate = learning_rate
+        self.exploration_sigma = exploration_sigma
+        self.eligibility_decay = eligibility_decay
+        self.min_gain = min_gain
+        self.max_gain = max_gain
+        self.rng = np.random.default_rng(seed)
+        self.updates = 0
+        self._source_multiplier = np.ones(node_count, dtype=np.float32)
+        self._refresh_multiplier()
+
+    @property
+    def source_multiplier(self) -> np.ndarray:
+        return self._source_multiplier
+
+    @property
+    def unique_source_neurons(self) -> int:
+        return int(sum(len(nodes) for nodes in self.groups))
+
+    def reset_gains(self) -> None:
+        self.gains.fill(1.0)
+        self.updates = 0
+        self.reset_traces()
+
+    def reset_traces(self, *, episode_seed: int | None = None) -> None:
+        self.perturbation.fill(0)
+        self.eligibility.fill(0)
+        if episode_seed is not None:
+            self.rng = np.random.default_rng(episode_seed)
+        self._refresh_multiplier()
+
+    def perturb(self, *, enabled: bool) -> None:
+        if enabled:
+            self.perturbation = self.rng.normal(
+                0.0, self.exploration_sigma, len(self.groups)
+            ).astype(np.float32)
+            self.eligibility *= self.eligibility_decay
+            self.eligibility += self.perturbation / (self.exploration_sigma**2)
+        else:
+            self.perturbation.fill(0)
+        self._refresh_multiplier()
+
+    def learn(self, dopamine: float, *, enabled: bool) -> None:
+        if enabled:
+            self.gains += self.learning_rate * float(dopamine) * self.eligibility
+            np.clip(self.gains, self.min_gain, self.max_gain, out=self.gains)
+            self.updates += 1
+        self._refresh_multiplier()
+
+    def _refresh_multiplier(self) -> None:
+        self._source_multiplier.fill(1.0)
+        effective = np.clip(
+            self.gains + self.perturbation, self.min_gain, self.max_gain
+        ).astype(np.float32)
+        for gain, nodes in zip(effective, self.groups, strict=True):
+            self._source_multiplier[nodes] = gain
+
+    def save(self, path: Path, body_ids: np.ndarray, *, base_checkpoint_sha256: str) -> None:
+        payload: dict[str, np.ndarray] = {
+            "format_version": np.asarray([self.format_version], dtype=np.int32),
+            "group_names": np.asarray(self.group_names),
+            "gains": self.gains,
+            "base_checkpoint_sha256": np.asarray([base_checkpoint_sha256]),
+        }
+        for index, nodes in enumerate(self.groups):
+            payload[f"source_body_ids_{index}"] = body_ids[nodes]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(path, **payload)
+
+    def load(
+        self, path: Path, body_ids: np.ndarray, *, expected_base_checkpoint_sha256: str
+    ) -> None:
+        with np.load(path, allow_pickle=False) as payload:
+            if payload["format_version"].tolist() != [self.format_version]:
+                raise ValueError("unsupported sensory pathway checkpoint")
+            if tuple(payload["group_names"].tolist()) != self.group_names:
+                raise ValueError("sensory pathway group contract mismatch")
+            if str(payload["base_checkpoint_sha256"][0]) != expected_base_checkpoint_sha256:
+                raise ValueError("sensory pathway base checkpoint mismatch")
+            gains = payload["gains"].astype(np.float32)
+            if gains.shape != self.gains.shape or not np.all(np.isfinite(gains)):
+                raise ValueError("invalid sensory pathway gains")
+            if np.any((gains < self.min_gain) | (gains > self.max_gain)):
+                raise ValueError("sensory pathway gains exceed configured bounds")
+            for index, nodes in enumerate(self.groups):
+                if not np.array_equal(payload[f"source_body_ids_{index}"], body_ids[nodes]):
+                    raise ValueError("sensory pathway source contract mismatch")
+        self.gains = gains
+        self.perturbation.fill(0)
+        self.eligibility.fill(0)
+        self._refresh_multiplier()
+
+    def summary(self) -> dict:
+        return {
+            "rule": "reward_prediction_error_x_perturbation_eligibility",
+            "group_names": list(self.group_names),
+            "group_gains": self.gains.tolist(),
+            "group_source_neurons": [int(len(nodes)) for nodes in self.groups],
+            "unique_source_neurons": self.unique_source_neurons,
+            "existing_outgoing_synapses": self.existing_synapses,
+            "updates": self.updates,
+            "learning_rate": self.learning_rate,
+            "exploration_sigma": self.exploration_sigma,
+            "eligibility_decay": self.eligibility_decay,
+            "gain_bounds": [self.min_gain, self.max_gain],
+            "contract_sha256": hashlib.sha256(
+                b"".join(nodes.tobytes() for nodes in self.groups)
+            ).hexdigest(),
         }

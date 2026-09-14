@@ -31,6 +31,7 @@ from fly_emotion.driving.retina import RetinaMap
 from fly_emotion.driving.sensory import (
     SensoryFrame,
     SensoryGains,
+    SensoryPathwayPlasticity,
     horizontal_flow_proxy,
     regional_horizontal_flow_proxy,
 )
@@ -215,6 +216,57 @@ def test_body_sensory_drive_is_mirror_equivariant() -> None:
             else name.replace("_right", "_left")
         )
         assert np.isclose(value, reflected[mirror_name])
+
+
+def test_sensory_pathway_plasticity_only_scales_existing_group_sources() -> None:
+    groups = {
+        "vision_pair": np.array([1, 3], dtype=np.int32),
+        "body_pair": np.array([4, 6], dtype=np.int32),
+    }
+    adjacency = sparse.csr_matrix(
+        (np.ones(5), ([0, 2, 5, 7, 1], [1, 1, 3, 4, 6])), shape=(8, 8)
+    )
+    pathway = SensoryPathwayPlasticity(8, groups, adjacency=adjacency, seed=7)
+    assert pathway.unique_source_neurons == 4
+    assert pathway.existing_synapses == 5
+    assert np.all(pathway.source_multiplier == 1)
+    pathway.perturb(enabled=True)
+    changed = np.flatnonzero(pathway.source_multiplier != 1)
+    assert set(changed.tolist()) == {1, 3, 4, 6}
+    pathway.learn(0.5, enabled=True)
+    assert pathway.updates == 1
+    assert np.all((pathway.gains >= pathway.min_gain) & (pathway.gains <= pathway.max_gain))
+
+
+def test_sensory_pathway_checkpoint_binds_sources_and_base_policy(tmp_path: Path) -> None:
+    body_ids = np.arange(10, 18, dtype=np.int64)
+    groups = {
+        "vision_pair": np.array([1, 3], dtype=np.int32),
+        "body_pair": np.array([4, 6], dtype=np.int32),
+    }
+    pathway = SensoryPathwayPlasticity(8, groups, seed=7)
+    pathway.perturb(enabled=True)
+    pathway.learn(1.0, enabled=True)
+    target = tmp_path / "sensory-pathway.npz"
+    pathway.save(target, body_ids, base_checkpoint_sha256="base-v6")
+    restored = SensoryPathwayPlasticity(8, groups, seed=9)
+    restored.load(target, body_ids, expected_base_checkpoint_sha256="base-v6")
+    assert np.array_equal(restored.gains, pathway.gains)
+    with pytest.raises(ValueError, match="base checkpoint"):
+        restored.load(target, body_ids, expected_base_checkpoint_sha256="wrong")
+    changed_ids = body_ids.copy()
+    changed_ids[1] = 99
+    with pytest.raises(ValueError, match="source contract"):
+        restored.load(target, changed_ids, expected_base_checkpoint_sha256="base-v6")
+
+
+def test_reset_without_keep_learning_restores_sensory_pathway_gains() -> None:
+    root = Path(__file__).parents[1]
+    engine = DrivingEngine(root, top_k=1, load_checkpoint=True, control_mode="neural")
+    engine.sensory_pathway.gains[0] = 1.2
+    engine.sensory_pathway._refresh_multiplier()
+    engine.reset(960, keep_learning=False, control_mode="neural")
+    assert np.all(engine.sensory_pathway.gains == 1)
 
 
 def test_panorama_preserves_front_pixels_in_centre_band() -> None:

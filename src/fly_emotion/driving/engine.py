@@ -16,6 +16,7 @@ from fly_emotion.driving.sensory import (
     AnatomySensoryProjection,
     SensoryFrame,
     SensoryGains,
+    SensoryPathwayPlasticity,
     horizontal_flow_proxy,
     regional_horizontal_flow_proxy,
 )
@@ -505,6 +506,12 @@ class DrivingEngine:
             adjacency=self.graph.adjacency,
         )
         self.sensory_gains = sensory_gains or SensoryGains()
+        self.sensory_pathway = SensoryPathwayPlasticity(
+            self.graph.node_count,
+            self.sensory_projection.pathway_groups(),
+            adjacency=self.graph.adjacency,
+            seed=seed,
+        )
         self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
         self.neural_motor_adapter = NeuralMotorAdapter()
         self.assisted_policy_checkpoint = root / "artifacts/checkpoints/driving-policy.npz"
@@ -552,6 +559,7 @@ class DrivingEngine:
         }
         self.close_hazard_streak = 0
         self.learning = False
+        self.sensory_learning = False
         self.previous_sensory_image: np.ndarray | None = None
         self.last_sensory_frame = SensoryFrame(0.0, 0.0, 0.0, 0.0)
         self.reset(seed)
@@ -669,6 +677,7 @@ class DrivingEngine:
         self.mirrored_activity.fill(0)
         self.visual_drive.fill(0)
         if not keep_learning:
+            self.sensory_pathway.reset_gains()
             self.policy = DopaminePolicy(self.graph.adjacency, self.graph.body_ids, seed=seed)
             if self.policy_checkpoint.exists():
                 self._load_published_policy()
@@ -676,6 +685,9 @@ class DrivingEngine:
                 self.checkpoint_loaded = False
                 self.checkpoint_rejection = None
         self.policy.reset_traces(
+            episode_seed=self.env.pair_seed if self.control_mode == "neural" else seed
+        )
+        self.sensory_pathway.reset_traces(
             episode_seed=self.env.pair_seed if self.control_mode == "neural" else seed
         )
         self.neural_motor_adapter.reset()
@@ -688,6 +700,7 @@ class DrivingEngine:
         self.last_reward = 0.0
         self.last_safety_signal = 0.0
         self.learning = False
+        self.sensory_learning = False
         self.control_statistics = {
             "steering_sum_abs": 0.0,
             "steering_change_sum_abs": 0.0,
@@ -751,7 +764,9 @@ class DrivingEngine:
             body=self.sensory_profile == "panorama_flow_body",
             gains=self.sensory_gains,
         )
-        recurrent = self.graph.adjacency @ (activity * self.source_sign)
+        recurrent = self.graph.adjacency @ (
+            activity * self.source_sign * self.sensory_pathway.source_multiplier
+        )
         activity = (0.72 * activity + 0.28 * np.tanh(1.8 * recurrent + self.visual_drive)).astype(
             np.float32
         )
@@ -768,6 +783,8 @@ class DrivingEngine:
         *,
         learning: bool = False,
         explore: bool = False,
+        sensory_learning: bool = False,
+        sensory_explore: bool = False,
         safety_constraints: bool = True,
         include_activity: bool = True,
     ) -> dict:
@@ -945,6 +962,8 @@ class DrivingEngine:
             enabled=learning,
             teacher_enabled=self.control_mode == "assisted",
         )
+        self.sensory_pathway.learn(dopamine, enabled=sensory_learning)
+        self.sensory_pathway.perturb(enabled=sensory_explore)
         for _ in range(self.brain_substeps):
             self._advance_brain(image, dopamine=dopamine, sensory_frame=sensory_frame)
         drive = float((1.0 - reverse) * throttle - reverse)
@@ -964,6 +983,7 @@ class DrivingEngine:
         self.last_reward = reward
         self.last_safety_signal = safety_signal
         self.learning = learning
+        self.sensory_learning = sensory_learning
         result = self.state(include_activity=include_activity)
         result["elapsed_ms"] = (time.perf_counter() - started) * 1000
         result["dopamine"]["dopamine"] = dopamine
@@ -1035,6 +1055,7 @@ class DrivingEngine:
             "safety_signal": self.last_safety_signal,
             "control_statistics": self.control_summary(),
             "learning": self.learning,
+            "sensory_learning": self.sensory_learning,
             "policy_checkpoint": {
                 "loaded": self.checkpoint_loaded,
                 "path": str(self.policy_checkpoint.relative_to(self.root)),
@@ -1084,6 +1105,7 @@ class DrivingEngine:
                         self.last_sensory_frame.lateral_acceleration
                     ),
                     **self.sensory_projection.summary(),
+                    "pathway_plasticity": self.sensory_pathway.summary(),
                     "diagnostics": self.sensory_projection.diagnostics(
                         self.activity,
                         self.last_sensory_frame,

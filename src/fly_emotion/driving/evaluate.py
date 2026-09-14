@@ -193,6 +193,8 @@ def run_episode(
     control_mode: str = "assisted",
     curriculum_stage: str = "full",
     sensory_profile: str | None = None,
+    sensory_learning: bool = False,
+    sensory_explore: bool = False,
 ) -> dict:
     engine.reset(
         seed,
@@ -206,6 +208,8 @@ def run_episode(
         engine.step(
             learning=learning,
             explore=explore,
+            sensory_learning=sensory_learning,
+            sensory_explore=sensory_explore,
             safety_constraints=safety_constraints,
             include_activity=False,
         )
@@ -262,6 +266,8 @@ def run_episode(
         "control_mode": control_mode,
         "curriculum_stage": curriculum_stage,
         "sensory_profile": engine.sensory_profile,
+        "sensory_learning": sensory_learning,
+        "sensory_explore": sensory_explore,
         **engine.control_summary(),
     }
 
@@ -1145,6 +1151,188 @@ def evaluate_body_motor_interaction(
                 "reduces steering but increases drift per metre"
             ),
         },
+    }
+
+
+def train_sensory_pathway_curriculum(
+    root: Path,
+    *,
+    episodes_per_stage: int = 2,
+    evaluation_start: int = 980,
+    evaluation_seeds: int = 4,
+    seed: int = 20260914,
+) -> dict:
+    """Train only mirror-tied gains on existing sensory outgoing synapses."""
+    if episodes_per_stage < 2 or episodes_per_stage % 2:
+        raise ValueError("sensory curriculum requires complete mirror pairs per stage")
+    validate_mirror_protocol(evaluation_seeds, evaluation_start)
+    checkpoint = root / "artifacts/checkpoints/driving-policy.neural-v6.npz"
+    checkpoint_sha = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+    sensory_gains = SensoryGains(
+        optic_flow=0.0003,
+        haltere_yaw_rate=0.0003,
+        haltere_yaw_acceleration=0.0003,
+        campaniform_lateral=0.0003,
+        campaniform_longitudinal=0.0003,
+        chordotonal_steering_rate=0.0003,
+    )
+    learned = DrivingEngine(
+        root,
+        seed=seed,
+        top_k=1,
+        load_checkpoint=True,
+        control_mode="neural",
+        sensory_profile="panorama_flow_body",
+        sensory_gains=sensory_gains,
+    )
+    frozen = DrivingEngine(
+        root,
+        seed=seed,
+        top_k=1,
+        load_checkpoint=True,
+        control_mode="neural",
+        sensory_profile="panorama_flow_body",
+        sensory_gains=sensory_gains,
+    )
+    if not learned.checkpoint_loaded or not frozen.checkpoint_loaded:
+        raise ValueError("sensory curriculum requires the published neural-v6 checkpoint")
+    initial_motor_gains = [gain.copy() for gain in learned.policy.gains]
+    stages = ("single", "triple", "nine")
+    training = []
+    stage_summaries = {}
+    episode_index = 0
+    for stage in stages:
+        stage_episodes = []
+        for _ in range(episodes_per_stage):
+            training_seed = 12_000 + episode_index
+            episode_index += 1
+            episode = run_episode(
+                learned,
+                training_seed,
+                learning=False,
+                explore=False,
+                sensory_learning=True,
+                sensory_explore=True,
+                safety_constraints=False,
+                control_mode="neural",
+                curriculum_stage=stage,
+                sensory_profile="panorama_flow_body",
+            )
+            stage_episodes.append(episode)
+            training.append(episode)
+        stage_summaries[stage] = summarize(stage_episodes)
+    motor_weights_unchanged = all(
+        np.array_equal(before, after)
+        for before, after in zip(initial_motor_gains, learned.policy.gains, strict=True)
+    )
+    candidate = root / "artifacts/checkpoints/driving-sensory-pathway.candidate.npz"
+    learned.sensory_pathway.save(
+        candidate, learned.graph.body_ids, base_checkpoint_sha256=checkpoint_sha
+    )
+    deployed = DrivingEngine(
+        root,
+        seed=seed,
+        top_k=1,
+        load_checkpoint=True,
+        control_mode="neural",
+        sensory_profile="panorama_flow_body",
+        sensory_gains=sensory_gains,
+    )
+    deployed.sensory_pathway.load(
+        candidate,
+        deployed.graph.body_ids,
+        expected_base_checkpoint_sha256=checkpoint_sha,
+    )
+    test_seeds = range(evaluation_start, evaluation_start + evaluation_seeds)
+    frozen_episodes = [
+        run_episode(
+            frozen,
+            value,
+            learning=False,
+            explore=False,
+            safety_constraints=False,
+            control_mode="neural",
+            curriculum_stage="nine",
+            sensory_profile="panorama_flow_body",
+        )
+        for value in test_seeds
+    ]
+    learned_episodes = [
+        run_episode(
+            deployed,
+            value,
+            learning=False,
+            explore=False,
+            safety_constraints=False,
+            control_mode="neural",
+            curriculum_stage="nine",
+            sensory_profile="panorama_flow_body",
+        )
+        for value in test_seeds
+    ]
+    frozen_summary = summarize(frozen_episodes)
+    learned_summary = summarize(learned_episodes)
+    gates = {
+        "motor_weights_unchanged": motor_weights_unchanged,
+        "zero_action_override": (
+            learned_summary["constraint_rate"] == 0
+            and learned_summary["mean_abs_constraint"] == 0
+        ),
+        "completion_not_worse": (
+            learned_summary["success_rate"] >= frozen_summary["success_rate"]
+        ),
+        "obstacles_not_worse": (
+            learned_summary["mean_obstacles_passed"]
+            >= frozen_summary["mean_obstacles_passed"]
+        ),
+        "complete_window_rate_not_lower": (
+            learned_summary["post_pass_complete_window_rate"]
+            >= frozen_summary["post_pass_complete_window_rate"]
+        ),
+        "early_failure_rate_not_higher": (
+            learned_summary["post_pass_30_step_early_failure_rate"]
+            <= frozen_summary["post_pass_30_step_early_failure_rate"]
+        ),
+        "post_pass_steering_lower": (
+            learned_summary["post_pass_complete_mean_abs_steering"]
+            < frozen_summary["post_pass_complete_mean_abs_steering"]
+        ),
+        "post_pass_drift_lower": (
+            learned_summary["post_pass_complete_mean_lateral_drift_per_metre"]
+            < frozen_summary["post_pass_complete_mean_lateral_drift_per_metre"]
+        ),
+    }
+    accepted = all(gates.values())
+    return {
+        "protocol": {
+            "base_checkpoint_sha256": checkpoint_sha,
+            "training_seed_range": [12_000, 12_000 + episode_index - 1],
+            "episodes_per_stage": episodes_per_stage,
+            "stages": list(stages),
+            "test_seed_range": [evaluation_start, evaluation_start + evaluation_seeds - 1],
+            "independent_test_pairs": evaluation_seeds // 2,
+            "motor_learning": False,
+            "motor_exploration": False,
+            "sensory_learning": True,
+            "sensory_exploration": True,
+            "learning_signal": "environment_reward_prediction_error_only",
+            "action_override": False,
+            "claim_boundary": "small curriculum screen; candidate is never auto-published",
+        },
+        "sensory_gains": sensory_gains.__dict__,
+        "anatomy": learned.sensory_projection.summary(),
+        "pathway_before": {
+            **frozen.sensory_pathway.summary(),
+            "group_gains": np.ones(len(frozen.sensory_pathway.groups)).tolist(),
+        },
+        "pathway_after": learned.sensory_pathway.summary(),
+        "stage_training": stage_summaries,
+        "frozen": frozen_summary,
+        "learned": learned_summary,
+        "gates": gates,
+        "accepted_for_larger_evaluation": accepted,
+        "candidate_checkpoint": str(candidate.relative_to(root)),
+        "candidate_sha256": hashlib.sha256(candidate.read_bytes()).hexdigest(),
     }
 
 

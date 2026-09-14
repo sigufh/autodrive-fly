@@ -21,6 +21,7 @@ from .driving.evaluate import (
     evaluate_sensory_ablation,
     evaluate_sensory_gain_audit,
     train_neural_curriculum,
+    train_sensory_pathway_curriculum,
     write_evaluation,
 )
 
@@ -86,6 +87,10 @@ def _parser() -> argparse.ArgumentParser:
     body_interaction.add_argument("--start", type=int, default=960)
     body_interaction.add_argument("--count", type=int, default=4)
     body_interaction.add_argument("--body-gain", type=float, default=0.0003)
+    sensory_train = subparsers.add_parser("train-sensory-pathway")
+    sensory_train.add_argument("--episodes-per-stage", type=int, default=2)
+    sensory_train.add_argument("--evaluation-start", type=int, default=980)
+    sensory_train.add_argument("--evaluation-seeds", type=int, default=4)
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -194,6 +199,17 @@ def main() -> None:
             root, start=args.start, count=args.count, body_gain=args.body_gain
         )
         target = root / "artifacts/neural-v6-body-motor-interaction.json"
+        target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "train-sensory-pathway":
+        report = train_sensory_pathway_curriculum(
+            root,
+            episodes_per_stage=args.episodes_per_stage,
+            evaluation_start=args.evaluation_start,
+            evaluation_seeds=args.evaluation_seeds,
+        )
+        target = root / "artifacts/neural-v6-sensory-pathway-curriculum.json"
         target.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(target)
         return

@@ -183,6 +183,18 @@ A one-pair 0.06–0.09 rate screen was strongly non-monotonic and is not release
 evidence. The retained configuration is adaptation 0.08 with body gains zero.
 Evidence: `artifacts/neural-v6-body-motor-interaction.json`.
 
+Sensory-pathway plasticity is restricted to 11 mirror-tied gains: six local
+T4/T5 region pairs and five bilateral body channels. They scale 540,845
+existing outgoing synapses from 7,226 unique sensory sources; no edge is added.
+The separate checkpoint binds source body IDs, the group contract and the v6
+hash. During a six-episode single→triple→nine screen, motor weights and motor
+exploration were frozen and only sensory perturbation eligibility received
+environment-reward prediction error. On unseen seeds 980–983, completion and
+obstacles remained 100% and 9/9, but complete-window steering worsened
+0.2635→0.2767 and drift/metre 0.1500→0.1596. The candidate failed both stability
+gates, is not promoted to larger evaluation, and cannot replace v6. Evidence:
+`artifacts/neural-v6-sensory-pathway-curriculum.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without

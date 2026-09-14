@@ -1,4 +1,4 @@
-.PHONY: verify audit prepare calibrate-policy evaluate-constraints evaluate-driving evaluate-city-alpha evaluate-neural-decision train-neural-v6 evaluate-neural-transfer evaluate-neural-motor-adaptation evaluate-sensory-ablation evaluate-sensory-gains evaluate-body-motor-interaction api web test
+.PHONY: verify audit prepare calibrate-policy evaluate-constraints evaluate-driving evaluate-city-alpha evaluate-neural-decision train-neural-v6 evaluate-neural-transfer evaluate-neural-motor-adaptation evaluate-sensory-ablation evaluate-sensory-gains evaluate-body-motor-interaction train-sensory-pathway api web test
 
 verify:
 	.venv/bin/autodrive-fly verify --dataset malecns
@@ -37,6 +37,9 @@ evaluate-sensory-gains:
 
 evaluate-body-motor-interaction:
 	.venv/bin/autodrive-fly evaluate-body-motor-interaction
+
+train-sensory-pathway:
+	.venv/bin/autodrive-fly train-sensory-pathway
 
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
