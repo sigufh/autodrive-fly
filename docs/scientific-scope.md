@@ -91,6 +91,14 @@ Declared branches plus explicitly omitted inputs reconstruct total raw weights.
 These are anatomy-only constraints on interpretation, not evidence that inputs
 are inactive or that a covered T4 subset has passed functional gates.
 
+A body-ID-joined coverage/response audit reproduces the frozen T4 population
+scores while retaining all 6,861 targets, including nine not using the branched
+equation. Even the >=50% covered-Mi9-input strata fail the 0.10 direction-contrast
+criterion under frame-difference encoding; T4a remains negative. This is reused-data
+association, not proof that coverage is irrelevant, since other inputs may remain
+uncovered or unlocated and whole-window scoring retains temporal confounds.
+No subset score authorizes stage advancement.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
