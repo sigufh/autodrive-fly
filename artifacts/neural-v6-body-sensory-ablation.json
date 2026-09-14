@@ -1,0 +1,75 @@
+{
+  "protocol": {
+    "checkpoint_sha256": "6746a2b9bf80f2e2a1d6a5a8c6039ed074a931dbf31ef0fdc9da911c326e2437",
+    "test_seed_range": [960, 963],
+    "learning": false,
+    "explore": false,
+    "action_override": false,
+    "sensory_profile": "panorama_flow_body",
+    "peripheral_visual_gain": 0.001,
+    "optic_flow_gain": 0.0,
+    "motor_adaptation_rate": 0.08,
+    "claim_boundary": "two-pair frozen screen; no body-sensory arm is deployed"
+  },
+  "anatomy": {
+    "body_mapped_unique": 474,
+    "body_unmapped_and_unstimulated": 7,
+    "body_groups_are_disjoint": true,
+    "group_counts": {
+      "haltere_rate_left": 75,
+      "haltere_rate_right": 73,
+      "haltere_acceleration_left": 26,
+      "haltere_acceleration_right": 27,
+      "campaniform_lateral_left": 41,
+      "campaniform_lateral_right": 42,
+      "campaniform_longitudinal_left": 80,
+      "campaniform_longitudinal_right": 88,
+      "chordotonal_rate_left": 11,
+      "chordotonal_rate_right": 11
+    }
+  },
+  "fixed_state_screen": {
+    "gain_range_per_channel": [0.0001, 0.0003, 0.001],
+    "channels": [
+      "haltere_yaw_rate",
+      "haltere_yaw_acceleration",
+      "campaniform_lateral",
+      "campaniform_longitudinal",
+      "chordotonal_steering_rate"
+    ],
+    "raw_steering_sign_disagreement_range": [0.0, 0.0],
+    "raw_steering_mae_range": [0.000029631026100495715, 0.0001732234065687319],
+    "source": "artifacts/neural-v6-sensory-gain-audit.json"
+  },
+  "closed_loop": {
+    "panorama_no_body": {
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.1359984727179241,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.06384909219247153
+    },
+    "campaniform_lateral_0.0003": {
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.138298816481937,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.07077118739665975
+    },
+    "all_five_channels_0.0003": {
+      "success_rate": 1.0,
+      "mean_obstacles_passed": 9.0,
+      "post_pass_complete_window_rate": 1.0,
+      "post_pass_30_step_early_failure_rate": 0.0,
+      "post_pass_complete_mean_abs_steering": 0.13193983971221102,
+      "post_pass_complete_mean_lateral_drift_per_metre": 0.06734515157144977
+    }
+  },
+  "decision": {
+    "default_body_gains": 0.0,
+    "deployed": false,
+    "reason": "Disjoint low-gain channels remove the old catastrophic interference, but the combined arm improves steering while worsening drift versus the corrected panorama baseline. Motor-adaptation interaction must be isolated next."
+  }
+}

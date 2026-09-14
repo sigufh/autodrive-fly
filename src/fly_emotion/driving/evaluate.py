@@ -792,6 +792,17 @@ def evaluate_sensory_gain_audit(
             "yaw_rate": float(reference_engine.env.last_yaw_rate),
             "steering": float(reference_engine.env.steering),
             "speed": float(reference_engine.env.speed),
+            "steering_rate": float(
+                (reference_engine.env.steering - reference_engine.env.previous_steering)
+                / reference_engine.env.dt
+            ),
+            "yaw_acceleration": float(reference_engine.last_sensory_frame.yaw_acceleration),
+            "longitudinal_acceleration": float(
+                reference_engine.last_sensory_frame.longitudinal_acceleration
+            ),
+            "lateral_acceleration": float(
+                reference_engine.last_sensory_frame.lateral_acceleration
+            ),
         }
 
     reference = [capture()]
@@ -809,44 +820,65 @@ def evaluate_sensory_gain_audit(
         replay_digest.update(frame["panorama"].tobytes())
         replay_digest.update(
             np.asarray(
-                [frame["yaw_rate"], frame["steering"], frame["speed"]],
+                [
+                    frame["yaw_rate"],
+                    frame["steering"],
+                    frame["speed"],
+                    frame["steering_rate"],
+                    frame["yaw_acceleration"],
+                    frame["longitudinal_acceleration"],
+                    frame["lateral_acceleration"],
+                ],
                 dtype=np.float64,
             ).tobytes()
         )
 
     variants = [
-        ("front", "front", 0.0, 0.0, 0.0),
-        ("panorama_core", "panorama", 0.0, 0.0, 0.0),
+        ("front", "front", 0.0, 0.0, None, 0.0),
+        ("panorama_core", "panorama", 0.0, 0.0, None, 0.0),
         *[
-            (f"panorama_{factor:g}", "panorama", factor, 0.0, 0.0)
+            (f"panorama_{factor:g}", "panorama", factor, 0.0, None, 0.0)
             for factor in (0.10, 0.25, 0.50, 1.00)
         ],
         *[
-            (f"panorama_flow_{factor:g}", "panorama_flow", 1.0, factor, 0.0)
+            (f"panorama_flow_{factor:g}", "panorama_flow", 1.0, factor, None, 0.0)
             for factor in (0.005, 0.01, 0.02, 0.05, 0.10, 0.25, 0.50, 1.00)
         ],
         *[
             (
-                f"panorama_flow_body_{factor:g}",
+                f"body_{channel}_{gain:g}",
                 "panorama_flow_body",
                 1.0,
-                1.0,
-                factor,
+                0.0,
+                channel,
+                gain,
             )
-            for factor in (0.05, 0.10, 0.25, 0.50, 1.00)
+            for channel in (
+                "haltere_yaw_rate",
+                "haltere_yaw_acceleration",
+                "campaniform_lateral",
+                "campaniform_longitudinal",
+                "chordotonal_steering_rate",
+            )
+            for gain in (0.0001, 0.0003, 0.001)
         ],
     ]
     arms = {}
     raw_traces: dict[str, np.ndarray] = {}
-    for name, profile, peripheral_scale, flow_scale, body_scale in variants:
+    for name, profile, peripheral_scale, flow_scale, body_channel, body_gain in variants:
         defaults = SensoryGains()
-        gains = SensoryGains(
-            peripheral_visual=defaults.peripheral_visual * peripheral_scale,
-            optic_flow=0.30 * flow_scale,
-            haltere_yaw=defaults.haltere_yaw * body_scale,
-            proprio_steering=defaults.proprio_steering * body_scale,
-            proprio_speed=defaults.proprio_speed * body_scale,
-        )
+        gain_values = {
+            "peripheral_visual": defaults.peripheral_visual * peripheral_scale,
+            "optic_flow": 0.30 * flow_scale,
+            "haltere_yaw_rate": 0.0,
+            "haltere_yaw_acceleration": 0.0,
+            "campaniform_lateral": 0.0,
+            "campaniform_longitudinal": 0.0,
+            "chordotonal_steering_rate": 0.0,
+        }
+        if body_channel is not None:
+            gain_values[body_channel] = body_gain
+        gains = SensoryGains(**gain_values)
         replay = DrivingEngine(
             root,
             seed=20260914,
@@ -883,6 +915,10 @@ def evaluate_sensory_gain_audit(
                 steering=sample["steering"],
                 speed=sample["speed"],
                 flow_regions=flow_regions,
+                yaw_acceleration=sample["yaw_acceleration"],
+                steering_rate=sample["steering_rate"],
+                longitudinal_acceleration=sample["longitudinal_acceleration"],
+                lateral_acceleration=sample["lateral_acceleration"],
             )
             for _ in range(replay.brain_substeps):
                 replay._advance_brain(image, dopamine=0.0, sensory_frame=frame)
@@ -929,7 +965,9 @@ def evaluate_sensory_gain_audit(
             "sensory_profile": profile,
             "peripheral_visual_gain_scale": peripheral_scale,
             "flow_gain_scale": flow_scale,
-            "body_gain_scale": body_scale,
+            "body_channel": body_channel,
+            "body_gain": body_gain,
+            "gains": gains.__dict__,
             "steps": len(raw_array),
             "mean_abs_raw_steering": float(np.mean(np.abs(raw_array))),
             "p95_abs_raw_steering": float(np.quantile(np.abs(raw_array), 0.95)),
@@ -943,14 +981,8 @@ def evaluate_sensory_gain_audit(
             ),
             "sensory_groups": {
                 group: sensory_group_summary(group)
-                for group in (
-                    "flow_positive",
-                    "flow_negative",
-                    "haltere_left",
-                    "haltere_right",
-                    "proprio_left",
-                    "proprio_right",
-                )
+                for group in sensory_rows[0]
+                if group != "total_direct_drive_l1"
             },
         }
     front_trace = raw_traces["front"]

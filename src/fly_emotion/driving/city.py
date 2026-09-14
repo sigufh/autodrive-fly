@@ -133,6 +133,7 @@ class CityDrivingEnvironment:
         self.mirror = 1
         self.x, self.y, self.heading, self.speed = -self.lane_width / 2, 2.0, 0.0, 0.0
         self.steering = self.previous_steering = 0.0
+        self.last_yaw_rate = 0.0
         self.steps, self.total_reward, self.done = 0, 0.0, False
         self.trajectory = [(self.x, self.y)]
         self.world_trajectory = [self.world_pose()[:2]]
@@ -288,6 +289,7 @@ class CityDrivingEnvironment:
         self.speed += (target_speed - self.speed) * 0.24
         curvature = self.route_pose(self.y)[3]
         yaw_rate = self.speed / self.wheelbase * np.tan(self.max_steering_angle * self.steering)
+        self.last_yaw_rate = float(yaw_rate)
         progress_delta = float(np.cos(self.heading) * self.speed * self.dt)
         self.heading = float(
             np.clip(self.heading + yaw_rate * self.dt - curvature * progress_delta, -1.15, 1.15)

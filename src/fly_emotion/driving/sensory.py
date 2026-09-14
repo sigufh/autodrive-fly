@@ -82,6 +82,10 @@ class SensoryFrame:
     steering: float
     speed: float
     flow_regions: tuple[float, ...] = ()
+    yaw_acceleration: float = 0.0
+    steering_rate: float = 0.0
+    longitudinal_acceleration: float = 0.0
+    lateral_acceleration: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -90,9 +94,11 @@ class SensoryGains:
 
     peripheral_visual: float = 0.001
     optic_flow: float = 0.0
-    haltere_yaw: float = 0.40
-    proprio_steering: float = 0.25
-    proprio_speed: float = 0.04
+    haltere_yaw_rate: float = 0.0
+    haltere_yaw_acceleration: float = 0.0
+    campaniform_lateral: float = 0.0
+    campaniform_longitudinal: float = 0.0
+    chordotonal_steering_rate: float = 0.0
 
     def scaled(
         self, *, peripheral_visual: float = 1.0, optic_flow: float = 1.0, body: float = 1.0
@@ -100,9 +106,11 @@ class SensoryGains:
         return SensoryGains(
             peripheral_visual=self.peripheral_visual * peripheral_visual,
             optic_flow=self.optic_flow * optic_flow,
-            haltere_yaw=self.haltere_yaw * body,
-            proprio_steering=self.proprio_steering * body,
-            proprio_speed=self.proprio_speed * body,
+            haltere_yaw_rate=self.haltere_yaw_rate * body,
+            haltere_yaw_acceleration=self.haltere_yaw_acceleration * body,
+            campaniform_lateral=self.campaniform_lateral * body,
+            campaniform_longitudinal=self.campaniform_longitudinal * body,
+            chordotonal_steering_rate=self.chordotonal_steering_rate * body,
         )
 
 
@@ -117,6 +125,17 @@ class AnatomySensoryProjection:
     flow_positive_bins: tuple[np.ndarray, ...]
     flow_negative_bins: tuple[np.ndarray, ...]
     flow_unmapped: np.ndarray
+    haltere_rate_left: np.ndarray
+    haltere_rate_right: np.ndarray
+    haltere_acceleration_left: np.ndarray
+    haltere_acceleration_right: np.ndarray
+    campaniform_lateral_left: np.ndarray
+    campaniform_lateral_right: np.ndarray
+    campaniform_longitudinal_left: np.ndarray
+    campaniform_longitudinal_right: np.ndarray
+    chordotonal_rate_left: np.ndarray
+    chordotonal_rate_right: np.ndarray
+    body_unmapped: np.ndarray
 
     @classmethod
     def from_annotations(
@@ -136,6 +155,7 @@ class AnatomySensoryProjection:
                 "superclass",
                 "rootSide",
                 "somaSide",
+                "entryNerve",
                 "assignedOlHex1",
                 "assignedOlHex2",
             ],
@@ -147,6 +167,22 @@ class AnatomySensoryProjection:
         proprio = table["class"].fillna("").eq("mechanosensory_proprioceptive") & table[
             "superclass"
         ].fillna("").str.startswith("sensory_ascending")
+        entry_nerve = table["entryNerve"].fillna("")
+        subclass = table["subclass"].fillna("")
+        typed_haltere = haltere & cell_type.ne("")
+        haltere_rate = haltere & cell_type.eq("SApp")
+        haltere_acceleration = typed_haltere & ~cell_type.eq("SApp")
+        non_haltere_proprio = proprio & ~haltere
+        lateral = non_haltere_proprio & subclass.eq("campaniform sensilla") & entry_nerve.eq(
+            "ADMN"
+        )
+        longitudinal = (
+            non_haltere_proprio
+            & subclass.eq("campaniform sensilla")
+            & entry_nerve.eq("DMetaN")
+        )
+        chordotonal = non_haltere_proprio & subclass.eq("chordotonal organ")
+        mapped_body = haltere_rate | haltere_acceleration | lateral | longitudinal | chordotonal
 
         def select(mask) -> np.ndarray:
             return _present_nodes(body_ids, table.loc[mask, "bodyId"].to_numpy(dtype=np.int64))
@@ -166,6 +202,17 @@ class AnatomySensoryProjection:
             flow_positive_bins=positive_bins,
             flow_negative_bins=negative_bins,
             flow_unmapped=unmapped,
+            haltere_rate_left=select(haltere_rate & root_side.eq("L")),
+            haltere_rate_right=select(haltere_rate & root_side.eq("R")),
+            haltere_acceleration_left=select(haltere_acceleration & root_side.eq("L")),
+            haltere_acceleration_right=select(haltere_acceleration & root_side.eq("R")),
+            campaniform_lateral_left=select(lateral & root_side.eq("L")),
+            campaniform_lateral_right=select(lateral & root_side.eq("R")),
+            campaniform_longitudinal_left=select(longitudinal & root_side.eq("L")),
+            campaniform_longitudinal_right=select(longitudinal & root_side.eq("R")),
+            chordotonal_rate_left=select(chordotonal & root_side.eq("L")),
+            chordotonal_rate_right=select(chordotonal & root_side.eq("R")),
+            body_unmapped=select((haltere | proprio) & ~mapped_body),
         )
 
     @staticmethod
@@ -264,17 +311,59 @@ class AnatomySensoryProjection:
                 drive[self.flow_positive] += gains.optic_flow * positive
                 drive[self.flow_negative] += gains.optic_flow * negative
         if body:
-            yaw = float(np.clip(frame.yaw_rate / 1.2, -1.0, 1.0))
-            steering = float(np.clip(frame.steering, -1.0, 1.0))
-            speed = float(np.clip(abs(frame.speed) / 6.0, 0.0, 1.0))
-            drive[self.haltere_left] += gains.haltere_yaw * max(-yaw, 0.0)
-            drive[self.haltere_right] += gains.haltere_yaw * max(yaw, 0.0)
-            drive[self.proprio_left] += (
-                gains.proprio_steering * max(-steering, 0.0) + gains.proprio_speed * speed
-            )
-            drive[self.proprio_right] += (
-                gains.proprio_steering * max(steering, 0.0) + gains.proprio_speed * speed
-            )
+            signals = self._body_drives(frame, gains)
+            for name, nodes in self._body_groups().items():
+                drive[nodes] += signals[name]
+
+    def _body_groups(self) -> dict[str, np.ndarray]:
+        return {
+            "haltere_rate_left": self.haltere_rate_left,
+            "haltere_rate_right": self.haltere_rate_right,
+            "haltere_acceleration_left": self.haltere_acceleration_left,
+            "haltere_acceleration_right": self.haltere_acceleration_right,
+            "campaniform_lateral_left": self.campaniform_lateral_left,
+            "campaniform_lateral_right": self.campaniform_lateral_right,
+            "campaniform_longitudinal_left": self.campaniform_longitudinal_left,
+            "campaniform_longitudinal_right": self.campaniform_longitudinal_right,
+            "chordotonal_rate_left": self.chordotonal_rate_left,
+            "chordotonal_rate_right": self.chordotonal_rate_right,
+        }
+
+    @staticmethod
+    def _body_drives(frame: SensoryFrame, gains: SensoryGains) -> dict[str, float]:
+        yaw_rate = float(np.clip(frame.yaw_rate / 1.2, -1.0, 1.0))
+        yaw_acceleration = float(np.clip(frame.yaw_acceleration / 3.0, -1.0, 1.0))
+        steering_rate = float(np.clip(frame.steering_rate / 1.0, -1.0, 1.0))
+        lateral = float(np.clip(frame.lateral_acceleration / 5.0, -1.0, 1.0))
+        longitudinal = float(np.clip(abs(frame.longitudinal_acceleration) / 5.0, 0.0, 1.0))
+        return {
+            "haltere_rate_left": gains.haltere_yaw_rate * max(-yaw_rate, 0.0),
+            "haltere_rate_right": gains.haltere_yaw_rate * max(yaw_rate, 0.0),
+            "haltere_acceleration_left": (
+                gains.haltere_yaw_acceleration * max(-yaw_acceleration, 0.0)
+            ),
+            "haltere_acceleration_right": (
+                gains.haltere_yaw_acceleration * max(yaw_acceleration, 0.0)
+            ),
+            "campaniform_lateral_left": (
+                gains.campaniform_lateral * max(-lateral, 0.0)
+            ),
+            "campaniform_lateral_right": (
+                gains.campaniform_lateral * max(lateral, 0.0)
+            ),
+            "campaniform_longitudinal_left": (
+                gains.campaniform_longitudinal * longitudinal
+            ),
+            "campaniform_longitudinal_right": (
+                gains.campaniform_longitudinal * longitudinal
+            ),
+            "chordotonal_rate_left": (
+                gains.chordotonal_steering_rate * max(-steering_rate, 0.0)
+            ),
+            "chordotonal_rate_right": (
+                gains.chordotonal_steering_rate * max(steering_rate, 0.0)
+            ),
+        }
 
     def diagnostics(
         self,
@@ -287,9 +376,6 @@ class AnatomySensoryProjection:
     ) -> dict:
         """Report direct-drive scale and resulting activity by sensory group."""
         gains = gains or SensoryGains()
-        yaw = float(np.clip(frame.yaw_rate / 1.2, -1.0, 1.0))
-        steering = float(np.clip(frame.steering, -1.0, 1.0))
-        speed = float(np.clip(abs(frame.speed) / 6.0, 0.0, 1.0))
         if optic_flow and frame.flow_regions and self.flow_positive_bins:
             if len(frame.flow_regions) != len(self.flow_positive_bins):
                 raise ValueError("regional flow count does not match anatomical bins")
@@ -323,26 +409,15 @@ class AnatomySensoryProjection:
             "flow_negative": (
                 negative_l1 / len(self.flow_negative) if len(self.flow_negative) else 0.0
             ),
-            "haltere_left": gains.haltere_yaw * max(-yaw, 0.0) if body else 0.0,
-            "haltere_right": gains.haltere_yaw * max(yaw, 0.0) if body else 0.0,
-            "proprio_left": (
-                gains.proprio_steering * max(-steering, 0.0) + gains.proprio_speed * speed
-                if body
-                else 0.0
-            ),
-            "proprio_right": (
-                gains.proprio_steering * max(steering, 0.0) + gains.proprio_speed * speed
-                if body
-                else 0.0
-            ),
         }
+        body_drives = self._body_drives(frame, gains) if body else {
+            name: 0.0 for name in self._body_groups()
+        }
+        drives.update(body_drives)
         groups = {
             "flow_positive": self.flow_positive,
             "flow_negative": self.flow_negative,
-            "haltere_left": self.haltere_left,
-            "haltere_right": self.haltere_right,
-            "proprio_left": self.proprio_left,
-            "proprio_right": self.proprio_right,
+            **self._body_groups(),
         }
         result = {}
         for name, nodes in groups.items():
@@ -357,15 +432,7 @@ class AnatomySensoryProjection:
         result["total_direct_drive_l1"] = float(
             positive_l1
             + negative_l1
-            + sum(
-                drives[name] * len(groups[name])
-                for name in (
-                    "haltere_left",
-                    "haltere_right",
-                    "proprio_left",
-                    "proprio_right",
-                )
-            )
+            + sum(drives[name] * len(nodes) for name, nodes in self._body_groups().items())
         )
         return result
 
@@ -386,4 +453,11 @@ class AnatomySensoryProjection:
             "ascending_proprioception": int(len(self.proprio_left) + len(self.proprio_right)),
             "haltere_by_side": [int(len(self.haltere_left)), int(len(self.haltere_right))],
             "proprioception_by_side": [int(len(self.proprio_left)), int(len(self.proprio_right))],
+            "body_mapped_unique": int(
+                len(np.unique(np.concatenate(list(self._body_groups().values()))))
+            ),
+            "body_unmapped": int(len(self.body_unmapped)),
+            "body_group_counts": {
+                name: int(len(nodes)) for name, nodes in self._body_groups().items()
+            },
         }

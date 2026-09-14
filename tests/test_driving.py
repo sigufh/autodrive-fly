@@ -109,37 +109,112 @@ def test_anatomy_sensory_projection_uses_real_balanced_groups() -> None:
     assert summary["haltere_yaw_rate"] == 205
     assert summary["ascending_proprioception"] == 424
     assert all(value > 90 for value in summary["haltere_by_side"])
+    assert summary["body_mapped_unique"] == 474
+    assert summary["body_unmapped"] == 7
+    groups = projection._body_groups()
+    group_sets = [set(nodes.tolist()) for nodes in groups.values()]
+    assert all(
+        not left & right
+        for index, left in enumerate(group_sets)
+        for right in group_sets[index + 1 :]
+    )
+    assert len(set().union(*group_sets)) == summary["body_mapped_unique"]
     drive = np.zeros(engine.graph.node_count, dtype=np.float32)
     projection.add_drive(
         drive,
-        SensoryFrame(flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0),
+        SensoryFrame(
+            flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0,
+            yaw_acceleration=1.5, steering_rate=0.5,
+            longitudinal_acceleration=2.5, lateral_acceleration=2.5,
+        ),
         optic_flow=True,
         body=True,
-        gains=SensoryGains(optic_flow=0.30),
+        gains=SensoryGains(
+            optic_flow=0.30, haltere_yaw_rate=0.40,
+            haltere_yaw_acceleration=0.40, campaniform_lateral=0.25,
+            campaniform_longitudinal=0.04, chordotonal_steering_rate=0.25,
+        ),
     )
     assert np.any(drive[projection.flow_positive] > 0)
-    assert np.any(drive[projection.haltere_right] > 0)
-    assert np.any(drive[projection.proprio_right] > 0)
+    assert np.any(drive[projection.haltere_rate_right] > 0)
+    assert np.any(drive[projection.campaniform_lateral_right] > 0)
     diagnostics = projection.diagnostics(
         drive,
-        SensoryFrame(flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0),
+        SensoryFrame(
+            flow=0.5, yaw_rate=0.6, steering=0.4, speed=3.0,
+            yaw_acceleration=1.5, steering_rate=0.5,
+            longitudinal_acceleration=2.5, lateral_acceleration=2.5,
+        ),
         optic_flow=True,
         body=True,
-        gains=SensoryGains(optic_flow=0.30),
+        gains=SensoryGains(
+            optic_flow=0.30, haltere_yaw_rate=0.40,
+            haltere_yaw_acceleration=0.40, campaniform_lateral=0.25,
+            campaniform_longitudinal=0.04, chordotonal_steering_rate=0.25,
+        ),
     )
     assert diagnostics["flow_positive"]["neurons"] == len(projection.flow_positive)
     assert diagnostics["flow_positive"]["direct_drive"] == 0.15
-    assert diagnostics["haltere_right"]["direct_drive"] == 0.2
+    assert diagnostics["haltere_rate_right"]["direct_drive"] == 0.2
     assert diagnostics["total_direct_drive_l1"] > 0
 
 
 def test_sensory_gains_scale_flow_and_body_independently() -> None:
-    gains = SensoryGains(optic_flow=0.30).scaled(optic_flow=0.25, body=0.5)
+    gains = SensoryGains(
+        optic_flow=0.30, haltere_yaw_rate=0.40,
+        haltere_yaw_acceleration=0.30, campaniform_lateral=0.20,
+        campaniform_longitudinal=0.04, chordotonal_steering_rate=0.10,
+    ).scaled(optic_flow=0.25, body=0.5)
     assert gains.peripheral_visual == 0.001
     assert gains.optic_flow == 0.075
-    assert gains.haltere_yaw == 0.2
-    assert gains.proprio_steering == 0.125
-    assert gains.proprio_speed == 0.02
+    assert gains.haltere_yaw_rate == 0.2
+    assert gains.haltere_yaw_acceleration == 0.15
+    assert gains.campaniform_lateral == 0.1
+    assert gains.campaniform_longitudinal == 0.02
+    assert gains.chordotonal_steering_rate == 0.05
+
+
+def test_default_body_sensation_is_explicitly_disabled() -> None:
+    root = Path(__file__).parents[1]
+    engine = DrivingEngine(root, top_k=1, load_checkpoint=False)
+    projection = engine.sensory_projection
+    drive = np.zeros(engine.graph.node_count, dtype=np.float32)
+    projection.add_drive(
+        drive,
+        SensoryFrame(
+            flow=0.0, yaw_rate=0.8, steering=0.7, speed=4.0,
+            yaw_acceleration=2.0, steering_rate=0.8,
+            longitudinal_acceleration=3.0, lateral_acceleration=3.0,
+        ),
+        optic_flow=False,
+        body=True,
+    )
+    assert not np.any(drive[np.concatenate(list(projection._body_groups().values()))])
+
+
+def test_body_sensory_drive_is_mirror_equivariant() -> None:
+    root = Path(__file__).parents[1]
+    projection = DrivingEngine(root, top_k=1, load_checkpoint=False).sensory_projection
+    gains = SensoryGains(
+        haltere_yaw_rate=0.1, haltere_yaw_acceleration=0.1,
+        campaniform_lateral=0.1, campaniform_longitudinal=0.1,
+        chordotonal_steering_rate=0.1,
+    )
+    frame = SensoryFrame(
+        0.0, 0.6, 0.4, 3.0, (), 1.2, 0.5, 2.0, 1.8
+    )
+    mirrored = SensoryFrame(
+        0.0, -0.6, -0.4, 3.0, (), -1.2, -0.5, 2.0, -1.8
+    )
+    original = projection._body_drives(frame, gains)
+    reflected = projection._body_drives(mirrored, gains)
+    for name, value in original.items():
+        mirror_name = (
+            name.replace("_left", "_right")
+            if name.endswith("_left")
+            else name.replace("_right", "_left")
+        )
+        assert np.isclose(value, reflected[mirror_name])
 
 
 def test_panorama_preserves_front_pixels_in_centre_band() -> None:

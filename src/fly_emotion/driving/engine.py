@@ -720,6 +720,10 @@ class DrivingEngine:
             -sensory_frame.steering,
             sensory_frame.speed,
             tuple(-value for value in reversed(sensory_frame.flow_regions)),
+            -sensory_frame.yaw_acceleration,
+            -sensory_frame.steering_rate,
+            sensory_frame.longitudinal_acceleration,
+            -sensory_frame.lateral_acceleration,
         )
         self.mirrored_activity = self._advance_state(
             self.mirrored_activity,
@@ -863,6 +867,8 @@ class DrivingEngine:
         if reverse_gate:
             stats = self.control_statistics
             stats["reverse_gate_steps"] += 1
+        previous_speed = float(self.env.speed)
+        previous_yaw_rate = float(getattr(self.env, "last_yaw_rate", 0.0))
         _, reward, done = self.env.step(steering, throttle, reverse)
         image = self._sensory_image()
         previous_image = self.previous_sensory_image
@@ -884,6 +890,14 @@ class DrivingEngine:
             steering=self.env.steering,
             speed=self.env.speed,
             flow_regions=flow_regions,
+            yaw_acceleration=(
+                float(getattr(self.env, "last_yaw_rate", 0.0)) - previous_yaw_rate
+            )
+            / self.env.dt,
+            steering_rate=(self.env.steering - self.env.previous_steering) / self.env.dt,
+            longitudinal_acceleration=(self.env.speed - previous_speed) / self.env.dt,
+            lateral_acceleration=self.env.speed
+            * float(getattr(self.env, "last_yaw_rate", 0.0)),
         )
         self.last_sensory_frame = sensory_frame
         self.previous_sensory_image = image.copy()
@@ -1061,6 +1075,14 @@ class DrivingEngine:
                     "last_flow": self.last_sensory_frame.flow,
                     "last_flow_regions": list(self.last_sensory_frame.flow_regions),
                     "last_yaw_rate": self.last_sensory_frame.yaw_rate,
+                    "last_yaw_acceleration": self.last_sensory_frame.yaw_acceleration,
+                    "last_steering_rate": self.last_sensory_frame.steering_rate,
+                    "last_longitudinal_acceleration": (
+                        self.last_sensory_frame.longitudinal_acceleration
+                    ),
+                    "last_lateral_acceleration": (
+                        self.last_sensory_frame.lateral_acceleration
+                    ),
                     **self.sensory_projection.summary(),
                     "diagnostics": self.sensory_projection.diagnostics(
                         self.activity,

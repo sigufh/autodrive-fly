@@ -160,6 +160,19 @@ not make flow useful to frozen v6: absolute gain 0.0003 reduced completion from
 retained for later sensory-pathway plasticity, not deployed as a claimed gain.
 Evidence: `artifacts/neural-v6-regional-flow-ablation.json`.
 
+Body sensation is now split by annotated subclass, entry nerve and side instead
+of broadcasting steering to every ascending proprioceptor. SApp haltere cells
+receive yaw rate; other typed haltere cells receive yaw acceleration; non-
+haltere ADMN campaniform, DMetaN campaniform and chordotonal groups receive
+lateral load, longitudinal acceleration and steering rate, respectively. Ten
+left/right groups cover 474 unique, non-overlapping nodes; seven insufficiently
+annotated cells remain unstimulated. All five isolated channels at gains
+0.0001–0.001 preserved the fixed-state DNp20 sign. In closed loop, gain 0.0003
+on all five preserved 100% completion and 9/9 obstacles, lowered complete-window
+steering 0.1360→0.1319, but raised drift/metre 0.0638→0.0673 versus corrected
+panorama. Body gains remain zero pending motor-adapter interaction ablation.
+Evidence: `artifacts/neural-v6-body-sensory-ablation.json`.
+
 ## Metrics and Publication
 
 An obstacle counts only after the vehicle's rear clears its far edge without
