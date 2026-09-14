@@ -1,0 +1,53 @@
+version: 1
+name: t4-phenotype-constrained-fit-v1
+deployment_enabled: false
+driving_data_allowed: false
+measured_voltage_data_available: false
+supervision:
+  - published_T4_subtype_direction
+  - published_T4_ON_polarity
+retinal_backend: signed_frame_difference
+retinal_geometry: nested_t4_axis_v1
+brain_substeps_per_frame: 4
+baseline_frames: 8
+cell_split:
+  seed: 20260915
+  train_fraction: 0.60
+  validation_fraction: 0.20
+  test_fraction: 0.20
+  fit_cells_per_population: 64
+stimulus_split:
+  width: 48
+  height: 24
+  train:
+    - {frames: 12, contrast: 0.84}
+    - {frames: 20, contrast: 0.50}
+  validation:
+    - {frames: 16, contrast: 0.68}
+  test:
+    - {frames: 14, contrast: 0.76}
+optimization:
+  method: Powell
+  max_iterations: 160
+  direction_loss_weight: 1.0
+  polarity_loss_weight: 0.35
+  parameter_regularization: 0.02
+  margin_temperature: 8.0
+parameter_bounds:
+  gains: [0.0, 2.0]
+  thresholds: [0.0, 1.0]
+  leak_reversal_millivolts: [-80.0, -45.0]
+  leak_conductance: [0.05, 3.0]
+validation_gates:
+  minimum_direction_accuracy: 0.75
+  minimum_median_direction_contrast: 0.10
+  minimum_on_off_accuracy: 0.65
+  minimum_median_on_off_contrast: 0.10
+  minimum_population_direction_fraction: 0.75
+test_policy:
+  evaluate_only_if_all_validation_gates_pass: true
+  original_visual_battery_only_after_test_pass: true
+provenance:
+  published_start: artifacts/v7-t4-conductance-candidate.json
+  source_audit: artifacts/v7-t4-source-audit.json
+  paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC8891015/

@@ -25,6 +25,10 @@ also evaluated without tuning. All five input populations had dynamic activity,
 but no retinal backend passed T4 direction or mirror gates. This tests transfer
 to the current dimensionless proxy; it is not a refutation or reproduction of
 the original electrophysiology.
+A strictly split phenotype-constrained fit (published T4 direction and ON labels,
+not measured voltage traces) reaches only 51.7% train and 51.6% validation
+direction accuracy while retaining 79.9% ON/OFF validation accuracy. The one-time
+test cells and original release battery remain sealed after validation failure.
 
 ## Supported claims
 

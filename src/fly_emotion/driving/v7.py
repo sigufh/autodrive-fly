@@ -1571,6 +1571,7 @@ def write_v7_manifest(root: Path) -> dict:
     contract = V7Contract.load(root)
     implementation_sha256 = _sha256(root / V7_IMPLEMENTATION)
     evidence_paths = (
+        root / "artifacts/v7-t4-conductance-fit.json",
         root / "artifacts/v7-t4-conductance-candidate.json",
         root / "artifacts/v7-branched-t4-candidate.json",
         root / "artifacts/v7-t4-source-audit.json",
@@ -1588,7 +1589,23 @@ def write_v7_manifest(root: Path) -> dict:
             continue
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
         protocol = evidence.get("protocol", {})
-        if evidence_path.name == "v7-t4-conductance-candidate.json":
+        if evidence_path.name == "v7-t4-conductance-fit.json":
+            source_audit_path = root / "artifacts/v7-t4-source-audit.json"
+            valid_evidence = (
+                protocol.get("v7_config_sha256") == contract.sha256
+                and protocol.get("v7_implementation_sha256") == implementation_sha256
+                and protocol.get("branched_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_branched.py")
+                and protocol.get("conductance_implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_conductance.py")
+                and protocol.get("config_sha256")
+                == _sha256(root / "configs/driving-v7-t4-fit.yaml")
+                and protocol.get("implementation_sha256")
+                == _sha256(root / "src/fly_emotion/driving/v7_fit.py")
+                and source_audit_path.exists()
+                and protocol.get("source_audit_sha256") == _sha256(source_audit_path)
+            )
+        elif evidence_path.name == "v7-t4-conductance-candidate.json":
             source_audit_path = root / "artifacts/v7-t4-source-audit.json"
             valid_evidence = (
                 protocol.get("v7_config_sha256") == contract.sha256
@@ -1634,6 +1651,7 @@ def write_v7_manifest(root: Path) -> dict:
     source_audit = current_evidence.get("v7-t4-source-audit.json")
     branched = current_evidence.get("v7-branched-t4-candidate.json")
     conductance = current_evidence.get("v7-t4-conductance-candidate.json")
+    fitted = current_evidence.get("v7-t4-conductance-fit.json")
     controlled = current_evidence.get("v7-typed-visual-candidate.json") or (
         current_evidence.get("v7-controlled-vision.json")
     )
@@ -1649,6 +1667,10 @@ def write_v7_manifest(root: Path) -> dict:
         blockers.append("published_T4_conductance_evidence_stale_or_missing")
     elif not conductance.get("controlled_response_gates_pass"):
         blockers.append("published_T4_conductance_response_gates_failed")
+    if fitted is None:
+        blockers.append("fitted_T4_conductance_evidence_stale_or_missing")
+    elif not fitted.get("validation_passed"):
+        blockers.append("fitted_T4_conductance_validation_failed")
     if controlled is None:
         blockers.append("controlled_visual_response_evidence_stale_or_missing")
     else:
@@ -1665,6 +1687,9 @@ def write_v7_manifest(root: Path) -> dict:
         and conductance is not None
         and conductance.get("controlled_response_gates_pass")
         and conductance.get("topology_controls_complete")
+        and fitted is not None
+        and fitted.get("validation_passed")
+        and fitted.get("test", {}).get("evaluated")
         and controlled is not None
         and controlled.get("advance_to_central_complex")
     )
@@ -1696,6 +1721,12 @@ def write_v7_manifest(root: Path) -> dict:
             ),
             "published_T4_conductance_response_passed": bool(
                 conductance and conductance.get("controlled_response_gates_pass")
+            ),
+            "fitted_T4_conductance_validation_passed": bool(
+                fitted and fitted.get("validation_passed")
+            ),
+            "fitted_T4_one_time_test_evaluated": bool(
+                fitted and fitted.get("test", {}).get("evaluated")
             ),
         },
         "current_evidence": evidence_used[0] if evidence_used else None,

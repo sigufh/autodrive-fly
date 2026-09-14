@@ -1,0 +1,229 @@
+{
+  "protocol": {
+    "version": 7,
+    "name": "t4-phenotype-constrained-fit-v1",
+    "deployment_enabled": false,
+    "driving_data_used": false,
+    "config_sha256": "5be1eae517e0af4bab0c0302c32a874f3898c1a4ecd3b40f86ea80f9e4864707",
+    "implementation_sha256": "b04655a960026c72a4974364be14e68379cd05fa39a1e4cddad346d43e8820c0",
+    "v7_config_sha256": "26cd9a32ce53a609fd0cc53ef5579c54474e9dbe94826e49c23f3df01a2788ca",
+    "v7_implementation_sha256": "ab50fc293fd337ab64cadb8417a2d465e800c3de42397073f0c635fb384dcb7a",
+    "branched_implementation_sha256": "cbe07d589301a5120757599bcf5f5867973d8367f559a228682a795e7fc8b258",
+    "conductance_implementation_sha256": "d4f100e401ebdbfd415b0e51ae0f02e058e992150a06ffa2bc9a373912b7ba1a",
+    "source_audit_sha256": "9559ac5f57ce962c16ace9e7cd270bd9ce54416aa65ac1f8225fa11fd464135e",
+    "direction_labels_used_for_training": true,
+    "direction_labels_used_by_runtime_dynamics": false,
+    "measured_voltage_data_used": false,
+    "supervision": [
+      "published_T4_subtype_direction",
+      "published_T4_ON_polarity"
+    ],
+    "one_time_test_policy": {
+      "evaluate_only_if_all_validation_gates_pass": true,
+      "original_visual_battery_only_after_test_pass": true
+    }
+  },
+  "split_counts": {
+    "train": 4107,
+    "validation": 1366,
+    "test": 1379
+  },
+  "split_body_id_overlap": {
+    "train_validation": 0,
+    "train_test": 0
+  },
+  "fit_cells": 512,
+  "train_feature_sha256": "3cb4244d0d344d5fcbb6af6b8ae9b1e54143e1d2589c63360c565e2f3b289252",
+  "validation_feature_sha256": "e65ce8b0f5a42fce6899f16b2e0a7e3bc33345cac96f93ece511b9a229915083",
+  "published_start_parameters": {
+    "gains": {
+      "Mi9": 0.92,
+      "Tm3": 0.35,
+      "Mi1": 0.65,
+      "Mi4": 1.1,
+      "C3": 1.49
+    },
+    "thresholds": {
+      "Mi9": 0.2,
+      "Tm3": 0.35,
+      "Mi1": 0.88,
+      "Mi4": 0.44,
+      "C3": 0.7
+    },
+    "leak_reversal": -65.0,
+    "leak_conductance": 0.5
+  },
+  "fitted_parameters": {
+    "gains": {
+      "Mi9": 1.2070047813457372,
+      "Tm3": 1.2823858327857303,
+      "Mi1": 0.6500000000000633,
+      "Mi4": 1.5343962513813552,
+      "C3": 1.5322925798725413
+    },
+    "thresholds": {
+      "Mi9": 0.43709615772539545,
+      "Tm3": 0.05126337675814663,
+      "Mi1": 0.688732056851846,
+      "Mi4": 0.6839282872837469,
+      "C3": 0.5704045018899395
+    },
+    "leak_reversal": -58.618998739357686,
+    "leak_conductance": 1.080894229748778
+  },
+  "optimization": {
+    "success": true,
+    "message": "Optimization terminated successfully.",
+    "iterations": 2,
+    "function_evaluations": 467,
+    "initial_objective": 0.5401758188474844,
+    "final_objective": 0.42992798741948374
+  },
+  "train_metrics": {
+    "cells": 4107,
+    "direction_accuracy": 0.5166788410031653,
+    "median_direction_contrast": 0.011654568410630409,
+    "on_off_accuracy": 0.802045288531775,
+    "median_on_off_contrast": 0.8431630329488724,
+    "population_direction_fraction": 0.5,
+    "by_population": {
+      "T4a_L": {
+        "cells_x_conditions": 998,
+        "direction_accuracy": 0.2865731462925852,
+        "median_direction_contrast": -0.10982366443934583,
+        "on_off_accuracy": 0.7855711422845691,
+        "median_on_off_contrast": 0.7915336583213534
+      },
+      "T4a_R": {
+        "cells_x_conditions": 1018,
+        "direction_accuracy": 0.14931237721021612,
+        "median_direction_contrast": -0.14537516304569365,
+        "on_off_accuracy": 0.8919449901768173,
+        "median_on_off_contrast": 0.9422086764394715
+      },
+      "T4b_L": {
+        "cells_x_conditions": 1010,
+        "direction_accuracy": 0.7376237623762376,
+        "median_direction_contrast": 0.09579782313271801,
+        "on_off_accuracy": 0.7475247524752475,
+        "median_on_off_contrast": 0.702315044952292
+      },
+      "T4b_R": {
+        "cells_x_conditions": 1014,
+        "direction_accuracy": 0.9063116370808678,
+        "median_direction_contrast": 0.13235434964493692,
+        "on_off_accuracy": 0.873767258382643,
+        "median_on_off_contrast": 0.945209531087411
+      },
+      "T4c_L": {
+        "cells_x_conditions": 1070,
+        "direction_accuracy": 0.6579439252336449,
+        "median_direction_contrast": 0.11009502098082391,
+        "on_off_accuracy": 0.7570093457943925,
+        "median_on_off_contrast": 0.8392437276911959
+      },
+      "T4c_R": {
+        "cells_x_conditions": 1058,
+        "direction_accuracy": 0.5396975425330813,
+        "median_direction_contrast": 0.025641006381890163,
+        "on_off_accuracy": 0.8752362948960303,
+        "median_on_off_contrast": 0.9331958685218593
+      },
+      "T4d_L": {
+        "cells_x_conditions": 1016,
+        "direction_accuracy": 0.3631889763779528,
+        "median_direction_contrast": -0.09728765652275395,
+        "on_off_accuracy": 0.6496062992125984,
+        "median_on_off_contrast": 0.5765246321290811
+      },
+      "T4d_R": {
+        "cells_x_conditions": 1030,
+        "direction_accuracy": 0.48349514563106794,
+        "median_direction_contrast": -0.00861051672820471,
+        "on_off_accuracy": 0.8339805825242719,
+        "median_on_off_contrast": 0.8369164185456799
+      }
+    }
+  },
+  "validation_metrics": {
+    "cells": 1366,
+    "direction_accuracy": 0.5161054172767203,
+    "median_direction_contrast": 0.008384875735911455,
+    "on_off_accuracy": 0.7986822840409956,
+    "median_on_off_contrast": 0.8119024345539599,
+    "population_direction_fraction": 0.5,
+    "by_population": {
+      "T4a_L": {
+        "cells_x_conditions": 166,
+        "direction_accuracy": 0.3072289156626506,
+        "median_direction_contrast": -0.11613050144828888,
+        "on_off_accuracy": 0.7891566265060241,
+        "median_on_off_contrast": 0.806952967158112
+      },
+      "T4a_R": {
+        "cells_x_conditions": 169,
+        "direction_accuracy": 0.1301775147928994,
+        "median_direction_contrast": -0.1279087494493908,
+        "on_off_accuracy": 0.8520710059171598,
+        "median_on_off_contrast": 0.8857090028897902
+      },
+      "T4b_L": {
+        "cells_x_conditions": 168,
+        "direction_accuracy": 0.7559523809523809,
+        "median_direction_contrast": 0.12129535305592318,
+        "on_off_accuracy": 0.7916666666666666,
+        "median_on_off_contrast": 0.7312471789586965
+      },
+      "T4b_R": {
+        "cells_x_conditions": 169,
+        "direction_accuracy": 0.8757396449704142,
+        "median_direction_contrast": 0.1213639169155046,
+        "on_off_accuracy": 0.863905325443787,
+        "median_on_off_contrast": 0.8983388619761847
+      },
+      "T4c_L": {
+        "cells_x_conditions": 178,
+        "direction_accuracy": 0.6404494382022472,
+        "median_direction_contrast": 0.08478310242112685,
+        "on_off_accuracy": 0.7359550561797753,
+        "median_on_off_contrast": 0.6571988119409036
+      },
+      "T4c_R": {
+        "cells_x_conditions": 176,
+        "direction_accuracy": 0.5397727272727273,
+        "median_direction_contrast": 0.031172788267265807,
+        "on_off_accuracy": 0.8806818181818182,
+        "median_on_off_contrast": 0.9356818979933725
+      },
+      "T4d_L": {
+        "cells_x_conditions": 169,
+        "direction_accuracy": 0.38461538461538464,
+        "median_direction_contrast": -0.05777219860758615,
+        "on_off_accuracy": 0.6982248520710059,
+        "median_on_off_contrast": 0.6463876487802341
+      },
+      "T4d_R": {
+        "cells_x_conditions": 171,
+        "direction_accuracy": 0.4853801169590643,
+        "median_direction_contrast": 0.0,
+        "on_off_accuracy": 0.7777777777777778,
+        "median_on_off_contrast": 0.7655367439635492
+      }
+    }
+  },
+  "validation_gates": {
+    "direction_accuracy": false,
+    "direction_contrast": false,
+    "on_off_accuracy": true,
+    "on_off_contrast": true,
+    "population_direction_fraction": false
+  },
+  "validation_passed": false,
+  "test": {
+    "evaluated": false,
+    "reason": "validation gates failed; one-time test remains sealed"
+  },
+  "original_visual_battery_evaluated": false,
+  "advance_to_central_complex": false,
+  "stop_reason": "held-out cell and stimulus validation failed; test remains sealed"
+}

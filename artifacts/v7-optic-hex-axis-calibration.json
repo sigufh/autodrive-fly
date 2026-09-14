@@ -4,7 +4,7 @@
     "mode": "v7-experimental",
     "deployment_enabled": false,
     "config_sha256": "26cd9a32ce53a609fd0cc53ef5579c54474e9dbe94826e49c23f3df01a2788ca",
-    "implementation_sha256": "1c28d65994f10a24c3fa5e23e903346f8d412a558790a73db2da1a3caa809b6e",
+    "implementation_sha256": "ab50fc293fd337ab64cadb8417a2d465e800c3de42397073f0c635fb384dcb7a",
     "fit_source": "T4 only, stratified by subtype and eye",
     "fit_objective": "unit offsets; equal weight per T4 subtype within each eye",
     "validation_source": "disjoint T4 bodyIds plus all T5 bodyIds",

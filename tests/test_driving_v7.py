@@ -225,11 +225,15 @@ def test_v7_manifest_is_isolated_and_in_progress() -> None:
         "nested_T4_branch_axis_validation_passed": True,
         "branched_T4_controlled_response_passed": False,
         "published_T4_conductance_response_passed": False,
+        "fitted_T4_conductance_validation_passed": False,
+        "fitted_T4_one_time_test_evaluated": False,
     }
     assert "branched_T4_response_gates_failed" in manifest["blockers"]
     assert "published_T4_conductance_response_gates_failed" in manifest["blockers"]
-    assert manifest["current_evidence"] == "artifacts/v7-t4-conductance-candidate.json"
+    assert "fitted_T4_conductance_validation_failed" in manifest["blockers"]
+    assert manifest["current_evidence"] == "artifacts/v7-t4-conductance-fit.json"
     assert set(manifest["evidence"]) >= {
+        "artifacts/v7-t4-conductance-fit.json",
         "artifacts/v7-t4-conductance-candidate.json",
         "artifacts/v7-branched-t4-candidate.json",
         "artifacts/v7-t4-source-audit.json",
