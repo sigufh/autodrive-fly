@@ -49,6 +49,7 @@ from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
+from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
@@ -147,6 +148,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-phase-motion")
     subparsers.add_parser("v7-evaluate-geometry-sign")
     subparsers.add_parser("v7-evaluate-pixel-sampling")
+    subparsers.add_parser("v7-audit-spectral-controls")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -404,6 +406,12 @@ def main() -> None:
     if args.command == "v7-audit-full-update-perturbation":
         report = evaluate_v7_perturbation(root)
         target = root / "artifacts/v7-full-update-perturbation.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-spectral-controls":
+        report = evaluate_v7_spectral_controls(root)
+        target = root / "artifacts/v7-spectral-controls.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

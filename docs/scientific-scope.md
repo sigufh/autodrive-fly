@@ -204,6 +204,19 @@ and no new neural model evaluation was run. The diagnostic revision after failur
 is recorded, existing scores and thresholds remain unchanged, and interpolation
 must not be described as a measured receptor receptive field or a functional fix.
 
+A follow-up spectral diagnostic (`artifacts/v7-spectral-controls.json`) retains
+signed DC, F1 power, total power and input-referenced complex transfer separately.
+Independent filters at all 3,344 receptor positions and 33 fractional offsets per
+eye pass the fixed 1e-6 negative tolerance in both encodings and both finite and
+analytic-periodic windows; maximum F1 contrast is about 4.4e-16. A synthetic
+opponent correlator has signed DC contrast near +1, and near -1 after voltage
+inversion, but almost equal power for opposite motion. Power alone therefore
+misses that direction code and cannot establish depolarization or ON/OFF identity.
+Missing input phase references are flagged explicitly; no unique reference
+receptor is assumed for downstream neurons. These are post-failure measurement
+controls, not a replacement visual gate or neural validation. No new neural
+response evaluation or deployment was performed in this diagnostic stage.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
