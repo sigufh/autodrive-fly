@@ -164,6 +164,28 @@ cycles and every T4a–d/T5a–d cell are retained. This is a post-inspection di
 at one frequency, not independent validation or an ON/OFF-specialization test.
 Gray-sham subtraction does not remove stimulus-dependent recurrent dynamics.
 
+An isolated anatomical-sign comparison identifies a convention mismatch: the
+historical axis fit maps centre-minus-proximal onto preferred motion, whereas
+Groschner et al. (2022, https://pmc.ncbi.nlm.nih.gov/articles/PMC8891015/) describe
+preferred motion encountering distal Mi9, central Mi1/Tm3, then proximal Mi4/C3.
+Negating both axes within each eye changes the frozen conductance T4 aggregate
+contrast from -0.10380 to +0.09358 for linear luminance and from -0.07228 to
++0.06616 for frame differences. Physiological labels, graph, dynamics and source
+normalization remain fixed; historical reports are preserved and hash-verified.
+This is a literature-motivated, post-inspection coordinate comparator, not a
+score-selected label flip. Reversing input space can itself exchange direction
+responses, so the result is not independent functional validation or learning.
+The subtype-fitted axis and reused anatomy still need independent validation.
+
+The comparison retains all 13,580 T4/T5 targets and missing anatomical-vector
+counts. Continuous per-eye reversal differs from a discrete half-image mirror
+at 1,655 of 3,344 receptors with the unchanged historical rounding rule; one left
+eye receptor rounds onto the right image half. Those ambiguities are disclosed,
+not silently corrected in the same intervention. Gray-background dynamics are
+unchanged, mixed-polarity single-frequency gratings do not establish ON/OFF or
+looming specialization, and neither v7 defaults nor advancement gates change.
+See `artifacts/v7-geometry-sign.json` for paired all-cell results and coordinates.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

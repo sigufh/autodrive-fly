@@ -37,6 +37,7 @@ from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_gain_audit import evaluate_v7_normalization_gain
+from .driving.v7_geometry_sign import evaluate_v7_geometry_sign
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
     evaluate_v7_receptor_mask_audit,
@@ -143,6 +144,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-normalization-gain")
     subparsers.add_parser("v7-audit-full-update-perturbation")
     subparsers.add_parser("v7-evaluate-phase-motion")
+    subparsers.add_parser("v7-evaluate-geometry-sign")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -400,6 +402,12 @@ def main() -> None:
     if args.command == "v7-audit-full-update-perturbation":
         report = evaluate_v7_perturbation(root)
         target = root / "artifacts/v7-full-update-perturbation.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-geometry-sign":
+        report = evaluate_v7_geometry_sign(root)
+        target = root / "artifacts/v7-geometry-sign.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
