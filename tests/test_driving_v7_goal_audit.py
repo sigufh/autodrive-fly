@@ -39,6 +39,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["development_neural_screen_performed"] is True
     assert visual["observations"]["development_response_gates_pass"] is False
     assert visual["observations"]["development_passing_retinal_backends"] == []
+    assert visual["observations"]["development_geometry_ab_performed"] is True
+    assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
+    assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []
     assert visual["observations"]["existing_artifacts_rescored_under_new_contract"] is False
     release = saved["checks"][7]
     assert release["observations"]["stage1_stimulus_splits_disjoint"] is True

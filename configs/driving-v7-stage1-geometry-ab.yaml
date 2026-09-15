@@ -1,0 +1,24 @@
+version: 1
+name: v7-stage1-development-geometry-sign-ab
+observed_on: "2026-09-15"
+development_config: configs/driving-v7-stage1-development.yaml
+development_evidence: artifacts/v7-stage1-development.json
+geometry_evidence: artifacts/v7-geometry-sign.json
+stage1_split_evidence: artifacts/v7-stage1-split.json
+scoring_evidence: artifacts/v7-stage1-scoring.json
+input_evidence: artifacts/v7-stage1-input-audit.json
+candidate_geometry:
+  reference: nested_t4_axis_v1
+  intervention: reverse_each_eye_continuous_uv
+  formula: u'=0.5-u(L), u'=1.5-u(R), v'=1-v
+retinal_backends: [linear_luminance, signed_frame_difference]
+boundary:
+  anatomy_supported_before_this_development_screen: true
+  physiological_labels_changed: false
+  model_parameters_changed: false
+  parameter_fitting: false
+  development_only: true
+  validation_evaluated: false
+  ood_evaluated: false
+  final_evaluated: false
+  direct_stage_advance_allowed: false

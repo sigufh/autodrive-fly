@@ -39,6 +39,7 @@ def test_saved_development_input_audit_passes_without_neural_evaluation() -> Non
     assert report["advance_to_central_complex"] is False
     assert report["retinal_maps"]["default_3344"]["receptor_count"] == 3344
     assert report["retinal_maps"]["nested_t4_axis_3344"]["receptor_count"] == 3344
+    assert report["retinal_maps"]["reversed_nested_t4_axis_3344"]["receptor_count"] == 3344
     assert report["retinal_maps"]["balanced_1914"]["receptor_count"] == 1914
     for mapping in report["retinal_maps"].values():
         for result in mapping["encodings"].values():

@@ -57,6 +57,7 @@ from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
 from .driving.v7_stage1_development import evaluate_v7_stage1_development
+from .driving.v7_stage1_geometry_ab import evaluate_v7_stage1_geometry_ab
 from .driving.v7_stage1_input_audit import evaluate_v7_stage1_input_audit
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
@@ -179,6 +180,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-freeze-stage1-scoring")
     subparsers.add_parser("v7-audit-stage1-input")
     subparsers.add_parser("v7-evaluate-stage1-development")
+    subparsers.add_parser("v7-evaluate-stage1-geometry-ab")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -496,6 +498,12 @@ def main() -> None:
     if args.command == "v7-evaluate-stage1-development":
         report = evaluate_v7_stage1_development(root)
         target = root / "artifacts/v7-stage1-development.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-stage1-geometry-ab":
+        report = evaluate_v7_stage1_geometry_ab(root)
+        target = root / "artifacts/v7-stage1-geometry-ab.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

@@ -9,7 +9,7 @@ branched_config: configs/driving-v7-branched-t4.yaml
 branched_implementation: src/fly_emotion/driving/v7_branched.py
 source_audit_evidence: artifacts/v7-t4-source-audit.json
 split: development
-retinal_maps: [default_3344, nested_t4_axis_3344, balanced_1914]
+retinal_maps: [default_3344, nested_t4_axis_3344, reversed_nested_t4_axis_3344, balanced_1914]
 retinal_encodings: [linear_luminance, signed_frame_difference]
 thresholds:
   maximum_balanced_pair_mirror_error: 0.000001

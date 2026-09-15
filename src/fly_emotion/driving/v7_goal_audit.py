@@ -38,6 +38,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     stage1_scoring = reports["stage1_scoring"]
     stage1_input = reports["stage1_input"]
     stage1_development = reports["stage1_development"]
+    stage1_geometry_ab = reports["stage1_geometry_ab"]
     t5_supplement = reports["t5_supplement"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
@@ -124,6 +125,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     backend: result["T4_conductance_target_fraction"]
                     for backend, result in stage1_development["retinal_results"].items()
                 },
+                "development_geometry_ab_performed": True,
+                "reversed_geometry_development_gates_pass": stage1_geometry_ab[
+                    "development_response_gates_pass"
+                ],
+                "reversed_geometry_passing_retinal_backends": stage1_geometry_ab[
+                    "passing_retinal_backends"
+                ],
                 "existing_artifacts_rescored_under_new_contract": stage1_scoring["protocol"][
                     "existing_artifacts_rescored"
                 ],
@@ -380,7 +388,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "next_allowed_work": [
                 "verify an external direction-code map before using T5 traces to score a model",
                 "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
-                "diagnose the failed development screen without using validation for selection",
+                "diagnose remaining T4/T5 and looming dynamics without using validation",
                 "obtain externally custodied independent-cell and one-time final manifests",
             ],
         },

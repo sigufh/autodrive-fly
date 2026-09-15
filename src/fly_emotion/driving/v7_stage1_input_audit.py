@@ -9,7 +9,7 @@ import yaml
 
 from fly_emotion.driving.retina import RetinaMap
 from fly_emotion.driving.v7_branched import V7BranchedT4Probe
-from fly_emotion.driving.v7_geometry_sign import _sha256
+from fly_emotion.driving.v7_geometry_sign import _sha256, reverse_eye_coordinates
 from fly_emotion.driving.v7_retina_audit import build_balanced_retina_control, infer_retinal_columns
 from fly_emotion.driving.v7_stage1_split import build_stage1_split
 
@@ -188,9 +188,21 @@ def evaluate_v7_stage1_input_audit(root: Path) -> dict:
         side=nested_probe.retina.side.copy(),
         mapping_version=nested_probe.retina.mapping_version,
     )
+    reversed_u, reversed_v = reverse_eye_coordinates(
+        nested_retina.u, nested_retina.v, nested_retina.side
+    )
+    reversed_nested_retina = RetinaMap(
+        node_indices=nested_retina.node_indices.copy(),
+        body_ids=nested_retina.body_ids.copy(),
+        u=reversed_u,
+        v=reversed_v,
+        side=nested_retina.side.copy(),
+        mapping_version=nested_retina.mapping_version,
+    )
     retinal_maps = {
         "default_3344": default_retina,
         "nested_t4_axis_3344": nested_retina,
+        "reversed_nested_t4_axis_3344": reversed_nested_retina,
         "balanced_1914": balanced.retina,
     }
     if list(retinal_maps) != config["retinal_maps"]:

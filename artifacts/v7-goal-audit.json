@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "7e1b7a23b826801192f3f03572962956b6b51a149dc74df68c9765d06e3a683d",
-      "src/fly_emotion/driving/v7_goal_audit.py": "8aff501822a240c51dcb5b885968777e255048de03dc99b23f38997e118feaab",
+      "configs/driving-v7-goal-audit.yaml": "e9b70c33e5fd118876ed9bd3daa9c6660463741d3a5ca07c4601fa7d54114efc",
+      "src/fly_emotion/driving/v7_goal_audit.py": "d443a63e4662d5818804e3d35c798b2321440cd394c2a30314af189dc38ec476",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -22,8 +22,9 @@
       "artifacts/v7-t5-label-audit.json": "5fa157ab99fc3c385e2d5add961b24dad3f3f1e061f571b953cd4effead80329",
       "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
       "artifacts/v7-stage1-scoring.json": "e4f8a863b2f89766ef9d8382e605b4379a5e1186a6cb49f1acc4f5f6b0ac664f",
-      "artifacts/v7-stage1-input-audit.json": "ede759bca478e229265125358c14316bcf62747f6f3aac35be2afc27fc30edb9",
-      "artifacts/v7-stage1-development.json": "1eb3fd6105815280a686d2fe484eb16fb9cbfa71547c1e38f4709b8fed343c7d",
+      "artifacts/v7-stage1-input-audit.json": "ef735d89fb00d21ee1ebf0d4fe590f1731648acefc8caf1c8210b82b3b682045",
+      "artifacts/v7-stage1-development.json": "a76c4c8bce93f7cc6105fb7f8bea5265d454b4b7f76a288677914cb989016ef2",
+      "artifacts/v7-stage1-geometry-ab.json": "726c59ef2a59b079d1cfad18f229f4f4627103cab4c1da32d552cf9a49af3521",
       "artifacts/v7-t5-supplement-audit.json": "1d6d7ea04a74b280c05f4f268e19214ef614d46965b740c5e670a0cb14bbfed8"
     }
   },
@@ -95,6 +96,9 @@
           "linear_luminance": 0.9849678925861063,
           "signed_frame_difference": 0.9849678925861063
         },
+        "development_geometry_ab_performed": true,
+        "reversed_geometry_development_gates_pass": false,
+        "reversed_geometry_passing_retinal_backends": [],
         "existing_artifacts_rescored_under_new_contract": false
       },
       "missing": [
@@ -396,7 +400,7 @@
     "next_allowed_work": [
       "verify an external direction-code map before using T5 traces to score a model",
       "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
-      "diagnose the failed development screen without using validation for selection",
+      "diagnose remaining T4/T5 and looming dynamics without using validation",
       "obtain externally custodied independent-cell and one-time final manifests"
     ]
   }

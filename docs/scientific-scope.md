@@ -391,6 +391,16 @@ passing is 24/132 versus 4/132. Per-cell IDs, signed contrasts, denominators and
 invalid cells are retained. This blocks validation; OOD, reserved final and
 topology controls were not run (`artifacts/v7-stage1-development.json`).
 
+An anatomy-supported development A/B negates both continuous within-eye axes while
+holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
+All eight T4 direction medians move positively, but the full gate still fails.
+Linear luminance changes direction/polarity/mirror pass counts from 0/9/24 to
+3/10/48 (out of 16/16/132); frame difference changes them from 0/11/4 to
+0/10/0. Looming remains 0/6 for both. Only linear-luminance T4a_R passes the
+complete per-group direction rule. This is retrospective development evidence,
+not independent validation, and does not authorize label reversal or validation
+(`artifacts/v7-stage1-geometry-ab.json`).
+
 The development-only R1-R6 preflight evaluates 172 stimuli without running a
 neural model. Both the default 3,344-receptor map and the 1,914-receptor exact
 bilateral-pair control pass family-specific dynamic range and spatial-support
