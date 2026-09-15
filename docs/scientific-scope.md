@@ -233,6 +233,28 @@ gate; background conductance dynamics, ON/OFF identity, looming and topology
 specificity remain unresolved. No downstream phase reference is invented and no
 default model or policy changes.
 
+The official Edmond dataset for Groschner et al. (DOI 10.17617/3.8G) is now
+audited without committing source arrays. Thirteen Fig. 1/Fig. 3 files are
+verified against repository sizes, MD5 values and frozen SHA-256 hashes. Numeric
+arrays are loaded with pickle disabled; the Fig. 1d object array is not
+deserialized. The Fig. 3 notebook uses 1-kHz processed traces, class-averaged
+inputs, one global ON/OFF min-max normalization and synthetic ±160-ms shifts for
+Mi9 versus Mi4/C3. Its fixed parameters replay the same fitted T4 averages with
+pooled RMSE 1.765 mV and correlation 0.855 in the 2.5–5.5-s display crop. This is
+training-data reproduction, not independent validation: the paper reports
+least-squares fitting plus manual tuning, and the notebook contains no optimizer
+objective/history or split.
+
+Although current v7 parameter values match the paper, its computation does not.
+It applies them to image-driven per-node recurrent MaleCNS states normalized by
+synthetic calibration, integrates row-normalized source matrices per T4 cell,
+then maps predicted voltage into a leaky normalized drive. It neither consumes
+the paper's five class-average voltage traces nor applies their fixed ±160-ms
+shift in the conductance equation. Accordingly it is a paper-parameter-derived
+connectome candidate, not a reproduced or fitted electrophysiology model. Fig. 3
+cannot validate T5, per-cell MaleCNS activity or driving behavior. No fitting or
+stage advancement is authorized by this audit.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

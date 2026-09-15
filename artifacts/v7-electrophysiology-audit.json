@@ -1,0 +1,524 @@
+{
+  "protocol": {
+    "name": "v7-published-electrophysiology-audit",
+    "exploratory": true,
+    "advance_allowed": false,
+    "config_sha256": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
+    "implementation_sha256": "7751d6fa40fb35fd23c3aacd00e721c7deb238edda3afe5803beaec8170b0111",
+    "current_conductance_config_sha256": "47d358b4c49908f5f155e6e55f46c4ca57fc97b4a9802b3d06ce47f2bf77c841",
+    "raw_files_committed": false,
+    "temporary_download_deleted_after_audit": true,
+    "parameter_fitting_performed": false
+  },
+  "dataset": {
+    "doi": "10.17617/3.8G",
+    "api_base": "https://edmond.mpg.de/api/access/datafile",
+    "license": "CC BY 4.0",
+    "release_date": "2021-12-14"
+  },
+  "verified_files": {
+    "readme.txt": {
+      "id": 104838,
+      "bytes": 824,
+      "md5": "9099a66a97a8fa9321b73010665acded",
+      "sha256": "35e7a6a2481dc17a4a281306e29d1e83fdf7a28b73205bd71c767cd20b3a8d58"
+    },
+    "fig1.ipynb": {
+      "id": 104767,
+      "bytes": 540647,
+      "md5": "f7552c0406f403168f0237b9a3a2abe5",
+      "sha256": "4877383bcc83eeba94b33c63b9ce0f15336c03030c516cbe42ca669b4889b2df"
+    },
+    "fig1d_receptive_fields.npy": {
+      "id": 104768,
+      "bytes": 35520207,
+      "md5": "85832a84de6e8d246401c37ff0ab1eca",
+      "sha256": "0dd4a309e3ddec79b5898b4764e0dec12d707c14bb0865c4aae45f5f0d381d82"
+    },
+    "fig1e_receptive_fields.npy": {
+      "id": 104769,
+      "bytes": 22334048,
+      "md5": "8e4c70e785330681cd8a5b572d8adec3",
+      "sha256": "45b42d0a6c646780108b38966506172bec06f334113388bbfaaa4b5a800e4f05"
+    },
+    "fig3.ipynb": {
+      "id": 104817,
+      "bytes": 263853,
+      "md5": "7a84cb74d6a992d7d03f7a0c9a1984df",
+      "sha256": "ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695"
+    },
+    "fig3_C3.npy": {
+      "id": 104809,
+      "bytes": 2048128,
+      "md5": "714a097178d0cc202b1a4698a95852bf",
+      "sha256": "b9118e32cfb0d22acd4da41aee6931923ea33e4dda258df2abd26fd252e21be6"
+    },
+    "fig3_Mi1.npy": {
+      "id": 104811,
+      "bytes": 3072128,
+      "md5": "1964e0a136ed93f74b215f2a11dc0c25",
+      "sha256": "351e9e791a30d1c5bac329165934fbc05dbcfbb038b4b6e940e2531de1d61cce"
+    },
+    "fig3_Mi4.npy": {
+      "id": 104812,
+      "bytes": 2432128,
+      "md5": "c2ef2980d423f322730dfaded3fa5a07",
+      "sha256": "9309bb6deadcb8bf5c9a52267ef6564c314a04212af81c129b0754cf4de1f791"
+    },
+    "fig3_Mi9.npy": {
+      "id": 104813,
+      "bytes": 3712128,
+      "md5": "9373355c71127babaceeb03bcbea92ad",
+      "sha256": "3d5909c9b6c42776ff5e56d7219eacd002758a24b3cf5b7cecf30a07b8bf5c83"
+    },
+    "fig3_T4r.npy": {
+      "id": 104814,
+      "bytes": 8448128,
+      "md5": "3c870150cdc5c9df00afbf82c95fe0d4",
+      "sha256": "d2031a0a3144ab8d1827aa87f8f30a3e1efddd47980ee49b5b779a55fe501427"
+    },
+    "fig3_T4v.npy": {
+      "id": 104815,
+      "bytes": 8448128,
+      "md5": "1da37faf7e5117aaeb0ebb1d93413f0e",
+      "sha256": "785b2fc410ee1cc4fcf4df5bcc31737f9e243f41d1df9a39697a7e33aaad636b"
+    },
+    "fig3_Tm3.npy": {
+      "id": 104816,
+      "bytes": 1536128,
+      "md5": "e001e3d8d3ca32ca11417965bb182616",
+      "sha256": "07797ccd2ce72d3ea89c9ca01ba641c7c92d3d6dd198d6324596f2cf16b0fb82"
+    },
+    "fig3_led.npy": {
+      "id": 104810,
+      "bytes": 256128,
+      "md5": "1d43f6f1ee6ef4f73be584c489e35136",
+      "sha256": "8d158e5a2abee4cbc77ccc7eda7b77cac31550dd3a20a2142638e7c257ca734b"
+    }
+  },
+  "array_headers": {
+    "fig1d_receptive_fields.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [],
+      "fortran_order": false,
+      "dtype": "object",
+      "contains_python_objects": true
+    },
+    "fig1e_receptive_fields.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        17,
+        17,
+        210,
+        46
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_C3.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        2,
+        16,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_Mi1.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        2,
+        24,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_Mi4.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        2,
+        19,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_Mi9.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        2,
+        29,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_T4r.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        33,
+        2,
+        2,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_T4v.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        33,
+        2,
+        2,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_Tm3.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        2,
+        12,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    },
+    "fig3_led.npy": {
+      "format_version": [
+        1,
+        0
+      ],
+      "shape": [
+        2,
+        2,
+        8000
+      ],
+      "fortran_order": false,
+      "dtype": "float64",
+      "contains_python_objects": false
+    }
+  },
+  "safe_loading": {
+    "fig1d_object_array_loaded": false,
+    "reason": "object dtype requires pickle; header and notebook semantics only",
+    "replay_arrays_loaded_with_allow_pickle_false": true,
+    "T4_resistance_array_used_in_replay": false
+  },
+  "paper_protocol": {
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8891015/",
+    "recording_rate_hz": 10000,
+    "repository_rate_hz": 1000,
+    "edge_speed_degrees_per_second": 30.0,
+    "inter_ommatidial_angle_degrees": 4.8,
+    "shift_milliseconds": 160,
+    "trace_milliseconds": 8000,
+    "notebook_display_margin_milliseconds": 2500,
+    "stimuli": [
+      "on",
+      "off"
+    ],
+    "directions": [
+      "pd",
+      "nd"
+    ],
+    "fig1_noise_rate_hz": 60,
+    "fig1_pixel_width_degrees": 2.8125,
+    "fig1_input_peak_window_samples": [
+      -6,
+      0
+    ],
+    "fig1_t4_tail_window_samples": [
+      -16,
+      -10
+    ],
+    "fig1_t4_peak_window_samples": [
+      -6,
+      0
+    ],
+    "fig3_input_order": [
+      "Mi9",
+      "Tm3",
+      "Mi1",
+      "Mi4",
+      "C3"
+    ],
+    "fit_bounds": {
+      "thresholds": [
+        0.0,
+        1.0
+      ],
+      "gains": [
+        0.0,
+        2.0
+      ],
+      "leak_reversal_millivolts": [
+        -80.0,
+        -45.0
+      ],
+      "leak_conductance": [
+        0.0,
+        3.0
+      ]
+    },
+    "notebook_assignments": {
+      "fs": 1000,
+      "stims": [
+        "on",
+        "off"
+      ],
+      "dirs": [
+        "pd",
+        "nd"
+      ],
+      "tf": 8000,
+      "Mi9gain": 0.92,
+      "Tm3gain": 0.35,
+      "Mi1gain": 0.65,
+      "Mi4gain": 1.1,
+      "C3gain": 1.49,
+      "Mi9trld": 0.2,
+      "Tm3trld": 0.35,
+      "Mi1trld": 0.88,
+      "Mi4trld": 0.44,
+      "C3trld": 0.7,
+      "gleak": 0.5,
+      "Eleak": -65.0,
+      "EGlu": -71.0,
+      "EGABA": -68.0,
+      "EnAChR": -21.0,
+      "m": 2500
+    },
+    "fig1_required_snippets_verified": [
+      "pw = 180/64",
+      "tmin = -6",
+      "RF_T4_t = time_avg(RF_T4, -16, -10)",
+      "RF_T4_p = time_avg(RF_T4, -6, 0)"
+    ],
+    "fig3_required_snippets_verified": [
+      "fs = 1000",
+      "stims = ['on', 'off']",
+      "dirs = ['pd', 'nd']",
+      "shift = int(4.8*fs/30)",
+      "T4v = T4va.mean(0)",
+      "m = 2500",
+      "T4model[:] = T4model[:] / gtotal[:]"
+    ],
+    "actual_source_array_order": [
+      "Mi9",
+      "Tm3",
+      "Mi1",
+      "Mi4",
+      "C3"
+    ],
+    "onoff_comment_order": [
+      "Mi9",
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "onoff_comment_disagrees_with_array_order": true,
+    "onoff_display_run_all_enabled": true,
+    "fig1e_T4_cells": 46,
+    "fig1d_cell_counts_not_loaded": true
+  },
+  "paper_model_replay": {
+    "input_cells": {
+      "Mi9": 29,
+      "Tm3": 12,
+      "Mi1": 24,
+      "Mi4": 19,
+      "C3": 16
+    },
+    "T4_cells": 33,
+    "array_axes": {
+      "inputs": [
+        "stimulus_on_off",
+        "cell",
+        "time_milliseconds"
+      ],
+      "T4_voltage": [
+        "cell",
+        "stimulus_on_off",
+        "direction_pd_nd",
+        "time_ms"
+      ]
+    },
+    "normalization": "mean over cells, then one min-max range across ON/OFF and time",
+    "direction_synthesis": {
+      "shift_samples": 160,
+      "pd": {
+        "Mi9": -160,
+        "Mi4": 160,
+        "C3": 160
+      },
+      "nd": {
+        "Mi9": 160,
+        "Mi4": -160,
+        "C3": -160
+      },
+      "Mi1_Tm3_shift_samples": 0
+    },
+    "display_window_milliseconds": [
+      2500,
+      5500
+    ],
+    "led_half_intensity_crossing_milliseconds": {
+      "on_pd": 4004,
+      "on_nd": 4005,
+      "off_pd": 3998,
+      "off_nd": 3998
+    },
+    "conditions": {
+      "on_pd": {
+        "rmse_millivolts": 2.3013097091005443,
+        "mae_millivolts": 1.7552842547772223,
+        "pearson_correlation": 0.9024622932674005,
+        "observed_peak_millivolts": -50.47354022902672,
+        "predicted_peak_millivolts": -50.40518441880803,
+        "observed_trough_millivolts": -69.3754345672299,
+        "predicted_trough_millivolts": -68.57281553398057
+      },
+      "on_nd": {
+        "rmse_millivolts": 1.6069055452919814,
+        "mae_millivolts": 1.302489102192244,
+        "pearson_correlation": 0.8862516317172203,
+        "observed_peak_millivolts": -61.787084637266226,
+        "predicted_peak_millivolts": -58.58851918696063,
+        "observed_trough_millivolts": -68.11132866445215,
+        "predicted_trough_millivolts": -68.25576980494554
+      },
+      "off_pd": {
+        "rmse_millivolts": 1.7612669069868487,
+        "mae_millivolts": 1.4273415300855765,
+        "pearson_correlation": 0.7558195326587656,
+        "observed_peak_millivolts": -60.288640725492215,
+        "predicted_peak_millivolts": -63.15983384134998,
+        "observed_trough_millivolts": -69.99651352082839,
+        "predicted_trough_millivolts": -67.68716086352866
+      },
+      "off_nd": {
+        "rmse_millivolts": 1.2169715618621442,
+        "mae_millivolts": 1.1184847545177963,
+        "pearson_correlation": 0.8040971464204983,
+        "observed_peak_millivolts": -64.5620880897599,
+        "predicted_peak_millivolts": -64.04957942278881,
+        "observed_trough_millivolts": -69.04263883648498,
+        "predicted_trough_millivolts": -67.56248383716498
+      }
+    },
+    "pooled": {
+      "rmse_millivolts": 1.7650249791942576,
+      "pearson_correlation": 0.8546715615184016
+    },
+    "direction_peak_difference": {
+      "on": {
+        "observed_peak_pd_minus_nd_millivolts": 11.313544408239508,
+        "predicted_peak_pd_minus_nd_millivolts": 8.183334768152605
+      },
+      "off": {
+        "observed_peak_pd_minus_nd_millivolts": 4.273447364267682,
+        "predicted_peak_pd_minus_nd_millivolts": 0.8897455814388309
+      }
+    },
+    "interpretation": "retrospective replay on the same averaged traces used for fitting"
+  },
+  "parameter_provenance": {
+    "paper_parameters": {
+      "gains": {
+        "Mi9": 0.92,
+        "Tm3": 0.35,
+        "Mi1": 0.65,
+        "Mi4": 1.1,
+        "C3": 1.49
+      },
+      "thresholds": {
+        "Mi9": 0.2,
+        "Tm3": 0.35,
+        "Mi1": 0.88,
+        "Mi4": 0.44,
+        "C3": 0.7
+      },
+      "reversal_potentials_millivolts": {
+        "glutamate": -71.0,
+        "acetylcholine": -21.0,
+        "gaba": -68.0,
+        "leak": -65.0
+      },
+      "leak_conductance": 0.5
+    },
+    "current_config_parameter_values_match": true,
+    "paper_fit_method": "least squares with scipy.optimize.minimize plus manual FaderPort tuning",
+    "optimizer_code_present_in_fig3_notebook": false,
+    "replay_is_independent_validation": false
+  },
+  "current_v7_model_differences": {
+    "input_data": "MaleCNS recurrent states from image-driven R1-R6, not measured input Vm",
+    "normalization": "per source node ranges from synthetic sweep/noise, not class-mean global min-max",
+    "spatial_timing": "real source-target adjacency with no paper fixed +/-160 ms shift in the equation",
+    "target_integration": "per-T4 row-normalized source matrices, not five class-average traces",
+    "temporal_update": "recurrent tanh plus leak integration, not instantaneous steady-state voltage",
+    "output": "paper voltage normalized to [-1,1] drive then leak-updated, not membrane mV",
+    "direct_fig3_reproduction": false
+  },
+  "fitting_boundary": {
+    "perform_parameter_fitting": false,
+    "paper_fig3_is_training_data": true,
+    "paper_parameter_estimation_was_least_squares_plus_manual_tuning": true,
+    "notebook_contains_optimizer": false,
+    "current_v7_is_direct_fig3_reproduction": false,
+    "require_physical_model_time_mapping_before_fit": true,
+    "require_independent_validation_after_fit": true,
+    "require_separate_T5_electrophysiology": true
+  },
+  "limitations": [
+    "Paper Fig. 3 parameters were fitted and hand-tuned on the same average traces.",
+    "The Fig. 3 notebook has simulation code, not the optimizer objective/history.",
+    "The 2.5-5.5 s interval is a display crop, not a proven original fit window.",
+    "Repository arrays are processed/aligned at 1 kHz; raw acquisition was 10 kHz.",
+    "Input directions are synthesized from class means, not recorded PD/ND arrays.",
+    "Fig. 1 T4 fields were rotated post hoc into preferred-direction coordinates.",
+    "The paper cannot validate T5, MaleCNS per-cell states or driving behavior."
+  ],
+  "advance_to_parameter_fit": false,
+  "advance_to_central_complex": false
+}
