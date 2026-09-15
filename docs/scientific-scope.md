@@ -351,11 +351,13 @@ an explicit response-independent code map before any T5 model scoring
 (`artifacts/v7-t5-label-audit.json`).
 
 A new stage-1 stimulus protocol freezes disjoint development, validation, OOD and
-sealed-final sets before another model is fitted. Each split contains 156 stimuli
-covering uniform luminance, ON/OFF four-direction edges, looming/receding,
+reserved-final sets before another model is fitted. Each split contains 172 stimuli
+covering uniform luminance, ON/OFF four-direction edges, looming/receding/static discs,
 translation and rotation. Parameters, noise levels and seeds are disjoint; all
 cross-split identity and frame-hash overlaps are zero. Mirror pairs share exactly
-mirrored noise. Final per-stimulus rows are not exposed and remain unevaluated.
+mirrored noise. Final per-stimulus rows are omitted and remain unevaluated, but
+their generator settings are committed, so this is not a blinded one-time test.
+A release final still requires an externally custodied manifest.
 The declared 10-ms frame and nominal 2.5-ms substep are engineering scheduling
 units only: they are not applied to the runtime and do not constitute biological
 time calibration (`artifacts/v7-stage1-split.json`).
@@ -367,6 +369,17 @@ bounds plus fixed VE=0, VI=-74 and VL=-65 mV, but no fitted vector for any of th
 17 cells. Those bounds cannot support zero-fit model replay or measured/model
 comparison; Figure 4 result files are still required
 (`artifacts/v7-t5-supplement-audit.json`).
+
+The frozen strict stage-1 scoring contract requires every T4/T5 subtype-by-eye
+group to pass signed direction and polarity criteria separately; no pooled median
+can authorize a pass. LPLC1, LPLC2 and LC4 must each prefer expansion over both
+receding and a size-matched static disc. Per-cell IDs, denominators and invalid
+coverage are retained. Silence, label reversal, insufficient valid coverage,
+static-equals-looming and silent mirror controls all fail as intended. Mirror
+equivariance also requires active-pair coverage, preventing silent populations
+from scoring as perfect. No old artifact is retrospectively rescored and final
+authorization additionally requires external custody
+(`artifacts/v7-stage1-scoring.json`).
 
 The machine-readable objective coverage audit maps all numbered requirements 0–8
 to current evidence. Only version/checkpoint isolation is complete; the city/LLM

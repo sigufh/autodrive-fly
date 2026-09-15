@@ -3,8 +3,8 @@
     "name": "v7-stage1-independent-stimulus-split",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-stage1-split.yaml": "4b8866a5c497eec453ace3b0077b59dc8893b37ded7cfbe889908de49546ef21",
-      "src/fly_emotion/driving/v7_stage1_split.py": "5fa7779a7b7df22be2e55b60a1fa1afff89213aac5d61b2f09a70ff48d0a0af3",
+      "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
+      "src/fly_emotion/driving/v7_stage1_split.py": "2936c656e7f97a36947af68fc09d62cd21564825fc5479c78688cf879458e0fd",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf"
     },
     "model_evaluated": false,
@@ -22,12 +22,13 @@
   "split_manifests": {
     "development": {
       "evaluable": true,
-      "stimulus_count": 156,
-      "aggregate_sha256": "a8edb087027ce10ae8f3a317958b122b92413a006400b027701b514bc59d0e42",
+      "stimulus_count": 172,
+      "aggregate_sha256": "1cc84e801095466a3a18a0b70d42f7859afb7016e14fc49a82d6b20ee9fcd8de",
       "families": {
         "looming": 32,
         "moving_edge": 64,
         "rotation": 16,
+        "static": 16,
         "translation": 32,
         "uniform": 12
       },
@@ -390,6 +391,23 @@
           "mirror_of": "development:loom:on:contraction:24:0:101"
         },
         {
+          "identity": "development:static:on:none:24:0:101",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.0,
+          "seed": 101,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "7c5df5f1db9623b4679cded7ae15d39baecd64a9905477d72e3401b9e1c99784",
+          "mirror_of": "development:static:on:none:24:0:101"
+        },
+        {
           "identity": "development:loom:off:expansion:24:0:101",
           "family": "looming",
           "polarity": "off",
@@ -422,6 +440,23 @@
           ],
           "sha256": "72deeb40f16dc581f1566477da56a67f284a1142f013930b751c5e1e71cf3395",
           "mirror_of": "development:loom:off:contraction:24:0:101"
+        },
+        {
+          "identity": "development:static:off:none:24:0:101",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.0,
+          "seed": 101,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "d5a41f4c272552f5458ff4bf634b47c36fc4f7cf6bf8860a8ea682ea6fbe29c9",
+          "mirror_of": "development:static:off:none:24:0:101"
         },
         {
           "identity": "development:loom:on:expansion:32:0:101",
@@ -458,6 +493,23 @@
           "mirror_of": "development:loom:on:contraction:32:0:101"
         },
         {
+          "identity": "development:static:on:none:32:0:101",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.0,
+          "seed": 101,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "ab308af65b8fc8490f92a538f76bf32eeb796666424a655230fe8ed7bd743793",
+          "mirror_of": "development:static:on:none:32:0:101"
+        },
+        {
           "identity": "development:loom:off:expansion:32:0:101",
           "family": "looming",
           "polarity": "off",
@@ -490,6 +542,23 @@
           ],
           "sha256": "a3a578632a1032722421104523ff3fbca4d8fa3933d332d7a6aeee10ed8877e9",
           "mirror_of": "development:loom:off:contraction:32:0:101"
+        },
+        {
+          "identity": "development:static:off:none:32:0:101",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.0,
+          "seed": 101,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "1a55aa2af5dcbc57d0ce73addc7a62c4fac20738b2e2c61fce7fdca8af4db863",
+          "mirror_of": "development:static:off:none:32:0:101"
         },
         {
           "identity": "development:translation:on:right:8:0:101",
@@ -1053,6 +1122,23 @@
           "mirror_of": "development:loom:on:contraction:24:0.005:102"
         },
         {
+          "identity": "development:static:on:none:24:0.005:102",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.005,
+          "seed": 102,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "364c51812745788137293ee802bc72a95c8618ff1c8d35d58523049162478100",
+          "mirror_of": "development:static:on:none:24:0.005:102"
+        },
+        {
           "identity": "development:loom:off:expansion:24:0.005:102",
           "family": "looming",
           "polarity": "off",
@@ -1085,6 +1171,23 @@
           ],
           "sha256": "42b6c313f4d4161f49d7de7399a995199623e53aa9766d246e0340891eb583e8",
           "mirror_of": "development:loom:off:contraction:24:0.005:102"
+        },
+        {
+          "identity": "development:static:off:none:24:0.005:102",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.005,
+          "seed": 102,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "8a9d53c49ae4bdc29161b03c1e07ce98796ff09bff8f791473d044114c6f0880",
+          "mirror_of": "development:static:off:none:24:0.005:102"
         },
         {
           "identity": "development:loom:on:expansion:32:0.005:102",
@@ -1121,6 +1224,23 @@
           "mirror_of": "development:loom:on:contraction:32:0.005:102"
         },
         {
+          "identity": "development:static:on:none:32:0.005:102",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.005,
+          "seed": 102,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "f514542eb03b71a63d86f5e49727674e5860e7322ba8a3ac80a9c629957ded92",
+          "mirror_of": "development:static:on:none:32:0.005:102"
+        },
+        {
           "identity": "development:loom:off:expansion:32:0.005:102",
           "family": "looming",
           "polarity": "off",
@@ -1153,6 +1273,23 @@
           ],
           "sha256": "da2522790a5fd427c063e7bea0dfae84806700a15a9560fb2de2356ed1403441",
           "mirror_of": "development:loom:off:contraction:32:0.005:102"
+        },
+        {
+          "identity": "development:static:off:none:32:0.005:102",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.005,
+          "seed": 102,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "f2e370b54fa1459b14f5376c03c28fca9e9115535b6e17b60d2279bac1dba565",
+          "mirror_of": "development:static:off:none:32:0.005:102"
         },
         {
           "identity": "development:translation:on:right:8:0.005:102",
@@ -1716,6 +1853,23 @@
           "mirror_of": "development:loom:on:contraction:24:0.01:103"
         },
         {
+          "identity": "development:static:on:none:24:0.01:103",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.01,
+          "seed": 103,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "5a8c16873c8551f7bc3e31b64ce3374bc18a71ace8d034a9950e5e2b3851657b",
+          "mirror_of": "development:static:on:none:24:0.01:103"
+        },
+        {
           "identity": "development:loom:off:expansion:24:0.01:103",
           "family": "looming",
           "polarity": "off",
@@ -1748,6 +1902,23 @@
           ],
           "sha256": "f2cd50bffa42c82557ae50cc2101bb60fde58db91a6e2c3e52643cf68d78ae8e",
           "mirror_of": "development:loom:off:contraction:24:0.01:103"
+        },
+        {
+          "identity": "development:static:off:none:24:0.01:103",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.01,
+          "seed": 103,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "471b7c9866f4322a681a49be97add2666811cc8051dfbd33f7893180c9025ea6",
+          "mirror_of": "development:static:off:none:24:0.01:103"
         },
         {
           "identity": "development:loom:on:expansion:32:0.01:103",
@@ -1784,6 +1955,23 @@
           "mirror_of": "development:loom:on:contraction:32:0.01:103"
         },
         {
+          "identity": "development:static:on:none:32:0.01:103",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.01,
+          "seed": 103,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "1f290015e35d829af1e8c30040cac76e5ea749e7f55659ece24c7b932d343aff",
+          "mirror_of": "development:static:on:none:32:0.01:103"
+        },
+        {
           "identity": "development:loom:off:expansion:32:0.01:103",
           "family": "looming",
           "polarity": "off",
@@ -1816,6 +2004,23 @@
           ],
           "sha256": "019b3ff5bc97f07f64c24a16122bf4b02340966a0917447ed65fce7cbaeead26",
           "mirror_of": "development:loom:off:contraction:32:0.01:103"
+        },
+        {
+          "identity": "development:static:off:none:32:0.01:103",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.01,
+          "seed": 103,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "14128de35b70b6aab9159d4685dc22581be08e5371c0d341b4ebeec6d131ef07",
+          "mirror_of": "development:static:off:none:32:0.01:103"
         },
         {
           "identity": "development:translation:on:right:8:0.01:103",
@@ -2379,6 +2584,23 @@
           "mirror_of": "development:loom:on:contraction:24:0.015:104"
         },
         {
+          "identity": "development:static:on:none:24:0.015:104",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.015,
+          "seed": 104,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "eb846ca1b117ba963af7bbdf6594be2fb24fca01793a746bcbe376952f46ba45",
+          "mirror_of": "development:static:on:none:24:0.015:104"
+        },
+        {
           "identity": "development:loom:off:expansion:24:0.015:104",
           "family": "looming",
           "polarity": "off",
@@ -2411,6 +2633,23 @@
           ],
           "sha256": "70981124c266f9cfd3bbcb627b23e8c58c8fbb8f5e0e77bb58ab449bb45b1b07",
           "mirror_of": "development:loom:off:contraction:24:0.015:104"
+        },
+        {
+          "identity": "development:static:off:none:24:0.015:104",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 24.0,
+          "noise_standard_deviation": 0.015,
+          "seed": 104,
+          "shape": [
+            24,
+            24,
+            48
+          ],
+          "sha256": "051c32b7f89804c4201a6d480a06ccc0ae795513792c6db5daa3b7fdae48ef29",
+          "mirror_of": "development:static:off:none:24:0.015:104"
         },
         {
           "identity": "development:loom:on:expansion:32:0.015:104",
@@ -2447,6 +2686,23 @@
           "mirror_of": "development:loom:on:contraction:32:0.015:104"
         },
         {
+          "identity": "development:static:on:none:32:0.015:104",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.015,
+          "seed": 104,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "e674a1ccbaa6b7cf34dc607cad7407101fee3955f3f2d6c91af24fbbc91aa509",
+          "mirror_of": "development:static:on:none:32:0.015:104"
+        },
+        {
           "identity": "development:loom:off:expansion:32:0.015:104",
           "family": "looming",
           "polarity": "off",
@@ -2479,6 +2735,23 @@
           ],
           "sha256": "7b6b73a00fd85f2a66aa6d730a2ad6dd293adfd159b2de903918d1f50d5f9f14",
           "mirror_of": "development:loom:off:contraction:32:0.015:104"
+        },
+        {
+          "identity": "development:static:off:none:32:0.015:104",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 32.0,
+          "noise_standard_deviation": 0.015,
+          "seed": 104,
+          "shape": [
+            32,
+            24,
+            48
+          ],
+          "sha256": "17c3abc41514416982f6a50408df77f66e458ae5be6ed78802be07a61fbe0b73",
+          "mirror_of": "development:static:off:none:32:0.015:104"
         },
         {
           "identity": "development:translation:on:right:8:0.015:104",
@@ -2688,12 +2961,13 @@
     },
     "validation": {
       "evaluable": true,
-      "stimulus_count": 156,
-      "aggregate_sha256": "45731a9b7b4900786e79b8f8c45b65add290ffc945297e1924ed606257f07e28",
+      "stimulus_count": 172,
+      "aggregate_sha256": "b5f8fe3089a2709db99eb3472b4e39c8a0346a199891ca0d95cd3bab0353241b",
       "families": {
         "looming": 32,
         "moving_edge": 64,
         "rotation": 16,
+        "static": 16,
         "translation": 32,
         "uniform": 12
       },
@@ -3056,6 +3330,23 @@
           "mirror_of": "validation:loom:on:contraction:28:0.02:201"
         },
         {
+          "identity": "validation:static:on:none:28:0.02:201",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.02,
+          "seed": 201,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "faa51e6089c60d367abae76be6fa10f653789105f2eed74f3cc1ac2ac3cb7420",
+          "mirror_of": "validation:static:on:none:28:0.02:201"
+        },
+        {
           "identity": "validation:loom:off:expansion:28:0.02:201",
           "family": "looming",
           "polarity": "off",
@@ -3088,6 +3379,23 @@
           ],
           "sha256": "e72fa6ba6ad5bbdf863dd50a6805a4828c46c2856e3f4185620d748945ec5855",
           "mirror_of": "validation:loom:off:contraction:28:0.02:201"
+        },
+        {
+          "identity": "validation:static:off:none:28:0.02:201",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.02,
+          "seed": 201,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "1cc5c40787a9d8693fb5670fad54ddf2c01e0c439a043b9cca9a329fb207ad29",
+          "mirror_of": "validation:static:off:none:28:0.02:201"
         },
         {
           "identity": "validation:loom:on:expansion:40:0.02:201",
@@ -3124,6 +3432,23 @@
           "mirror_of": "validation:loom:on:contraction:40:0.02:201"
         },
         {
+          "identity": "validation:static:on:none:40:0.02:201",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.02,
+          "seed": 201,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "ead041c7c69720b20de7ae14dbfae6ca3957f392c42498bb2e7c9e529f7a9fcb",
+          "mirror_of": "validation:static:on:none:40:0.02:201"
+        },
+        {
           "identity": "validation:loom:off:expansion:40:0.02:201",
           "family": "looming",
           "polarity": "off",
@@ -3156,6 +3481,23 @@
           ],
           "sha256": "4d28e6cb0a701d30010ced265ef0095ae48788ec7a26335c97f8caa68a001aab",
           "mirror_of": "validation:loom:off:contraction:40:0.02:201"
+        },
+        {
+          "identity": "validation:static:off:none:40:0.02:201",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.02,
+          "seed": 201,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "82bc04a9885dd75ae119d6746675a13f2b6d14216de97bcce1bd185f19235e1a",
+          "mirror_of": "validation:static:off:none:40:0.02:201"
         },
         {
           "identity": "validation:translation:on:right:10:0.02:201",
@@ -3719,6 +4061,23 @@
           "mirror_of": "validation:loom:on:contraction:28:0.03:202"
         },
         {
+          "identity": "validation:static:on:none:28:0.03:202",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.03,
+          "seed": 202,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "2eb4148807caf7fd26b3715dddd8b9cfb481dd5378d229587d88291f18dec524",
+          "mirror_of": "validation:static:on:none:28:0.03:202"
+        },
+        {
           "identity": "validation:loom:off:expansion:28:0.03:202",
           "family": "looming",
           "polarity": "off",
@@ -3751,6 +4110,23 @@
           ],
           "sha256": "8152a4a4c5946ecc6b54ec4dda566a645684baaa70fe3742e473733231269208",
           "mirror_of": "validation:loom:off:contraction:28:0.03:202"
+        },
+        {
+          "identity": "validation:static:off:none:28:0.03:202",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.03,
+          "seed": 202,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "7812c3a89fd25943fb825d1ca2b8aa13ae96b53e988d703fb721baae410a8d19",
+          "mirror_of": "validation:static:off:none:28:0.03:202"
         },
         {
           "identity": "validation:loom:on:expansion:40:0.03:202",
@@ -3787,6 +4163,23 @@
           "mirror_of": "validation:loom:on:contraction:40:0.03:202"
         },
         {
+          "identity": "validation:static:on:none:40:0.03:202",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.03,
+          "seed": 202,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "85cdc86deaa9e2f14025520eaf0d628e61df1145de2e5993fc527b94258faca5",
+          "mirror_of": "validation:static:on:none:40:0.03:202"
+        },
+        {
           "identity": "validation:loom:off:expansion:40:0.03:202",
           "family": "looming",
           "polarity": "off",
@@ -3819,6 +4212,23 @@
           ],
           "sha256": "3356ecb591dbe02ceca1358e568784d3fba5a5c4e7704a8ae10fd6127211c83c",
           "mirror_of": "validation:loom:off:contraction:40:0.03:202"
+        },
+        {
+          "identity": "validation:static:off:none:40:0.03:202",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.03,
+          "seed": 202,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "6537af6fb1e28a3f00f4db0a55d5ca764087aa6cb625d48742d06a98479de7a3",
+          "mirror_of": "validation:static:off:none:40:0.03:202"
         },
         {
           "identity": "validation:translation:on:right:10:0.03:202",
@@ -4382,6 +4792,23 @@
           "mirror_of": "validation:loom:on:contraction:28:0.04:203"
         },
         {
+          "identity": "validation:static:on:none:28:0.04:203",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.04,
+          "seed": 203,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "3c0fb8ca285f8aaa9809d98e7370d06e197d2550b198fe4c018b323b4d14a2ba",
+          "mirror_of": "validation:static:on:none:28:0.04:203"
+        },
+        {
           "identity": "validation:loom:off:expansion:28:0.04:203",
           "family": "looming",
           "polarity": "off",
@@ -4414,6 +4841,23 @@
           ],
           "sha256": "4ff4020644615cc80e81f63636fc1a0040c53eeb27216593b4f134f7b23b3427",
           "mirror_of": "validation:loom:off:contraction:28:0.04:203"
+        },
+        {
+          "identity": "validation:static:off:none:28:0.04:203",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.04,
+          "seed": 203,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "fbbe4698e1cd2c3c08f030c61011096e88d730db4668b375377cf05d6eb49827",
+          "mirror_of": "validation:static:off:none:28:0.04:203"
         },
         {
           "identity": "validation:loom:on:expansion:40:0.04:203",
@@ -4450,6 +4894,23 @@
           "mirror_of": "validation:loom:on:contraction:40:0.04:203"
         },
         {
+          "identity": "validation:static:on:none:40:0.04:203",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.04,
+          "seed": 203,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "f7b791ecb4e3fca6f6518d0b5a9f9e634af14317f630e9f24d9abd91e7da107a",
+          "mirror_of": "validation:static:on:none:40:0.04:203"
+        },
+        {
           "identity": "validation:loom:off:expansion:40:0.04:203",
           "family": "looming",
           "polarity": "off",
@@ -4482,6 +4943,23 @@
           ],
           "sha256": "64e9f71849c1d57c218191b505393d225fc371e1a6b22fca8dfbcfdbda1120ed",
           "mirror_of": "validation:loom:off:contraction:40:0.04:203"
+        },
+        {
+          "identity": "validation:static:off:none:40:0.04:203",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.04,
+          "seed": 203,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "7b853a56f4a4130b2b28f7240c360958e419120ed0079fea75f2b18c1f806727",
+          "mirror_of": "validation:static:off:none:40:0.04:203"
         },
         {
           "identity": "validation:translation:on:right:10:0.04:203",
@@ -5045,6 +5523,23 @@
           "mirror_of": "validation:loom:on:contraction:28:0.05:204"
         },
         {
+          "identity": "validation:static:on:none:28:0.05:204",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.05,
+          "seed": 204,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "a1025c76080441984b603fd8393f94cebd4e92ed6303a050695204c1445f50d1",
+          "mirror_of": "validation:static:on:none:28:0.05:204"
+        },
+        {
           "identity": "validation:loom:off:expansion:28:0.05:204",
           "family": "looming",
           "polarity": "off",
@@ -5077,6 +5572,23 @@
           ],
           "sha256": "7c0d545270fe505ffbe7ad5a8d8fd1a96218e0b684479e6f44fd6caa09cb492d",
           "mirror_of": "validation:loom:off:contraction:28:0.05:204"
+        },
+        {
+          "identity": "validation:static:off:none:28:0.05:204",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 28.0,
+          "noise_standard_deviation": 0.05,
+          "seed": 204,
+          "shape": [
+            28,
+            24,
+            48
+          ],
+          "sha256": "934dec5b955e76be563a269aaf91f541a18eab8d3ef3fe22d8ef259cf30e6115",
+          "mirror_of": "validation:static:off:none:28:0.05:204"
         },
         {
           "identity": "validation:loom:on:expansion:40:0.05:204",
@@ -5113,6 +5625,23 @@
           "mirror_of": "validation:loom:on:contraction:40:0.05:204"
         },
         {
+          "identity": "validation:static:on:none:40:0.05:204",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.05,
+          "seed": 204,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "29b8040f25070ac8b8a9a236d6db3b41da9f28165ff5068e79b4280d12a90d1c",
+          "mirror_of": "validation:static:on:none:40:0.05:204"
+        },
+        {
           "identity": "validation:loom:off:expansion:40:0.05:204",
           "family": "looming",
           "polarity": "off",
@@ -5145,6 +5674,23 @@
           ],
           "sha256": "5fb865e54b9b31dfa2a78978c290edc6d8ec311ff4cc6af4ea88963cdf34ae4a",
           "mirror_of": "validation:loom:off:contraction:40:0.05:204"
+        },
+        {
+          "identity": "validation:static:off:none:40:0.05:204",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 40.0,
+          "noise_standard_deviation": 0.05,
+          "seed": 204,
+          "shape": [
+            40,
+            24,
+            48
+          ],
+          "sha256": "3f5c718ccbd5402419d503091013871f955bfbdb496abe09d259d19aef4ca3e2",
+          "mirror_of": "validation:static:off:none:40:0.05:204"
         },
         {
           "identity": "validation:translation:on:right:10:0.05:204",
@@ -5354,12 +5900,13 @@
     },
     "ood": {
       "evaluable": true,
-      "stimulus_count": 156,
-      "aggregate_sha256": "f28bd13d23bb6709bf66b675718d1da37a55b0cec33f79ed40266273c040fb1a",
+      "stimulus_count": 172,
+      "aggregate_sha256": "8b966639f6a4543f36d43a1acdccc3dace8532007e56e625b0ecf8282e8529c1",
       "families": {
         "looming": 32,
         "moving_edge": 64,
         "rotation": 16,
+        "static": 16,
         "translation": 32,
         "uniform": 12
       },
@@ -5722,6 +6269,23 @@
           "mirror_of": "ood:loom:on:contraction:16:0.08:301"
         },
         {
+          "identity": "ood:static:on:none:16:0.08:301",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.08,
+          "seed": 301,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "8413ab827794dbde889a7a93ea65df0809307796c94463bc68224d8b6f16e5bb",
+          "mirror_of": "ood:static:on:none:16:0.08:301"
+        },
+        {
           "identity": "ood:loom:off:expansion:16:0.08:301",
           "family": "looming",
           "polarity": "off",
@@ -5754,6 +6318,23 @@
           ],
           "sha256": "e6e87f516582dcef08930a0e77acfb6182b8c834154e38248680cdbf9389dad7",
           "mirror_of": "ood:loom:off:contraction:16:0.08:301"
+        },
+        {
+          "identity": "ood:static:off:none:16:0.08:301",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.08,
+          "seed": 301,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "cc655356a50790b33ab4713f2624ba88c04193035e5ac6ae90bd56b4ce94449e",
+          "mirror_of": "ood:static:off:none:16:0.08:301"
         },
         {
           "identity": "ood:loom:on:expansion:56:0.08:301",
@@ -5790,6 +6371,23 @@
           "mirror_of": "ood:loom:on:contraction:56:0.08:301"
         },
         {
+          "identity": "ood:static:on:none:56:0.08:301",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.08,
+          "seed": 301,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "6d6deff616fa3aafd69600b702691524893918d386a2e6f54a754d6fb6708e58",
+          "mirror_of": "ood:static:on:none:56:0.08:301"
+        },
+        {
           "identity": "ood:loom:off:expansion:56:0.08:301",
           "family": "looming",
           "polarity": "off",
@@ -5822,6 +6420,23 @@
           ],
           "sha256": "606270dac0f4196aad752093310d28b484e77f4536bb345532ca3d447cf4da27",
           "mirror_of": "ood:loom:off:contraction:56:0.08:301"
+        },
+        {
+          "identity": "ood:static:off:none:56:0.08:301",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.08,
+          "seed": 301,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "93cfbe662e7e9b3d1ecb4ada70f4e5013c01f736bad423c73b9dfaaecf403c49",
+          "mirror_of": "ood:static:off:none:56:0.08:301"
         },
         {
           "identity": "ood:translation:on:right:6:0.08:301",
@@ -6385,6 +7000,23 @@
           "mirror_of": "ood:loom:on:contraction:16:0.1:302"
         },
         {
+          "identity": "ood:static:on:none:16:0.1:302",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.1,
+          "seed": 302,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "78d73965699876e8f528162f5b19da4797e61ade4c08311e82c3b65be2f39b79",
+          "mirror_of": "ood:static:on:none:16:0.1:302"
+        },
+        {
           "identity": "ood:loom:off:expansion:16:0.1:302",
           "family": "looming",
           "polarity": "off",
@@ -6417,6 +7049,23 @@
           ],
           "sha256": "fd32e6d3383baaaaab5d274551b967da92d0465aa454e85ebb819f47cb7e971e",
           "mirror_of": "ood:loom:off:contraction:16:0.1:302"
+        },
+        {
+          "identity": "ood:static:off:none:16:0.1:302",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.1,
+          "seed": 302,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "d927f06192af9fd010b344d51a921ce5589e4455f87696b3e0700467b3dcc17a",
+          "mirror_of": "ood:static:off:none:16:0.1:302"
         },
         {
           "identity": "ood:loom:on:expansion:56:0.1:302",
@@ -6453,6 +7102,23 @@
           "mirror_of": "ood:loom:on:contraction:56:0.1:302"
         },
         {
+          "identity": "ood:static:on:none:56:0.1:302",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.1,
+          "seed": 302,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "d1534b7595c95a3946f48763146637cc3f6aa65b6c0bf8e91bdada0ad3d20814",
+          "mirror_of": "ood:static:on:none:56:0.1:302"
+        },
+        {
           "identity": "ood:loom:off:expansion:56:0.1:302",
           "family": "looming",
           "polarity": "off",
@@ -6485,6 +7151,23 @@
           ],
           "sha256": "77e8a3e64bf64b798893cd6c83e06818cfd53091ec3941e82acd6c2d9c9c5108",
           "mirror_of": "ood:loom:off:contraction:56:0.1:302"
+        },
+        {
+          "identity": "ood:static:off:none:56:0.1:302",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.1,
+          "seed": 302,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "32f6dca26b8c109fe3f0a0006cec0e629b53c1494bb0ec4cc28efdb57ec9b8cf",
+          "mirror_of": "ood:static:off:none:56:0.1:302"
         },
         {
           "identity": "ood:translation:on:right:6:0.1:302",
@@ -7048,6 +7731,23 @@
           "mirror_of": "ood:loom:on:contraction:16:0.12:303"
         },
         {
+          "identity": "ood:static:on:none:16:0.12:303",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.12,
+          "seed": 303,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "49ae6217617aca375fc2212f4fd49bf99b0f7cab7e01128915c447be0c55b426",
+          "mirror_of": "ood:static:on:none:16:0.12:303"
+        },
+        {
           "identity": "ood:loom:off:expansion:16:0.12:303",
           "family": "looming",
           "polarity": "off",
@@ -7080,6 +7780,23 @@
           ],
           "sha256": "4a6ffbe03d52ba9d03ce977615fba8ca6013c4fc9646d4316c60be69fe8a5514",
           "mirror_of": "ood:loom:off:contraction:16:0.12:303"
+        },
+        {
+          "identity": "ood:static:off:none:16:0.12:303",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.12,
+          "seed": 303,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "230e62597ce94e43e523852e749f22d6fc06f229bfe58951f6aeb9acc72f0f25",
+          "mirror_of": "ood:static:off:none:16:0.12:303"
         },
         {
           "identity": "ood:loom:on:expansion:56:0.12:303",
@@ -7116,6 +7833,23 @@
           "mirror_of": "ood:loom:on:contraction:56:0.12:303"
         },
         {
+          "identity": "ood:static:on:none:56:0.12:303",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.12,
+          "seed": 303,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "a3cd538ea40bd71bc9f2d113a49b0f471777a9f8c88c64138ae7b3280cb88a5e",
+          "mirror_of": "ood:static:on:none:56:0.12:303"
+        },
+        {
           "identity": "ood:loom:off:expansion:56:0.12:303",
           "family": "looming",
           "polarity": "off",
@@ -7148,6 +7882,23 @@
           ],
           "sha256": "e5f6d98cde7725a10f38b6f259990e003ebc211b8da60db529e5561e29c8b604",
           "mirror_of": "ood:loom:off:contraction:56:0.12:303"
+        },
+        {
+          "identity": "ood:static:off:none:56:0.12:303",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.12,
+          "seed": 303,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "e886f04e12f3d10d69d86a90338f53dfa68f01d571e8d70a206d50b34922387d",
+          "mirror_of": "ood:static:off:none:56:0.12:303"
         },
         {
           "identity": "ood:translation:on:right:6:0.12:303",
@@ -7711,6 +8462,23 @@
           "mirror_of": "ood:loom:on:contraction:16:0.15:304"
         },
         {
+          "identity": "ood:static:on:none:16:0.15:304",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.15,
+          "seed": 304,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "e3232063ce616a2cff43cc703596d5a1b329e334500b85e3a31bc233ee8cf5f7",
+          "mirror_of": "ood:static:on:none:16:0.15:304"
+        },
+        {
           "identity": "ood:loom:off:expansion:16:0.15:304",
           "family": "looming",
           "polarity": "off",
@@ -7743,6 +8511,23 @@
           ],
           "sha256": "5bd79613cd6d288df5b66bfb0cf904126d2d8015c11ad8b9e62bd6e76200e39e",
           "mirror_of": "ood:loom:off:contraction:16:0.15:304"
+        },
+        {
+          "identity": "ood:static:off:none:16:0.15:304",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 16.0,
+          "noise_standard_deviation": 0.15,
+          "seed": 304,
+          "shape": [
+            16,
+            24,
+            48
+          ],
+          "sha256": "9bb92a9b5a1d61c1da46c37d1d790f3646ebf215cd8b5a4162b5690a2927b192",
+          "mirror_of": "ood:static:off:none:16:0.15:304"
         },
         {
           "identity": "ood:loom:on:expansion:56:0.15:304",
@@ -7779,6 +8564,23 @@
           "mirror_of": "ood:loom:on:contraction:56:0.15:304"
         },
         {
+          "identity": "ood:static:on:none:56:0.15:304",
+          "family": "static",
+          "polarity": "on",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.15,
+          "seed": 304,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "1d5c52e6bedd49d306d6882ac1cda07e1201702b4fbb9cd075aa31071fafc542",
+          "mirror_of": "ood:static:on:none:56:0.15:304"
+        },
+        {
           "identity": "ood:loom:off:expansion:56:0.15:304",
           "family": "looming",
           "polarity": "off",
@@ -7811,6 +8613,23 @@
           ],
           "sha256": "e3baee5cd69e854a20820319ce53f4d911fcff51f80af69415d43717d3a33db6",
           "mirror_of": "ood:loom:off:contraction:56:0.15:304"
+        },
+        {
+          "identity": "ood:static:off:none:56:0.15:304",
+          "family": "static",
+          "polarity": "off",
+          "direction": "none",
+          "parameter_name": "duration_frames",
+          "parameter_value": 56.0,
+          "noise_standard_deviation": 0.15,
+          "seed": 304,
+          "shape": [
+            56,
+            24,
+            48
+          ],
+          "sha256": "74837be51f2c74c146a8361f561d9a2a20df8a52498b3ce59f3811d1159dfdf3",
+          "mirror_of": "ood:static:off:none:56:0.15:304"
         },
         {
           "identity": "ood:translation:on:right:6:0.15:304",
@@ -8020,17 +8839,20 @@
     },
     "final": {
       "evaluable": false,
-      "stimulus_count": 156,
-      "aggregate_sha256": "aa82db7eb5bf39b62bf1aec71a93a582f04a1243157ac252e9f2f535cc3b144a",
+      "stimulus_count": 172,
+      "aggregate_sha256": "487620cc82e7e543bf57535db104aae27917222a95071e6522a9d9800e1f28d4",
       "families": {
         "looming": 32,
         "moving_edge": 64,
         "rotation": 16,
+        "static": 16,
         "translation": 32,
         "uniform": 12
       },
       "stimuli": null,
-      "sealed": true,
+      "reserved": true,
+      "blinded": false,
+      "one_time_test": false,
       "evaluated": false
     }
   },
@@ -8073,6 +8895,9 @@
     "final_single_use_after_all_stage1_gates": true,
     "final_store_frames": false,
     "final_store_aggregate_digest_only": true,
+    "final_is_blinded": false,
+    "final_is_one_time_test": false,
+    "require_externally_custodied_final_manifest": true,
     "no_target_activity_injection": true,
     "no_runtime_change": true,
     "no_parameter_fit_in_this_protocol": true
@@ -8080,7 +8905,7 @@
   "limitations": [
     "The 10-ms frame interval is an engineering schedule, not a biological calibration.",
     "Stimulus-level disjointness does not create independent animals or cells.",
-    "The sealed final aggregate digest proves identity but does not constitute evaluation.",
+    "The reserved final aggregate digest proves deterministic identity, but its generator settings are visible and it is not a blinded one-time test.",
     "No v7 model, visual gate, navigation policy or driving task was evaluated."
   ],
   "advance_to_model_fit": false,

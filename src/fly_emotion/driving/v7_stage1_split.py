@@ -75,6 +75,11 @@ def _looming(width: int, height: int, frames: int, polarity: str, direction: str
     return output
 
 
+def _static_disc(width: int, height: int, frames: int, polarity: str) -> np.ndarray:
+    final = _looming(width, height, frames, polarity, "expansion")[-1]
+    return np.repeat(final[None, :, :], frames, axis=0)
+
+
 def _translation(
     width: int, height: int, period: float, polarity: str, direction: str, frames: int = 32
 ) -> np.ndarray:
@@ -245,6 +250,23 @@ def build_stage1_split(config: dict) -> dict[str, list[Stage1Stimulus]]:
                                 identity,
                             )
                         )
+                    identity = f"{split}:static:{polarity}:none:{parameter}:{noise:g}:{seed}"
+                    frames = _static_disc(width, height, int(parameter), polarity)
+                    stimuli.append(
+                        Stage1Stimulus(
+                            identity,
+                            split,
+                            "static",
+                            polarity,
+                            "none",
+                            "duration_frames",
+                            float(parameter),
+                            noise,
+                            int(seed),
+                            _symmetric_noise(frames, noise, _condition_seed(int(seed), identity)),
+                            identity,
+                        )
+                    )
             for parameter in values["translation_period_pixels"]:
                 for polarity in config["polarities"]:
                     base = _translation(width, height, float(parameter), polarity, "right")
@@ -380,7 +402,9 @@ def evaluate_v7_stage1_split(root: Path) -> dict:
             ]
         else:
             manifest["stimuli"] = None
-            manifest["sealed"] = True
+            manifest["reserved"] = True
+            manifest["blinded"] = False
+            manifest["one_time_test"] = False
             manifest["evaluated"] = False
         manifests[name] = manifest
     return {
@@ -404,7 +428,10 @@ def evaluate_v7_stage1_split(root: Path) -> dict:
         "limitations": [
             "The 10-ms frame interval is an engineering schedule, not a biological calibration.",
             "Stimulus-level disjointness does not create independent animals or cells.",
-            "The sealed final aggregate digest proves identity but does not constitute evaluation.",
+            (
+                "The reserved final aggregate digest proves deterministic identity, but its "
+                "generator settings are visible and it is not a blinded one-time test."
+            ),
             "No v7 model, visual gate, navigation policy or driving task was evaluated.",
         ],
         "advance_to_model_fit": False,

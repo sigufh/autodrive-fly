@@ -932,11 +932,14 @@ readme/绘图源、校验其文件哈希、查找不依赖响应大小的显式�
 2026-09-15 的环境观测，不是永久不可访问声明。
 
 `make v7-freeze-stage1-split` 预注册了新的阶段 1 刺激划分，而没有运行任何模型。
-development、validation、OOD、final 各含 156 个刺激，覆盖 uniform、ON/OFF 四向
-moving edge、looming/receding、左右 translation 和顺/逆时针 rotation；每个 split
+development、validation、OOD、final 各含 172 个刺激，覆盖 uniform、ON/OFF 四向
+moving edge、looming/receding、static disc、左右 translation 和顺/逆时针 rotation；
+每个 split
 使用互斥参数、噪声水平和 seed，全部六组跨 split 的 identity 与帧哈希重叠均为零。
 每个左右/旋转镜像对共享同一噪声场并逐像素严格镜像。final 只保存聚合 SHA-256，
-不暴露逐刺激条目，且 `evaluable=false`、`evaluated=false`。
+不列逐刺激条目，且 `evaluable=false`、`evaluated=false`。但其生成参数仍在版本库
+配置中，所以它只是预留集，不是真正盲化的一次性最终测试；正式 final 仍需由外部
+保管一份在提交前不可访问的 manifest。
 
 该协议定义 10 ms/frame、每帧四个名义 2.5 ms 子步，仅用于确定性刺激调度；
 `applied_to_current_runtime=false`、`biologically_calibrated=false`，没有修改旧 v7 的
@@ -950,6 +953,19 @@ moving edge、looming/receding、左右 translation 和顺/逆时针 rotation；
 常数 1–400 ms、幅值/宽度 0–10、E 位置 -5–5、I 位置 -5–10）以及固定
 `VE=0`、`VI=-74`、`VL=-65 mV`，不含 17 个细胞的拟合参数向量。因此不能据此做
 零拟合论文模型重放；`advance_to_T5_replay=false`，仍需 Figure 4 结果包。
+
+`make v7-freeze-stage1-scoring` 冻结了新划分的严格评分合同，不事后重评旧结果。
+T4/T5 的 16 个亚型×眼侧群体必须逐群体通过方向和 ON/OFF 门槛；LPLC1、LPLC2、
+LC4 的六个群体必须逐群体让 expansion 同时高于 receding 与同尺寸 static。每个
+细胞保留 body ID、带符号响应、绝对分母和缺失状态；有效分母至少 `1e-6`、有效
+细胞覆盖至少 80%、中位带符号对比至少 0.10、正细胞至少 60%。禁止跨群体池化
+决定通过。镜像项同时要求有效活动群体对覆盖至少 80% 和能量加权误差不高于 0.20，
+因此静默不能获得“完美镜像”通过。
+
+合成正例、标签翻转、静默、70% 有效覆盖、static 等于 looming、活动/静默镜像八项
+控制均按预期通过或失败。执行顺序锁定为 development→validation→OOD；预留 final
+只有阶段 1、拓扑门槛和外部保管三项都成立时才可授权。当前没有模型被评估、没有
+旧 artifact 被重解释、没有 final 被运行：`artifacts/v7-stage1-scoring.json`。
 
 `make v7-audit-goal-coverage` 将总目标第 0–8 项逐项绑定到当前 artifact，并保存
 `artifacts/v7-goal-audit.json`。目前仅版本/检查点隔离完整通过；城市/大模型暂停只通过

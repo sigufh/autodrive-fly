@@ -33,6 +33,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_model_scoring_allowed"] is False
     assert visual["observations"]["T5_published_fitted_parameter_vectors_available"] is False
     assert visual["observations"]["physical_timebase_identified"] is False
+    assert visual["observations"]["strict_scoring_contract_frozen"] is True
+    assert visual["observations"]["existing_artifacts_rescored_under_new_contract"] is False
     release = saved["checks"][7]
     assert release["observations"]["stage1_stimulus_splits_disjoint"] is True
-    assert release["observations"]["sealed_final_evaluated"] is False
+    assert release["observations"]["reserved_final_evaluated"] is False
+    assert release["observations"]["blinded_one_time_final_available"] is False

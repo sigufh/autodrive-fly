@@ -35,6 +35,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_labels = reports["t5_label_audit"]
     interface = reports["ephys_interface"]
     stage1_split = reports["stage1_split"]
+    stage1_scoring = reports["stage1_scoring"]
     t5_supplement = reports["t5_supplement"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
@@ -102,6 +103,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"
+                ],
+                "strict_scoring_contract_frozen": all(
+                    stage1_scoring["synthetic_controls"].values()
+                ),
+                "existing_artifacts_rescored_under_new_contract": stage1_scoring["protocol"][
+                    "existing_artifacts_rescored"
                 ],
             },
             "missing": [
@@ -176,7 +183,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     value["identity_overlap"] == value["frame_hash_overlap"] == 0
                     for value in stage1_split["cross_split_overlap"].values()
                 ),
-                "sealed_final_evaluated": stage1_split["split_manifests"]["final"]["evaluated"],
+                "reserved_final_evaluated": stage1_split["split_manifests"]["final"]["evaluated"],
+                "blinded_one_time_final_available": False,
             },
         },
         {
@@ -284,6 +292,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fitted_t4"],
                 config["evidence"]["ephys_interface"],
                 config["evidence"]["stage1_split"],
+                config["evidence"]["stage1_scoring"],
             ],
         },
         {
@@ -353,8 +362,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "current_stage": "controlled_vision",
             "next_allowed_work": [
                 "verify an external direction-code map before using T5 traces to score a model",
-                "pre-register an independent stage-1 validation split and physical timebase",
                 "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
+                "evaluate only development under the frozen strict scoring contract",
+                "obtain externally custodied independent-cell and one-time final manifests",
             ],
         },
     }

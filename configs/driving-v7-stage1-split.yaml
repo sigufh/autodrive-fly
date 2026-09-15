@@ -48,11 +48,12 @@ splits:
     translation_period_pixels: [7, 14]
     rotation_turns_per_sequence: [0.3125, 0.625]
     noise_standard_deviation: [0.025, 0.035, 0.06, 0.09]
-families: [uniform, moving_edge, looming, translation, rotation]
+families: [uniform, moving_edge, looming, static, translation, rotation]
 polarities: ["on", "off"]
 directions:
   moving_edge: [left, right, up, down]
   looming: [expansion, contraction]
+  static: [none]
   translation: [left, right]
   rotation: [clockwise, counterclockwise]
 release_boundary:
@@ -62,6 +63,9 @@ release_boundary:
   final_single_use_after_all_stage1_gates: true
   final_store_frames: false
   final_store_aggregate_digest_only: true
+  final_is_blinded: false
+  final_is_one_time_test: false
+  require_externally_custodied_final_manifest: true
   no_target_activity_injection: true
   no_runtime_change: true
   no_parameter_fit_in_this_protocol: true

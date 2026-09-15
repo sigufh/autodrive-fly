@@ -1,0 +1,121 @@
+{
+  "protocol": {
+    "name": "v7-stage1-strict-scoring-contract",
+    "observed_on": "2026-09-15",
+    "dependencies_sha256": {
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "src/fly_emotion/driving/v7_stage1_scoring.py": "9c87cc211da8efcc511a676422bd609453aaf28b037f62c263c713083c9724bf",
+      "artifacts/v7-stage1-split.json": "c6e9fd702b884bc00f2ef2f0e21021e8e5a2637cf7af42ed6ef8d654e187d579"
+    },
+    "model_evaluated": false,
+    "parameters_fitted": false,
+    "existing_artifacts_rescored": false
+  },
+  "population_contract": {
+    "direction_populations": {
+      "T4a_L": "left",
+      "T4a_R": "right",
+      "T4b_L": "right",
+      "T4b_R": "left",
+      "T4c_L": "up",
+      "T4c_R": "up",
+      "T4d_L": "down",
+      "T4d_R": "down",
+      "T5a_L": "left",
+      "T5a_R": "right",
+      "T5b_L": "right",
+      "T5b_R": "left",
+      "T5c_L": "up",
+      "T5c_R": "up",
+      "T5d_L": "down",
+      "T5d_R": "down"
+    },
+    "polarity_populations": {
+      "T4a_L": "on",
+      "T4a_R": "on",
+      "T4b_L": "on",
+      "T4b_R": "on",
+      "T4c_L": "on",
+      "T4c_R": "on",
+      "T4d_L": "on",
+      "T4d_R": "on",
+      "T5a_L": "off",
+      "T5a_R": "off",
+      "T5b_L": "off",
+      "T5b_R": "off",
+      "T5c_L": "off",
+      "T5c_R": "off",
+      "T5d_L": "off",
+      "T5d_R": "off"
+    },
+    "looming_populations": [
+      "LPLC1_L",
+      "LPLC1_R",
+      "LPLC2_L",
+      "LPLC2_R",
+      "LC4_L",
+      "LC4_R"
+    ],
+    "required_direction_groups": 16,
+    "required_polarity_groups": 16,
+    "required_looming_groups": 6
+  },
+  "thresholds": {
+    "minimum_valid_denominator": 1e-06,
+    "minimum_valid_cell_fraction": 0.8,
+    "minimum_median_signed_contrast": 0.1,
+    "minimum_positive_cell_fraction": 0.6,
+    "maximum_energy_weighted_mirror_error": 0.2,
+    "minimum_active_mirror_pair_fraction": 0.8
+  },
+  "aggregation": {
+    "preserve_cell_ids": true,
+    "reject_nonfinite": true,
+    "require_every_population": true,
+    "allow_cross_population_pooling_for_pass": false,
+    "direction_response": "maximum_signed_baseline_subtracted_response",
+    "polarity_response": "maximum_signed_baseline_subtracted_response",
+    "looming_comparator": "elementwise_max_of_receding_and_same_size_static",
+    "contrast_formula": "(preferred-comparator)/(abs(preferred)+abs(comparator))"
+  },
+  "execution_order": {
+    "development": "always",
+    "validation": "after_development_pass",
+    "ood": "after_validation_pass",
+    "final": "after_all_stage1_and_topology_gates_and_external_custody"
+  },
+  "synthetic_controls": {
+    "positive_response_passes": true,
+    "reversed_labels_fail": true,
+    "silent_response_fails": true,
+    "insufficient_valid_coverage_fails": true,
+    "looming_above_receding_and_static_passes": true,
+    "static_equal_to_looming_fails": true,
+    "exact_active_mirror_passes": true,
+    "silent_mirror_fails": true
+  },
+  "final_lock": {
+    "reserved_final_evaluable": false,
+    "reserved_final_evaluated": false,
+    "reserved_final_blinded": false,
+    "authorization_without_prerequisites": false,
+    "authorization_with_all_prerequisites": true
+  },
+  "boundary": {
+    "model_evaluated": false,
+    "final_evaluated": false,
+    "score_existing_artifacts_retroactively": false,
+    "fit_parameters": false,
+    "change_visual_gate": false,
+    "advance_to_central_complex": false
+  },
+  "limitations": [
+    "Synthetic controls validate metric behavior, not biological model behavior.",
+    "No existing response artifact is reinterpreted under the new thresholds.",
+    "The reserved final generator is visible and cannot serve as a blinded final test.",
+    "Independent cells or animals remain necessary for biological generalization."
+  ],
+  "advance_to_model_fit": false,
+  "advance_to_final_test": false,
+  "advance_to_central_complex": false
+}
