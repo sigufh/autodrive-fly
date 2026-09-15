@@ -330,6 +330,23 @@ interface is read-only with `fit_allowed=false` and remains runtime-isolated
 (`artifacts/v7-t5-conductance-audit.json`,
 `artifacts/v7-ephys-interface.json`).
 
+A measured-only phenotype extraction finds 134 matched moving-bar direction-code
+pairs across all 17 cells. Numeric code 1 has the larger peak in 130 pairs, with
+median normalized code-1-minus-code-0 contrast 0.4922; all 17 within-cell medians
+are positive. Swapping the codes exactly negates the metric, while a fixed random
+within-pair label control has median -0.0253. The paper confirms that T5 responses
+were aligned to each cell's PD/ND axis and defines DSI, but neither the repository
+nor the accessible model code maps numeric code 0/1 to PD/ND. The audit therefore
+does not infer the label from response magnitude, assigns no biological PD code,
+does not score a v7 model, and cannot advance a gate
+(`artifacts/v7-t5-phenotype.json`).
+
+The machine-readable objective coverage audit maps all numbered requirements 0–8
+to current evidence. Only version/checkpoint isolation is complete; the city/LLM
+pause is a boundary-only pass. Controlled vision is failed, topology/baseline work
+is incomplete, and central-complex, descending, separated-signal, mushroom-body
+and release stages remain unauthorized (`artifacts/v7-goal-audit.json`).
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

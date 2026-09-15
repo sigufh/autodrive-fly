@@ -1,0 +1,378 @@
+{
+  "protocol": {
+    "name": "v7-objective-coverage-audit",
+    "observed_on": "2026-09-15",
+    "dependencies_sha256": {
+      "configs/driving-v7-goal-audit.yaml": "389b5890d8046944a88ebbf53366997cbeca529a0649a9b5668924562fb67ad4",
+      "src/fly_emotion/driving/v7_goal_audit.py": "4fd1f8d1c1d43dbade1cb58f60a1c6f8638d514e3b103445666577c959903edf",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
+      "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
+      "artifacts/v7-controlled-vision.json": "44e1f5289a78b493cd7ac6560a690b46617c896467837ad85cbafaa8935275d8",
+      "artifacts/v7-typed-visual-candidate.json": "79bf4ff689a2e609c67991cdfbfc7a58a4e0f538af9f8b09c1fe97a2b919e699",
+      "artifacts/v7-branched-t4-candidate.json": "353800c491e31ddc20af77398615a4e50f4a16e9c3573546c861d24d1214de48",
+      "artifacts/v7-t4-conductance-candidate.json": "66fdadc9881c0fd7412fc4a0cbe6ec1a21232ea1068efa5a615c5e6bb1222fdf",
+      "artifacts/v7-t4-conductance-fit.json": "387d5c6a83694d57166f5199d98b8536a386600480b249f65249505d16b8f0be",
+      "artifacts/v7-retina-column-audit.json": "d858370e73b1dfc5a542971a0d162ad72d118c9c84f10be129095deb64b46287",
+      "artifacts/v7-layerwise-mirror-audit.json": "22e5eefe110a65a93c4279475eb2215c345eaccae19a46e90faeb3c48b68b989",
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "artifacts/v7-ephys-interface.json": "f25367ac0a41908d223d674cbf703fd28bb73851bc96c4567dfcb53896d0ed9d",
+      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3",
+      "artifacts/v7-t5-phenotype.json": "d15de3a2a0c3e4719415f5c58d50c3188564d0ed2857dc677295ccecafe9ce47"
+    }
+  },
+  "objective_items": {
+    "0": "version_and_claim_boundaries",
+    "1": "controlled_causal_visual_chain",
+    "2": "central_complex_heading",
+    "3": "descending_readout_comparison",
+    "4": "separated_visual_navigation_signals",
+    "5": "mushroom_body_value_learning",
+    "6": "topology_baselines_and_ablations",
+    "7": "independent_split_ood_release",
+    "8": "upper_layer_expansion_boundary"
+  },
+  "checks": [
+    {
+      "item": 0,
+      "deliverable": "independent v5/v6/v7 versions, checkpoints and claims",
+      "status": "passed",
+      "evidence": [
+        "configs/driving-v7.yaml",
+        "artifacts/v7-manifest.json"
+      ],
+      "observations": {
+        "baseline_hashes_valid": true,
+        "v7_deployment_enabled": false,
+        "v7_city_expansion_enabled": false,
+        "default_runtime_changed": false
+      }
+    },
+    {
+      "item": 1,
+      "deliverable": "R1-R6 causal controlled vision through T4/T5 and LPLC/LC",
+      "status": "failed",
+      "evidence": [
+        "artifacts/v7-controlled-vision.json",
+        "artifacts/v7-typed-visual-candidate.json",
+        "artifacts/v7-branched-t4-candidate.json",
+        "artifacts/v7-t4-conductance-candidate.json",
+        "artifacts/v7-t4-conductance-fit.json",
+        "artifacts/v7-t5-phenotype.json"
+      ],
+      "observations": {
+        "stimulus_count": 20,
+        "stimulus_families": [
+          "looming",
+          "moving_bar",
+          "receding",
+          "rotation",
+          "static",
+          "translation",
+          "uniform"
+        ],
+        "visual_inputs_only_at_receptors": true,
+        "controlled_response_gates_pass": false,
+        "T5_measured_pair_count": 134,
+        "T5_biological_PD_code_assigned": null,
+        "T5_model_scoring_allowed": false,
+        "physical_timebase_identified": false
+      },
+      "missing": [
+        "complete T4/T5 direction and ON/OFF response gates",
+        "LPLC1/LPLC2/LC4 looming and collision response gates",
+        "an independent T5 label map suitable for model scoring",
+        "a calibrated physical visual/neural timebase"
+      ]
+    },
+    {
+      "item": 2,
+      "deliverable": "EPG/PEN/PEG heading, occlusion memory and FC2/PFL comparison",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ],
+      "observations": {
+        "stage1_pass": false
+      }
+    },
+    {
+      "item": 3,
+      "deliverable": "DNp20, DNa01/DNa02 and PFL3-to-DNa readout comparison",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ],
+      "observations": {
+        "stage1_pass": false
+      }
+    },
+    {
+      "item": 4,
+      "deliverable": "separate self-motion, looming, near-collision, heading and target signals",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ],
+      "observations": {
+        "stage1_pass": false
+      }
+    },
+    {
+      "item": 5,
+      "deliverable": "KC-MBON value learning gated by PAM/PPL1",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ],
+      "observations": {
+        "causal_visual_navigation_pass": false
+      }
+    },
+    {
+      "item": 6,
+      "deliverable": "real topology, strict graph shuffles, parametric baselines and ablations",
+      "status": "incomplete",
+      "evidence": [
+        "artifacts/v7-controlled-vision.json"
+      ],
+      "observations": {
+        "preliminary_stage1_controls_complete": true,
+        "strict_degree_preserving_control_complete": false,
+        "real_topology_advantage": false,
+        "parameter_matched_linear_mlp_gru_complete": false,
+        "downstream_ablations_authorized": false
+      }
+    },
+    {
+      "item": 7,
+      "deliverable": "independent train/validation/final and dynamic OOD release gates",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-t4-conductance-fit.json",
+        "artifacts/v7-ephys-interface.json"
+      ],
+      "observations": {
+        "fitted_T4_final_test_evaluated": false,
+        "ephys_final_test_available": false,
+        "task_and_OOD_release_evaluated": false
+      }
+    },
+    {
+      "item": 8,
+      "deliverable": "pause city/LLM expansion and separate planner, fly core and executor",
+      "status": "passed_boundary_only",
+      "evidence": [
+        "configs/driving-v7.yaml",
+        "artifacts/v7-manifest.json"
+      ],
+      "observations": {
+        "city_expansion_enabled": false,
+        "v7_deployment_enabled": false,
+        "three_way_contribution_report_available": false
+      }
+    }
+  ],
+  "requirement_checklist": [
+    {
+      "requirement": "0.version_config_evidence_claim_boundaries",
+      "status": "passed",
+      "evidence": [
+        "configs/driving-v7.yaml",
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "0.preserve_assisted_v5_checkpoint",
+      "status": "passed",
+      "evidence": [
+        "artifacts/checkpoints/driving-policy.npz"
+      ]
+    },
+    {
+      "requirement": "0.preserve_neural_v6_front_checkpoint",
+      "status": "passed",
+      "evidence": [
+        "artifacts/checkpoints/driving-policy.neural-v6.npz"
+      ]
+    },
+    {
+      "requirement": "0.keep_default_service_unchanged",
+      "status": "passed",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "1.controlled_brightness_on_off_motion_looming_flow_mirror_stimuli",
+      "status": "passed",
+      "evidence": [
+        "artifacts/v7-controlled-vision.json"
+      ]
+    },
+    {
+      "requirement": "1.external_visual_input_only_via_R1_R6",
+      "status": "passed",
+      "evidence": [
+        "artifacts/v7-controlled-vision.json"
+      ]
+    },
+    {
+      "requirement": "1.T4_T5_direction_and_ON_OFF_validation",
+      "status": "failed",
+      "evidence": [
+        "artifacts/v7-typed-visual-candidate.json",
+        "artifacts/v7-t5-phenotype.json"
+      ]
+    },
+    {
+      "requirement": "1.LPLC1_LPLC2_LC4_approach_collision_validation",
+      "status": "failed",
+      "evidence": [
+        "artifacts/v7-controlled-vision.json"
+      ]
+    },
+    {
+      "requirement": "2.EPG_PEN_PEG_heading_and_occlusion",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "2.FC2_PFL3_PFL2_heading_goal_and_turn_termination",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "3.DNp20_DNa01_DNa02_PFL3_DNa_readout_comparison",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "3.transparent_environment_blind_vehicle_mapping",
+      "status": "present_in_v5_v6_not_yet_validated_for_v7",
+      "evidence": [
+        "src/fly_emotion/driving/engine.py"
+      ]
+    },
+    {
+      "requirement": "4.separate_self_motion_looming_slowing_heading_target_channels",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "5.KC_MBON_PAM_PPL1_value_learning_after_navigation_gate",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "6.real_MaleCNS_and_strict_randomized_graph_controls",
+      "status": "incomplete",
+      "evidence": [
+        "artifacts/v7-controlled-vision.json"
+      ]
+    },
+    {
+      "requirement": "6.parameter_matched_linear_MLP_GRU_baselines",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "requirement": "6.T4_T5_LPLC_EPG_PFL_DNa_MBON_DAN_ablations",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "7.independent_train_validation_one_time_final_split",
+      "status": "missing",
+      "evidence": [
+        "artifacts/v7-t4-conductance-fit.json",
+        "artifacts/v7-ephys-interface.json"
+      ]
+    },
+    {
+      "requirement": "7.dynamic_obstacle_density_curvature_speed_noise_OOD",
+      "status": "not_authorized",
+      "evidence": [
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "7.task_collision_exit_window_early_failure_steering_drift_mirror_zero_action_topology_gates",
+      "status": "not_authorized",
+      "evidence": [
+        "configs/driving-v7.yaml",
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "8.pause_city_and_large_model_expansion",
+      "status": "passed",
+      "evidence": [
+        "configs/driving-v7.yaml",
+        "artifacts/v7-manifest.json"
+      ]
+    },
+    {
+      "requirement": "8.separate_planner_fly_core_executor_contributions",
+      "status": "missing",
+      "evidence": []
+    },
+    {
+      "requirement": "8.continuous_tests_evidence_docs_frontend_and_remote_updates",
+      "status": "in_progress",
+      "evidence": [
+        "tests",
+        "docs/driving-v7.zh-CN.md",
+        "apps/web/src/components/DrivingPanel.tsx"
+      ]
+    },
+    {
+      "requirement": "8.preserve_negative_results_and_stop_conditions",
+      "status": "passed",
+      "evidence": [
+        "artifacts/v7-manifest.json",
+        "artifacts/v7-t5-phenotype.json"
+      ]
+    }
+  ],
+  "summary": {
+    "complete_items": [
+      0
+    ],
+    "boundary_only_items": [
+      8
+    ],
+    "failed_items": [
+      1
+    ],
+    "incomplete_items": [
+      6
+    ],
+    "not_authorized_items": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "objective_complete": false,
+    "current_stage": "controlled_vision",
+    "next_allowed_work": [
+      "verify an external direction-code map before using T5 traces to score a model",
+      "pre-register an independent stage-1 validation split and physical timebase",
+      "repair T4/T5/LPLC/LC visual dynamics without target-state injection"
+    ]
+  }
+}

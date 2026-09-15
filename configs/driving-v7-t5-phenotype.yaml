@@ -1,0 +1,37 @@
+version: 1
+name: v7-t5-measured-moving-bar-phenotype
+exploratory: true
+advance_allowed: false
+observed_on: "2026-09-15"
+source:
+  repository_config: configs/driving-v7-t5-conductance-audit.yaml
+  repository_evidence: artifacts/v7-t5-conductance-audit.json
+  paper_sources:
+    - url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6917495/fullTextXML
+    - url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6917495/
+  required_paper_phrases:
+    - Each of the 17 T5 neurons we recorded showed clear preferred and null directions
+    - Directional Selectivity Index
+    - Preferred Direction
+    - Null Direction
+    - Baseline-subtracted responses
+    - Current clamp recordings were sampled at 20 KHz and low-pass filtered at 10 KHz
+    - starting from random uniform initialization
+analysis:
+  stimulus: moving_bar
+  grouping_fields: [cell_id, width_pixels, step_duration_milliseconds]
+  direction_codes: [0, 1]
+  response_measure: maximum_baseline_subtracted_voltage_millivolts
+  contrast: (direction_1_peak-direction_0_peak)/max(abs(direction_1_peak),abs(direction_0_peak))
+  permutation_seed: 20260915
+  preserve_all_pairs: true
+interpretation_boundary:
+  direction_0_motion_order: decreasing_receptive_field_coordinate
+  direction_1_motion_order: increasing_receptive_field_coordinate
+  repository_maps_numeric_code_to_PD_ND: false
+  infer_PD_from_larger_response: false
+  fit_allowed: false
+  model_scoring_allowed: false
+  independent_cell_holdout: false
+  untouched_final_test: false
+  change_visual_gate: false

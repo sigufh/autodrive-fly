@@ -1,0 +1,1253 @@
+{
+  "protocol": {
+    "name": "v7-t5-measured-moving-bar-phenotype",
+    "exploratory": true,
+    "advance_allowed": false,
+    "observed_on": "2026-09-15",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-phenotype.yaml": "05678278b88f40c8ac27685b553f8fdc624a7161d77c460a12f59cab104bfad8",
+      "src/fly_emotion/driving/v7_t5_phenotype.py": "fb48b42a192f045005cc0b505eeeacc1493a708fa7d5f76e38202aa0fef3f70c",
+      "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
+      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3"
+    },
+    "parameter_fitting": false,
+    "model_simulation": false,
+    "raw_files_committed": false,
+    "temporary_clone_deleted_after_audit": true
+  },
+  "paper_evidence": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6917495/fullTextXML",
+    "http_status": 200,
+    "validated_claims_sha256": "024da47853bc5f7552b587b2b1ef661a5f8cc79cbc8c24c67184357e2628ea77",
+    "reported_cells": 17,
+    "reports_all_cells_have_PD_and_ND": true,
+    "reported_DSI_definition": "(PDmax-NDmax)/PDmax",
+    "raw_acquisition_kilohertz": 20,
+    "raw_low_pass_kilohertz": 10,
+    "responses_baseline_subtracted": true
+  },
+  "repository_evidence": {
+    "commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
+    "manifest_sha256": "1db6da29a948fa80039b551db5c6020dbbbea666491bb133001e9113f2c360fa",
+    "recorded_cells": 17
+  },
+  "moving_bar_pairs": [
+    {
+      "cell_id": 1,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 8.629529379966712,
+      "direction_1_peak_millivolts": 13.444376746676092,
+      "direction_1_minus_0_normalized_contrast": 0.35813094630063635
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.069350132959251,
+      "direction_1_peak_millivolts": 10.62694262331864,
+      "direction_1_minus_0_normalized_contrast": 0.3347710264806535
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 9.385511019477661,
+      "direction_1_peak_millivolts": 11.973178484988004,
+      "direction_1_minus_0_normalized_contrast": 0.21612201544934503
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 7.444250302910419,
+      "direction_1_peak_millivolts": 16.3697977113372,
+      "direction_1_minus_0_normalized_contrast": 0.5452448201143764
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 16.841051997887618,
+      "direction_1_peak_millivolts": 22.44607676937096,
+      "direction_1_minus_0_normalized_contrast": 0.24971066565769484
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 17.868923336930933,
+      "direction_1_peak_millivolts": 24.043880665975337,
+      "direction_1_minus_0_normalized_contrast": 0.25682032841656166
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 10.857380028212447,
+      "direction_1_peak_millivolts": 20.874427684287596,
+      "direction_1_minus_0_normalized_contrast": 0.47987172666846756
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 15.2151245359195,
+      "direction_1_peak_millivolts": 23.522566651784466,
+      "direction_1_minus_0_normalized_contrast": 0.3531690329054609
+    },
+    {
+      "cell_id": 1,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 15.785369896842042,
+      "direction_1_peak_millivolts": 24.046122932026584,
+      "direction_1_minus_0_normalized_contrast": 0.34353783595534226
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 4.500331724150826,
+      "direction_1_peak_millivolts": 7.195201097975371,
+      "direction_1_minus_0_normalized_contrast": 0.3745370472804219
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 5.316103564666136,
+      "direction_1_peak_millivolts": 11.157806549583952,
+      "direction_1_minus_0_normalized_contrast": 0.5235529903622177
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 4.574791767056439,
+      "direction_1_peak_millivolts": 8.687364941426281,
+      "direction_1_minus_0_normalized_contrast": 0.47339707749109994
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 4.752732756981629,
+      "direction_1_peak_millivolts": 8.325265804021363,
+      "direction_1_minus_0_normalized_contrast": 0.4291193976430265
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 10.98973018243251,
+      "direction_1_peak_millivolts": 19.041449192036467,
+      "direction_1_minus_0_normalized_contrast": 0.42285221720263577
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 4.774171485618652,
+      "direction_1_peak_millivolts": 22.4009420416575,
+      "direction_1_minus_0_normalized_contrast": 0.7868763074008025
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 6.3431271557364965,
+      "direction_1_peak_millivolts": 18.946292629121935,
+      "direction_1_minus_0_normalized_contrast": 0.6652048355894908
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 8.150745941922963,
+      "direction_1_peak_millivolts": 20.65689621550637,
+      "direction_1_minus_0_normalized_contrast": 0.6054225253935053
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 7.52675180818143,
+      "direction_1_peak_millivolts": 23.59772490739749,
+      "direction_1_minus_0_normalized_contrast": 0.6810390900937268
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 9.936872212553332,
+      "direction_1_peak_millivolts": 29.013199233768837,
+      "direction_1_minus_0_normalized_contrast": 0.6575051192221615
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 10.550400912185566,
+      "direction_1_peak_millivolts": 22.704340194967806,
+      "direction_1_minus_0_normalized_contrast": 0.5353134765605759
+    },
+    {
+      "cell_id": 2,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 14.37002420131617,
+      "direction_1_peak_millivolts": 18.66356264006857,
+      "direction_1_minus_0_normalized_contrast": 0.23004924202063412
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 10.156592033310318,
+      "direction_1_peak_millivolts": 8.886613562319639,
+      "direction_1_minus_0_normalized_contrast": -0.12503982308490516
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.655713513624171,
+      "direction_1_peak_millivolts": 9.42219166413107,
+      "direction_1_minus_0_normalized_contrast": 0.18748060042459413
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 3.0159208900461394,
+      "direction_1_peak_millivolts": 10.788396078636062,
+      "direction_1_minus_0_normalized_contrast": 0.7204477043609404
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 5.930649511003864,
+      "direction_1_peak_millivolts": 12.495202918847284,
+      "direction_1_minus_0_normalized_contrast": 0.5253658904523831
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 11.770182835853774,
+      "direction_1_peak_millivolts": 11.272748052303044,
+      "direction_1_minus_0_normalized_contrast": -0.04226228177488186
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 14.931228273517455,
+      "direction_1_peak_millivolts": 19.624915962706748,
+      "direction_1_minus_0_normalized_contrast": 0.23916982361140876
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 5.981439876091159,
+      "direction_1_peak_millivolts": 17.957609040962815,
+      "direction_1_minus_0_normalized_contrast": 0.6669133478489819
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 6.934019191579679,
+      "direction_1_peak_millivolts": 12.74167378485041,
+      "direction_1_minus_0_normalized_contrast": 0.4557999750531922
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 20,
+      "direction_0_peak_millivolts": 8.81360322312581,
+      "direction_1_peak_millivolts": 18.02017342632225,
+      "direction_1_minus_0_normalized_contrast": 0.510903529360506
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 12.005494251182803,
+      "direction_1_peak_millivolts": 20.472660757277225,
+      "direction_1_minus_0_normalized_contrast": 0.41358407714955553
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 5.276173325410973,
+      "direction_1_peak_millivolts": 20.16591197133571,
+      "direction_1_minus_0_normalized_contrast": 0.738361779377464
+    },
+    {
+      "cell_id": 3,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 6.099390521722448,
+      "direction_1_peak_millivolts": 20.32866554423661,
+      "direction_1_minus_0_normalized_contrast": 0.6999610963912145
+    },
+    {
+      "cell_id": 4,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 9.91574018379805,
+      "direction_1_peak_millivolts": 12.955925650252517,
+      "direction_1_minus_0_normalized_contrast": 0.23465598279311
+    },
+    {
+      "cell_id": 4,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 15.401000940241332,
+      "direction_1_peak_millivolts": 19.572828353757906,
+      "direction_1_minus_0_normalized_contrast": 0.2131438205105191
+    },
+    {
+      "cell_id": 4,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 16.779553076729094,
+      "direction_1_peak_millivolts": 25.356129933735687,
+      "direction_1_minus_0_normalized_contrast": 0.3382447116109653
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 4.504855674563466,
+      "direction_1_peak_millivolts": 6.583273036034846,
+      "direction_1_minus_0_normalized_contrast": 0.3157118579306604
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 4.33378224430448,
+      "direction_1_peak_millivolts": 12.005938025058214,
+      "direction_1_minus_0_normalized_contrast": 0.63903010033375
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 7.975201203769224,
+      "direction_1_peak_millivolts": 7.335653876518997,
+      "direction_1_minus_0_normalized_contrast": -0.08019199903670965
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.132434941732534,
+      "direction_1_peak_millivolts": 15.601486151661135,
+      "direction_1_minus_0_normalized_contrast": 0.5428361841687035
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 7.518341975352584,
+      "direction_1_peak_millivolts": 18.178214909032235,
+      "direction_1_minus_0_normalized_contrast": 0.5864092259346689
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 7.134933172486306,
+      "direction_1_peak_millivolts": 15.060359986315873,
+      "direction_1_minus_0_normalized_contrast": 0.526244181482432
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 8.955035864558823,
+      "direction_1_peak_millivolts": 16.93184075775931,
+      "direction_1_minus_0_normalized_contrast": 0.4711126809732709
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 13.020398746467578,
+      "direction_1_peak_millivolts": 22.744012562183016,
+      "direction_1_minus_0_normalized_contrast": 0.4275241138357051
+    },
+    {
+      "cell_id": 5,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 11.788184923651201,
+      "direction_1_peak_millivolts": 23.394665426032596,
+      "direction_1_minus_0_normalized_contrast": 0.4961165415713188
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 4.723042886002013,
+      "direction_1_peak_millivolts": 13.311716077899625,
+      "direction_1_minus_0_normalized_contrast": 0.6451965427775835
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 8.555341577710834,
+      "direction_1_peak_millivolts": 15.240591815822782,
+      "direction_1_minus_0_normalized_contrast": 0.4386476797555408
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 15.48523964857366,
+      "direction_1_peak_millivolts": 15.988157519024611,
+      "direction_1_minus_0_normalized_contrast": 0.0314556489609587
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 9.030743179081462,
+      "direction_1_peak_millivolts": 19.832953849449908,
+      "direction_1_minus_0_normalized_contrast": 0.5446596988208118
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 13.371945983792784,
+      "direction_1_peak_millivolts": 22.15642772253603,
+      "direction_1_minus_0_normalized_contrast": 0.396475544196516
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 16.585708833271852,
+      "direction_1_peak_millivolts": 23.97797198034635,
+      "direction_1_minus_0_normalized_contrast": 0.3082939271567086
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.278072372423601,
+      "direction_1_peak_millivolts": 30.649124196362333,
+      "direction_1_minus_0_normalized_contrast": 0.7625357146979287
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 9.00213006373955,
+      "direction_1_peak_millivolts": 23.20935283069766,
+      "direction_1_minus_0_normalized_contrast": 0.6121335166298582
+    },
+    {
+      "cell_id": 6,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 15.135047638171876,
+      "direction_1_peak_millivolts": 28.660577275298717,
+      "direction_1_minus_0_normalized_contrast": 0.4719210470608314
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 6.979586757767414,
+      "direction_1_peak_millivolts": 11.75432052650254,
+      "direction_1_minus_0_normalized_contrast": 0.40621095519468803
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 7.890871451856185,
+      "direction_1_peak_millivolts": 14.490159257093232,
+      "direction_1_minus_0_normalized_contrast": 0.4554323860868927
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 4.238286938237259,
+      "direction_1_peak_millivolts": 15.71227690635407,
+      "direction_1_minus_0_normalized_contrast": 0.7302563490003611
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 10.651938494144751,
+      "direction_1_peak_millivolts": 21.50392889499784,
+      "direction_1_minus_0_normalized_contrast": 0.5046515199079474
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 5.86753901675192,
+      "direction_1_peak_millivolts": 20.70101801981332,
+      "direction_1_minus_0_normalized_contrast": 0.7165579484479463
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 8.748672365893015,
+      "direction_1_peak_millivolts": 22.36304849984767,
+      "direction_1_minus_0_normalized_contrast": 0.6087889195449983
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 8.688772302244274,
+      "direction_1_peak_millivolts": 29.34043376620251,
+      "direction_1_minus_0_normalized_contrast": 0.7038635361876298
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 2.807060750075202,
+      "direction_1_peak_millivolts": 23.754373779367395,
+      "direction_1_minus_0_normalized_contrast": 0.8818297305520484
+    },
+    {
+      "cell_id": 7,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 11.551927850353074,
+      "direction_1_peak_millivolts": 26.766044803410445,
+      "direction_1_minus_0_normalized_contrast": 0.5684110993910776
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 6.2876209620773835,
+      "direction_1_peak_millivolts": 13.428803716856741,
+      "direction_1_minus_0_normalized_contrast": 0.531781006361368
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 8.62656436013124,
+      "direction_1_peak_millivolts": 13.01039921134921,
+      "direction_1_minus_0_normalized_contrast": 0.3369485270977596
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 4.220418236914284,
+      "direction_1_peak_millivolts": 5.285642366372379,
+      "direction_1_minus_0_normalized_contrast": 0.2015316314692655
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 9.018976432123296,
+      "direction_1_peak_millivolts": 19.50333895972485,
+      "direction_1_minus_0_normalized_contrast": 0.5375675698018769
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 10.916497066209807,
+      "direction_1_peak_millivolts": 19.747097464543103,
+      "direction_1_minus_0_normalized_contrast": 0.4471847274866131
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 7.714524614674424,
+      "direction_1_peak_millivolts": 15.792038457622247,
+      "direction_1_minus_0_normalized_contrast": 0.5114927920561831
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 8.55873612996838,
+      "direction_1_peak_millivolts": 22.810421733190793,
+      "direction_1_minus_0_normalized_contrast": 0.6247883432372139
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 5.068863532997405,
+      "direction_1_peak_millivolts": 20.875062319076733,
+      "direction_1_minus_0_normalized_contrast": 0.7571809149347923
+    },
+    {
+      "cell_id": 8,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 6.632047726774061,
+      "direction_1_peak_millivolts": 23.710175172934647,
+      "direction_1_minus_0_normalized_contrast": 0.7202868524419593
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 8.158543646546512,
+      "direction_1_peak_millivolts": 9.957095331376856,
+      "direction_1_minus_0_normalized_contrast": 0.18063015618246991
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 5.866740223775935,
+      "direction_1_peak_millivolts": 8.437002216682167,
+      "direction_1_minus_0_normalized_contrast": 0.30464161640542775
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.104486342801884,
+      "direction_1_peak_millivolts": 19.28134673698269,
+      "direction_1_minus_0_normalized_contrast": 0.6315357822399882
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 8.575365824803235,
+      "direction_1_peak_millivolts": 18.652891213501157,
+      "direction_1_minus_0_normalized_contrast": 0.5402661321159533
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 4.613097081855123,
+      "direction_1_peak_millivolts": 17.04214081807138,
+      "direction_1_minus_0_normalized_contrast": 0.7293123480728769
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 5.121167815494431,
+      "direction_1_peak_millivolts": 21.56431969541184,
+      "direction_1_minus_0_normalized_contrast": 0.7625166066989796
+    },
+    {
+      "cell_id": 9,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 4.370216715255204,
+      "direction_1_peak_millivolts": 18.357421226704005,
+      "direction_1_minus_0_normalized_contrast": 0.7619373297978271
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 10.183993989292794,
+      "direction_1_peak_millivolts": 10.383600681026358,
+      "direction_1_minus_0_normalized_contrast": 0.019223263477215494
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 11.810602243618483,
+      "direction_1_peak_millivolts": 13.914067779351349,
+      "direction_1_minus_0_normalized_contrast": 0.15117545559569828
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 13.296212475167614,
+      "direction_1_peak_millivolts": 20.455835878229784,
+      "direction_1_minus_0_normalized_contrast": 0.35000395220621766
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 10.226671303277065,
+      "direction_1_peak_millivolts": 24.94831700092966,
+      "direction_1_minus_0_normalized_contrast": 0.5900857239028996
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 12.254941644625553,
+      "direction_1_peak_millivolts": 18.912878554374444,
+      "direction_1_minus_0_normalized_contrast": 0.35203191785995724
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 14.417375000979142,
+      "direction_1_peak_millivolts": 20.525516006020503,
+      "direction_1_minus_0_normalized_contrast": 0.29758769539580554
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 10.43019159739967,
+      "direction_1_peak_millivolts": 21.954525104987425,
+      "direction_1_minus_0_normalized_contrast": 0.5249183688773921
+    },
+    {
+      "cell_id": 10,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 15.92580767099642,
+      "direction_1_peak_millivolts": 24.973207501950387,
+      "direction_1_minus_0_normalized_contrast": 0.36228425324409663
+    },
+    {
+      "cell_id": 11,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 8.653340327921782,
+      "direction_1_peak_millivolts": 16.91322895771797,
+      "direction_1_minus_0_normalized_contrast": 0.48836852208678777
+    },
+    {
+      "cell_id": 11,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 8.738000176390926,
+      "direction_1_peak_millivolts": 25.770793260170933,
+      "direction_1_minus_0_normalized_contrast": 0.6609339849116864
+    },
+    {
+      "cell_id": 11,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 15.901759195935632,
+      "direction_1_peak_millivolts": 29.676419417734223,
+      "direction_1_minus_0_normalized_contrast": 0.4641617988983887
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 11.053110755685054,
+      "direction_1_peak_millivolts": 19.557858805547205,
+      "direction_1_minus_0_normalized_contrast": 0.4348506722755328
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 5.9187057631197035,
+      "direction_1_peak_millivolts": 14.090840079967798,
+      "direction_1_minus_0_normalized_contrast": 0.5799607596473957
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 11.230299873139536,
+      "direction_1_peak_millivolts": 20.598224222943067,
+      "direction_1_minus_0_normalized_contrast": 0.4547928136139614
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 6.722051680812058,
+      "direction_1_peak_millivolts": 15.074598769924968,
+      "direction_1_minus_0_normalized_contrast": 0.5540808890898583
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 15.767626825487426,
+      "direction_1_peak_millivolts": 17.180353110745536,
+      "direction_1_minus_0_normalized_contrast": 0.08222917632435117
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 16.284552437389088,
+      "direction_1_peak_millivolts": 31.403351339617164,
+      "direction_1_minus_0_normalized_contrast": 0.4814390266415555
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 12.385129958861413,
+      "direction_1_peak_millivolts": 22.927941701998407,
+      "direction_1_minus_0_normalized_contrast": 0.4598237329876881
+    },
+    {
+      "cell_id": 12,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 14.991244303291637,
+      "direction_1_peak_millivolts": 20.081571106002563,
+      "direction_1_minus_0_normalized_contrast": 0.25348249775085485
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 5.848049078491279,
+      "direction_1_peak_millivolts": 17.545579010212855,
+      "direction_1_minus_0_normalized_contrast": 0.6666938677209072
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 7.5721273690532485,
+      "direction_1_peak_millivolts": 17.61634733766701,
+      "direction_1_minus_0_normalized_contrast": 0.5701647325684457
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 9.67723041767065,
+      "direction_1_peak_millivolts": 27.314587460176178,
+      "direction_1_minus_0_normalized_contrast": 0.6457120052872938
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 13.644971184961285,
+      "direction_1_peak_millivolts": 23.634192947489552,
+      "direction_1_minus_0_normalized_contrast": 0.42265973645566485
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 14.047652362448737,
+      "direction_1_peak_millivolts": 26.65491670427963,
+      "direction_1_minus_0_normalized_contrast": 0.47298081932504066
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 10.604062964722814,
+      "direction_1_peak_millivolts": 33.92362125178922,
+      "direction_1_minus_0_normalized_contrast": 0.6874135904885588
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 13.212109569270169,
+      "direction_1_peak_millivolts": 28.46315715535898,
+      "direction_1_minus_0_normalized_contrast": 0.5358171443471575
+    },
+    {
+      "cell_id": 13,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 17.004321111419372,
+      "direction_1_peak_millivolts": 29.931237683049666,
+      "direction_1_minus_0_normalized_contrast": 0.43188713772938714
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 4.676119329955924,
+      "direction_1_peak_millivolts": 13.394303286204988,
+      "direction_1_minus_0_normalized_contrast": 0.6508874534167122
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 5.7948641146591555,
+      "direction_1_peak_millivolts": 9.254370880214594,
+      "direction_1_minus_0_normalized_contrast": 0.3738240892151513
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 5.655487074507498,
+      "direction_1_peak_millivolts": 17.932034339807608,
+      "direction_1_minus_0_normalized_contrast": 0.6846154224703445
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 9.97384811306339,
+      "direction_1_peak_millivolts": 20.541232213314018,
+      "direction_1_minus_0_normalized_contrast": 0.5144474289814642
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 6.188287329876729,
+      "direction_1_peak_millivolts": 15.244246528925537,
+      "direction_1_minus_0_normalized_contrast": 0.5940575142146498
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.396894671326244,
+      "direction_1_peak_millivolts": 21.52073804910586,
+      "direction_1_minus_0_normalized_contrast": 0.6562899165238634
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 8.410055097132982,
+      "direction_1_peak_millivolts": 20.54151348202845,
+      "direction_1_minus_0_normalized_contrast": 0.590582499946226
+    },
+    {
+      "cell_id": 14,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 11.876794486767423,
+      "direction_1_peak_millivolts": 19.485616487615886,
+      "direction_1_minus_0_normalized_contrast": 0.39048402731749654
+    },
+    {
+      "cell_id": 15,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 5.57159117831462,
+      "direction_1_peak_millivolts": 17.535366107598172,
+      "direction_1_minus_0_normalized_contrast": 0.6822654774284742
+    },
+    {
+      "cell_id": 15,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 8.299385267643075,
+      "direction_1_peak_millivolts": 15.444883945883447,
+      "direction_1_minus_0_normalized_contrast": 0.4626450223437823
+    },
+    {
+      "cell_id": 15,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 9.235576484389107,
+      "direction_1_peak_millivolts": 20.9893672796696,
+      "direction_1_minus_0_normalized_contrast": 0.5599878566451725
+    },
+    {
+      "cell_id": 15,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 6.3113617200096215,
+      "direction_1_peak_millivolts": 24.379669480269335,
+      "direction_1_minus_0_normalized_contrast": 0.7411219325546042
+    },
+    {
+      "cell_id": 15,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 6.665463518125414,
+      "direction_1_peak_millivolts": 23.202639765374,
+      "direction_1_minus_0_normalized_contrast": 0.7127282246534514
+    },
+    {
+      "cell_id": 15,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 12.808908324404193,
+      "direction_1_peak_millivolts": 19.220833019258322,
+      "direction_1_minus_0_normalized_contrast": 0.33359244567754676
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 12.481566472443937,
+      "direction_1_peak_millivolts": 11.683140214132656,
+      "direction_1_minus_0_normalized_contrast": -0.06396843377584048
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 14.956710684966268,
+      "direction_1_peak_millivolts": 19.530319648414952,
+      "direction_1_minus_0_normalized_contrast": 0.2341799338558123
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 12.083701449485332,
+      "direction_1_peak_millivolts": 18.559742695583907,
+      "direction_1_minus_0_normalized_contrast": 0.3489294734478986
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 13.607327970612111,
+      "direction_1_peak_millivolts": 20.228516843113255,
+      "direction_1_minus_0_normalized_contrast": 0.3273195422014002
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 10.144021025675372,
+      "direction_1_peak_millivolts": 15.668379150633648,
+      "direction_1_minus_0_normalized_contrast": 0.3525800640798806
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 13.00417849343097,
+      "direction_1_peak_millivolts": 28.824017031965,
+      "direction_1_minus_0_normalized_contrast": 0.5488422561293343
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "direction_0_peak_millivolts": 10.802310106233833,
+      "direction_1_peak_millivolts": 23.697984742723506,
+      "direction_1_minus_0_normalized_contrast": 0.544167564309421
+    },
+    {
+      "cell_id": 16,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 17.1696778695028,
+      "direction_1_peak_millivolts": 26.804520634187938,
+      "direction_1_minus_0_normalized_contrast": 0.3594484264865509
+    },
+    {
+      "cell_id": 17,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 8.710281475215261,
+      "direction_1_peak_millivolts": 11.918336807739628,
+      "direction_1_minus_0_normalized_contrast": 0.2691697158987061
+    },
+    {
+      "cell_id": 17,
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 10.09175183819044,
+      "direction_1_peak_millivolts": 12.045701944477358,
+      "direction_1_minus_0_normalized_contrast": 0.16221139417971014
+    },
+    {
+      "cell_id": 17,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 7.758506547559101,
+      "direction_1_peak_millivolts": 21.17636952178279,
+      "direction_1_minus_0_normalized_contrast": 0.6336243311405
+    },
+    {
+      "cell_id": 17,
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 8.039460423864469,
+      "direction_1_peak_millivolts": 23.30078194737029,
+      "direction_1_minus_0_normalized_contrast": 0.6549703592770715
+    },
+    {
+      "cell_id": 17,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "direction_0_peak_millivolts": 4.560276800966612,
+      "direction_1_peak_millivolts": 25.380024041609126,
+      "direction_1_minus_0_normalized_contrast": 0.8203202332081997
+    },
+    {
+      "cell_id": 17,
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "direction_0_peak_millivolts": 7.2663742896184615,
+      "direction_1_peak_millivolts": 26.168689054842254,
+      "direction_1_minus_0_normalized_contrast": 0.7223256283725114
+    }
+  ],
+  "summary": {
+    "all_pairs": {
+      "pair_count": 134,
+      "positive_count": 130,
+      "zero_count": 0,
+      "negative_count": 4,
+      "positive_fraction": 0.9701492537313433,
+      "median_contrast": 0.4922425318290533,
+      "lower_quartile_contrast": 0.35051094361965257,
+      "upper_quartile_contrast": 0.633102193915372
+    },
+    "by_width_pixels": {
+      "1": {
+        "pair_count": 42,
+        "positive_count": 39,
+        "zero_count": 0,
+        "negative_count": 3,
+        "positive_fraction": 0.9285714285714286,
+        "median_contrast": 0.39037400123755495,
+        "lower_quartile_contrast": 0.22063649505096183,
+        "upper_quartile_contrast": 0.5301772273841219
+      },
+      "2": {
+        "pair_count": 48,
+        "positive_count": 47,
+        "zero_count": 0,
+        "negative_count": 1,
+        "positive_fraction": 0.9791666666666666,
+        "median_contrast": 0.5203458052319481,
+        "lower_quartile_contrast": 0.3530217906990658,
+        "upper_quartile_contrast": 0.6144756352187457
+      },
+      "4": {
+        "pair_count": 44,
+        "positive_count": 44,
+        "zero_count": 0,
+        "negative_count": 0,
+        "positive_fraction": 1.0,
+        "median_contrast": 0.5399923543282893,
+        "lower_quartile_contrast": 0.43079638175596663,
+        "upper_quartile_contrast": 0.7009367063403183
+      }
+    },
+    "by_step_duration_milliseconds": {
+      "20": {
+        "pair_count": 8,
+        "positive_count": 6,
+        "zero_count": 0,
+        "negative_count": 2,
+        "positive_fraction": 0.75,
+        "median_contrast": 0.36633399679052914,
+        "lower_quartile_contrast": 0.17671742879955066,
+        "upper_quartile_contrast": 0.44486504524210335
+      },
+      "40": {
+        "pair_count": 44,
+        "positive_count": 43,
+        "zero_count": 0,
+        "negative_count": 1,
+        "positive_fraction": 0.9772727272727273,
+        "median_contrast": 0.5402018769852902,
+        "lower_quartile_contrast": 0.3497353325166379,
+        "upper_quartile_contrast": 0.656593717198438
+      },
+      "80": {
+        "pair_count": 38,
+        "positive_count": 38,
+        "zero_count": 0,
+        "negative_count": 0,
+        "positive_fraction": 1.0,
+        "median_contrast": 0.5196828989294282,
+        "lower_quartile_contrast": 0.430305005315664,
+        "upper_quartile_contrast": 0.6067457624589501
+      },
+      "160": {
+        "pair_count": 44,
+        "positive_count": 43,
+        "zero_count": 0,
+        "negative_count": 1,
+        "positive_fraction": 0.9772727272727273,
+        "median_contrast": 0.45922249869848725,
+        "lower_quartile_contrast": 0.32726781604733723,
+        "upper_quartile_contrast": 0.5834849482892093
+      }
+    },
+    "cell_median_contrast": {
+      "1": 0.34353783595534226,
+      "2": 0.5294332334613968,
+      "3": 0.4833517522068491,
+      "4": 0.23465598279311,
+      "5": 0.4961165415713188,
+      "6": 0.4719210470608314,
+      "7": 0.6087889195449983,
+      "8": 0.531781006361368,
+      "9": 0.6315357822399882,
+      "10": 0.3510179350330874,
+      "11": 0.48836852208678777,
+      "12": 0.45730827330082474,
+      "13": 0.5529909384578016,
+      "14": 0.592320007080438,
+      "15": 0.6211266670368234,
+      "16": 0.35075476876388956,
+      "17": 0.6442973452087857
+    },
+    "cells_with_positive_median": 17
+  },
+  "negative_controls": {
+    "swap_direction_codes_median_contrast": -0.4922425318290533,
+    "swap_negation_maximum_error": 0.0,
+    "deterministic_within_pair_label_permutation": {
+      "pair_count": 134,
+      "positive_count": 66,
+      "zero_count": 0,
+      "negative_count": 68,
+      "positive_fraction": 0.4925373134328358,
+      "median_contrast": -0.025339456219087095,
+      "lower_quartile_contrast": -0.46937496045455035,
+      "upper_quartile_contrast": 0.5093405269973663
+    }
+  },
+  "label_boundary": {
+    "direction_0_motion_order": "decreasing_receptive_field_coordinate",
+    "direction_1_motion_order": "increasing_receptive_field_coordinate",
+    "repository_maps_numeric_code_to_PD_ND": false,
+    "infer_PD_from_larger_response": false,
+    "fit_allowed": false,
+    "model_scoring_allowed": false,
+    "independent_cell_holdout": false,
+    "untouched_final_test": false,
+    "change_visual_gate": false,
+    "direction_1_has_larger_peak_pairs": 130,
+    "direction_1_has_larger_peak_fraction": 0.9701492537313433,
+    "biological_PD_code_assigned": null,
+    "reason": "The paper states that traces were aligned to each cell's PD-ND axis, but the audited repository does not label numeric direction codes as PD or ND. Response magnitude is therefore not used to assign the biological label."
+  },
+  "limitations": [
+    "This report describes measured T5 phenotype and does not score a v7 model.",
+    "Direction-code asymmetry is not biological direction correctness without a source label map.",
+    "The moving-bar cells are the same cells whose width-2 flashes define model fits.",
+    "The processed 2.5/5-ms traces are not the raw 20-kHz acquisition.",
+    "No independent-cell or untouched final test is created by this audit."
+  ],
+  "advance_to_T5_fit": false,
+  "advance_to_visual_gate": false,
+  "advance_to_central_complex": false
+}
