@@ -34,6 +34,14 @@ def test_stage1_split_is_deterministic_disjoint_and_exactly_mirrored() -> None:
             np.array_equal(item.frames[:, :, ::-1], by_identity[item.mirror_of].frames)
             for item in stimuli
         )
+        for item in stimuli:
+            if item.family == "static":
+                assert (
+                    float(np.mean(item.frames[0])) < 0.2
+                    if item.polarity == "on"
+                    else float(np.mean(item.frames[0])) > 0.8
+                )
+                assert not np.array_equal(item.frames[0], item.frames[1])
         all_identities.extend(item.identity for item in stimuli)
         split_hashes[name] = {item.sha256 for item in stimuli}
     assert len(all_identities) == len(set(all_identities))

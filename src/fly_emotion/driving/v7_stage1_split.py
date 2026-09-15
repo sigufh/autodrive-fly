@@ -77,7 +77,10 @@ def _looming(width: int, height: int, frames: int, polarity: str, direction: str
 
 def _static_disc(width: int, height: int, frames: int, polarity: str) -> np.ndarray:
     final = _looming(width, height, frames, polarity, "expansion")[-1]
-    return np.repeat(final[None, :, :], frames, axis=0)
+    background = 0.08 if polarity == "on" else 0.92
+    output = np.repeat(final[None, :, :], frames, axis=0)
+    output[0] = background
+    return output
 
 
 def _translation(
@@ -145,6 +148,13 @@ def _symmetric_noise(frames: np.ndarray, standard_deviation: float, seed: int) -
     return np.clip(frames + noise, 0, 1).astype(np.float32)
 
 
+def _complementary_pair(
+    on_frames: np.ndarray, standard_deviation: float, seed: int
+) -> tuple[np.ndarray, np.ndarray]:
+    on = _add_noise(on_frames, standard_deviation, seed)
+    return on, (1.0 - on).astype(np.float32)
+
+
 def build_stage1_split(config: dict) -> dict[str, list[Stage1Stimulus]]:
     width = int(config["stimulus_geometry"]["width"])
     height = int(config["stimulus_geometry"]["height"])
@@ -172,67 +182,60 @@ def build_stage1_split(config: dict) -> dict[str, list[Stage1Stimulus]]:
                     )
                 )
             for parameter in values["edge_speeds_pixels_per_frame"]:
-                for polarity in config["polarities"]:
-                    horizontal_ids = {
-                        direction: (
-                            f"{split}:edge:{polarity}:{direction}:{parameter:g}:{noise:g}:{seed}"
-                        )
-                        for direction in ("right", "left")
-                    }
-                    base = _moving_edge(width, height, float(parameter), polarity, "right")
-                    right, left = _paired_noise(
-                        base,
-                        noise,
-                        _condition_seed(int(seed), horizontal_ids["right"]),
-                        2,
-                    )
-                    for direction, frames in (("right", right), ("left", left)):
-                        identity = horizontal_ids[direction]
-                        mirror_of = horizontal_ids["left" if direction == "right" else "right"]
-                        stimuli.append(
-                            Stage1Stimulus(
-                                identity,
-                                split,
-                                "moving_edge",
-                                polarity,
-                                direction,
-                                "speed_pixels_per_frame",
-                                float(parameter),
-                                noise,
-                                int(seed),
-                                frames,
-                                mirror_of,
+                for axis_direction, mirror_direction, mirror_axis in (
+                    ("right", "left", 2),
+                    ("down", "up", 1),
+                ):
+                    base = _moving_edge(width, height, float(parameter), "on", axis_direction)
+                    pair_seed = _condition_seed(int(seed), f"edge:{axis_direction}:{parameter:g}")
+                    if mirror_axis == 2:
+                        on_primary, off_primary = _complementary_pair(base, noise, pair_seed)
+                    else:
+                        on_primary = _symmetric_noise(base, noise, pair_seed)
+                        off_primary = (1.0 - on_primary).astype(np.float32)
+                    for polarity, primary in (("on", on_primary), ("off", off_primary)):
+                        frames_by_direction = {
+                            axis_direction: primary,
+                            mirror_direction: np.flip(primary, axis=mirror_axis).copy(),
+                        }
+                        identities = {
+                            direction: (
+                                f"{split}:edge:{polarity}:{direction}:"
+                                f"{parameter:g}:{noise:g}:{seed}"
                             )
-                        )
-                    for direction in ("down", "up"):
-                        identity = (
-                            f"{split}:edge:{polarity}:{direction}:{parameter:g}:{noise:g}:{seed}"
-                        )
-                        frames = _moving_edge(width, height, float(parameter), polarity, direction)
-                        stimuli.append(
-                            Stage1Stimulus(
-                                identity,
-                                split,
-                                "moving_edge",
-                                polarity,
-                                direction,
-                                "speed_pixels_per_frame",
-                                float(parameter),
-                                noise,
-                                int(seed),
-                                _symmetric_noise(
-                                    frames, noise, _condition_seed(int(seed), identity)
-                                ),
-                                identity,
+                            for direction in (axis_direction, mirror_direction)
+                        }
+                        for direction, frames in frames_by_direction.items():
+                            mirror_of = identities[
+                                mirror_direction if direction == axis_direction else axis_direction
+                            ]
+                            if mirror_axis == 1:
+                                mirror_of = identities[direction]
+                            stimuli.append(
+                                Stage1Stimulus(
+                                    identities[direction],
+                                    split,
+                                    "moving_edge",
+                                    polarity,
+                                    direction,
+                                    "speed_pixels_per_frame",
+                                    float(parameter),
+                                    noise,
+                                    int(seed),
+                                    frames,
+                                    mirror_of,
+                                )
                             )
-                        )
             for parameter in values["looming_duration_frames"]:
-                for polarity in config["polarities"]:
-                    for direction in config["directions"]["looming"]:
+                for direction in config["directions"]["looming"]:
+                    base = _looming(width, height, int(parameter), "on", direction)
+                    pair_seed = _condition_seed(int(seed), f"loom:{direction}:{parameter}")
+                    on_frames = _symmetric_noise(base, noise, pair_seed)
+                    off_frames = (1.0 - on_frames).astype(np.float32)
+                    for polarity, frames in (("on", on_frames), ("off", off_frames)):
                         identity = (
                             f"{split}:loom:{polarity}:{direction}:{parameter}:{noise:g}:{seed}"
                         )
-                        frames = _looming(width, height, int(parameter), polarity, direction)
                         stimuli.append(
                             Stage1Stimulus(
                                 identity,
@@ -244,14 +247,16 @@ def build_stage1_split(config: dict) -> dict[str, list[Stage1Stimulus]]:
                                 float(parameter),
                                 noise,
                                 int(seed),
-                                _symmetric_noise(
-                                    frames, noise, _condition_seed(int(seed), identity)
-                                ),
+                                frames,
                                 identity,
                             )
                         )
+                base_static = _static_disc(width, height, int(parameter), "on")
+                static_seed = _condition_seed(int(seed), f"static:{parameter}")
+                on_static = _symmetric_noise(base_static, noise, static_seed)
+                off_static = (1.0 - on_static).astype(np.float32)
+                for polarity, frames in (("on", on_static), ("off", off_static)):
                     identity = f"{split}:static:{polarity}:none:{parameter}:{noise:g}:{seed}"
-                    frames = _static_disc(width, height, int(parameter), polarity)
                     stimuli.append(
                         Stage1Stimulus(
                             identity,
@@ -263,18 +268,18 @@ def build_stage1_split(config: dict) -> dict[str, list[Stage1Stimulus]]:
                             float(parameter),
                             noise,
                             int(seed),
-                            _symmetric_noise(frames, noise, _condition_seed(int(seed), identity)),
+                            frames,
                             identity,
                         )
                     )
             for parameter in values["translation_period_pixels"]:
-                for polarity in config["polarities"]:
-                    base = _translation(width, height, float(parameter), polarity, "right")
+                base = _translation(width, height, float(parameter), "on", "right")
+                pair_seed = _condition_seed(int(seed), f"translation:{parameter}")
+                on_right, off_right = _complementary_pair(base, noise, pair_seed)
+                for polarity, primary in (("on", on_right), ("off", off_right)):
                     right_id = f"{split}:translation:{polarity}:right:{parameter}:{noise:g}:{seed}"
                     left_id = f"{split}:translation:{polarity}:left:{parameter}:{noise:g}:{seed}"
-                    right, left = _paired_noise(
-                        base, noise, _condition_seed(int(seed), right_id), 2
-                    )
+                    right, left = primary, np.flip(primary, axis=2).copy()
                     for direction, frames, identity, mirror_of in (
                         ("right", right, right_id, left_id),
                         ("left", left, left_id, right_id),

@@ -36,6 +36,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     interface = reports["ephys_interface"]
     stage1_split = reports["stage1_split"]
     stage1_scoring = reports["stage1_scoring"]
+    stage1_input = reports["stage1_input"]
     t5_supplement = reports["t5_supplement"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
@@ -107,6 +108,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "strict_scoring_contract_frozen": all(
                     stage1_scoring["synthetic_controls"].values()
                 ),
+                "development_R1_R6_input_gates_pass": stage1_input["input_gates_pass"],
+                "development_neural_evaluation_allowed": stage1_input[
+                    "development_neural_evaluation_allowed"
+                ],
                 "existing_artifacts_rescored_under_new_contract": stage1_scoring["protocol"][
                     "existing_artifacts_rescored"
                 ],

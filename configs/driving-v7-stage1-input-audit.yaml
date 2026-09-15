@@ -1,0 +1,31 @@
+version: 1
+name: v7-stage1-development-r1-r6-input-audit
+observed_on: "2026-09-15"
+stage1_config: configs/driving-v7-stage1-split.yaml
+stage1_evidence: artifacts/v7-stage1-split.json
+retina_audit_config: configs/driving-v7-retina-audit.yaml
+retina_audit_evidence: artifacts/v7-retina-column-audit.json
+split: development
+retinal_encodings: [linear_luminance, signed_frame_difference]
+thresholds:
+  maximum_balanced_pair_mirror_error: 0.000001
+  minimum_dynamic_range: 0.20
+  minimum_dynamic_receptor_fraction_by_family:
+    moving_edge: 0.80
+    looming: 0.10
+    static: 0.10
+    translation: 0.95
+    rotation: 0.95
+  minimum_on_off_sign_agreement: 0.95
+  maximum_cross_receptor_leakage: 0.0
+  minimum_changed_target_receptor_magnitude: 0.000001
+  require_all_stimulus_families: [uniform, moving_edge, looming, static, translation, rotation]
+boundary:
+  evaluate_development_only: true
+  neural_evaluation_allowed_only_if_all_input_gates_pass: true
+  validation_evaluation: false
+  ood_evaluation: false
+  final_evaluation: false
+  fit_parameters: false
+  change_retina_mapping: false
+  change_runtime: false

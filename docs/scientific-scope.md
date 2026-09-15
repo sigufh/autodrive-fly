@@ -381,6 +381,17 @@ from scoring as perfect. No old artifact is retrospectively rescored and final
 authorization additionally requires external custody
 (`artifacts/v7-stage1-scoring.json`).
 
+The development-only R1-R6 preflight evaluates 172 stimuli without running a
+neural model. Both the default 3,344-receptor map and the 1,914-receptor exact
+bilateral-pair control pass family-specific dynamic range and spatial-support
+coverage, exact ON/OFF complementation, and zero cross-receptor leakage under
+linear-luminance and signed-frame-difference encodings. The paired map has zero
+input mirror error. Finite-view per-receptor motion energy is retained as an
+observation rather than incorrectly required to be direction invariant. This
+authorizes development neural evaluation only; validation, OOD, reserved final
+and central-complex stages remain closed
+(`artifacts/v7-stage1-input-audit.json`).
+
 The machine-readable objective coverage audit maps all numbered requirements 0–8
 to current evidence. Only version/checkpoint isolation is complete; the city/LLM
 pause is a boundary-only pass. Controlled vision is failed, topology/baseline work

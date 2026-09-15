@@ -933,7 +933,7 @@ readme/绘图源、校验其文件哈希、查找不依赖响应大小的显式�
 
 `make v7-freeze-stage1-split` 预注册了新的阶段 1 刺激划分，而没有运行任何模型。
 development、validation、OOD、final 各含 172 个刺激，覆盖 uniform、ON/OFF 四向
-moving edge、looming/receding、static disc、左右 translation 和顺/逆时针 rotation；
+moving edge、looming/receding、背景后出现的 static disc、左右 translation 和顺/逆时针 rotation；
 每个 split
 使用互斥参数、噪声水平和 seed，全部六组跨 split 的 identity 与帧哈希重叠均为零。
 每个左右/旋转镜像对共享同一噪声场并逐像素严格镜像。final 只保存聚合 SHA-256，
@@ -966,6 +966,15 @@ LC4 的六个群体必须逐群体让 expansion 同时高于 receding 与同尺�
 控制均按预期通过或失败。执行顺序锁定为 development→validation→OOD；预留 final
 只有阶段 1、拓扑门槛和外部保管三项都成立时才可授权。当前没有模型被评估、没有
 旧 artifact 被重解释、没有 final 被运行：`artifacts/v7-stage1-scoring.json`。
+
+`make v7-audit-stage1-input` 只对 development 的 172 个刺激执行 R1–R6 输入预检，
+没有运行神经模型。默认 3,344 受体与严格双眼配对的 1,914 受体分别通过线性亮度
+和帧差分编码的分族动态范围、按空间支持冻结的覆盖率、四类 ON/OFF 严格互补和零
+跨受体泄漏检查；严格配对映射的全部刺激镜像误差为 0。有限视野中单受体能量可随
+运动方向不同，因此它作为观测值保存，不再被误设为“必须为零”的阴性门槛；真正的
+阴性对照是扰动一个受体不能改变其他受体。输入层门槛因此允许下一步只运行
+development 神经评估；validation、OOD、预留 final 与中央复合体仍关闭。证据见
+`artifacts/v7-stage1-input-audit.json`。
 
 `make v7-audit-goal-coverage` 将总目标第 0–8 项逐项绑定到当前 artifact，并保存
 `artifacts/v7-goal-audit.json`。目前仅版本/检查点隔离完整通过；城市/大模型暂停只通过
