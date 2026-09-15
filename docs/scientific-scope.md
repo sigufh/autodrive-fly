@@ -360,6 +360,14 @@ The declared 10-ms frame and nominal 2.5-ms substep are engineering scheduling
 units only: they are not applied to the runtime and do not constitute biological
 time calibration (`artifacts/v7-stage1-split.json`).
 
+The official Europe PMC supplementary bundle is retrievable within a 10-MB cap.
+Supplementary file 1 is parsed only as nested ZIP/XML and its 121,076-byte DOCX
+member is fixed by SHA-256. It contains ten free-parameter definitions, units and
+bounds plus fixed VE=0, VI=-74 and VL=-65 mV, but no fitted vector for any of the
+17 cells. Those bounds cannot support zero-fit model replay or measured/model
+comparison; Figure 4 result files are still required
+(`artifacts/v7-t5-supplement-audit.json`).
+
 The machine-readable objective coverage audit maps all numbered requirements 0–8
 to current evidence. Only version/checkpoint isolation is complete; the city/LLM
 pause is a boundary-only pass. Controlled vision is failed, topology/baseline work

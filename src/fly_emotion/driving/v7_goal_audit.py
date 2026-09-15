@@ -35,6 +35,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_labels = reports["t5_label_audit"]
     interface = reports["ephys_interface"]
     stage1_split = reports["stage1_split"]
+    t5_supplement = reports["t5_supplement"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -96,6 +97,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "direction_code_to_PD_ND_mapping_verified"
                 ],
                 "T5_model_scoring_allowed": t5["label_boundary"]["model_scoring_allowed"],
+                "T5_published_fitted_parameter_vectors_available": t5_supplement["replay_status"][
+                    "published_17_cell_parameter_values_available"
+                ],
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"
                 ],

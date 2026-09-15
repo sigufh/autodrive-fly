@@ -943,6 +943,14 @@ moving edge、looming/receding、左右 translation 和顺/逆时针 rotation；
 无量纲 leak/delay，也不能解决论文 160 ms 时移与当前支路延迟的矛盾。刺激级互斥
 也不等于独立动物或独立细胞。证据见 `artifacts/v7-stage1-split.json`。
 
+`make v7-audit-t5-supplement` 在 10 MB 上限内取得 Europe PMC 官方补充包，安全读取
+其中 `elife-50706-supp1.docx` 的 `word/document.xml`，未执行 Office 内容。DOCX
+成员为 121,076 字节，SHA-256 为 `b0933c4d…`；外层 ZIP 会动态重打包，故其哈希只
+记录、不作为身份约束。Supplementary 1 只有 10 个自由参数的单位与上下界（时间
+常数 1–400 ms、幅值/宽度 0–10、E 位置 -5–5、I 位置 -5–10）以及固定
+`VE=0`、`VI=-74`、`VL=-65 mV`，不含 17 个细胞的拟合参数向量。因此不能据此做
+零拟合论文模型重放；`advance_to_T5_replay=false`，仍需 Figure 4 结果包。
+
 `make v7-audit-goal-coverage` 将总目标第 0–8 项逐项绑定到当前 artifact，并保存
 `artifacts/v7-goal-audit.json`。目前仅版本/检查点隔离完整通过；城市/大模型暂停只通过
 边界要求；视觉阶段明确失败，拓扑/基线阶段不完整，中央复合体、下降读出、信号分离、

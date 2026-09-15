@@ -1,0 +1,137 @@
+{
+  "protocol": {
+    "name": "v7-t5-official-supplement-parameter-audit",
+    "observed_on": "2026-09-15",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-supplement-audit.yaml": "ca4d788df7ce96708c3361c8b81b8490d1eeb7023991d4b6252d2cd3bb22d592",
+      "src/fly_emotion/driving/v7_t5_supplement_audit.py": "1ba09da2d9cd1ad406e9664eb40ea6a1d30b38a20006bc1e17001a74431bc142"
+    },
+    "safe_parsing": "nested ZIP member plus word/document.xml only",
+    "office_content_executed": false,
+    "parameter_fitting": false,
+    "raw_files_committed": false
+  },
+  "source": {
+    "pmc_id": "PMC6917495",
+    "doi": "10.7554/eLife.50706",
+    "http_status": 200,
+    "bundle_size_bytes": 2349249,
+    "bundle_sha256": "7087f37c0f81047bfba84ed0116e358b78a04fd74cdf9f13aa8255dd0eee9939",
+    "bundle_sha256_is_identity_constraint": false,
+    "bundle_is_dynamically_repacked": true,
+    "bundle_member_count": 31,
+    "member": "elife-50706-supp1.docx",
+    "member_size_bytes": 121076,
+    "member_sha256": "b0933c4d99363b3807d41c9fdffa9277ece3ced9bc0f9c187abc38cfe780daa0"
+  },
+  "parameter_contract": {
+    "free_parameter_count": 10,
+    "free_parameters": [
+      {
+        "name": "rise_time_E",
+        "description": "Rise time of E conductance",
+        "unit": "ms",
+        "minimum": 1.0,
+        "maximum": 400.0
+      },
+      {
+        "name": "decay_time_E",
+        "description": "Decay time of E conductance",
+        "unit": "ms",
+        "minimum": 1.0,
+        "maximum": 400.0
+      },
+      {
+        "name": "conductance_amplitude_E",
+        "description": "Conductance amplitude (E)",
+        "unit": "unitless",
+        "minimum": 0.0,
+        "maximum": 10.0
+      },
+      {
+        "name": "receptive_field_location_E",
+        "description": "Receptive field location (E)",
+        "unit": "unitless",
+        "minimum": -5.0,
+        "maximum": 5.0
+      },
+      {
+        "name": "spatial_profile_width_E",
+        "description": "Width of conductance spatial profile (E)",
+        "unit": "unitless",
+        "minimum": 0.0,
+        "maximum": 10.0
+      },
+      {
+        "name": "rise_time_I",
+        "description": "Rise time of I conductance",
+        "unit": "ms",
+        "minimum": 1.0,
+        "maximum": 400.0
+      },
+      {
+        "name": "decay_time_I",
+        "description": "Decay time of I conductance",
+        "unit": "ms",
+        "minimum": 1.0,
+        "maximum": 400.0
+      },
+      {
+        "name": "conductance_amplitude_I",
+        "description": "Conductance amplitude (I)",
+        "unit": "unitless",
+        "minimum": 0.0,
+        "maximum": 10.0
+      },
+      {
+        "name": "receptive_field_location_I",
+        "description": "Receptive field location (I)",
+        "unit": "unitless",
+        "minimum": -5.0,
+        "maximum": 10.0
+      },
+      {
+        "name": "spatial_profile_width_I",
+        "description": "Width of conductance spatial profile (I)",
+        "unit": "unitless",
+        "minimum": 0.0,
+        "maximum": 10.0
+      }
+    ],
+    "fixed_parameters": {
+      "excitatory_reversal_millivolts": 0.0,
+      "inhibitory_reversal_millivolts": -74.0,
+      "resting_potential_millivolts": -65.0
+    },
+    "fitted_cell_parameter_values_present": false,
+    "table_rows_including_header": 14,
+    "table_columns": [
+      "Parameter",
+      "Description",
+      "Units",
+      "Bounds"
+    ]
+  },
+  "replay_status": {
+    "published_17_cell_parameter_values_available": false,
+    "zero_fit_replay_performed": false,
+    "measured_model_comparison_performed": false,
+    "reason": "Supplementary file 1 provides parameter definitions, units, bounds and fixed potentials, but no fitted parameter vector for any of the 17 cells."
+  },
+  "audit_boundary": {
+    "execute_office_content": false,
+    "extract_xml_text_only": true,
+    "fit_parameters": false,
+    "infer_missing_cell_parameters": false,
+    "change_visual_gate": false
+  },
+  "limitations": [
+    "The Europe PMC bundle is a publication supplement package, not Figure 4 raw data.",
+    "Parameter bounds cannot substitute for fitted per-cell values.",
+    "No model quality or generalization metric is produced by this audit."
+  ],
+  "advance_to_T5_replay": false,
+  "advance_to_T5_fit": false,
+  "advance_to_visual_gate": false,
+  "advance_to_central_complex": false
+}

@@ -1,0 +1,34 @@
+version: 1
+name: v7-t5-official-supplement-parameter-audit
+observed_on: "2026-09-15"
+source:
+  pmc_id: PMC6917495
+  doi: 10.7554/eLife.50706
+  bundle_url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6917495/supplementaryFiles
+  bundle_is_dynamically_repacked: true
+  expected_member_count: 31
+  member: elife-50706-supp1.docx
+  member_sha256: b0933c4d99363b3807d41c9fdffa9277ece3ced9bc0f9c187abc38cfe780daa0
+  member_size_bytes: 121076
+  maximum_download_bytes: 10000000
+expected_free_parameters:
+  - [rise_time_E, Rise time of E conductance, ms, 1.0, 400.0]
+  - [decay_time_E, Decay time of E conductance, ms, 1.0, 400.0]
+  - [conductance_amplitude_E, Conductance amplitude (E), unitless, 0.0, 10.0]
+  - [receptive_field_location_E, Receptive field location (E), unitless, -5.0, 5.0]
+  - [spatial_profile_width_E, Width of conductance spatial profile (E), unitless, 0.0, 10.0]
+  - [rise_time_I, Rise time of I conductance, ms, 1.0, 400.0]
+  - [decay_time_I, Decay time of I conductance, ms, 1.0, 400.0]
+  - [conductance_amplitude_I, Conductance amplitude (I), unitless, 0.0, 10.0]
+  - [receptive_field_location_I, Receptive field location (I), unitless, -5.0, 10.0]
+  - [spatial_profile_width_I, Width of conductance spatial profile (I), unitless, 0.0, 10.0]
+expected_fixed_parameters:
+  - [excitatory_reversal_millivolts, Reversal potential (E), mV, 0.0]
+  - [inhibitory_reversal_millivolts, Reversal potential (I), mV, -74.0]
+  - [resting_potential_millivolts, Resting potential, mV, -65.0]
+audit_boundary:
+  execute_office_content: false
+  extract_xml_text_only: true
+  fit_parameters: false
+  infer_missing_cell_parameters: false
+  change_visual_gate: false

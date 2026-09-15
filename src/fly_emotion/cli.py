@@ -62,6 +62,7 @@ from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
+from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
 
@@ -171,6 +172,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-goal-coverage")
     subparsers.add_parser("v7-audit-t5-labels")
     subparsers.add_parser("v7-freeze-stage1-split")
+    subparsers.add_parser("v7-audit-t5-supplement")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -464,6 +466,12 @@ def main() -> None:
     if args.command == "v7-freeze-stage1-split":
         report = evaluate_v7_stage1_split(root)
         target = root / "artifacts/v7-stage1-split.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t5-supplement":
+        report = evaluate_v7_t5_supplement_audit(root)
+        target = root / "artifacts/v7-t5-supplement-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

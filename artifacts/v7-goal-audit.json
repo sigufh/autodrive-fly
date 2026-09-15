@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "aa14dce47077e9b71d6a795830c049db633b71937d8f56ef425fc4e62f1ddb56",
-      "src/fly_emotion/driving/v7_goal_audit.py": "352b30becc3557f4b29734418d4512df9cdac0fab34998d1af700d1d94a29dfc",
+      "configs/driving-v7-goal-audit.yaml": "4f8f35b286da09c5ec4edb06040d6e985dfe8f783be78ac934d000fbbfebfccd",
+      "src/fly_emotion/driving/v7_goal_audit.py": "8e5f35b4578b939af3e48c8ad410ad99865fd23ef081c16bdf0fd920669aa0e0",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -20,7 +20,8 @@
       "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3",
       "artifacts/v7-t5-phenotype.json": "d15de3a2a0c3e4719415f5c58d50c3188564d0ed2857dc677295ccecafe9ce47",
       "artifacts/v7-t5-label-audit.json": "5fa157ab99fc3c385e2d5add961b24dad3f3f1e061f571b953cd4effead80329",
-      "artifacts/v7-stage1-split.json": "74e17db588d4bab6c6f5ad9f187e329a0892a2d50126f84553493b59c400146e"
+      "artifacts/v7-stage1-split.json": "74e17db588d4bab6c6f5ad9f187e329a0892a2d50126f84553493b59c400146e",
+      "artifacts/v7-t5-supplement-audit.json": "1d6d7ea04a74b280c05f4f268e19214ef614d46965b740c5e670a0cb14bbfed8"
     }
   },
   "objective_items": {
@@ -79,6 +80,7 @@
         "T5_biological_PD_code_assigned": null,
         "T5_external_direction_label_map_verified": false,
         "T5_model_scoring_allowed": false,
+        "T5_published_fitted_parameter_vectors_available": false,
         "physical_timebase_identified": false
       },
       "missing": [
