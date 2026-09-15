@@ -37,6 +37,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     stage1_split = reports["stage1_split"]
     stage1_scoring = reports["stage1_scoring"]
     stage1_input = reports["stage1_input"]
+    stage1_development = reports["stage1_development"]
     t5_supplement = reports["t5_supplement"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
@@ -112,6 +113,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "development_neural_evaluation_allowed": stage1_input[
                     "development_neural_evaluation_allowed"
                 ],
+                "development_neural_screen_performed": True,
+                "development_response_gates_pass": stage1_development[
+                    "development_response_gates_pass"
+                ],
+                "development_passing_retinal_backends": stage1_development[
+                    "passing_retinal_backends"
+                ],
+                "development_T4_conductance_target_fraction": {
+                    backend: result["T4_conductance_target_fraction"]
+                    for backend, result in stage1_development["retinal_results"].items()
+                },
                 "existing_artifacts_rescored_under_new_contract": stage1_scoring["protocol"][
                     "existing_artifacts_rescored"
                 ],
@@ -368,7 +380,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "next_allowed_work": [
                 "verify an external direction-code map before using T5 traces to score a model",
                 "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
-                "evaluate only development under the frozen strict scoring contract",
+                "diagnose the failed development screen without using validation for selection",
                 "obtain externally custodied independent-cell and one-time final manifests",
             ],
         },

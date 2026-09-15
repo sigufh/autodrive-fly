@@ -104,7 +104,7 @@ def _mirror_summary(stimuli, encoded: dict[str, np.ndarray], balanced) -> dict:
     }
 
 
-def _direction_null(stimuli, encoded: dict[str, np.ndarray]) -> dict:
+def _finite_view_direction_energy_observation(stimuli, encoded: dict[str, np.ndarray]) -> dict:
     by_key = {
         (
             item.family,
@@ -233,7 +233,7 @@ def evaluate_v7_stage1_input_audit(root: Path) -> dict:
                 family: _sign_agreement(stimuli, encoded, family)
                 for family in ("moving_edge", "looming", "static", "translation")
             }
-            direction_null = _direction_null(stimuli, encoded)
+            direction_observation = _finite_view_direction_energy_observation(stimuli, encoded)
             separability = receptor_separability_control(encoding)
             coverage_thresholds = thresholds["minimum_dynamic_receptor_fraction_by_family"]
             gates = {
@@ -263,7 +263,7 @@ def evaluate_v7_stage1_input_audit(root: Path) -> dict:
                 "minimum_dynamic_range_by_family": family_ranges,
                 "minimum_dynamic_receptor_fraction_by_family": family_coverage,
                 "on_off_sign_agreement_by_family": polarity,
-                "independent_receptor_direction_null": direction_null,
+                "finite_view_direction_energy_observation": direction_observation,
                 "receptor_separability_control": separability,
                 "mirror_summary": mirror,
                 "gates": gates,

@@ -381,6 +381,16 @@ from scoring as perfect. No old artifact is retrospectively rescored and final
 authorization additionally requires external custody
 (`artifacts/v7-stage1-scoring.json`).
 
+The only authorized development neural screen evaluates 172 stimuli with the
+frozen published-parameter T4 conductance proxy on `nested_t4_axis_v1`. The proxy
+replaces 6,749 of 6,852 T4 targets that have all five declared source types; all
+remaining T4 cells and every T5/LPLC/LC cell retain legacy recurrent dynamics.
+Neither retinal encoding passes: direction is 0/16 groups, looming is 0/6 groups,
+polarity is 9/16 for linear luminance and 11/16 for frame difference, and mirror
+passing is 24/132 versus 4/132. Per-cell IDs, signed contrasts, denominators and
+invalid cells are retained. This blocks validation; OOD, reserved final and
+topology controls were not run (`artifacts/v7-stage1-development.json`).
+
 The development-only R1-R6 preflight evaluates 172 stimuli without running a
 neural model. Both the default 3,344-receptor map and the 1,914-receptor exact
 bilateral-pair control pass family-specific dynamic range and spatial-support

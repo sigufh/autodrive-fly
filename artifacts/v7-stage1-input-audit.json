@@ -5,7 +5,7 @@
     "split": "development",
     "dependencies_sha256": {
       "configs/driving-v7-stage1-input-audit.yaml": "c0f450560139a7517214f3f24ab5fbec3abdcec922452514438c8e3d3d654aa0",
-      "src/fly_emotion/driving/v7_stage1_input_audit.py": "34253bd770f6efea2bb3f25a4beaf82cdf7b88477d75299f3fe3f8ae03500719",
+      "src/fly_emotion/driving/v7_stage1_input_audit.py": "d9184b776f8933e55f5030ee0480b4d865351c7e38efd8bd524e245b14285b40",
       "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
       "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
       "configs/driving-v7-retina-audit.yaml": "be82842332be48809b990b43cc51ff07093b92b4538920d3e4c583326ccdd2ef",
@@ -1191,7 +1191,7 @@
               "median_opposite_sign_fraction": 1.0
             }
           },
-          "independent_receptor_direction_null": {
+          "finite_view_direction_energy_observation": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.3846562697179539
           },
@@ -2370,7 +2370,7 @@
               "median_opposite_sign_fraction": 1.0
             }
           },
-          "independent_receptor_direction_null": {
+          "finite_view_direction_energy_observation": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.06995162232300048
           },
@@ -3555,7 +3555,7 @@
               "median_opposite_sign_fraction": 1.0
             }
           },
-          "independent_receptor_direction_null": {
+          "finite_view_direction_energy_observation": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.2194253646435046
           },
@@ -4734,7 +4734,7 @@
               "median_opposite_sign_fraction": 1.0
             }
           },
-          "independent_receptor_direction_null": {
+          "finite_view_direction_energy_observation": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.0350385147540983
           },
@@ -5919,7 +5919,7 @@
               "median_opposite_sign_fraction": 1.0
             }
           },
-          "independent_receptor_direction_null": {
+          "finite_view_direction_energy_observation": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.6278015384452716
           },
@@ -7236,7 +7236,7 @@
               "median_opposite_sign_fraction": 1.0
             }
           },
-          "independent_receptor_direction_null": {
+          "finite_view_direction_energy_observation": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.07790678948048804
           },

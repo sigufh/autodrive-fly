@@ -967,6 +967,19 @@ LC4 的六个群体必须逐群体让 expansion 同时高于 receding 与同尺�
 只有阶段 1、拓扑门槛和外部保管三项都成立时才可授权。当前没有模型被评估、没有
 旧 artifact 被重解释、没有 final 被运行：`artifacts/v7-stage1-scoring.json`。
 
+`make v7-evaluate-stage1-development` 随后只运行了获授权的 development split：172
+条刺激、`nested_t4_axis_v1`、线性亮度与帧差分两种编码、冻结发表参数，未做拟合。
+该候选是严格限定的混合物：只有同时具有 Mi9/Tm3/Mi1/Mi4/C3 五类输入的
+6,749/6,852 个 T4 使用电导代理（98.50%），其余 T4 与全部 T5、LPLC/LC 仍走旧
+递归状态；因此不能称完整 T4 或 T5 论文模型。
+
+严格逐群体结果全部保留在 `artifacts/v7-stage1-development.json`。两种编码都没有
+任何方向群体通过（0/16），也没有任何 LPLC1/LPLC2/LC4 looming 群体通过（0/6）。
+ON/OFF 群体在线性亮度下通过 9/16、帧差分下通过 11/16；132 个镜像条件中分别只有
+24 和 4 个通过。所有群体保留逐细胞 body ID、preferred/comparator、分母、对比和
+无效 ID。结果不是参数容量上限，但足以阻止当前冻结候选进入 validation；OOD、预留
+final、拓扑控制、中央复合体和驾驶学习均未运行。
+
 `make v7-audit-stage1-input` 只对 development 的 172 个刺激执行 R1–R6 输入预检，
 没有运行神经模型。默认 3,344 受体与严格双眼配对的 1,914 受体分别通过线性亮度
 和帧差分编码的分族动态范围、按空间支持冻结的覆盖率、四类 ON/OFF 严格互补和零

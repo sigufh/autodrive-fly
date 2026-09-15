@@ -1,0 +1,31 @@
+version: 1
+name: v7-stage1-development-neural-screen
+observed_on: "2026-09-15"
+deployment_enabled: false
+parameter_scan_allowed: false
+split: development
+stage1_config: configs/driving-v7-stage1-split.yaml
+stage1_evidence: artifacts/v7-stage1-split.json
+input_evidence: artifacts/v7-stage1-input-audit.json
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+scoring_evidence: artifacts/v7-stage1-scoring.json
+candidate_config: configs/driving-v7-t4-conductance.yaml
+candidate_implementation: src/fly_emotion/driving/v7_conductance.py
+source_audit_evidence: artifacts/v7-t4-source-audit.json
+retinal_geometry: nested_t4_axis_v1
+retinal_backends: [linear_luminance, signed_frame_difference]
+candidate_semantics:
+  T4: published_parameter_proxy_only_for_targets_with_all_five_source_types_other_T4_legacy
+  T5: legacy_typed_recurrent_state_not_published_T5_model
+  LPLC_LC: legacy_typed_recurrent_state_not_electrophysiology_calibrated
+  target_activity_injection: false
+  T5_direction_labels_externally_verified: false
+  engineering_timebase_applied_to_dynamics: false
+evaluation_boundary:
+  evaluate_development: true
+  evaluate_validation: false
+  evaluate_ood: false
+  evaluate_final: false
+  fit_parameters: false
+  select_retinal_backend: false
+  run_topology_controls_only_if_response_gates_pass: true
