@@ -290,6 +290,23 @@ Fig. 5 inputs, T5 recordings and an untouched final test are absent. The interfa
 cannot resample, map millivolts to v7 state, inject target activity, or be imported
 by the runtime (`artifacts/v7-ephys-interface.json`). Fitting remains disabled.
 
+A T5 availability audit identifies a genuine whole-cell candidate rather than
+collapsing all optical signals into electrophysiology. Gruntman et al. (2021,
+doi:10.1016/j.cub.2021.09.072) publicly describe CC-BY Figshare datasets with
+T4/T5 single-bar responses (6.32 GB), minimal-motion responses (4.31 GB), a
+3.63-MB unified-model package and 17-KB support functions. In this environment,
+the article APIs returned HTTP 403 on 2026-09-15, so file manifests, hashes and
+array axes were not verified and no large dataset was downloaded. This is a
+dated access observation, not a claim that the public data are unavailable.
+
+Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
+about 15 Hz; this can constrain polarity, F1 and relative response amplitude but
+not absolute millivolts. Ramos-Traslosheros and Silies (2021) provide calcium
+activity and receptive-field constraints, while the Shinomiya T5 dataset is
+structural connectomics only. These modalities cannot substitute for one another.
+The current interface remains T4-only and T5 fitting remains disabled
+(`artifacts/v7-t5-data-audit.json`).
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

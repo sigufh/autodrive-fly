@@ -1,0 +1,98 @@
+version: 1
+name: v7-t5-public-data-availability-audit
+exploratory: true
+advance_allowed: false
+observed_on: "2026-09-15"
+sources:
+  gruntman_2021_whole_cell:
+    paper_doi: 10.1016/j.cub.2021.09.072
+    pubmed_id: 34672960
+    pubmed_url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=34672960&retmode=xml
+    collection_doi: 10.25378/janelia.c.5629663
+    collection_datacite_url: https://api.datacite.org/dois/10.25378/janelia.c.5629663
+    required_abstract_phrases:
+      - Using whole-cell electrophysiology
+      - T4 (ON) and T5 (OFF) cells
+    modality: whole_cell_electrophysiology
+    signal_unit: membrane_voltage
+    absolute_millivolts_possible: true
+    datasets:
+      figure_2_single_bar:
+        doi: 10.25378/janelia.16663705.v1
+        article_id: 16663705
+        datacite_url: https://api.datacite.org/dois/10.25378/janelia.16663705.v1
+        expected_size_bytes: 6320065220
+        required_description_phrases: [singleBarStT4.mat, singleBarStT5, raw and processed recordings, position, duration, width, value]
+        stimulus_scope: stationary single-bar flashes
+      figure_4_minimal_motion:
+        doi: 10.25378/janelia.16663723.v1
+        article_id: 16663723
+        datacite_url: https://api.datacite.org/dois/10.25378/janelia.16663723.v1
+        expected_size_bytes: 4306385640
+        required_description_phrases: [minimal motion stimuli, T4, T5, single bar flash]
+        stimulus_scope: minimal-motion and component flashes
+      unified_model:
+        doi: 10.25378/janelia.16663486
+        article_id: 16663486
+        datacite_url: https://api.datacite.org/dois/10.25378/janelia.16663486
+        expected_size_bytes: 3630019
+        required_description_phrases: [optTables.mat, T4 and T5 averaged cells, quality control statistics]
+        stimulus_scope: model code and fitted parameter tables
+      supporting_functions:
+        doi: 10.25378/janelia.16669378
+        article_id: 16669378
+        datacite_url: https://api.datacite.org/dois/10.25378/janelia.16669378
+        expected_size_bytes: 17374
+        required_description_phrases: [Supporting Functions, Matlab]
+        stimulus_scope: analysis utilities
+  wienecke_2018_voltage_imaging:
+    paper_doi: 10.1016/j.neuron.2018.07.005
+    pmc_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6107374/
+    required_phrases:
+      - genetically encoded voltage indicator
+      - acquired at ~15 Hz
+      - quantified as −ΔF/F
+      - 57 single T5 cells
+    modality: two_photon_ASAP2f_voltage_imaging
+    signal_unit: inverted_relative_fluorescence
+    absolute_millivolts_possible: false
+    edge_speeds_degrees_per_second: [30, 60, 90]
+    grating_frequency_combinations: 7
+  ramos_2021_calcium:
+    paper_doi: 10.1038/s41467-021-24986-w
+    pmc_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8371135/
+    gnode_accession: 10.12751/g-node.qeeyfz
+    required_phrases:
+      - two-photon calcium imaging
+      - Tm9 and T5
+      - Source data are provided
+      - G-NODE
+    modality: two_photon_calcium_imaging
+    signal_unit: relative_calcium_fluorescence
+    absolute_millivolts_possible: false
+  shinomiya_2025_connectome:
+    dataset_doi: 10.5281/zenodo.17221018
+    datacite_url: https://api.datacite.org/dois/10.5281/zenodo.17221018
+    modality: connectome_structure
+    signal_unit: none
+    absolute_millivolts_possible: false
+allowed_roles:
+  whole_cell_electrophysiology: [absolute_voltage_calibration, polarity, temporal_response, receptive_field, direction_response]
+  two_photon_ASAP2f_voltage_imaging: [relative_voltage_polarity, relative_amplitude, frequency_response, direction_response]
+  two_photon_calcium_imaging: [relative_calcium_activity, receptive_field, direction_response]
+  connectome_structure: [topology, spatial_input_order, synapse_distribution]
+forbidden_cross_modal_claims:
+  - ASAP2f fluorescence is absolute membrane millivolts
+  - calcium fluorescence is membrane voltage
+  - connectome topology is functional direction selectivity
+  - existence of a public DOI means files were downloaded and verified
+  - T4 electrophysiology validates T5 dynamics
+audit_boundary:
+  download_large_datasets: false
+  maximum_download_bytes: 10000000
+  add_T5_to_interface: false
+  fit_T5_parameters: false
+  change_visual_gates: false
+  require_file_manifest_and_hashes_before_import: true
+  require_signal_specific_loss_before_fit: true
+  require_untouched_final_test: true
