@@ -7,6 +7,8 @@ from pathlib import Path
 import numpy as np
 import yaml
 
+from fly_emotion.driving.retina import RetinaMap
+from fly_emotion.driving.v7_branched import V7BranchedT4Probe
 from fly_emotion.driving.v7_geometry_sign import _sha256
 from fly_emotion.driving.v7_retina_audit import build_balanced_retina_control, infer_retinal_columns
 from fly_emotion.driving.v7_stage1_split import build_stage1_split
@@ -171,7 +173,28 @@ def evaluate_v7_stage1_input_audit(root: Path) -> dict:
     stimuli = build_stage1_split(split_config)[config["split"]]
     default_retina, _ = infer_retinal_columns(root)
     balanced = build_balanced_retina_control(root)
-    retinal_maps = {"default_3344": default_retina, "balanced_1914": balanced.retina}
+    nested_probe = V7BranchedT4Probe(
+        root,
+        retinal_backend="linear_luminance",
+        retinal_geometry="nested_t4_axis_v1",
+        brain_substeps=4,
+        baseline_frames=8,
+    )
+    nested_retina = RetinaMap(
+        node_indices=nested_probe.retina.node_indices.copy(),
+        body_ids=nested_probe.retina.body_ids.copy(),
+        u=nested_probe.retinal_u.copy(),
+        v=nested_probe.retinal_v.copy(),
+        side=nested_probe.retina.side.copy(),
+        mapping_version=nested_probe.retina.mapping_version,
+    )
+    retinal_maps = {
+        "default_3344": default_retina,
+        "nested_t4_axis_3344": nested_retina,
+        "balanced_1914": balanced.retina,
+    }
+    if list(retinal_maps) != config["retinal_maps"]:
+        raise ValueError("stage-1 retinal map set differs from frozen input audit")
     thresholds = config["thresholds"]
     reports = {}
     all_gates = []
@@ -260,6 +283,9 @@ def evaluate_v7_stage1_input_audit(root: Path) -> dict:
         str(split_evidence_path): _sha256(root / split_evidence_path),
         config["retina_audit_config"]: _sha256(root / config["retina_audit_config"]),
         config["retina_audit_evidence"]: _sha256(root / config["retina_audit_evidence"]),
+        config["branched_config"]: _sha256(root / config["branched_config"]),
+        config["branched_implementation"]: _sha256(root / config["branched_implementation"]),
+        config["source_audit_evidence"]: _sha256(root / config["source_audit_evidence"]),
     }
     return {
         "protocol": {

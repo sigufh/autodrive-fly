@@ -4,12 +4,15 @@
     "observed_on": "2026-09-15",
     "split": "development",
     "dependencies_sha256": {
-      "configs/driving-v7-stage1-input-audit.yaml": "f8910046b230d343166d625ac18cc6221587fcaee5a27956a92c63066a6c78ce",
-      "src/fly_emotion/driving/v7_stage1_input_audit.py": "fa6860cab2bca3ea991b0407c3529d85ee100f877e38076339162b53d3e45505",
+      "configs/driving-v7-stage1-input-audit.yaml": "c0f450560139a7517214f3f24ab5fbec3abdcec922452514438c8e3d3d654aa0",
+      "src/fly_emotion/driving/v7_stage1_input_audit.py": "34253bd770f6efea2bb3f25a4beaf82cdf7b88477d75299f3fe3f8ae03500719",
       "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
       "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
       "configs/driving-v7-retina-audit.yaml": "be82842332be48809b990b43cc51ff07093b92b4538920d3e4c583326ccdd2ef",
-      "artifacts/v7-retina-column-audit.json": "d858370e73b1dfc5a542971a0d162ad72d118c9c84f10be129095deb64b46287"
+      "artifacts/v7-retina-column-audit.json": "d858370e73b1dfc5a542971a0d162ad72d118c9c84f10be129095deb64b46287",
+      "configs/driving-v7-branched-t4.yaml": "ab6f8ac8b8852c26b765b620a60fbdaa5b6cc9649c5476303783030e16dffc93",
+      "src/fly_emotion/driving/v7_branched.py": "f07bc7c822d5b88053d8faaa50270a3f4a1a16c27c1b0cd077de372aacfa2a97",
+      "artifacts/v7-t4-source-audit.json": "9559ac5f57ce962c16ace9e7cd270bd9ce54416aa65ac1f8225fa11fd464135e"
     },
     "neural_evaluation_performed": false,
     "parameters_fitted": false,
@@ -2370,6 +2373,2370 @@
           "independent_receptor_direction_null": {
             "comparison_count": 48,
             "maximum_absolute_population_energy_contrast": 0.06995162232300048
+          },
+          "receptor_separability_control": {
+            "perturbed_receptor_index": 3,
+            "perturbed_time_index": 5,
+            "maximum_other_receptor_change": 0.0,
+            "maximum_target_receptor_change": 0.12951859831809998,
+            "encoding_reads_direction_label": false
+          },
+          "mirror_summary": null,
+          "gates": {
+            "all_family_dynamic_ranges": true,
+            "all_family_dynamic_receptor_coverage": true,
+            "all_on_off_pairs_have_opposite_sign": true,
+            "retinal_encoding_is_receptor_separable": true
+          },
+          "passed": true
+        }
+      }
+    },
+    "nested_t4_axis_3344": {
+      "receptor_count": 3344,
+      "receptor_body_ids_sha256": "fff18486d0f7422e79ea50428637a69c8fc768fe073ad8ef89419f27e0a4466b",
+      "encodings": {
+        "linear_luminance": {
+          "stimulus_dynamic_summary": {
+            "development:edge:on:right:1:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "af11203b1e1344119475f76071196fc5d39d8f4804e29553157b2909cd472060"
+            },
+            "development:edge:on:left:1:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "a84a3d977b9740bb4b4bc1f2827b7fa42d326b39ca665fb1cc90b5d29bac21d7"
+            },
+            "development:edge:off:right:1:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "d8b53168be46f7e2232265f7ab13fb7b1b119419375b1c44ae39fe3323bf6ebb"
+            },
+            "development:edge:off:left:1:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "189ac220e2cfd42be6939dac976e8bdca953bad395f350017c7194fa2aad20a1"
+            },
+            "development:edge:on:down:1:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "09e052474675f6a268b451865cc04f426415fefdfcdb93c2fef4d5d6850feb50"
+            },
+            "development:edge:on:up:1:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "ed2557c4d00388dd5acec5a344814f7a017bdbb9aeb1f3d4137729d33ada5a5a"
+            },
+            "development:edge:off:down:1:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "4f3a3cd8fa96c9775e6d2364a5e4dd1f1b7b1b9f5debf6da6650b9ce05de57ee"
+            },
+            "development:edge:off:up:1:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "2cb20f05b74beefeadf052d780baa5b65e260b928df2dc458945530391d5f7cc"
+            },
+            "development:edge:on:right:2:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "e66ea655cf472018d65b0286e76508eb717f68c66815caf12f7d05b81f1adb88"
+            },
+            "development:edge:on:left:2:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "bc7933dc3cfdb4e8af609d2dc9f44d4f289a12ffde450dade74f09a81c21610c"
+            },
+            "development:edge:off:right:2:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "f876b88cdd6b16c9e948b2c58534f21ae9c0ffbb83031a9691ea11a7b717e38d"
+            },
+            "development:edge:off:left:2:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "c2c086628473ce4235b485e82b963c0864c57320191d323e8a1f11cad4e0bb06"
+            },
+            "development:edge:on:down:2:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "1784d87a9759e6fa333dcbcffb618126490dc032241db6ed60a0ce199307741b"
+            },
+            "development:edge:on:up:2:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "ea2c563e8d867d4f64002689f8c6bd41b99b194d3396f1adbd182744ac7456ed"
+            },
+            "development:edge:off:down:2:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "ccb118e11f3946e6102bb6bd2c1a95f638413a5dcf2e1c21de2bb81428541f53"
+            },
+            "development:edge:off:up:2:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "b013825dd5cd1687d57b3ffb1bb0e0b60b94c929e4e2970927189b0f43c24429"
+            },
+            "development:loom:on:expansion:24:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "81afb7f897ac22bc945311a4603d9fa7e5b67c3864990fa11ecc0c61fd2100c8"
+            },
+            "development:loom:off:expansion:24:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "fb459cadf3e6b49fc1c14c4edff929f82f640465b190a8c73a73333ef24eab84"
+            },
+            "development:loom:on:contraction:24:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "28d2748e8fe91e7a7f727819ca66446947c5ac6344075244970385ebb495ca7a"
+            },
+            "development:loom:off:contraction:24:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "e92d4ef226bd11e24e08e58704b82d945447a63b818ab6f35fd877f5ae09378b"
+            },
+            "development:static:on:none:24:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "5b3b344b37f343ab2005e52bd8d993804db9b13f104d31b34c1b940acac89aea"
+            },
+            "development:static:off:none:24:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "8ec00da19fc207e92f4ce92465895a3e8f7dec8ea89e561c355f2b1e943e26de"
+            },
+            "development:loom:on:expansion:32:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "d788c4ce23614b13c22d888d822ff918f84a5201c625c5b87a54b4a5fac062f4"
+            },
+            "development:loom:off:expansion:32:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "5de82d89732e5ec9a1fd68037b2da403a3bba05472336fe49528ca0322bc78db"
+            },
+            "development:loom:on:contraction:32:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "463de1f308e2d93645c52faf48cf8060b8a93be4d8490eb7a6169779eca44d12"
+            },
+            "development:loom:off:contraction:32:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "fd3fe579f085db9216472cf4eb5e4e4829015c7f02bf849485e44a490e491989"
+            },
+            "development:static:on:none:32:0:101": {
+              "minimum": 0.07999999821186066,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "0a0dd79abd50ccea74e33ab295d53787bba0998b9ff9cfe26d18c2bd14698e51"
+            },
+            "development:static:off:none:32:0:101": {
+              "minimum": 0.07999998331069946,
+              "maximum": 0.9200000166893005,
+              "dynamic_range": 0.8400000333786011,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "f78bd3a85008df95bcd6da1400971d9e95f11a42382961a262c57d8cec5591c8"
+            },
+            "development:translation:on:right:8:0:101": {
+              "minimum": 0.10000000149011612,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "251c0f1bda6d6c3d18da3e28700e559944098b8769b20b845cdff6243ae08bf1"
+            },
+            "development:translation:on:left:8:0:101": {
+              "minimum": 0.10000000149011612,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e4259f787c57b1d032609e85226895cbbaa698daaefdf4681d8fb8505a78d920"
+            },
+            "development:translation:off:right:8:0:101": {
+              "minimum": 0.10000002384185791,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "41475bbfa8b291b17eeb41b99acc6cef4c0d2da78dc2134f100a7bff953cebbf"
+            },
+            "development:translation:off:left:8:0:101": {
+              "minimum": 0.10000002384185791,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3986b3c286bc722a7c539d2a9a2d59746b8e54722b9e67733a77837933ae37b9"
+            },
+            "development:translation:on:right:12:0:101": {
+              "minimum": 0.10000000149011612,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "94ecc6e2c4326b5c251fb92f30b4de414df3de7b59a2b7dc04228b64693e3ea9"
+            },
+            "development:translation:on:left:12:0:101": {
+              "minimum": 0.10000000149011612,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1771a12d13a046b901c9ed59cc36a43823507cf6854c89d695f68032f717c427"
+            },
+            "development:translation:off:right:12:0:101": {
+              "minimum": 0.10000002384185791,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "aea83740e6d2dc628de29e2f9835f674c40cf5fd797973e96ce430c3fb9c719e"
+            },
+            "development:translation:off:left:12:0:101": {
+              "minimum": 0.10000002384185791,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "fe36833c2bf9fb31428e3d183644df2ad678eae05877b373f9c99e537afcb124"
+            },
+            "development:rotation:clockwise:0.25:0:101": {
+              "minimum": 0.10000000894069672,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2ee8cc63d8c84761904bbea3735e80b731e3eb9326c57daf48bbe1a39fe6537c"
+            },
+            "development:rotation:counterclockwise:0.25:0:101": {
+              "minimum": 0.10000000894069672,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "66b2e11f6799373c0d8318523da22e7bc771b3773d735124a6bfe029d1df1bb7"
+            },
+            "development:rotation:clockwise:0.5:0:101": {
+              "minimum": 0.10000003129243851,
+              "maximum": 0.8999996781349182,
+              "dynamic_range": 0.7999996542930603,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "87e9d9f0d5c0a1df5f607ba8d972f9eacd3e63165c569f1acfb2b5f3b85673ba"
+            },
+            "development:rotation:counterclockwise:0.5:0:101": {
+              "minimum": 0.10000003129243851,
+              "maximum": 0.8999999761581421,
+              "dynamic_range": 0.7999999523162842,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6d8ce89c25503264e92a6dc7ae3fd4d48bfdf78a203cc0fca4e2006694bccac6"
+            },
+            "development:edge:on:right:1:0.005:102": {
+              "minimum": 0.06041383370757103,
+              "maximum": 0.9382184147834778,
+              "dynamic_range": 0.8778045773506165,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "442aa437875d5a6fb05c00f442ad28d6c001a18166d4f8ce77ceeb4b468df10a"
+            },
+            "development:edge:on:left:1:0.005:102": {
+              "minimum": 0.059489790350198746,
+              "maximum": 0.9381315112113953,
+              "dynamic_range": 0.8786417245864868,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "cdb88eea84c83fa8594c21dd17cf0b0f8899bd722ab732cf69f5ef9e1a9bedfa"
+            },
+            "development:edge:off:right:1:0.005:102": {
+              "minimum": 0.06178158521652222,
+              "maximum": 0.9395861625671387,
+              "dynamic_range": 0.8778045773506165,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7cfa40ab568ea09fec59d48d4c46e87fcd172d4878de97116db7cc9fefcd534b"
+            },
+            "development:edge:off:left:1:0.005:102": {
+              "minimum": 0.061868488788604736,
+              "maximum": 0.9405102133750916,
+              "dynamic_range": 0.8786417245864868,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3ee90794d0bf4122c9a79f35ab76174e0f51f241278dfc9b3e1c885adf77f760"
+            },
+            "development:edge:on:down:1:0.005:102": {
+              "minimum": 0.06553597003221512,
+              "maximum": 0.9312902092933655,
+              "dynamic_range": 0.865754246711731,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "29fee6df700093a880b1f5f922e2df3363f00f6f8cbd7787b43cbc45ec77f6c4"
+            },
+            "development:edge:on:up:1:0.005:102": {
+              "minimum": 0.06553597003221512,
+              "maximum": 0.9320249557495117,
+              "dynamic_range": 0.8664889931678772,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "17dc6a82c5d5d8db262ff839dbfab9e3e29b05834520433583b8294feec40dd5"
+            },
+            "development:edge:off:down:1:0.005:102": {
+              "minimum": 0.06870979070663452,
+              "maximum": 0.9344640374183655,
+              "dynamic_range": 0.865754246711731,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "58bfce3b53ecc98f3901a27928aa9a37537fe4e081b72637e7e3fcc0dd6361f7"
+            },
+            "development:edge:off:up:1:0.005:102": {
+              "minimum": 0.06797504425048828,
+              "maximum": 0.9344640374183655,
+              "dynamic_range": 0.8664889931678772,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "738028304d1658ce6daba21b2787ecbdadbe6025258c3d89a5f635497c2319fc"
+            },
+            "development:edge:on:right:2:0.005:102": {
+              "minimum": 0.06089875474572182,
+              "maximum": 0.9399306774139404,
+              "dynamic_range": 0.8790318965911865,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "5cc9b649db47424d324dc86301b8769d6d5948e20ac49b00d9e2fe71a32c0543"
+            },
+            "development:edge:on:left:2:0.005:102": {
+              "minimum": 0.06189274042844772,
+              "maximum": 0.9399306774139404,
+              "dynamic_range": 0.8780379295349121,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f2cdb5213e4f2440f8b805ced5f235c8435330d64b98cd408ee279ccf9806953"
+            },
+            "development:edge:off:right:2:0.005:102": {
+              "minimum": 0.06006932258605957,
+              "maximum": 0.9391012191772461,
+              "dynamic_range": 0.8790318965911865,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "0ff723e517ee03b594f720a56ed39bda7cad5db5501d8d8529a1823d153b866d"
+            },
+            "development:edge:off:left:2:0.005:102": {
+              "minimum": 0.06006932258605957,
+              "maximum": 0.9381072521209717,
+              "dynamic_range": 0.8780379295349121,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7cbd577359aac79aef7416cf251c3b8939042752ded2bdb82471966a41a4ac11"
+            },
+            "development:edge:on:down:2:0.005:102": {
+              "minimum": 0.0647626593708992,
+              "maximum": 0.9319117069244385,
+              "dynamic_range": 0.8671490550041199,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "dec4b803f94160ac7cbecc8e8884a489cd93f8fa7755b4b315ddb89bfe5ae36d"
+            },
+            "development:edge:on:up:2:0.005:102": {
+              "minimum": 0.0647626593708992,
+              "maximum": 0.9319117069244385,
+              "dynamic_range": 0.8671490550041199,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "d69014f5fcee00e1524a76db63b1be9ed2b383565a415a61fdb7f25f19fca270"
+            },
+            "development:edge:off:down:2:0.005:102": {
+              "minimum": 0.06808829307556152,
+              "maximum": 0.9352373480796814,
+              "dynamic_range": 0.8671490550041199,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "5d98d30bd7526bc32bf7b1b15a6fe9f911872e8be79dcd508e02260fa8111cbb"
+            },
+            "development:edge:off:up:2:0.005:102": {
+              "minimum": 0.06808829307556152,
+              "maximum": 0.9352373480796814,
+              "dynamic_range": 0.8671490550041199,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "55fe8cc41cb4b4f787eb66ef23b112ba9e43e229172ce25da7c04804ef9bbb67"
+            },
+            "development:loom:on:expansion:24:0.005:102": {
+              "minimum": 0.0653049647808075,
+              "maximum": 0.9316094517707825,
+              "dynamic_range": 0.8663045167922974,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "9cb0875e273c371654d6bb04130699ecea2341c040d67c4881dd33a53c803549"
+            },
+            "development:loom:off:expansion:24:0.005:102": {
+              "minimum": 0.06839054822921753,
+              "maximum": 0.9346950054168701,
+              "dynamic_range": 0.8663044571876526,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "792f1b5162435bc90977e29a0c454de0df29cd7d3f5c289ec2f222670cbc1f5a"
+            },
+            "development:loom:on:contraction:24:0.005:102": {
+              "minimum": 0.06533783674240112,
+              "maximum": 0.9312675595283508,
+              "dynamic_range": 0.8659297227859497,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "98ee741e234631c0799a8ea5a99b2e28bd0342db69bbaec9e23de170889cee00"
+            },
+            "development:loom:off:contraction:24:0.005:102": {
+              "minimum": 0.06873244047164917,
+              "maximum": 0.9346621632575989,
+              "dynamic_range": 0.8659297227859497,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ff38d02e904cc748747f2b35fe25c26f35c765e353beeeea2e257f8debd70297"
+            },
+            "development:static:on:none:24:0.005:102": {
+              "minimum": 0.06327258795499802,
+              "maximum": 0.9326068162918091,
+              "dynamic_range": 0.8693342208862305,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "bb32a73290a60caffdb98dcff76c0308136ca1a47042be4d5b956a70505354bb"
+            },
+            "development:static:off:none:24:0.005:102": {
+              "minimum": 0.06739318370819092,
+              "maximum": 0.9367274045944214,
+              "dynamic_range": 0.8693342208862305,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "0c91452a29adf8f7639871bd26fbfac2663ab6ddd57103c79367ac818d51629e"
+            },
+            "development:loom:on:expansion:32:0.005:102": {
+              "minimum": 0.0645812451839447,
+              "maximum": 0.9336283802986145,
+              "dynamic_range": 0.8690471649169922,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "97b1fd3ae911fff102a00e4f0f208cd72e0e5ef7f32ba80d40e91dfaed9567a7"
+            },
+            "development:loom:off:expansion:32:0.005:102": {
+              "minimum": 0.0663716197013855,
+              "maximum": 0.9354187250137329,
+              "dynamic_range": 0.8690471053123474,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3c52b0b61ab626e158320320d6ec77b6f62f4cb1fb18b52a61077cd16d94607c"
+            },
+            "development:loom:on:contraction:32:0.005:102": {
+              "minimum": 0.06671641767024994,
+              "maximum": 0.9326674938201904,
+              "dynamic_range": 0.8659510612487793,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ce32ecf9cd3a5b8653126b053241457e37445b7790d877c1a8b69e08ccaf6270"
+            },
+            "development:loom:off:contraction:32:0.005:102": {
+              "minimum": 0.06733250617980957,
+              "maximum": 0.9332835674285889,
+              "dynamic_range": 0.8659510612487793,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "55d244f24c1105b12e65ea0e8e5ac5d8f9d815371ec54d40de714bec97a32efb"
+            },
+            "development:static:on:none:32:0.005:102": {
+              "minimum": 0.06641559302806854,
+              "maximum": 0.9335322380065918,
+              "dynamic_range": 0.8671166300773621,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "156210188c101347299ed501b10cb9d8c5d484a245ad403e2ab72b35e52466ce"
+            },
+            "development:static:off:none:32:0.005:102": {
+              "minimum": 0.0664677619934082,
+              "maximum": 0.9335843920707703,
+              "dynamic_range": 0.8671166300773621,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a791a370dc7ab2a3742ce00bf60c43b7b79eafc2ed5ad38308d165c50d538edd"
+            },
+            "development:translation:on:right:8:0.005:102": {
+              "minimum": 0.08355461806058884,
+              "maximum": 0.9178614616394043,
+              "dynamic_range": 0.8343068361282349,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f6707e4439d04a75a166d02ee8a8453d3c42005a9fbc2eeb45832cac406b93c2"
+            },
+            "development:translation:on:left:8:0.005:102": {
+              "minimum": 0.086092010140419,
+              "maximum": 0.9178614616394043,
+              "dynamic_range": 0.8317694664001465,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "dce2966637ff1d2d44b60f93e3b9324c282c3d4bdbd3e16110a567db414acbfc"
+            },
+            "development:translation:off:right:8:0.005:102": {
+              "minimum": 0.0821385383605957,
+              "maximum": 0.9164453744888306,
+              "dynamic_range": 0.8343068361282349,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "09fcd2db9fe607eda0deab5939756c7917e211e14ebf7e07e996d8ffea39bd7a"
+            },
+            "development:translation:off:left:8:0.005:102": {
+              "minimum": 0.0821385383605957,
+              "maximum": 0.9139080047607422,
+              "dynamic_range": 0.8317694664001465,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c719c16951028021a62eab3f9e5135496a4749842becfea95f7c5ef1f6995b08"
+            },
+            "development:translation:on:right:12:0.005:102": {
+              "minimum": 0.0845925584435463,
+              "maximum": 0.9128408432006836,
+              "dynamic_range": 0.8282482624053955,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "02e5ba0771efc92090b023e47a3057056741b347a2693894cfc1204f608f94ac"
+            },
+            "development:translation:on:left:12:0.005:102": {
+              "minimum": 0.0845925584435463,
+              "maximum": 0.9128408432006836,
+              "dynamic_range": 0.8282482624053955,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "db164cf8d873dca93d57c2327cf711a2b898cda027405f4f3e2c44808c37e9ca"
+            },
+            "development:translation:off:right:12:0.005:102": {
+              "minimum": 0.0871591567993164,
+              "maximum": 0.9154074192047119,
+              "dynamic_range": 0.8282482624053955,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "30b5ff2f49fd1b11799be193119f159c7f1dbee96d7c09c24036c714347cb881"
+            },
+            "development:translation:off:left:12:0.005:102": {
+              "minimum": 0.0871591567993164,
+              "maximum": 0.9154074192047119,
+              "dynamic_range": 0.8282482624053955,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "424034fe5bb7e028e09ba65e5ecf0df74fedfdfbfe00d3a85cc03664fb2e9e2a"
+            },
+            "development:rotation:clockwise:0.25:0.005:102": {
+              "minimum": 0.08785552531480789,
+              "maximum": 0.9146422147750854,
+              "dynamic_range": 0.8267866969108582,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ba2f5afd3ade4b6711866b2b21d92d42829673861a9475fb046a8dce13a37ae4"
+            },
+            "development:rotation:counterclockwise:0.25:0.005:102": {
+              "minimum": 0.08592671900987625,
+              "maximum": 0.9146422147750854,
+              "dynamic_range": 0.8287155032157898,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7f3dd7adec6b2d69f77c2db20bfaca2315cabfe09d1f462db79e5974dbb8bd4e"
+            },
+            "development:rotation:clockwise:0.5:0.005:102": {
+              "minimum": 0.08468583226203918,
+              "maximum": 0.9123185276985168,
+              "dynamic_range": 0.8276326656341553,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "81fa2645885a4f569b8027921aa8d8e002434ee3e4425e9e099080cf03d443ee"
+            },
+            "development:rotation:counterclockwise:0.5:0.005:102": {
+              "minimum": 0.08658704161643982,
+              "maximum": 0.914638876914978,
+              "dynamic_range": 0.8280518054962158,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "aa286bb436d3bd50e6c577dbee5f22abb90519e8c5b9b5fa25bf988411d6dcb3"
+            },
+            "development:edge:on:right:1:0.01:103": {
+              "minimum": 0.042544540017843246,
+              "maximum": 0.9572718739509583,
+              "dynamic_range": 0.9147273302078247,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "b2add74b500358c577b1787c4a894d9d24b6bda442591c85323ab119e8392d3e"
+            },
+            "development:edge:on:left:1:0.01:103": {
+              "minimum": 0.042544540017843246,
+              "maximum": 0.9572718739509583,
+              "dynamic_range": 0.9147273302078247,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2e6fd31103be25fce5281e7410b22547063ab375d8441f7b014d09c36680f37a"
+            },
+            "development:edge:off:right:1:0.01:103": {
+              "minimum": 0.04272812604904175,
+              "maximum": 0.9574554562568665,
+              "dynamic_range": 0.9147273302078247,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "09cf8bde04806e369f49691691d58892a30a5cb34124b906144261f958650abd"
+            },
+            "development:edge:off:left:1:0.01:103": {
+              "minimum": 0.04272812604904175,
+              "maximum": 0.9574554562568665,
+              "dynamic_range": 0.9147273302078247,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e203ccd1893968023bbe9147bdbb40cfc8757470ebee878546e43c1f63dc8506"
+            },
+            "development:edge:on:down:1:0.01:103": {
+              "minimum": 0.05048525705933571,
+              "maximum": 0.9451392292976379,
+              "dynamic_range": 0.8946539759635925,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "8206602d3c21b09c071f081a3a6d2c76ea2bc1b3ba88b7a158e3376ef7da98ab"
+            },
+            "development:edge:on:up:1:0.01:103": {
+              "minimum": 0.057028256356716156,
+              "maximum": 0.9451392292976379,
+              "dynamic_range": 0.8881109952926636,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "9e12c5aa5bc3ab7cf344940b540fbda2dc570329da33891911ac3cebda59eedb"
+            },
+            "development:edge:off:down:1:0.01:103": {
+              "minimum": 0.05486077070236206,
+              "maximum": 0.9495147466659546,
+              "dynamic_range": 0.8946539759635925,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "600807be6e0f7796cd76c1825e5445ca2ec29b7482574acf6e2f65d972e360c6"
+            },
+            "development:edge:off:up:1:0.01:103": {
+              "minimum": 0.05486077070236206,
+              "maximum": 0.9429717659950256,
+              "dynamic_range": 0.8881109952926636,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "af69822e5ef91858500d806adc905dcf41c69603219299b20bb12eba5e43ed3b"
+            },
+            "development:edge:on:right:2:0.01:103": {
+              "minimum": 0.04349925369024277,
+              "maximum": 0.9546406865119934,
+              "dynamic_range": 0.9111414551734924,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "535c0ad7e5524ab6bda86c809ce75263e668fd1600eec7a626e3b4c5c01ac568"
+            },
+            "development:edge:on:left:2:0.01:103": {
+              "minimum": 0.04349925369024277,
+              "maximum": 0.9593597650527954,
+              "dynamic_range": 0.9158605337142944,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "36edcd8775b10cf66d05f0c2ea84c34114b14b187dbf6a54974b15ba38ace2c4"
+            },
+            "development:edge:off:right:2:0.01:103": {
+              "minimum": 0.04535931348800659,
+              "maximum": 0.956500768661499,
+              "dynamic_range": 0.9111414551734924,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "10df644582426c21ea0722e9bba3c3f3c389ce9c0153836a9b4bf98cc6f9062b"
+            },
+            "development:edge:off:left:2:0.01:103": {
+              "minimum": 0.04064023494720459,
+              "maximum": 0.956500768661499,
+              "dynamic_range": 0.9158605337142944,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "545b2eac29c0f48834562081c060292cb238d73dc1d5307b72ef572da58f7277"
+            },
+            "development:edge:on:down:2:0.01:103": {
+              "minimum": 0.05874517560005188,
+              "maximum": 0.9455754160881042,
+              "dynamic_range": 0.88683021068573,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "83ea2d25e0784609aebc6b8edbf4bce97decd3be15b4b11aee762195cafe949d"
+            },
+            "development:edge:on:up:2:0.01:103": {
+              "minimum": 0.05682652071118355,
+              "maximum": 0.9455754160881042,
+              "dynamic_range": 0.8887488842010498,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1575e018eee0581bb9760636d87a224f9222886806303c9fe5106c9377f4622a"
+            },
+            "development:edge:off:down:2:0.01:103": {
+              "minimum": 0.05442458391189575,
+              "maximum": 0.9412548542022705,
+              "dynamic_range": 0.8868302702903748,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "87be38b97fcd344a6838d0ad81a8edc469d6c79c0d26c0817c0d1b42c555c453"
+            },
+            "development:edge:off:up:2:0.01:103": {
+              "minimum": 0.05442458391189575,
+              "maximum": 0.9431734681129456,
+              "dynamic_range": 0.8887488842010498,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "68681af7251fad2117a7db7561dc54ff93519e3783efddade54702c3c29091c3"
+            },
+            "development:loom:on:expansion:24:0.01:103": {
+              "minimum": 0.0547514446079731,
+              "maximum": 0.9405433535575867,
+              "dynamic_range": 0.8857918977737427,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "14d6a37f5aba34b3000724a9fcc3a93c48f645bf334846caca4eb2f34040a2b1"
+            },
+            "development:loom:off:expansion:24:0.01:103": {
+              "minimum": 0.05945664644241333,
+              "maximum": 0.945248544216156,
+              "dynamic_range": 0.8857918977737427,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1bf5ef784cc6bf710d45e72a8dd328fc5547a871d7f9ef85bc4b5d9e8bc453ea"
+            },
+            "development:loom:on:contraction:24:0.01:103": {
+              "minimum": 0.054035551846027374,
+              "maximum": 0.9423691034317017,
+              "dynamic_range": 0.8883335590362549,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "8267e79f8761050ae136dc5bb14957b874d6ca71156fbe21d62e2f009a298a4e"
+            },
+            "development:loom:off:contraction:24:0.01:103": {
+              "minimum": 0.05763089656829834,
+              "maximum": 0.9459644556045532,
+              "dynamic_range": 0.8883335590362549,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "894f591961b63ccfd30e2687f5bcc08d4e3fd6bd8ba811808f625b9c95bc209e"
+            },
+            "development:static:on:none:24:0.01:103": {
+              "minimum": 0.05220255255699158,
+              "maximum": 0.9432708621025085,
+              "dynamic_range": 0.8910683393478394,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f78940bc4a2918bd8be7766bab3b9e0a43d6c7fbbf804b1ae9d349cb9e6d0e3e"
+            },
+            "development:static:off:none:24:0.01:103": {
+              "minimum": 0.056729137897491455,
+              "maximum": 0.947797417640686,
+              "dynamic_range": 0.8910682797431946,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "18bb4ea2fc0552ea3d44f7b10a2d27592dc301932835129300339844b5b27332"
+            },
+            "development:loom:on:expansion:32:0.01:103": {
+              "minimum": 0.051323555409908295,
+              "maximum": 0.9434776306152344,
+              "dynamic_range": 0.8921540975570679,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3e388b34e2600bcf3144e8b18f6a6d7bf811c769856ff8047cb824bb9ef1503b"
+            },
+            "development:loom:off:expansion:32:0.01:103": {
+              "minimum": 0.056522369384765625,
+              "maximum": 0.9486764669418335,
+              "dynamic_range": 0.8921540975570679,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "61e2a713f396895ffc675edc0c15059381e2238df4091a9a4c82b3d65cf223b1"
+            },
+            "development:loom:on:contraction:32:0.01:103": {
+              "minimum": 0.05320625379681587,
+              "maximum": 0.9423564672470093,
+              "dynamic_range": 0.8891502022743225,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "5dc565929a010b181a4814a696c375f76500fad66f8e70d7d3ae14ac13c2a67a"
+            },
+            "development:loom:off:contraction:32:0.01:103": {
+              "minimum": 0.05764353275299072,
+              "maximum": 0.9467937350273132,
+              "dynamic_range": 0.8891502022743225,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "70bd307789ed2f32703070ba2ea1cd750d860fb3cdf22bdabb5b844fdc6d58ab"
+            },
+            "development:static:on:none:32:0.01:103": {
+              "minimum": 0.05270601809024811,
+              "maximum": 0.9443753957748413,
+              "dynamic_range": 0.8916693925857544,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ac5add1d0046c648e578b92bb797beafd9febb044649d6d983182caf290a56e0"
+            },
+            "development:static:off:none:32:0.01:103": {
+              "minimum": 0.05562460422515869,
+              "maximum": 0.9472939968109131,
+              "dynamic_range": 0.8916693925857544,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a850d751b418015ec876e54bfc809f58ffcffbaa66f6344f05b7c6ac17787e4d"
+            },
+            "development:translation:on:right:8:0.01:103": {
+              "minimum": 0.05892503261566162,
+              "maximum": 0.929612398147583,
+              "dynamic_range": 0.8706873655319214,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "10476e823d26f2d9b2712c75ad1b96c8204b0af5018340f7447b44ed87550101"
+            },
+            "development:translation:on:left:8:0.01:103": {
+              "minimum": 0.05892503261566162,
+              "maximum": 0.9338828921318054,
+              "dynamic_range": 0.8749578595161438,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "81d44385eb87303d31f63ef0072a87112cda45d8c366d1b6023898dd8c61ab11"
+            },
+            "development:translation:off:right:8:0.01:103": {
+              "minimum": 0.07038760185241699,
+              "maximum": 0.9410749673843384,
+              "dynamic_range": 0.8706873655319214,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "81b08d7301d03400b4a74c448a0f2b7e9e9969cd7f56cf6b96c7b36d0f1950a9"
+            },
+            "development:translation:off:left:8:0.01:103": {
+              "minimum": 0.06611710786819458,
+              "maximum": 0.9410749673843384,
+              "dynamic_range": 0.8749578595161438,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "4052d69d3df7183e9bcb695bedc25acbb33296531d92db9d96db9fa1e5eadaea"
+            },
+            "development:translation:on:right:12:0.01:103": {
+              "minimum": 0.07026256620883942,
+              "maximum": 0.9283344149589539,
+              "dynamic_range": 0.8580718636512756,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ec699e02f4890f2705d56db4dc13f637aa80e9b1d2ea4a69a3c6dbe5c0b13a7b"
+            },
+            "development:translation:on:left:12:0.01:103": {
+              "minimum": 0.07026256620883942,
+              "maximum": 0.9250189661979675,
+              "dynamic_range": 0.8547564148902893,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f6cc22ee9f8b9a7f7d64b2a0a52c397beb4cfa92d63ccec5f6eaacd0a4904ff5"
+            },
+            "development:translation:off:right:12:0.01:103": {
+              "minimum": 0.07166558504104614,
+              "maximum": 0.9297374486923218,
+              "dynamic_range": 0.8580718636512756,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "11904b6a36628a7d686fbfb0bf219676692b693e80066c7a469d295ce78a79b8"
+            },
+            "development:translation:off:left:12:0.01:103": {
+              "minimum": 0.07498103380203247,
+              "maximum": 0.9297374486923218,
+              "dynamic_range": 0.8547564148902893,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "72d8628247c563e396ef28f3216f55429db7aca88458573d28afd9b959b739a5"
+            },
+            "development:rotation:clockwise:0.25:0.01:103": {
+              "minimum": 0.06935153156518936,
+              "maximum": 0.9272574186325073,
+              "dynamic_range": 0.8579058647155762,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "4b4ae3932bf93d24e1558c18391f399542ce52ff4e5ee2e56393bba13a830e22"
+            },
+            "development:rotation:counterclockwise:0.25:0.01:103": {
+              "minimum": 0.06648007035255432,
+              "maximum": 0.9272574186325073,
+              "dynamic_range": 0.8607773780822754,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "65c83c22076e4d68f6808d2f4f6afca4d5ca2ee19f64277248fd1d50706c1f72"
+            },
+            "development:rotation:clockwise:0.5:0.01:103": {
+              "minimum": 0.06578090041875839,
+              "maximum": 0.9309601187705994,
+              "dynamic_range": 0.8651792407035828,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "99604268499cbbaded208711eff1bce0e66fb432879f2ed465d4025b93e4385c"
+            },
+            "development:rotation:counterclockwise:0.5:0.01:103": {
+              "minimum": 0.06578090041875839,
+              "maximum": 0.9277560114860535,
+              "dynamic_range": 0.8619751334190369,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "fc5064746bd00c4e329c2e8e7712d63dffac844e6c77cc228eccc9a7b93b79a6"
+            },
+            "development:edge:on:right:1:0.015:104": {
+              "minimum": 0.0227805208414793,
+              "maximum": 0.9741214513778687,
+              "dynamic_range": 0.951340913772583,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "27589141d432bd523876def39d3695306fa1311c1ea62b9fd55b987c921b2bae"
+            },
+            "development:edge:on:left:1:0.015:104": {
+              "minimum": 0.025527607649564743,
+              "maximum": 0.9762212038040161,
+              "dynamic_range": 0.9506936073303223,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "955af3ba4240d16ba2522ed377e4c3e3543327fbf39b47d9db8f342686f25cc0"
+            },
+            "development:edge:off:right:1:0.015:104": {
+              "minimum": 0.025878548622131348,
+              "maximum": 0.9772194623947144,
+              "dynamic_range": 0.951340913772583,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "9257178efe5fe09b0c64a0884f5b97df9031040671a93243dfcbfc7a2ac5aa38"
+            },
+            "development:edge:off:left:1:0.015:104": {
+              "minimum": 0.023778796195983887,
+              "maximum": 0.9744724035263062,
+              "dynamic_range": 0.9506936073303223,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7859fcb773b1b697fd54194b7cbae2398be2d9a2b92b6c581a38adba41d06c99"
+            },
+            "development:edge:on:down:1:0.015:104": {
+              "minimum": 0.047778695821762085,
+              "maximum": 0.9551980495452881,
+              "dynamic_range": 0.9074193239212036,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ee9e3a68244c5f1d93878f403e0e5b96ddb65d3f9102faa93fbebaa20a1c5de9"
+            },
+            "development:edge:on:up:1:0.015:104": {
+              "minimum": 0.05094727501273155,
+              "maximum": 0.9551980495452881,
+              "dynamic_range": 0.9042508006095886,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "62c7a83c4d7f2e469d5522f0d1d8f5f2d2a6abf7a38e6102f9e4f9a4dcb75c7d"
+            },
+            "development:edge:off:down:1:0.015:104": {
+              "minimum": 0.044801950454711914,
+              "maximum": 0.9522212743759155,
+              "dynamic_range": 0.9074193239212036,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c98a876c54cb37b8d2db94ffa918ac1be71a42e5e77141f3d1b68e8d59e0cd4f"
+            },
+            "development:edge:off:up:1:0.015:104": {
+              "minimum": 0.044801950454711914,
+              "maximum": 0.9490527510643005,
+              "dynamic_range": 0.9042508006095886,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c2175dc94bf08e6a20dccddae8696d5bf96379ca33333613352821585bad5c6f"
+            },
+            "development:edge:on:right:2:0.015:104": {
+              "minimum": 0.020964013412594795,
+              "maximum": 0.9819900393486023,
+              "dynamic_range": 0.9610260128974915,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "67549eaffa7c22d5f6e46cfbf2ed82bf013135d9f62767056ab013324d3d2a72"
+            },
+            "development:edge:on:left:2:0.015:104": {
+              "minimum": 0.020964013412594795,
+              "maximum": 0.9819900393486023,
+              "dynamic_range": 0.9610260128974915,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2192fee64fa56dd46bfafad706a45c4d3c0381de305b2f42a0b34dc6bb2972bb"
+            },
+            "development:edge:off:right:2:0.015:104": {
+              "minimum": 0.018009960651397705,
+              "maximum": 0.9790359735488892,
+              "dynamic_range": 0.9610260128974915,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c2a628d0059814f2327d8b3ce6aea508d2855d33e6eccd2517ce4ac5528f53b2"
+            },
+            "development:edge:off:left:2:0.015:104": {
+              "minimum": 0.018009960651397705,
+              "maximum": 0.9790359735488892,
+              "dynamic_range": 0.9610260128974915,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f9564d348976a9f6c1a9fcc814307556df739841e831a3768cc75214b59de745"
+            },
+            "development:edge:on:down:2:0.015:104": {
+              "minimum": 0.03603744879364967,
+              "maximum": 0.9535093307495117,
+              "dynamic_range": 0.9174718856811523,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "43fb848e29a2d540938130a2e3b21fc5df770c5b63cb1807ac7bb35ba56a9762"
+            },
+            "development:edge:on:up:2:0.015:104": {
+              "minimum": 0.03603744879364967,
+              "maximum": 0.9535093307495117,
+              "dynamic_range": 0.9174718856811523,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "8c139195572af1e2769d2fab4479dfff74d837de40b7e5d20d1943ee400a9ec4"
+            },
+            "development:edge:off:down:2:0.015:104": {
+              "minimum": 0.04649066925048828,
+              "maximum": 0.9639625549316406,
+              "dynamic_range": 0.9174718856811523,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "26c272be9b9319f94907859a95250ab98ae2395e86bb4eafe1d39d76d4d8a7d3"
+            },
+            "development:edge:off:up:2:0.015:104": {
+              "minimum": 0.04649066925048828,
+              "maximum": 0.9639625549316406,
+              "dynamic_range": 0.9174718856811523,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2c92ecc4b448d5d106c3d17404e81417740270d4bb7aa121973b28d7714d2e98"
+            },
+            "development:loom:on:expansion:24:0.015:104": {
+              "minimum": 0.04373124986886978,
+              "maximum": 0.9540256857872009,
+              "dynamic_range": 0.9102944135665894,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e9086e13885ee770059e2d736567ad61780024e0e665eb2a695f0d04e14602fb"
+            },
+            "development:loom:off:expansion:24:0.015:104": {
+              "minimum": 0.04597431421279907,
+              "maximum": 0.9562687277793884,
+              "dynamic_range": 0.9102944135665894,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3716e6aa0f1a292bb3bbedce4f1c2be517922d3dc82c55cc4b1ce36ced86834c"
+            },
+            "development:loom:on:contraction:24:0.015:104": {
+              "minimum": 0.04268298298120499,
+              "maximum": 0.9532815217971802,
+              "dynamic_range": 0.9105985164642334,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "937a04040b813007dc189cbed776bdd8536b79ab416471008a18bbf747a9fd6a"
+            },
+            "development:loom:off:contraction:24:0.015:104": {
+              "minimum": 0.046718478202819824,
+              "maximum": 0.9573169946670532,
+              "dynamic_range": 0.9105985164642334,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "5ad4f29b8c026b9821decf5f2adc69bcb25a3f8c110a0b7d011389af25a43513"
+            },
+            "development:static:on:none:24:0.015:104": {
+              "minimum": 0.03888913244009018,
+              "maximum": 0.9621628522872925,
+              "dynamic_range": 0.9232737421989441,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "0d650e52875061835474fd1b8a21218ab9139a8fce93edafe98126dfd901562f"
+            },
+            "development:static:off:none:24:0.015:104": {
+              "minimum": 0.03783714771270752,
+              "maximum": 0.9611108899116516,
+              "dynamic_range": 0.9232737421989441,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "bc447f7edb15eae8a59b30ded4dc19c172331a75a68953897086c51bc24d75b9"
+            },
+            "development:loom:on:expansion:32:0.015:104": {
+              "minimum": 0.04001033306121826,
+              "maximum": 0.9573076367378235,
+              "dynamic_range": 0.9172973036766052,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "5d4a99d9413d577e71f25bcc22a71b7bd234f6b1e6f9b905309989412ccc9950"
+            },
+            "development:loom:off:expansion:32:0.015:104": {
+              "minimum": 0.042692363262176514,
+              "maximum": 0.9599896669387817,
+              "dynamic_range": 0.9172973036766052,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "98e554b1802c9687badee252eb2cbf8c2bd3643ef58feb3c6ef519bed504a5a5"
+            },
+            "development:loom:on:contraction:32:0.015:104": {
+              "minimum": 0.03644856438040733,
+              "maximum": 0.9656028151512146,
+              "dynamic_range": 0.9291542768478394,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "84a4ced0f9887bf6d956e7e0a62cc924d91d3d5d97985b180738099c10471949"
+            },
+            "development:loom:off:contraction:32:0.015:104": {
+              "minimum": 0.0343971848487854,
+              "maximum": 0.9635514616966248,
+              "dynamic_range": 0.9291542768478394,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "d122c374372a1423d9d3ce5739d6f18aa6640d394efd784000e95c9daffce1d2"
+            },
+            "development:static:on:none:32:0.015:104": {
+              "minimum": 0.03212133049964905,
+              "maximum": 0.9591758847236633,
+              "dynamic_range": 0.9270545244216919,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a849ec114ef66c18e219905603c97a2b600bc893beda83769352794c82b8ef90"
+            },
+            "development:static:off:none:32:0.015:104": {
+              "minimum": 0.04082411527633667,
+              "maximum": 0.9678786993026733,
+              "dynamic_range": 0.9270545840263367,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "76231bf1b83b2f72bacd9e0b3a479f45171562032295089a85b25d6217d0acb9"
+            },
+            "development:translation:on:right:8:0.015:104": {
+              "minimum": 0.05838446319103241,
+              "maximum": 0.9451157450675964,
+              "dynamic_range": 0.8867312669754028,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a85da24cb60f427f056cafcc213d1a7023a698c0fe488cc1ed9f15c7de59c120"
+            },
+            "development:translation:on:left:8:0.015:104": {
+              "minimum": 0.05838446319103241,
+              "maximum": 0.9451157450675964,
+              "dynamic_range": 0.8867312669754028,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "eda3f00e90b19cad7329bb3b2f3f37d58ed7c0ccc406422e7bc9e9e140d4be75"
+            },
+            "development:translation:off:right:8:0.015:104": {
+              "minimum": 0.054884254932403564,
+              "maximum": 0.9416155219078064,
+              "dynamic_range": 0.8867312669754028,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "8bf5990372c96a6cc947bba7e96761d521b509faca81b8dfda0e3dbe0b2f5c72"
+            },
+            "development:translation:off:left:8:0.015:104": {
+              "minimum": 0.054884254932403564,
+              "maximum": 0.9416155219078064,
+              "dynamic_range": 0.8867312669754028,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "d95e753f0aff7a5294efbd1626ca1cfa486a959a3353fcb10ca8b2266287bcf1"
+            },
+            "development:translation:on:right:12:0.015:104": {
+              "minimum": 0.05784694477915764,
+              "maximum": 0.9447367191314697,
+              "dynamic_range": 0.8868897557258606,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ab88814a438cb27325df881ccdc5f6bd4b347970541844589f6189e9583c103a"
+            },
+            "development:translation:on:left:12:0.015:104": {
+              "minimum": 0.05784694477915764,
+              "maximum": 0.9447367191314697,
+              "dynamic_range": 0.8868897557258606,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "72dfd9394b0a2596cda19d00a66d04b7b78dfcaa8d03219073a314d9b5228c42"
+            },
+            "development:translation:off:right:12:0.015:104": {
+              "minimum": 0.05526328086853027,
+              "maximum": 0.9421530365943909,
+              "dynamic_range": 0.8868897557258606,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "90d43734314bfb7de0f136dfdfd642498ac45be419454535931d2b7875c0cb91"
+            },
+            "development:translation:off:left:12:0.015:104": {
+              "minimum": 0.05526328086853027,
+              "maximum": 0.9421530365943909,
+              "dynamic_range": 0.8868897557258606,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3ee90994193b0f66fe05e28a1788b562465d1efd76b39af4c6ee430810ea3855"
+            },
+            "development:rotation:clockwise:0.25:0.015:104": {
+              "minimum": 0.05569145083427429,
+              "maximum": 0.9431769847869873,
+              "dynamic_range": 0.8874855041503906,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "0330c91263431419cedd48ef82cb6ba7d96f531e801d46c01add50f091192552"
+            },
+            "development:rotation:counterclockwise:0.25:0.015:104": {
+              "minimum": 0.054861120879650116,
+              "maximum": 0.9469342827796936,
+              "dynamic_range": 0.8920731544494629,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ee1739b1b0b45e19d3c8e9dfc1441b3713ba3c0d97b3dad9bac431b7d3503b56"
+            },
+            "development:rotation:clockwise:0.5:0.015:104": {
+              "minimum": 0.056032173335552216,
+              "maximum": 0.940464973449707,
+              "dynamic_range": 0.8844327926635742,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "b7118753b5f6a5a8d694ad96075bf5d4226a9f4abf3f8e23aab4fcb726bdeab5"
+            },
+            "development:rotation:counterclockwise:0.5:0.015:104": {
+              "minimum": 0.0549381785094738,
+              "maximum": 0.940464973449707,
+              "dynamic_range": 0.8855267763137817,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "099f082147ab82b47aa89cd087e38b946b43834819e00f97a0cda9918a0ddcc4"
+            }
+          },
+          "minimum_dynamic_range_by_family": {
+            "moving_edge": 0.8400000333786011,
+            "looming": 0.8400000333786011,
+            "static": 0.8400000333786011,
+            "translation": 0.7999999523162842,
+            "rotation": 0.7999996542930603
+          },
+          "minimum_dynamic_receptor_fraction_by_family": {
+            "moving_edge": 0.895933014354067,
+            "looming": 0.48325358851674644,
+            "static": 0.49282296650717705,
+            "translation": 1.0,
+            "rotation": 1.0
+          },
+          "on_off_sign_agreement_by_family": {
+            "moving_edge": {
+              "pair_count": 32,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            },
+            "looming": {
+              "pair_count": 16,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            },
+            "static": {
+              "pair_count": 8,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            },
+            "translation": {
+              "pair_count": 16,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            }
+          },
+          "independent_receptor_direction_null": {
+            "comparison_count": 48,
+            "maximum_absolute_population_energy_contrast": 0.2194253646435046
+          },
+          "receptor_separability_control": {
+            "perturbed_receptor_index": 3,
+            "perturbed_time_index": 5,
+            "maximum_other_receptor_change": 0.0,
+            "maximum_target_receptor_change": 0.07999999821186066,
+            "encoding_reads_direction_label": false
+          },
+          "mirror_summary": null,
+          "gates": {
+            "all_family_dynamic_ranges": true,
+            "all_family_dynamic_receptor_coverage": true,
+            "all_on_off_pairs_have_opposite_sign": true,
+            "retinal_encoding_is_receptor_separable": true
+          },
+          "passed": true
+        },
+        "signed_frame_difference": {
+          "stimulus_dynamic_summary": {
+            "development:edge:on:right:1:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "03de17f5ce5902314791605a74ddaa697d3fa6b7923b3dfd2922e0c8359a81e4"
+            },
+            "development:edge:on:left:1:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "e6723f2c7299f5ac1a4662c5e3ef7013236ae637d0597b5d0ebcd8cd4a3245c3"
+            },
+            "development:edge:off:right:1:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "f58091e67a598256d469e98106b21dccfbb929e5e5b0e69a3fee96b6d038dff3"
+            },
+            "development:edge:off:left:1:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "0adec9c0b410c32c419a55f52d2543fa65c195222b15d27fb0c5b59f6f61cd10"
+            },
+            "development:edge:on:down:1:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "33ec1bfc1d9d97a0d12370d06e33c7c703329cc171056cd8a0c9eafb0bc0d598"
+            },
+            "development:edge:on:up:1:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "fc795b3ad82eae671e6d92ad41f90d9f92b86c9d1a73a209f4a4aaa4b46e49c7"
+            },
+            "development:edge:off:down:1:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "0ccad44a91114dcbcfdb668bc2bda349f76e24e1ece739dc865461e06c3a96c0"
+            },
+            "development:edge:off:up:1:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "0f9b7848356dd69cbe6c17132f954b75f31b19394e0e9de1bb901ffe3da4a04a"
+            },
+            "development:edge:on:right:2:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "36426205237e830c9660e3de8cc2b67a25cd80f6925e9913cc9d7f85be21052f"
+            },
+            "development:edge:on:left:2:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "6e1ce5364df5f09c3a4cb2d0d9af2827acf93cfff9634122412f3d80fccc9e1e"
+            },
+            "development:edge:off:right:2:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.9871411483253588,
+              "sha256": "6dcdfbde44e0fc8e17108889efd81f7afd948b610dacaae15131c2fc9e6ebee3"
+            },
+            "development:edge:off:left:2:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.9784688995215312,
+              "sha256": "7e721cada1dc0d3c328abcfe34934c244403b521f3fcf9dedaa96b79d9aa2368"
+            },
+            "development:edge:on:down:2:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "a0a3100d10eba8faaed9447527e0d9995aaa3762cd7dd253df7f00e276d3da17"
+            },
+            "development:edge:on:up:2:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "b421971398c3992acb9d1cfa26c843fa6157c9963fa0d7e785c912f0856b7ae5"
+            },
+            "development:edge:off:down:2:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.9231459330143541,
+              "sha256": "2ff03bf63232d41b88e0a68dd7261a82fd060e5192d07ef2d9fd2da32df1ab88"
+            },
+            "development:edge:off:up:2:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.895933014354067,
+              "sha256": "c1e6867cbde9abe7794b81210185a42c2442193aaa3fb37eab180b558c6ac2f0"
+            },
+            "development:loom:on:expansion:24:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "05954f9982f619d0c3407edc04cb252c8dcbca9537e3c0c7e6ccb015eeb0397a"
+            },
+            "development:loom:off:expansion:24:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "7cf5ae624d34ca033c1df17cb0c60cb7153cee5d2ccf312def34c5cff29c38ed"
+            },
+            "development:loom:on:contraction:24:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "94a8e1c2e381b07f9add2cb3dbd0c809e5713cd75a7b0570994af31ef9079ed1"
+            },
+            "development:loom:off:contraction:24:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "93f73891b1de319bbb63d4dccde1bf8314d7b35ec5ded6b7a0627b1718fc9f76"
+            },
+            "development:static:on:none:24:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "7a104a60f5c3dacd12ed6adb4761ae0adde5c974580a5b07263000421ea60597"
+            },
+            "development:static:off:none:24:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "781678807dbbb3898ad9937fd3872e9bb8bf31ae612992e3f4bf8811ebc50df7"
+            },
+            "development:loom:on:expansion:32:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "5d61f0661904de60cc7ea89153f675bda16eecd6cf8cd1bcae18524424536760"
+            },
+            "development:loom:off:expansion:32:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "a4f48d706f65427690a5d8939c66c86b6989e36e0a71e5eeb74579ce81bdc573"
+            },
+            "development:loom:on:contraction:32:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "c1d32429056df3a19b82a14486bce9d46bf6abefdf3f6a59254b1f8add67a6f6"
+            },
+            "development:loom:off:contraction:32:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.48325358851674644,
+              "sha256": "747c8b6d9b9a6ad982e7026513434d398b5aa2fa095b56d3cdf0a607faf9974c"
+            },
+            "development:static:on:none:32:0:101": {
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "dynamic_range": 1.0,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "e9d37df402342960f283e83b0228b5f7c981bf45485bf738a624dbd60342c08c"
+            },
+            "development:static:off:none:32:0:101": {
+              "minimum": -0.9130434989929199,
+              "maximum": 0.0,
+              "dynamic_range": 0.9130434989929199,
+              "dynamic_receptor_fraction_above_1e_6": 0.49282296650717705,
+              "sha256": "fff641960961855cf3179f1f4bab001024363aa526b140136d42ccb3a0c8df41"
+            },
+            "development:translation:on:right:8:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "289a194601b1ab9825175c766118470264672aaa14595d3e77e3f2d64e54add7"
+            },
+            "development:translation:on:left:8:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "947e6f6e9679ac2b7608e9fe7244e9c42d0190d7b73e5a84eb82853e914ba841"
+            },
+            "development:translation:off:right:8:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f9602cd3da6dce67f2c59882493a0e4d2a56e11c87ecc28a00775f0ebc0097af"
+            },
+            "development:translation:off:left:8:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7eb97d2082d441e2b1ed3cd75dffeb3e2ae8a655ddb16c809658e5c2434769e8"
+            },
+            "development:translation:on:right:12:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "5e8de8511ae5599696dbc89493ca7aa29dd044d0a89f2284adc3de644db7049f"
+            },
+            "development:translation:on:left:12:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6b2c113b924bd790c30e64123c3fd1963f7f7f14ed4339ee5b8dcc56e8796227"
+            },
+            "development:translation:off:right:12:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "bb462359e957bb14adcf885ceb5ea6b3710a56049ad13056b385694e77bc3c72"
+            },
+            "development:translation:off:left:12:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "af50592c65392936bed607e8d464675efc5c950098c19bac7f21e77da8abd278"
+            },
+            "development:rotation:clockwise:0.25:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "9b68a5f0ee2ec0cda81602ecf2752e65bc2b63b33f7706ea08e99273f22d0dc1"
+            },
+            "development:rotation:counterclockwise:0.25:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e14bc54c3be0002e585ad6a6a899b82b1aa68ab60f1dec25b81bc3447c4415b9"
+            },
+            "development:rotation:clockwise:0.5:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "271cdc3e04bfa2e30987f4e69ba752e3e2b76de2e377afd305a854aa02624e04"
+            },
+            "development:rotation:counterclockwise:0.5:0:101": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "13bb654bc61164cd6b21af0d94c9d6232a5cb038f35aa96d1a0e0f92bf6ca42e"
+            },
+            "development:edge:on:right:1:0.005:102": {
+              "minimum": -0.4219686686992645,
+              "maximum": 1.0,
+              "dynamic_range": 1.421968698501587,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "67144c3c9fb4766daf473eeb435a801e8c47057eb9620f16d5bb54e63265c0c5"
+            },
+            "development:edge:on:left:1:0.005:102": {
+              "minimum": -0.4219686686992645,
+              "maximum": 1.0,
+              "dynamic_range": 1.421968698501587,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "dfa916da337d8541f1209186ca61c708332d4940030da8e32cf809b220925116"
+            },
+            "development:edge:off:right:1:0.005:102": {
+              "minimum": -0.9362453818321228,
+              "maximum": 0.22887107729911804,
+              "dynamic_range": 1.1651164293289185,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f3622027063e9d1381451e21db4b2799198f68328ed53900eff0900a74e3d36a"
+            },
+            "development:edge:off:left:1:0.005:102": {
+              "minimum": -0.9399728178977966,
+              "maximum": 0.24573563039302826,
+              "dynamic_range": 1.1857084035873413,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "4f1ba733b19f785702cd9c1287ef4078b097c30ab651322158ad854b9b85cddb"
+            },
+            "development:edge:on:down:1:0.005:102": {
+              "minimum": -0.21271756291389465,
+              "maximum": 1.0,
+              "dynamic_range": 1.2127175331115723,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "44869764c1f3b39cfa7ad9160dc3922b7b303aba6b20cb024162c865e3a02392"
+            },
+            "development:edge:on:up:1:0.005:102": {
+              "minimum": -0.21271756291389465,
+              "maximum": 1.0,
+              "dynamic_range": 1.2127175331115723,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "8d5ba2ab578eb9994020a84d818cb19713aae4a84d1a96be4535b4000aff7509"
+            },
+            "development:edge:off:down:1:0.005:102": {
+              "minimum": -0.9305023550987244,
+              "maximum": 0.18271581828594208,
+              "dynamic_range": 1.1132181882858276,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "22abe05475a445ff3b1abaef52f50d320208a93fe10a130aa1e0d623c25a64e7"
+            },
+            "development:edge:off:up:1:0.005:102": {
+              "minimum": -0.9305023550987244,
+              "maximum": 0.2228778898715973,
+              "dynamic_range": 1.153380274772644,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "039a4d97a0ef0198a00a60de3e15ecef918cbedc9b0c989ffccde80fa75800c6"
+            },
+            "development:edge:on:right:2:0.005:102": {
+              "minimum": -0.3635556697845459,
+              "maximum": 1.0,
+              "dynamic_range": 1.363555669784546,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7d70d99085cb5e33c2f49fab1af520dda7e8e5978f9aedf311b08c9e2bf2b217"
+            },
+            "development:edge:on:left:2:0.005:102": {
+              "minimum": -0.3635556697845459,
+              "maximum": 1.0,
+              "dynamic_range": 1.363555669784546,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ae9de0a7796f00033f83e9e3beef49d6ef976fd2a1d4cbfcb956c3c81d7e9e0c"
+            },
+            "development:edge:off:right:2:0.005:102": {
+              "minimum": -0.9348545074462891,
+              "maximum": 0.17611758410930634,
+              "dynamic_range": 1.1109720468521118,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "021a726a28523858423a06df88958d743e83bb77bb4b1338b20f6bda1060b2e8"
+            },
+            "development:edge:off:left:2:0.005:102": {
+              "minimum": -0.9510867595672607,
+              "maximum": 0.25249913334846497,
+              "dynamic_range": 1.2035858631134033,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2b50957d39281aa591317bd58519a025de2ab1acd145e4909a87dfa9ddb9d80a"
+            },
+            "development:edge:on:down:2:0.005:102": {
+              "minimum": -0.2351808249950409,
+              "maximum": 1.0,
+              "dynamic_range": 1.2351808547973633,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "10b3dd3796a8df4bfd92a2605748e1b6e06f8650299946fdaa9857b4e0d7ea27"
+            },
+            "development:edge:on:up:2:0.005:102": {
+              "minimum": -0.2351808249950409,
+              "maximum": 1.0,
+              "dynamic_range": 1.2351808547973633,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7a0f08bf7d00522e9d8c3ebea39f43223081f3ae47d81e32e16435685fd507cf"
+            },
+            "development:edge:off:down:2:0.005:102": {
+              "minimum": -0.930551290512085,
+              "maximum": 0.23776212334632874,
+              "dynamic_range": 1.1683133840560913,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "da0445921150ace8ab2f332a8603eadc11a0bbae00cb940bd7a7e30fa432ec2a"
+            },
+            "development:edge:off:up:2:0.005:102": {
+              "minimum": -0.930551290512085,
+              "maximum": 0.23776212334632874,
+              "dynamic_range": 1.1683133840560913,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "edb381b399457d4c54170de3cdfc43f43222cfe09690ea82f50ea720dacab8e3"
+            },
+            "development:loom:on:expansion:24:0.005:102": {
+              "minimum": -0.24363620579242706,
+              "maximum": 1.0,
+              "dynamic_range": 1.2436362504959106,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2ddc82096654eb62566673d8ecca21697ba7af9f5dc84a2eaa40401cd5c5b7c1"
+            },
+            "development:loom:off:expansion:24:0.005:102": {
+              "minimum": -0.9327229857444763,
+              "maximum": 0.11880722641944885,
+              "dynamic_range": 1.0515302419662476,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "b4d48cc818b499a6d55bb46674d058585b78f74a96a3a29bbafd402e671ecf69"
+            },
+            "development:loom:on:contraction:24:0.005:102": {
+              "minimum": -0.9310681819915771,
+              "maximum": 0.259124219417572,
+              "dynamic_range": 1.190192461013794,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a80d5091015c6159f6b619639682cdc9ba42392e1beee1b30f6ad3321f85c267"
+            },
+            "development:loom:off:contraction:24:0.005:102": {
+              "minimum": -0.27659279108047485,
+              "maximum": 1.0,
+              "dynamic_range": 1.27659273147583,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e67348df4b63d8fbee88201b5a98b7f63d36a654907af4914e152c19bba711a2"
+            },
+            "development:static:on:none:24:0.005:102": {
+              "minimum": -0.2758912444114685,
+              "maximum": 1.0,
+              "dynamic_range": 1.2758913040161133,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "195900a153738196c0aad9a9971653ebbaaf755b11eaecb05b1085586ad4642e"
+            },
+            "development:static:off:none:24:0.005:102": {
+              "minimum": -0.9252575635910034,
+              "maximum": 0.019484203308820724,
+              "dynamic_range": 0.9447417855262756,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "dd3e44411f2b4084d8a56b12681b7a993b3db7651d1bd08c015ff67b9dcba547"
+            },
+            "development:loom:on:expansion:32:0.005:102": {
+              "minimum": -0.2540026307106018,
+              "maximum": 1.0,
+              "dynamic_range": 1.254002571105957,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "fe26425f6739eb1439ecc5472dd0cc0136cf46ce6d55ac50315ead4935cb373b"
+            },
+            "development:loom:off:expansion:32:0.005:102": {
+              "minimum": -0.9250711798667908,
+              "maximum": 0.17218707501888275,
+              "dynamic_range": 1.09725821018219,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ce2f4b452734dd237dccac29768508290d009dea5c7ce90a42599eea6c1ecb3b"
+            },
+            "development:loom:on:contraction:32:0.005:102": {
+              "minimum": -0.9314733743667603,
+              "maximum": 0.22021077573299408,
+              "dynamic_range": 1.1516841650009155,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1fbbad1929c63c349bd86f4c7f334b7d73b4e888385d1e47299ac8930baa66a4"
+            },
+            "development:loom:off:contraction:32:0.005:102": {
+              "minimum": -0.2532501518726349,
+              "maximum": 1.0,
+              "dynamic_range": 1.2532501220703125,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f3aba39b12e0a603f1f6b92ee2b00de5e7db517ef2df4d31a1933e32d376d064"
+            },
+            "development:static:on:none:32:0.005:102": {
+              "minimum": -0.2394300103187561,
+              "maximum": 1.0,
+              "dynamic_range": 1.2394299507141113,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ddb1905e230c4934452f5c780201e95811a72433855ee27878c72bb6b1af217c"
+            },
+            "development:static:off:none:32:0.005:102": {
+              "minimum": -0.9214380383491516,
+              "maximum": 0.019850928336381912,
+              "dynamic_range": 0.941288948059082,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "67a7b907fdb9b29e14ffc751a70f15000a6a2449e75a869aaff661cba54f2540"
+            },
+            "development:translation:on:right:8:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "bd3d0e52383bd5df53587193147c85bb74678bbfa60fd60293e0a3e033b78a82"
+            },
+            "development:translation:on:left:8:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "208dfda22311f6a6daa48770ccad8442deaf690ed45d2ba4d0fb93780419d984"
+            },
+            "development:translation:off:right:8:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3c5d182f3ca69c43bb8f53e90858a2aeb9e457f882a117ac2146a15632a39c77"
+            },
+            "development:translation:off:left:8:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "76bafeae5658d2e7c0813f534197cb71eaafd8a6dfad4fabaaa84f4217bb8ddd"
+            },
+            "development:translation:on:right:12:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "0458ec31d879eb4fbe8620b3c29c2eab0c94abe3aabf49853f3b9df8bc500104"
+            },
+            "development:translation:on:left:12:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ff4a0b857ebdd7a5fc6754f6c2994219bc57e5a622aa792d31a643515d99c3eb"
+            },
+            "development:translation:off:right:12:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "116d9cbca1ac4106ef16c9fbac0df7de11c77721e5394d0055eb8e44ac1bd671"
+            },
+            "development:translation:off:left:12:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a796369960b834a4fa0dcaef5dd6b91aacfa03443b94944c39f5ee4d6eb9f98d"
+            },
+            "development:rotation:clockwise:0.25:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f578cac7cf02f659043a2093aa061afeab41e0fdf4b7dd48e9f989277d4ee1a4"
+            },
+            "development:rotation:counterclockwise:0.25:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e2fef83219a9081cf64d20efb79f925968b1b8b03b05486f44373db01fbb0f22"
+            },
+            "development:rotation:clockwise:0.5:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1e8b027aac6651968a4945e5d384bc55a2854136ef5c5f5a07ace8da1bc99c4f"
+            },
+            "development:rotation:counterclockwise:0.5:0.005:102": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ef997cd95883a239b4ea6c390dc1e5d6261401ab852029a582f9d968d8843b99"
+            },
+            "development:edge:on:right:1:0.01:103": {
+              "minimum": -0.8517983555793762,
+              "maximum": 1.0,
+              "dynamic_range": 1.8517982959747314,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ab6f1d04513843ac33b267c1414d70ead3ed85d0fde9cfd33616acf31cb12dbd"
+            },
+            "development:edge:on:left:1:0.01:103": {
+              "minimum": -0.7321396470069885,
+              "maximum": 1.0,
+              "dynamic_range": 1.7321395874023438,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "213fdada393cc616b3bd697595c004235dee01004fe948cc9d0e58fdbdb8c758"
+            },
+            "development:edge:off:right:1:0.01:103": {
+              "minimum": -0.9616575837135315,
+              "maximum": 0.3865451514720917,
+              "dynamic_range": 1.3482027053833008,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "959c4431648b56170d290e7650ca3157226b2082744403cd9d27918bcc73de19"
+            },
+            "development:edge:off:left:1:0.01:103": {
+              "minimum": -0.9737206697463989,
+              "maximum": 0.5214794874191284,
+              "dynamic_range": 1.4952001571655273,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "385cc0a78a1b31f42d242f1409d83faceb623d3e576d4e8f274a6953456a4eb1"
+            },
+            "development:edge:on:down:1:0.01:103": {
+              "minimum": -0.48852506279945374,
+              "maximum": 1.0,
+              "dynamic_range": 1.4885250329971313,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ab8a367d2ab64c85312d653ded2c2b4249b8792acfc3881704cfa0fe97dc0e4c"
+            },
+            "development:edge:on:up:1:0.01:103": {
+              "minimum": -0.524689793586731,
+              "maximum": 1.0,
+              "dynamic_range": 1.524689793586731,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a7afb0a08828d81df07fd62aefe5b3141ba909580e7dd9ddc1cea16f1c1c3d18"
+            },
+            "development:edge:off:down:1:0.01:103": {
+              "minimum": -0.9421653747558594,
+              "maximum": 0.4449845850467682,
+              "dynamic_range": 1.3871499300003052,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "727db91fcb377869bf4241fcbfc9bfbe7029faff889e4c3050edd4f39967d0cc"
+            },
+            "development:edge:off:up:1:0.01:103": {
+              "minimum": -0.9483629465103149,
+              "maximum": 0.3965338170528412,
+              "dynamic_range": 1.3448967933654785,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "eeb44be26953e36798d279ce4ec9baab04b5a8c2256fe8b759b5d6a20fa0a10d"
+            },
+            "development:edge:on:right:2:0.01:103": {
+              "minimum": -0.882270872592926,
+              "maximum": 1.0,
+              "dynamic_range": 1.8822708129882812,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "db739a28253ed31b1c79cf83829843d628a0df5950183a1e5438d43c60fde059"
+            },
+            "development:edge:on:left:2:0.01:103": {
+              "minimum": -0.8440171480178833,
+              "maximum": 1.0,
+              "dynamic_range": 1.8440171480178833,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1e60d9e28752a9cc1b0505c5b0a9df15f719d5ec2f3515a049e67e99a6cd24a2"
+            },
+            "development:edge:off:right:2:0.01:103": {
+              "minimum": -0.9722321629524231,
+              "maximum": 0.46914809942245483,
+              "dynamic_range": 1.441380262374878,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "504abbb83b182e3eb76a04293011db2488ae05c72f796e05fcf7ec517cff313b"
+            },
+            "development:edge:off:left:2:0.01:103": {
+              "minimum": -0.9722321629524231,
+              "maximum": 0.6858389973640442,
+              "dynamic_range": 1.6580711603164673,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "42895b81c089ca3c8b605a87bb835c3e10641cd3fbc576fb4e103e3087ab9c2c"
+            },
+            "development:edge:on:down:2:0.01:103": {
+              "minimum": -0.4004725515842438,
+              "maximum": 1.0,
+              "dynamic_range": 1.4004725217819214,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "21999ae8338c842bd4e4266fee8017ea3760943380e0dff544015630022d4636"
+            },
+            "development:edge:on:up:2:0.01:103": {
+              "minimum": -0.4386560618877411,
+              "maximum": 1.0,
+              "dynamic_range": 1.4386560916900635,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2e4057f7df1dd0d60617326d74a8f7cc7e95bb7e6b9bd41554cfa1c484a1f12b"
+            },
+            "development:edge:off:down:2:0.01:103": {
+              "minimum": -0.9448735117912292,
+              "maximum": 0.30536821484565735,
+              "dynamic_range": 1.250241756439209,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "aad2e02d98fb33d8faea7f442516c1ab5b522345399346521827ebdc4cbdb56c"
+            },
+            "development:edge:off:up:2:0.01:103": {
+              "minimum": -0.9473721385002136,
+              "maximum": 0.32246875762939453,
+              "dynamic_range": 1.269840955734253,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "159f87ec336e2793684b5a72488053dc6163ccaa9b1a4ad0733c1ca2a9973615"
+            },
+            "development:loom:on:expansion:24:0.01:103": {
+              "minimum": -0.4842900037765503,
+              "maximum": 1.0,
+              "dynamic_range": 1.4842900037765503,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e81dceac4935e9bd1a5ff961df24add7817b8e41315bd0a1bc4df14642a6df84"
+            },
+            "development:loom:off:expansion:24:0.01:103": {
+              "minimum": -0.9507660269737244,
+              "maximum": 0.37957367300987244,
+              "dynamic_range": 1.3303396701812744,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ed4ccf0cd3ec3180852e6da7f2a1a5e5b08ca2adfe94d9f0cedc7b04748519bb"
+            },
+            "development:loom:on:contraction:24:0.01:103": {
+              "minimum": -0.9394446015357971,
+              "maximum": 0.6367006301879883,
+              "dynamic_range": 1.5761451721191406,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "75cc3d0df658ae190a91663a9672a1a095450bdac62d7c18e5cd404b3144d663"
+            },
+            "development:loom:off:contraction:24:0.01:103": {
+              "minimum": -0.5274543166160583,
+              "maximum": 1.0,
+              "dynamic_range": 1.5274543762207031,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "b7f812363c18cc6a7cc01141cbc4d1b3566a8569c6586e71353af7c6d25c2b9f"
+            },
+            "development:static:on:none:24:0.01:103": {
+              "minimum": -0.42722412943840027,
+              "maximum": 1.0,
+              "dynamic_range": 1.4272241592407227,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "923134b9e57a217526dcdf16a85dff8c1c38cd83d38c00e9a3329533a3ffc26e"
+            },
+            "development:static:off:none:24:0.01:103": {
+              "minimum": -0.9330894351005554,
+              "maximum": 0.0367295928299427,
+              "dynamic_range": 0.9698190093040466,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "035f0bba4c04fa4b785181959540c8b8c1d0dcbdebaeed0b3535a96836b0bda8"
+            },
+            "development:loom:on:expansion:32:0.01:103": {
+              "minimum": -0.5011687278747559,
+              "maximum": 1.0,
+              "dynamic_range": 1.5011687278747559,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "63f8c98827f80c289645930a7e77e8de1fec0cc9a66f8541bda20a1a932378c4"
+            },
+            "development:loom:off:expansion:32:0.01:103": {
+              "minimum": -0.9482455849647522,
+              "maximum": 0.3115668296813965,
+              "dynamic_range": 1.259812355041504,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c893e89c830659ec02dc75def5cd50c1e8c0d7ad0a64f92fa8c1dc553c14feb6"
+            },
+            "development:loom:on:contraction:32:0.01:103": {
+              "minimum": -0.9414488077163696,
+              "maximum": 0.6420320272445679,
+              "dynamic_range": 1.5834808349609375,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "9c63a5f42858c6e1f927961c4aeb1635e0c503754fa916cb3df0e45856386bfc"
+            },
+            "development:loom:off:contraction:32:0.01:103": {
+              "minimum": -0.5100747346878052,
+              "maximum": 1.0,
+              "dynamic_range": 1.5100747346878052,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c4173db810d8b013120c5e547daec36223a1db3cdb9e45effc7193398ff07094"
+            },
+            "development:static:on:none:32:0.01:103": {
+              "minimum": -0.44887053966522217,
+              "maximum": 1.0,
+              "dynamic_range": 1.4488705396652222,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c2623f122e0c0c1d63e890f745b58ee584834c00ab660fc8cb1305b03aad36b4"
+            },
+            "development:static:off:none:32:0.01:103": {
+              "minimum": -0.9404573440551758,
+              "maximum": 0.034203384071588516,
+              "dynamic_range": 0.9746607542037964,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6cb723e38731ddc75b90e362e2b5ecc85cea2e61d26f3362868e2668a9aaf6db"
+            },
+            "development:translation:on:right:8:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "2e4319e495e20576a30ce68d8c6aa4d8098f1d203252bb12d3fe2bab216fb9d6"
+            },
+            "development:translation:on:left:8:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "076deeaa309962959ec12de08ddfd55dae854471ff472ee0611485471ee8496e"
+            },
+            "development:translation:off:right:8:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "bcb10b0a4b2c84b643eccd5da7787aa93c5e498a1e4b9b61552480c536e3ca64"
+            },
+            "development:translation:off:left:8:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "8b191dd93465eb9545e31e11c94a319a4375ce0721016a823793d3a43d017c0b"
+            },
+            "development:translation:on:right:12:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "fc5234b12aabe7e6975d7997f472f04839faf1869a2badd5c7888cbec6da8244"
+            },
+            "development:translation:on:left:12:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e87d15fbcd8aa4ac30511b3e32085ddedecca420185833ded6428c98f91ebf68"
+            },
+            "development:translation:off:right:12:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "144e15f38eb12d331839eba0884b7ed38646a8ad36ea1af4bde7723fba3b60cc"
+            },
+            "development:translation:off:left:12:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "61b52a435bd6dba3877997f7f47f9fa7807b563c56c257e171378b3d1d97e470"
+            },
+            "development:rotation:clockwise:0.25:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a4983c9fa2f205b68d349d2eeed818a6ebac7ee94f3dc17684a50af350f174e9"
+            },
+            "development:rotation:counterclockwise:0.25:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1fa3863fdd6b8ff75f413c508a176f9e5c159ce4cd962cd668cf6641e665d7f9"
+            },
+            "development:rotation:clockwise:0.5:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "34b4ec1e270fb33d30479bc0c6dd4f078d1998b92603f3e5b3f311061c055344"
+            },
+            "development:rotation:counterclockwise:0.5:0.01:103": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3c7dbc899bd1a99bf2d6353a9fe69d58b89dd5ec01c1fd7599a30688f9eac774"
+            },
+            "development:edge:on:right:1:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "a19eff641bf0bb595c499aa359238db9a740a579c40edb0def13a1e7b0a0e7ca"
+            },
+            "development:edge:on:left:1:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "bd719be9f11fcfc0251a71d899fdf7fe344bdff0db536a3e0346410ea56b5011"
+            },
+            "development:edge:off:right:1:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 0.782623827457428,
+              "dynamic_range": 1.7826237678527832,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "73c1c93c0471a7a6c4cdb354064512261263b526d445311d38992652ff8658cf"
+            },
+            "development:edge:off:left:1:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 0.9036954641342163,
+              "dynamic_range": 1.9036954641342163,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6258fc166a7f21c57c16e6ad1b988a0d81e934de0dfac8f6d2cdfae60887e43a"
+            },
+            "development:edge:on:down:1:0.015:104": {
+              "minimum": -0.8812123537063599,
+              "maximum": 1.0,
+              "dynamic_range": 1.8812123537063599,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "3f3134a9100841e3cd6f9a39e48070480db57c260acf721d937e1e6d393700fa"
+            },
+            "development:edge:on:up:1:0.015:104": {
+              "minimum": -0.8812123537063599,
+              "maximum": 1.0,
+              "dynamic_range": 1.8812123537063599,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "80bdc2dfa6f312281cbc6f9f47e7b98396a04e32d0351742fc98377b41283c7c"
+            },
+            "development:edge:off:down:1:0.015:104": {
+              "minimum": -0.9662336707115173,
+              "maximum": 0.608600914478302,
+              "dynamic_range": 1.5748345851898193,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "41b933320fd21d0ee637ca405d528b2cb6e442de26a697d20630d92ff66e80e5"
+            },
+            "development:edge:off:up:1:0.015:104": {
+              "minimum": -0.9662336707115173,
+              "maximum": 0.608600914478302,
+              "dynamic_range": 1.5748345851898193,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "d6ad16395a9d86a541ea07e0ea6f252052d73503d15f60f168d048107627ef94"
+            },
+            "development:edge:on:right:2:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "781a8630fcf97212c19093fe6996bebdbfecfe9e5bc5a1f147ba2eca2a8f0fce"
+            },
+            "development:edge:on:left:2:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "503c82bf61a1d4365a11f3323c9a33f86a352d178fccefeeb0dcd42f2a38e816"
+            },
+            "development:edge:off:right:2:0.015:104": {
+              "minimum": -0.9885104298591614,
+              "maximum": 0.6908929347991943,
+              "dynamic_range": 1.679403305053711,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ff9b223b416e14b922d20c8d33e70a3aeeb4913718becbf65637377b6454a4be"
+            },
+            "development:edge:off:left:2:0.015:104": {
+              "minimum": -0.9885104298591614,
+              "maximum": 1.0,
+              "dynamic_range": 1.9885103702545166,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1a36caf5d8e9a7e6bda622206e5dd1062f4cd3c2417a1de4fabb35b0a7b29227"
+            },
+            "development:edge:on:down:2:0.015:104": {
+              "minimum": -0.7299332618713379,
+              "maximum": 1.0,
+              "dynamic_range": 1.729933261871338,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1cf941a8bd9ec9b8577c7dae4821026ed9f500924b9ab4d60190478b26b003d3"
+            },
+            "development:edge:on:up:2:0.015:104": {
+              "minimum": -0.6896837949752808,
+              "maximum": 1.0,
+              "dynamic_range": 1.6896837949752808,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "0c5612213630b9dced7886259199f5b9d6d9c097bffe206f00f739a4eb7f80c5"
+            },
+            "development:edge:off:down:2:0.015:104": {
+              "minimum": -0.9734746813774109,
+              "maximum": 0.6025975346565247,
+              "dynamic_range": 1.5760722160339355,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "c5a09c59784a21702c216a7af6443c9e739284e1807c2be23ab1af3f94c883ea"
+            },
+            "development:edge:off:up:2:0.015:104": {
+              "minimum": -0.9734746813774109,
+              "maximum": 0.6025975346565247,
+              "dynamic_range": 1.5760722160339355,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6a60bc9f7eccc927fa4ad5068e7e9f74098d9c72905229b3c9a8f4ffc72c7465"
+            },
+            "development:loom:on:expansion:24:0.015:104": {
+              "minimum": -0.7365750670433044,
+              "maximum": 1.0,
+              "dynamic_range": 1.7365751266479492,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "271390d8f59d726f15f4fd5c68bdaaa407ab90e638d7a649eb1f582db8be541b"
+            },
+            "development:loom:off:expansion:24:0.015:104": {
+              "minimum": -0.9551481008529663,
+              "maximum": 0.34215259552001953,
+              "dynamic_range": 1.2973006963729858,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "1a257705d793f3569730cdee07f91f852ef5dd51bbf3049d4f92e744ed96c219"
+            },
+            "development:loom:on:contraction:24:0.015:104": {
+              "minimum": -0.9575320482254028,
+              "maximum": 0.7476693987846375,
+              "dynamic_range": 1.7052013874053955,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "b423b0705992c184b9d0df7ceff88347cdc41832c13163c761e930e6359a789e"
+            },
+            "development:loom:off:contraction:24:0.015:104": {
+              "minimum": -0.6527554988861084,
+              "maximum": 1.0,
+              "dynamic_range": 1.6527554988861084,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "47972b6ca9872dcc31cb557006cc8ebc57c57a9233cde9eab5650cbddb3f5a65"
+            },
+            "development:static:on:none:24:0.015:104": {
+              "minimum": -0.7184565663337708,
+              "maximum": 1.0,
+              "dynamic_range": 1.718456506729126,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f4f360d529ddb739a932ab70a667a66db3ad92801d6751c3d9efe5ead6402dda"
+            },
+            "development:static:off:none:24:0.015:104": {
+              "minimum": -0.9594150185585022,
+              "maximum": 0.06879496574401855,
+              "dynamic_range": 1.028209924697876,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6de28a166b051f5fb632b61f9acc1d6b8b8da241bff5c9ed56f46519a707a9f3"
+            },
+            "development:loom:on:expansion:32:0.015:104": {
+              "minimum": -0.847204864025116,
+              "maximum": 1.0,
+              "dynamic_range": 1.8472049236297607,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "4903708d23631e5d3eea1d184b9a23dbb78fb576a978f180b12acb4a420849c6"
+            },
+            "development:loom:off:expansion:32:0.015:104": {
+              "minimum": -0.960339367389679,
+              "maximum": 0.46156197786331177,
+              "dynamic_range": 1.4219013452529907,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f87569aeca4164170f6ff63dd8d0525ae91982e6c861f8d911f5583c2f3ed063"
+            },
+            "development:loom:on:contraction:32:0.015:104": {
+              "minimum": -0.9563422203063965,
+              "maximum": 0.7246729135513306,
+              "dynamic_range": 1.681015133857727,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "6aa5ea8ee2d043bc4ab036c7c00762c296e1e038f7c27481136649bb019c726d"
+            },
+            "development:loom:off:contraction:32:0.015:104": {
+              "minimum": -0.620081901550293,
+              "maximum": 1.0,
+              "dynamic_range": 1.620081901550293,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ca9301e0cb6466768cb8e6f3aa4ebce75dd6598daf1593c98edfd1b3f565cd5c"
+            },
+            "development:static:on:none:32:0.015:104": {
+              "minimum": -0.7609760165214539,
+              "maximum": 1.0,
+              "dynamic_range": 1.7609760761260986,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "93222cffc7167810e09757631c0b339e078fc900d6f0db70c07d3004beac925d"
+            },
+            "development:static:off:none:32:0.015:104": {
+              "minimum": -0.9487429261207581,
+              "maximum": 0.06015569716691971,
+              "dynamic_range": 1.0088986158370972,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "13f088d95f688d9a9f600499ccfdc3507dc990316a6904fa9bc4208c603225ec"
+            },
+            "development:translation:on:right:8:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "b2bbb04ecc2d9de9a7b1d21c263c970c55c91e591873989fbb08a7a77437ed2f"
+            },
+            "development:translation:on:left:8:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "05ed4368f281b37c5f87aa12b2f0517d8cd4298e3dc9c0e97a54b13169e0a928"
+            },
+            "development:translation:off:right:8:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "071396d626b00b7073ceb06ca20a520c0e2796855f1612788935ede83c235dcf"
+            },
+            "development:translation:off:left:8:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "88b8bc13efebf11e2fd8a63580b3568a7234bbd7ae9fc3aa8005be71a99fb2f4"
+            },
+            "development:translation:on:right:12:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "181b445f3645e52cdc589387f5d2db33c6a8540caff5c9c7362ad49a0b0c6d48"
+            },
+            "development:translation:on:left:12:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "7208cc0cd5996ac81024771fbde63b78f934f4a71e176241068b7815c2380386"
+            },
+            "development:translation:off:right:12:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "ec8277a0181e5bc563cfb0b5b138947dca0fb5f197ac3a53a8671652bbf0c5fa"
+            },
+            "development:translation:off:left:12:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "f3b31efddada78214dd7da60a847a610fce9c6bba653c46c090e67199f07e545"
+            },
+            "development:rotation:clockwise:0.25:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "fb62291d8dfeee76e9f30e13729b3335eb087fc980157d4f244adc37dcf868fd"
+            },
+            "development:rotation:counterclockwise:0.25:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "edb80ad7409a3c52c5925d9213fa940575804ee771a78bf352d6c6615aca4e2e"
+            },
+            "development:rotation:clockwise:0.5:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "e9f4539c521f6583f78b26c48c3653842e80a2719d001e18772e8a211e7975e4"
+            },
+            "development:rotation:counterclockwise:0.5:0.015:104": {
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "dynamic_range": 2.0,
+              "dynamic_receptor_fraction_above_1e_6": 1.0,
+              "sha256": "77d9ad00ae156424938aa57f5cb56a130e7fc1cb61ee1b50c1928cc0f781e392"
+            }
+          },
+          "minimum_dynamic_range_by_family": {
+            "moving_edge": 0.9130434989929199,
+            "looming": 0.9130434989929199,
+            "static": 0.9130434989929199,
+            "translation": 2.0,
+            "rotation": 2.0
+          },
+          "minimum_dynamic_receptor_fraction_by_family": {
+            "moving_edge": 0.895933014354067,
+            "looming": 0.48325358851674644,
+            "static": 0.49282296650717705,
+            "translation": 1.0,
+            "rotation": 1.0
+          },
+          "on_off_sign_agreement_by_family": {
+            "moving_edge": {
+              "pair_count": 32,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            },
+            "looming": {
+              "pair_count": 16,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            },
+            "static": {
+              "pair_count": 8,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            },
+            "translation": {
+              "pair_count": 16,
+              "minimum_opposite_sign_fraction": 1.0,
+              "median_opposite_sign_fraction": 1.0
+            }
+          },
+          "independent_receptor_direction_null": {
+            "comparison_count": 48,
+            "maximum_absolute_population_energy_contrast": 0.0350385147540983
           },
           "receptor_separability_control": {
             "perturbed_receptor_index": 3,
