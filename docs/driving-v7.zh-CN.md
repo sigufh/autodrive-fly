@@ -1161,6 +1161,25 @@ PD/ND 的独立映射、物理时间尺度、whole-cell 到 MaleCNS target 的�
 缺口是让 T4/T5、LPLC1/LPLC2/LC4 在不做可逆像素重建的情况下形成等价的局部危险、
 道路/自运动和减速通道。该上界不能解锁中央复合体、OOD、外部 final 或部署。
 
+随后以上述上界作只读教师，不向目标神经元注入危险、侧别或道路值。原图及镜像图分别
+经过同一 MaleCNS visual subgraph；readout 保留 T4/T5 六个 optic-hex 空间区和
+LPLC1/LPLC2/LC4 左右群体的均值、标准差、q10、q90、最大值，以及当前值、一阶差分、
+绝对值、平方项和慢均值。镜像关系被硬编码：危险只读偶分量，障碍侧别和道路中心只读
+奇分量；三个输出各使用固定 ridge=1 的透明线性 readout。
+
+`8200–8205` tuning 中危险、侧别、道路三路教师拟合 R² 约为 0.91、0.98、0.94，实际
+闭环达到 6/6 success、54/54 障碍。模型哈希冻结后，未参与拟合的 `8300/8301`
+一次 calibration 达到 2/2 success、18/18 障碍；三路通道、动作和轨迹的镜像误差约
+1e-12。证据见 `artifacts/v7-neural-channels-tuning.json` 和
+`artifacts/v7-neural-channels-calibration.json`。
+
+后验来源消融不参与选择：完整模型 6/6；去掉 T4/T5 空间特征为 0/6；去掉 LPLC2
+为 4/6；全部 LPLC/LC 去掉为 2/6；heading 反馈去掉为 0/6 且全部出界。单独去掉
+LPLC1 或 LC4 仍为 6/6，因此只能说二者在当前 tuning 屏幕下非必要或可由其它特征
+补偿，不能称生物通路无效。证据见 `artifacts/v7-neural-channel-controls.json`。该模型
+仍是教师监督的工程神经解码器，尚未通过 T4/T5 生理方向、LPLC 分型机制、真实拓扑
+优势、OOD 或外部 final，故不部署。
+
 ## 文献依据
 
 - Lappalainen 等，连接组约束视觉模型：

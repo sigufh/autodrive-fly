@@ -209,6 +209,15 @@ v7-evaluate-r1r6-local-calibration:
 v7-evaluate-r1r6-local-controls:
 	.venv/bin/autodrive-fly v7-evaluate-r1r6-local-controls
 
+v7-evaluate-neural-channels-tuning:
+	.venv/bin/autodrive-fly v7-evaluate-neural-channels-tuning
+
+v7-evaluate-neural-channels-calibration:
+	.venv/bin/autodrive-fly v7-evaluate-neural-channels-calibration
+
+v7-evaluate-neural-channel-controls:
+	.venv/bin/autodrive-fly v7-evaluate-neural-channel-controls
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

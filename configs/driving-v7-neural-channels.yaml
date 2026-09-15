@@ -1,0 +1,58 @@
+version: 1
+name: v7-structured-neural-channel-readout
+observed_on: "2026-09-15"
+teacher_tuning_evidence: artifacts/v7-r1r6-local-tuning.json
+teacher_calibration_evidence: artifacts/v7-r1r6-local-calibration.json
+input:
+  external_visual_path: R1-R6_only
+  retina_assignment: mass_balanced_exact_pixel_reconstruction
+  visual_graph: typed_visual_subgraph_v1
+  target_activity_injection: false
+features:
+  T4_T5_spatial_bins: 6
+  spatial_groups_per_bin: [front_to_back, back_to_front]
+  looming_populations: [LPLC1_L, LPLC1_R, LPLC2_L, LPLC2_R, LC4_L, LC4_R]
+  per_group_statistics: [mean, standard_deviation, q10, q90, maximum]
+  temporal_terms: [current, first_difference, absolute, square, exponential_mean]
+  exponential_mean_update: 0.10
+  mirror_contract:
+    danger: even
+    obstacle_asymmetry: odd
+    road_center: odd
+    T4_T5_mapping: reverse_spatial_bin_and_swap_motion_direction
+    LPLC_LC_mapping: swap_left_right
+readout:
+  type: ridge_linear
+  alpha: 1.0
+  outputs: [danger, obstacle_asymmetry, road_center]
+  output_clips:
+    danger: [0.0, 1.0]
+    obstacle_asymmetry: [-1.0, 1.0]
+    road_center: [-1.0, 1.0]
+adapter_source: artifacts/v7-r1r6-local-tuning.json
+tuning:
+  mirror_pair_seeds: [8200, 8201, 8202, 8203, 8204, 8205]
+  teacher_for_fit_only: true
+  teacher_not_injected_into_neural_state: true
+  require_all_nine_obstacles: true
+calibration:
+  mirror_pair_seeds: [8300, 8301]
+  previously_used_for_fit: false
+  run_once_after_readout_freeze: true
+  pass_requirements:
+    both_success: true
+    both_pass_all_nine_obstacles: true
+    no_collision_or_road_boundary: true
+    maximum_channel_mirror_error: 0.00000001
+    maximum_action_mirror_error: 0.00000001
+    maximum_trajectory_mirror_error: 0.00000001
+boundary:
+  measured_cell_physiology_gate_passed: false
+  T5_PD_ND_label_resolved: false
+  LPLC_typed_mechanism_gate_passed: false
+  topology_advantage_tested: false
+  external_final_evaluated: false
+  navigation_release_allowed: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

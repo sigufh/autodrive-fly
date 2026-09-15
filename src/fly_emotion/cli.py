@@ -55,6 +55,11 @@ from .driving.v7_local_input_audit import (
 )
 from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
+from .driving.v7_neural_channel_controls import evaluate_v7_neural_channel_controls
+from .driving.v7_neural_channels import (
+    evaluate_v7_neural_channels_calibration,
+    evaluate_v7_neural_channels_tuning,
+)
 from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
@@ -213,6 +218,9 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-r1r6-local-tuning")
     subparsers.add_parser("v7-evaluate-r1r6-local-calibration")
     subparsers.add_parser("v7-evaluate-r1r6-local-controls")
+    subparsers.add_parser("v7-evaluate-neural-channels-tuning")
+    subparsers.add_parser("v7-evaluate-neural-channels-calibration")
+    subparsers.add_parser("v7-evaluate-neural-channel-controls")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -614,6 +622,24 @@ def main() -> None:
     if args.command == "v7-evaluate-r1r6-local-controls":
         report = evaluate_v7_r1r6_local_controls(root)
         target = root / "artifacts/v7-r1r6-local-controls.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-channels-tuning":
+        report = evaluate_v7_neural_channels_tuning(root)
+        target = root / "artifacts/v7-neural-channels-tuning.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-channels-calibration":
+        report = evaluate_v7_neural_channels_calibration(root)
+        target = root / "artifacts/v7-neural-channels-calibration.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-channel-controls":
+        report = evaluate_v7_neural_channel_controls(root)
+        target = root / "artifacts/v7-neural-channel-controls.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

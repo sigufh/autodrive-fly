@@ -53,6 +53,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     r1r6_local_tuning = reports["r1r6_local_tuning"]
     r1r6_local_calibration = reports["r1r6_local_calibration"]
     r1r6_local_controls = reports["r1r6_local_controls"]
+    neural_channels_tuning = reports["neural_channels_tuning"]
+    neural_channels_calibration = reports["neural_channels_calibration"]
+    neural_channel_controls = reports["neural_channel_controls"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -230,6 +233,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "mass_balanced_R1_R6_local_controls_passed": r1r6_local_controls[
                     "causal_controls_passed"
                 ],
+                "structured_neural_channels_tuning_passed": neural_channels_tuning["tuning_passed"],
+                "structured_neural_channels_calibration_passed": neural_channels_calibration[
+                    "calibration_passed"
+                ],
+                "structured_neural_channels_calibration_obstacles": sum(
+                    item["obstacles_passed"] for item in neural_channels_calibration["episodes"]
+                ),
+                "neural_channel_source_controls": {
+                    name: {
+                        "success_count": item["success_count"],
+                        "total_obstacles_passed": item["total_obstacles_passed"],
+                    }
+                    for name, item in neural_channel_controls["arms"].items()
+                },
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -258,6 +275,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "calibration_passed"
                 ],
                 "R1_R6_upper_bound_authorizes_neural_release": r1r6_local_calibration[
+                    "advance_to_navigation_release"
+                ],
+                "structured_neural_channels_calibration_passed": neural_channels_calibration[
+                    "calibration_passed"
+                ],
+                "structured_neural_channels_release_authorized": neural_channels_calibration[
                     "advance_to_navigation_release"
                 ],
             },
@@ -449,6 +472,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["r1r6_local_tuning"],
                 config["evidence"]["r1r6_local_calibration"],
                 config["evidence"]["r1r6_local_controls"],
+                config["evidence"]["neural_channels_tuning"],
+                config["evidence"]["neural_channels_calibration"],
+                config["evidence"]["neural_channel_controls"],
             ],
         },
         {
