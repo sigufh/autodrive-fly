@@ -37,6 +37,7 @@ from .driving.v7_closed_loop import (
     evaluate_v7_closed_loop_tuning,
 )
 from .driving.v7_closed_loop_controls import evaluate_v7_closed_loop_controls
+from .driving.v7_closed_loop_multi import evaluate_v7_closed_loop_multi
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
@@ -197,6 +198,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-closed-loop-tuning")
     subparsers.add_parser("v7-evaluate-closed-loop-calibration")
     subparsers.add_parser("v7-evaluate-closed-loop-controls")
+    subparsers.add_parser("v7-evaluate-closed-loop-multi")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -562,6 +564,12 @@ def main() -> None:
     if args.command == "v7-evaluate-closed-loop-controls":
         report = evaluate_v7_closed_loop_controls(root)
         target = root / "artifacts/v7-closed-loop-controls.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-closed-loop-multi":
+        report = evaluate_v7_closed_loop_multi(root)
+        target = root / "artifacts/v7-closed-loop-multi.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

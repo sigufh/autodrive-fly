@@ -1,0 +1,20 @@
+version: 1
+name: v7-frozen-single-event-multi-obstacle-diagnostic
+observed_on: "2026-09-15"
+closed_loop_config: configs/driving-v7-closed-loop.yaml
+tuning_evidence: artifacts/v7-closed-loop-tuning.json
+calibration_evidence: artifacts/v7-closed-loop-calibration.json
+diagnostic_mirror_pair_seeds: [7400, 7401, 7402, 7403, 7404, 7405]
+curriculum_stage: full
+parameter_search_allowed: false
+candidate_changes_allowed: false
+result_may_authorize_release: false
+boundary:
+  development_diagnostic_only: true
+  previously_used_for_tuning: false
+  previously_used_for_calibration: false
+  not_ood: true
+  not_final: true
+  final_evaluated: false
+  runtime_modified: false
+  deployment_allowed: false

@@ -38,6 +38,7 @@ evidence:
   closed_loop_tuning: artifacts/v7-closed-loop-tuning.json
   closed_loop_calibration: artifacts/v7-closed-loop-calibration.json
   closed_loop_controls: artifacts/v7-closed-loop-controls.json
+  closed_loop_multi: artifacts/v7-closed-loop-multi.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading

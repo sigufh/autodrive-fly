@@ -47,6 +47,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     closed_loop_tuning = reports["closed_loop_tuning"]
     closed_loop_calibration = reports["closed_loop_calibration"]
     closed_loop_controls = reports["closed_loop_controls"]
+    closed_loop_multi = reports["closed_loop_multi"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -201,6 +202,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "closed_loop_point_sample_successes": closed_loop_controls["arms"][
                     "point_sampled_R1_R6"
                 ]["success_count"],
+                "multi_obstacle_diagnostic_successes": closed_loop_multi["summary"][
+                    "success_count"
+                ],
+                "multi_obstacle_diagnostic_episode_count": closed_loop_multi["summary"][
+                    "episode_count"
+                ],
+                "multi_obstacle_mean_obstacles_passed": closed_loop_multi["summary"][
+                    "mean_obstacles_passed"
+                ],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -224,6 +234,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "closed_loop_navigation_release_authorized": closed_loop_calibration[
                     "advance_to_navigation_release"
                 ],
+                "multi_obstacle_diagnostic_passed": closed_loop_multi["diagnostic_passed"],
             },
         },
         {
@@ -407,6 +418,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["closed_loop_tuning"],
                 config["evidence"]["closed_loop_calibration"],
                 config["evidence"]["closed_loop_controls"],
+                config["evidence"]["closed_loop_multi"],
             ],
         },
         {
