@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "489d891af4debb9911253aedb3bf116373159a65020a1b167ae216efaf0e4e21",
-      "src/fly_emotion/driving/v7_goal_audit.py": "e5f1f9b30a39b29825dd16954936245268ace7bdc5901ec45a8ddc47b7c04773",
+      "configs/driving-v7-goal-audit.yaml": "8bde52b84ba16056e0a397178708a07c60376f58c759d1ff79e2d7e5244ea60a",
+      "src/fly_emotion/driving/v7_goal_audit.py": "c87976db9f180001ededf55cebbf7f0b4238eda8bb5914d78b3c7a23736cafd7",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -29,7 +29,10 @@
       "artifacts/v7-t5-supplement-audit.json": "1d6d7ea04a74b280c05f4f268e19214ef614d46965b740c5e670a0cb14bbfed8",
       "artifacts/v7-looming-mechanism-audit.json": "da3af7b7482ecd4797b8b17a1b6acbdef767305c3cebd91db63aaf6ced377433",
       "artifacts/v7-stage1-nested.json": "efae99e6e704ff5f51169cfe83605d72dad51019611efcf1424ab5def7de54f2",
-      "artifacts/v7-target-fit.json": "94cd2a5073de5c8bb734367bf04aa1d85545fb5fa11994011cf07bcce32d87ac"
+      "artifacts/v7-target-fit.json": "94cd2a5073de5c8bb734367bf04aa1d85545fb5fa11994011cf07bcce32d87ac",
+      "artifacts/v7-closed-loop-tuning.json": "918674132d562484d0ad24d82d17de1b038e2fa03f425e6cc0cc92455cc584de",
+      "artifacts/v7-closed-loop-calibration.json": "8dd8baa2ab99fc8a0b7fae73fc2d86cdb22e9fcbde572d14a406234a6ece0ef6",
+      "artifacts/v7-closed-loop-controls.json": "00baf4854bc5690dfcc3bafb8a6a4f7fdd83b04b73057b0296ba7e54bd6baec3"
     }
   },
   "objective_items": {
@@ -119,14 +122,23 @@
           "LPLC1": 0.0,
           "LPLC2": 0.5714285714285714,
           "LC4": 0.0
-        }
+        },
+        "closed_loop_tuning_successes": 6,
+        "closed_loop_tuning_episode_count": 6,
+        "closed_loop_calibration_passed": true,
+        "closed_loop_calibration_successes": 2,
+        "closed_loop_causal_controls_passed": true,
+        "closed_loop_zero_action_successes": 0,
+        "closed_loop_wrong_sign_successes": 0,
+        "closed_loop_point_sample_successes": 2
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
         "LPLC1/LPLC2/LC4 looming and collision response gates",
         "an independent T5 label map suitable for model scoring",
         "a calibrated physical visual/neural timebase",
-        "an externally committed and independently custodied final condition"
+        "an externally committed and independently custodied final condition",
+        "multi-obstacle and dynamic OOD closed-loop validation"
       ]
     },
     {
@@ -137,7 +149,9 @@
         "artifacts/v7-manifest.json"
       ],
       "observations": {
-        "stage1_pass": false
+        "stage1_pass": false,
+        "single_obstacle_closed_loop_calibration_passed": true,
+        "closed_loop_navigation_release_authorized": false
       }
     },
     {
@@ -210,7 +224,9 @@
           "external_final": 1
         },
         "external_final_committed": false,
-        "external_final_evaluated": false
+        "external_final_evaluated": false,
+        "closed_loop_calibration_passed": true,
+        "closed_loop_final_evaluated": false
       }
     },
     {
@@ -357,7 +373,10 @@
         "artifacts/v7-stage1-split.json",
         "artifacts/v7-stage1-scoring.json",
         "artifacts/v7-stage1-nested.json",
-        "artifacts/v7-target-fit.json"
+        "artifacts/v7-target-fit.json",
+        "artifacts/v7-closed-loop-tuning.json",
+        "artifacts/v7-closed-loop-calibration.json",
+        "artifacts/v7-closed-loop-controls.json"
       ]
     },
     {

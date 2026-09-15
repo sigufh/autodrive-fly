@@ -1,0 +1,330 @@
+{
+  "protocol": {
+    "name": "v7-r1r6-neural-event-closed-loop",
+    "phase": "post_calibration_causal_controls",
+    "dependencies_sha256": {
+      "configs/driving-v7-closed-loop.yaml": "094983d934baaf9762d22c6f50c37f88bcbe9bc016844cc0bdc45eeeb81bbd5a",
+      "src/fly_emotion/driving/v7_closed_loop.py": "9753de5c80ab876d80c0205bbd17523f6e353d92da640ecb13fdbe24fb4b346a",
+      "src/fly_emotion/driving/v7_closed_loop_controls.py": "8033113961dd0647d5994d13701acc7c3e97c3d304e28011b3db531d25cfd7d6",
+      "artifacts/v7-closed-loop-tuning.json": "918674132d562484d0ad24d82d17de1b038e2fa03f425e6cc0cc92455cc584de",
+      "artifacts/v7-closed-loop-calibration.json": "8dd8baa2ab99fc8a0b7fae73fc2d86cdb22e9fcbde572d14a406234a6ece0ef6"
+    },
+    "candidate_sha256": "fac41c4f58d10a4eee18ec729b38c27153fda7829d73197cef8d06bbb7c962df",
+    "candidate_parameters_changed": false,
+    "control_results_used_for_selection": false,
+    "visual_input_only_via_R1_R6": true,
+    "environment_state_used_by_controller": false,
+    "runtime_modified": false
+  },
+  "seeds": [
+    7100,
+    7101,
+    7102,
+    7103,
+    7104,
+    7105
+  ],
+  "arms": {
+    "frozen_candidate": {
+      "success_count": 6,
+      "first_obstacle_pass_count": 6,
+      "terminal_counts": {
+        "success": 6,
+        "obstacle": 0,
+        "road_boundary": 0,
+        "timeout": 0
+      },
+      "mean_distance": 36.67647038414714,
+      "episodes": [
+        {
+          "seed": 7100,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 36.45269608443005,
+          "steps": 108,
+          "maximum_absolute_neural_signal": 0.008960253931581974,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7101,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 36.45269608443005,
+          "steps": 108,
+          "maximum_absolute_neural_signal": 0.008960253931581974,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7102,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 38.10456091340225,
+          "steps": 113,
+          "maximum_absolute_neural_signal": 0.009524622885510325,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7103,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 38.10456091340225,
+          "steps": 113,
+          "maximum_absolute_neural_signal": 0.009524622885510325,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7104,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 35.472154154609115,
+          "steps": 105,
+          "maximum_absolute_neural_signal": 0.010017814650200307,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7105,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 35.472154154609115,
+          "steps": 105,
+          "maximum_absolute_neural_signal": 0.010017814650200307,
+          "maximum_absolute_steering_command": 0.8
+        }
+      ]
+    },
+    "zero_action": {
+      "success_count": 0,
+      "first_obstacle_pass_count": 0,
+      "terminal_counts": {
+        "success": 0,
+        "obstacle": 6,
+        "road_boundary": 0,
+        "timeout": 0
+      },
+      "mean_distance": 17.785001259155155,
+      "episodes": [
+        {
+          "seed": 7100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 17.78500087218677,
+          "steps": 51,
+          "maximum_absolute_neural_signal": 0.006450539454817772,
+          "maximum_absolute_steering_command": 0.0
+        },
+        {
+          "seed": 7101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 17.78500087218677,
+          "steps": 51,
+          "maximum_absolute_neural_signal": 0.006450539454817772,
+          "maximum_absolute_steering_command": 0.0
+        },
+        {
+          "seed": 7102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 19.10500029098048,
+          "steps": 55,
+          "maximum_absolute_neural_signal": 0.00438185102539137,
+          "maximum_absolute_steering_command": 0.0
+        },
+        {
+          "seed": 7103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 19.10500029098048,
+          "steps": 55,
+          "maximum_absolute_neural_signal": 0.00438185102539137,
+          "maximum_absolute_steering_command": 0.0
+        },
+        {
+          "seed": 7104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 16.465002614298218,
+          "steps": 47,
+          "maximum_absolute_neural_signal": 0.0013779646367765965,
+          "maximum_absolute_steering_command": 0.0
+        },
+        {
+          "seed": 7105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 16.465002614298218,
+          "steps": 47,
+          "maximum_absolute_neural_signal": 0.0013779646367765965,
+          "maximum_absolute_steering_command": 0.0
+        }
+      ]
+    },
+    "wrong_action_sign": {
+      "success_count": 0,
+      "first_obstacle_pass_count": 0,
+      "terminal_counts": {
+        "success": 0,
+        "obstacle": 6,
+        "road_boundary": 0,
+        "timeout": 0
+      },
+      "mean_distance": 17.318263003732064,
+      "episodes": [
+        {
+          "seed": 7100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 17.0944767197102,
+          "steps": 49,
+          "maximum_absolute_neural_signal": 0.0004212647560052574,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 17.0944767197102,
+          "steps": 49,
+          "maximum_absolute_neural_signal": 0.0004212647560052574,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 18.746363507398776,
+          "steps": 54,
+          "maximum_absolute_neural_signal": 0.00044452386209741234,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 18.746363507398776,
+          "steps": 54,
+          "maximum_absolute_neural_signal": 0.00044452386209741234,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 16.113948784087214,
+          "steps": 46,
+          "maximum_absolute_neural_signal": 0.00028441835893318053,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 16.113948784087214,
+          "steps": 46,
+          "maximum_absolute_neural_signal": 0.00028441835893318053,
+          "maximum_absolute_steering_command": 0.8
+        }
+      ]
+    },
+    "point_sampled_R1_R6": {
+      "success_count": 2,
+      "first_obstacle_pass_count": 2,
+      "terminal_counts": {
+        "success": 2,
+        "obstacle": 4,
+        "road_boundary": 0,
+        "timeout": 0
+      },
+      "mean_distance": 24.119307620066483,
+      "episodes": [
+        {
+          "seed": 7100,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 36.4735058401602,
+          "steps": 108,
+          "maximum_absolute_neural_signal": 0.01136718038469553,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7101,
+          "terminal_reason": "success",
+          "success": true,
+          "first_obstacle_passed": true,
+          "distance": 36.4735058401602,
+          "steps": 108,
+          "maximum_absolute_neural_signal": 0.01136718038469553,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 19.423417210224336,
+          "steps": 56,
+          "maximum_absolute_neural_signal": 0.009845718345604836,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 19.423417210224336,
+          "steps": 56,
+          "maximum_absolute_neural_signal": 0.009845718345604836,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 16.460999809814925,
+          "steps": 47,
+          "maximum_absolute_neural_signal": 0.0007332621840760112,
+          "maximum_absolute_steering_command": 0.8
+        },
+        {
+          "seed": 7105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "first_obstacle_passed": false,
+          "distance": 16.460999809814925,
+          "steps": 47,
+          "maximum_absolute_neural_signal": 0.0007332621840760112,
+          "maximum_absolute_steering_command": 0.8
+        }
+      ]
+    }
+  },
+  "gates": {
+    "frozen_candidate_replays_all_successes": true,
+    "zero_action_reduces_success": true,
+    "wrong_sign_reduces_success": true,
+    "point_sampling_reduces_success": true
+  },
+  "causal_controls_passed": true,
+  "final_evaluated": false,
+  "advance_to_navigation_release": false
+}

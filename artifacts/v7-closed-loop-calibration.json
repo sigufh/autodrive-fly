@@ -1,0 +1,1969 @@
+{
+  "protocol": {
+    "name": "v7-r1r6-neural-event-closed-loop",
+    "phase": "calibration_once",
+    "dependencies_sha256": {
+      "configs/driving-v7-closed-loop.yaml": "094983d934baaf9762d22c6f50c37f88bcbe9bc016844cc0bdc45eeeb81bbd5a",
+      "src/fly_emotion/driving/v7_closed_loop.py": "9753de5c80ab876d80c0205bbd17523f6e353d92da640ecb13fdbe24fb4b346a",
+      "artifacts/v7-closed-loop-tuning.json": "918674132d562484d0ad24d82d17de1b038e2fa03f425e6cc0cc92455cc584de"
+    },
+    "candidate_sha256": "fac41c4f58d10a4eee18ec729b38c27153fda7829d73197cef8d06bbb7c962df",
+    "parameters_changed_after_tuning": false,
+    "visual_input_only_via_R1_R6": true,
+    "environment_state_used_by_controller": false,
+    "reward_used_by_controller": false,
+    "runtime_modified": false
+  },
+  "condition_id": "CL-C01",
+  "seeds": [
+    7300,
+    7301
+  ],
+  "episodes": [
+    {
+      "seed": 7300,
+      "pair_seed": 3650,
+      "mirror": 1,
+      "first_obstacle_x": -1.5120913404184912,
+      "terminal_reason": "success",
+      "success": true,
+      "first_obstacle_passed": true,
+      "obstacles_passed": 1,
+      "distance": 35.462743766303284,
+      "steps": 105,
+      "maximum_absolute_neural_signal": 0.008987259701825678,
+      "maximum_absolute_lateral_position": 2.6831901960739484,
+      "trace": [
+        {
+          "step": 1,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.0792,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 2,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.218592,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 3,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.40372992,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 4,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.6236347392,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 5,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.869962401792,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 6,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 3.13637142536192,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 7,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 3.418042283275059,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 8,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 3.711312135289045,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 9,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.013397222819674,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 10,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.322181889342953,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 11,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.636058235900644,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 12,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.95380425928449,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 13,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 5.274491237056212,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 14,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 5.5974133401627215,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 15,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 5.922034138523668,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 16,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 6.247945945277988,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 17,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 6.574838918411271,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 18,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 6.902477577992566,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 19,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 7.2306829592743505,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 20,
+          "neural_spatial_moment": 2.7241185307502745e-09,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 7.559319049048506,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 21,
+          "neural_spatial_moment": -7.986091077327728e-09,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 7.8882824772768645,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 22,
+          "neural_spatial_moment": -3.725872375071048e-08,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 8.217494682730416,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 23,
+          "neural_spatial_moment": -7.97270331531763e-08,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 8.546895958875117,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 24,
+          "neural_spatial_moment": -1.0089715942740441e-07,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 8.876440928745088,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 25,
+          "neural_spatial_moment": -1.413573045283556e-07,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 9.206095105846266,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 26,
+          "neural_spatial_moment": -1.7864338587969542e-06,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 9.535832280443163,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 27,
+          "neural_spatial_moment": -5.581002915278078e-06,
+          "steering_command": 0.8,
+          "vehicle_steering": 0.12,
+          "vehicle_x": 0.00219460939802205,
+          "vehicle_y": 9.865625231196177,
+          "adapter_phase": "turn"
+        },
+        {
+          "step": 28,
+          "neural_spatial_moment": -1.062211231328547e-05,
+          "steering_command": 0.8,
+          "vehicle_steering": 0.24,
+          "vehicle_x": 0.00879084163836333,
+          "vehicle_y": 10.195407461640778,
+          "adapter_phase": "turn"
+        },
+        {
+          "step": 29,
+          "neural_spatial_moment": -1.6212894115597008e-05,
+          "steering_command": 0.8,
+          "vehicle_steering": 0.36,
+          "vehicle_x": 0.02201698210012498,
+          "vehicle_y": 10.525026841608819,
+          "adapter_phase": "turn"
+        },
+        {
+          "step": 30,
+          "neural_spatial_moment": -2.146884799003601e-05,
+          "steering_command": 0.8,
+          "vehicle_steering": 0.48,
+          "vehicle_x": 0.044129092219758054,
+          "vehicle_y": 10.854197299964428,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 31,
+          "neural_spatial_moment": -4.920549690723419e-05,
+          "steering_command": -0.8,
+          "vehicle_steering": 0.36,
+          "vehicle_x": 0.07285702385679987,
+          "vehicle_y": 11.182877582234505,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 32,
+          "neural_spatial_moment": -8.723310893401503e-05,
+          "steering_command": -0.8,
+          "vehicle_steering": 0.24,
+          "vehicle_x": 0.10597135800437574,
+          "vehicle_y": 11.511161021949329,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 33,
+          "neural_spatial_moment": -0.00013497594045475125,
+          "steering_command": -0.8,
+          "vehicle_steering": 0.12,
+          "vehicle_x": 0.1412718427526607,
+          "vehicle_y": 11.83922880916047,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 34,
+          "neural_spatial_moment": -0.00019290864001959563,
+          "steering_command": -0.8,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.17657331580622512,
+          "vehicle_y": 12.16730578126322,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 35,
+          "neural_spatial_moment": -0.00023516981163993476,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.21187553997180195,
+          "vehicle_y": 12.495389733883592,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 36,
+          "neural_spatial_moment": -0.00020080746617168188,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.24717833498250819,
+          "vehicle_y": 12.823478991697355,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 37,
+          "neural_spatial_moment": -4.505513934418559e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.2824815638355128,
+          "vehicle_y": 13.151572281458098,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 38,
+          "neural_spatial_moment": 0.00023517376976087687,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.3177851224086642,
+          "vehicle_y": 13.479668635498543,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 39,
+          "neural_spatial_moment": 0.00042799927759915594,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.3530889315691271,
+          "vehicle_y": 13.807767318391564,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 40,
+          "neural_spatial_moment": 0.0006247193901799619,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.38839293117594675,
+          "vehicle_y": 14.135867771212542,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 41,
+          "neural_spatial_moment": 0.0009168288670480251,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.42369707552199753,
+          "vehicle_y": 14.463969569178767,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 42,
+          "neural_spatial_moment": 0.0014241481665521862,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.45900132986986397,
+          "vehicle_y": 14.79207238945538,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 43,
+          "neural_spatial_moment": 0.0025671685696579513,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.49430566781911034,
+          "vehicle_y": 15.120175986687887,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 44,
+          "neural_spatial_moment": 0.003978343948256224,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.5296100693054054,
+          "vehicle_y": 15.448280174406873,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 45,
+          "neural_spatial_moment": 0.005600742169190198,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.5649145190798576,
+          "vehicle_y": 15.776384810895586,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 46,
+          "neural_spatial_moment": 0.007172878691926598,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.6002190055533091,
+          "vehicle_y": 16.10448978844929,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 47,
+          "neural_spatial_moment": 0.008465927536599338,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.635523519918,
+          "vehicle_y": 16.432595025212386,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 48,
+          "neural_spatial_moment": 0.008987259701825678,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.6708280554800331,
+          "vehicle_y": 16.760700458974622,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 49,
+          "neural_spatial_moment": 0.008656101603992283,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.7061326071520461,
+          "vehicle_y": 17.088806042456202,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 50,
+          "neural_spatial_moment": 0.0076121189398691055,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.7414371710676437,
+          "vehicle_y": 17.416911739724483,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 51,
+          "neural_spatial_moment": 0.005991845577955245,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.7767417442883658,
+          "vehicle_y": 17.74501752347066,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 52,
+          "neural_spatial_moment": 0.003912161232437939,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.8120463245809825,
+          "vehicle_y": 18.07312337294004,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 53,
+          "neural_spatial_moment": 0.001103674282785505,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.8473509102482389,
+          "vehicle_y": 18.401229272359046,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 54,
+          "neural_spatial_moment": -0.0021321241278201342,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.8826555000002217,
+          "vehicle_y": 18.729335209739773,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 55,
+          "neural_spatial_moment": -0.004882981581613421,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.9179600928565965,
+          "vehicle_y": 19.05744117597141,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 56,
+          "neural_spatial_moment": -0.006073910393752158,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.9532646880723092,
+          "vehicle_y": 19.385547164129733,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 57,
+          "neural_spatial_moment": -0.005577575392089784,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.9885692850811187,
+          "vehicle_y": 19.71365316895234,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 58,
+          "neural_spatial_moment": -0.003912085806950927,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.023873883452682,
+          "vehicle_y": 20.041759186439805,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 59,
+          "neural_spatial_moment": -0.0018390162847936153,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.0591784828599378,
+          "vehicle_y": 20.369865213552558,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 60,
+          "neural_spatial_moment": 3.6183826159685845e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.09448308305432,
+          "vehicle_y": 20.697971247980533,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 61,
+          "neural_spatial_moment": 0.0013893450261093677,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.1297876838469183,
+          "vehicle_y": 21.026077287968075,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 62,
+          "neural_spatial_moment": 0.0021177109447307885,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.165092285094161,
+          "vehicle_y": 21.354183332180888,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 63,
+          "neural_spatial_moment": 0.0022943138144910337,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.2003968866869332,
+          "vehicle_y": 21.68228937960491,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 64,
+          "neural_spatial_moment": 0.002071157773025334,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.235701488542308,
+          "vehicle_y": 22.010395429469447,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 65,
+          "neural_spatial_moment": 0.001625410304404795,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.2710060905972609,
+          "vehicle_y": 22.33850148118878,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 66,
+          "neural_spatial_moment": 0.0010974337812513113,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.3063106928038928,
+          "vehicle_y": 22.66660753431775,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 67,
+          "neural_spatial_moment": 0.0005887544131837786,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.341615295125801,
+          "vehicle_y": 22.994713588518053,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 68,
+          "neural_spatial_moment": 0.00014838408678770066,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.376919897535319,
+          "vehicle_y": 23.322819643532565,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 69,
+          "neural_spatial_moment": -0.0001798533601686358,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.4122245000114204,
+          "vehicle_y": 23.650925699165875,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 70,
+          "neural_spatial_moment": -0.00038491846062242984,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.4475291025381254,
+          "vehicle_y": 23.97903175526947,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 71,
+          "neural_spatial_moment": -0.0004996075876988471,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.4828337051032892,
+          "vehicle_y": 24.307137811730488,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 72,
+          "neural_spatial_moment": -0.0005406553391367197,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.5181383076976813,
+          "vehicle_y": 24.635243868463142,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 73,
+          "neural_spatial_moment": -0.0005552396411076187,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.5534429103142873,
+          "vehicle_y": 24.96334992540224,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 74,
+          "neural_spatial_moment": -0.0005332015105523169,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.5887475129477757,
+          "vehicle_y": 25.29145598249824,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 75,
+          "neural_spatial_moment": -0.00048072028439491985,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.6240521155940948,
+          "vehicle_y": 25.61956203971348,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 76,
+          "neural_spatial_moment": -0.0004186251317150891,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.6593567182501652,
+          "vehicle_y": 25.947668097019342,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 77,
+          "neural_spatial_moment": -0.00034854782279580826,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.6946613209136465,
+          "vehicle_y": 26.27577415439408,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 78,
+          "neural_spatial_moment": -0.0002802489907480776,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.7299659235827602,
+          "vehicle_y": 26.603880211821163,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 79,
+          "neural_spatial_moment": -0.00021536774002015588,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.7652705262561545,
+          "vehicle_y": 26.93198626928803,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 80,
+          "neural_spatial_moment": -0.00013771564699709414,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.800575128932802,
+          "vehicle_y": 27.260092326785127,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 81,
+          "neural_spatial_moment": -6.269526202231648e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.835879731611922,
+          "vehicle_y": 27.588198384305205,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 82,
+          "neural_spatial_moment": -2.3040431551635244e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.871184334292921,
+          "vehicle_y": 27.916304441842744,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 83,
+          "neural_spatial_moment": -7.060286588966781e-06,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.9064889369753482,
+          "vehicle_y": 28.244410499393556,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 84,
+          "neural_spatial_moment": 2.266654046252371e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.9417935396588606,
+          "vehicle_y": 28.572516556954454,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 85,
+          "neural_spatial_moment": 6.0016475617885655e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 1.977098142343198,
+          "vehicle_y": 28.90062261452302,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 86,
+          "neural_spatial_moment": 0.00012693508761003615,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.012402745028162,
+          "vehicle_y": 29.22872867209741,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 87,
+          "neural_spatial_moment": 0.0002273795893415809,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.0477073477136027,
+          "vehicle_y": 29.55683472967623,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 88,
+          "neural_spatial_moment": 0.0003331772750243544,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.0830119503994053,
+          "vehicle_y": 29.884940787258415,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 89,
+          "neural_spatial_moment": 0.0004278329433873296,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.1183165530854833,
+          "vehicle_y": 30.213046844843156,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 90,
+          "neural_spatial_moment": 0.0004887990653514862,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.1536211557717704,
+          "vehicle_y": 30.541152902429843,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 91,
+          "neural_spatial_moment": 0.0005452623474411667,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.1889257584582165,
+          "vehicle_y": 30.869258960018005,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 92,
+          "neural_spatial_moment": 0.0006002972717396915,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.2242303611447833,
+          "vehicle_y": 31.19736501760729,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 93,
+          "neural_spatial_moment": 0.0006543880561366678,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.259534963831442,
+          "vehicle_y": 31.52547107519743,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 94,
+          "neural_spatial_moment": 0.0006853983853943647,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.2948395665181707,
+          "vehicle_y": 31.853577132788217,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 95,
+          "neural_spatial_moment": 0.0007019365555606782,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.330144169204952,
+          "vehicle_y": 32.181683190379495,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 96,
+          "neural_spatial_moment": 0.0007139225839637221,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.365448771891774,
+          "vehicle_y": 32.50978924797115,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 97,
+          "neural_spatial_moment": 0.0007239523925818503,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.4007533745786263,
+          "vehicle_y": 32.83789530556309,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 98,
+          "neural_spatial_moment": 0.0007276820368133486,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.4360579772655018,
+          "vehicle_y": 33.166001363155246,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 99,
+          "neural_spatial_moment": 0.0007173261488787831,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.471362579952395,
+          "vehicle_y": 33.49410742074757,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 100,
+          "neural_spatial_moment": 0.0006765144527889788,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.506667182639302,
+          "vehicle_y": 33.82221347834001,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 101,
+          "neural_spatial_moment": 0.0006161665078252554,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.5419717853262194,
+          "vehicle_y": 34.15031953593255,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 102,
+          "neural_spatial_moment": 0.000552229059394449,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.577276388013144,
+          "vehicle_y": 34.47842559352517,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 103,
+          "neural_spatial_moment": 0.00048378779320046306,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.6125809907000748,
+          "vehicle_y": 34.80653165111784,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 104,
+          "neural_spatial_moment": 0.0004157699644565582,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.64788559338701,
+          "vehicle_y": 35.13463770871054,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 105,
+          "neural_spatial_moment": 0.000357042474206537,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 2.6831901960739484,
+          "vehicle_y": 35.462743766303284,
+          "adapter_phase": "complete"
+        }
+      ]
+    },
+    {
+      "seed": 7301,
+      "pair_seed": 3650,
+      "mirror": -1,
+      "first_obstacle_x": 1.5120913404184912,
+      "terminal_reason": "success",
+      "success": true,
+      "first_obstacle_passed": true,
+      "obstacles_passed": 1,
+      "distance": 35.462743766303284,
+      "steps": 105,
+      "maximum_absolute_neural_signal": 0.008987259701825678,
+      "maximum_absolute_lateral_position": 2.6831901960739484,
+      "trace": [
+        {
+          "step": 1,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.0792,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 2,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.218592,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 3,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.40372992,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 4,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.6236347392,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 5,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 2.869962401792,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 6,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 3.13637142536192,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 7,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 3.418042283275059,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 8,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 3.711312135289045,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 9,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.013397222819674,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 10,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.322181889342953,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 11,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.636058235900644,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 12,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 4.95380425928449,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 13,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 5.274491237056212,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 14,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 5.5974133401627215,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 15,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 5.922034138523668,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 16,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 6.247945945277988,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 17,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 6.574838918411271,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 18,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 6.902477577992566,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 19,
+          "neural_spatial_moment": 0.0,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 7.2306829592743505,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 20,
+          "neural_spatial_moment": -2.7241185307502745e-09,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 7.559319049048506,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 21,
+          "neural_spatial_moment": 7.986091077327728e-09,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 7.8882824772768645,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 22,
+          "neural_spatial_moment": 3.725872375071048e-08,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 8.217494682730416,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 23,
+          "neural_spatial_moment": 7.97270331531763e-08,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 8.546895958875117,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 24,
+          "neural_spatial_moment": 1.0089715942740441e-07,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 8.876440928745088,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 25,
+          "neural_spatial_moment": 1.413573045283556e-07,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 9.206095105846266,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 26,
+          "neural_spatial_moment": 1.7864338587969542e-06,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": 0.0,
+          "vehicle_y": 9.535832280443163,
+          "adapter_phase": "waiting"
+        },
+        {
+          "step": 27,
+          "neural_spatial_moment": 5.581002915278078e-06,
+          "steering_command": -0.8,
+          "vehicle_steering": -0.12,
+          "vehicle_x": -0.00219460939802205,
+          "vehicle_y": 9.865625231196177,
+          "adapter_phase": "turn"
+        },
+        {
+          "step": 28,
+          "neural_spatial_moment": 1.062211231328547e-05,
+          "steering_command": -0.8,
+          "vehicle_steering": -0.24,
+          "vehicle_x": -0.00879084163836333,
+          "vehicle_y": 10.195407461640778,
+          "adapter_phase": "turn"
+        },
+        {
+          "step": 29,
+          "neural_spatial_moment": 1.6212894115597008e-05,
+          "steering_command": -0.8,
+          "vehicle_steering": -0.36,
+          "vehicle_x": -0.02201698210012498,
+          "vehicle_y": 10.525026841608819,
+          "adapter_phase": "turn"
+        },
+        {
+          "step": 30,
+          "neural_spatial_moment": 2.146884799003601e-05,
+          "steering_command": -0.8,
+          "vehicle_steering": -0.48,
+          "vehicle_x": -0.044129092219758054,
+          "vehicle_y": 10.854197299964428,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 31,
+          "neural_spatial_moment": 4.920549690723419e-05,
+          "steering_command": 0.8,
+          "vehicle_steering": -0.36,
+          "vehicle_x": -0.07285702385679987,
+          "vehicle_y": 11.182877582234505,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 32,
+          "neural_spatial_moment": 8.723310893401503e-05,
+          "steering_command": 0.8,
+          "vehicle_steering": -0.24,
+          "vehicle_x": -0.10597135800437574,
+          "vehicle_y": 11.511161021949329,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 33,
+          "neural_spatial_moment": 0.00013497594045475125,
+          "steering_command": 0.8,
+          "vehicle_steering": -0.12,
+          "vehicle_x": -0.1412718427526607,
+          "vehicle_y": 11.83922880916047,
+          "adapter_phase": "counter_turn"
+        },
+        {
+          "step": 34,
+          "neural_spatial_moment": 0.00019290864001959563,
+          "steering_command": 0.8,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.17657331580622512,
+          "vehicle_y": 12.16730578126322,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 35,
+          "neural_spatial_moment": 0.00023516981163993476,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.21187553997180195,
+          "vehicle_y": 12.495389733883592,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 36,
+          "neural_spatial_moment": 0.00020080746617168188,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.24717833498250819,
+          "vehicle_y": 12.823478991697355,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 37,
+          "neural_spatial_moment": 4.505513934418559e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.2824815638355128,
+          "vehicle_y": 13.151572281458098,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 38,
+          "neural_spatial_moment": -0.00023517376976087687,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.3177851224086642,
+          "vehicle_y": 13.479668635498543,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 39,
+          "neural_spatial_moment": -0.00042799927759915594,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.3530889315691271,
+          "vehicle_y": 13.807767318391564,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 40,
+          "neural_spatial_moment": -0.0006247193901799619,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.38839293117594675,
+          "vehicle_y": 14.135867771212542,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 41,
+          "neural_spatial_moment": -0.0009168288670480251,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.42369707552199753,
+          "vehicle_y": 14.463969569178767,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 42,
+          "neural_spatial_moment": -0.0014241481665521862,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.45900132986986397,
+          "vehicle_y": 14.79207238945538,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 43,
+          "neural_spatial_moment": -0.0025671685696579513,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.49430566781911034,
+          "vehicle_y": 15.120175986687887,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 44,
+          "neural_spatial_moment": -0.003978343948256224,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.5296100693054054,
+          "vehicle_y": 15.448280174406873,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 45,
+          "neural_spatial_moment": -0.005600742169190198,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.5649145190798576,
+          "vehicle_y": 15.776384810895586,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 46,
+          "neural_spatial_moment": -0.007172878691926598,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.6002190055533091,
+          "vehicle_y": 16.10448978844929,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 47,
+          "neural_spatial_moment": -0.008465927536599338,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.635523519918,
+          "vehicle_y": 16.432595025212386,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 48,
+          "neural_spatial_moment": -0.008987259701825678,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.6708280554800331,
+          "vehicle_y": 16.760700458974622,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 49,
+          "neural_spatial_moment": -0.008656101603992283,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.7061326071520461,
+          "vehicle_y": 17.088806042456202,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 50,
+          "neural_spatial_moment": -0.0076121189398691055,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.7414371710676437,
+          "vehicle_y": 17.416911739724483,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 51,
+          "neural_spatial_moment": -0.005991845577955245,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.7767417442883658,
+          "vehicle_y": 17.74501752347066,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 52,
+          "neural_spatial_moment": -0.003912161232437939,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.8120463245809825,
+          "vehicle_y": 18.07312337294004,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 53,
+          "neural_spatial_moment": -0.001103674282785505,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.8473509102482389,
+          "vehicle_y": 18.401229272359046,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 54,
+          "neural_spatial_moment": 0.0021321241278201342,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.8826555000002217,
+          "vehicle_y": 18.729335209739773,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 55,
+          "neural_spatial_moment": 0.004882981581613421,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.9179600928565965,
+          "vehicle_y": 19.05744117597141,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 56,
+          "neural_spatial_moment": 0.006073910393752158,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.9532646880723092,
+          "vehicle_y": 19.385547164129733,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 57,
+          "neural_spatial_moment": 0.005577575392089784,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -0.9885692850811187,
+          "vehicle_y": 19.71365316895234,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 58,
+          "neural_spatial_moment": 0.003912085806950927,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.023873883452682,
+          "vehicle_y": 20.041759186439805,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 59,
+          "neural_spatial_moment": 0.0018390162847936153,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.0591784828599378,
+          "vehicle_y": 20.369865213552558,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 60,
+          "neural_spatial_moment": -3.6183826159685845e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.09448308305432,
+          "vehicle_y": 20.697971247980533,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 61,
+          "neural_spatial_moment": -0.0013893450261093677,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.1297876838469183,
+          "vehicle_y": 21.026077287968075,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 62,
+          "neural_spatial_moment": -0.0021177109447307885,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.165092285094161,
+          "vehicle_y": 21.354183332180888,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 63,
+          "neural_spatial_moment": -0.0022943138144910337,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.2003968866869332,
+          "vehicle_y": 21.68228937960491,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 64,
+          "neural_spatial_moment": -0.002071157773025334,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.235701488542308,
+          "vehicle_y": 22.010395429469447,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 65,
+          "neural_spatial_moment": -0.001625410304404795,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.2710060905972609,
+          "vehicle_y": 22.33850148118878,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 66,
+          "neural_spatial_moment": -0.0010974337812513113,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.3063106928038928,
+          "vehicle_y": 22.66660753431775,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 67,
+          "neural_spatial_moment": -0.0005887544131837786,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.341615295125801,
+          "vehicle_y": 22.994713588518053,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 68,
+          "neural_spatial_moment": -0.00014838408678770066,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.376919897535319,
+          "vehicle_y": 23.322819643532565,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 69,
+          "neural_spatial_moment": 0.0001798533601686358,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.4122245000114204,
+          "vehicle_y": 23.650925699165875,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 70,
+          "neural_spatial_moment": 0.00038491846062242984,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.4475291025381254,
+          "vehicle_y": 23.97903175526947,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 71,
+          "neural_spatial_moment": 0.0004996075876988471,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.4828337051032892,
+          "vehicle_y": 24.307137811730488,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 72,
+          "neural_spatial_moment": 0.0005406553391367197,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.5181383076976813,
+          "vehicle_y": 24.635243868463142,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 73,
+          "neural_spatial_moment": 0.0005552396411076187,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.5534429103142873,
+          "vehicle_y": 24.96334992540224,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 74,
+          "neural_spatial_moment": 0.0005332015105523169,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.5887475129477757,
+          "vehicle_y": 25.29145598249824,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 75,
+          "neural_spatial_moment": 0.00048072028439491985,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.6240521155940948,
+          "vehicle_y": 25.61956203971348,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 76,
+          "neural_spatial_moment": 0.0004186251317150891,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.6593567182501652,
+          "vehicle_y": 25.947668097019342,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 77,
+          "neural_spatial_moment": 0.00034854782279580826,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.6946613209136465,
+          "vehicle_y": 26.27577415439408,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 78,
+          "neural_spatial_moment": 0.0002802489907480776,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.7299659235827602,
+          "vehicle_y": 26.603880211821163,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 79,
+          "neural_spatial_moment": 0.00021536774002015588,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.7652705262561545,
+          "vehicle_y": 26.93198626928803,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 80,
+          "neural_spatial_moment": 0.00013771564699709414,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.800575128932802,
+          "vehicle_y": 27.260092326785127,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 81,
+          "neural_spatial_moment": 6.269526202231648e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.835879731611922,
+          "vehicle_y": 27.588198384305205,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 82,
+          "neural_spatial_moment": 2.3040431551635244e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.871184334292921,
+          "vehicle_y": 27.916304441842744,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 83,
+          "neural_spatial_moment": 7.060286588966781e-06,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.9064889369753482,
+          "vehicle_y": 28.244410499393556,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 84,
+          "neural_spatial_moment": -2.266654046252371e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.9417935396588606,
+          "vehicle_y": 28.572516556954454,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 85,
+          "neural_spatial_moment": -6.0016475617885655e-05,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -1.977098142343198,
+          "vehicle_y": 28.90062261452302,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 86,
+          "neural_spatial_moment": -0.00012693508761003615,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.012402745028162,
+          "vehicle_y": 29.22872867209741,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 87,
+          "neural_spatial_moment": -0.0002273795893415809,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.0477073477136027,
+          "vehicle_y": 29.55683472967623,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 88,
+          "neural_spatial_moment": -0.0003331772750243544,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.0830119503994053,
+          "vehicle_y": 29.884940787258415,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 89,
+          "neural_spatial_moment": -0.0004278329433873296,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.1183165530854833,
+          "vehicle_y": 30.213046844843156,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 90,
+          "neural_spatial_moment": -0.0004887990653514862,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.1536211557717704,
+          "vehicle_y": 30.541152902429843,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 91,
+          "neural_spatial_moment": -0.0005452623474411667,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.1889257584582165,
+          "vehicle_y": 30.869258960018005,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 92,
+          "neural_spatial_moment": -0.0006002972717396915,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.2242303611447833,
+          "vehicle_y": 31.19736501760729,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 93,
+          "neural_spatial_moment": -0.0006543880561366678,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.259534963831442,
+          "vehicle_y": 31.52547107519743,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 94,
+          "neural_spatial_moment": -0.0006853983853943647,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.2948395665181707,
+          "vehicle_y": 31.853577132788217,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 95,
+          "neural_spatial_moment": -0.0007019365555606782,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.330144169204952,
+          "vehicle_y": 32.181683190379495,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 96,
+          "neural_spatial_moment": -0.0007139225839637221,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.365448771891774,
+          "vehicle_y": 32.50978924797115,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 97,
+          "neural_spatial_moment": -0.0007239523925818503,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.4007533745786263,
+          "vehicle_y": 32.83789530556309,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 98,
+          "neural_spatial_moment": -0.0007276820368133486,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.4360579772655018,
+          "vehicle_y": 33.166001363155246,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 99,
+          "neural_spatial_moment": -0.0007173261488787831,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.471362579952395,
+          "vehicle_y": 33.49410742074757,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 100,
+          "neural_spatial_moment": -0.0006765144527889788,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.506667182639302,
+          "vehicle_y": 33.82221347834001,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 101,
+          "neural_spatial_moment": -0.0006161665078252554,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.5419717853262194,
+          "vehicle_y": 34.15031953593255,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 102,
+          "neural_spatial_moment": -0.000552229059394449,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.577276388013144,
+          "vehicle_y": 34.47842559352517,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 103,
+          "neural_spatial_moment": -0.00048378779320046306,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.6125809907000748,
+          "vehicle_y": 34.80653165111784,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 104,
+          "neural_spatial_moment": -0.0004157699644565582,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.64788559338701,
+          "vehicle_y": 35.13463770871054,
+          "adapter_phase": "complete"
+        },
+        {
+          "step": 105,
+          "neural_spatial_moment": -0.000357042474206537,
+          "steering_command": 0.0,
+          "vehicle_steering": 0.0,
+          "vehicle_x": -2.6831901960739484,
+          "vehicle_y": 35.462743766303284,
+          "adapter_phase": "complete"
+        }
+      ]
+    }
+  ],
+  "mirror_checks": [
+    {
+      "seeds": [
+        7300,
+        7301
+      ],
+      "paired_steps": 105,
+      "maximum_signal_odd_error": 0.0,
+      "maximum_action_odd_error": 0.0,
+      "maximum_trajectory_mirror_error": 0.0
+    }
+  ],
+  "gates": {
+    "both_episodes_success": true,
+    "both_first_obstacles_passed": true,
+    "zero_terminal_collision_or_road_boundary": true,
+    "signal_mirror_error": true,
+    "action_mirror_error": true
+  },
+  "calibration_passed": true,
+  "final_evaluated": false,
+  "advance_to_external_final": false,
+  "advance_to_navigation_release": false
+}

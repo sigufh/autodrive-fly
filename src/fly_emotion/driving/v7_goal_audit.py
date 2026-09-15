@@ -44,6 +44,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     looming_mechanisms = reports["looming_mechanisms"]
     stage1_nested = reports["stage1_nested"]
     target_fit = reports["target_fit"]
+    closed_loop_tuning = reports["closed_loop_tuning"]
+    closed_loop_calibration = reports["closed_loop_calibration"]
+    closed_loop_controls = reports["closed_loop_controls"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -176,6 +179,28 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     name: item["coverage_fraction"]
                     for name, item in looming_mechanisms["target_contracts"].items()
                 },
+                "closed_loop_tuning_successes": max(
+                    item["success_count"] for item in closed_loop_tuning["candidate_summaries"]
+                ),
+                "closed_loop_tuning_episode_count": sum(
+                    len(pair) for pair in closed_loop_tuning["condition_pairs"].values()
+                ),
+                "closed_loop_calibration_passed": closed_loop_calibration["calibration_passed"],
+                "closed_loop_calibration_successes": sum(
+                    item["success"] for item in closed_loop_calibration["episodes"]
+                ),
+                "closed_loop_causal_controls_passed": closed_loop_controls[
+                    "causal_controls_passed"
+                ],
+                "closed_loop_zero_action_successes": closed_loop_controls["arms"]["zero_action"][
+                    "success_count"
+                ],
+                "closed_loop_wrong_sign_successes": closed_loop_controls["arms"][
+                    "wrong_action_sign"
+                ]["success_count"],
+                "closed_loop_point_sample_successes": closed_loop_controls["arms"][
+                    "point_sampled_R1_R6"
+                ]["success_count"],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -183,6 +208,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "an independent T5 label map suitable for model scoring",
                 "a calibrated physical visual/neural timebase",
                 "an externally committed and independently custodied final condition",
+                "multi-obstacle and dynamic OOD closed-loop validation",
             ],
         },
         {
@@ -190,7 +216,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "deliverable": "EPG/PEN/PEG heading, occlusion memory and FC2/PFL comparison",
             "status": "not_authorized",
             "evidence": [config["evidence"]["manifest"]],
-            "observations": {"stage1_pass": stage1_pass},
+            "observations": {
+                "stage1_pass": stage1_pass,
+                "single_obstacle_closed_loop_calibration_passed": closed_loop_calibration[
+                    "calibration_passed"
+                ],
+                "closed_loop_navigation_release_authorized": closed_loop_calibration[
+                    "advance_to_navigation_release"
+                ],
+            },
         },
         {
             "item": 3,
@@ -258,6 +292,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "nested_role_counts": stage1_nested["condition_contract"]["required_role_counts"],
                 "external_final_committed": stage1_nested["external_final"]["committed"],
                 "external_final_evaluated": stage1_nested["external_final"]["evaluated"],
+                "closed_loop_calibration_passed": closed_loop_calibration["calibration_passed"],
+                "closed_loop_final_evaluated": closed_loop_calibration["final_evaluated"],
             },
         },
         {
@@ -368,6 +404,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["stage1_scoring"],
                 config["evidence"]["stage1_nested"],
                 config["evidence"]["target_fit"],
+                config["evidence"]["closed_loop_tuning"],
+                config["evidence"]["closed_loop_calibration"],
+                config["evidence"]["closed_loop_controls"],
             ],
         },
         {

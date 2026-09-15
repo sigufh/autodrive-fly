@@ -32,6 +32,11 @@ from .driving.v7 import (
     write_v7_manifest,
 )
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
+from .driving.v7_closed_loop import (
+    evaluate_v7_closed_loop_calibration,
+    evaluate_v7_closed_loop_tuning,
+)
+from .driving.v7_closed_loop_controls import evaluate_v7_closed_loop_controls
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
@@ -189,6 +194,9 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-looming-mechanisms")
     subparsers.add_parser("v7-freeze-stage1-nested")
     subparsers.add_parser("v7-freeze-target-fit")
+    subparsers.add_parser("v7-evaluate-closed-loop-tuning")
+    subparsers.add_parser("v7-evaluate-closed-loop-calibration")
+    subparsers.add_parser("v7-evaluate-closed-loop-controls")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -536,6 +544,24 @@ def main() -> None:
     if args.command == "v7-freeze-target-fit":
         report = evaluate_v7_target_fit_contract(root)
         target = root / "artifacts/v7-target-fit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-closed-loop-tuning":
+        report = evaluate_v7_closed_loop_tuning(root)
+        target = root / "artifacts/v7-closed-loop-tuning.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-closed-loop-calibration":
+        report = evaluate_v7_closed_loop_calibration(root)
+        target = root / "artifacts/v7-closed-loop-calibration.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-closed-loop-controls":
+        report = evaluate_v7_closed_loop_controls(root)
+        target = root / "artifacts/v7-closed-loop-controls.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

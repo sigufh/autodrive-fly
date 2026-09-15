@@ -35,6 +35,9 @@ evidence:
   looming_mechanisms: artifacts/v7-looming-mechanism-audit.json
   stage1_nested: artifacts/v7-stage1-nested.json
   target_fit: artifacts/v7-target-fit.json
+  closed_loop_tuning: artifacts/v7-closed-loop-tuning.json
+  closed_loop_calibration: artifacts/v7-closed-loop-calibration.json
+  closed_loop_controls: artifacts/v7-closed-loop-controls.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading

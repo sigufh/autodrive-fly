@@ -1095,6 +1095,35 @@ PD/ND 的独立映射、物理时间尺度、whole-cell 到 MaleCNS target 的�
 因此 calibration、final、视觉 gate 与中央复合体全部保持关闭。证据见
 `artifacts/v7-target-fit.json`。
 
+## 实际 R1–R6 闭环避障探针
+
+`make v7-evaluate-closed-loop-tuning` 已运行真实车辆环境闭环，而不是只生成协议。最初
+点采样在远距离障碍上存在输入盲区：相机图像已有左右差异，但 3,344 个 R1–R6 最近邻
+采样值完全相同，神经控制器直到约 3–4 m 才得到侧别信号。实验候选因此只在每只眼内
+加入固定 9×9 uniform receptive-field mean，不跨眼、不读环境射线；随后由 MaleCNS
+视觉子图运行 T4/T5，再用已有的 6 区 optic-hex 分桶和固定空间权重得到严格镜像奇
+分量。动作执行器只在该神经信号越过阈值时输出 4 步避让和 4 步等幅回正，固定油门
+0.35，不读取障碍距离、道路位置、奖励或标签。
+
+三个 tuning 镜像对共 6 个单障碍 episode 上，9 个有限候选中冻结的
+`threshold=2e-6, turn=4, counter-turn=4` 达到 6/6 success、6/6 首障碍通过、零碰撞、
+零出界；三对神经信号、动作和横向轨迹镜像误差均为 0。候选连同配置与实现哈希被
+固定后，使用此前未参与搜索的 `CL-C01` (`7300/7301`) 只运行一次 calibration，
+得到 2/2 success，仍为零碰撞、零出界和零镜像误差，参数没有事后修改。证据分别在
+`artifacts/v7-closed-loop-tuning.json` 与
+`artifacts/v7-closed-loop-calibration.json`。
+
+后验因果消融不参与选择：冻结候选重放为 6/6；动作置零变为 0/6，动作符号反转为
+0/6，撤销同眼接受野、恢复 R1–R6 点采样仅 2/6。由此当前可支持的窄结论是：在这组
+单障碍镜像环境中，输入接受野、真实视觉图的空间神经信号和正确动作反馈三者均为成功
+所需，不能把结果归因于环境规则或随机轨迹。证据见
+`artifacts/v7-closed-loop-controls.json`。
+
+这仍是闭环 smoke 能力而非发布验证：旧 172 条继续仅作回归，T4/T5 严格生物方向门
+仍失败，LPLC1/LPLC2/LC4 分型功能尚未通过；多障碍、曲率、速度、噪声 OOD、真实
+拓扑优势和外部托管 final 都未运行。默认 assisted-v5、neural-v6-front、API/UI 服务和
+检查点没有改变，v7 不部署。
+
 ## 文献依据
 
 - Lappalainen 等，连接组约束视觉模型：

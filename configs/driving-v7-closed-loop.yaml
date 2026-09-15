@@ -1,0 +1,76 @@
+version: 1
+name: v7-r1r6-neural-event-closed-loop
+observed_on: "2026-09-15"
+stage1_nested_evidence: artifacts/v7-stage1-nested.json
+visual_core:
+  width: 48
+  height: 24
+  retinal_backend: linear_luminance
+  retinal_geometry: axial_hex_cartesian_v1
+  dynamics_backend: typed_visual_subgraph_v1
+  brain_substeps_per_vehicle_step: 1
+  same_eye_receptive_field:
+    kernel: uniform_mean
+    radius_pixels: 4
+    kernel_size_pixels: 9
+    cross_eye_support: false
+  steering_signal:
+    source_populations: [T4a, T4b, T5a, T5b]
+    optic_hex_bins: 6
+    spatial_weights: [-1.0, -0.6, -0.2, 0.2, 0.6, 1.0]
+    symmetry: original_image_minus_horizontal_mirror_state
+    steering_away_sign: negative_signal_sign
+vehicle_adapter:
+  fixed_throttle: 0.35
+  reverse: 0.0
+  steering_amplitude: 0.8
+  event_rearm: false
+tuning:
+  condition_pairs:
+    CL-T01: [7100, 7101]
+    CL-T02: [7102, 7103]
+    CL-T03: [7104, 7105]
+  curriculum_stage: single
+  candidates:
+    signal_threshold: [0.0000005, 0.000002, 0.000004]
+    turn_steps: [3, 4, 6]
+    counter_turn_steps_by_turn_steps:
+      "3": [3]
+      "4": [4]
+      "6": [8]
+  selection_order:
+    - maximum_success_count
+    - maximum_first_obstacle_pass_count
+    - minimum_road_boundary_count
+    - minimum_mean_maximum_absolute_lateral_position
+    - minimum_signal_threshold_distance_from_0.000002
+    - minimum_total_pulse_steps
+calibration:
+  condition_id: CL-C01
+  mirror_pair_seeds: [7300, 7301]
+  previously_used_for_search: false
+  prior_exploratory_pair_7200_7201_excluded: true
+  run_once_after_tuning_candidate_frozen: true
+  pass_requirements:
+    both_episodes_success: true
+    both_first_obstacles_passed: true
+    zero_terminal_collision_or_road_boundary: true
+    maximum_signal_mirror_error: 0.00000001
+    maximum_action_mirror_error: 0.00000001
+controls:
+  zero_neural_action_on_tuning: true
+  wrong_sign_action_on_tuning: true
+  require_zero_action_override: true
+boundary:
+  visual_input_only_via_R1_R6: true
+  target_activity_injection: false
+  obstacle_rays_used_by_controller: false
+  road_or_lane_state_used_by_controller: false
+  reward_used_by_controller: false
+  transparent_fixed_adapter: true
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false
+  legacy_172_used_for_selection: false
+  external_final_evaluated: false
+  deployment_allowed: false
