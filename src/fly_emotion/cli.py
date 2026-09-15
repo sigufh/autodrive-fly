@@ -44,6 +44,7 @@ from .driving.v7_local_input_audit import (
     evaluate_v7_t4_input_coverage,
 )
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
+from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
@@ -149,6 +150,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-geometry-sign")
     subparsers.add_parser("v7-evaluate-pixel-sampling")
     subparsers.add_parser("v7-audit-spectral-controls")
+    subparsers.add_parser("v7-evaluate-neural-spectra")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -406,6 +408,12 @@ def main() -> None:
     if args.command == "v7-audit-full-update-perturbation":
         report = evaluate_v7_perturbation(root)
         target = root / "artifacts/v7-full-update-perturbation.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-spectra":
+        report = evaluate_v7_neural_spectra(root)
+        target = root / "artifacts/v7-neural-spectra.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

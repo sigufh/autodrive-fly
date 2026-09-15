@@ -217,6 +217,22 @@ receptor is assumed for downstream neurons. These are post-failure measurement
 controls, not a replacement visual gate or neural validation. No new neural
 response evaluation or deployment was performed in this diagnostic stage.
 
+A frozen neural replay then compares nearest-pixel and within-eye bilinear
+sampling while holding coordinates, graph, labels, dynamics and conductance
+normalization fixed (`artifacts/v7-neural-spectra.json`). All 13,580 T4/T5 IDs,
+two cycles, per-cell DC/F1/total-power values and activity denominators are
+retained. Bilinear sampling leaves uniform-gray trajectories unchanged and makes
+only modest aggregate F1 changes. Conductance T4 DC is positive across all eight
+T4 populations, but conductance T5 DC remains negative in aggregate and only two
+of eight T5 groups are positive under frame-difference input. Typed-model DC
+under interpolated frame differences has no cells above the 1e-6 response
+denominator: its nonzero normalized contrast is a tiny-denominator artifact, not
+a direction signal. Power metrics are mostly positive but lose voltage sign.
+Thus the replay supports neither complete T4/T5 direction validation nor a new
+gate; background conductance dynamics, ON/OFF identity, looming and topology
+specificity remain unresolved. No downstream phase reference is invented and no
+default model or policy changes.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
