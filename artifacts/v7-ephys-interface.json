@@ -1,0 +1,440 @@
+{
+  "protocol": {
+    "name": "v7-offline-electrophysiology-interface",
+    "exploratory": true,
+    "advance_allowed": false,
+    "dependencies_sha256": {
+      "configs/driving-v7-ephys-interface.yaml": "c2d3d67db8180cfcf7beed980c416bb863241d77d796634e8269cec1d298bab3",
+      "src/fly_emotion/driving/v7_ephys_interface.py": "8f7a757a95128a8491a4e8ce06daccf46dae2e49a2314abc58410c8bdabf3184",
+      "configs/driving-v7-electrophysiology-audit.yaml": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
+      "configs/driving-v7-fig5-validation.yaml": "e62c0dfd7a94ee783d991856ca5cd4af0bdc4a0c5f1ff8e7f04470c7ae16cb49",
+      "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
+      "artifacts/v7-fig5-validation.json": "c98dec3b65c6998b4087e4acf4251b7830fc6b5e4dea42b38fe79ad64f4f9a96",
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa"
+    },
+    "parameter_fitting": false,
+    "runtime_imports_interface": false,
+    "raw_files_committed": false,
+    "temporary_download_deleted_after_audit": true
+  },
+  "dataset_roles": {
+    "training_reproduction": [
+      "fig3_Mi9.npy",
+      "fig3_Tm3.npy",
+      "fig3_Mi1.npy",
+      "fig3_Mi4.npy",
+      "fig3_C3.npy",
+      "fig3_T4v.npy",
+      "fig3_led.npy"
+    ],
+    "external_condition_validation": [
+      "fig5_dvm_gfp.npy",
+      "fig5c_pvm_gfp.npy"
+    ],
+    "mechanism_challenge": [
+      "fig5_dvm_gluclarnai.npy",
+      "fig5c_pvm_gluclarnai.npy"
+    ],
+    "measured_negative_control": [
+      "fig5_dvm_nmdar1rnai.npy",
+      "fig5c_pvm_nmdar1rnai.npy"
+    ],
+    "final_held_out": []
+  },
+  "split_contract": {
+    "fit_allowed": false,
+    "fig3_conditions_available": [
+      "on_pd",
+      "on_nd",
+      "off_pd",
+      "off_nd"
+    ],
+    "fig3_target_cell_ids_available": false,
+    "fig5_target_cell_ids_available": false,
+    "fig3_fig5_cell_disjointness_verified": false,
+    "fig5_reuses_fig3_input_traces": true,
+    "fig5_is_independent_stimulus_condition": true,
+    "fig5_is_independent_input_dataset": false,
+    "final_test_available": false,
+    "minimum_future_independent_conditions": [
+      "unseen temporal frequencies",
+      "unseen edge velocities",
+      "independent T4 cells with stable identifiers",
+      "independent T5 recordings"
+    ]
+  },
+  "interface_boundary": {
+    "preserve_native_1khz_samples": true,
+    "permit_resampling": false,
+    "connect_to_v7_runtime": false,
+    "convert_millivolts_to_normalized_drive": false,
+    "apply_current_v7_leak_or_delay": false,
+    "inject_target_activity": false
+  },
+  "verified_files": {
+    "fig3_C3.npy": {
+      "id": 104809,
+      "bytes": 2048128,
+      "md5": "714a097178d0cc202b1a4698a95852bf",
+      "sha256": "b9118e32cfb0d22acd4da41aee6931923ea33e4dda258df2abd26fd252e21be6"
+    },
+    "fig3_Mi1.npy": {
+      "id": 104811,
+      "bytes": 3072128,
+      "md5": "1964e0a136ed93f74b215f2a11dc0c25",
+      "sha256": "351e9e791a30d1c5bac329165934fbc05dbcfbb038b4b6e940e2531de1d61cce"
+    },
+    "fig3_Mi4.npy": {
+      "id": 104812,
+      "bytes": 2432128,
+      "md5": "c2ef2980d423f322730dfaded3fa5a07",
+      "sha256": "9309bb6deadcb8bf5c9a52267ef6564c314a04212af81c129b0754cf4de1f791"
+    },
+    "fig3_Mi9.npy": {
+      "id": 104813,
+      "bytes": 3712128,
+      "md5": "9373355c71127babaceeb03bcbea92ad",
+      "sha256": "3d5909c9b6c42776ff5e56d7219eacd002758a24b3cf5b7cecf30a07b8bf5c83"
+    },
+    "fig3_T4v.npy": {
+      "id": 104815,
+      "bytes": 8448128,
+      "md5": "1da37faf7e5117aaeb0ebb1d93413f0e",
+      "sha256": "785b2fc410ee1cc4fcf4df5bcc31737f9e243f41d1df9a39697a7e33aaad636b"
+    },
+    "fig3_Tm3.npy": {
+      "id": 104816,
+      "bytes": 1536128,
+      "md5": "e001e3d8d3ca32ca11417965bb182616",
+      "sha256": "07797ccd2ce72d3ea89c9ca01ba641c7c92d3d6dd198d6324596f2cf16b0fb82"
+    },
+    "fig3_led.npy": {
+      "id": 104810,
+      "bytes": 256128,
+      "md5": "1d43f6f1ee6ef4f73be584c489e35136",
+      "sha256": "8d158e5a2abee4cbc77ccc7eda7b77cac31550dd3a20a2142638e7c257ca734b"
+    },
+    "fig5_dvm_gfp.npy": {
+      "id": 104791,
+      "bytes": 7328,
+      "md5": "56a212b32e16f3fd6ded2c70486b669e",
+      "sha256": "9fcc80e9e201c2dafc06deab16916e146c09b9e87770f43aa18b9344e6740325"
+    },
+    "fig5_dvm_gluclarnai.npy": {
+      "id": 104792,
+      "bytes": 5024,
+      "md5": "8c0a9c6be568a5874611e00428c720c2",
+      "sha256": "ad4016e28ae0fa5c760570d54c49c0943a115938affec32cade25b14aab2e7b9"
+    },
+    "fig5_dvm_nmdar1rnai.npy": {
+      "id": 104793,
+      "bytes": 3584,
+      "md5": "032a1e12731dc3f5a31aacc23bb5f3da",
+      "sha256": "5e29ce11569d5a7dbaf14bd5ee9053e8c33fb6ec5d1b8f03ab5cb8e9eecf2090"
+    },
+    "fig5c_pvm_gfp.npy": {
+      "id": 104798,
+      "bytes": 7328,
+      "md5": "bc56a5d41417194288bf1e91777ba267",
+      "sha256": "5e9459182fcef9fe2b4391c4771d407fab3dee70fad73bf04cf4bc6c8c677a13"
+    },
+    "fig5c_pvm_gluclarnai.npy": {
+      "id": 104799,
+      "bytes": 5024,
+      "md5": "aea7ead82287707ebd11a9cbe97feba2",
+      "sha256": "bb31239dbd4a3f97ae0f175613e4659d966333ae44cf7dac45252ae9bb8b2d48"
+    },
+    "fig5c_pvm_nmdar1rnai.npy": {
+      "id": 104800,
+      "bytes": 3584,
+      "md5": "031001aa9d3e217a390266e872bd0c52",
+      "sha256": "290c50eee56e72be7c5405e0c4021dc7d6cf80ad91d74b4b4c3c9977676a9083"
+    }
+  },
+  "arrays": {
+    "fig3_inputs": {
+      "Mi9": {
+        "shape": [
+          2,
+          29,
+          8000
+        ],
+        "dtype": "float64",
+        "axes": [
+          "stimulus",
+          "cell",
+          "time"
+        ],
+        "sample_interval_milliseconds": 1.0,
+        "time_start_milliseconds": 0.0,
+        "time_end_milliseconds": 7999.0,
+        "role": "training_reproduction",
+        "all_finite": true,
+        "minimum": -74.89054361979167,
+        "maximum": -37.763671875,
+        "sha256_values": "b6ae2cc1e7dec10099b9825f93fe921217bec4512e70e94e8c0bdbe96824d03b"
+      },
+      "Tm3": {
+        "shape": [
+          2,
+          12,
+          8000
+        ],
+        "dtype": "float64",
+        "axes": [
+          "stimulus",
+          "cell",
+          "time"
+        ],
+        "sample_interval_milliseconds": 1.0,
+        "time_start_milliseconds": 0.0,
+        "time_end_milliseconds": 7999.0,
+        "role": "training_reproduction",
+        "all_finite": true,
+        "minimum": -81.495361328125,
+        "maximum": -17.822265625,
+        "sha256_values": "7ab6bebf7add8e0fbc15a7910117aea7317f7df53ba3389a419890d9bfc5d75e"
+      },
+      "Mi1": {
+        "shape": [
+          2,
+          24,
+          8000
+        ],
+        "dtype": "float64",
+        "axes": [
+          "stimulus",
+          "cell",
+          "time"
+        ],
+        "sample_interval_milliseconds": 1.0,
+        "time_start_milliseconds": 0.0,
+        "time_end_milliseconds": 7999.0,
+        "role": "training_reproduction",
+        "all_finite": true,
+        "minimum": -79.26432291666667,
+        "maximum": -30.408935546875,
+        "sha256_values": "01865d9663f6fcabd84a288cae3869735219b287169183a375b9e8b9b2494bba"
+      },
+      "Mi4": {
+        "shape": [
+          2,
+          19,
+          8000
+        ],
+        "dtype": "float64",
+        "axes": [
+          "stimulus",
+          "cell",
+          "time"
+        ],
+        "sample_interval_milliseconds": 1.0,
+        "time_start_milliseconds": 0.0,
+        "time_end_milliseconds": 7999.0,
+        "role": "training_reproduction",
+        "all_finite": true,
+        "minimum": -80.00732421875,
+        "maximum": -36.04451497395833,
+        "sha256_values": "c13d8d441f83b8b785212cc78697578511cff14953236c5372dbe5d9b0ae6008"
+      },
+      "C3": {
+        "shape": [
+          2,
+          16,
+          8000
+        ],
+        "dtype": "float64",
+        "axes": [
+          "stimulus",
+          "cell",
+          "time"
+        ],
+        "sample_interval_milliseconds": 1.0,
+        "time_start_milliseconds": 0.0,
+        "time_end_milliseconds": 7999.0,
+        "role": "training_reproduction",
+        "all_finite": true,
+        "minimum": -86.995849609375,
+        "maximum": -36.35986328125,
+        "sha256_values": "6b91dcf86ff35dd1ef363066ce42123a9056e85909dfa883abdf36e7eec33583"
+      }
+    },
+    "fig3_T4_voltage": {
+      "shape": [
+        33,
+        2,
+        2,
+        8000
+      ],
+      "dtype": "float64",
+      "axes": [
+        "cell",
+        "stimulus",
+        "direction",
+        "time"
+      ],
+      "sample_interval_milliseconds": 1.0,
+      "time_start_milliseconds": 0.0,
+      "time_end_milliseconds": 7999.0,
+      "role": "training_reproduction",
+      "all_finite": true,
+      "minimum": -84.3321304321289,
+      "maximum": -32.51328182220459,
+      "sha256_values": "148ed0d347ec2380f2c18b9c72f534d886d4a34a270f3875bfc43dbd9ee10f73"
+    },
+    "fig3_led": {
+      "shape": [
+        2,
+        2,
+        8000
+      ],
+      "dtype": "float64",
+      "axes": [
+        "stimulus",
+        "direction",
+        "time"
+      ],
+      "sample_interval_milliseconds": 1.0,
+      "time_start_milliseconds": 0.0,
+      "time_end_milliseconds": 7999.0,
+      "role": "training_reproduction",
+      "all_finite": true,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "sha256_values": "b24a079ffeb9503b8636d9e4c53761951374e0b30d63806fd2c5eb7c513bc6cc"
+    },
+    "fig5_groups": {
+      "gfp": {
+        "delta_voltage": {
+          "shape": [
+            25,
+            36
+          ],
+          "dtype": "float64",
+          "axes": [
+            "cell",
+            "direction"
+          ],
+          "sample_interval_milliseconds": null,
+          "time_start_milliseconds": null,
+          "time_end_milliseconds": null,
+          "role": "external_condition_validation",
+          "all_finite": true,
+          "minimum": 1.0771675109863281,
+          "maximum": 28.082298278808594,
+          "sha256_values": "515c19fb592bdd211961fd51e7e51e2f076a95c8883a400cbd7acd764a44fd8a"
+        },
+        "absolute_peak_voltage": {
+          "shape": [
+            25,
+            36
+          ],
+          "dtype": "float64",
+          "axes": [
+            "cell",
+            "direction"
+          ],
+          "sample_interval_milliseconds": null,
+          "time_start_milliseconds": null,
+          "time_end_milliseconds": null,
+          "role": "external_condition_validation",
+          "all_finite": true,
+          "minimum": -69.06144788250064,
+          "maximum": -31.17644944593836,
+          "sha256_values": "82deb58e1cd5877b5f322e75e3f66653e001a99c375114ddb72c92dd2efee7f7"
+        }
+      },
+      "gluclarnai": {
+        "delta_voltage": {
+          "shape": [
+            17,
+            36
+          ],
+          "dtype": "float64",
+          "axes": [
+            "cell",
+            "direction"
+          ],
+          "sample_interval_milliseconds": null,
+          "time_start_milliseconds": null,
+          "time_end_milliseconds": null,
+          "role": "mechanism_challenge",
+          "all_finite": true,
+          "minimum": 0.6501007080078125,
+          "maximum": 22.568470001220703,
+          "sha256_values": "13d237aa9413031747e31ff4955e510b2efc717f44b071d9a4e14ff4b69331b0"
+        },
+        "absolute_peak_voltage": {
+          "shape": [
+            17,
+            36
+          ],
+          "dtype": "float64",
+          "axes": [
+            "cell",
+            "direction"
+          ],
+          "sample_interval_milliseconds": null,
+          "time_start_milliseconds": null,
+          "time_end_milliseconds": null,
+          "role": "mechanism_challenge",
+          "all_finite": true,
+          "minimum": -67.20131025339435,
+          "maximum": -33.4755925099855,
+          "sha256_values": "c20479d7225734664083625474a588b880332a2ab35f5a144a4e440966cf39b3"
+        }
+      },
+      "nmdar1rnai": {
+        "delta_voltage": {
+          "shape": [
+            12,
+            36
+          ],
+          "dtype": "float64",
+          "axes": [
+            "cell",
+            "direction"
+          ],
+          "sample_interval_milliseconds": null,
+          "time_start_milliseconds": null,
+          "time_end_milliseconds": null,
+          "role": "measured_negative_control",
+          "all_finite": true,
+          "minimum": 0.6186790466308594,
+          "maximum": 24.982135772705078,
+          "sha256_values": "2f11448f134b8114b8acc87072aa594d98c63288b3157716071e877c09901cc2"
+        },
+        "absolute_peak_voltage": {
+          "shape": [
+            12,
+            36
+          ],
+          "dtype": "float64",
+          "axes": [
+            "cell",
+            "direction"
+          ],
+          "sample_interval_milliseconds": null,
+          "time_start_milliseconds": null,
+          "time_end_milliseconds": null,
+          "role": "measured_negative_control",
+          "all_finite": true,
+          "minimum": -71.36066875511926,
+          "maximum": -36.67421179389279,
+          "sha256_values": "c918df5d04df3a8b37adc6b39ff2ea18c439a8f2798d730c5c1c8108e88ad53c"
+        }
+      }
+    }
+  },
+  "available_final_test": false,
+  "limitations": [
+    "The interface exposes published processed arrays, not raw 10-kHz recordings.",
+    "Fig. 3 remains training-data reproduction and cannot score generalization.",
+    "Fig. 5 is an external condition but cell identity disjointness is unknown.",
+    "Fig. 5 reuses Fig. 3 input traces and is not an independent input dataset.",
+    "No T5 electrophysiology or untouched final test is available in this interface.",
+    "No conversion from millivolts to current v7 normalized state is defined."
+  ],
+  "advance_to_parameter_fit": false,
+  "advance_to_central_complex": false
+}

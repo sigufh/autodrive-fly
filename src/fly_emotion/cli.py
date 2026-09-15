@@ -36,6 +36,8 @@ from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
+from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
+from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_gain_audit import evaluate_v7_normalization_gain
 from .driving.v7_geometry_sign import evaluate_v7_geometry_sign
@@ -155,6 +157,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-spectra")
     subparsers.add_parser("v7-audit-electrophysiology")
     subparsers.add_parser("v7-audit-timebase")
+    subparsers.add_parser("v7-validate-published-fig5")
+    subparsers.add_parser("v7-build-ephys-interface")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -412,6 +416,18 @@ def main() -> None:
     if args.command == "v7-audit-full-update-perturbation":
         report = evaluate_v7_perturbation(root)
         target = root / "artifacts/v7-full-update-perturbation.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-build-ephys-interface":
+        report = evaluate_v7_ephys_interface(root)
+        target = root / "artifacts/v7-ephys-interface.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-validate-published-fig5":
+        report = evaluate_v7_fig5_validation(root)
+        target = root / "artifacts/v7-fig5-validation.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

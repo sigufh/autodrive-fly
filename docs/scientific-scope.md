@@ -268,6 +268,28 @@ therefore dimensionless ordering parameters, not calibrated milliseconds or
 biological time constants. No `dt`, delay or dynamics parameter changes in this
 audit (`artifacts/v7-timebase-audit.json`).
 
+Fig. 5 provides a distinct 36-direction ON-edge target condition: the unchanged
+Fig. 3 model correlates 0.979 with the 25-cell GFP population mean (RMSE
+0.733 mV), with matching peak direction. This is external-condition support, not
+an independent cell holdout, because target arrays contain no cell IDs and the
+model reuses Fig. 3 input-class averages. Model Mi9 removal and measured
+GluCl-alpha RNAi both reduce direction selectivity, but they are explicitly not
+treated as equivalent interventions. The source notebook's flattened 18-element
+roll preserves group mean/SEM while scrambling individual rows, and its plotted
+0–360-degree coordinate differs from the internal 0–350-degree indices; the audit
+uses the unrolled canonical indices. Behavioral CSVs are excluded. This evidence
+is retrospective, T4-only, and cannot advance MaleCNS or driving gates
+(`artifacts/v7-fig5-validation.json`).
+
+The offline electrophysiology interface keeps processed Fig. 3 arrays on an
+explicit native 1-ms grid and marks Fig. 5 direction curves as untimed derived
+readouts. Roles are immutable: Fig. 3 is training reproduction, Fig. 5 GFP is
+inspected external-condition evidence, GluCl-alpha RNAi is a mechanism challenge,
+and Nmdar1 RNAi is a measured negative control. Stable cell identities, independent
+Fig. 5 inputs, T5 recordings and an untouched final test are absent. The interface
+cannot resample, map millivolts to v7 state, inject target activity, or be imported
+by the runtime (`artifacts/v7-ephys-interface.json`). Fitting remains disabled.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

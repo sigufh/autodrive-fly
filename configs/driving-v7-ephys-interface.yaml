@@ -1,0 +1,53 @@
+version: 1
+name: v7-offline-electrophysiology-interface
+exploratory: true
+advance_allowed: false
+sample_interval_milliseconds: 1.0
+source_configs:
+  fig3: configs/driving-v7-electrophysiology-audit.yaml
+  fig5: configs/driving-v7-fig5-validation.yaml
+source_evidence:
+  fig3: artifacts/v7-electrophysiology-audit.json
+  fig5: artifacts/v7-fig5-validation.json
+  timebase: artifacts/v7-timebase-audit.json
+dataset_roles:
+  training_reproduction:
+    - fig3_Mi9.npy
+    - fig3_Tm3.npy
+    - fig3_Mi1.npy
+    - fig3_Mi4.npy
+    - fig3_C3.npy
+    - fig3_T4v.npy
+    - fig3_led.npy
+  external_condition_validation:
+    - fig5_dvm_gfp.npy
+    - fig5c_pvm_gfp.npy
+  mechanism_challenge:
+    - fig5_dvm_gluclarnai.npy
+    - fig5c_pvm_gluclarnai.npy
+  measured_negative_control:
+    - fig5_dvm_nmdar1rnai.npy
+    - fig5c_pvm_nmdar1rnai.npy
+  final_held_out: []
+split_contract:
+  fit_allowed: false
+  fig3_conditions_available: [on_pd, on_nd, off_pd, off_nd]
+  fig3_target_cell_ids_available: false
+  fig5_target_cell_ids_available: false
+  fig3_fig5_cell_disjointness_verified: false
+  fig5_reuses_fig3_input_traces: true
+  fig5_is_independent_stimulus_condition: true
+  fig5_is_independent_input_dataset: false
+  final_test_available: false
+  minimum_future_independent_conditions:
+    - unseen temporal frequencies
+    - unseen edge velocities
+    - independent T4 cells with stable identifiers
+    - independent T5 recordings
+interface_boundary:
+  preserve_native_1khz_samples: true
+  permit_resampling: false
+  connect_to_v7_runtime: false
+  convert_millivolts_to_normalized_drive: false
+  apply_current_v7_leak_or_delay: false
+  inject_target_activity: false

@@ -1,0 +1,37 @@
+version: 1
+name: v7-published-fig5-external-condition-validation
+exploratory: true
+advance_allowed: false
+dataset_config: configs/driving-v7-electrophysiology-audit.yaml
+electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
+files:
+  fig5.ipynb: {id: 104794, size: 865105, md5: bf14ba467811d9977d79f7087a3a2cda, sha256: db32d235e9abfead5ac636f996450ea11cc6f6b32504de24ba7c129dba557b1d}
+  fig5_dvm_gfp.npy: {id: 104791, size: 7328, md5: 56a212b32e16f3fd6ded2c70486b669e, sha256: 9fcc80e9e201c2dafc06deab16916e146c09b9e87770f43aa18b9344e6740325}
+  fig5_dvm_gluclarnai.npy: {id: 104792, size: 5024, md5: 8c0a9c6be568a5874611e00428c720c2, sha256: ad4016e28ae0fa5c760570d54c49c0943a115938affec32cade25b14aab2e7b9}
+  fig5_dvm_nmdar1rnai.npy: {id: 104793, size: 3584, md5: 032a1e12731dc3f5a31aacc23bb5f3da, sha256: 5e29ce11569d5a7dbaf14bd5ee9053e8c33fb6ec5d1b8f03ab5cb8e9eecf2090}
+  fig5b_vm_gfp.npy: {id: 104795, size: 184312, md5: c1955fb258e15b06b97fc897b67ba5ba, sha256: 271c65ba8bfafbdbdb36824c386333b6bfcf99096f6d52252bd879caf2e51d09}
+  fig5b_vm_gluclarnai.npy: {id: 104796, size: 184312, md5: e933815bda50715c67c9dec3ec4f1c16, sha256: 65552b9132414b46310d59775b69bf3232fe7c6a0ded9b1ae37aa422eaad1f78}
+  fig5b_vm_nmdar1rnai.npy: {id: 104797, size: 184312, md5: 1ed208dffb6d333b2bbcd2138f98baf2, sha256: 4370b3c2666c7e9ba2bc55bca9aaf97f02b8efb79b0fb5c058f1c5e075096871}
+  fig5c_pvm_gfp.npy: {id: 104798, size: 7328, md5: bc56a5d41417194288bf1e91777ba267, sha256: 5e9459182fcef9fe2b4391c4771d407fab3dee70fad73bf04cf4bc6c8c677a13}
+  fig5c_pvm_gluclarnai.npy: {id: 104799, size: 5024, md5: aea7ead82287707ebd11a9cbe97feba2, sha256: bb31239dbd4a3f97ae0f175613e4659d966333ae44cf7dac45252ae9bb8b2d48}
+  fig5c_pvm_nmdar1rnai.npy: {id: 104800, size: 3584, md5: 031001aa9d3e217a390266e872bd0c52, sha256: 290c50eee56e72be7c5405e0c4021dc7d6cf80ad91d74b4b4c3c9977676a9083}
+excluded_files:
+  fig5_R39H12_barfixation.csv: {id: 104789, size: 1604495205, reason: behavior data outside T4 electrophysiology validation}
+  fig5_R39H12_edges.csv: {id: 104790, size: 2615183478, reason: behavior data outside T4 electrophysiology validation}
+data_roles:
+  parameter_training: [fig3_T4v.npy]
+  reused_model_inputs: [fig3_Mi9.npy, fig3_Tm3.npy, fig3_Mi1.npy, fig3_Mi4.npy, fig3_C3.npy]
+  external_stimulus_condition: [fig5_dvm_gfp.npy]
+  absolute_peak_readout: [fig5c_pvm_gfp.npy]
+  mechanism_intervention: [fig5_dvm_gluclarnai.npy, fig5c_pvm_gluclarnai.npy]
+  measured_negative_control: [fig5_dvm_nmdar1rnai.npy, fig5c_pvm_nmdar1rnai.npy]
+  exemplar_only: [fig5b_vm_gfp.npy, fig5b_vm_gluclarnai.npy, fig5b_vm_nmdar1rnai.npy]
+validation_boundary:
+  parameter_fitting: false
+  post_inspection_protocol: true
+  independent_stimulus_conditions: true
+  independent_cell_identities_verified: false
+  independent_input_recordings: false
+  final_test: false
+  mi9_block_equals_gluclar_rnai: false
+  may_advance_visual_gate: false
