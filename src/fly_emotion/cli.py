@@ -59,6 +59,15 @@ from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
+from .driving.v7_r1r6_local import (
+    evaluate_v7_r1r6_local_calibration,
+    evaluate_v7_r1r6_local_tuning,
+)
+from .driving.v7_r1r6_local_controls import evaluate_v7_r1r6_local_controls
+from .driving.v7_r1r6_multi import (
+    evaluate_v7_r1r6_multi_calibration,
+    evaluate_v7_r1r6_multi_tuning,
+)
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
@@ -199,6 +208,11 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-closed-loop-calibration")
     subparsers.add_parser("v7-evaluate-closed-loop-controls")
     subparsers.add_parser("v7-evaluate-closed-loop-multi")
+    subparsers.add_parser("v7-evaluate-r1r6-multi-tuning")
+    subparsers.add_parser("v7-evaluate-r1r6-multi-calibration")
+    subparsers.add_parser("v7-evaluate-r1r6-local-tuning")
+    subparsers.add_parser("v7-evaluate-r1r6-local-calibration")
+    subparsers.add_parser("v7-evaluate-r1r6-local-controls")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -570,6 +584,36 @@ def main() -> None:
     if args.command == "v7-evaluate-closed-loop-multi":
         report = evaluate_v7_closed_loop_multi(root)
         target = root / "artifacts/v7-closed-loop-multi.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-r1r6-multi-tuning":
+        report = evaluate_v7_r1r6_multi_tuning(root)
+        target = root / "artifacts/v7-r1r6-multi-tuning.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-r1r6-multi-calibration":
+        report = evaluate_v7_r1r6_multi_calibration(root)
+        target = root / "artifacts/v7-r1r6-multi-calibration.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-r1r6-local-tuning":
+        report = evaluate_v7_r1r6_local_tuning(root)
+        target = root / "artifacts/v7-r1r6-local-tuning.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-r1r6-local-calibration":
+        report = evaluate_v7_r1r6_local_calibration(root)
+        target = root / "artifacts/v7-r1r6-local-calibration.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-r1r6-local-controls":
+        report = evaluate_v7_r1r6_local_controls(root)
+        target = root / "artifacts/v7-r1r6-local-controls.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

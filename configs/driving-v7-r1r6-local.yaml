@@ -1,0 +1,63 @@
+version: 1
+name: v7-mass-balanced-r1r6-local-danger-upper-bound
+observed_on: "2026-09-15"
+retina_contract: configs/driving-v7-r1r6-multi.yaml
+input:
+  image_shape: [24, 48]
+  reconstruction: inverse_duplicate_mass_weighted_pixel_projection
+  require_every_pixel_covered: true
+  require_exact_reconstruction: true
+channels:
+  obstacle:
+    luminance_threshold: 0.8
+    per_column_measure: obstacle_vertical_height
+    distance_proxy: 1_minus_height_over_lower_visual_field_height
+    horizontal_regions: [left_central_quarter, right_central_quarter]
+    outputs: [near_danger, left_minus_right_near_danger]
+  road_center:
+    target_luminance: 0.30
+    absolute_tolerance: 0.000001
+    output: horizontal_centroid
+adapter:
+  formula: tanh(obstacle_gain*danger*asymmetry + road_gain*road_centroid - heading_gain*heading)
+  smoothing_previous: 0.4
+  smoothing_current: 0.6
+  reverse: 0.0
+tuning:
+  mirror_pair_seeds: [8000, 8001, 8002, 8003, 8004, 8005]
+  candidate_grid:
+    throttle: [0.25, 0.30, 0.35]
+    obstacle_gain: [2.0, 4.0, 8.0]
+    road_gain: [2.0, 4.0]
+    heading_gain: [2.0, 4.0]
+  selection_order:
+    - maximum_success_count
+    - maximum_total_obstacles_passed
+    - minimum_road_boundary_count
+    - minimum_mean_maximum_absolute_lateral_position
+    - minimum_throttle
+calibration:
+  mirror_pair_seeds: [8100, 8101]
+  previously_used_for_search: false
+  run_once_after_candidate_freeze: true
+  pass_requirements:
+    both_success: true
+    both_pass_all_nine_obstacles: true
+    no_collision_or_road_boundary: true
+    maximum_reconstruction_error: 0.00000001
+    maximum_action_mirror_error: 0.00000001
+    maximum_trajectory_mirror_error: 0.00000001
+boundary:
+  visual_input_only_via_R1_R6: true
+  target_neuron_activity_used: false
+  target_activity_injection: false
+  obstacle_rays_used: false
+  obstacle_coordinates_used: false
+  lane_position_used_by_adapter: false
+  reward_used: false
+  engineering_input_upper_bound_not_neural_gate: true
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false
+  external_final_evaluated: false
+  deployment_allowed: false

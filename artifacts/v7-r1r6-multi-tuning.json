@@ -1,0 +1,4089 @@
+{
+  "protocol": {
+    "name": "v7-balanced-r1r6-multi-obstacle-upper-bound",
+    "phase": "tuning",
+    "dependencies_sha256": {
+      "configs/driving-v7-r1r6-multi.yaml": "05bfe0fbb4cf8c21113ada5cd955a8d40e5a405d4ae630380afcf2265b52d774",
+      "src/fly_emotion/driving/v7_r1r6_multi.py": "e22c9399a75a4aa623d1bf8079038dac0e0ea62a5c6e34ee15d03a8474108796"
+    },
+    "visual_input_only_via_R1_R6": true,
+    "target_neuron_activity_used": false,
+    "environment_geometry_used": false,
+    "runtime_modified": false
+  },
+  "retina": {
+    "receptor_count": 1914,
+    "receptors_per_eye": 957,
+    "pixels_per_eye": 576,
+    "covered_pixels_per_eye": 576,
+    "maximum_pairs_per_pixel": 46,
+    "maximum_pixel_mass_error": 1.1102230246251565e-15
+  },
+  "candidate_count": 36,
+  "candidate_summaries": [
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 5.0,
+        "road_gain": 1.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 38,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.083338091905522,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24127432792568,
+          "steps": 445,
+          "maximum_absolute_lateral_position": 4.997299362421807
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24127432792568,
+          "steps": 445,
+          "maximum_absolute_lateral_position": 4.997299362421809
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.14837554930436,
+          "steps": 443,
+          "maximum_absolute_lateral_position": 5.2417193177396415
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.14837554930436,
+          "steps": 443,
+          "maximum_absolute_lateral_position": 5.241719317739644
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.855650221873038,
+          "steps": 96,
+          "maximum_absolute_lateral_position": 2.0109955955551135
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.855650221873038,
+          "steps": 96,
+          "maximum_absolute_lateral_position": 2.0109955955551144
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 1.3322676295501878e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 5.0,
+        "road_gain": 1.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 34,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.4911626862417173,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 89.11196482697889,
+          "steps": 327,
+          "maximum_absolute_lateral_position": 3.6587704189426646
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 89.11196482697889,
+          "steps": 327,
+          "maximum_absolute_lateral_position": 3.6587704189426655
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.94104714683867,
+          "steps": 174,
+          "maximum_absolute_lateral_position": 2.807005325831233
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.94104714683867,
+          "steps": 174,
+          "maximum_absolute_lateral_position": 2.8070053258312337
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.98106729170412,
+          "steps": 334,
+          "maximum_absolute_lateral_position": 1.0077123139512532
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.98106729170412,
+          "steps": 334,
+          "maximum_absolute_lateral_position": 1.0077123139512536
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.3877787807814457e-16,
+          "maximum_trajectory_mirror_error": 9.43689570931383e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 5.0,
+        "road_gain": 2.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 40,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.6377035490939487,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24198181370139,
+          "steps": 447,
+          "maximum_absolute_lateral_position": 3.161137766819889
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24198181370139,
+          "steps": 447,
+          "maximum_absolute_lateral_position": 3.1611377668198917
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.33475252831918,
+          "steps": 215,
+          "maximum_absolute_lateral_position": 2.9694893564067093
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.33475252831918,
+          "steps": 215,
+          "maximum_absolute_lateral_position": 2.969489356406711
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.9317767849071,
+          "steps": 337,
+          "maximum_absolute_lateral_position": 1.7824835240552448
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.9317767849071,
+          "steps": 337,
+          "maximum_absolute_lateral_position": 1.7824835240552457
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 5.773159728050814e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.498001805406602e-16,
+          "maximum_trajectory_mirror_error": 3.1086244689504383e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 5.773159728050814e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 5.0,
+        "road_gain": 2.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 34,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.6401536639858743,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.12114194953946,
+          "steps": 171,
+          "maximum_absolute_lateral_position": 1.6431468681368484
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.12114194953946,
+          "steps": 171,
+          "maximum_absolute_lateral_position": 1.64314686813685
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.20603600636036,
+          "steps": 336,
+          "maximum_absolute_lateral_position": 2.2987373643524704
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.20603600636036,
+          "steps": 336,
+          "maximum_absolute_lateral_position": 2.298737364352471
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.22025975675164,
+          "steps": 335,
+          "maximum_absolute_lateral_position": 0.9785767594683025
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.22025975675164,
+          "steps": 335,
+          "maximum_absolute_lateral_position": 0.9785767594683031
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.942890293094024e-16,
+          "maximum_trajectory_mirror_error": 1.5543122344752192e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 3.1086244689504383e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.942890293094024e-16,
+          "maximum_trajectory_mirror_error": 4.912736883966318e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 5.0,
+        "road_gain": 4.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.7689157442807952,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.422158788136976,
+          "steps": 174,
+          "maximum_absolute_lateral_position": 1.807968138451264
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.422158788136976,
+          "steps": 174,
+          "maximum_absolute_lateral_position": 1.807968138451269
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.438106685262312,
+          "steps": 87,
+          "maximum_absolute_lateral_position": 1.9292446449722427
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.438106685262312,
+          "steps": 87,
+          "maximum_absolute_lateral_position": 1.9292446449722451
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.04816023979389,
+          "steps": 338,
+          "maximum_absolute_lateral_position": 1.5695344494188743
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.04816023979389,
+          "steps": 338,
+          "maximum_absolute_lateral_position": 1.569534449418876
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.163336342344337e-16,
+          "maximum_trajectory_mirror_error": 5.10702591327572e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.0245584642661925e-16,
+          "maximum_trajectory_mirror_error": 3.3306690738754696e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 1.0755285551056204e-14
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 5.0,
+        "road_gain": 4.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.0853612045205745,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.60266182919916,
+          "steps": 169,
+          "maximum_absolute_lateral_position": 0.9779455544539437
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.60266182919916,
+          "steps": 169,
+          "maximum_absolute_lateral_position": 0.977945554453945
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.99959414035389,
+          "steps": 85,
+          "maximum_absolute_lateral_position": 1.338785166605714
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.99959414035388,
+          "steps": 85,
+          "maximum_absolute_lateral_position": 1.3387851666057158
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.21625897828743,
+          "steps": 335,
+          "maximum_absolute_lateral_position": 0.9393528925020633
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.21625897828743,
+          "steps": 335,
+          "maximum_absolute_lateral_position": 0.9393528925020649
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.0245584642661925e-16,
+          "maximum_trajectory_mirror_error": 4.218847493575595e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 1.9984014443252818e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.0245584642661925e-16,
+          "maximum_trajectory_mirror_error": 7.605027718682322e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 10.0,
+        "road_gain": 1.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 8,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.490872470711015,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.820005619019167,
+          "steps": 98,
+          "maximum_absolute_lateral_position": 5.492513970431985
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.820005619019167,
+          "steps": 98,
+          "maximum_absolute_lateral_position": 5.492513970431987
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.79671655695636,
+          "steps": 120,
+          "maximum_absolute_lateral_position": 5.463863786867391
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.79671655695636,
+          "steps": 120,
+          "maximum_absolute_lateral_position": 5.463863786867392
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.389509420013102,
+          "steps": 100,
+          "maximum_absolute_lateral_position": 5.516239654833666
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.389509420013102,
+          "steps": 100,
+          "maximum_absolute_lateral_position": 5.516239654833666
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 4.440892098500626e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 10.0,
+        "road_gain": 1.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 20,
+      "road_boundary_count": 4,
+      "mean_maximum_absolute_lateral_position": 4.398209309263308,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 78.50320778416796,
+          "steps": 291,
+          "maximum_absolute_lateral_position": 5.452828816907523
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 78.50320778416796,
+          "steps": 291,
+          "maximum_absolute_lateral_position": 5.452828816907524
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 48.43368037462241,
+          "steps": 177,
+          "maximum_absolute_lateral_position": 5.487497193195486
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 48.43368037462241,
+          "steps": 177,
+          "maximum_absolute_lateral_position": 5.487497193195486
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.567310649105377,
+          "steps": 95,
+          "maximum_absolute_lateral_position": 2.2543019176869126
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.567310649105377,
+          "steps": 95,
+          "maximum_absolute_lateral_position": 2.2543019176869126
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.3306690738754696e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 4.440892098500626e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.220446049250313e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 10.0,
+        "road_gain": 2.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 14,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.502947084846788,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 38.02155054584624,
+          "steps": 146,
+          "maximum_absolute_lateral_position": 5.575306138103609
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 38.02155054584623,
+          "steps": 146,
+          "maximum_absolute_lateral_position": 5.575306138103607
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 51.10701218901556,
+          "steps": 188,
+          "maximum_absolute_lateral_position": 5.470211969728849
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 51.10701218901556,
+          "steps": 188,
+          "maximum_absolute_lateral_position": 5.470211969728852
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 30.12768991881676,
+          "steps": 110,
+          "maximum_absolute_lateral_position": 5.463323146707906
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 30.12768991881676,
+          "steps": 110,
+          "maximum_absolute_lateral_position": 5.463323146707909
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.3306690738754696e-16,
+          "maximum_trajectory_mirror_error": 2.220446049250313e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 10.0,
+        "road_gain": 2.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.2860700394396,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25007182933832,
+          "steps": 446,
+          "maximum_absolute_lateral_position": 5.237534084574718
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25007182933832,
+          "steps": 446,
+          "maximum_absolute_lateral_position": 5.237534084574721
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25009750034327,
+          "steps": 444,
+          "maximum_absolute_lateral_position": 5.446016259146522
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25009750034327,
+          "steps": 444,
+          "maximum_absolute_lateral_position": 5.446016259146524
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2139964961132,
+          "steps": 449,
+          "maximum_absolute_lateral_position": 2.1746597745975587
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2139964961132,
+          "steps": 449,
+          "maximum_absolute_lateral_position": 2.174659774597557
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 4.107825191113079e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 10.0,
+        "road_gain": 4.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 38,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.631999336277415,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.26609904839962,
+          "steps": 461,
+          "maximum_absolute_lateral_position": 3.8905235373432263
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.26609904839962,
+          "steps": 461,
+          "maximum_absolute_lateral_position": 3.8905235373432325
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.67585637357577,
+          "steps": 221,
+          "maximum_absolute_lateral_position": 3.2997727145672653
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.67585637357577,
+          "steps": 221,
+          "maximum_absolute_lateral_position": 3.299772714567269
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 78.5203579843192,
+          "steps": 310,
+          "maximum_absolute_lateral_position": 3.7057017569217523
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 78.5203579843192,
+          "steps": 310,
+          "maximum_absolute_lateral_position": 3.705701756921744
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.163336342344337e-16,
+          "maximum_trajectory_mirror_error": 1.482147737874584e-14
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.163336342344337e-16,
+          "maximum_trajectory_mirror_error": 8.1601392309949e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.163336342344337e-16,
+          "maximum_trajectory_mirror_error": 8.43769498715119e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 10.0,
+        "road_gain": 4.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.9444409909062075,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.23029514265782,
+          "steps": 448,
+          "maximum_absolute_lateral_position": 3.384024288287806
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2302951426578,
+          "steps": 448,
+          "maximum_absolute_lateral_position": 3.38402428828781
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.21360927840959,
+          "steps": 451,
+          "maximum_absolute_lateral_position": 3.4084597524396125
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.21360927840959,
+          "steps": 451,
+          "maximum_absolute_lateral_position": 3.4084597524396174
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.00043950501255,
+          "steps": 448,
+          "maximum_absolute_lateral_position": 2.040838931991205
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.00043950501255,
+          "steps": 448,
+          "maximum_absolute_lateral_position": 2.040838931991198
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.3021142204224816e-16,
+          "maximum_trajectory_mirror_error": 6.5503158452884236e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 6.439293542825908e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.371503159461554e-16,
+          "maximum_trajectory_mirror_error": 8.354428260304303e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 20.0,
+        "road_gain": 1.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 4,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.469941346606018,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 20.836020266462597,
+          "steps": 77,
+          "maximum_absolute_lateral_position": 5.460302492268573
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 20.836020266462597,
+          "steps": 77,
+          "maximum_absolute_lateral_position": 5.460302492268573
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 16.051157953997187,
+          "steps": 60,
+          "maximum_absolute_lateral_position": 5.488243142505223
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 16.051157953997187,
+          "steps": 60,
+          "maximum_absolute_lateral_position": 5.488243142505223
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 19.225569399805632,
+          "steps": 71,
+          "maximum_absolute_lateral_position": 5.46127840504426
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 19.225569399805632,
+          "steps": 71,
+          "maximum_absolute_lateral_position": 5.46127840504426
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 0.0
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 0.0
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 5.551115123125783e-17
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 20.0,
+        "road_gain": 1.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 6,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.5156185857520095,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.837411944212526,
+          "steps": 91,
+          "maximum_absolute_lateral_position": 5.558453498092086
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.837411944212526,
+          "steps": 91,
+          "maximum_absolute_lateral_position": 5.558453498092086
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 22.965215623737482,
+          "steps": 84,
+          "maximum_absolute_lateral_position": 5.511612223504265
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 22.965215623737482,
+          "steps": 84,
+          "maximum_absolute_lateral_position": 5.511612223504265
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.88566107364842,
+          "steps": 91,
+          "maximum_absolute_lateral_position": 5.47679003565968
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.88566107364842,
+          "steps": 91,
+          "maximum_absolute_lateral_position": 5.47679003565968
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 0.0
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 4.336808689942018e-19
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.0816681711721685e-17
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 20.0,
+        "road_gain": 2.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 6,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.499107990535421,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.792150465248756,
+          "steps": 88,
+          "maximum_absolute_lateral_position": 5.50877429559495
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.792150465248756,
+          "steps": 88,
+          "maximum_absolute_lateral_position": 5.508774295594951
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 21.058828148771894,
+          "steps": 78,
+          "maximum_absolute_lateral_position": 5.494805298072914
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 21.058828148771894,
+          "steps": 78,
+          "maximum_absolute_lateral_position": 5.494805298072916
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.38647762561818,
+          "steps": 86,
+          "maximum_absolute_lateral_position": 5.493744377938395
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.38647762561818,
+          "steps": 86,
+          "maximum_absolute_lateral_position": 5.493744377938398
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 5.551115123125783e-16,
+          "maximum_trajectory_mirror_error": 3.552713678800501e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 20.0,
+        "road_gain": 2.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 8,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.480520663624602,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.923317770211884,
+          "steps": 95,
+          "maximum_absolute_lateral_position": 5.509791693882915
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.923317770211884,
+          "steps": 95,
+          "maximum_absolute_lateral_position": 5.509791693882916
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.99378422467509,
+          "steps": 121,
+          "maximum_absolute_lateral_position": 5.464708660932354
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.99378422467509,
+          "steps": 121,
+          "maximum_absolute_lateral_position": 5.464708660932354
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.26215479391461,
+          "steps": 96,
+          "maximum_absolute_lateral_position": 5.467061636058536
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.26215479391461,
+          "steps": 96,
+          "maximum_absolute_lateral_position": 5.467061636058537
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.498001805406602e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 4.336808689942018e-19
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 20.0,
+        "road_gain": 4.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 14,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.481231274768109,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 37.484700940391406,
+          "steps": 148,
+          "maximum_absolute_lateral_position": 5.46175260811186
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 37.484700940391406,
+          "steps": 148,
+          "maximum_absolute_lateral_position": 5.461752608111857
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 60.06553886073139,
+          "steps": 233,
+          "maximum_absolute_lateral_position": 5.456386385654274
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 60.065538860731394,
+          "steps": 233,
+          "maximum_absolute_lateral_position": 5.45638638565427
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.94982528181833,
+          "steps": 99,
+          "maximum_absolute_lateral_position": 5.525554830538193
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.949825281818327,
+          "steps": 99,
+          "maximum_absolute_lateral_position": 5.525554830538196
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 3.552713678800501e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 4.884981308350689e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.25,
+        "obstacle_gain": 20.0,
+        "road_gain": 4.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.483735782605218,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.32059597692901,
+          "steps": 342,
+          "maximum_absolute_lateral_position": 5.456136363209645
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.32059597692901,
+          "steps": 342,
+          "maximum_absolute_lateral_position": 5.45613636320965
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 49.48876263230356,
+          "steps": 183,
+          "maximum_absolute_lateral_position": 5.468616014980622
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 49.48876263230356,
+          "steps": 183,
+          "maximum_absolute_lateral_position": 5.468616014980623
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 28.424741460617145,
+          "steps": 104,
+          "maximum_absolute_lateral_position": 5.5264549696253855
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 28.424741460617145,
+          "steps": 104,
+          "maximum_absolute_lateral_position": 5.526454969625387
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 4.440892098500626e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 2.220446049250313e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 5.0,
+        "road_gain": 1.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 38,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.112599660013462,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25068424232664,
+          "steps": 401,
+          "maximum_absolute_lateral_position": 5.0172185694946565
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25068424232664,
+          "steps": 401,
+          "maximum_absolute_lateral_position": 5.017218569494659
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.14308515744037,
+          "steps": 399,
+          "maximum_absolute_lateral_position": 5.279555526653827
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.14308515744037,
+          "steps": 399,
+          "maximum_absolute_lateral_position": 5.27955552665383
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.94701527826854,
+          "steps": 87,
+          "maximum_absolute_lateral_position": 2.0410248838919016
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.94701527826854,
+          "steps": 87,
+          "maximum_absolute_lateral_position": 2.0410248838919016
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 3.3306690738754696e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 3.9968028886505635e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 3.3306690738754696e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 5.0,
+        "road_gain": 1.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 34,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.4974159321603424,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 89.21671655572203,
+          "steps": 295,
+          "maximum_absolute_lateral_position": 3.6733004747580393
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 89.21671655572203,
+          "steps": 295,
+          "maximum_absolute_lateral_position": 3.673300474758042
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.962977295822654,
+          "steps": 157,
+          "maximum_absolute_lateral_position": 2.801977715481979
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.962977295822654,
+          "steps": 157,
+          "maximum_absolute_lateral_position": 2.80197771548198
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.00390385764797,
+          "steps": 301,
+          "maximum_absolute_lateral_position": 1.0169696062410065
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.00390385764797,
+          "steps": 301,
+          "maximum_absolute_lateral_position": 1.0169696062410067
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 1.4988010832439613e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 5.0,
+        "road_gain": 2.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 40,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.6428324142813167,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.02234263802363,
+          "steps": 402,
+          "maximum_absolute_lateral_position": 3.166019335091609
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.02234263802363,
+          "steps": 402,
+          "maximum_absolute_lateral_position": 3.166019335091613
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.39066751902479,
+          "steps": 194,
+          "maximum_absolute_lateral_position": 3.0017636329144204
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.39066751902479,
+          "steps": 194,
+          "maximum_absolute_lateral_position": 3.0017636329144217
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.74635636825158,
+          "steps": 303,
+          "maximum_absolute_lateral_position": 1.760714274837918
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.74635636825158,
+          "steps": 303,
+          "maximum_absolute_lateral_position": 1.7607142748379192
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 5.995204332975845e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.942890293094024e-16,
+          "maximum_trajectory_mirror_error": 3.1086244689504383e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 2.7755575615628914e-16,
+          "maximum_trajectory_mirror_error": 5.995204332975845e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 5.0,
+        "road_gain": 2.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 34,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.6344487216530867,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.055278901520026,
+          "steps": 154,
+          "maximum_absolute_lateral_position": 1.5754150873754953
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.055278901520026,
+          "steps": 154,
+          "maximum_absolute_lateral_position": 1.5754150873754973
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.25888728833006,
+          "steps": 303,
+          "maximum_absolute_lateral_position": 2.345857244685553
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.25888728833006,
+          "steps": 303,
+          "maximum_absolute_lateral_position": 2.3458572446855537
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.27313878924447,
+          "steps": 302,
+          "maximum_absolute_lateral_position": 0.9820738328982099
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.27313878924447,
+          "steps": 302,
+          "maximum_absolute_lateral_position": 0.9820738328982104
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 1.942890293094024e-16,
+          "maximum_trajectory_mirror_error": 1.9984014443252818e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.275957200481571e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 4.6351811278100286e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 5.0,
+        "road_gain": 4.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.7448430075922523,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.43955345664959,
+          "steps": 157,
+          "maximum_absolute_lateral_position": 1.7912967432449451
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 47.43955345664959,
+          "steps": 157,
+          "maximum_absolute_lateral_position": 1.791296743244951
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.248689833781967,
+          "steps": 78,
+          "maximum_absolute_lateral_position": 1.9465028493236038
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.248689833781967,
+          "steps": 78,
+          "maximum_absolute_lateral_position": 1.9465028493236058
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.18254802593175,
+          "steps": 305,
+          "maximum_absolute_lateral_position": 1.496729430208203
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.18254802593174,
+          "steps": 305,
+          "maximum_absolute_lateral_position": 1.4967294302082053
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 5.773159728050814e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.0245584642661925e-16,
+          "maximum_trajectory_mirror_error": 2.886579864025407e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.0245584642661925e-16,
+          "maximum_trajectory_mirror_error": 1.2712053631958042e-14
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 5.0,
+        "road_gain": 4.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.0958619785069674,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.77271216418524,
+          "steps": 153,
+          "maximum_absolute_lateral_position": 0.9891077568272538
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.772712164185236,
+          "steps": 153,
+          "maximum_absolute_lateral_position": 0.9891077568272553
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.050461867322003,
+          "steps": 77,
+          "maximum_absolute_lateral_position": 1.3548214103154175
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.050461867322003,
+          "steps": 77,
+          "maximum_absolute_lateral_position": 1.354821410315419
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.26661971086965,
+          "steps": 302,
+          "maximum_absolute_lateral_position": 0.9436567683782288
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.26661971086965,
+          "steps": 302,
+          "maximum_absolute_lateral_position": 0.94365676837823
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 3.774758283725532e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 1.5543122344752192e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 7.827072323607354e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 10.0,
+        "road_gain": 1.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 8,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.504460338227527,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.94630491436858,
+          "steps": 89,
+          "maximum_absolute_lateral_position": 5.542535953490046
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.94630491436858,
+          "steps": 89,
+          "maximum_absolute_lateral_position": 5.542535953490047
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 33.31653559531714,
+          "steps": 110,
+          "maximum_absolute_lateral_position": 5.452883922827117
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 33.31653559531714,
+          "steps": 110,
+          "maximum_absolute_lateral_position": 5.452883922827118
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.288886262469532,
+          "steps": 90,
+          "maximum_absolute_lateral_position": 5.517961138365414
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.288886262469532,
+          "steps": 90,
+          "maximum_absolute_lateral_position": 5.517961138365415
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.6653345369377348e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.3877787807814457e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.1102230246251565e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 10.0,
+        "road_gain": 1.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 4,
+      "mean_maximum_absolute_lateral_position": 4.450411818087955,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 82.90100624378405,
+          "steps": 277,
+          "maximum_absolute_lateral_position": 5.451923809664699
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 82.90100624378405,
+          "steps": 277,
+          "maximum_absolute_lateral_position": 5.4519238096647
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 48.25057263625503,
+          "steps": 159,
+          "maximum_absolute_lateral_position": 5.480995412980503
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 48.25057263625503,
+          "steps": 159,
+          "maximum_absolute_lateral_position": 5.480995412980503
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.630933684543763,
+          "steps": 86,
+          "maximum_absolute_lateral_position": 2.418316231618661
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.63093368454376,
+          "steps": 86,
+          "maximum_absolute_lateral_position": 2.418316231618661
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 4.440892098500626e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.220446049250313e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 10.0,
+        "road_gain": 2.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 12,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.496922229439229,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 37.687078798951674,
+          "steps": 131,
+          "maximum_absolute_lateral_position": 5.49082755364111
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 37.687078798951674,
+          "steps": 131,
+          "maximum_absolute_lateral_position": 5.490827553641108
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 50.923020732983254,
+          "steps": 169,
+          "maximum_absolute_lateral_position": 5.512560689559129
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 50.923020732983254,
+          "steps": 169,
+          "maximum_absolute_lateral_position": 5.512560689559131
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 29.726828569238865,
+          "steps": 98,
+          "maximum_absolute_lateral_position": 5.48737844511745
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 29.726828569238865,
+          "steps": 98,
+          "maximum_absolute_lateral_position": 5.487378445117451
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 10.0,
+        "road_gain": 2.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.348312949451507,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.13530305903197,
+          "steps": 402,
+          "maximum_absolute_lateral_position": 5.36413560466492
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.13530305903197,
+          "steps": 402,
+          "maximum_absolute_lateral_position": 5.364135604664921
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25687778878928,
+          "steps": 400,
+          "maximum_absolute_lateral_position": 5.447513677890715
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25687778878928,
+          "steps": 400,
+          "maximum_absolute_lateral_position": 5.447513677890718
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24813151769432,
+          "steps": 405,
+          "maximum_absolute_lateral_position": 2.2332895657988856
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24813151769432,
+          "steps": 405,
+          "maximum_absolute_lateral_position": 2.233289565798884
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 1.2212453270876722e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.2898349882893854e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 4.996003610813204e-16,
+          "maximum_trajectory_mirror_error": 2.942091015256665e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 10.0,
+        "road_gain": 4.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 44,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.060975528411244,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.22053708388064,
+          "steps": 416,
+          "maximum_absolute_lateral_position": 3.9897034074962274
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.22053708388066,
+          "steps": 416,
+          "maximum_absolute_lateral_position": 3.989703407496233
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.376064774706514,
+          "steps": 198,
+          "maximum_absolute_lateral_position": 3.4210571079340566
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.37606477470651,
+          "steps": 198,
+          "maximum_absolute_lateral_position": 3.421057107934061
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04075295324209,
+          "steps": 424,
+          "maximum_absolute_lateral_position": 4.772166069803438
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04075295324209,
+          "steps": 424,
+          "maximum_absolute_lateral_position": 4.772166069803447
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 1.2712053631958042e-14
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.163336342344337e-16,
+          "maximum_trajectory_mirror_error": 8.659739592076221e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 6.106226635438361e-16,
+          "maximum_trajectory_mirror_error": 1.8096635301390052e-14
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 10.0,
+        "road_gain": 4.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.059900142729114,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2958857352958,
+          "steps": 404,
+          "maximum_absolute_lateral_position": 3.4784581365706257
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2958857352958,
+          "steps": 404,
+          "maximum_absolute_lateral_position": 3.4784581365706306
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.17048800533894,
+          "steps": 407,
+          "maximum_absolute_lateral_position": 3.538531868040776
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.17048800533894,
+          "steps": 407,
+          "maximum_absolute_lateral_position": 3.538531868040782
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.29609572748923,
+          "steps": 405,
+          "maximum_absolute_lateral_position": 2.162710423575939
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.29609572748923,
+          "steps": 405,
+          "maximum_absolute_lateral_position": 2.162710423575932
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 7.105427357601002e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.3306690738754696e-16,
+          "maximum_trajectory_mirror_error": 5.773159728050814e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 7.382983113757291e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 20.0,
+        "road_gain": 1.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 4,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.466815357197317,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 19.987291054315712,
+          "steps": 67,
+          "maximum_absolute_lateral_position": 5.463816711337822
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 19.987291054315712,
+          "steps": 67,
+          "maximum_absolute_lateral_position": 5.463816711337822
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.959636725177582,
+          "steps": 54,
+          "maximum_absolute_lateral_position": 5.479802012614001
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.959636725177582,
+          "steps": 54,
+          "maximum_absolute_lateral_position": 5.479802012614001
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 18.54804834232681,
+          "steps": 62,
+          "maximum_absolute_lateral_position": 5.456827347640124
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 18.54804834232681,
+          "steps": 62,
+          "maximum_absolute_lateral_position": 5.456827347640125
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 0.0
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 1.942890293094024e-16,
+          "maximum_trajectory_mirror_error": 4.336808689942018e-19
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 20.0,
+        "road_gain": 1.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 6,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.549661853903363,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.06121103727491,
+          "steps": 83,
+          "maximum_absolute_lateral_position": 5.58274282464976
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.06121103727491,
+          "steps": 83,
+          "maximum_absolute_lateral_position": 5.5827428246497615
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 22.65829013564086,
+          "steps": 75,
+          "maximum_absolute_lateral_position": 5.533937023473408
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 22.65829013564086,
+          "steps": 75,
+          "maximum_absolute_lateral_position": 5.533937023473409
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.110319963607267,
+          "steps": 83,
+          "maximum_absolute_lateral_position": 5.532305713586918
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.110319963607267,
+          "steps": 83,
+          "maximum_absolute_lateral_position": 5.532305713586918
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.7755575615628914e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.3306690738754696e-16,
+          "maximum_trajectory_mirror_error": 4.440892098500626e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 20.0,
+        "road_gain": 2.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 6,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.487478140213601,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.98347367253575,
+          "steps": 80,
+          "maximum_absolute_lateral_position": 5.4858312255346995
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.98347367253575,
+          "steps": 80,
+          "maximum_absolute_lateral_position": 5.485831225534703
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 20.574473097753522,
+          "steps": 69,
+          "maximum_absolute_lateral_position": 5.494607289253962
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 20.574473097753526,
+          "steps": 69,
+          "maximum_absolute_lateral_position": 5.494607289253963
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.4750566321133,
+          "steps": 78,
+          "maximum_absolute_lateral_position": 5.481995905852139
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 23.475056632113297,
+          "steps": 78,
+          "maximum_absolute_lateral_position": 5.48199590585214
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.3306690738754696e-16,
+          "maximum_trajectory_mirror_error": 3.552713678800501e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 20.0,
+        "road_gain": 2.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 8,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.535102964750382,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.92816411800294,
+          "steps": 86,
+          "maximum_absolute_lateral_position": 5.574498699591528
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.92816411800294,
+          "steps": 86,
+          "maximum_absolute_lateral_position": 5.574498699591529
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 33.24026150839526,
+          "steps": 110,
+          "maximum_absolute_lateral_position": 5.476790334221521
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 33.24026150839526,
+          "steps": 110,
+          "maximum_absolute_lateral_position": 5.476790334221522
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.333438825410514,
+          "steps": 87,
+          "maximum_absolute_lateral_position": 5.5540198604380935
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.333438825410514,
+          "steps": 87,
+          "maximum_absolute_lateral_position": 5.554019860438094
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.220446049250313e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 2.7755575615628914e-16,
+          "maximum_trajectory_mirror_error": 8.881784197001252e-16
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 20.0,
+        "road_gain": 4.0,
+        "heading_gain": 2.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 14,
+      "road_boundary_count": 6,
+      "mean_maximum_absolute_lateral_position": 5.520515671369476,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 36.26336489750774,
+          "steps": 130,
+          "maximum_absolute_lateral_position": 5.468449488045473
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 36.263364897507735,
+          "steps": 130,
+          "maximum_absolute_lateral_position": 5.4684494880454695
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 60.462110747582685,
+          "steps": 212,
+          "maximum_absolute_lateral_position": 5.54524650570494
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 60.462110747582685,
+          "steps": 212,
+          "maximum_absolute_lateral_position": 5.545246505704937
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.09264320239485,
+          "steps": 90,
+          "maximum_absolute_lateral_position": 5.547851020358018
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.09264320239485,
+          "steps": 90,
+          "maximum_absolute_lateral_position": 5.547851020358021
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 3.552713678800501e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 6.314393452555578e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 2.6645352591003757e-15
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "throttle": 0.3,
+        "obstacle_gain": 20.0,
+        "road_gain": 4.0,
+        "heading_gain": 4.0
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 26,
+      "road_boundary_count": 4,
+      "mean_maximum_absolute_lateral_position": 5.337278909376589,
+      "episodes": [
+        {
+          "seed": 7500,
+          "pair_seed": 3750,
+          "mirror": 1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04362593895684,
+          "steps": 422,
+          "maximum_absolute_lateral_position": 5.050433793367539
+        },
+        {
+          "seed": 7501,
+          "pair_seed": 3750,
+          "mirror": -1,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04362593895684,
+          "steps": 422,
+          "maximum_absolute_lateral_position": 5.050433793367541
+        },
+        {
+          "seed": 7502,
+          "pair_seed": 3751,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 49.19017642302251,
+          "steps": 164,
+          "maximum_absolute_lateral_position": 5.467063430903231
+        },
+        {
+          "seed": 7503,
+          "pair_seed": 3751,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 49.19017642302251,
+          "steps": 164,
+          "maximum_absolute_lateral_position": 5.467063430903234
+        },
+        {
+          "seed": 7504,
+          "pair_seed": 3752,
+          "mirror": 1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 28.14641863138055,
+          "steps": 93,
+          "maximum_absolute_lateral_position": 5.49433950385899
+        },
+        {
+          "seed": 7505,
+          "pair_seed": 3752,
+          "mirror": -1,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 28.14641863138055,
+          "steps": 93,
+          "maximum_absolute_lateral_position": 5.494339503858992
+        }
+      ],
+      "mirror_checks": [
+        {
+          "seeds": [
+            7500,
+            7501
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 4.440892098500626e-16,
+          "maximum_trajectory_mirror_error": 3.9968028886505635e-15
+        },
+        {
+          "seeds": [
+            7502,
+            7503
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.885780586188048e-16,
+          "maximum_trajectory_mirror_error": 3.552713678800501e-15
+        },
+        {
+          "seeds": [
+            7504,
+            7505
+          ],
+          "maximum_obstacle_asymmetry_odd_error": 0.0,
+          "maximum_road_centroid_odd_error": 1.1102230246251565e-16,
+          "maximum_action_odd_error": 3.3306690738754696e-16,
+          "maximum_trajectory_mirror_error": 1.7763568394002505e-15
+        }
+      ]
+    }
+  ],
+  "selected_candidate": {
+    "throttle": 0.25,
+    "obstacle_gain": 10.0,
+    "road_gain": 4.0,
+    "heading_gain": 4.0,
+    "config_sha256": "05bfe0fbb4cf8c21113ada5cd955a8d40e5a405d4ae630380afcf2265b52d774",
+    "implementation_sha256": "e22c9399a75a4aa623d1bf8079038dac0e0ea62a5c6e34ee15d03a8474108796",
+    "retina_body_ids_sha256": "839cf879766d4647ec2b232ad35176716988223eca44ab3f4c3e4787443bd1f9",
+    "retina_assignment_sha256": "f8866f23c23f9a50184ffb3cc396b5ee32a8fad2d2370942c44a507714ff6ea8"
+  },
+  "selected_candidate_sha256": "444d634512782aaecd42acaae50d2c67b963c066724b644c7e0c032688614cef",
+  "tuning_passed": true,
+  "calibration_evaluated": false,
+  "final_evaluated": false,
+  "advance_to_calibration": true,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "visual_input_only_via_R1_R6": true,
+    "connectome_used_for_retinal_pairing_only": true,
+    "target_neuron_activity_used": false,
+    "target_activity_injection": false,
+    "obstacle_rays_used": false,
+    "obstacle_coordinates_used": false,
+    "lane_position_used_by_adapter": false,
+    "reward_used": false,
+    "engineering_upper_bound_not_T4_T5_gate": true,
+    "modifies_assisted_v5": false,
+    "modifies_neural_v6_front": false,
+    "changes_default_service": false,
+    "external_final_evaluated": false,
+    "deployment_allowed": false
+  }
+}

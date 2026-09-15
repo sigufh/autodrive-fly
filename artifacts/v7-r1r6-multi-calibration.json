@@ -1,0 +1,2037 @@
+{
+  "protocol": {
+    "name": "v7-balanced-r1r6-multi-obstacle-upper-bound",
+    "phase": "calibration_once",
+    "dependencies_sha256": {
+      "configs/driving-v7-r1r6-multi.yaml": "05bfe0fbb4cf8c21113ada5cd955a8d40e5a405d4ae630380afcf2265b52d774",
+      "src/fly_emotion/driving/v7_r1r6_multi.py": "e22c9399a75a4aa623d1bf8079038dac0e0ea62a5c6e34ee15d03a8474108796",
+      "artifacts/v7-r1r6-multi-tuning.json": "d64e5a63b592c0b02b8321f96ea8a6b63f4cc49e72fa0ad9a6145677ad2dd458"
+    },
+    "candidate_sha256": "444d634512782aaecd42acaae50d2c67b963c066724b644c7e0c032688614cef",
+    "parameters_changed_after_tuning": false,
+    "runtime_modified": false
+  },
+  "seeds": [
+    7700,
+    7701
+  ],
+  "episodes": [
+    {
+      "seed": 7700,
+      "pair_seed": 3850,
+      "mirror": 1,
+      "terminal_reason": "obstacle",
+      "success": false,
+      "obstacles_passed": 2,
+      "distance": 33.867827542089266,
+      "steps": 123,
+      "maximum_absolute_lateral_position": 1.4641508801082035,
+      "trace": [
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": 0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.127196302868534,
+          "vehicle_x": 8.47243722529548e-05,
+          "vehicle_y": 2.0647999446124823
+        },
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": 0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.17507460780699408,
+          "vehicle_x": 0.0006170956183392313,
+          "vehicle_y": 2.17884670206247
+        },
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": 0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.18648522343531365,
+          "vehicle_x": 0.0020444961267901134,
+          "vehicle_y": 2.330316456538335
+        },
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": 0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.18002706122697276,
+          "vehicle_x": 0.004720819071372466,
+          "vehicle_y": 2.5102186752240505
+        },
+        {
+          "danger": 0.022034499054820415,
+          "obstacle_asymmetry": 0.6848376526660169,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.12669788878497631,
+          "vehicle_x": 0.008583987724835967,
+          "vehicle_y": 2.711722461733264
+        },
+        {
+          "danger": 0.022034499054820415,
+          "obstacle_asymmetry": 0.6848376526660169,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.09513145654147923,
+          "vehicle_x": 0.013521661825716024,
+          "vehicle_y": 2.929637547540531
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": 0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.13934570318053008,
+          "vehicle_x": 0.019986551274707172,
+          "vehicle_y": 3.1600048266559737
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": 0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.1443938298174624,
+          "vehicle_x": 0.02811536773815619,
+          "vehicle_y": 3.3998151562816465
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": 0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.13268682897872894,
+          "vehicle_x": 0.03785076205228416,
+          "vehicle_y": 3.6467838745233307
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": 0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.11493996050983465,
+          "vehicle_x": 0.04903445624448116,
+          "vehicle_y": 3.8991782189309196
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": 0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.09622638308659856,
+          "vehicle_x": 0.06146815191343195,
+          "vehicle_y": 4.155684965315773
+        },
+        {
+          "danger": 0.03125984562066792,
+          "obstacle_asymmetry": 0.8889238845143864,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.08885289045197084,
+          "vehicle_x": 0.07506320879469486,
+          "vehicle_y": 4.4153032717815615
+        },
+        {
+          "danger": 0.03210000525099769,
+          "obstacle_asymmetry": 0.8918311011143574,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.08165409302412983,
+          "vehicle_x": 0.08972746987508376,
+          "vehicle_y": 4.6772734178282125
+        },
+        {
+          "danger": 0.03210000525099769,
+          "obstacle_asymmetry": 0.8918311011143574,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.07017497831341074,
+          "vehicle_x": 0.1053157918756617,
+          "vehicle_y": 4.9410221551474285
+        },
+        {
+          "danger": 0.0336884320520899,
+          "obstacle_asymmetry": 0.8026302971261156,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.04861589018960222,
+          "vehicle_x": 0.12098611448366879,
+          "vehicle_y": 5.206158312913056
+        },
+        {
+          "danger": 0.043809730098718754,
+          "obstacle_asymmetry": 0.848228331710207,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10023447538631067,
+          "vehicle_x": 0.13791457965119724,
+          "vehicle_y": 5.472275537493819
+        },
+        {
+          "danger": 0.0336884320520899,
+          "obstacle_asymmetry": 0.8026302971261156,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.0498637468049396,
+          "vehicle_x": 0.15489400842460188,
+          "vehicle_y": 5.739193915233843
+        },
+        {
+          "danger": 0.03590369670237345,
+          "obstacle_asymmetry": 0.8148080438756463,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.04299655590813329,
+          "vehicle_x": 0.17191216953847244,
+          "vehicle_y": 6.006721169374905
+        },
+        {
+          "danger": 0.03590369670237345,
+          "obstacle_asymmetry": 0.8148080438756463,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.04024967954941076,
+          "vehicle_x": 0.1889597672310971,
+          "vehicle_y": 6.2747111695807565
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": 0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.09517412320968174,
+          "vehicle_x": 0.20718385954282464,
+          "vehicle_y": 6.54297694715093
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": 0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10697744785143136,
+          "vehicle_x": 0.2267257224471536,
+          "vehicle_y": 6.811418483839
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": 0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10021066530764239,
+          "vehicle_x": 0.2475011017444254,
+          "vehicle_y": 7.079971527235321
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": 0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.08669637816775835,
+          "vehicle_x": 0.26934350300376586,
+          "vehicle_y": 7.348595097291557
+        },
+        {
+          "danger": 0.04949721697122453,
+          "obstacle_asymmetry": 0.8071873756795899,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.07959440036032847,
+          "vehicle_x": 0.29216457364262866,
+          "vehicle_y": 7.617255285550839
+        },
+        {
+          "danger": 0.05014046418819575,
+          "obstacle_asymmetry": 0.8096609503861483,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.07198097719979235,
+          "vehicle_x": 0.31586991299799067,
+          "vehicle_y": 7.885928592933806
+        },
+        {
+          "danger": 0.05078371140516698,
+          "obstacle_asymmetry": 0.8120718624789693,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.06498086165612135,
+          "vehicle_x": 0.34037280486480814,
+          "vehicle_y": 8.154598527035455
+        },
+        {
+          "danger": 0.05209646082755723,
+          "obstacle_asymmetry": 0.7664104825500564,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.04726917370281132,
+          "vehicle_x": 0.36488038408841394,
+          "vehicle_y": 8.423319857186447
+        },
+        {
+          "danger": 0.05209646082755723,
+          "obstacle_asymmetry": 0.7664104825500564,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.04018449852148731,
+          "vehicle_x": 0.38939152570317886,
+          "vehicle_y": 8.69208024833494
+        },
+        {
+          "danger": 0.06359942764125184,
+          "obstacle_asymmetry": 0.808658857526166,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10570162362923619,
+          "vehicle_x": 0.4151942321131103,
+          "vehicle_y": 8.96074966397857
+        },
+        {
+          "danger": 0.053205734089477,
+          "obstacle_asymmetry": 0.7712805329385389,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.0587072958939613,
+          "vehicle_x": 0.44171448364660115,
+          "vehicle_y": 9.22937196554557
+        },
+        {
+          "danger": 0.06526333753413148,
+          "obstacle_asymmetry": 0.8135371618223659,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10535469535184883,
+          "vehicle_x": 0.4695204959788306,
+          "vehicle_y": 9.497881529371908
+        },
+        {
+          "danger": 0.06581797416509136,
+          "obstacle_asymmetry": 0.8151084517576448,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.11600430710816118,
+          "vehicle_x": 0.4987413201247747,
+          "vehicle_y": 9.766253973257063
+        },
+        {
+          "danger": 0.06637261079605124,
+          "obstacle_asymmetry": 0.8166534810126368,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.11107948417521385,
+          "vehicle_x": 0.5293159296560223,
+          "vehicle_y": 10.034485567390401
+        },
+        {
+          "danger": 0.06028801722327241,
+          "obstacle_asymmetry": 0.9999999999999711,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.1331150661115647,
+          "vehicle_x": 0.5615120271771983,
+          "vehicle_y": 10.302534979255771
+        },
+        {
+          "danger": 0.06202412833438352,
+          "obstacle_asymmetry": 0.9999999999999719,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.1379260466089749,
+          "vehicle_x": 0.5953869726916992,
+          "vehicle_y": 10.57038319307022
+        },
+        {
+          "danger": 0.08135108170552403,
+          "obstacle_asymmetry": 0.8212844924963517,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.05199039642187614,
+          "vehicle_x": 0.6294802454409228,
+          "vehicle_y": 10.83820810537594
+        },
+        {
+          "danger": 0.07303809598823777,
+          "obstacle_asymmetry": 0.771826555830132,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.04668644533422603,
+          "vehicle_x": 0.6635739371684117,
+          "vehicle_y": 11.106036309029427
+        },
+        {
+          "danger": 0.08604087901701324,
+          "obstacle_asymmetry": 0.806308883548826,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.008428204975065053,
+          "vehicle_x": 0.6976679473193821,
+          "vehicle_y": 11.373867014107217
+        },
+        {
+          "danger": 0.07445586536441923,
+          "obstacle_asymmetry": 0.7761713756776827,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.06244202623966738,
+          "vehicle_x": 0.7310033056400048,
+          "vehicle_y": 11.641795132896739
+        },
+        {
+          "danger": 0.08698605860113422,
+          "obstacle_asymmetry": 0.8084135068854771,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.0022701183356672663,
+          "vehicle_x": 0.7643388437881786,
+          "vehicle_y": 11.909724697024181
+        },
+        {
+          "danger": 0.0990436620457887,
+          "obstacle_asymmetry": 0.8317373007720454,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.09336757166405023,
+          "vehicle_x": 0.7988095105773555,
+          "vehicle_y": 12.177511702495812
+        },
+        {
+          "danger": 0.10046471329552614,
+          "obstacle_asymmetry": 0.815235855220161,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.11887806177979211,
+          "vehicle_x": 0.8347249573695438,
+          "vehicle_y": 12.445109613787034
+        },
+        {
+          "danger": 0.08793452005881117,
+          "obstacle_asymmetry": 0.7889079644696417,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.04145658047083513,
+          "vehicle_x": 0.8706404892104312,
+          "vehicle_y": 12.712708158756975
+        },
+        {
+          "danger": 0.10046471329552614,
+          "obstacle_asymmetry": 0.815235855220161,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.08536523045244371,
+          "vehicle_x": 0.9075924400109273,
+          "vehicle_y": 12.980166047818686
+        },
+        {
+          "danger": 0.10046471329552614,
+          "obstacle_asymmetry": 0.815235855220161,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.09373814994687711,
+          "vehicle_x": 0.9456819090139899,
+          "vehicle_y": 13.247464683914174
+        },
+        {
+          "danger": 0.10125892669607224,
+          "obstacle_asymmetry": 0.8166850327348015,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.09169165060074502,
+          "vehicle_x": 0.984883362693123,
+          "vehicle_y": 13.514602786952379
+        },
+        {
+          "danger": 0.09150848036126863,
+          "obstacle_asymmetry": 0.7971523867589418,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": 0.02253429063167233,
+          "vehicle_x": 1.0240848473421766,
+          "vehicle_y": 13.781741101034944
+        },
+        {
+          "danger": 0.07942134005461036,
+          "obstacle_asymmetry": 0.7451239669421325,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.08690611737125314,
+          "vehicle_x": 1.0622325111919033,
+          "vehicle_y": 14.04903210075696
+        },
+        {
+          "danger": 0.08100976685570256,
+          "obstacle_asymmetry": 0.7501215362177769,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.11208414717079127,
+          "vehicle_x": 1.0990197571289264,
+          "vehicle_y": 14.316513853137206
+        },
+        {
+          "danger": 0.06808246691871454,
+          "obstacle_asymmetry": 0.7026753434562366,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.18528726197556655,
+          "vehicle_x": 1.1335531051948806,
+          "vehicle_y": 14.58429601788041
+        },
+        {
+          "danger": 0.06567357172862844,
+          "obstacle_asymmetry": 0.3835390535205534,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.3179792054623139,
+          "vehicle_x": 1.1643545792150274,
+          "vehicle_y": 14.852533128492277
+        },
+        {
+          "danger": 0.05419357802982566,
+          "obstacle_asymmetry": 0.2529522194634449,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.3999324761753493,
+          "vehicle_x": 1.1902388115381677,
+          "vehicle_y": 15.121289363831213
+        },
+        {
+          "danger": 0.0672390254148288,
+          "obstacle_asymmetry": 0.3759273721202558,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.4237237599784817,
+          "vehicle_x": 1.2108977373472678,
+          "vehicle_y": 15.390497719007943
+        },
+        {
+          "danger": 0.06517144507456415,
+          "obstacle_asymmetry": 0.022862322489676117,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.5050982011788596,
+          "vehicle_x": 1.225289518761983,
+          "vehicle_y": 15.660113785311943
+        },
+        {
+          "danger": 0.060740915773997047,
+          "obstacle_asymmetry": -0.07272530797492774,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.5233766835581521,
+          "vehicle_x": 1.2331718323157908,
+          "vehicle_y": 15.92999862841174
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": -0.8020422055819998,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.6220682704295855,
+          "vehicle_x": 1.2332584556938198,
+          "vehicle_y": 16.199998557378176
+        },
+        {
+          "danger": 0.043438878386893504,
+          "obstacle_asymmetry": -0.9999999999999601,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.6391039899272987,
+          "vehicle_x": 1.2253254210785756,
+          "vehicle_y": 16.469881946108135
+        },
+        {
+          "danger": 0.043438878386893504,
+          "obstacle_asymmetry": -0.9999999999999601,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.601568217842677,
+          "vehicle_x": 1.2098712892494594,
+          "vehicle_y": 16.739439272085082
+        },
+        {
+          "danger": 0.062312933207309386,
+          "obstacle_asymmetry": -0.8047084847527031,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.5682791463789716,
+          "vehicle_x": 1.1873398700196163,
+          "vehicle_y": 17.008497484379557
+        },
+        {
+          "danger": 0.05209646082755723,
+          "obstacle_asymmetry": -0.7664104825500564,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.4581042455558316,
+          "vehicle_x": 1.1591529030813148,
+          "vehicle_y": 17.2770221286882
+        },
+        {
+          "danger": 0.06359942764125184,
+          "obstacle_asymmetry": -0.9999999999999727,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.4049500622501111,
+          "vehicle_x": 1.1259905488995061,
+          "vehicle_y": 17.544977816147675
+        },
+        {
+          "danger": 0.06359942764125184,
+          "obstacle_asymmetry": -0.9999999999999727,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.3442428590200874,
+          "vehicle_x": 1.088618977832445,
+          "vehicle_y": 17.81237893755579
+        },
+        {
+          "danger": 0.06968402121403067,
+          "obstacle_asymmetry": -0.999999999999975,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.3188414905963622,
+          "vehicle_x": 1.0473608861395007,
+          "vehicle_y": 18.07920803145515
+        },
+        {
+          "danger": 0.07197805082965764,
+          "obstacle_asymmetry": -0.9999999999999758,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.2892552951439411,
+          "vehicle_x": 1.0025881934003293,
+          "vehicle_y": 18.34546993738739
+        },
+        {
+          "danger": 0.07371744381432471,
+          "obstacle_asymmetry": -0.9999999999999764,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.25757177217792104,
+          "vehicle_x": 0.9546956001926701,
+          "vehicle_y": 18.611188391593796
+        },
+        {
+          "danger": 0.08577504725897919,
+          "obstacle_asymmetry": -0.9999999999999797,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.28583589391985154,
+          "vehicle_x": 0.9033453453501316,
+          "vehicle_y": 18.876260361715126
+        },
+        {
+          "danger": 0.0820960670027305,
+          "obstacle_asymmetry": -0.9999999999999788,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.2475387428928712,
+          "vehicle_x": 0.8490113209783774,
+          "vehicle_y": 19.140736848927187
+        },
+        {
+          "danger": 0.094153670447385,
+          "obstacle_asymmetry": -0.9999999999999816,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.27449826169866953,
+          "vehicle_x": 0.791373903520858,
+          "vehicle_y": 19.404513130960083
+        },
+        {
+          "danger": 0.08315939403486662,
+          "obstacle_asymmetry": -0.9999999999999791,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.19401778246350748,
+          "vehicle_x": 0.7314122043584457,
+          "vehicle_y": 19.66777078756821
+        },
+        {
+          "danger": 0.08995615416929216,
+          "obstacle_asymmetry": -0.9999999999999807,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.18095673687943292,
+          "vehicle_x": 0.6692875161658665,
+          "vehicle_y": 19.93052642015332
+        },
+        {
+          "danger": 0.11070087691661416,
+          "obstacle_asymmetry": -0.9999999999999842,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.2734280783463291,
+          "vehicle_x": 0.6038944521978531,
+          "vehicle_y": 20.192487765931524
+        },
+        {
+          "danger": 0.10017919029615625,
+          "obstacle_asymmetry": -0.9999999999999827,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.22403669361800982,
+          "vehicle_x": 0.5358348154054011,
+          "vehicle_y": 20.453769004173843
+        },
+        {
+          "danger": 0.11270938353287124,
+          "obstacle_asymmetry": -0.9999999999999847,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.15404980883873542,
+          "vehicle_x": 0.4659485530703547,
+          "vehicle_y": 20.714567604719043
+        },
+        {
+          "danger": 0.11270938353287124,
+          "obstacle_asymmetry": -0.9999999999999847,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10940913133714583,
+          "vehicle_x": 0.39476795527522834,
+          "vehicle_y": 20.97501591490121
+        },
+        {
+          "danger": 0.12713649968494012,
+          "obstacle_asymmetry": -0.9999999999999865,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.16462231679176853,
+          "vehicle_x": 0.3216414240046475,
+          "vehicle_y": 21.234924572426383
+        },
+        {
+          "danger": 0.1155547679059021,
+          "obstacle_asymmetry": -0.999999999999985,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10090275683608878,
+          "vehicle_x": 0.24732536237678862,
+          "vehicle_y": 21.49449560867003
+        },
+        {
+          "danger": 0.12927628124343624,
+          "obstacle_asymmetry": -0.9999999999999867,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.1456902736283794,
+          "vehicle_x": 0.17129341798098519,
+          "vehicle_y": 21.753569233986223
+        },
+        {
+          "danger": 0.1304676013442554,
+          "obstacle_asymmetry": -0.9999999999999868,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.15512097977233938,
+          "vehicle_x": 0.09343787602050421,
+          "vehicle_y": 22.012100691477148
+        },
+        {
+          "danger": 0.1433949012812434,
+          "obstacle_asymmetry": -0.999999999999988,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.21682347199637325,
+          "vehicle_x": 0.013036423495766891,
+          "vehicle_y": 22.269851746520445
+        },
+        {
+          "danger": 0.1543104127284184,
+          "obstacle_asymmetry": -0.9999999999999888,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.27979427874915797,
+          "vehicle_x": -0.07064478576907278,
+          "vehicle_y": 22.52655674291403
+        },
+        {
+          "danger": 0.1467095935727788,
+          "obstacle_asymmetry": -0.9999999999999882,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.23415317878358596,
+          "vehicle_x": -0.157056528831369,
+          "vehicle_y": 22.782355512708964
+        },
+        {
+          "danger": 0.1467095935727788,
+          "obstacle_asymmetry": -0.9999999999999882,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.19118517567123375,
+          "vehicle_x": -0.24568808836426342,
+          "vehicle_y": 23.037393640505954
+        },
+        {
+          "danger": 0.16975819155639568,
+          "obstacle_asymmetry": -0.9999999999999898,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.2834528865146328,
+          "vehicle_x": -0.3376068736643303,
+          "vehicle_y": 23.291265531211256
+        },
+        {
+          "danger": 0.1467095935727788,
+          "obstacle_asymmetry": -0.9999999999999882,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.1598222315347311,
+          "vehicle_x": -0.4314083325938902,
+          "vehicle_y": 23.544447849489
+        },
+        {
+          "danger": 0.13378229363579078,
+          "obstacle_asymmetry": -0.9999999999999871,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.015184769872415155,
+          "vehicle_x": -0.5257086925224429,
+          "vehicle_y": 23.797444770629472
+        },
+        {
+          "danger": 0.13343769691241333,
+          "obstacle_asymmetry": -0.999999999999987,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.049417405400274526,
+          "vehicle_x": -0.62000905245267,
+          "vehicle_y": 24.050441691774434
+        },
+        {
+          "danger": 0.12124881852551983,
+          "obstacle_asymmetry": -0.9999999999999858,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.2399152598124484,
+          "vehicle_x": -0.712929739794357,
+          "vehicle_y": 24.303948586863537
+        },
+        {
+          "danger": 0.10905994013862633,
+          "obstacle_asymmetry": -0.999999999999984,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.36608541820536034,
+          "vehicle_x": -0.8030757759174323,
+          "vehicle_y": 24.558455349379905
+        },
+        {
+          "danger": 0.09580445284604074,
+          "obstacle_asymmetry": -0.9999999999999818,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.4573256560857342,
+          "vehicle_x": -0.8890218401306991,
+          "vehicle_y": 24.814410958895795
+        },
+        {
+          "danger": 0.08287715290905272,
+          "obstacle_asymmetry": -0.999999999999979,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.5207501480888526,
+          "vehicle_x": -0.969297810627216,
+          "vehicle_y": 25.072201122707582
+        },
+        {
+          "danger": 0.0822174963243016,
+          "obstacle_asymmetry": -0.9999999999999788,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.5111095484777368,
+          "vehicle_x": -1.0434819720014163,
+          "vehicle_y": 25.331809886425464
+        },
+        {
+          "danger": 0.05938878386893509,
+          "obstacle_asymmetry": -0.9999999999999707,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.5631055150763429,
+          "vehicle_x": -1.1108842538498795,
+          "vehicle_y": 25.593261473531072
+        },
+        {
+          "danger": 0.062411389413988654,
+          "obstacle_asymmetry": -0.9999999999999721,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.5279424474236859,
+          "vehicle_x": -1.1719014113530943,
+          "vehicle_y": 25.85627650444951
+        },
+        {
+          "danger": 0.06098705629069523,
+          "obstacle_asymmetry": -0.9999999999999715,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.47515088255129734,
+          "vehicle_x": -1.2271592756761123,
+          "vehicle_y": 26.12056151807977
+        },
+        {
+          "danger": 0.03798112266330603,
+          "obstacle_asymmetry": -0.9999999999999544,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.5834262031576105,
+          "vehicle_x": -1.275260331647117,
+          "vehicle_y": 26.386242319820848
+        },
+        {
+          "danger": 0.03798112266330603,
+          "obstacle_asymmetry": -0.9999999999999544,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.5871282100930323,
+          "vehicle_x": -1.316121860333233,
+          "vehicle_y": 26.65313243854559
+        },
+        {
+          "danger": 0.036245011552194915,
+          "obstacle_asymmetry": -0.9999999999999521,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.5509142662067837,
+          "vehicle_x": -1.3501798220356906,
+          "vehicle_y": 26.920975779407883
+        },
+        {
+          "danger": 0.04885725162780928,
+          "obstacle_asymmetry": -0.9999999999999645,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.4263110413561234,
+          "vehicle_x": -1.3789382186263295,
+          "vehicle_y": 27.1894398452067
+        },
+        {
+          "danger": 0.03964503255618568,
+          "obstacle_asymmetry": -0.9999999999999563,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.3833576662575943,
+          "vehicle_x": -1.4029833190827181,
+          "vehicle_y": 27.458367034504864
+        },
+        {
+          "danger": 0.037908921445074566,
+          "obstacle_asymmetry": -0.9999999999999543,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.3379792003522586,
+          "vehicle_x": -1.4228749513595407,
+          "vehicle_y": 27.72763330228675
+        },
+        {
+          "danger": 0.04996652488972905,
+          "obstacle_asymmetry": -0.5173727422003105,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.35118360271255855,
+          "vehicle_x": -1.4384435021184858,
+          "vehicle_y": 27.997184077145835
+        },
+        {
+          "danger": 0.04996652488972905,
+          "obstacle_asymmetry": -0.5173727422003105,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.32220040099736713,
+          "vehicle_x": -1.450046800288662,
+          "vehicle_y": 28.266934635016383
+        },
+        {
+          "danger": 0.05043911468178954,
+          "obstacle_asymmetry": -0.5218947231439732,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2753462784030026,
+          "vehicle_x": -1.458265068511289,
+          "vehicle_y": 28.536809532084163
+        },
+        {
+          "danger": 0.0650303245116572,
+          "obstacle_asymmetry": -0.2438051980822544,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.28692762550245987,
+          "vehicle_x": -1.462953200191279,
+          "vehicle_y": 28.806768827944286
+        },
+        {
+          "danger": 0.06217837639151439,
+          "obstacle_asymmetry": -0.19391956085716755,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2836690450078984,
+          "vehicle_x": -1.4641508801082035,
+          "vehicle_y": 29.076766171565982
+        },
+        {
+          "danger": 0.06265096618357487,
+          "obstacle_asymmetry": -0.19999999999999443,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2507159211697059,
+          "vehicle_x": -1.4622666115955347,
+          "vehicle_y": 29.34675959654544
+        },
+        {
+          "danger": 0.07518115942028986,
+          "obstacle_asymmetry": 0.0,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2819177741063639,
+          "vehicle_x": -1.4569137486721124,
+          "vehicle_y": 29.616706529957355
+        },
+        {
+          "danger": 0.07518115942028986,
+          "obstacle_asymmetry": 0.0,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.26597204449193496,
+          "vehicle_x": -1.4482909712022125,
+          "vehicle_y": 29.88656880540297
+        },
+        {
+          "danger": 0.076372479521109,
+          "obstacle_asymmetry": 0.0051996046581580585,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.23437105918988904,
+          "vehicle_x": -1.4367905113394204,
+          "vehicle_y": 30.156323767216335
+        },
+        {
+          "danger": 0.08969688615837008,
+          "obstacle_asymmetry": 0.14412205920017282,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2681349592648372,
+          "vehicle_x": -1.4219961282456872,
+          "vehicle_y": 30.425918140727475
+        },
+        {
+          "danger": 0.09049109955891618,
+          "obstacle_asymmetry": 0.14285714285714018,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2544379026076947,
+          "vehicle_x": -1.4040794388782547,
+          "vehicle_y": 30.69532302606199
+        },
+        {
+          "danger": 0.1034183994959042,
+          "obstacle_asymmetry": 0.24999999999999584,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2946884923494344,
+          "vehicle_x": -1.3825448197392367,
+          "vehicle_y": 30.96446287851519
+        },
+        {
+          "danger": 0.1034183994959042,
+          "obstacle_asymmetry": 0.24999999999999584,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.2813968070626866,
+          "vehicle_x": -1.3575606370395867,
+          "vehicle_y": 31.2333044501049
+        },
+        {
+          "danger": 0.11733026149968492,
+          "obstacle_asymmetry": 0.33333333333332843,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.3201415681077804,
+          "vehicle_x": -1.3286515460954795,
+          "vehicle_y": 31.501752330448145
+        },
+        {
+          "danger": 0.13157031085906323,
+          "obstacle_asymmetry": 0.40049887752556224,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.3753761823032165,
+          "vehicle_x": -1.2951378117853496,
+          "vehicle_y": 31.769664311540048
+        },
+        {
+          "danger": 0.14515398550724637,
+          "obstacle_asymmetry": 0.4566008727305559,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.4299701336198116,
+          "vehicle_x": -1.2563481761158612,
+          "vehicle_y": 32.03686342112806
+        },
+        {
+          "danger": 0.15906584751102706,
+          "obstacle_asymmetry": 0.4999999999999945,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.47637282689606314,
+          "vehicle_x": -1.2117163043498531,
+          "vehicle_y": 32.30314897466535
+        },
+        {
+          "danger": 0.17232133480361267,
+          "obstacle_asymmetry": 0.538461538461533,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.514503305261834,
+          "vehicle_x": -1.160784457075112,
+          "vehicle_y": 32.56830166074109
+        },
+        {
+          "danger": 0.18557682209619825,
+          "obstacle_asymmetry": 0.5714285714285661,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.4694755644473504,
+          "vehicle_x": -1.104144037242851,
+          "vehicle_y": 32.832293825096826
+        },
+        {
+          "danger": 0.2147461142617097,
+          "obstacle_asymmetry": 0.6296420820979868,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.541509089269281,
+          "vehicle_x": -1.040923429430164,
+          "vehicle_y": 33.094787929312126
+        },
+        {
+          "danger": 0.24285207939508505,
+          "obstacle_asymmetry": 0.6681261655720377,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.630426584511689,
+          "vehicle_x": -0.9700442237916451,
+          "vehicle_y": 33.35531842312821
+        },
+        {
+          "danger": 0.28394770006301195,
+          "obstacle_asymmetry": 0.7142857142857101,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.7399874468650908,
+          "vehicle_x": -0.8901716631599759,
+          "vehicle_y": 33.61323386287182
+        },
+        {
+          "danger": 0.3515542953161101,
+          "obstacle_asymmetry": 0.6923076923076888,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.8275652234121814,
+          "vehicle_x": -0.8002713934021671,
+          "vehicle_y": 33.867827542089266
+        }
+      ]
+    },
+    {
+      "seed": 7701,
+      "pair_seed": 3850,
+      "mirror": -1,
+      "terminal_reason": "obstacle",
+      "success": false,
+      "obstacles_passed": 2,
+      "distance": 33.867827542089266,
+      "steps": 123,
+      "maximum_absolute_lateral_position": 1.4641508801082006,
+      "trace": [
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": -0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.12719630286853426,
+          "vehicle_x": -8.47243722529548e-05,
+          "vehicle_y": 2.0647999446124823
+        },
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": -0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.17507460780699444,
+          "vehicle_x": -0.0006170956183392319,
+          "vehicle_y": 2.17884670206247
+        },
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": -0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.186485223435314,
+          "vehicle_x": -0.002044496126790116,
+          "vehicle_y": 2.330316456538335
+        },
+        {
+          "danger": 0.028470253098088632,
+          "obstacle_asymmetry": -0.7560806916426053,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.18002706122697312,
+          "vehicle_x": -0.004720819071372474,
+          "vehicle_y": 2.5102186752240505
+        },
+        {
+          "danger": 0.022034499054820415,
+          "obstacle_asymmetry": -0.6848376526660169,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.12669788878497668,
+          "vehicle_x": -0.008583987724835982,
+          "vehicle_y": 2.711722461733264
+        },
+        {
+          "danger": 0.022034499054820415,
+          "obstacle_asymmetry": -0.6848376526660169,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.09513145654147953,
+          "vehicle_x": -0.013521661825716052,
+          "vehicle_y": 2.929637547540531
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": -0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.13934570318053036,
+          "vehicle_x": -0.019986551274707214,
+          "vehicle_y": 3.1600048266559737
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": -0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.14439382981746263,
+          "vehicle_x": -0.028115367738156247,
+          "vehicle_y": 3.3998151562816465
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": -0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.13268682897872913,
+          "vehicle_x": -0.03785076205228423,
+          "vehicle_y": 3.6467838745233307
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": -0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.11493996050983481,
+          "vehicle_x": -0.04903445624448125,
+          "vehicle_y": 3.8991782189309196
+        },
+        {
+          "danger": 0.029579526360008396,
+          "obstacle_asymmetry": -0.8826140019970635,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.09622638308659867,
+          "vehicle_x": -0.06146815191343206,
+          "vehicle_y": 4.155684965315773
+        },
+        {
+          "danger": 0.03125984562066792,
+          "obstacle_asymmetry": -0.8889238845143864,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.08885289045197092,
+          "vehicle_x": -0.075063208794695,
+          "vehicle_y": 4.4153032717815615
+        },
+        {
+          "danger": 0.03210000525099769,
+          "obstacle_asymmetry": -0.8918311011143574,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.08165409302412989,
+          "vehicle_x": -0.08972746987508393,
+          "vehicle_y": 4.6772734178282125
+        },
+        {
+          "danger": 0.03210000525099769,
+          "obstacle_asymmetry": -0.8918311011143574,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.07017497831341077,
+          "vehicle_x": -0.10531579187566191,
+          "vehicle_y": 4.9410221551474285
+        },
+        {
+          "danger": 0.0336884320520899,
+          "obstacle_asymmetry": -0.8026302971261156,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.048615890189602225,
+          "vehicle_x": -0.12098611448366903,
+          "vehicle_y": 5.206158312913056
+        },
+        {
+          "danger": 0.043809730098718754,
+          "obstacle_asymmetry": -0.848228331710207,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10023447538631067,
+          "vehicle_x": -0.1379145796511975,
+          "vehicle_y": 5.472275537493819
+        },
+        {
+          "danger": 0.0336884320520899,
+          "obstacle_asymmetry": -0.8026302971261156,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.0498637468049396,
+          "vehicle_x": -0.15489400842460216,
+          "vehicle_y": 5.739193915233843
+        },
+        {
+          "danger": 0.03590369670237345,
+          "obstacle_asymmetry": -0.8148080438756463,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.04299655590813329,
+          "vehicle_x": -0.17191216953847274,
+          "vehicle_y": 6.006721169374905
+        },
+        {
+          "danger": 0.03590369670237345,
+          "obstacle_asymmetry": -0.8148080438756463,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.04024967954941076,
+          "vehicle_x": -0.18895976723109742,
+          "vehicle_y": 6.2747111695807565
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": -0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.09517412320968174,
+          "vehicle_x": -0.207183859542825,
+          "vehicle_y": 6.54297694715093
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": -0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10697744785143136,
+          "vehicle_x": -0.226725722447154,
+          "vehicle_y": 6.811418483839
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": -0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10021066530764239,
+          "vehicle_x": -0.24750110174442583,
+          "vehicle_y": 7.079971527235321
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": -0.8020422055819998,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.08669637816775835,
+          "vehicle_x": -0.2693435030037663,
+          "vehicle_y": 7.348595097291557
+        },
+        {
+          "danger": 0.04949721697122453,
+          "obstacle_asymmetry": -0.8071873756795899,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.07959440036032847,
+          "vehicle_x": -0.29216457364262916,
+          "vehicle_y": 7.617255285550839
+        },
+        {
+          "danger": 0.05014046418819575,
+          "obstacle_asymmetry": -0.8096609503861483,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.07198097719979235,
+          "vehicle_x": -0.3158699129979912,
+          "vehicle_y": 7.885928592933806
+        },
+        {
+          "danger": 0.05078371140516698,
+          "obstacle_asymmetry": -0.8120718624789693,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.06498086165612135,
+          "vehicle_x": -0.34037280486480875,
+          "vehicle_y": 8.154598527035455
+        },
+        {
+          "danger": 0.05209646082755723,
+          "obstacle_asymmetry": -0.7664104825500564,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.04726917370281132,
+          "vehicle_x": -0.3648803840884146,
+          "vehicle_y": 8.423319857186447
+        },
+        {
+          "danger": 0.05209646082755723,
+          "obstacle_asymmetry": -0.7664104825500564,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.04018449852148731,
+          "vehicle_x": -0.3893915257031796,
+          "vehicle_y": 8.69208024833494
+        },
+        {
+          "danger": 0.06359942764125184,
+          "obstacle_asymmetry": -0.808658857526166,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10570162362923619,
+          "vehicle_x": -0.4151942321131111,
+          "vehicle_y": 8.96074966397857
+        },
+        {
+          "danger": 0.053205734089477,
+          "obstacle_asymmetry": -0.7712805329385389,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.0587072958939613,
+          "vehicle_x": -0.44171448364660193,
+          "vehicle_y": 9.22937196554557
+        },
+        {
+          "danger": 0.06526333753413148,
+          "obstacle_asymmetry": -0.8135371618223659,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.10535469535184883,
+          "vehicle_x": -0.46952049597883144,
+          "vehicle_y": 9.497881529371908
+        },
+        {
+          "danger": 0.06581797416509136,
+          "obstacle_asymmetry": -0.8151084517576448,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.11600430710816118,
+          "vehicle_x": -0.49874132012477557,
+          "vehicle_y": 9.766253973257063
+        },
+        {
+          "danger": 0.06637261079605124,
+          "obstacle_asymmetry": -0.8166534810126368,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.11107948417521385,
+          "vehicle_x": -0.5293159296560233,
+          "vehicle_y": 10.034485567390401
+        },
+        {
+          "danger": 0.06028801722327241,
+          "obstacle_asymmetry": -0.9999999999999711,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.1331150661115647,
+          "vehicle_x": -0.5615120271771994,
+          "vehicle_y": 10.302534979255771
+        },
+        {
+          "danger": 0.06202412833438352,
+          "obstacle_asymmetry": -0.9999999999999719,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.1379260466089749,
+          "vehicle_x": -0.5953869726917003,
+          "vehicle_y": 10.57038319307022
+        },
+        {
+          "danger": 0.08135108170552403,
+          "obstacle_asymmetry": -0.8212844924963517,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.051990396421876,
+          "vehicle_x": -0.6294802454409241,
+          "vehicle_y": 10.83820810537594
+        },
+        {
+          "danger": 0.07303809598823777,
+          "obstacle_asymmetry": -0.771826555830132,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.04668644533422622,
+          "vehicle_x": -0.663573937168413,
+          "vehicle_y": 11.106036309029427
+        },
+        {
+          "danger": 0.08604087901701324,
+          "obstacle_asymmetry": -0.806308883548826,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.008428204975065263,
+          "vehicle_x": -0.6976679473193833,
+          "vehicle_y": 11.373867014107217
+        },
+        {
+          "danger": 0.07445586536441923,
+          "obstacle_asymmetry": -0.7761713756776827,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.0624420262396676,
+          "vehicle_x": -0.731003305640006,
+          "vehicle_y": 11.641795132896739
+        },
+        {
+          "danger": 0.08698605860113422,
+          "obstacle_asymmetry": -0.8084135068854771,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.002270118335667457,
+          "vehicle_x": -0.7643388437881798,
+          "vehicle_y": 11.909724697024181
+        },
+        {
+          "danger": 0.0990436620457887,
+          "obstacle_asymmetry": -0.8317373007720454,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.09336757166405005,
+          "vehicle_x": -0.7988095105773567,
+          "vehicle_y": 12.177511702495812
+        },
+        {
+          "danger": 0.10046471329552614,
+          "obstacle_asymmetry": -0.815235855220161,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.1188780617797919,
+          "vehicle_x": -0.834724957369545,
+          "vehicle_y": 12.445109613787034
+        },
+        {
+          "danger": 0.08793452005881117,
+          "obstacle_asymmetry": -0.7889079644696417,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.04145658047083498,
+          "vehicle_x": -0.8706404892104326,
+          "vehicle_y": 12.712708158756975
+        },
+        {
+          "danger": 0.10046471329552614,
+          "obstacle_asymmetry": -0.815235855220161,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.0853652304524436,
+          "vehicle_x": -0.9075924400109286,
+          "vehicle_y": 12.980166047818686
+        },
+        {
+          "danger": 0.10046471329552614,
+          "obstacle_asymmetry": -0.815235855220161,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.09373814994687699,
+          "vehicle_x": -0.9456819090139912,
+          "vehicle_y": 13.247464683914174
+        },
+        {
+          "danger": 0.10125892669607224,
+          "obstacle_asymmetry": -0.8166850327348015,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.09169165060074491,
+          "vehicle_x": -0.9848833626931244,
+          "vehicle_y": 13.514602786952379
+        },
+        {
+          "danger": 0.09150848036126863,
+          "obstacle_asymmetry": -0.7971523867589418,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": -0.02253429063167222,
+          "vehicle_x": -1.024084847342178,
+          "vehicle_y": 13.781741101034944
+        },
+        {
+          "danger": 0.07942134005461036,
+          "obstacle_asymmetry": -0.7451239669421325,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.08690611737125326,
+          "vehicle_x": -1.0622325111919046,
+          "vehicle_y": 14.04903210075696
+        },
+        {
+          "danger": 0.08100976685570256,
+          "obstacle_asymmetry": -0.7501215362177769,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.11208414717079138,
+          "vehicle_x": -1.0990197571289277,
+          "vehicle_y": 14.316513853137206
+        },
+        {
+          "danger": 0.06808246691871454,
+          "obstacle_asymmetry": -0.7026753434562366,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.1852872619755666,
+          "vehicle_x": -1.1335531051948822,
+          "vehicle_y": 14.58429601788041
+        },
+        {
+          "danger": 0.06567357172862844,
+          "obstacle_asymmetry": -0.3835390535205534,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.3179792054623139,
+          "vehicle_x": -1.164354579215029,
+          "vehicle_y": 14.852533128492277
+        },
+        {
+          "danger": 0.05419357802982566,
+          "obstacle_asymmetry": -0.2529522194634449,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.3999324761753493,
+          "vehicle_x": -1.1902388115381692,
+          "vehicle_y": 15.121289363831213
+        },
+        {
+          "danger": 0.0672390254148288,
+          "obstacle_asymmetry": -0.3759273721202558,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.42372375997848183,
+          "vehicle_x": -1.2108977373472694,
+          "vehicle_y": 15.390497719007943
+        },
+        {
+          "danger": 0.06517144507456415,
+          "obstacle_asymmetry": -0.022862322489676117,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.5050982011788597,
+          "vehicle_x": -1.2252895187619846,
+          "vehicle_y": 15.660113785311943
+        },
+        {
+          "danger": 0.060740915773997047,
+          "obstacle_asymmetry": 0.07272530797492774,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.5233766835581523,
+          "vehicle_x": -1.2331718323157923,
+          "vehicle_y": 15.92999862841174
+        },
+        {
+          "danger": 0.04821072253728208,
+          "obstacle_asymmetry": 0.8020422055819998,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.6220682704295857,
+          "vehicle_x": -1.2332584556938213,
+          "vehicle_y": 16.199998557378176
+        },
+        {
+          "danger": 0.043438878386893504,
+          "obstacle_asymmetry": 0.9999999999999601,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.6391039899272988,
+          "vehicle_x": -1.2253254210785771,
+          "vehicle_y": 16.469881946108135
+        },
+        {
+          "danger": 0.043438878386893504,
+          "obstacle_asymmetry": 0.9999999999999601,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.6015682178426771,
+          "vehicle_x": -1.209871289249461,
+          "vehicle_y": 16.739439272085082
+        },
+        {
+          "danger": 0.062312933207309386,
+          "obstacle_asymmetry": 0.8047084847527031,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.5682791463789716,
+          "vehicle_x": -1.1873398700196178,
+          "vehicle_y": 17.008497484379557
+        },
+        {
+          "danger": 0.05209646082755723,
+          "obstacle_asymmetry": 0.7664104825500564,
+          "road_centroid": 0.08510638297872075,
+          "steering_command": 0.4581042455558317,
+          "vehicle_x": -1.1591529030813164,
+          "vehicle_y": 17.2770221286882
+        },
+        {
+          "danger": 0.06359942764125184,
+          "obstacle_asymmetry": 0.9999999999999727,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.40495006225011104,
+          "vehicle_x": -1.1259905488995074,
+          "vehicle_y": 17.544977816147675
+        },
+        {
+          "danger": 0.06359942764125184,
+          "obstacle_asymmetry": 0.9999999999999727,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.3442428590200873,
+          "vehicle_x": -1.0886189778324464,
+          "vehicle_y": 17.81237893755579
+        },
+        {
+          "danger": 0.06968402121403067,
+          "obstacle_asymmetry": 0.999999999999975,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.3188414905963621,
+          "vehicle_x": -1.047360886139502,
+          "vehicle_y": 18.07920803145515
+        },
+        {
+          "danger": 0.07197805082965764,
+          "obstacle_asymmetry": 0.9999999999999758,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.289255295143941,
+          "vehicle_x": -1.0025881934003307,
+          "vehicle_y": 18.34546993738739
+        },
+        {
+          "danger": 0.07371744381432471,
+          "obstacle_asymmetry": 0.9999999999999764,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.25757177217792093,
+          "vehicle_x": -0.9546956001926714,
+          "vehicle_y": 18.611188391593796
+        },
+        {
+          "danger": 0.08577504725897919,
+          "obstacle_asymmetry": 0.9999999999999797,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.2858358939198516,
+          "vehicle_x": -0.903345345350133,
+          "vehicle_y": 18.876260361715126
+        },
+        {
+          "danger": 0.0820960670027305,
+          "obstacle_asymmetry": 0.9999999999999788,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.24753874289287114,
+          "vehicle_x": -0.8490113209783788,
+          "vehicle_y": 19.140736848927187
+        },
+        {
+          "danger": 0.094153670447385,
+          "obstacle_asymmetry": 0.9999999999999816,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.27449826169866953,
+          "vehicle_x": -0.7913739035208596,
+          "vehicle_y": 19.404513130960083
+        },
+        {
+          "danger": 0.08315939403486662,
+          "obstacle_asymmetry": 0.9999999999999791,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.19401778246350754,
+          "vehicle_x": -0.7314122043584472,
+          "vehicle_y": 19.66777078756821
+        },
+        {
+          "danger": 0.08995615416929216,
+          "obstacle_asymmetry": 0.9999999999999807,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.18095673687943287,
+          "vehicle_x": -0.669287516165868,
+          "vehicle_y": 19.93052642015332
+        },
+        {
+          "danger": 0.11070087691661416,
+          "obstacle_asymmetry": 0.9999999999999842,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.2734280783463291,
+          "vehicle_x": -0.6038944521978546,
+          "vehicle_y": 20.192487765931524
+        },
+        {
+          "danger": 0.10017919029615625,
+          "obstacle_asymmetry": 0.9999999999999827,
+          "road_centroid": 0.04255319148936032,
+          "steering_command": 0.22403669361800982,
+          "vehicle_x": -0.5358348154054027,
+          "vehicle_y": 20.453769004173843
+        },
+        {
+          "danger": 0.11270938353287124,
+          "obstacle_asymmetry": 0.9999999999999847,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.15404980883873529,
+          "vehicle_x": -0.4659485530703563,
+          "vehicle_y": 20.714567604719043
+        },
+        {
+          "danger": 0.11270938353287124,
+          "obstacle_asymmetry": 0.9999999999999847,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10940913133714564,
+          "vehicle_x": -0.39476795527523,
+          "vehicle_y": 20.97501591490121
+        },
+        {
+          "danger": 0.12713649968494012,
+          "obstacle_asymmetry": 0.9999999999999865,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.1646223167917683,
+          "vehicle_x": -0.32164142400464923,
+          "vehicle_y": 21.234924572426383
+        },
+        {
+          "danger": 0.1155547679059021,
+          "obstacle_asymmetry": 0.999999999999985,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.10090275683608854,
+          "vehicle_x": -0.24732536237679037,
+          "vehicle_y": 21.49449560867003
+        },
+        {
+          "danger": 0.12927628124343624,
+          "obstacle_asymmetry": 0.9999999999999867,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.1456902736283792,
+          "vehicle_x": -0.17129341798098693,
+          "vehicle_y": 21.753569233986223
+        },
+        {
+          "danger": 0.1304676013442554,
+          "obstacle_asymmetry": 0.9999999999999868,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.15512097977233916,
+          "vehicle_x": -0.09343787602050597,
+          "vehicle_y": 22.012100691477148
+        },
+        {
+          "danger": 0.1433949012812434,
+          "obstacle_asymmetry": 0.999999999999988,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.21682347199637303,
+          "vehicle_x": -0.013036423495768695,
+          "vehicle_y": 22.269851746520445
+        },
+        {
+          "danger": 0.1543104127284184,
+          "obstacle_asymmetry": 0.9999999999999888,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.27979427874915785,
+          "vehicle_x": 0.07064478576907096,
+          "vehicle_y": 22.52655674291403
+        },
+        {
+          "danger": 0.1467095935727788,
+          "obstacle_asymmetry": 0.9999999999999882,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.23415317878358594,
+          "vehicle_x": 0.15705652883136717,
+          "vehicle_y": 22.782355512708964
+        },
+        {
+          "danger": 0.1467095935727788,
+          "obstacle_asymmetry": 0.9999999999999882,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.19118517567123372,
+          "vehicle_x": 0.24568808836426154,
+          "vehicle_y": 23.037393640505954
+        },
+        {
+          "danger": 0.16975819155639568,
+          "obstacle_asymmetry": 0.9999999999999898,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.2834528865146328,
+          "vehicle_x": 0.33760687366432834,
+          "vehicle_y": 23.291265531211256
+        },
+        {
+          "danger": 0.1467095935727788,
+          "obstacle_asymmetry": 0.9999999999999882,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.1598222315347311,
+          "vehicle_x": 0.4314083325938882,
+          "vehicle_y": 23.544447849489
+        },
+        {
+          "danger": 0.13378229363579078,
+          "obstacle_asymmetry": 0.9999999999999871,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": 0.015184769872415155,
+          "vehicle_x": 0.5257086925224408,
+          "vehicle_y": 23.797444770629472
+        },
+        {
+          "danger": 0.13343769691241333,
+          "obstacle_asymmetry": 0.999999999999987,
+          "road_centroid": -5.551115123125609e-17,
+          "steering_command": -0.049417405400274526,
+          "vehicle_x": 0.6200090524526679,
+          "vehicle_y": 24.050441691774434
+        },
+        {
+          "danger": 0.12124881852551983,
+          "obstacle_asymmetry": 0.9999999999999858,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.2399152598124483,
+          "vehicle_x": 0.7129297397943548,
+          "vehicle_y": 24.303948586863537
+        },
+        {
+          "danger": 0.10905994013862633,
+          "obstacle_asymmetry": 0.999999999999984,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.36608541820536017,
+          "vehicle_x": 0.80307577591743,
+          "vehicle_y": 24.558455349379905
+        },
+        {
+          "danger": 0.09580445284604074,
+          "obstacle_asymmetry": 0.9999999999999818,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.45732565608573406,
+          "vehicle_x": 0.8890218401306967,
+          "vehicle_y": 24.814410958895795
+        },
+        {
+          "danger": 0.08287715290905272,
+          "obstacle_asymmetry": 0.999999999999979,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.5207501480888523,
+          "vehicle_x": 0.9692978106272137,
+          "vehicle_y": 25.072201122707582
+        },
+        {
+          "danger": 0.0822174963243016,
+          "obstacle_asymmetry": 0.9999999999999788,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.5111095484777366,
+          "vehicle_x": 1.043481972001414,
+          "vehicle_y": 25.331809886425464
+        },
+        {
+          "danger": 0.05938878386893509,
+          "obstacle_asymmetry": 0.9999999999999707,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.5631055150763425,
+          "vehicle_x": 1.1108842538498769,
+          "vehicle_y": 25.593261473531072
+        },
+        {
+          "danger": 0.062411389413988654,
+          "obstacle_asymmetry": 0.9999999999999721,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.5279424474236856,
+          "vehicle_x": 1.1719014113530917,
+          "vehicle_y": 25.85627650444951
+        },
+        {
+          "danger": 0.06098705629069523,
+          "obstacle_asymmetry": 0.9999999999999715,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.47515088255129706,
+          "vehicle_x": 1.2271592756761096,
+          "vehicle_y": 26.12056151807977
+        },
+        {
+          "danger": 0.03798112266330603,
+          "obstacle_asymmetry": 0.9999999999999544,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.5834262031576104,
+          "vehicle_x": 1.2752603316471143,
+          "vehicle_y": 26.386242319820848
+        },
+        {
+          "danger": 0.03798112266330603,
+          "obstacle_asymmetry": 0.9999999999999544,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.5871282100930322,
+          "vehicle_x": 1.3161218603332303,
+          "vehicle_y": 26.65313243854559
+        },
+        {
+          "danger": 0.036245011552194915,
+          "obstacle_asymmetry": 0.9999999999999521,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.5509142662067835,
+          "vehicle_x": 1.3501798220356878,
+          "vehicle_y": 26.920975779407883
+        },
+        {
+          "danger": 0.04885725162780928,
+          "obstacle_asymmetry": 0.9999999999999645,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.4263110413561232,
+          "vehicle_x": 1.3789382186263266,
+          "vehicle_y": 27.1894398452067
+        },
+        {
+          "danger": 0.03964503255618568,
+          "obstacle_asymmetry": 0.9999999999999563,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.38335766625759415,
+          "vehicle_x": 1.4029833190827152,
+          "vehicle_y": 27.458367034504864
+        },
+        {
+          "danger": 0.037908921445074566,
+          "obstacle_asymmetry": 0.9999999999999543,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.3379792003522585,
+          "vehicle_x": 1.4228749513595378,
+          "vehicle_y": 27.72763330228675
+        },
+        {
+          "danger": 0.04996652488972905,
+          "obstacle_asymmetry": 0.5173727422003105,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.35118360271255844,
+          "vehicle_x": 1.438443502118483,
+          "vehicle_y": 27.997184077145835
+        },
+        {
+          "danger": 0.04996652488972905,
+          "obstacle_asymmetry": 0.5173727422003105,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.3222004009973671,
+          "vehicle_x": 1.450046800288659,
+          "vehicle_y": 28.266934635016383
+        },
+        {
+          "danger": 0.05043911468178954,
+          "obstacle_asymmetry": 0.5218947231439732,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2753462784030025,
+          "vehicle_x": 1.4582650685112861,
+          "vehicle_y": 28.536809532084163
+        },
+        {
+          "danger": 0.0650303245116572,
+          "obstacle_asymmetry": 0.2438051980822544,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2869276255024598,
+          "vehicle_x": 1.4629532001912762,
+          "vehicle_y": 28.806768827944286
+        },
+        {
+          "danger": 0.06217837639151439,
+          "obstacle_asymmetry": 0.19391956085716755,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.28366904500789836,
+          "vehicle_x": 1.4641508801082006,
+          "vehicle_y": 29.076766171565982
+        },
+        {
+          "danger": 0.06265096618357487,
+          "obstacle_asymmetry": 0.19999999999999443,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.25071592116970587,
+          "vehicle_x": 1.4622666115955318,
+          "vehicle_y": 29.34675959654544
+        },
+        {
+          "danger": 0.07518115942028986,
+          "obstacle_asymmetry": 0.0,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.28191777410636387,
+          "vehicle_x": 1.4569137486721095,
+          "vehicle_y": 29.616706529957355
+        },
+        {
+          "danger": 0.07518115942028986,
+          "obstacle_asymmetry": 0.0,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2659720444919349,
+          "vehicle_x": 1.4482909712022096,
+          "vehicle_y": 29.88656880540297
+        },
+        {
+          "danger": 0.076372479521109,
+          "obstacle_asymmetry": -0.0051996046581580585,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.23437105918988904,
+          "vehicle_x": 1.4367905113394175,
+          "vehicle_y": 30.156323767216335
+        },
+        {
+          "danger": 0.08969688615837008,
+          "obstacle_asymmetry": -0.14412205920017282,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2681349592648372,
+          "vehicle_x": 1.4219961282456843,
+          "vehicle_y": 30.425918140727475
+        },
+        {
+          "danger": 0.09049109955891618,
+          "obstacle_asymmetry": -0.14285714285714018,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2544379026076947,
+          "vehicle_x": 1.4040794388782518,
+          "vehicle_y": 30.69532302606199
+        },
+        {
+          "danger": 0.1034183994959042,
+          "obstacle_asymmetry": -0.24999999999999584,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2946884923494344,
+          "vehicle_x": 1.3825448197392338,
+          "vehicle_y": 30.96446287851519
+        },
+        {
+          "danger": 0.1034183994959042,
+          "obstacle_asymmetry": -0.24999999999999584,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.2813968070626866,
+          "vehicle_x": 1.3575606370395839,
+          "vehicle_y": 31.2333044501049
+        },
+        {
+          "danger": 0.11733026149968492,
+          "obstacle_asymmetry": -0.33333333333332843,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.3201415681077804,
+          "vehicle_x": 1.3286515460954766,
+          "vehicle_y": 31.501752330448145
+        },
+        {
+          "danger": 0.13157031085906323,
+          "obstacle_asymmetry": -0.40049887752556224,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.3753761823032165,
+          "vehicle_x": 1.2951378117853467,
+          "vehicle_y": 31.769664311540048
+        },
+        {
+          "danger": 0.14515398550724637,
+          "obstacle_asymmetry": -0.4566008727305559,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.4299701336198116,
+          "vehicle_x": 1.2563481761158584,
+          "vehicle_y": 32.03686342112806
+        },
+        {
+          "danger": 0.15906584751102706,
+          "obstacle_asymmetry": -0.4999999999999945,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.47637282689606314,
+          "vehicle_x": 1.2117163043498502,
+          "vehicle_y": 32.30314897466535
+        },
+        {
+          "danger": 0.17232133480361267,
+          "obstacle_asymmetry": -0.538461538461533,
+          "road_centroid": -0.08510638297872075,
+          "steering_command": -0.514503305261834,
+          "vehicle_x": 1.1607844570751091,
+          "vehicle_y": 32.56830166074109
+        },
+        {
+          "danger": 0.18557682209619825,
+          "obstacle_asymmetry": -0.5714285714285661,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.4694755644473505,
+          "vehicle_x": 1.1041440372428482,
+          "vehicle_y": 32.832293825096826
+        },
+        {
+          "danger": 0.2147461142617097,
+          "obstacle_asymmetry": -0.6296420820979868,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.5415090892692811,
+          "vehicle_x": 1.040923429430161,
+          "vehicle_y": 33.094787929312126
+        },
+        {
+          "danger": 0.24285207939508505,
+          "obstacle_asymmetry": -0.6681261655720377,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.6304265845116891,
+          "vehicle_x": 0.9700442237916422,
+          "vehicle_y": 33.35531842312821
+        },
+        {
+          "danger": 0.28394770006301195,
+          "obstacle_asymmetry": -0.7142857142857101,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.7399874468650909,
+          "vehicle_x": 0.890171663159973,
+          "vehicle_y": 33.61323386287182
+        },
+        {
+          "danger": 0.3515542953161101,
+          "obstacle_asymmetry": -0.6923076923076888,
+          "road_centroid": -0.042553191489360376,
+          "steering_command": -0.8275652234121815,
+          "vehicle_x": 0.8002713934021642,
+          "vehicle_y": 33.867827542089266
+        }
+      ]
+    }
+  ],
+  "mirror_checks": [
+    {
+      "seeds": [
+        7700,
+        7701
+      ],
+      "maximum_obstacle_asymmetry_odd_error": 0.0,
+      "maximum_road_centroid_odd_error": 1.1102230246251218e-16,
+      "maximum_action_odd_error": 3.608224830031759e-16,
+      "maximum_trajectory_mirror_error": 2.886579864025407e-15
+    }
+  ],
+  "gates": {
+    "both_success": false,
+    "both_pass_all_nine_obstacles": false,
+    "no_collision_or_road_boundary": false,
+    "action_mirror_error": true,
+    "trajectory_mirror_error": true
+  },
+  "calibration_passed": false,
+  "engineering_upper_bound_only": true,
+  "final_evaluated": false,
+  "advance_to_navigation_release": false
+}

@@ -48,6 +48,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     closed_loop_calibration = reports["closed_loop_calibration"]
     closed_loop_controls = reports["closed_loop_controls"]
     closed_loop_multi = reports["closed_loop_multi"]
+    r1r6_multi_tuning = reports["r1r6_multi_tuning"]
+    r1r6_multi_calibration = reports["r1r6_multi_calibration"]
+    r1r6_local_tuning = reports["r1r6_local_tuning"]
+    r1r6_local_calibration = reports["r1r6_local_calibration"]
+    r1r6_local_controls = reports["r1r6_local_controls"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -211,6 +216,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "multi_obstacle_mean_obstacles_passed": closed_loop_multi["summary"][
                     "mean_obstacles_passed"
                 ],
+                "mass_balanced_R1_R6_global_tuning_passed": r1r6_multi_tuning["tuning_passed"],
+                "mass_balanced_R1_R6_global_calibration_passed": r1r6_multi_calibration[
+                    "calibration_passed"
+                ],
+                "mass_balanced_R1_R6_local_tuning_passed": r1r6_local_tuning["tuning_passed"],
+                "mass_balanced_R1_R6_local_calibration_passed": r1r6_local_calibration[
+                    "calibration_passed"
+                ],
+                "mass_balanced_R1_R6_local_calibration_obstacles": sum(
+                    item["obstacles_passed"] for item in r1r6_local_calibration["episodes"]
+                ),
+                "mass_balanced_R1_R6_local_controls_passed": r1r6_local_controls[
+                    "causal_controls_passed"
+                ],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -235,6 +254,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "advance_to_navigation_release"
                 ],
                 "multi_obstacle_diagnostic_passed": closed_loop_multi["diagnostic_passed"],
+                "R1_R6_local_multi_obstacle_upper_bound_passed": r1r6_local_calibration[
+                    "calibration_passed"
+                ],
+                "R1_R6_upper_bound_authorizes_neural_release": r1r6_local_calibration[
+                    "advance_to_navigation_release"
+                ],
             },
         },
         {
@@ -419,6 +444,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["closed_loop_calibration"],
                 config["evidence"]["closed_loop_controls"],
                 config["evidence"]["closed_loop_multi"],
+                config["evidence"]["r1r6_multi_tuning"],
+                config["evidence"]["r1r6_multi_calibration"],
+                config["evidence"]["r1r6_local_tuning"],
+                config["evidence"]["r1r6_local_calibration"],
+                config["evidence"]["r1r6_local_controls"],
             ],
         },
         {

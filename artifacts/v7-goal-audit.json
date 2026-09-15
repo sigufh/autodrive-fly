@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "1312f41a8c2a382336486d36007d07c7cd5bbae58190130047dd904c1505b6e2",
-      "src/fly_emotion/driving/v7_goal_audit.py": "e7f2dc2ee463e23cb5b59d1f9e57e6d340d1b2e9b1e32e06011baf43687f562e",
+      "configs/driving-v7-goal-audit.yaml": "30d0fe68df7286874e5e2b853a4af08396b959755ece2344a824525830f6ee5c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "9381e289c9392e09e6a131e49a618161e7fb5b38b0c538dd96a233da6e620e93",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -33,7 +33,12 @@
       "artifacts/v7-closed-loop-tuning.json": "918674132d562484d0ad24d82d17de1b038e2fa03f425e6cc0cc92455cc584de",
       "artifacts/v7-closed-loop-calibration.json": "8dd8baa2ab99fc8a0b7fae73fc2d86cdb22e9fcbde572d14a406234a6ece0ef6",
       "artifacts/v7-closed-loop-controls.json": "00baf4854bc5690dfcc3bafb8a6a4f7fdd83b04b73057b0296ba7e54bd6baec3",
-      "artifacts/v7-closed-loop-multi.json": "be6ef42ed9d9a225f5d2f06bcdf9eeeb6ce5f93ba4a701913311b5b0a8d7b292"
+      "artifacts/v7-closed-loop-multi.json": "be6ef42ed9d9a225f5d2f06bcdf9eeeb6ce5f93ba4a701913311b5b0a8d7b292",
+      "artifacts/v7-r1r6-multi-tuning.json": "d64e5a63b592c0b02b8321f96ea8a6b63f4cc49e72fa0ad9a6145677ad2dd458",
+      "artifacts/v7-r1r6-multi-calibration.json": "d66f1cd0b2b10262394b8e492a25ffb790e142dedf4eb0e23dec2695d0e8d046",
+      "artifacts/v7-r1r6-local-tuning.json": "0e84d436eb73e25b5a640badae39be95299e75e70d3c13f10abba36e88c03dae",
+      "artifacts/v7-r1r6-local-calibration.json": "498a8a0a3f5d18ded062dbd82d32014d1c73daea9e001dd9a3313c3d1ead1d10",
+      "artifacts/v7-r1r6-local-controls.json": "0683e6b6291e7a5432a284072bf896181f017fed60c0bd1fefa5df961795abab"
     }
   },
   "objective_items": {
@@ -134,7 +139,13 @@
         "closed_loop_point_sample_successes": 2,
         "multi_obstacle_diagnostic_successes": 0,
         "multi_obstacle_diagnostic_episode_count": 6,
-        "multi_obstacle_mean_obstacles_passed": 1.3333333333333333
+        "multi_obstacle_mean_obstacles_passed": 1.3333333333333333,
+        "mass_balanced_R1_R6_global_tuning_passed": true,
+        "mass_balanced_R1_R6_global_calibration_passed": false,
+        "mass_balanced_R1_R6_local_tuning_passed": true,
+        "mass_balanced_R1_R6_local_calibration_passed": true,
+        "mass_balanced_R1_R6_local_calibration_obstacles": 18,
+        "mass_balanced_R1_R6_local_controls_passed": true
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
@@ -156,7 +167,9 @@
         "stage1_pass": false,
         "single_obstacle_closed_loop_calibration_passed": true,
         "closed_loop_navigation_release_authorized": false,
-        "multi_obstacle_diagnostic_passed": false
+        "multi_obstacle_diagnostic_passed": false,
+        "R1_R6_local_multi_obstacle_upper_bound_passed": true,
+        "R1_R6_upper_bound_authorizes_neural_release": false
       }
     },
     {
@@ -382,7 +395,12 @@
         "artifacts/v7-closed-loop-tuning.json",
         "artifacts/v7-closed-loop-calibration.json",
         "artifacts/v7-closed-loop-controls.json",
-        "artifacts/v7-closed-loop-multi.json"
+        "artifacts/v7-closed-loop-multi.json",
+        "artifacts/v7-r1r6-multi-tuning.json",
+        "artifacts/v7-r1r6-multi-calibration.json",
+        "artifacts/v7-r1r6-local-tuning.json",
+        "artifacts/v7-r1r6-local-calibration.json",
+        "artifacts/v7-r1r6-local-controls.json"
       ]
     },
     {

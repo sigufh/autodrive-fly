@@ -39,6 +39,11 @@ evidence:
   closed_loop_calibration: artifacts/v7-closed-loop-calibration.json
   closed_loop_controls: artifacts/v7-closed-loop-controls.json
   closed_loop_multi: artifacts/v7-closed-loop-multi.json
+  r1r6_multi_tuning: artifacts/v7-r1r6-multi-tuning.json
+  r1r6_multi_calibration: artifacts/v7-r1r6-multi-calibration.json
+  r1r6_local_tuning: artifacts/v7-r1r6-local-tuning.json
+  r1r6_local_calibration: artifacts/v7-r1r6-local-calibration.json
+  r1r6_local_controls: artifacts/v7-r1r6-local-controls.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading

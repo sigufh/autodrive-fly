@@ -1,0 +1,79 @@
+version: 1
+name: v7-balanced-r1r6-multi-obstacle-upper-bound
+observed_on: "2026-09-15"
+retina_mapping:
+  source: balanced_common_optic_hex_pairs
+  pair_count: 957
+  receptors_per_eye: 957
+  target_pixels_per_eye: 576
+  assignment: minimum_squared_hex_to_pixel_cost_then_nearest_for_remaining_pairs
+  duplicate_mass_normalization: inverse_pairs_assigned_to_pixel
+  required_pixel_mass: 1.0
+  exact_horizontal_mirror: true
+channels:
+  obstacle:
+    source: R1-R6_current_luminance
+    threshold: 0.8
+    vertical_weight_power: 2
+    output: [danger_mass, left_minus_right_asymmetry]
+  road_center:
+    source: R1-R6_current_luminance
+    target_luminance: 0.30
+    absolute_tolerance: 0.000001
+    output: horizontal_centroid
+adapter:
+  formula: tanh(obstacle_gain*danger*asymmetry + road_gain*road_centroid - heading_gain*heading)
+  smoothing_previous: 0.4
+  smoothing_current: 0.6
+  reverse: 0.0
+tuning:
+  mirror_pair_seeds: [7500, 7501, 7502, 7503, 7504, 7505]
+  candidate_grid:
+    throttle: [0.25, 0.30]
+    obstacle_gain: [5.0, 10.0, 20.0]
+    road_gain: [1.0, 2.0, 4.0]
+    heading_gain: [2.0, 4.0]
+  selection_order:
+    - maximum_success_count
+    - maximum_total_obstacles_passed
+    - minimum_road_boundary_count
+    - minimum_mean_maximum_absolute_lateral_position
+    - minimum_throttle
+calibration:
+  mirror_pair_seeds: [7700, 7701]
+  run_once_after_candidate_freeze: true
+  pass_requirements:
+    both_success: true
+    both_pass_all_nine_obstacles: true
+    no_collision_or_road_boundary: true
+    maximum_action_mirror_error: 0.00000001
+    maximum_trajectory_mirror_error: 0.00000001
+dynamic_throttle_followup:
+  status: calibration_failed
+  tuning_mirror_pair_seeds: [7800, 7801, 7802, 7803, 7804, 7805]
+  calibration_mirror_pair_seeds: [7900, 7901]
+  selected_candidate:
+    obstacle_gain: 10.0
+    road_gain: 2.0
+    heading_gain: 4.0
+    cruise_throttle: 0.35
+    danger_brake_gain: 2.0
+    minimum_throttle: 0.08
+  tuning_result: {success_count: 6, episode_count: 6, total_obstacles_passed: 54}
+  calibration_result: {success_count: 0, episode_count: 2, obstacles_passed_each: 3}
+  parameter_changes_after_calibration: false
+boundary:
+  visual_input_only_via_R1_R6: true
+  connectome_used_for_retinal_pairing_only: true
+  target_neuron_activity_used: false
+  target_activity_injection: false
+  obstacle_rays_used: false
+  obstacle_coordinates_used: false
+  lane_position_used_by_adapter: false
+  reward_used: false
+  engineering_upper_bound_not_T4_T5_gate: true
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false
+  external_final_evaluated: false
+  deployment_allowed: false
