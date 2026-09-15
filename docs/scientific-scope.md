@@ -186,6 +186,24 @@ unchanged, mixed-polarity single-frequency gratings do not establish ON/OFF or
 looming specialization, and neither v7 defaults nor advancement gates change.
 See `artifacts/v7-geometry-sign.json` for paired all-cell results and coordinates.
 
+A subsequent per-eye pixel-centre bilinear sampler has zero tested cross-eye
+support and zero random-image reflection error at all 3,344 retained receptor
+positions. However, the original rectified phase-cycle score gives independent
+receptor filters a spurious direction contrast up to 0.0289 after fractional
+sampling. Integer and half-pixel test locations miss this failure. An explicitly
+post-failure 33-position diagnostic initializes filters at their analytic periodic
+fixed point and still finds rectified-score bias (up to 0.02786/0.02833), ruling
+out finite warmup as its necessary cause in that control. Mean-square response
+has contrast near 1e-16 here, but is only a diagnostic, not an adopted neural
+metric. Sampler algebra, stimulus discretization and scoring must be validated
+jointly; prior nearest-pixel controls do not establish interpolation invariance.
+
+`artifacts/v7-pixel-sampling.json` retains all receptor denominators, cycle means,
+input hashes and synthetic periodic traces. Its input control explicitly fails,
+and no new neural model evaluation was run. The diagnostic revision after failure
+is recorded, existing scores and thresholds remain unchanged, and interpolation
+must not be described as a measured receptor receptive field or a functional fix.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
