@@ -69,6 +69,7 @@ from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
+from .driving.v7_visual_target_input_audit import evaluate_v7_visual_target_input_audit
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -181,6 +182,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-stage1-input")
     subparsers.add_parser("v7-evaluate-stage1-development")
     subparsers.add_parser("v7-evaluate-stage1-geometry-ab")
+    subparsers.add_parser("v7-audit-visual-target-inputs")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -504,6 +506,12 @@ def main() -> None:
     if args.command == "v7-evaluate-stage1-geometry-ab":
         report = evaluate_v7_stage1_geometry_ab(root)
         target = root / "artifacts/v7-stage1-geometry-ab.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-visual-target-inputs":
+        report = evaluate_v7_visual_target_input_audit(root)
+        target = root / "artifacts/v7-visual-target-input-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

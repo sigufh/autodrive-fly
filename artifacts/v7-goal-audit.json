@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "e9b70c33e5fd118876ed9bd3daa9c6660463741d3a5ca07c4601fa7d54114efc",
-      "src/fly_emotion/driving/v7_goal_audit.py": "d443a63e4662d5818804e3d35c798b2321440cd394c2a30314af189dc38ec476",
+      "configs/driving-v7-goal-audit.yaml": "4b0d80024f909f153530453676af73f1451e2b4f0996f357f647fa73b3b69c2f",
+      "src/fly_emotion/driving/v7_goal_audit.py": "50a19ebe374a5c13c00d8d4612036349ff2ad368a421109a56d911cbe6821048",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -25,6 +25,7 @@
       "artifacts/v7-stage1-input-audit.json": "ef735d89fb00d21ee1ebf0d4fe590f1731648acefc8caf1c8210b82b3b682045",
       "artifacts/v7-stage1-development.json": "a76c4c8bce93f7cc6105fb7f8bea5265d454b4b7f76a288677914cb989016ef2",
       "artifacts/v7-stage1-geometry-ab.json": "726c59ef2a59b079d1cfad18f229f4f4627103cab4c1da32d552cf9a49af3521",
+      "artifacts/v7-visual-target-input-audit.json": "6b37ff019b74d1fa7c6a5a7317959f89541a34196e9d4334f1e256192f5d749e",
       "artifacts/v7-t5-supplement-audit.json": "1d6d7ea04a74b280c05f4f268e19214ef614d46965b740c5e670a0cb14bbfed8"
     }
   },
@@ -99,6 +100,10 @@
         "development_geometry_ab_performed": true,
         "reversed_geometry_development_gates_pass": false,
         "reversed_geometry_passing_retinal_backends": [],
+        "T5_targets_with_every_fast_and_any_delayed_source": 6717,
+        "T5_target_count_in_structure_audit": 6719,
+        "looming_targets_with_any_T4_and_any_T5": 319,
+        "looming_target_count_in_structure_audit": 445,
         "existing_artifacts_rescored_under_new_contract": false
       },
       "missing": [
@@ -400,7 +405,7 @@
     "next_allowed_work": [
       "verify an external direction-code map before using T5 traces to score a model",
       "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
-      "diagnose remaining T4/T5 and looming dynamics without using validation",
+      "build distinct T5 and LPLC/LC development hypotheses from source-specific evidence",
       "obtain externally custodied independent-cell and one-time final manifests"
     ]
   }

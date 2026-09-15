@@ -1,0 +1,30 @@
+version: 1
+name: v7-t5-looming-target-input-structure-audit
+observed_on: "2026-09-15"
+development_evidence: artifacts/v7-stage1-development.json
+geometry_ab_evidence: artifacts/v7-stage1-geometry-ab.json
+t5_groups:
+  target_types: [T5a, T5b, T5c, T5d]
+  fast_candidate_sources: [Tm1, Tm2, Tm4]
+  delayed_candidate_sources: [Tm9, CT1]
+looming_groups:
+  target_types: [LPLC1, LPLC2, LC4]
+  T4_sources: [T4a, T4b, T4c, T4d]
+  T5_sources: [T5a, T5b, T5c, T5d]
+coverage_rules:
+  T5_requires_every_fast_source: true
+  T5_requires_any_delayed_source: true
+  looming_requires_any_T4_and_any_T5: false
+  reason: LC4 is an OFF-pathway target and does not require direct T4 input
+  report_all_source_types_separately: true
+  preserve_zero_weight_and_missing_coordinate_cells: true
+boundary:
+  anatomy_only: true
+  infer_function_from_connectivity: false
+  infer_inhibition_from_cell_type: false
+  change_transmitter_sign: false
+  remove_uncovered_cells: false
+  fit_parameters: false
+  evaluate_validation: false
+  evaluate_ood: false
+  evaluate_final: false

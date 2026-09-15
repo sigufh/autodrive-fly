@@ -401,6 +401,20 @@ complete per-group direction rule. This is retrospective development evidence,
 not independent validation, and does not authorize label reversal or validation
 (`artifacts/v7-stage1-geometry-ab.json`).
 
+An anatomy-only source audit shows that 6,717/6,719 T5 targets have all three
+candidate fast inputs (Tm1/Tm2/Tm4) and at least one delayed candidate (Tm9/CT1),
+while 6,712 have all five. Missing edges are therefore not a population-wide
+explanation. The proposed delayed sources cannot be collapsed by sign: Tm9 cells
+are cholinergic, whereas the two large-field CT1 cells are GABAergic. Tm4 has only
+49.9% optic-hex coordinate coverage and CT1 has none.
+
+LPLC1 and LPLC2 nearly always receive both T4 and T5 inputs, but LC4 is structurally
+different: only 1/126 LC4 cells has any direct T4 input while all 126 have T5
+input. A single T4+T5 looming integration rule is therefore not justified across
+all three targets. Every target ID, source weight, edge count, same-side fraction
+and located-weight fraction is retained; connectivity is not interpreted as
+functional sign (`artifacts/v7-visual-target-input-audit.json`).
+
 The development-only R1-R6 preflight evaluates 172 stimuli without running a
 neural model. Both the default 3,344-receptor map and the 1,914-receptor exact
 bilateral-pair control pass family-specific dynamic range and spatial-support

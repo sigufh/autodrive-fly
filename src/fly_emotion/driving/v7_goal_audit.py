@@ -39,6 +39,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     stage1_input = reports["stage1_input"]
     stage1_development = reports["stage1_development"]
     stage1_geometry_ab = reports["stage1_geometry_ab"]
+    visual_target_inputs = reports["visual_target_inputs"]
     t5_supplement = reports["t5_supplement"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
@@ -132,6 +133,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "reversed_geometry_passing_retinal_backends": stage1_geometry_ab[
                     "passing_retinal_backends"
                 ],
+                "T5_targets_with_every_fast_and_any_delayed_source": visual_target_inputs[
+                    "structural_findings"
+                ]["T5_targets_with_every_fast_and_any_delayed_source"],
+                "T5_target_count_in_structure_audit": visual_target_inputs["structural_findings"][
+                    "T5_target_count"
+                ],
+                "looming_targets_with_any_T4_and_any_T5": visual_target_inputs[
+                    "structural_findings"
+                ]["looming_targets_with_any_T4_and_any_T5"],
+                "looming_target_count_in_structure_audit": visual_target_inputs[
+                    "structural_findings"
+                ]["looming_target_count"],
                 "existing_artifacts_rescored_under_new_contract": stage1_scoring["protocol"][
                     "existing_artifacts_rescored"
                 ],
@@ -388,7 +401,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "next_allowed_work": [
                 "verify an external direction-code map before using T5 traces to score a model",
                 "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
-                "diagnose remaining T4/T5 and looming dynamics without using validation",
+                (
+                    "build distinct T5 and LPLC/LC development hypotheses from "
+                    "source-specific evidence"
+                ),
                 "obtain externally custodied independent-cell and one-time final manifests",
             ],
         },
