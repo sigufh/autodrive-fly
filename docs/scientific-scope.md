@@ -156,6 +156,14 @@ proves global stability nor rules out growth in untested directions. The unit-sl
 tangent comparison changes only a derivative factor along the original trajectory,
 not a deployable model; finite differences retain threshold and float32 errors.
 
+A phase-balanced periodic-grating diagnostic rejects independent-pixel filters
+(direction contrast about 1e-16) and detects a synthetic two-pixel correlator.
+Neither frozen neural model shows the expected aggregate T4/T5 preference under
+the two tested encodings; all T4 population medians are nonpositive. Both scored
+cycles and every T4a–d/T5a–d cell are retained. This is a post-inspection diagnostic
+at one frequency, not independent validation or an ON/OFF-specialization test.
+Gray-sham subtraction does not remove stimulus-dependent recurrent dynamics.
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical

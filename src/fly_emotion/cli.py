@@ -44,6 +44,7 @@ from .driving.v7_local_input_audit import (
 )
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_perturbation import evaluate_v7_perturbation
+from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
@@ -141,6 +142,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-synchronous-update")
     subparsers.add_parser("v7-audit-normalization-gain")
     subparsers.add_parser("v7-audit-full-update-perturbation")
+    subparsers.add_parser("v7-evaluate-phase-motion")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -398,6 +400,12 @@ def main() -> None:
     if args.command == "v7-audit-full-update-perturbation":
         report = evaluate_v7_perturbation(root)
         target = root / "artifacts/v7-full-update-perturbation.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-phase-motion":
+        report = evaluate_v7_phase_motion(root)
+        target = root / "artifacts/v7-phase-motion.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
