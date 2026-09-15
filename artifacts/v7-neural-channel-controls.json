@@ -4,10 +4,10 @@
     "phase": "post_calibration_neural_source_controls",
     "dependencies_sha256": {
       "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
-      "src/fly_emotion/driving/v7_neural_channels.py": "db27939e7736e3b7028178465affceed55f74064d7213a1e96bddbef5ef1df00",
+      "src/fly_emotion/driving/v7_neural_channels.py": "afc30366fbab7377334e0e05cc3926572816c8059746ed37f72dd538535fb14f",
       "src/fly_emotion/driving/v7_neural_channel_controls.py": "705ebfd7c94a879cd83c79db59607a3ed00faa66f3fd7c0926fcc385b2b07b93",
-      "artifacts/v7-neural-channels-tuning.json": "616adde39b4b0fea51d51447e4b4b5733a3b2f13dfec857cdcc368f28291c4db",
-      "artifacts/v7-neural-channels-calibration.json": "3694891b2dc1817df5bab4e28d1f8b422b0e5638a0aa19b60fe5c9a936f732ed"
+      "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
+      "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76"
     },
     "model_sha256": "46983654c60f185c9a75eef19a63e10a2426020d99d4f875017108152ac64e10",
     "model_changed_after_calibration": false,

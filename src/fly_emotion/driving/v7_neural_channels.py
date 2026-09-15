@@ -23,7 +23,14 @@ TUNING_ARTIFACT = Path("artifacts/v7-neural-channels-tuning.json")
 
 
 class StructuredNeuralFeatures:
-    def __init__(self, root: Path, config: dict):
+    def __init__(
+        self,
+        root: Path,
+        config: dict,
+        *,
+        topology_control: str = "real_malecns",
+        control_seed: int = 20260915,
+    ):
         self.root = root
         self.config = config
         self.retina = build_mass_balanced_retina(root)
@@ -34,6 +41,8 @@ class StructuredNeuralFeatures:
             retinal_backend="linear_luminance",
             retinal_geometry="legacy_proxy_v2",
             dynamics_backend=config["input"]["visual_graph"],
+            control=topology_control,
+            control_seed=control_seed,
         )
         nodes = np.searchsorted(self.probe.graph.body_ids, self.retina.body_ids).astype(np.int32)
         if not np.array_equal(self.probe.graph.body_ids[nodes], self.retina.body_ids):
@@ -49,6 +58,10 @@ class StructuredNeuralFeatures:
         self.probe.retinal_u = self.probe.retina.u
         self.probe.retinal_v = self.probe.retina.v
         self.probe.retinal_permutation = np.arange(len(nodes), dtype=np.int32)
+        if topology_control == "shuffled_retina_coordinates":
+            self.probe.retinal_permutation = (
+                np.random.default_rng(control_seed).permutation(len(nodes)).astype(np.int32)
+            )
         self.retinal_gain = self.retina.mass * (len(nodes) / (2 * 24 * 24))
         raw = root / "data/raw/malecns-v1.0/body-annotations.feather"
         projection = AnatomySensoryProjection.from_annotations(
@@ -108,7 +121,9 @@ class StructuredNeuralFeatures:
         self.ema_odd = np.zeros(base_size, dtype=np.float64)
 
     def _advance(self, index: int, image: np.ndarray) -> None:
-        values = self.probe._sample_retina(image) * self.retinal_gain
+        values = (self.probe._sample_retina(image) * self.retinal_gain)[
+            self.probe.retinal_permutation
+        ]
         drive = np.zeros_like(self.states[index])
         drive[self.probe.retina.node_indices] = values
         self.states[index] = self.probe._advance(self.states[index], drive, self.histories[index])

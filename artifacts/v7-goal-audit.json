@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "13023293612ea94fee800bfaf9e5cadb0a2c5b33d6ccd0805c7776a4dc842013",
-      "src/fly_emotion/driving/v7_goal_audit.py": "567b977770016918aebbb21a378ea3ade96bf9659dc09416cbf60cd3b6ce8d37",
+      "configs/driving-v7-goal-audit.yaml": "784d1afbdd299d3592533c13d49d6c118e255f26d8845017cd2b07f05be9fb3c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "d41c98ad8e7715f5ad58b2ac05ad1f48da1e5e543de988c426db20b96600ee88",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -39,9 +39,10 @@
       "artifacts/v7-r1r6-local-tuning.json": "0e84d436eb73e25b5a640badae39be95299e75e70d3c13f10abba36e88c03dae",
       "artifacts/v7-r1r6-local-calibration.json": "498a8a0a3f5d18ded062dbd82d32014d1c73daea9e001dd9a3313c3d1ead1d10",
       "artifacts/v7-r1r6-local-controls.json": "0683e6b6291e7a5432a284072bf896181f017fed60c0bd1fefa5df961795abab",
-      "artifacts/v7-neural-channels-tuning.json": "616adde39b4b0fea51d51447e4b4b5733a3b2f13dfec857cdcc368f28291c4db",
-      "artifacts/v7-neural-channels-calibration.json": "3694891b2dc1817df5bab4e28d1f8b422b0e5638a0aa19b60fe5c9a936f732ed",
-      "artifacts/v7-neural-channel-controls.json": "afc9abaf70a00ef933dc9e80b369b8a37c00893d2e0f592014660859ff4a205e"
+      "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
+      "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76",
+      "artifacts/v7-neural-channel-controls.json": "9115c8d47b8535b53a99c2fb2d7061b5a356a63fd7a56d8cc48310ce4dc96608",
+      "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70"
     }
   },
   "objective_items": {
@@ -181,7 +182,8 @@
             "success_count": 0,
             "total_obstacles_passed": 8
           }
-        }
+        },
+        "structured_neural_real_topology_advantage": true
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
@@ -254,6 +256,12 @@
         "preliminary_stage1_controls_complete": true,
         "strict_degree_preserving_control_complete": false,
         "real_topology_advantage": false,
+        "structured_neural_topology_control_successes": {
+          "real_malecns": 6,
+          "shuffled_retina_coordinates": 0,
+          "source_preserving_target_shuffle": 0,
+          "shuffled_transmitter_signs": 0
+        },
         "parameter_matched_linear_mlp_gru_complete": false,
         "downstream_ablations_authorized": false
       }
@@ -441,7 +449,8 @@
         "artifacts/v7-r1r6-local-controls.json",
         "artifacts/v7-neural-channels-tuning.json",
         "artifacts/v7-neural-channels-calibration.json",
-        "artifacts/v7-neural-channel-controls.json"
+        "artifacts/v7-neural-channel-controls.json",
+        "artifacts/v7-neural-topology-controls.json"
       ]
     },
     {

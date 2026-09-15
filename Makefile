@@ -218,6 +218,9 @@ v7-evaluate-neural-channels-calibration:
 v7-evaluate-neural-channel-controls:
 	.venv/bin/autodrive-fly v7-evaluate-neural-channel-controls
 
+v7-evaluate-neural-topology-controls:
+	.venv/bin/autodrive-fly v7-evaluate-neural-topology-controls
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

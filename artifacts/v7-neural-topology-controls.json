@@ -1,0 +1,312 @@
+{
+  "protocol": {
+    "name": "v7-structured-neural-channel-readout",
+    "phase": "post_calibration_frozen_topology_controls",
+    "control_seed": 20260915,
+    "dependencies_sha256": {
+      "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
+      "src/fly_emotion/driving/v7_neural_channels.py": "afc30366fbab7377334e0e05cc3926572816c8059746ed37f72dd538535fb14f",
+      "src/fly_emotion/driving/v7_neural_topology_controls.py": "a7152b8bc59d597e5316f68746c01470b078fc7e7a4b035ee756a69f8e3e4f21",
+      "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
+      "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76"
+    },
+    "model_sha256": "46983654c60f185c9a75eef19a63e10a2426020d99d4f875017108152ac64e10",
+    "model_changed_after_calibration": false,
+    "control_results_used_for_selection": false,
+    "runtime_modified": false
+  },
+  "seeds": [
+    8200,
+    8201,
+    8202,
+    8203,
+    8204,
+    8205
+  ],
+  "controls": {
+    "real_malecns": {
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "terminal_counts": {
+        "success": 6,
+        "obstacle": 0,
+        "road_boundary": 0,
+        "timeout": 0
+      },
+      "episodes": [
+        {
+          "seed": 8200,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.06942988881303,
+          "steps": 443,
+          "maximum_absolute_lateral_position": 1.3207098018541998
+        },
+        {
+          "seed": 8201,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.06942988881315,
+          "steps": 443,
+          "maximum_absolute_lateral_position": 1.3207098018546006
+        },
+        {
+          "seed": 8202,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.15982509503642,
+          "steps": 444,
+          "maximum_absolute_lateral_position": 1.7349782379574046
+        },
+        {
+          "seed": 8203,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.15982509503691,
+          "steps": 444,
+          "maximum_absolute_lateral_position": 1.734978237957056
+        },
+        {
+          "seed": 8204,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.13860664854472,
+          "steps": 444,
+          "maximum_absolute_lateral_position": 1.345721119914687
+        },
+        {
+          "seed": 8205,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.13860664854485,
+          "steps": 444,
+          "maximum_absolute_lateral_position": 1.3457211199152805
+        }
+      ]
+    },
+    "shuffled_retina_coordinates": {
+      "success_count": 0,
+      "total_obstacles_passed": 14,
+      "terminal_counts": {
+        "success": 0,
+        "obstacle": 4,
+        "road_boundary": 2,
+        "timeout": 0
+      },
+      "episodes": [
+        {
+          "seed": 8200,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 12.753425524578462,
+          "steps": 43,
+          "maximum_absolute_lateral_position": 0.06943685978866615
+        },
+        {
+          "seed": 8201,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 12.753425524578418,
+          "steps": 43,
+          "maximum_absolute_lateral_position": 0.0694368597861119
+        },
+        {
+          "seed": 8202,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.826520538982201,
+          "steps": 47,
+          "maximum_absolute_lateral_position": 0.2065470760191801
+        },
+        {
+          "seed": 8203,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.826520538982422,
+          "steps": 47,
+          "maximum_absolute_lateral_position": 0.20654707601416356
+        },
+        {
+          "seed": 8204,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.10509844231215,
+          "steps": 334,
+          "maximum_absolute_lateral_position": 5.461656424412505
+        },
+        {
+          "seed": 8205,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 91.10509844230221,
+          "steps": 334,
+          "maximum_absolute_lateral_position": 5.461656424557417
+        }
+      ]
+    },
+    "source_preserving_target_shuffle": {
+      "success_count": 0,
+      "total_obstacles_passed": 0,
+      "terminal_counts": {
+        "success": 0,
+        "obstacle": 6,
+        "road_boundary": 0,
+        "timeout": 0
+      },
+      "episodes": [
+        {
+          "seed": 8200,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 11.940445290143824,
+          "steps": 41,
+          "maximum_absolute_lateral_position": 1.6479308403120936
+        },
+        {
+          "seed": 8201,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 11.940445290014257,
+          "steps": 41,
+          "maximum_absolute_lateral_position": 1.647930840902479
+        },
+        {
+          "seed": 8202,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.522447240597135,
+          "steps": 47,
+          "maximum_absolute_lateral_position": 1.743572371092678
+        },
+        {
+          "seed": 8203,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.52244723986844,
+          "steps": 47,
+          "maximum_absolute_lateral_position": 1.7435723744991778
+        },
+        {
+          "seed": 8204,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.283860260756127,
+          "steps": 46,
+          "maximum_absolute_lateral_position": 1.628417411156321
+        },
+        {
+          "seed": 8205,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.28386026075594,
+          "steps": 46,
+          "maximum_absolute_lateral_position": 1.6284174111582688
+        }
+      ]
+    },
+    "shuffled_transmitter_signs": {
+      "success_count": 0,
+      "total_obstacles_passed": 10,
+      "terminal_counts": {
+        "success": 0,
+        "obstacle": 4,
+        "road_boundary": 2,
+        "timeout": 0
+      },
+      "episodes": [
+        {
+          "seed": 8200,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 11.95825821913437,
+          "steps": 41,
+          "maximum_absolute_lateral_position": 1.836997600522199
+        },
+        {
+          "seed": 8201,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 11.958258219134844,
+          "steps": 41,
+          "maximum_absolute_lateral_position": 1.836997600519768
+        },
+        {
+          "seed": 8202,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.467818734988684,
+          "steps": 46,
+          "maximum_absolute_lateral_position": 0.9857545575780436
+        },
+        {
+          "seed": 8203,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 13.467818734987722,
+          "steps": 46,
+          "maximum_absolute_lateral_position": 0.985754557590968
+        },
+        {
+          "seed": 8204,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 63.223665679390315,
+          "steps": 241,
+          "maximum_absolute_lateral_position": 5.5883354567398085
+        },
+        {
+          "seed": 8205,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 63.22366567923824,
+          "steps": 241,
+          "maximum_absolute_lateral_position": 5.588335457316531
+        }
+      ]
+    }
+  },
+  "gates": {
+    "real_topology_replays_all_successes": true,
+    "retina_shuffle_reduces_success": true,
+    "target_shuffle_reduces_success": true,
+    "transmitter_shuffle_reduces_success": true
+  },
+  "real_topology_advantage_passed": true,
+  "final_evaluated": false,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "measured_cell_physiology_gate_passed": false,
+    "T5_PD_ND_label_resolved": false,
+    "LPLC_typed_mechanism_gate_passed": false,
+    "topology_advantage_tested": false,
+    "external_final_evaluated": false,
+    "navigation_release_allowed": false,
+    "modifies_assisted_v5": false,
+    "modifies_neural_v6_front": false,
+    "changes_default_service": false
+  }
+}

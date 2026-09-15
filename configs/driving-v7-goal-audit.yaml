@@ -47,6 +47,7 @@ evidence:
   neural_channels_tuning: artifacts/v7-neural-channels-tuning.json
   neural_channels_calibration: artifacts/v7-neural-channels-calibration.json
   neural_channel_controls: artifacts/v7-neural-channel-controls.json
+  neural_topology_controls: artifacts/v7-neural-topology-controls.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading

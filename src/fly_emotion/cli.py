@@ -61,6 +61,7 @@ from .driving.v7_neural_channels import (
     evaluate_v7_neural_channels_tuning,
 )
 from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
+from .driving.v7_neural_topology_controls import evaluate_v7_neural_topology_controls
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
@@ -221,6 +222,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-channels-tuning")
     subparsers.add_parser("v7-evaluate-neural-channels-calibration")
     subparsers.add_parser("v7-evaluate-neural-channel-controls")
+    subparsers.add_parser("v7-evaluate-neural-topology-controls")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -640,6 +642,12 @@ def main() -> None:
     if args.command == "v7-evaluate-neural-channel-controls":
         report = evaluate_v7_neural_channel_controls(root)
         target = root / "artifacts/v7-neural-channel-controls.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-topology-controls":
+        report = evaluate_v7_neural_topology_controls(root)
+        target = root / "artifacts/v7-neural-topology-controls.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

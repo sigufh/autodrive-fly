@@ -4,7 +4,7 @@
     "phase": "tuning",
     "dependencies_sha256": {
       "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
-      "src/fly_emotion/driving/v7_neural_channels.py": "db27939e7736e3b7028178465affceed55f74064d7213a1e96bddbef5ef1df00",
+      "src/fly_emotion/driving/v7_neural_channels.py": "afc30366fbab7377334e0e05cc3926572816c8059746ed37f72dd538535fb14f",
       "artifacts/v7-r1r6-local-tuning.json": "0e84d436eb73e25b5a640badae39be95299e75e70d3c13f10abba36e88c03dae"
     },
     "visual_input_only_via_R1_R6": true,
