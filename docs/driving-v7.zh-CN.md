@@ -931,6 +931,18 @@ readme/绘图源、校验其文件哈希、查找不依赖响应大小的显式�
 `biological_PD_code_assigned=null` 和 `advance_to_model_scoring=false`。HTTP 状态只是
 2026-09-15 的环境观测，不是永久不可访问声明。
 
+`make v7-freeze-stage1-split` 预注册了新的阶段 1 刺激划分，而没有运行任何模型。
+development、validation、OOD、final 各含 156 个刺激，覆盖 uniform、ON/OFF 四向
+moving edge、looming/receding、左右 translation 和顺/逆时针 rotation；每个 split
+使用互斥参数、噪声水平和 seed，全部六组跨 split 的 identity 与帧哈希重叠均为零。
+每个左右/旋转镜像对共享同一噪声场并逐像素严格镜像。final 只保存聚合 SHA-256，
+不暴露逐刺激条目，且 `evaluable=false`、`evaluated=false`。
+
+该协议定义 10 ms/frame、每帧四个名义 2.5 ms 子步，仅用于确定性刺激调度；
+`applied_to_current_runtime=false`、`biologically_calibrated=false`，没有修改旧 v7 的
+无量纲 leak/delay，也不能解决论文 160 ms 时移与当前支路延迟的矛盾。刺激级互斥
+也不等于独立动物或独立细胞。证据见 `artifacts/v7-stage1-split.json`。
+
 `make v7-audit-goal-coverage` 将总目标第 0–8 项逐项绑定到当前 artifact，并保存
 `artifacts/v7-goal-audit.json`。目前仅版本/检查点隔离完整通过；城市/大模型暂停只通过
 边界要求；视觉阶段明确失败，拓扑/基线阶段不完整，中央复合体、下降读出、信号分离、

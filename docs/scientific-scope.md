@@ -350,6 +350,16 @@ bounded retrieval must hash and inspect only the readme/plotting source and find
 an explicit response-independent code map before any T5 model scoring
 (`artifacts/v7-t5-label-audit.json`).
 
+A new stage-1 stimulus protocol freezes disjoint development, validation, OOD and
+sealed-final sets before another model is fitted. Each split contains 156 stimuli
+covering uniform luminance, ON/OFF four-direction edges, looming/receding,
+translation and rotation. Parameters, noise levels and seeds are disjoint; all
+cross-split identity and frame-hash overlaps are zero. Mirror pairs share exactly
+mirrored noise. Final per-stimulus rows are not exposed and remain unevaluated.
+The declared 10-ms frame and nominal 2.5-ms substep are engineering scheduling
+units only: they are not applied to the runtime and do not constitute biological
+time calibration (`artifacts/v7-stage1-split.json`).
+
 The machine-readable objective coverage audit maps all numbered requirements 0–8
 to current evidence. Only version/checkpoint isolation is complete; the city/LLM
 pause is a boundary-only pass. Controlled vision is failed, topology/baseline work

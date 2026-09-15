@@ -1,0 +1,67 @@
+version: 1
+name: v7-stage1-independent-stimulus-split
+observed_on: "2026-09-15"
+exploratory: true
+advance_allowed: false
+base_visual_config: configs/driving-v7.yaml
+engineering_timebase:
+  frame_interval_milliseconds: 10.0
+  neural_substeps_per_frame: 4
+  nominal_substep_interval_milliseconds: 2.5
+  applied_to_current_runtime: false
+  biologically_calibrated: false
+  permitted_use: deterministic_stimulus_scheduling_only
+stimulus_geometry:
+  width: 48
+  height: 24
+  uniform_levels: [0.08, 0.50, 0.92]
+splits:
+  development:
+    evaluable: true
+    seeds: [101, 102, 103, 104]
+    edge_speeds_pixels_per_frame: [1.0, 2.0]
+    looming_duration_frames: [24, 32]
+    translation_period_pixels: [8, 12]
+    rotation_turns_per_sequence: [0.25, 0.50]
+    noise_standard_deviation: [0.00, 0.005, 0.01, 0.015]
+  validation:
+    evaluable: true
+    seeds: [201, 202, 203, 204]
+    edge_speeds_pixels_per_frame: [0.5, 1.5]
+    looming_duration_frames: [28, 40]
+    translation_period_pixels: [10, 16]
+    rotation_turns_per_sequence: [0.375, 0.75]
+    noise_standard_deviation: [0.02, 0.03, 0.04, 0.05]
+  ood:
+    evaluable: true
+    seeds: [301, 302, 303, 304]
+    edge_speeds_pixels_per_frame: [0.25, 3.0]
+    looming_duration_frames: [16, 56]
+    translation_period_pixels: [6, 20]
+    rotation_turns_per_sequence: [0.125, 1.0]
+    noise_standard_deviation: [0.08, 0.10, 0.12, 0.15]
+  final:
+    evaluable: false
+    seeds: [401, 402, 403, 404]
+    edge_speeds_pixels_per_frame: [0.75, 2.5]
+    looming_duration_frames: [20, 48]
+    translation_period_pixels: [7, 14]
+    rotation_turns_per_sequence: [0.3125, 0.625]
+    noise_standard_deviation: [0.025, 0.035, 0.06, 0.09]
+families: [uniform, moving_edge, looming, translation, rotation]
+polarities: ["on", "off"]
+directions:
+  moving_edge: [left, right, up, down]
+  looming: [expansion, contraction]
+  translation: [left, right]
+  rotation: [clockwise, counterclockwise]
+release_boundary:
+  fit_on_development_only: true
+  select_on_validation_only: true
+  ood_for_robustness_not_selection: true
+  final_single_use_after_all_stage1_gates: true
+  final_store_frames: false
+  final_store_aggregate_digest_only: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  no_parameter_fit_in_this_protocol: true

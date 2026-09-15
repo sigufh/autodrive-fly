@@ -56,6 +56,7 @@ from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
+from .driving.v7_stage1_split import evaluate_v7_stage1_split
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
@@ -169,6 +170,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-extract-t5-phenotype")
     subparsers.add_parser("v7-audit-goal-coverage")
     subparsers.add_parser("v7-audit-t5-labels")
+    subparsers.add_parser("v7-freeze-stage1-split")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -456,6 +458,12 @@ def main() -> None:
     if args.command == "v7-audit-t5-labels":
         report = evaluate_v7_t5_label_audit(root)
         target = root / "artifacts/v7-t5-label-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-freeze-stage1-split":
+        report = evaluate_v7_stage1_split(root)
+        target = root / "artifacts/v7-stage1-split.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

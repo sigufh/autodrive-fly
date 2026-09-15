@@ -34,6 +34,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5 = reports["t5_phenotype"]
     t5_labels = reports["t5_label_audit"]
     interface = reports["ephys_interface"]
+    stage1_split = reports["stage1_split"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -167,6 +168,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "fitted_T4_final_test_evaluated": reports["fitted_t4"]["test"]["evaluated"],
                 "ephys_final_test_available": interface["available_final_test"],
                 "task_and_OOD_release_evaluated": False,
+                "stage1_stimulus_splits_disjoint": all(
+                    value["identity_overlap"] == value["frame_hash_overlap"] == 0
+                    for value in stage1_split["cross_split_overlap"].values()
+                ),
+                "sealed_final_evaluated": stage1_split["split_manifests"]["final"]["evaluated"],
             },
         },
         {
@@ -269,8 +275,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         },
         {
             "requirement": "7.independent_train_validation_one_time_final_split",
-            "status": "missing",
-            "evidence": [config["evidence"]["fitted_t4"], config["evidence"]["ephys_interface"]],
+            "status": "protocol_frozen_not_evaluated",
+            "evidence": [
+                config["evidence"]["fitted_t4"],
+                config["evidence"]["ephys_interface"],
+                config["evidence"]["stage1_split"],
+            ],
         },
         {
             "requirement": "7.dynamic_obstacle_density_curvature_speed_noise_OOD",
