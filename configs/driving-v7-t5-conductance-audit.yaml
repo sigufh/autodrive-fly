@@ -1,0 +1,43 @@
+version: 1
+name: v7-t5-conductance-model-data-audit
+exploratory: true
+advance_allowed: false
+observed_on: "2026-09-15"
+repository:
+  url: https://github.com/reiserlab/T5ConductanceModel.git
+  commit: fe52053dda84d49a124e6c1f141dd461eba9630c
+  license: GPL-3.0
+  file_count: 38
+  total_file_bytes: 13686897
+  manifest_sha256: 1db6da29a948fa80039b551db5c6020dbbbea666491bb133001e9113f2c360fa
+paper:
+  title: The computation of directional selectivity in the Drosophila OFF motion pathway
+  doi: 10.7554/eLife.50706
+  pubmed_id: 31825313
+  data_collection_doi: 10.25378/janelia.c.4771805.v1
+  cell_type: T5
+  recorded_cells: 17
+model_protocol:
+  fit_stimulus: width-2 single-bar flashes
+  paper_random_initializations_per_cell: 1000
+  paper_prediction_models: best_error_one_percent
+  script_attempts_per_seed: 10
+  script_error_cutoff: 3.5
+  script_output_models_per_cell_per_seed: 1
+  grating_cell_ids: [2, 5, 6, 7, 9, 10, 13, 14, 15, 16, 17]
+  reversal_potentials_millivolts:
+    leak: -65
+    inhibitory: -74
+    excitatory: 0
+interface_boundary:
+  read_only: true
+  fit_allowed: false
+  preserve_native_ragged_time_vectors: true
+  resample_to_1khz: false
+  connect_to_v7_runtime: false
+  convert_to_normalized_drive: false
+  inject_target_activity: false
+  raw_files_committed: false
+  split_kind: within_cell_stimulus_condition_generalization
+  independent_cell_holdout: false
+  untouched_final_test: false

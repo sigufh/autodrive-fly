@@ -76,9 +76,11 @@ def test_saved_T5_data_audit_is_hash_bound_and_non_advancing() -> None:
     assert candidate["datasets"]["unified_model"]["size_bytes"] == 3_630_019
     assert all(item["metadata_status_code"] == 200 for item in candidate["datasets"].values())
     status = report["interface_status"]
-    assert status["current_interface_contains_T5_data"] is False
+    assert status["current_interface_contains_T5_data"] is True
     assert status["absolute_T5_voltage_candidate_discovered"] is True
     assert status["absolute_T5_voltage_files_verified"] is False
+    assert status["processed_baseline_subtracted_T5_voltage_files_verified"] is True
+    assert status["processed_T5_cell_count"] == 17
     assert status["T5_fit_allowed"] is False
     other = report["other_modalities"]
     assert other["wienecke_2018_voltage_imaging"]["signal_unit"] == (

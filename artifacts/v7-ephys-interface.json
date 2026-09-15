@@ -4,13 +4,15 @@
     "exploratory": true,
     "advance_allowed": false,
     "dependencies_sha256": {
-      "configs/driving-v7-ephys-interface.yaml": "c2d3d67db8180cfcf7beed980c416bb863241d77d796634e8269cec1d298bab3",
-      "src/fly_emotion/driving/v7_ephys_interface.py": "8f7a757a95128a8491a4e8ce06daccf46dae2e49a2314abc58410c8bdabf3184",
+      "configs/driving-v7-ephys-interface.yaml": "8d464400b1b8115854bbea619cef8f38c39f40e64868cda93b9b3bee9883f846",
+      "src/fly_emotion/driving/v7_ephys_interface.py": "98b17128a92574e2894bdc95228933263ac06363e98cbe4adde82f9ce0b7bf68",
       "configs/driving-v7-electrophysiology-audit.yaml": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
       "configs/driving-v7-fig5-validation.yaml": "e62c0dfd7a94ee783d991856ca5cd4af0bdc4a0c5f1ff8e7f04470c7ae16cb49",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig5-validation.json": "c98dec3b65c6998b4087e4acf4251b7830fc6b5e4dea42b38fe79ad64f4f9a96",
-      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa"
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
+      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3"
     },
     "parameter_fitting": false,
     "runtime_imports_interface": false,
@@ -43,6 +45,14 @@
   },
   "split_contract": {
     "fit_allowed": false,
+    "t5_data_available": true,
+    "t5_same_cells_used_for_fit_and_prediction": true,
+    "t5_independent_cell_holdout": false,
+    "t5_native_sample_intervals_milliseconds": [
+      2.5,
+      5.0
+    ],
+    "t5_resampled_to_1khz": false,
     "fig3_conditions_available": [
       "on_pd",
       "on_nd",
@@ -65,6 +75,7 @@
   },
   "interface_boundary": {
     "preserve_native_1khz_samples": true,
+    "preserve_T5_native_ragged_samples": true,
     "permit_resampling": false,
     "connect_to_v7_runtime": false,
     "convert_millivolts_to_normalized_drive": false,
@@ -426,13 +437,38 @@
       }
     }
   },
+  "t5_conductance": {
+    "role": "within_cell_stimulus_condition_generalization",
+    "cell_count": 17,
+    "fit_allowed": false,
+    "fit_trace_count": 635,
+    "condition_trace_counts": {
+      "single_bar": 1398,
+      "moving_bar": 268,
+      "minimal_motion": 1633,
+      "moving_grating": 96,
+      "static_grating": 176
+    },
+    "response_quantity": "baseline_subtracted_membrane_voltage",
+    "response_unit": "millivolts",
+    "native_sample_intervals_milliseconds": {
+      "2.5": 1905,
+      "5": 1666
+    },
+    "ragged_trace_lengths": true,
+    "repository_commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
+    "manifest_sha256": "1db6da29a948fa80039b551db5c6020dbbbea666491bb133001e9113f2c360fa",
+    "spfr_is_exact_subset_of_all": true
+  },
   "available_final_test": false,
   "limitations": [
     "The interface exposes published processed arrays, not raw 10-kHz recordings.",
     "Fig. 3 remains training-data reproduction and cannot score generalization.",
     "Fig. 5 is an external condition but cell identity disjointness is unknown.",
     "Fig. 5 reuses Fig. 3 input traces and is not an independent input dataset.",
-    "No T5 electrophysiology or untouched final test is available in this interface.",
+    "T5 traces are processed same-cell data, not an independent cell holdout.",
+    "T5 native 2.5/5-ms ragged traces remain separate from the T4 1-kHz bundle.",
+    "No untouched final test is available in this interface.",
     "No conversion from millivolts to current v7 normalized state is defined."
   ],
   "advance_to_parameter_fit": false,

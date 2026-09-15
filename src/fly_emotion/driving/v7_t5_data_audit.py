@@ -14,6 +14,7 @@ from fly_emotion.driving.v7_geometry_sign import _sha256
 CONFIG = Path("configs/driving-v7-t5-data-audit.yaml")
 IMPLEMENTATION = Path("src/fly_emotion/driving/v7_t5_data_audit.py")
 INTERFACE_CONFIG = Path("configs/driving-v7-ephys-interface.yaml")
+T5_CONDUCTANCE_EVIDENCE = Path("artifacts/v7-t5-conductance-audit.json")
 
 
 def _fetch(url: str) -> tuple[bytes, int]:
@@ -88,6 +89,7 @@ def evidence_classification(modality: str, allowed_roles: dict) -> dict:
 def evaluate_v7_t5_data_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
     interface = yaml.safe_load((root / INTERFACE_CONFIG).read_text(encoding="utf-8"))
+    t5_conductance = json.loads((root / T5_CONDUCTANCE_EVIDENCE).read_text(encoding="utf-8"))
     if not config["exploratory"] or config["advance_allowed"]:
         raise ValueError("T5 data audit must remain exploratory and non-advancing")
     source = config["sources"]["gruntman_2021_whole_cell"]
@@ -137,9 +139,7 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
     connectome = config["sources"]["shinomiya_2025_connectome"]
     raw, status = _fetch(connectome["datacite_url"])
     connectome_attributes = json.loads(raw)["data"]["attributes"]
-    interface_has_t5 = any(
-        "T5" in value for values in interface["dataset_roles"].values() for value in values
-    )
+    interface_has_t5 = bool(interface["split_contract"]["t5_data_available"])
     return {
         "protocol": {
             "name": config["name"],
@@ -150,6 +150,7 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(INTERFACE_CONFIG): _sha256(root / INTERFACE_CONFIG),
+                str(T5_CONDUCTANCE_EVIDENCE): _sha256(root / T5_CONDUCTANCE_EVIDENCE),
             },
             "large_raw_files_downloaded": False,
             "parameter_fitting": False,
@@ -189,10 +190,15 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
             "current_interface_contains_T5_data": interface_has_t5,
             "absolute_T5_voltage_candidate_discovered": True,
             "absolute_T5_voltage_files_verified": False,
+            "processed_baseline_subtracted_T5_voltage_files_verified": True,
+            "processed_T5_repository_commit": t5_conductance["repository"]["commit"],
+            "processed_T5_cell_count": len(t5_conductance["cells"]),
             "T5_fit_allowed": False,
             "reason": (
-                "Whole-cell T5 datasets are publicly described, but this audit lacks a file "
-                "manifest and verified raw files; the current interface still contains T4 only."
+                "The 2021 raw whole-cell datasets still lack a verified file manifest here. "
+                "A separate fixed-commit audit verified processed baseline-subtracted 2019 T5 "
+                "voltage traces and added a read-only, native-time interface; it is same-cell "
+                "condition generalization and remains unavailable for fitting."
             ),
         },
         "forbidden_cross_modal_claims": config["forbidden_cross_modal_claims"],
@@ -201,6 +207,7 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
             "Figshare access codes are dated environment observations, not permanence claims.",
             "DataCite descriptions establish scope, not file integrity or array axes.",
             "The 6.32-GB and 4.31-GB datasets were not downloaded under the bounded audit.",
+            "Verified 2019 processed T5 traces do not verify the separate 2021 raw datasets.",
             "ASAP2f is relative fluorescence at about 15 Hz, not patch-clamp millivolts.",
             "Calcium imaging and connectome structure cannot calibrate membrane voltage.",
         ],

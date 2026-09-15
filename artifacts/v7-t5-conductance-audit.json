@@ -1,0 +1,908 @@
+{
+  "protocol": {
+    "name": "v7-t5-conductance-model-data-audit",
+    "exploratory": true,
+    "advance_allowed": false,
+    "observed_on": "2026-09-15",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
+      "src/fly_emotion/driving/v7_t5_conductance_audit.py": "d9925e14c0f432a0bf4cc684034afd2e8a542ac3822b241dd562afe33eed6e0d"
+    },
+    "parameter_fitting": false,
+    "model_simulation": false,
+    "raw_files_committed": false,
+    "temporary_clone_deleted_after_audit": true
+  },
+  "repository": {
+    "url": "https://github.com/reiserlab/T5ConductanceModel.git",
+    "commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
+    "license": "GPL-3.0",
+    "file_count": 38,
+    "total_file_bytes": 13686897,
+    "manifest_sha256": "1db6da29a948fa80039b551db5c6020dbbbea666491bb133001e9113f2c360fa",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size_bytes": 66,
+        "git_blob": "dfe0770424b2a19faf507a501ebfc23be8f54e7b",
+        "sha256": "1a1dbe176bc233b499d35a57db7513f2941c99ab9759f177830c9149be99005b"
+      },
+      {
+        "path": "LICENSE",
+        "size_bytes": 35129,
+        "git_blob": "e62ec04cdeece724caeeeeaeb6ae1f6af1bb6b9a",
+        "sha256": "605e9047a563c5c8396ffb18232aa4304ec56586aee537c45064c6fb425e44ad"
+      },
+      {
+        "path": "README.md",
+        "size_bytes": 1329,
+        "git_blob": "4dc5f83e88ba86520218348787dfc3df8b2ebe7d",
+        "sha256": "410af03f0bdac23a43bb3d1d5050734c32def81da9c0ce6f5a1453e317476a5a"
+      },
+      {
+        "path": "data_cell_10_all.mat",
+        "size_bytes": 727424,
+        "git_blob": "e4520cd910adc902cd4729f3f2ff2a4115e62622",
+        "sha256": "f4f0386b782de0c0510229fe775a391bfbc0961b38958b6a68da2edbf0ffbb59"
+      },
+      {
+        "path": "data_cell_10_spfr.mat",
+        "size_bytes": 120318,
+        "git_blob": "ce051dd5b3fdd36510f7070b9e978589293c161c",
+        "sha256": "4aa87ef318cd3860d06292b5915dcbdb876999425ac9f58bb271dff70a86012c"
+      },
+      {
+        "path": "data_cell_11_all.mat",
+        "size_bytes": 457436,
+        "git_blob": "fe4c010d7978fa196f9c687bda4f497291bbb413",
+        "sha256": "07bcc7a3370f817d8be1fb3f9127c118608ba9d688bd8d6943b54390ccab35dc"
+      },
+      {
+        "path": "data_cell_11_spfr.mat",
+        "size_bytes": 143579,
+        "git_blob": "4f624e4c25207fec071ad0f7f04e775f683435b7",
+        "sha256": "344773429832c2a8a0eb6f3ac8b0348c5df0994125d7ee25c79e434cbf00c409"
+      },
+      {
+        "path": "data_cell_12_all.mat",
+        "size_bytes": 552509,
+        "git_blob": "458ee791f22824f5b337481fde4af0d8d26c1e24",
+        "sha256": "ec24f2841207eef04d80614e91791da52b8fe6699b990dd9f5bb8b28f1577314"
+      },
+      {
+        "path": "data_cell_12_spfr.mat",
+        "size_bytes": 139626,
+        "git_blob": "1bf6d8484fadcfabd9ffb63c042cfd313950bdb1",
+        "sha256": "bde68bab2c1f4018565015c94ef777733194e11b15b698762772bad9944ef6ab"
+      },
+      {
+        "path": "data_cell_13_all.mat",
+        "size_bytes": 700666,
+        "git_blob": "6638b4fb7fcc02726fe77929a5f1f951aaf3c6b1",
+        "sha256": "aefbab728ab065ce5d27f960dbedf5d6827109520e69c74bc4339f5b4f726fca"
+      },
+      {
+        "path": "data_cell_13_spfr.mat",
+        "size_bytes": 138891,
+        "git_blob": "9873a8fea8221aeec47369ad37f26c33b67aee98",
+        "sha256": "bbf2e91c8a9ca97567c236ac2dfcd24d8242da28fb0807c603413198661ed1e7"
+      },
+      {
+        "path": "data_cell_14_all.mat",
+        "size_bytes": 737473,
+        "git_blob": "9c06ef960e7a7872d84b03aa77f9dc8f7c80c206",
+        "sha256": "327cd9cd51706781f8a5dbe507f3b17afbfe56896b4f54a2f129c88f94eb2e53"
+      },
+      {
+        "path": "data_cell_14_spfr.mat",
+        "size_bytes": 138463,
+        "git_blob": "4a7dc80db2af492d3c9bb8eef348c564237a802f",
+        "sha256": "14aa8e680ec5fada4ca153f974abcc097b0e8e48df519077ba593d41486600f6"
+      },
+      {
+        "path": "data_cell_15_all.mat",
+        "size_bytes": 711975,
+        "git_blob": "587514ac7cb0154599f04930ca5ffd64611a7677",
+        "sha256": "69ef28202eef328b40686f02cdb7136e5d8ada0bceeb6c42ac9bfe199caac28a"
+      },
+      {
+        "path": "data_cell_15_spfr.mat",
+        "size_bytes": 102236,
+        "git_blob": "d4ddd4a4cf4f6ac044a28c1b71832a7689dd94d2",
+        "sha256": "ec389896aa2324a7dc905b4a8669a90399425a8c805fcc04c0c0a1a907297832"
+      },
+      {
+        "path": "data_cell_16_all.mat",
+        "size_bytes": 902791,
+        "git_blob": "61311a63c09082c4efefc28d099d684bb25caf74",
+        "sha256": "3243c7d43b8f0354a911c8359bfab514d3303cce4a18a8edf1d003fecdc51f42"
+      },
+      {
+        "path": "data_cell_16_spfr.mat",
+        "size_bytes": 180709,
+        "git_blob": "62779a60de254e213751bffdf8a98f6c6cbef7bb",
+        "sha256": "03760ae3dd683829d16ede498f8efe76fca2247f907e402ff8ad261c7e33df47"
+      },
+      {
+        "path": "data_cell_17_all.mat",
+        "size_bytes": 932808,
+        "git_blob": "5b0b37cbbddd245c1da61a5f67d2821655ec0402",
+        "sha256": "71032bc5ddc6f93d4bc80b6556d89e930de508635422be2b64880561334062c4"
+      },
+      {
+        "path": "data_cell_17_spfr.mat",
+        "size_bytes": 155069,
+        "git_blob": "57f4ec834291c72729de06920aca63e8a24f2e89",
+        "sha256": "6d766ed8fe31410db27141356a5250d3fec4cf9fd79e7e340b012f3784ec8292"
+      },
+      {
+        "path": "data_cell_1_all.mat",
+        "size_bytes": 543899,
+        "git_blob": "591b2210eef335613bde9b4afd2befc5eeddf0e2",
+        "sha256": "0ff3d06d7c4186db0a053b294d5652b973f615368f1eeccb8b8ad9aa4cb387fb"
+      },
+      {
+        "path": "data_cell_1_spfr.mat",
+        "size_bytes": 90637,
+        "git_blob": "66e2cfcf5a9217f3c9ed66fc2a3960b68a1620d2",
+        "sha256": "103b57bbc5723417bbb78bb9ab615e466861a575ad0cccfdad953095dc109fb6"
+      },
+      {
+        "path": "data_cell_2_all.mat",
+        "size_bytes": 911297,
+        "git_blob": "597321573dc5568cec05eaf7411011ac8c90573f",
+        "sha256": "f9bbf7ca292d970d0d4b854832750855820093c68d5d5694fbcfa4a6aaa47767"
+      },
+      {
+        "path": "data_cell_2_spfr.mat",
+        "size_bytes": 103546,
+        "git_blob": "6b90bbe48fdf5a23803f1a6c3fe20d146756552e",
+        "sha256": "cae3e7ab06a46e2f70e2c17f4ffd4ce2c3f157c9383e1ea538bbec2722f512ae"
+      },
+      {
+        "path": "data_cell_3_all.mat",
+        "size_bytes": 524819,
+        "git_blob": "bbd7e1639f865fe1ef390a789516e7346f2039d3",
+        "sha256": "7cc7caece72ca9de8ba534fc81e2bf2545b3bfc751a355baee552c993f4f2a47"
+      },
+      {
+        "path": "data_cell_3_spfr.mat",
+        "size_bytes": 94724,
+        "git_blob": "c6590611fe7f55025b6f11975547293c181d7b5a",
+        "sha256": "759f05a2884daaada8ed0c36441deaf2f0f624ad878ac9969b6b52cf5ac4aa07"
+      },
+      {
+        "path": "data_cell_4_all.mat",
+        "size_bytes": 336117,
+        "git_blob": "aec05813338f0479b3ab9c745584c4e16cd721fd",
+        "sha256": "10e372b2371d96d29243380e98256ce6a9d34b39d68e2aa1465a902843f86095"
+      },
+      {
+        "path": "data_cell_4_spfr.mat",
+        "size_bytes": 72744,
+        "git_blob": "60a645a57b515d8fe6754a13325291c019e029dc",
+        "sha256": "4f609462f21c6ca41daf94e48eaba0ca9f7d564941249334bb35950642dcdf02"
+      },
+      {
+        "path": "data_cell_5_all.mat",
+        "size_bytes": 854954,
+        "git_blob": "48f21589ad42522788cdf2ab40bebbd3fb114f0c",
+        "sha256": "e89474ac9b519068f575d80b8f59f1df42a5f788a3f3c9b7fd4e0ed7a4435aac"
+      },
+      {
+        "path": "data_cell_5_spfr.mat",
+        "size_bytes": 95282,
+        "git_blob": "f8485140668fcd246c8e5ffc1041d1bdc7459224",
+        "sha256": "bb42ddccc483376900a1bdf7665d7061c22247a60787f877b62ed32f60e72731"
+      },
+      {
+        "path": "data_cell_6_all.mat",
+        "size_bytes": 876159,
+        "git_blob": "f8522cf6e569a55288cad565cbaaac9ee10c797c",
+        "sha256": "6387a2ddcec94fc0b0dc6419722a9eaa89991704da4845ef623288dc8fa3beaf"
+      },
+      {
+        "path": "data_cell_6_spfr.mat",
+        "size_bytes": 57149,
+        "git_blob": "dec7466b9fb28f661849a6fae4cb519c6663b1ef",
+        "sha256": "d0fd4cbea24500afa7220f6dda5b627fe269c6245154290a64cb9872fa294c38"
+      },
+      {
+        "path": "data_cell_7_all.mat",
+        "size_bytes": 528022,
+        "git_blob": "dbc18ce67a5b19043a950f08385cea139764d423",
+        "sha256": "c27e3d99fc0b715b005b2ddce4a405e38f36b81f21222afbfcf2eda8235de8f1"
+      },
+      {
+        "path": "data_cell_7_spfr.mat",
+        "size_bytes": 68852,
+        "git_blob": "45f0dd171d2382e14c4609649fef3ab6b562e3a7",
+        "sha256": "8316bb01b392172e27d231562ba0467d7fb7107b5063597bb939110957c63497"
+      },
+      {
+        "path": "data_cell_8_all.mat",
+        "size_bytes": 590634,
+        "git_blob": "1f495886c63d7b17b4179dc36f2eb20e3722c71c",
+        "sha256": "ad33f097c46b821eb46d2f59f5ad6e2fd7ff61b7d8f55d1da574a8252d0ffa3e"
+      },
+      {
+        "path": "data_cell_8_spfr.mat",
+        "size_bytes": 137479,
+        "git_blob": "c3be1975824affdc0b53f2b1d67f7c9b34a83061",
+        "sha256": "f8be6e4b91bdc5fe64bb4a9707e70b444002e92bf9dfc1e85461d670cd42f8e2"
+      },
+      {
+        "path": "data_cell_9_all.mat",
+        "size_bytes": 793358,
+        "git_blob": "e4f1ba2db2284ac15b5ccada9b1360982d48de32",
+        "sha256": "c8f526270e0c941027255b0064898f108337487591a3d14930352eee1080ccb2"
+      },
+      {
+        "path": "data_cell_9_spfr.mat",
+        "size_bytes": 120402,
+        "git_blob": "3bd8ae6a382dc2cdb74b347ed42a849c34f37041",
+        "sha256": "143bf6f695adadb015651e96a5bf1efd09e8e6f23f8ddd716a8459480d412afd"
+      },
+      {
+        "path": "optimize_model.m",
+        "size_bytes": 8326,
+        "git_blob": "154cde0f056bbe2048ae233f0ef511d807643148",
+        "sha256": "35744fb4c18499388576f1c5b99acb2e2577885aec334a6cf03d37b060b5c4a2"
+      }
+    ]
+  },
+  "paper": {
+    "title": "The computation of directional selectivity in the Drosophila OFF motion pathway",
+    "doi": "10.7554/eLife.50706",
+    "pubmed_id": 31825313,
+    "data_collection_doi": "10.25378/janelia.c.4771805.v1",
+    "cell_type": "T5",
+    "recorded_cells": 17
+  },
+  "model_protocol": {
+    "fit_stimulus": "width-2 single-bar flashes",
+    "paper_random_initializations_per_cell": 1000,
+    "paper_prediction_models": "best_error_one_percent",
+    "script_attempts_per_seed": 10,
+    "script_error_cutoff": 3.5,
+    "script_output_models_per_cell_per_seed": 1,
+    "grating_cell_ids": [
+      2,
+      5,
+      6,
+      7,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "reversal_potentials_millivolts": {
+      "leak": -65,
+      "inhibitory": -74,
+      "excitatory": 0
+    }
+  },
+  "data_semantics": {
+    "response_quantity": "baseline_subtracted_membrane_voltage",
+    "response_unit": "millivolts",
+    "model_comparison_expression": "vm_minus_vl",
+    "time_unit": "milliseconds",
+    "native_sample_intervals_milliseconds": {
+      "2.5": 1905,
+      "5": 1666
+    },
+    "ragged_trace_lengths": true
+  },
+  "cells": [
+    {
+      "cell_id": 1,
+      "spfr_single_bar_conditions": 60,
+      "training_width2_conditions": 48,
+      "training_width2_samples": 7250,
+      "spfr_conditions_exactly_present_in_all": 60,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 112,
+          "samples": 16981
+        },
+        "moving_bar": {
+          "conditions": 18,
+          "samples": 6217
+        },
+        "minimal_motion": {
+          "conditions": 85,
+          "samples": 33008
+        },
+        "moving_grating": {
+          "conditions": 0,
+          "samples": 0
+        },
+        "static_grating": {
+          "conditions": 0,
+          "samples": 0
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -10.512842383624559,
+      "response_delta_voltage_millivolts_maximum": 25.30334017024837
+    },
+    {
+      "cell_id": 2,
+      "spfr_single_bar_conditions": 68,
+      "training_width2_conditions": 58,
+      "training_width2_samples": 8817,
+      "spfr_conditions_exactly_present_in_all": 68,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 120,
+          "samples": 18254
+        },
+        "moving_bar": {
+          "conditions": 24,
+          "samples": 8449
+        },
+        "minimal_motion": {
+          "conditions": 115,
+          "samples": 47959
+        },
+        "moving_grating": {
+          "conditions": 16,
+          "samples": 15553
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5500
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -7.289916938754601,
+      "response_delta_voltage_millivolts_maximum": 29.013199233768837
+    },
+    {
+      "cell_id": 3,
+      "spfr_single_bar_conditions": 62,
+      "training_width2_conditions": 54,
+      "training_width2_samples": 8196,
+      "spfr_conditions_exactly_present_in_all": 62,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 114,
+          "samples": 17316
+        },
+        "moving_bar": {
+          "conditions": 24,
+          "samples": 8466
+        },
+        "minimal_motion": {
+          "conditions": 65,
+          "samples": 28489
+        },
+        "moving_grating": {
+          "conditions": 0,
+          "samples": 0
+        },
+        "static_grating": {
+          "conditions": 0,
+          "samples": 0
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -13.628900085723458,
+      "response_delta_voltage_millivolts_maximum": 25.526484679196578
+    },
+    {
+      "cell_id": 4,
+      "spfr_single_bar_conditions": 48,
+      "training_width2_conditions": 48,
+      "training_width2_samples": 7262,
+      "spfr_conditions_exactly_present_in_all": 48,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 100,
+          "samples": 15127
+        },
+        "moving_bar": {
+          "conditions": 6,
+          "samples": 2200
+        },
+        "minimal_motion": {
+          "conditions": 42,
+          "samples": 17456
+        },
+        "moving_grating": {
+          "conditions": 0,
+          "samples": 0
+        },
+        "static_grating": {
+          "conditions": 0,
+          "samples": 0
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -5.45278337517761,
+      "response_delta_voltage_millivolts_maximum": 25.356129933735687
+    },
+    {
+      "cell_id": 5,
+      "spfr_single_bar_conditions": 62,
+      "training_width2_conditions": 54,
+      "training_width2_samples": 8230,
+      "spfr_conditions_exactly_present_in_all": 62,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 114,
+          "samples": 17360
+        },
+        "moving_bar": {
+          "conditions": 18,
+          "samples": 7284
+        },
+        "minimal_motion": {
+          "conditions": 113,
+          "samples": 50009
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5520
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -7.099057297132816,
+      "response_delta_voltage_millivolts_maximum": 23.394665426032596
+    },
+    {
+      "cell_id": 6,
+      "spfr_single_bar_conditions": 36,
+      "training_width2_conditions": 28,
+      "training_width2_samples": 4364,
+      "spfr_conditions_exactly_present_in_all": 36,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 62,
+          "samples": 9670
+        },
+        "moving_bar": {
+          "conditions": 18,
+          "samples": 7283
+        },
+        "minimal_motion": {
+          "conditions": 114,
+          "samples": 60277
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5508
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -10.469930848586017,
+      "response_delta_voltage_millivolts_maximum": 30.649124196362333
+    },
+    {
+      "cell_id": 7,
+      "spfr_single_bar_conditions": 44,
+      "training_width2_conditions": 24,
+      "training_width2_samples": 3748,
+      "spfr_conditions_exactly_present_in_all": 44,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 70,
+          "samples": 10933
+        },
+        "moving_bar": {
+          "conditions": 18,
+          "samples": 5932
+        },
+        "minimal_motion": {
+          "conditions": 56,
+          "samples": 23528
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5511
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -8.337608312614684,
+      "response_delta_voltage_millivolts_maximum": 29.34043376620251
+    },
+    {
+      "cell_id": 8,
+      "spfr_single_bar_conditions": 60,
+      "training_width2_conditions": 32,
+      "training_width2_samples": 7581,
+      "spfr_conditions_exactly_present_in_all": 60,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 60,
+          "samples": 14216
+        },
+        "moving_bar": {
+          "conditions": 18,
+          "samples": 7288
+        },
+        "minimal_motion": {
+          "conditions": 92,
+          "samples": 41021
+        },
+        "moving_grating": {
+          "conditions": 0,
+          "samples": 0
+        },
+        "static_grating": {
+          "conditions": 0,
+          "samples": 0
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -10.742799648073309,
+      "response_delta_voltage_millivolts_maximum": 23.710175172934647
+    },
+    {
+      "cell_id": 9,
+      "spfr_single_bar_conditions": 52,
+      "training_width2_conditions": 28,
+      "training_width2_samples": 6628,
+      "spfr_conditions_exactly_present_in_all": 52,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 61,
+          "samples": 13825
+        },
+        "moving_bar": {
+          "conditions": 14,
+          "samples": 4718
+        },
+        "minimal_motion": {
+          "conditions": 110,
+          "samples": 49549
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5513
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -15.152386353960928,
+      "response_delta_voltage_millivolts_maximum": 24.826953874066866
+    },
+    {
+      "cell_id": 10,
+      "spfr_single_bar_conditions": 52,
+      "training_width2_conditions": 28,
+      "training_width2_samples": 6649,
+      "spfr_conditions_exactly_present_in_all": 52,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 61,
+          "samples": 14595
+        },
+        "moving_bar": {
+          "conditions": 16,
+          "samples": 5381
+        },
+        "minimal_motion": {
+          "conditions": 106,
+          "samples": 40851
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5525
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -8.618250911427715,
+      "response_delta_voltage_millivolts_maximum": 25.169318425379878
+    },
+    {
+      "cell_id": 11,
+      "spfr_single_bar_conditions": 62,
+      "training_width2_conditions": 34,
+      "training_width2_samples": 8079,
+      "spfr_conditions_exactly_present_in_all": 62,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 62,
+          "samples": 14709
+        },
+        "moving_bar": {
+          "conditions": 6,
+          "samples": 2204
+        },
+        "minimal_motion": {
+          "conditions": 78,
+          "samples": 30467
+        },
+        "moving_grating": {
+          "conditions": 0,
+          "samples": 0
+        },
+        "static_grating": {
+          "conditions": 0,
+          "samples": 0
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -9.192071487622641,
+      "response_delta_voltage_millivolts_maximum": 29.676419417734223
+    },
+    {
+      "cell_id": 12,
+      "spfr_single_bar_conditions": 60,
+      "training_width2_conditions": 32,
+      "training_width2_samples": 7583,
+      "spfr_conditions_exactly_present_in_all": 60,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 71,
+          "samples": 16987
+        },
+        "moving_bar": {
+          "conditions": 16,
+          "samples": 6610
+        },
+        "minimal_motion": {
+          "conditions": 86,
+          "samples": 33166
+        },
+        "moving_grating": {
+          "conditions": 0,
+          "samples": 0
+        },
+        "static_grating": {
+          "conditions": 0,
+          "samples": 0
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -11.528438098045662,
+      "response_delta_voltage_millivolts_maximum": 33.795663823156985
+    },
+    {
+      "cell_id": 13,
+      "spfr_single_bar_conditions": 60,
+      "training_width2_conditions": 32,
+      "training_width2_samples": 7570,
+      "spfr_conditions_exactly_present_in_all": 60,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 86,
+          "samples": 20353
+        },
+        "moving_bar": {
+          "conditions": 16,
+          "samples": 6596
+        },
+        "minimal_motion": {
+          "conditions": 81,
+          "samples": 30944
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5497
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -8.716330024128204,
+      "response_delta_voltage_millivolts_maximum": 37.73009281257205
+    },
+    {
+      "cell_id": 14,
+      "spfr_single_bar_conditions": 60,
+      "training_width2_conditions": 32,
+      "training_width2_samples": 7577,
+      "spfr_conditions_exactly_present_in_all": 60,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 82,
+          "samples": 19419
+        },
+        "moving_bar": {
+          "conditions": 16,
+          "samples": 6598
+        },
+        "minimal_motion": {
+          "conditions": 95,
+          "samples": 36372
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5506
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -10.575277426064652,
+      "response_delta_voltage_millivolts_maximum": 23.679825617466264
+    },
+    {
+      "cell_id": 15,
+      "spfr_single_bar_conditions": 44,
+      "training_width2_conditions": 24,
+      "training_width2_samples": 5709,
+      "spfr_conditions_exactly_present_in_all": 44,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 44,
+          "samples": 10464
+        },
+        "moving_bar": {
+          "conditions": 12,
+          "samples": 4132
+        },
+        "minimal_motion": {
+          "conditions": 116,
+          "samples": 44826
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5537
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -11.75520197077337,
+      "response_delta_voltage_millivolts_maximum": 24.765358263608334
+    },
+    {
+      "cell_id": 16,
+      "spfr_single_bar_conditions": 78,
+      "training_width2_conditions": 42,
+      "training_width2_samples": 9963,
+      "spfr_conditions_exactly_present_in_all": 78,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 96,
+          "samples": 22791
+        },
+        "moving_bar": {
+          "conditions": 16,
+          "samples": 6604
+        },
+        "minimal_motion": {
+          "conditions": 129,
+          "samples": 50099
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5518
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -12.259947452086877,
+      "response_delta_voltage_millivolts_maximum": 28.824017031965
+    },
+    {
+      "cell_id": 17,
+      "spfr_single_bar_conditions": 65,
+      "training_width2_conditions": 37,
+      "training_width2_samples": 9175,
+      "spfr_conditions_exactly_present_in_all": 65,
+      "all_modalities": {
+        "single_bar": {
+          "conditions": 83,
+          "samples": 20281
+        },
+        "moving_bar": {
+          "conditions": 12,
+          "samples": 4130
+        },
+        "minimal_motion": {
+          "conditions": 150,
+          "samples": 58520
+        },
+        "moving_grating": {
+          "conditions": 8,
+          "samples": 9248
+        },
+        "static_grating": {
+          "conditions": 16,
+          "samples": 5527
+        }
+      },
+      "all_values_finite": true,
+      "response_delta_voltage_millivolts_minimum": -7.998054159638684,
+      "response_delta_voltage_millivolts_maximum": 26.168689054842254
+    }
+  ],
+  "aggregate": {
+    "minimal_motion_conditions": 1633,
+    "minimal_motion_samples": 676541,
+    "moving_bar_conditions": 268,
+    "moving_bar_samples": 100092,
+    "moving_grating_conditions": 96,
+    "moving_grating_samples": 108033,
+    "single_bar_conditions": 1398,
+    "single_bar_samples": 273281,
+    "spfr_single_bar_conditions": 973,
+    "static_grating_conditions": 176,
+    "static_grating_samples": 60662,
+    "training_width2_conditions": 635,
+    "training_width2_samples": 124381
+  },
+  "subset_verification": {
+    "spfr_conditions_found_in_all": 973,
+    "all_spfr_traces_byte_exact_with_condition_matched_all_trace": true
+  },
+  "split_contract": {
+    "fit_source": "same-cell width-2 single-bar flash traces from _spfr files",
+    "prediction_conditions": [
+      "other single bars",
+      "moving bars",
+      "minimal motion",
+      "moving gratings where available",
+      "static gratings where available"
+    ],
+    "same_cells_used_for_fit_and_prediction": true,
+    "independent_cell_holdout": false,
+    "untouched_final_test": false,
+    "classification": "within_cell_stimulus_condition_generalization"
+  },
+  "optimizer_reconciliation": {
+    "paper_protocol": "1000 random initializations per cell; best-error 1% used for predictions",
+    "repository_function_unit": "one seed, up to 10 attempts, threshold early stop, one saved model per cell",
+    "relationship": "The repository function is a seeded job unit. Reproducing the paper's 1000-start selection requires orchestrating many seeds and ranking outputs; neither orchestration nor published result directories are present in this repository.",
+    "paper_1000_start_selection_reproduced": false
+  },
+  "interface_boundary": {
+    "read_only": true,
+    "fit_allowed": false,
+    "preserve_native_ragged_time_vectors": true,
+    "resample_to_1khz": false,
+    "connect_to_v7_runtime": false,
+    "convert_to_normalized_drive": false,
+    "inject_target_activity": false,
+    "raw_files_committed": false,
+    "split_kind": "within_cell_stimulus_condition_generalization",
+    "independent_cell_holdout": false,
+    "untouched_final_test": false
+  },
+  "limitations": [
+    "The verified files are processed per-cell traces and protocol metadata, not raw acquisition files.",
+    "Responses are baseline-subtracted membrane voltage, not absolute resting voltage traces.",
+    "Native traces are ragged and use 2.5-ms or 5-ms intervals; they are not a 1-kHz bundle.",
+    "Prediction stimuli reuse the same 17 cells used for fitting and are not an independent cell holdout.",
+    "The paper's 1000-start/best-1% ensemble was not reconstructed and no parameters were fitted.",
+    "GPL-3.0 source/data files remain external and are not copied into this Apache-2.0 repository."
+  ],
+  "advance_to_T5_fit": false,
+  "advance_to_visual_gate": false,
+  "advance_to_central_complex": false
+}

@@ -8,6 +8,7 @@ import yaml
 
 from fly_emotion.driving.v7_ephys_interface import (
     CONFIG,
+    NativeTimedTrace,
     TimedArray,
     _array_summary,
     load_offline_bundle,
@@ -31,10 +32,27 @@ def test_offline_bundle_rejects_non_native_timebase(tmp_path: Path) -> None:
         load_offline_bundle(tmp_path, 2.0)
 
 
+def test_native_t5_trace_preserves_ragged_time_and_is_read_only() -> None:
+    trace = NativeTimedTrace(
+        np.array([0.0, 1.0, 0.5]),
+        np.array([-20.0, -15.0, -10.0]),
+        "within_cell_condition_generalization",
+    )
+    assert trace.quantity == "baseline_subtracted_membrane_voltage_millivolts"
+    assert trace.values.flags.writeable is False
+    assert trace.time_milliseconds.flags.writeable is False
+    with pytest.raises(ValueError, match="equal lengths"):
+        NativeTimedTrace(np.zeros(2), np.zeros(3), "invalid")
+
+
 def test_split_contract_has_no_final_test_or_verified_cell_holdout() -> None:
     config = yaml.safe_load((ROOT / CONFIG).read_text())
     split = config["split_contract"]
     assert split["fit_allowed"] is False
+    assert split["t5_data_available"] is True
+    assert split["t5_same_cells_used_for_fit_and_prediction"] is True
+    assert split["t5_independent_cell_holdout"] is False
+    assert split["t5_resampled_to_1khz"] is False
     assert split["fig5_is_independent_stimulus_condition"] is True
     assert split["fig3_fig5_cell_disjointness_verified"] is False
     assert split["fig5_is_independent_input_dataset"] is False
@@ -69,6 +87,19 @@ def test_saved_interface_is_hash_bound_native_1khz_and_runtime_isolated() -> Non
         "external_condition_validation"
     )
     assert len(report["verified_files"]) == 13
+    t5 = report["t5_conductance"]
+    assert t5["cell_count"] == 17
+    assert t5["fit_allowed"] is False
+    assert t5["fit_trace_count"] == 635
+    assert t5["condition_trace_counts"] == {
+        "single_bar": 1398,
+        "moving_bar": 268,
+        "minimal_motion": 1633,
+        "moving_grating": 96,
+        "static_grating": 176,
+    }
+    assert t5["native_sample_intervals_milliseconds"] == {"2.5": 1905, "5": 1666}
+    assert t5["spfr_is_exact_subset_of_all"] is True
     assert all(item["all_finite"] for item in arrays["fig3_inputs"].values())
     for path in (
         ROOT / "src/fly_emotion/driving/engine.py",

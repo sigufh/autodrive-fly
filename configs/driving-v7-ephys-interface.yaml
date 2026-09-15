@@ -10,6 +10,9 @@ source_evidence:
   fig3: artifacts/v7-electrophysiology-audit.json
   fig5: artifacts/v7-fig5-validation.json
   timebase: artifacts/v7-timebase-audit.json
+t5_conductance:
+  source_config: configs/driving-v7-t5-conductance-audit.yaml
+  source_evidence: artifacts/v7-t5-conductance-audit.json
 dataset_roles:
   training_reproduction:
     - fig3_Mi9.npy
@@ -31,6 +34,11 @@ dataset_roles:
   final_held_out: []
 split_contract:
   fit_allowed: false
+  t5_data_available: true
+  t5_same_cells_used_for_fit_and_prediction: true
+  t5_independent_cell_holdout: false
+  t5_native_sample_intervals_milliseconds: [2.5, 5.0]
+  t5_resampled_to_1khz: false
   fig3_conditions_available: [on_pd, on_nd, off_pd, off_nd]
   fig3_target_cell_ids_available: false
   fig5_target_cell_ids_available: false
@@ -46,6 +54,7 @@ split_contract:
     - independent T5 recordings
 interface_boundary:
   preserve_native_1khz_samples: true
+  preserve_T5_native_ragged_samples: true
   permit_resampling: false
   connect_to_v7_runtime: false
   convert_millivolts_to_normalized_drive: false

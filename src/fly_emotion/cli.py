@@ -56,6 +56,7 @@ from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
+from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
@@ -161,6 +162,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-validate-published-fig5")
     subparsers.add_parser("v7-build-ephys-interface")
     subparsers.add_parser("v7-audit-t5-data")
+    subparsers.add_parser("v7-audit-t5-conductance")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -424,6 +426,12 @@ def main() -> None:
     if args.command == "v7-audit-t5-data":
         report = evaluate_v7_t5_data_audit(root)
         target = root / "artifacts/v7-t5-data-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t5-conductance":
+        report = evaluate_v7_t5_conductance_audit(root)
+        target = root / "artifacts/v7-t5-conductance-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

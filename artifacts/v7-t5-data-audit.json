@@ -6,8 +6,9 @@
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
       "configs/driving-v7-t5-data-audit.yaml": "112b9c5e937c4152ff93f34620a31ae0511ba9e2eafd788bbd7a0a59295c7eb6",
-      "src/fly_emotion/driving/v7_t5_data_audit.py": "91f4b069897610e67fe731a20876ad6a01ab711386c229352351e4d485a11171",
-      "configs/driving-v7-ephys-interface.yaml": "c2d3d67db8180cfcf7beed980c416bb863241d77d796634e8269cec1d298bab3"
+      "src/fly_emotion/driving/v7_t5_data_audit.py": "a00be4fd5916bedd496c8ed3baa712e8b35b6911fc035f2ae1a84b189d30f3e2",
+      "configs/driving-v7-ephys-interface.yaml": "8d464400b1b8115854bbea619cef8f38c39f40e64868cda93b9b3bee9883f846",
+      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3"
     },
     "large_raw_files_downloaded": false,
     "parameter_fitting": false
@@ -147,7 +148,7 @@
     "wienecke_2018_voltage_imaging": {
       "paper_doi": "10.1016/j.neuron.2018.07.005",
       "http_status": 200,
-      "page_sha256": "319faca21f89ebd2c0a3335c51f169f3e273b915709821d7ee923d418215ad75",
+      "page_sha256": "1c975c96fa10827dfc432e7a7e497c74c7aacb3b1bb78ee7b649788df55dba3e",
       "signal_unit": "inverted_relative_fluorescence",
       "absolute_millivolts_possible": false,
       "modality": "two_photon_ASAP2f_voltage_imaging",
@@ -165,7 +166,7 @@
     "ramos_2021_calcium": {
       "paper_doi": "10.1038/s41467-021-24986-w",
       "http_status": 200,
-      "page_sha256": "77e964fe7b72b771ccd671c1c4f0393a720c3c34885ebb5b62e05b46a3421d7c",
+      "page_sha256": "2b63e92669ef40c83c59508512ce990d58e5d83f8244a4fd117f5281a3360ef4",
       "signal_unit": "relative_calcium_fluorescence",
       "absolute_millivolts_possible": false,
       "modality": "two_photon_calcium_imaging",
@@ -197,11 +198,14 @@
     }
   },
   "interface_status": {
-    "current_interface_contains_T5_data": false,
+    "current_interface_contains_T5_data": true,
     "absolute_T5_voltage_candidate_discovered": true,
     "absolute_T5_voltage_files_verified": false,
+    "processed_baseline_subtracted_T5_voltage_files_verified": true,
+    "processed_T5_repository_commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
+    "processed_T5_cell_count": 17,
     "T5_fit_allowed": false,
-    "reason": "Whole-cell T5 datasets are publicly described, but this audit lacks a file manifest and verified raw files; the current interface still contains T4 only."
+    "reason": "The 2021 raw whole-cell datasets still lack a verified file manifest here. A separate fixed-commit audit verified processed baseline-subtracted 2019 T5 voltage traces and added a read-only, native-time interface; it is same-cell condition generalization and remains unavailable for fitting."
   },
   "forbidden_cross_modal_claims": [
     "ASAP2f fluorescence is absolute membrane millivolts",
@@ -224,6 +228,7 @@
     "Figshare access codes are dated environment observations, not permanence claims.",
     "DataCite descriptions establish scope, not file integrity or array axes.",
     "The 6.32-GB and 4.31-GB datasets were not downloaded under the bounded audit.",
+    "Verified 2019 processed T5 traces do not verify the separate 2021 raw datasets.",
     "ASAP2f is relative fluorescence at about 15 Hz, not patch-clamp millivolts.",
     "Calcium imaging and connectome structure cannot calibrate membrane voltage."
   ],

@@ -304,8 +304,31 @@ about 15 Hz; this can constrain polarity, F1 and relative response amplitude but
 not absolute millivolts. Ramos-Traslosheros and Silies (2021) provide calcium
 activity and receptive-field constraints, while the Shinomiya T5 dataset is
 structural connectomics only. These modalities cannot substitute for one another.
-The current interface remains T4-only and T5 fitting remains disabled
+The separate 2021 raw datasets remain unverified here; a subsequently identified
+2019 repository is not treated as a substitute for those raw files
 (`artifacts/v7-t5-data-audit.json`).
+
+The fixed `reiserlab/T5ConductanceModel` commit
+`fe52053dda84d49a124e6c1f141dd461eba9630c` corresponds to Gruntman, Romani and
+Reiser (2019, doi:10.7554/eLife.50706). All 38 repository files are size-,
+Git-blob- and SHA-256-bound under GPL-3.0; none is committed here. Its MAT files
+expose processed baseline-subtracted whole-cell T5 voltage (`vm - vl`) from 17
+cells. They are not absolute resting-voltage traces or raw acquisition files.
+Native ragged traces use 2.5-ms or 5-ms intervals, so the read-only interface
+preserves per-trace time vectors instead of resampling them into the T4 1-kHz
+bundle.
+
+The repository code fits only width-2 single-bar flashes. Across cells this is
+635 conditions and 124,381 samples; all 973 `_spfr` traces are exact copies of
+condition-matched traces in `_all`. Other single bars, moving bars, minimal-motion
+stimuli and available gratings therefore test within-cell stimulus-condition
+generalization, not independent cells. The paper's 1000 initializations and
+best-error 1% require external multi-seed orchestration; the provided function
+runs at most 10 attempts per seed and saves one model per cell. That ensemble was
+not reconstructed, no fitting was run, and no untouched final test exists. The
+interface is read-only with `fit_allowed=false` and remains runtime-isolated
+(`artifacts/v7-t5-conductance-audit.json`,
+`artifacts/v7-ephys-interface.json`).
 
 ## Supported claims
 
