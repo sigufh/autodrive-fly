@@ -32,6 +32,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     manifest = reports["manifest"]
     controlled = reports["controlled_vision"]
     t5 = reports["t5_phenotype"]
+    t5_labels = reports["t5_label_audit"]
     interface = reports["ephys_interface"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
@@ -89,6 +90,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_measured_pair_count": t5["summary"]["all_pairs"]["pair_count"],
                 "T5_biological_PD_code_assigned": t5["label_boundary"][
                     "biological_PD_code_assigned"
+                ],
+                "T5_external_direction_label_map_verified": t5_labels["label_status"][
+                    "direction_code_to_PD_ND_mapping_verified"
                 ],
                 "T5_model_scoring_allowed": t5["label_boundary"]["model_scoring_allowed"],
                 "physical_timebase_identified": reports["timebase"]["identifiability"][

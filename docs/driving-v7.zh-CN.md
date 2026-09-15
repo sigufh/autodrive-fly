@@ -922,6 +922,15 @@ bar、moving bar、minimal motion 和部分 grating 用于**同细胞刺激条�
 用这份表型直接给 v7 模型计分或改变门槛：`artifacts/v7-t5-phenotype.json`。论文全文
 同时确认原始采集为 20 kHz、10 kHz 低通，而仓库提供的是 2.5/5 ms 处理后轨迹。
 
+`make v7-audit-t5-labels` 已把缺失映射定位到 Figure 4 数据与绘图代码包
+`10.25378/janelia.11328086.v1`。DataCite 校验其标题、1,391,804,749 字节总量和
+CC BY-NC 4.0 许可证，并确认描述中声明了 `readme.txt`；但本环境的 article API、
+页面和 archive 入口均返回 403，未取得文件清单，完整归档也超过本轮 10 MB 下载
+边界。因此不能验证 `direction_mb=0/1` 与 PD/ND 的映射。报告预注册了以后只取
+readme/绘图源、校验其文件哈希、查找不依赖响应大小的显式映射等步骤；当前仍保持
+`biological_PD_code_assigned=null` 和 `advance_to_model_scoring=false`。HTTP 状态只是
+2026-09-15 的环境观测，不是永久不可访问声明。
+
 `make v7-audit-goal-coverage` 将总目标第 0–8 项逐项绑定到当前 artifact，并保存
 `artifacts/v7-goal-audit.json`。目前仅版本/检查点隔离完整通过；城市/大模型暂停只通过
 边界要求；视觉阶段明确失败，拓扑/基线阶段不完整，中央复合体、下降读出、信号分离、

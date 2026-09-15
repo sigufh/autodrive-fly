@@ -341,6 +341,15 @@ does not infer the label from response magnitude, assigns no biological PD code,
 does not score a v7 model, and cannot advance a gate
 (`artifacts/v7-t5-phenotype.json`).
 
+The missing mapping is now localized to the Figure 4 data-and-code package
+(doi:10.25378/janelia.11328086.v1). DataCite verifies its title, 1,391,804,749-byte
+size, CC-BY-NC-4.0 license and declared `readme.txt`; however, the file API, page
+and archive endpoints returned HTTP 403 in this environment and no file manifest
+was obtained. The full archive exceeds the frozen 10-MB audit budget. A future
+bounded retrieval must hash and inspect only the readme/plotting source and find
+an explicit response-independent code map before any T5 model scoring
+(`artifacts/v7-t5-label-audit.json`).
+
 The machine-readable objective coverage audit maps all numbered requirements 0–8
 to current evidence. Only version/checkpoint isolation is complete; the city/LLM
 pause is a boundary-only pass. Controlled vision is failed, topology/baseline work

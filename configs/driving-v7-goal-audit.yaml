@@ -24,6 +24,7 @@ evidence:
   ephys_interface: artifacts/v7-ephys-interface.json
   t5_repository: artifacts/v7-t5-conductance-audit.json
   t5_phenotype: artifacts/v7-t5-phenotype.json
+  t5_label_audit: artifacts/v7-t5-label-audit.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading
