@@ -1,0 +1,95 @@
+version: 2
+name: v7-stage1-five-condition-nested-protocol
+observed_on: "2026-09-15"
+legacy_split_evidence: artifacts/v7-stage1-split.json
+legacy_regression:
+  source_split: development
+  expected_stimulus_count: 172
+  expected_aggregate_sha256: f0248b99e93efe102aff2b2a4f29663041d808680b80b8afaf61b59bc126172e
+  role: regression_only
+  parameter_selection_eligible: false
+  calibration_eligible: false
+  scientific_gate_eligible: false
+  score_weight: 0
+condition_contract:
+  condition_count: 5
+  required_role_counts:
+    tuning: 3
+    calibration: 1
+    external_final: 1
+  local_bundle_families: [uniform, moving_edge, looming, static, translation, rotation]
+conditions:
+  - condition_id: S1-T01
+    role: tuning
+    generator_parameters:
+      seed: 7101
+      edge_speed_pixels_per_frame: 0.625
+      looming_duration_frames: 26
+      terminal_radius_pixels: 9.5
+      translation_period_pixels: 9
+      rotation_turns_per_sequence: 0.1875
+      noise_standard_deviation: 0.0125
+  - condition_id: S1-T02
+    role: tuning
+    generator_parameters:
+      seed: 7102
+      edge_speed_pixels_per_frame: 1.25
+      looming_duration_frames: 36
+      terminal_radius_pixels: 7.5
+      translation_period_pixels: 11
+      rotation_turns_per_sequence: 0.4375
+      noise_standard_deviation: 0.045
+  - condition_id: S1-T03
+    role: tuning
+    generator_parameters:
+      seed: 7103
+      edge_speed_pixels_per_frame: 2.25
+      looming_duration_frames: 44
+      terminal_radius_pixels: 10.5
+      translation_period_pixels: 18
+      rotation_turns_per_sequence: 0.875
+      noise_standard_deviation: 0.07
+  - condition_id: S1-C01
+    role: calibration
+    generator_parameters:
+      seed: 7201
+      edge_speed_pixels_per_frame: 1.75
+      looming_duration_frames: 34
+      terminal_radius_pixels: 8.5
+      translation_period_pixels: 13
+      rotation_turns_per_sequence: 0.5625
+      noise_standard_deviation: 0.055
+  - condition_id: S1-F01
+    role: external_final
+    external_manifest:
+      custodian: null
+      commitment_sha256: null
+      public_key_fingerprint: null
+      committed_at_utc: null
+      retrieval_authorized: false
+      consumed: false
+statistics:
+  bootstrap_replicates: 1000
+  bootstrap_seed: 20260915
+  bootstrap_unit: target_cell_cluster_carrying_all_conditions
+  confidence_interval: percentile_95
+  minimum_consistent_conditions: 3
+  tuning_condition_count: 3
+  forbid_frame_timepoint_or_mirror_as_independent_unit: true
+  benefit_gate_uses_lower_confidence_bound: true
+  error_gate_uses_upper_confidence_bound: true
+execution_policy:
+  tuning_may_update_weights: true
+  calibration_requires_frozen_candidate_and_scorer: true
+  calibration_may_update_weights: false
+  calibration_may_update_architecture: false
+  final_requires_external_custody: true
+  final_requires_frozen_calibration_receipt: true
+  final_one_time_only: true
+  final_local_generator_available: false
+  final_payload_available: false
+  validation_evaluated: false
+  ood_evaluated: false
+  final_evaluated: false
+  no_target_activity_injection: true
+  input_path: R1-R6_only

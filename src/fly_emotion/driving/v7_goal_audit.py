@@ -41,6 +41,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     stage1_geometry_ab = reports["stage1_geometry_ab"]
     visual_target_inputs = reports["visual_target_inputs"]
     t5_supplement = reports["t5_supplement"]
+    looming_mechanisms = reports["looming_mechanisms"]
+    stage1_nested = reports["stage1_nested"]
+    target_fit = reports["target_fit"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -148,12 +151,38 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "existing_artifacts_rescored_under_new_contract": stage1_scoring["protocol"][
                     "existing_artifacts_rescored"
                 ],
+                "legacy_172_role": stage1_nested["legacy_regression"]["role"],
+                "legacy_172_scientific_gate_eligible": stage1_nested["legacy_regression"][
+                    "scientific_gate_eligible"
+                ],
+                "new_tuning_condition_count": len(
+                    [
+                        item
+                        for item in stage1_nested["local_condition_manifests"]
+                        if item["role"] == "tuning"
+                    ]
+                ),
+                "new_calibration_condition_count": len(
+                    [
+                        item
+                        for item in stage1_nested["local_condition_manifests"]
+                        if item["role"] == "calibration"
+                    ]
+                ),
+                "external_final_committed": stage1_nested["external_final"]["committed"],
+                "target_fit_contract_frozen": True,
+                "target_fit_real_fit_performed": target_fit["protocol"]["real_fit_performed"],
+                "looming_mechanism_axis_coverage": {
+                    name: item["coverage_fraction"]
+                    for name, item in looming_mechanisms["target_contracts"].items()
+                },
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
                 "LPLC1/LPLC2/LC4 looming and collision response gates",
                 "an independent T5 label map suitable for model scoring",
                 "a calibrated physical visual/neural timebase",
+                "an externally committed and independently custodied final condition",
             ],
         },
         {
@@ -223,6 +252,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "reserved_final_evaluated": stage1_split["split_manifests"]["final"]["evaluated"],
                 "blinded_one_time_final_available": False,
+                "legacy_172_regression_only": not stage1_nested["legacy_regression"][
+                    "decision_eligible"
+                ],
+                "nested_role_counts": stage1_nested["condition_contract"]["required_role_counts"],
+                "external_final_committed": stage1_nested["external_final"]["committed"],
+                "external_final_evaluated": stage1_nested["external_final"]["evaluated"],
             },
         },
         {
@@ -331,6 +366,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["ephys_interface"],
                 config["evidence"]["stage1_split"],
                 config["evidence"]["stage1_scoring"],
+                config["evidence"]["stage1_nested"],
+                config["evidence"]["target_fit"],
             ],
         },
         {

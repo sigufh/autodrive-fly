@@ -1,0 +1,82 @@
+version: 1
+name: v7-lplc1-lplc2-lc4-mechanism-audit
+observed_on: "2026-09-15"
+stage1_split_config: configs/driving-v7-stage1-split.yaml
+stage1_scoring_config: configs/driving-v7-stage1-scoring.yaml
+structure_evidence: artifacts/v7-visual-target-input-audit.json
+sources:
+  LPLC1:
+    paper_doi: 10.1016/j.cub.2022.04.023
+    pubmed_id: 35508172
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9177691/
+    required_phrases:
+      - requires the visual neuron LPLC1
+      - activity drives slowing
+      - pools inputs from object- and motion-detectors
+      - spatially biased inhibition
+      - back-to-front objects
+      - rotating checkerboard backgrounds
+      - receptive field size of about 30°
+      - tuning curve peaking at 10° of height
+  LPLC2:
+    paper_doi: 10.1038/nature24626
+    pubmed_id: 29120418
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7457385/fullTextXML
+    required_phrases:
+      - ultra-selective looming detecting neuron
+      - radial motion opponency
+      - respond strongly to outward motion
+      - local inhibitory inputs directionally selective for inward motion
+      - did not respond to dark receding looming
+      - luminance-matched motion-free darkening
+      - did not respond to wide-field motion
+      - 60° RF diameter upper limit
+  LC4:
+    paper_doi: 10.1016/j.cub.2019.01.079
+    pubmed_id: 30827912
+    url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=30827912&retmode=xml
+    required_phrases:
+      - LPLC2 and LC4 synapse directly onto the GF
+      - LPLC2 silencing eliminates the size component
+      - leaving only the velocity component
+      - linear function of angular velocity (provided by LC4)
+      - Gaussian function of angular size (provided by LPLC2)
+target_contracts:
+  LPLC1:
+    required_stimulus_axes:
+      - localized_object_azimuth
+      - back_to_front_vs_front_to_back_motion
+      - object_height_and_width
+      - object_motion_vs_rotating_background
+      - near_collision_vs_noncollision_trajectory
+    output_role: near_collision_specific_slowing_signal
+    current_shared_looming_score_is_sufficient: false
+  LPLC2:
+    required_stimulus_axes:
+      - receptive_field_centered_dark_looming
+      - receding_control
+      - luminance_matched_motion_free_darkening
+      - wide_field_translation_control
+      - local_outward_vs_inward_motion
+      - terminal_size
+      - radius_velocity_ratio
+    output_role: local_radial_expansion_and_terminal_size_signal
+    current_shared_looming_score_is_sufficient: false
+  LC4:
+    required_stimulus_axes:
+      - angular_velocity
+      - angular_size_matched_control
+      - radius_velocity_ratio
+      - downstream_GF_combination_context
+    output_role: looming_angular_velocity_component
+    current_shared_looming_score_is_sufficient: false
+boundary:
+  literature_audit_only: true
+  fit_parameters: false
+  infer_quantitative_thresholds_from_text: false
+  treat_calcium_as_membrane_voltage: false
+  treat_connectivity_as_function: false
+  evaluate_validation: false
+  evaluate_ood: false
+  evaluate_final: false
+  change_visual_gate: false

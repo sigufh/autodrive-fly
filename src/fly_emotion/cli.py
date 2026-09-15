@@ -47,6 +47,7 @@ from .driving.v7_local_input_audit import (
     evaluate_v7_receptor_mask_audit,
     evaluate_v7_t4_input_coverage,
 )
+from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_perturbation import evaluate_v7_perturbation
@@ -59,6 +60,7 @@ from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_
 from .driving.v7_stage1_development import evaluate_v7_stage1_development
 from .driving.v7_stage1_geometry_ab import evaluate_v7_stage1_geometry_ab
 from .driving.v7_stage1_input_audit import evaluate_v7_stage1_input_audit
+from .driving.v7_stage1_nested import evaluate_v7_stage1_nested
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
@@ -67,6 +69,7 @@ from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
+from .driving.v7_target_fit import evaluate_v7_target_fit_contract
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
 from .driving.v7_visual_target_input_audit import evaluate_v7_visual_target_input_audit
@@ -183,6 +186,9 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-stage1-development")
     subparsers.add_parser("v7-evaluate-stage1-geometry-ab")
     subparsers.add_parser("v7-audit-visual-target-inputs")
+    subparsers.add_parser("v7-audit-looming-mechanisms")
+    subparsers.add_parser("v7-freeze-stage1-nested")
+    subparsers.add_parser("v7-freeze-target-fit")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -512,6 +518,24 @@ def main() -> None:
     if args.command == "v7-audit-visual-target-inputs":
         report = evaluate_v7_visual_target_input_audit(root)
         target = root / "artifacts/v7-visual-target-input-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-looming-mechanisms":
+        report = evaluate_v7_looming_mechanism_audit(root)
+        target = root / "artifacts/v7-looming-mechanism-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-freeze-stage1-nested":
+        report = evaluate_v7_stage1_nested(root)
+        target = root / "artifacts/v7-stage1-nested.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-freeze-target-fit":
+        report = evaluate_v7_target_fit_contract(root)
+        target = root / "artifacts/v7-target-fit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

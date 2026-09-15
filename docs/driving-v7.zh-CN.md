@@ -1064,6 +1064,37 @@ T4 电压，只保留一份历史状态，完全不调用 branch 的 2/3 微步�
 6. 方向、ON/OFF、looming、镜像与真实拓扑优势全部通过后，才启动 EPG/PFL
    航向实验。
 
+## 五条件嵌套协议与分型视觉核
+
+`make v7-freeze-stage1-nested` 已把旧 development 172 条固定为
+`regression_only`：它的参数选择、calibration 和 scientific-final 权重均为零。新的
+五条件协议严格由三个 tuning bundle（S1-T01..03）、一个 calibration bundle
+（S1-C01）和一个外部 final（S1-F01）组成。每个本地 bundle 含 23 条成套刺激，覆盖
+uniform、四向 ON/OFF edge、loom/recede、same-size static、translation 和 rotation；
+噪声、速度、终末半径均固定且互异。S1-F01 在仓库内没有 seed、参数、帧或生成入口，
+当前也没有 custodian/commitment，因此 `calibration_authorized=false`、
+`final_authorized=false`。公开的旧 stage1 final 仍只算回归材料，不能冒充独立盲测。
+证据见 `artifacts/v7-stage1-nested.json`。
+
+`make v7-audit-looming-mechanisms` 将 LPLC1、LPLC2、LC4 拆成三套机制合同。现有旧
+电池对 LPLC1/LC4 所需轴覆盖为 0，对 LPLC2 为 4/7；统一的
+`expansion > max(receding, static)` 不足以推进分型拟合。LPLC1 使用 near-collision、
+BTF/FTF 与背景相对运动；LPLC2 分别检验 outward 对 inward、motion-free darkening
+和 translation；LC4 在固定 angular size 下检验 angular-velocity 回归。文献角度和
+毫秒数没有直接转换为当前像素/微步阈值。证据见
+`artifacts/v7-looming-mechanism-audit.json`。
+
+`make v7-freeze-target-fit` 冻结了 target-level `fast_weight / delayed_weight / leak`
+搜索核、729 点参数域、逐 target 输出与 1000 次 target-cluster bootstrap。T5 快支路
+固定为 Tm1/Tm2/Tm4；Tm9 与 CT1 在应用各自冻结 effect 后才共享 delayed scale，
+绝不将两者宣称为统一抑制。三个 tuning bundle 是 optimizer 唯一合法输入；旧 172、
+calibration 和 final 都不能进入搜索。LPLC1/LPLC2/LC4 使用独立 readout。当前仅以
+合成数据验证了核与统计不变量，没有执行真实拟合；真实 T5 仍缺 direction 0/1 到
+PD/ND 的独立映射、物理时间尺度、whole-cell 到 MaleCNS target 的映射和外部 final。
+离线缓存搜索只能称 frozen-upstream surrogate，top-K 仍需完整 recurrent graph 复核。
+因此 calibration、final、视觉 gate 与中央复合体全部保持关闭。证据见
+`artifacts/v7-target-fit.json`。
+
 ## 文献依据
 
 - Lappalainen 等，连接组约束视觉模型：

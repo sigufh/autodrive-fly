@@ -1,0 +1,189 @@
+{
+  "protocol": {
+    "name": "v7-lplc1-lplc2-lc4-mechanism-audit",
+    "observed_on": "2026-09-15",
+    "dependencies_sha256": {
+      "configs/driving-v7-looming-mechanism-audit.yaml": "423b893310fd78204c43034c57666a7d9878c300a96ac23a7951c1976463e54b",
+      "src/fly_emotion/driving/v7_looming_mechanism_audit.py": "d884154489b3c2dda651647036da505b9a2823b5acbdd523c30fe35e2bf55ba0",
+      "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "artifacts/v7-visual-target-input-audit.json": "6b37ff019b74d1fa7c6a5a7317959f89541a34196e9d4334f1e256192f5d749e"
+    },
+    "literature_audit_only": true,
+    "parameter_fitting": false,
+    "neural_evaluation_performed": false,
+    "runtime_modified": false
+  },
+  "sources": {
+    "LPLC1": {
+      "paper_doi": "10.1016/j.cub.2022.04.023",
+      "pubmed_id": 35508172,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9177691/",
+      "http_status": 200,
+      "response_bytes": 361608,
+      "response_sha256": "a29b358cb4951c77429a6f74ff4d3a6604e5650bb04b945ab8c78416833197e2",
+      "required_phrases_verified": [
+        "requires the visual neuron LPLC1",
+        "activity drives slowing",
+        "pools inputs from object- and motion-detectors",
+        "spatially biased inhibition",
+        "back-to-front objects",
+        "rotating checkerboard backgrounds",
+        "receptive field size of about 30\u00b0",
+        "tuning curve peaking at 10\u00b0 of height"
+      ]
+    },
+    "LPLC2": {
+      "paper_doi": "10.1038/nature24626",
+      "pubmed_id": 29120418,
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7457385/fullTextXML",
+      "http_status": 200,
+      "response_bytes": 137905,
+      "response_sha256": "fecd5b543b97b4ae316086675d8f11b26005d9f6a410224ac833fab08d459812",
+      "required_phrases_verified": [
+        "ultra-selective looming detecting neuron",
+        "radial motion opponency",
+        "respond strongly to outward motion",
+        "local inhibitory inputs directionally selective for inward motion",
+        "did not respond to dark receding looming",
+        "luminance-matched motion-free darkening",
+        "did not respond to wide-field motion",
+        "60\u00b0 RF diameter upper limit"
+      ]
+    },
+    "LC4": {
+      "paper_doi": "10.1016/j.cub.2019.01.079",
+      "pubmed_id": 30827912,
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=30827912&retmode=xml",
+      "http_status": 200,
+      "response_bytes": 9388,
+      "response_sha256": "5839dc4282d185676c5afb0caf0117244b21b8c8d9d0af605039adb050c9f81c",
+      "required_phrases_verified": [
+        "LPLC2 and LC4 synapse directly onto the GF",
+        "LPLC2 silencing eliminates the size component",
+        "leaving only the velocity component",
+        "linear function of angular velocity (provided by LC4)",
+        "Gaussian function of angular size (provided by LPLC2)"
+      ]
+    }
+  },
+  "current_stage1_axes": [
+    "luminance_matched_motion_free_darkening",
+    "receding_control",
+    "receptive_field_centered_dark_looming",
+    "wide_field_translation_control"
+  ],
+  "target_contracts": {
+    "LPLC1": {
+      "output_role": "near_collision_specific_slowing_signal",
+      "required_stimulus_axes": [
+        "localized_object_azimuth",
+        "back_to_front_vs_front_to_back_motion",
+        "object_height_and_width",
+        "object_motion_vs_rotating_background",
+        "near_collision_vs_noncollision_trajectory"
+      ],
+      "covered_by_current_stage1_battery": [],
+      "missing_from_current_stage1_battery": [
+        "localized_object_azimuth",
+        "back_to_front_vs_front_to_back_motion",
+        "object_height_and_width",
+        "object_motion_vs_rotating_background",
+        "near_collision_vs_noncollision_trajectory"
+      ],
+      "coverage_fraction": 0.0,
+      "current_shared_looming_score_is_sufficient": false,
+      "ready_for_typed_development_fit": false
+    },
+    "LPLC2": {
+      "output_role": "local_radial_expansion_and_terminal_size_signal",
+      "required_stimulus_axes": [
+        "receptive_field_centered_dark_looming",
+        "receding_control",
+        "luminance_matched_motion_free_darkening",
+        "wide_field_translation_control",
+        "local_outward_vs_inward_motion",
+        "terminal_size",
+        "radius_velocity_ratio"
+      ],
+      "covered_by_current_stage1_battery": [
+        "receptive_field_centered_dark_looming",
+        "receding_control",
+        "luminance_matched_motion_free_darkening",
+        "wide_field_translation_control"
+      ],
+      "missing_from_current_stage1_battery": [
+        "local_outward_vs_inward_motion",
+        "terminal_size",
+        "radius_velocity_ratio"
+      ],
+      "coverage_fraction": 0.5714285714285714,
+      "current_shared_looming_score_is_sufficient": false,
+      "ready_for_typed_development_fit": false
+    },
+    "LC4": {
+      "output_role": "looming_angular_velocity_component",
+      "required_stimulus_axes": [
+        "angular_velocity",
+        "angular_size_matched_control",
+        "radius_velocity_ratio",
+        "downstream_GF_combination_context"
+      ],
+      "covered_by_current_stage1_battery": [],
+      "missing_from_current_stage1_battery": [
+        "angular_velocity",
+        "angular_size_matched_control",
+        "radius_velocity_ratio",
+        "downstream_GF_combination_context"
+      ],
+      "coverage_fraction": 0.0,
+      "current_shared_looming_score_is_sufficient": false,
+      "ready_for_typed_development_fit": false
+    }
+  },
+  "mechanism_boundaries": {
+    "LPLC1": "near-collision slowing depends on object position, motion direction and relative background motion; generic radial expansion is insufficient",
+    "LPLC2": "local outward motion with inward-motion inhibition rejects receding, motion-free darkening and wide-field translation",
+    "LC4": "LC4 contributes an angular-velocity component downstream at GF; it is not interchangeable with the LPLC2 terminal-size component"
+  },
+  "next_stimulus_requirements": {
+    "LPLC1": [
+      "localized_object_azimuth",
+      "back_to_front_vs_front_to_back_motion",
+      "object_height_and_width",
+      "object_motion_vs_rotating_background",
+      "near_collision_vs_noncollision_trajectory"
+    ],
+    "LPLC2": [
+      "local_outward_vs_inward_motion",
+      "terminal_size",
+      "radius_velocity_ratio"
+    ],
+    "LC4": [
+      "angular_velocity",
+      "angular_size_matched_control",
+      "radius_velocity_ratio",
+      "downstream_GF_combination_context"
+    ]
+  },
+  "boundary": {
+    "literature_audit_only": true,
+    "fit_parameters": false,
+    "infer_quantitative_thresholds_from_text": false,
+    "treat_calcium_as_membrane_voltage": false,
+    "treat_connectivity_as_function": false,
+    "evaluate_validation": false,
+    "evaluate_ood": false,
+    "evaluate_final": false,
+    "change_visual_gate": false
+  },
+  "limitations": [
+    "Literature statements define stimulus semantics, not MaleCNS parameter values.",
+    "LPLC1 and LPLC2 evidence is calcium imaging, not absolute membrane voltage.",
+    "The LC4 source available here is a PubMed abstract and downstream GF model summary.",
+    "No current v7 target response is reclassified or rescored by this audit."
+  ],
+  "advance_to_typed_looming_model": false,
+  "advance_to_validation": false,
+  "advance_to_central_complex": false
+}

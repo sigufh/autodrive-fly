@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "4b0d80024f909f153530453676af73f1451e2b4f0996f357f647fa73b3b69c2f",
-      "src/fly_emotion/driving/v7_goal_audit.py": "50a19ebe374a5c13c00d8d4612036349ff2ad368a421109a56d911cbe6821048",
+      "configs/driving-v7-goal-audit.yaml": "489d891af4debb9911253aedb3bf116373159a65020a1b167ae216efaf0e4e21",
+      "src/fly_emotion/driving/v7_goal_audit.py": "e5f1f9b30a39b29825dd16954936245268ace7bdc5901ec45a8ddc47b7c04773",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -26,7 +26,10 @@
       "artifacts/v7-stage1-development.json": "a76c4c8bce93f7cc6105fb7f8bea5265d454b4b7f76a288677914cb989016ef2",
       "artifacts/v7-stage1-geometry-ab.json": "726c59ef2a59b079d1cfad18f229f4f4627103cab4c1da32d552cf9a49af3521",
       "artifacts/v7-visual-target-input-audit.json": "6b37ff019b74d1fa7c6a5a7317959f89541a34196e9d4334f1e256192f5d749e",
-      "artifacts/v7-t5-supplement-audit.json": "1d6d7ea04a74b280c05f4f268e19214ef614d46965b740c5e670a0cb14bbfed8"
+      "artifacts/v7-t5-supplement-audit.json": "1d6d7ea04a74b280c05f4f268e19214ef614d46965b740c5e670a0cb14bbfed8",
+      "artifacts/v7-looming-mechanism-audit.json": "da3af7b7482ecd4797b8b17a1b6acbdef767305c3cebd91db63aaf6ced377433",
+      "artifacts/v7-stage1-nested.json": "efae99e6e704ff5f51169cfe83605d72dad51019611efcf1424ab5def7de54f2",
+      "artifacts/v7-target-fit.json": "94cd2a5073de5c8bb734367bf04aa1d85545fb5fa11994011cf07bcce32d87ac"
     }
   },
   "objective_items": {
@@ -104,13 +107,26 @@
         "T5_target_count_in_structure_audit": 6719,
         "looming_targets_with_any_T4_and_any_T5": 319,
         "looming_target_count_in_structure_audit": 445,
-        "existing_artifacts_rescored_under_new_contract": false
+        "existing_artifacts_rescored_under_new_contract": false,
+        "legacy_172_role": "regression_only",
+        "legacy_172_scientific_gate_eligible": false,
+        "new_tuning_condition_count": 3,
+        "new_calibration_condition_count": 1,
+        "external_final_committed": false,
+        "target_fit_contract_frozen": true,
+        "target_fit_real_fit_performed": false,
+        "looming_mechanism_axis_coverage": {
+          "LPLC1": 0.0,
+          "LPLC2": 0.5714285714285714,
+          "LC4": 0.0
+        }
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
         "LPLC1/LPLC2/LC4 looming and collision response gates",
         "an independent T5 label map suitable for model scoring",
-        "a calibrated physical visual/neural timebase"
+        "a calibrated physical visual/neural timebase",
+        "an externally committed and independently custodied final condition"
       ]
     },
     {
@@ -186,7 +202,15 @@
         "task_and_OOD_release_evaluated": false,
         "stage1_stimulus_splits_disjoint": true,
         "reserved_final_evaluated": false,
-        "blinded_one_time_final_available": false
+        "blinded_one_time_final_available": false,
+        "legacy_172_regression_only": true,
+        "nested_role_counts": {
+          "tuning": 3,
+          "calibration": 1,
+          "external_final": 1
+        },
+        "external_final_committed": false,
+        "external_final_evaluated": false
       }
     },
     {
@@ -331,7 +355,9 @@
         "artifacts/v7-t4-conductance-fit.json",
         "artifacts/v7-ephys-interface.json",
         "artifacts/v7-stage1-split.json",
-        "artifacts/v7-stage1-scoring.json"
+        "artifacts/v7-stage1-scoring.json",
+        "artifacts/v7-stage1-nested.json",
+        "artifacts/v7-target-fit.json"
       ]
     },
     {

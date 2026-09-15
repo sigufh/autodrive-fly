@@ -1,4 +1,4 @@
-.PHONY: verify audit prepare calibrate-policy evaluate-constraints evaluate-driving evaluate-city-alpha evaluate-neural-decision train-neural-v6 evaluate-neural-transfer evaluate-neural-motor-adaptation evaluate-sensory-ablation evaluate-sensory-gains evaluate-body-motor-interaction train-sensory-pathway evaluate-panorama-release v7-init v7-evaluate-vision v7-evaluate-typed-vision v7-evaluate-optic-axis v7-audit-t4-sources v7-evaluate-branched-t4 v7-evaluate-t4-conductance v7-fit-t4-conductance v7-audit-retina-columns v7-audit-layer-mirror v7-audit-temporal-input v7-audit-local-input v7-audit-receptor-mask v7-audit-t4-input-coverage v7-audit-coverage-response v7-evaluate-mi9-sign v7-evaluate-conductance-order v7-audit-background-stability v7-audit-feedback-cut v7-evaluate-synchronous-update v7-audit-normalization-gain v7-audit-full-update-perturbation v7-evaluate-phase-motion v7-evaluate-geometry-sign v7-evaluate-pixel-sampling v7-audit-spectral-controls v7-evaluate-neural-spectra v7-audit-electrophysiology v7-audit-timebase v7-validate-published-fig5 v7-build-ephys-interface v7-audit-t5-data v7-audit-t5-conductance v7-extract-t5-phenotype v7-audit-goal-coverage v7-audit-t5-labels v7-freeze-stage1-split v7-audit-t5-supplement v7-freeze-stage1-scoring v7-audit-stage1-input v7-evaluate-stage1-development v7-evaluate-stage1-geometry-ab v7-audit-visual-target-inputs api web test
+.PHONY: verify audit prepare calibrate-policy evaluate-constraints evaluate-driving evaluate-city-alpha evaluate-neural-decision train-neural-v6 evaluate-neural-transfer evaluate-neural-motor-adaptation evaluate-sensory-ablation evaluate-sensory-gains evaluate-body-motor-interaction train-sensory-pathway evaluate-panorama-release v7-init v7-evaluate-vision v7-evaluate-typed-vision v7-evaluate-optic-axis v7-audit-t4-sources v7-evaluate-branched-t4 v7-evaluate-t4-conductance v7-fit-t4-conductance v7-audit-retina-columns v7-audit-layer-mirror v7-audit-temporal-input v7-audit-local-input v7-audit-receptor-mask v7-audit-t4-input-coverage v7-audit-coverage-response v7-evaluate-mi9-sign v7-evaluate-conductance-order v7-audit-background-stability v7-audit-feedback-cut v7-evaluate-synchronous-update v7-audit-normalization-gain v7-audit-full-update-perturbation v7-evaluate-phase-motion v7-evaluate-geometry-sign v7-evaluate-pixel-sampling v7-audit-spectral-controls v7-evaluate-neural-spectra v7-audit-electrophysiology v7-audit-timebase v7-validate-published-fig5 v7-build-ephys-interface v7-audit-t5-data v7-audit-t5-conductance v7-extract-t5-phenotype v7-audit-goal-coverage v7-audit-t5-labels v7-freeze-stage1-split v7-audit-t5-supplement v7-freeze-stage1-scoring v7-audit-stage1-input v7-evaluate-stage1-development v7-evaluate-stage1-geometry-ab v7-audit-visual-target-inputs v7-audit-looming-mechanisms v7-freeze-stage1-nested v7-freeze-target-fit api web test
 
 verify:
 	.venv/bin/autodrive-fly verify --dataset malecns
@@ -172,6 +172,15 @@ v7-evaluate-stage1-geometry-ab:
 
 v7-audit-visual-target-inputs:
 	.venv/bin/autodrive-fly v7-audit-visual-target-inputs
+
+v7-audit-looming-mechanisms:
+	.venv/bin/autodrive-fly v7-audit-looming-mechanisms
+
+v7-freeze-stage1-nested:
+	.venv/bin/autodrive-fly v7-freeze-stage1-nested
+
+v7-freeze-target-fit:
+	.venv/bin/autodrive-fly v7-freeze-target-fit
 
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
