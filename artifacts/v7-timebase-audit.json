@@ -1,0 +1,305 @@
+{
+  "protocol": {
+    "name": "v7-physical-timebase-audit",
+    "exploratory": true,
+    "advance_allowed": false,
+    "dependencies_sha256": {
+      "configs/driving-v7-timebase-audit.yaml": "462f2a84f2578c752fbc8d3692798ecebdb6d3b1212c466ea730937f88863f64",
+      "src/fly_emotion/driving/v7_timebase_audit.py": "0c823684b61bf8382c2627a47bdb95eed8bc019b546dfba09078be8c5ea7a6bb",
+      "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "configs/driving-v7-branched-t4.yaml": "ab6f8ac8b8852c26b765b620a60fbdaa5b6cc9649c5476303783030e16dffc93",
+      "configs/driving-v7-t4-conductance.yaml": "47d358b4c49908f5f155e6e55f46c4ca57fc97b4a9802b3d06ce47f2bf77c841",
+      "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
+      "src/fly_emotion/driving/v7_branched.py": "f07bc7c822d5b88053d8faaa50270a3f4a1a16c27c1b0cd077de372aacfa2a97",
+      "src/fly_emotion/driving/v7_conductance.py": "7758815cf11256d67647e286f103b579a68543c146b60711fee1830bbdbfad0d"
+    },
+    "parameter_fitting": false,
+    "runtime_modified": false
+  },
+  "paper_reference": {
+    "repository_rate_hz": 1000,
+    "edge_speed_degrees_per_second": 30.0,
+    "inter_ommatidial_angle_degrees": 4.8,
+    "spatial_shift_milliseconds": 160.0,
+    "fig1_pixel_width_degrees": 2.8125
+  },
+  "current_v7_time_contract": {
+    "frames_per_stimulus": 16,
+    "brain_substeps_per_frame": 4,
+    "physical_frame_duration_defined": false,
+    "physical_substep_duration_defined": false,
+    "milliseconds_per_substep": null,
+    "stimulus_time_unit": "abstract frame index"
+  },
+  "branched_delay_semantics": {
+    "delays_substeps": {
+      "centre_fast_excitatory": 0,
+      "proximal_delayed_on_inhibitory": 2,
+      "distal_delayed_off_inhibitory": 3
+    },
+    "delay_zero_reads": "current pre-update state",
+    "positive_delay_reads": "history[delay_substeps-1]",
+    "history_length_substeps": 3,
+    "physical_time_calibrated": false
+  },
+  "paper_shift_mapping": {
+    "target_milliseconds": 160.0,
+    "delays_substeps": {
+      "centre_fast_excitatory": 0,
+      "proximal_delayed_on_inhibitory": 2,
+      "distal_delayed_off_inhibitory": 3
+    },
+    "exact_single_branch_candidates": {
+      "proximal_delayed_on_inhibitory": {
+        "milliseconds_per_substep": 80.0,
+        "implied_delays_milliseconds": {
+          "proximal_delayed_on_inhibitory": 160.0,
+          "distal_delayed_off_inhibitory": 240.0
+        }
+      },
+      "distal_delayed_off_inhibitory": {
+        "milliseconds_per_substep": 53.333333333333336,
+        "implied_delays_milliseconds": {
+          "proximal_delayed_on_inhibitory": 106.66666666666667,
+          "distal_delayed_off_inhibitory": 160.0
+        }
+      }
+    },
+    "single_dt_matches_all_positive_delays": false,
+    "least_squares_milliseconds_per_substep": 61.53846153846154,
+    "least_squares_implied_delays_milliseconds": {
+      "proximal_delayed_on_inhibitory": 123.07692307692308,
+      "distal_delayed_off_inhibitory": 184.6153846153846
+    },
+    "least_squares_errors_milliseconds": {
+      "proximal_delayed_on_inhibitory": -36.92307692307692,
+      "distal_delayed_off_inhibitory": 24.615384615384613
+    },
+    "least_squares_rmse_milliseconds": 31.378581622109444,
+    "paper_signed_offsets_milliseconds": {
+      "pd": {
+        "distal_Mi9": -160.0,
+        "proximal_Mi4_C3": 160.0
+      },
+      "nd": {
+        "distal_Mi9": 160.0,
+        "proximal_Mi4_C3": -160.0
+      }
+    },
+    "current_signed_lags_substeps": {
+      "all_directions": {
+        "distal_Mi9": 3,
+        "proximal_Mi4_C3": 2
+      }
+    },
+    "direction_dependent_sign_reversal_implemented": false,
+    "positive_dt_can_match_paper_signed_offsets": false
+  },
+  "stimulus_time_candidates": {
+    "candidates": {
+      "horizontal_edge": {
+        "pixel_centres": [
+          2,
+          5,
+          8,
+          11,
+          13,
+          16,
+          19,
+          22,
+          25,
+          28,
+          31,
+          34,
+          36,
+          39,
+          42,
+          45
+        ],
+        "mean_pixels_per_frame": 2.8666666666666667,
+        "borrowed_degrees_per_pixel": 2.8125,
+        "borrowed_edge_speed_degrees_per_second": 30.0,
+        "implied_milliseconds_per_frame": 268.75,
+        "implied_milliseconds_per_substep": 67.1875
+      },
+      "vertical_edge": {
+        "pixel_centres": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16,
+          17,
+          18,
+          20,
+          21
+        ],
+        "mean_pixels_per_frame": 1.2666666666666666,
+        "borrowed_degrees_per_pixel": 2.8125,
+        "borrowed_edge_speed_degrees_per_second": 30.0,
+        "implied_milliseconds_per_frame": 118.75,
+        "implied_milliseconds_per_substep": 29.6875
+      },
+      "phase_grating": {
+        "pixels_per_frame": 1.0,
+        "borrowed_degrees_per_pixel": 2.8125,
+        "borrowed_edge_speed_degrees_per_second": 30.0,
+        "implied_milliseconds_per_frame": 93.75,
+        "implied_milliseconds_per_substep": 23.4375
+      }
+    },
+    "single_frame_duration_from_borrowed_scale": false,
+    "borrowed_scale_is_valid_for_v7": false,
+    "reason": "Fig. 1 white-noise pixel width and Fig. 3 edge speed are not calibrated to the v7 split-eye camera; candidates expose inconsistency only"
+  },
+  "typed_leak_time_constants": {
+    "default": {
+      "leak_per_substep": 0.28,
+      "effective_time_constant_substeps": 3.04410234313819,
+      "effective_time_constant_milliseconds": null
+    },
+    "R1-R6": {
+      "leak_per_substep": 1.0,
+      "effective_time_constant_substeps": 0.0,
+      "effective_time_constant_milliseconds": null
+    },
+    "L1": {
+      "leak_per_substep": 0.45,
+      "effective_time_constant_substeps": 1.6726967362944687,
+      "effective_time_constant_milliseconds": null
+    },
+    "L2": {
+      "leak_per_substep": 0.55,
+      "effective_time_constant_substeps": 1.2523360823403717,
+      "effective_time_constant_milliseconds": null
+    },
+    "L3": {
+      "leak_per_substep": 0.3,
+      "effective_time_constant_substeps": 2.8036732520571284,
+      "effective_time_constant_milliseconds": null
+    },
+    "L5": {
+      "leak_per_substep": 0.35,
+      "effective_time_constant_substeps": 2.321354823145728,
+      "effective_time_constant_milliseconds": null
+    },
+    "Mi1": {
+      "leak_per_substep": 0.24,
+      "effective_time_constant_substeps": 3.643825585602064,
+      "effective_time_constant_milliseconds": null
+    },
+    "Tm3": {
+      "leak_per_substep": 0.62,
+      "effective_time_constant_substeps": 1.0335019728090538,
+      "effective_time_constant_milliseconds": null
+    },
+    "Mi4": {
+      "leak_per_substep": 0.14,
+      "effective_time_constant_substeps": 6.630293331203163,
+      "effective_time_constant_milliseconds": null
+    },
+    "Mi9": {
+      "leak_per_substep": 0.12,
+      "effective_time_constant_substeps": 7.822683452596521,
+      "effective_time_constant_milliseconds": null
+    },
+    "CT1": {
+      "leak_per_substep": 0.1,
+      "effective_time_constant_substeps": 9.491221581029905,
+      "effective_time_constant_milliseconds": null
+    },
+    "C3": {
+      "leak_per_substep": 0.16,
+      "effective_time_constant_substeps": 5.735477907117629,
+      "effective_time_constant_milliseconds": null
+    },
+    "Tm1": {
+      "leak_per_substep": 0.28,
+      "effective_time_constant_substeps": 3.04410234313819,
+      "effective_time_constant_milliseconds": null
+    },
+    "Tm2": {
+      "leak_per_substep": 0.55,
+      "effective_time_constant_substeps": 1.2523360823403717,
+      "effective_time_constant_milliseconds": null
+    },
+    "Tm4": {
+      "leak_per_substep": 0.34,
+      "effective_time_constant_substeps": 2.4066494146779696,
+      "effective_time_constant_milliseconds": null
+    },
+    "Tm9": {
+      "leak_per_substep": 0.16,
+      "effective_time_constant_substeps": 5.735477907117629,
+      "effective_time_constant_milliseconds": null
+    },
+    "T4": {
+      "leak_per_substep": 0.5,
+      "effective_time_constant_substeps": 1.4426950408889634,
+      "effective_time_constant_milliseconds": null
+    },
+    "T5": {
+      "leak_per_substep": 0.5,
+      "effective_time_constant_substeps": 1.4426950408889634,
+      "effective_time_constant_milliseconds": null
+    },
+    "LPLC": {
+      "leak_per_substep": 0.38,
+      "effective_time_constant_substeps": 2.0918935318805514,
+      "effective_time_constant_milliseconds": null
+    },
+    "LC": {
+      "leak_per_substep": 0.38,
+      "effective_time_constant_substeps": 2.0918935318805514,
+      "effective_time_constant_milliseconds": null
+    }
+  },
+  "conductance_candidate_timing": {
+    "brain_substeps_per_frame": 4,
+    "uses_updated_same_substep_source_state": true,
+    "uses_branched_delay_substeps": false,
+    "history_retained_substeps": 1,
+    "paper_fixed_160_ms_shift_implemented": false
+  },
+  "identifiability": {
+    "physical_timebase_identified": false,
+    "single_dt_matches_branched_delays_and_paper_shift": false,
+    "signed_pd_nd_sequence_matches_paper": false,
+    "single_frame_duration_matches_current_stimulus_generators": false,
+    "current_delay_values_are_ordering_hyperparameters": true,
+    "reason": "No frame duration is declared; 2 and 3 substeps cannot both equal the paper's 160 ms shift; fixed positive lags cannot reverse between PD and ND; stimulus generators imply different durations under borrowed angular assumptions; and the conductance candidate bypasses branch delays."
+  },
+  "next_protocol_boundary": {
+    "assign_physical_time_to_current_runtime": false,
+    "modify_existing_delays": false,
+    "fit_model_parameters": false,
+    "require_explicit_solver_dt_before_fit": true,
+    "require_stimulus_angular_calibration_before_fit": true,
+    "require_resampling_protocol_before_fit": true,
+    "require_independent_validation_after_fit": true,
+    "required_design": [
+      "separate stimulus sampling interval from neural solver step",
+      "resample measured 1-kHz traces without changing their physical time axis",
+      "fit only on declared T4 training cells or conditions",
+      "freeze absolute-mV and PD/ND validation metrics before fitting",
+      "reserve independent T4 validation and obtain separate T5 constraints"
+    ]
+  },
+  "limitations": [
+    "The borrowed 2.8125-degree pixel scale is only an inconsistency check.",
+    "The paper's 160-ms spatial shift is not a synaptic time constant.",
+    "Discrete leak coefficients lack millisecond constants until solver dt is defined.",
+    "No candidate time mapping is selected by neural response or driving performance."
+  ],
+  "advance_to_time_calibrated_dynamics": false,
+  "advance_to_parameter_fit": false,
+  "advance_to_central_complex": false
+}

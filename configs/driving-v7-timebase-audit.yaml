@@ -1,0 +1,34 @@
+version: 1
+name: v7-physical-timebase-audit
+exploratory: true
+advance_allowed: false
+paper_evidence: artifacts/v7-electrophysiology-audit.json
+current_contract: configs/driving-v7.yaml
+branched_config: configs/driving-v7-branched-t4.yaml
+conductance_config: configs/driving-v7-t4-conductance.yaml
+paper_reference:
+  repository_rate_hz: 1000
+  edge_speed_degrees_per_second: 30.0
+  inter_ommatidial_angle_degrees: 4.8
+  spatial_shift_milliseconds: 160.0
+  fig1_pixel_width_degrees: 2.8125
+candidate_assumptions:
+  v7_frames: 16
+  brain_substeps_per_frame: 4
+  horizontal_edge_start_pixel: 2
+  horizontal_edge_end_pixel: 45
+  vertical_edge_start_pixel: 2
+  vertical_edge_end_pixel: 21
+  phase_grating_pixels_per_frame: 1.0
+  branched_delay_substeps:
+    centre_fast_excitatory: 0
+    proximal_delayed_on_inhibitory: 2
+    distal_delayed_off_inhibitory: 3
+audit_boundary:
+  assign_physical_time_to_current_runtime: false
+  modify_existing_delays: false
+  fit_model_parameters: false
+  require_explicit_solver_dt_before_fit: true
+  require_stimulus_angular_calibration_before_fit: true
+  require_resampling_protocol_before_fit: true
+  require_independent_validation_after_fit: true

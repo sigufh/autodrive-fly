@@ -255,6 +255,19 @@ connectome candidate, not a reproduced or fitted electrophysiology model. Fig. 3
 cannot validate T5, per-cell MaleCNS activity or driving behavior. No fitting or
 stage advancement is authorized by this audit.
 
+A separate timebase audit finds no physical time unit in the current v7 visual
+runtime: 16 stimulus frames and four brain substeps per frame are abstract indices.
+The branched proxy uses fixed 0/2/3-substep lags. No single positive solver step
+can make both 2 and 3 substeps equal the paper's 160-ms spatial offset, and fixed
+past-state lags cannot reproduce the paper's PD/ND-dependent sign reversal between
+Mi9 and Mi4/C3. Borrowing the paper's angular scales also implies incompatible
+frame durations for current horizontal edge, vertical edge and periodic grating
+generators. Most importantly, the conductance candidate reads same-substep updated
+source state and bypasses branch delays entirely. Existing leaks and delays are
+therefore dimensionless ordering parameters, not calibrated milliseconds or
+biological time constants. No `dt`, delay or dynamics parameter changes in this
+audit (`artifacts/v7-timebase-audit.json`).
+
 ## Supported claims
 
 - The recurrent model retains every edge in the documented MaleCNS v1.0 canonical
