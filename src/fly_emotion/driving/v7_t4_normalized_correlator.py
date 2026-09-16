@@ -20,12 +20,24 @@ IMPLEMENTATION = Path("src/fly_emotion/driving/v7_t4_normalized_correlator.py")
 
 
 class NormalizedCorrelatorT4Probe(MotionSignConductanceProbe):
-    def __init__(self, root: Path, normalization, gain: float, mode: str, source_audit: dict):
+    def __init__(
+        self,
+        root: Path,
+        normalization,
+        gain: float,
+        mode: str,
+        source_audit: dict,
+        *,
+        lag_substeps: int = 1,
+    ):
         super().__init__(root, retinal_backend="linear_luminance", normalization=normalization)
         if mode not in {"multiplicative", "additive"}:
             raise ValueError(f"unknown normalized correlator mode: {mode}")
         self.direction_gain = float(gain)
         self.direction_mode = mode
+        self.direction_lag_substeps = int(lag_substeps)
+        if self.direction_lag_substeps < 1:
+            raise ValueError("normalized correlator lag must be positive")
         coordinates = _frozen_axis_coordinates(
             root, self, source_audit["frozen_axis_calibration"]["transforms_by_eye"]
         )
@@ -63,6 +75,10 @@ class NormalizedCorrelatorT4Probe(MotionSignConductanceProbe):
             self.conductance["matrices"]["Mi4"]
             + self.conductance["matrices"]["C3"]
         ).tocsr()
+        self.correlator = {
+            "targets": self.conductance["targets"],
+            "history_substeps": self.direction_lag_substeps,
+        }
 
     def _advance(
         self, state: np.ndarray, drive: np.ndarray, history: list[np.ndarray]
@@ -72,7 +88,9 @@ class NormalizedCorrelatorT4Probe(MotionSignConductanceProbe):
             (1.0 - self.leak) * state + self.leak * np.tanh(1.8 * recurrent + drive)
         ).astype(np.float32)
         current = self._normalized_source_state(updated)
-        previous = self._normalized_source_state(history[0])
+        previous = self._normalized_source_state(
+            history[min(self.direction_lag_substeps - 1, len(history) - 1)]
+        )
         voltage = self._conductance_voltage(current)
         output = self.conductance["model"]["output_normalization"]
         base = np.clip(
@@ -100,7 +118,7 @@ class NormalizedCorrelatorT4Probe(MotionSignConductanceProbe):
             + self.leak[targets] * target_drive
         )
         history.insert(0, state.copy())
-        del history[1:]
+        del history[self.direction_lag_substeps :]
         return updated
 
 
@@ -160,6 +178,7 @@ def evaluate_v7_t4_normalized_correlator(root: Path) -> dict:
                 {
                     "mode": mode,
                     "gain": float(gain),
+                    "lag_substeps": 1,
                     "passed_gate_count": _pass_count(result),
                     **result,
                 }
@@ -168,7 +187,40 @@ def evaluate_v7_t4_normalized_correlator(root: Path) -> dict:
         candidates,
         key=lambda item: (-item["passed_gate_count"], item["gain"], item["mode"]),
     )
-    passed = selected["strict_t4ab_tuning_passed"] and selected["passed_gate_count"] == 24
+    lag_candidates = []
+    for mode, gain in config["correlator"]["lag_followup"]["frozen_mode_gain_pairs"]:
+        for lag in config["correlator"]["lag_followup"]["lags_substeps"]:
+            probe = NormalizedCorrelatorT4Probe(
+                root,
+                normalization,
+                float(gain),
+                str(mode),
+                source_audit,
+                lag_substeps=int(lag),
+            )
+            result = _score_variant(probe, condition_stimuli, scoring)
+            lag_candidates.append(
+                {
+                    "mode": mode,
+                    "gain": float(gain),
+                    "lag_substeps": int(lag),
+                    "passed_gate_count": _pass_count(result),
+                    **result,
+                }
+            )
+    selected_lag = min(
+        lag_candidates,
+        key=lambda item: (
+            -item["passed_gate_count"],
+            item["lag_substeps"],
+            item["gain"],
+            item["mode"],
+        ),
+    )
+    passed = (
+        selected_lag["strict_t4ab_tuning_passed"]
+        and selected_lag["passed_gate_count"] == 24
+    )
     return {
         "protocol": {
             "name": config["name"],
@@ -190,10 +242,16 @@ def evaluate_v7_t4_normalized_correlator(root: Path) -> dict:
             "runtime_modified": False,
         },
         "candidates": candidates,
+        "lag_followup_candidates": lag_candidates,
         "selected_candidate": {
             key: selected[key] for key in ("mode", "gain", "passed_gate_count")
         },
         "selected_result": selected,
+        "selected_lag_followup": {
+            key: selected_lag[key]
+            for key in ("mode", "gain", "lag_substeps", "passed_gate_count")
+        },
+        "selected_lag_followup_result": selected_lag,
         "tuning_passed": bool(passed),
         "advance_to_calibration": bool(passed),
         "advance_to_navigation_release": False,

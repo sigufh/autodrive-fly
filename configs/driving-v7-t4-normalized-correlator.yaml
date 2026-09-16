@@ -15,6 +15,11 @@ correlator:
   orientation: sign_of_proximal_minus_Mi1_centroid_on_frozen_eye_axis
   modes: [multiplicative, additive]
   gains: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+  lag_followup:
+    lags_substeps: [1, 2, 3, 4]
+    frozen_mode_gain_pairs:
+      - [additive, 0.5]
+      - [multiplicative, 4.0]
 selection_order:
   - maximize_passed_population_condition_head_gates
   - minimize_gain

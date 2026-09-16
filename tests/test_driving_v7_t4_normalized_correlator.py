@@ -28,6 +28,25 @@ def test_normalized_t4_correlator_improves_but_does_not_pass() -> None:
         "passed_gate_count": 16,
     }
     assert max(item["passed_gate_count"] for item in report["candidates"]) == 16
+    assert [
+        (item["mode"], item["gain"], item["lag_substeps"], item["passed_gate_count"])
+        for item in report["lag_followup_candidates"]
+    ] == [
+        ("additive", 0.5, 1, 16),
+        ("additive", 0.5, 2, 14),
+        ("additive", 0.5, 3, 13),
+        ("additive", 0.5, 4, 14),
+        ("multiplicative", 4.0, 1, 16),
+        ("multiplicative", 4.0, 2, 15),
+        ("multiplicative", 4.0, 3, 15),
+        ("multiplicative", 4.0, 4, 16),
+    ]
+    assert report["selected_lag_followup"] == {
+        "mode": "additive",
+        "gain": 0.5,
+        "lag_substeps": 1,
+        "passed_gate_count": 16,
+    }
     assert report["tuning_passed"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_navigation_release"] is False
