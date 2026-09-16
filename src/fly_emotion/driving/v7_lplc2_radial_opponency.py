@@ -18,9 +18,20 @@ import yaml
 from scipy import sparse
 
 from fly_emotion.connectome.graph import load_graph
-from fly_emotion.driving.v7 import HORIZONTAL_PREFERENCE, VERTICAL_PREFERENCE, V7VisualProbe
+from fly_emotion.driving.v7 import (
+    HORIZONTAL_PREFERENCE,
+    VERTICAL_PREFERENCE,
+    V7VisualProbe,
+    VisualStimulus,
+)
 from fly_emotion.driving.v7_geometry_sign import _sha256
-from fly_emotion.driving.v7_lplc_typed_screen import _condition_stimuli
+from fly_emotion.driving.v7_lplc_typed_screen import (
+    HEIGHT,
+    WIDTH,
+    _motion_free_darkening,
+    _radial_ring,
+    _translation,
+)
 from fly_emotion.driving.v7_nested_neural_screen import MassBalancedVisualProbe
 from fly_emotion.driving.v7_source_audit import CARDINAL_VECTORS
 from fly_emotion.driving.v7_stage1_scoring import strict_contrast_summary
@@ -29,6 +40,39 @@ CONFIG = Path("configs/driving-v7-lplc2-radial-opponency.yaml")
 IMPLEMENTATION = Path("src/fly_emotion/driving/v7_lplc2_radial_opponency.py")
 T4_T5_TYPES = tuple(f"{family}{subtype}" for family in ("T4", "T5") for subtype in "abcd")
 SIDES = ("L", "R")
+
+
+def _matched_noise_stimuli(condition: dict, typed: dict, *, zero_noise: bool) -> dict:
+    duration = int(condition["duration_frames"])
+    start = float(condition["start_radius_pixels"])
+    terminal = float(condition["terminal_radius_pixels"])
+    period = float(typed["stimulus"]["translation_period_pixels"])
+    raw = {
+        "lplc2_outward": _radial_ring(duration, start, terminal, True),
+        "lplc2_inward": _radial_ring(duration, start, terminal, False),
+        "lplc2_motion_free": _motion_free_darkening(duration, terminal),
+        "lplc2_translation": _translation(duration, period),
+    }
+    if zero_noise:
+        perturbation = np.zeros((duration, HEIGHT, WIDTH), dtype=np.float64)
+        suffix = "zero-noise"
+    else:
+        rng = np.random.default_rng(int(condition["seed"]))
+        perturbation = rng.normal(
+            0.0, float(condition["noise_standard_deviation"]), (duration, HEIGHT, WIDTH)
+        )
+        perturbation = (perturbation + perturbation[:, :, ::-1]) / 2.0
+        suffix = "matched-noise"
+    return {
+        name: VisualStimulus(
+            f"{condition['condition_id']}:{name}:{suffix}",
+            name,
+            "off",
+            name.rsplit("_", 1)[-1],
+            np.clip(frames + perturbation, 0.0, 1.0).astype(np.float32),
+        )
+        for name, frames in raw.items()
+    }
 
 
 def _node_annotations(root: Path, probe: MassBalancedVisualProbe) -> tuple[np.ndarray, np.ndarray]:
@@ -369,6 +413,22 @@ def _compact(score: dict) -> dict:
     }
 
 
+def _compact_scalar_score(score: dict) -> dict:
+    return {
+        key: score[key]
+        for key in (
+            "cell_count",
+            "valid_cell_count",
+            "valid_cell_fraction",
+            "median_signed_contrast",
+            "positive_cell_fraction",
+            "all_target_positive_fraction",
+            "gates",
+            "passed",
+        )
+    }
+
+
 def _coverage(scores: list[dict], thresholds: dict) -> dict:
     body_ids = np.asarray(scores[0]["cell_ids"], dtype=np.int64)
     contrasts = []
@@ -638,7 +698,7 @@ def _full_retina_projection_ab(root: Path, config: dict, typed: dict) -> dict:
     per_condition = {}
     conditions = {row["condition_id"]: row for row in typed["conditions"]}
     for condition_id in config["condition_ids"]:
-        stimuli = _condition_stimuli(conditions[condition_id], typed)
+        stimuli = _matched_noise_stimuli(conditions[condition_id], typed, zero_noise=False)
         outward = _layer_traces(probe, stimuli["lplc2_outward"], populations)
         inward = _layer_traces(probe, stimuli["lplc2_inward"], populations)
         condition_scores = {}
@@ -665,9 +725,99 @@ def _full_retina_projection_ab(root: Path, config: dict, typed: dict) -> dict:
         "comparator": config["input_projection_ab"]["comparator"],
         "full_mapped_receptor_count": int(probe.retina.size),
         "full_mapping_is_exact_mirror": False,
+        "same_noise_realization_within_pair": True,
         "per_condition": per_condition,
         "population_consistency": consistency,
         "passing_populations": [name for name, result in consistency.items() if result["passed"]],
+    }
+
+
+def _paired_noise_layer_control(
+    probe: MassBalancedVisualProbe,
+    matrices: dict[str, dict[str, sparse.csr_matrix]],
+    config: dict,
+    typed: dict,
+) -> dict:
+    populations = _layer_nodes(probe, config["layer_localization"])
+    conditions = {row["condition_id"]: row for row in typed["conditions"]}
+    controls = {}
+    for control_name, zero_noise in (("matched_noise", False), ("zero_noise", True)):
+        scores = {name: [] for name in populations}
+        radial_scores = {side: {name: [] for name in config["comparisons"]} for side in SIDES}
+        per_condition = {}
+        radial_per_condition = {}
+        for condition_id in config["condition_ids"]:
+            stimuli = _matched_noise_stimuli(conditions[condition_id], typed, zero_noise=zero_noise)
+            outward = _layer_traces(probe, stimuli["lplc2_outward"], populations)
+            inward = _layer_traces(probe, stimuli["lplc2_inward"], populations)
+            condition_scores = {}
+            for name, nodes in populations.items():
+                score = _layer_score(
+                    probe.graph.body_ids[nodes],
+                    outward[name],
+                    inward[name],
+                    config["layer_localization"],
+                )
+                scores[name].append(score)
+                condition_scores[name] = _compact_layer_score(score)
+            per_condition[condition_id] = condition_scores
+            radial_traces = {
+                name: _radial_traces(probe, stimulus, matrices)[0]
+                for name, stimulus in stimuli.items()
+            }
+            radial_condition = {}
+            for side in SIDES:
+                ids = probe.graph.body_ids[probe.populations[f"LPLC2_{side}"]]
+                radial_condition[side] = {}
+                for name, comparator in config["comparisons"].items():
+                    score = _score(
+                        ids,
+                        np.max(radial_traces["lplc2_outward"][side], axis=0),
+                        np.max(radial_traces[comparator][side], axis=0),
+                        config["thresholds"],
+                    )
+                    radial_scores[side][name].append(score)
+                    radial_condition[side][name] = _compact_scalar_score(score)
+            radial_per_condition[condition_id] = radial_condition
+        consistency = {
+            name: _layer_consistency(values, config["layer_localization"])
+            for name, values in scores.items()
+        }
+        controls[control_name] = {
+            "same_noise_realization_within_pair": True,
+            "noise_standard_deviation_zero": zero_noise,
+            "per_condition": per_condition,
+            "population_consistency": consistency,
+            "passing_populations": [
+                name for name, result in consistency.items() if result["passed"]
+            ],
+            "radial_per_condition_scores": radial_per_condition,
+            "radial_population_consistency": {
+                side: {
+                    name: {
+                        "passing_condition_count": int(sum(score["passed"] for score in values)),
+                        "required_condition_count": len(values),
+                        "coverage": _coverage(values, config["thresholds"]),
+                        "passed": bool(
+                            all(score["passed"] for score in values)
+                            and _coverage(values, config["thresholds"])["passed"]
+                        ),
+                    }
+                    for name, values in mechanisms.items()
+                }
+                for side, mechanisms in radial_scores.items()
+            },
+        }
+    return {
+        "post_failure_correction": True,
+        "parameter_fit": False,
+        "runtime_modified": False,
+        "calibration_evaluated": False,
+        "primary_interpretation_source": config["paired_noise_control"][
+            "primary_interpretation_source"
+        ],
+        "unmatched_noise_layer_localization_confounded": True,
+        "controls": controls,
     }
 
 
@@ -705,8 +855,7 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
     layer_scores = {name: [] for name in layer_nodes}
     layer_per_condition = {}
     for condition_id in condition_ids:
-        stimuli = _condition_stimuli(conditions[condition_id], typed)
-        selected = {name: item for name, item in stimuli.items() if name.startswith("lplc2_")}
+        selected = _matched_noise_stimuli(conditions[condition_id], typed, zero_noise=False)
         responses = {}
         response_traces = {}
         for name, stimulus in selected.items():
@@ -813,6 +962,7 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
         for name, scores in layer_scores.items()
     }
     full_retina_ab = _full_retina_projection_ab(root, config, typed)
+    paired_noise = _paired_noise_layer_control(probe, matrices, config, typed)
     return {
         "protocol": {
             "name": config["name"],
@@ -824,6 +974,7 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
             },
             "condition_ids": condition_ids,
             "stimulus_count": len(stimulus_manifest),
+            "paired_noise_policy": "same realization within each preferred-comparator pair",
             "fixed_target_denominators": {
                 side: int(len(probe.populations[f"LPLC2_{side}"])) for side in SIDES
             },
@@ -870,8 +1021,11 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
                 name for name, result in layer_consistency.items() if result["passed"]
             ],
             "selected_receptor_edge_audit": receptor_edge_audit,
+            "interpretation_allowed": True,
+            "paired_noise_policy": "matched_noise",
         },
         "input_projection_ab": full_retina_ab,
+        "paired_noise_control": paired_noise,
         "radial_opponency_mechanism_gates_passed": bool(mechanism_passed and mirror_passed),
         "advance_to_calibration": bool(mechanism_passed and mirror_passed),
         "advance_to_runtime_integration": False,

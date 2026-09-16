@@ -74,12 +74,12 @@ def test_radial_opponency_has_full_structural_coverage_but_fails_functional_gate
     assert localization["post_failure_localization_only"] is True
     assert localization["parameter_search"] is False
     assert localization["selected_receptors_only"] is True
-    assert localization["passing_populations"] == ["mapped_R1-R6"]
+    assert localization["passing_populations"] == []
     receptor = localization["population_consistency"]["mapped_R1-R6"]
     assert receptor["cell_count"] == 1914
-    assert receptor["passing_condition_count"] == 3
-    assert receptor["all_condition_separated_count"] == 1894
-    assert receptor["all_condition_separated_fraction"] > 0.98
+    assert receptor["passing_condition_count"] == 0
+    assert receptor["all_condition_separated_count"] == 168
+    assert receptor["all_condition_separated_fraction"] < 0.10
     for population in ("L1", "L2", "L3", "L5", "T4a", "T4b", "T5a", "T5b"):
         assert localization["population_consistency"][population]["passed"] is False
     edge_audit = localization["selected_receptor_edge_audit"]
@@ -96,10 +96,31 @@ def test_radial_opponency_has_full_structural_coverage_but_fails_functional_gate
     assert full["calibration_evaluated"] is False
     assert full["full_mapped_receptor_count"] == 3344
     assert full["full_mapping_is_exact_mirror"] is False
-    assert full["passing_populations"] == ["mapped_R1-R6"]
-    assert full["population_consistency"]["mapped_R1-R6"]["all_condition_separated_count"] == 3268
+    assert full["same_noise_realization_within_pair"] is True
+    assert full["passing_populations"] == []
+    assert full["population_consistency"]["mapped_R1-R6"]["all_condition_separated_count"] == 574
     for population in ("L1", "L2", "L3", "Mi1", "Tm1", "T4a", "T5a"):
         assert full["population_consistency"][population]["passed"] is False
+    assert localization["interpretation_allowed"] is True
+    noise = report["paired_noise_control"]
+    assert noise["post_failure_correction"] is True
+    assert noise["parameter_fit"] is False
+    assert noise["runtime_modified"] is False
+    assert noise["calibration_evaluated"] is False
+    assert noise["primary_interpretation_source"] == "matched_noise"
+    assert noise["unmatched_noise_layer_localization_confounded"] is True
+    for control in noise["controls"].values():
+        assert control["same_noise_realization_within_pair"] is True
+        assert control["passing_populations"] == []
+    matched = noise["controls"]["matched_noise"]["population_consistency"]
+    assert matched["mapped_R1-R6"]["all_condition_separated_count"] == 168
+    assert matched["mapped_R1-R6"]["passed"] is False
+    assert matched["L1"]["all_condition_separated_count"] == 115
+    assert matched["T4a"]["all_condition_separated_count"] == 48
+    assert matched["T5a"]["all_condition_separated_count"] == 55
+    radial = noise["controls"]["matched_noise"]["radial_population_consistency"]
+    assert radial["R"]["outward_vs_translation"]["passing_condition_count"] == 3
+    assert radial["R"]["outward_vs_translation"]["passed"] is False
     assert report["radial_opponency_mechanism_gates_passed"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False

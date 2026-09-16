@@ -56,6 +56,14 @@ input_projection_ab:
   parameter_fit: false
   runtime_modified: false
   calibration_evaluated: false
+paired_noise_control:
+  post_failure_correction: true
+  primary_interpretation_source: matched_noise
+  controls: [matched_noise, zero_noise]
+  same_noise_realization_within_each_preferred_comparator_pair: true
+  parameter_fit: false
+  runtime_modified: false
+  calibration_evaluated: false
 boundary:
   tuning_only: true
   label_informed_mechanism_diagnostic: true

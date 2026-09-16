@@ -331,6 +331,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     ]["all_condition_separated_fraction"]
                     for name in ("L1", "L2", "L3")
                 },
+                "unmatched_noise_layer_localization_confounded": lplc2_radial_opponency[
+                    "paired_noise_control"
+                ]["unmatched_noise_layer_localization_confounded"],
+                "matched_noise_passing_populations": lplc2_radial_opponency["paired_noise_control"][
+                    "controls"
+                ]["matched_noise"]["passing_populations"],
+                "matched_noise_mapped_R1_R6_all_condition_separated_fraction": (
+                    lplc2_radial_opponency["paired_noise_control"]["controls"]["matched_noise"][
+                        "population_consistency"
+                    ]["mapped_R1-R6"]["all_condition_separated_fraction"]
+                ),
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
