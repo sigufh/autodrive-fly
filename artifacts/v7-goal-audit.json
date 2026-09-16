@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "6699434b302cc6498dbdfe3a735df12a5d22da14ed1c8c0521d8d0402a25644a",
-      "src/fly_emotion/driving/v7_goal_audit.py": "82f391ac0bb78424b4c2d6b0d0141009ca809ba595026b0791e1082b50d6049d",
+      "configs/driving-v7-goal-audit.yaml": "a2db7539c8f0f10530929b1ff422a94b3b16e36cbb217a0eb1aeebfadea57695",
+      "src/fly_emotion/driving/v7_goal_audit.py": "5886552d95630b494bd3879a0d803f084cb69fc4a1aaf8202493d27e974fcc05",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -63,7 +63,10 @@
       "artifacts/v7-visual-layer-locality.json": "4e579dcc91faf080c50872e083e29a6a6bad20a48360856d3017a0bb68fd5255",
       "artifacts/v7-lamina-goal.json": "6682fdef9a70ddcf0653129b928ac2731485da563d9edac38ee0c2f95b557fb2",
       "artifacts/v7-lamina-goal-symmetry.json": "6284bce6a3f291aad1d4fe295a49b1123c7e70951f965c308d2234eda4deed56",
-      "artifacts/v7-fc2-goal-memory.json": "96c605dd0aa12c3582ae161d4a93b0ffb9e2af2179682a9266ec6062b962083a"
+      "artifacts/v7-fc2-goal-memory.json": "96c605dd0aa12c3582ae161d4a93b0ffb9e2af2179682a9266ec6062b962083a",
+      "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
+      "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
+      "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5"
     }
   },
   "objective_items": {
@@ -316,7 +319,9 @@
         "best_local_visual_family": "lamina",
         "lamina_direct_goal_obstacles": 40,
         "lamina_equivariant_goal_obstacles": 46,
-        "FC2_goal_memory_obstacles": 46
+        "FC2_goal_memory_obstacles": 46,
+        "complementary_goal_fusion_development_CV_passed": true,
+        "fusion_nested_fresh_CV_passed": false
       }
     },
     {
@@ -387,7 +392,15 @@
         "navigation_nested_CV_passed": false,
         "navigation_nested_tuning_passed": false,
         "navigation_nested_calibration_attempt_count": 0,
-        "navigation_external_final_committed": false
+        "navigation_external_final_committed": false,
+        "fusion_nested_role_counts": {
+          "tuning": 3,
+          "calibration": 1,
+          "external_final": 1
+        },
+        "fusion_nested_CV_passed": false,
+        "fusion_nested_calibration_attempt_count": 0,
+        "fusion_external_final_committed": false
       }
     },
     {

@@ -78,6 +78,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     lamina_goal = reports["lamina_goal"]
     lamina_goal_symmetry = reports["lamina_goal_symmetry"]
     fc2_goal_memory = reports["fc2_goal_memory"]
+    neural_goal_fusion = reports["neural_goal_fusion"]
+    fusion_nested = reports["fusion_nested"]
+    fusion_nested_eval = reports["fusion_nested_eval"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -408,6 +411,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "FC2_goal_memory_obstacles": fc2_goal_memory["selected_summary"][
                     "held_out_obstacles_passed"
                 ],
+                "complementary_goal_fusion_development_CV_passed": neural_goal_fusion[
+                    "cross_validation_passed"
+                ],
+                "fusion_nested_fresh_CV_passed": fusion_nested_eval[
+                    "cross_validation"
+                ]["passed"],
             },
         },
         {
@@ -488,6 +497,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "navigation_external_final_committed": navigation_nested[
                     "external_final"
                 ]["committed"],
+                "fusion_nested_role_counts": fusion_nested["role_counts"],
+                "fusion_nested_CV_passed": fusion_nested_eval["cross_validation"][
+                    "passed"
+                ],
+                "fusion_nested_calibration_attempt_count": fusion_nested_eval[
+                    "calibration_receipt"
+                ]["attempt_count"],
+                "fusion_external_final_committed": fusion_nested["external_final"][
+                    "committed"
+                ],
             },
         },
         {

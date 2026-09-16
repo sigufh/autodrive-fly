@@ -69,6 +69,9 @@ evidence:
   lamina_goal: artifacts/v7-lamina-goal.json
   lamina_goal_symmetry: artifacts/v7-lamina-goal-symmetry.json
   fc2_goal_memory: artifacts/v7-fc2-goal-memory.json
+  neural_goal_fusion: artifacts/v7-neural-goal-fusion.json
+  fusion_nested: artifacts/v7-fusion-nested.json
+  fusion_nested_eval: artifacts/v7-fusion-nested-eval.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading
