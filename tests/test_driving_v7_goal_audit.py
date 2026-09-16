@@ -12,9 +12,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
     assert [item["item"] for item in report["checks"]] == list(range(9))
     assert report["summary"]["complete_items"] == [0]
     assert report["summary"]["boundary_only_items"] == [8]
+    assert report["summary"]["component_pass_items"] == [2, 3]
     assert report["summary"]["failed_items"] == [1]
     assert report["summary"]["incomplete_items"] == [6]
-    assert report["summary"]["not_authorized_items"] == [2, 3, 4, 5, 7]
+    assert report["summary"]["partially_validated_items"] == [2, 3, 4]
+    assert report["summary"]["not_authorized_items"] == [5, 7]
     assert report["summary"]["objective_complete"] is False
     assert report["summary"]["current_stage"] == "controlled_vision"
 

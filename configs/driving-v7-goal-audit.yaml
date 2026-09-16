@@ -49,6 +49,26 @@ evidence:
   neural_channel_controls: artifacts/v7-neural-channel-controls.json
   neural_topology_controls: artifacts/v7-neural-topology-controls.json
   nested_neural_screen: artifacts/v7-nested-neural-screen.json
+  t4_source_resolved: artifacts/v7-t4-source-resolved.json
+  t4_normalized_correlator: artifacts/v7-t4-normalized-correlator.json
+  t5_spatial_order: artifacts/v7-t5-spatial-order.json
+  lplc_typed_screen: artifacts/v7-lplc-typed-screen.json
+  heading_ring: artifacts/v7-heading-ring.json
+  neural_episode_cv: artifacts/v7-neural-episode-cv.json
+  neural_episode_controls: artifacts/v7-neural-episode-controls.json
+  fc2_pfl_dna: artifacts/v7-fc2-pfl-dna.json
+  navigation_nested: artifacts/v7-navigation-nested.json
+  navigation_nested_eval: artifacts/v7-navigation-nested-eval.json
+  danger_throttle: artifacts/v7-danger-throttle.json
+  visual_corridor_goal: artifacts/v7-visual-corridor-goal.json
+  neural_corridor: artifacts/v7-neural-corridor.json
+  local_column_corridor: artifacts/v7-local-column-corridor.json
+  neural_dynamics_local: artifacts/v7-neural-dynamics-local.json
+  neural_corridor_dagger: artifacts/v7-neural-corridor-dagger.json
+  visual_layer_locality: artifacts/v7-visual-layer-locality.json
+  lamina_goal: artifacts/v7-lamina-goal.json
+  lamina_goal_symmetry: artifacts/v7-lamina-goal-symmetry.json
+  fc2_goal_memory: artifacts/v7-fc2-goal-memory.json
 required_stage_order:
   - controlled_vision
   - central_complex_heading

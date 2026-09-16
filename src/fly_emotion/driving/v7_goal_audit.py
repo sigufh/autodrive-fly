@@ -58,6 +58,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     neural_channel_controls = reports["neural_channel_controls"]
     neural_topology_controls = reports["neural_topology_controls"]
     nested_neural_screen = reports["nested_neural_screen"]
+    t4_source_resolved = reports["t4_source_resolved"]
+    t4_normalized_correlator = reports["t4_normalized_correlator"]
+    t5_spatial_order = reports["t5_spatial_order"]
+    lplc_typed_screen = reports["lplc_typed_screen"]
+    heading_ring = reports["heading_ring"]
+    neural_episode_cv = reports["neural_episode_cv"]
+    neural_episode_controls = reports["neural_episode_controls"]
+    fc2_pfl_dna = reports["fc2_pfl_dna"]
+    navigation_nested = reports["navigation_nested"]
+    navigation_nested_eval = reports["navigation_nested_eval"]
+    danger_throttle = reports["danger_throttle"]
+    visual_corridor_goal = reports["visual_corridor_goal"]
+    neural_corridor = reports["neural_corridor"]
+    local_column_corridor = reports["local_column_corridor"]
+    neural_dynamics_local = reports["neural_dynamics_local"]
+    neural_corridor_dagger = reports["neural_corridor_dagger"]
+    visual_layer_locality = reports["visual_layer_locality"]
+    lamina_goal = reports["lamina_goal"]
+    lamina_goal_symmetry = reports["lamina_goal_symmetry"]
+    fc2_goal_memory = reports["fc2_goal_memory"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -253,6 +273,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "real_topology_advantage_passed"
                 ],
                 "nested_neural_strict_screen": nested_neural_screen["summaries"],
+                "T4_source_resolved_passing_variants": t4_source_resolved[
+                    "passing_variants"
+                ],
+                "T4_normalized_correlator_best_gate_count": t4_normalized_correlator[
+                    "selected_candidate"
+                ]["passed_gate_count"],
+                "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order[
+                    "b_d_reachability"
+                ]["reachable_fraction"],
+                "typed_LPLC_LC4_gates_passed": lplc_typed_screen[
+                    "typed_lplc_lc4_gates_passed"
+                ],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -266,8 +298,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         {
             "item": 2,
             "deliverable": "EPG/PEN/PEG heading, occlusion memory and FC2/PFL comparison",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "status": "partially_validated_not_stage_authorized",
+            "evidence": [
+                config["evidence"]["heading_ring"],
+                config["evidence"]["fc2_pfl_dna"],
+            ],
             "observations": {
                 "stage1_pass": stage1_pass,
                 "single_obstacle_closed_loop_calibration_passed": closed_loop_calibration[
@@ -289,23 +324,91 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "structured_neural_channels_release_authorized": neural_channels_calibration[
                     "advance_to_navigation_release"
                 ],
+                "EPG_PEN_PEG_heading_assays_passed": heading_ring["heading_assays"][
+                    "passed"
+                ],
+                "heading_tuning_obstacles": heading_ring["navigation_arms"][
+                    "neural_heading"
+                ]["tuning_obstacles_passed"],
+                "heading_fresh_calibration_obstacles": heading_ring["navigation_arms"][
+                    "neural_heading"
+                ]["calibration_obstacles_passed"],
+                "heading_failure_attributed_to_visual_readout": heading_ring[
+                    "calibration_failure_attribution"
+                ]["diagnosis"]
+                == "frozen_neural_visual_readout_generalization_gap",
             },
         },
         {
             "item": 3,
             "deliverable": "DNp20, DNa01/DNa02 and PFL3-to-DNa readout comparison",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
-            "observations": {"stage1_pass": stage1_pass},
+            "status": "partially_validated_not_stage_authorized",
+            "evidence": [config["evidence"]["fc2_pfl_dna"]],
+            "observations": {
+                "stage1_pass": stage1_pass,
+                "turn_termination_passed": fc2_pfl_dna["turn_termination_assay"]["passed"],
+                "readout_action_equivalence": fc2_pfl_dna["readout_action_equivalence"],
+                "PFL3_to_DNa02_edges": fc2_pfl_dna["malecns_structure"]["edges"][
+                    "PFL3->DNa02"
+                ]["edge_count"],
+                "PFL3_to_DNa01_edges": fc2_pfl_dna["malecns_structure"]["edges"][
+                    "PFL3->DNa01"
+                ]["edge_count"],
+                "fresh_calibration_passed": fc2_pfl_dna["calibration_passed"],
+            },
         },
         {
             "item": 4,
             "deliverable": (
                 "separate self-motion, looming, near-collision, heading and target signals"
             ),
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
-            "observations": {"stage1_pass": stage1_pass},
+            "status": "partially_validated_not_stage_authorized",
+            "evidence": [
+                config["evidence"]["neural_episode_controls"],
+                config["evidence"]["fc2_pfl_dna"],
+            ],
+            "observations": {
+                "stage1_pass": stage1_pass,
+                "T4_T5_spatial_is_causal": neural_episode_controls["causal_gates"][
+                    "T4_T5_spatial_is_causal"
+                ],
+                "LPLC_LC_joint_is_causal": neural_episode_controls["causal_gates"][
+                    "all_LPLC_LC_is_causal"
+                ],
+                "heading_is_causal": neural_episode_controls["causal_gates"][
+                    "heading_is_causal"
+                ],
+                "FC2_PFL_DNa_controls_passed": fc2_pfl_dna["causal_controls_passed"],
+                "danger_throttle_tuning_passed": danger_throttle["tuning_passed"],
+                "R1_R6_visual_corridor_tuning_passed": visual_corridor_goal[
+                    "tuning_passed"
+                ],
+                "six_bin_neural_corridor_CV_passed": neural_corridor[
+                    "cross_validation_passed"
+                ],
+                "local_column_neural_corridor_CV_passed": local_column_corridor[
+                    "cross_validation_passed"
+                ],
+                "best_local_dynamics_backend": neural_dynamics_local[
+                    "selected_backend"
+                ],
+                "best_local_dynamics_closed_loop_passed": neural_dynamics_local[
+                    "cross_validation_passed"
+                ],
+                "closed_loop_data_aggregation_CV_passed": neural_corridor_dagger[
+                    "cross_validation_passed"
+                ],
+                "best_local_visual_family": visual_layer_locality["selected_family"],
+                "lamina_direct_goal_obstacles": lamina_goal[
+                    "total_obstacles_passed"
+                ],
+                "lamina_equivariant_goal_obstacles": lamina_goal_symmetry[
+                    "selected_summary"
+                ]["held_out_obstacles_passed"],
+                "FC2_goal_memory_obstacles": fc2_goal_memory["selected_summary"][
+                    "held_out_obstacles_passed"
+                ],
+            },
         },
         {
             "item": 5,
@@ -333,6 +436,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     name: item["success_count"]
                     for name, item in neural_topology_controls["controls"].items()
                 },
+                "compact_neural_CV_passed": neural_episode_cv[
+                    "cross_validation_passed"
+                ],
+                "compact_neural_calibration_passed": neural_episode_cv[
+                    "calibration_passed"
+                ],
+                "compact_neural_real_topology_advantage": neural_episode_controls[
+                    "real_topology_advantage_passed"
+                ],
                 "parameter_matched_linear_mlp_gru_complete": False,
                 "downstream_ablations_authorized": downstream_authorized,
             },
@@ -363,6 +475,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "external_final_evaluated": stage1_nested["external_final"]["evaluated"],
                 "closed_loop_calibration_passed": closed_loop_calibration["calibration_passed"],
                 "closed_loop_final_evaluated": closed_loop_calibration["final_evaluated"],
+                "navigation_nested_role_counts": navigation_nested["role_counts"],
+                "navigation_nested_CV_passed": navigation_nested_eval[
+                    "cross_validation"
+                ]["passed"],
+                "navigation_nested_tuning_passed": navigation_nested_eval[
+                    "tuning_passed"
+                ],
+                "navigation_nested_calibration_attempt_count": navigation_nested_eval[
+                    "calibration_receipt"
+                ]["attempt_count"],
+                "navigation_external_final_committed": navigation_nested[
+                    "external_final"
+                ]["committed"],
             },
         },
         {
@@ -411,42 +536,47 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         {
             "requirement": "1.T4_T5_direction_and_ON_OFF_validation",
             "status": "failed",
-            "evidence": [config["evidence"]["typed_vision"], config["evidence"]["t5_phenotype"]],
+            "evidence": [
+                config["evidence"]["nested_neural_screen"],
+                config["evidence"]["t4_source_resolved"],
+                config["evidence"]["t4_normalized_correlator"],
+                config["evidence"]["t5_spatial_order"],
+            ],
         },
         {
             "requirement": "1.LPLC1_LPLC2_LC4_approach_collision_validation",
             "status": "failed",
-            "evidence": [config["evidence"]["controlled_vision"]],
+            "evidence": [config["evidence"]["lplc_typed_screen"]],
         },
         {
             "requirement": "2.EPG_PEN_PEG_heading_and_occlusion",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "status": "passed_component_not_stage_gate",
+            "evidence": [config["evidence"]["heading_ring"]],
         },
         {
             "requirement": "2.FC2_PFL3_PFL2_heading_goal_and_turn_termination",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "status": "passed_component_not_stage_gate",
+            "evidence": [config["evidence"]["fc2_pfl_dna"]],
         },
         {
             "requirement": "3.DNp20_DNa01_DNa02_PFL3_DNa_readout_comparison",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "status": "partially_validated_not_stage_authorized",
+            "evidence": [config["evidence"]["fc2_pfl_dna"]],
         },
         {
             "requirement": "3.transparent_environment_blind_vehicle_mapping",
-            "status": "present_in_v5_v6_not_yet_validated_for_v7",
-            "evidence": ["src/fly_emotion/driving/engine.py"],
+            "status": "passed_component_not_stage_gate",
+            "evidence": [config["evidence"]["fc2_pfl_dna"]],
         },
         {
             "requirement": "4.separate_self_motion_looming_slowing_heading_target_channels",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "status": "partially_validated_not_stage_authorized",
+            "evidence": [config["evidence"]["neural_episode_controls"]],
         },
         {
             "requirement": "5.KC_MBON_PAM_PPL1_value_learning_after_navigation_gate",
-            "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "status": "partially_validated_not_stage_authorized",
+            "evidence": [config["evidence"]["neural_episode_controls"]],
         },
         {
             "requirement": "6.real_MaleCNS_and_strict_randomized_graph_controls",
@@ -487,12 +617,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["neural_channel_controls"],
                 config["evidence"]["neural_topology_controls"],
                 config["evidence"]["nested_neural_screen"],
+                config["evidence"]["navigation_nested"],
+                config["evidence"]["navigation_nested_eval"],
             ],
         },
         {
             "requirement": "7.dynamic_obstacle_density_curvature_speed_noise_OOD",
             "status": "not_authorized",
-            "evidence": [config["evidence"]["manifest"]],
+            "evidence": [
+                config["evidence"]["navigation_nested_eval"],
+                config["evidence"]["visual_corridor_goal"],
+            ],
         },
         {
             "requirement": (
@@ -547,19 +682,35 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "boundary_only_items": [
                 item["item"] for item in checks if item["status"] == "passed_boundary_only"
             ],
+            "component_pass_items": sorted(
+                {
+                    int(item["requirement"].split(".", 1)[0])
+                    for item in requirement_checklist
+                    if item["status"] == "passed_component_not_stage_gate"
+                }
+            ),
             "failed_items": [item["item"] for item in checks if item["status"] == "failed"],
             "incomplete_items": [item["item"] for item in checks if item["status"] == "incomplete"],
+            "partially_validated_items": [
+                item["item"]
+                for item in checks
+                if item["status"] == "partially_validated_not_stage_authorized"
+            ],
             "not_authorized_items": [
                 item["item"] for item in checks if item["status"] == "not_authorized"
             ],
             "objective_complete": False,
             "current_stage": "controlled_vision",
             "next_allowed_work": [
-                "verify an external direction-code map before using T5 traces to score a model",
-                "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
+                "repair T4/T5 direction and polarity dynamics without subtype label injection",
+                "repair typed LPLC1/LPLC2/LC4 responses under separate mechanism scores",
                 (
-                    "build distinct T5 and LPLC/LC development hypotheses from "
-                    "source-specific evidence"
+                    "preserve EPG/PEN/PEG heading and FC2/PFL3/PFL2/DNa02 component "
+                    "evidence without treating it as downstream stage authorization"
+                ),
+                (
+                    "improve local neural column information before retrying the frozen "
+                    "navigation nested protocol"
                 ),
                 "obtain externally custodied independent-cell and one-time final manifests",
             ],

@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "265d31751dc0bb7ea0853c418b361d4a3737a335f37f62338016688168ba137c",
-      "src/fly_emotion/driving/v7_goal_audit.py": "562a11b8fb667a2b0939df0f6952586a0470758779c3edb4adacf7547dc15d75",
+      "configs/driving-v7-goal-audit.yaml": "6699434b302cc6498dbdfe3a735df12a5d22da14ed1c8c0521d8d0402a25644a",
+      "src/fly_emotion/driving/v7_goal_audit.py": "82f391ac0bb78424b4c2d6b0d0141009ca809ba595026b0791e1082b50d6049d",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -43,7 +43,27 @@
       "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76",
       "artifacts/v7-neural-channel-controls.json": "9115c8d47b8535b53a99c2fb2d7061b5a356a63fd7a56d8cc48310ce4dc96608",
       "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70",
-      "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d"
+      "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d",
+      "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
+      "artifacts/v7-t4-normalized-correlator.json": "fe18d4c53802c4bcb63f3388c810e14a7431032eb268bba018f77b64098e9a8b",
+      "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
+      "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
+      "artifacts/v7-heading-ring.json": "2d68ed0763908ed451f0f57f8a4e8f8c9143c68813bf8b85d030622bc3816dd5",
+      "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
+      "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
+      "artifacts/v7-fc2-pfl-dna.json": "1a93b4c1723e39c48b2ed7746b1f204f039a873d30c5d448761ef320dc6d0f0a",
+      "artifacts/v7-navigation-nested.json": "41421a7b534242d7750b81c059cadbee7c3728fd382fed253b2390c7c96f2832",
+      "artifacts/v7-navigation-nested-eval.json": "d23e4c2b530e211d2984d1b2f8504f47993fb1c79f0d6707fc13f2a4a187ea2c",
+      "artifacts/v7-danger-throttle.json": "c720245879f9e168e47bb47ba6c12028919242a71f5ab3b8aeb4e514eee590ea",
+      "artifacts/v7-visual-corridor-goal.json": "5b8c919a9f788d1563fe899cc65d9919b84c98ff76bc298959be0375326c6152",
+      "artifacts/v7-neural-corridor.json": "f2b1855765dc133f9bb9db1eb5ff65388dadc206c895097b5e5df024f6e1386f",
+      "artifacts/v7-local-column-corridor.json": "502651d58edab02f10cd2de295b7f14f2280821f02f843c74acc20894b3f7f12",
+      "artifacts/v7-neural-dynamics-local.json": "ddf8f08b89c87d15afc12fc54fee5c65c2c43fa35943fa2fcaab43aba051755f",
+      "artifacts/v7-neural-corridor-dagger.json": "4e796397463ddcfdf9ed7030fd0e39d0720a1d3d584cd223b6727e2fc0de5d1c",
+      "artifacts/v7-visual-layer-locality.json": "4e579dcc91faf080c50872e083e29a6a6bad20a48360856d3017a0bb68fd5255",
+      "artifacts/v7-lamina-goal.json": "6682fdef9a70ddcf0653129b928ac2731485da563d9edac38ee0c2f95b557fb2",
+      "artifacts/v7-lamina-goal-symmetry.json": "6284bce6a3f291aad1d4fe295a49b1123c7e70951f965c308d2234eda4deed56",
+      "artifacts/v7-fc2-goal-memory.json": "96c605dd0aa12c3582ae161d4a93b0ffb9e2af2179682a9266ec6062b962083a"
     }
   },
   "objective_items": {
@@ -218,7 +238,11 @@
             "mirror_total": 54,
             "passed": false
           }
-        }
+        },
+        "T4_source_resolved_passing_variants": [],
+        "T4_normalized_correlator_best_gate_count": 16,
+        "T5_spatial_order_b_d_reachable_fraction": 0.046875,
+        "typed_LPLC_LC4_gates_passed": false
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
@@ -232,9 +256,10 @@
     {
       "item": 2,
       "deliverable": "EPG/PEN/PEG heading, occlusion memory and FC2/PFL comparison",
-      "status": "not_authorized",
+      "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-heading-ring.json",
+        "artifacts/v7-fc2-pfl-dna.json"
       ],
       "observations": {
         "stage1_pass": false,
@@ -244,29 +269,54 @@
         "R1_R6_local_multi_obstacle_upper_bound_passed": true,
         "R1_R6_upper_bound_authorizes_neural_release": false,
         "structured_neural_channels_calibration_passed": true,
-        "structured_neural_channels_release_authorized": false
+        "structured_neural_channels_release_authorized": false,
+        "EPG_PEN_PEG_heading_assays_passed": true,
+        "heading_tuning_obstacles": 54,
+        "heading_fresh_calibration_obstacles": 6,
+        "heading_failure_attributed_to_visual_readout": true
       }
     },
     {
       "item": 3,
       "deliverable": "DNp20, DNa01/DNa02 and PFL3-to-DNa readout comparison",
-      "status": "not_authorized",
+      "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-fc2-pfl-dna.json"
       ],
       "observations": {
-        "stage1_pass": false
+        "stage1_pass": false,
+        "turn_termination_passed": true,
+        "readout_action_equivalence": true,
+        "PFL3_to_DNa02_edges": 24,
+        "PFL3_to_DNa01_edges": 0,
+        "fresh_calibration_passed": false
       }
     },
     {
       "item": 4,
       "deliverable": "separate self-motion, looming, near-collision, heading and target signals",
-      "status": "not_authorized",
+      "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-neural-episode-controls.json",
+        "artifacts/v7-fc2-pfl-dna.json"
       ],
       "observations": {
-        "stage1_pass": false
+        "stage1_pass": false,
+        "T4_T5_spatial_is_causal": true,
+        "LPLC_LC_joint_is_causal": true,
+        "heading_is_causal": true,
+        "FC2_PFL_DNa_controls_passed": true,
+        "danger_throttle_tuning_passed": false,
+        "R1_R6_visual_corridor_tuning_passed": true,
+        "six_bin_neural_corridor_CV_passed": false,
+        "local_column_neural_corridor_CV_passed": false,
+        "best_local_dynamics_backend": "typed_visual_leak_v1",
+        "best_local_dynamics_closed_loop_passed": false,
+        "closed_loop_data_aggregation_CV_passed": false,
+        "best_local_visual_family": "lamina",
+        "lamina_direct_goal_obstacles": 40,
+        "lamina_equivariant_goal_obstacles": 46,
+        "FC2_goal_memory_obstacles": 46
       }
     },
     {
@@ -297,6 +347,9 @@
           "source_preserving_target_shuffle": 0,
           "shuffled_transmitter_signs": 0
         },
+        "compact_neural_CV_passed": true,
+        "compact_neural_calibration_passed": true,
+        "compact_neural_real_topology_advantage": true,
         "parameter_matched_linear_mlp_gru_complete": false,
         "downstream_ablations_authorized": false
       }
@@ -325,7 +378,16 @@
         "external_final_committed": false,
         "external_final_evaluated": false,
         "closed_loop_calibration_passed": true,
-        "closed_loop_final_evaluated": false
+        "closed_loop_final_evaluated": false,
+        "navigation_nested_role_counts": {
+          "tuning": 3,
+          "calibration": 1,
+          "external_final": 1
+        },
+        "navigation_nested_CV_passed": false,
+        "navigation_nested_tuning_passed": false,
+        "navigation_nested_calibration_attempt_count": 0,
+        "navigation_external_final_committed": false
       }
     },
     {
@@ -391,57 +453,59 @@
       "requirement": "1.T4_T5_direction_and_ON_OFF_validation",
       "status": "failed",
       "evidence": [
-        "artifacts/v7-typed-visual-candidate.json",
-        "artifacts/v7-t5-phenotype.json"
+        "artifacts/v7-nested-neural-screen.json",
+        "artifacts/v7-t4-source-resolved.json",
+        "artifacts/v7-t4-normalized-correlator.json",
+        "artifacts/v7-t5-spatial-order.json"
       ]
     },
     {
       "requirement": "1.LPLC1_LPLC2_LC4_approach_collision_validation",
       "status": "failed",
       "evidence": [
-        "artifacts/v7-controlled-vision.json"
+        "artifacts/v7-lplc-typed-screen.json"
       ]
     },
     {
       "requirement": "2.EPG_PEN_PEG_heading_and_occlusion",
-      "status": "not_authorized",
+      "status": "passed_component_not_stage_gate",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-heading-ring.json"
       ]
     },
     {
       "requirement": "2.FC2_PFL3_PFL2_heading_goal_and_turn_termination",
-      "status": "not_authorized",
+      "status": "passed_component_not_stage_gate",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-fc2-pfl-dna.json"
       ]
     },
     {
       "requirement": "3.DNp20_DNa01_DNa02_PFL3_DNa_readout_comparison",
-      "status": "not_authorized",
+      "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-fc2-pfl-dna.json"
       ]
     },
     {
       "requirement": "3.transparent_environment_blind_vehicle_mapping",
-      "status": "present_in_v5_v6_not_yet_validated_for_v7",
+      "status": "passed_component_not_stage_gate",
       "evidence": [
-        "src/fly_emotion/driving/engine.py"
+        "artifacts/v7-fc2-pfl-dna.json"
       ]
     },
     {
       "requirement": "4.separate_self_motion_looming_slowing_heading_target_channels",
-      "status": "not_authorized",
+      "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-neural-episode-controls.json"
       ]
     },
     {
       "requirement": "5.KC_MBON_PAM_PPL1_value_learning_after_navigation_gate",
-      "status": "not_authorized",
+      "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-neural-episode-controls.json"
       ]
     },
     {
@@ -486,14 +550,17 @@
         "artifacts/v7-neural-channels-calibration.json",
         "artifacts/v7-neural-channel-controls.json",
         "artifacts/v7-neural-topology-controls.json",
-        "artifacts/v7-nested-neural-screen.json"
+        "artifacts/v7-nested-neural-screen.json",
+        "artifacts/v7-navigation-nested.json",
+        "artifacts/v7-navigation-nested-eval.json"
       ]
     },
     {
       "requirement": "7.dynamic_obstacle_density_curvature_speed_noise_OOD",
       "status": "not_authorized",
       "evidence": [
-        "artifacts/v7-manifest.json"
+        "artifacts/v7-navigation-nested-eval.json",
+        "artifacts/v7-visual-corridor-goal.json"
       ]
     },
     {
@@ -542,25 +609,32 @@
     "boundary_only_items": [
       8
     ],
+    "component_pass_items": [
+      2,
+      3
+    ],
     "failed_items": [
       1
     ],
     "incomplete_items": [
       6
     ],
-    "not_authorized_items": [
+    "partially_validated_items": [
       2,
       3,
-      4,
+      4
+    ],
+    "not_authorized_items": [
       5,
       7
     ],
     "objective_complete": false,
     "current_stage": "controlled_vision",
     "next_allowed_work": [
-      "verify an external direction-code map before using T5 traces to score a model",
-      "repair T4/T5/LPLC/LC visual dynamics without target-state injection",
-      "build distinct T5 and LPLC/LC development hypotheses from source-specific evidence",
+      "repair T4/T5 direction and polarity dynamics without subtype label injection",
+      "repair typed LPLC1/LPLC2/LC4 responses under separate mechanism scores",
+      "preserve EPG/PEN/PEG heading and FC2/PFL3/PFL2/DNa02 component evidence without treating it as downstream stage authorization",
+      "improve local neural column information before retrying the frozen navigation nested protocol",
       "obtain externally custodied independent-cell and one-time final manifests"
     ]
   }

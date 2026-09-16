@@ -1,0 +1,714 @@
+{
+  "protocol": {
+    "name": "v7-neural-global-lamina-goal-fusion-cv",
+    "dependencies_sha256": {
+      "configs/driving-v7-neural-goal-fusion.yaml": "6105357f858445adc923356f81abcbfa72631a33096e512f0372cbbcc819e476",
+      "src/fly_emotion/driving/v7_neural_goal_fusion.py": "2b4c23891a8e51c257c27c737d9c5a5f68385a46800e824935f7fe6de7a3e2ba",
+      "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a",
+      "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
+      "configs/driving-v7-lamina-goal.yaml": "0253263eca5606dcf8ace811a25cf934cdb7fd27b3aea29f7fbc8aeead0ebf75",
+      "artifacts/v7-lamina-goal-symmetry.json": "6284bce6a3f291aad1d4fe295a49b1123c7e70951f965c308d2234eda4deed56",
+      "configs/driving-v7-heading-ring.yaml": "0933edfef539902cf1f9ee1365b39cd8ed741e2de7fe856452aa4504f2cdabb3"
+    },
+    "tuning_only": true,
+    "one_global_fusion_weight_across_folds": true,
+    "mirror_pair_is_indivisible_cv_unit": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false
+  },
+  "candidate_summaries": [
+    {
+      "lamina_weight": 0.0,
+      "held_out_success_count": 0,
+      "held_out_obstacles_passed": 32,
+      "maximum_mirror_goal_error": 6.045164369083977e-14,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 14,
+          "maximum_mirror_goal_error": 1.2850831510036187e-14,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.53936719076601,
+              "steps": 340,
+              "maximum_absolute_lateral_position": 1.2029071097267054
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.53936719076601,
+              "steps": 340,
+              "maximum_absolute_lateral_position": 1.2029071097268051
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 16,
+          "maximum_mirror_goal_error": 8.548717289613705e-15,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 8,
+              "distance": 101.23605037616136,
+              "steps": 375,
+              "maximum_absolute_lateral_position": 1.4550338266096225
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 8,
+              "distance": 101.23605037616136,
+              "steps": 375,
+              "maximum_absolute_lateral_position": 1.455033826609626
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 2,
+          "maximum_mirror_goal_error": 6.045164369083977e-14,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 1,
+              "distance": 27.146762131499564,
+              "steps": 97,
+              "maximum_absolute_lateral_position": 2.1031051348475467
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 1,
+              "distance": 27.146762131499575,
+              "steps": 97,
+              "maximum_absolute_lateral_position": 2.1031051348474574
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lamina_weight": 0.25,
+      "held_out_success_count": 2,
+      "held_out_obstacles_passed": 48,
+      "maximum_mirror_goal_error": 7.37188088351104e-14,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 14,
+          "maximum_mirror_goal_error": 5.229150445984487e-14,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.94160772733086,
+              "steps": 342,
+              "maximum_absolute_lateral_position": 1.138467421908204
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.94160772733086,
+              "steps": 342,
+              "maximum_absolute_lateral_position": 1.1384674219082687
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 16,
+          "maximum_mirror_goal_error": 1.509903313490213e-14,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 8,
+              "distance": 100.95536734362545,
+              "steps": 374,
+              "maximum_absolute_lateral_position": 1.696458810520149
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 8,
+              "distance": 100.95536734362544,
+              "steps": 374,
+              "maximum_absolute_lateral_position": 1.6964588105203064
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 7.37188088351104e-14,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.1119727192391,
+              "steps": 445,
+              "maximum_absolute_lateral_position": 3.206745989437173
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.11197271923923,
+              "steps": 445,
+              "maximum_absolute_lateral_position": 3.2067459894371315
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lamina_weight": 0.5,
+      "held_out_success_count": 2,
+      "held_out_obstacles_passed": 40,
+      "maximum_mirror_goal_error": 7.788214517745473e-14,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 14,
+          "maximum_mirror_goal_error": 6.39280295366973e-14,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.54024407237193,
+              "steps": 340,
+              "maximum_absolute_lateral_position": 1.0477921205218863
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.54024407237195,
+              "steps": 340,
+              "maximum_absolute_lateral_position": 1.0477921205218785
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "success_count": 0,
+          "total_obstacles_passed": 8,
+          "maximum_mirror_goal_error": 2.8851920852446256e-14,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 4,
+              "distance": 55.927537383052105,
+              "steps": 205,
+              "maximum_absolute_lateral_position": 1.7863451750840214
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 4,
+              "distance": 55.927537383052105,
+              "steps": 205,
+              "maximum_absolute_lateral_position": 1.7863451750839898
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 7.788214517745473e-14,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.2147296537636,
+              "steps": 446,
+              "maximum_absolute_lateral_position": 3.3815559739364773
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.21472965376371,
+              "steps": 446,
+              "maximum_absolute_lateral_position": 3.3815559739356966
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lamina_weight": 0.75,
+      "held_out_success_count": 6,
+      "held_out_obstacles_passed": 54,
+      "maximum_mirror_goal_error": 1.421709971971552e-13,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 1.4183099139586375e-13,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.08519923146515,
+              "steps": 444,
+              "maximum_absolute_lateral_position": 3.473338349272629
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.085199231465,
+              "steps": 444,
+              "maximum_absolute_lateral_position": 3.4733383492732273
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 1.421709971971552e-13,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.13120284455266,
+              "steps": 446,
+              "maximum_absolute_lateral_position": 4.415964863931023
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.13120284455242,
+              "steps": 446,
+              "maximum_absolute_lateral_position": 4.415964863931516
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 1.066507993030541e-13,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.22064565627927,
+              "steps": 444,
+              "maximum_absolute_lateral_position": 4.2083635102914165
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.22064565627922,
+              "steps": 444,
+              "maximum_absolute_lateral_position": 4.2083635102922585
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lamina_weight": 1.0,
+      "held_out_success_count": 6,
+      "held_out_obstacles_passed": 54,
+      "maximum_mirror_goal_error": 1.882521916130031e-13,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 1.4949153026577733e-13,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.14776427583115,
+              "steps": 445,
+              "maximum_absolute_lateral_position": 4.000842696114174
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.14776427583101,
+              "steps": 445,
+              "maximum_absolute_lateral_position": 4.000842696114477
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 1.882521916130031e-13,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.10154047178418,
+              "steps": 446,
+              "maximum_absolute_lateral_position": 4.331597380071049
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.10154047178402,
+              "steps": 446,
+              "maximum_absolute_lateral_position": 4.331597380071603
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "success_count": 2,
+          "total_obstacles_passed": 18,
+          "maximum_mirror_goal_error": 1.468825061579082e-13,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.00246501299459,
+              "steps": 443,
+              "maximum_absolute_lateral_position": 4.242614358921926
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "success",
+              "success": true,
+              "obstacles_passed": 9,
+              "distance": 120.00246501299458,
+              "steps": 443,
+              "maximum_absolute_lateral_position": 4.242614358922902
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_lamina_weight": 0.75,
+  "selected_summary": {
+    "lamina_weight": 0.75,
+    "held_out_success_count": 6,
+    "held_out_obstacles_passed": 54,
+    "maximum_mirror_goal_error": 1.421709971971552e-13,
+    "folds": [
+      {
+        "training_seeds": [
+          9102,
+          9103,
+          9104,
+          9105
+        ],
+        "held_out_seeds": [
+          9100,
+          9101
+        ],
+        "success_count": 2,
+        "total_obstacles_passed": 18,
+        "maximum_mirror_goal_error": 1.4183099139586375e-13,
+        "episodes": [
+          {
+            "seed": 9100,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.08519923146515,
+            "steps": 444,
+            "maximum_absolute_lateral_position": 3.473338349272629
+          },
+          {
+            "seed": 9101,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.085199231465,
+            "steps": 444,
+            "maximum_absolute_lateral_position": 3.4733383492732273
+          }
+        ]
+      },
+      {
+        "training_seeds": [
+          9100,
+          9101,
+          9104,
+          9105
+        ],
+        "held_out_seeds": [
+          9102,
+          9103
+        ],
+        "success_count": 2,
+        "total_obstacles_passed": 18,
+        "maximum_mirror_goal_error": 1.421709971971552e-13,
+        "episodes": [
+          {
+            "seed": 9102,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.13120284455266,
+            "steps": 446,
+            "maximum_absolute_lateral_position": 4.415964863931023
+          },
+          {
+            "seed": 9103,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.13120284455242,
+            "steps": 446,
+            "maximum_absolute_lateral_position": 4.415964863931516
+          }
+        ]
+      },
+      {
+        "training_seeds": [
+          9100,
+          9101,
+          9102,
+          9103
+        ],
+        "held_out_seeds": [
+          9104,
+          9105
+        ],
+        "success_count": 2,
+        "total_obstacles_passed": 18,
+        "maximum_mirror_goal_error": 1.066507993030541e-13,
+        "episodes": [
+          {
+            "seed": 9104,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.22064565627927,
+            "steps": 444,
+            "maximum_absolute_lateral_position": 4.2083635102914165
+          },
+          {
+            "seed": 9105,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.22064565627922,
+            "steps": 444,
+            "maximum_absolute_lateral_position": 4.2083635102922585
+          }
+        ]
+      }
+    ]
+  },
+  "cross_validation_passed": true,
+  "advance_to_full_tuning": true,
+  "advance_to_calibration": false,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "tuning_only": true,
+    "one_global_fusion_weight_across_folds": true,
+    "mirror_pair_is_indivisible_cv_unit": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  }
+}

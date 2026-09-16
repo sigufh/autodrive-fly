@@ -1,0 +1,27 @@
+version: 1
+name: v7-neural-global-lamina-goal-fusion-cv
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+base_neural_config: configs/driving-v7-neural-channels.yaml
+lamina_goal_config: configs/driving-v7-lamina-goal.yaml
+lamina_symmetry_evidence: artifacts/v7-lamina-goal-symmetry.json
+heading_config: configs/driving-v7-heading-ring.yaml
+tuning_pairs: [[9100, 9101], [9102, 9103], [9104, 9105]]
+lamina_feature_parity: odd_plus_paired_even_times_odd
+ridge_alpha: 1.0
+fusion_weights: [0.0, 0.25, 0.50, 0.75, 1.0]
+gates:
+  maximum_mirror_goal_error: 0.00000001
+selection_order:
+  - maximize_held_out_success_count
+  - maximize_held_out_obstacles_passed
+  - minimize_mirror_goal_error
+  - prefer_smaller_lamina_weight
+boundary:
+  tuning_only: true
+  one_global_fusion_weight_across_folds: true
+  mirror_pair_is_indivisible_cv_unit: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  target_activity_injection: false
+  runtime_modified: false

@@ -290,6 +290,9 @@ v7-evaluate-fc2-goal-memory:
 v7-evaluate-lplc-typed-screen:
 	.venv/bin/autodrive-fly v7-evaluate-lplc-typed-screen
 
+v7-evaluate-neural-goal-fusion:
+	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
