@@ -53,6 +53,7 @@ evidence:
   t4_normalized_correlator: artifacts/v7-t4-normalized-correlator.json
   t5_spatial_order: artifacts/v7-t5-spatial-order.json
   t4t5_local_edge_precheck: artifacts/v7-t4t5-local-edge-precheck.json
+  t4t5_local_edge_backends: artifacts/v7-t4t5-local-edge-backends.json
   lplc_typed_screen: artifacts/v7-lplc-typed-screen.json
   lplc2_radial_opponency: artifacts/v7-lplc2-radial-opponency.json
   lplc2_position_coverage: artifacts/v7-lplc2-position-coverage.json

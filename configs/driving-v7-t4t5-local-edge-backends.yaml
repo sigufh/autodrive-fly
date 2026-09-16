@@ -1,0 +1,19 @@
+version: 1
+name: v7-t4-t5-local-edge-frozen-backend-ab
+observed_on: "2026-09-16"
+precheck_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+condition_id: LPLC-T01
+retinal_backends: [linear_luminance, signed_frame_difference]
+dynamics_backends: [typed_visual_subgraph_v1, columnar_delay_v1, columnar_correlator_v1]
+selection:
+  metric: [direction_pass_count, polarity_pass_count]
+  minimum_direction_populations_to_expand: 1
+  parameter_fit: false
+boundary:
+  tuning_only: true
+  frozen_existing_backends_only: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  expand_only_if_direction_gate_passes: true

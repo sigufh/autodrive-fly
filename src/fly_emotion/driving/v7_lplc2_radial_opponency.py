@@ -349,7 +349,11 @@ def _layer_traces(
     probe: MassBalancedVisualProbe, stimulus, populations: dict[str, np.ndarray]
 ) -> dict[str, np.ndarray]:
     state = np.zeros(probe.graph.node_count, dtype=np.float32)
-    history_length = max(1, int(probe.source_delays.max()))
+    history_length = max(
+        1,
+        int(probe.source_delays.max()),
+        int(probe.correlator["history_substeps"]) if probe.correlator is not None else 0,
+    )
     history = [state.copy() for _ in range(history_length)]
     baseline_image = stimulus.frames[0]
     baseline_values = probe._sample_retina(baseline_image)[probe.retinal_permutation]

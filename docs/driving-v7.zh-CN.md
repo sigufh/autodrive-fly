@@ -1305,6 +1305,12 @@ ON/OFF 极性门 0/16，未达到“至少 1 个方向群体通过才扩成三�
 虽有正 OFF 趋势，但有效覆盖约 70%，不能通过 80% 门。由此位置覆盖不能修复 T4/T5
 方向选择，三条件扩展、calibration 和 runtime 均不运行。证据见
 `artifacts/v7-t4t5-local-edge-precheck.json`。
+同一预检随后只替换已冻结后端，比较 linear luminance / signed frame difference 与
+typed visual subgraph / columnar delay / columnar correlator 的 2×3 组合。六个组合的方向门
+全部仍为 0/16；signed-frame-difference 配 typed/delay 可使极性门达到 8/16，但方向不改善，
+correlator 连极性也为 0/16。没有组合达到扩展门，因此现有后端复用方向关闭；下一步必须
+设计新的 lamina→T4/T5 局部时序相关机制，而不是只切换 retinal code 或既有 delay。证据见
+`artifacts/v7-t4t5-local-edge-backends.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

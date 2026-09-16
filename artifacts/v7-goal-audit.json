@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "f92f73f68aa4847fda54d0fd6a1eecc5ccb0f3341b79e815eef4ff2efe323b43",
-      "src/fly_emotion/driving/v7_goal_audit.py": "cd2c0810fdb302104a7e4e95688c06a83eb8e5804a2d446b7e2f3154a307e555",
+      "configs/driving-v7-goal-audit.yaml": "5a80a903bdc1da909e0d8e4c3cdb237c2d338186d9cc44202f04f14b0e984db3",
+      "src/fly_emotion/driving/v7_goal_audit.py": "b156c8e9adcfe017914b98f55f8a5eca030711d68b22598b50afcbb89181ef1a",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -47,9 +47,10 @@
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
-      "artifacts/v7-t4t5-local-edge-precheck.json": "24bb359c7424fdf9417825a27a29cdc22ab3da0e73f0062fcda7c3e4cf5836eb",
+      "artifacts/v7-t4t5-local-edge-precheck.json": "8b5df01eada7f01b3c09c7fd046195b221a5f83c9b0986c32027e6ede2d8e7bb",
+      "artifacts/v7-t4t5-local-edge-backends.json": "0e3a2a9cf28a196893adf91e3be5c7cc08317c1267c0e8e65e16910c44d5e70d",
       "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
-      "artifacts/v7-lplc2-radial-opponency.json": "8305e69bd326a3afba3d350dc9ed9b125b6ceebbd8fa9420a59bded069424aab",
+      "artifacts/v7-lplc2-radial-opponency.json": "2ecbb95b3d1c2b9aa9d3c81fc40baad778133cf0c1938b046ec2dfb3812ca49d",
       "artifacts/v7-lplc2-position-coverage.json": "2447e854c6d7b2ec05b49f63e57bed037a1582f0bd8dce2e907644bb8b88e74a",
       "artifacts/v7-heading-ring.json": "2d68ed0763908ed451f0f57f8a4e8f8c9143c68813bf8b85d030622bc3816dd5",
       "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
@@ -253,6 +254,23 @@
         "local_edge_precheck_direction_pass_count": 0,
         "local_edge_precheck_polarity_pass_count": 0,
         "local_edge_precheck_expand_to_three_conditions": false,
+        "local_edge_backend_direction_pass_counts": {
+          "linear_luminance:typed_visual_subgraph_v1": 0,
+          "linear_luminance:columnar_delay_v1": 0,
+          "linear_luminance:columnar_correlator_v1": 0,
+          "signed_frame_difference:typed_visual_subgraph_v1": 0,
+          "signed_frame_difference:columnar_delay_v1": 0,
+          "signed_frame_difference:columnar_correlator_v1": 0
+        },
+        "local_edge_backend_polarity_pass_counts": {
+          "linear_luminance:typed_visual_subgraph_v1": 0,
+          "linear_luminance:columnar_delay_v1": 0,
+          "linear_luminance:columnar_correlator_v1": 0,
+          "signed_frame_difference:typed_visual_subgraph_v1": 8,
+          "signed_frame_difference:columnar_delay_v1": 8,
+          "signed_frame_difference:columnar_correlator_v1": 0
+        },
+        "existing_backend_reuse_gate_passed": false,
         "typed_LPLC_LC4_gates_passed": false,
         "LPLC2_radial_opponency_gates_passed": false,
         "LPLC2_radial_fixed_target_denominators": {
@@ -507,7 +525,8 @@
         "artifacts/v7-t4-source-resolved.json",
         "artifacts/v7-t4-normalized-correlator.json",
         "artifacts/v7-t5-spatial-order.json",
-        "artifacts/v7-t4t5-local-edge-precheck.json"
+        "artifacts/v7-t4t5-local-edge-precheck.json",
+        "artifacts/v7-t4t5-local-edge-backends.json"
       ]
     },
     {

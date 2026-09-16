@@ -77,6 +77,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["local_edge_precheck_direction_pass_count"] == 0
     assert visual["observations"]["local_edge_precheck_polarity_pass_count"] == 0
     assert visual["observations"]["local_edge_precheck_expand_to_three_conditions"] is False
+    assert set(visual["observations"]["local_edge_backend_direction_pass_counts"].values()) == {0}
+    assert set(visual["observations"]["local_edge_backend_polarity_pass_counts"].values()) == {0, 8}
+    assert visual["observations"]["existing_backend_reuse_gate_passed"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

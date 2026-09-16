@@ -75,8 +75,14 @@ def _compact(score: dict) -> dict:
     }
 
 
-def evaluate_v7_t4t5_local_edge_precheck(root: Path) -> dict:
+def evaluate_v7_t4t5_local_edge_precheck(
+    root: Path, *, retinal_backend: str | None = None, dynamics_backend: str | None = None
+) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
+    if retinal_backend is not None:
+        config["retinal_backend"] = retinal_backend
+    if dynamics_backend is not None:
+        config["dynamics_backend"] = dynamics_backend
     source_path = Path(config["source_protocol"])
     source = yaml.safe_load((root / source_path).read_text())
     typed_path = Path(config["typed_stimulus_protocol"])
@@ -214,6 +220,8 @@ def evaluate_v7_t4t5_local_edge_precheck(root: Path) -> dict:
             "position_count": len(x_centers) * len(y_centers),
             "stimulus_count": len(responses),
             "noise_standard_deviation": 0.0,
+            "retinal_backend": config["retinal_backend"],
+            "dynamics_backend": config["dynamics_backend"],
             "parameter_fit": False,
             "target_activity_injection": False,
             "calibration_evaluated": False,

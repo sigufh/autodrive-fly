@@ -62,6 +62,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
+    t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
     lplc_typed_screen = reports["lplc_typed_screen"]
     lplc2_radial_opponency = reports["lplc2_radial_opponency"]
     lplc2_position_coverage = reports["lplc2_position_coverage"]
@@ -297,6 +298,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "local_edge_precheck_expand_to_three_conditions": t4t5_local_edge_precheck[
                     "summary"
                 ]["expand_to_three_conditions"],
+                "local_edge_backend_direction_pass_counts": {
+                    name: result["direction_pass_count"]
+                    for name, result in t4t5_local_edge_backends["candidates"].items()
+                },
+                "local_edge_backend_polarity_pass_counts": {
+                    name: result["polarity_pass_count"]
+                    for name, result in t4t5_local_edge_backends["candidates"].items()
+                },
+                "existing_backend_reuse_gate_passed": t4t5_local_edge_backends[
+                    "existing_backend_reuse_gate_passed"
+                ],
                 "typed_LPLC_LC4_gates_passed": lplc_typed_screen["typed_lplc_lc4_gates_passed"],
                 "LPLC2_radial_opponency_gates_passed": lplc2_radial_opponency[
                     "radial_opponency_mechanism_gates_passed"
@@ -610,6 +622,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_normalized_correlator"],
                 config["evidence"]["t5_spatial_order"],
                 config["evidence"]["t4t5_local_edge_precheck"],
+                config["evidence"]["t4t5_local_edge_backends"],
             ],
         },
         {
