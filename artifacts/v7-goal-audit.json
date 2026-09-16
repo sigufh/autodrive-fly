@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "a2db7539c8f0f10530929b1ff422a94b3b16e36cbb217a0eb1aeebfadea57695",
-      "src/fly_emotion/driving/v7_goal_audit.py": "5886552d95630b494bd3879a0d803f084cb69fc4a1aaf8202493d27e974fcc05",
+      "configs/driving-v7-goal-audit.yaml": "65fe09a4610452f9c2adf375c6f1a3f19afe741269676a388ba84756dc1dd498",
+      "src/fly_emotion/driving/v7_goal_audit.py": "9d6c9b2e8d2d021647d1a01d5b7a824f632ca146208c2b95f7f56b0e5fbf2c83",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -45,9 +45,10 @@
       "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70",
       "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d",
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
-      "artifacts/v7-t4-normalized-correlator.json": "fe18d4c53802c4bcb63f3388c810e14a7431032eb268bba018f77b64098e9a8b",
+      "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
+      "artifacts/v7-lplc2-radial-opponency.json": "eb3166fbf71efcf242c45e24a4beb3f527f96d7e6c1786d9e15b94a7c2a1a3ae",
       "artifacts/v7-heading-ring.json": "2d68ed0763908ed451f0f57f8a4e8f8c9143c68813bf8b85d030622bc3816dd5",
       "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
       "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
@@ -106,7 +107,8 @@
         "artifacts/v7-branched-t4-candidate.json",
         "artifacts/v7-t4-conductance-candidate.json",
         "artifacts/v7-t4-conductance-fit.json",
-        "artifacts/v7-t5-phenotype.json"
+        "artifacts/v7-t5-phenotype.json",
+        "artifacts/v7-lplc2-radial-opponency.json"
       ],
       "observations": {
         "stimulus_count": 20,
@@ -245,7 +247,14 @@
         "T4_source_resolved_passing_variants": [],
         "T4_normalized_correlator_best_gate_count": 16,
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
-        "typed_LPLC_LC4_gates_passed": false
+        "typed_LPLC_LC4_gates_passed": false,
+        "LPLC2_radial_opponency_gates_passed": false,
+        "LPLC2_radial_fixed_target_denominators": {
+          "L": 94,
+          "R": 91
+        },
+        "LPLC2_radial_direction_labels_used": true,
+        "LPLC2_radial_may_authorize_strict_visual_gate": false
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
@@ -476,7 +485,8 @@
       "requirement": "1.LPLC1_LPLC2_LC4_approach_collision_validation",
       "status": "failed",
       "evidence": [
-        "artifacts/v7-lplc-typed-screen.json"
+        "artifacts/v7-lplc-typed-screen.json",
+        "artifacts/v7-lplc2-radial-opponency.json"
       ]
     },
     {

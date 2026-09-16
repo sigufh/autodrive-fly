@@ -1235,10 +1235,26 @@ outward/inward、motion-free darkening、wide-field translation、固定终端�
 0/3 条件一致通过，虽然镜像保持通过。证据见 `artifacts/v7-t4-normalized-correlator.json`、
 `artifacts/v7-t5-spatial-order.json` 和 `artifacts/v7-lplc-typed-screen.json`。
 
+针对 LPLC2 又新增了一个不接入 runtime 的 source-resolved radial-opponency 诊断。它先
+用每个 T4/T5 自身的、带 optic-hex 坐标的直接上游按真实边权推断 receptive-field
+centroid，再用冻结的 T4a-d/T5a-d 方向标签，将真实 `T4/T5→LPLC2` 边分成 outward
+与 inward 对齐池。视觉刺激仍从 R1–R6 进入普通 typed visual subgraph；诊断头只读取
+传播后的逐细胞 T4/T5 状态，不注入 LPLC2 活动，也不读取刺激标签或环境状态。该方法
+明确是 label-informed mechanism diagnostic：即使通过，也不能证明上游 T4/T5 生物方向门。
+
+结构上，6,861/6,861 个 T4 和 6,718/6,719 个 T5 可推断位置；LPLC2 左/右固定分母
+94/91 个 target 均有真实直接 T4/T5 输入、可定位输入及非空 outward/inward 两池。功能上
+仍失败：`outward > inward` 与 `outward > motion-free` 两侧三条件均 0/3；
+`outward > translation` 右侧的逐条件群体门是 3/3，但三条件同一 target 全成功只有
+41/91（45.1%，要求 60%），左侧为 38/94（40.4%）。左侧三比较的 joint-valid 也只有
+71.3%–74.5%，低于 80%。三组镜像误差均通过（最大约 0.020），说明失败不是简单左右
+不对称，而是 inward 与 motion-free 选择性及全细胞稳定性不足。证据见
+`artifacts/v7-lplc2-radial-opponency.json`；calibration 未运行，不能接入闭环或视觉 gate。
+
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
 T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge、危险减速、简单目标记忆、
-统一 LPLC looming 规则及按亚型翻转标签。当前阶段仍是 controlled vision；MB 学习、OOD、
+统一 LPLC looming 规则及把冻结方向标签当作上游方向验证。当前阶段仍是 controlled vision；MB 学习、OOD、
 外部 final、城市交通和部署均不授权。
 
 ## 文献依据

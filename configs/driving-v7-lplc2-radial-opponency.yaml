@@ -1,0 +1,44 @@
+version: 1
+name: v7-lplc2-source-resolved-radial-opponency
+observed_on: "2026-09-16"
+typed_stimulus_protocol: configs/driving-v7-lplc-typed-screen.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_ids: [LPLC-T01, LPLC-T02, LPLC-T03]
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+source_coordinate_types:
+  T4: [Mi1, Tm3, Mi4, Mi9, C3]
+  T5: [Tm1, Tm2, Tm4, Tm9]
+source_populations: [T4a, T4b, T4c, T4d, T5a, T5b, T5c, T5d]
+alignment:
+  formula: dot(frozen_subtype_direction, source_position_minus_target_source_centroid)
+  minimum_radius: 0.000000000001
+  normalize_by_all_direct_t4_t5_weight: true
+response:
+  formula: max_over_time(outward_aligned_pool_minus_inward_aligned_pool)
+  rectify_source_activity: false
+comparisons:
+  outward_vs_inward: lplc2_inward
+  outward_vs_motion_free: lplc2_motion_free
+  outward_vs_translation: lplc2_translation
+thresholds:
+  minimum_valid_denominator: 0.000001
+  minimum_valid_cell_fraction: 0.80
+  minimum_median_signed_contrast: 0.10
+  minimum_positive_cell_fraction: 0.60
+  minimum_joint_valid_fraction: 0.80
+  minimum_all_condition_success_fraction: 0.60
+  maximum_mirror_error: 0.20
+boundary:
+  tuning_only: true
+  label_informed_mechanism_diagnostic: true
+  direction_labels_used_by_mechanism: true
+  may_authorize_strict_visual_gate: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  external_final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false

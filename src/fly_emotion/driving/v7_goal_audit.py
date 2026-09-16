@@ -62,6 +62,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t5_spatial_order = reports["t5_spatial_order"]
     lplc_typed_screen = reports["lplc_typed_screen"]
+    lplc2_radial_opponency = reports["lplc2_radial_opponency"]
     heading_ring = reports["heading_ring"]
     neural_episode_cv = reports["neural_episode_cv"]
     neural_episode_controls = reports["neural_episode_controls"]
@@ -128,6 +129,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["conductance_t4"],
                 config["evidence"]["fitted_t4"],
                 config["evidence"]["t5_phenotype"],
+                config["evidence"]["lplc2_radial_opponency"],
             ],
             "observations": {
                 "stimulus_count": controlled["protocol"]["stimulus_count"],
@@ -288,6 +290,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "typed_LPLC_LC4_gates_passed": lplc_typed_screen[
                     "typed_lplc_lc4_gates_passed"
                 ],
+                "LPLC2_radial_opponency_gates_passed": lplc2_radial_opponency[
+                    "radial_opponency_mechanism_gates_passed"
+                ],
+                "LPLC2_radial_fixed_target_denominators": lplc2_radial_opponency[
+                    "protocol"
+                ]["fixed_target_denominators"],
+                "LPLC2_radial_direction_labels_used": lplc2_radial_opponency[
+                    "protocol"
+                ]["direction_labels_used_by_mechanism"],
+                "LPLC2_radial_may_authorize_strict_visual_gate": lplc2_radial_opponency[
+                    "protocol"
+                ]["may_authorize_strict_visual_gate"],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -565,7 +579,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         {
             "requirement": "1.LPLC1_LPLC2_LC4_approach_collision_validation",
             "status": "failed",
-            "evidence": [config["evidence"]["lplc_typed_screen"]],
+            "evidence": [
+                config["evidence"]["lplc_typed_screen"],
+                config["evidence"]["lplc2_radial_opponency"],
+            ],
         },
         {
             "requirement": "2.EPG_PEN_PEG_heading_and_occlusion",
