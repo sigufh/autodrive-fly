@@ -1,0 +1,36 @@
+version: 1
+name: v7-fc2-pfl-dna-transparent-readout
+observed_on: "2026-09-16"
+candidate_evidence: artifacts/v7-neural-episode-cv.json
+control_evidence: artifacts/v7-neural-episode-controls.json
+base_neural_config: configs/driving-v7-neural-channels.yaml
+heading_config: configs/driving-v7-heading-ring.yaml
+tuning_seeds: [8200, 8201, 8202, 8203, 8204, 8205]
+calibration_seeds: [8700, 8701]
+readouts:
+  - hierarchical_fc2_pfl3_dna02
+  - direct_dna01_dna02
+  - direct_dnp20
+controls:
+  - no_fc2_goal
+  - no_epg_heading
+  - no_pfl3
+  - no_dna02
+turn_termination:
+  initial_heading_radians: [-0.8, -0.4, 0.4, 0.8]
+  target_heading_radians: [-0.35, 0.0, 0.35]
+  update_gain: 0.12
+  error_threshold: 0.01
+  maximum_steps: 160
+  maximum_final_error: 0.012
+boundary:
+  transparent_fixed_mapping: true
+  environment_geometry_read_by_controller: false
+  reward_read_by_controller: false
+  raw_heading_read_by_controller: false
+  calibration_may_change_candidate: false
+  external_final_evaluated: false
+  runtime_modified: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

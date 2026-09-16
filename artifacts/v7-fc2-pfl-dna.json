@@ -1,0 +1,925 @@
+{
+  "protocol": {
+    "name": "v7-fc2-pfl-dna-transparent-readout",
+    "dependencies_sha256": {
+      "configs/driving-v7-fc2-pfl-dna.yaml": "b854f0348d74b0d07d5897d194d642a7d49c6d2dea8720ab48e16cbbe89c7680",
+      "src/fly_emotion/driving/v7_fc2_pfl_dna.py": "4c6f01ec1ad32e0b895aa4c01e247141cc84567aaed4e84ca58e6828b61fdac0",
+      "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
+      "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
+      "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
+      "configs/driving-v7-heading-ring.yaml": "0933edfef539902cf1f9ee1365b39cd8ed741e2de7fe856452aa4504f2cdabb3"
+    },
+    "model_sha256": "503a493a58fcc6d9fcb1ff2676267490d45fcf6ccdf020c59e6176be210f2742",
+    "transparent_fixed_mapping": true,
+    "environment_geometry_read_by_controller": false,
+    "reward_read_by_controller": false,
+    "raw_heading_read_by_controller": false,
+    "calibration_run_once_after_candidate_freeze": true,
+    "external_final_evaluated": false,
+    "runtime_modified": false
+  },
+  "malecns_structure": {
+    "population_counts": {
+      "FC2": 92,
+      "EPG": 46,
+      "PFL3": 24,
+      "PFL2": 12,
+      "DNa01": 2,
+      "DNa02": 2,
+      "DNp20": 2
+    },
+    "edges": {
+      "FC2->FC2": {
+        "edge_count": 1184,
+        "synapse_weight": 2120.0
+      },
+      "FC2->EPG": {
+        "edge_count": 18,
+        "synapse_weight": 27.0
+      },
+      "FC2->PFL3": {
+        "edge_count": 576,
+        "synapse_weight": 7690.0
+      },
+      "FC2->PFL2": {
+        "edge_count": 298,
+        "synapse_weight": 4333.0
+      },
+      "FC2->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "FC2->DNa02": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "FC2->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "EPG->FC2": {
+        "edge_count": 19,
+        "synapse_weight": 25.0
+      },
+      "EPG->EPG": {
+        "edge_count": 842,
+        "synapse_weight": 11486.0
+      },
+      "EPG->PFL3": {
+        "edge_count": 113,
+        "synapse_weight": 1182.0
+      },
+      "EPG->PFL2": {
+        "edge_count": 71,
+        "synapse_weight": 1036.0
+      },
+      "EPG->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "EPG->DNa02": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "EPG->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "PFL3->FC2": {
+        "edge_count": 19,
+        "synapse_weight": 28.0
+      },
+      "PFL3->EPG": {
+        "edge_count": 16,
+        "synapse_weight": 20.0
+      },
+      "PFL3->PFL3": {
+        "edge_count": 253,
+        "synapse_weight": 853.0
+      },
+      "PFL3->PFL2": {
+        "edge_count": 30,
+        "synapse_weight": 36.0
+      },
+      "PFL3->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "PFL3->DNa02": {
+        "edge_count": 24,
+        "synapse_weight": 736.0
+      },
+      "PFL3->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "PFL2->FC2": {
+        "edge_count": 4,
+        "synapse_weight": 4.0
+      },
+      "PFL2->EPG": {
+        "edge_count": 3,
+        "synapse_weight": 3.0
+      },
+      "PFL2->PFL3": {
+        "edge_count": 30,
+        "synapse_weight": 36.0
+      },
+      "PFL2->PFL2": {
+        "edge_count": 125,
+        "synapse_weight": 606.0
+      },
+      "PFL2->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "PFL2->DNa02": {
+        "edge_count": 4,
+        "synapse_weight": 5.0
+      },
+      "PFL2->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa01->FC2": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa01->EPG": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa01->PFL3": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa01->PFL2": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa01->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa01->DNa02": {
+        "edge_count": 2,
+        "synapse_weight": 8.0
+      },
+      "DNa01->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->FC2": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->EPG": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->PFL3": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->PFL2": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->DNa02": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNa02->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->FC2": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->EPG": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->PFL3": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->PFL2": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->DNa01": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->DNa02": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      },
+      "DNp20->DNp20": {
+        "edge_count": 0,
+        "synapse_weight": 0.0
+      }
+    },
+    "cross_side_pfl3_dna02_edges": {
+      "PFL3_L->DNa02_R": {
+        "edge_count": 12,
+        "synapse_weight": 380.0
+      },
+      "PFL3_R->DNa02_L": {
+        "edge_count": 12,
+        "synapse_weight": 356.0
+      }
+    },
+    "supported_hierarchy": [
+      "FC2->PFL3",
+      "EPG->PFL3",
+      "PFL3->DNa02"
+    ],
+    "unsupported_direct_claims": [
+      "PFL3->DNa01",
+      "PFL3->DNp20"
+    ],
+    "structure_is_not_functional_validation": true
+  },
+  "turn_termination_assay": {
+    "records": [
+      {
+        "initial_heading": -0.8,
+        "target_heading": -0.35,
+        "steps": 32,
+        "final_error": 0.008905807844145963,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": -0.8,
+        "target_heading": 0.0,
+        "steps": 37,
+        "final_error": 0.009088321334736076,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": -0.8,
+        "target_heading": 0.35,
+        "steps": 41,
+        "final_error": 0.008873533729111038,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": -0.4,
+        "target_heading": -0.35,
+        "steps": 14,
+        "final_error": 0.009494138833277599,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": -0.4,
+        "target_heading": 0.0,
+        "steps": 31,
+        "final_error": 0.008920693789089142,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": -0.4,
+        "target_heading": 0.35,
+        "steps": 36,
+        "final_error": 0.00954156648155663,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": 0.4,
+        "target_heading": -0.35,
+        "steps": 36,
+        "final_error": 0.009541566481556685,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": 0.4,
+        "target_heading": 0.0,
+        "steps": 31,
+        "final_error": 0.008920693789089166,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": 0.4,
+        "target_heading": 0.35,
+        "steps": 14,
+        "final_error": 0.009494138833277543,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": 0.8,
+        "target_heading": -0.35,
+        "steps": 41,
+        "final_error": 0.008873533729111094,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": 0.8,
+        "target_heading": 0.0,
+        "steps": 37,
+        "final_error": 0.00908832133473608,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      },
+      {
+        "initial_heading": 0.8,
+        "target_heading": 0.35,
+        "steps": 32,
+        "final_error": 0.008905807844146019,
+        "monotone_error_reduction": true,
+        "pfl2_termination": true
+      }
+    ],
+    "maximum_final_error": 0.009541566481556685,
+    "maximum_mirror_error": 5.551115123125783e-17,
+    "passed": true
+  },
+  "readout_arms": {
+    "hierarchical_fc2_pfl3_dna02": {
+      "tuning": {
+        "success_count": 6,
+        "total_obstacles_passed": 54,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.20693365337925,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.183170290277186,
+            "trace_sha256": "ec35e9c45185f55c694625419cff319e56e1413dd030f40318b6d66e0ab2818d"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.20693365337914,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.1831702902772219,
+            "trace_sha256": "bd20110d5c97b252c7ed41647564544e5dc97493ce1c2bb5b7da561e0094366d"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.07583493277066,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.588485395698349,
+            "trace_sha256": "c4b5d2edbcb933536cb4116b48c325105de47ade568fd6bc620d6d81d0cb8465"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.07583493277052,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.5884853956987395,
+            "trace_sha256": "cd05c7a4c58ac86f779018f05029321c91033ad998252faadb604a6ff0658eea"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.10417013672635,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.0109244078448059,
+            "trace_sha256": "dfd818413e5619eb98cc4a1122ce14fcbaabf948013498c24d8d994cdab1d768"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.10417013672638,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.0109244078446178,
+            "trace_sha256": "64cb4653662fef39e2a2321b2df656ac4cee478504123191cdaa0558b3fbae10"
+          }
+        ]
+      }
+    },
+    "direct_dna01_dna02": {
+      "tuning": {
+        "success_count": 6,
+        "total_obstacles_passed": 54,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.20693365337925,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.183170290277186,
+            "trace_sha256": "ec35e9c45185f55c694625419cff319e56e1413dd030f40318b6d66e0ab2818d"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.20693365337914,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.1831702902772219,
+            "trace_sha256": "bd20110d5c97b252c7ed41647564544e5dc97493ce1c2bb5b7da561e0094366d"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.07583493277066,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.588485395698349,
+            "trace_sha256": "c4b5d2edbcb933536cb4116b48c325105de47ade568fd6bc620d6d81d0cb8465"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.07583493277052,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.5884853956987395,
+            "trace_sha256": "cd05c7a4c58ac86f779018f05029321c91033ad998252faadb604a6ff0658eea"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.10417013672635,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.0109244078448059,
+            "trace_sha256": "dfd818413e5619eb98cc4a1122ce14fcbaabf948013498c24d8d994cdab1d768"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.10417013672638,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.0109244078446178,
+            "trace_sha256": "64cb4653662fef39e2a2321b2df656ac4cee478504123191cdaa0558b3fbae10"
+          }
+        ]
+      }
+    },
+    "direct_dnp20": {
+      "tuning": {
+        "success_count": 6,
+        "total_obstacles_passed": 54,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.20693365337925,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.183170290277186,
+            "trace_sha256": "ec35e9c45185f55c694625419cff319e56e1413dd030f40318b6d66e0ab2818d"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.20693365337914,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.1831702902772219,
+            "trace_sha256": "bd20110d5c97b252c7ed41647564544e5dc97493ce1c2bb5b7da561e0094366d"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.07583493277066,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.588485395698349,
+            "trace_sha256": "c4b5d2edbcb933536cb4116b48c325105de47ade568fd6bc620d6d81d0cb8465"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.07583493277052,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.5884853956987395,
+            "trace_sha256": "cd05c7a4c58ac86f779018f05029321c91033ad998252faadb604a6ff0658eea"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.10417013672635,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.0109244078448059,
+            "trace_sha256": "dfd818413e5619eb98cc4a1122ce14fcbaabf948013498c24d8d994cdab1d768"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "success",
+            "success": true,
+            "obstacles_passed": 9,
+            "distance": 120.10417013672638,
+            "steps": 443,
+            "maximum_absolute_lateral_position": 1.0109244078446178,
+            "trace_sha256": "64cb4653662fef39e2a2321b2df656ac4cee478504123191cdaa0558b3fbae10"
+          }
+        ]
+      }
+    },
+    "no_fc2_goal": {
+      "tuning": {
+        "success_count": 0,
+        "total_obstacles_passed": 8,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 12.755006411366194,
+            "steps": 43,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "6806aaec846d13979a6fc2b815b08560480c0c9e50ad39d191138bfeb283dc79"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 12.755006411366194,
+            "steps": 43,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "6806aaec846d13979a6fc2b815b08560480c0c9e50ad39d191138bfeb283dc79"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 13.565002814435886,
+            "steps": 46,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "bf3b03d636627a76310b18278e8e7d2a49b1b99ea02a1eb01fa3fa3f01deacb6"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 13.565002814435886,
+            "steps": 46,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "bf3b03d636627a76310b18278e8e7d2a49b1b99ea02a1eb01fa3fa3f01deacb6"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 4,
+            "distance": 59.73500000000028,
+            "steps": 217,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "c0098faae3fa74d74cd645ef422093a1980722b83601eb4c769f239b428d00df"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 4,
+            "distance": 59.73500000000028,
+            "steps": 217,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "c0098faae3fa74d74cd645ef422093a1980722b83601eb4c769f239b428d00df"
+          }
+        ]
+      }
+    },
+    "no_epg_heading": {
+      "tuning": {
+        "success_count": 0,
+        "total_obstacles_passed": 10,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "road_boundary",
+            "success": false,
+            "obstacles_passed": 2,
+            "distance": 37.34179487158138,
+            "steps": 142,
+            "maximum_absolute_lateral_position": 5.498722163131047,
+            "trace_sha256": "f0ea8b1e327e20b1e782db10a7ba9ed114b029baf1b21d76959b9823835dc9df"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "road_boundary",
+            "success": false,
+            "obstacles_passed": 2,
+            "distance": 37.34179487158167,
+            "steps": 142,
+            "maximum_absolute_lateral_position": 5.498722163130746,
+            "trace_sha256": "4e89af8002d8deaf2595384428db6061e3e33147ed5ce031c2db1785a05d5f6b"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 1,
+            "distance": 25.283088896018683,
+            "steps": 91,
+            "maximum_absolute_lateral_position": 2.9061946130044434,
+            "trace_sha256": "bd917f526a95ae88ec1066e70b029b353e364610fb5918033e0675682135b4c6"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 1,
+            "distance": 25.283088896018654,
+            "steps": 91,
+            "maximum_absolute_lateral_position": 2.90619461300494,
+            "trace_sha256": "2242bf6a8e3e8ea56b6676d9f6a4e1156a524b7f258e75014d4826f85bbbbeb3"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 2,
+            "distance": 35.038530980359354,
+            "steps": 129,
+            "maximum_absolute_lateral_position": 2.876841802881051,
+            "trace_sha256": "e76ef31bededdbcbbe101ea5bbedd0c3ee11da72c4dfc1e28e68f0275e246088"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 2,
+            "distance": 35.03853098035896,
+            "steps": 129,
+            "maximum_absolute_lateral_position": 2.8768418028833294,
+            "trace_sha256": "a931c57b5c9b2b1691ee30636354d00b338775d9b1fb1db7c71ac3a8e05e35e1"
+          }
+        ]
+      }
+    },
+    "no_pfl3": {
+      "tuning": {
+        "success_count": 0,
+        "total_obstacles_passed": 8,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 12.755006411366194,
+            "steps": 43,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "67874cb943b468a9e615a37b898265437a68b3e7e7949fa5e36c7cc62799c4bd"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 12.755006411366194,
+            "steps": 43,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "67874cb943b468a9e615a37b898265437a68b3e7e7949fa5e36c7cc62799c4bd"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 13.565002814435886,
+            "steps": 46,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0092a66901d88a02e6eed01116da28238e84420c55d5ac2bb6d3b59337e5e4e5"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 13.565002814435886,
+            "steps": 46,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0092a66901d88a02e6eed01116da28238e84420c55d5ac2bb6d3b59337e5e4e5"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 4,
+            "distance": 59.73500000000028,
+            "steps": 217,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0d46ed2bbcdabe8966868082af4177190bfd1749df4846e438631c3fc3ea12c9"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 4,
+            "distance": 59.73500000000028,
+            "steps": 217,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0d46ed2bbcdabe8966868082af4177190bfd1749df4846e438631c3fc3ea12c9"
+          }
+        ]
+      }
+    },
+    "no_dna02": {
+      "tuning": {
+        "success_count": 0,
+        "total_obstacles_passed": 8,
+        "episodes": [
+          {
+            "seed": 8200,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 12.755006411366194,
+            "steps": 43,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "67874cb943b468a9e615a37b898265437a68b3e7e7949fa5e36c7cc62799c4bd"
+          },
+          {
+            "seed": 8201,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 12.755006411366194,
+            "steps": 43,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "67874cb943b468a9e615a37b898265437a68b3e7e7949fa5e36c7cc62799c4bd"
+          },
+          {
+            "seed": 8202,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 13.565002814435886,
+            "steps": 46,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0092a66901d88a02e6eed01116da28238e84420c55d5ac2bb6d3b59337e5e4e5"
+          },
+          {
+            "seed": 8203,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 0,
+            "distance": 13.565002814435886,
+            "steps": 46,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0092a66901d88a02e6eed01116da28238e84420c55d5ac2bb6d3b59337e5e4e5"
+          },
+          {
+            "seed": 8204,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 4,
+            "distance": 59.73500000000028,
+            "steps": 217,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0d46ed2bbcdabe8966868082af4177190bfd1749df4846e438631c3fc3ea12c9"
+          },
+          {
+            "seed": 8205,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 4,
+            "distance": 59.73500000000028,
+            "steps": 217,
+            "maximum_absolute_lateral_position": 0.0,
+            "trace_sha256": "0d46ed2bbcdabe8966868082af4177190bfd1749df4846e438631c3fc3ea12c9"
+          }
+        ]
+      }
+    }
+  },
+  "readout_action_equivalence": true,
+  "causal_controls_passed": true,
+  "tuning_passed": true,
+  "calibration_episodes": [
+    {
+      "seed": 8700,
+      "terminal_reason": "obstacle",
+      "success": false,
+      "obstacles_passed": 2,
+      "distance": 35.017245255312154,
+      "steps": 126,
+      "maximum_absolute_lateral_position": 1.2781066820128326,
+      "trace_sha256": "e3c7566c6bfad784f28e3bee6e670c2c4907b8273aac73ef735e8a4e006fbced"
+    },
+    {
+      "seed": 8701,
+      "terminal_reason": "obstacle",
+      "success": false,
+      "obstacles_passed": 2,
+      "distance": 35.01724525531217,
+      "steps": 126,
+      "maximum_absolute_lateral_position": 1.27810668201277,
+      "trace_sha256": "91623b5bd02b58fce7a777cecf435b907d143fd87c975702e3513817abdd8269"
+    }
+  ],
+  "calibration_passed": false,
+  "calibration_failure_attribution": {
+    "role": "post_failure_attribution_only_not_parameter_selection",
+    "direct_18_feature_reference": [
+      {
+        "seed": 8700,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 2,
+        "distance": 35.017245255312154,
+        "steps": 126,
+        "maximum_heading_decode_error": 5.551115123125783e-17,
+        "maximum_absolute_lateral_position": 1.2781066820128326
+      },
+      {
+        "seed": 8701,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 2,
+        "distance": 35.01724525531217,
+        "steps": 126,
+        "maximum_heading_decode_error": 8.326672684688674e-17,
+        "maximum_absolute_lateral_position": 1.27810668201277
+      }
+    ],
+    "r1r6_local_upper_bound": [
+      {
+        "seed": 8700,
+        "pair_seed": 4350,
+        "mirror": 1,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.21031844465787,
+        "steps": 447,
+        "maximum_reconstruction_error": 4.440892098500626e-16,
+        "maximum_absolute_lateral_position": 1.269703479978025
+      },
+      {
+        "seed": 8701,
+        "pair_seed": 4350,
+        "mirror": -1,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.21031844465787,
+        "steps": 447,
+        "maximum_reconstruction_error": 4.440892098500626e-16,
+        "maximum_absolute_lateral_position": 1.269703479978022
+      }
+    ],
+    "direct_reference_matches_hierarchical_failure": true,
+    "r1r6_local_upper_bound_passes_both": true,
+    "diagnosis": "frozen_neural_visual_readout_generalization_gap"
+  },
+  "advance_to_navigation_release": false,
+  "advance_to_mushroom_body": false,
+  "boundary": {
+    "transparent_fixed_mapping": true,
+    "environment_geometry_read_by_controller": false,
+    "reward_read_by_controller": false,
+    "raw_heading_read_by_controller": false,
+    "calibration_may_change_candidate": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false,
+    "modifies_assisted_v5": false,
+    "modifies_neural_v6_front": false,
+    "changes_default_service": false
+  }
+}

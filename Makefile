@@ -245,6 +245,9 @@ v7-evaluate-neural-episode-cv:
 v7-evaluate-neural-episode-controls:
 	.venv/bin/autodrive-fly v7-evaluate-neural-episode-controls
 
+v7-evaluate-fc2-pfl-dna:
+	.venv/bin/autodrive-fly v7-evaluate-fc2-pfl-dna
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
