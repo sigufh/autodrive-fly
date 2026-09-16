@@ -1,0 +1,39 @@
+version: 1
+name: v7-epg-pen-peg-heading-ring
+observed_on: "2026-09-16"
+neural_channel_config: configs/driving-v7-neural-channels.yaml
+neural_tuning_evidence: artifacts/v7-neural-channels-tuning.json
+neural_calibration_evidence: artifacts/v7-neural-channels-calibration.json
+ring:
+  bins: 16
+  epg_concentration: 7.0
+  peg_memory: 0.96
+  pen_update_gain: 1.0
+  initial_heading: 0.0
+  decode_limit: 1.15
+assays:
+  dt: 0.12
+  maximum_tracking_error: 0.000001
+  maximum_occlusion_drift: 0.000001
+  maximum_mirror_error: 0.000001
+  rotation_sequences:
+    - [0.00, 0.08, 0.12, 0.18, 0.10, -0.06, -0.15, -0.10, 0.00]
+    - [0.00, -0.11, -0.16, -0.08, 0.05, 0.14, 0.09, 0.00]
+  occlusion_steps: 64
+navigation:
+  tuning_seeds: [8200, 8201, 8202, 8203, 8204, 8205]
+  development_regression_seeds: [8300, 8301]
+  calibration_seeds: [8400, 8401]
+  calibration_run_once_after_candidate_freeze: true
+  controls: [neural_heading, frozen_heading, reversed_yaw_update]
+boundary:
+  yaw_rate_is_proprioceptive_input: true
+  heading_value_not_read_by_controller: true
+  visual_model_changed: false
+  action_adapter_changed: false
+  target_activity_injection: false
+  calibration_used_for_parameter_selection: false
+  external_final_evaluated: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

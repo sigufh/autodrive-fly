@@ -48,6 +48,7 @@ from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_gain_audit import evaluate_v7_normalization_gain
 from .driving.v7_geometry_sign import evaluate_v7_geometry_sign
 from .driving.v7_goal_audit import evaluate_v7_goal_coverage
+from .driving.v7_heading_ring import evaluate_v7_heading_ring
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
     evaluate_v7_receptor_mask_audit,
@@ -231,6 +232,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-spatial-order")
     subparsers.add_parser("v7-evaluate-lplc2-phenotype")
     subparsers.add_parser("v7-evaluate-t4-source-resolved")
+    subparsers.add_parser("v7-evaluate-heading-ring")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -680,6 +682,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t4-source-resolved":
         report = evaluate_v7_t4_source_resolved(root)
         target = root / "artifacts/v7-t4-source-resolved.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-heading-ring":
+        report = evaluate_v7_heading_ring(root)
+        target = root / "artifacts/v7-heading-ring.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

@@ -233,6 +233,9 @@ v7-evaluate-lplc2-phenotype:
 v7-evaluate-t4-source-resolved:
 	.venv/bin/autodrive-fly v7-evaluate-t4-source-resolved
 
+v7-evaluate-heading-ring:
+	.venv/bin/autodrive-fly v7-evaluate-heading-ring
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
