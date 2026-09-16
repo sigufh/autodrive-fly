@@ -44,6 +44,7 @@ from .driving.v7_danger_throttle import evaluate_v7_danger_throttle
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
+from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
 from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
@@ -267,6 +268,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-lamina-goal")
     subparsers.add_parser("v7-evaluate-lamina-goal-symmetry")
     subparsers.add_parser("v7-evaluate-t4-normalized-correlator")
+    subparsers.add_parser("v7-evaluate-fc2-goal-memory")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -818,6 +820,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t4-normalized-correlator":
         report = evaluate_v7_t4_normalized_correlator(root)
         target = root / "artifacts/v7-t4-normalized-correlator.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-fc2-goal-memory":
+        report = evaluate_v7_fc2_goal_memory(root)
+        target = root / "artifacts/v7-fc2-goal-memory.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
