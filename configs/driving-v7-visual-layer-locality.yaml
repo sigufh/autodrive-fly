@@ -1,0 +1,28 @@
+version: 1
+name: v7-visual-layer-locality-screen
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+base_neural_config: configs/driving-v7-neural-channels.yaml
+neural_corridor_config: configs/driving-v7-neural-corridor.yaml
+tuning_pairs: [[9100, 9101], [9102, 9103], [9104, 9105]]
+spatial_bins: 24
+families:
+  lamina: [L1, L2, L3, L5]
+  T4_upstream: [Mi1, Tm3, Mi4, C3, Mi9]
+  T5_upstream: [Tm1, Tm2, Tm4, Tm9]
+  T4_T5_output: [T4a, T4b, T5a, T5b]
+dynamics_backend: typed_visual_leak_v1
+readout:
+  ridge_alpha: 1.0
+selection_order:
+  - minimize_held_out_safety_mae
+  - maximize_held_out_safety_mean_r2
+  - minimize_unmapped_fraction
+  - lexical_family_name
+boundary:
+  tuning_only: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  direct_R1_R6_readout_forbidden: true
+  target_activity_injection: false
+  runtime_modified: false

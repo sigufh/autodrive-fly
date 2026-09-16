@@ -51,6 +51,7 @@ from .driving.v7_gain_audit import evaluate_v7_normalization_gain
 from .driving.v7_geometry_sign import evaluate_v7_geometry_sign
 from .driving.v7_goal_audit import evaluate_v7_goal_coverage
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
+from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
     evaluate_v7_receptor_mask_audit,
@@ -112,6 +113,7 @@ from .driving.v7_target_fit import evaluate_v7_target_fit_contract
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
+from .driving.v7_visual_layer_locality import evaluate_v7_visual_layer_locality
 from .driving.v7_visual_target_input_audit import evaluate_v7_visual_target_input_audit
 
 
@@ -259,6 +261,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-local-column-corridor")
     subparsers.add_parser("v7-evaluate-neural-dynamics-local")
     subparsers.add_parser("v7-evaluate-neural-corridor-dagger")
+    subparsers.add_parser("v7-evaluate-visual-layer-locality")
+    subparsers.add_parser("v7-evaluate-lamina-goal")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -786,6 +790,18 @@ def main() -> None:
     if args.command == "v7-evaluate-neural-corridor-dagger":
         report = evaluate_v7_neural_corridor_dagger(root)
         target = root / "artifacts/v7-neural-corridor-dagger.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-visual-layer-locality":
+        report = evaluate_v7_visual_layer_locality(root)
+        target = root / "artifacts/v7-visual-layer-locality.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-lamina-goal":
+        report = evaluate_v7_lamina_goal(root)
+        target = root / "artifacts/v7-lamina-goal.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

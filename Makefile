@@ -272,6 +272,12 @@ v7-evaluate-neural-dynamics-local:
 v7-evaluate-neural-corridor-dagger:
 	.venv/bin/autodrive-fly v7-evaluate-neural-corridor-dagger
 
+v7-evaluate-visual-layer-locality:
+	.venv/bin/autodrive-fly v7-evaluate-visual-layer-locality
+
+v7-evaluate-lamina-goal:
+	.venv/bin/autodrive-fly v7-evaluate-lamina-goal
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
