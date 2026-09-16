@@ -1,0 +1,52 @@
+version: 1
+name: v7-lplc2-filled-loom-position-coverage
+observed_on: "2026-09-16"
+source_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+typed_stimulus_protocol: configs/driving-v7-lplc-typed-screen.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_ids: [LPLC-T01, LPLC-T02, LPLC-T03]
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+common_background_frames: 2
+centers:
+  x: [4.5, 14.0, 23.5, 33.0, 42.5]
+  y: [5.5, 11.5, 17.5]
+stimuli:
+  preferred: filled_expansion
+  comparators: [filled_contraction, motion_free_darkening, wide_field_translation]
+  translation_period_pixels: 10.0
+  translation_directions: [forward, mirrored]
+  matched_noise_within_position: true
+  mirror_noise_across_horizontal_center_pairs: true
+aggregation:
+  position_rule: fixed_grid_independent_of_target_and_response
+  response: maximum_over_time_then_maximum_over_same_position_set
+  position_comparators_use_same_position_set: true
+  translation_comparator_uses_fixed_bidirectional_pair: true
+observability:
+  population: mapped_R1-R6
+  metric: maximum_over_positions_of_normalized_trace_separation
+  minimum_valid_scale: 0.000001
+  minimum_median_trace_separation: 0.10
+  minimum_separated_cell_fraction: 0.60
+  minimum_joint_valid_fraction: 0.80
+  minimum_all_condition_separated_fraction: 0.60
+thresholds:
+  minimum_valid_denominator: 0.000001
+  minimum_valid_cell_fraction: 0.80
+  minimum_median_signed_contrast: 0.10
+  minimum_positive_cell_fraction: 0.60
+  minimum_joint_valid_fraction: 0.80
+  minimum_all_condition_success_fraction: 0.60
+  maximum_mirror_error: 0.20
+boundary:
+  tuning_only: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  external_final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  observability_is_not_functional_preference: true

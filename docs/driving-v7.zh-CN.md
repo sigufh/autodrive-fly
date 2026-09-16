@@ -1283,6 +1283,16 @@ runtime，但它撤销了“信息主要在 R1–R6→lamina 丢失”的强断�
 balanced retina 对环形运动的身份覆盖本身就很低，后续必须先建立无噪声混淆、共同基线、
 exact-mirror 的运动刺激合同，再判断神经层损失。
 
+为区分“中央单刺激覆盖不足”和“功能动力学失败”，随后固定了 5×3 共 15 个左右对称
+位置。每个位置的 filled expansion、filled contraction、motion-free darkening 使用共同
+亮背景和逐像素逐帧 matched noise；wide-field translation 使用固定双方向镜像对。位置
+集合不由 target 或响应选择，preferred 与 comparator 都在同一固定集合上取响应包络。
+该设计让三条件持续可观测的 mapped R1–R6 达到 1,902/1,914（99.4%），且刺激镜像误差
+为零，说明输入覆盖门终于通过。但 source-resolved LPLC2 仍不能区分 expansion 与
+contraction 或 motion-free darkening：两侧均 0/3；相对 translation 左侧 0/3、右侧 2/3，
+跨条件同一 target 成功比例也仅约 51.1%/46.2%。因此“可观测”没有被误写成功能偏好，
+calibration 继续关闭。证据见 `artifacts/v7-lplc2-position-coverage.json`。
+
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
 T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge、危险减速、简单目标记忆、

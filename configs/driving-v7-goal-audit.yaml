@@ -54,6 +54,7 @@ evidence:
   t5_spatial_order: artifacts/v7-t5-spatial-order.json
   lplc_typed_screen: artifacts/v7-lplc-typed-screen.json
   lplc2_radial_opponency: artifacts/v7-lplc2-radial-opponency.json
+  lplc2_position_coverage: artifacts/v7-lplc2-position-coverage.json
   heading_ring: artifacts/v7-heading-ring.json
   neural_episode_cv: artifacts/v7-neural-episode-cv.json
   neural_episode_controls: artifacts/v7-neural-episode-controls.json

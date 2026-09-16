@@ -63,6 +63,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_spatial_order = reports["t5_spatial_order"]
     lplc_typed_screen = reports["lplc_typed_screen"]
     lplc2_radial_opponency = reports["lplc2_radial_opponency"]
+    lplc2_position_coverage = reports["lplc2_position_coverage"]
     heading_ring = reports["heading_ring"]
     neural_episode_cv = reports["neural_episode_cv"]
     neural_episode_controls = reports["neural_episode_controls"]
@@ -130,6 +131,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fitted_t4"],
                 config["evidence"]["t5_phenotype"],
                 config["evidence"]["lplc2_radial_opponency"],
+                config["evidence"]["lplc2_position_coverage"],
             ],
             "observations": {
                 "stimulus_count": controlled["protocol"]["stimulus_count"],
@@ -342,6 +344,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "population_consistency"
                     ]["mapped_R1-R6"]["all_condition_separated_fraction"]
                 ),
+                "LPLC2_position_observability_gate_passed": lplc2_position_coverage[
+                    "observability_gate_passed"
+                ],
+                "LPLC2_position_observability_all_condition_fraction": lplc2_position_coverage[
+                    "observability_consistency"
+                ]["all_condition_separated_fraction"],
+                "LPLC2_position_coverage_gates_passed": lplc2_position_coverage[
+                    "LPLC2_position_coverage_gates_passed"
+                ],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -596,6 +607,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "evidence": [
                 config["evidence"]["lplc_typed_screen"],
                 config["evidence"]["lplc2_radial_opponency"],
+                config["evidence"]["lplc2_position_coverage"],
             ],
         },
         {

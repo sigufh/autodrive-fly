@@ -63,6 +63,7 @@ from .driving.v7_local_input_audit import (
 )
 from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
 from .driving.v7_lplc2_phenotype import evaluate_v7_lplc2_phenotype
+from .driving.v7_lplc2_position_coverage import evaluate_v7_lplc2_position_coverage
 from .driving.v7_lplc2_radial_opponency import evaluate_v7_lplc2_radial_opponency
 from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
@@ -276,6 +277,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-fc2-goal-memory")
     subparsers.add_parser("v7-evaluate-lplc-typed-screen")
     subparsers.add_parser("v7-evaluate-lplc2-radial-opponency")
+    subparsers.add_parser("v7-evaluate-lplc2-position-coverage")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
     subparsers.add_parser("v7-freeze-fusion-nested")
     subparsers.add_parser("v7-evaluate-fusion-nested")
@@ -848,6 +850,12 @@ def main() -> None:
     if args.command == "v7-evaluate-lplc2-radial-opponency":
         report = evaluate_v7_lplc2_radial_opponency(root)
         target = root / "artifacts/v7-lplc2-radial-opponency.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-lplc2-position-coverage":
+        report = evaluate_v7_lplc2_position_coverage(root)
+        target = root / "artifacts/v7-lplc2-position-coverage.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

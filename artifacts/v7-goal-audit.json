@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "65fe09a4610452f9c2adf375c6f1a3f19afe741269676a388ba84756dc1dd498",
-      "src/fly_emotion/driving/v7_goal_audit.py": "53049a6fd04f15172605d08b8fda004ed8bfef92f2112498d9bd760cf885724d",
+      "configs/driving-v7-goal-audit.yaml": "feb1748d7961211acc98124e64082536b4155100bbba07bb5736a3d3f1beb266",
+      "src/fly_emotion/driving/v7_goal_audit.py": "f01a2fa98bbfb0196fa5b2df3c5c0613aaea0a3b7be380eed07f3946cca84e8a",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -49,6 +49,7 @@
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
       "artifacts/v7-lplc2-radial-opponency.json": "8305e69bd326a3afba3d350dc9ed9b125b6ceebbd8fa9420a59bded069424aab",
+      "artifacts/v7-lplc2-position-coverage.json": "f4b07e481991cf89cbf655788a331b6f3b0446eab46ad7236a102e5513c31b89",
       "artifacts/v7-heading-ring.json": "2d68ed0763908ed451f0f57f8a4e8f8c9143c68813bf8b85d030622bc3816dd5",
       "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
       "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
@@ -108,7 +109,8 @@
         "artifacts/v7-t4-conductance-candidate.json",
         "artifacts/v7-t4-conductance-fit.json",
         "artifacts/v7-t5-phenotype.json",
-        "artifacts/v7-lplc2-radial-opponency.json"
+        "artifacts/v7-lplc2-radial-opponency.json",
+        "artifacts/v7-lplc2-position-coverage.json"
       ],
       "observations": {
         "stimulus_count": 20,
@@ -273,7 +275,10 @@
         },
         "unmatched_noise_layer_localization_confounded": true,
         "matched_noise_passing_populations": [],
-        "matched_noise_mapped_R1_R6_all_condition_separated_fraction": 0.0877742946708464
+        "matched_noise_mapped_R1_R6_all_condition_separated_fraction": 0.0877742946708464,
+        "LPLC2_position_observability_gate_passed": true,
+        "LPLC2_position_observability_all_condition_fraction": 0.9937304075235109,
+        "LPLC2_position_coverage_gates_passed": false
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
@@ -505,7 +510,8 @@
       "status": "failed",
       "evidence": [
         "artifacts/v7-lplc-typed-screen.json",
-        "artifacts/v7-lplc2-radial-opponency.json"
+        "artifacts/v7-lplc2-radial-opponency.json",
+        "artifacts/v7-lplc2-position-coverage.json"
       ]
     },
     {

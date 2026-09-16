@@ -1,0 +1,1844 @@
+{
+  "protocol": {
+    "name": "v7-lplc2-filled-loom-position-coverage",
+    "dependencies_sha256": {
+      "configs/driving-v7-lplc2-position-coverage.yaml": "2a579fd834b74316921068ac4f15092f62415bdae4b470721b78cf074b73f369",
+      "src/fly_emotion/driving/v7_lplc2_position_coverage.py": "e76b16a7108be4c192c284d79314dfd6987fea388067c0f1bebc7b1b86b055c7",
+      "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
+      "configs/driving-v7-lplc-typed-screen.yaml": "b53c1438f5b02325f1db7f97eac362975b9790fe95d4fa322f0937ed559100ba",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "condition_ids": [
+      "LPLC-T01",
+      "LPLC-T02",
+      "LPLC-T03"
+    ],
+    "position_count": 15,
+    "stimulus_count": 141,
+    "matched_noise_within_position": true,
+    "common_background_frames": 2,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false
+  },
+  "candidate": {
+    "centers": {
+      "x": [
+        4.5,
+        14.0,
+        23.5,
+        33.0,
+        42.5
+      ],
+      "y": [
+        5.5,
+        11.5,
+        17.5
+      ]
+    },
+    "preferred": "filled_expansion",
+    "comparators": [
+      "filled_contraction",
+      "motion_free_darkening",
+      "wide_field_translation"
+    ],
+    "position_grid_selection_uses_target_or_response": false,
+    "per_target_pooling": "maximum over every fixed grid position",
+    "observability_is_functional_preference": false
+  },
+  "anatomy_target_counts": {
+    "L": 94,
+    "R": 91
+  },
+  "stimulus_manifest": [
+    {
+      "identity": "LPLC-T01:filled_expansion:x0:y0",
+      "frame_sha256": "0c89db8f0d49e2218721d51e7ce8ce595f61db29daae9f3993a6b1e6b1cc747a",
+      "retinal_drive_sha256": "4a7d75ca199f2261dad0fd9f5b7f65805ab40f37ea9ff9f0bcd15b0eeb727220"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x0:y0",
+      "frame_sha256": "c8699d74a018b43ecc1b610f142f4c0e1b5a2f1f313cc9b262a101d701c7997c",
+      "retinal_drive_sha256": "e2e02387167ba112c2244907f73e5acdea66318d6c475dc66b590ae72325a18c"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x0:y0",
+      "frame_sha256": "150e106cf8def608bf356661d6fa4bf0d67cf89ac6828b0544d3bc54f22690e7",
+      "retinal_drive_sha256": "c7bdc07bc5a2cddc8bf7acb7367aa60c7f612973e02b7740c7ad98d1c92f412b"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x0:y1",
+      "frame_sha256": "36c35359725aeadab6b1779851ac7cc8bb6aa7203e9948bbaa74f9582b408364",
+      "retinal_drive_sha256": "b958fa7647dbdd989b001563e272787f9822d0ab75e386e52f6954f2b8fe26d4"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x0:y1",
+      "frame_sha256": "bf6ee3f84d0b3b71af2f7ab1df110a95d965d1e5cce5b55ab83e3765b00aec73",
+      "retinal_drive_sha256": "9f287e28ee989f8a45f548dbe1d3b9cc691d713f6ccedd7e92b59a0560a28cb5"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x0:y1",
+      "frame_sha256": "30a4ea76b82c02efe442216eaa65bc00b63d4703ac0672b6aa7ffae69bcaffd4",
+      "retinal_drive_sha256": "cdaa054393745b95db99fe41248743818a6d9c985363ffa09f0ddf57f2249077"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x0:y2",
+      "frame_sha256": "3b7104b702d46e3b20c6f5d471d121192b9426a00ecaf7b78bab195ff9ae9572",
+      "retinal_drive_sha256": "12ac4ba5881d6dde3d5b05bf333312aa6af2f08a8e58175c0048186d2bab46ca"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x0:y2",
+      "frame_sha256": "d45e3b6afdbed650f09f68480335303ed641352bfc9b3b7ac3259215a66153f0",
+      "retinal_drive_sha256": "93e1818ec14a49a82becc559ec19c51865ff23f3488a8763e2400e1039e07ef0"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x0:y2",
+      "frame_sha256": "8cc88e39bae48f4bb78b3fd153d170f2c1382176dc968a0bfd484987eb4a56d0",
+      "retinal_drive_sha256": "2f05a0c3ef5bbbacc9d32015c80cae8d9c6b88f9d807092df397500eb34ea98f"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x1:y0",
+      "frame_sha256": "fc00e588378ee089a889fab0bf8847ad0229bbca9a9146f89b4f1d096e84b35a",
+      "retinal_drive_sha256": "cae2c18563172d8a63bff9638afd2350b5b6349b3ade5d797191070b170025f2"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x1:y0",
+      "frame_sha256": "9fa3d3b5b5a55eb37777183911d3a5bef48477f955799e87c93de75786bcb0fd",
+      "retinal_drive_sha256": "bf8585e01ae3e6f8b2c24469dfbe4964b7271ff8b42c14f0f7f3d1ccafe154da"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x1:y0",
+      "frame_sha256": "83eebf5a342011c73292b772a945b902ce8ac45f6f5f37bf6191778bccd77217",
+      "retinal_drive_sha256": "a6dffa39f7aa8f7a5517c8714ccd4f41e7272d4934bf8f2b0d20c16f4148e3bf"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x1:y1",
+      "frame_sha256": "02a0aa6d02606c39837a873fc7a08dd5f1245d1648b51de65688ffd741c8617d",
+      "retinal_drive_sha256": "b103d9266e3cbafb0027443c8b15adacc5d709fc71b1b508cf6994637d3e8307"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x1:y1",
+      "frame_sha256": "04c1588c5d0face09d9452bec000a37c99a9da16d19a137a7711a59c7186a835",
+      "retinal_drive_sha256": "5fc2fccf45f98f1fa7b543f9026d726363e63eca6c8a6cdd6a1b0cc712c821a6"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x1:y1",
+      "frame_sha256": "4b9cfc00208d4e93277f995f934ca63d30c274a54402cf979fa1abda8ab77c45",
+      "retinal_drive_sha256": "15945f87a9e398f21e3334d87b899b60c990721ec47b279e768b2b9c2aaf933e"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x1:y2",
+      "frame_sha256": "4f9f72c01705f1075d72671ddd8b2602995ea7517f5d44bf48a3ddeec116437f",
+      "retinal_drive_sha256": "d83111b2ce6c0b656bf9cb06633b698414be618a2e8a7301a14f58abf5ae11d9"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x1:y2",
+      "frame_sha256": "f38665cafc0a9dfeaa5b9696097571c35d1897be597c9d8ffd0e0166ddb02cdf",
+      "retinal_drive_sha256": "b557819896ffd61cdc3c78446be28fd6551fb30ed5dc3a90714bf08d458e2d8b"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x1:y2",
+      "frame_sha256": "b962f21ef32d4b1fc81e021f662cdd5d66e200a3ed20f44c67906921dd4a2ccc",
+      "retinal_drive_sha256": "ddf20341e81ceadf99cd471eb9240b9298c6292af2292d8305cdf572646fe14e"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x2:y0",
+      "frame_sha256": "232004800fd7faa6a38fb740603c5def34590ea2860f889d7ea78db51eae3009",
+      "retinal_drive_sha256": "cf27367ba7a8109625eceb312d01c2fd0b5c289907ae15ba908c0912a86d163e"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x2:y0",
+      "frame_sha256": "f71e3a154710c66f1e4bec1a4015e54d2b568ec00618bdbf0a74d50b8b99c843",
+      "retinal_drive_sha256": "150842b80f939bdf67acb56ed3f7becaee18eed8c0451d54d98900f64bcb22ab"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x2:y0",
+      "frame_sha256": "e96d61d982bb7e72a90da7be7bb6ced60ca6983bfbbb9ecbea6521e0f26a7e22",
+      "retinal_drive_sha256": "cbf1231bc2309467c647f9812f06525ab0a87d6c6c9878da9f6315e5782aa2cf"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x2:y1",
+      "frame_sha256": "4945e7a0a1512e4ad8bef34921630f58470c4c5b3ded01abeecd4d468720613a",
+      "retinal_drive_sha256": "6a21a8f32f430d22f9e335ab890d310baeba42457e09d395369aea8cb2d0df84"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x2:y1",
+      "frame_sha256": "8b5c96ee375c42c23eaf073a888c779083a8c249a415f70f51a458b911bd5e99",
+      "retinal_drive_sha256": "7f59495727144c0c2a6cccaba58b421a6431eca1b8a455f2ee165f609522a6ca"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x2:y1",
+      "frame_sha256": "28959f8da7ecaf23fa7e1ed8c0159dcb8d42a173eb65f6a8fe53dfab3499ab08",
+      "retinal_drive_sha256": "520a3c28034cf57b02747c1468e9a678bde0a24b5340048879c00ebe0f588a5b"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x2:y2",
+      "frame_sha256": "9949fd8378b25eda6886da4d334a42224bb9b470c8ed7db75e637952e94990c3",
+      "retinal_drive_sha256": "db8eae1bb8ec3ab98d9aafb0b461bfce56909ae3c8bdd5641c38fd58e1c446e4"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x2:y2",
+      "frame_sha256": "e2fbb30755be2b01f6bf14424277000c10918d7f78638cfc735828d102c1dde6",
+      "retinal_drive_sha256": "3b319df1aaf9733219d70b82db48902f60f024ff08396f8df1c14365509795ab"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x2:y2",
+      "frame_sha256": "b3a6a82cd6f83e85a9988bfe11b6edf504662524f6410986e86d066036c475bc",
+      "retinal_drive_sha256": "fa2f1e514770b68be9fd7b6007b27430ee178160608f41f63c7481b4c28a8a5f"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x3:y0",
+      "frame_sha256": "376575b9b3d4d36625fd5baf9aa8c2976b1aed52e51a1a2f308e965f139bade8",
+      "retinal_drive_sha256": "d20f43a49a4d877a4ef50266172f25ef201ba6991c7351fd79de95cf3e003266"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x3:y0",
+      "frame_sha256": "4909243025c188b78df8809a109cc6ce57827ef55a95b0263cbbd7482b4cc491",
+      "retinal_drive_sha256": "ee556f95792c33d613cc6006c6e5b5919d185715d5874aee0ad8f12013b14486"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x3:y0",
+      "frame_sha256": "6b5d5128572baf5b5e0f1fec6a72677b15577720aba98b9b1249e3a1b173a573",
+      "retinal_drive_sha256": "102f80511dc1549a68f57122db2694e30f1fb474424f9ad3fc4e5e777dde0be6"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x3:y1",
+      "frame_sha256": "e251f459a6038645d3901edbeb3d4502d9f584c57edcf156f9211c28baa528f8",
+      "retinal_drive_sha256": "5d10b574183752ddfb4fb4f20560ef38112d34cedc05ef8dda11d713863cd5bb"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x3:y1",
+      "frame_sha256": "92073c293843682c49dbf11ad56fbb596e1c95a165f869208806db2c5a48180e",
+      "retinal_drive_sha256": "714340f634c13da9d230a3425e367162276f2ab9bf19a5338ec0a066728a900d"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x3:y1",
+      "frame_sha256": "f6567caa6558437be6f35a10db5899b93c72732001a8e9490c96a020b3295f76",
+      "retinal_drive_sha256": "1a3dc141c63b09733ed02b19e2c09a88df9a6d6e615d0bea8fa59c8d5083223e"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x3:y2",
+      "frame_sha256": "ef2c2b39b9afe98ce5b6734b34fd9c7245b3667011d5e94cf624579125223566",
+      "retinal_drive_sha256": "fdaf9f720a914f091964d9e50e60dd55d12af626d728d1458ee12ec3dbe5d399"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x3:y2",
+      "frame_sha256": "4bac2da29f85b0abe523c9564851c222d00ae8e2b62750f9835c5874cda9949e",
+      "retinal_drive_sha256": "f1113a856420eb689c2f633ecf339e81f9ffa949b6b4095409dea8f99e10091b"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x3:y2",
+      "frame_sha256": "8617f56b92e28595d8e13529aad223c7156e899bfb0421f678a16b9816809db7",
+      "retinal_drive_sha256": "40f1a0631b173180bc15cad9a50f6e59ca772560b3cea9fc59c86f6d7a8a7d08"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x4:y0",
+      "frame_sha256": "fb2d45bf2508977fa3e27337620dd6e3e89193074d3e31456a86b6d7ad2096ed",
+      "retinal_drive_sha256": "7b458d9c999f246dedaca3352e0ee1eed050f8b7effe09468f757b58c2b1c951"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x4:y0",
+      "frame_sha256": "0be8b8085bf0fe9c448f9bd8177624aaa441f13400496528924b9bc6840abfe0",
+      "retinal_drive_sha256": "0d78c209b4cf9caacb5d4ffd465c1ed17cb61282d09ba956e47d3ac8b161e839"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x4:y0",
+      "frame_sha256": "1fdbf85b9e7b0d4371116024204e37e6a79c262c00d616f305ae5fe9a2464cb3",
+      "retinal_drive_sha256": "d7a0f1a7f57b6e71ad89224755b2d55b9812084a6ae68b5e0138ab779f311bad"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x4:y1",
+      "frame_sha256": "db3fa28ae3b97c34891d5de081a87f1cd257d224074526eb4161222c261ebd13",
+      "retinal_drive_sha256": "a7c0d3c38c1fad51b2ccea11bbaa23a535dc78fe00c4ce95a5f84823556097da"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x4:y1",
+      "frame_sha256": "afa5122f1de5d3c097f6303b38c1697f5456bfe1c657c465eee6b028a118e8eb",
+      "retinal_drive_sha256": "c573d9b5235acc8dbed0b20a0e37398b1c5273d00760e641c3ec4e31d0fa70b5"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x4:y1",
+      "frame_sha256": "5b891d725f9d6d691bcdae0746308a2a0476390ae660346d75b54bbae8066a8b",
+      "retinal_drive_sha256": "78b75d214355384239774e735cfebbad05509922e1f15ee1029b42ac35312bdb"
+    },
+    {
+      "identity": "LPLC-T01:filled_expansion:x4:y2",
+      "frame_sha256": "2ff8875a1cf4f862f21d84906ff9e2f5f502328e33347322deadba32a89aad56",
+      "retinal_drive_sha256": "9be953c930ea364b543481ddca07ba377eb0dc115e4215f3a6ab45733c4b12fa"
+    },
+    {
+      "identity": "LPLC-T01:filled_contraction:x4:y2",
+      "frame_sha256": "a756be5f380bb0402dbe9769e34e37cf17df8c52deaaf5bad8b3faf5f0e56b9c",
+      "retinal_drive_sha256": "0dbf45329cf57391731b2a28cb82685c559d0d558e3bd54bc37bd56ef459f766"
+    },
+    {
+      "identity": "LPLC-T01:motion_free_darkening:x4:y2",
+      "frame_sha256": "6951771982b9101fce5cbafc2d5152ce76a2291827124f355c7771934a186a40",
+      "retinal_drive_sha256": "3955a956d50a9d972b60498399000bd18dbc2a542aca32e104f2677c8f0ac946"
+    },
+    {
+      "identity": "LPLC-T01:wide_field_translation:forward",
+      "frame_sha256": "1a9d911118dee3fdb9a23812d75da90638f369ad09812f9ec22d9d3bba10daa4",
+      "retinal_drive_sha256": "d3a2bf9fbdfbb1020b97873b4d0a6a6a479f97336477b559a6181dec6b5c8c00"
+    },
+    {
+      "identity": "LPLC-T01:wide_field_translation:mirrored",
+      "frame_sha256": "cd44732370b0200cd9d730b59a7129a2931b41ed4b3e56995934b39bf08fa49d",
+      "retinal_drive_sha256": "418fea0775824c1659ff1ffadcd8f44b52cf859e9e5639bc6d0d3670c743941b"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x0:y0",
+      "frame_sha256": "be78c55d59954d00b3e3b687e4999797e3e79dad92a62ad99780b041e12307b5",
+      "retinal_drive_sha256": "07b6863491948027677cb696d318fa10edb9ee881202acfe6027a403a236006a"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x0:y0",
+      "frame_sha256": "faf29344a8e8fce3b8823932c3329af3c7335c7cfcdf19f4added39b9e69d46a",
+      "retinal_drive_sha256": "9d53fd65c9d87193d34168a3f98c48fc93a5c398004aa68585631919b302f34c"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x0:y0",
+      "frame_sha256": "3c666108d06807a62e9259bc82d61ecd7808e6dc4c02ef62a8a27dd795908c1c",
+      "retinal_drive_sha256": "dc04139148f79d30a3f2d60ec893384b42fc05ee6924921d0cfadd8192d5df78"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x0:y1",
+      "frame_sha256": "b0c70bf4e99983b7d6a0839496b7fffe143669d5d762a3b1b5c79e2401ffb33b",
+      "retinal_drive_sha256": "ea2d06f9e786fe25816b09648585464d5f208ba6b64fe9548a03602785a0ffce"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x0:y1",
+      "frame_sha256": "1c68af6809afc0a8e781ad57b7562f8f319fe93ba183296f020a2a99e2fa9c5f",
+      "retinal_drive_sha256": "dd5845986d50d276ba673e904558dcb568629a948b0b205fe8a02d2c59a4cd78"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x0:y1",
+      "frame_sha256": "07010481714fa211c3932c8c5b7a578e6374224a594b69d879b5c269e23978ae",
+      "retinal_drive_sha256": "e2b2b634b0fc462c8a90431c36f6261ca3bb2ee12fda0ab8b3bddcb7d8c5af39"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x0:y2",
+      "frame_sha256": "e176b0eec30cfa54d09e720d430674c05704260158999d39b7068ded11053814",
+      "retinal_drive_sha256": "a4f64843565906cacb7e94c669c38e9eba708bbfdea235d62488141a9666843f"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x0:y2",
+      "frame_sha256": "2775ab822c1108d4e9fcd3aa4f39be85c2b5f5ce8e25b73f49baa9cfaf2e51d4",
+      "retinal_drive_sha256": "d36d966536b878339fa531be87f0dd7c0848bf8d888422b784995a6bab0f9e71"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x0:y2",
+      "frame_sha256": "fc7d8a980e310f090126a765e18ee68206d740f3f7237c2cdebe6aa926071cd5",
+      "retinal_drive_sha256": "529606f7ec5b75839209f5acf4d5578ea67bb4779691e0f0405f1330cfe78b76"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x1:y0",
+      "frame_sha256": "c0f5aabab714c8c70a588adf67df112eddf10753130600486bc7290cafbacc7e",
+      "retinal_drive_sha256": "6cb04de171be29a8c92dcc536c2980be4fcac59fa42fe55d0f3af346ef7ce1e2"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x1:y0",
+      "frame_sha256": "f15f44b7bd1d18e535e5ccb820152de36c096fff62b267f24244c7747a00c78f",
+      "retinal_drive_sha256": "096eb4bab8a566a3a77477aeb37810bb0f5c74a9d8b4e883227fefe3ec0cc68d"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x1:y0",
+      "frame_sha256": "2dc3a68634132845f1e2d1dcc9cc1eda203c88d1f8296216b929708ee487ce60",
+      "retinal_drive_sha256": "ce7a42775fca74d8dadb69c25ba866bda42a43b91458bfa0e2ec7763d287ac15"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x1:y1",
+      "frame_sha256": "be9aea2612839d754c4f412f87c5ccbfd1af7ed85d9b1fbc1967ec559c34593c",
+      "retinal_drive_sha256": "9f565d543484a983863ea54e8dc9c5631e5f6cb5bf9564493b10803bf9d54c83"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x1:y1",
+      "frame_sha256": "e8bfb43bb592276458c3b91d07b149acdd3359777a4e88d3987894b9b0ef07a4",
+      "retinal_drive_sha256": "6c3d9c15f1c8508927989bc704c423a1d1357ba0b5aa5f86e85cc24f26fe27a0"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x1:y1",
+      "frame_sha256": "986158fce3dfc417cf813ae7e73f083690d9095c0b8a535a292a269be360a3f0",
+      "retinal_drive_sha256": "aa406caa5679b8b19044e90a9f0377d883ef82c0a3d8d3b49f72f78b17e519f2"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x1:y2",
+      "frame_sha256": "6f888246b96dd0f3fdb42a5f68020b2868dc6fefb6a8879558722dfeea37baf0",
+      "retinal_drive_sha256": "4530395618c3049199b045c45f5653858b5893a8cd43fe58224e99551697ebe5"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x1:y2",
+      "frame_sha256": "1e0fdbc0fe8c856033c18ea47c53722fcdc24051e7694b620310b3f18f8267ef",
+      "retinal_drive_sha256": "270bcf47765bdbc3bb3bfed18367ce68da6bc04c8a6d26fd0ecca0b76ee1d746"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x1:y2",
+      "frame_sha256": "c9c35910f8c878e113dc95ca46eca2a24cea6f51d3847f6c12a1ad707dbb5eba",
+      "retinal_drive_sha256": "de7001a85fe53769733b23dc2e48bdb60728cb1945d0a9f6df29579e6a3971b8"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x2:y0",
+      "frame_sha256": "b88f5f0e1a151508d53f7dd271a57de11fafb5fb60a8b882cdc3cdb174c99286",
+      "retinal_drive_sha256": "ca7be9176045760ae728dbd4d93745069b456c88a669483262fcd6b4faad909e"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x2:y0",
+      "frame_sha256": "c5285ed57a10d3140e2e61e6628ead7b1218aedb63d40e7964e71becf2752879",
+      "retinal_drive_sha256": "408723c41a69dbfeb97e6bb8e39b96e65b73634b1d127e1edb154fe8466563f8"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x2:y0",
+      "frame_sha256": "698674c40105912642266663db9b4d3b56fa87d1f6ef073dd0b16a43f479db70",
+      "retinal_drive_sha256": "9840254b5e49e7d1469a8df43c7ece0be83dde0cd68439114c7f369db2aae802"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x2:y1",
+      "frame_sha256": "b99d7bd79cc8463d99221f1a2046e53f0a87aa0f4e0b535c59bf25d21da75f7f",
+      "retinal_drive_sha256": "4a8e66636400cab91f9b571b1876117395bb85cd6593d89c20598b7d3f57ed09"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x2:y1",
+      "frame_sha256": "ed04ef872b53e482276cf8045f6096947818c44e1960737316dc37535c388fdd",
+      "retinal_drive_sha256": "cc78662477d200bcfa38eff0f5dc1e277f079dcf88c4198d281c8a0ed871fd90"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x2:y1",
+      "frame_sha256": "9a44a99330542c70f0ab911ee39d208a08eaa283eb3614b48a61f3c349117190",
+      "retinal_drive_sha256": "580ae3beeb0762bc0a14d934566bfd2c5632717e9e19dd433f7577b480b917f9"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x2:y2",
+      "frame_sha256": "f87112a52b8d8011842b605ba6ad1ba13f9dd249c35ac125c5d9b3c4c5b82231",
+      "retinal_drive_sha256": "e064d2f0c180d0b9daf41127d5633fcd1cf25f837781e2827bf4ef78304734a0"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x2:y2",
+      "frame_sha256": "d42fb9d0a91f22d88bb92e1e255e06e79ed9e0a90e1683421379c3713be974a9",
+      "retinal_drive_sha256": "22301028c37999b73b7ad20fa4801da9897a8599de3f237f9e617dada002461b"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x2:y2",
+      "frame_sha256": "e2399f92a3735dd275ac7c1ebc8a1f6b1b8807e9f6baefb741c81fc92d7bf2eb",
+      "retinal_drive_sha256": "453d2a481bacae695e4a535e4181fca1030e8eb1cca80ab68fd189ed15f54eb4"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x3:y0",
+      "frame_sha256": "3c4767c03e78f5e7bf192d8b99735b47de420eac517707173a1891b32b120daa",
+      "retinal_drive_sha256": "9672b43fc1671e07bb988585493152c584262081c1c30b4feab1a468bc825b00"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x3:y0",
+      "frame_sha256": "d743e0a10b4bffd63a5cc3c8f34afe29866b283cf16b2ebb472e5ee2befecb1a",
+      "retinal_drive_sha256": "a2f299e6cc33bfcf9bd8ed428d2954672acb1429dd1e734929b06438f09a83d7"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x3:y0",
+      "frame_sha256": "bc1afcbf34346da4687eea069b738b04ca4a013fb5b18da1b8cafa320895e35e",
+      "retinal_drive_sha256": "96c1d2bacdce17552a8e01f42200c8f5e0c77dca04a075ccce8309b5f88f6fff"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x3:y1",
+      "frame_sha256": "8a34386ba6f6bae295c0c7fa2d7987746c4b603077a700a1db926a721b89b2db",
+      "retinal_drive_sha256": "bb0bfc90ffb61774d1f6065dc29a520af0c7fe9c688aea02d4dc05609d6bb621"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x3:y1",
+      "frame_sha256": "260f0fe58c3053d476b68e955a62c22ce4540afd588f60625d8c35d88dd616a2",
+      "retinal_drive_sha256": "a77a32d27e8ee76a72075ff70735ff698605b572a46263f05c64bcba827823f8"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x3:y1",
+      "frame_sha256": "fccff54b9e1ee1762f1c251470063b9dbd6fc1736234de574f116b48bb070c80",
+      "retinal_drive_sha256": "58859edda2b1305177996a577741f0adedd7ee6aa236b767456b12e9b4ddb9b6"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x3:y2",
+      "frame_sha256": "cd6fb8564848e94feaeeee092ce290d0beb4943e8a4b58498465bfad67b8ea89",
+      "retinal_drive_sha256": "7873e1771cfeee18dba952c1ad8aa8b8d335d0345a92f76adab4e0e84b9b1822"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x3:y2",
+      "frame_sha256": "87a3b2a6aa336461aa52d955d9dbac730a33d093026baa03a602470715ea0a11",
+      "retinal_drive_sha256": "98cab75b60c245e005c5ec8499c8dc5e7df9956ee5de76f59a79115e65007dae"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x3:y2",
+      "frame_sha256": "ea4e464ab57e096ccc0554d1effa3637afe4425a5e884404f09a2f0bd9f2c9aa",
+      "retinal_drive_sha256": "c727e0fc1a79c253c7d2f0004a5cde62041919272e0dcf4412ca0848c3d56aed"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x4:y0",
+      "frame_sha256": "bc618c746ffa465e10cac6feec238f461eb1135a9769e35e3acff9f896bc67a1",
+      "retinal_drive_sha256": "89989b6d9526dc97fd7ea5c1494345a6f08347426f25fdffb0dfef558fd00b14"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x4:y0",
+      "frame_sha256": "593891624e6a21f76dacc8880e7a75efaa228bce335cc784bb09e292d7459694",
+      "retinal_drive_sha256": "fb116e093b3e8b335cadb1afd3516b234df61aaccc49078f56e0e1130e17eede"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x4:y0",
+      "frame_sha256": "2c6559983fd0f3beb409ffa1402c700a2592a65c742de17b36fc72a78c7c541a",
+      "retinal_drive_sha256": "4845d1fd0423bdd2c16d303653e4854d2f47927b86631d736c0b02a2bbe2104e"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x4:y1",
+      "frame_sha256": "9e3e187288c7206bd8bcb656d3ea47e4dfc2cc6829de056a76cbb2a7b059a9ae",
+      "retinal_drive_sha256": "0c4e5984e904280258ac182b0607d84016ffd8e2bcef7bcd61a3b727acc22bb7"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x4:y1",
+      "frame_sha256": "f80f3487da746ff7672a6d69d213caba5fef48350a0c499904146433cee07594",
+      "retinal_drive_sha256": "e29356b3360dcee9a31bdefaa6c773919dbf13b2f4242d3756a2a5437f351ac3"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x4:y1",
+      "frame_sha256": "ac0c0229bfe6d68a17370d3916e2283428f2e59ef6e2daf431ca574a7517470d",
+      "retinal_drive_sha256": "eb055c9864b42c63a77f1bfc0a986abb1f0a4ccf5e1ea38a316c2ab64fb062fc"
+    },
+    {
+      "identity": "LPLC-T02:filled_expansion:x4:y2",
+      "frame_sha256": "624e59fccda0ca32ab904f75242ff6ae195660ce9867cd6d596d70e507bd8fd9",
+      "retinal_drive_sha256": "62e7a8f8ed9dd4a0ea8148f93845e573654eff2db199d623a25b1055ff920b58"
+    },
+    {
+      "identity": "LPLC-T02:filled_contraction:x4:y2",
+      "frame_sha256": "33ef52db69e4b258e8d4547caee275a11f1c0b42049eb9a67bcd640df027bcb4",
+      "retinal_drive_sha256": "7cfe112f48e6f43ea883c1fcb756c9203db885dad843ebd350fcb42a0b29fa1e"
+    },
+    {
+      "identity": "LPLC-T02:motion_free_darkening:x4:y2",
+      "frame_sha256": "1ea81f3627044587c58288898cefc47abe853fd356cc894e726f4cac3f9a4cb2",
+      "retinal_drive_sha256": "434bcbfd779dd3c8a7f21c6d6ce564d26bd9822c670d464f4d7ceafe57f81693"
+    },
+    {
+      "identity": "LPLC-T02:wide_field_translation:forward",
+      "frame_sha256": "7c97f49ed718c118e8d709ad711007382f23f03558ad7061575ad52448e75f0e",
+      "retinal_drive_sha256": "6016321218833787a90b7eb0739f66c0924fb76376af4b5858ceb4d135046f04"
+    },
+    {
+      "identity": "LPLC-T02:wide_field_translation:mirrored",
+      "frame_sha256": "a70b6e0b67f6db560bc3f32173f338a4d149cf36f71b0134ddc73384f6f2b1af",
+      "retinal_drive_sha256": "bd2fcf04db0933712f87637a5d686173afb04a4d01121b178da1285e462fa3ca"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x0:y0",
+      "frame_sha256": "3c568b5f10a23539391a1b53c4d5245af8758f4ad7b749d9c2f8ab4ecfce724e",
+      "retinal_drive_sha256": "c6c868158f6773ff389548fbefee747362f007e4d6b2b96e7efaeeec6c44edf5"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x0:y0",
+      "frame_sha256": "be59681574cc4bac1f3cf46aab6d4fbaf829685000111178675bcc1081051e91",
+      "retinal_drive_sha256": "b4380f9358b94dbf62a92fcac31a7630bac5ce41378b017a4157cfede9d2d16d"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x0:y0",
+      "frame_sha256": "2b9284e9fb5255cffae3226e5892b9825498c98d17e7b26c0cb5f61c85e2a520",
+      "retinal_drive_sha256": "089855a5fb94d93b87e447cca1196572c1b53f84b6c18276597690d9c73efedc"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x0:y1",
+      "frame_sha256": "e7503e61627c86069d4e235553dfb6608aa62987843beeb23ab8268ec99dd1bf",
+      "retinal_drive_sha256": "39b62ff33a256d3a2fe6234a431ed0e958b7ad722a966cd83329ece387a4b30f"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x0:y1",
+      "frame_sha256": "9a3097fb7690b0b32fd29dbef76e464253524351131a1c4efc244711dd3469d0",
+      "retinal_drive_sha256": "2743cb67c1fbcdb2c373dfe8c87669e2b19111c912941019e6f649d8bb6938b3"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x0:y1",
+      "frame_sha256": "0f24640c29ff43fae1433a9859ef56e9755c4e71d17faf96023198700b2ac2de",
+      "retinal_drive_sha256": "0641770fd70697738fbdb186c27c675f7aa34146a18aa2ce715a8f1beb3ca049"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x0:y2",
+      "frame_sha256": "1aa51658c61e00c44e196cfa76701d9d90dc501d8d43ff7bc9ab50cac900b055",
+      "retinal_drive_sha256": "1e2e789b84347f39f2359d4da76bb75eda0d707d3b6ec977f7ec40527d12215b"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x0:y2",
+      "frame_sha256": "743ffe78621c7675c950cb1f69b494e40430b95f0079a86dc5ffbee43404b597",
+      "retinal_drive_sha256": "9fecfd5a79ad398fc88158ce55cf4e7741b440aab818ecb0adb7243fa489869f"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x0:y2",
+      "frame_sha256": "31105d4d8eac2aff6e1500a3ab5d924ee19eacbf68a9140b3295dbbe88c39d80",
+      "retinal_drive_sha256": "acc4338e7421d9c52a8fac18a18a22ae443c28b1e973eca95fc136c58d5fbf44"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x1:y0",
+      "frame_sha256": "0a98fd7975c023a392b86aed954407c2fdf7f87beed49c88228f929ec8fc929c",
+      "retinal_drive_sha256": "9ef276b44f4ec6535ab15bf1471d0030c7527298064ebd3aff5b629dbdce97d0"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x1:y0",
+      "frame_sha256": "78fe94325e0ab62990cdd1ea459ca35ea152ae0258bf0e1c0e824d3d998c6cc8",
+      "retinal_drive_sha256": "ace29207c24fed207062da5f1d0452f1e8ff72a4dcfeaeae6b27c613ee0b46c8"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x1:y0",
+      "frame_sha256": "fe1beae61ae46ea17889d9ce5dbc2ea8842d45ef3d84a00c87427f7950451524",
+      "retinal_drive_sha256": "0fcb72043ab19749bc46329f1c40e115a2bb02d2865c1fee20ad135f730ebf99"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x1:y1",
+      "frame_sha256": "40be89b676f2595b470ee730b37022fbce36f90248d18db288b2e37b642adc67",
+      "retinal_drive_sha256": "9f370b7d0c7eb23669fc0948aa5451d75a58dc3dede00934a0e263d7b7164ed1"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x1:y1",
+      "frame_sha256": "9d98c0a0eafdcec069e3f1232138e8e38e06c1befa8705f0a80079836371e0d6",
+      "retinal_drive_sha256": "98b7ab3428e1c36b762000c597602933ad8c667db3d0648caaa1b130a844828f"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x1:y1",
+      "frame_sha256": "2255d99d78c9db4e3d6535476c3cbeecf13657f8207cd77e76193bcf5343fd05",
+      "retinal_drive_sha256": "8ddc3af5fae6bec59022ad7b7e056ef3844500495e9949ed673f65cb2e9afd7b"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x1:y2",
+      "frame_sha256": "767ebc1028ba20a258bfcdad7a0cd63ac8b9cc2a93ec3f2031fc716110d89607",
+      "retinal_drive_sha256": "3b251c514bb6ac7cda88c5205cc08867b1de700e28a25ad02c2f658896e3c145"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x1:y2",
+      "frame_sha256": "6d187dab8ad62ccb2ad567f15480403c1b82faf0b92c78996f1ad86b20604ca6",
+      "retinal_drive_sha256": "799944f889324763208be86f694c58343f83b8d49f6cc0f200ba00b430a39c00"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x1:y2",
+      "frame_sha256": "0ebdb82512499a5731327ad4f0e12aa25b651c36b93c470e537d4c5bcec18a31",
+      "retinal_drive_sha256": "9cfc4f86b654c624e94e55877b3d4a1f61d19480220b55f87bc2bbc20ad385cf"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x2:y0",
+      "frame_sha256": "baf15e29da023d13cd3584d65f069081e5782270a19add0a179b887101feca95",
+      "retinal_drive_sha256": "80fdc6be176b8a8fe7cb61240e6760b35d75f57864717260bf897a9db7a01491"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x2:y0",
+      "frame_sha256": "9edff80271e3e67638e978e2b0b4e5e37b16f0eed163359dfddd80099953913e",
+      "retinal_drive_sha256": "37617c701508cc7c40e36ffbfff86d8bc06ff8bc0614e422ad488970589978e2"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x2:y0",
+      "frame_sha256": "38a9d21f6a749b613af579702eb5fae2d2d1a98b79760aa15eb410b9ab165d5e",
+      "retinal_drive_sha256": "4763ec686c7123f88116c7ea40734fe5cb310d280b213f0d8486082894023369"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x2:y1",
+      "frame_sha256": "5b3551ffd6f51f92e708e10d3949d753c68b3178c418e926a9870d2f6c696b4c",
+      "retinal_drive_sha256": "6103f1bc99aad33417f78428ba41e4555a14a1b76772478beebd6ed7f2b5204a"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x2:y1",
+      "frame_sha256": "ddeb9df9e0c0fcda022ba08d625c814a9cf3b2b2ed669a91ec811007602bc4a8",
+      "retinal_drive_sha256": "e715483763889f3df2802353f151ee33cac1eea17295ca10225ac7bf2832a9db"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x2:y1",
+      "frame_sha256": "1f3a5634643f164b9eb3a55c73bfcb9caaef2da86e2f2224e09fff9f817b07b0",
+      "retinal_drive_sha256": "3a3331f584d8111c4620da8041291ba3d0d26b30ef164ae3f9c4452efe2c8beb"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x2:y2",
+      "frame_sha256": "2ead7d43bcf22a670899a73af1388d83cbbd2ad6a7a3fd128abf59bebd6356c3",
+      "retinal_drive_sha256": "4fd517d541b816e478b1f3df0a743090938cf5f5502e1dcf675d22c7aaac1e9e"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x2:y2",
+      "frame_sha256": "1c297b7ed10105e51433cfc6699761860dc1c83cc0d36f116036f8e52b35f6ec",
+      "retinal_drive_sha256": "a83cbb08fb52bb6ec7fe64b39356b2a40c24b496be67abf6b0e45de39196fcfe"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x2:y2",
+      "frame_sha256": "b3b6ec2d2875b04e8c3232c3fb089eb38ffa04012bd0a3b553b594a8b8cf0f45",
+      "retinal_drive_sha256": "1a97155ceec832be89edbaa4da01a28fdc4823c5832effdfb2bc5b5ace08036c"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x3:y0",
+      "frame_sha256": "80e37ff9de0c1333ba00ab54ae93a87eb4ea3c05d62eb10f5a69055337b818c9",
+      "retinal_drive_sha256": "d63d6f4e018d591504916bba28c9b2babac195bd42d98e44c2285ba5c21f77b6"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x3:y0",
+      "frame_sha256": "671654deac842e2dfdf6ae0f33b260cdde757acfdc02bc4db7288ea8066911a4",
+      "retinal_drive_sha256": "0b7d4775a24a3513359d9370bee6465a6ef03d550a6b8d644c2d9df1a7c6f4be"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x3:y0",
+      "frame_sha256": "7ada5d4d2d646b1f75108b11472d98ae66255277d80bb694ef427c87662d0027",
+      "retinal_drive_sha256": "a25b9a3c48c6a1ebd21ea7cf6d456257e7cf3103bbc0616fc297a1c023906c50"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x3:y1",
+      "frame_sha256": "932b4eb4c4a379d336761fb3c8a66ba469d3a40a124d94caa5c1f9051b8237e6",
+      "retinal_drive_sha256": "d57a7cb382c1fed4820d3273828ef81ea2d20bb5d6b632797a28393238bf1f64"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x3:y1",
+      "frame_sha256": "fac593f66f619049b00a542f6fb6221759a799c19e18c024a1e9a7d2a727fa6a",
+      "retinal_drive_sha256": "b546ff50027f88324ceeac32f706fab2fefca1690adba880f027f7f1fa415b74"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x3:y1",
+      "frame_sha256": "7d533f4f913496427f90824804b6317acdcb2c344ffd3229916c810c1b375c97",
+      "retinal_drive_sha256": "5393c299a38dd724b246f74dfe18b9bfb7d7d0f0e17eac5dfec25af1e2f36bc8"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x3:y2",
+      "frame_sha256": "073ce1c5c46b1941ed46e6d1c3fd655caa0079db323d4f8509583706bec2d362",
+      "retinal_drive_sha256": "bbd685c059e6de3f4347c0d8584f83926fe556d74be7daa919d75827304b7e62"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x3:y2",
+      "frame_sha256": "9b6b359a4785c2be59cd295fec26dbb2ea7b2a1ed19d632f1c2530003bfb72b1",
+      "retinal_drive_sha256": "222d23395523dcbf72f4f5cb437676a2dd3aceaac75b747b039666b26c4c112f"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x3:y2",
+      "frame_sha256": "575319895a0ea9699cef843c81b168ddbacfedff8821ace15db2882efb15d5ec",
+      "retinal_drive_sha256": "5a67fba5662703daa04a0c3d0a05d969b98ce601e7c3e3944a01b8d7a0081b94"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x4:y0",
+      "frame_sha256": "68c1bafc19ec64b46161dc91db46358c770833ae14c07c41ff5ac83aba8a70a5",
+      "retinal_drive_sha256": "f451bb4e5bcd04cc37dcfa80bc6afc5ea08ebe42981166a5f9bf652e9f9b4084"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x4:y0",
+      "frame_sha256": "c588e85cd3d3ec86cb2cf4452a05f0ab9de371f2d8eda60b5abec1ab5f1e9d06",
+      "retinal_drive_sha256": "2e9026cf321e6ba6a49b1d538b4843c6aa6e0f27d68a804a681d3a81ebece102"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x4:y0",
+      "frame_sha256": "bed8558775d44e81fbb4e8ca4e60455abed47959d0bb73b91f1de1fe6bc149ed",
+      "retinal_drive_sha256": "52e2742c3f56432597d7077208c8531044acaa3524dc4e29b8cc9d986d2107d1"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x4:y1",
+      "frame_sha256": "ee099833d2a2e44c802fe2d74827db8a135716a100044c7467f31262523b3e62",
+      "retinal_drive_sha256": "a5b17d3eb11840bd76382559d3ce792ab2a3d14f1ac89ca44716da247b0be984"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x4:y1",
+      "frame_sha256": "024ea6a25d6e9876a8bafe2abd52236fe4aa8abc55d14f94773de219652a2eb9",
+      "retinal_drive_sha256": "2ef4d0b2c46bbc9411cea7677e7a762c98e673facbfcabfbc9cd373910d3c47c"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x4:y1",
+      "frame_sha256": "04713766a5445d28eadf371c1d91dc7d5121570710e1e9b24e091b289f2c439e",
+      "retinal_drive_sha256": "87eb43d75135b34a48dfbd98ac5e734c0beb76da8f415a0887eb066a53ed3a44"
+    },
+    {
+      "identity": "LPLC-T03:filled_expansion:x4:y2",
+      "frame_sha256": "3ddb9bf68f3809170e167ffcec36dc22332e43440ab5caf778e875d952dd4403",
+      "retinal_drive_sha256": "64e588a29e83b6f053a7385bc4897ecba01978df4c9a099ebe5c01c122ffa0e2"
+    },
+    {
+      "identity": "LPLC-T03:filled_contraction:x4:y2",
+      "frame_sha256": "2877d8ade31b7aa9f671662b4204864ee15e9718a9a2f2b17bd2e74a52bfc5b6",
+      "retinal_drive_sha256": "a74ed755e8082be9808ac370323680e0e30568416b1b8fa79b27db6f864b264d"
+    },
+    {
+      "identity": "LPLC-T03:motion_free_darkening:x4:y2",
+      "frame_sha256": "019f816092a2695d6af7f4a05e74f35ec02bf4e1d1323e1b5c33ff0ecbb67438",
+      "retinal_drive_sha256": "ddb611b84be747794766846f649bc577b6e91352d7c0f8415e4c2a0d8d66ad39"
+    },
+    {
+      "identity": "LPLC-T03:wide_field_translation:forward",
+      "frame_sha256": "8118da6df060cc280368634eebef8cae4da15055479d97f61beb70a70eb23b8c",
+      "retinal_drive_sha256": "c731c1fdf75a57cbe22e7c1cceb1a68fa04e000ba375d11ca3f46fe3af28f572"
+    },
+    {
+      "identity": "LPLC-T03:wide_field_translation:mirrored",
+      "frame_sha256": "71d31afba531f333c62ee328763ac1ff2ec964ac85097152f88bd5b787968ec4",
+      "retinal_drive_sha256": "5889edc05acf0579836d20892256b0b81c9d097d0958c0e30350dce3e2b633cf"
+    }
+  ],
+  "per_condition": {
+    "LPLC-T01": {
+      "observability": {
+        "cell_count": 1914,
+        "valid_cell_count": 1914,
+        "valid_cell_fraction": 1.0,
+        "median_trace_separation": 0.9837035913858545,
+        "separated_cell_count": 1914,
+        "separated_cell_fraction": 1.0,
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_trace_separation": true,
+          "separated_cell_fraction": true
+        },
+        "passed": true
+      },
+      "LPLC2": {
+        "L": {
+          "filled_contraction": {
+            "cell_count": 94,
+            "valid_cell_count": 71,
+            "valid_cell_fraction": 0.7553191489361702,
+            "median_signed_contrast": 0.0,
+            "positive_cell_fraction": 0.49295774647887325,
+            "all_target_positive_fraction": 0.3723404255319149,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "motion_free_darkening": {
+            "cell_count": 94,
+            "valid_cell_count": 71,
+            "valid_cell_fraction": 0.7553191489361702,
+            "median_signed_contrast": 0.0008691177468670868,
+            "positive_cell_fraction": 0.5211267605633803,
+            "all_target_positive_fraction": 0.39361702127659576,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "wide_field_translation": {
+            "cell_count": 94,
+            "valid_cell_count": 71,
+            "valid_cell_fraction": 0.7553191489361702,
+            "median_signed_contrast": 0.15886406265753666,
+            "positive_cell_fraction": 0.7887323943661971,
+            "all_target_positive_fraction": 0.5957446808510638,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": true,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          }
+        },
+        "R": {
+          "filled_contraction": {
+            "cell_count": 91,
+            "valid_cell_count": 79,
+            "valid_cell_fraction": 0.8681318681318682,
+            "median_signed_contrast": 0.0,
+            "positive_cell_fraction": 0.3924050632911392,
+            "all_target_positive_fraction": 0.34065934065934067,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "motion_free_darkening": {
+            "cell_count": 91,
+            "valid_cell_count": 78,
+            "valid_cell_fraction": 0.8571428571428571,
+            "median_signed_contrast": 7.381447235700776e-05,
+            "positive_cell_fraction": 0.5641025641025641,
+            "all_target_positive_fraction": 0.4835164835164835,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "wide_field_translation": {
+            "cell_count": 91,
+            "valid_cell_count": 78,
+            "valid_cell_fraction": 0.8571428571428571,
+            "median_signed_contrast": 0.14858663740019895,
+            "positive_cell_fraction": 0.7051282051282052,
+            "all_target_positive_fraction": 0.6043956043956044,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": true,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": true
+            },
+            "passed": true
+          }
+        }
+      }
+    },
+    "LPLC-T02": {
+      "observability": {
+        "cell_count": 1914,
+        "valid_cell_count": 1914,
+        "valid_cell_fraction": 1.0,
+        "median_trace_separation": 0.9608164531625912,
+        "separated_cell_count": 1914,
+        "separated_cell_fraction": 1.0,
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_trace_separation": true,
+          "separated_cell_fraction": true
+        },
+        "passed": true
+      },
+      "LPLC2": {
+        "L": {
+          "filled_contraction": {
+            "cell_count": 94,
+            "valid_cell_count": 73,
+            "valid_cell_fraction": 0.776595744680851,
+            "median_signed_contrast": 0.0,
+            "positive_cell_fraction": 0.4520547945205479,
+            "all_target_positive_fraction": 0.35106382978723405,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "motion_free_darkening": {
+            "cell_count": 94,
+            "valid_cell_count": 73,
+            "valid_cell_fraction": 0.776595744680851,
+            "median_signed_contrast": 0.008765424560979748,
+            "positive_cell_fraction": 0.6438356164383562,
+            "all_target_positive_fraction": 0.5,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "wide_field_translation": {
+            "cell_count": 94,
+            "valid_cell_count": 73,
+            "valid_cell_fraction": 0.776595744680851,
+            "median_signed_contrast": 0.17293595086373836,
+            "positive_cell_fraction": 0.8082191780821918,
+            "all_target_positive_fraction": 0.6276595744680851,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": true,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": true
+            },
+            "passed": false
+          }
+        },
+        "R": {
+          "filled_contraction": {
+            "cell_count": 91,
+            "valid_cell_count": 79,
+            "valid_cell_fraction": 0.8681318681318682,
+            "median_signed_contrast": 0.0,
+            "positive_cell_fraction": 0.35443037974683544,
+            "all_target_positive_fraction": 0.3076923076923077,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "motion_free_darkening": {
+            "cell_count": 91,
+            "valid_cell_count": 79,
+            "valid_cell_fraction": 0.8681318681318682,
+            "median_signed_contrast": 0.005681838371862641,
+            "positive_cell_fraction": 0.620253164556962,
+            "all_target_positive_fraction": 0.5384615384615384,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "wide_field_translation": {
+            "cell_count": 91,
+            "valid_cell_count": 79,
+            "valid_cell_fraction": 0.8681318681318682,
+            "median_signed_contrast": 0.1454695773873953,
+            "positive_cell_fraction": 0.7341772151898734,
+            "all_target_positive_fraction": 0.6373626373626373,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": true,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": true
+            },
+            "passed": true
+          }
+        }
+      }
+    },
+    "LPLC-T03": {
+      "observability": {
+        "cell_count": 1914,
+        "valid_cell_count": 1914,
+        "valid_cell_fraction": 1.0,
+        "median_trace_separation": 0.8943943474982211,
+        "separated_cell_count": 1902,
+        "separated_cell_fraction": 0.9937304075235109,
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_trace_separation": true,
+          "separated_cell_fraction": true
+        },
+        "passed": true
+      },
+      "LPLC2": {
+        "L": {
+          "filled_contraction": {
+            "cell_count": 94,
+            "valid_cell_count": 71,
+            "valid_cell_fraction": 0.7553191489361702,
+            "median_signed_contrast": 0.001465921291825333,
+            "positive_cell_fraction": 0.5633802816901409,
+            "all_target_positive_fraction": 0.425531914893617,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "motion_free_darkening": {
+            "cell_count": 94,
+            "valid_cell_count": 71,
+            "valid_cell_fraction": 0.7553191489361702,
+            "median_signed_contrast": 0.00042787674992139483,
+            "positive_cell_fraction": 0.5352112676056338,
+            "all_target_positive_fraction": 0.40425531914893614,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "wide_field_translation": {
+            "cell_count": 94,
+            "valid_cell_count": 71,
+            "valid_cell_fraction": 0.7553191489361702,
+            "median_signed_contrast": 0.14523072832259512,
+            "positive_cell_fraction": 0.7746478873239436,
+            "all_target_positive_fraction": 0.5851063829787234,
+            "gates": {
+              "valid_cell_fraction": false,
+              "median_signed_contrast": true,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          }
+        },
+        "R": {
+          "filled_contraction": {
+            "cell_count": 91,
+            "valid_cell_count": 78,
+            "valid_cell_fraction": 0.8571428571428571,
+            "median_signed_contrast": 0.0,
+            "positive_cell_fraction": 0.47435897435897434,
+            "all_target_positive_fraction": 0.4065934065934066,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "motion_free_darkening": {
+            "cell_count": 91,
+            "valid_cell_count": 78,
+            "valid_cell_fraction": 0.8571428571428571,
+            "median_signed_contrast": 5.227687222315155e-05,
+            "positive_cell_fraction": 0.5384615384615384,
+            "all_target_positive_fraction": 0.46153846153846156,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": false,
+              "positive_cell_fraction": false,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          },
+          "wide_field_translation": {
+            "cell_count": 91,
+            "valid_cell_count": 78,
+            "valid_cell_fraction": 0.8571428571428571,
+            "median_signed_contrast": 0.12700506465664207,
+            "positive_cell_fraction": 0.6666666666666666,
+            "all_target_positive_fraction": 0.5714285714285714,
+            "gates": {
+              "valid_cell_fraction": true,
+              "median_signed_contrast": true,
+              "positive_cell_fraction": true,
+              "all_target_positive_fraction": false
+            },
+            "passed": false
+          }
+        }
+      }
+    }
+  },
+  "observability_consistency": {
+    "cell_count": 1914,
+    "passing_condition_count": 3,
+    "joint_valid_fraction": 1.0,
+    "all_condition_separated_count": 1902,
+    "all_condition_separated_fraction": 0.9937304075235109,
+    "passed": true
+  },
+  "radial_population_consistency": {
+    "L": {
+      "filled_contraction": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "coverage": {
+          "target_count": 94,
+          "joint_valid_count": 71,
+          "joint_valid_fraction": 0.7553191489361702,
+          "all_condition_success_count": 2,
+          "all_condition_success_fraction": 0.02127659574468085,
+          "joint_invalid_body_ids": [
+            11498,
+            13132,
+            14030,
+            17059,
+            17774,
+            17880,
+            17990,
+            18900,
+            18936,
+            23665,
+            24605,
+            25524,
+            25575,
+            25854,
+            29319,
+            30512,
+            30895,
+            32737,
+            34407,
+            40841,
+            95241,
+            134521,
+            517078
+          ],
+          "all_condition_failure_body_ids": [
+            11498,
+            12384,
+            13132,
+            13726,
+            13764,
+            14030,
+            14102,
+            15804,
+            17059,
+            17544,
+            17774,
+            17775,
+            17880,
+            17990,
+            18900,
+            18936,
+            19787,
+            19830,
+            19911,
+            20240,
+            20329,
+            20799,
+            21299,
+            21361,
+            22253,
+            23349,
+            23550,
+            23665,
+            23919,
+            24308,
+            24568,
+            24605,
+            24840,
+            25027,
+            25136,
+            25209,
+            25286,
+            25524,
+            25572,
+            25575,
+            25854,
+            26416,
+            26528,
+            27023,
+            27355,
+            27399,
+            27716,
+            27796,
+            28011,
+            28188,
+            29319,
+            29702,
+            29753,
+            29815,
+            29955,
+            30512,
+            30893,
+            30895,
+            31105,
+            31563,
+            32223,
+            32237,
+            32737,
+            33303,
+            33406,
+            33965,
+            34051,
+            34407,
+            34655,
+            35294,
+            40811,
+            40841,
+            41097,
+            95241,
+            100103,
+            111903,
+            112292,
+            129687,
+            134521,
+            514670,
+            515971,
+            517078,
+            517079,
+            517819,
+            518731,
+            520764,
+            521115,
+            524366,
+            525844,
+            531014,
+            533895,
+            536444
+          ],
+          "gates": {
+            "joint_valid_fraction": false,
+            "all_condition_success_fraction": false
+          },
+          "passed": false
+        },
+        "passed": false
+      },
+      "motion_free_darkening": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "coverage": {
+          "target_count": 94,
+          "joint_valid_count": 71,
+          "joint_valid_fraction": 0.7553191489361702,
+          "all_condition_success_count": 6,
+          "all_condition_success_fraction": 0.06382978723404255,
+          "joint_invalid_body_ids": [
+            11498,
+            13132,
+            14030,
+            17059,
+            17774,
+            17880,
+            17990,
+            18900,
+            18936,
+            23665,
+            24605,
+            25524,
+            25575,
+            25854,
+            29319,
+            30512,
+            30895,
+            32737,
+            34407,
+            40841,
+            95241,
+            134521,
+            517078
+          ],
+          "all_condition_failure_body_ids": [
+            11498,
+            12384,
+            13132,
+            13726,
+            13764,
+            14030,
+            14102,
+            15804,
+            17059,
+            17544,
+            17774,
+            17775,
+            17880,
+            17990,
+            18900,
+            18936,
+            19787,
+            19830,
+            19911,
+            20240,
+            20329,
+            20799,
+            21299,
+            21361,
+            22253,
+            23247,
+            23349,
+            23550,
+            23665,
+            23919,
+            24308,
+            24568,
+            24605,
+            24840,
+            25027,
+            25136,
+            25209,
+            25286,
+            25524,
+            25575,
+            25854,
+            26416,
+            26528,
+            27355,
+            27399,
+            27716,
+            27796,
+            28011,
+            28188,
+            29319,
+            29702,
+            29753,
+            29815,
+            30512,
+            30893,
+            30895,
+            31105,
+            31563,
+            32223,
+            32237,
+            32737,
+            33303,
+            33406,
+            33965,
+            34051,
+            34407,
+            34655,
+            35294,
+            40811,
+            40841,
+            41097,
+            95241,
+            100103,
+            111903,
+            112292,
+            129687,
+            134521,
+            514670,
+            515971,
+            517078,
+            517079,
+            517819,
+            518731,
+            521115,
+            524366,
+            525844,
+            531014,
+            533895
+          ],
+          "gates": {
+            "joint_valid_fraction": false,
+            "all_condition_success_fraction": false
+          },
+          "passed": false
+        },
+        "passed": false
+      },
+      "wide_field_translation": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "coverage": {
+          "target_count": 94,
+          "joint_valid_count": 71,
+          "joint_valid_fraction": 0.7553191489361702,
+          "all_condition_success_count": 48,
+          "all_condition_success_fraction": 0.5106382978723404,
+          "joint_invalid_body_ids": [
+            11498,
+            13132,
+            14030,
+            17059,
+            17774,
+            17880,
+            17990,
+            18900,
+            18936,
+            23665,
+            24605,
+            25524,
+            25575,
+            25854,
+            29319,
+            30512,
+            30895,
+            32737,
+            34407,
+            40841,
+            95241,
+            134521,
+            517078
+          ],
+          "all_condition_failure_body_ids": [
+            11498,
+            13132,
+            13726,
+            13764,
+            14030,
+            15804,
+            17059,
+            17774,
+            17775,
+            17880,
+            17990,
+            18900,
+            18936,
+            20329,
+            21361,
+            23550,
+            23665,
+            23919,
+            24308,
+            24605,
+            25136,
+            25286,
+            25524,
+            25572,
+            25575,
+            25854,
+            27796,
+            28188,
+            29319,
+            29702,
+            30512,
+            30895,
+            32737,
+            34407,
+            40841,
+            95241,
+            100103,
+            112292,
+            134521,
+            514670,
+            515971,
+            517078,
+            517079,
+            518731,
+            525844,
+            531014
+          ],
+          "gates": {
+            "joint_valid_fraction": false,
+            "all_condition_success_fraction": false
+          },
+          "passed": false
+        },
+        "passed": false
+      }
+    },
+    "R": {
+      "filled_contraction": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "coverage": {
+          "target_count": 91,
+          "joint_valid_count": 78,
+          "joint_valid_fraction": 0.8571428571428571,
+          "all_condition_success_count": 3,
+          "all_condition_success_fraction": 0.03296703296703297,
+          "joint_invalid_body_ids": [
+            14465,
+            18929,
+            19842,
+            20694,
+            20749,
+            21318,
+            21769,
+            21899,
+            25267,
+            26730,
+            29986,
+            30938,
+            35889
+          ],
+          "all_condition_failure_body_ids": [
+            14465,
+            17551,
+            18672,
+            18929,
+            19034,
+            19146,
+            19229,
+            19249,
+            19549,
+            19589,
+            19608,
+            19842,
+            20047,
+            20103,
+            20162,
+            20182,
+            20269,
+            20334,
+            20471,
+            20535,
+            20584,
+            20694,
+            20749,
+            21045,
+            21318,
+            21562,
+            21703,
+            21769,
+            21808,
+            21862,
+            21899,
+            22218,
+            22261,
+            22677,
+            23497,
+            23590,
+            23878,
+            24118,
+            24187,
+            24268,
+            24401,
+            24800,
+            25253,
+            25267,
+            25316,
+            25497,
+            25511,
+            26147,
+            26393,
+            26730,
+            26915,
+            27471,
+            27566,
+            28003,
+            28044,
+            28741,
+            28871,
+            29014,
+            29183,
+            29287,
+            29391,
+            29598,
+            29873,
+            29986,
+            30041,
+            30207,
+            30938,
+            31257,
+            31964,
+            31988,
+            32507,
+            33185,
+            33396,
+            33439,
+            33694,
+            34110,
+            34372,
+            34681,
+            35632,
+            35680,
+            35838,
+            35889,
+            37431,
+            37925,
+            38542,
+            39620,
+            50287,
+            55627
+          ],
+          "gates": {
+            "joint_valid_fraction": true,
+            "all_condition_success_fraction": false
+          },
+          "passed": false
+        },
+        "passed": false
+      },
+      "motion_free_darkening": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "coverage": {
+          "target_count": 91,
+          "joint_valid_count": 78,
+          "joint_valid_fraction": 0.8571428571428571,
+          "all_condition_success_count": 6,
+          "all_condition_success_fraction": 0.06593406593406594,
+          "joint_invalid_body_ids": [
+            14465,
+            18929,
+            19842,
+            20694,
+            20749,
+            21318,
+            21769,
+            21899,
+            25267,
+            26730,
+            29986,
+            30938,
+            35889
+          ],
+          "all_condition_failure_body_ids": [
+            14465,
+            17551,
+            18672,
+            18929,
+            19034,
+            19146,
+            19229,
+            19249,
+            19549,
+            19589,
+            19608,
+            19842,
+            20047,
+            20103,
+            20162,
+            20182,
+            20269,
+            20334,
+            20471,
+            20584,
+            20694,
+            20749,
+            21045,
+            21318,
+            21562,
+            21703,
+            21769,
+            21808,
+            21862,
+            21899,
+            22218,
+            22261,
+            22677,
+            23497,
+            23590,
+            24118,
+            24187,
+            24268,
+            24401,
+            24800,
+            25253,
+            25267,
+            25316,
+            25497,
+            25511,
+            25636,
+            26147,
+            26393,
+            26730,
+            27471,
+            27566,
+            28003,
+            28741,
+            29014,
+            29183,
+            29216,
+            29287,
+            29391,
+            29598,
+            29873,
+            29986,
+            30041,
+            30207,
+            30938,
+            31257,
+            31964,
+            31988,
+            32507,
+            33185,
+            33439,
+            33694,
+            34110,
+            34372,
+            34681,
+            35632,
+            35680,
+            35838,
+            35889,
+            37431,
+            37613,
+            37925,
+            38542,
+            39620,
+            50287,
+            55627
+          ],
+          "gates": {
+            "joint_valid_fraction": true,
+            "all_condition_success_fraction": false
+          },
+          "passed": false
+        },
+        "passed": false
+      },
+      "wide_field_translation": {
+        "passing_condition_count": 2,
+        "required_condition_count": 3,
+        "coverage": {
+          "target_count": 91,
+          "joint_valid_count": 78,
+          "joint_valid_fraction": 0.8571428571428571,
+          "all_condition_success_count": 42,
+          "all_condition_success_fraction": 0.46153846153846156,
+          "joint_invalid_body_ids": [
+            14465,
+            18929,
+            19842,
+            20694,
+            20749,
+            21318,
+            21769,
+            21899,
+            25267,
+            26730,
+            29986,
+            30938,
+            35889
+          ],
+          "all_condition_failure_body_ids": [
+            14465,
+            17551,
+            18672,
+            18929,
+            19146,
+            19229,
+            19249,
+            19589,
+            19842,
+            20103,
+            20269,
+            20334,
+            20471,
+            20694,
+            20749,
+            21318,
+            21562,
+            21769,
+            21808,
+            21862,
+            21899,
+            23497,
+            23590,
+            24118,
+            24187,
+            25267,
+            25497,
+            25511,
+            26730,
+            27471,
+            27566,
+            28003,
+            28044,
+            28741,
+            29014,
+            29183,
+            29391,
+            29873,
+            29986,
+            30041,
+            30207,
+            30938,
+            31257,
+            31964,
+            32507,
+            35838,
+            35889,
+            37613,
+            38542
+          ],
+          "gates": {
+            "joint_valid_fraction": true,
+            "all_condition_success_fraction": false
+          },
+          "passed": false
+        },
+        "passed": false
+      }
+    }
+  },
+  "mirror_summary": {
+    "LPLC-T01": {
+      "maximum_position_pair_frame_error": 0.0,
+      "translation_pair_frame_error": 0.0,
+      "passed": true,
+      "per_comparison_population_metric_error": {
+        "filled_contraction": 0.0,
+        "motion_free_darkening": 0.0007953032745100791,
+        "wide_field_translation": 0.010277425257337713
+      },
+      "maximum_population_metric_error": 0.010277425257337713
+    },
+    "LPLC-T02": {
+      "maximum_position_pair_frame_error": 0.0,
+      "translation_pair_frame_error": 0.0,
+      "passed": true,
+      "per_comparison_population_metric_error": {
+        "filled_contraction": 0.0,
+        "motion_free_darkening": 0.0030835861891171067,
+        "wide_field_translation": 0.027466373476343064
+      },
+      "maximum_population_metric_error": 0.027466373476343064
+    },
+    "LPLC-T03": {
+      "maximum_position_pair_frame_error": 0.0,
+      "translation_pair_frame_error": 0.0,
+      "passed": true,
+      "per_comparison_population_metric_error": {
+        "filled_contraction": 0.001465921291825333,
+        "motion_free_darkening": 0.0003755998776982433,
+        "wide_field_translation": 0.018225663665953046
+      },
+      "maximum_population_metric_error": 0.018225663665953046
+    }
+  },
+  "observability_gate_passed": true,
+  "LPLC2_position_coverage_gates_passed": false,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "boundary": {
+    "tuning_only": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "observability_is_not_functional_preference": true
+  }
+}
