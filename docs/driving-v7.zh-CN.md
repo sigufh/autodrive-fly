@@ -1196,6 +1196,51 @@ linear/MLP/GRU 或外部 final 的替代。
 优化应保留输入与镜像，修正错向的水平/垂直 T4/T5 动力学，并为 LPLC2/LC4 建立局部
 looming 机制；LPLC1 继续使用 near-collision 专用刺激。
 
+## 模块化闭环实测与当前停止边界
+
+后续实验已从纸面协议推进到真实九障碍闭环，但所有结果仍属于隔离的 v7 研究，不改变
+发布态 v5/v6 服务或检查点。当前最稳定的旧分布结果是 18 维 `current mean` 神经 readout：
+它通过三组镜像 episode 留一验证、完整 tuning 54/54、`8600/8601` calibration 18/18；
+视网膜坐标、目标行或递质符号打乱均显著失败。T4/T5、LPLC/LC 联合通道和航向反馈
+在 tuning 或 calibration 消融中也有因果贡献。证据见
+`artifacts/v7-neural-episode-cv.json` 与 `artifacts/v7-neural-episode-controls.json`。
+
+EPG/PEN/PEG 环形状态用车辆本体感觉 yaw-rate 更新，而控制器不再读取环境 heading。固定
+旋转、遮挡保持和镜像测试通过；冻结/反向 yaw 更新在闭环中失败。FC2 目标、PFL3 左右误差、
+PFL2 误差幅度和 DNa02 运动意图的透明分层链通过转向终止测试。MaleCNS 中存在
+`FC2→PFL3` 576 条、`EPG→PFL3` 113 条和 `PFL3→DNa02` 24 条边；没有相应
+`PFL3→DNa01` 或 `PFL3→DNp20` 直接边，因此后二者只作为动作等价对照，不能宣称同一
+解剖通路。证据见 `artifacts/v7-heading-ring.json` 与 `artifacts/v7-fc2-pfl-dna.json`。
+
+上述组件级成功没有解锁后续阶段。新导航嵌套协议将历史 `8000–8701` 固定为零权重回归，
+用 `9100–9105` 三个新 tuning 镜像对做留一验证；固定 18 维模型仅达到 48/54，完整 tuning
+为 32/54，因此 `9200/9201` calibration 从未运行。融合全局意图与 lamina 双线性目标在
+旧 tuning 上达到 54/54，但第二代新协议 `9400–9405` 的留一验证只有 34/54，故
+`9500/9501` 同样未运行。两个协议的外部 final 均无本地 seed、未托管、未消费。
+
+为定位实际能力口子，还完成了以下闭环反证：
+
+- 危险减速不能修复新布局，所有减速候选均 6/6 超时；
+- 逐像素 R1–R6 安全走廊可在 `9100–9105` 达到 54/54，证明视觉输入存在可用解；
+- 18 维与 24 列 T4/T5 神经 safety head 分别只有 24/54、22/54；
+- 四种既有动力学中 lamina/typed leak 的局部解码误差最低，但实际闭环仍失败；
+- tuning-only 闭环数据聚合 0/1/2 轮分别为 18/54、20/54、14/54；
+- lamina 直接 FC2 目标达到 40/54；严格奇对称 `odd + even×odd` 提高至 46/54，
+  固定目标记忆没有进一步突破，说明偶上下文门控奇方向有效但仍不足。
+
+严格细胞门仍然关闭。尺度归一化的 T4 conductance+anatomical correlator 最佳只通过
+16/24 个 T4a/b 条件×方向/ON 门；T5 b/d 空间顺序小样本仅 3/64 可达。LPLC1、
+LPLC2、LC4 已用互不共享的专用刺激评分：近碰撞/擦过、物体方向/背景运动、径向
+outward/inward、motion-free darkening、wide-field translation、固定终端尺寸速度斜率均为
+0/3 条件一致通过，虽然镜像保持通过。证据见 `artifacts/v7-t4-normalized-correlator.json`、
+`artifacts/v7-t5-spatial-order.json` 和 `artifacts/v7-lplc-typed-screen.json`。
+
+因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
+EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
+T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge、危险减速、简单目标记忆、
+统一 LPLC looming 规则及按亚型翻转标签。当前阶段仍是 controlled vision；MB 学习、OOD、
+外部 final、城市交通和部署均不授权。
+
 ## 文献依据
 
 - Lappalainen 等，连接组约束视觉模型：
