@@ -71,6 +71,7 @@ from .driving.v7_neural_corridor import (
     evaluate_v7_local_column_corridor,
     evaluate_v7_neural_corridor,
 )
+from .driving.v7_neural_corridor_dagger import evaluate_v7_neural_corridor_dagger
 from .driving.v7_neural_dynamics_local import evaluate_v7_neural_dynamics_local
 from .driving.v7_neural_episode_controls import evaluate_v7_neural_episode_controls
 from .driving.v7_neural_episode_cv import evaluate_v7_neural_episode_cv
@@ -257,6 +258,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-corridor")
     subparsers.add_parser("v7-evaluate-local-column-corridor")
     subparsers.add_parser("v7-evaluate-neural-dynamics-local")
+    subparsers.add_parser("v7-evaluate-neural-corridor-dagger")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -778,6 +780,12 @@ def main() -> None:
     if args.command == "v7-evaluate-neural-dynamics-local":
         report = evaluate_v7_neural_dynamics_local(root)
         target = root / "artifacts/v7-neural-dynamics-local.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-corridor-dagger":
+        report = evaluate_v7_neural_corridor_dagger(root)
+        target = root / "artifacts/v7-neural-corridor-dagger.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

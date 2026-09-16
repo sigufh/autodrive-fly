@@ -269,6 +269,9 @@ v7-evaluate-local-column-corridor:
 v7-evaluate-neural-dynamics-local:
 	.venv/bin/autodrive-fly v7-evaluate-neural-dynamics-local
 
+v7-evaluate-neural-corridor-dagger:
+	.venv/bin/autodrive-fly v7-evaluate-neural-corridor-dagger
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

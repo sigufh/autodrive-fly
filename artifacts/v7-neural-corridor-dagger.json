@@ -1,0 +1,760 @@
+{
+  "protocol": {
+    "name": "v7-neural-corridor-closed-loop-data-aggregation",
+    "dependencies_sha256": {
+      "configs/driving-v7-neural-corridor-dagger.yaml": "31e0ce3c180eeb3494069aea58ab9b341b9b9565d386ae3d47b85ea15f5b1eb7",
+      "src/fly_emotion/driving/v7_neural_corridor_dagger.py": "d0a319bd54a9a34404dd07cee710df530ec0735f26064f1d22107ca9ac47db90",
+      "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a",
+      "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
+      "configs/driving-v7-neural-local-columns.yaml": "5c432fb5786a9a6f96461019ba4b68f88a09b690297432cb3161786a1d9d5b8e",
+      "configs/driving-v7-neural-corridor.yaml": "45a976a524d4beb61f749b1a87d110d356571b310b377b14b3602d1d6afc2f54",
+      "artifacts/v7-neural-dynamics-local.json": "ddf8f08b89c87d15afc12fc54fee5c65c2c43fa35943fa2fcaab43aba051755f"
+    },
+    "tuning_only": true,
+    "held_out_pairs_never_labeled_for_fit": true,
+    "teacher_actions_injected": false,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false
+  },
+  "round_summaries": [
+    {
+      "aggregation_rounds": 0,
+      "held_out_success_count": 0,
+      "held_out_obstacles_passed": 18,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "fit_keys": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.03347568190873959,
+            "per_bin_r2": [
+              0.9536909203251615,
+              0.919788165391082,
+              0.7074638816323933,
+              0.7074638816323207,
+              0.9197881653910883,
+              0.9536909203251587
+            ],
+            "mean_r2": 0.8603143224495341
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 8,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 4,
+              "distance": 58.50501693687618,
+              "steps": 222,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.495611802164413
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 4,
+              "distance": 58.50501693687639,
+              "steps": 222,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.495611802164271
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "fit_keys": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.03293104134144104,
+            "per_bin_r2": [
+              0.9649103249188243,
+              0.9317742596448804,
+              0.7869288151779903,
+              0.7869288151780548,
+              0.9317742596448497,
+              0.964910324918818
+            ],
+            "mean_r2": 0.8945377999139029
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 4,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 2,
+              "distance": 30.49928977017436,
+              "steps": 114,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.497519563586128
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 2,
+              "distance": 30.499289770174318,
+              "steps": 114,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.497519563586174
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "fit_keys": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.048389035851696224,
+            "per_bin_r2": [
+              0.942242170494274,
+              0.8461719516365952,
+              0.6009162679689342,
+              0.6009162679687841,
+              0.8461719516366167,
+              0.9422421704942899
+            ],
+            "mean_r2": 0.7964434633665823
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 6,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 3,
+              "distance": 46.98056894743025,
+              "steps": 173,
+              "goal_switch_count": 2,
+              "maximum_absolute_lateral_position": 4.992212125466925
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 3,
+              "distance": 46.980568947430235,
+              "steps": 173,
+              "goal_switch_count": 2,
+              "maximum_absolute_lateral_position": 4.992212125466903
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "aggregation_rounds": 1,
+      "held_out_success_count": 0,
+      "held_out_obstacles_passed": 20,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "fit_keys": [
+            9102,
+            9103,
+            9104,
+            9105,
+            109102,
+            109103,
+            109104,
+            109105
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.03873646589829873,
+            "per_bin_r2": [
+              0.9437480107027256,
+              0.905234148840562,
+              0.6202924786964201,
+              0.6202924786966391,
+              0.905234148840571,
+              0.9437480107027258
+            ],
+            "mean_r2": 0.8230915460799406
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 14,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.49446140006613,
+              "steps": 340,
+              "goal_switch_count": 2,
+              "maximum_absolute_lateral_position": 1.7509919085810925
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "obstacle",
+              "success": false,
+              "obstacles_passed": 7,
+              "distance": 92.49446140006613,
+              "steps": 340,
+              "goal_switch_count": 2,
+              "maximum_absolute_lateral_position": 1.7509919085811068
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "fit_keys": [
+            9100,
+            9101,
+            9104,
+            9105,
+            109100,
+            109101,
+            109104,
+            109105
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.04071854612207445,
+            "per_bin_r2": [
+              0.9440093986367935,
+              0.9130756838884164,
+              0.7574909255330821,
+              0.757490925533095,
+              0.9130756838884402,
+              0.9440093986367641
+            ],
+            "mean_r2": 0.8715253360194318
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 4,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 2,
+              "distance": 30.922272802306804,
+              "steps": 115,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.4801566984986945
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 2,
+              "distance": 30.92227280230686,
+              "steps": 115,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.480156698498716
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "fit_keys": [
+            9100,
+            9101,
+            9102,
+            9103,
+            109100,
+            109101,
+            109102,
+            109103
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.05017656570660317,
+            "per_bin_r2": [
+              0.9206968700273656,
+              0.8332701138908893,
+              0.7729646099311065,
+              0.7729646099312294,
+              0.833270113891068,
+              0.9206968700274024
+            ],
+            "mean_r2": 0.8423105312831769
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 2,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 1,
+              "distance": 26.650555400785457,
+              "steps": 100,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.54706494126344
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 1,
+              "distance": 26.65055540078515,
+              "steps": 100,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.547064941263826
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "aggregation_rounds": 2,
+      "held_out_success_count": 0,
+      "held_out_obstacles_passed": 14,
+      "folds": [
+        {
+          "training_seeds": [
+            9102,
+            9103,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9100,
+            9101
+          ],
+          "fit_keys": [
+            9102,
+            9103,
+            9104,
+            9105,
+            109102,
+            109103,
+            109104,
+            109105,
+            209102,
+            209103,
+            209104,
+            209105
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.04333598829051757,
+            "per_bin_r2": [
+              0.9149193045447416,
+              0.8901004902595822,
+              0.6442635884896486,
+              0.6442635884895809,
+              0.890100490259546,
+              0.9149193045447237
+            ],
+            "mean_r2": 0.8164277944313039
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 8,
+          "episodes": [
+            {
+              "seed": 9100,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 4,
+              "distance": 58.06869824909227,
+              "steps": 219,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.639245305672447
+            },
+            {
+              "seed": 9101,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 4,
+              "distance": 58.06869824909233,
+              "steps": 219,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.639245305672386
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9104,
+            9105
+          ],
+          "held_out_seeds": [
+            9102,
+            9103
+          ],
+          "fit_keys": [
+            9100,
+            9101,
+            9104,
+            9105,
+            109100,
+            109101,
+            109104,
+            109105,
+            209100,
+            209101,
+            209104,
+            209105
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.04277326529556276,
+            "per_bin_r2": [
+              0.9414170275420484,
+              0.9314161524359604,
+              0.6798240847142243,
+              0.6798240847142789,
+              0.9314161524359357,
+              0.9414170275420739
+            ],
+            "mean_r2": 0.8508857548974204
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 4,
+          "episodes": [
+            {
+              "seed": 9102,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 2,
+              "distance": 32.32736739974257,
+              "steps": 120,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.503317726059356
+            },
+            {
+              "seed": 9103,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 2,
+              "distance": 32.32736739974254,
+              "steps": 120,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.50331772605936
+            }
+          ]
+        },
+        {
+          "training_seeds": [
+            9100,
+            9101,
+            9102,
+            9103
+          ],
+          "held_out_seeds": [
+            9104,
+            9105
+          ],
+          "fit_keys": [
+            9100,
+            9101,
+            9102,
+            9103,
+            109100,
+            109101,
+            109102,
+            109103,
+            209100,
+            209101,
+            209102,
+            209103
+          ],
+          "safety_metrics_on_teacher_held_out": {
+            "mean_absolute_error": 0.0503955433301016,
+            "per_bin_r2": [
+              0.9232852585770257,
+              0.8450004176088863,
+              0.7555097490749126,
+              0.7555097490749275,
+              0.8450004176089303,
+              0.9232852585769571
+            ],
+            "mean_r2": 0.8412651417536066
+          },
+          "success_count": 0,
+          "total_obstacles_passed": 2,
+          "episodes": [
+            {
+              "seed": 9104,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 1,
+              "distance": 18.05365859339206,
+              "steps": 69,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.490395190562899
+            },
+            {
+              "seed": 9105,
+              "terminal_reason": "road_boundary",
+              "success": false,
+              "obstacles_passed": 1,
+              "distance": 18.053658593392043,
+              "steps": 69,
+              "goal_switch_count": 1,
+              "maximum_absolute_lateral_position": 5.490395190562927
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_rounds": 1,
+  "selected_summary": {
+    "aggregation_rounds": 1,
+    "held_out_success_count": 0,
+    "held_out_obstacles_passed": 20,
+    "folds": [
+      {
+        "training_seeds": [
+          9102,
+          9103,
+          9104,
+          9105
+        ],
+        "held_out_seeds": [
+          9100,
+          9101
+        ],
+        "fit_keys": [
+          9102,
+          9103,
+          9104,
+          9105,
+          109102,
+          109103,
+          109104,
+          109105
+        ],
+        "safety_metrics_on_teacher_held_out": {
+          "mean_absolute_error": 0.03873646589829873,
+          "per_bin_r2": [
+            0.9437480107027256,
+            0.905234148840562,
+            0.6202924786964201,
+            0.6202924786966391,
+            0.905234148840571,
+            0.9437480107027258
+          ],
+          "mean_r2": 0.8230915460799406
+        },
+        "success_count": 0,
+        "total_obstacles_passed": 14,
+        "episodes": [
+          {
+            "seed": 9100,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 7,
+            "distance": 92.49446140006613,
+            "steps": 340,
+            "goal_switch_count": 2,
+            "maximum_absolute_lateral_position": 1.7509919085810925
+          },
+          {
+            "seed": 9101,
+            "terminal_reason": "obstacle",
+            "success": false,
+            "obstacles_passed": 7,
+            "distance": 92.49446140006613,
+            "steps": 340,
+            "goal_switch_count": 2,
+            "maximum_absolute_lateral_position": 1.7509919085811068
+          }
+        ]
+      },
+      {
+        "training_seeds": [
+          9100,
+          9101,
+          9104,
+          9105
+        ],
+        "held_out_seeds": [
+          9102,
+          9103
+        ],
+        "fit_keys": [
+          9100,
+          9101,
+          9104,
+          9105,
+          109100,
+          109101,
+          109104,
+          109105
+        ],
+        "safety_metrics_on_teacher_held_out": {
+          "mean_absolute_error": 0.04071854612207445,
+          "per_bin_r2": [
+            0.9440093986367935,
+            0.9130756838884164,
+            0.7574909255330821,
+            0.757490925533095,
+            0.9130756838884402,
+            0.9440093986367641
+          ],
+          "mean_r2": 0.8715253360194318
+        },
+        "success_count": 0,
+        "total_obstacles_passed": 4,
+        "episodes": [
+          {
+            "seed": 9102,
+            "terminal_reason": "road_boundary",
+            "success": false,
+            "obstacles_passed": 2,
+            "distance": 30.922272802306804,
+            "steps": 115,
+            "goal_switch_count": 1,
+            "maximum_absolute_lateral_position": 5.4801566984986945
+          },
+          {
+            "seed": 9103,
+            "terminal_reason": "road_boundary",
+            "success": false,
+            "obstacles_passed": 2,
+            "distance": 30.92227280230686,
+            "steps": 115,
+            "goal_switch_count": 1,
+            "maximum_absolute_lateral_position": 5.480156698498716
+          }
+        ]
+      },
+      {
+        "training_seeds": [
+          9100,
+          9101,
+          9102,
+          9103
+        ],
+        "held_out_seeds": [
+          9104,
+          9105
+        ],
+        "fit_keys": [
+          9100,
+          9101,
+          9102,
+          9103,
+          109100,
+          109101,
+          109102,
+          109103
+        ],
+        "safety_metrics_on_teacher_held_out": {
+          "mean_absolute_error": 0.05017656570660317,
+          "per_bin_r2": [
+            0.9206968700273656,
+            0.8332701138908893,
+            0.7729646099311065,
+            0.7729646099312294,
+            0.833270113891068,
+            0.9206968700274024
+          ],
+          "mean_r2": 0.8423105312831769
+        },
+        "success_count": 0,
+        "total_obstacles_passed": 2,
+        "episodes": [
+          {
+            "seed": 9104,
+            "terminal_reason": "road_boundary",
+            "success": false,
+            "obstacles_passed": 1,
+            "distance": 26.650555400785457,
+            "steps": 100,
+            "goal_switch_count": 1,
+            "maximum_absolute_lateral_position": 5.54706494126344
+          },
+          {
+            "seed": 9105,
+            "terminal_reason": "road_boundary",
+            "success": false,
+            "obstacles_passed": 1,
+            "distance": 26.65055540078515,
+            "steps": 100,
+            "goal_switch_count": 1,
+            "maximum_absolute_lateral_position": 5.547064941263826
+          }
+        ]
+      }
+    ]
+  },
+  "cross_validation_passed": false,
+  "advance_to_full_tuning": false,
+  "advance_to_calibration": false,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "tuning_only": true,
+    "held_out_pairs_never_labeled_for_fit": true,
+    "candidate_trajectory_labels_from_R1_R6_upper_bound": true,
+    "teacher_actions_not_injected": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false
+  }
+}

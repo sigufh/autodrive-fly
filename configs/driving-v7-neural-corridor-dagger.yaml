@@ -1,0 +1,24 @@
+version: 1
+name: v7-neural-corridor-closed-loop-data-aggregation
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+base_neural_config: configs/driving-v7-neural-channels.yaml
+local_column_config: configs/driving-v7-neural-local-columns.yaml
+neural_corridor_config: configs/driving-v7-neural-corridor.yaml
+dynamics_evidence: artifacts/v7-neural-dynamics-local.json
+tuning_pairs: [[9100, 9101], [9102, 9103], [9104, 9105]]
+selected_backend: typed_visual_leak_v1
+aggregation_rounds: [0, 1, 2]
+ridge_alpha: 1.0
+selection_order:
+  - maximize_held_out_success_count
+  - maximize_held_out_obstacles_passed
+  - minimize_aggregation_rounds
+boundary:
+  tuning_only: true
+  held_out_pairs_never_labeled_for_fit: true
+  candidate_trajectory_labels_from_R1_R6_upper_bound: true
+  teacher_actions_not_injected: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  runtime_modified: false
