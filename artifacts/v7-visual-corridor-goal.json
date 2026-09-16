@@ -1,0 +1,4319 @@
+{
+  "protocol": {
+    "name": "v7-transparent-visual-corridor-goal-tuning",
+    "dependencies_sha256": {
+      "configs/driving-v7-visual-corridor-goal.yaml": "fdb6e376cc5d5a52064e1ac8760fe5e5773020ae1cc22a23bb899dc95a8b1d73",
+      "src/fly_emotion/driving/v7_visual_corridor_goal.py": "aadc4eea25ead0cedcc05ef0fd8efd6ebdc80d3c11da671747a7880cebb883c4",
+      "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a",
+      "configs/driving-v7-r1r6-local.yaml": "1fc02bcb6af88660ad35c7f88ed6f8133f0311c52bced3b3afdb4feaa3c2d862"
+    },
+    "candidate_count": 54,
+    "tuning_only": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "environment_geometry_used": false,
+    "runtime_modified": false
+  },
+  "candidate_summaries": [
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 2.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 0.7312450423926006,
+      "total_goal_switch_count": 122,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.62714567016621,
+          "steps": 339,
+          "goal_switch_count": 33,
+          "maximum_absolute_lateral_position": 1.0470568223993377
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.62714567016621,
+          "steps": 339,
+          "goal_switch_count": 33,
+          "maximum_absolute_lateral_position": 1.0470568223993457
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.70684622472222,
+          "steps": 206,
+          "goal_switch_count": 22,
+          "maximum_absolute_lateral_position": 0.8479209750425595
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.70684622472222,
+          "steps": 206,
+          "goal_switch_count": 22,
+          "maximum_absolute_lateral_position": 0.8479209750425561
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.990609749974467,
+          "steps": 55,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 0.29875732973590174
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.990609749974467,
+          "steps": 55,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 0.29875732973590274
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 2.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 0.737047721619836,
+      "total_goal_switch_count": 128,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.63357613394253,
+          "steps": 339,
+          "goal_switch_count": 25,
+          "maximum_absolute_lateral_position": 1.044394852965774
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.63357613394253,
+          "steps": 339,
+          "goal_switch_count": 25,
+          "maximum_absolute_lateral_position": 1.0443948529657836
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.70332048673558,
+          "steps": 206,
+          "goal_switch_count": 32,
+          "maximum_absolute_lateral_position": 0.8745265816541454
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.70332048673558,
+          "steps": 206,
+          "goal_switch_count": 32,
+          "maximum_absolute_lateral_position": 0.8745265816541427
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.99051498333885,
+          "steps": 55,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 0.29222173023958453
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.99051498333885,
+          "steps": 55,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 0.2922217302395855
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 2.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 28,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.5406318614907193,
+      "total_goal_switch_count": 34,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03803210222759,
+          "steps": 441,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 1.4455904732986355
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03803210222759,
+          "steps": 441,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 1.445590473298629
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.619771056903325,
+          "steps": 202,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 1.8614844497762557
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.619771056903325,
+          "steps": 202,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 1.861484449776252
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.4701862004309,
+          "steps": 94,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 1.314820661397271
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.4701862004309,
+          "steps": 94,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 1.3148206613972726
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 2.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 1,
+      "total_obstacles_passed": 26,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.5354160938637698,
+      "total_goal_switch_count": 33,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24321426130804,
+          "steps": 442,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 1.6718694613042613
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.48902610884633,
+          "steps": 339,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 1.214107995286051
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.61955524044201,
+          "steps": 202,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 1.8522355287102652
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.61955524044201,
+          "steps": 202,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 1.852235528710263
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.469492335113742,
+          "steps": 94,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 1.311024024585888
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.469492335113742,
+          "steps": 94,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 1.31102402458589
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 2.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 25,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.4918361349478637,
+      "total_goal_switch_count": 13,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 103.8499772222078,
+          "steps": 381,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.7440292811048768
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.33407130665634,
+          "steps": 338,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.8084535949242309
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.572173469841424,
+          "steps": 202,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.7938549890915074
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.572173469841424,
+          "steps": 202,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.7938549890915063
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.459253692393666,
+          "steps": 94,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.4054119777375296
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.459253692393666,
+          "steps": 94,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.405411977737531
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 2.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 25,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.4918361349478637,
+      "total_goal_switch_count": 13,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 103.8499772222078,
+          "steps": 381,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.7440292811048768
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.33407130665634,
+          "steps": 338,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.8084535949242309
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.572173469841424,
+          "steps": 202,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.7938549890915074
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.572173469841424,
+          "steps": 202,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.7938549890915063
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.459253692393666,
+          "steps": 94,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.4054119777375296
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.459253692393666,
+          "steps": 94,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.405411977737531
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 4.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.313146217128568,
+      "total_goal_switch_count": 154,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.59999748691676,
+          "steps": 339,
+          "goal_switch_count": 34,
+          "maximum_absolute_lateral_position": 1.2662337428664225
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.59999748691676,
+          "steps": 339,
+          "goal_switch_count": 34,
+          "maximum_absolute_lateral_position": 1.2662337428664303
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.44161093252047,
+          "steps": 168,
+          "goal_switch_count": 31,
+          "maximum_absolute_lateral_position": 1.0483306185997747
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.44161093252047,
+          "steps": 168,
+          "goal_switch_count": 31,
+          "maximum_absolute_lateral_position": 1.0483306185997714
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.7309382364123,
+          "steps": 95,
+          "goal_switch_count": 12,
+          "maximum_absolute_lateral_position": 1.6248742899195037
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.7309382364123,
+          "steps": 95,
+          "goal_switch_count": 12,
+          "maximum_absolute_lateral_position": 1.6248742899195054
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 4.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.2498973960670932,
+      "total_goal_switch_count": 170,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.14987917421725,
+          "steps": 341,
+          "goal_switch_count": 32,
+          "maximum_absolute_lateral_position": 0.9695811617584418
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.59591081848146,
+          "steps": 339,
+          "goal_switch_count": 30,
+          "maximum_absolute_lateral_position": 1.185521733467836
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.93136992158967,
+          "steps": 207,
+          "goal_switch_count": 44,
+          "maximum_absolute_lateral_position": 1.0588434977659624
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.93132920600316,
+          "steps": 207,
+          "goal_switch_count": 44,
+          "maximum_absolute_lateral_position": 1.0588434977659595
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.728549859878544,
+          "steps": 95,
+          "goal_switch_count": 10,
+          "maximum_absolute_lateral_position": 1.6132972428221788
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.728549859878544,
+          "steps": 95,
+          "goal_switch_count": 10,
+          "maximum_absolute_lateral_position": 1.6132972428221803
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 4.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 26,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.9274730533298734,
+      "total_goal_switch_count": 20,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.65262497393341,
+          "steps": 210,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 2.7959853662536593
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.65262497393341,
+          "steps": 210,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 2.795985366253657
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.13433393457741,
+          "steps": 374,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 4.105776519141938
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.13433393457741,
+          "steps": 374,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 4.10577651914194
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.97554163162446,
+          "steps": 96,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.8806572745940224
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.97554163162446,
+          "steps": 96,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.8806572745940247
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 4.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 1,
+      "total_obstacles_passed": 23,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.3008763850539236,
+      "total_goal_switch_count": 27,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.61482977316195,
+          "steps": 210,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 2.7704498637597594
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2007120656989,
+          "steps": 444,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 2.8775204461380683
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.884273126068265,
+          "steps": 204,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 2.2757931091452988
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.884273126068265,
+          "steps": 204,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 2.2757931091452956
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.707677089151755,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.8028508910675587
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.707677089151755,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.8028508910675602
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 4.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 39,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.1316659233958686,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 103.25045413953895,
+          "steps": 380,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.7987290429631764
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.9325111683757,
+          "steps": 341,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.6648151646239828
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 77.96328933535827,
+          "steps": 286,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.93675362739031
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 77.96328933535827,
+          "steps": 286,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.936753627390304
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 80.80141311274409,
+          "steps": 297,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 2.72647203900372
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 80.80141311274409,
+          "steps": 297,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 2.726472039003721
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 4.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 35,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.6504834213942092,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 103.25045413953895,
+          "steps": 380,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.7987290429631764
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.9325111683757,
+          "steps": 341,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.6648151646239828
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09680905430501,
+          "steps": 443,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 3.600953583247449
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09680905430501,
+          "steps": 443,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 3.6009535832474446
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.659945156280013,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6187245771416012
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.659945156280013,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6187245771416017
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 8.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.0123374333932795,
+      "total_goal_switch_count": 162,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.60567128711067,
+          "steps": 339,
+          "goal_switch_count": 35,
+          "maximum_absolute_lateral_position": 1.336274607759445
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.60567128711067,
+          "steps": 339,
+          "goal_switch_count": 35,
+          "maximum_absolute_lateral_position": 1.3362746077594523
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.09564898885227,
+          "steps": 204,
+          "goal_switch_count": 33,
+          "maximum_absolute_lateral_position": 2.712066810123896
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.09564898885227,
+          "steps": 204,
+          "goal_switch_count": 33,
+          "maximum_absolute_lateral_position": 2.7120668101238925
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.965123135691158,
+          "steps": 96,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.9886708822964938
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.965123135691158,
+          "steps": 96,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.9886708822964958
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 8.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.4929287574813264,
+      "total_goal_switch_count": 134,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.60212218307768,
+          "steps": 339,
+          "goal_switch_count": 24,
+          "maximum_absolute_lateral_position": 1.3303602909228995
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.60212218307768,
+          "steps": 339,
+          "goal_switch_count": 24,
+          "maximum_absolute_lateral_position": 1.3303602909229069
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.14767263580112,
+          "steps": 167,
+          "goal_switch_count": 30,
+          "maximum_absolute_lateral_position": 1.1806704468366236
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.14767263580112,
+          "steps": 167,
+          "goal_switch_count": 30,
+          "maximum_absolute_lateral_position": 1.1806704468366196
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.959635693788496,
+          "steps": 96,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.967755534684453
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.959635693788496,
+          "steps": 96,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.9677555346844553
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 8.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.190906442945438,
+      "total_goal_switch_count": 32,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09387458084828,
+          "steps": 445,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 4.561238929221215
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.08049064408513,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.2184334153048395
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09547986825714,
+          "steps": 447,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 4.045741907224985
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09547986825714,
+          "steps": 447,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 4.045741907224984
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.05839597222182,
+          "steps": 445,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 3.2837278156756935
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.26029401386019,
+          "steps": 447,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 4.9905546830209095
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 8.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 52,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.6054250978990723,
+      "total_goal_switch_count": 38,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.11831456768829,
+          "steps": 445,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 2.907803397128995
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.11831456768827,
+          "steps": 445,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 2.907803397129
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.02459016912766,
+          "steps": 380,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 3.92956183647667
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.02459016912766,
+          "steps": 380,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 3.929561836476664
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.02820802500524,
+          "steps": 444,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 3.9789100600915552
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.02820802500524,
+          "steps": 444,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 3.9789100600915512
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 3,
+      "total_obstacles_passed": 49,
+      "road_boundary_count": 1,
+      "mean_maximum_absolute_lateral_position": 4.83831097577352,
+      "total_goal_switch_count": 11,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 99.41910473871516,
+          "steps": 369,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.497668994104564
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.02597071032604,
+          "steps": 446,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 4.386148819681505
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.81824572582492,
+          "steps": 339,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.022575208122296
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.81824572582492,
+          "steps": 339,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.022575208122296
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.10739440435572,
+          "steps": 449,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.347218750757062
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2421430770605,
+          "steps": 446,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.753678873853392
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 4,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 48,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.9171293800818625,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.25344591959397,
+          "steps": 447,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.306685086021266
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.02597071032604,
+          "steps": 446,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 4.386148819681505
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04209366961848,
+          "steps": 445,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.239903052525333
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04209366961848,
+          "steps": 445,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.239903052525333
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 80.97825591936835,
+          "steps": 300,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 2.6650681348688696
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 80.97825591936835,
+          "steps": 300,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 2.6650681348688674
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 2.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.7263325066651731,
+      "total_goal_switch_count": 204,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.7436025165644,
+          "steps": 340,
+          "goal_switch_count": 50,
+          "maximum_absolute_lateral_position": 1.326623898020184
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.7436025165644,
+          "steps": 340,
+          "goal_switch_count": 50,
+          "maximum_absolute_lateral_position": 1.3266238980201936
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.79884358259897,
+          "steps": 203,
+          "goal_switch_count": 39,
+          "maximum_absolute_lateral_position": 2.2402913732698413
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.79884358259897,
+          "steps": 203,
+          "goal_switch_count": 39,
+          "maximum_absolute_lateral_position": 2.240291373269838
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.73875836531362,
+          "steps": 95,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.6120822487054902
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.73875836531362,
+          "steps": 95,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.6120822487054915
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 2.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 18,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.005448136796472,
+      "total_goal_switch_count": 164,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.434897927885025,
+          "steps": 209,
+          "goal_switch_count": 27,
+          "maximum_absolute_lateral_position": 2.2327006394162225
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.434897927885025,
+          "steps": 209,
+          "goal_switch_count": 27,
+          "maximum_absolute_lateral_position": 2.232700639416218
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.79859832126836,
+          "steps": 203,
+          "goal_switch_count": 40,
+          "maximum_absolute_lateral_position": 2.2294179696854264
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.79859832126836,
+          "steps": 203,
+          "goal_switch_count": 40,
+          "maximum_absolute_lateral_position": 2.2294179696854233
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.469336776153664,
+          "steps": 94,
+          "goal_switch_count": 15,
+          "maximum_absolute_lateral_position": 1.5542258012877697
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.469336776153664,
+          "steps": 94,
+          "goal_switch_count": 15,
+          "maximum_absolute_lateral_position": 1.5542258012877717
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 2.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 16,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.8760577664415836,
+      "total_goal_switch_count": 30,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.642901676218095,
+          "steps": 210,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 2.1097934618424588
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.642901676218095,
+          "steps": 210,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 2.109793461842454
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 44.992273606410336,
+          "steps": 164,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 1.9041536612091643
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 44.992273606410336,
+          "steps": 164,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 1.904153661209163
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.730661316464523,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6142261762731291
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.730661316464523,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6142261762731311
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 2.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 17,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.0142794123186083,
+      "total_goal_switch_count": 26,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.63585950528281,
+          "steps": 210,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 2.3470608903072163
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.63585950528281,
+          "steps": 210,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 2.3470608903072114
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.76114310032651,
+          "steps": 203,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 2.301477680519187
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.24328659857194,
+          "steps": 164,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.7731433157492298
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.72325084696056,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6584668485144023
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.72325084696056,
+          "steps": 95,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6584668485144043
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 2.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 17,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.3658974197109788,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.63873503984111,
+          "steps": 210,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 2.4592041986023667
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.63873503984111,
+          "steps": 210,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 2.4592041986023663
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.37912209452686,
+          "steps": 206,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 2.872098078895612
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 44.97074637277191,
+          "steps": 164,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.9723866921162276
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.46506320614981,
+          "steps": 98,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 2.2162456750246498
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.46506320614981,
+          "steps": 98,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 2.21624567502465
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 2.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 18,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.9588380979819975,
+      "total_goal_switch_count": 12,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.70077343708008,
+          "steps": 210,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.921175407556091
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.70077343708008,
+          "steps": 210,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.9211754075560903
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.78834012985424,
+          "steps": 204,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 2.340761591800092
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.78834012985424,
+          "steps": 204,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 2.3407615918000895
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.689185248142635,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.6145772945898107
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.689185248142635,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.6145772945898116
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 4.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 15,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.769672550888197,
+      "total_goal_switch_count": 197,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.83388261491495,
+          "steps": 211,
+          "goal_switch_count": 49,
+          "maximum_absolute_lateral_position": 3.0868551493006335
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.83388261491495,
+          "steps": 211,
+          "goal_switch_count": 49,
+          "maximum_absolute_lateral_position": 3.086855149300629
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 35.00323784008182,
+          "steps": 127,
+          "goal_switch_count": 31,
+          "maximum_absolute_lateral_position": 4.341182096575723
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.254870388489486,
+          "steps": 165,
+          "goal_switch_count": 42,
+          "maximum_absolute_lateral_position": 1.950348164859321
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.234502977037277,
+          "steps": 97,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 2.076397372646438
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.234502977037277,
+          "steps": 97,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 2.076397372646439
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 4.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 26,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.4465441470635896,
+      "total_goal_switch_count": 266,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.78479395679827,
+          "steps": 211,
+          "goal_switch_count": 52,
+          "maximum_absolute_lateral_position": 3.0517389775323958
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.78479395679827,
+          "steps": 211,
+          "goal_switch_count": 52,
+          "maximum_absolute_lateral_position": 3.0517389775323918
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.2926572839046,
+          "steps": 165,
+          "goal_switch_count": 38,
+          "maximum_absolute_lateral_position": 1.931251101904456
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.2926572839046,
+          "steps": 165,
+          "goal_switch_count": 38,
+          "maximum_absolute_lateral_position": 1.9312511019044583
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 80.7765315620684,
+          "steps": 297,
+          "goal_switch_count": 43,
+          "maximum_absolute_lateral_position": 2.3566423617539174
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 80.7765315620684,
+          "steps": 297,
+          "goal_switch_count": 43,
+          "maximum_absolute_lateral_position": 2.3566423617539187
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 4.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 1,
+      "total_obstacles_passed": 20,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.9768711460564092,
+      "total_goal_switch_count": 18,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.65353256135232,
+          "steps": 96,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.081048569947706
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.65353256135232,
+          "steps": 96,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.081048569947708
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 35.00482927103656,
+          "steps": 127,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.2993034579113525
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 35.00482927103656,
+          "steps": 127,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.299303457911351
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.21863427544294,
+          "steps": 445,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.8072359877744235
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 68.15099233559445,
+          "steps": 250,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.2932868328459195
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 4.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 32,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.8352905371400454,
+      "total_goal_switch_count": 24,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2544536693344,
+          "steps": 447,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.9841912078292223
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.2544536693344,
+          "steps": 447,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.9841912078292183
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 34.98241382578789,
+          "steps": 127,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 4.28903734112601
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 34.98241382578789,
+          "steps": 127,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 4.289037341126009
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 68.04542200775482,
+          "steps": 250,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.2326430624649043
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 68.04542200775482,
+          "steps": 250,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.2326430624649074
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 4.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 40,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.432664493598204,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.1738391202227,
+          "steps": 445,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.716064947774054
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.1738391202227,
+          "steps": 445,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.716064947774054
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 34.968902375058114,
+          "steps": 128,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 4.7720938616548265
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 34.968902375058114,
+          "steps": 128,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 4.772093861654826
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.0128812965416,
+          "steps": 445,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 3.8098346713657327
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.0128812965416,
+          "steps": 445,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 3.8098346713657305
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 4.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 30,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.1454333797193903,
+      "total_goal_switch_count": 18,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.74081564250507,
+          "steps": 211,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 2.9089576982632233
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 57.74081564250507,
+          "steps": 211,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 2.9089576982632233
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 35.253378231451826,
+          "steps": 128,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.324772480707527
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 35.253378231451826,
+          "steps": 128,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.3247724807075256
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.17503681921151,
+          "steps": 447,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.2025699601874216
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.17503681921151,
+          "steps": 447,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.202569960187423
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 8.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 18,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.280687253310227,
+      "total_goal_switch_count": 227,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.894639889013593,
+          "steps": 97,
+          "goal_switch_count": 21,
+          "maximum_absolute_lateral_position": 4.380734448475677
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.894639889013593,
+          "steps": 97,
+          "goal_switch_count": 21,
+          "maximum_absolute_lateral_position": 4.38073444847568
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.61529348343249,
+          "steps": 167,
+          "goal_switch_count": 34,
+          "maximum_absolute_lateral_position": 2.3121438166143387
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.61529348343249,
+          "steps": 167,
+          "goal_switch_count": 34,
+          "maximum_absolute_lateral_position": 2.312143816614344
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 67.96804829139701,
+          "steps": 251,
+          "goal_switch_count": 54,
+          "maximum_absolute_lateral_position": 3.0904310180442294
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 67.971496387753,
+          "steps": 251,
+          "goal_switch_count": 63,
+          "maximum_absolute_lateral_position": 3.2079359716370948
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 8.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 25,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.921974811587194,
+      "total_goal_switch_count": 278,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.307030043179644,
+          "steps": 214,
+          "goal_switch_count": 45,
+          "maximum_absolute_lateral_position": 3.5570715529215975
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.025600355723085,
+          "steps": 213,
+          "goal_switch_count": 49,
+          "maximum_absolute_lateral_position": 3.4039150815785364
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.35806258472287,
+          "steps": 166,
+          "goal_switch_count": 34,
+          "maximum_absolute_lateral_position": 2.1148944299506556
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.35806258472287,
+          "steps": 166,
+          "goal_switch_count": 34,
+          "maximum_absolute_lateral_position": 2.114894429950657
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 6,
+          "distance": 81.01877584526652,
+          "steps": 301,
+          "goal_switch_count": 62,
+          "maximum_absolute_lateral_position": 3.1705366875608574
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 67.90951586459853,
+          "steps": 251,
+          "goal_switch_count": 54,
+          "maximum_absolute_lateral_position": 3.1705366875608587
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 8.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 38,
+      "road_boundary_count": 2,
+      "mean_maximum_absolute_lateral_position": 4.976541683574157,
+      "total_goal_switch_count": 18,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.7726923417213,
+          "steps": 94,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.528175727376754
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 25.7726923417213,
+          "steps": 94,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.528175727376755
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.06414892374572,
+          "steps": 454,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 5.0550684432283175
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.06414892374572,
+          "steps": 454,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 5.05506844322832
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03235021753454,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.3463808801173975
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03235021753454,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.346380880117401
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 8.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.751951818621735,
+      "total_goal_switch_count": 39,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.15914004508899,
+          "steps": 454,
+          "goal_switch_count": 5,
+          "maximum_absolute_lateral_position": 5.2372956419482035
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.14576022467847,
+          "steps": 454,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 3.885010092267402
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.04465564717427,
+          "steps": 453,
+          "goal_switch_count": 6,
+          "maximum_absolute_lateral_position": 4.87721175974426
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.0032401392237,
+          "steps": 455,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 5.344259812297495
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03064905269646,
+          "steps": 447,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 4.583966802736523
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03064905269646,
+          "steps": 447,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 4.583966802736527
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 40,
+      "road_boundary_count": 2,
+      "mean_maximum_absolute_lateral_position": 5.318814960151182,
+      "total_goal_switch_count": 12,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.11749780259815,
+          "steps": 453,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.242269626701806
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.11749780259815,
+          "steps": 453,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.242269626701805
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 29.6283573744789,
+          "steps": 111,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.566645064353784
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 29.6283573744789,
+          "steps": 111,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.566645064353784
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.01597685623882,
+          "steps": 449,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 5.147530189397953
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.01597685623882,
+          "steps": 449,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 5.147530189397954
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 8,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 38,
+      "road_boundary_count": 4,
+      "mean_maximum_absolute_lateral_position": 5.064198153802411,
+      "total_goal_switch_count": 16,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 100.44260489229137,
+          "steps": 375,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.503033534503832
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 100.44260489229137,
+          "steps": 375,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.50303353450383
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 34.24965180588763,
+          "steps": 127,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.453842924629118
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 34.24965180588763,
+          "steps": 127,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.453842924629118
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.0165176964914,
+          "steps": 449,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 4.235718002274287
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.0165176964914,
+          "steps": 449,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 4.235718002274282
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 2.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 32,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.578997235595167,
+      "total_goal_switch_count": 214,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.35571810547627,
+          "steps": 342,
+          "goal_switch_count": 47,
+          "maximum_absolute_lateral_position": 0.9104627778345011
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.35571810547627,
+          "steps": 342,
+          "goal_switch_count": 47,
+          "maximum_absolute_lateral_position": 0.9104627778344921
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.23130907939874,
+          "steps": 372,
+          "goal_switch_count": 47,
+          "maximum_absolute_lateral_position": 1.9600353260703178
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.23130907939874,
+          "steps": 372,
+          "goal_switch_count": 47,
+          "maximum_absolute_lateral_position": 1.9600353260703098
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.98685735780397,
+          "steps": 96,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.86649360288069
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.98685735780397,
+          "steps": 96,
+          "goal_switch_count": 13,
+          "maximum_absolute_lateral_position": 1.8664936028806915
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 2.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 32,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.6926965160145222,
+      "total_goal_switch_count": 198,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.57108055928302,
+          "steps": 339,
+          "goal_switch_count": 37,
+          "maximum_absolute_lateral_position": 1.2942732256296547
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.57108055928302,
+          "steps": 339,
+          "goal_switch_count": 37,
+          "maximum_absolute_lateral_position": 1.2942732256296654
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.2284857782541,
+          "steps": 372,
+          "goal_switch_count": 47,
+          "maximum_absolute_lateral_position": 1.9304820612140297
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.2284857782541,
+          "steps": 372,
+          "goal_switch_count": 47,
+          "maximum_absolute_lateral_position": 1.93048206121402
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.982322649723677,
+          "steps": 96,
+          "goal_switch_count": 15,
+          "maximum_absolute_lateral_position": 1.8533342611998813
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.982322649723677,
+          "steps": 96,
+          "goal_switch_count": 15,
+          "maximum_absolute_lateral_position": 1.8533342611998818
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 2.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 22,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.761690484049691,
+      "total_goal_switch_count": 20,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.99556584436652,
+          "steps": 342,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 1.7498305933956741
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.99556584436652,
+          "steps": 342,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 1.7498305933956817
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.13754774495525,
+          "steps": 164,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6594955537058624
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.13754774495525,
+          "steps": 164,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.6594955537058647
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.964430975876468,
+          "steps": 96,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.8757453050475315
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.964430975876468,
+          "steps": 96,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.8757453050475321
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 2.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.398091341243297,
+      "total_goal_switch_count": 24,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.7835986991501,
+          "steps": 341,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 0.908228661448711
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.7835986991501,
+          "steps": 341,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 0.9082286614487068
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.49551112157921,
+          "steps": 202,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.733906864557481
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.49551112157921,
+          "steps": 202,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.7339068645574778
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.711675152433248,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.5521384977237018
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.711675152433248,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.5521384977237025
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 2.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.3488036217019808,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.89442296220716,
+          "steps": 340,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.6694623697648647
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.89442296220716,
+          "steps": 340,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.6694623697648644
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.719379645170065,
+          "steps": 203,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.6488868700044979
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.719379645170065,
+          "steps": 203,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.6488868700044947
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.696799343475508,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.728061625336581
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.696799343475508,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.7280616253365817
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 2.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.4034952436622132,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.89442296220716,
+          "steps": 340,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.6694623697648647
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.89442296220716,
+          "steps": 340,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.6694623697648644
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.751864410998905,
+          "steps": 203,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.8129617358851955
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 55.751864410998905,
+          "steps": 203,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 1.8129617358851924
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.696799343475508,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.728061625336581
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 26.696799343475508,
+          "steps": 95,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 1.7280616253365817
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 4.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.4116039809408623,
+      "total_goal_switch_count": 172,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.5088395837485,
+          "steps": 343,
+          "goal_switch_count": 42,
+          "maximum_absolute_lateral_position": 1.9245727338796454
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.5088395837485,
+          "steps": 343,
+          "goal_switch_count": 42,
+          "maximum_absolute_lateral_position": 1.9245727338796526
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.5180574163092,
+          "steps": 206,
+          "goal_switch_count": 27,
+          "maximum_absolute_lateral_position": 3.0832907829196814
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.5180574163092,
+          "steps": 206,
+          "goal_switch_count": 27,
+          "maximum_absolute_lateral_position": 3.083290782919673
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.45933394807642,
+          "steps": 98,
+          "goal_switch_count": 17,
+          "maximum_absolute_lateral_position": 2.22694842602326
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.45933394807642,
+          "steps": 98,
+          "goal_switch_count": 17,
+          "maximum_absolute_lateral_position": 2.226948426023262
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 4.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 24,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 2.3816218769188424,
+      "total_goal_switch_count": 168,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.50599954932719,
+          "steps": 343,
+          "goal_switch_count": 43,
+          "maximum_absolute_lateral_position": 1.883386559909281
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 93.50599954932719,
+          "steps": 343,
+          "goal_switch_count": 43,
+          "maximum_absolute_lateral_position": 1.8833865599092914
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.79201500908334,
+          "steps": 207,
+          "goal_switch_count": 25,
+          "maximum_absolute_lateral_position": 3.087976504471365
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.79201500908334,
+          "steps": 207,
+          "goal_switch_count": 25,
+          "maximum_absolute_lateral_position": 3.0879765044713574
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.4565013738561,
+          "steps": 98,
+          "goal_switch_count": 16,
+          "maximum_absolute_lateral_position": 2.1735025663758805
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 27.4565013738561,
+          "steps": 98,
+          "goal_switch_count": 16,
+          "maximum_absolute_lateral_position": 2.1735025663758814
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 4.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 46,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.9552953728508142,
+      "total_goal_switch_count": 26,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09139581904505,
+          "steps": 447,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 3.9871738521814333
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09139581904502,
+          "steps": 447,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 3.987173852181431
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.07660153629091,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.578339163931288
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.07660153629091,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 4.57833916393129
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 68.17567615786939,
+          "steps": 252,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.30037310243972
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 5,
+          "distance": 68.17567615786939,
+          "steps": 252,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.3003731024397216
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 4.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 52,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.4217515863962134,
+      "total_goal_switch_count": 38,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.71793351242098,
+          "steps": 382,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 3.0900269644240423
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.71793351242098,
+          "steps": 382,
+          "goal_switch_count": 8,
+          "maximum_absolute_lateral_position": 3.090026964424034
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.07446918240939,
+          "steps": 448,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 3.815940962870397
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.07446918240939,
+          "steps": 448,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 3.8159409628703926
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12269719229391,
+          "steps": 446,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.359286831894206
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12269719229391,
+          "steps": 446,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.3592868318942073
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 4.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 40,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.33124109082668,
+      "total_goal_switch_count": 10,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.84761234411903,
+          "steps": 378,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.105307785163713
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.84761234411903,
+          "steps": 378,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.105307785163712
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.61710712560701,
+          "steps": 169,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 2.5602120585501615
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.61710712560701,
+          "steps": 169,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 2.5602120585501593
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.16869300917462,
+          "steps": 446,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.328203428766168
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.16869300917462,
+          "steps": 446,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.328203428766164
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 4.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 52,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.325643607952673,
+      "total_goal_switch_count": 16,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.84761234411903,
+          "steps": 378,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.105307785163713
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.84761234411903,
+          "steps": 378,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 3.105307785163712
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12425519063974,
+          "steps": 445,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.578667016013198
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12425519063974,
+          "steps": 445,
+          "goal_switch_count": 4,
+          "maximum_absolute_lateral_position": 3.5786670160131955
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.23313421652615,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.292956022681108
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.23313421652615,
+          "steps": 446,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.292956022681115
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 32,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.333327825916586,
+      "total_goal_switch_count": 296,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 59.02772721146387,
+          "steps": 216,
+          "goal_switch_count": 38,
+          "maximum_absolute_lateral_position": 3.913824828380821
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 59.02772721146387,
+          "steps": 216,
+          "goal_switch_count": 38,
+          "maximum_absolute_lateral_position": 3.9138248283808172
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.286743751198095,
+          "steps": 169,
+          "goal_switch_count": 30,
+          "maximum_absolute_lateral_position": 2.531863019385688
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 46.286743751198095,
+          "steps": 169,
+          "goal_switch_count": 30,
+          "maximum_absolute_lateral_position": 2.5318630193856912
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.23006675721362,
+          "steps": 445,
+          "goal_switch_count": 80,
+          "maximum_absolute_lateral_position": 3.5542956299832533
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.23006675721362,
+          "steps": 445,
+          "goal_switch_count": 80,
+          "maximum_absolute_lateral_position": 3.554295629983247
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.0,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 42,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.3074179102149284,
+      "total_goal_switch_count": 344,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 103.57317653773028,
+          "steps": 384,
+          "goal_switch_count": 75,
+          "maximum_absolute_lateral_position": 4.070021241993378
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 103.57317653773028,
+          "steps": 384,
+          "goal_switch_count": 75,
+          "maximum_absolute_lateral_position": 4.0700212419933735
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.716299579490766,
+          "steps": 209,
+          "goal_switch_count": 37,
+          "maximum_absolute_lateral_position": 3.311955073350068
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 56.71629957949077,
+          "steps": 209,
+          "goal_switch_count": 37,
+          "maximum_absolute_lateral_position": 3.311955073350065
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.15737924645937,
+          "steps": 446,
+          "goal_switch_count": 60,
+          "maximum_absolute_lateral_position": 2.5402774153013397
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.15737924645937,
+          "steps": 446,
+          "goal_switch_count": 60,
+          "maximum_absolute_lateral_position": 2.540277415301346
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 26,
+      "road_boundary_count": 4,
+      "mean_maximum_absolute_lateral_position": 5.354747581469006,
+      "total_goal_switch_count": 14,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.02640920243272,
+          "steps": 122,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.502192239557141
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.02640920243272,
+          "steps": 122,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.502192239557141
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.6385005023073,
+          "steps": 120,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.517523184783881
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 32.6385005023073,
+          "steps": 120,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 5.517523184783881
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.177214609036,
+          "steps": 450,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 5.044527320065993
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.177214609036,
+          "steps": 450,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 5.044527320065996
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.1,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 4.931177775203296,
+      "total_goal_switch_count": 48,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03875759197818,
+          "steps": 456,
+          "goal_switch_count": 10,
+          "maximum_absolute_lateral_position": 5.248800812959011
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.03875759197818,
+          "steps": 456,
+          "goal_switch_count": 10,
+          "maximum_absolute_lateral_position": 5.248800812959007
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09894728730227,
+          "steps": 455,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 5.060071060351836
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.09894728730227,
+          "steps": 455,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 5.0600710603518335
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.18755212951146,
+          "steps": 454,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 4.484661452299045
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.18755212951147,
+          "steps": 454,
+          "goal_switch_count": 7,
+          "maximum_absolute_lateral_position": 4.484661452299045
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.25
+      },
+      "success_count": 2,
+      "total_obstacles_passed": 30,
+      "road_boundary_count": 2,
+      "mean_maximum_absolute_lateral_position": 5.163342559223278,
+      "total_goal_switch_count": 8,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24002356370814,
+          "steps": 447,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.4377991824392335
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24002356370814,
+          "steps": 447,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.437799182439232
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 33.64753386928979,
+          "steps": 124,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.5230789179518265
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "road_boundary",
+          "success": false,
+          "obstacles_passed": 2,
+          "distance": 33.64753386928979,
+          "steps": 124,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.523078917951826
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.28007860306583,
+          "steps": 220,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.5291495772787735
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 4,
+          "distance": 58.28007860306583,
+          "steps": 220,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 4.529149577278774
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 6,
+      "total_obstacles_passed": 54,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 3.987924125383001,
+      "total_goal_switch_count": 14,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24002356370814,
+          "steps": 447,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.4377991824392335
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.24002356370814,
+          "steps": 447,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 5.437799182439232
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12056912109219,
+          "steps": 448,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.3808168826954077
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12056912109219,
+          "steps": 448,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.380816882695405
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.06446933134585,
+          "steps": 452,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.14515631101436
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.06446933134585,
+          "steps": 452,
+          "goal_switch_count": 3,
+          "maximum_absolute_lateral_position": 3.1451563110143654
+        }
+      ]
+    }
+  ],
+  "selected_candidate": {
+    "corridor_width_columns": 12,
+    "goal_gain": 8.0,
+    "switch_margin": 0.25,
+    "active_danger_threshold": 0.5
+  },
+  "selected_summary": {
+    "candidate": {
+      "corridor_width_columns": 12,
+      "goal_gain": 8.0,
+      "switch_margin": 0.25,
+      "active_danger_threshold": 0.5
+    },
+    "success_count": 6,
+    "total_obstacles_passed": 54,
+    "road_boundary_count": 0,
+    "mean_maximum_absolute_lateral_position": 3.987924125383001,
+    "total_goal_switch_count": 14,
+    "episodes": [
+      {
+        "seed": 9100,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.24002356370814,
+        "steps": 447,
+        "goal_switch_count": 1,
+        "maximum_absolute_lateral_position": 5.4377991824392335
+      },
+      {
+        "seed": 9101,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.24002356370814,
+        "steps": 447,
+        "goal_switch_count": 1,
+        "maximum_absolute_lateral_position": 5.437799182439232
+      },
+      {
+        "seed": 9102,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.12056912109219,
+        "steps": 448,
+        "goal_switch_count": 3,
+        "maximum_absolute_lateral_position": 3.3808168826954077
+      },
+      {
+        "seed": 9103,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.12056912109219,
+        "steps": 448,
+        "goal_switch_count": 3,
+        "maximum_absolute_lateral_position": 3.380816882695405
+      },
+      {
+        "seed": 9104,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.06446933134585,
+        "steps": 452,
+        "goal_switch_count": 3,
+        "maximum_absolute_lateral_position": 3.14515631101436
+      },
+      {
+        "seed": 9105,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.06446933134585,
+        "steps": 452,
+        "goal_switch_count": 3,
+        "maximum_absolute_lateral_position": 3.1451563110143654
+      }
+    ]
+  },
+  "controls": {
+    "no_visual_goal": {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 20,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 0.0,
+      "total_goal_switch_count": 6,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.4049999999999,
+          "steps": 338,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.0
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.4049999999999,
+          "steps": 338,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.0
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.15500000000011,
+          "steps": 163,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.0
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 3,
+          "distance": 45.15500000000011,
+          "steps": 163,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.0
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.45500041217961,
+          "steps": 53,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.0
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 15.45500041217961,
+          "steps": 53,
+          "goal_switch_count": 1,
+          "maximum_absolute_lateral_position": 0.0
+        }
+      ]
+    },
+    "reversed_visual_goal": {
+      "candidate": {
+        "corridor_width_columns": 12,
+        "goal_gain": 8.0,
+        "switch_margin": 0.25,
+        "active_danger_threshold": 0.5
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 16,
+      "road_boundary_count": 0,
+      "mean_maximum_absolute_lateral_position": 1.4314952013610014,
+      "total_goal_switch_count": 12,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.57377377747841,
+          "steps": 339,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 0.8967031497975723
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 92.57377377747841,
+          "steps": 339,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 0.8967031497975723
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.86332412341607,
+          "steps": 89,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.8813716546432075
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 1,
+          "distance": 24.86332412341607,
+          "steps": 89,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.8813716546432075
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 14.901207212136049,
+          "steps": 52,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.5164107996422242
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 0,
+          "distance": 14.901207212136049,
+          "steps": 52,
+          "goal_switch_count": 2,
+          "maximum_absolute_lateral_position": 1.5164107996422242
+        }
+      ]
+    }
+  },
+  "tuning_passed": true,
+  "causal_controls_passed": true,
+  "advance_to_neural_cv": true,
+  "advance_to_calibration": false,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "tuning_only": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "obstacle_coordinates_used": false,
+    "obstacle_rays_used": false,
+    "reward_used": false,
+    "world_lane_position_used": false,
+    "visual_input_only_via_R1_R6": true,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  }
+}

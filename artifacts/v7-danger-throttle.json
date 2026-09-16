@@ -1,0 +1,588 @@
+{
+  "protocol": {
+    "name": "v7-transparent-danger-throttle-tuning",
+    "dependencies_sha256": {
+      "configs/driving-v7-danger-throttle.yaml": "8bb9aee75821f5712784cd859ef7cf0c5bf3216f87cd2e717065004c6cb2adc6",
+      "src/fly_emotion/driving/v7_danger_throttle.py": "1a753118f2a5bb67e2b7deb35af85c259faf4eb0cd2486faad279f93b6e1d875",
+      "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a",
+      "configs/driving-v7-r1r6-local.yaml": "1fc02bcb6af88660ad35c7f88ed6f8133f0311c52bced3b3afdb4feaa3c2d862"
+    },
+    "tuning_only": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "steering_policy_changed": false,
+    "runtime_modified": false
+  },
+  "candidate_summaries": [
+    {
+      "candidate": {
+        "name": "constant",
+        "formula": "base"
+      },
+      "success_count": 4,
+      "total_obstacles_passed": 50,
+      "timeout_count": 0,
+      "mean_absolute_throttle_change": 0.0,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12395535629045,
+          "steps": 444,
+          "mean_absolute_throttle_change": 0.0,
+          "maximum_absolute_lateral_position": 1.838768120807155,
+          "steering_policy_trace_sha256": "983bff5f6614b54ed921515b62cdfa6f77d9003b9b4b41f82057277bbfaf6c5c"
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.12395535629045,
+          "steps": 444,
+          "mean_absolute_throttle_change": 0.0,
+          "maximum_absolute_lateral_position": 1.8387681208071471,
+          "steering_policy_trace_sha256": "d7ec88d28a7a819798aa8faabc3711c7bf08f4c5b48f174d3b79da50f25ad754"
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.16733889927458,
+          "steps": 446,
+          "mean_absolute_throttle_change": 0.0,
+          "maximum_absolute_lateral_position": 1.6035186565727364,
+          "steering_policy_trace_sha256": "2b473b0eaa4aaafdf967c881db404d7979e92295e00345ef4f59e6dd8b820b3a"
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "success",
+          "success": true,
+          "obstacles_passed": 9,
+          "distance": 120.16733889927458,
+          "steps": 446,
+          "mean_absolute_throttle_change": 0.0,
+          "maximum_absolute_lateral_position": 1.6035186565727326,
+          "steering_policy_trace_sha256": "9e686899f22644dfe56e7874fe8cfeb642711b8a31901202e0135762e90e4e81"
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.67151325949719,
+          "steps": 337,
+          "mean_absolute_throttle_change": 0.0,
+          "maximum_absolute_lateral_position": 2.044751255866997,
+          "steering_policy_trace_sha256": "347d47abfc6c74b2dd08e2a368f25c3b921ede105776dd01e2584a1f67189dbf"
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "obstacle",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.67151325949719,
+          "steps": 337,
+          "mean_absolute_throttle_change": 0.0,
+          "maximum_absolute_lateral_position": 2.0447512558669967,
+          "steering_policy_trace_sha256": "54507fef347dc6335fa8ca502d428bd9f9cad56bf6ff55d740a466105c178f63"
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "name": "linear_moderate",
+        "formula": "base_times_one_minus_gain_danger",
+        "gain": 0.75
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 48,
+      "timeout_count": 6,
+      "mean_absolute_throttle_change": 0.1187890625,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.12865213381575,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1151953125,
+          "maximum_absolute_lateral_position": 1.4670711273661146,
+          "steering_policy_trace_sha256": "453a09e20fafd57ed32f17a505069391fbf609cd776fc7cc7baa5108592288ee"
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 101.12865213381575,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1151953125,
+          "maximum_absolute_lateral_position": 1.4670711273661048,
+          "steering_policy_trace_sha256": "97db9cec40ff7ba80a9ef5ad88a1dfae290fd51279868430a66a393f5385bb21"
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 99.17512024332241,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1199296875,
+          "maximum_absolute_lateral_position": 1.5825654242761003,
+          "steering_policy_trace_sha256": "3e4eb12053499fb8f08d354dd6b33c777db23e6d6b50fe1e859dbedd62fbb318"
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 99.17512024332241,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1199296875,
+          "maximum_absolute_lateral_position": 1.5825654242760967,
+          "steering_policy_trace_sha256": "713b165c8ab7b670ca52ea47a05eabe091612e62023ce9787756c2fa49f4d94b"
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 98.60969130701781,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1212421875,
+          "maximum_absolute_lateral_position": 2.4769090734779153,
+          "steering_policy_trace_sha256": "e4468f8e41f8554dfca1da9dc700c8a5a59aa241ad531ac57867cfecbbddf3d8"
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 98.60969130701781,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1212421875,
+          "maximum_absolute_lateral_position": 2.476909073477921,
+          "steering_policy_trace_sha256": "0f133c2f075a114ce53d5e45ac65d5bc8b94f95947440b627beebeaf5d0624a7"
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "name": "linear_strong",
+        "formula": "base_times_one_minus_gain_danger",
+        "gain": 1.0
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 42,
+      "timeout_count": 6,
+      "mean_absolute_throttle_change": 0.15723958333333332,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.61153888990344,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.15146875,
+          "maximum_absolute_lateral_position": 0.9016794385732065,
+          "steering_policy_trace_sha256": "e3f05d68b1fa2bc6e6064f1fc3dc0cf33e5a0e849bfcc133ab865f0757fdf29b"
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 90.61153888990344,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.15146875,
+          "maximum_absolute_lateral_position": 0.9016794385732031,
+          "steering_policy_trace_sha256": "0179e4d3a2b2c455a6f3565ad92ca1be93f1eb60f3fd318370cdca59c0fc1879"
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 87.75483927759086,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.159125,
+          "maximum_absolute_lateral_position": 1.5827670199845456,
+          "steering_policy_trace_sha256": "7660a23a3143c97dee037cf9c1fedb63f2160c1098cb17b6a569aac7c56de667"
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 87.75483927759086,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.159125,
+          "maximum_absolute_lateral_position": 1.5827670199845412,
+          "steering_policy_trace_sha256": "59b0542e35517a34b78df0ff862c2124d568c1daf3b3d5dbedb5cebc5d67b46b"
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 86.94745417960556,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.161125,
+          "maximum_absolute_lateral_position": 1.632428983276546,
+          "steering_policy_trace_sha256": "0eaadb7892645d2b5df6dbfec99ed5dde1650350beaa8c2fe9ed830b0573dc09"
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 7,
+          "distance": 86.94745417960556,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.161125,
+          "maximum_absolute_lateral_position": 1.6324289832765446,
+          "steering_policy_trace_sha256": "3c9de181c6a805d05b51a89a50d3835a800700caa585412b5351c7484bae5610"
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "name": "quadratic",
+        "formula": "base_times_one_minus_danger_squared"
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 50,
+      "timeout_count": 6,
+      "mean_absolute_throttle_change": 0.107064453125,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 9,
+          "distance": 106.11027368398598,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.09761328125,
+          "maximum_absolute_lateral_position": 1.4532025260943857,
+          "steering_policy_trace_sha256": "0beb554be37c84afe95033fc58a159dfcb05a2b08d9a4ec89111edd7244c39b7"
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 9,
+          "distance": 106.11027368398598,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.09761328125,
+          "maximum_absolute_lateral_position": 1.4532025260943773,
+          "steering_policy_trace_sha256": "a65fe81f06ce6a29c16b813cc8f480eb11221e7521a40190c83e6fbc564bc410"
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.01715337638672,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.109517578125,
+          "maximum_absolute_lateral_position": 1.6000488919613327,
+          "steering_policy_trace_sha256": "e430452fad4d338afbddd15d36c160178310b5b8528df09662e2966d06be7757"
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 102.01715337638672,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.109517578125,
+          "maximum_absolute_lateral_position": 1.6000488919613287,
+          "steering_policy_trace_sha256": "3704425e4fa6affb1bcb9cfd3e07768ceff4817f57b24762a3af0c3aab5ff6ae"
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 100.85619392760032,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1140625,
+          "maximum_absolute_lateral_position": 2.472358015272188,
+          "steering_policy_trace_sha256": "0f85cc37bad63884aacc8ab51113fb34f263a7ad24ba443dc9d87749c096b238"
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 100.85619392760032,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.1140625,
+          "maximum_absolute_lateral_position": 2.4723580152721927,
+          "steering_policy_trace_sha256": "5cc08b5e22e98de3b98b8567da8ddf001fd05fdd1c760c43c4734e40fe0255b8"
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "name": "threshold_stop",
+        "formula": "zero_above_threshold",
+        "threshold": 0.75
+      },
+      "success_count": 0,
+      "total_obstacles_passed": 50,
+      "timeout_count": 6,
+      "mean_absolute_throttle_change": 0.10866666666666668,
+      "episodes": [
+        {
+          "seed": 9100,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 9,
+          "distance": 108.39156726297149,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.09,
+          "maximum_absolute_lateral_position": 1.4469590307171016,
+          "steering_policy_trace_sha256": "e052c403cc513b9dcca4006f35695e97b950179c7c6596d79e7cdc83aec84546"
+        },
+        {
+          "seed": 9101,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 9,
+          "distance": 108.39156726297149,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.09,
+          "maximum_absolute_lateral_position": 1.4469590307170923,
+          "steering_policy_trace_sha256": "a8046a8ab118d1c79d34a1c2672c59e92fa501d5ab67585af408da254e9c2575"
+        },
+        {
+          "seed": 9102,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 100.48394119600584,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.116,
+          "maximum_absolute_lateral_position": 1.5861654132412293,
+          "steering_policy_trace_sha256": "e75939aadec10b1d09cc4d29cff5ba70b9607271c046b261125fcc85ddd5bcd3"
+        },
+        {
+          "seed": 9103,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 100.48394119600584,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.116,
+          "maximum_absolute_lateral_position": 1.5861654132412253,
+          "steering_policy_trace_sha256": "c3efc20bf52bf3dc0093e22ec51bb667a41779ee72c59fc694cefcdb1dbad6e4"
+        },
+        {
+          "seed": 9104,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 99.25649078489855,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.12,
+          "maximum_absolute_lateral_position": 2.440275253508387,
+          "steering_policy_trace_sha256": "d4e8803aac15e340c7b0d98a301ea48a6f40d63624ccf1e7807f307746ef1bce"
+        },
+        {
+          "seed": 9105,
+          "terminal_reason": "timeout",
+          "success": false,
+          "obstacles_passed": 8,
+          "distance": 99.25649078489853,
+          "steps": 500,
+          "mean_absolute_throttle_change": 0.12,
+          "maximum_absolute_lateral_position": 2.4402752535083927,
+          "steering_policy_trace_sha256": "c4a8fb3ca8d93aeed742ce982c5ea76fa671250821830a7c764cce17ba323ba6"
+        }
+      ]
+    }
+  ],
+  "selected_candidate": {
+    "name": "constant",
+    "formula": "base"
+  },
+  "selected_summary": {
+    "candidate": {
+      "name": "constant",
+      "formula": "base"
+    },
+    "success_count": 4,
+    "total_obstacles_passed": 50,
+    "timeout_count": 0,
+    "mean_absolute_throttle_change": 0.0,
+    "episodes": [
+      {
+        "seed": 9100,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.12395535629045,
+        "steps": 444,
+        "mean_absolute_throttle_change": 0.0,
+        "maximum_absolute_lateral_position": 1.838768120807155,
+        "steering_policy_trace_sha256": "983bff5f6614b54ed921515b62cdfa6f77d9003b9b4b41f82057277bbfaf6c5c"
+      },
+      {
+        "seed": 9101,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.12395535629045,
+        "steps": 444,
+        "mean_absolute_throttle_change": 0.0,
+        "maximum_absolute_lateral_position": 1.8387681208071471,
+        "steering_policy_trace_sha256": "d7ec88d28a7a819798aa8faabc3711c7bf08f4c5b48f174d3b79da50f25ad754"
+      },
+      {
+        "seed": 9102,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.16733889927458,
+        "steps": 446,
+        "mean_absolute_throttle_change": 0.0,
+        "maximum_absolute_lateral_position": 1.6035186565727364,
+        "steering_policy_trace_sha256": "2b473b0eaa4aaafdf967c881db404d7979e92295e00345ef4f59e6dd8b820b3a"
+      },
+      {
+        "seed": 9103,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.16733889927458,
+        "steps": 446,
+        "mean_absolute_throttle_change": 0.0,
+        "maximum_absolute_lateral_position": 1.6035186565727326,
+        "steering_policy_trace_sha256": "9e686899f22644dfe56e7874fe8cfeb642711b8a31901202e0135762e90e4e81"
+      },
+      {
+        "seed": 9104,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 7,
+        "distance": 90.67151325949719,
+        "steps": 337,
+        "mean_absolute_throttle_change": 0.0,
+        "maximum_absolute_lateral_position": 2.044751255866997,
+        "steering_policy_trace_sha256": "347d47abfc6c74b2dd08e2a368f25c3b921ede105776dd01e2584a1f67189dbf"
+      },
+      {
+        "seed": 9105,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 7,
+        "distance": 90.67151325949719,
+        "steps": 337,
+        "mean_absolute_throttle_change": 0.0,
+        "maximum_absolute_lateral_position": 2.0447512558669967,
+        "steering_policy_trace_sha256": "54507fef347dc6335fa8ca502d428bd9f9cad56bf6ff55d740a466105c178f63"
+      }
+    ]
+  },
+  "negative_control": {
+    "candidate": {
+      "name": "reverse_danger_acceleration",
+      "formula": "base_times_one_plus_gain_danger",
+      "gain": 0.75
+    },
+    "success_count": 4,
+    "total_obstacles_passed": 50,
+    "timeout_count": 0,
+    "mean_absolute_throttle_change": 0.1008944033468549,
+    "episodes": [
+      {
+        "seed": 9100,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.14252252113937,
+        "steps": 371,
+        "mean_absolute_throttle_change": 0.08958052560646901,
+        "maximum_absolute_lateral_position": 2.212337139767354,
+        "steering_policy_trace_sha256": "6f5a1b9175b403098a1f4ed878bb41359978019fa31112ed81ecad5091e92243"
+      },
+      {
+        "seed": 9101,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.14252252113937,
+        "steps": 371,
+        "mean_absolute_throttle_change": 0.08958052560646901,
+        "maximum_absolute_lateral_position": 2.212337139767344,
+        "steering_policy_trace_sha256": "89f63eb06a4dcb53222df8c0e45539637364e7803e7b88e64e34a54709ffc40a"
+      },
+      {
+        "seed": 9102,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.08314037681254,
+        "steps": 368,
+        "mean_absolute_throttle_change": 0.09508746603260869,
+        "maximum_absolute_lateral_position": 1.5848863702494156,
+        "steering_policy_trace_sha256": "747e3249ce5df6cc789ea5d9dde2bed6482a91d84708dc677dcc91e87fd786ef"
+      },
+      {
+        "seed": 9103,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.08314037681254,
+        "steps": 368,
+        "mean_absolute_throttle_change": 0.09508746603260869,
+        "maximum_absolute_lateral_position": 1.5848863702494118,
+        "steering_policy_trace_sha256": "49b1b988a3df3ac0c7c7c522725c4ad7c4f704c8fc8b8f59434fbe546f65b2c0"
+      },
+      {
+        "seed": 9104,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 7,
+        "distance": 90.6319307555211,
+        "steps": 269,
+        "mean_absolute_throttle_change": 0.11801521840148699,
+        "maximum_absolute_lateral_position": 2.432196555637411,
+        "steering_policy_trace_sha256": "1affac3babd3bba78c5716464214c9bc008c378d2977725af7a24630517dbb60"
+      },
+      {
+        "seed": 9105,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 7,
+        "distance": 90.63193075552108,
+        "steps": 269,
+        "mean_absolute_throttle_change": 0.11801521840148699,
+        "maximum_absolute_lateral_position": 2.43219655563741,
+        "steering_policy_trace_sha256": "45437ab4f4db322dfd3b3ea1c5d105cac092f39155f4fd0cfc38a0e6e9ba7866"
+      }
+    ]
+  },
+  "tuning_passed": false,
+  "negative_control_reduces_success": false,
+  "advance_to_neural_cv": false,
+  "advance_to_calibration": false,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "tuning_only": true,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "steering_policy_changed": false,
+    "obstacle_rays_used": false,
+    "obstacle_coordinates_used": false,
+    "reward_used": false,
+    "visual_input_only_via_R1_R6": true,
+    "runtime_modified": false
+  }
+}

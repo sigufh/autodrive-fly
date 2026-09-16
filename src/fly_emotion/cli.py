@@ -40,6 +40,7 @@ from .driving.v7_closed_loop_controls import evaluate_v7_closed_loop_controls
 from .driving.v7_closed_loop_multi import evaluate_v7_closed_loop_multi
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
+from .driving.v7_danger_throttle import evaluate_v7_danger_throttle
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
@@ -66,6 +67,7 @@ from .driving.v7_neural_channels import (
     evaluate_v7_neural_channels_calibration,
     evaluate_v7_neural_channels_tuning,
 )
+from .driving.v7_neural_corridor import evaluate_v7_neural_corridor
 from .driving.v7_neural_episode_controls import evaluate_v7_neural_episode_controls
 from .driving.v7_neural_episode_cv import evaluate_v7_neural_episode_cv
 from .driving.v7_neural_local_columns import evaluate_v7_neural_local_columns
@@ -104,6 +106,7 @@ from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
 from .driving.v7_target_fit import evaluate_v7_target_fit_contract
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
+from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
 from .driving.v7_visual_target_input_audit import evaluate_v7_visual_target_input_audit
 
 
@@ -245,6 +248,9 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-fc2-pfl-dna")
     subparsers.add_parser("v7-freeze-navigation-nested")
     subparsers.add_parser("v7-evaluate-navigation-nested")
+    subparsers.add_parser("v7-evaluate-danger-throttle")
+    subparsers.add_parser("v7-evaluate-visual-corridor")
+    subparsers.add_parser("v7-evaluate-neural-corridor")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -736,6 +742,24 @@ def main() -> None:
     if args.command == "v7-evaluate-navigation-nested":
         report = evaluate_v7_navigation_nested_candidate(root)
         target = root / "artifacts/v7-navigation-nested-eval.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-danger-throttle":
+        report = evaluate_v7_danger_throttle(root)
+        target = root / "artifacts/v7-danger-throttle.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-visual-corridor":
+        report = evaluate_v7_visual_corridor_goal(root)
+        target = root / "artifacts/v7-visual-corridor-goal.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-corridor":
+        report = evaluate_v7_neural_corridor(root)
+        target = root / "artifacts/v7-neural-corridor.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

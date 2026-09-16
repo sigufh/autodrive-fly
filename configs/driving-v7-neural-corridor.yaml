@@ -1,0 +1,36 @@
+version: 1
+name: v7-six-bin-neural-corridor-readout
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+base_neural_config: configs/driving-v7-neural-channels.yaml
+heading_config: configs/driving-v7-heading-ring.yaml
+upper_bound_evidence: artifacts/v7-visual-corridor-goal.json
+tuning_pairs: [[9100, 9101], [9102, 9103], [9104, 9105]]
+features:
+  variant: current_mean
+  dimension: 18
+targets:
+  local_safety_bins: 6
+  source: R1_R6_local_obstacle_distance_profile
+readout:
+  ridge_alpha: 1.0
+corridor:
+  width_bins: 2
+  goal_gain: 8.0
+  switch_margin: 0.25
+  active_danger_threshold: 0.50
+fixed_policy:
+  throttle: 0.25
+  road_gain: 4.0
+  heading_gain: 4.0
+  smoothing_previous: 0.4
+  smoothing_current: 0.6
+boundary:
+  tuning_only: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  target_activity_injection: false
+  environment_geometry_used: false
+  obstacle_coordinates_used: false
+  raw_heading_read_by_controller: false
+  runtime_modified: false

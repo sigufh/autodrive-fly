@@ -1,0 +1,41 @@
+version: 1
+name: v7-transparent-danger-throttle-tuning
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+input_upper_bound_config: configs/driving-v7-r1r6-local.yaml
+tuning_seeds: [9100, 9101, 9102, 9103, 9104, 9105]
+base_throttle: 0.25
+candidates:
+  - name: constant
+    formula: base
+  - name: linear_moderate
+    formula: base_times_one_minus_gain_danger
+    gain: 0.75
+  - name: linear_strong
+    formula: base_times_one_minus_gain_danger
+    gain: 1.0
+  - name: quadratic
+    formula: base_times_one_minus_danger_squared
+  - name: threshold_stop
+    formula: zero_above_threshold
+    threshold: 0.75
+negative_control:
+  name: reverse_danger_acceleration
+  formula: base_times_one_plus_gain_danger
+  gain: 0.75
+selection_order:
+  - maximize_success_count
+  - maximize_obstacles_passed
+  - minimize_timeout_count
+  - minimize_mean_absolute_throttle_change
+  - lexical_candidate_name
+boundary:
+  tuning_only: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  steering_policy_changed: false
+  obstacle_rays_used: false
+  obstacle_coordinates_used: false
+  reward_used: false
+  visual_input_only_via_R1_R6: true
+  runtime_modified: false

@@ -254,6 +254,15 @@ v7-freeze-navigation-nested:
 v7-evaluate-navigation-nested:
 	.venv/bin/autodrive-fly v7-evaluate-navigation-nested
 
+v7-evaluate-danger-throttle:
+	.venv/bin/autodrive-fly v7-evaluate-danger-throttle
+
+v7-evaluate-visual-corridor:
+	.venv/bin/autodrive-fly v7-evaluate-visual-corridor
+
+v7-evaluate-neural-corridor:
+	.venv/bin/autodrive-fly v7-evaluate-neural-corridor
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

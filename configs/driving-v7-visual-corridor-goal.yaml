@@ -1,0 +1,38 @@
+version: 1
+name: v7-transparent-visual-corridor-goal-tuning
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+input_upper_bound_config: configs/driving-v7-r1r6-local.yaml
+tuning_seeds: [9100, 9101, 9102, 9103, 9104, 9105]
+candidate_grid:
+  corridor_width_columns: [4, 8, 12]
+  goal_gain: [2.0, 4.0, 8.0]
+  switch_margin: [0.0, 0.10, 0.25]
+  active_danger_threshold: [0.25, 0.50]
+fixed_policy:
+  throttle: 0.25
+  road_gain: 4.0
+  heading_gain: 4.0
+  smoothing_previous: 0.4
+  smoothing_current: 0.6
+selection_order:
+  - maximize_success_count
+  - maximize_obstacles_passed
+  - minimize_road_boundary_count
+  - minimize_mean_maximum_absolute_lateral_position
+  - minimize_goal_switch_count
+  - lexical_candidate_tuple
+controls:
+  - no_visual_goal
+  - reversed_visual_goal
+boundary:
+  tuning_only: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  obstacle_coordinates_used: false
+  obstacle_rays_used: false
+  reward_used: false
+  world_lane_position_used: false
+  visual_input_only_via_R1_R6: true
+  target_activity_injection: false
+  runtime_modified: false
