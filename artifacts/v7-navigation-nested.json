@@ -1,0 +1,148 @@
+{
+  "protocol": {
+    "name": "v7-navigation-five-condition-nested-protocol",
+    "dependencies_sha256": {
+      "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a",
+      "src/fly_emotion/driving/v7_navigation_nested.py": "3480fefd4aa36ca652e0d25561a2ee200c82997b1b6eee588a7380d79262fab3",
+      "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
+      "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
+      "artifacts/v7-heading-ring.json": "2d68ed0763908ed451f0f57f8a4e8f8c9143c68813bf8b85d030622bc3816dd5",
+      "artifacts/v7-fc2-pfl-dna.json": "1a93b4c1723e39c48b2ed7746b1f204f039a873d30c5d448761ef320dc6d0f0a"
+    },
+    "architecture_frozen_before_new_tuning": true,
+    "model_evaluated": false,
+    "parameters_fitted": false,
+    "runtime_modified": false
+  },
+  "architecture": {
+    "visual_features": "six_bin_current_mean_18",
+    "heading": "EPG_PEN_PEG_yaw_integrator",
+    "descending": "FC2_PFL3_PFL2_DNa02_transparent",
+    "external_visual_input": "R1_R6_only"
+  },
+  "role_counts": {
+    "tuning": 3,
+    "calibration": 1,
+    "external_final": 1
+  },
+  "local_conditions": [
+    {
+      "condition_id": "NAV-T01",
+      "role": "tuning",
+      "manifests": [
+        {
+          "seed": 9100,
+          "pair_seed": 4550,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "fba5c0617e2b5964eaa478f70515acb9e72d7ac9de0dcccd54652a3a911c8494"
+        },
+        {
+          "seed": 9101,
+          "pair_seed": 4550,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "ee93e17a72469c4c3908b8dc03ef0746856efaab734964d60163663053faae82"
+        }
+      ]
+    },
+    {
+      "condition_id": "NAV-T02",
+      "role": "tuning",
+      "manifests": [
+        {
+          "seed": 9102,
+          "pair_seed": 4551,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "100a6b6772745b8b13f20a75742b912d25eaa272d2f4859e698f768c3e0b9206"
+        },
+        {
+          "seed": 9103,
+          "pair_seed": 4551,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "83a3b2daafd0c1fd8ea7c4ef9d7bc5c1eb05a4df0c845073bb96ebe2cf561a82"
+        }
+      ]
+    },
+    {
+      "condition_id": "NAV-T03",
+      "role": "tuning",
+      "manifests": [
+        {
+          "seed": 9104,
+          "pair_seed": 4552,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "73a0b57a87a717affb3684bd15a20f066056ae9c29a4a9a0c6ee32642c19483b"
+        },
+        {
+          "seed": 9105,
+          "pair_seed": 4552,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "3aa7ccd24b8ddb665d8945037cdedaafc4713b693bff59e351e218821d649f89"
+        }
+      ]
+    },
+    {
+      "condition_id": "NAV-C01",
+      "role": "calibration",
+      "manifests": [
+        {
+          "seed": 9200,
+          "pair_seed": 4600,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "b2992db000eb5369b49c39a20ec191163d680f6990769f16362785ca4db355cb"
+        },
+        {
+          "seed": 9201,
+          "pair_seed": 4600,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "cba9d9af51a1d723b530400ebdb84a42d9f63e66156471830195baeb3df08cb0"
+        }
+      ]
+    }
+  ],
+  "historical_regression": {
+    "seed_ranges": [
+      "8200-8205",
+      "8300-8301",
+      "8400-8401",
+      "8500-8501",
+      "8600-8601",
+      "8700-8701"
+    ],
+    "role": "regression_only",
+    "fit_weight": 0,
+    "selection_weight": 0,
+    "calibration_weight": 0
+  },
+  "external_final": {
+    "condition_id": "NAV-F01",
+    "committed": false,
+    "retrieval_authorized": false,
+    "consumed": false,
+    "local_seed_available": false,
+    "local_generator_available": false
+  },
+  "execution_policy": {
+    "tuning_pair_is_indivisible_cv_unit": true,
+    "tuning_may_fit_readout_coefficients": true,
+    "architecture_frozen_before_new_tuning": true,
+    "calibration_requires_cv_and_full_tuning_pass": true,
+    "calibration_may_change_candidate": false,
+    "final_requires_external_custody": true,
+    "final_requires_frozen_calibration_receipt": true,
+    "final_one_time_only": true,
+    "final_local_seed_or_generator_forbidden": true,
+    "direct_target_activity_injection": false
+  },
+  "advance_to_tuning": true,
+  "advance_to_calibration": false,
+  "advance_to_final": false,
+  "advance_to_navigation_release": false
+}

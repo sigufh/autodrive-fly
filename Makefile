@@ -248,6 +248,12 @@ v7-evaluate-neural-episode-controls:
 v7-evaluate-fc2-pfl-dna:
 	.venv/bin/autodrive-fly v7-evaluate-fc2-pfl-dna
 
+v7-freeze-navigation-nested:
+	.venv/bin/autodrive-fly v7-freeze-navigation-nested
+
+v7-evaluate-navigation-nested:
+	.venv/bin/autodrive-fly v7-evaluate-navigation-nested
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

@@ -1,0 +1,52 @@
+version: 1
+name: v7-navigation-five-condition-nested-protocol
+observed_on: "2026-09-16"
+frozen_architecture_evidence:
+  - artifacts/v7-neural-episode-cv.json
+  - artifacts/v7-neural-episode-controls.json
+  - artifacts/v7-heading-ring.json
+  - artifacts/v7-fc2-pfl-dna.json
+architecture:
+  visual_features: six_bin_current_mean_18
+  heading: EPG_PEN_PEG_yaw_integrator
+  descending: FC2_PFL3_PFL2_DNa02_transparent
+  external_visual_input: R1_R6_only
+historical_regression:
+  seed_ranges: [8200-8205, 8300-8301, 8400-8401, 8500-8501, 8600-8601, 8700-8701]
+  role: regression_only
+  fit_weight: 0
+  selection_weight: 0
+  calibration_weight: 0
+conditions:
+  - condition_id: NAV-T01
+    role: tuning
+    mirror_pair_seeds: [9100, 9101]
+  - condition_id: NAV-T02
+    role: tuning
+    mirror_pair_seeds: [9102, 9103]
+  - condition_id: NAV-T03
+    role: tuning
+    mirror_pair_seeds: [9104, 9105]
+  - condition_id: NAV-C01
+    role: calibration
+    mirror_pair_seeds: [9200, 9201]
+  - condition_id: NAV-F01
+    role: external_final
+    external_manifest:
+      custodian: null
+      commitment_sha256: null
+      public_key_fingerprint: null
+      committed_at_utc: null
+      retrieval_authorized: false
+      consumed: false
+execution_policy:
+  tuning_pair_is_indivisible_cv_unit: true
+  tuning_may_fit_readout_coefficients: true
+  architecture_frozen_before_new_tuning: true
+  calibration_requires_cv_and_full_tuning_pass: true
+  calibration_may_change_candidate: false
+  final_requires_external_custody: true
+  final_requires_frozen_calibration_receipt: true
+  final_one_time_only: true
+  final_local_seed_or_generator_forbidden: true
+  direct_target_activity_injection: false
