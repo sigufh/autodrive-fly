@@ -1,0 +1,36 @@
+version: 1
+name: v7-neural-local-column-readout
+observed_on: "2026-09-16"
+base_neural_config: configs/driving-v7-neural-channels.yaml
+heading_config: configs/driving-v7-heading-ring.yaml
+teacher_tuning_evidence: artifacts/v7-r1r6-local-tuning.json
+input:
+  external_visual_path: R1-R6_only
+  retina_assignment: mass_balanced_exact_pixel_reconstruction
+  visual_graph: typed_visual_subgraph_v1
+  target_activity_injection: false
+features:
+  T4_T5_spatial_bins: 24
+  minimum_cells_per_motion_direction_bin: 40
+  looming_populations: [LPLC1_L, LPLC1_R, LPLC2_L, LPLC2_R, LC4_L, LC4_R]
+  per_group_statistics: [mean, standard_deviation, q10, q90, maximum]
+  temporal_terms: [current, first_difference, absolute, square, exponential_mean]
+  exponential_mean_update: 0.10
+readout:
+  type: ridge_linear
+  alpha: 1.0
+  outputs: [danger, obstacle_asymmetry, road_center]
+tuning:
+  mirror_pair_seeds: [8200, 8201, 8202, 8203, 8204, 8205]
+  require_all_nine_obstacles: true
+calibration:
+  mirror_pair_seeds: [8500, 8501]
+  run_once_after_candidate_freeze: true
+  previously_used_for_fit_or_architecture: false
+boundary:
+  calibration_may_change_candidate: false
+  external_final_evaluated: false
+  runtime_modified: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

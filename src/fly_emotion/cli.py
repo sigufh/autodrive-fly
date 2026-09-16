@@ -63,6 +63,7 @@ from .driving.v7_neural_channels import (
     evaluate_v7_neural_channels_calibration,
     evaluate_v7_neural_channels_tuning,
 )
+from .driving.v7_neural_local_columns import evaluate_v7_neural_local_columns
 from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_neural_topology_controls import evaluate_v7_neural_topology_controls
 from .driving.v7_perturbation import evaluate_v7_perturbation
@@ -233,6 +234,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-lplc2-phenotype")
     subparsers.add_parser("v7-evaluate-t4-source-resolved")
     subparsers.add_parser("v7-evaluate-heading-ring")
+    subparsers.add_parser("v7-evaluate-neural-local-columns")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -688,6 +690,12 @@ def main() -> None:
     if args.command == "v7-evaluate-heading-ring":
         report = evaluate_v7_heading_ring(root)
         target = root / "artifacts/v7-heading-ring.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-local-columns":
+        report = evaluate_v7_neural_local_columns(root)
+        target = root / "artifacts/v7-neural-local-columns.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

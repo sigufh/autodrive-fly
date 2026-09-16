@@ -236,6 +236,9 @@ v7-evaluate-t4-source-resolved:
 v7-evaluate-heading-ring:
 	.venv/bin/autodrive-fly v7-evaluate-heading-ring
 
+v7-evaluate-neural-local-columns:
+	.venv/bin/autodrive-fly v7-evaluate-neural-local-columns
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
