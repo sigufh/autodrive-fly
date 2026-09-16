@@ -1,0 +1,26 @@
+version: 1
+name: v7-local-safety-dynamics-backend-screen
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+base_neural_config: configs/driving-v7-neural-channels.yaml
+local_column_config: configs/driving-v7-neural-local-columns.yaml
+neural_corridor_config: configs/driving-v7-neural-corridor.yaml
+tuning_pairs: [[9100, 9101], [9102, 9103], [9104, 9105]]
+dynamics_backends:
+  - typed_visual_leak_v1
+  - typed_visual_subgraph_v1
+  - columnar_delay_v1
+  - columnar_correlator_v1
+readout:
+  ridge_alpha: 1.0
+selection_order:
+  - minimize_held_out_safety_mae
+  - maximize_held_out_safety_mean_r2
+  - lexical_backend_name
+boundary:
+  tuning_only: true
+  diagnostic_two_state_views: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  target_activity_injection: false
+  runtime_modified: false
