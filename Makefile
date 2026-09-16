@@ -278,6 +278,9 @@ v7-evaluate-visual-layer-locality:
 v7-evaluate-lamina-goal:
 	.venv/bin/autodrive-fly v7-evaluate-lamina-goal
 
+v7-evaluate-lamina-goal-symmetry:
+	.venv/bin/autodrive-fly v7-evaluate-lamina-goal-symmetry
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

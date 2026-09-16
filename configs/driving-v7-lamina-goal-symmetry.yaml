@@ -1,0 +1,38 @@
+version: 1
+name: v7-lamina-fc2-goal-symmetry-screen
+observed_on: "2026-09-16"
+lamina_goal_config: configs/driving-v7-lamina-goal.yaml
+nested_protocol: configs/driving-v7-navigation-nested.yaml
+base_neural_config: configs/driving-v7-neural-channels.yaml
+neural_corridor_config: configs/driving-v7-neural-corridor.yaml
+tuning_pairs: [[9100, 9101], [9102, 9103], [9104, 9105]]
+ridge_alpha: 1.0
+candidates:
+  - name: full_continuous
+    feature_parity: even_and_odd
+    output: continuous
+  - name: odd_continuous
+    feature_parity: odd_only
+    output: continuous
+  - name: odd_hold_010
+    feature_parity: odd_only
+    output: hold
+    update_threshold: 0.10
+  - name: odd_ternary
+    feature_parity: odd_only
+    output: ternary
+    deadband: 0.20
+    level: 0.50
+selection_order:
+  - maximize_held_out_success_count
+  - maximize_held_out_obstacles_passed
+  - minimize_mean_maximum_absolute_lateral_position
+  - minimize_feature_count
+  - lexical_candidate_name
+boundary:
+  tuning_only: true
+  mirror_pair_is_indivisible_cv_unit: true
+  calibration_evaluated: false
+  external_final_evaluated: false
+  target_activity_injection: false
+  runtime_modified: false
