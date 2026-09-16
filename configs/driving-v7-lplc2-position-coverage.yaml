@@ -25,6 +25,12 @@ aggregation:
   response: maximum_over_time_then_maximum_over_same_position_set
   position_comparators_use_same_position_set: true
   translation_comparator_uses_fixed_bidirectional_pair: true
+anatomy_assignment_control:
+  post_failure_control_only: true
+  source_centroid: raw_weighted_direct_T4_T5_centroid
+  coordinate_transform: global_inferred_T4_T5_bounds_to_48x24_camera
+  grid_assignment: nearest_preregistered_center
+  target_response_used_for_assignment: false
 observability:
   population: mapped_R1-R6
   metric: maximum_over_positions_of_normalized_trace_separation

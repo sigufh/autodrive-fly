@@ -42,5 +42,16 @@ def test_position_coverage_restores_observability_but_not_lplc2_preference() -> 
     )
     assert report["observability_gate_passed"] is True
     assert report["LPLC2_position_coverage_gates_passed"] is False
+    anatomy = report["anatomy_assignment_control"]
+    assert anatomy["post_failure_control_only"] is True
+    assert anatomy["assignment"]["target_response_used_for_assignment"] is False
+    assert anatomy["assignment"]["by_side"]["L"]["target_count"] == 94
+    assert anatomy["assignment"]["by_side"]["R"]["target_count"] == 91
+    assert anatomy["passed"] is False
+    assert all(
+        not result["passed"]
+        for mechanisms in anatomy["population_consistency"].values()
+        for result in mechanisms.values()
+    )
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False

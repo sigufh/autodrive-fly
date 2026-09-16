@@ -8,12 +8,15 @@ from pathlib import Path
 import numpy as np
 import yaml
 
+from fly_emotion.connectome.graph import load_graph
 from fly_emotion.driving.v7 import VisualStimulus
 from fly_emotion.driving.v7_geometry_sign import _sha256
 from fly_emotion.driving.v7_lplc2_radial_opponency import (
+    T4_T5_TYPES,
     _build_radial_projection,
     _compact_scalar_score,
     _coverage,
+    _infer_t4_t5_positions,
     _layer_nodes,
     _layer_traces,
     _radial_traces,
@@ -174,6 +177,55 @@ def _observability(
     )
 
 
+def _anatomy_position_assignment(
+    root: Path, probe: MassBalancedVisualProbe, source_config: dict, config: dict
+) -> tuple[dict[str, np.ndarray], dict]:
+    raw = load_graph(root / "data/processed/malecns-v1.0", normalized=False).adjacency
+    positions, _ = _infer_t4_t5_positions(root, probe, source_config)
+    finite_positions = positions[np.all(np.isfinite(positions), axis=1)]
+    low, high = finite_positions.min(axis=0), finite_positions.max(axis=0)
+    x_centers = np.asarray(config["centers"]["x"], dtype=np.float64)
+    y_centers = np.asarray(config["centers"]["y"], dtype=np.float64)
+    assignments = {}
+    summary = {}
+    for side in SIDES:
+        selected = []
+        camera_centroids = []
+        for target in probe.populations[f"LPLC2_{side}"]:
+            row = raw.getrow(int(target))
+            sources = row.indices
+            weights = np.abs(row.data).astype(np.float64)
+            keep = np.isin(probe.node_types[sources], T4_T5_TYPES)
+            keep &= np.all(np.isfinite(positions[sources]), axis=1)
+            centroid = np.average(positions[sources[keep]], axis=0, weights=weights[keep])
+            camera = (
+                (centroid - low)
+                / np.maximum(high - low, 1e-12)
+                * np.asarray((WIDTH - 1, HEIGHT - 1), dtype=np.float64)
+            )
+            x_index = int(np.argmin(np.abs(x_centers - camera[0])))
+            y_index = int(np.argmin(np.abs(y_centers - camera[1])))
+            selected.append((x_index, y_index))
+            camera_centroids.append(camera)
+        indices = np.asarray(selected, dtype=np.int32)
+        assignments[side] = indices
+        unique, counts = np.unique(indices, axis=0, return_counts=True)
+        summary[side] = {
+            "target_count": int(len(indices)),
+            "position_counts": {
+                f"x{int(position[0])}:y{int(position[1])}": int(count)
+                for position, count in zip(unique, counts, strict=True)
+            },
+            "camera_centroid_min": np.min(camera_centroids, axis=0).tolist(),
+            "camera_centroid_max": np.max(camera_centroids, axis=0).tolist(),
+        }
+    return assignments, {
+        "global_inferred_source_bounds": {"low": low.tolist(), "high": high.tolist()},
+        "by_side": summary,
+        "target_response_used_for_assignment": False,
+    }
+
+
 def evaluate_v7_lplc2_position_coverage(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     source_path = Path(config["source_protocol"])
@@ -187,12 +239,19 @@ def evaluate_v7_lplc2_position_coverage(root: Path) -> dict:
         raise ValueError("position coverage may consume tuning conditions only")
     probe = MassBalancedVisualProbe(root, config)
     matrices, anatomy = _build_radial_projection(root, probe, source_config)
+    anatomy_assignments, anatomy_assignment_summary = _anatomy_position_assignment(
+        root, probe, source_config, config
+    )
     receptor_nodes = _layer_nodes(probe, {"populations": ["mapped_R1-R6"]})["mapped_R1-R6"]
     observations = []
     radial_scores = {
         side: {name: [] for name in config["stimuli"]["comparators"]} for side in SIDES
     }
     per_condition = {}
+    anatomy_scores = {
+        side: {name: [] for name in config["stimuli"]["comparators"]} for side in SIDES
+    }
+    anatomy_per_condition = {}
     mirror_summary = {}
     manifest = []
     for condition_id in condition_ids:
@@ -262,6 +321,35 @@ def evaluate_v7_lplc2_position_coverage(root: Path) -> dict:
                 score = _score(ids, preferred, comparator, config["thresholds"])
                 radial_scores[side][comparator_name].append(score)
                 condition_scores["LPLC2"][side][comparator_name] = _compact_scalar_score(score)
+        anatomy_condition = {}
+        positions = sorted(bundle)
+        position_lookup = {position: index for index, position in enumerate(positions)}
+        for side in SIDES:
+            ids = probe.graph.body_ids[probe.populations[f"LPLC2_{side}"]]
+            assigned_rows = np.asarray(
+                [position_lookup[tuple(position)] for position in anatomy_assignments[side]],
+                dtype=np.int32,
+            )
+            target_columns = np.arange(len(ids), dtype=np.int32)
+            preferred = np.stack(radial_by_name["filled_expansion"][side])[
+                assigned_rows, target_columns
+            ]
+            anatomy_condition[side] = {}
+            for comparator_name in config["stimuli"]["comparators"]:
+                comparator = (
+                    np.maximum(
+                        translation_responses["forward"][side],
+                        translation_responses["mirrored"][side],
+                    )
+                    if comparator_name == "wide_field_translation"
+                    else np.stack(radial_by_name[comparator_name][side])[
+                        assigned_rows, target_columns
+                    ]
+                )
+                score = _score(ids, preferred, comparator, config["thresholds"])
+                anatomy_scores[side][comparator_name].append(score)
+                anatomy_condition[side][comparator_name] = _compact_scalar_score(score)
+        anatomy_per_condition[condition_id] = anatomy_condition
         per_condition[condition_id] = condition_scores
         x_count = len(config["centers"]["x"])
         frame_errors = []
@@ -347,6 +435,21 @@ def evaluate_v7_lplc2_position_coverage(root: Path) -> dict:
         for result in mechanisms.values()
     )
     mirror_passed = all(item["passed"] for item in mirror_summary.values())
+    anatomy_consistency = {
+        side: {
+            name: {
+                "passing_condition_count": int(sum(score["passed"] for score in values)),
+                "required_condition_count": len(values),
+                "coverage": _coverage(values, config["thresholds"]),
+                "passed": bool(
+                    all(score["passed"] for score in values)
+                    and _coverage(values, config["thresholds"])["passed"]
+                ),
+            }
+            for name, values in mechanisms.items()
+        }
+        for side, mechanisms in anatomy_scores.items()
+    }
     return {
         "protocol": {
             "name": config["name"],
@@ -382,6 +485,17 @@ def evaluate_v7_lplc2_position_coverage(root: Path) -> dict:
         "per_condition": per_condition,
         "observability_consistency": observation_consistency,
         "radial_population_consistency": radial_consistency,
+        "anatomy_assignment_control": {
+            "post_failure_control_only": True,
+            "assignment": anatomy_assignment_summary,
+            "per_condition": anatomy_per_condition,
+            "population_consistency": anatomy_consistency,
+            "passed": all(
+                result["passed"]
+                for mechanisms in anatomy_consistency.values()
+                for result in mechanisms.values()
+            ),
+        },
         "mirror_summary": mirror_summary,
         "observability_gate_passed": observation_consistency["passed"],
         "LPLC2_position_coverage_gates_passed": bool(

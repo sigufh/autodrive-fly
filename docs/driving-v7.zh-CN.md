@@ -1292,6 +1292,11 @@ exact-mirror 的运动刺激合同，再判断神经层损失。
 contraction 或 motion-free darkening：两侧均 0/3；相对 translation 左侧 0/3、右侧 2/3，
 跨条件同一 target 成功比例也仅约 51.1%/46.2%。因此“可观测”没有被误写成功能偏好，
 calibration 继续关闭。证据见 `artifacts/v7-lplc2-position-coverage.json`。
+失败后的解剖负对照再按每个 LPLC2 target 的真实 T4/T5 输入质心，将 target 固定分配到
+最近的预注册位置；位置映射不读响应或条件。该固定位置读出在 expansion 对 contraction、
+motion-free、双向 translation 的左右六组比较中仍全部 0/3，通过率比公平全位置包络更低。
+因此跨位置独立取最大值没有隐藏可用的 expansion preference，继续调整 LPLC2 位置 pooling
+在此停止；缺口仍是上游有符号时间方向动力学。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
