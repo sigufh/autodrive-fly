@@ -61,6 +61,7 @@ from .driving.v7_local_input_audit import (
 )
 from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
 from .driving.v7_lplc2_phenotype import evaluate_v7_lplc2_phenotype
+from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_navigation_nested import evaluate_v7_navigation_nested
 from .driving.v7_navigation_nested_eval import evaluate_v7_navigation_nested_candidate
@@ -269,6 +270,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-lamina-goal-symmetry")
     subparsers.add_parser("v7-evaluate-t4-normalized-correlator")
     subparsers.add_parser("v7-evaluate-fc2-goal-memory")
+    subparsers.add_parser("v7-evaluate-lplc-typed-screen")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -826,6 +828,12 @@ def main() -> None:
     if args.command == "v7-evaluate-fc2-goal-memory":
         report = evaluate_v7_fc2_goal_memory(root)
         target = root / "artifacts/v7-fc2-goal-memory.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-lplc-typed-screen":
+        report = evaluate_v7_lplc_typed_screen(root)
+        target = root / "artifacts/v7-lplc-typed-screen.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

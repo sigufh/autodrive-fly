@@ -287,6 +287,9 @@ v7-evaluate-t4-normalized-correlator:
 v7-evaluate-fc2-goal-memory:
 	.venv/bin/autodrive-fly v7-evaluate-fc2-goal-memory
 
+v7-evaluate-lplc-typed-screen:
+	.venv/bin/autodrive-fly v7-evaluate-lplc-typed-screen
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

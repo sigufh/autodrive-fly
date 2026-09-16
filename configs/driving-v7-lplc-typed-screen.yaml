@@ -1,0 +1,54 @@
+version: 1
+name: v7-lplc1-lplc2-lc4-typed-response-screen
+observed_on: "2026-09-16"
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_ids: [LPLC-T01, LPLC-T02, LPLC-T03]
+conditions:
+  - condition_id: LPLC-T01
+    role: tuning
+    seed: 9301
+    duration_frames: 32
+    terminal_radius_pixels: 8.0
+    start_radius_pixels: 1.0
+    noise_standard_deviation: 0.01
+  - condition_id: LPLC-T02
+    role: tuning
+    seed: 9302
+    duration_frames: 40
+    terminal_radius_pixels: 10.0
+    start_radius_pixels: 1.5
+    noise_standard_deviation: 0.03
+  - condition_id: LPLC-T03
+    role: tuning
+    seed: 9303
+    duration_frames: 48
+    terminal_radius_pixels: 7.0
+    start_radius_pixels: 0.75
+    noise_standard_deviation: 0.05
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+stimulus:
+  object_width_pixels: 5
+  object_height_pixels: 7
+  near_collision_vertical_fraction: 0.70
+  matched_miss_vertical_fraction: 0.28
+  ring_half_width_pixels: 1.25
+  translation_period_pixels: 10.0
+thresholds:
+  minimum_valid_denominator: 0.000001
+  minimum_valid_cell_fraction: 0.80
+  minimum_median_signed_contrast: 0.10
+  minimum_positive_cell_fraction: 0.60
+  minimum_LC4_positive_slope_fraction: 0.60
+  minimum_LC4_median_r_squared: 0.50
+  maximum_mirror_error: 0.20
+boundary:
+  tuning_only: true
+  shared_generic_looming_rule: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  external_final_evaluated: false
+  runtime_modified: false

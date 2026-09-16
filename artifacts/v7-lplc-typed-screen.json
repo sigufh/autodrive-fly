@@ -1,0 +1,680 @@
+{
+  "protocol": {
+    "name": "v7-lplc1-lplc2-lc4-typed-response-screen",
+    "dependencies_sha256": {
+      "configs/driving-v7-lplc-typed-screen.yaml": "b53c1438f5b02325f1db7f97eac362975b9790fe95d4fa322f0937ed559100ba",
+      "src/fly_emotion/driving/v7_lplc_typed_screen.py": "4d9e8c07fd78147aabac4f27adb4641a15271f62fc2b95702ba3e1815685a198",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "condition_ids": [
+      "LPLC-T01",
+      "LPLC-T02",
+      "LPLC-T03"
+    ],
+    "stimulus_count": 33,
+    "shared_generic_looming_rule": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false
+  },
+  "stimulus_manifest": [
+    {
+      "identity": "LPLC-T01:lplc1_near_back_to_front",
+      "frame_sha256": "65f05ae4c2ed4f0917d81b515b2dd41cc7b80eea12e04c1cb46efb1813187923",
+      "retinal_drive_sha256": "21ef5b79605fdf622120ff4484e8a147a4a5c937c80d9dfc5e98f21f9ca89c3a"
+    },
+    {
+      "identity": "LPLC-T01:lplc1_near_front_to_back",
+      "frame_sha256": "d827f933d7a5e984e5c8b8d536cde90c8ab5406a86fa644e5bd76cac622a43c9",
+      "retinal_drive_sha256": "78743797789becc4722485e618c7bd4472dd89419332575e1cd2342cdc51da72"
+    },
+    {
+      "identity": "LPLC-T01:lplc1_matched_miss",
+      "frame_sha256": "ad75dbfb08f3ed5f909588e5e476450159665aab7a32a9fefc6209a2478c751f",
+      "retinal_drive_sha256": "720f20581adbcc9ecb204276bb9bdf4215452c2c1c9bf242382cce68903d7d8c"
+    },
+    {
+      "identity": "LPLC-T01:lplc1_rotating_background",
+      "frame_sha256": "5e40ed2a183be06add98d1779c63e16691d675a141fd90d5c6fc4390ef454c62",
+      "retinal_drive_sha256": "6e77cb9115b1ce27db56e989f11f3604d9eb298b2afd97f16538f4c94dbdffaa"
+    },
+    {
+      "identity": "LPLC-T01:lplc2_outward",
+      "frame_sha256": "d17a4cd1611758291cefce0f74cbf87afde45a425bd44bdecb9e3b799b5fda9d",
+      "retinal_drive_sha256": "1db60498680b62537e56831b56eea44dc7873bd1c57ee5f634e65de84c35bd5f"
+    },
+    {
+      "identity": "LPLC-T01:lplc2_inward",
+      "frame_sha256": "eae8514cce522648ed2e7f16f5c8e0db6de4b87ab9ffe896a4e403983705aa98",
+      "retinal_drive_sha256": "32ec0ee6c0e59191d3a449fcb3cde6bfad25809ba76ebed378cfcb8992050344"
+    },
+    {
+      "identity": "LPLC-T01:lplc2_motion_free",
+      "frame_sha256": "155514a2e329b7dadc8afc504999e076e47d1513740c67fcedf9b1a165263886",
+      "retinal_drive_sha256": "f4d06cffdd1bfb5aca0ec469193016abd506bb4382fe68522cd44fb6c57a94c4"
+    },
+    {
+      "identity": "LPLC-T01:lplc2_translation",
+      "frame_sha256": "ff05f1ea9a16b22c908bbdfb6102f368f26b1caa8417c88129178b96e49966e3",
+      "retinal_drive_sha256": "58043c30e740f3b525f33bb632b96b599d0699bddc37c21ec5ccae5250ba4804"
+    },
+    {
+      "identity": "LPLC-T01:lc4_slow",
+      "frame_sha256": "d1580bdffa8284aacb6acb3a46117242a0c8331edd93a7822e2fe4e0e60b0d26",
+      "retinal_drive_sha256": "2c2083948ab13e71ed358d45be290246c312aa798f194eb0a60329831e60cb9e"
+    },
+    {
+      "identity": "LPLC-T01:lc4_medium",
+      "frame_sha256": "5cfdf6690cb901dbe9e676a8ef486b8bc6a9b6c7a7ed9c8cd57b167d8528457d",
+      "retinal_drive_sha256": "5ad09ed35e0bebf178d82253131595b28851b0f0e43f223b465776b951200b08"
+    },
+    {
+      "identity": "LPLC-T01:lc4_fast",
+      "frame_sha256": "7aafda7bbeecfb5ea20a3762b15092dece757ce1cb512b759e292292e87a0c82",
+      "retinal_drive_sha256": "5fc3909fe96b93b05cf8a26a19050b4e0bd00c9bfbd0ed84eb1faeea60584569"
+    },
+    {
+      "identity": "LPLC-T02:lplc1_near_back_to_front",
+      "frame_sha256": "a31a369ee5200ab38343556789667e5561b71fe82a4ed93eac485f4bd4a1211b",
+      "retinal_drive_sha256": "487b0c7ca9b32b0fe3680d7c524086d89a5a2cebc3df9aaf683c1ca0c5ced918"
+    },
+    {
+      "identity": "LPLC-T02:lplc1_near_front_to_back",
+      "frame_sha256": "9a345ed0ea6602833678e225ec7900ea23c17b94f7e4c0ff3aa2a02a860dd4f3",
+      "retinal_drive_sha256": "02bfe0011e4c058f67cf1d8c3f0c4737828bb6219fae6a5be44341e6a3a3e466"
+    },
+    {
+      "identity": "LPLC-T02:lplc1_matched_miss",
+      "frame_sha256": "db943b86842d8196d58a1d10b507e0fba02b4d6973e0b558916a811a9f6c2593",
+      "retinal_drive_sha256": "905dfc5967615830ae0acb13f87cb4d181e02373771c6313fbc3e5a65f0b61a0"
+    },
+    {
+      "identity": "LPLC-T02:lplc1_rotating_background",
+      "frame_sha256": "23bf3dc885ed72174876f75af29d566e2a68f29e8bf264c14be69e46d2e2a7db",
+      "retinal_drive_sha256": "848c27073e3a99f9b18a03e599aba72abbb2cff8f98fb622c6f5441e5bdd804c"
+    },
+    {
+      "identity": "LPLC-T02:lplc2_outward",
+      "frame_sha256": "bdc727978013ad79a587ad03676ba85a7988e335113dd9bcad955cf4f40ce0d5",
+      "retinal_drive_sha256": "2ef8c255847e42dbb4b8a5f61ac279e30aa83f20493fb461b958a4583c2f513f"
+    },
+    {
+      "identity": "LPLC-T02:lplc2_inward",
+      "frame_sha256": "89a5c0f2649b8b32a753ff3a174c9a698a3e236b7f848c34ce25303a4d8f2858",
+      "retinal_drive_sha256": "d8aa5473c992053ed14a4bf75c93386d2103669899f5f0a7ce94552caa186afe"
+    },
+    {
+      "identity": "LPLC-T02:lplc2_motion_free",
+      "frame_sha256": "9dae7bd7a835ea6add072f3d45bce56d76454788ba992402e185a0c73b522ad4",
+      "retinal_drive_sha256": "2e30d1660e5f7ff5b17dbeed19898e3c25eb1a075e16b1a4b9f63a6721e45a67"
+    },
+    {
+      "identity": "LPLC-T02:lplc2_translation",
+      "frame_sha256": "0b73423ef0a9fee497cb0fb39c6677ee1f6770bec25cd23332fc669055f14e45",
+      "retinal_drive_sha256": "57ba16c9c381270b297ac9e93d7d7714ace09affff4b4670e7fa14fe299251a0"
+    },
+    {
+      "identity": "LPLC-T02:lc4_slow",
+      "frame_sha256": "f27f05e97ebff79df1b196de34185dce424fc1213e2adc475efe95db3ae8dc97",
+      "retinal_drive_sha256": "873e200e8c84752fb8a7472e32c4d1ac22fa75a71ff935573117017e145f28b9"
+    },
+    {
+      "identity": "LPLC-T02:lc4_medium",
+      "frame_sha256": "166a975ac5c34ca4e2128cecffa9ac94c9bedcdbf2c89bdaa77f63a4a64beaa0",
+      "retinal_drive_sha256": "c9c1c134cfaf1dc5a5338165d4c1c06ca50f4a3bad0403b320dbd7841efd0615"
+    },
+    {
+      "identity": "LPLC-T02:lc4_fast",
+      "frame_sha256": "5abcf636ddf4fdd25b0ab199c9b60d0b3c3724fdb08383482bbf8cc502e5bc2d",
+      "retinal_drive_sha256": "4328a32e96a349f1efc120270a61f8c2a33ff3375f11401c5464d75219a95f01"
+    },
+    {
+      "identity": "LPLC-T03:lplc1_near_back_to_front",
+      "frame_sha256": "cae14359d946627fb2fbebd1519b122d39d680e900637fe4011893b668a4b23e",
+      "retinal_drive_sha256": "f7eea9e118af10859a250d6a96280696f8977160a1b3376ae6554b8aa0cb7fa8"
+    },
+    {
+      "identity": "LPLC-T03:lplc1_near_front_to_back",
+      "frame_sha256": "b998a0adcd25286b49e6ff80ceae23d62f5faa0e767f0177c2567a37972ea15b",
+      "retinal_drive_sha256": "1827c187f182442e8513b1c3f307587aab83fcdd2b9800b6c28763130d7445b2"
+    },
+    {
+      "identity": "LPLC-T03:lplc1_matched_miss",
+      "frame_sha256": "33d9da699dba43f1b679fa7dd6ede963ca992786860699deaf627fd0e6969b63",
+      "retinal_drive_sha256": "549336c0317abb7f4a5bc612985030abb5a674b2ca2ebea104148d14e7d8c6a9"
+    },
+    {
+      "identity": "LPLC-T03:lplc1_rotating_background",
+      "frame_sha256": "b005cd491a295b0c3c667400495a008e76e182b0cf97939fc0cd89a0d5633779",
+      "retinal_drive_sha256": "9b20a8a0f1df0d5199b69aa4e94758166d75f6b5861b1b51e22aa2ad7c471584"
+    },
+    {
+      "identity": "LPLC-T03:lplc2_outward",
+      "frame_sha256": "aac18f7b506c6365c770bb243aa07bc421c3e48e7c08f1c63f15a750ed08c2d0",
+      "retinal_drive_sha256": "a85a4644e82034711e64fda1e206473eed5a30d4cbcf66ab983594ac28d92cec"
+    },
+    {
+      "identity": "LPLC-T03:lplc2_inward",
+      "frame_sha256": "d7ec49c00fd328f99d0f9e5de16e6504c574be505346d1f9fb7f744d26fd2b2d",
+      "retinal_drive_sha256": "cce5e88aff81ecfda0989c90e9f3fe4b11a51fb327d34bd989dfb5f7add0eecb"
+    },
+    {
+      "identity": "LPLC-T03:lplc2_motion_free",
+      "frame_sha256": "5d2ebedaecc54ea2b7950bcfb7e06f355f7b94a11908f2a4376575bd0fe5ee3c",
+      "retinal_drive_sha256": "2bb8afdb25bc11ed22220d148409af1c8aa4ca0bba8faa4b7727415e7b6dfad3"
+    },
+    {
+      "identity": "LPLC-T03:lplc2_translation",
+      "frame_sha256": "4dea1ac4abfb15aa97ee66d7edb68b0615356743652fc7c302b2c9447f154b94",
+      "retinal_drive_sha256": "cd089269ce1385060639b1a72bacf57899b05f986f21b4231dce5fa27dec87ba"
+    },
+    {
+      "identity": "LPLC-T03:lc4_slow",
+      "frame_sha256": "8bf8cc7674d9bacd4039217d9a8e0643908bf2c9802558b42ff258e80a7a0342",
+      "retinal_drive_sha256": "ba99e08d6f8f4321a65705f562735ab2bbd8622b1286e66b170517866f4f1ff7"
+    },
+    {
+      "identity": "LPLC-T03:lc4_medium",
+      "frame_sha256": "741e57ebd95f664e0510ce1c17f03e932d79a4d42d260b9c022a9cd01a00bd70",
+      "retinal_drive_sha256": "905442638f99fc79b738c05b8b76817be39cd73de7c8a632b4d8961f1eb1f489"
+    },
+    {
+      "identity": "LPLC-T03:lc4_fast",
+      "frame_sha256": "c12fbfbc18eb24259940176f11f0a6febd64e1b5f5357a68aeccd9f24f8e48eb",
+      "retinal_drive_sha256": "fd7ab6530353bef4ab545f7d5710f37dbbc7eb31270963c96b6880ee487b6223"
+    }
+  ],
+  "per_condition_scores": {
+    "LPLC-T01": {
+      "LPLC1_L": {
+        "near_vs_miss": {
+          "cell_count": 68,
+          "valid_cell_count": 49,
+          "valid_cell_fraction": 0.7205882352941176,
+          "median_signed_contrast": -0.002030813446151126,
+          "positive_cell_fraction": 0.40816326530612246,
+          "passed": false
+        },
+        "back_to_front_vs_front_to_back": {
+          "cell_count": 68,
+          "valid_cell_count": 49,
+          "valid_cell_fraction": 0.7205882352941176,
+          "median_signed_contrast": 0.00024850109872746683,
+          "positive_cell_fraction": 0.5306122448979592,
+          "passed": false
+        },
+        "object_vs_rotating_background": {
+          "cell_count": 68,
+          "valid_cell_count": 50,
+          "valid_cell_fraction": 0.7352941176470589,
+          "median_signed_contrast": 0.18229822252966757,
+          "positive_cell_fraction": 0.96,
+          "passed": false
+        }
+      },
+      "LPLC2_L": {
+        "outward_vs_inward": {
+          "cell_count": 94,
+          "valid_cell_count": 12,
+          "valid_cell_fraction": 0.1276595744680851,
+          "median_signed_contrast": 0.032668670539670916,
+          "positive_cell_fraction": 0.9166666666666666,
+          "passed": false
+        },
+        "outward_vs_motion_free": {
+          "cell_count": 94,
+          "valid_cell_count": 12,
+          "valid_cell_fraction": 0.1276595744680851,
+          "median_signed_contrast": -0.00032555027496313264,
+          "positive_cell_fraction": 0.5,
+          "passed": false
+        },
+        "outward_vs_translation": {
+          "cell_count": 94,
+          "valid_cell_count": 13,
+          "valid_cell_fraction": 0.13829787234042554,
+          "median_signed_contrast": 0.2221804053728631,
+          "positive_cell_fraction": 0.9230769230769231,
+          "passed": false
+        }
+      },
+      "LC4_L": {
+        "angular_velocity": {
+          "cell_count": 71,
+          "valid_cell_count": 9,
+          "valid_cell_fraction": 0.1267605633802817,
+          "positive_slope_fraction": 0.0,
+          "median_r_squared": 0.9230539142494033,
+          "passed": false
+        }
+      },
+      "LPLC1_R": {
+        "near_vs_miss": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": -0.000653088878412192,
+          "positive_cell_fraction": 0.4,
+          "passed": false
+        },
+        "back_to_front_vs_front_to_back": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": -0.005575220604985623,
+          "positive_cell_fraction": 0.4,
+          "passed": false
+        },
+        "object_vs_rotating_background": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": 0.2099987870806008,
+          "positive_cell_fraction": 0.9555555555555556,
+          "passed": false
+        }
+      },
+      "LPLC2_R": {
+        "outward_vs_inward": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.008023560103219533,
+          "positive_cell_fraction": 0.6896551724137931,
+          "passed": false
+        },
+        "outward_vs_motion_free": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": -0.0008135796316251787,
+          "positive_cell_fraction": 0.4482758620689655,
+          "passed": false
+        },
+        "outward_vs_translation": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.2679509000155695,
+          "positive_cell_fraction": 0.9310344827586207,
+          "passed": false
+        }
+      },
+      "LC4_R": {
+        "angular_velocity": {
+          "cell_count": 55,
+          "valid_cell_count": 9,
+          "valid_cell_fraction": 0.16363636363636364,
+          "positive_slope_fraction": 0.0,
+          "median_r_squared": 0.9019962253779196,
+          "passed": false
+        }
+      }
+    },
+    "LPLC-T02": {
+      "LPLC1_L": {
+        "near_vs_miss": {
+          "cell_count": 68,
+          "valid_cell_count": 49,
+          "valid_cell_fraction": 0.7205882352941176,
+          "median_signed_contrast": -0.002213551327023714,
+          "positive_cell_fraction": 0.4489795918367347,
+          "passed": false
+        },
+        "back_to_front_vs_front_to_back": {
+          "cell_count": 68,
+          "valid_cell_count": 49,
+          "valid_cell_fraction": 0.7205882352941176,
+          "median_signed_contrast": -0.003518879604626613,
+          "positive_cell_fraction": 0.30612244897959184,
+          "passed": false
+        },
+        "object_vs_rotating_background": {
+          "cell_count": 68,
+          "valid_cell_count": 51,
+          "valid_cell_fraction": 0.75,
+          "median_signed_contrast": 0.17702360552755855,
+          "positive_cell_fraction": 0.9019607843137255,
+          "passed": false
+        }
+      },
+      "LPLC2_L": {
+        "outward_vs_inward": {
+          "cell_count": 94,
+          "valid_cell_count": 14,
+          "valid_cell_fraction": 0.14893617021276595,
+          "median_signed_contrast": 0.005143020562201185,
+          "positive_cell_fraction": 0.5714285714285714,
+          "passed": false
+        },
+        "outward_vs_motion_free": {
+          "cell_count": 94,
+          "valid_cell_count": 13,
+          "valid_cell_fraction": 0.13829787234042554,
+          "median_signed_contrast": -0.0015739579445584553,
+          "positive_cell_fraction": 0.38461538461538464,
+          "passed": false
+        },
+        "outward_vs_translation": {
+          "cell_count": 94,
+          "valid_cell_count": 13,
+          "valid_cell_fraction": 0.13829787234042554,
+          "median_signed_contrast": 0.19150286892029456,
+          "positive_cell_fraction": 0.8461538461538461,
+          "passed": false
+        }
+      },
+      "LC4_L": {
+        "angular_velocity": {
+          "cell_count": 71,
+          "valid_cell_count": 5,
+          "valid_cell_fraction": 0.07042253521126761,
+          "positive_slope_fraction": 0.0,
+          "median_r_squared": 0.9572992044353656,
+          "passed": false
+        }
+      },
+      "LPLC1_R": {
+        "near_vs_miss": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": -0.000888152591412847,
+          "positive_cell_fraction": 0.4,
+          "passed": false
+        },
+        "back_to_front_vs_front_to_back": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": -0.0033121145556543087,
+          "positive_cell_fraction": 0.3333333333333333,
+          "passed": false
+        },
+        "object_vs_rotating_background": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": 0.1916619702468495,
+          "positive_cell_fraction": 0.9555555555555556,
+          "passed": false
+        }
+      },
+      "LPLC2_R": {
+        "outward_vs_inward": {
+          "cell_count": 91,
+          "valid_cell_count": 30,
+          "valid_cell_fraction": 0.32967032967032966,
+          "median_signed_contrast": 0.010247695766204821,
+          "positive_cell_fraction": 0.7,
+          "passed": false
+        },
+        "outward_vs_motion_free": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.0016563530702000027,
+          "positive_cell_fraction": 0.5172413793103449,
+          "passed": false
+        },
+        "outward_vs_translation": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.2206113628108432,
+          "positive_cell_fraction": 0.896551724137931,
+          "passed": false
+        }
+      },
+      "LC4_R": {
+        "angular_velocity": {
+          "cell_count": 55,
+          "valid_cell_count": 3,
+          "valid_cell_fraction": 0.05454545454545454,
+          "positive_slope_fraction": 0.0,
+          "median_r_squared": 0.9472224666973516,
+          "passed": false
+        }
+      }
+    },
+    "LPLC-T03": {
+      "LPLC1_L": {
+        "near_vs_miss": {
+          "cell_count": 68,
+          "valid_cell_count": 49,
+          "valid_cell_fraction": 0.7205882352941176,
+          "median_signed_contrast": -0.00041358070313585903,
+          "positive_cell_fraction": 0.46938775510204084,
+          "passed": false
+        },
+        "back_to_front_vs_front_to_back": {
+          "cell_count": 68,
+          "valid_cell_count": 49,
+          "valid_cell_fraction": 0.7205882352941176,
+          "median_signed_contrast": -0.005570654338495645,
+          "positive_cell_fraction": 0.30612244897959184,
+          "passed": false
+        },
+        "object_vs_rotating_background": {
+          "cell_count": 68,
+          "valid_cell_count": 52,
+          "valid_cell_fraction": 0.7647058823529411,
+          "median_signed_contrast": 0.17726275674131475,
+          "positive_cell_fraction": 0.8846153846153846,
+          "passed": false
+        }
+      },
+      "LPLC2_L": {
+        "outward_vs_inward": {
+          "cell_count": 94,
+          "valid_cell_count": 13,
+          "valid_cell_fraction": 0.13829787234042554,
+          "median_signed_contrast": 0.02145460741500561,
+          "positive_cell_fraction": 0.9230769230769231,
+          "passed": false
+        },
+        "outward_vs_motion_free": {
+          "cell_count": 94,
+          "valid_cell_count": 13,
+          "valid_cell_fraction": 0.13829787234042554,
+          "median_signed_contrast": 0.001647082555643931,
+          "positive_cell_fraction": 0.5384615384615384,
+          "passed": false
+        },
+        "outward_vs_translation": {
+          "cell_count": 94,
+          "valid_cell_count": 13,
+          "valid_cell_fraction": 0.13829787234042554,
+          "median_signed_contrast": 0.1882518488487149,
+          "positive_cell_fraction": 0.7692307692307693,
+          "passed": false
+        }
+      },
+      "LC4_L": {
+        "angular_velocity": {
+          "cell_count": 71,
+          "valid_cell_count": 3,
+          "valid_cell_fraction": 0.04225352112676056,
+          "positive_slope_fraction": 0.0,
+          "median_r_squared": 0.9476395386450397,
+          "passed": false
+        }
+      },
+      "LPLC1_R": {
+        "near_vs_miss": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": -0.0004905162378907264,
+          "positive_cell_fraction": 0.4222222222222222,
+          "passed": false
+        },
+        "back_to_front_vs_front_to_back": {
+          "cell_count": 66,
+          "valid_cell_count": 45,
+          "valid_cell_fraction": 0.6818181818181818,
+          "median_signed_contrast": 0.001337414420077436,
+          "positive_cell_fraction": 0.5555555555555556,
+          "passed": false
+        },
+        "object_vs_rotating_background": {
+          "cell_count": 66,
+          "valid_cell_count": 46,
+          "valid_cell_fraction": 0.696969696969697,
+          "median_signed_contrast": 0.17956754912236664,
+          "positive_cell_fraction": 0.9347826086956522,
+          "passed": false
+        }
+      },
+      "LPLC2_R": {
+        "outward_vs_inward": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.007574659457076583,
+          "positive_cell_fraction": 0.6551724137931034,
+          "passed": false
+        },
+        "outward_vs_motion_free": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.0038219266064471197,
+          "positive_cell_fraction": 0.6206896551724138,
+          "passed": false
+        },
+        "outward_vs_translation": {
+          "cell_count": 91,
+          "valid_cell_count": 29,
+          "valid_cell_fraction": 0.31868131868131866,
+          "median_signed_contrast": 0.20837665105082984,
+          "positive_cell_fraction": 0.896551724137931,
+          "passed": false
+        }
+      },
+      "LC4_R": {
+        "angular_velocity": {
+          "cell_count": 55,
+          "valid_cell_count": 2,
+          "valid_cell_fraction": 0.03636363636363636,
+          "positive_slope_fraction": 0.0,
+          "median_r_squared": 0.9840582953459627,
+          "passed": false
+        }
+      }
+    }
+  },
+  "population_consistency": {
+    "LPLC1_L": {
+      "near_vs_miss": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "back_to_front_vs_front_to_back": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "object_vs_rotating_background": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      }
+    },
+    "LPLC1_R": {
+      "near_vs_miss": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "back_to_front_vs_front_to_back": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "object_vs_rotating_background": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      }
+    },
+    "LPLC2_L": {
+      "outward_vs_inward": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "outward_vs_motion_free": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "outward_vs_translation": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      }
+    },
+    "LPLC2_R": {
+      "outward_vs_inward": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "outward_vs_motion_free": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      },
+      "outward_vs_translation": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      }
+    },
+    "LC4_L": {
+      "angular_velocity": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      }
+    },
+    "LC4_R": {
+      "angular_velocity": {
+        "passing_condition_count": 0,
+        "required_condition_count": 3,
+        "passed": false
+      }
+    }
+  },
+  "mirror_summary": {
+    "LPLC-T01": {
+      "maximum_population_metric_error": 0.024645110436451383,
+      "passed": true
+    },
+    "LPLC-T02": {
+      "maximum_population_metric_error": 0.010076737738014097,
+      "passed": true
+    },
+    "LPLC-T03": {
+      "maximum_population_metric_error": 0.03641875670092298,
+      "passed": true
+    }
+  },
+  "typed_lplc_lc4_gates_passed": false,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "advance_to_navigation_release": false,
+  "boundary": {
+    "tuning_only": true,
+    "shared_generic_looming_rule": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "external_final_evaluated": false,
+    "runtime_modified": false
+  }
+}
