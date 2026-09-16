@@ -33,6 +33,15 @@ spatial_pilot:
   minimum_contrast: 0.10
   pilot_informed_only: true
   may_authorize_candidate: false
+hybrid_pilot:
+  target_sample_seed: 20260916
+  targets_per_population: 16
+  lags_substeps: [1, 2, 3, 4]
+  anatomical_delayed_sources: [proximal, distal]
+  combination_modes: [positive_product, signed_product, positive_gate]
+  minimum_contrast: 0.10
+  use_frozen_eye_specific_axis_transform: true
+  targetwise_selection_may_authorize_candidate: false
 variants:
   - name: pooled_typed_baseline
     implementation: pooled_typed

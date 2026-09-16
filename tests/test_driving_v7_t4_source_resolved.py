@@ -88,3 +88,27 @@ def test_t4_spatial_pilot_is_informed_only_and_fails_to_expand() -> None:
     ) == 1
     assert pilot["advance_to_full_population"] is False
     assert pilot["advance_to_calibration"] is False
+
+
+def test_hybrid_conductance_ordering_has_signal_but_no_global_candidate() -> None:
+    pilot = json.loads(REPORT.read_text())["hybrid_conductance_anatomical_order_pilot"]
+    assert pilot["status"] == "pilot_informed_reachability_envelope_only"
+    assert pilot["target_count"] == 64
+    assert pilot["candidate_count"] == 24
+    assert pilot["targetwise_label_based_candidate_selection"] is True
+    assert pilot["targetwise_selection_may_authorize_candidate"] is False
+    populations = pilot["population_results"]
+    assert {
+        name: item["all_six_comparisons_reachable_count"]
+        for name, item in populations.items()
+    } == {"T4a_L": 10, "T4a_R": 2, "T4b_L": 5, "T4b_R": 11}
+    global_candidate = pilot["best_single_global_candidate"]
+    assert global_candidate == {
+        "lag_substeps": 3,
+        "delayed_source": "proximal",
+        "combination_mode": "positive_product",
+        "passed_population_condition_head_gates": 17,
+        "total_population_condition_head_gates": 24,
+    }
+    assert pilot["advance_to_full_population"] is False
+    assert pilot["advance_to_calibration"] is False

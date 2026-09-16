@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pyarrow.feather as feather
 import yaml
 from scipy import sparse
 
@@ -511,11 +512,260 @@ def _spatial_reachability_pilot(
     }
 
 
+def _frozen_axis_coordinates(root: Path, probe, transforms: dict) -> np.ndarray:
+    table = feather.read_table(
+        root / "data/raw/malecns-v1.0/body-annotations.feather",
+        columns=["bodyId", "somaSide", "assignedOlHex1", "assignedOlHex2"],
+        memory_map=True,
+    ).to_pandas()
+    body_ids = table["bodyId"].to_numpy(dtype=np.int64)
+    nodes = np.searchsorted(probe.graph.body_ids, body_ids)
+    valid = nodes < probe.graph.node_count
+    valid[valid] &= probe.graph.body_ids[nodes[valid]] == body_ids[valid]
+    raw = np.column_stack(
+        (
+            table["assignedOlHex1"].to_numpy(dtype=np.float64),
+            table["assignedOlHex2"].to_numpy(dtype=np.float64),
+        )
+    )
+    sides = table["somaSide"].fillna("").to_numpy(dtype=str)
+    coordinates = np.full((probe.graph.node_count, 2), np.nan, dtype=np.float64)
+    for side in ("L", "R"):
+        keep = valid & (sides == side) & np.all(np.isfinite(raw), axis=1)
+        coordinates[nodes[keep]] = raw[keep] @ np.asarray(transforms[side], dtype=np.float64)
+    return coordinates
+
+
+def _hybrid_source_traces(probe, stimulus, target_nodes: np.ndarray, rows: np.ndarray) -> dict:
+    matrices = {
+        "center": probe.conductance["matrices"]["Mi1"]
+        + probe.conductance["matrices"]["Tm3"],
+        "proximal": probe.conductance["matrices"]["Mi4"]
+        + probe.conductance["matrices"]["C3"],
+        "distal": probe.conductance["matrices"]["Mi9"],
+    }
+    state = np.zeros(probe.graph.node_count, dtype=np.float32)
+    history = [state.copy()]
+    baseline_image = stimulus.frames[0]
+    baseline_values = probe._sample_retina(baseline_image)[probe.retinal_permutation]
+    baseline_drive = probe._retinal_code(baseline_values, baseline_values, baseline_values)
+    for _ in range(probe.baseline_frames):
+        drive = np.zeros_like(state)
+        drive[probe.retina.node_indices] = baseline_drive
+        for _ in range(probe.brain_substeps):
+            state = probe._advance(state, drive, history)
+            state[probe.retina.node_indices] = baseline_drive
+    baseline_target = state[target_nodes].astype(np.float64)
+    normalized = probe._normalized_source_state(state)
+    baseline_sources = {name: (matrix @ normalized)[rows] for name, matrix in matrices.items()}
+    output = {name: [] for name in ("polarity", *matrices)}
+    previous = baseline_values.copy()
+    for image in stimulus.frames:
+        sampled = probe._sample_retina(image)[probe.retinal_permutation]
+        receptor_values = probe._retinal_code(sampled, baseline_values, previous)
+        previous = sampled
+        drive = np.zeros_like(state)
+        drive[probe.retina.node_indices] = receptor_values
+        for _ in range(probe.brain_substeps):
+            state = probe._advance(state, drive, history)
+            state[probe.retina.node_indices] = receptor_values
+            normalized = probe._normalized_source_state(state)
+            output["polarity"].append(state[target_nodes].astype(np.float64) - baseline_target)
+            for name, matrix in matrices.items():
+                output[name].append((matrix @ normalized)[rows] - baseline_sources[name])
+    return {name: np.stack(values) for name, values in output.items()}
+
+
+def _hybrid_response(
+    traces: dict[str, np.ndarray],
+    orientation: np.ndarray,
+    lag: int,
+    delayed_source: str,
+    mode: str,
+) -> np.ndarray:
+    center = traces["center"]
+    delayed = traces[delayed_source]
+    ordering = orientation[None, :] * (
+        delayed * _lag(center, lag) - center * _lag(delayed, lag)
+    )
+    polarity = np.maximum(traces["polarity"], 0.0)
+    if mode == "positive_product":
+        combined = polarity * np.maximum(ordering, 0.0)
+    elif mode == "signed_product":
+        combined = polarity * ordering
+    elif mode == "positive_gate":
+        combined = polarity * (ordering > 0.0)
+    else:
+        raise ValueError(f"unknown hybrid combination mode: {mode}")
+    return np.max(combined, axis=0)
+
+
+def _hybrid_conductance_pilot(
+    root: Path, config: dict, condition_stimuli: dict, scoring: dict, source_audit: dict
+) -> dict:
+    pilot = config["hybrid_pilot"]
+    conductance_config = yaml.safe_load((root / CONDUCTANCE_CONFIG).read_text())
+    normalization = _collect_source_normalization(
+        root,
+        retinal_backend=config["retinal_backend"],
+        retinal_geometry=conductance_config["primary_retinal_geometry"],
+        config=conductance_config,
+    )
+    probe = MotionSignConductanceProbe(
+        root, retinal_backend=config["retinal_backend"], normalization=normalization
+    )
+    coordinates = _frozen_axis_coordinates(
+        root, probe, source_audit["frozen_axis_calibration"]["transforms_by_eye"]
+    )
+    target_nodes: list[int] = []
+    target_body_ids: list[int] = []
+    target_populations: list[str] = []
+    for population in scoring["target_populations"]:
+        nodes = probe.populations[population]
+        body_ids = probe.graph.body_ids[nodes]
+        selected = _fixed_sample(
+            body_ids, int(pilot["targets_per_population"]), int(pilot["target_sample_seed"])
+        )
+        target_nodes.extend(nodes[selected].tolist())
+        target_body_ids.extend(body_ids[selected].tolist())
+        target_populations.extend([population] * len(selected))
+    targets = np.asarray(target_nodes, dtype=np.int32)
+    target_row = {int(node): index for index, node in enumerate(probe.conductance["targets"])}
+    rows = np.asarray([target_row.get(int(node), -1) for node in targets], dtype=np.int32)
+    if np.any(rows < 0):
+        raise ValueError("hybrid pilot target lacks published-conductance source coverage")
+    orientation = np.zeros(len(targets), dtype=np.float64)
+    for index, target in enumerate(targets):
+        row = probe.adjacency.getrow(int(target))
+        sources, weights = row.indices, np.abs(row.data).astype(np.float64)
+        horizontal = coordinates[sources, 0]
+
+        def centroid(
+            source_types: tuple[str, ...],
+            source_nodes: np.ndarray = sources,
+            positions: np.ndarray = horizontal,
+            source_weights: np.ndarray = weights,
+        ) -> float:
+            mask = np.isin(probe.node_types[source_nodes], source_types) & np.isfinite(positions)
+            return (
+                float(np.average(positions[mask], weights=source_weights[mask]))
+                if np.any(mask)
+                else np.nan
+            )
+
+        orientation[index] = np.sign(centroid(("Mi4", "C3")) - centroid(("Mi1",)))
+    if np.any(~np.isfinite(orientation) | (orientation == 0)):
+        raise ValueError("hybrid pilot target lacks an anatomical center/proximal ordering")
+    traces = {
+        item.identity: _hybrid_source_traces(probe, _as_visual_stimulus(item), targets, rows)
+        for items in condition_stimuli.values()
+        for item in items
+    }
+    lookup = {
+        (condition_id, item.polarity, item.direction): item.identity
+        for condition_id, items in condition_stimuli.items()
+        for item in items
+    }
+    candidates = [
+        (int(lag), str(source), str(mode))
+        for lag in pilot["lags_substeps"]
+        for source in pilot["anatomical_delayed_sources"]
+        for mode in pilot["combination_modes"]
+    ]
+    population_contrasts: dict[str, np.ndarray] = {}
+    names = np.asarray(target_populations)
+    population_results = {}
+    for population in scoring["target_populations"]:
+        group = np.flatnonzero(names == population)
+        preferred = scoring["direction_populations"][population]
+        opposite = OPPOSITE_DIRECTION[preferred]
+        cubes = []
+        for lag, source, mode in candidates:
+            comparisons = []
+            for condition_id in condition_stimuli:
+                preferred_on = _hybrid_response(
+                    traces[lookup[(condition_id, "on", preferred)]],
+                    orientation,
+                    lag,
+                    source,
+                    mode,
+                )[group]
+                opposite_on = _hybrid_response(
+                    traces[lookup[(condition_id, "on", opposite)]],
+                    orientation,
+                    lag,
+                    source,
+                    mode,
+                )[group]
+                preferred_off = _hybrid_response(
+                    traces[lookup[(condition_id, "off", preferred)]],
+                    orientation,
+                    lag,
+                    source,
+                    mode,
+                )[group]
+                comparisons.extend(
+                    (
+                        _contrast(preferred_on, opposite_on, 1e-6),
+                        _contrast(preferred_on, preferred_off, 1e-6),
+                    )
+                )
+            cubes.append(np.stack(comparisons, axis=1))
+        cube = np.stack(cubes)
+        population_contrasts[population] = cube
+        success = np.isfinite(cube) & (cube >= float(pilot["minimum_contrast"]))
+        reachable = np.any(np.all(success, axis=2), axis=0)
+        population_results[population] = {
+            "target_count": int(len(group)),
+            "body_ids_sha256": hashlib.sha256(
+                np.asarray(target_body_ids, dtype=np.int64)[group].tobytes()
+            ).hexdigest(),
+            "all_six_comparisons_reachable_count": int(np.count_nonzero(reachable)),
+            "best_comparison_count_histogram_0_to_6": np.bincount(
+                np.max(np.sum(success, axis=2), axis=0), minlength=7
+            ).tolist(),
+        }
+    candidate_gate_counts = []
+    for candidate_index, _candidate in enumerate(candidates):
+        gate_count = 0
+        for cube in population_contrasts.values():
+            values = cube[candidate_index]
+            for comparison in range(values.shape[1]):
+                current = values[:, comparison]
+                valid = np.isfinite(current)
+                gate_count += bool(
+                    np.mean(valid) >= 0.80
+                    and np.median(current[valid]) >= 0.10
+                    and np.mean(current[valid] > 0.0) >= 0.60
+                )
+        candidate_gate_counts.append(gate_count)
+    best_index = int(np.argmax(candidate_gate_counts))
+    best_lag, best_source, best_mode = candidates[best_index]
+    return {
+        "status": "pilot_informed_reachability_envelope_only",
+        "target_count": len(targets),
+        "candidate_count": len(candidates),
+        "targetwise_label_based_candidate_selection": True,
+        "targetwise_selection_may_authorize_candidate": False,
+        "population_results": population_results,
+        "best_single_global_candidate": {
+            "lag_substeps": best_lag,
+            "delayed_source": best_source,
+            "combination_mode": best_mode,
+            "passed_population_condition_head_gates": int(candidate_gate_counts[best_index]),
+            "total_population_condition_head_gates": 24,
+        },
+        "advance_to_full_population": candidate_gate_counts[best_index] == 24,
+        "advance_to_calibration": False,
+    }
+
+
 def evaluate_v7_t4_source_resolved(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     nested = yaml.safe_load((root / NESTED_CONFIG).read_text())
     scoring_path = Path(config["scoring_config"])
     source_audit_path = Path(config["source_audit_evidence"])
+    source_audit = json.loads((root / source_audit_path).read_text())
     strict_scoring = yaml.safe_load((root / scoring_path).read_text())
     condition_ids = list(config["condition_ids"])
     conditions = {item["condition_id"]: item for item in nested["conditions"]}
@@ -567,6 +817,9 @@ def evaluate_v7_t4_source_resolved(root: Path) -> dict:
     spatial_pilot = _spatial_reachability_pilot(
         root, config, MassBalancedVisualProbe(root, config), condition_stimuli, scoring
     )
+    hybrid_pilot = _hybrid_conductance_pilot(
+        root, config, condition_stimuli, scoring, source_audit
+    )
     return {
         "protocol": {
             "name": config["name"],
@@ -599,6 +852,7 @@ def evaluate_v7_t4_source_resolved(root: Path) -> dict:
         },
         "variants": results,
         "spatial_reachability_pilot": spatial_pilot,
+        "hybrid_conductance_anatomical_order_pilot": hybrid_pilot,
         "passing_variants": passing,
         "advance_to_calibration": bool(passing),
         "advance_to_runtime_integration": False,
