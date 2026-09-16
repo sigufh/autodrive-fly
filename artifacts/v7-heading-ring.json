@@ -3,7 +3,7 @@
     "name": "v7-epg-pen-peg-heading-ring",
     "dependencies_sha256": {
       "configs/driving-v7-heading-ring.yaml": "0933edfef539902cf1f9ee1365b39cd8ed741e2de7fe856452aa4504f2cdabb3",
-      "src/fly_emotion/driving/v7_heading_ring.py": "608074c0b0c325e939a5d60011e14fe8a9f7afa6825d0960bf62325bd09ba0ca",
+      "src/fly_emotion/driving/v7_heading_ring.py": "9e34b765f4cb2d7d6d92d9159b77321756256de470f6e7698b2ee152e8d5e7dd",
       "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
       "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
       "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76"

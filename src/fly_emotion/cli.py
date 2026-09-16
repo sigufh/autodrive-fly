@@ -63,6 +63,8 @@ from .driving.v7_neural_channels import (
     evaluate_v7_neural_channels_calibration,
     evaluate_v7_neural_channels_tuning,
 )
+from .driving.v7_neural_episode_controls import evaluate_v7_neural_episode_controls
+from .driving.v7_neural_episode_cv import evaluate_v7_neural_episode_cv
 from .driving.v7_neural_local_columns import evaluate_v7_neural_local_columns
 from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_neural_topology_controls import evaluate_v7_neural_topology_controls
@@ -235,6 +237,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-source-resolved")
     subparsers.add_parser("v7-evaluate-heading-ring")
     subparsers.add_parser("v7-evaluate-neural-local-columns")
+    subparsers.add_parser("v7-evaluate-neural-episode-cv")
+    subparsers.add_parser("v7-evaluate-neural-episode-controls")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -696,6 +700,18 @@ def main() -> None:
     if args.command == "v7-evaluate-neural-local-columns":
         report = evaluate_v7_neural_local_columns(root)
         target = root / "artifacts/v7-neural-local-columns.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-episode-cv":
+        report = evaluate_v7_neural_episode_cv(root)
+        target = root / "artifacts/v7-neural-episode-cv.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-neural-episode-controls":
+        report = evaluate_v7_neural_episode_controls(root)
+        target = root / "artifacts/v7-neural-episode-controls.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

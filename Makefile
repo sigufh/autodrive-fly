@@ -239,6 +239,12 @@ v7-evaluate-heading-ring:
 v7-evaluate-neural-local-columns:
 	.venv/bin/autodrive-fly v7-evaluate-neural-local-columns
 
+v7-evaluate-neural-episode-cv:
+	.venv/bin/autodrive-fly v7-evaluate-neural-episode-cv
+
+v7-evaluate-neural-episode-controls:
+	.venv/bin/autodrive-fly v7-evaluate-neural-episode-controls
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

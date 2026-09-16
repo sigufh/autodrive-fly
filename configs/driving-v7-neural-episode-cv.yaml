@@ -1,0 +1,49 @@
+version: 1
+name: v7-neural-six-bin-episode-pair-cv
+observed_on: "2026-09-16"
+base_neural_config: configs/driving-v7-neural-channels.yaml
+heading_config: configs/driving-v7-heading-ring.yaml
+teacher_tuning_evidence: artifacts/v7-r1r6-local-tuning.json
+tuning_mirror_pairs: [[8200, 8201], [8202, 8203], [8204, 8205]]
+ridge_alpha_candidates: [0.1, 1.0, 10.0, 100.0, 1000.0]
+feature_complexity_candidates:
+  - name: current_mean
+    statistics: [mean]
+    temporal_terms: [current]
+  - name: mean_temporal
+    statistics: [mean]
+    temporal_terms: [current, first_difference, exponential_mean]
+  - name: mean_std_max_temporal
+    statistics: [mean, standard_deviation, maximum]
+    temporal_terms: [current, first_difference, exponential_mean]
+  - name: all_statistics_current
+    statistics: [mean, standard_deviation, q10, q90, maximum]
+    temporal_terms: [current]
+  - name: all_statistics_reduced_temporal
+    statistics: [mean, standard_deviation, q10, q90, maximum]
+    temporal_terms: [current, first_difference, exponential_mean]
+  - name: full
+    statistics: [mean, standard_deviation, q10, q90, maximum]
+    temporal_terms: [current, first_difference, absolute, square, exponential_mean]
+feature_complexity_alpha: 1.0
+selection_order:
+  - maximize_held_out_success_count
+  - maximize_held_out_obstacles_passed
+  - minimize_held_out_mean_maximum_absolute_lateral_position
+  - prefer_larger_alpha
+calibration:
+  mirror_pair_seeds: [8600, 8601]
+  run_once_after_candidate_freeze: true
+  previously_used_for_fit_architecture_or_selection: false
+boundary:
+  teacher_data_tuning_only: true
+  mirror_pair_is_indivisible_cv_unit: true
+  training_r2_not_used_for_selection: true
+  target_activity_injection: false
+  raw_heading_read_by_controller: false
+  calibration_may_change_candidate: false
+  external_final_evaluated: false
+  runtime_modified: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

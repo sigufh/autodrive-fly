@@ -168,7 +168,16 @@ def _heading_assays(config: dict) -> dict:
     }
 
 
-def _heading_episode(features, model, teacher: dict, config: dict, seed: int, arm: str) -> dict:
+def _heading_episode(
+    features,
+    model,
+    teacher: dict,
+    config: dict,
+    seed: int,
+    arm: str,
+    *,
+    ablated_groups: set[str] | None = None,
+) -> dict:
     environment = DrivingEnvironment()
     image = environment.reset(seed)
     features.reset()
@@ -179,7 +188,9 @@ def _heading_episode(features, model, teacher: dict, config: dict, seed: int, ar
     trace = []
     while not environment.done:
         even, odd = features.step(image)
-        danger, asymmetry, road = _predict(model, even, odd)
+        danger, asymmetry, road = _predict(
+            model, even, odd, ablated_groups=ablated_groups
+        )
         target = np.tanh(
             float(teacher["obstacle_gain"]) * danger * asymmetry
             + float(teacher["road_gain"]) * road
