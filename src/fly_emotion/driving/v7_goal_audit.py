@@ -307,6 +307,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "population_consistency"
                     ].items()
                 },
+                "radial_layer_localization_passing_populations": lplc2_radial_opponency[
+                    "layer_localization"
+                ]["passing_populations"],
+                "mapped_R1_R6_all_condition_separated_fraction": lplc2_radial_opponency[
+                    "layer_localization"
+                ]["population_consistency"]["mapped_R1-R6"]["all_condition_separated_fraction"],
+                "visual_graph_unselected_R1_R6_count": lplc2_radial_opponency["layer_localization"][
+                    "selected_receptor_edge_audit"
+                ]["unselected_graph_R1_R6_count"],
+                "selected_R1_R6_renormalization_AB_gate_restored": lplc2_radial_opponency[
+                    "layer_localization"
+                ]["selected_receptor_edge_audit"]["renormalization_AB_gate_restored"],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",

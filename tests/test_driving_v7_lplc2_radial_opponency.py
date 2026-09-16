@@ -70,6 +70,25 @@ def test_radial_opponency_has_full_structural_coverage_but_fails_functional_gate
                 side["median_normalized_time_reversed_trace_error"]
                 > side["median_normalized_forward_trace_error"]
             )
+    localization = report["layer_localization"]
+    assert localization["post_failure_localization_only"] is True
+    assert localization["parameter_search"] is False
+    assert localization["selected_receptors_only"] is True
+    assert localization["passing_populations"] == ["mapped_R1-R6"]
+    receptor = localization["population_consistency"]["mapped_R1-R6"]
+    assert receptor["cell_count"] == 1914
+    assert receptor["passing_condition_count"] == 3
+    assert receptor["all_condition_separated_count"] == 1894
+    assert receptor["all_condition_separated_fraction"] > 0.98
+    for population in ("L1", "L2", "L3", "L5", "T4a", "T4b", "T5a", "T5b"):
+        assert localization["population_consistency"][population]["passed"] is False
+    edge_audit = localization["selected_receptor_edge_audit"]
+    assert edge_audit["mapped_receptor_count"] == 1914
+    assert edge_audit["all_graph_R1_R6_count"] == 3377
+    assert edge_audit["unselected_graph_R1_R6_count"] == 1463
+    assert edge_audit["visual_graph_keeps_unselected_R1_R6_outputs"] is True
+    assert edge_audit["renormalization_AB_parameter_search"] is False
+    assert edge_audit["renormalization_AB_gate_restored"] is False
     assert report["radial_opponency_mechanism_gates_passed"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False

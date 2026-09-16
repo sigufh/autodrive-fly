@@ -39,6 +39,16 @@ temporal_identifiability:
   minimum_all_target_separated_fraction: 0.60
   minimum_joint_valid_fraction: 0.80
   minimum_all_condition_separated_fraction: 0.60
+layer_localization:
+  post_failure_localization_only: true
+  selected_receptors_only: true
+  populations: [mapped_R1-R6, L1, L2, L3, L5, Mi1, Tm3, Mi4, Mi9, C3, Tm1, Tm2, Tm4, Tm9, T4a, T4b, T4c, T4d, T5a, T5b, T5c, T5d]
+  metric: mean_abs_outward_minus_inward_trace_divided_by_sum_mean_abs_traces
+  minimum_valid_scale: 0.000001
+  minimum_normalized_trace_separation: 0.10
+  minimum_all_target_separated_fraction: 0.60
+  minimum_joint_valid_fraction: 0.80
+  minimum_all_condition_separated_fraction: 0.60
 boundary:
   tuning_only: true
   label_informed_mechanism_diagnostic: true

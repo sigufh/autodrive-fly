@@ -53,6 +53,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "L": 4 / 94,
         "R": 9 / 91,
     }
+    assert visual["observations"]["radial_layer_localization_passing_populations"] == [
+        "mapped_R1-R6"
+    ]
+    assert visual["observations"]["mapped_R1_R6_all_condition_separated_fraction"] == (1894 / 1914)
+    assert visual["observations"]["visual_graph_unselected_R1_R6_count"] == 1463
+    assert visual["observations"]["selected_R1_R6_renormalization_AB_gate_restored"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

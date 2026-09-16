@@ -287,6 +287,52 @@ def _radial_traces(
     return {side: np.stack(values) for side, values in traces.items()}, retinal_hash.hexdigest()
 
 
+def _layer_nodes(probe: MassBalancedVisualProbe, config: dict) -> dict[str, np.ndarray]:
+    populations = {}
+    for name in config["populations"]:
+        nodes = (
+            probe.retina.node_indices
+            if name == "mapped_R1-R6"
+            else np.flatnonzero(probe.node_types == name)
+        )
+        if len(nodes) == 0:
+            raise ValueError(f"layer-localization population is empty: {name}")
+        populations[name] = np.asarray(nodes, dtype=np.int32)
+    return populations
+
+
+def _layer_traces(
+    probe: MassBalancedVisualProbe, stimulus, populations: dict[str, np.ndarray]
+) -> dict[str, np.ndarray]:
+    state = np.zeros(probe.graph.node_count, dtype=np.float32)
+    history_length = max(1, int(probe.source_delays.max()))
+    history = [state.copy() for _ in range(history_length)]
+    baseline_image = stimulus.frames[0]
+    baseline_values = probe._sample_retina(baseline_image)[probe.retinal_permutation]
+    baseline_drive = probe._retinal_code(baseline_values, baseline_values, baseline_values)
+    for _ in range(probe.baseline_frames):
+        drive = np.zeros_like(state)
+        drive[probe.retina.node_indices] = baseline_drive
+        for _ in range(probe.brain_substeps):
+            state = probe._advance(state, drive, history)
+            state[probe.retina.node_indices] = baseline_drive
+    baselines = {name: state[nodes].astype(np.float64) for name, nodes in populations.items()}
+    traces = {name: [] for name in populations}
+    previous = baseline_values.copy()
+    for image in stimulus.frames:
+        sampled = probe._sample_retina(image)[probe.retinal_permutation]
+        receptor_values = probe._retinal_code(sampled, baseline_values, previous)
+        previous = sampled
+        drive = np.zeros_like(state)
+        drive[probe.retina.node_indices] = receptor_values
+        for _ in range(probe.brain_substeps):
+            state = probe._advance(state, drive, history)
+            state[probe.retina.node_indices] = receptor_values
+        for name, nodes in populations.items():
+            traces[name].append(state[nodes].astype(np.float64) - baselines[name])
+    return {name: np.stack(values) for name, values in traces.items()}
+
+
 def _score(
     cell_ids: np.ndarray, preferred: np.ndarray, comparator: np.ndarray, thresholds: dict
 ) -> dict:
@@ -452,6 +498,132 @@ def _temporal_coverage(scores: list[dict], config: dict) -> dict:
     }
 
 
+def _layer_score(
+    body_ids: np.ndarray, outward: np.ndarray, inward: np.ndarray, config: dict
+) -> dict:
+    ids = np.asarray(body_ids, dtype=np.int64)
+    outward = np.asarray(outward, dtype=np.float64)
+    inward = np.asarray(inward, dtype=np.float64)
+    if outward.shape != inward.shape or outward.ndim != 2 or outward.shape[1] != len(ids):
+        raise ValueError("layer traces must be equal time-by-cell arrays")
+    scale = np.mean(np.abs(outward), axis=0) + np.mean(np.abs(inward), axis=0)
+    finite = np.all(np.isfinite(outward), axis=0) & np.all(np.isfinite(inward), axis=0)
+    valid = finite & (scale >= float(config["minimum_valid_scale"]))
+    separation = np.full(len(ids), np.nan, dtype=np.float64)
+    separation[valid] = np.mean(np.abs(outward[:, valid] - inward[:, valid]), axis=0) / scale[valid]
+    threshold = float(config["minimum_normalized_trace_separation"])
+    separated = valid & (separation >= threshold)
+    valid_fraction = float(np.mean(valid))
+    median = float(np.median(separation[valid])) if np.any(valid) else None
+    separated_fraction = float(np.mean(separated))
+    gates = {
+        "valid_cell_fraction": valid_fraction >= float(config["minimum_joint_valid_fraction"]),
+        "median_normalized_trace_separation": median is not None and median >= threshold,
+        "all_target_separated_fraction": separated_fraction
+        >= float(config["minimum_all_target_separated_fraction"]),
+    }
+    return {
+        "cell_count": int(len(ids)),
+        "valid_cell_count": int(np.count_nonzero(valid)),
+        "valid_cell_fraction": valid_fraction,
+        "median_normalized_trace_separation": median,
+        "all_cell_separated_count": int(np.count_nonzero(separated)),
+        "all_cell_separated_fraction": separated_fraction,
+        "cell_ids_sha256": hashlib.sha256(ids.tobytes()).hexdigest(),
+        "normalized_trace_separation": [
+            float(value) if np.isfinite(value) else None for value in separation
+        ],
+        "gates": gates,
+        "passed": all(gates.values()),
+    }
+
+
+def _layer_consistency(scores: list[dict], config: dict) -> dict:
+    values = np.stack(
+        [
+            np.asarray(
+                [
+                    value if value is not None else np.nan
+                    for value in score["normalized_trace_separation"]
+                ]
+            )
+            for score in scores
+        ]
+    )
+    joint_valid = np.all(np.isfinite(values), axis=0)
+    threshold = float(config["minimum_normalized_trace_separation"])
+    all_separated = np.all(np.isfinite(values) & (values >= threshold), axis=0)
+    joint_fraction = float(np.mean(joint_valid))
+    separated_fraction = float(np.mean(all_separated))
+    gates = {
+        "joint_valid_fraction": joint_fraction >= float(config["minimum_joint_valid_fraction"]),
+        "all_condition_separated_fraction": separated_fraction
+        >= float(config["minimum_all_condition_separated_fraction"]),
+    }
+    return {
+        "cell_count": int(values.shape[1]),
+        "passing_condition_count": int(sum(score["passed"] for score in scores)),
+        "required_condition_count": int(len(scores)),
+        "joint_valid_count": int(np.count_nonzero(joint_valid)),
+        "joint_valid_fraction": joint_fraction,
+        "all_condition_separated_count": int(np.count_nonzero(all_separated)),
+        "all_condition_separated_fraction": separated_fraction,
+        "gates": gates,
+        "passed": bool(all(score["passed"] for score in scores) and all(gates.values())),
+    }
+
+
+def _compact_layer_score(score: dict) -> dict:
+    return {key: value for key, value in score.items() if key != "normalized_trace_separation"}
+
+
+def _selected_receptor_edge_audit(
+    root: Path, probe: MassBalancedVisualProbe, layer_nodes: dict[str, np.ndarray]
+) -> dict:
+    raw = load_graph(root / "data/processed/malecns-v1.0", normalized=False).adjacency
+    selected = np.zeros(probe.graph.node_count, dtype=bool)
+    selected[probe.retina.node_indices] = True
+    all_receptors = probe.node_types == "R1-R6"
+    unselected = all_receptors & ~selected
+    populations = {}
+    for name in ("L1", "L2", "L3", "L5"):
+        nodes = layer_nodes[name]
+        matrix = raw[nodes, :]
+        selected_weight = np.asarray(matrix.multiply(selected).sum(axis=1)).ravel()
+        unselected_weight = np.asarray(matrix.multiply(unselected).sum(axis=1)).ravel()
+        total = selected_weight + unselected_weight
+        with_any = total > 0.0
+        fraction = np.zeros(len(nodes), dtype=np.float64)
+        np.divide(selected_weight, total, out=fraction, where=with_any)
+        populations[name] = {
+            "cell_count": int(len(nodes)),
+            "cells_with_selected_receptor_input": int(np.count_nonzero(selected_weight > 0.0)),
+            "cells_with_unselected_receptor_input": int(np.count_nonzero(unselected_weight > 0.0)),
+            "cells_with_any_R1_R6_input": int(np.count_nonzero(with_any)),
+            "median_selected_weight_fraction_all_cells": float(np.median(fraction)),
+            "median_selected_weight_fraction_cells_with_any_R1_R6": (
+                float(np.median(fraction[with_any])) if np.any(with_any) else None
+            ),
+        }
+    return {
+        "mapped_receptor_count": int(len(probe.retina.node_indices)),
+        "all_graph_R1_R6_count": int(np.count_nonzero(all_receptors)),
+        "unselected_graph_R1_R6_count": int(np.count_nonzero(unselected)),
+        "visual_graph_keeps_unselected_R1_R6_outputs": bool(
+            np.any(probe.adjacency[:, np.flatnonzero(unselected)].data)
+        ),
+        "populations": populations,
+        "interpretation": (
+            "The mass-balanced camera drives only the selected paired receptors while the "
+            "typed visual adjacency retains outputs from all annotated R1-R6 cells. This is an "
+            "input-contract mismatch, but a post-failure renormalization A/B did not restore "
+            "the preregistered layer separation gate."
+        ),
+        "renormalization_AB_parameter_search": False,
+        "renormalization_AB_gate_restored": False,
+    }
+
+
 def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     typed_path = Path(config["typed_stimulus_protocol"])
@@ -476,11 +648,15 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
         raise ValueError("radial diagnostic thresholds diverged from the frozen strict gate")
     probe = MassBalancedVisualProbe(root, config)
     matrices, anatomy = _build_radial_projection(root, probe, config)
+    layer_nodes = _layer_nodes(probe, config["layer_localization"])
+    receptor_edge_audit = _selected_receptor_edge_audit(root, probe, layer_nodes)
     per_condition = {}
     stimulus_manifest = []
     raw_scores = {side: {name: [] for name in config["comparisons"]} for side in SIDES}
     temporal_scores = {side: [] for side in SIDES}
     temporal_per_condition = {}
+    layer_scores = {name: [] for name in layer_nodes}
+    layer_per_condition = {}
     for condition_id in condition_ids:
         stimuli = _condition_stimuli(conditions[condition_id], typed)
         selected = {name: item for name, item in stimuli.items() if name.startswith("lplc2_")}
@@ -498,6 +674,8 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
                     "retinal_drive_sha256": retinal_hash,
                 }
             )
+        layer_outward = _layer_traces(probe, selected["lplc2_outward"], layer_nodes)
+        layer_inward = _layer_traces(probe, selected["lplc2_inward"], layer_nodes)
         condition_scores = {}
         condition_temporal = {}
         for side in SIDES:
@@ -522,6 +700,17 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
             condition_temporal[side] = temporal
         per_condition[condition_id] = condition_scores
         temporal_per_condition[condition_id] = condition_temporal
+        condition_layers = {}
+        for name, nodes in layer_nodes.items():
+            score = _layer_score(
+                probe.graph.body_ids[nodes],
+                layer_outward[name],
+                layer_inward[name],
+                config["layer_localization"],
+            )
+            layer_scores[name].append(score)
+            condition_layers[name] = _compact_layer_score(score)
+        layer_per_condition[condition_id] = condition_layers
     consistency = {
         side: {
             name: {
@@ -572,6 +761,10 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
         for side, scores in temporal_scores.items()
     }
     temporal_passed = all(result["passed"] for result in temporal_consistency.values())
+    layer_consistency = {
+        name: _layer_consistency(scores, config["layer_localization"])
+        for name, scores in layer_scores.items()
+    }
     return {
         "protocol": {
             "name": config["name"],
@@ -617,6 +810,18 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
             "per_condition": temporal_per_condition,
             "population_consistency": temporal_consistency,
             "passed": bool(temporal_passed),
+        },
+        "layer_localization": {
+            "post_failure_localization_only": True,
+            "parameter_search": False,
+            "selected_receptors_only": True,
+            "metric": config["layer_localization"]["metric"],
+            "per_condition": layer_per_condition,
+            "population_consistency": layer_consistency,
+            "passing_populations": [
+                name for name, result in layer_consistency.items() if result["passed"]
+            ],
+            "selected_receptor_edge_audit": receptor_edge_audit,
         },
         "radial_opponency_mechanism_gates_passed": bool(mechanism_passed and mirror_passed),
         "advance_to_calibration": bool(mechanism_passed and mirror_passed),
