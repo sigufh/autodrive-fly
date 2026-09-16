@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 UPPER = ROOT / "artifacts/v7-visual-corridor-goal.json"
 NEURAL = ROOT / "artifacts/v7-neural-corridor.json"
+LOCAL_COLUMN = ROOT / "artifacts/v7-local-column-corridor.json"
 
 
 def test_visual_corridor_upper_bound_is_tuning_only_and_causal() -> None:
@@ -45,3 +46,23 @@ def test_neural_corridor_cannot_recover_receptor_level_upper_bound() -> None:
     assert report["advance_to_full_tuning"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_navigation_release"] is False
+
+
+def test_local_column_neural_corridor_also_fails_pair_cv() -> None:
+    report = json.loads(LOCAL_COLUMN.read_text())
+    for path, digest in report["protocol"]["dependencies_sha256"].items():
+        assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+    assert report["protocol"]["motion_spatial_bins"] == 24
+    assert report["protocol"]["target_safety_bins"] == 6
+    assert report["structure"] == {
+        "minimum_motion_bin_count": 44,
+        "unmapped_flow_target_count": 1,
+        "feature_dimension": 108,
+    }
+    assert [fold["success_count"] for fold in report["folds"]] == [0, 0, 0]
+    assert [fold["total_obstacles_passed"] for fold in report["folds"]] == [8, 12, 2]
+    assert report["success_count"] == 0
+    assert report["total_obstacles_passed"] == 22
+    assert report["cross_validation_passed"] is False
+    assert report["advance_to_full_tuning"] is False
+    assert report["advance_to_calibration"] is False

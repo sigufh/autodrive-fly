@@ -11,9 +11,16 @@ from fly_emotion.driving.v7_geometry_sign import _sha256
 from fly_emotion.driving.v7_heading_ring import EPGPENPEGHeadingRing
 from fly_emotion.driving.v7_neural_channels import (
     StructuredNeuralFeatures,
+    _model_digest,
     _predict,
     _teacher_step,
 )
+from fly_emotion.driving.v7_neural_episode_cv import (
+    _collect_teacher_features,
+    _feature_mask,
+    _fit_from_cache,
+)
+from fly_emotion.driving.v7_neural_local_columns import LocalColumnNeuralFeatures
 from fly_emotion.driving.v7_r1r6_local import reconstruct_image
 from fly_emotion.driving.v7_r1r6_multi import build_mass_balanced_retina
 from fly_emotion.driving.v7_visual_corridor_goal import obstacle_distance_profile
@@ -35,10 +42,22 @@ def _safety_targets(profile: np.ndarray, bins: int) -> np.ndarray:
     return np.mean(values.reshape(bins, 48 // bins), axis=1)
 
 
-def _collect(root: Path, base: dict, seeds: list[int], teacher: dict, bins: int):
+def _collect(
+    root: Path,
+    base: dict,
+    seeds: list[int],
+    teacher: dict,
+    bins: int,
+    *,
+    local_feature_config: dict | None = None,
+):
     teacher_config = yaml.safe_load((root / "configs/driving-v7-r1r6-local.yaml").read_text())
     retina = build_mass_balanced_retina(root)
-    features = StructuredNeuralFeatures(root, base)
+    features = (
+        LocalColumnNeuralFeatures(root, local_feature_config)
+        if local_feature_config is not None
+        else StructuredNeuralFeatures(root, base)
+    )
     cache = {}
     for seed in seeds:
         environment = DrivingEnvironment()
@@ -104,21 +123,39 @@ def _goal(safety: np.ndarray, width: int, previous: float, margin: float) -> tup
 
 
 def _episode(
-    features, global_model: dict, corridor_model: dict, teacher: dict, heading, config, seed
+    corridor_features,
+    global_model: dict,
+    corridor_model: dict,
+    teacher: dict,
+    heading,
+    config,
+    seed,
+    *,
+    global_features=None,
 ):
     environment = DrivingEnvironment()
     image = environment.reset(seed)
-    features.reset()
+    corridor_features.reset()
+    if global_features is None:
+        global_features = corridor_features
+    elif global_features is corridor_features:
+        raise ValueError("explicit global feature view must be independent")
+    global_features.reset()
     ring = EPGPENPEGHeadingRing(heading)
     decoded_heading = ring.decode()
     command = 0.0
     goal = 0.0
     switches = 0
     while not environment.done:
-        even, odd = features.step(image)
-        danger, _asymmetry, road = _predict(global_model, even, odd)
+        corridor_even, corridor_odd = corridor_features.step(image)
+        if global_features is corridor_features:
+            global_even, global_odd = corridor_even, corridor_odd
+        else:
+            global_even, global_odd = global_features.step(image)
+        danger, _asymmetry, road = _predict(global_model, global_even, global_odd)
         safety = _predict_safety(
-            corridor_model, _current_mean_features(features, even, odd)
+            corridor_model,
+            _current_mean_features(corridor_features, corridor_even, corridor_odd),
         )
         if danger >= float(config["corridor"]["active_danger_threshold"]):
             goal, changed = _goal(
@@ -225,6 +262,129 @@ def evaluate_v7_neural_corridor(root: Path) -> dict:
             "calibration_evaluated": False,
             "external_final_evaluated": False,
             "runtime_modified": False,
+        },
+        "folds": folds,
+        "success_count": success_count,
+        "total_obstacles_passed": obstacles,
+        "cross_validation_passed": bool(passed),
+        "advance_to_full_tuning": bool(passed),
+        "advance_to_calibration": False,
+        "advance_to_navigation_release": False,
+        "boundary": config["boundary"],
+    }
+
+
+def evaluate_v7_local_column_corridor(root: Path) -> dict:
+    config = yaml.safe_load((root / CONFIG).read_text())
+    nested_path = Path(config["nested_protocol"])
+    nested = yaml.safe_load((root / nested_path).read_text())
+    base_path = Path(config["base_neural_config"])
+    heading_path = Path(config["heading_config"])
+    upper_path = Path(config["upper_bound_evidence"])
+    local_path = Path("configs/driving-v7-neural-local-columns.yaml")
+    base = yaml.safe_load((root / base_path).read_text())
+    heading = yaml.safe_load((root / heading_path).read_text())
+    local_config = yaml.safe_load((root / local_path).read_text())
+    upper = json.loads((root / upper_path).read_text())
+    if not upper["advance_to_neural_cv"]:
+        raise ValueError("local-column corridor requires passed receptor upper bound")
+    global_candidate = json.loads((root / "artifacts/v7-neural-episode-cv.json").read_text())
+    global_model = global_candidate["model"]
+    teacher = json.loads((root / base["adapter_source"]).read_text())["selected_candidate"]
+    pairs = [[int(seed) for seed in pair] for pair in config["tuning_pairs"]]
+    protocol_pairs = [
+        [int(seed) for seed in item["mirror_pair_seeds"]]
+        for item in nested["conditions"]
+        if item["role"] == "tuning"
+    ]
+    if pairs != protocol_pairs:
+        raise ValueError("local-column corridor pairs differ from nested protocol")
+    seeds = [seed for pair in pairs for seed in pair]
+    features, cache = _collect(
+        root,
+        base,
+        seeds,
+        teacher,
+        int(config["targets"]["local_safety_bins"]),
+        local_feature_config=local_config,
+    )
+    if min(features.motion_bin_counts) < 40 or features.unmapped_flow_count != 1:
+        raise ValueError("local-column corridor structure coverage changed")
+    global_feature_view, global_cache = _collect_teacher_features(
+        root, base, seeds, teacher
+    )
+    global_variant = {
+        "name": "current_mean",
+        "statistics": ["mean"],
+        "temporal_terms": ["current"],
+    }
+    global_mask = _feature_mask(base, global_feature_view, global_variant)
+    folds = []
+    for held_out in pairs:
+        train = [seed for seed in seeds if seed not in held_out]
+        model = _fit(cache, train, float(config["readout"]["ridge_alpha"]))
+        global_model = _fit_from_cache(
+            global_feature_view,
+            global_cache,
+            train,
+            1.0,
+            feature_mask=global_mask,
+            feature_variant=global_variant["name"],
+        )
+        global_features = StructuredNeuralFeatures(root, base)
+        episodes = [
+            _episode(
+                features,
+                global_model,
+                model,
+                teacher,
+                heading,
+                config,
+                seed,
+                global_features=global_features,
+            )
+            for seed in held_out
+        ]
+        folds.append(
+            {
+                "training_seeds": train,
+                "held_out_seeds": held_out,
+                "model": model,
+                "global_model_sha256": _model_digest(global_model),
+                "success_count": sum(item["success"] for item in episodes),
+                "total_obstacles_passed": sum(
+                    item["obstacles_passed"] for item in episodes
+                ),
+                "episodes": episodes,
+            }
+        )
+    success_count = sum(item["success_count"] for item in folds)
+    obstacles = sum(item["total_obstacles_passed"] for item in folds)
+    passed = success_count == len(seeds) and obstacles == 9 * len(seeds)
+    return {
+        "protocol": {
+            "name": "v7-local-column-neural-corridor-cv",
+            "dependencies_sha256": {
+                str(CONFIG): _sha256(root / CONFIG),
+                str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
+                str(nested_path): _sha256(root / nested_path),
+                str(base_path): _sha256(root / base_path),
+                str(heading_path): _sha256(root / heading_path),
+                str(upper_path): _sha256(root / upper_path),
+                str(local_path): _sha256(root / local_path),
+            },
+            "motion_spatial_bins": 24,
+            "target_safety_bins": int(config["targets"]["local_safety_bins"]),
+            "mirror_pair_is_indivisible_cv_unit": True,
+            "tuning_only": True,
+            "calibration_evaluated": False,
+            "external_final_evaluated": False,
+            "runtime_modified": False,
+        },
+        "structure": {
+            "minimum_motion_bin_count": min(features.motion_bin_counts),
+            "unmapped_flow_target_count": features.unmapped_flow_count,
+            "feature_dimension": len(features.groups) * 2,
         },
         "folds": folds,
         "success_count": success_count,

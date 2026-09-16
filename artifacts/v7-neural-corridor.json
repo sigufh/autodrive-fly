@@ -3,7 +3,7 @@
     "name": "v7-six-bin-neural-corridor-readout",
     "dependencies_sha256": {
       "configs/driving-v7-neural-corridor.yaml": "45a976a524d4beb61f749b1a87d110d356571b310b377b14b3602d1d6afc2f54",
-      "src/fly_emotion/driving/v7_neural_corridor.py": "57c3590e99cbc2e76abcec24240b02cdc9b8aa1556dee097bd2dc280bef01b3d",
+      "src/fly_emotion/driving/v7_neural_corridor.py": "1424946da7c3c5df2c8ce7825542defe1396b28dbb4b70fd731f621688b38536",
       "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a",
       "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
       "configs/driving-v7-heading-ring.yaml": "0933edfef539902cf1f9ee1365b39cd8ed741e2de7fe856452aa4504f2cdabb3",
