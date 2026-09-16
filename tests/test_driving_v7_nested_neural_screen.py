@@ -42,3 +42,27 @@ def test_nested_neural_screen_preserves_mirror_but_exposes_response_failures() -
     assert aggregate["polarity_pass_count"] == 3
     assert aggregate["looming_pass_count"] == 0
     assert aggregate["mirror_pass_count"] == aggregate["mirror_total"] == 54
+
+
+def test_nested_neural_screen_preserves_target_denominators_and_joint_coverage() -> None:
+    report = json.loads(REPORT.read_text())
+    t5a = report["target_coverage"]["direction"]["T5a_L"]
+    assert t5a["target_count"] == 826
+    assert [
+        t5a["per_condition"][name]["valid_count"]
+        for name in ("S1-T01", "S1-T02", "S1-T03")
+    ] == [651, 627, 616]
+    assert t5a["joint_valid_count"] == 613
+    assert t5a["joint_valid_fraction"] == 613 / 826
+    assert t5a["all_condition_success_count"] == 387
+    assert t5a["all_condition_success_fraction"] == 387 / 826
+    assert t5a["passed"] is False
+    t5b = report["target_coverage"]["direction"]["T5b_R"]
+    assert t5b["target_count"] == 852
+    assert t5b["joint_valid_count"] == 583
+    assert t5b["all_condition_success_count"] == 48
+    assert t5b["passed"] is False
+    for condition in ("S1-T01", "S1-T02", "S1-T03"):
+        detail = report["per_condition_scores"][condition]["direction"]["T5a_L"]
+        assert detail["cell_count"] == 826
+        assert detail["valid_cell_count"] + len(detail["invalid_body_ids"]) == 826
