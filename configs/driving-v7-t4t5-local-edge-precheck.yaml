@@ -1,0 +1,35 @@
+version: 1
+name: v7-t4-t5-anatomy-local-edge-precheck
+observed_on: "2026-09-16"
+source_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+typed_stimulus_protocol: configs/driving-v7-lplc-typed-screen.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: LPLC-T01
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+common_background_frames: 2
+centers:
+  x: [4.5, 14.0, 23.5, 33.0, 42.5]
+  y: [5.5, 11.5, 17.5]
+stimulus:
+  aperture_radius_pixels: 8.0
+  bar_half_width_pixels: 1.5
+  noise_standard_deviation: 0.0
+assignment:
+  source: each_T4_T5_cells_inferred_input_centroid
+  coordinate_transform: global_inferred_T4_T5_bounds_to_48x24_camera
+  grid_assignment: nearest_preregistered_center
+  unmapped_cells_remain_invalid_in_full_denominator: true
+precheck_gate:
+  minimum_direction_populations_to_expand: 1
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  parameter_fit: false
+  labels_changed: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  expand_to_three_conditions_only_after_precheck_gate: true

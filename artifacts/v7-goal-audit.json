@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "feb1748d7961211acc98124e64082536b4155100bbba07bb5736a3d3f1beb266",
-      "src/fly_emotion/driving/v7_goal_audit.py": "f01a2fa98bbfb0196fa5b2df3c5c0613aaea0a3b7be380eed07f3946cca84e8a",
+      "configs/driving-v7-goal-audit.yaml": "f92f73f68aa4847fda54d0fd6a1eecc5ccb0f3341b79e815eef4ff2efe323b43",
+      "src/fly_emotion/driving/v7_goal_audit.py": "cd2c0810fdb302104a7e4e95688c06a83eb8e5804a2d446b7e2f3154a307e555",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -47,6 +47,7 @@
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
+      "artifacts/v7-t4t5-local-edge-precheck.json": "24bb359c7424fdf9417825a27a29cdc22ab3da0e73f0062fcda7c3e4cf5836eb",
       "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
       "artifacts/v7-lplc2-radial-opponency.json": "8305e69bd326a3afba3d350dc9ed9b125b6ceebbd8fa9420a59bded069424aab",
       "artifacts/v7-lplc2-position-coverage.json": "2447e854c6d7b2ec05b49f63e57bed037a1582f0bd8dce2e907644bb8b88e74a",
@@ -249,6 +250,9 @@
         "T4_source_resolved_passing_variants": [],
         "T4_normalized_correlator_best_gate_count": 16,
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
+        "local_edge_precheck_direction_pass_count": 0,
+        "local_edge_precheck_polarity_pass_count": 0,
+        "local_edge_precheck_expand_to_three_conditions": false,
         "typed_LPLC_LC4_gates_passed": false,
         "LPLC2_radial_opponency_gates_passed": false,
         "LPLC2_radial_fixed_target_denominators": {
@@ -502,7 +506,8 @@
         "artifacts/v7-nested-neural-screen.json",
         "artifacts/v7-t4-source-resolved.json",
         "artifacts/v7-t4-normalized-correlator.json",
-        "artifacts/v7-t5-spatial-order.json"
+        "artifacts/v7-t5-spatial-order.json",
+        "artifacts/v7-t4t5-local-edge-precheck.json"
       ]
     },
     {

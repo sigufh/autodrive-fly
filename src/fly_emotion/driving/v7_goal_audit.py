@@ -61,6 +61,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_resolved = reports["t4_source_resolved"]
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t5_spatial_order = reports["t5_spatial_order"]
+    t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     lplc_typed_screen = reports["lplc_typed_screen"]
     lplc2_radial_opponency = reports["lplc2_radial_opponency"]
     lplc2_position_coverage = reports["lplc2_position_coverage"]
@@ -287,6 +288,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"
                 ],
+                "local_edge_precheck_direction_pass_count": t4t5_local_edge_precheck["summary"][
+                    "direction_pass_count"
+                ],
+                "local_edge_precheck_polarity_pass_count": t4t5_local_edge_precheck["summary"][
+                    "polarity_pass_count"
+                ],
+                "local_edge_precheck_expand_to_three_conditions": t4t5_local_edge_precheck[
+                    "summary"
+                ]["expand_to_three_conditions"],
                 "typed_LPLC_LC4_gates_passed": lplc_typed_screen["typed_lplc_lc4_gates_passed"],
                 "LPLC2_radial_opponency_gates_passed": lplc2_radial_opponency[
                     "radial_opponency_mechanism_gates_passed"
@@ -599,6 +609,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_resolved"],
                 config["evidence"]["t4_normalized_correlator"],
                 config["evidence"]["t5_spatial_order"],
+                config["evidence"]["t4t5_local_edge_precheck"],
             ],
         },
         {
