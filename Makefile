@@ -293,6 +293,12 @@ v7-evaluate-lplc-typed-screen:
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 
+v7-freeze-fusion-nested:
+	.venv/bin/autodrive-fly v7-freeze-fusion-nested
+
+v7-evaluate-fusion-nested:
+	.venv/bin/autodrive-fly v7-evaluate-fusion-nested
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

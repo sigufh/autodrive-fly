@@ -1,0 +1,46 @@
+version: 1
+name: v7-fused-neural-navigation-five-condition-protocol
+observed_on: "2026-09-16"
+architecture_evidence: artifacts/v7-neural-goal-fusion.json
+frozen_architecture:
+  global_features: six_bin_current_mean_18
+  local_features: lamina_24_bin_odd_plus_paired_even_times_odd
+  lamina_weight: 0.75
+  ridge_alpha: 1.0
+  heading: EPG_PEN_PEG_yaw_integrator
+  descending: FC2_PFL3_PFL2_DNa02_transparent
+conditions:
+  - condition_id: FUS-T01
+    role: tuning
+    mirror_pair_seeds: [9400, 9401]
+  - condition_id: FUS-T02
+    role: tuning
+    mirror_pair_seeds: [9402, 9403]
+  - condition_id: FUS-T03
+    role: tuning
+    mirror_pair_seeds: [9404, 9405]
+  - condition_id: FUS-C01
+    role: calibration
+    mirror_pair_seeds: [9500, 9501]
+  - condition_id: FUS-F01
+    role: external_final
+    external_manifest:
+      custodian: null
+      commitment_sha256: null
+      committed_at_utc: null
+      retrieval_authorized: false
+      consumed: false
+historical_regression:
+  seed_ranges: [8000-8701, 9100-9201]
+  fit_weight: 0
+  selection_weight: 0
+  calibration_weight: 0
+execution_policy:
+  architecture_frozen_before_new_tuning: true
+  tuning_pair_is_indivisible_cv_unit: true
+  tuning_may_refit_linear_coefficients_only: true
+  calibration_requires_cv_and_full_tuning_pass: true
+  calibration_may_change_candidate: false
+  external_final_requires_custody: true
+  external_final_local_generator_forbidden: true
+  direct_target_activity_injection: false

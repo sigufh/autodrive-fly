@@ -1,0 +1,140 @@
+{
+  "protocol": {
+    "name": "v7-fused-neural-navigation-five-condition-protocol",
+    "dependencies_sha256": {
+      "configs/driving-v7-fusion-nested.yaml": "fd3aa0c3681240abeee7cf98a1704a1821a55e5c372ae1aefbe55deb7de4192a",
+      "src/fly_emotion/driving/v7_fusion_nested.py": "92ed67ce96ef6655adb6cf93ec76e2588b11bfa9447e0713a1024cfe0d992a55",
+      "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042"
+    },
+    "architecture_frozen_before_new_tuning": true,
+    "model_evaluated": false,
+    "parameters_fitted": false,
+    "runtime_modified": false
+  },
+  "frozen_architecture": {
+    "global_features": "six_bin_current_mean_18",
+    "local_features": "lamina_24_bin_odd_plus_paired_even_times_odd",
+    "lamina_weight": 0.75,
+    "ridge_alpha": 1.0,
+    "heading": "EPG_PEN_PEG_yaw_integrator",
+    "descending": "FC2_PFL3_PFL2_DNa02_transparent"
+  },
+  "role_counts": {
+    "tuning": 3,
+    "calibration": 1,
+    "external_final": 1
+  },
+  "local_conditions": [
+    {
+      "condition_id": "FUS-T01",
+      "role": "tuning",
+      "manifests": [
+        {
+          "seed": 9400,
+          "pair_seed": 4700,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "bfb490c5acd1d3319c688f2211379fd3d4d92fb1dfafdb747f8666a06ad795f7"
+        },
+        {
+          "seed": 9401,
+          "pair_seed": 4700,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "88feaee69d817f6872f6a478d1192a4f3d9602a5e52860bb0fcda61ad090ccfd"
+        }
+      ]
+    },
+    {
+      "condition_id": "FUS-T02",
+      "role": "tuning",
+      "manifests": [
+        {
+          "seed": 9402,
+          "pair_seed": 4701,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "f600b1845f91f9f7af8cb9c6175c4806cc3b7937c2bd4884061661d8ed22d3df"
+        },
+        {
+          "seed": 9403,
+          "pair_seed": 4701,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "878d5c29c6df4be1d8ec8999065e74d27fa5bf475f68dc77aad6d986fdef05af"
+        }
+      ]
+    },
+    {
+      "condition_id": "FUS-T03",
+      "role": "tuning",
+      "manifests": [
+        {
+          "seed": 9404,
+          "pair_seed": 4702,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "1a22897c7760c734a32c6c7f49867f96e45fff568e0c2db438b3be0e8413e853"
+        },
+        {
+          "seed": 9405,
+          "pair_seed": 4702,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "b5abcb33d06f78ac8534507257dfede295fcef192d5102401f77fa72fdc60b65"
+        }
+      ]
+    },
+    {
+      "condition_id": "FUS-C01",
+      "role": "calibration",
+      "manifests": [
+        {
+          "seed": 9500,
+          "pair_seed": 4750,
+          "mirror": 1,
+          "obstacle_count": 9,
+          "environment_sha256": "87b917d1fb74792a7d9ad2c23fae443ff26d802374c5a2fd3cf74cee8f6c6192"
+        },
+        {
+          "seed": 9501,
+          "pair_seed": 4750,
+          "mirror": -1,
+          "obstacle_count": 9,
+          "environment_sha256": "d58c03cead87d2baed0223baecadc78fd306637d29aeb212cc074d88b01af43e"
+        }
+      ]
+    }
+  ],
+  "historical_regression": {
+    "seed_ranges": [
+      "8000-8701",
+      "9100-9201"
+    ],
+    "fit_weight": 0,
+    "selection_weight": 0,
+    "calibration_weight": 0
+  },
+  "external_final": {
+    "condition_id": "FUS-F01",
+    "committed": false,
+    "retrieval_authorized": false,
+    "consumed": false,
+    "local_seed_available": false,
+    "local_generator_available": false
+  },
+  "execution_policy": {
+    "architecture_frozen_before_new_tuning": true,
+    "tuning_pair_is_indivisible_cv_unit": true,
+    "tuning_may_refit_linear_coefficients_only": true,
+    "calibration_requires_cv_and_full_tuning_pass": true,
+    "calibration_may_change_candidate": false,
+    "external_final_requires_custody": true,
+    "external_final_local_generator_forbidden": true,
+    "direct_target_activity_injection": false
+  },
+  "advance_to_tuning": true,
+  "advance_to_calibration": false,
+  "advance_to_final": false,
+  "advance_to_navigation_release": false
+}

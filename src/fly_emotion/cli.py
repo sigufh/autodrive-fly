@@ -48,6 +48,8 @@ from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
 from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
+from .driving.v7_fusion_nested import evaluate_v7_fusion_nested
+from .driving.v7_fusion_nested_eval import evaluate_v7_fusion_nested_candidate
 from .driving.v7_gain_audit import evaluate_v7_normalization_gain
 from .driving.v7_geometry_sign import evaluate_v7_geometry_sign
 from .driving.v7_goal_audit import evaluate_v7_goal_coverage
@@ -273,6 +275,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-fc2-goal-memory")
     subparsers.add_parser("v7-evaluate-lplc-typed-screen")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
+    subparsers.add_parser("v7-freeze-fusion-nested")
+    subparsers.add_parser("v7-evaluate-fusion-nested")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -842,6 +846,18 @@ def main() -> None:
     if args.command == "v7-evaluate-neural-goal-fusion":
         report = evaluate_v7_neural_goal_fusion(root)
         target = root / "artifacts/v7-neural-goal-fusion.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-freeze-fusion-nested":
+        report = evaluate_v7_fusion_nested(root)
+        target = root / "artifacts/v7-fusion-nested.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-fusion-nested":
+        report = evaluate_v7_fusion_nested_candidate(root)
+        target = root / "artifacts/v7-fusion-nested-eval.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
