@@ -224,6 +224,12 @@ v7-evaluate-neural-topology-controls:
 v7-evaluate-nested-neural-screen:
 	.venv/bin/autodrive-fly v7-evaluate-nested-neural-screen
 
+v7-evaluate-t5-spatial-order:
+	.venv/bin/autodrive-fly v7-evaluate-t5-spatial-order
+
+v7-evaluate-lplc2-phenotype:
+	.venv/bin/autodrive-fly v7-evaluate-lplc2-phenotype
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

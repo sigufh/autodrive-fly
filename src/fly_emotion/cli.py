@@ -54,6 +54,7 @@ from .driving.v7_local_input_audit import (
     evaluate_v7_t4_input_coverage,
 )
 from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
+from .driving.v7_lplc2_phenotype import evaluate_v7_lplc2_phenotype
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_nested_neural_screen import evaluate_v7_nested_neural_screen
 from .driving.v7_neural_channel_controls import evaluate_v7_neural_channel_controls
@@ -90,6 +91,7 @@ from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
+from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
 from .driving.v7_target_fit import evaluate_v7_target_fit_contract
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
@@ -225,6 +227,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-channel-controls")
     subparsers.add_parser("v7-evaluate-neural-topology-controls")
     subparsers.add_parser("v7-evaluate-nested-neural-screen")
+    subparsers.add_parser("v7-evaluate-t5-spatial-order")
+    subparsers.add_parser("v7-evaluate-lplc2-phenotype")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -656,6 +660,18 @@ def main() -> None:
     if args.command == "v7-evaluate-nested-neural-screen":
         report = evaluate_v7_nested_neural_screen(root)
         target = root / "artifacts/v7-nested-neural-screen.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t5-spatial-order":
+        report = evaluate_v7_t5_spatial_order(root)
+        target = root / "artifacts/v7-t5-spatial-order.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-lplc2-phenotype":
+        report = evaluate_v7_lplc2_phenotype(root)
+        target = root / "artifacts/v7-lplc2-phenotype.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

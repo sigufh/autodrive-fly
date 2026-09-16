@@ -1,0 +1,31 @@
+version: 1
+name: v7-t5-spatial-order-reachability
+observed_on: "2026-09-15"
+nested_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_ids: [S1-T01, S1-T02, S1-T03]
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+sample_seed: 20260915
+targets_per_population: 16
+source_groups:
+  fast: [Tm1, Tm2, Tm4]
+  spatial_delayed: [Tm9]
+  global_modulator: [CT1]
+lags_frames: [0, 1, 2, 3]
+ct1_modes: [separate_only, inhibitory_gain]
+reachability_gate:
+  minimum_signed_contrast: 0.10
+  minimum_b_d_reachable_fraction: 0.25
+boundary:
+  tuning_only: true
+  exploratory_reachability_envelope: true
+  runtime_modified: false
+  calibration_evaluated: false
+  final_evaluated: false
+  target_activity_injection: false
+  labels_or_thresholds_changed: false
+  connect_to_navigation: false
+  ct1_spatial_pooling: false
