@@ -281,6 +281,9 @@ v7-evaluate-lamina-goal:
 v7-evaluate-lamina-goal-symmetry:
 	.venv/bin/autodrive-fly v7-evaluate-lamina-goal-symmetry
 
+v7-evaluate-t4-normalized-correlator:
+	.venv/bin/autodrive-fly v7-evaluate-t4-normalized-correlator
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

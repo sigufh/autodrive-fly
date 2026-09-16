@@ -1,0 +1,30 @@
+version: 1
+name: v7-t4-conductance-normalized-correlator-screen
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+conductance_config: configs/driving-v7-t4-conductance.yaml
+source_audit_evidence: artifacts/v7-t4-source-audit.json
+condition_ids: [S1-T01, S1-T02, S1-T03]
+retinal_backend: linear_luminance
+source_groups:
+  center: [Mi1, Tm3]
+  proximal: [Mi4, C3]
+correlator:
+  formula: orientation*(proximal_now*center_previous-center_now*proximal_previous)/(abs(forward)+abs(reverse)+1e-6)
+  orientation: sign_of_proximal_minus_Mi1_centroid_on_frozen_eye_axis
+  modes: [multiplicative, additive]
+  gains: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+selection_order:
+  - maximize_passed_population_condition_head_gates
+  - minimize_gain
+  - lexical_mode
+boundary:
+  tuning_only: true
+  global_gain_shared_by_all_T4_targets: true
+  subtype_labels_used_by_dynamics: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  external_final_evaluated: false
+  runtime_modified: false
+  advance_requires_all_24_gates: true
