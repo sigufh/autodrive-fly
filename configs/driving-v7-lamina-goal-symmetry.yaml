@@ -14,6 +14,12 @@ candidates:
   - name: odd_continuous
     feature_parity: odd_only
     output: continuous
+  - name: paired_bilinear_continuous
+    feature_parity: paired_even_times_odd
+    output: continuous
+  - name: odd_plus_paired_bilinear_continuous
+    feature_parity: odd_plus_paired_even_times_odd
+    output: continuous
   - name: odd_hold_010
     feature_parity: odd_only
     output: hold

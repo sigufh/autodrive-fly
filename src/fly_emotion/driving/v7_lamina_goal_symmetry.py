@@ -23,9 +23,26 @@ CONFIG = Path("configs/driving-v7-lamina-goal-symmetry.yaml")
 IMPLEMENTATION = Path("src/fly_emotion/driving/v7_lamina_goal_symmetry.py")
 
 
-def _fit_goal(cache: dict, seeds: list[int], alpha: float, indices: np.ndarray) -> dict:
+def _transform_features(matrix: np.ndarray, parity: str, group_count: int) -> np.ndarray:
+    even = matrix[:, :group_count]
+    odd = matrix[:, group_count:]
+    if parity == "even_and_odd":
+        return matrix
+    if parity == "odd_only":
+        return odd
+    paired = even * odd
+    if parity == "paired_even_times_odd":
+        return paired
+    if parity == "odd_plus_paired_even_times_odd":
+        return np.concatenate((odd, paired), axis=1)
+    raise ValueError(f"unknown FC2 feature parity: {parity}")
+
+
+def _fit_goal(
+    cache: dict, seeds: list[int], alpha: float, parity: str, group_count: int
+) -> dict:
     full_matrix = np.concatenate([cache[seed]["features"] for seed in seeds])
-    matrix = full_matrix[:, indices]
+    matrix = _transform_features(full_matrix, parity, group_count)
     targets = np.concatenate([cache[seed]["targets"] for seed in seeds])
     mean = np.mean(matrix, axis=0)
     scale = np.std(matrix, axis=0)
@@ -38,7 +55,8 @@ def _fit_goal(cache: dict, seeds: list[int], alpha: float, indices: np.ndarray) 
     denominator = np.sum((targets - np.mean(targets)) ** 2)
     return {
         "alpha": float(alpha),
-        "feature_indices": indices.tolist(),
+        "feature_parity": parity,
+        "group_count": group_count,
         "mean": mean.tolist(),
         "scale": scale.tolist(),
         "coefficient": coefficient.tolist(),
@@ -50,8 +68,10 @@ def _fit_goal(cache: dict, seeds: list[int], alpha: float, indices: np.ndarray) 
 
 
 def _raw_goal(model: dict, feature: np.ndarray) -> float:
-    indices = np.asarray(model["feature_indices"], dtype=np.int32)
-    normalized = (feature[indices] - np.asarray(model["mean"])) / np.asarray(model["scale"])
+    transformed = _transform_features(
+        feature[None, :], model["feature_parity"], int(model["group_count"])
+    )[0]
+    normalized = (transformed - np.asarray(model["mean"])) / np.asarray(model["scale"])
     return float(np.clip(np.r_[1.0, normalized] @ np.asarray(model["coefficient"]), -1.0, 1.0))
 
 
@@ -144,10 +164,6 @@ def evaluate_v7_lamina_goal_symmetry(root: Path) -> dict:
     seeds = [seed for pair in pairs for seed in pair]
     local_features, cache = _collect(root, base, lamina_config, seeds, teacher)
     group_count = len(local_features.groups)
-    indices_by_parity = {
-        "even_and_odd": np.arange(2 * group_count, dtype=np.int32),
-        "odd_only": np.arange(group_count, 2 * group_count, dtype=np.int32),
-    }
     global_features, global_cache = _collect_teacher_features(root, base, seeds, teacher)
     global_variant = {
         "name": "current_mean",
@@ -157,11 +173,19 @@ def evaluate_v7_lamina_goal_symmetry(root: Path) -> dict:
     global_mask = _feature_mask(base, global_features, global_variant)
     summaries = []
     for candidate in config["candidates"]:
-        indices = indices_by_parity[candidate["feature_parity"]]
+        transformed_dimension = _transform_features(
+            np.zeros((1, 2 * group_count)), candidate["feature_parity"], group_count
+        ).shape[1]
         folds = []
         for held_out in pairs:
             train = [seed for seed in seeds if seed not in held_out]
-            goal_model = _fit_goal(cache, train, float(config["ridge_alpha"]), indices)
+            goal_model = _fit_goal(
+                cache,
+                train,
+                float(config["ridge_alpha"]),
+                candidate["feature_parity"],
+                group_count,
+            )
             global_model = _fit_from_cache(
                 global_features,
                 global_cache,
@@ -199,7 +223,7 @@ def evaluate_v7_lamina_goal_symmetry(root: Path) -> dict:
         summaries.append(
             {
                 "candidate": candidate,
-                "feature_count": int(len(indices)),
+                "feature_count": int(transformed_dimension),
                 "held_out_success_count": sum(item["success"] for item in all_episodes),
                 "held_out_obstacles_passed": sum(
                     item["obstacles_passed"] for item in all_episodes

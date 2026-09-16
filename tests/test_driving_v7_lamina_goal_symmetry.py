@@ -22,13 +22,26 @@ def test_odd_only_and_discrete_goals_do_not_improve_closed_loop() -> None:
     results = {item["candidate"]["name"]: item for item in report["candidate_summaries"]}
     assert [
         results[name]["held_out_obstacles_passed"]
-        for name in ("full_continuous", "odd_continuous", "odd_hold_010", "odd_ternary")
-    ] == [40, 20, 20, 16]
+        for name in (
+            "full_continuous",
+            "odd_continuous",
+            "paired_bilinear_continuous",
+            "odd_plus_paired_bilinear_continuous",
+            "odd_hold_010",
+            "odd_ternary",
+        )
+    ] == [40, 20, 36, 46, 20, 16]
     assert results["full_continuous"]["held_out_success_count"] == 2
     assert results["odd_continuous"]["held_out_success_count"] == 0
     assert results["odd_hold_010"]["held_out_success_count"] == 0
     assert results["odd_ternary"]["held_out_success_count"] == 0
-    assert report["selected_candidate"]["name"] == "full_continuous"
+    assert results["paired_bilinear_continuous"]["held_out_success_count"] == 2
+    assert results["odd_plus_paired_bilinear_continuous"][
+        "held_out_success_count"
+    ] == 4
+    assert report["selected_candidate"]["name"] == (
+        "odd_plus_paired_bilinear_continuous"
+    )
     assert report["cross_validation_passed"] is False
     assert report["advance_to_full_tuning"] is False
     assert report["advance_to_calibration"] is False
