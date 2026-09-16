@@ -18,7 +18,7 @@ import yaml
 from scipy import sparse
 
 from fly_emotion.connectome.graph import load_graph
-from fly_emotion.driving.v7 import HORIZONTAL_PREFERENCE, VERTICAL_PREFERENCE
+from fly_emotion.driving.v7 import HORIZONTAL_PREFERENCE, VERTICAL_PREFERENCE, V7VisualProbe
 from fly_emotion.driving.v7_geometry_sign import _sha256
 from fly_emotion.driving.v7_lplc_typed_screen import _condition_stimuli
 from fly_emotion.driving.v7_nested_neural_screen import MassBalancedVisualProbe
@@ -624,6 +624,53 @@ def _selected_receptor_edge_audit(
     }
 
 
+def _full_retina_projection_ab(root: Path, config: dict, typed: dict) -> dict:
+    probe = V7VisualProbe(
+        root,
+        brain_substeps=int(config["brain_substeps_per_frame"]),
+        baseline_frames=int(config["baseline_frames"]),
+        retinal_backend=config["retinal_backend"],
+        retinal_geometry="legacy_proxy_v2",
+        dynamics_backend=config["dynamics_backend"],
+    )
+    populations = _layer_nodes(probe, config["layer_localization"])
+    scores = {name: [] for name in populations}
+    per_condition = {}
+    conditions = {row["condition_id"]: row for row in typed["conditions"]}
+    for condition_id in config["condition_ids"]:
+        stimuli = _condition_stimuli(conditions[condition_id], typed)
+        outward = _layer_traces(probe, stimuli["lplc2_outward"], populations)
+        inward = _layer_traces(probe, stimuli["lplc2_inward"], populations)
+        condition_scores = {}
+        for name, nodes in populations.items():
+            score = _layer_score(
+                probe.graph.body_ids[nodes],
+                outward[name],
+                inward[name],
+                config["layer_localization"],
+            )
+            scores[name].append(score)
+            condition_scores[name] = _compact_layer_score(score)
+        per_condition[condition_id] = condition_scores
+    consistency = {
+        name: _layer_consistency(values, config["layer_localization"])
+        for name, values in scores.items()
+    }
+    return {
+        "post_failure_localization_only": True,
+        "parameter_fit": False,
+        "runtime_modified": False,
+        "calibration_evaluated": False,
+        "baseline": config["input_projection_ab"]["baseline"],
+        "comparator": config["input_projection_ab"]["comparator"],
+        "full_mapped_receptor_count": int(probe.retina.size),
+        "full_mapping_is_exact_mirror": False,
+        "per_condition": per_condition,
+        "population_consistency": consistency,
+        "passing_populations": [name for name, result in consistency.items() if result["passed"]],
+    }
+
+
 def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     typed_path = Path(config["typed_stimulus_protocol"])
@@ -765,6 +812,7 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
         name: _layer_consistency(scores, config["layer_localization"])
         for name, scores in layer_scores.items()
     }
+    full_retina_ab = _full_retina_projection_ab(root, config, typed)
     return {
         "protocol": {
             "name": config["name"],
@@ -823,6 +871,7 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
             ],
             "selected_receptor_edge_audit": receptor_edge_audit,
         },
+        "input_projection_ab": full_retina_ab,
         "radial_opponency_mechanism_gates_passed": bool(mechanism_passed and mirror_passed),
         "advance_to_calibration": bool(mechanism_passed and mirror_passed),
         "advance_to_runtime_integration": False,

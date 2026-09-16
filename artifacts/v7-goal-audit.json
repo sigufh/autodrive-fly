@@ -4,7 +4,7 @@
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "65fe09a4610452f9c2adf375c6f1a3f19afe741269676a388ba84756dc1dd498",
-      "src/fly_emotion/driving/v7_goal_audit.py": "9fadc19b1a7ed665445f14b964e4f1d3d32a06106e6c02df6d015c644b4f41a7",
+      "src/fly_emotion/driving/v7_goal_audit.py": "f3e5011d2c853f342b059e87ebe9f0953700cc335bed30a3d75a08ea6d21ffe7",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -48,7 +48,7 @@
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
-      "artifacts/v7-lplc2-radial-opponency.json": "cd3389da2e1a84413a5897b983407c42d7876ab5c53b4f07418ecf9dc2464a76",
+      "artifacts/v7-lplc2-radial-opponency.json": "17fbc267bd21c337329db45165d7664758481ea1fcacbdc2efad838e108245cf",
       "artifacts/v7-heading-ring.json": "2d68ed0763908ed451f0f57f8a4e8f8c9143c68813bf8b85d030622bc3816dd5",
       "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
       "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
@@ -265,7 +265,16 @@
         ],
         "mapped_R1_R6_all_condition_separated_fraction": 0.9895506792058516,
         "visual_graph_unselected_R1_R6_count": 1463,
-        "selected_R1_R6_renormalization_AB_gate_restored": false
+        "selected_R1_R6_renormalization_AB_gate_restored": false,
+        "full_retina_projection_AB_passing_populations": [
+          "mapped_R1-R6"
+        ],
+        "full_retina_mapping_is_exact_mirror": false,
+        "full_retina_lamina_all_condition_separated_fraction": {
+          "L1": 0.16385135135135134,
+          "L2": 0.13771781899943789,
+          "L3": 0.17381489841986456
+        }
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",

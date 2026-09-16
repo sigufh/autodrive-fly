@@ -319,6 +319,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "selected_R1_R6_renormalization_AB_gate_restored": lplc2_radial_opponency[
                     "layer_localization"
                 ]["selected_receptor_edge_audit"]["renormalization_AB_gate_restored"],
+                "full_retina_projection_AB_passing_populations": lplc2_radial_opponency[
+                    "input_projection_ab"
+                ]["passing_populations"],
+                "full_retina_mapping_is_exact_mirror": lplc2_radial_opponency[
+                    "input_projection_ab"
+                ]["full_mapping_is_exact_mirror"],
+                "full_retina_lamina_all_condition_separated_fraction": {
+                    name: lplc2_radial_opponency["input_projection_ab"]["population_consistency"][
+                        name
+                    ]["all_condition_separated_fraction"]
+                    for name in ("L1", "L2", "L3")
+                },
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",

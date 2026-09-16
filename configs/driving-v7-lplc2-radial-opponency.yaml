@@ -49,6 +49,13 @@ layer_localization:
   minimum_all_target_separated_fraction: 0.60
   minimum_joint_valid_fraction: 0.80
   minimum_all_condition_separated_fraction: 0.60
+input_projection_ab:
+  post_failure_localization_only: true
+  baseline: mass_balanced_common_column_1914
+  comparator: legacy_proxy_v2_full_mapped_retina
+  parameter_fit: false
+  runtime_modified: false
+  calibration_evaluated: false
 boundary:
   tuning_only: true
   label_informed_mechanism_diagnostic: true

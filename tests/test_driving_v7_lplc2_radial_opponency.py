@@ -89,6 +89,17 @@ def test_radial_opponency_has_full_structural_coverage_but_fails_functional_gate
     assert edge_audit["visual_graph_keeps_unselected_R1_R6_outputs"] is True
     assert edge_audit["renormalization_AB_parameter_search"] is False
     assert edge_audit["renormalization_AB_gate_restored"] is False
+    full = report["input_projection_ab"]
+    assert full["post_failure_localization_only"] is True
+    assert full["parameter_fit"] is False
+    assert full["runtime_modified"] is False
+    assert full["calibration_evaluated"] is False
+    assert full["full_mapped_receptor_count"] == 3344
+    assert full["full_mapping_is_exact_mirror"] is False
+    assert full["passing_populations"] == ["mapped_R1-R6"]
+    assert full["population_consistency"]["mapped_R1-R6"]["all_condition_separated_count"] == 3268
+    for population in ("L1", "L2", "L3", "Mi1", "Tm1", "T4a", "T5a"):
+        assert full["population_consistency"][population]["passed"] is False
     assert report["radial_opponency_mechanism_gates_passed"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False
