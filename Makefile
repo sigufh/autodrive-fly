@@ -221,6 +221,9 @@ v7-evaluate-neural-channel-controls:
 v7-evaluate-neural-topology-controls:
 	.venv/bin/autodrive-fly v7-evaluate-neural-topology-controls
 
+v7-evaluate-nested-neural-screen:
+	.venv/bin/autodrive-fly v7-evaluate-nested-neural-screen
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 

@@ -57,6 +57,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     neural_channels_calibration = reports["neural_channels_calibration"]
     neural_channel_controls = reports["neural_channel_controls"]
     neural_topology_controls = reports["neural_topology_controls"]
+    nested_neural_screen = reports["nested_neural_screen"]
     baseline_hashes_valid = all(
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
@@ -251,6 +252,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "structured_neural_real_topology_advantage": neural_topology_controls[
                     "real_topology_advantage_passed"
                 ],
+                "nested_neural_strict_screen": nested_neural_screen["summaries"],
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -484,6 +486,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["neural_channels_calibration"],
                 config["evidence"]["neural_channel_controls"],
                 config["evidence"]["neural_topology_controls"],
+                config["evidence"]["nested_neural_screen"],
             ],
         },
         {

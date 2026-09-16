@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "784d1afbdd299d3592533c13d49d6c118e255f26d8845017cd2b07f05be9fb3c",
-      "src/fly_emotion/driving/v7_goal_audit.py": "d41c98ad8e7715f5ad58b2ac05ad1f48da1e5e543de988c426db20b96600ee88",
+      "configs/driving-v7-goal-audit.yaml": "265d31751dc0bb7ea0853c418b361d4a3737a335f37f62338016688168ba137c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "562a11b8fb667a2b0939df0f6952586a0470758779c3edb4adacf7547dc15d75",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -42,7 +42,8 @@
       "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
       "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76",
       "artifacts/v7-neural-channel-controls.json": "9115c8d47b8535b53a99c2fb2d7061b5a356a63fd7a56d8cc48310ce4dc96608",
-      "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70"
+      "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70",
+      "artifacts/v7-nested-neural-screen.json": "3966bb23dd8faf3ae98a4557d96176d0285949d2de354b78ece311521298e3aa"
     }
   },
   "objective_items": {
@@ -183,7 +184,41 @@
             "total_obstacles_passed": 8
           }
         },
-        "structured_neural_real_topology_advantage": true
+        "structured_neural_real_topology_advantage": true,
+        "nested_neural_strict_screen": {
+          "S1-T01": {
+            "direction_pass_count": 3,
+            "polarity_pass_count": 3,
+            "looming_pass_count": 0,
+            "mirror_pass_count": 18,
+            "mirror_total": 18,
+            "passed": false
+          },
+          "S1-T02": {
+            "direction_pass_count": 3,
+            "polarity_pass_count": 2,
+            "looming_pass_count": 0,
+            "mirror_pass_count": 18,
+            "mirror_total": 18,
+            "passed": false
+          },
+          "S1-T03": {
+            "direction_pass_count": 3,
+            "polarity_pass_count": 0,
+            "looming_pass_count": 0,
+            "mirror_pass_count": 18,
+            "mirror_total": 18,
+            "passed": false
+          },
+          "aggregate": {
+            "direction_pass_count": 3,
+            "polarity_pass_count": 3,
+            "looming_pass_count": 0,
+            "mirror_pass_count": 54,
+            "mirror_total": 54,
+            "passed": false
+          }
+        }
       },
       "missing": [
         "complete T4/T5 direction and ON/OFF response gates",
@@ -450,7 +485,8 @@
         "artifacts/v7-neural-channels-tuning.json",
         "artifacts/v7-neural-channels-calibration.json",
         "artifacts/v7-neural-channel-controls.json",
-        "artifacts/v7-neural-topology-controls.json"
+        "artifacts/v7-neural-topology-controls.json",
+        "artifacts/v7-nested-neural-screen.json"
       ]
     },
     {

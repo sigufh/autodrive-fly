@@ -55,6 +55,7 @@ from .driving.v7_local_input_audit import (
 )
 from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
+from .driving.v7_nested_neural_screen import evaluate_v7_nested_neural_screen
 from .driving.v7_neural_channel_controls import evaluate_v7_neural_channel_controls
 from .driving.v7_neural_channels import (
     evaluate_v7_neural_channels_calibration,
@@ -223,6 +224,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-channels-calibration")
     subparsers.add_parser("v7-evaluate-neural-channel-controls")
     subparsers.add_parser("v7-evaluate-neural-topology-controls")
+    subparsers.add_parser("v7-evaluate-nested-neural-screen")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -648,6 +650,12 @@ def main() -> None:
     if args.command == "v7-evaluate-neural-topology-controls":
         report = evaluate_v7_neural_topology_controls(root)
         target = root / "artifacts/v7-neural-topology-controls.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-nested-neural-screen":
+        report = evaluate_v7_nested_neural_screen(root)
+        target = root / "artifacts/v7-nested-neural-screen.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

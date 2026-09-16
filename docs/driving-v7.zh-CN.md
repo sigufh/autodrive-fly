@@ -1188,6 +1188,14 @@ permutation 而错误地与真实图一致；测试已补上并重跑，证据�
 `artifacts/v7-neural-topology-controls.json`。这仍不是严格度分布随机图、参数匹配
 linear/MLP/GRU 或外部 final 的替代。
 
+闭环通过后又单独运行了不含教师/动作分数的严格细胞级屏幕。质量守恒 R1–R6 输入经
+普通 typed visual subgraph，在 `S1-T01/T02/T03` 共 69 条刺激上逐群体评分：每个条件
+方向均为 3/16；极性随条件从 3/16 降到 2/16、0/16；LPLC1/LPLC2/LC4 looming
+始终为 0/6；镜像为 18/18、18/18、18/18，聚合 54/54。证据见
+`artifacts/v7-nested-neural-screen.json`。因此九障碍闭环成功不能替代生理表型门，当前
+优化应保留输入与镜像，修正错向的水平/垂直 T4/T5 动力学，并为 LPLC2/LC4 建立局部
+looming 机制；LPLC1 继续使用 near-collision 专用刺激。
+
 ## 文献依据
 
 - Lappalainen 等，连接组约束视觉模型：
