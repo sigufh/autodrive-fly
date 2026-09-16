@@ -250,7 +250,7 @@ def _build_radial_projection(
     return matrices, {"source_positions": position_metadata, "populations": populations}
 
 
-def _radial_responses(
+def _radial_traces(
     probe: MassBalancedVisualProbe, stimulus, matrices: dict[str, dict[str, sparse.csr_matrix]]
 ) -> tuple[dict[str, np.ndarray], str]:
     state = np.zeros(probe.graph.node_count, dtype=np.float32)
@@ -267,7 +267,7 @@ def _radial_responses(
             state[probe.retina.node_indices] = baseline_drive
     signed = {side: pools["outward"] - pools["inward"] for side, pools in matrices.items()}
     baselines = {side: matrix @ state.astype(np.float64) for side, matrix in signed.items()}
-    peaks = {side: np.full(matrix.shape[0], -np.inf) for side, matrix in signed.items()}
+    traces = {side: [] for side in signed}
     previous = baseline_values.copy()
     retinal_hash = hashlib.sha256()
     for image in stimulus.frames:
@@ -283,8 +283,8 @@ def _radial_responses(
         state64 = state.astype(np.float64)
         for side, matrix in signed.items():
             response = matrix @ state64 - baselines[side]
-            peaks[side] = np.maximum(peaks[side], response)
-    return peaks, retinal_hash.hexdigest()
+            traces[side].append(response)
+    return {side: np.stack(values) for side, values in traces.items()}, retinal_hash.hexdigest()
 
 
 def _score(
@@ -360,6 +360,98 @@ def _coverage(scores: list[dict], thresholds: dict) -> dict:
     }
 
 
+def _temporal_score(
+    cell_ids: np.ndarray, outward: np.ndarray, inward: np.ndarray, config: dict
+) -> dict:
+    ids = np.asarray(cell_ids, dtype=np.int64)
+    outward = np.asarray(outward, dtype=np.float64)
+    inward = np.asarray(inward, dtype=np.float64)
+    if outward.shape != inward.shape or outward.ndim != 2 or outward.shape[1] != len(ids):
+        raise ValueError("temporal traces must be equal time-by-target arrays")
+    scale = np.mean(np.abs(outward), axis=0) + np.mean(np.abs(inward), axis=0)
+    finite = np.all(np.isfinite(outward), axis=0) & np.all(np.isfinite(inward), axis=0)
+    valid = finite & (scale >= float(config["minimum_valid_scale"]))
+    forward_error = np.full(len(ids), np.nan, dtype=np.float64)
+    reverse_error = np.full(len(ids), np.nan, dtype=np.float64)
+    forward_error[valid] = (
+        np.mean(np.abs(outward[:, valid] - inward[:, valid]), axis=0) / scale[valid]
+    )
+    reverse_error[valid] = (
+        np.mean(np.abs(outward[:, valid] - inward[::-1, valid]), axis=0) / scale[valid]
+    )
+    threshold = float(config["minimum_median_normalized_trace_separation"])
+    separated = valid & (forward_error >= threshold)
+    valid_fraction = float(np.mean(valid))
+    median_separation = float(np.median(forward_error[valid])) if np.any(valid) else None
+    separated_fraction = float(np.mean(separated))
+    gates = {
+        "valid_cell_fraction": valid_fraction >= float(config["minimum_joint_valid_fraction"]),
+        "median_normalized_trace_separation": median_separation is not None
+        and median_separation >= threshold,
+        "all_target_separated_fraction": separated_fraction
+        >= float(config["minimum_all_target_separated_fraction"]),
+    }
+    return {
+        "target_count": int(len(ids)),
+        "valid_target_count": int(np.count_nonzero(valid)),
+        "valid_target_fraction": valid_fraction,
+        "median_normalized_forward_trace_error": median_separation,
+        "median_normalized_time_reversed_trace_error": (
+            float(np.median(reverse_error[valid])) if np.any(valid) else None
+        ),
+        "all_target_separated_count": int(np.count_nonzero(separated)),
+        "all_target_separated_fraction": separated_fraction,
+        "cell_ids": ids.tolist(),
+        "normalized_forward_trace_error": [
+            float(value) if np.isfinite(value) else None for value in forward_error
+        ],
+        "normalized_time_reversed_trace_error": [
+            float(value) if np.isfinite(value) else None for value in reverse_error
+        ],
+        "gates": gates,
+        "passed": all(gates.values()),
+    }
+
+
+def _temporal_coverage(scores: list[dict], config: dict) -> dict:
+    body_ids = np.asarray(scores[0]["cell_ids"], dtype=np.int64)
+    values = []
+    for score in scores:
+        if score["cell_ids"] != body_ids.tolist():
+            raise ValueError("temporal target IDs changed across tuning conditions")
+        values.append(
+            np.asarray(
+                [
+                    value if value is not None else np.nan
+                    for value in score["normalized_forward_trace_error"]
+                ],
+                dtype=np.float64,
+            )
+        )
+    matrix = np.stack(values)
+    joint_valid = np.all(np.isfinite(matrix), axis=0)
+    threshold = float(config["minimum_median_normalized_trace_separation"])
+    all_separated = np.all(np.isfinite(matrix) & (matrix >= threshold), axis=0)
+    joint_fraction = float(np.mean(joint_valid))
+    separated_fraction = float(np.mean(all_separated))
+    gates = {
+        "joint_valid_fraction": joint_fraction >= float(config["minimum_joint_valid_fraction"]),
+        "all_condition_separated_fraction": separated_fraction
+        >= float(config["minimum_all_condition_separated_fraction"]),
+    }
+    return {
+        "target_count": int(len(body_ids)),
+        "joint_valid_count": int(np.count_nonzero(joint_valid)),
+        "joint_valid_fraction": joint_fraction,
+        "all_condition_separated_count": int(np.count_nonzero(all_separated)),
+        "all_condition_separated_fraction": separated_fraction,
+        "joint_invalid_body_ids": body_ids[~joint_valid].tolist(),
+        "all_condition_unseparated_body_ids": body_ids[~all_separated].tolist(),
+        "gates": gates,
+        "passed": all(gates.values()),
+    }
+
+
 def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     typed_path = Path(config["typed_stimulus_protocol"])
@@ -387,12 +479,18 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
     per_condition = {}
     stimulus_manifest = []
     raw_scores = {side: {name: [] for name in config["comparisons"]} for side in SIDES}
+    temporal_scores = {side: [] for side in SIDES}
+    temporal_per_condition = {}
     for condition_id in condition_ids:
         stimuli = _condition_stimuli(conditions[condition_id], typed)
         selected = {name: item for name, item in stimuli.items() if name.startswith("lplc2_")}
         responses = {}
+        response_traces = {}
         for name, stimulus in selected.items():
-            responses[name], retinal_hash = _radial_responses(probe, stimulus, matrices)
+            response_traces[name], retinal_hash = _radial_traces(probe, stimulus, matrices)
+            responses[name] = {
+                side: np.max(values, axis=0) for side, values in response_traces[name].items()
+            }
             stimulus_manifest.append(
                 {
                     "identity": stimulus.name,
@@ -401,6 +499,7 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
                 }
             )
         condition_scores = {}
+        condition_temporal = {}
         for side in SIDES:
             ids = probe.graph.body_ids[probe.populations[f"LPLC2_{side}"]]
             condition_scores[side] = {}
@@ -413,7 +512,16 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
                 )
                 raw_scores[side][name].append(score)
                 condition_scores[side][name] = _compact(score)
+            temporal = _temporal_score(
+                ids,
+                response_traces["lplc2_outward"][side],
+                response_traces["lplc2_inward"][side],
+                config["temporal_identifiability"],
+            )
+            temporal_scores[side].append(temporal)
+            condition_temporal[side] = temporal
         per_condition[condition_id] = condition_scores
+        temporal_per_condition[condition_id] = condition_temporal
     consistency = {
         side: {
             name: {
@@ -451,6 +559,19 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
         result["passed"] for side in consistency.values() for result in side.values()
     )
     mirror_passed = all(result["passed"] for result in mirror.values())
+    temporal_consistency = {
+        side: {
+            "passing_condition_count": int(sum(score["passed"] for score in scores)),
+            "required_condition_count": len(condition_ids),
+            "coverage": _temporal_coverage(scores, config["temporal_identifiability"]),
+            "passed": bool(
+                all(score["passed"] for score in scores)
+                and _temporal_coverage(scores, config["temporal_identifiability"])["passed"]
+            ),
+        }
+        for side, scores in temporal_scores.items()
+    }
+    temporal_passed = all(result["passed"] for result in temporal_consistency.values())
     return {
         "protocol": {
             "name": config["name"],
@@ -489,6 +610,14 @@ def evaluate_v7_lplc2_radial_opponency(root: Path) -> dict:
         "per_condition_scores": per_condition,
         "population_consistency": consistency,
         "mirror_summary": mirror,
+        "temporal_identifiability": {
+            "post_failure_localization_only": True,
+            "parameter_search": False,
+            "metric": config["temporal_identifiability"]["metric"],
+            "per_condition": temporal_per_condition,
+            "population_consistency": temporal_consistency,
+            "passed": bool(temporal_passed),
+        },
         "radial_opponency_mechanism_gates_passed": bool(mechanism_passed and mirror_passed),
         "advance_to_calibration": bool(mechanism_passed and mirror_passed),
         "advance_to_runtime_integration": False,

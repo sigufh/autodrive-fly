@@ -55,6 +55,21 @@ def test_radial_opponency_has_full_structural_coverage_but_fails_functional_gate
         for result in mechanisms.values()
     )
     assert all(result["passed"] for result in report["mirror_summary"].values())
+    temporal = report["temporal_identifiability"]
+    assert temporal["post_failure_localization_only"] is True
+    assert temporal["parameter_search"] is False
+    assert temporal["passed"] is False
+    assert temporal["population_consistency"]["L"]["coverage"]["joint_valid_fraction"] == 1.0
+    assert temporal["population_consistency"]["R"]["coverage"]["joint_valid_fraction"] == 1.0
+    assert temporal["population_consistency"]["L"]["coverage"]["all_condition_separated_count"] == 4
+    assert temporal["population_consistency"]["R"]["coverage"]["all_condition_separated_count"] == 9
+    for condition in temporal["per_condition"].values():
+        for side in condition.values():
+            assert side["median_normalized_forward_trace_error"] < 0.03
+            assert (
+                side["median_normalized_time_reversed_trace_error"]
+                > side["median_normalized_forward_trace_error"]
+            )
     assert report["radial_opponency_mechanism_gates_passed"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False

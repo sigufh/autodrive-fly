@@ -1250,6 +1250,12 @@ centroid，再用冻结的 T4a-d/T5a-d 方向标签，将真实 `T4/T5→LPLC2` 
 71.3%–74.5%，低于 80%。三组镜像误差均通过（最大约 0.020），说明失败不是简单左右
 不对称，而是 inward 与 motion-free 选择性及全细胞稳定性不足。证据见
 `artifacts/v7-lplc2-radial-opponency.json`；calibration 未运行，不能接入闭环或视觉 gate。
+失败后的固定时序定位进一步显示：185 个 target 的 outward/inward trace 都有足够幅度，
+但同时间轨迹的中位归一化差仅 0.011–0.027，三条件持续可分的 target 只有左 4/94、
+右 9/91；把 inward trace 时间反转后误差反而增至约 0.20–0.30。因此不是简单换一个
+LPLC2 峰值窗口就能恢复 radial selectivity，而是当前上游 T4/T5 状态没有保留足够的
+outward/inward 时间顺序。该检查是失败后定位、没有搜索参数，下一步应回到上游局部
+方向动力学，不再继续调整 LPLC2 下游边权。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

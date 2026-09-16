@@ -278,30 +278,35 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "real_topology_advantage_passed"
                 ],
                 "nested_neural_strict_screen": nested_neural_screen["summaries"],
-                "T4_source_resolved_passing_variants": t4_source_resolved[
-                    "passing_variants"
-                ],
+                "T4_source_resolved_passing_variants": t4_source_resolved["passing_variants"],
                 "T4_normalized_correlator_best_gate_count": t4_normalized_correlator[
                     "selected_candidate"
                 ]["passed_gate_count"],
-                "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order[
-                    "b_d_reachability"
-                ]["reachable_fraction"],
-                "typed_LPLC_LC4_gates_passed": lplc_typed_screen[
-                    "typed_lplc_lc4_gates_passed"
+                "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
+                    "reachable_fraction"
                 ],
+                "typed_LPLC_LC4_gates_passed": lplc_typed_screen["typed_lplc_lc4_gates_passed"],
                 "LPLC2_radial_opponency_gates_passed": lplc2_radial_opponency[
                     "radial_opponency_mechanism_gates_passed"
                 ],
-                "LPLC2_radial_fixed_target_denominators": lplc2_radial_opponency[
-                    "protocol"
-                ]["fixed_target_denominators"],
-                "LPLC2_radial_direction_labels_used": lplc2_radial_opponency[
-                    "protocol"
-                ]["direction_labels_used_by_mechanism"],
-                "LPLC2_radial_may_authorize_strict_visual_gate": lplc2_radial_opponency[
-                    "protocol"
-                ]["may_authorize_strict_visual_gate"],
+                "LPLC2_radial_fixed_target_denominators": lplc2_radial_opponency["protocol"][
+                    "fixed_target_denominators"
+                ],
+                "LPLC2_radial_direction_labels_used": lplc2_radial_opponency["protocol"][
+                    "direction_labels_used_by_mechanism"
+                ],
+                "LPLC2_radial_may_authorize_strict_visual_gate": lplc2_radial_opponency["protocol"][
+                    "may_authorize_strict_visual_gate"
+                ],
+                "LPLC2_radial_temporal_identifiability_passed": lplc2_radial_opponency[
+                    "temporal_identifiability"
+                ]["passed"],
+                "LPLC2_radial_all_condition_separated_fraction": {
+                    side: result["coverage"]["all_condition_separated_fraction"]
+                    for side, result in lplc2_radial_opponency["temporal_identifiability"][
+                        "population_consistency"
+                    ].items()
+                },
             },
             "missing": [
                 "complete T4/T5 direction and ON/OFF response gates",
@@ -341,12 +346,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "structured_neural_channels_release_authorized": neural_channels_calibration[
                     "advance_to_navigation_release"
                 ],
-                "EPG_PEN_PEG_heading_assays_passed": heading_ring["heading_assays"][
-                    "passed"
+                "EPG_PEN_PEG_heading_assays_passed": heading_ring["heading_assays"]["passed"],
+                "heading_tuning_obstacles": heading_ring["navigation_arms"]["neural_heading"][
+                    "tuning_obstacles_passed"
                 ],
-                "heading_tuning_obstacles": heading_ring["navigation_arms"][
-                    "neural_heading"
-                ]["tuning_obstacles_passed"],
                 "heading_fresh_calibration_obstacles": heading_ring["navigation_arms"][
                     "neural_heading"
                 ]["calibration_obstacles_passed"],
@@ -365,12 +368,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "stage1_pass": stage1_pass,
                 "turn_termination_passed": fc2_pfl_dna["turn_termination_assay"]["passed"],
                 "readout_action_equivalence": fc2_pfl_dna["readout_action_equivalence"],
-                "PFL3_to_DNa02_edges": fc2_pfl_dna["malecns_structure"]["edges"][
-                    "PFL3->DNa02"
-                ]["edge_count"],
-                "PFL3_to_DNa01_edges": fc2_pfl_dna["malecns_structure"]["edges"][
-                    "PFL3->DNa01"
-                ]["edge_count"],
+                "PFL3_to_DNa02_edges": fc2_pfl_dna["malecns_structure"]["edges"]["PFL3->DNa02"][
+                    "edge_count"
+                ],
+                "PFL3_to_DNa01_edges": fc2_pfl_dna["malecns_structure"]["edges"]["PFL3->DNa01"][
+                    "edge_count"
+                ],
                 "fresh_calibration_passed": fc2_pfl_dna["calibration_passed"],
             },
         },
@@ -392,23 +395,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "LPLC_LC_joint_is_causal": neural_episode_controls["causal_gates"][
                     "all_LPLC_LC_is_causal"
                 ],
-                "heading_is_causal": neural_episode_controls["causal_gates"][
-                    "heading_is_causal"
-                ],
+                "heading_is_causal": neural_episode_controls["causal_gates"]["heading_is_causal"],
                 "FC2_PFL_DNa_controls_passed": fc2_pfl_dna["causal_controls_passed"],
                 "danger_throttle_tuning_passed": danger_throttle["tuning_passed"],
-                "R1_R6_visual_corridor_tuning_passed": visual_corridor_goal[
-                    "tuning_passed"
-                ],
-                "six_bin_neural_corridor_CV_passed": neural_corridor[
-                    "cross_validation_passed"
-                ],
+                "R1_R6_visual_corridor_tuning_passed": visual_corridor_goal["tuning_passed"],
+                "six_bin_neural_corridor_CV_passed": neural_corridor["cross_validation_passed"],
                 "local_column_neural_corridor_CV_passed": local_column_corridor[
                     "cross_validation_passed"
                 ],
-                "best_local_dynamics_backend": neural_dynamics_local[
-                    "selected_backend"
-                ],
+                "best_local_dynamics_backend": neural_dynamics_local["selected_backend"],
                 "best_local_dynamics_closed_loop_passed": neural_dynamics_local[
                     "cross_validation_passed"
                 ],
@@ -416,21 +411,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "cross_validation_passed"
                 ],
                 "best_local_visual_family": visual_layer_locality["selected_family"],
-                "lamina_direct_goal_obstacles": lamina_goal[
-                    "total_obstacles_passed"
+                "lamina_direct_goal_obstacles": lamina_goal["total_obstacles_passed"],
+                "lamina_equivariant_goal_obstacles": lamina_goal_symmetry["selected_summary"][
+                    "held_out_obstacles_passed"
                 ],
-                "lamina_equivariant_goal_obstacles": lamina_goal_symmetry[
-                    "selected_summary"
-                ]["held_out_obstacles_passed"],
                 "FC2_goal_memory_obstacles": fc2_goal_memory["selected_summary"][
                     "held_out_obstacles_passed"
                 ],
                 "complementary_goal_fusion_development_CV_passed": neural_goal_fusion[
                     "cross_validation_passed"
                 ],
-                "fusion_nested_fresh_CV_passed": fusion_nested_eval[
-                    "cross_validation"
-                ]["passed"],
+                "fusion_nested_fresh_CV_passed": fusion_nested_eval["cross_validation"]["passed"],
             },
         },
         {
@@ -459,12 +450,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     name: item["success_count"]
                     for name, item in neural_topology_controls["controls"].items()
                 },
-                "compact_neural_CV_passed": neural_episode_cv[
-                    "cross_validation_passed"
-                ],
-                "compact_neural_calibration_passed": neural_episode_cv[
-                    "calibration_passed"
-                ],
+                "compact_neural_CV_passed": neural_episode_cv["cross_validation_passed"],
+                "compact_neural_calibration_passed": neural_episode_cv["calibration_passed"],
                 "compact_neural_real_topology_advantage": neural_episode_controls[
                     "real_topology_advantage_passed"
                 ],
@@ -499,28 +486,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "closed_loop_calibration_passed": closed_loop_calibration["calibration_passed"],
                 "closed_loop_final_evaluated": closed_loop_calibration["final_evaluated"],
                 "navigation_nested_role_counts": navigation_nested["role_counts"],
-                "navigation_nested_CV_passed": navigation_nested_eval[
-                    "cross_validation"
-                ]["passed"],
-                "navigation_nested_tuning_passed": navigation_nested_eval[
-                    "tuning_passed"
-                ],
+                "navigation_nested_CV_passed": navigation_nested_eval["cross_validation"]["passed"],
+                "navigation_nested_tuning_passed": navigation_nested_eval["tuning_passed"],
                 "navigation_nested_calibration_attempt_count": navigation_nested_eval[
                     "calibration_receipt"
                 ]["attempt_count"],
-                "navigation_external_final_committed": navigation_nested[
-                    "external_final"
-                ]["committed"],
-                "fusion_nested_role_counts": fusion_nested["role_counts"],
-                "fusion_nested_CV_passed": fusion_nested_eval["cross_validation"][
-                    "passed"
+                "navigation_external_final_committed": navigation_nested["external_final"][
+                    "committed"
                 ],
+                "fusion_nested_role_counts": fusion_nested["role_counts"],
+                "fusion_nested_CV_passed": fusion_nested_eval["cross_validation"]["passed"],
                 "fusion_nested_calibration_attempt_count": fusion_nested_eval[
                     "calibration_receipt"
                 ]["attempt_count"],
-                "fusion_external_final_committed": fusion_nested["external_final"][
-                    "committed"
-                ],
+                "fusion_external_final_committed": fusion_nested["external_final"]["committed"],
             },
         },
         {
