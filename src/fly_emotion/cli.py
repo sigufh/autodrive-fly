@@ -87,6 +87,7 @@ from .driving.v7_stage1_nested import evaluate_v7_stage1_nested
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
+from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
@@ -229,6 +230,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-nested-neural-screen")
     subparsers.add_parser("v7-evaluate-t5-spatial-order")
     subparsers.add_parser("v7-evaluate-lplc2-phenotype")
+    subparsers.add_parser("v7-evaluate-t4-source-resolved")
     train_neural.add_argument("--publish", action="store_true")
     return parser
 
@@ -672,6 +674,12 @@ def main() -> None:
     if args.command == "v7-evaluate-lplc2-phenotype":
         report = evaluate_v7_lplc2_phenotype(root)
         target = root / "artifacts/v7-lplc2-phenotype.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-source-resolved":
+        report = evaluate_v7_t4_source_resolved(root)
+        target = root / "artifacts/v7-t4-source-resolved.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

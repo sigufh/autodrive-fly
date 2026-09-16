@@ -1,0 +1,92 @@
+version: 1
+name: v7-t4-source-resolved-tuning-screen
+observed_on: "2026-09-16"
+nested_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+source_audit_evidence: artifacts/v7-t4-source-audit.json
+published_conductance_config: configs/driving-v7-t4-conductance.yaml
+condition_ids: [S1-T01, S1-T02, S1-T03]
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+target_populations: [T4a_L, T4a_R, T4b_L, T4b_R]
+source_groups:
+  center: [Mi1, Tm3]
+  proximal: [Mi4, C3]
+  wide_field: [CT1]
+  distal: [Mi9]
+source_delays_substeps:
+  Mi1: 1
+  Tm3: 0
+  Mi4: 2
+  C3: 2
+  CT1: 2
+  Mi9: 3
+target_gain: 1.8
+spatial_pilot:
+  target_sample_seed: 20260916
+  targets_per_population: 16
+  lags_frames: [0, 1, 2, 3]
+  correlation_forms: [center_proximal, proximal_center, center_distal, combined]
+  output_signs: [1, -1]
+  minimum_contrast: 0.10
+  pilot_informed_only: true
+  may_authorize_candidate: false
+variants:
+  - name: pooled_typed_baseline
+    implementation: pooled_typed
+  - name: published_conductance_reversed_branch_axis_native_timebase
+    implementation: published_conductance_reversed_branch_axis
+    retinal_geometry: reversed_nested_t4_axis_v1
+    brain_substeps_per_frame: 4
+    baseline_frames: 8
+  - name: source_resolved_declared_delay
+    implementation: source_resolved
+    retinal_geometry: mass_balanced_hungarian
+    delays: declared
+    active_groups: [center, proximal, wide_field, distal]
+  - name: source_resolved_branch_axis_declared_delay
+    implementation: source_resolved
+    retinal_geometry: frozen_branch_axis
+    delays: declared
+    active_groups: [center, proximal, wide_field, distal]
+  - name: source_resolved_reversed_branch_axis_declared_delay
+    implementation: source_resolved
+    retinal_geometry: frozen_branch_axis_reversed
+    delays: declared
+    active_groups: [center, proximal, wide_field, distal]
+  - name: source_resolved_zero_delay
+    implementation: source_resolved
+    delays: zero
+    active_groups: [center, proximal, wide_field, distal]
+  - name: no_center
+    implementation: source_resolved
+    delays: declared
+    active_groups: [proximal, wide_field, distal]
+  - name: no_proximal
+    implementation: source_resolved
+    delays: declared
+    active_groups: [center, wide_field, distal]
+  - name: no_wide_field_ct1
+    implementation: source_resolved
+    delays: declared
+    active_groups: [center, proximal, distal]
+  - name: no_distal_mi9
+    implementation: source_resolved
+    delays: declared
+    active_groups: [center, proximal, wide_field]
+gates:
+  minimum_joint_valid_fraction: 0.80
+  minimum_all_condition_success_fraction: 0.60
+  maximum_mirror_error: 0.20
+boundary:
+  tuning_only: true
+  parameter_fit: false
+  subtype_conditioned_dynamics: false
+  labels_used_by_dynamics: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false

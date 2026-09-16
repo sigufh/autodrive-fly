@@ -230,6 +230,9 @@ v7-evaluate-t5-spatial-order:
 v7-evaluate-lplc2-phenotype:
 	.venv/bin/autodrive-fly v7-evaluate-lplc2-phenotype
 
+v7-evaluate-t4-source-resolved:
+	.venv/bin/autodrive-fly v7-evaluate-t4-source-resolved
+
 calibrate-policy:
 	.venv/bin/autodrive-fly calibrate-policy
 
