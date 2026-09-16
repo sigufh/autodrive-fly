@@ -69,3 +69,16 @@ def test_neural_heading_passes_tuning_and_controls_but_fails_fresh_calibration()
     assert report["navigation_passed"] is False
     assert report["advance_to_fc2_pfl_comparison"] is False
     assert report["advance_to_navigation_release"] is False
+
+
+def test_calibration_failure_is_visual_readout_not_heading_ring() -> None:
+    attribution = json.loads(REPORT.read_text())["calibration_failure_attribution"]
+    assert attribution["role"] == "post_failure_attribution_only_not_parameter_selection"
+    assert attribution["raw_heading_matches_neural_heading_failure"] is True
+    assert attribution["r1r6_local_upper_bound_passes_both"] is True
+    assert attribution["diagnosis"] == "frozen_neural_visual_readout_generalization_gap"
+    assert [item["obstacles_passed"] for item in attribution["raw_heading_reference"]] == [3, 3]
+    assert [
+        item["obstacles_passed"]
+        for item in attribution["r1r6_local_visual_upper_bound"]
+    ] == [9, 9]

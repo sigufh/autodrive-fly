@@ -15,8 +15,11 @@ from fly_emotion.driving.v7_neural_channels import (
     StructuredNeuralFeatures,
     _mirror_checks,
     _model_digest,
+    _neural_episode,
     _predict,
 )
+from fly_emotion.driving.v7_r1r6_local import _episode as _r1r6_local_episode
+from fly_emotion.driving.v7_r1r6_multi import build_mass_balanced_retina
 
 CONFIG = Path("configs/driving-v7-heading-ring.yaml")
 IMPLEMENTATION = Path("src/fly_emotion/driving/v7_heading_ring.py")
@@ -296,6 +299,48 @@ def evaluate_v7_heading_ring(root: Path) -> dict:
         or arms[name]["tuning_obstacles_passed"] < neural["tuning_obstacles_passed"]
         for name in ("frozen_heading", "reversed_yaw_update")
     )
+    attribution_seeds = [int(seed) for seed in config["navigation"]["calibration_seeds"]]
+    raw_heading_reference = [
+        _neural_episode(features, tuning["model"], teacher, seed)
+        for seed in attribution_seeds
+    ]
+    r1r6_config = yaml.safe_load((root / "configs/driving-v7-r1r6-local.yaml").read_text())
+    r1r6_candidate = json.loads(
+        (root / "artifacts/v7-r1r6-local-tuning.json").read_text()
+    )["selected_candidate"]
+    retina = build_mass_balanced_retina(root)
+    r1r6_upper_bound = [
+        _r1r6_local_episode(retina, r1r6_config, r1r6_candidate, seed)
+        for seed in attribution_seeds
+    ]
+    raw_matches_ring = all(
+        raw["terminal_reason"] == ring["terminal_reason"]
+        and raw["obstacles_passed"] == ring["obstacles_passed"]
+        and raw["steps"] == ring["steps"]
+        for raw, ring in zip(raw_heading_reference, neural["calibration"], strict=True)
+    )
+    attribution = {
+        "role": "post_failure_attribution_only_not_parameter_selection",
+        "raw_heading_reference": [
+            {key: value for key, value in item.items() if key != "trace"}
+            for item in raw_heading_reference
+        ],
+        "r1r6_local_visual_upper_bound": [
+            {key: value for key, value in item.items() if key != "trace"}
+            for item in r1r6_upper_bound
+        ],
+        "raw_heading_matches_neural_heading_failure": bool(raw_matches_ring),
+        "r1r6_local_upper_bound_passes_both": all(
+            item["success"] and item["obstacles_passed"] == 9
+            for item in r1r6_upper_bound
+        ),
+        "diagnosis": (
+            "frozen_neural_visual_readout_generalization_gap"
+            if raw_matches_ring
+            and all(item["success"] for item in r1r6_upper_bound)
+            else "attribution_inconclusive"
+        ),
+    }
     return {
         "protocol": {
             "name": config["name"],
@@ -319,6 +364,7 @@ def evaluate_v7_heading_ring(root: Path) -> dict:
         "malecns_structure": _central_complex_structure(root),
         "heading_assays": _heading_assays(config),
         "navigation_arms": arms,
+        "calibration_failure_attribution": attribution,
         "navigation_passed": bool(navigation_passed),
         "causal_controls_passed": bool(controls_passed),
         "advance_to_fc2_pfl_comparison": bool(navigation_passed and controls_passed),

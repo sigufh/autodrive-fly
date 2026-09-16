@@ -3,7 +3,7 @@
     "name": "v7-epg-pen-peg-heading-ring",
     "dependencies_sha256": {
       "configs/driving-v7-heading-ring.yaml": "0933edfef539902cf1f9ee1365b39cd8ed741e2de7fe856452aa4504f2cdabb3",
-      "src/fly_emotion/driving/v7_heading_ring.py": "359f900f254f06196557231ce7be05ebfbedc3c43a986af2887045881b0ef406",
+      "src/fly_emotion/driving/v7_heading_ring.py": "608074c0b0c325e939a5d60011e14fe8a9f7afa6825d0960bf62325bd09ba0ca",
       "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
       "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
       "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76"
@@ -721,6 +721,58 @@
         }
       ]
     }
+  },
+  "calibration_failure_attribution": {
+    "role": "post_failure_attribution_only_not_parameter_selection",
+    "raw_heading_reference": [
+      {
+        "seed": 8400,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 3,
+        "distance": 47.831188035555726,
+        "steps": 175,
+        "maximum_absolute_lateral_position": 1.3997659929693527
+      },
+      {
+        "seed": 8401,
+        "terminal_reason": "obstacle",
+        "success": false,
+        "obstacles_passed": 3,
+        "distance": 47.83118803555535,
+        "steps": 175,
+        "maximum_absolute_lateral_position": 1.3997659929704942
+      }
+    ],
+    "r1r6_local_visual_upper_bound": [
+      {
+        "seed": 8400,
+        "pair_seed": 4200,
+        "mirror": 1,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.07919813960311,
+        "steps": 446,
+        "maximum_reconstruction_error": 4.440892098500626e-16,
+        "maximum_absolute_lateral_position": 1.723199278173434
+      },
+      {
+        "seed": 8401,
+        "pair_seed": 4200,
+        "mirror": -1,
+        "terminal_reason": "success",
+        "success": true,
+        "obstacles_passed": 9,
+        "distance": 120.07919813960311,
+        "steps": 446,
+        "maximum_reconstruction_error": 4.440892098500626e-16,
+        "maximum_absolute_lateral_position": 1.7231992781734258
+      }
+    ],
+    "raw_heading_matches_neural_heading_failure": true,
+    "r1r6_local_upper_bound_passes_both": true,
+    "diagnosis": "frozen_neural_visual_readout_generalization_gap"
   },
   "navigation_passed": false,
   "causal_controls_passed": true,
