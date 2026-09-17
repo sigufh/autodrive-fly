@@ -179,9 +179,10 @@ def _score_energies(
     y_centers: np.ndarray,
     scoring: dict,
     temporal_reduction: str = "maximum",
-) -> tuple[dict, dict]:
+) -> tuple[dict, dict, dict]:
     condition_scores = {}
     raw = {}
+    preferred_energy = {}
     for name, nodes in populations.items():
         family, subtype, side = name[:2], name[2], name[-1]
         data = family_data[family]
@@ -221,6 +222,10 @@ def _score_energies(
             return _peak(values, selected_vector, temporal_reduction)
 
         preferred = response(expected_polarity, expected_direction)
+        preferred_energy[name] = {
+            "median_absolute_preferred_energy": float(np.nanmedian(np.abs(preferred))),
+            "mean_absolute_preferred_energy": float(np.nanmean(np.abs(preferred))),
+        }
         direction_score = strict_contrast_summary(
             probe.graph.body_ids[nodes],
             preferred,
@@ -238,7 +243,7 @@ def _score_energies(
             "direction": _compact(direction_score),
             "polarity": _compact(polarity_score),
         }
-    return condition_scores, raw
+    return condition_scores, raw, preferred_energy
 
 
 def evaluate_v7_three_hop_moment(root: Path) -> dict:
@@ -311,7 +316,7 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
                             energies[family][(xi, yi, polarity, direction)] = _energy(
                                 probe, stimulus, family_data[family]["matrix"], x, y, channel
                             )
-        condition_scores, condition_raw = _score_energies(
+        condition_scores, condition_raw, condition_energy = _score_energies(
             probe,
             populations,
             family_data,
@@ -377,7 +382,7 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
                                         channel,
                                     )
             for control_name, energy in control_energies.items():
-                scores, _ = _score_energies(
+                scores, _, control_energy_summary = _score_energies(
                     probe,
                     populations,
                     family_data,
@@ -398,7 +403,12 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
                     "passed_as_failure_control": not any(
                         value["direction"]["passed"] for value in scores.values()
                     ),
+                    "preferred_energy_by_population": control_energy_summary,
                 }
+            controls["ordered_reference"] = {
+                "condition_id": condition_id,
+                "preferred_energy_by_population": condition_energy,
+            }
     consistency = {}
     for name, heads in raw_scores.items():
         consistency[name] = {}
@@ -423,6 +433,18 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
     )
     temporal_shuffle_failed = controls["temporal_shuffle"]["passed_as_failure_control"]
     static_failed = controls["static_sham"]["passed_as_failure_control"]
+    energy_ratios = {}
+    for name in populations:
+        ordered_energy = controls["ordered_reference"]["preferred_energy_by_population"][name][
+            "mean_absolute_preferred_energy"
+        ]
+        shuffled_energy = controls["temporal_shuffle"]["preferred_energy_by_population"][name][
+            "mean_absolute_preferred_energy"
+        ]
+        energy_ratios[name] = float(shuffled_energy / max(ordered_energy, 1e-12))
+    attenuation_threshold = float(
+        config["controls"]["maximum_shuffle_to_ordered_energy_ratio_for_diagnostic_attenuation"]
+    )
     controls["coordinate_shuffle"] = {
         "evaluated": False,
         "reason": "not run because temporal-shuffle prerequisite failed",
@@ -463,6 +485,18 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
         "controls": controls,
         "temporal_shuffle_control_passed": temporal_shuffle_failed,
         "static_sham_control_passed": static_failed,
+        "temporal_shuffle_energy_attenuation": {
+            "shuffle_to_ordered_mean_absolute_energy_ratio_by_population": energy_ratios,
+            "maximum_allowed_ratio": attenuation_threshold,
+            "attenuated_population_count": int(
+                sum(value <= attenuation_threshold for value in energy_ratios.values())
+            ),
+            "population_count": len(energy_ratios),
+            "all_populations_attenuated": all(
+                value <= attenuation_threshold for value in energy_ratios.values()
+            ),
+            "diagnostic_only_does_not_authorize_candidate": True,
+        },
         "bilateral_direction_populations": bilateral_direction,
         "interpretation": {
             "diagnostic_output": "target-specific two-dimensional path-weighted optical flow",

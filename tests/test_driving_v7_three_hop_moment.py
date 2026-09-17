@@ -47,6 +47,16 @@ def test_three_hop_main_pass_is_rejected_by_temporal_shuffle() -> None:
     assert report["controls"]["coordinate_shuffle"]["evaluated"] is False
     assert report["controls"]["direction_reversal"]["evaluated"] is False
     assert report["temporal_shuffle_control_passed"] is False
+    attenuation = report["temporal_shuffle_energy_attenuation"]
+    assert attenuation["maximum_allowed_ratio"] == 0.5
+    assert attenuation["attenuated_population_count"] == 0
+    assert attenuation["population_count"] == 16
+    assert attenuation["all_populations_attenuated"] is False
+    assert (
+        min(attenuation["shuffle_to_ordered_mean_absolute_energy_ratio_by_population"].values())
+        > 3.0
+    )
+    assert attenuation["diagnostic_only_does_not_authorize_candidate"] is True
     assert report["strict_three_hop_gates_passed"] is False
     assert report["advance_to_target_dynamics"] is False
     assert report["advance_to_calibration"] is False

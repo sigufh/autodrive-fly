@@ -1349,6 +1349,9 @@ proximal、distal 三池均为 0/8。最接近的 `T4d_R center` 中位对比约
 依赖正确时间顺序，不能称 Reichardt 或 T4/T5 神经方向选择。按顺序门，坐标打乱和
 标签反转不再运行；候选不写入 target dynamics、不进 calibration 或闭环。证据见
 `artifacts/v7-three-hop-moment.json`。
+进一步比较绝对能量后，时间打乱的 shuffle/ordered 比在全部 16 个群体中为约
+3.4–7.6，没有任何群体低于预注册 0.5 衰减线；乱序反而制造了更大的帧间跳跃。因而
+不能用“shuffle 仍有方向符号但能量已经衰减”挽救该候选，它明确奖励无序大跳跃。
 此外该诊断输出本质是 target-specific 二维光流向量，最终才按冻结亚型标签投影；标签虽
 未参与光流生成，这仍不是 T4/T5 cell 自身的标量活动。因此即使主评分为 32/32，也不能
 单独验证 target direction selectivity。后续候选必须用解剖本身固定每个 target 的标量

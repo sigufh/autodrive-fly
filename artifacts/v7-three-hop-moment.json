@@ -2,8 +2,8 @@
   "protocol": {
     "name": "v7-three-hop-on-off-moment-reichardt",
     "dependencies_sha256": {
-      "configs/driving-v7-three-hop-moment.yaml": "a1ffc58850598935b0c98568a5f9277bff10e1dcfae0e40e52e05139e9ed219e",
-      "src/fly_emotion/driving/v7_three_hop_moment.py": "401b834f6d9c74326b91469a7cac3f280daa8cb16017aae8a98f1cf7f877e111",
+      "configs/driving-v7-three-hop-moment.yaml": "3638c572b2c5b8e6fa06872ae3c2706b0d0031de17b487e882a11f4f19a588d3",
+      "src/fly_emotion/driving/v7_three_hop_moment.py": "efd0c80de0f21cf12cf72f0b957c9b1af9c9e405f9006cbf7edacb1c5d33c4d9",
       "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
       "src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py": "2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049",
       "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
@@ -165408,13 +165408,214 @@
       "condition_id": "S1-T01",
       "direction_pass_count": 16,
       "polarity_pass_count": 16,
-      "passed_as_failure_control": false
+      "passed_as_failure_control": false,
+      "preferred_energy_by_population": {
+        "T4a_L": {
+          "median_absolute_preferred_energy": 0.004505471517232373,
+          "mean_absolute_preferred_energy": 0.0037333533785671768
+        },
+        "T4a_R": {
+          "median_absolute_preferred_energy": 0.001518843840355364,
+          "mean_absolute_preferred_energy": 0.0014382924535594685
+        },
+        "T4b_L": {
+          "median_absolute_preferred_energy": 0.0031870403683683284,
+          "mean_absolute_preferred_energy": 0.002777460086084125
+        },
+        "T4b_R": {
+          "median_absolute_preferred_energy": 0.001760325609591385,
+          "mean_absolute_preferred_energy": 0.0015429938169082447
+        },
+        "T4c_L": {
+          "median_absolute_preferred_energy": 0.0038455873706976897,
+          "mean_absolute_preferred_energy": 0.0033387325012470058
+        },
+        "T4c_R": {
+          "median_absolute_preferred_energy": 0.002888777097545617,
+          "mean_absolute_preferred_energy": 0.002582627965852506
+        },
+        "T4d_L": {
+          "median_absolute_preferred_energy": 0.0031943649346952135,
+          "mean_absolute_preferred_energy": 0.0030636328561853996
+        },
+        "T4d_R": {
+          "median_absolute_preferred_energy": 0.0026421390493690427,
+          "mean_absolute_preferred_energy": 0.002369150902072728
+        },
+        "T5a_L": {
+          "median_absolute_preferred_energy": 0.004505471519712898,
+          "mean_absolute_preferred_energy": 0.003901299513095524
+        },
+        "T5a_R": {
+          "median_absolute_preferred_energy": 0.0015188438407302755,
+          "mean_absolute_preferred_energy": 0.001488932088780442
+        },
+        "T5b_L": {
+          "median_absolute_preferred_energy": 0.0031870403699476536,
+          "mean_absolute_preferred_energy": 0.002889436909192146
+        },
+        "T5b_R": {
+          "median_absolute_preferred_energy": 0.001760325610004387,
+          "mean_absolute_preferred_energy": 0.00160839419443647
+        },
+        "T5c_L": {
+          "median_absolute_preferred_energy": 0.0038455873717906067,
+          "mean_absolute_preferred_energy": 0.003467611723959746
+        },
+        "T5c_R": {
+          "median_absolute_preferred_energy": 0.0028887770980498976,
+          "mean_absolute_preferred_energy": 0.0026745069972726777
+        },
+        "T5d_L": {
+          "median_absolute_preferred_energy": 0.0031943649338384847,
+          "mean_absolute_preferred_energy": 0.0030635817217283734
+        },
+        "T5d_R": {
+          "median_absolute_preferred_energy": 0.0026421390498941807,
+          "mean_absolute_preferred_energy": 0.002423137809745885
+        }
+      }
     },
     "static_sham": {
       "condition_id": "S1-T01",
       "direction_pass_count": 0,
       "polarity_pass_count": 0,
-      "passed_as_failure_control": true
+      "passed_as_failure_control": true,
+      "preferred_energy_by_population": {
+        "T4a_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4a_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4b_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4b_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4c_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4c_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4d_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T4d_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5a_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5a_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5b_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5b_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5c_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5c_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5d_L": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        },
+        "T5d_R": {
+          "median_absolute_preferred_energy": 0.0,
+          "mean_absolute_preferred_energy": 0.0
+        }
+      }
+    },
+    "ordered_reference": {
+      "condition_id": "S1-T01",
+      "preferred_energy_by_population": {
+        "T4a_L": {
+          "median_absolute_preferred_energy": 0.0008748525101064126,
+          "mean_absolute_preferred_energy": 0.00068850432885789
+        },
+        "T4a_R": {
+          "median_absolute_preferred_energy": 0.0002989306521478238,
+          "mean_absolute_preferred_energy": 0.000267777797094947
+        },
+        "T4b_L": {
+          "median_absolute_preferred_energy": 0.0010629868830871413,
+          "mean_absolute_preferred_energy": 0.0008101144021378343
+        },
+        "T4b_R": {
+          "median_absolute_preferred_energy": 0.00020997336349247415,
+          "mean_absolute_preferred_energy": 0.0002019772977318532
+        },
+        "T4c_L": {
+          "median_absolute_preferred_energy": 0.0009083686348322055,
+          "mean_absolute_preferred_energy": 0.0007798918047474529
+        },
+        "T4c_R": {
+          "median_absolute_preferred_energy": 0.00043796566608170315,
+          "mean_absolute_preferred_energy": 0.0003866045742919454
+        },
+        "T4d_L": {
+          "median_absolute_preferred_energy": 0.0007116942588730917,
+          "mean_absolute_preferred_energy": 0.0006587378097016927
+        },
+        "T4d_R": {
+          "median_absolute_preferred_energy": 0.0004147864308925826,
+          "mean_absolute_preferred_energy": 0.00036405904254357144
+        },
+        "T5a_L": {
+          "median_absolute_preferred_energy": 0.000874852510167325,
+          "mean_absolute_preferred_energy": 0.000723889012570021
+        },
+        "T5a_R": {
+          "median_absolute_preferred_energy": 0.00029893065215297007,
+          "mean_absolute_preferred_energy": 0.0002827349103736287
+        },
+        "T5b_L": {
+          "median_absolute_preferred_energy": 0.001062986883172432,
+          "mean_absolute_preferred_energy": 0.0008420288147701499
+        },
+        "T5b_R": {
+          "median_absolute_preferred_energy": 0.00020997336350160985,
+          "mean_absolute_preferred_energy": 0.00021227903961199986
+        },
+        "T5c_L": {
+          "median_absolute_preferred_energy": 0.0009083686350256893,
+          "mean_absolute_preferred_energy": 0.0008218177305222932
+        },
+        "T5c_R": {
+          "median_absolute_preferred_energy": 0.00043796566610656185,
+          "mean_absolute_preferred_energy": 0.0004105290212912147
+        },
+        "T5d_L": {
+          "median_absolute_preferred_energy": 0.00071169425894863,
+          "mean_absolute_preferred_energy": 0.0006766374497854188
+        },
+        "T5d_R": {
+          "median_absolute_preferred_energy": 0.0004147864308956747,
+          "mean_absolute_preferred_energy": 0.0003732989005168789
+        }
+      }
     },
     "coordinate_shuffle": {
       "evaluated": false,
@@ -165427,6 +165628,31 @@
   },
   "temporal_shuffle_control_passed": false,
   "static_sham_control_passed": true,
+  "temporal_shuffle_energy_attenuation": {
+    "shuffle_to_ordered_mean_absolute_energy_ratio_by_population": {
+      "T4a_L": 5.4224109015555015,
+      "T4a_R": 5.371216244076755,
+      "T4b_L": 3.428478840463279,
+      "T4b_R": 7.6394418295304485,
+      "T4c_L": 4.281020111922018,
+      "T4c_R": 6.680283001261719,
+      "T4d_L": 4.650762125788341,
+      "T4d_R": 6.507600760360684,
+      "T5a_L": 5.389361415011331,
+      "T5a_R": 5.266177023604363,
+      "T5b_L": 3.431517851299282,
+      "T5b_R": 7.576792307786329,
+      "T5c_L": 4.21944136171893,
+      "T5c_R": 6.514781802418488,
+      "T5d_L": 4.527656166090014,
+      "T5d_R": 6.491146388030472
+    },
+    "maximum_allowed_ratio": 0.5,
+    "attenuated_population_count": 0,
+    "population_count": 16,
+    "all_populations_attenuated": false,
+    "diagnostic_only_does_not_authorize_candidate": true
+  },
   "bilateral_direction_populations": [
     "T4a",
     "T4b",

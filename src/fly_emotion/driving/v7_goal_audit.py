@@ -314,6 +314,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "three_hop_static_sham_control_passed": three_hop_moment[
                     "static_sham_control_passed"
                 ],
+                "three_hop_temporal_shuffle_attenuated_population_count": three_hop_moment[
+                    "temporal_shuffle_energy_attenuation"
+                ]["attenuated_population_count"],
+                "three_hop_temporal_shuffle_minimum_energy_ratio": min(
+                    three_hop_moment["temporal_shuffle_energy_attenuation"][
+                        "shuffle_to_ordered_mean_absolute_energy_ratio_by_population"
+                    ].values()
+                ),
                 "three_hop_strict_gates_passed": three_hop_moment["strict_three_hop_gates_passed"],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"

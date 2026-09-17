@@ -29,6 +29,7 @@ controls:
   coordinate_shuffle_seed: 20260917
   direction_reversal: true
   temporal_shuffle_seed: 20260917
+  maximum_shuffle_to_ordered_energy_ratio_for_diagnostic_attenuation: 0.50
   temporal_and_static_sham_condition: S1-T01
   sequential_execution: [temporal_shuffle, static_sham, coordinate_shuffle, direction_reversal]
   stop_after_first_failed_control: true
