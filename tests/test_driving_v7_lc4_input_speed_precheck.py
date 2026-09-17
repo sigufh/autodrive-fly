@@ -38,6 +38,14 @@ def test_lc4_direct_input_lacks_full_denominator_positive_speed_code() -> None:
         "median_response_by_speed"
     ][-1]
     assert report["mirror"]["peak_positive_input_derivative"]["passed"] is True
+    excitatory = report["readouts"]["peak_positive_excitatory_input_derivative"]
+    assert excitatory["L"]["valid_cell_count"] == 0
+    assert excitatory["R"]["valid_cell_count"] == 0
+    inhibitory = report["readouts"]["peak_positive_inhibitory_input_derivative"]
+    assert inhibitory["L"]["monotonic_cell_count"] == 63
+    assert inhibitory["R"]["monotonic_cell_count"] == 47
+    assert inhibitory["L"]["valid_cell_count"] == 0
+    assert inhibitory["R"]["valid_cell_count"] == 0
     assert report["LC4_input_speed_precheck_passed"] is False
     assert report["expand_to_three_conditions"] is False
     assert report["advance_to_calibration"] is False

@@ -4,7 +4,7 @@
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "7daa1fd5f6c3f0d5a914f81d0fce0dd3f3eb987ff2e4f9db38c797b516e6ad99",
-      "src/fly_emotion/driving/v7_goal_audit.py": "253a291af6092d2e290508677b0e6a53dfd83de232255be6c96f5d5cbc07a0ac",
+      "src/fly_emotion/driving/v7_goal_audit.py": "9e7fcc2b8ab945b29f2ef5b5dc2a666c218ce56c0550f2109ca32ba30ea3f550",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -52,7 +52,7 @@
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
       "artifacts/v7-four-hop-scalar-precheck.json": "d0c82ac14f42f580cbb9bf1b78f7b4d2a41d7cbaa2a5b28858ff791b34b95b3c",
       "artifacts/v7-lc4-position-speed-precheck.json": "4615ff4eceedc1baf555fa93c074fb2e914411edfa43939e6acccb5c94f9d49e",
-      "artifacts/v7-lc4-input-speed-precheck.json": "4d529af114c9d4aed0ba3800f9e233774d87b0d53b73cbf46f8f04f90b5af3a1",
+      "artifacts/v7-lc4-input-speed-precheck.json": "f1ed721d4958488762315807871b8e3e67c67b121eedc7de7b77982c73714c07",
       "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
       "artifacts/v7-t5-lamina-scalar-precheck.json": "7335166942c334e5c99a153374de007fb08f9ebc38e12f9fb0619f6d75bc4fd6",
       "artifacts/v7-t5-source-axis-audit.json": "71a896609e4ba5f85a6b6a00b44c27f45817a620fb100358ae627ececbfaab47",
@@ -342,6 +342,14 @@
         },
         "LC4_input_speed_mirror_passed": true,
         "LC4_input_speed_precheck_passed": false,
+        "LC4_excitatory_input_derivative_valid_counts": {
+          "L": 0,
+          "R": 0
+        },
+        "LC4_inhibitory_input_derivative_monotonic_fractions": {
+          "L": 0.8873239436619719,
+          "R": 0.8545454545454545
+        },
         "T5_lamina_split_polarity_passing_condition_counts": {
           "T5a_L": 3,
           "T5a_R": 3,

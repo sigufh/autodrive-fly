@@ -15,7 +15,13 @@ duration_divisors: [1, 2, 4]
 relative_angular_velocities: [1.0, 2.0, 4.0]
 position_pooling: maximum_over_fixed_5x3_grid_for_each_speed
 source_pool: all_direct_non_LC4_presynaptic_nodes
-readouts: [input_peak, peak_positive_input_derivative]
+readouts:
+  - input_peak
+  - peak_positive_input_derivative
+  - excitatory_input_peak
+  - peak_positive_excitatory_input_derivative
+  - inhibitory_input_magnitude_peak
+  - peak_positive_inhibitory_input_derivative
 primary_precheck_readout: peak_positive_input_derivative
 thresholds:
   minimum_valid_denominator: 0.000001

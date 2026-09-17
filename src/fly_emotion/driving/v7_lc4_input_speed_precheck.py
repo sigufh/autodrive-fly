@@ -25,9 +25,11 @@ RAW_ADJACENCY = Path("data/processed/malecns-v1.0/adjacency_raw.npz")
 BODY_IDS = Path("data/processed/malecns-v1.0/body_ids.npy")
 
 
-def _direct_input_trace(probe, stimulus, targets: np.ndarray) -> np.ndarray:
+def _direct_input_trace(probe, stimulus, targets: np.ndarray) -> dict[str, np.ndarray]:
     source_mask = (probe.node_types != "LC4").astype(np.float32)
     matrix = probe.adjacency[targets, :].multiply(source_mask).tocsr()
+    excitatory = matrix.multiply((probe.source_sign > 0.0).astype(np.float32)).tocsr()
+    inhibitory = matrix.multiply((probe.source_sign < 0.0).astype(np.float32)).tocsr()
     state = np.zeros(probe.graph.node_count, dtype=np.float32)
     history = [state.copy()]
     baseline_image = stimulus.frames[0]
@@ -39,8 +41,11 @@ def _direct_input_trace(probe, stimulus, targets: np.ndarray) -> np.ndarray:
         for _ in range(probe.brain_substeps):
             state = probe._advance(state, drive, history)
             state[probe.retina.node_indices] = baseline_drive
+    baseline_positive = np.maximum(state.astype(np.float64), 0.0)
     baseline_input = matrix @ (state.astype(np.float64) * probe.source_sign)
-    traces = []
+    baseline_excitatory = excitatory @ baseline_positive
+    baseline_inhibitory = inhibitory @ baseline_positive
+    traces = {"net": [], "excitatory": [], "inhibitory_magnitude": []}
     previous = baseline_values.copy()
     for image in stimulus.frames:
         sampled = probe._sample_retina(image)[probe.retinal_permutation]
@@ -51,9 +56,12 @@ def _direct_input_trace(probe, stimulus, targets: np.ndarray) -> np.ndarray:
         for _ in range(probe.brain_substeps):
             state = probe._advance(state, drive, history)
             state[probe.retina.node_indices] = receptor_values
-        value = matrix @ (state.astype(np.float64) * probe.source_sign)
-        traces.append(value - baseline_input)
-    return np.stack(traces)
+        state64 = state.astype(np.float64)
+        positive = np.maximum(state64, 0.0)
+        traces["net"].append(matrix @ (state64 * probe.source_sign) - baseline_input)
+        traces["excitatory"].append(excitatory @ positive - baseline_excitatory)
+        traces["inhibitory_magnitude"].append(inhibitory @ positive - baseline_inhibitory)
+    return {name: np.stack(values) for name, values in traces.items()}
 
 
 def _score_speed(
@@ -218,10 +226,25 @@ def evaluate_v7_lc4_input_speed_precheck(root: Path) -> dict:
             traces = _direct_input_trace(probe, stimulus, targets)
             for side in populations:
                 group = np.flatnonzero(names == side)
-                per_position["input_peak"][side].append(np.max(traces[:, group], axis=0))
-                derivative = np.diff(traces[:, group], axis=0)
+                net = traces["net"][:, group]
+                excitatory = traces["excitatory"][:, group]
+                inhibitory = traces["inhibitory_magnitude"][:, group]
+                per_position["input_peak"][side].append(np.max(net, axis=0))
+                derivative = np.diff(net, axis=0)
                 per_position["peak_positive_input_derivative"][side].append(
                     np.max(np.maximum(derivative, 0.0), axis=0)
+                )
+                per_position["excitatory_input_peak"][side].append(
+                    np.max(excitatory, axis=0)
+                )
+                per_position["peak_positive_excitatory_input_derivative"][side].append(
+                    np.max(np.maximum(np.diff(excitatory, axis=0), 0.0), axis=0)
+                )
+                per_position["inhibitory_input_magnitude_peak"][side].append(
+                    np.max(inhibitory, axis=0)
+                )
+                per_position["peak_positive_inhibitory_input_derivative"][side].append(
+                    np.max(np.maximum(np.diff(inhibitory, axis=0), 0.0), axis=0)
                 )
         for readout in config["readouts"]:
             for side in populations:

@@ -383,6 +383,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "LC4_input_speed_precheck_passed": lc4_input_speed_precheck[
                     "LC4_input_speed_precheck_passed"
                 ],
+                "LC4_excitatory_input_derivative_valid_counts": {
+                    side: result["valid_cell_count"]
+                    for side, result in lc4_input_speed_precheck["readouts"]
+                    ["peak_positive_excitatory_input_derivative"].items()
+                },
+                "LC4_inhibitory_input_derivative_monotonic_fractions": {
+                    side: result["monotonic_cell_fraction"]
+                    for side, result in lc4_input_speed_precheck["readouts"]
+                    ["peak_positive_inhibitory_input_derivative"].items()
+                },
                 "T5_lamina_split_polarity_passing_condition_counts": {
                     name: result["polarity"]["passing_condition_count"]
                     for name, result in t5_lamina_split["population_consistency"].items()

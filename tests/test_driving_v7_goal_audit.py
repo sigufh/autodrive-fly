@@ -144,6 +144,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["LC4_input_speed_mirror_passed"] is True
     assert visual["observations"]["LC4_input_speed_precheck_passed"] is False
+    assert visual["observations"]["LC4_excitatory_input_derivative_valid_counts"] == {
+        "L": 0,
+        "R": 0,
+    }
+    assert visual["observations"]["LC4_inhibitory_input_derivative_monotonic_fractions"] == {
+        "L": 63 / 71,
+        "R": 47 / 55,
+    }
     assert visual["observations"]["T5_lamina_split_polarity_passing_condition_counts"] == {
         f"T5{subtype}_{side}": 3 for subtype in "abcd" for side in "LR"
     }
