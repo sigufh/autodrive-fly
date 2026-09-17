@@ -305,6 +305,11 @@ v7-evaluate-t4t5-local-edge-backends:
 v7-evaluate-t4-local-correlator-precheck:
 	.venv/bin/autodrive-fly v7-evaluate-t4-local-correlator-precheck
 
+v7-evaluate-t4-source-pool-local:
+	.venv/bin/autodrive-fly v7-evaluate-t4-source-pool-local
+
+.PHONY: v7-evaluate-t4-source-pool-local
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "daa4506974fcd19eb987db91c4233262a0d07e68a5f27599ffb89334798e948c",
-      "src/fly_emotion/driving/v7_goal_audit.py": "d041a6aaa4ea5c483ec847fa04578edc1be0e3879d519813239b283298a3f651",
+      "configs/driving-v7-goal-audit.yaml": "2155fc521118d03f2c50d6baa6278caf25e322e61e288888c6d6ed13b1d93b98",
+      "src/fly_emotion/driving/v7_goal_audit.py": "adf6de4074b1b8d34d9d1f86881940565f537a75434a5810b37afbe6800a45f9",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -47,6 +47,7 @@
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t4-local-correlator-precheck.json": "25594ffa544731ef3acb3a0c4dc55390a9b800fa8e06c8c315574553e66f1718",
+      "artifacts/v7-t4-source-pool-local.json": "cc31f38135842edb99b907b0dcf8014fe3303f1b39b36415348b8ba60ca57d19",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-t4t5-local-edge-precheck.json": "4a13be0c85994ce8946f43e7131172f2aeb480106ea5356d8462d1529c7665a3",
       "artifacts/v7-t4t5-local-edge-backends.json": "c944084fcbe3f275298d537d090c7117225a4e1030e51a3963154bbfbdd0e08f",
@@ -256,6 +257,14 @@
           "multiplicative:gain=4:lag=1": 0
         },
         "T4_local_correlator_gate_passed": false,
+        "T4_source_pool_direction_pass_counts": {
+          "center": 0,
+          "proximal": 1,
+          "distal": 1,
+          "center_proximal_correlation": 0
+        },
+        "T4_source_pool_maximum_bilateral_pair_count": 0,
+        "T4_source_pool_authorizes_target_formula": false,
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
         "local_edge_precheck_direction_pass_count": 0,
         "local_edge_precheck_polarity_pass_count": 0,
@@ -531,6 +540,7 @@
         "artifacts/v7-t4-source-resolved.json",
         "artifacts/v7-t4-normalized-correlator.json",
         "artifacts/v7-t4-local-correlator-precheck.json",
+        "artifacts/v7-t4-source-pool-local.json",
         "artifacts/v7-t5-spatial-order.json",
         "artifacts/v7-t4t5-local-edge-precheck.json",
         "artifacts/v7-t4t5-local-edge-backends.json"

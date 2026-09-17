@@ -1316,6 +1316,13 @@ correlator 连极性也为 0/16。没有组合达到扩展门，因此现有后�
 0/8 群体通过。它们未达到“至少 1 个 T4 方向群体通过”的 stop/go 门，因此不扩三条件，
 也不再以位置覆盖为由继续搜索该公式。证据见
 `artifacts/v7-t4-local-correlator-precheck.json`。
+继续向上游做只读定位时，真实 T4 直接输入被分成 center（Mi1/Tm3）、proximal
+（Mi4/C3）、distal（Mi9）及冻结 lag=1 的 center–proximal 相关能量；所有读出共享同一
+局部边缘视觉状态，不写入 T4。center 与相关能量均 0/8 方向群体通过；proximal/distal
+各只有单侧 `T4c_L` 通过，对应右侧未通过，故左右双侧通过亚型为 0。按“至少一个双侧
+亚型才允许新 target 公式”的门，孤立单侧趋势不足以晋级。当前更准确的缺口是 lamina/
+medulla 上游池缺少稳定镜像方向编码，而非现有 target 组合漏掉普遍信号。证据见
+`artifacts/v7-t4-source-pool-local.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

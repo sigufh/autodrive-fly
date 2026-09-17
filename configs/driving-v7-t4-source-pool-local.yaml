@@ -1,0 +1,32 @@
+version: 1
+name: v7-t4-local-edge-source-pool-diagnostic
+observed_on: "2026-09-17"
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+source_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+source_audit_evidence: artifacts/v7-t4-source-audit.json
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: LPLC-T01
+retinal_backend: signed_frame_difference
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+source_groups:
+  center: [Mi1, Tm3]
+  proximal: [Mi4, C3]
+  distal: [Mi9]
+readouts: [center, proximal, distal, center_proximal_correlation]
+correlation:
+  lag_substeps: 1
+  formula: orientation*(proximal_now*center_previous-center_now*proximal_previous)/(abs(forward)+abs(reverse)+1e-6)
+  orientation: frozen_center_minus_proximal_axis
+stop_gate:
+  minimum_bilateral_direction_pairs_to_authorize_target_formula: 1
+  unilateral_population_pass_is_insufficient: true
+boundary:
+  tuning_only: true
+  source_pool_diagnostic_only: true
+  labels_used_only_for_scoring: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false

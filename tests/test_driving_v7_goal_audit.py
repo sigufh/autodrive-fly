@@ -82,6 +82,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["existing_backend_reuse_gate_passed"] is False
     assert set(visual["observations"]["T4_local_correlator_direction_pass_counts"].values()) == {0}
     assert visual["observations"]["T4_local_correlator_gate_passed"] is False
+    assert visual["observations"]["T4_source_pool_direction_pass_counts"] == {
+        "center": 0,
+        "proximal": 1,
+        "distal": 1,
+        "center_proximal_correlation": 0,
+    }
+    assert visual["observations"]["T4_source_pool_maximum_bilateral_pair_count"] == 0
+    assert visual["observations"]["T4_source_pool_authorizes_target_formula"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

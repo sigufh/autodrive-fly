@@ -1,0 +1,870 @@
+{
+  "protocol": {
+    "name": "v7-t4-local-edge-source-pool-diagnostic",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-source-pool-local.yaml": "73d98cfffa78a94da5e63a1cc3e5dae65af046d9f8fac6b5806867afd1c038c9",
+      "src/fly_emotion/driving/v7_t4_source_pool_local.py": "38ca733aa73231c1bddf0bdf16881398d7462a943369e4bab622647711cd925b",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py": "2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049",
+      "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
+      "artifacts/v7-t4-source-audit.json": "9559ac5f57ce962c16ace9e7cd270bd9ce54416aa65ac1f8225fa11fd464135e",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "condition_id": "LPLC-T01",
+    "target_count": 6861,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false
+  },
+  "population_scores": {
+    "T4a_L": {
+      "center": {
+        "cell_count": 835,
+        "valid_cell_count": 835,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.019375795197583385,
+        "positive_cell_fraction": 0.5700598802395209,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 835,
+        "valid_cell_count": 824,
+        "valid_cell_fraction": 0.9868263473053892,
+        "median_signed_contrast": -0.005399326972384344,
+        "positive_cell_fraction": 0.4975728155339806,
+        "invalid_cell_ids": [
+          85311,
+          90993,
+          94751,
+          110034,
+          120338,
+          123668,
+          132241,
+          132983,
+          135292,
+          149698,
+          196128
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 835,
+        "valid_cell_count": 829,
+        "valid_cell_fraction": 0.9928143712574851,
+        "median_signed_contrast": 0.005209544080480998,
+        "positive_cell_fraction": 0.5597104945717732,
+        "invalid_cell_ids": [
+          100273,
+          107239,
+          112544,
+          143795,
+          168413,
+          548301
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 835,
+        "valid_cell_count": 804,
+        "valid_cell_fraction": 0.962874251497006,
+        "median_signed_contrast": 0.04286475359628557,
+        "positive_cell_fraction": 0.5310945273631841,
+        "invalid_cell_ids": [
+          51940,
+          79400,
+          86462,
+          87809,
+          94271,
+          95455,
+          95805,
+          101412,
+          103230,
+          103511,
+          105936,
+          137526,
+          141270,
+          143795,
+          145578,
+          150887,
+          154637,
+          156156,
+          168114,
+          173066,
+          198913,
+          203620,
+          207048,
+          513724,
+          545138,
+          545317,
+          547634,
+          549313,
+          550355,
+          550881,
+          551572
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4a_R": {
+      "center": {
+        "cell_count": 849,
+        "valid_cell_count": 848,
+        "valid_cell_fraction": 0.9988221436984688,
+        "median_signed_contrast": 0.002367565701286943,
+        "positive_cell_fraction": 0.5047169811320755,
+        "invalid_cell_ids": [
+          116521
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 849,
+        "valid_cell_count": 848,
+        "valid_cell_fraction": 0.9988221436984688,
+        "median_signed_contrast": -0.006660418132293892,
+        "positive_cell_fraction": 0.48702830188679247,
+        "invalid_cell_ids": [
+          92146
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 849,
+        "valid_cell_count": 840,
+        "valid_cell_fraction": 0.9893992932862191,
+        "median_signed_contrast": 0.005387764708725318,
+        "positive_cell_fraction": 0.5535714285714286,
+        "invalid_cell_ids": [
+          83594,
+          87646,
+          91564,
+          92395,
+          101248,
+          106719,
+          112366,
+          114595,
+          116845
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 849,
+        "valid_cell_count": 848,
+        "valid_cell_fraction": 0.9988221436984688,
+        "median_signed_contrast": -0.020450939480584976,
+        "positive_cell_fraction": 0.4386792452830189,
+        "invalid_cell_ids": [
+          109316
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4b_L": {
+      "center": {
+        "cell_count": 844,
+        "valid_cell_count": 844,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.008662877620631896,
+        "positive_cell_fraction": 0.46919431279620855,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 844,
+        "valid_cell_count": 836,
+        "valid_cell_fraction": 0.990521327014218,
+        "median_signed_contrast": 0.009554113124307421,
+        "positive_cell_fraction": 0.507177033492823,
+        "invalid_cell_ids": [
+          80420,
+          85498,
+          93666,
+          114236,
+          120453,
+          123458,
+          127295,
+          519288
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 844,
+        "valid_cell_count": 834,
+        "valid_cell_fraction": 0.9881516587677726,
+        "median_signed_contrast": -0.0011581934751100252,
+        "positive_cell_fraction": 0.49160671462829736,
+        "invalid_cell_ids": [
+          81876,
+          84666,
+          107788,
+          109488,
+          115332,
+          117979,
+          162968,
+          167354,
+          170298,
+          536905
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 844,
+        "valid_cell_count": 844,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.0001266645839326189,
+        "positive_cell_fraction": 0.5,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4b_R": {
+      "center": {
+        "cell_count": 846,
+        "valid_cell_count": 846,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.016553539567097132,
+        "positive_cell_fraction": 0.5673758865248227,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 846,
+        "valid_cell_count": 846,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.00825605659650089,
+        "positive_cell_fraction": 0.5106382978723404,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 846,
+        "valid_cell_count": 832,
+        "valid_cell_fraction": 0.983451536643026,
+        "median_signed_contrast": -0.005710183811147442,
+        "positive_cell_fraction": 0.4495192307692308,
+        "invalid_cell_ids": [
+          89252,
+          89460,
+          102024,
+          102272,
+          104799,
+          106409,
+          106480,
+          110437,
+          111889,
+          116291,
+          119686,
+          121222,
+          125314,
+          134894
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 846,
+        "valid_cell_count": 818,
+        "valid_cell_fraction": 0.966903073286052,
+        "median_signed_contrast": -0.08430236300142464,
+        "positive_cell_fraction": 0.4621026894865526,
+        "invalid_cell_ids": [
+          87479,
+          88604,
+          89252,
+          90423,
+          90731,
+          91725,
+          92339,
+          93283,
+          93751,
+          93941,
+          97268,
+          98072,
+          99177,
+          101330,
+          102119,
+          106028,
+          108442,
+          112158,
+          114423,
+          115385,
+          117621,
+          117644,
+          118873,
+          121445,
+          131582,
+          135040,
+          136081,
+          143641
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4c_L": {
+      "center": {
+        "cell_count": 895,
+        "valid_cell_count": 895,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.02902633464910278,
+        "positive_cell_fraction": 0.5698324022346368,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 895,
+        "valid_cell_count": 874,
+        "valid_cell_fraction": 0.976536312849162,
+        "median_signed_contrast": 0.10360783859288492,
+        "positive_cell_fraction": 0.631578947368421,
+        "invalid_cell_ids": [
+          46982,
+          88663,
+          88939,
+          100908,
+          105478,
+          106323,
+          108116,
+          109280,
+          110049,
+          110058,
+          110197,
+          113358,
+          113575,
+          115391,
+          115865,
+          116497,
+          117905,
+          128869,
+          210119,
+          534836,
+          546326
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": true,
+          "positive_cell_fraction": true
+        },
+        "passed": true
+      },
+      "distal": {
+        "cell_count": 895,
+        "valid_cell_count": 871,
+        "valid_cell_fraction": 0.9731843575418995,
+        "median_signed_contrast": 0.10957618047442841,
+        "positive_cell_fraction": 0.6670493685419059,
+        "invalid_cell_ids": [
+          77180,
+          77393,
+          86280,
+          100953,
+          108763,
+          111168,
+          114086,
+          116545,
+          116891,
+          116988,
+          119832,
+          119902,
+          122158,
+          124838,
+          131513,
+          147478,
+          147740,
+          151008,
+          156882,
+          198691,
+          219835,
+          530006,
+          544537,
+          548540
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": true,
+          "positive_cell_fraction": true
+        },
+        "passed": true
+      },
+      "center_proximal_correlation": {
+        "cell_count": 895,
+        "valid_cell_count": 885,
+        "valid_cell_fraction": 0.9888268156424581,
+        "median_signed_contrast": -0.0017507580794719117,
+        "positive_cell_fraction": 0.488135593220339,
+        "invalid_cell_ids": [
+          56768,
+          64583,
+          71377,
+          73837,
+          105794,
+          109152,
+          184600,
+          210119,
+          531763,
+          547536
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4c_R": {
+      "center": {
+        "cell_count": 883,
+        "valid_cell_count": 883,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.021619621217475196,
+        "positive_cell_fraction": 0.5594563986409966,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 883,
+        "valid_cell_count": 877,
+        "valid_cell_fraction": 0.9932049830124575,
+        "median_signed_contrast": 0.08408662796825661,
+        "positive_cell_fraction": 0.5997719498289624,
+        "invalid_cell_ids": [
+          96373,
+          98985,
+          102112,
+          104853,
+          135685,
+          137725
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 883,
+        "valid_cell_count": 867,
+        "valid_cell_fraction": 0.9818799546998868,
+        "median_signed_contrast": 0.012959143899077189,
+        "positive_cell_fraction": 0.532871972318339,
+        "invalid_cell_ids": [
+          90510,
+          95402,
+          98450,
+          100108,
+          102374,
+          104966,
+          107297,
+          108724,
+          112080,
+          112407,
+          113537,
+          117702,
+          119603,
+          129034,
+          131901,
+          141139
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 883,
+        "valid_cell_count": 859,
+        "valid_cell_fraction": 0.9728199320498301,
+        "median_signed_contrast": 0.05473365670165132,
+        "positive_cell_fraction": 0.5681024447031432,
+        "invalid_cell_ids": [
+          90952,
+          95036,
+          100075,
+          100265,
+          100345,
+          104999,
+          106150,
+          107095,
+          110742,
+          111480,
+          113475,
+          116401,
+          118338,
+          118854,
+          120217,
+          121821,
+          123726,
+          125144,
+          131261,
+          131847,
+          135014,
+          135281,
+          141765,
+          144634
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4d_L": {
+      "center": {
+        "cell_count": 850,
+        "valid_cell_count": 850,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.030487113901771883,
+        "positive_cell_fraction": 0.42705882352941177,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 850,
+        "valid_cell_count": 833,
+        "valid_cell_fraction": 0.98,
+        "median_signed_contrast": -0.13466478853886923,
+        "positive_cell_fraction": 0.32653061224489793,
+        "invalid_cell_ids": [
+          47786,
+          70299,
+          87690,
+          93093,
+          94123,
+          95986,
+          102252,
+          103233,
+          105281,
+          114796,
+          125139,
+          165213,
+          517857,
+          541735,
+          544522,
+          545961,
+          581357
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 850,
+        "valid_cell_count": 823,
+        "valid_cell_fraction": 0.9682352941176471,
+        "median_signed_contrast": -0.07955798195169834,
+        "positive_cell_fraction": 0.37424058323207776,
+        "invalid_cell_ids": [
+          67412,
+          73952,
+          93391,
+          95378,
+          103297,
+          103778,
+          103872,
+          106571,
+          110668,
+          112597,
+          113774,
+          115139,
+          117683,
+          119735,
+          119931,
+          119990,
+          149879,
+          178005,
+          200176,
+          535662,
+          537526,
+          539221,
+          544538,
+          545961,
+          549355,
+          552102,
+          554080
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 850,
+        "valid_cell_count": 835,
+        "valid_cell_fraction": 0.9823529411764705,
+        "median_signed_contrast": -0.056385329216688,
+        "positive_cell_fraction": 0.3964071856287425,
+        "invalid_cell_ids": [
+          94711,
+          97942,
+          105238,
+          117447,
+          122498,
+          123565,
+          124075,
+          124905,
+          128143,
+          147494,
+          154404,
+          165262,
+          201144,
+          543357,
+          547318
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    },
+    "T4d_R": {
+      "center": {
+        "cell_count": 859,
+        "valid_cell_count": 859,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.0312618955683987,
+        "positive_cell_fraction": 0.43538998835855647,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "proximal": {
+        "cell_count": 859,
+        "valid_cell_count": 847,
+        "valid_cell_fraction": 0.9860302677532014,
+        "median_signed_contrast": -0.07666104417259027,
+        "positive_cell_fraction": 0.38961038961038963,
+        "invalid_cell_ids": [
+          88377,
+          91955,
+          92266,
+          99863,
+          100912,
+          100956,
+          103571,
+          104218,
+          109384,
+          124666,
+          127788,
+          129944
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "distal": {
+        "cell_count": 859,
+        "valid_cell_count": 850,
+        "valid_cell_fraction": 0.989522700814901,
+        "median_signed_contrast": -0.013600817206242169,
+        "positive_cell_fraction": 0.47058823529411764,
+        "invalid_cell_ids": [
+          101960,
+          103078,
+          112730,
+          114517,
+          116893,
+          121850,
+          126172,
+          127732,
+          133992
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "center_proximal_correlation": {
+        "cell_count": 859,
+        "valid_cell_count": 824,
+        "valid_cell_fraction": 0.959254947613504,
+        "median_signed_contrast": 0.07650438941052806,
+        "positive_cell_fraction": 0.5618932038834952,
+        "invalid_cell_ids": [
+          79704,
+          95210,
+          98375,
+          99537,
+          100769,
+          101709,
+          103286,
+          105199,
+          106837,
+          107149,
+          109760,
+          110183,
+          110928,
+          111745,
+          111840,
+          112175,
+          112843,
+          113667,
+          113740,
+          115954,
+          116605,
+          117369,
+          118526,
+          118638,
+          119628,
+          120082,
+          120239,
+          121420,
+          121601,
+          121864,
+          122586,
+          123434,
+          133474,
+          133567,
+          183759
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      }
+    }
+  },
+  "direction_pass_counts": {
+    "center": 0,
+    "proximal": 1,
+    "distal": 1,
+    "center_proximal_correlation": 0
+  },
+  "bilateral_passing_subtypes": {
+    "center": [],
+    "proximal": [],
+    "distal": [],
+    "center_proximal_correlation": []
+  },
+  "maximum_bilateral_direction_pair_count": 0,
+  "authorize_new_target_formula": false,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "boundary": {
+    "tuning_only": true,
+    "source_pool_diagnostic_only": true,
+    "labels_used_only_for_scoring": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false
+  }
+}
