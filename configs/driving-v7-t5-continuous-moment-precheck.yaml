@@ -1,0 +1,41 @@
+version: 1
+name: v7-t5-continuous-source-moment-precheck
+observed_on: "2026-09-17"
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+lamina_split_evidence: artifacts/v7-t5-lamina-split.json
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+source_position_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+condition_id: S1-T01
+source_types: [Tm1, Tm2, Tm4, Tm9]
+structural_axis:
+  x: Tm2_centroid_x_minus_Tm9_centroid_x
+  y: Tm9_centroid_y_minus_Tm1_centroid_y
+  left_eye_horizontal_reflection: true
+activity_moment:
+  source_state: positive_baseline_subtracted_state
+  formula: axis_dot(moment_now*mass_previous-mass_now*moment_previous)
+  normalization: sum_absolute_xy_cross_terms_plus_1e-9
+  temporal_reductions: [signed_mean, maximum, positive_mean, terminal_sum]
+  position_reduction: maximum_over_fixed_5x3_grid
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_run_controls: 1
+  require_all_structural_axis_populations: true
+controls_after_ordered_gate: [temporal_shuffle, static_sham]
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  structure_axis_does_not_use_subtype_or_direction_labels: true
+  labels_used_for_posthoc_scoring_only: true
+  diagnostic_head_not_target_activity: true
+  fixed_whole_population_denominators: true
+  direct_real_T5_sources_only: true
+  labels_changed: false
+  thresholds_changed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true

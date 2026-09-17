@@ -232,6 +232,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "LPLC_mechanism_repair_authorized_by_T4_T5_gate"
     ] is False
+    assert visual["observations"]["T5_continuous_moment_structural_axis_passed"] is True
+    assert visual["observations"]["T5_continuous_moment_direction_pass_counts"] == {
+        "signed_mean": 0,
+        "maximum": 0,
+        "positive_mean": 0,
+        "terminal_sum": 0,
+    }
+    assert visual["observations"]["T5_continuous_moment_controls_evaluated"] is False
+    assert visual["observations"][
+        "T5_continuous_moment_three_condition_evaluation_performed"
+    ] is False
     assert visual["observations"]["LPLC1_near_collision_direct_input_fraction"] == {
         "L": 67 / 68,
         "R": 1.0,

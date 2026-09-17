@@ -75,6 +75,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
     t5_source_pair_precheck = reports["t5_source_pair_precheck"]
+    t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
     t5_spatial_order = reports["t5_spatial_order"]
@@ -163,6 +164,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["t5_source_pair_precheck"],
+                config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -504,6 +506,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "LPLC_mechanism_repair_authorized_by_T4_T5_gate": (
                     t5_source_pair_precheck["advance_to_LPLC_mechanism_repair"]
+                ),
+                "T5_continuous_moment_structural_axis_passed": (
+                    t5_continuous_moment_precheck["structural_axis"]
+                    ["all_population_and_mirror_gates_passed"]
+                ),
+                "T5_continuous_moment_direction_pass_counts": {
+                    name: result["direction_pass_count"]
+                    for name, result in t5_continuous_moment_precheck[
+                        "ordered_activity_moment"
+                    ].items()
+                },
+                "T5_continuous_moment_controls_evaluated": (
+                    t5_continuous_moment_precheck["controls_evaluated"]
+                ),
+                "T5_continuous_moment_three_condition_evaluation_performed": (
+                    t5_continuous_moment_precheck["three_condition_evaluation_performed"]
                 ),
                 "LPLC1_near_collision_direct_input_fraction": {
                     side: result["targets_with_direct_T4_T5_fraction"]

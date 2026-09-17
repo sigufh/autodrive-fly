@@ -1,0 +1,503 @@
+{
+  "protocol": {
+    "name": "v7-t5-continuous-source-moment-precheck",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-continuous-moment-precheck.yaml": "00bc6dc8693e9f1490957bac6661aeb00b0827378fc304535a01fd337e5daab9",
+      "src/fly_emotion/driving/v7_t5_continuous_moment_precheck.py": "e4714a8bfd33686540068806f22947c233c04fda45a06b9d7dc324146e05f1ea",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "src/fly_emotion/driving/v7_t5_lamina_split.py": "d8c3f00cbfe8bb0a6608bba022e9fbdb3607285875032bdb31b4164c65cab9ed",
+      "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2"
+    },
+    "condition_id": "S1-T01",
+    "position_count": 15,
+    "stimulus_count": 60,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false
+  },
+  "structural_axis": {
+    "definition": {
+      "x": "Tm2_centroid_x_minus_Tm9_centroid_x",
+      "y": "Tm9_centroid_y_minus_Tm1_centroid_y",
+      "left_eye_horizontal_reflection": true
+    },
+    "population_results": {
+      "T5a_L": {
+        "cell_count": 826,
+        "valid_axis_count": 825,
+        "valid_axis_fraction": 0.9987893462469734,
+        "median_expected_cosine": 0.7905206824284922,
+        "positive_alignment_fraction_all_cells": 0.8995157384987893,
+        "median_unit_axis": [
+          -0.9179410538795905,
+          0.3967168027729945
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5a_R": {
+        "cell_count": 838,
+        "valid_axis_count": 837,
+        "valid_axis_fraction": 0.9988066825775657,
+        "median_expected_cosine": 0.8633149378767315,
+        "positive_alignment_fraction_all_cells": 0.9606205250596659,
+        "median_unit_axis": [
+          0.9388973550265486,
+          0.3441972642601205
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5b_L": {
+        "cell_count": 863,
+        "valid_axis_count": 862,
+        "valid_axis_fraction": 0.9988412514484357,
+        "median_expected_cosine": 0.7232937436309138,
+        "positive_alignment_fraction_all_cells": 0.8910776361529548,
+        "median_unit_axis": [
+          0.9842748165286894,
+          -0.17664395134681096
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5b_R": {
+        "cell_count": 852,
+        "valid_axis_count": 852,
+        "valid_axis_fraction": 1.0,
+        "median_expected_cosine": 0.8636037156421852,
+        "positive_alignment_fraction_all_cells": 0.9706572769953051,
+        "median_unit_axis": [
+          -0.9832246921425631,
+          -0.18239847795736114
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5c_L": {
+        "cell_count": 862,
+        "valid_axis_count": 862,
+        "valid_axis_fraction": 1.0,
+        "median_expected_cosine": 0.8279318107869882,
+        "positive_alignment_fraction_all_cells": 0.9559164733178654,
+        "median_unit_axis": [
+          -0.5461808724782945,
+          -0.8376672695879009
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5c_R": {
+        "cell_count": 858,
+        "valid_axis_count": 858,
+        "valid_axis_fraction": 1.0,
+        "median_expected_cosine": 0.8586081061165936,
+        "positive_alignment_fraction_all_cells": 0.9941724941724942,
+        "median_unit_axis": [
+          0.5101407549554425,
+          -0.8600909313168528
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5d_L": {
+        "cell_count": 812,
+        "valid_axis_count": 812,
+        "valid_axis_fraction": 1.0,
+        "median_expected_cosine": 0.8008853863571922,
+        "positive_alignment_fraction_all_cells": 0.9593596059113301,
+        "median_unit_axis": [
+          0.5924638400538066,
+          0.8055970445754488
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      },
+      "T5d_R": {
+        "cell_count": 808,
+        "valid_axis_count": 808,
+        "valid_axis_fraction": 1.0,
+        "median_expected_cosine": 0.8153757346297547,
+        "positive_alignment_fraction_all_cells": 0.9876237623762376,
+        "median_unit_axis": [
+          -0.5773225532533812,
+          0.8165161783485964
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_expected_cosine": true,
+          "positive_alignment_fraction": true
+        },
+        "passed": true
+      }
+    },
+    "mirror": {
+      "a": {
+        "error": 0.05654616241061151,
+        "passed": true
+      },
+      "b": {
+        "error": 0.005849558764374215,
+        "passed": true
+      },
+      "c": {
+        "error": 0.042446562598112,
+        "passed": true
+      },
+      "d": {
+        "error": 0.018667781023159326,
+        "passed": true
+      }
+    },
+    "all_population_and_mirror_gates_passed": true
+  },
+  "ordered_activity_moment": {
+    "signed_mean": {
+      "direction_pass_count": 0,
+      "bilateral_direction_subtypes": [],
+      "population_scores": {
+        "T5a_L": {
+          "cell_count": 826,
+          "valid_cell_count": 824,
+          "valid_cell_fraction": 0.9975786924939467,
+          "median_signed_contrast": -0.08739674108921755,
+          "positive_cell_fraction": 0.4199029126213592,
+          "passed": false
+        },
+        "T5a_R": {
+          "cell_count": 838,
+          "valid_cell_count": 836,
+          "valid_cell_fraction": 0.9976133651551312,
+          "median_signed_contrast": 0.009469581018089457,
+          "positive_cell_fraction": 0.5406698564593302,
+          "passed": false
+        },
+        "T5b_L": {
+          "cell_count": 863,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 0.9988412514484357,
+          "median_signed_contrast": 0.07787524898666333,
+          "positive_cell_fraction": 0.5812064965197216,
+          "passed": false
+        },
+        "T5b_R": {
+          "cell_count": 852,
+          "valid_cell_count": 852,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.05256690019275152,
+          "positive_cell_fraction": 0.5704225352112676,
+          "passed": false
+        },
+        "T5c_L": {
+          "cell_count": 862,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.011166988544207584,
+          "positive_cell_fraction": 0.47215777262180975,
+          "passed": false
+        },
+        "T5c_R": {
+          "cell_count": 858,
+          "valid_cell_count": 858,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.018211406378739255,
+          "positive_cell_fraction": 0.4428904428904429,
+          "passed": false
+        },
+        "T5d_L": {
+          "cell_count": 812,
+          "valid_cell_count": 812,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.023964985862817485,
+          "positive_cell_fraction": 0.5480295566502463,
+          "passed": false
+        },
+        "T5d_R": {
+          "cell_count": 808,
+          "valid_cell_count": 808,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.0029858713948977948,
+          "positive_cell_fraction": 0.5173267326732673,
+          "passed": false
+        }
+      }
+    },
+    "maximum": {
+      "direction_pass_count": 0,
+      "bilateral_direction_subtypes": [],
+      "population_scores": {
+        "T5a_L": {
+          "cell_count": 826,
+          "valid_cell_count": 825,
+          "valid_cell_fraction": 0.9987893462469734,
+          "median_signed_contrast": -0.06585720318121999,
+          "positive_cell_fraction": 0.36363636363636365,
+          "passed": false
+        },
+        "T5a_R": {
+          "cell_count": 838,
+          "valid_cell_count": 837,
+          "valid_cell_fraction": 0.9988066825775657,
+          "median_signed_contrast": -0.03288320618946984,
+          "positive_cell_fraction": 0.4121863799283154,
+          "passed": false
+        },
+        "T5b_L": {
+          "cell_count": 863,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 0.9988412514484357,
+          "median_signed_contrast": 0.017952245161261177,
+          "positive_cell_fraction": 0.5278422273781903,
+          "passed": false
+        },
+        "T5b_R": {
+          "cell_count": 852,
+          "valid_cell_count": 852,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.003878769290223518,
+          "positive_cell_fraction": 0.5129107981220657,
+          "passed": false
+        },
+        "T5c_L": {
+          "cell_count": 862,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.055241714737958955,
+          "positive_cell_fraction": 0.37354988399071926,
+          "passed": false
+        },
+        "T5c_R": {
+          "cell_count": 858,
+          "valid_cell_count": 858,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.03358787017750703,
+          "positive_cell_fraction": 0.40442890442890445,
+          "passed": false
+        },
+        "T5d_L": {
+          "cell_count": 812,
+          "valid_cell_count": 812,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.06959658366175693,
+          "positive_cell_fraction": 0.624384236453202,
+          "passed": false
+        },
+        "T5d_R": {
+          "cell_count": 808,
+          "valid_cell_count": 808,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.05389902016277128,
+          "positive_cell_fraction": 0.599009900990099,
+          "passed": false
+        }
+      }
+    },
+    "positive_mean": {
+      "direction_pass_count": 0,
+      "bilateral_direction_subtypes": [],
+      "population_scores": {
+        "T5a_L": {
+          "cell_count": 826,
+          "valid_cell_count": 825,
+          "valid_cell_fraction": 0.9987893462469734,
+          "median_signed_contrast": -0.018263823961377906,
+          "positive_cell_fraction": 0.4412121212121212,
+          "passed": false
+        },
+        "T5a_R": {
+          "cell_count": 838,
+          "valid_cell_count": 837,
+          "valid_cell_fraction": 0.9988066825775657,
+          "median_signed_contrast": -0.007073571135484142,
+          "positive_cell_fraction": 0.4755077658303465,
+          "passed": false
+        },
+        "T5b_L": {
+          "cell_count": 863,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 0.9988412514484357,
+          "median_signed_contrast": 0.026122273644993043,
+          "positive_cell_fraction": 0.5707656612529002,
+          "passed": false
+        },
+        "T5b_R": {
+          "cell_count": 852,
+          "valid_cell_count": 852,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.04803774497967099,
+          "positive_cell_fraction": 0.6126760563380281,
+          "passed": false
+        },
+        "T5c_L": {
+          "cell_count": 862,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.03573699264904629,
+          "positive_cell_fraction": 0.3805104408352668,
+          "passed": false
+        },
+        "T5c_R": {
+          "cell_count": 858,
+          "valid_cell_count": 858,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.03389146215560876,
+          "positive_cell_fraction": 0.36596736596736595,
+          "passed": false
+        },
+        "T5d_L": {
+          "cell_count": 812,
+          "valid_cell_count": 812,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.0452544208638158,
+          "positive_cell_fraction": 0.6182266009852216,
+          "passed": false
+        },
+        "T5d_R": {
+          "cell_count": 808,
+          "valid_cell_count": 808,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.03844485604126531,
+          "positive_cell_fraction": 0.6163366336633663,
+          "passed": false
+        }
+      }
+    },
+    "terminal_sum": {
+      "direction_pass_count": 0,
+      "bilateral_direction_subtypes": [],
+      "population_scores": {
+        "T5a_L": {
+          "cell_count": 826,
+          "valid_cell_count": 825,
+          "valid_cell_fraction": 0.9987893462469734,
+          "median_signed_contrast": -0.08740748437899645,
+          "positive_cell_fraction": 0.4193939393939394,
+          "passed": false
+        },
+        "T5a_R": {
+          "cell_count": 838,
+          "valid_cell_count": 837,
+          "valid_cell_fraction": 0.9988066825775657,
+          "median_signed_contrast": 0.009018757741229228,
+          "positive_cell_fraction": 0.5400238948626045,
+          "passed": false
+        },
+        "T5b_L": {
+          "cell_count": 863,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 0.9988412514484357,
+          "median_signed_contrast": 0.07787524898666334,
+          "positive_cell_fraction": 0.5812064965197216,
+          "passed": false
+        },
+        "T5b_R": {
+          "cell_count": 852,
+          "valid_cell_count": 852,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.05256690019275151,
+          "positive_cell_fraction": 0.5704225352112676,
+          "passed": false
+        },
+        "T5c_L": {
+          "cell_count": 862,
+          "valid_cell_count": 862,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.011166988544207591,
+          "positive_cell_fraction": 0.47215777262180975,
+          "passed": false
+        },
+        "T5c_R": {
+          "cell_count": 858,
+          "valid_cell_count": 858,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.018211406378739227,
+          "positive_cell_fraction": 0.4428904428904429,
+          "passed": false
+        },
+        "T5d_L": {
+          "cell_count": 812,
+          "valid_cell_count": 812,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.02396498586281745,
+          "positive_cell_fraction": 0.5480295566502463,
+          "passed": false
+        },
+        "T5d_R": {
+          "cell_count": 808,
+          "valid_cell_count": 808,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": 0.00298587139489784,
+          "positive_cell_fraction": 0.5173267326732673,
+          "passed": false
+        }
+      }
+    }
+  },
+  "control_eligibility_gate_passed": false,
+  "controls_requested": [
+    "temporal_shuffle",
+    "static_sham"
+  ],
+  "controls_evaluated": false,
+  "three_condition_evaluation_performed": false,
+  "advance_to_three_tuning_conditions": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "continuous_moment_produced_no_bilateral_direction_selective_T5_subtype",
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_precheck": true,
+    "structure_axis_does_not_use_subtype_or_direction_labels": true,
+    "labels_used_for_posthoc_scoring_only": true,
+    "diagnostic_head_not_target_activity": true,
+    "fixed_whole_population_denominators": true,
+    "direct_real_T5_sources_only": true,
+    "labels_changed": false,
+    "thresholds_changed": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "LPLC_experiments_authorized_only_after_strict_T4_T5_gate": true
+  }
+}

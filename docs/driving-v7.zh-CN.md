@@ -1442,6 +1442,17 @@ T5 横轴冲突，却不能授权把拟合变换应用到新动态模型。
 亚型，时序打乱、static sham 和另外两个 tuning 条件按 stop gate 均未运行；LPLC1、LPLC2、
 LC4 新修复实验继续未授权，下降车辆实验也保持冻结。证据见
 `artifacts/v7-t5-source-pair-precheck.json`。
+
+随后检查了比来源标量更强、但仍不读取亚型标签的连续空间矩候选。每个 T5 的结构轴用
+同一公式 `[Tm2.x−Tm9.x, Tm9.y−Tm1.y]` 从真实直接输入的突触权重质心生成，左眼仅做
+预先声明的相机水平反射。该结构轴在 8/8 群体上通过：有效覆盖均不低于 99.88%，中位
+expected cosine 为 0.723–0.864，四组镜像误差均低于 0.057。这首次给出了无需事后翻转
+a/b 标签的四方向结构轴，但它仍不是功能证据。将 R1–R6 传播后的 Tm1/Tm2/Tm4/Tm9
+正向基线扣除状态组成连续二维质量矩，并把相邻帧质心位移投影到该轴后，`signed mean`、
+`maximum`、`positive mean` 和 `terminal sum` 四种预注册归约仍全部为方向 0/8。结构轴
+通过而活动方向失败，说明缺口在动态表示而非仅坐标轴定义。没有双侧方向亚型，因此不运行
+时序打乱、static sham 或三条件扩展，并继续冻结 LPLC 新实验。证据见
+`artifacts/v7-t5-continuous-moment-precheck.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有
