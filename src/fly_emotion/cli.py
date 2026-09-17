@@ -133,6 +133,9 @@ from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_corre
 from .driving.v7_t4_pair_lag_audit import evaluate_v7_t4_pair_lag_audit
 from .driving.v7_t4_source_pool_local import evaluate_v7_t4_source_pool_local
 from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
+from .driving.v7_t4_synapse_correlator_precheck import (
+    evaluate_v7_t4_synapse_correlator_precheck,
+)
 from .driving.v7_t4t5_local_edge_backends import evaluate_v7_t4t5_local_edge_backends
 from .driving.v7_t4t5_local_edge_precheck import evaluate_v7_t4t5_local_edge_precheck
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
@@ -324,6 +327,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-upstream-latency")
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
+    subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1062,6 +1066,12 @@ def main() -> None:
     if args.command == "v7-calibrate-synapse-axis":
         report = evaluate_v7_synapse_axis_calibration(root)
         target = root / "artifacts/v7-synapse-axis-calibration.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-synapse-correlator-precheck":
+        report = evaluate_v7_t4_synapse_correlator_precheck(root)
+        target = root / "artifacts/v7-t4-synapse-correlator-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

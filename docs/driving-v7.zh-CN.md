@@ -1509,6 +1509,19 @@ T5 约 3 帧。但 temporal shuffle 和 static sham 下也同样各为 8/8，sta
 变换零样本应用到 6,718 个 T5 时准确率仅 10.39%、中位角误差 139.41°，因此明确禁止
 T5 映射应用。该结果只授权 T4 的单条件 tuning 预检，不是功能验证或 calibration。证据见
 `artifacts/v7-synapse-axis-calibration.json`。
+
+冻结映射随后只用于 `S1-T01` 的 T4 单条件功能预检。候选从 R1–R6 进入既有 published
+conductance 状态，不向 T4 注入活动；对每个 T4 的真实 Mi1/Tm3 fast 与 Mi4/C3 delayed
+突触后位置计算全部 fast×delayed 突触对的可因式 Reichardt 项，并沿各自冻结的二维突触轴
+投影。固定 T4 全群体分母为 6,861；有完整 conductance 与双通道突触矩的 6,749 个目标
+有效，其余 112 个保持 NaN 并计失败。两个时间归约 × 四个预注册增益的八个候选均保持
+8/8 ON 极性，但方向仅分别通过 2、2、2、1、2、2、2、1 个群体，没有任何 a/b/c/d
+亚型左右眼同时通过；因此主门失败。按 stop gate 未运行 temporal shuffle、static sham 或
+另外两个 tuning 条件，也未授权 T5 映射、LPLC 修复或运行时接入。这说明 held-out 结构轴
+准确并不足以产生功能方向选择；下一候选必须改变局部时空动力学，而不能继续旋转坐标、
+改标签、降阈值或忽略缺失细胞。证据见
+`artifacts/v7-t4-synapse-correlator-precheck.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

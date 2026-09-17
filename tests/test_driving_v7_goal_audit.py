@@ -236,6 +236,20 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["synapse_axis_zero_shot_T5_accuracy"] < 0.11
     assert visual["observations"]["synapse_axis_zero_shot_T5_mapping_passed"] is False
     assert visual["observations"]["synapse_axis_T5_mapping_application_authorized"] is False
+    assert visual["observations"]["T4_synapse_correlator_fixed_population_denominator"] == 6861
+    assert visual["observations"]["T4_synapse_correlator_valid_target_count"] == 6749
+    assert visual["observations"]["T4_synapse_correlator_direction_pass_counts"] == [
+        2, 2, 2, 1, 2, 2, 2, 1
+    ]
+    assert visual["observations"]["T4_synapse_correlator_polarity_pass_counts"] == [8] * 8
+    assert visual["observations"]["T4_synapse_correlator_bilateral_direction_subtypes"] == [
+        [] for _ in range(8)
+    ]
+    assert visual["observations"]["T4_synapse_correlator_main_gate_passed"] is False
+    assert visual["observations"]["T4_synapse_correlator_controls_evaluated"] is False
+    assert visual["observations"][
+        "T4_synapse_correlator_three_condition_evaluation_performed"
+    ] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

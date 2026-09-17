@@ -1,0 +1,1452 @@
+{
+  "protocol": {
+    "name": "v7-t4-synapse-axis-conductance-correlator-precheck",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-synapse-correlator-precheck.yaml": "b5c5b78511359ab064b8b678219016a844ac7098950c5d7580d4cf927eafd9f3",
+      "src/fly_emotion/driving/v7_t4_synapse_correlator_precheck.py": "7542184772eaa9c21aec765dd0714896e13cf38843eeabdb4c99a25bc8f4ae7e",
+      "artifacts/v7-synapse-axis-calibration.json": "b4483743c987130039baa9c5dda2d307d31b4c455dd7358ad8b58319a2a49b2f",
+      "configs/driving-v7-t4-conductance.yaml": "47d358b4c49908f5f155e6e55f46c4ca57fc97b4a9802b3d06ce47f2bf77c841",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "configs/driving-v7-synapse-spatial-audit.yaml": "ce72f8560a05554a24681440ce67efd885827266fd77b6c66396678887708d48"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count": 8,
+    "candidate_count": 8,
+    "T5_evaluated": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false
+  },
+  "diagnostic_target_count": 6749,
+  "diagnostic_valid_target_count": 6749,
+  "fixed_T4_population_denominator": 6861,
+  "candidates": [
+    {
+      "name": "positive_peak:gain=0.125",
+      "temporal_reduction": "positive_peak",
+      "reduction_index": 1,
+      "gain": 0.125,
+      "direction_pass_count": 2,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.05357755749998516,
+          "polarity": 0.16768471268070828
+        },
+        "b": {
+          "direction": 0.0022748429458623667,
+          "polarity": 0.1727120790483987
+        },
+        "c": {
+          "direction": 0.05776764205426069,
+          "polarity": 0.20545188140979342
+        },
+        "d": {
+          "direction": 0.04359985645795342,
+          "polarity": 0.225566030108876
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.09790659755221551,
+            "positive_cell_fraction": 0.5985576923076923,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.713306932079316,
+            "positive_cell_fraction": 0.7692307692307693,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.15148415505220067,
+            "positive_cell_fraction": 0.7497048406139315,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.8809916447600242,
+            "positive_cell_fraction": 0.9043683589138135,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.047001001975935985,
+            "positive_cell_fraction": 0.5830346475507766,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.6190821424734477,
+            "positive_cell_fraction": 0.7275985663082437,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.04927584492179835,
+            "positive_cell_fraction": 0.6011834319526628,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.7917942215218464,
+            "positive_cell_fraction": 0.850887573964497,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.07334174909465382,
+            "positive_cell_fraction": 0.6007025761124122,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.6953485715370383,
+            "positive_cell_fraction": 0.7236533957845434,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.1311093911489145,
+            "positive_cell_fraction": 0.7174163783160323,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.9008004529468318,
+            "positive_cell_fraction": 0.8373702422145328,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.05026235035443857,
+            "positive_cell_fraction": 0.5926829268292683,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.6184802496768915,
+            "positive_cell_fraction": 0.758830694275274,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.09386220681239199,
+            "positive_cell_fraction": 0.6524822695035462,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.8440462797857675,
+            "positive_cell_fraction": 0.8309692671394799,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "positive_peak:gain=0.5",
+      "temporal_reduction": "positive_peak",
+      "reduction_index": 1,
+      "gain": 0.5,
+      "direction_pass_count": 2,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.05922036007386908,
+          "polarity": 0.18030571247167104
+        },
+        "b": {
+          "direction": 0.004240900572639358,
+          "polarity": 0.18912937026252918
+        },
+        "c": {
+          "direction": 0.05789114450572293,
+          "polarity": 0.19818920569739473
+        },
+        "d": {
+          "direction": 0.043694115486437396,
+          "polarity": 0.21893066891599255
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.0888368982101855,
+            "positive_cell_fraction": 0.5985576923076923,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.67241506299014,
+            "positive_cell_fraction": 0.7680288461538461,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.14805725828405458,
+            "positive_cell_fraction": 0.7497048406139315,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.852720775461811,
+            "positive_cell_fraction": 0.9043683589138135,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.04350088801043328,
+            "positive_cell_fraction": 0.5842293906810035,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.5864490443765454,
+            "positive_cell_fraction": 0.7275985663082437,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.04774178858307264,
+            "positive_cell_fraction": 0.6011834319526628,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.7755784146390746,
+            "positive_cell_fraction": 0.850887573964497,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.07098507186426502,
+            "positive_cell_fraction": 0.6018735362997658,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.6652605641735724,
+            "positive_cell_fraction": 0.724824355971897,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.12887621636998794,
+            "positive_cell_fraction": 0.7174163783160323,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.8634497698709671,
+            "positive_cell_fraction": 0.8373702422145328,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.04825562647740242,
+            "positive_cell_fraction": 0.5926829268292683,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.5884532266944561,
+            "positive_cell_fraction": 0.7551766138855055,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.09194974196383982,
+            "positive_cell_fraction": 0.6524822695035462,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.8073838956104487,
+            "positive_cell_fraction": 0.8309692671394799,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "positive_peak:gain=2",
+      "temporal_reduction": "positive_peak",
+      "reduction_index": 1,
+      "gain": 2.0,
+      "direction_pass_count": 2,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.06302311959845283,
+          "polarity": 0.1783000250724629
+        },
+        "b": {
+          "direction": 0.006812108222873169,
+          "polarity": 0.20879256010008962
+        },
+        "c": {
+          "direction": 0.05015270931695724,
+          "polarity": 0.187975277416369
+        },
+        "d": {
+          "direction": 0.036886775727939344,
+          "polarity": 0.2180901558975259
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.07372740262224212,
+            "positive_cell_fraction": 0.5973557692307693,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.5692125896813002,
+            "positive_cell_fraction": 0.7668269230769231,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.13675052222069495,
+            "positive_cell_fraction": 0.7497048406139315,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.7475126147537631,
+            "positive_cell_fraction": 0.9043683589138135,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.038655233185465876,
+            "positive_cell_fraction": 0.5842293906810035,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.4990035976858541,
+            "positive_cell_fraction": 0.7228195937873357,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.045467341408339045,
+            "positive_cell_fraction": 0.6,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.7077961577859437,
+            "positive_cell_fraction": 0.850887573964497,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.06556918247803989,
+            "positive_cell_fraction": 0.6018735362997658,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.5553132468572015,
+            "positive_cell_fraction": 0.7236533957845434,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.11572189179499713,
+            "positive_cell_fraction": 0.7174163783160323,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.7432885242735705,
+            "positive_cell_fraction": 0.8373702422145328,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.0427697930899648,
+            "positive_cell_fraction": 0.5914634146341463,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.47918107313193326,
+            "positive_cell_fraction": 0.7539585870889159,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.07965656881790414,
+            "positive_cell_fraction": 0.6524822695035462,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.6972712290294591,
+            "positive_cell_fraction": 0.8309692671394799,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "positive_peak:gain=8",
+      "temporal_reduction": "positive_peak",
+      "reduction_index": 1,
+      "gain": 8.0,
+      "direction_pass_count": 1,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.05153703016755589,
+          "polarity": 0.1586952619338171
+        },
+        "b": {
+          "direction": 0.007500582675238652,
+          "polarity": 0.20634370061651186
+        },
+        "c": {
+          "direction": 0.04474822399752343,
+          "polarity": 0.16270621871205188
+        },
+        "d": {
+          "direction": 0.02543570023232141,
+          "polarity": 0.16699724063897248
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.049279183035873204,
+            "positive_cell_fraction": 0.5961538461538461,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.35810478465654927,
+            "positive_cell_fraction": 0.7620192307692307,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.1008162132034291,
+            "positive_cell_fraction": 0.7497048406139315,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.5168000465903664,
+            "positive_cell_fraction": 0.9031877213695395,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.02948840330639047,
+            "positive_cell_fraction": 0.5830346475507766,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.34676269281886185,
+            "positive_cell_fraction": 0.7216248506571087,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.03698898598162912,
+            "positive_cell_fraction": 0.6,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.5531063934353737,
+            "positive_cell_fraction": 0.8520710059171598,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.0419178904794225,
+            "positive_cell_fraction": 0.6065573770491803,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.3519726446143227,
+            "positive_cell_fraction": 0.7201405152224825,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.08666611447694593,
+            "positive_cell_fraction": 0.71280276816609,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.5146788633263746,
+            "positive_cell_fraction": 0.8350634371395617,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.028559083582636105,
+            "positive_cell_fraction": 0.5951219512195122,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.2992494211380139,
+            "positive_cell_fraction": 0.7442143727161997,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.053994783814957516,
+            "positive_cell_fraction": 0.6513002364066194,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.46624666177698637,
+            "positive_cell_fraction": 0.8309692671394799,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "signed_mean:gain=0.125",
+      "temporal_reduction": "signed_mean",
+      "reduction_index": 2,
+      "gain": 0.125,
+      "direction_pass_count": 2,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.054019203057156295,
+          "polarity": 0.16641490561186245
+        },
+        "b": {
+          "direction": 0.0010756850281384844,
+          "polarity": 0.16567886677461652
+        },
+        "c": {
+          "direction": 0.05692226097911385,
+          "polarity": 0.20364502920759453
+        },
+        "d": {
+          "direction": 0.044335861894884164,
+          "polarity": 0.2223755712969382
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.09746495199481092,
+            "positive_cell_fraction": 0.5973557692307693,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.7145767391481843,
+            "positive_cell_fraction": 0.7680288461538461,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.15148415505196722,
+            "positive_cell_fraction": 0.7497048406139315,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.8809916447600468,
+            "positive_cell_fraction": 0.9043683589138135,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.048200159894120825,
+            "positive_cell_fraction": 0.5842293906810035,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.6270628630207289,
+            "positive_cell_fraction": 0.7287933094384708,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.04927584492225931,
+            "positive_cell_fraction": 0.6011834319526628,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.7927417297953454,
+            "positive_cell_fraction": 0.850887573964497,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.07461004862140361,
+            "positive_cell_fraction": 0.6007025761124122,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.6971554237390973,
+            "positive_cell_fraction": 0.7224824355971897,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.13153230960051746,
+            "positive_cell_fraction": 0.7162629757785467,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.9008004529466919,
+            "positive_cell_fraction": 0.8373702422145328,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.049526344918054445,
+            "positive_cell_fraction": 0.5926829268292683,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.6229215967490546,
+            "positive_cell_fraction": 0.7576126674786845,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.09386220681293861,
+            "positive_cell_fraction": 0.6524822695035462,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.8452971680459928,
+            "positive_cell_fraction": 0.8309692671394799,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "signed_mean:gain=0.5",
+      "temporal_reduction": "signed_mean",
+      "reduction_index": 2,
+      "gain": 0.5,
+      "direction_pass_count": 2,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.05870607447122597,
+          "polarity": 0.17588791411841986
+        },
+        "b": {
+          "direction": 0.00035253453303971116,
+          "polarity": 0.16815419281559163
+        },
+        "c": {
+          "direction": 0.056994470838196684,
+          "polarity": 0.19302047000772193
+        },
+        "d": {
+          "direction": 0.04399799743220342,
+          "polarity": 0.21682842085539256
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.08935118380884069,
+            "positive_cell_fraction": 0.5925480769230769,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.6791913416361778,
+            "positive_cell_fraction": 0.7668269230769231,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.14805725828006666,
+            "positive_cell_fraction": 0.7497048406139315,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.8550792557545976,
+            "positive_cell_fraction": 0.9031877213695395,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.048250524043572385,
+            "positive_cell_fraction": 0.5854241338112306,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.6084415295474088,
+            "positive_cell_fraction": 0.7323775388291517,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.048603058576612096,
+            "positive_cell_fraction": 0.6011834319526628,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.7765957223630005,
+            "positive_cell_fraction": 0.850887573964497,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.0723007314070571,
+            "positive_cell_fraction": 0.6007025761124122,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.6714501652474727,
+            "positive_cell_fraction": 0.7236533957845434,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.1292952022452538,
+            "positive_cell_fraction": 0.7162629757785467,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.8644706352551946,
+            "positive_cell_fraction": 0.8373702422145328,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.04782215171973711,
+            "positive_cell_fraction": 0.5914634146341463,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.5931046018020667,
+            "positive_cell_fraction": 0.7539585870889159,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.09182014915194053,
+            "positive_cell_fraction": 0.6501182033096927,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.8099330226574593,
+            "positive_cell_fraction": 0.8321513002364066,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "signed_mean:gain=2",
+      "temporal_reduction": "signed_mean",
+      "reduction_index": 2,
+      "gain": 2.0,
+      "direction_pass_count": 2,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.05721623861381074,
+          "polarity": 0.16923235278287618
+        },
+        "b": {
+          "direction": 0.0016106498982129056,
+          "polarity": 0.15477668116991328
+        },
+        "c": {
+          "direction": 0.04622205906397425,
+          "polarity": 0.17383995332949853
+        },
+        "d": {
+          "direction": 0.03572216050593521,
+          "polarity": 0.20994410902476313
+        }
+      },
+      "mirror_gate_passed": false,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.0800447472953555,
+            "positive_cell_fraction": 0.5925480769230769,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.5883770007819551,
+            "positive_cell_fraction": 0.7608173076923077,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.13726098590916624,
+            "positive_cell_fraction": 0.7449822904368358,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.7576093535648313,
+            "positive_cell_fraction": 0.9020070838252656,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.04467800365793793,
+            "positive_cell_fraction": 0.5878136200716846,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.5576069540083305,
+            "positive_cell_fraction": 0.7311827956989247,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.04628865355615083,
+            "positive_cell_fraction": 0.5988165680473373,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.7123836351782438,
+            "positive_cell_fraction": 0.8532544378698225,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.06949983272832098,
+            "positive_cell_fraction": 0.6053864168618267,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.5802631965674114,
+            "positive_cell_fraction": 0.7224824355971897,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.11572189179229524,
+            "positive_cell_fraction": 0.7151095732410612,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.75410314989691,
+            "positive_cell_fraction": 0.8385236447520185,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.04486646049910384,
+            "positive_cell_fraction": 0.5878048780487805,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.49990690109077396,
+            "positive_cell_fraction": 0.7515225334957369,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.08058862100503905,
+            "positive_cell_fraction": 0.6501182033096927,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.7098510101155371,
+            "positive_cell_fraction": 0.8333333333333334,
+            "passed": true
+          }
+        }
+      }
+    },
+    {
+      "name": "signed_mean:gain=8",
+      "temporal_reduction": "signed_mean",
+      "reduction_index": 2,
+      "gain": 8.0,
+      "direction_pass_count": 1,
+      "polarity_pass_count": 8,
+      "bilateral_direction_subtypes": [],
+      "mirror_absolute_median_contrast_errors": {
+        "a": {
+          "direction": 0.04558763954951579,
+          "polarity": 0.12660832891932272
+        },
+        "b": {
+          "direction": 0.0021101752285392628,
+          "polarity": 0.15697464052917587
+        },
+        "c": {
+          "direction": 0.025961151297901164,
+          "polarity": 0.12584288474481892
+        },
+        "d": {
+          "direction": 0.02592427911398168,
+          "polarity": 0.16436013478881284
+        }
+      },
+      "mirror_gate_passed": true,
+      "population_scores": {
+        "T4a_L": {
+          "direction": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.06048852573978995,
+            "positive_cell_fraction": 0.5949519230769231,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 835,
+            "valid_cell_count": 832,
+            "valid_cell_fraction": 0.9964071856287425,
+            "median_signed_contrast": 0.4183730093846446,
+            "positive_cell_fraction": 0.7475961538461539,
+            "passed": true
+          }
+        },
+        "T4a_R": {
+          "direction": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.10607616528930575,
+            "positive_cell_fraction": 0.7520661157024794,
+            "passed": true
+          },
+          "polarity": {
+            "cell_count": 849,
+            "valid_cell_count": 847,
+            "valid_cell_fraction": 0.9976442873969376,
+            "median_signed_contrast": 0.5449813383039673,
+            "positive_cell_fraction": 0.8961038961038961,
+            "passed": true
+          }
+        },
+        "T4b_L": {
+          "direction": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.041760323312937254,
+            "positive_cell_fraction": 0.5961768219832736,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 844,
+            "valid_cell_count": 837,
+            "valid_cell_fraction": 0.9917061611374408,
+            "median_signed_contrast": 0.4146098750243401,
+            "positive_cell_fraction": 0.7323775388291517,
+            "passed": true
+          }
+        },
+        "T4b_R": {
+          "direction": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.03965014808439799,
+            "positive_cell_fraction": 0.5964497041420118,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 846,
+            "valid_cell_count": 845,
+            "valid_cell_fraction": 0.9988179669030733,
+            "median_signed_contrast": 0.571584515553516,
+            "positive_cell_fraction": 0.8520710059171598,
+            "passed": true
+          }
+        },
+        "T4c_L": {
+          "direction": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.057007804459515574,
+            "positive_cell_fraction": 0.6147540983606558,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 895,
+            "valid_cell_count": 854,
+            "valid_cell_fraction": 0.9541899441340782,
+            "median_signed_contrast": 0.4079137024948574,
+            "positive_cell_fraction": 0.7201405152224825,
+            "passed": true
+          }
+        },
+        "T4c_R": {
+          "direction": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.08296895575741674,
+            "positive_cell_fraction": 0.707035755478662,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 883,
+            "valid_cell_count": 867,
+            "valid_cell_fraction": 0.9818799546998868,
+            "median_signed_contrast": 0.5337565872396763,
+            "positive_cell_fraction": 0.8408304498269896,
+            "passed": true
+          }
+        },
+        "T4d_L": {
+          "direction": {
+            "cell_count": 850,
+            "valid_cell_count": 820,
+            "valid_cell_fraction": 0.9647058823529412,
+            "median_signed_contrast": 0.031047540377464156,
+            "positive_cell_fraction": 0.5853658536585366,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 850,
+            "valid_cell_count": 821,
+            "valid_cell_fraction": 0.9658823529411765,
+            "median_signed_contrast": 0.31977378346097396,
+            "positive_cell_fraction": 0.7381242387332522,
+            "passed": true
+          }
+        },
+        "T4d_R": {
+          "direction": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.056971819491445835,
+            "positive_cell_fraction": 0.6394799054373522,
+            "passed": false
+          },
+          "polarity": {
+            "cell_count": 859,
+            "valid_cell_count": 846,
+            "valid_cell_fraction": 0.9848661233993015,
+            "median_signed_contrast": 0.4841339182497868,
+            "positive_cell_fraction": 0.8404255319148937,
+            "passed": true
+          }
+        }
+      }
+    }
+  ],
+  "control_eligible_candidates": [],
+  "advancing_candidates": [],
+  "main_gate_passed": false,
+  "controls_requested": [
+    "temporal_shuffle",
+    "static_sham"
+  ],
+  "controls_evaluated": false,
+  "three_condition_evaluation_performed": false,
+  "advance_to_calibration": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "no_bilateral_T4_direction_subtype_passed_synapse_axis_main_gate",
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_precheck": true,
+    "T4_only": true,
+    "T5_mapping_application_forbidden": true,
+    "synapse_axis_fit_frozen_before_functional_precheck": true,
+    "dynamics_do_not_read_subtype_or_direction_labels": true,
+    "labels_used_for_posthoc_scoring_only": true,
+    "fixed_whole_population_denominators": true,
+    "missing_conductance_targets_count_as_invalid": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "LPLC_experiments_authorized_only_after_strict_T4_T5_gate": true
+  }
+}

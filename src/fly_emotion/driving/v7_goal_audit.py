@@ -73,6 +73,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     upstream_latency_audit = reports["upstream_latency_audit"]
     synapse_spatial_audit = reports["synapse_spatial_audit"]
     synapse_axis_calibration = reports["synapse_axis_calibration"]
+    t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -171,6 +172,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["t5_source_pair_precheck"],
                 config["evidence"]["t5_continuous_moment_precheck"],
+                config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -492,6 +494,35 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "synapse_axis_T5_mapping_application_authorized": synapse_axis_calibration[
                     "authorize_T5_mapping_application"
                 ],
+                "T4_synapse_correlator_fixed_population_denominator": (
+                    t4_synapse_correlator_precheck["fixed_T4_population_denominator"]
+                ),
+                "T4_synapse_correlator_valid_target_count": (
+                    t4_synapse_correlator_precheck["diagnostic_valid_target_count"]
+                ),
+                "T4_synapse_correlator_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t4_synapse_correlator_precheck["candidates"]
+                ],
+                "T4_synapse_correlator_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t4_synapse_correlator_precheck["candidates"]
+                ],
+                "T4_synapse_correlator_bilateral_direction_subtypes": [
+                    item["bilateral_direction_subtypes"]
+                    for item in t4_synapse_correlator_precheck["candidates"]
+                ],
+                "T4_synapse_correlator_main_gate_passed": (
+                    t4_synapse_correlator_precheck["main_gate_passed"]
+                ),
+                "T4_synapse_correlator_controls_evaluated": (
+                    t4_synapse_correlator_precheck["controls_evaluated"]
+                ),
+                "T4_synapse_correlator_three_condition_evaluation_performed": (
+                    t4_synapse_correlator_precheck[
+                        "three_condition_evaluation_performed"
+                    ]
+                ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
                 ),
