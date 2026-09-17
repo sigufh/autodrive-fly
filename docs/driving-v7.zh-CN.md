@@ -1411,6 +1411,13 @@ LPLC1 也完成了独立的近碰撞单条件 precheck，不复用 LPLC2 radial 
 背景更是约 -0.493/-0.488，与所需背景运动抑制方向相反。三项比较左右均未过门，因此
 不扩另两个 tuning 条件，不拟合参数或接入减速控制。像素尺寸只作为工程刺激参数，不宣称
 等同论文中的视觉角度。证据见 `artifacts/v7-lplc1-near-collision-precheck.json`。
+进一步按文献机制只读统计 LPLC1 的直接输入：已知 object detector（T2/T2a/T3）与
+motion detector（T4/T5）在左右两侧的 target 覆盖都超过 98%，且其 source 均可由原生
+optic-hex 或一跳真实上游加权质心定位。谷氨酸候选输入也覆盖全部 LPLC1，但可定位权重
+仅左 60.37%、右 77.66%，低于冻结 80% 空间机制门；GABA 输入分开报告为左 77.80%、
+右 83.00%，不与谷氨酸合并凑覆盖。故当前证据支持 object/motion 汇聚存在，却不足以
+构造文献所需的空间偏置谷氨酸抑制；不猜测未列名 source 的功能，也不授权新的 LPLC1
+读出。证据见 `artifacts/v7-lplc1-input-structure.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

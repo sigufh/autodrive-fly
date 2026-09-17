@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "0f9bbf7630ead8ba55a12dc8fa832c45b04f401402333fb17880a272583812a1",
-      "src/fly_emotion/driving/v7_goal_audit.py": "76cf314614fb183b90562a9e8bf9652046ac3c566b976639fc30850485812923",
+      "configs/driving-v7-goal-audit.yaml": "f8acc8efb71663d171adb6ac657558a8e512603fb90a3fbba8e2a0a4b34772d3",
+      "src/fly_emotion/driving/v7_goal_audit.py": "e3861fde8cf1d85531fa068b45eddcad551bdd567f487bb7bd71988018c7f169",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -56,6 +56,7 @@
       "artifacts/v7-t5-lamina-scalar-precheck.json": "7335166942c334e5c99a153374de007fb08f9ebc38e12f9fb0619f6d75bc4fd6",
       "artifacts/v7-t5-source-axis-audit.json": "71a896609e4ba5f85a6b6a00b44c27f45817a620fb100358ae627ececbfaab47",
       "artifacts/v7-lplc1-near-collision-precheck.json": "7c41b998e8b80207e0b4a17141367c0c8338ed5caea7389cbc37c99b10dfc59f",
+      "artifacts/v7-lplc1-input-structure.json": "dc005e820af8bdbcd0bc4b7a45ed9385dc17aa7c0f05ac7345c7ef9cb5df095a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-t4t5-local-edge-precheck.json": "4a13be0c85994ce8946f43e7131172f2aeb480106ea5356d8462d1529c7665a3",
       "artifacts/v7-t4t5-local-edge-backends.json": "c944084fcbe3f275298d537d090c7117225a4e1030e51a3963154bbfbdd0e08f",
@@ -125,6 +126,7 @@
         "artifacts/v7-t5-lamina-scalar-precheck.json",
         "artifacts/v7-t5-source-axis-audit.json",
         "artifacts/v7-lplc1-near-collision-precheck.json",
+        "artifacts/v7-lplc1-input-structure.json",
         "artifacts/v7-lplc2-radial-opponency.json",
         "artifacts/v7-lplc2-position-coverage.json"
       ],
@@ -381,6 +383,36 @@
         "LPLC1_near_collision_stimulus_geometry_passed": true,
         "LPLC1_near_collision_mirror_passed": true,
         "LPLC1_near_collision_precheck_passed": false,
+        "LPLC1_input_group_target_fractions": {
+          "L": {
+            "object_detectors": 1.0,
+            "motion_detectors": 0.9852941176470589,
+            "glutamatergic": 1.0,
+            "GABAergic": 1.0
+          },
+          "R": {
+            "object_detectors": 1.0,
+            "motion_detectors": 1.0,
+            "glutamatergic": 1.0,
+            "GABAergic": 1.0
+          }
+        },
+        "LPLC1_input_group_located_weight_fractions": {
+          "L": {
+            "object_detectors": 1.0,
+            "motion_detectors": 1.0,
+            "glutamatergic": 0.6037249728387397,
+            "GABAergic": 0.7779621138996139
+          },
+          "R": {
+            "object_detectors": 1.0,
+            "motion_detectors": 1.0,
+            "glutamatergic": 0.7766119146849718,
+            "GABAergic": 0.829952180843356
+          }
+        },
+        "LPLC1_input_structure_gate_passed": false,
+        "LPLC1_spatial_inhibition_mechanism_authorized": false,
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
         "local_edge_precheck_direction_pass_count": 0,
         "local_edge_precheck_polarity_pass_count": 0,

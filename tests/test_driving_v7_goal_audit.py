@@ -168,6 +168,20 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["LPLC1_near_collision_stimulus_geometry_passed"] is True
     assert visual["observations"]["LPLC1_near_collision_mirror_passed"] is True
     assert visual["observations"]["LPLC1_near_collision_precheck_passed"] is False
+    assert visual["observations"]["LPLC1_input_group_target_fractions"]["L"][
+        "object_detectors"
+    ] == 1.0
+    assert visual["observations"]["LPLC1_input_group_target_fractions"]["R"][
+        "motion_detectors"
+    ] == 1.0
+    assert visual["observations"]["LPLC1_input_group_located_weight_fractions"]["L"][
+        "glutamatergic"
+    ] < 0.61
+    assert visual["observations"]["LPLC1_input_group_located_weight_fractions"]["R"][
+        "glutamatergic"
+    ] < 0.78
+    assert visual["observations"]["LPLC1_input_structure_gate_passed"] is False
+    assert visual["observations"]["LPLC1_spatial_inhibition_mechanism_authorized"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

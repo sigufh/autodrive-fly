@@ -61,6 +61,7 @@ evidence:
   t5_lamina_scalar_precheck: artifacts/v7-t5-lamina-scalar-precheck.json
   t5_source_axis_audit: artifacts/v7-t5-source-axis-audit.json
   lplc1_near_collision_precheck: artifacts/v7-lplc1-near-collision-precheck.json
+  lplc1_input_structure: artifacts/v7-lplc1-input-structure.json
   t5_spatial_order: artifacts/v7-t5-spatial-order.json
   t4t5_local_edge_precheck: artifacts/v7-t4t5-local-edge-precheck.json
   t4t5_local_edge_backends: artifacts/v7-t4t5-local-edge-backends.json

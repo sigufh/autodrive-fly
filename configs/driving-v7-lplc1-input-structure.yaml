@@ -1,0 +1,26 @@
+version: 1
+name: v7-lplc1-input-mechanism-structure-audit
+observed_on: "2026-09-17"
+mechanism_evidence: artifacts/v7-looming-mechanism-audit.json
+near_collision_evidence: artifacts/v7-lplc1-near-collision-precheck.json
+source_groups:
+  object_detectors: [T2, T2a, T3]
+  motion_detectors: [T4a, T4b, T4c, T4d, T5a, T5b, T5c, T5d]
+inhibition_candidates:
+  glutamatergic: [glutamate]
+  GABAergic_reported_separately: [gaba]
+gate:
+  minimum_target_coverage: 0.80
+  minimum_located_source_weight_fraction: 0.80
+  require_object_motion_and_glutamatergic_groups_both_sides: true
+boundary:
+  structure_only: true
+  all_LPLC1_cells_in_denominator: true
+  functional_roles_from_paper_not_inferred_for_unlisted_types: true
+  glutamate_sign_uses_frozen_v7_convention: true
+  universal_physiological_inhibition_claimed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false

@@ -64,6 +64,7 @@ from .driving.v7_local_input_audit import (
     evaluate_v7_t4_input_coverage,
 )
 from .driving.v7_looming_mechanism_audit import evaluate_v7_looming_mechanism_audit
+from .driving.v7_lplc1_input_structure import evaluate_v7_lplc1_input_structure
 from .driving.v7_lplc1_near_collision_precheck import (
     evaluate_v7_lplc1_near_collision_precheck,
 )
@@ -304,6 +305,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
     subparsers.add_parser("v7-evaluate-lplc1-near-collision-precheck")
+    subparsers.add_parser("v7-audit-lplc1-input-structure")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
     subparsers.add_parser("v7-freeze-fusion-nested")
     subparsers.add_parser("v7-evaluate-fusion-nested")
@@ -954,6 +956,12 @@ def main() -> None:
     if args.command == "v7-evaluate-lplc1-near-collision-precheck":
         report = evaluate_v7_lplc1_near_collision_precheck(root)
         target = root / "artifacts/v7-lplc1-near-collision-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-lplc1-input-structure":
+        report = evaluate_v7_lplc1_input_structure(root)
+        target = root / "artifacts/v7-lplc1-input-structure.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

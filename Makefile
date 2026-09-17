@@ -350,6 +350,11 @@ v7-evaluate-lplc1-near-collision-precheck:
 
 .PHONY: v7-evaluate-lplc1-near-collision-precheck
 
+v7-audit-lplc1-input-structure:
+	.venv/bin/autodrive-fly v7-audit-lplc1-input-structure
+
+.PHONY: v7-audit-lplc1-input-structure
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

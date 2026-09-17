@@ -70,6 +70,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
+    lplc1_input_structure = reports["lplc1_input_structure"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -146,6 +147,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
+                config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lplc2_radial_opponency"],
                 config["evidence"]["lplc2_position_coverage"],
             ],
@@ -438,6 +440,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "LPLC1_near_collision_precheck_passed": lplc1_near_collision_precheck[
                     "LPLC1_near_collision_precheck_passed"
+                ],
+                "LPLC1_input_group_target_fractions": {
+                    side: {
+                        name: result["targets_with_input_fraction"]
+                        for name, result in side_result["groups"].items()
+                    }
+                    for side, side_result in lplc1_input_structure["per_side"].items()
+                },
+                "LPLC1_input_group_located_weight_fractions": {
+                    side: {
+                        name: result["located_source_weight_fraction"]
+                        for name, result in side_result["groups"].items()
+                    }
+                    for side, side_result in lplc1_input_structure["per_side"].items()
+                },
+                "LPLC1_input_structure_gate_passed": lplc1_input_structure[
+                    "strict_input_structure_gate_passed"
+                ],
+                "LPLC1_spatial_inhibition_mechanism_authorized": lplc1_input_structure[
+                    "authorize_spatial_inhibition_mechanism"
                 ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"
