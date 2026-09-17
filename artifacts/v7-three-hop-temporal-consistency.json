@@ -1,0 +1,522 @@
+{
+  "protocol": {
+    "name": "v7-three-hop-temporal-consistency-audit",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-three-hop-temporal-consistency.yaml": "f8cf0eb2a2c7be886478b8b1c5d7c3302c6bd0a1167596387b41c73be8a120e2",
+      "src/fly_emotion/driving/v7_three_hop_temporal_consistency.py": "57339c3dbe6f73c390f9b2296285a0390be86efb6243c29c7360f91be3760b12",
+      "configs/driving-v7-three-hop-moment.yaml": "3638c572b2c5b8e6fa06872ae3c2706b0d0031de17b487e882a11f4f19a588d3",
+      "src/fly_emotion/driving/v7_three_hop_moment.py": "efd0c80de0f21cf12cf72f0b957c9b1af9c9e405f9006cbf7edacb1c5d33c4d9",
+      "artifacts/v7-three-hop-moment.json": "cb2fe8928a9115790020d75b8b424182878d697d85b38b51e6d7169bd561c1f9",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163"
+    },
+    "condition_id": "S1-T01",
+    "metric_count": 4,
+    "stimulus_count_per_family": 60,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false
+  },
+  "maximum_shuffle_to_ordered_energy_ratio": 0.5,
+  "families": {
+    "T4": {
+      "path_summary": {
+        "known_source_cell_count": 9155,
+        "path_nonzero_count": 542414,
+        "reachable_target_count": 6845,
+        "reachable_target_fraction": 0.9976679784288005
+      },
+      "metrics": {
+        "mean_vector_magnitude": {
+          "population_results": {
+            "T4a_L": {
+              "ordered_mean_energy": 0.0016953090235416611,
+              "temporal_shuffle_mean_energy": 0.0039175745250252655,
+              "shuffle_to_ordered_energy_ratio": 2.3108321082613488,
+              "attenuation_gate_passed": false
+            },
+            "T4a_R": {
+              "ordered_mean_energy": 0.0005052345757891299,
+              "temporal_shuffle_mean_energy": 0.0022101846491201418,
+              "shuffle_to_ordered_energy_ratio": 4.374571248747251,
+              "attenuation_gate_passed": false
+            },
+            "T4b_L": {
+              "ordered_mean_energy": 0.001664368350937305,
+              "temporal_shuffle_mean_energy": 0.003868470980277111,
+              "shuffle_to_ordered_energy_ratio": 2.324287756432369,
+              "attenuation_gate_passed": false
+            },
+            "T4b_R": {
+              "ordered_mean_energy": 0.0005048067611786693,
+              "temporal_shuffle_mean_energy": 0.0022115117747088723,
+              "shuffle_to_ordered_energy_ratio": 4.380907596295326,
+              "attenuation_gate_passed": false
+            },
+            "T4c_L": {
+              "ordered_mean_energy": 0.00168915696270072,
+              "temporal_shuffle_mean_energy": 0.0038686011615023785,
+              "shuffle_to_ordered_energy_ratio": 2.2902555812912966,
+              "attenuation_gate_passed": false
+            },
+            "T4c_R": {
+              "ordered_mean_energy": 0.0005092244296470594,
+              "temporal_shuffle_mean_energy": 0.0022246470017005734,
+              "shuffle_to_ordered_energy_ratio": 4.368696535715036,
+              "attenuation_gate_passed": false
+            },
+            "T4d_L": {
+              "ordered_mean_energy": 0.0016921810775693876,
+              "temporal_shuffle_mean_energy": 0.003919813866624617,
+              "shuffle_to_ordered_energy_ratio": 2.3164269584286767,
+              "attenuation_gate_passed": false
+            },
+            "T4d_R": {
+              "ordered_mean_energy": 0.0005085319874383756,
+              "temporal_shuffle_mean_energy": 0.0022217527457302376,
+              "shuffle_to_ordered_energy_ratio": 4.368953774022861,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.2902555812912966,
+          "median_shuffle_to_ordered_ratio": 3.3464921460737025,
+          "maximum_shuffle_to_ordered_ratio": 4.380907596295326,
+          "passed": false
+        },
+        "coherence_weighted_magnitude": {
+          "population_results": {
+            "T4a_L": {
+              "ordered_mean_energy": 0.0014585172234062443,
+              "temporal_shuffle_mean_energy": 0.0035887218261628,
+              "shuffle_to_ordered_energy_ratio": 2.460527560848162,
+              "attenuation_gate_passed": false
+            },
+            "T4a_R": {
+              "ordered_mean_energy": 0.000361085999809048,
+              "temporal_shuffle_mean_energy": 0.002002499501298863,
+              "shuffle_to_ordered_energy_ratio": 5.545768881534701,
+              "attenuation_gate_passed": false
+            },
+            "T4b_L": {
+              "ordered_mean_energy": 0.0014305857291841296,
+              "temporal_shuffle_mean_energy": 0.0035432709997680286,
+              "shuffle_to_ordered_energy_ratio": 2.4767973896879107,
+              "attenuation_gate_passed": false
+            },
+            "T4b_R": {
+              "ordered_mean_energy": 0.0003620976457123961,
+              "temporal_shuffle_mean_energy": 0.002005014813416733,
+              "shuffle_to_ordered_energy_ratio": 5.537221346667521,
+              "attenuation_gate_passed": false
+            },
+            "T4c_L": {
+              "ordered_mean_energy": 0.00145394509889012,
+              "temporal_shuffle_mean_energy": 0.0035430168513315816,
+              "shuffle_to_ordered_energy_ratio": 2.436829873449947,
+              "attenuation_gate_passed": false
+            },
+            "T4c_R": {
+              "ordered_mean_energy": 0.00036374056111954014,
+              "temporal_shuffle_mean_energy": 0.0020172893352899696,
+              "shuffle_to_ordered_energy_ratio": 5.54595651659262,
+              "attenuation_gate_passed": false
+            },
+            "T4d_L": {
+              "ordered_mean_energy": 0.001454726579286187,
+              "temporal_shuffle_mean_energy": 0.003589383077671355,
+              "shuffle_to_ordered_energy_ratio": 2.467393618003881,
+              "attenuation_gate_passed": false
+            },
+            "T4d_R": {
+              "ordered_mean_energy": 0.00036227503636537584,
+              "temporal_shuffle_mean_energy": 0.0020134428181852,
+              "shuffle_to_ordered_energy_ratio": 5.557774111033485,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.436829873449947,
+          "median_shuffle_to_ordered_ratio": 4.007009368177716,
+          "maximum_shuffle_to_ordered_ratio": 5.557774111033485,
+          "passed": false
+        },
+        "squared_coherence_weighted_magnitude": {
+          "population_results": {
+            "T4a_L": {
+              "ordered_mean_energy": 0.0013188052472167997,
+              "temporal_shuffle_mean_energy": 0.003327918405920708,
+              "shuffle_to_ordered_energy_ratio": 2.523434307638623,
+              "attenuation_gate_passed": false
+            },
+            "T4a_R": {
+              "ordered_mean_energy": 0.0002873368134394519,
+              "temporal_shuffle_mean_energy": 0.0018443622431842475,
+              "shuffle_to_ordered_energy_ratio": 6.418816374786918,
+              "attenuation_gate_passed": false
+            },
+            "T4b_L": {
+              "ordered_mean_energy": 0.001292675529975832,
+              "temporal_shuffle_mean_energy": 0.003285592667674061,
+              "shuffle_to_ordered_energy_ratio": 2.5416994377045947,
+              "attenuation_gate_passed": false
+            },
+            "T4b_R": {
+              "ordered_mean_energy": 0.0002891176019156739,
+              "temporal_shuffle_mean_energy": 0.001847952186101327,
+              "shuffle_to_ordered_energy_ratio": 6.391697267329693,
+              "attenuation_gate_passed": false
+            },
+            "T4c_L": {
+              "ordered_mean_energy": 0.0013159455630843133,
+              "temporal_shuffle_mean_energy": 0.0032850539659084487,
+              "shuffle_to_ordered_energy_ratio": 2.4963448778298543,
+              "attenuation_gate_passed": false
+            },
+            "T4c_R": {
+              "ordered_mean_energy": 0.000289540068526207,
+              "temporal_shuffle_mean_energy": 0.001859500021636292,
+              "shuffle_to_ordered_energy_ratio": 6.422254547017848,
+              "attenuation_gate_passed": false
+            },
+            "T4d_L": {
+              "ordered_mean_energy": 0.001315331150583575,
+              "temporal_shuffle_mean_energy": 0.003327626460262241,
+              "shuffle_to_ordered_energy_ratio": 2.529877330728363,
+              "attenuation_gate_passed": false
+            },
+            "T4d_R": {
+              "ordered_mean_energy": 0.00028780175577022333,
+              "temporal_shuffle_mean_energy": 0.0018547561191909576,
+              "shuffle_to_ordered_energy_ratio": 6.4445615150164945,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.4963448778298543,
+          "median_shuffle_to_ordered_ratio": 4.4666983525171435,
+          "maximum_shuffle_to_ordered_ratio": 6.4445615150164945,
+          "passed": false
+        },
+        "sign_persistence_weighted_magnitude": {
+          "population_results": {
+            "T4a_L": {
+              "ordered_mean_energy": 0.00013421197636537355,
+              "temporal_shuffle_mean_energy": 0.00037141031139970975,
+              "shuffle_to_ordered_energy_ratio": 2.7673410485260757,
+              "attenuation_gate_passed": false
+            },
+            "T4a_R": {
+              "ordered_mean_energy": 4.842213290100382e-05,
+              "temporal_shuffle_mean_energy": 0.00029297466394289577,
+              "shuffle_to_ordered_energy_ratio": 6.050428727331469,
+              "attenuation_gate_passed": false
+            },
+            "T4b_L": {
+              "ordered_mean_energy": 0.0001317859566296957,
+              "temporal_shuffle_mean_energy": 0.00036414899710637686,
+              "shuffle_to_ordered_energy_ratio": 2.763185140656498,
+              "attenuation_gate_passed": false
+            },
+            "T4b_R": {
+              "ordered_mean_energy": 4.813627001157481e-05,
+              "temporal_shuffle_mean_energy": 0.00029227521653924155,
+              "shuffle_to_ordered_energy_ratio": 6.071829339268732,
+              "attenuation_gate_passed": false
+            },
+            "T4c_L": {
+              "ordered_mean_energy": 0.00013246733389636476,
+              "temporal_shuffle_mean_energy": 0.0003620122964004945,
+              "shuffle_to_ordered_energy_ratio": 2.732842020386047,
+              "attenuation_gate_passed": false
+            },
+            "T4c_R": {
+              "ordered_mean_energy": 4.8439544196276605e-05,
+              "temporal_shuffle_mean_energy": 0.0002934126185682001,
+              "shuffle_to_ordered_energy_ratio": 6.057295200369656,
+              "attenuation_gate_passed": false
+            },
+            "T4d_L": {
+              "ordered_mean_energy": 0.00013347306751326307,
+              "temporal_shuffle_mean_energy": 0.00037013940145559854,
+              "shuffle_to_ordered_energy_ratio": 2.773139243381952,
+              "attenuation_gate_passed": false
+            },
+            "T4d_R": {
+              "ordered_mean_energy": 4.8627730270884766e-05,
+              "temporal_shuffle_mean_energy": 0.0002938875835610757,
+              "shuffle_to_ordered_energy_ratio": 6.043621240883561,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.732842020386047,
+          "median_shuffle_to_ordered_ratio": 4.408380242132757,
+          "maximum_shuffle_to_ordered_ratio": 6.071829339268732,
+          "passed": false
+        }
+      }
+    },
+    "T5": {
+      "path_summary": {
+        "known_source_cell_count": 6986,
+        "path_nonzero_count": 536869,
+        "reachable_target_count": 6715,
+        "reachable_target_fraction": 0.9994046733144814
+      },
+      "metrics": {
+        "mean_vector_magnitude": {
+          "population_results": {
+            "T5a_L": {
+              "ordered_mean_energy": 0.001775761544278079,
+              "temporal_shuffle_mean_energy": 0.004065780119003046,
+              "shuffle_to_ordered_energy_ratio": 2.2895980218199594,
+              "attenuation_gate_passed": false
+            },
+            "T5a_R": {
+              "ordered_mean_energy": 0.000531593832619678,
+              "temporal_shuffle_mean_energy": 0.002295751539712782,
+              "shuffle_to_ordered_energy_ratio": 4.318619590448199,
+              "attenuation_gate_passed": false
+            },
+            "T5b_L": {
+              "ordered_mean_energy": 0.0017086281756612382,
+              "temporal_shuffle_mean_energy": 0.003974648626569888,
+              "shuffle_to_ordered_energy_ratio": 2.32622210214443,
+              "attenuation_gate_passed": false
+            },
+            "T5b_R": {
+              "ordered_mean_energy": 0.0005276268294420681,
+              "temporal_shuffle_mean_energy": 0.0022905363668362117,
+              "shuffle_to_ordered_energy_ratio": 4.341205259137995,
+              "attenuation_gate_passed": false
+            },
+            "T5c_L": {
+              "ordered_mean_energy": 0.0017639858518015443,
+              "temporal_shuffle_mean_energy": 0.0040208520249752945,
+              "shuffle_to_ordered_energy_ratio": 2.279412854059363,
+              "attenuation_gate_passed": false
+            },
+            "T5c_R": {
+              "ordered_mean_energy": 0.0005372721795920131,
+              "temporal_shuffle_mean_energy": 0.0023024638994446475,
+              "shuffle_to_ordered_energy_ratio": 4.285470171176671,
+              "attenuation_gate_passed": false
+            },
+            "T5d_L": {
+              "ordered_mean_energy": 0.001706903017798054,
+              "temporal_shuffle_mean_energy": 0.003958247357135439,
+              "shuffle_to_ordered_energy_ratio": 2.318964414417448,
+              "attenuation_gate_passed": false
+            },
+            "T5d_R": {
+              "ordered_mean_energy": 0.0005233775629177696,
+              "temporal_shuffle_mean_energy": 0.0022746386101042434,
+              "shuffle_to_ordered_energy_ratio": 4.3460758948537945,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.279412854059363,
+          "median_shuffle_to_ordered_ratio": 3.3058461366605503,
+          "maximum_shuffle_to_ordered_ratio": 4.3460758948537945,
+          "passed": false
+        },
+        "coherence_weighted_magnitude": {
+          "population_results": {
+            "T5a_L": {
+              "ordered_mean_energy": 0.0015231445304846889,
+              "temporal_shuffle_mean_energy": 0.0037246726207423443,
+              "shuffle_to_ordered_energy_ratio": 2.445383577326765,
+              "attenuation_gate_passed": false
+            },
+            "T5a_R": {
+              "ordered_mean_energy": 0.0003771565492186634,
+              "temporal_shuffle_mean_energy": 0.0020799537399550957,
+              "shuffle_to_ordered_energy_ratio": 5.514828641485964,
+              "attenuation_gate_passed": false
+            },
+            "T5b_L": {
+              "ordered_mean_energy": 0.0014678496248489647,
+              "temporal_shuffle_mean_energy": 0.0036448225769092277,
+              "shuffle_to_ordered_energy_ratio": 2.4831035245073307,
+              "attenuation_gate_passed": false
+            },
+            "T5b_R": {
+              "ordered_mean_energy": 0.0003760407134406588,
+              "temporal_shuffle_mean_energy": 0.0020768807396669316,
+              "shuffle_to_ordered_energy_ratio": 5.523020953407149,
+              "attenuation_gate_passed": false
+            },
+            "T5c_L": {
+              "ordered_mean_energy": 0.0015139027522746394,
+              "temporal_shuffle_mean_energy": 0.0036855502714960853,
+              "shuffle_to_ordered_energy_ratio": 2.434469628883721,
+              "attenuation_gate_passed": false
+            },
+            "T5c_R": {
+              "ordered_mean_energy": 0.00038290831689743847,
+              "temporal_shuffle_mean_energy": 0.002088337843151976,
+              "shuffle_to_ordered_energy_ratio": 5.4538847838902775,
+              "attenuation_gate_passed": false
+            },
+            "T5d_L": {
+              "ordered_mean_energy": 0.001465594374477708,
+              "temporal_shuffle_mean_energy": 0.003628621318363236,
+              "shuffle_to_ordered_energy_ratio": 2.475870119013225,
+              "attenuation_gate_passed": false
+            },
+            "T5d_R": {
+              "ordered_mean_energy": 0.0003739604159779096,
+              "temporal_shuffle_mean_energy": 0.00206283474881613,
+              "shuffle_to_ordered_energy_ratio": 5.516184763624781,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.434469628883721,
+          "median_shuffle_to_ordered_ratio": 3.968494154198804,
+          "maximum_shuffle_to_ordered_ratio": 5.523020953407149,
+          "passed": false
+        },
+        "squared_coherence_weighted_magnitude": {
+          "population_results": {
+            "T5a_L": {
+              "ordered_mean_energy": 0.0013744383927247444,
+              "temporal_shuffle_mean_energy": 0.0034521754460026467,
+              "shuffle_to_ordered_energy_ratio": 2.5116989341071223,
+              "attenuation_gate_passed": false
+            },
+            "T5a_R": {
+              "ordered_mean_energy": 0.0002983792497977082,
+              "temporal_shuffle_mean_energy": 0.0019158231821997768,
+              "shuffle_to_ordered_energy_ratio": 6.420765463746708,
+              "attenuation_gate_passed": false
+            },
+            "T5b_L": {
+              "ordered_mean_energy": 0.0013256225502676683,
+              "temporal_shuffle_mean_energy": 0.0033808976489806135,
+              "shuffle_to_ordered_energy_ratio": 2.550422553009487,
+              "attenuation_gate_passed": false
+            },
+            "T5b_R": {
+              "ordered_mean_energy": 0.00029867873806864925,
+              "temporal_shuffle_mean_energy": 0.0019142677641419755,
+              "shuffle_to_ordered_energy_ratio": 6.409119633088828,
+              "attenuation_gate_passed": false
+            },
+            "T5c_L": {
+              "ordered_mean_energy": 0.0013667456543174452,
+              "temporal_shuffle_mean_energy": 0.0034172656460619015,
+              "shuffle_to_ordered_energy_ratio": 2.500293771022443,
+              "attenuation_gate_passed": false
+            },
+            "T5c_R": {
+              "ordered_mean_energy": 0.00030410273664200786,
+              "temporal_shuffle_mean_energy": 0.0019252733296049318,
+              "shuffle_to_ordered_energy_ratio": 6.330996395706162,
+              "attenuation_gate_passed": false
+            },
+            "T5d_L": {
+              "ordered_mean_energy": 0.0013232054261219908,
+              "temporal_shuffle_mean_energy": 0.003365325515948323,
+              "shuffle_to_ordered_energy_ratio": 2.5433129652523525,
+              "attenuation_gate_passed": false
+            },
+            "T5d_R": {
+              "ordered_mean_energy": 0.00029741785829527563,
+              "temporal_shuffle_mean_energy": 0.0019013678750537718,
+              "shuffle_to_ordered_energy_ratio": 6.392917647756373,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.500293771022443,
+          "median_shuffle_to_ordered_ratio": 4.440709474357824,
+          "maximum_shuffle_to_ordered_ratio": 6.420765463746708,
+          "passed": false
+        },
+        "sign_persistence_weighted_magnitude": {
+          "population_results": {
+            "T5a_L": {
+              "ordered_mean_energy": 0.0001402757106077037,
+              "temporal_shuffle_mean_energy": 0.0003828603070013268,
+              "shuffle_to_ordered_energy_ratio": 2.7293414187152996,
+              "attenuation_gate_passed": false
+            },
+            "T5a_R": {
+              "ordered_mean_energy": 5.0694049375626234e-05,
+              "temporal_shuffle_mean_energy": 0.0003026664333591311,
+              "shuffle_to_ordered_energy_ratio": 5.97045288523851,
+              "attenuation_gate_passed": false
+            },
+            "T5b_L": {
+              "ordered_mean_energy": 0.0001349175491655702,
+              "temporal_shuffle_mean_energy": 0.0003729537718320783,
+              "shuffle_to_ordered_energy_ratio": 2.7643088251950916,
+              "attenuation_gate_passed": false
+            },
+            "T5b_R": {
+              "ordered_mean_energy": 5.001026151069045e-05,
+              "temporal_shuffle_mean_energy": 0.0003015356570521943,
+              "shuffle_to_ordered_energy_ratio": 6.029475710454673,
+              "attenuation_gate_passed": false
+            },
+            "T5c_L": {
+              "ordered_mean_energy": 0.0001391535399084625,
+              "temporal_shuffle_mean_energy": 0.0003759336421202168,
+              "shuffle_to_ordered_energy_ratio": 2.70157440743162,
+              "attenuation_gate_passed": false
+            },
+            "T5c_R": {
+              "ordered_mean_energy": 5.096731155859286e-05,
+              "temporal_shuffle_mean_energy": 0.00030221457112035926,
+              "shuffle_to_ordered_energy_ratio": 5.929576465357181,
+              "attenuation_gate_passed": false
+            },
+            "T5d_L": {
+              "ordered_mean_energy": 0.00013524876586919193,
+              "temporal_shuffle_mean_energy": 0.00037190852130838167,
+              "shuffle_to_ordered_energy_ratio": 2.7498108313097593,
+              "attenuation_gate_passed": false
+            },
+            "T5d_R": {
+              "ordered_mean_energy": 4.982318903420006e-05,
+              "temporal_shuffle_mean_energy": 0.00029963114508150846,
+              "shuffle_to_ordered_energy_ratio": 6.013889333254704,
+              "attenuation_gate_passed": false
+            }
+          },
+          "attenuated_population_count": 0,
+          "minimum_shuffle_to_ordered_ratio": 2.70157440743162,
+          "median_shuffle_to_ordered_ratio": 4.346942645276137,
+          "maximum_shuffle_to_ordered_ratio": 6.029475710454673,
+          "passed": false
+        }
+      }
+    }
+  },
+  "passing_family_metrics": [],
+  "temporal_consistency_gate_passed": false,
+  "authorize_new_motion_field_candidate": false,
+  "advance_to_three_tuning_conditions": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "stop_reason": "all_label_free_consistency_metrics_amplified_temporal_shuffle",
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_audit": true,
+    "label_free_temporal_metrics": true,
+    "thresholds_changed": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "may_validate_direction_selectivity": false,
+    "LPLC_experiments_authorized_only_after_strict_T4_T5_gate": true
+  }
+}

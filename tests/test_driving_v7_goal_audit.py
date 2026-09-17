@@ -172,6 +172,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["three_hop_temporal_shuffle_attenuated_population_count"] == 0
     assert visual["observations"]["three_hop_temporal_shuffle_minimum_energy_ratio"] > 3.0
     assert visual["observations"]["three_hop_strict_gates_passed"] is False
+    assert visual["observations"][
+        "three_hop_temporal_consistency_passing_family_metrics"
+    ] == []
+    assert all(
+        ratio > 2.0
+        for family in visual["observations"][
+            "three_hop_temporal_consistency_minimum_ratios"
+        ].values()
+        for ratio in family.values()
+    )
+    assert visual["observations"]["three_hop_temporal_consistency_gate_passed"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

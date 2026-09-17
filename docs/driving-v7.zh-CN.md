@@ -1463,6 +1463,15 @@ T4 随后采用同样的结构—功能分离审计，但只使用此前经 nest
 表明通过的结构轴不能替代动态功能证据。由于没有任何双侧方向亚型，时序打乱、static
 sham 和三条件扩展均未运行，LPLC 阶段仍未授权。证据见
 `artifacts/v7-t4-continuous-pair-precheck.json`。
+
+已有 three-hop 二维运动场曾在三组 tuning 上给出 T4/T5 方向与极性全通过，但其时间
+乱序控制同样全通过且乱序能量反而更大，故从未被视为功能成功。为检查能否用不依赖标签
+的时间连续性挽救该表示，现对 T4/T5 分别比较净向量幅度、coherence 加权、coherence
+平方加权和符号持续度加权，并沿用冻结的 shuffle/ordered `≤0.50` 衰减门。八个 T4 和
+八个 T5 群体在四种指标下均无一衰减；最小比值仍分别大于 2.29 和 2.27，最大达到
+6.44 和 6.42。时间一致性加权没有抑制乱序，反而进一步偏好帧跳变。因此 three-hop
+motion-field 机制族停止，不授权新候选、三条件扩展或 LPLC。证据见
+`artifacts/v7-three-hop-temporal-consistency.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

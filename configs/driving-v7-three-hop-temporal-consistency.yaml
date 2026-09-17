@@ -1,0 +1,32 @@
+version: 1
+name: v7-three-hop-temporal-consistency-audit
+observed_on: "2026-09-17"
+three_hop_protocol: configs/driving-v7-three-hop-moment.yaml
+three_hop_evidence: artifacts/v7-three-hop-moment.json
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+condition_id: S1-T01
+families:
+  T4: {channel: on, sources: [Mi1, Tm3, Mi4, C3, Mi9, CT1]}
+  T5: {channel: off, sources: [Tm1, Tm2, Tm4, Tm9, CT1]}
+metrics:
+  - mean_vector_magnitude
+  - coherence_weighted_magnitude
+  - squared_coherence_weighted_magnitude
+  - sign_persistence_weighted_magnitude
+aggregation: mean_over_all_four_directions_fixed_5x3_grid_and_all_population_cells
+temporal_shuffle_seed: 20260917
+maximum_shuffle_to_ordered_energy_ratio: 0.50
+boundary:
+  tuning_only: true
+  single_condition_audit: true
+  label_free_temporal_metrics: true
+  thresholds_changed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  may_validate_direction_selectivity: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true

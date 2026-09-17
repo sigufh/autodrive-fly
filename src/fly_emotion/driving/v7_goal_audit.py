@@ -68,6 +68,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_local_correlator_precheck = reports["t4_local_correlator_precheck"]
     t4_source_pool_local = reports["t4_source_pool_local"]
     three_hop_moment = reports["three_hop_moment"]
+    three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -394,6 +395,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     ].values()
                 ),
                 "three_hop_strict_gates_passed": three_hop_moment["strict_three_hop_gates_passed"],
+                "three_hop_temporal_consistency_passing_family_metrics": (
+                    three_hop_temporal_consistency["passing_family_metrics"]
+                ),
+                "three_hop_temporal_consistency_minimum_ratios": {
+                    family: {
+                        metric: result["minimum_shuffle_to_ordered_ratio"]
+                        for metric, result in family_result["metrics"].items()
+                    }
+                    for family, family_result in three_hop_temporal_consistency[
+                        "families"
+                    ].items()
+                },
+                "three_hop_temporal_consistency_gate_passed": (
+                    three_hop_temporal_consistency["temporal_consistency_gate_passed"]
+                ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
                 ),
@@ -997,6 +1013,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_local_correlator_precheck"],
                 config["evidence"]["t4_source_pool_local"],
                 config["evidence"]["three_hop_moment"],
+                config["evidence"]["three_hop_temporal_consistency"],
                 config["evidence"]["three_hop_source_coverage"],
                 config["evidence"]["four_hop_scalar_precheck"],
                 config["evidence"]["lc4_position_speed_precheck"],
