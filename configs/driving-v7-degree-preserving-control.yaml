@@ -3,6 +3,7 @@ name: v7-visual-target-degree-preserving-control
 observed_on: "2026-09-17"
 v7_config: configs/driving-v7.yaml
 controlled_vision_evidence: artifacts/v7-controlled-vision.json
+typed_visual_evidence: artifacts/v7-typed-visual-candidate.json
 seed: 20260917
 scope: all_edges_into_v7_visual_target_populations
 swap_attempt_multiplier: 10
@@ -19,7 +20,7 @@ requirements:
   deterministic_seed: true
 boundary:
   structure_only: true
-  visual_response_evaluation_deferred_until_visual_candidate_passes: true
+  visual_response_evaluation_is_post_failure_diagnostic: true
   control_used_for_model_selection: false
   parameter_fit: false
   target_activity_injection: false

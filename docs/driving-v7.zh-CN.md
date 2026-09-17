@@ -1463,8 +1463,10 @@ neural intent → 固定 motor mapping → safety correction → executed action
 上，以固定 seed 对相同权重的两条有向边做 double-edge swap。最终 910,175 条边（82.09%）
 改变端点，同时逐节点保持目标入度与输入权重多重集、source 在该范围内的出度与输出权重
 多重集，也保持全局权重多重集；没有重复边或新增自环，重复运行结果一致。该控制范围明确
-限定为“进入 v7 视觉目标的边”，不是整脑全图。由于真实受控视觉响应门仍失败，按执行
-顺序只完成结构构造，尚未运行该控制的响应比较，也不能据此声称真实拓扑优势。证据见
+限定为“进入 v7 视觉目标的边”，不是整脑全图。随后在同一 20 刺激上完成
+`typed_visual_subgraph_v1 × 3 retinal backend` 响应对照；三个严格重连对照均未通过完整
+响应门。真实图在部分方向、极性和 looming 指标上更好，但自身也未通过，且镜像误差并非
+全面优于对照，因此仍不能声称真实拓扑优势，也不用于选模或推进阶段。证据见
 `artifacts/v7-degree-preserving-control.json`。
 参数匹配 baseline 也已冻结为协议但未训练：共享现有 450 维 parity-aware 神经特征与
 danger/asymmetry/road-center 三输出，当前线性 readout 的可训练预算为 1,353；最接近的

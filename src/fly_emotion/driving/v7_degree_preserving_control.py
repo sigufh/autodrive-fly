@@ -11,7 +11,13 @@ import numpy as np
 import yaml
 from scipy import sparse
 
-from fly_emotion.driving.v7 import V7_CONFIG, V7_IMPLEMENTATION, V7VisualProbe
+from fly_emotion.driving.v7 import (
+    V7_CONFIG,
+    V7_IMPLEMENTATION,
+    V7VisualProbe,
+    build_controlled_stimuli,
+    score_v7_visual_responses,
+)
 from fly_emotion.driving.v7_geometry_sign import _sha256
 
 CONFIG = Path("configs/driving-v7-degree-preserving-control.yaml")
@@ -99,6 +105,8 @@ def evaluate_v7_degree_preserving_control(root: Path) -> dict:
     evidence = json.loads((root / evidence_path).read_text())
     if evidence["controlled_response_gates_pass"]:
         raise ValueError("structural precheck is reserved for the current failed visual gate")
+    typed_path = Path(config["typed_visual_evidence"])
+    typed = json.loads((root / typed_path).read_text())
     probe = V7VisualProbe(root, brain_substeps=1, dynamics_backend="typed_visual_subgraph_v1")
     target_nodes = np.unique(np.concatenate(list(probe.populations.values()))).astype(np.int32)
     scoped = probe.adjacency[target_nodes, :].tocoo()
@@ -156,6 +164,94 @@ def evaluate_v7_degree_preserving_control(root: Path) -> dict:
         "minimum_rewired_edge_fraction": stats["rewired_edge_fraction"]
         >= float(config["minimum_rewired_edge_fraction"]),
     }
+    if not all(invariants.values()):
+        raise ValueError("strict degree-preserving control invariants failed")
+    base = probe.adjacency.tocoo()
+    replace = np.isin(base.row, target_nodes)
+    control_adjacency = sparse.csr_matrix(
+        (
+            np.concatenate((base.data[~replace], weights)),
+            (
+                np.concatenate((base.row[~replace], rows)),
+                np.concatenate((base.col[~replace], shuffled_cols)),
+            ),
+        ),
+        shape=shape,
+        dtype=np.float32,
+    )
+    visual = yaml.safe_load((root / V7_CONFIG).read_text())["controlled_vision"]
+    stimuli = build_controlled_stimuli(
+        width=int(visual["width"]),
+        height=int(visual["height"]),
+        frames=int(visual["frames_per_stimulus"]),
+    )
+    response_results = {}
+    for backend in visual["retinal_backends"]:
+        probe.retinal_backend = backend
+        probe.adjacency = control_adjacency
+        responses = {stimulus.name: probe.run(stimulus) for stimulus in stimuli}
+        scores = score_v7_visual_responses(responses)
+        summary = scores["summary"]
+        thresholds = visual["gates"]
+        gates = {
+            "cardinal_direction_contrast": summary["median_cardinal_direction_contrast"]
+            >= float(thresholds["minimum_cardinal_direction_contrast"]),
+            "on_off_specialization": summary["median_on_off_specialization"]
+            >= float(thresholds["minimum_on_off_specialization"]),
+            "looming_contrast": summary["median_known_looming_contrast"]
+            >= float(thresholds["minimum_looming_contrast"]),
+            "mirror_response_error": summary[thresholds["mirror_metric"]]
+            <= float(thresholds["maximum_mirror_response_error"]),
+        }
+        response_digest = hashlib.sha256(
+            b"".join(
+                np.asarray(
+                    response["population_response_trace"][population], dtype=np.float32
+                ).tobytes()
+                for response in responses.values()
+                for population in sorted(response["population_response_trace"])
+            )
+        ).hexdigest()
+        real = typed["backends"]["typed_visual_subgraph_v1"][backend]
+        real_summary = real["scores"]["summary"]
+        comparison = {
+            "real_gate_passed": real["controlled_response_gates_pass"],
+            "control_gate_passed": bool(all(gates.values())),
+            "real_minus_control_direction_contrast": (
+                real_summary["median_cardinal_direction_contrast"]
+                - summary["median_cardinal_direction_contrast"]
+            ),
+            "real_minus_control_on_off_specialization": (
+                real_summary["median_on_off_specialization"]
+                - summary["median_on_off_specialization"]
+            ),
+            "real_minus_control_looming_contrast": (
+                real_summary["median_known_looming_contrast"]
+                - summary["median_known_looming_contrast"]
+            ),
+            "control_minus_real_mirror_error": (
+                summary[thresholds["mirror_metric"]]
+                - real_summary[thresholds["mirror_metric"]]
+            ),
+        }
+        comparison["real_better_on_every_metric"] = all(
+            value > 0.0
+            for key, value in comparison.items()
+            if key.startswith(("real_minus_control", "control_minus_real"))
+        )
+        response_results[backend] = {
+            "summary": summary,
+            "gates": gates,
+            "controlled_response_gates_passed": bool(all(gates.values())),
+            "response_sha256": response_digest,
+            "comparison_to_frozen_real_graph": comparison,
+        }
+    real_topology_advantage = any(
+        item["comparison_to_frozen_real_graph"]["real_gate_passed"]
+        and not item["controlled_response_gates_passed"]
+        and item["comparison_to_frozen_real_graph"]["real_better_on_every_metric"]
+        for item in response_results.values()
+    )
     return {
         "protocol": {
             "name": config["name"],
@@ -165,6 +261,7 @@ def evaluate_v7_degree_preserving_control(root: Path) -> dict:
                 str(V7_CONFIG): _sha256(root / V7_CONFIG),
                 str(V7_IMPLEMENTATION): _sha256(root / V7_IMPLEMENTATION),
                 str(evidence_path): _sha256(root / evidence_path),
+                str(typed_path): _sha256(root / typed_path),
                 str(RAW_ADJACENCY): _sha256(root / RAW_ADJACENCY),
                 str(NORMALIZED_ADJACENCY): _sha256(root / NORMALIZED_ADJACENCY),
                 str(BODY_IDS): _sha256(root / BODY_IDS),
@@ -182,8 +279,11 @@ def evaluate_v7_degree_preserving_control(root: Path) -> dict:
         "original_edge_sha256": _digest_edges(rows, cols, weights),
         "shuffled_edge_sha256": _digest_edges(rows, shuffled_cols, weights),
         "strict_degree_preserving_control_constructed": bool(all(invariants.values())),
-        "visual_response_evaluation_performed": False,
-        "real_topology_advantage_established_by_this_control": False,
+        "visual_response_evaluation": response_results,
+        "visual_response_evaluation_performed": True,
+        "real_topology_advantage_established_by_this_control": bool(
+            real_topology_advantage
+        ),
         "advance_to_model_selection": False,
         "boundary": config["boundary"],
     }

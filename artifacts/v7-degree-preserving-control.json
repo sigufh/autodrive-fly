@@ -2,11 +2,12 @@
   "protocol": {
     "name": "v7-visual-target-degree-preserving-control",
     "dependencies_sha256": {
-      "configs/driving-v7-degree-preserving-control.yaml": "4036ac61a50fa83c37580b0aca02b830ca92ce5015ded38d84edb7b00146b7e0",
-      "src/fly_emotion/driving/v7_degree_preserving_control.py": "fc8667afca466bf411976060f3e89ec517174ddc05800ee520093f4abadfcee5",
+      "configs/driving-v7-degree-preserving-control.yaml": "272d18a3b6bb0e3108943fe9a78592f9867b978d6d76248f8ce5b7b95f47771c",
+      "src/fly_emotion/driving/v7_degree_preserving_control.py": "487414fd3e3760549a8b0b4f65b4e512a950c73bdf6d82276be3948a324ac6eb",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-controlled-vision.json": "44e1f5289a78b493cd7ac6560a690b46617c896467837ad85cbafaa8935275d8",
+      "artifacts/v7-typed-visual-candidate.json": "79bf4ff689a2e609c67991cdfbfc7a58a4e0f538af9f8b09c1fe97a2b919e699",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/adjacency_target_norm.npz": "59c80de1ad03492dd0bf94e208fd58710d03f878ee975cc95588108ed3129b6b",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f"
@@ -41,12 +42,98 @@
   "original_edge_sha256": "f83782a90c34de8371656e299192be4d9862f4ccfb6830f7082b86b5202d69a3",
   "shuffled_edge_sha256": "b1f717d940ddb21c8051c782e645f9747226e1c0d2b81e2ba65c8625a24db122",
   "strict_degree_preserving_control_constructed": true,
-  "visual_response_evaluation_performed": false,
+  "visual_response_evaluation": {
+    "legacy_absolute_contrast": {
+      "summary": {
+        "median_cardinal_direction_contrast": 0.0,
+        "fraction_expected_direction_positive": 0.3125,
+        "median_on_off_specialization": 0.0,
+        "fraction_expected_polarity_positive": 0.0625,
+        "median_known_looming_contrast": 0.0,
+        "maximum_mirror_response_error": 0.44823292202696025,
+        "maximum_energy_weighted_mirror_response_error": 0.4193240670095135
+      },
+      "gates": {
+        "cardinal_direction_contrast": false,
+        "on_off_specialization": false,
+        "looming_contrast": false,
+        "mirror_response_error": false
+      },
+      "controlled_response_gates_passed": false,
+      "response_sha256": "6c515497815cebe699c4d98637886d57b9159f5e08e2c5b47782228d66473c68",
+      "comparison_to_frozen_real_graph": {
+        "real_gate_passed": false,
+        "control_gate_passed": false,
+        "real_minus_control_direction_contrast": -0.008696598311938301,
+        "real_minus_control_on_off_specialization": 0.11065797095930774,
+        "real_minus_control_looming_contrast": -0.9732860638599302,
+        "control_minus_real_mirror_error": -0.07206169890636371,
+        "real_better_on_every_metric": false
+      }
+    },
+    "linear_luminance": {
+      "summary": {
+        "median_cardinal_direction_contrast": 0.0,
+        "fraction_expected_direction_positive": 0.1875,
+        "median_on_off_specialization": 0.03526399350011322,
+        "fraction_expected_polarity_positive": 0.5,
+        "median_known_looming_contrast": 0.0,
+        "maximum_mirror_response_error": 0.5248840415072326,
+        "maximum_energy_weighted_mirror_response_error": 0.5070975604780216
+      },
+      "gates": {
+        "cardinal_direction_contrast": false,
+        "on_off_specialization": false,
+        "looming_contrast": false,
+        "mirror_response_error": false
+      },
+      "controlled_response_gates_passed": false,
+      "response_sha256": "044ff8e21ee4451070277da32d0b95b8bfdb98cd97113aec1ea91b46e48f41d4",
+      "comparison_to_frozen_real_graph": {
+        "real_gate_passed": false,
+        "control_gate_passed": false,
+        "real_minus_control_direction_contrast": 0.006805536776394203,
+        "real_minus_control_on_off_specialization": 0.5855313334821284,
+        "real_minus_control_looming_contrast": 0.09687597081811643,
+        "control_minus_real_mirror_error": -0.19451193296079006,
+        "real_better_on_every_metric": false
+      }
+    },
+    "signed_frame_difference": {
+      "summary": {
+        "median_cardinal_direction_contrast": 0.0,
+        "fraction_expected_direction_positive": 0.4375,
+        "median_on_off_specialization": 0.2248787244288138,
+        "fraction_expected_polarity_positive": 0.9375,
+        "median_known_looming_contrast": 0.3220595003052482,
+        "maximum_mirror_response_error": 0.6211522079061174,
+        "maximum_energy_weighted_mirror_response_error": 0.6042824556058904
+      },
+      "gates": {
+        "cardinal_direction_contrast": false,
+        "on_off_specialization": true,
+        "looming_contrast": true,
+        "mirror_response_error": false
+      },
+      "controlled_response_gates_passed": false,
+      "response_sha256": "10feb13d0f6a3221406fe6c550b944ef8d9c9cbdbbb67aace9113b1970a53ab9",
+      "comparison_to_frozen_real_graph": {
+        "real_gate_passed": false,
+        "control_gate_passed": false,
+        "real_minus_control_direction_contrast": 0.0037753593469418527,
+        "real_minus_control_on_off_specialization": 0.6963917434425213,
+        "real_minus_control_looming_contrast": 0.021419191756083145,
+        "control_minus_real_mirror_error": -0.0932236209989098,
+        "real_better_on_every_metric": false
+      }
+    }
+  },
+  "visual_response_evaluation_performed": true,
   "real_topology_advantage_established_by_this_control": false,
   "advance_to_model_selection": false,
   "boundary": {
     "structure_only": true,
-    "visual_response_evaluation_deferred_until_visual_candidate_passes": true,
+    "visual_response_evaluation_is_post_failure_diagnostic": true,
     "control_used_for_model_selection": false,
     "parameter_fit": false,
     "target_activity_injection": false,

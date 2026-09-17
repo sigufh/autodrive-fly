@@ -44,7 +44,7 @@
       "artifacts/v7-neural-channels-calibration.json": "6edca1078467233ef4f5cca19d9efcbea5402d6d96e2078c277538a711f66c76",
       "artifacts/v7-neural-channel-controls.json": "9115c8d47b8535b53a99c2fb2d7061b5a356a63fd7a56d8cc48310ce4dc96608",
       "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70",
-      "artifacts/v7-degree-preserving-control.json": "39f6fe32cc1796ce529fd0e78e93e35e2022f2d6c09a200d7065915190770ab4",
+      "artifacts/v7-degree-preserving-control.json": "aede456446c843253799b166e54c75c7fbe1b81ccab0d7bd4052a7ea971b879b",
       "artifacts/v7-parameter-matched-baselines.json": "8f0682497172d9661b89b6246bded00a0757a024d689a40f2393051365ed701e",
       "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d",
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
@@ -600,7 +600,7 @@
         "strict_degree_preserving_control_complete": false,
         "strict_visual_target_degree_preserving_control_constructed": true,
         "strict_visual_target_degree_preserving_rewired_fraction": 0.8209196861983935,
-        "strict_visual_target_control_response_evaluated": false,
+        "strict_visual_target_control_response_evaluated": true,
         "real_topology_advantage": false,
         "structured_neural_topology_control_successes": {
           "real_malecns": 6,

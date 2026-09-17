@@ -45,6 +45,17 @@ def test_saved_degree_preserving_control_is_hash_bound_and_non_advancing() -> No
     assert all(report["invariants"].values())
     assert report["original_edge_sha256"] != report["shuffled_edge_sha256"]
     assert report["strict_degree_preserving_control_constructed"] is True
-    assert report["visual_response_evaluation_performed"] is False
+    assert report["visual_response_evaluation_performed"] is True
+    responses = report["visual_response_evaluation"]
+    assert set(responses) == {
+        "legacy_absolute_contrast",
+        "linear_luminance",
+        "signed_frame_difference",
+    }
+    assert not any(item["controlled_response_gates_passed"] for item in responses.values())
+    assert not any(
+        item["comparison_to_frozen_real_graph"]["real_gate_passed"]
+        for item in responses.values()
+    )
     assert report["real_topology_advantage_established_by_this_control"] is False
     assert report["advance_to_model_selection"] is False
