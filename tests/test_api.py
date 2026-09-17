@@ -83,6 +83,18 @@ def test_v7_status_rejects_stale_evidence(tmp_path, monkeypatch) -> None:
     assert alias.json() == response.json()
 
 
+def test_status_routes_report_invalid_audit_as_service_unavailable(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr(api_module, "ROOT", tmp_path)
+    target = tmp_path / "artifacts/v7-goal-audit.json"
+    target.parent.mkdir(parents=True)
+    target.write_text("{not-json", encoding="utf-8")
+    client = TestClient(app)
+    for route in ("/api/v7/status", "/api/autonomy/status"):
+        response = client.get(route)
+        assert response.status_code == 503
+        assert response.json()["detail"] == "Invalid v7 goal audit"
+
+
 def test_real_cached_skeleton_endpoint() -> None:
     response = TestClient(app).get("/api/skeleton/10001?max_edges=20000")
     assert response.status_code == 200
