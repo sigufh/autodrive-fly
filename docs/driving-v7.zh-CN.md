@@ -1369,6 +1369,12 @@ T4 center×Mi9、T5 fast×Tm9 在 `S1-T01` ordered 下分别只有 0/8、1/8、2
 群体通过，均没有左右双侧亚型；共享 temporal-shuffle 反而让后两者出现 T4 a/c 和 T5 a
 双侧通过。故覆盖充分仍不能恢复正确时间选择，三个候选均不扩三条件。证据见
 `artifacts/v7-four-hop-scalar-precheck.json`。
+独立的 LC4 位置覆盖速度 precheck 在 15 个固定位置使用相同起止半径、32/16/8 帧
+filled looming，直接读取真实 LC4_L/R 状态。仅 10/71 与 9/55 个细胞具有可评分速度
+变化，所有有效细胞的斜率方向均为负；中位 R² 虽约 0.87/0.89，却表示稳定的
+slow>medium>fast 持续时间积分，不是预期 fast>medium>slow 角速度选择。因此不扩三条件，
+不能以高 R² 单独宣称 LC4 功能通过。证据见
+`artifacts/v7-lc4-position-speed-precheck.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

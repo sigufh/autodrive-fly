@@ -65,6 +65,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     three_hop_moment = reports["three_hop_moment"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
+    lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -342,6 +343,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "four_hop_scalar_gate_passed": four_hop_scalar_precheck[
                     "four_hop_scalar_gate_passed"
                 ],
+                "LC4_position_speed_precheck_passed": lc4_position_speed_precheck[
+                    "LC4_position_speed_precheck_passed"
+                ],
+                "LC4_position_speed_valid_fraction": {
+                    side: result["valid_cell_fraction"]
+                    for side, result in lc4_position_speed_precheck["per_side"].items()
+                },
+                "LC4_position_speed_positive_slope_fraction": {
+                    side: result["positive_slope_fraction"]
+                    for side, result in lc4_position_speed_precheck["per_side"].items()
+                },
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"
                 ],
@@ -681,6 +693,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["three_hop_moment"],
                 config["evidence"]["three_hop_source_coverage"],
                 config["evidence"]["four_hop_scalar_precheck"],
+                config["evidence"]["lc4_position_speed_precheck"],
                 config["evidence"]["t5_spatial_order"],
                 config["evidence"]["t4t5_local_edge_precheck"],
                 config["evidence"]["t4t5_local_edge_backends"],

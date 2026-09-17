@@ -1,0 +1,28 @@
+version: 1
+name: v7-lc4-position-covered-speed-precheck
+observed_on: "2026-09-17"
+position_protocol: configs/driving-v7-lplc2-position-coverage.yaml
+typed_stimulus_protocol: configs/driving-v7-lplc-typed-screen.yaml
+condition_id: LPLC-T01
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+common_background_frames: 2
+duration_divisors: [1, 2, 4]
+relative_angular_velocities: [1.0, 2.0, 4.0]
+noise_standard_deviation: 0.0
+position_pooling: maximum_over_fixed_5x3_grid_for_each_speed
+thresholds:
+  minimum_valid_denominator: 0.000001
+  minimum_valid_cell_fraction: 0.80
+  minimum_positive_slope_fraction: 0.60
+  minimum_median_r_squared: 0.50
+  minimum_monotonic_cell_fraction: 0.60
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false

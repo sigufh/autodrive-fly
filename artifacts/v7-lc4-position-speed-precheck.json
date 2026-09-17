@@ -1,0 +1,78 @@
+{
+  "protocol": {
+    "name": "v7-lc4-position-covered-speed-precheck",
+    "dependencies_sha256": {
+      "configs/driving-v7-lc4-position-speed-precheck.yaml": "8c898579ebb3882bacc79528326c3ae6fc23eb9640c4b6290ce4d6dca86d8c7e",
+      "src/fly_emotion/driving/v7_lc4_position_speed_precheck.py": "c37ff76821acf04ce7802b3495a5a47ddb52c3a40ecfd38e4e0e1ad70fa9a285",
+      "configs/driving-v7-lplc2-position-coverage.yaml": "836a387af7c51ca1ecfc1ab8a604ef741f1a719cc828a29f2e6213916908e731",
+      "configs/driving-v7-lplc-typed-screen.yaml": "b53c1438f5b02325f1db7f97eac362975b9790fe95d4fa322f0937ed559100ba"
+    },
+    "condition_id": "LPLC-T01",
+    "position_count": 15,
+    "duration_frames": [
+      32,
+      16,
+      8
+    ],
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false
+  },
+  "per_side": {
+    "L": {
+      "cell_count": 71,
+      "valid_cell_count": 10,
+      "valid_cell_fraction": 0.14084507042253522,
+      "positive_slope_fraction": 0.0,
+      "median_r_squared": 0.8677888355590081,
+      "monotonic_cell_count": 12,
+      "monotonic_cell_fraction": 0.16901408450704225,
+      "median_response_by_speed": [
+        0.0004822600749321282,
+        0.00027648720424622297,
+        1.1384851177353994e-06
+      ],
+      "gates": {
+        "valid_cell_fraction": false,
+        "positive_slope_fraction": false,
+        "median_r_squared": true,
+        "monotonic_cell_fraction": false
+      },
+      "passed": false
+    },
+    "R": {
+      "cell_count": 55,
+      "valid_cell_count": 9,
+      "valid_cell_fraction": 0.16363636363636364,
+      "positive_slope_fraction": 0.0,
+      "median_r_squared": 0.892762784281674,
+      "monotonic_cell_count": 5,
+      "monotonic_cell_fraction": 0.09090909090909091,
+      "median_response_by_speed": [
+        0.0009148268727585673,
+        0.0003466763882897794,
+        0.0003478387661743909
+      ],
+      "gates": {
+        "valid_cell_fraction": false,
+        "positive_slope_fraction": false,
+        "median_r_squared": true,
+        "monotonic_cell_fraction": false
+      },
+      "passed": false
+    }
+  },
+  "LC4_position_speed_precheck_passed": false,
+  "expand_to_three_conditions": false,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_precheck": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false
+  }
+}

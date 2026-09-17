@@ -126,6 +126,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "T5_tm9": ["a"],
     }
     assert visual["observations"]["four_hop_scalar_gate_passed"] is False
+    assert visual["observations"]["LC4_position_speed_precheck_passed"] is False
+    assert visual["observations"]["LC4_position_speed_positive_slope_fraction"] == {
+        "L": 0.0,
+        "R": 0.0,
+    }
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

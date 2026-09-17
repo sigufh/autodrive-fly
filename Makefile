@@ -325,6 +325,11 @@ v7-evaluate-four-hop-scalar-precheck:
 
 .PHONY: v7-evaluate-four-hop-scalar-precheck
 
+v7-evaluate-lc4-position-speed-precheck:
+	.venv/bin/autodrive-fly v7-evaluate-lc4-position-speed-precheck
+
+.PHONY: v7-evaluate-lc4-position-speed-precheck
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 
