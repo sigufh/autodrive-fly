@@ -42,6 +42,10 @@ from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_danger_throttle import evaluate_v7_danger_throttle
 from .driving.v7_degree_preserving_control import evaluate_v7_degree_preserving_control
+from .driving.v7_descending_path_audit import evaluate_v7_descending_path_audit
+from .driving.v7_descending_propagation_precheck import (
+    evaluate_v7_descending_propagation_precheck,
+)
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
@@ -280,6 +284,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-episode-cv")
     subparsers.add_parser("v7-evaluate-neural-episode-controls")
     subparsers.add_parser("v7-evaluate-fc2-pfl-dna")
+    subparsers.add_parser("v7-audit-descending-paths")
+    subparsers.add_parser("v7-evaluate-descending-propagation-precheck")
     subparsers.add_parser("v7-freeze-navigation-nested")
     subparsers.add_parser("v7-evaluate-navigation-nested")
     subparsers.add_parser("v7-evaluate-danger-throttle")
@@ -794,6 +800,18 @@ def main() -> None:
     if args.command == "v7-evaluate-fc2-pfl-dna":
         report = evaluate_v7_fc2_pfl_dna(root)
         target = root / "artifacts/v7-fc2-pfl-dna.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-descending-paths":
+        report = evaluate_v7_descending_path_audit(root)
+        target = root / "artifacts/v7-descending-path-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-descending-propagation-precheck":
+        report = evaluate_v7_descending_propagation_precheck(root)
+        target = root / "artifacts/v7-descending-propagation-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

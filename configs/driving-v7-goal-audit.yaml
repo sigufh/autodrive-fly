@@ -76,6 +76,8 @@ evidence:
   neural_episode_cv: artifacts/v7-neural-episode-cv.json
   neural_episode_controls: artifacts/v7-neural-episode-controls.json
   fc2_pfl_dna: artifacts/v7-fc2-pfl-dna.json
+  descending_path_audit: artifacts/v7-descending-path-audit.json
+  descending_propagation_precheck: artifacts/v7-descending-propagation-precheck.json
   navigation_nested: artifacts/v7-navigation-nested.json
   navigation_nested_eval: artifacts/v7-navigation-nested-eval.json
   danger_throttle: artifacts/v7-danger-throttle.json

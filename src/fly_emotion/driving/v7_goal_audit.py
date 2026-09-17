@@ -86,6 +86,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     neural_episode_cv = reports["neural_episode_cv"]
     neural_episode_controls = reports["neural_episode_controls"]
     fc2_pfl_dna = reports["fc2_pfl_dna"]
+    descending_paths = reports["descending_path_audit"]
+    descending_propagation = reports["descending_propagation_precheck"]
     navigation_nested = reports["navigation_nested"]
     navigation_nested_eval = reports["navigation_nested_eval"]
     danger_throttle = reports["danger_throttle"]
@@ -665,7 +667,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "item": 3,
             "deliverable": "DNp20, DNa01/DNa02 and PFL3-to-DNa readout comparison",
             "status": "partially_validated_not_stage_authorized",
-            "evidence": [config["evidence"]["fc2_pfl_dna"]],
+            "evidence": [
+                config["evidence"]["fc2_pfl_dna"],
+                config["evidence"]["descending_path_audit"],
+                config["evidence"]["descending_propagation_precheck"],
+            ],
             "observations": {
                 "stage1_pass": stage1_pass,
                 "turn_termination_passed": fc2_pfl_dna["turn_termination_assay"]["passed"],
@@ -675,6 +681,37 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "PFL3_to_DNa01_edges": fc2_pfl_dna["malecns_structure"]["edges"]["PFL3->DNa01"][
                     "edge_count"
+                ],
+                "bilateral_shortest_paths_supported": descending_paths[
+                    "structural_bilateral_path_gate_passed"
+                ],
+                "shortest_hops_by_target": {
+                    target_type: {
+                        item["target"]["soma_side"]: item["shortest_hops"]
+                        for item in records
+                    }
+                    for target_type, records in descending_paths[
+                        "target_shortest_paths"
+                    ].items()
+                },
+                "action_equivalence_is_formula_level_only": descending_paths[
+                    "algebraic_action_readout_boundary"
+                ]["equivalence_is_formula_level_not_neural_state_level"],
+                "real_neural_state_readout_performed": descending_paths[
+                    "algebraic_action_readout_boundary"
+                ]["real_neural_state_readout_performed"],
+                "fixed_input_propagation_precheck_evaluated": True,
+                "functional_neural_readout_validated": descending_propagation[
+                    "functional_neural_readout_validated"
+                ],
+                "real_state_precheck_passing_populations": descending_propagation[
+                    "passing_target_populations"
+                ],
+                "real_state_precheck_failed_populations": descending_propagation[
+                    "failed_target_populations"
+                ],
+                "all_descending_readouts_precheck_passed": descending_propagation[
+                    "all_descending_readouts_precheck_passed"
                 ],
                 "fresh_calibration_passed": fc2_pfl_dna["calibration_passed"],
             },
@@ -919,7 +956,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         {
             "requirement": "3.DNp20_DNa01_DNa02_PFL3_DNa_readout_comparison",
             "status": "partially_validated_not_stage_authorized",
-            "evidence": [config["evidence"]["fc2_pfl_dna"]],
+            "evidence": [
+                config["evidence"]["fc2_pfl_dna"],
+                config["evidence"]["descending_path_audit"],
+                config["evidence"]["descending_propagation_precheck"],
+            ],
         },
         {
             "requirement": "3.transparent_environment_blind_vehicle_mapping",

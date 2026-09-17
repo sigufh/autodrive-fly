@@ -42,6 +42,20 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "single_layer_gru": 1365,
     }
     assert topology["parameter_matched_baseline_evaluation_performed"] is False
+    descending = report["checks"][3]["observations"]
+    assert descending["bilateral_shortest_paths_supported"] is True
+    assert descending["shortest_hops_by_target"] == {
+        "DNa02": {"L": 1, "R": 1},
+        "DNa01": {"L": 2, "R": 2},
+        "DNp20": {"L": 2, "R": 3},
+    }
+    assert descending["action_equivalence_is_formula_level_only"] is True
+    assert descending["real_neural_state_readout_performed"] is False
+    assert descending["fixed_input_propagation_precheck_evaluated"] is True
+    assert descending["functional_neural_readout_validated"] is False
+    assert descending["real_state_precheck_passing_populations"] == ["DNa02"]
+    assert descending["real_state_precheck_failed_populations"] == ["DNa01", "DNp20"]
+    assert descending["all_descending_readouts_precheck_passed"] is False
 
 
 def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:

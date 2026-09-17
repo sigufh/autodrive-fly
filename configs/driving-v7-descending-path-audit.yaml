@@ -1,0 +1,28 @@
+version: 1
+name: v7-pfl3-descending-shortest-path-audit
+observed_on: "2026-09-17"
+source_type: PFL3
+target_types: [DNa02, DNa01, DNp20]
+required_target_sides: [L, R]
+maximum_hops: 3
+maximum_shortest_paths_per_target: 100000
+algebraic_action_evidence: artifacts/v7-fc2-pfl-dna.json
+algebraic_action_arms:
+  - hierarchical_fc2_pfl3_dna02
+  - direct_dna01_dna02
+  - direct_dnp20
+boundary:
+  structure_only: true
+  edge_direction_and_weight_from_malecns: true
+  transmitter_sign_from_presynaptic_consensus: true
+  unknown_or_modulatory_transmitter_sign_is_zero: true
+  all_target_cells_in_denominator: true
+  shortest_paths_are_not_functional_propagation: true
+  algebraic_action_equivalence_is_not_neural_state_equivalence: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_calibration_or_final_consumed: true
+  runtime_modified: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

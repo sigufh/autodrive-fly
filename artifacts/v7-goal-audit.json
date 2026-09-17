@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "02dec7889637b6edc155c6c318048b5f58c902b4344e99661d13e596f0b12d80",
-      "src/fly_emotion/driving/v7_goal_audit.py": "957816745a2f3fe23a893bb94fcde988e7b2e4b5629784c017aab019ae632230",
+      "configs/driving-v7-goal-audit.yaml": "61fbb2c3412d617729671ee925278fb7f842151408f18956082dd94ed7edd01b",
+      "src/fly_emotion/driving/v7_goal_audit.py": "26f4ba6fa7a4390372260e691ab05a85f721408bf6205a2340a2d4631055244b",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -71,6 +71,8 @@
       "artifacts/v7-neural-episode-cv.json": "3a777704f3af4518682223c230f8edf9d4d87e65f81eb94b2dd72c4d9ee39c34",
       "artifacts/v7-neural-episode-controls.json": "fe5286433a2f8912c10f0378f61427f29f39f9318c7639c9cd55f1fd1bde4023",
       "artifacts/v7-fc2-pfl-dna.json": "1a93b4c1723e39c48b2ed7746b1f204f039a873d30c5d448761ef320dc6d0f0a",
+      "artifacts/v7-descending-path-audit.json": "817e1d7e3642100683e98f6894b17bccbc2b43f3550eabe47bf6c36533b04ed2",
+      "artifacts/v7-descending-propagation-precheck.json": "5af686f89d09af830b3e7849fcc9da02900610b9a0cc0de5bc8e180f25ddc88c",
       "artifacts/v7-navigation-nested.json": "41421a7b534242d7750b81c059cadbee7c3728fd382fed253b2390c7c96f2832",
       "artifacts/v7-navigation-nested-eval.json": "d23e4c2b530e211d2984d1b2f8504f47993fb1c79f0d6707fc13f2a4a187ea2c",
       "artifacts/v7-danger-throttle.json": "c720245879f9e168e47bb47ba6c12028919242a71f5ab3b8aeb4e514eee590ea",
@@ -537,7 +539,9 @@
       "deliverable": "DNp20, DNa01/DNa02 and PFL3-to-DNa readout comparison",
       "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-fc2-pfl-dna.json"
+        "artifacts/v7-fc2-pfl-dna.json",
+        "artifacts/v7-descending-path-audit.json",
+        "artifacts/v7-descending-propagation-precheck.json"
       ],
       "observations": {
         "stage1_pass": false,
@@ -545,6 +549,33 @@
         "readout_action_equivalence": true,
         "PFL3_to_DNa02_edges": 24,
         "PFL3_to_DNa01_edges": 0,
+        "bilateral_shortest_paths_supported": true,
+        "shortest_hops_by_target": {
+          "DNa02": {
+            "R": 1,
+            "L": 1
+          },
+          "DNa01": {
+            "L": 2,
+            "R": 2
+          },
+          "DNp20": {
+            "R": 3,
+            "L": 2
+          }
+        },
+        "action_equivalence_is_formula_level_only": true,
+        "real_neural_state_readout_performed": false,
+        "fixed_input_propagation_precheck_evaluated": true,
+        "functional_neural_readout_validated": false,
+        "real_state_precheck_passing_populations": [
+          "DNa02"
+        ],
+        "real_state_precheck_failed_populations": [
+          "DNa01",
+          "DNp20"
+        ],
+        "all_descending_readouts_precheck_passed": false,
         "fresh_calibration_passed": false
       }
     },
@@ -781,7 +812,9 @@
       "requirement": "3.DNp20_DNa01_DNa02_PFL3_DNa_readout_comparison",
       "status": "partially_validated_not_stage_authorized",
       "evidence": [
-        "artifacts/v7-fc2-pfl-dna.json"
+        "artifacts/v7-fc2-pfl-dna.json",
+        "artifacts/v7-descending-path-audit.json",
+        "artifacts/v7-descending-propagation-precheck.json"
       ]
     },
     {

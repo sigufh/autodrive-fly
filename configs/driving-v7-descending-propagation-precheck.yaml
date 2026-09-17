@@ -1,0 +1,36 @@
+version: 1
+name: v7-pfl3-descending-fixed-propagation-precheck
+observed_on: "2026-09-17"
+path_evidence: artifacts/v7-descending-path-audit.json
+threshold_source: configs/driving-v7-stage1-scoring.yaml
+source_type: PFL3
+source_sides: [L, R]
+target_types: [DNa02, DNa01, DNp20]
+maximum_hops: 3
+input_amplitude_per_source: 1.0
+thresholds:
+  minimum_absolute_readout: 0.000001
+  maximum_normalized_mirror_error: 0.20
+threshold_provenance:
+  minimum_absolute_readout: stage1_scoring.minimum_valid_denominator
+  maximum_normalized_mirror_error: stage1_scoring.maximum_energy_weighted_mirror_error
+expected_fixed_readout_sign:
+  PFL3_L: positive
+  PFL3_R: negative
+boundary:
+  precheck_only: true
+  real_malecns_target_normalized_edges: true
+  transmitter_sign_from_presynaptic_consensus: true
+  identity_activation_without_fit: true
+  fixed_whole_population_denominators: true
+  no_environment_observation: true
+  no_vehicle_execution: true
+  no_parameter_or_threshold_search: true
+  no_target_activity_injection: true
+  simulated_state_is_not_physiological_measurement: true
+  algebraic_action_equivalence_is_not_used: true
+  no_calibration_or_final_consumed: true
+  runtime_modified: false
+  modifies_assisted_v5: false
+  modifies_neural_v6_front: false
+  changes_default_service: false

@@ -1,0 +1,716 @@
+{
+  "protocol": {
+    "name": "v7-pfl3-descending-fixed-propagation-precheck",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-descending-propagation-precheck.yaml": "65dd2e8e25d57c3a9b735a369e4d4f29e1fd98736b3906f116c3002f6c785647",
+      "src/fly_emotion/driving/v7_descending_propagation_precheck.py": "57c0cb030c4ce0f7501c9661f6665df6230ae47d0f44fb5c7680796939c82e89",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/raw/malecns-v1.0/body-neurotransmitters.feather": "95c9289220663abeb3409f3ad9e5a7f8a53f8093f5139d15502cd08da8879621",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
+      "data/processed/malecns-v1.0/adjacency_target_norm.npz": "59c80de1ad03492dd0bf94e208fd58710d03f878ee975cc95588108ed3129b6b",
+      "src/fly_emotion/driving/engine.py": "24d3c960c1b7a49dda50f18e15ee27234e211a6f7e0ea6afd5d5f1ef9733131a",
+      "artifacts/v7-descending-path-audit.json": "817e1d7e3642100683e98f6894b17bccbc2b43f3550eabe47bf6c36533b04ed2",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "state_update": "x[h+1] = target_normalized_adjacency @ (presynaptic_consensus_sign * x[h])",
+    "activation": "identity",
+    "source_stimulus": "fixed_unilateral_population_pulse",
+    "stimulus_generated_without_environment": true,
+    "vehicle_not_run": true,
+    "parameter_fit": false,
+    "threshold_search": false,
+    "calibration_consumed": false,
+    "final_consumed": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "thresholds": {
+    "minimum_absolute_readout": 1e-06,
+    "maximum_normalized_mirror_error": 0.2
+  },
+  "threshold_provenance": {
+    "minimum_absolute_readout": "stage1_scoring.minimum_valid_denominator",
+    "maximum_normalized_mirror_error": "stage1_scoring.maximum_energy_weighted_mirror_error"
+  },
+  "stimulus_traces": {
+    "L": {
+      "source_type": "PFL3",
+      "source_side": "L",
+      "source_body_ids": [
+        15210,
+        17000,
+        17286,
+        17290,
+        26038,
+        29836,
+        108478,
+        513032,
+        519346,
+        519351,
+        523032,
+        530071
+      ],
+      "source_count": 12,
+      "input_amplitude_per_source": 1.0,
+      "hops": {
+        "0": {
+          "state_sha256": "cfec3d46bb54de6b63262e43635e74fe76cf1f9ac83944ef42cfca9234941852",
+          "nonzero_node_count": 12,
+          "l2_norm": 3.464101552963257,
+          "targets": {}
+        },
+        "1": {
+          "state_sha256": "a7373120edf3f72c99ee42d84ff1890b915a57eba6edc2eb5ffd737d91e0e1dc",
+          "nonzero_node_count": 362,
+          "l2_norm": 0.6917148232460022,
+          "targets": {
+            "DNa02": {
+              "L": {
+                "body_ids": [
+                  523769
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10360
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.015723271295428276
+                ],
+                "mean_state": 0.015723271295428276
+              }
+            },
+            "DNa01": {
+              "L": {
+                "body_ids": [
+                  10442
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10760
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            },
+            "DNp20": {
+              "L": {
+                "body_ids": [
+                  10162
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10059
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            }
+          }
+        },
+        "2": {
+          "state_sha256": "fd88592d214f51fbb6ff5758bd4f6f0070a2d56438eda831e45731e971dfc2c4",
+          "nonzero_node_count": 21964,
+          "l2_norm": 0.22556675970554352,
+          "targets": {
+            "DNa02": {
+              "L": {
+                "body_ids": [
+                  523769
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.002645018044859171
+                ],
+                "mean_state": -0.002645018044859171
+              },
+              "R": {
+                "body_ids": [
+                  10360
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.0009357138187624514
+                ],
+                "mean_state": 0.0009357138187624514
+              }
+            },
+            "DNa01": {
+              "L": {
+                "body_ids": [
+                  10442
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.00028223899425938725
+                ],
+                "mean_state": -0.00028223899425938725
+              },
+              "R": {
+                "body_ids": [
+                  10760
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.0005007957806810737
+                ],
+                "mean_state": 0.0005007957806810737
+              }
+            },
+            "DNp20": {
+              "L": {
+                "body_ids": [
+                  10162
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10059
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            }
+          }
+        },
+        "3": {
+          "state_sha256": "4b5488c9ccb95e85100bf71a4c258ab2a7561a1160c9d927fe5506ff53819c1d",
+          "nonzero_node_count": 140937,
+          "l2_norm": 0.05982954427599907,
+          "targets": {
+            "DNa02": {
+              "L": {
+                "body_ids": [
+                  523769
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.0005385338445194066
+                ],
+                "mean_state": -0.0005385338445194066
+              },
+              "R": {
+                "body_ids": [
+                  10360
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.00018920277943834662
+                ],
+                "mean_state": 0.00018920277943834662
+              }
+            },
+            "DNa01": {
+              "L": {
+                "body_ids": [
+                  10442
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.00015470021753571928
+                ],
+                "mean_state": -0.00015470021753571928
+              },
+              "R": {
+                "body_ids": [
+                  10760
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  9.503303590463474e-05
+                ],
+                "mean_state": 9.503303590463474e-05
+              }
+            },
+            "DNp20": {
+              "L": {
+                "body_ids": [
+                  10162
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -6.401115115295397e-06
+                ],
+                "mean_state": -6.401115115295397e-06
+              },
+              "R": {
+                "body_ids": [
+                  10059
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -6.461822522396687e-06
+                ],
+                "mean_state": -6.461822522396687e-06
+              }
+            }
+          }
+        }
+      }
+    },
+    "R": {
+      "source_type": "PFL3",
+      "source_side": "R",
+      "source_body_ids": [
+        18327,
+        18803,
+        18851,
+        19009,
+        23159,
+        26488,
+        35322,
+        79549,
+        513266,
+        518378,
+        520811,
+        567101
+      ],
+      "source_count": 12,
+      "input_amplitude_per_source": 1.0,
+      "hops": {
+        "0": {
+          "state_sha256": "7b2dcda4d26bb40e2ca98a69b7cc7533a9438c7664a47b9f90127a83b12eac0f",
+          "nonzero_node_count": 12,
+          "l2_norm": 3.464101552963257,
+          "targets": {}
+        },
+        "1": {
+          "state_sha256": "691c1dc3ddc02faeb574b7542e8cea91d70970a599f96e5a7c57fdc8be2bb2ae",
+          "nonzero_node_count": 469,
+          "l2_norm": 0.7363516092300415,
+          "targets": {
+            "DNa02": {
+              "L": {
+                "body_ids": [
+                  523769
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.014859956689178944
+                ],
+                "mean_state": 0.014859956689178944
+              },
+              "R": {
+                "body_ids": [
+                  10360
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            },
+            "DNa01": {
+              "L": {
+                "body_ids": [
+                  10442
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10760
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            },
+            "DNp20": {
+              "L": {
+                "body_ids": [
+                  10162
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10059
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            }
+          }
+        },
+        "2": {
+          "state_sha256": "87fc802269faf238273a75bb2a908902a491fc435ab8cbd2ed3c80d9fef22225",
+          "nonzero_node_count": 23990,
+          "l2_norm": 0.2290690541267395,
+          "targets": {
+            "DNa02": {
+              "L": {
+                "body_ids": [
+                  523769
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.0011740481713786721
+                ],
+                "mean_state": 0.0011740481713786721
+              },
+              "R": {
+                "body_ids": [
+                  10360
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.0028371119406074286
+                ],
+                "mean_state": -0.0028371119406074286
+              }
+            },
+            "DNa01": {
+              "L": {
+                "body_ids": [
+                  10442
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.0006586204399354756
+                ],
+                "mean_state": 0.0006586204399354756
+              },
+              "R": {
+                "body_ids": [
+                  10760
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.00037505876389332116
+                ],
+                "mean_state": -0.00037505876389332116
+              }
+            },
+            "DNp20": {
+              "L": {
+                "body_ids": [
+                  10162
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              },
+              "R": {
+                "body_ids": [
+                  10059
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 0,
+                "values": [
+                  0.0
+                ],
+                "mean_state": 0.0
+              }
+            }
+          }
+        },
+        "3": {
+          "state_sha256": "bd4c5f651439e10963f08cacf9452a290bde83728abf97d184b07b4b070a8718",
+          "nonzero_node_count": 140713,
+          "l2_norm": 0.061408840119838715,
+          "targets": {
+            "DNa02": {
+              "L": {
+                "body_ids": [
+                  523769
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  0.00015043029270600528
+                ],
+                "mean_state": 0.00015043029270600528
+              },
+              "R": {
+                "body_ids": [
+                  10360
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.0005144645692780614
+                ],
+                "mean_state": -0.0005144645692780614
+              }
+            },
+            "DNa01": {
+              "L": {
+                "body_ids": [
+                  10442
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  7.949348946567625e-05
+                ],
+                "mean_state": 7.949348946567625e-05
+              },
+              "R": {
+                "body_ids": [
+                  10760
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -0.00013970503641758114
+                ],
+                "mean_state": -0.00013970503641758114
+              }
+            },
+            "DNp20": {
+              "L": {
+                "body_ids": [
+                  10162
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -1.440816413378343e-05
+                ],
+                "mean_state": -1.440816413378343e-05
+              },
+              "R": {
+                "body_ids": [
+                  10059
+                ],
+                "fixed_denominator": 1,
+                "finite_count": 1,
+                "nonzero_count": 1,
+                "values": [
+                  -2.30756813834887e-05
+                ],
+                "mean_state": -2.30756813834887e-05
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "target_readout_results": {
+    "DNa02": {
+      "selected_hop_from_maximum_bilateral_shortest_depth": 1,
+      "fixed_readout": "right_mean_state_minus_left_mean_state",
+      "fixed_target_denominators": {
+        "L": {
+          "L": 1,
+          "R": 1
+        },
+        "R": {
+          "L": 1,
+          "R": 1
+        }
+      },
+      "readout_by_PFL3_source_side": {
+        "L": 0.015723271295428276,
+        "R": -0.014859956689178944
+      },
+      "minimum_absolute_readout": 0.014859956689178944,
+      "normalized_mirror_error": 0.05490680597111818,
+      "finite_denominator_passed": true,
+      "magnitude_gate_passed": true,
+      "opponent_sign_gate_passed": true,
+      "mirror_gate_passed": true,
+      "precheck_passed": true
+    },
+    "DNa01": {
+      "selected_hop_from_maximum_bilateral_shortest_depth": 2,
+      "fixed_readout": "right_mean_state_minus_left_mean_state",
+      "fixed_target_denominators": {
+        "L": {
+          "L": 1,
+          "R": 1
+        },
+        "R": {
+          "L": 1,
+          "R": 1
+        }
+      },
+      "readout_by_PFL3_source_side": {
+        "L": 0.0007830347749404609,
+        "R": -0.0010336792038287967
+      },
+      "minimum_absolute_readout": 0.0007830347749404609,
+      "normalized_mirror_error": 0.24247796411104816,
+      "finite_denominator_passed": true,
+      "magnitude_gate_passed": true,
+      "opponent_sign_gate_passed": true,
+      "mirror_gate_passed": false,
+      "precheck_passed": false
+    },
+    "DNp20": {
+      "selected_hop_from_maximum_bilateral_shortest_depth": 3,
+      "fixed_readout": "right_mean_state_minus_left_mean_state",
+      "fixed_target_denominators": {
+        "L": {
+          "L": 1,
+          "R": 1
+        },
+        "R": {
+          "L": 1,
+          "R": 1
+        }
+      },
+      "readout_by_PFL3_source_side": {
+        "L": -6.07074071012903e-08,
+        "R": -8.66751724970527e-06
+      },
+      "minimum_absolute_readout": 6.07074071012903e-08,
+      "normalized_mirror_error": 1.007004013416109,
+      "finite_denominator_passed": true,
+      "magnitude_gate_passed": false,
+      "opponent_sign_gate_passed": false,
+      "mirror_gate_passed": false,
+      "precheck_passed": false
+    }
+  },
+  "passing_target_populations": [
+    "DNa02"
+  ],
+  "failed_target_populations": [
+    "DNa01",
+    "DNp20"
+  ],
+  "all_descending_readouts_precheck_passed": false,
+  "real_graph_propagated_target_states_were_read": true,
+  "biological_neural_states_measured": false,
+  "physiological_neural_states_claimed": false,
+  "algebraic_action_equivalence_used_as_evidence": false,
+  "functional_neural_readout_validated": false,
+  "advance_to_vehicle_assay": false,
+  "advance_to_navigation_release": false,
+  "advance_to_mushroom_body": false,
+  "stop_reason": "one_or_more_real_descending_state_readouts_failed_fixed_precheck",
+  "boundary": {
+    "precheck_only": true,
+    "real_malecns_target_normalized_edges": true,
+    "transmitter_sign_from_presynaptic_consensus": true,
+    "identity_activation_without_fit": true,
+    "fixed_whole_population_denominators": true,
+    "no_environment_observation": true,
+    "no_vehicle_execution": true,
+    "no_parameter_or_threshold_search": true,
+    "no_target_activity_injection": true,
+    "simulated_state_is_not_physiological_measurement": true,
+    "algebraic_action_equivalence_is_not_used": true,
+    "no_calibration_or_final_consumed": true,
+    "runtime_modified": false,
+    "modifies_assisted_v5": false,
+    "modifies_neural_v6_front": false,
+    "changes_default_service": false
+  }
+}
