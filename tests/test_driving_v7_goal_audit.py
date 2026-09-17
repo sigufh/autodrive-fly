@@ -207,6 +207,19 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "upstream_source_latency_temporal_identifiability_passed"
     ] is False
+    assert visual["observations"]["upstream_paired_residual_passing_populations"] == {
+        "T4": 0,
+        "T5": 0,
+    }
+    assert all(
+        value > 4.0
+        for value in visual["observations"][
+            "upstream_paired_residual_minimum_shuffle_ratios"
+        ].values()
+    )
+    assert visual["observations"][
+        "upstream_paired_residual_temporal_identifiability_passed"
+    ] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

@@ -1486,7 +1486,10 @@ Tm1/Tm2/Tm4 对 Tm9。ordered 条件下，两家族各 8/8 群体都达到固定
 中位至少晚 1 帧、且至少 60% 全体“目标×四方向”比较中慢源较晚；T4 中位差约 1–2 帧，
 T5 约 3 帧。但 temporal shuffle 和 static sham 下也同样各为 8/8，static 甚至更一致。
 因此该差异只是当前代理通道的固有滤波时间常数，不是运动顺序可辨识性，不能授权新的
-目标动力学。证据见 `artifacts/v7-upstream-latency-audit.json`。
+目标动力学。进一步按同一目标、RF、方向计算 `ordered−static` 和 `shuffle−static` 配对
+残差：T4/T5 各 0/8 群体通过完整残差门，所有 fast/delayed 通道的 shuffle/ordered
+残差能量比都大于 4.0，最高约 6.17。故即使去掉固有静态滤波，乱序跳变仍主导源层活动。
+证据见 `artifacts/v7-upstream-latency-audit.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

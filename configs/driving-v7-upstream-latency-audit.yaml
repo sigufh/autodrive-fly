@@ -5,14 +5,15 @@ lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
 stage1_protocol: configs/driving-v7-stage1-nested.yaml
 scoring_config: configs/driving-v7-stage1-scoring.yaml
 source_position_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+temporal_control_protocol: configs/driving-v7-three-hop-moment.yaml
 condition_id: S1-T01
 families:
   T4:
-    polarity: on
+    polarity: "on"
     fast_sources: [Mi1, Tm3]
     delayed_sources: [Mi4, C3]
   T5:
-    polarity: off
+    polarity: "off"
     fast_sources: [Tm1, Tm2, Tm4]
     delayed_sources: [Tm9]
 directions: [left, right, up, down]
@@ -23,6 +24,7 @@ thresholds:
   minimum_joint_active_comparison_fraction: 0.80
   minimum_median_delayed_minus_fast_peak_frames: 1.0
   minimum_delayed_later_fraction_all_comparisons: 0.60
+  maximum_shuffle_to_ordered_residual_energy_ratio: 0.50
 stop_gate:
   require_every_population_on_ordered: true
 boundary:
@@ -34,6 +36,7 @@ boundary:
   source_activity_readout_only: true
   source_sign_not_used_to_define_latency: true
   source_latency_is_not_target_direction_selectivity: true
+  static_sham_subtracted_before_residual_scoring: true
   labels_changed: false
   thresholds_changed: false
   parameter_fit: false

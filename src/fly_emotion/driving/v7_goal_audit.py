@@ -441,6 +441,23 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "upstream_source_latency_temporal_identifiability_passed": (
                     upstream_latency_audit["source_latency_temporal_identifiability_passed"]
                 ),
+                "upstream_paired_residual_passing_populations": {
+                    family: result["passing_population_count"]
+                    for family, result in upstream_latency_audit["paired_static_residual"].items()
+                },
+                "upstream_paired_residual_minimum_shuffle_ratios": {
+                    family: min(
+                        channel["shuffle_to_ordered_residual_energy_ratio"]
+                        for population in result["populations"].values()
+                        for channel in population["channel_residual_energy"].values()
+                    )
+                    for family, result in upstream_latency_audit["paired_static_residual"].items()
+                },
+                "upstream_paired_residual_temporal_identifiability_passed": (
+                    upstream_latency_audit[
+                        "paired_static_residual_temporal_identifiability_passed"
+                    ]
+                ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
                 ),

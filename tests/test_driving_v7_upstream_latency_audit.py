@@ -19,6 +19,8 @@ def test_upstream_latency_audit_is_tuning_only_and_hash_bound() -> None:
     assert report["protocol"]["calibration_evaluated"] is False
     assert report["protocol"]["final_evaluated"] is False
     assert report["protocol"]["runtime_modified"] is False
+    assert report["source_groups"]["T4"]["polarity"] == "on"
+    assert report["source_groups"]["T5"]["polarity"] == "off"
 
 
 def test_ordered_latency_passes_but_is_not_motion_specific() -> None:
@@ -38,13 +40,25 @@ def test_ordered_latency_passes_but_is_not_motion_specific() -> None:
 
 def test_upstream_latency_failure_does_not_authorize_target_or_LPLC_work() -> None:
     report = json.loads(REPORT.read_text())
+    residual = report["paired_static_residual"]
+    assert residual["T4"]["passing_population_count"] == 0
+    assert residual["T5"]["passing_population_count"] == 0
+    assert all(
+        channel["shuffle_to_ordered_residual_energy_ratio"] > 4.0
+        for family in residual.values()
+        for population in family["populations"].values()
+        for channel in population["channel_residual_energy"].values()
+    )
+    assert report["paired_static_residual_shuffle_attenuation_passed"] is False
     assert report["authorize_new_target_dynamics_candidate"] is False
+    assert report["paired_static_residual_temporal_identifiability_passed"] is False
     assert report["advance_to_three_tuning_conditions"] is False
     assert report["advance_to_LPLC_mechanism_repair"] is False
     assert report["stop_reason"] == (
-        "fast_delayed_latency_persists_under_temporal_shuffle_and_static_sham"
+        "paired_motion_residual_failed_latency_or_shuffle_attenuation"
     )
     boundary = report["boundary"]
     assert boundary["all_four_directions_used_without_preferred_direction_selection"] is True
     assert boundary["fixed_whole_population_times_four_directions_denominator"] is True
     assert boundary["source_latency_is_not_target_direction_selectivity"] is True
+    assert boundary["static_sham_subtracted_before_residual_scoring"] is True

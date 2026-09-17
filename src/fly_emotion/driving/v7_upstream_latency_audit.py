@@ -118,6 +118,10 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
     scoring = yaml.safe_load((root / scoring_path).read_text(encoding="utf-8"))
     source_path = Path(config["source_position_protocol"])
     source_config = yaml.safe_load((root / source_path).read_text(encoding="utf-8"))
+    temporal_control_path = Path(config["temporal_control_protocol"])
+    temporal_control = yaml.safe_load(
+        (root / temporal_control_path).read_text(encoding="utf-8")
+    )
     thresholds = config["thresholds"]
     if float(thresholds["minimum_activity"]) != float(
         scoring["thresholds"]["minimum_valid_denominator"]
@@ -131,11 +135,22 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
         scoring["thresholds"]["minimum_positive_cell_fraction"]
     ):
         raise ValueError("upstream delay-fraction threshold differs from frozen scoring")
+    if float(thresholds["maximum_shuffle_to_ordered_residual_energy_ratio"]) != float(
+        temporal_control["controls"][
+            "maximum_shuffle_to_ordered_energy_ratio_for_diagnostic_attenuation"
+        ]
+    ):
+        raise ValueError("upstream residual attenuation threshold differs from frozen control")
     condition = next(
         row for row in stage1["conditions"] if row["condition_id"] == config["condition_id"]
     )
     if condition["role"] != "tuning":
         raise ValueError("upstream latency audit may consume tuning only")
+    if {family: settings["polarity"] for family, settings in config["families"].items()} != {
+        "T4": "on",
+        "T5": "off",
+    }:
+        raise ValueError("upstream source polarities must be explicit quoted strings")
 
     probe = LaminaSplitProbe(root, lamina)
     positions, position_summary = _infer_t4_t5_positions(root, probe, source_config)
@@ -186,6 +201,7 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
                 channel: {
                     "amplitude": np.full((len(directions), len(data["targets"])), np.nan),
                     "latency": np.full((len(directions), len(data["targets"])), -1, dtype=np.int16),
+                    "trace": None,
                 }
                 for channel in ("fast", "delayed")
             }
@@ -203,7 +219,7 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
                         float(center_y),
                         float(local["stimulus"]["aperture_radius_pixels"]),
                         speed,
-                        str(settings["polarity"]),
+                        settings["polarity"],
                         direction,
                         int(local["common_background_frames"]),
                     )
@@ -229,7 +245,21 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
                             },
                         )
                         for channel in ("fast", "delayed"):
-                            selected = np.abs(traces[channel][:, target_indices])
+                            trace = traces[channel][:, target_indices]
+                            if mode_arrays[mode][family][channel]["trace"] is None:
+                                mode_arrays[mode][family][channel]["trace"] = np.full(
+                                    (
+                                        len(directions),
+                                        trace.shape[0],
+                                        len(data["targets"]),
+                                    ),
+                                    np.nan,
+                                    dtype=np.float32,
+                                )
+                            mode_arrays[mode][family][channel]["trace"][
+                                direction_index, :, target_indices
+                            ] = trace.T
+                            selected = np.abs(trace)
                             mode_arrays[mode][family][channel]["amplitude"][
                                 direction_index, target_indices
                             ] = np.max(selected, axis=0)
@@ -278,6 +308,69 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
         for result in results[mode].values()
     )
     identifiable = bool(ordered_passed and failure_controls_rejected)
+    residual_results = {}
+    residual_attenuation_passed = True
+    for family, data in family_data.items():
+        population_results = {}
+        for population, nodes in data["populations"].items():
+            group = np.flatnonzero(data["names"] == population)
+            residual = {}
+            for mode in ("ordered", "temporal_shuffle"):
+                residual[mode] = {
+                    channel: (
+                        mode_arrays[mode][family][channel]["trace"][:, :, group]
+                        - mode_arrays["static_sham"][family][channel]["trace"][:, :, group]
+                    )
+                    for channel in ("fast", "delayed")
+                }
+            ordered_summary = _population_summary(
+                probe.graph.body_ids[nodes],
+                np.max(np.abs(residual["ordered"]["fast"]), axis=1),
+                np.max(np.abs(residual["ordered"]["delayed"]), axis=1),
+                np.argmax(np.abs(residual["ordered"]["fast"]), axis=1),
+                np.argmax(np.abs(residual["ordered"]["delayed"]), axis=1),
+                thresholds,
+            )
+            channel_ratios = {}
+            for channel in ("fast", "delayed"):
+                ordered_energy = float(np.nanmean(np.abs(residual["ordered"][channel])))
+                shuffled_energy = float(
+                    np.nanmean(np.abs(residual["temporal_shuffle"][channel]))
+                )
+                ratio = shuffled_energy / max(ordered_energy, 1e-12)
+                channel_ratios[channel] = {
+                    "ordered_residual_mean_absolute_energy": ordered_energy,
+                    "shuffle_residual_mean_absolute_energy": shuffled_energy,
+                    "shuffle_to_ordered_residual_energy_ratio": ratio,
+                    "attenuation_gate_passed": ratio
+                    <= float(thresholds["maximum_shuffle_to_ordered_residual_energy_ratio"]),
+                }
+            attenuation = all(
+                item["attenuation_gate_passed"] for item in channel_ratios.values()
+            )
+            residual_attenuation_passed &= attenuation
+            population_results[population] = {
+                "ordered_minus_static_latency": ordered_summary,
+                "channel_residual_energy": channel_ratios,
+                "shuffle_attenuation_gate_passed": attenuation,
+                "passed": bool(ordered_summary["passed"] and attenuation),
+            }
+        residual_results[family] = {
+            "populations": population_results,
+            "passing_population_count": int(
+                sum(item["passed"] for item in population_results.values())
+            ),
+            "all_population_residual_gate_passed": all(
+                item["passed"] for item in population_results.values()
+            ),
+        }
+    residual_identifiable = bool(
+        residual_attenuation_passed
+        and all(
+            result["all_population_residual_gate_passed"]
+            for result in residual_results.values()
+        )
+    )
     return {
         "protocol": {
             "name": config["name"],
@@ -291,6 +384,7 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
                 str(scoring_path): _sha256(root / scoring_path),
                 str(source_path): _sha256(root / source_path),
                 str(local_path): _sha256(root / local_path),
+                str(temporal_control_path): _sha256(root / temporal_control_path),
             },
             "condition_id": config["condition_id"],
             "position_count": int(len(x_centers) * len(y_centers)),
@@ -309,17 +403,18 @@ def evaluate_v7_upstream_latency_audit(root: Path) -> dict:
         "ordered_source_latency_gate_passed": bool(ordered_passed),
         "failure_controls_rejected": bool(failure_controls_rejected),
         "source_latency_temporal_identifiability_passed": identifiable,
-        "authorize_new_target_dynamics_candidate": identifiable,
+        "paired_static_residual": residual_results,
+        "paired_static_residual_shuffle_attenuation_passed": bool(
+            residual_attenuation_passed
+        ),
+        "paired_static_residual_temporal_identifiability_passed": residual_identifiable,
+        "authorize_new_target_dynamics_candidate": residual_identifiable,
         "advance_to_three_tuning_conditions": False,
         "advance_to_LPLC_mechanism_repair": False,
         "stop_reason": (
             None
-            if identifiable
-            else (
-                "fast_delayed_latency_persists_under_temporal_shuffle_and_static_sham"
-                if ordered_passed
-                else "one_or_more_upstream_populations_lack_consistent_fast_delayed_latency"
-            )
+            if residual_identifiable
+            else "paired_motion_residual_failed_latency_or_shuffle_attenuation"
         ),
         "boundary": config["boundary"],
     }
