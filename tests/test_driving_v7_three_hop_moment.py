@@ -1,0 +1,45 @@
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).parents[1]
+REPORT = ROOT / "artifacts/v7-three-hop-moment.json"
+
+
+def test_three_hop_moment_is_read_only_and_uses_known_sources() -> None:
+    report = json.loads(REPORT.read_text())
+    for path, digest in report["protocol"]["dependencies_sha256"].items():
+        assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+    protocol = report["protocol"]
+    assert protocol["condition_ids"] == ["S1-T01", "S1-T02", "S1-T03"]
+    assert protocol["parameter_fit"] is False
+    assert protocol["target_activity_injection"] is False
+    assert protocol["calibration_evaluated"] is False
+    assert protocol["runtime_modified"] is False
+    assert report["path_summary"]["T4"]["reachable_target_fraction"] > 0.99
+    assert report["path_summary"]["T5"]["reachable_target_fraction"] > 0.99
+
+
+def test_three_hop_main_pass_is_rejected_by_temporal_shuffle() -> None:
+    report = json.loads(REPORT.read_text())
+    assert report["bilateral_direction_populations"] == [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d",
+    ]
+    shuffled = report["controls"]["temporal_shuffle"]
+    assert shuffled["direction_pass_count"] == 16
+    assert shuffled["polarity_pass_count"] == 16
+    assert shuffled["passed_as_failure_control"] is False
+    assert report["controls"]["static_sham"]["passed_as_failure_control"] is True
+    assert report["controls"]["coordinate_shuffle"]["evaluated"] is False
+    assert report["controls"]["direction_reversal"]["evaluated"] is False
+    assert report["temporal_shuffle_control_passed"] is False
+    assert report["strict_three_hop_gates_passed"] is False
+    assert report["advance_to_target_dynamics"] is False
+    assert report["advance_to_calibration"] is False

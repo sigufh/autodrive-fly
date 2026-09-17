@@ -310,6 +310,11 @@ v7-evaluate-t4-source-pool-local:
 
 .PHONY: v7-evaluate-t4-source-pool-local
 
+v7-evaluate-three-hop-moment:
+	.venv/bin/autodrive-fly v7-evaluate-three-hop-moment
+
+.PHONY: v7-evaluate-three-hop-moment
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

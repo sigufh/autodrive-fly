@@ -62,6 +62,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t4_local_correlator_precheck = reports["t4_local_correlator_precheck"]
     t4_source_pool_local = reports["t4_source_pool_local"]
+    three_hop_moment = reports["three_hop_moment"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -304,6 +305,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_source_pool_authorizes_target_formula": t4_source_pool_local[
                     "authorize_new_target_formula"
                 ],
+                "three_hop_main_direction_bilateral_populations": three_hop_moment[
+                    "bilateral_direction_populations"
+                ],
+                "three_hop_temporal_shuffle_control_passed": three_hop_moment[
+                    "temporal_shuffle_control_passed"
+                ],
+                "three_hop_static_sham_control_passed": three_hop_moment[
+                    "static_sham_control_passed"
+                ],
+                "three_hop_strict_gates_passed": three_hop_moment["strict_three_hop_gates_passed"],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"
                 ],
@@ -640,6 +651,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_normalized_correlator"],
                 config["evidence"]["t4_local_correlator_precheck"],
                 config["evidence"]["t4_source_pool_local"],
+                config["evidence"]["three_hop_moment"],
                 config["evidence"]["t5_spatial_order"],
                 config["evidence"]["t4t5_local_edge_precheck"],
                 config["evidence"]["t4t5_local_edge_backends"],

@@ -98,6 +98,19 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["T4_source_pool_maximum_bilateral_pair_count"] == 0
     assert visual["observations"]["T4_source_pool_authorizes_target_formula"] is False
+    assert visual["observations"]["three_hop_main_direction_bilateral_populations"] == [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d",
+    ]
+    assert visual["observations"]["three_hop_temporal_shuffle_control_passed"] is False
+    assert visual["observations"]["three_hop_static_sham_control_passed"] is True
+    assert visual["observations"]["three_hop_strict_gates_passed"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

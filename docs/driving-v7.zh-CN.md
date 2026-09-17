@@ -1341,6 +1341,15 @@ proximal、distal 三池均为 0/8。最接近的 `T4d_R center` 中位对比约
 且没有 sign 搜索。结果仍为 0/8，a/b/d 多数组的中位方向对比反而为负。按冻结方向不
 翻转 sign，因此 anatomy-vector target 公式也关闭，不扩三条件。
 
+随后构造了只读 3-hop moment 诊断：目标只经已知 T4/T5 直接 source、一个真实 visual
+中间层和 R1–R6 三跳获得权重；T4/T5 路径覆盖分别为 99.77%/99.94%。用 stage-1
+0.625/1.25/2.25 px/frame 的单跃迁局部 ON/OFF edge 后，主评分表面上让 16 个群体的
+方向和极性全部跨三条件通过。但固定时间顺序打乱在 `S1-T01` 仍得到方向 16/16、极性
+16/16，只有静态 sham 为 0/16。故该峰值 moment 指标只识别帧集合中的空间变化，不
+依赖正确时间顺序，不能称 Reichardt 或 T4/T5 神经方向选择。按顺序门，坐标打乱和
+标签反转不再运行；候选不写入 target dynamics、不进 calibration 或闭环。证据见
+`artifacts/v7-three-hop-moment.json`。
+
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
 T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge、危险减速、简单目标记忆、

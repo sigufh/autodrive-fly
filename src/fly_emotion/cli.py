@@ -124,6 +124,7 @@ from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
 from .driving.v7_target_fit import evaluate_v7_target_fit_contract
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
+from .driving.v7_three_hop_moment import evaluate_v7_three_hop_moment
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
 from .driving.v7_visual_layer_locality import evaluate_v7_visual_layer_locality
@@ -286,6 +287,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-backends")
     subparsers.add_parser("v7-evaluate-t4-local-correlator-precheck")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
+    subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
     subparsers.add_parser("v7-freeze-fusion-nested")
     subparsers.add_parser("v7-evaluate-fusion-nested")
@@ -888,6 +890,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t4-source-pool-local":
         report = evaluate_v7_t4_source_pool_local(root)
         target = root / "artifacts/v7-t4-source-pool-local.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-three-hop-moment":
+        report = evaluate_v7_three_hop_moment(root)
+        target = root / "artifacts/v7-three-hop-moment.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
