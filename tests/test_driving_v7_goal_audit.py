@@ -147,6 +147,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_lamina_scalar_ordered_polarity_pass_count"] == 8
     assert visual["observations"]["T5_lamina_scalar_shuffle_bilateral_subtypes"] == ["a"]
     assert visual["observations"]["T5_lamina_scalar_precheck_passed"] is False
+    assert visual["observations"]["T5_source_axis_passing_populations"] == [
+        "T5c_L",
+        "T5c_R",
+        "T5d_L",
+        "T5d_R",
+    ]
+    assert visual["observations"]["T5_source_axis_mirror_passing_subtypes"] == ["c", "d"]
+    assert visual["observations"]["T5_source_axis_strict_gate_passed"] is False
+    assert visual["observations"]["T5_source_axis_dynamic_candidate_authorized"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

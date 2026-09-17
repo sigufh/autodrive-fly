@@ -68,6 +68,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
     t5_lamina_split = reports["t5_lamina_split"]
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
+    t5_source_axis_audit = reports["t5_source_axis_audit"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -142,6 +143,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_phenotype"],
                 config["evidence"]["t5_lamina_split"],
                 config["evidence"]["t5_lamina_scalar_precheck"],
+                config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["lplc2_radial_opponency"],
                 config["evidence"]["lplc2_position_coverage"],
             ],
@@ -392,6 +394,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "T5_lamina_scalar_precheck_passed": t5_lamina_scalar_precheck[
                     "candidate_passed"
+                ],
+                "T5_source_axis_passing_populations": [
+                    name
+                    for name, result in t5_source_axis_audit["population_summaries"].items()
+                    if result["passed"]
+                ],
+                "T5_source_axis_mirror_passing_subtypes": [
+                    name
+                    for name, result in t5_source_axis_audit["population_mirror"].items()
+                    if result["passed"]
+                ],
+                "T5_source_axis_strict_gate_passed": t5_source_axis_audit[
+                    "strict_source_axis_gate_passed"
+                ],
+                "T5_source_axis_dynamic_candidate_authorized": t5_source_axis_audit[
+                    "authorize_dynamic_axis_candidate"
                 ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"

@@ -1394,6 +1394,13 @@ runtime。证据见 `artifacts/v7-t5-lamina-split.json`；可用
 T5a 左右双侧方向通过，static sham 才为零。故该组合只保留了极性，既没有 ordered 方向
 选择，也不满足时间顺序反证；按 stop gate 不运行另外两个 tuning 条件，不扩 calibration。
 证据见 `artifacts/v7-t5-lamina-scalar-precheck.json`。
+对全部 6,719 个 T5 的真实直接输入再做纯结构检查：分别计算 Tm1/Tm2/Tm4 fast 与 Tm9
+delayed 的突触权重质心，以 `fast→Tm9` 位移作为无标签生成轴；冻结标签只用于事后评分，
+不拟合坐标变换、不搜索符号。各群体有效轴覆盖均超过 99.8%，c/d 四群体与冻结上下方向
+一致且镜像通过；a/b 四群体的中位 expected cosine 则均低于 -0.7，左右镜像也超 0.20。
+同眼 a↔b、c↔d 的中位轴多数近似互反，说明有解剖方向族信号，但尚无独立依据把完整
+四方向轴映射到相机语义。严格结构门失败，因此不通过事后翻转 a/b 来创建动态候选。证据见
+`artifacts/v7-t5-source-axis-audit.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

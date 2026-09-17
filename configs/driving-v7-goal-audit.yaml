@@ -59,6 +59,7 @@ evidence:
   lc4_position_speed_precheck: artifacts/v7-lc4-position-speed-precheck.json
   t5_lamina_split: artifacts/v7-t5-lamina-split.json
   t5_lamina_scalar_precheck: artifacts/v7-t5-lamina-scalar-precheck.json
+  t5_source_axis_audit: artifacts/v7-t5-source-axis-audit.json
   t5_spatial_order: artifacts/v7-t5-spatial-order.json
   t4t5_local_edge_precheck: artifacts/v7-t4t5-local-edge-precheck.json
   t4t5_local_edge_backends: artifacts/v7-t4t5-local-edge-backends.json
