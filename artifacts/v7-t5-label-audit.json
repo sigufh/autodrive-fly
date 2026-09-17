@@ -3,8 +3,10 @@
     "name": "v7-t5-direction-label-source-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-label-audit.yaml": "a6af2148ff77a36331dd543a54ab3efd2fae140feafa84f4425eb95d434a4f5b",
-      "src/fly_emotion/driving/v7_t5_label_audit.py": "a05a7bb1f41801eca55f2fad76d7f731a2ed68e51420132a4f92be61e76bcc99"
+      "configs/driving-v7-t5-label-audit.yaml": "684268defc928cfb22051350868558784db4a6e6433591ff0ef0ad0552a95a5b",
+      "src/fly_emotion/driving/v7_t5_label_audit.py": "9ac31e503b584780e5deccbe1360463e037658f4e437967d6422460886d73a1a",
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae",
+      "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf"
     },
     "parameter_fitting": false,
     "raw_files_downloaded": false
@@ -29,13 +31,37 @@
     "article_page": {
       "status_code": 403,
       "accessible": false,
-      "response_bytes": 0
+      "response_bytes": 118
     },
     "archive": {
       "status_code": 403,
       "accessible": false,
-      "response_bytes": 0
+      "response_bytes": 118
     }
+  },
+  "processed_repository_evidence": {
+    "commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
+    "manifest_sha256": "1db6da29a948fa80039b551db5c6020dbbbea666491bb133001e9113f2c360fa",
+    "recorded_cell_count": 17,
+    "cells_with_both_direction_codes": 17,
+    "direction_codes_present": [
+      0,
+      1
+    ],
+    "direction_code_to_PD_ND_mapping_verified": false,
+    "stable_biological_cell_ids_available": false,
+    "code_effect": "selects_forward_or_reversed_internal_position_sequence"
+  },
+  "paper_alignment_evidence": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6917495/fullTextXML",
+    "http_status": 200,
+    "response_sha256": "5a94e37108ceb3a13fe67109deaf2189fcb089a4c09b16ed29be75840a086afe",
+    "required_phrase_checks": {
+      "aligned to the PD of each cell": true,
+      "after identifying the PD-ND axis": true
+    },
+    "required_phrases_verified": true,
+    "scope": "paper confirms per-cell PD-ND alignment, not the repository's numeric direction-code mapping"
   },
   "bounded_download_decision": {
     "maximum_download_bytes": 10000000,
@@ -47,7 +73,7 @@
   "label_status": {
     "direction_code_to_PD_ND_mapping_verified": false,
     "biological_PD_code_assigned": null,
-    "reason": "DataCite verifies the Figure 4 data-and-code package and declares a readme, but the environment could not retrieve its file manifest or bounded individual files. The 1.392-GB archive exceeds this audit's download budget."
+    "reason": "DataCite verifies the Figure 4 data-and-code package and declares a readme, but the environment could not retrieve its file manifest or bounded individual files. The 1.392-GB archive exceeds this audit's download budget. The fixed repository code maps 0/1 only to reverse/forward position sequences, while the paper states per-cell PD-ND alignment without linking those numeric codes; response magnitude is not used to infer the mapping."
   },
   "next_protocol_if_manifest_available": [
     "retrieve only readme and plotting source when separately addressable",
@@ -63,7 +89,8 @@
     "assign_PD_code_without_plotting_source": false,
     "infer_PD_from_response_magnitude": false,
     "fit_allowed": false,
-    "change_visual_gate": false
+    "change_visual_gate": false,
+    "require_direction_mapping_independent_of_response_magnitude": true
   },
   "advance_to_model_scoring": false,
   "advance_to_visual_gate": false,

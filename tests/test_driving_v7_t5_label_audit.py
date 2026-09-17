@@ -31,6 +31,16 @@ def test_saved_label_audit_is_hash_bound_and_stays_non_advancing() -> None:
     assert decision["archive_exceeds_budget"] is True
     assert decision["archive_downloaded"] is False
     assert decision["file_manifest_retrieved"] is False
+    repository = report["processed_repository_evidence"]
+    assert repository["recorded_cell_count"] == 17
+    assert repository["cells_with_both_direction_codes"] == 17
+    assert repository["direction_codes_present"] == [0, 1]
+    assert repository["code_effect"] == (
+        "selects_forward_or_reversed_internal_position_sequence"
+    )
+    assert repository["direction_code_to_PD_ND_mapping_verified"] is False
+    assert repository["stable_biological_cell_ids_available"] is False
+    assert report["paper_alignment_evidence"]["required_phrases_verified"] is True
     assert report["label_status"]["direction_code_to_PD_ND_mapping_verified"] is False
     assert report["label_status"]["biological_PD_code_assigned"] is None
     assert report["advance_to_model_scoring"] is False

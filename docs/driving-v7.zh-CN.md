@@ -1423,6 +1423,10 @@ T5 横轴冲突，却不能授权把拟合变换应用到新动态模型。
 审计上限，但本环境下官方 article API、landing page 和 ndownloader 均返回 HTTP 403，
 DataCite 只给出包级描述、没有 file ID，因此其 `optTables.mat` 仍未做文件级验证。现阶段
 只能保留 native-time read-only 重放接口，不能据此拟合 T5、校准方向标签或推进视觉门。
+进一步比对固定仓库代码和论文结构化全文：`direction_mb` 的 0/1 只控制内部位置数组按
+正序或反序播放；论文则说明测量结果已按每个细胞先验确定的 PD–ND 轴对齐，却没有把该
+数字码映射到 PD/ND。两份信息都不能独立导出 `0→PD` 或 `1→PD`，因此仍禁止依据响应
+峰值大小反推方向标签。该边界已纳入 `artifacts/v7-t5-label-audit.json`。
 
 LPLC1 也完成了独立的近碰撞单条件 precheck，不复用 LPLC2 radial 或 LC4 speed 规则。
 新刺激让小暗物体从外侧向前方接近并同步由 2×3 增长到 5×7 像素，配套相同逐帧面积的

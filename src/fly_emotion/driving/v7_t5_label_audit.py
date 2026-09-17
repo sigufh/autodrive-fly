@@ -30,6 +30,13 @@ def _request(url: str, method: str = "GET") -> tuple[bytes, int]:
 
 def evaluate_v7_t5_label_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
+    repository_evidence_path = Path(config["processed_repository_evidence"])
+    repository_config_path = Path(config["processed_repository_config"])
+    repository = json.loads((root / repository_evidence_path).read_text())
+    repository_config = yaml.safe_load((root / repository_config_path).read_text())
+    if repository["repository"]["commit"] != repository_config["repository"]["commit"]:
+        raise ValueError("T5 label audit repository commit mismatch")
+    readiness = repository["direction_and_identity_readiness"]
     dataset = config["figure4_dataset"]
     metadata_raw, metadata_status = _request(dataset["datacite_url"])
     if metadata_status != 200:
@@ -64,13 +71,19 @@ def evaluate_v7_t5_label_audit(root: Path) -> dict:
         ("article_page", dataset["article_page_url"]),
         ("archive", dataset["archive_url"]),
     ):
-        raw, status = _request(url, method="HEAD" if name != "article_api" else "GET")
+        raw, status = _request(url, method="GET")
         access[name] = {
             "status_code": status or None,
             "accessible": status == 200,
             "response_bytes": len(raw),
         }
     manifest_retrieved = access["article_api"]["accessible"]
+    paper_raw, paper_status = _request(config["paper_full_text_url"])
+    paper_text = _plain(paper_raw.decode("utf-8", errors="replace"))
+    paper_phrase_checks = {
+        phrase: phrase.lower() in paper_text.lower()
+        for phrase in config["required_paper_alignment_phrases"]
+    }
     archive_exceeds_budget = int(dataset["expected_size_bytes"]) > int(
         config["audit_boundary"]["maximum_download_bytes"]
     )
@@ -81,6 +94,8 @@ def evaluate_v7_t5_label_audit(root: Path) -> dict:
             "dependencies_sha256": {
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
+                str(repository_evidence_path): _sha256(root / repository_evidence_path),
+                str(repository_config_path): _sha256(root / repository_config_path),
             },
             "parameter_fitting": False,
             "raw_files_downloaded": False,
@@ -95,6 +110,33 @@ def evaluate_v7_t5_label_audit(root: Path) -> dict:
             "metadata_sha256": hashlib.sha256(metadata_raw).hexdigest(),
         },
         "access_observation": access,
+        "processed_repository_evidence": {
+            "commit": repository["repository"]["commit"],
+            "manifest_sha256": repository["repository"]["manifest_sha256"],
+            "recorded_cell_count": readiness["recorded_cell_count"],
+            "cells_with_both_direction_codes": readiness[
+                "cells_with_both_moving_bar_direction_codes"
+            ],
+            "direction_codes_present": readiness["direction_codes_present"],
+            "direction_code_to_PD_ND_mapping_verified": readiness[
+                "direction_code_to_PD_ND_mapping_verified"
+            ],
+            "stable_biological_cell_ids_available": readiness[
+                "stable_biological_cell_ids_available"
+            ],
+            "code_effect": config["repository_direction_semantics"]["code_effect"],
+        },
+        "paper_alignment_evidence": {
+            "url": config["paper_full_text_url"],
+            "http_status": paper_status or None,
+            "response_sha256": hashlib.sha256(paper_raw).hexdigest(),
+            "required_phrase_checks": paper_phrase_checks,
+            "required_phrases_verified": all(paper_phrase_checks.values()),
+            "scope": (
+                "paper confirms per-cell PD-ND alignment, not the repository's numeric "
+                "direction-code mapping"
+            ),
+        },
         "bounded_download_decision": {
             "maximum_download_bytes": config["audit_boundary"]["maximum_download_bytes"],
             "archive_exceeds_budget": archive_exceeds_budget,
@@ -109,6 +151,9 @@ def evaluate_v7_t5_label_audit(root: Path) -> dict:
                 "DataCite verifies the Figure 4 data-and-code package and declares a readme, "
                 "but the environment could not retrieve its file manifest or bounded individual "
                 "files. The 1.392-GB archive exceeds this audit's download budget."
+                " The fixed repository code maps 0/1 only to reverse/forward position "
+                "sequences, while the paper states per-cell PD-ND alignment without linking "
+                "those numeric codes; response magnitude is not used to infer the mapping."
             ),
         },
         "next_protocol_if_manifest_available": config["next_protocol_if_manifest_available"],

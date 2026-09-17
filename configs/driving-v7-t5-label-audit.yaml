@@ -1,6 +1,17 @@
 version: 1
 name: v7-t5-direction-label-source-audit
 observed_on: "2026-09-15"
+processed_repository_evidence: artifacts/v7-t5-conductance-audit.json
+processed_repository_config: configs/driving-v7-t5-conductance-audit.yaml
+paper_full_text_url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6917495/fullTextXML
+required_paper_alignment_phrases:
+  - aligned to the PD of each cell
+  - after identifying the PD-ND axis
+repository_direction_semantics:
+  direction_field: direction_mb
+  code_values: [0, 1]
+  code_effect: selects_forward_or_reversed_internal_position_sequence
+  PD_ND_mapping_present: false
 figure4_dataset:
   doi: 10.25378/janelia.11328086.v1
   datacite_url: https://api.datacite.org/dois/10.25378/janelia.11328086.v1
@@ -19,6 +30,7 @@ audit_boundary:
   infer_PD_from_response_magnitude: false
   fit_allowed: false
   change_visual_gate: false
+  require_direction_mapping_independent_of_response_magnitude: true
 next_protocol_if_manifest_available:
   - retrieve only readme and plotting source when separately addressable
   - verify file size and published checksum before parsing
