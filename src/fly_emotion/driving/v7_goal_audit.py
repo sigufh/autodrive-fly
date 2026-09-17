@@ -74,6 +74,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_lamina_split = reports["t5_lamina_split"]
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
+    t5_source_pair_precheck = reports["t5_source_pair_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
     t5_spatial_order = reports["t5_spatial_order"]
@@ -161,6 +162,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_lamina_split"],
                 config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["t5_source_axis_audit"],
+                config["evidence"]["t5_source_pair_precheck"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -476,6 +478,33 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_source_axis_transform_application_authorized": t5_source_axis_audit[
                     "independent_T4_axis_calibration"
                 ]["transform_application_authorized"],
+                "T5_source_pair_joint_source_fraction": t5_source_pair_precheck[
+                    "source_coverage"
+                ]["joint_present_fraction"],
+                "T5_source_pair_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t5_source_pair_precheck["candidates"]
+                ],
+                "T5_source_pair_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t5_source_pair_precheck["candidates"]
+                ],
+                "T5_source_pair_bilateral_direction_subtypes": [
+                    item["bilateral_direction_subtypes"]
+                    for item in t5_source_pair_precheck["candidates"]
+                ],
+                "T5_source_pair_precheck_passed": t5_source_pair_precheck[
+                    "ordered_precheck_passed"
+                ],
+                "T5_source_pair_controls_evaluated": t5_source_pair_precheck[
+                    "controls_evaluated"
+                ],
+                "T5_source_pair_three_condition_evaluation_performed": (
+                    t5_source_pair_precheck["three_condition_evaluation_performed"]
+                ),
+                "LPLC_mechanism_repair_authorized_by_T4_T5_gate": (
+                    t5_source_pair_precheck["advance_to_LPLC_mechanism_repair"]
+                ),
                 "LPLC1_near_collision_direct_input_fraction": {
                     side: result["targets_with_direct_T4_T5_fraction"]
                     for side, result in lplc1_near_collision_precheck[

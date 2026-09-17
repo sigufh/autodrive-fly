@@ -136,6 +136,7 @@ from .driving.v7_t5_lamina_scalar_precheck import evaluate_v7_t5_lamina_scalar_p
 from .driving.v7_t5_lamina_split import evaluate_v7_t5_lamina_split
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_source_axis_audit import evaluate_v7_t5_source_axis_audit
+from .driving.v7_t5_source_pair_precheck import evaluate_v7_t5_source_pair_precheck
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
 from .driving.v7_target_fit import evaluate_v7_target_fit_contract
@@ -316,6 +317,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-lamina-split")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
+    subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
     subparsers.add_parser("v7-evaluate-lplc1-near-collision-precheck")
     subparsers.add_parser("v7-audit-lplc1-input-structure")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
@@ -992,6 +994,12 @@ def main() -> None:
     if args.command == "v7-audit-t5-source-axis":
         report = evaluate_v7_t5_source_axis_audit(root)
         target = root / "artifacts/v7-t5-source-axis-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t5-source-pair-precheck":
+        report = evaluate_v7_t5_source_pair_precheck(root)
+        target = root / "artifacts/v7-t5-source-pair-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

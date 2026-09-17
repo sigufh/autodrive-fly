@@ -218,6 +218,20 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_source_axis_dynamic_candidate_authorized"] is False
     assert visual["observations"]["T5_zero_shot_T4_axis_calibration_accuracy"] > 0.83
     assert visual["observations"]["T5_source_axis_transform_application_authorized"] is False
+    assert visual["observations"]["T5_source_pair_joint_source_fraction"] == 6718 / 6719
+    assert visual["observations"]["T5_source_pair_direction_pass_counts"] == [0] * 6
+    assert visual["observations"]["T5_source_pair_polarity_pass_counts"] == [8] * 6
+    assert visual["observations"]["T5_source_pair_bilateral_direction_subtypes"] == [
+        []
+    ] * 6
+    assert visual["observations"]["T5_source_pair_precheck_passed"] is False
+    assert visual["observations"]["T5_source_pair_controls_evaluated"] is False
+    assert visual["observations"][
+        "T5_source_pair_three_condition_evaluation_performed"
+    ] is False
+    assert visual["observations"][
+        "LPLC_mechanism_repair_authorized_by_T4_T5_gate"
+    ] is False
     assert visual["observations"]["LPLC1_near_collision_direct_input_fraction"] == {
         "L": 67 / 68,
         "R": 1.0,

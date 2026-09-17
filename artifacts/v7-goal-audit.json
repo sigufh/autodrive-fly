@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "61fbb2c3412d617729671ee925278fb7f842151408f18956082dd94ed7edd01b",
-      "src/fly_emotion/driving/v7_goal_audit.py": "26f4ba6fa7a4390372260e691ab05a85f721408bf6205a2340a2d4631055244b",
+      "configs/driving-v7-goal-audit.yaml": "d923835da358b44c96d532dbe35ae57261be003b0b033ee0e7ea1a55c32bdec7",
+      "src/fly_emotion/driving/v7_goal_audit.py": "aafa00ad0fd99735d2b41ed29d489df2683dec3a66c005ee7c91ca47dad27dc5",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -59,6 +59,7 @@
       "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
       "artifacts/v7-t5-lamina-scalar-precheck.json": "7335166942c334e5c99a153374de007fb08f9ebc38e12f9fb0619f6d75bc4fd6",
       "artifacts/v7-t5-source-axis-audit.json": "5d005802745abb94614a211fb70dd654c00fd7a91701f9bc29e4ea5b5dde77ed",
+      "artifacts/v7-t5-source-pair-precheck.json": "6acf0f677104433974f0270325805f5c1217937038f8a7db016a048044c0fadf",
       "artifacts/v7-lplc1-near-collision-precheck.json": "7c41b998e8b80207e0b4a17141367c0c8338ed5caea7389cbc37c99b10dfc59f",
       "artifacts/v7-lplc1-input-structure.json": "dc005e820af8bdbcd0bc4b7a45ed9385dc17aa7c0f05ac7345c7ef9cb5df095a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
@@ -136,6 +137,7 @@
         "artifacts/v7-t5-lamina-split.json",
         "artifacts/v7-t5-lamina-scalar-precheck.json",
         "artifacts/v7-t5-source-axis-audit.json",
+        "artifacts/v7-t5-source-pair-precheck.json",
         "artifacts/v7-lplc1-near-collision-precheck.json",
         "artifacts/v7-lplc1-input-structure.json",
         "artifacts/v7-lc4-input-speed-precheck.json",
@@ -408,6 +410,35 @@
         "T5_source_axis_dynamic_candidate_authorized": false,
         "T5_zero_shot_T4_axis_calibration_accuracy": 0.8350454071758225,
         "T5_source_axis_transform_application_authorized": false,
+        "T5_source_pair_joint_source_fraction": 0.9998511683286203,
+        "T5_source_pair_direction_pass_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "T5_source_pair_polarity_pass_counts": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "T5_source_pair_bilateral_direction_subtypes": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "T5_source_pair_precheck_passed": false,
+        "T5_source_pair_controls_evaluated": false,
+        "T5_source_pair_three_condition_evaluation_performed": false,
+        "LPLC_mechanism_repair_authorized_by_T4_T5_gate": false,
         "LPLC1_near_collision_direct_input_fraction": {
           "L": 0.9852941176470589,
           "R": 1.0

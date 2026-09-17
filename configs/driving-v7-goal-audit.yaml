@@ -64,6 +64,7 @@ evidence:
   t5_lamina_split: artifacts/v7-t5-lamina-split.json
   t5_lamina_scalar_precheck: artifacts/v7-t5-lamina-scalar-precheck.json
   t5_source_axis_audit: artifacts/v7-t5-source-axis-audit.json
+  t5_source_pair_precheck: artifacts/v7-t5-source-pair-precheck.json
   lplc1_near_collision_precheck: artifacts/v7-lplc1-near-collision-precheck.json
   lplc1_input_structure: artifacts/v7-lplc1-input-structure.json
   t5_spatial_order: artifacts/v7-t5-spatial-order.json

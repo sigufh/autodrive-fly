@@ -1,0 +1,43 @@
+version: 1
+name: v7-t5-source-pair-dynamics-precheck
+observed_on: "2026-09-17"
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+lamina_split_evidence: artifacts/v7-t5-lamina-split.json
+source_axis_evidence: artifacts/v7-t5-source-axis-audit.json
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: S1-T01
+source_pairs:
+  horizontal: {first: Tm9, second: Tm2}
+  vertical: {first: Tm1, second: Tm9}
+baseline_source: Tm9
+formula: baseline_peak+gain*(positive_horizontal_reichardt_peak+positive_vertical_reichardt_peak)
+global_gains: [0.125, 0.25, 0.5, 1.0, 2.0, 4.0]
+position_reduction: maximum_over_fixed_5x3_grid
+thresholds_from: configs/driving-v7-stage1-scoring.yaml
+stop_gate:
+  require_all_direction_populations: true
+  require_all_polarity_populations: true
+  require_mirror: true
+  minimum_bilateral_direction_subtypes_to_run_controls: 1
+  maximum_mirror_error: 0.20
+controls_after_ordered_gate: [temporal_shuffle, static_sham]
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  source_pairs_selected_after_structure_label_audit: true
+  source_pair_screen_may_not_authorize_validation: true
+  dynamics_do_not_read_subtype_or_direction_labels: true
+  labels_used_for_scoring_only: true
+  fixed_whole_population_denominators: true
+  direct_real_T5_sources_only: true
+  Tm4_not_merged_into_selected_pair_channels: true
+  labels_changed: false
+  thresholds_changed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true
