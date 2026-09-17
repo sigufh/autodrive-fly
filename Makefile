@@ -315,6 +315,11 @@ v7-evaluate-three-hop-moment:
 
 .PHONY: v7-evaluate-three-hop-moment
 
+v7-audit-three-hop-source-coverage:
+	.venv/bin/autodrive-fly v7-audit-three-hop-source-coverage
+
+.PHONY: v7-audit-three-hop-source-coverage
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

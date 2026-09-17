@@ -1,0 +1,26 @@
+version: 1
+name: v7-three-hop-source-channel-coverage
+observed_on: "2026-09-17"
+balanced_retina_source: mass_balanced_common_optic_hex_pairs
+retina_modes: [balanced_1914, all_mapped_3377]
+path_length_edges: 3
+source_groups:
+  T4_center: [Mi1, Tm3]
+  T4_proximal: [Mi4, C3]
+  T4_distal: [Mi9]
+  T4_all_known: [Mi1, Tm3, Mi4, C3, Mi9, CT1]
+  T5_fast: [Tm1, Tm2, Tm4]
+  T5_delayed: [Tm9]
+  T5_all_known: [Tm1, Tm2, Tm4, Tm9, CT1]
+gate:
+  minimum_population_coverage: 0.80
+  require_every_population: true
+  require_independent_fast_and_delayed_channels: true
+boundary:
+  structure_only: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  synthetic_edge_completion_allowed: false
+  denominator_restriction_allowed: false

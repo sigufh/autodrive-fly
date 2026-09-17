@@ -54,6 +54,7 @@ evidence:
   t4_local_correlator_precheck: artifacts/v7-t4-local-correlator-precheck.json
   t4_source_pool_local: artifacts/v7-t4-source-pool-local.json
   three_hop_moment: artifacts/v7-three-hop-moment.json
+  three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json
   t5_spatial_order: artifacts/v7-t5-spatial-order.json
   t4t5_local_edge_precheck: artifacts/v7-t4t5-local-edge-precheck.json
   t4t5_local_edge_backends: artifacts/v7-t4t5-local-edge-backends.json

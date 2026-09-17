@@ -1356,6 +1356,13 @@ proximal、distal 三池均为 0/8。最接近的 `T4d_R center` 中位对比约
 未参与光流生成，这仍不是 T4/T5 cell 自身的标量活动。因此即使主评分为 32/32，也不能
 单独验证 target direction selectivity。后续候选必须用解剖本身固定每个 target 的标量
 preferred axis，并通过时间顺序反证，不能继续依赖标签条件化向量投影。
+对 target-specific 标量 Reichardt 的结构前置审计又发现：镜像 1,914 受体下，T4
+center/proximal/distal 与 T5 fast/delayed 独立三跳通道的每群体覆盖仅约 38%–55%；即使
+使用全部 3,377 个 R1–R6，右侧部分群体可超过 80%，左侧仍约 42%–58%。将所有已知
+source 合并可接近全覆盖，但会破坏 fast/delayed 分工，不能作为机制替代。与此同时，
+不限制中间路径的真实 visual subgraph 在 2–4 跳内可达全部 T4/T5，说明问题是独立通道
+覆盖合同而非整图断连。故不补合成边、不缩分母，也不实现缺路径的标量 target 头。证据见
+`artifacts/v7-three-hop-source-coverage.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
