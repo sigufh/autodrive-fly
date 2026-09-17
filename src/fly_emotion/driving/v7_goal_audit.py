@@ -449,6 +449,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_source_axis_dynamic_candidate_authorized": t5_source_axis_audit[
                     "authorize_dynamic_axis_candidate"
                 ],
+                "T5_zero_shot_T4_axis_calibration_accuracy": t5_source_axis_audit[
+                    "independent_T4_axis_calibration"
+                ]["zero_shot_T5_accuracy"],
+                "T5_source_axis_transform_application_authorized": t5_source_axis_audit[
+                    "independent_T4_axis_calibration"
+                ]["transform_application_authorized"],
                 "LPLC1_near_collision_direct_input_fraction": {
                     side: result["targets_with_direct_T4_T5_fraction"]
                     for side, result in lplc1_near_collision_precheck[

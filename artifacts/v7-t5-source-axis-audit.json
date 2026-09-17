@@ -2,12 +2,13 @@
   "protocol": {
     "name": "v7-t5-direct-source-axis-audit",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-axis-audit.yaml": "b2b6bafe94339ae8ba296805e807148fda8007c592d69283b66f93d0d410e1e0",
-      "src/fly_emotion/driving/v7_t5_source_axis_audit.py": "7e9076046fc45c825fa0e879c3287439d1c736f4c7bea28e41ef8e55be37dc74",
+      "configs/driving-v7-t5-source-axis-audit.yaml": "36c0d510694f8f0639f5145b3016d03e2629d987c0bb49b2de8be4ab6829dca5",
+      "src/fly_emotion/driving/v7_t5_source_axis_audit.py": "359d304771a6748b4cb3f4a3bb306f671954c3c61c18f7c18d6a55d649604eb7",
       "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
       "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
       "src/fly_emotion/driving/v7_t5_lamina_split.py": "d8c3f00cbfe8bb0a6608bba022e9fbdb3607285875032bdb31b4164c65cab9ed",
       "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "artifacts/v7-optic-hex-axis-calibration.json": "1635689991661b70c8c1d3f2e23f5634117340fffe44626e4d241b52489beb79",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f"
@@ -237,6 +238,26 @@
       "opposite_angle_degrees": 6.5305729910705,
       "descriptive_only": true
     }
+  },
+  "independent_T4_axis_calibration": {
+    "fit_source": "T4 only, stratified by subtype and eye",
+    "T5_used_for_fit_or_model_selection": false,
+    "held_out_T4_accuracy": 0.4660646664724731,
+    "held_out_T4_median_angle_error_degrees": 50.80428811076111,
+    "zero_shot_T5_accuracy": 0.8350454071758225,
+    "zero_shot_T5_median_angle_error_degrees": 19.37663945609101,
+    "cross_eye_maximum_error_degrees": 36.19665026356343,
+    "preregistered_gates": {
+      "held_out_T4_accuracy": false,
+      "zero_shot_T5_accuracy": true,
+      "held_out_T4_angle": false,
+      "zero_shot_T5_angle": true,
+      "cross_eye_mirror": false,
+      "held_out_T4_above_random_p95": true,
+      "zero_shot_T5_above_random_p95": true
+    },
+    "axis_calibration_passed": false,
+    "transform_application_authorized": false
   },
   "population_gate_passed": false,
   "mirror_gate_passed": false,
@@ -154777,6 +154798,7 @@
     "target_activity_injection": false,
     "calibration_evaluated": false,
     "runtime_modified": false,
-    "connect_to_navigation": false
+    "connect_to_navigation": false,
+    "fitted_transform_application_authorized": false
   }
 }

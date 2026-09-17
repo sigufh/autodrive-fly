@@ -64,6 +64,10 @@ def evaluate_v7_t5_source_axis_audit(root: Path) -> dict:
     lamina = yaml.safe_load((root / lamina_path).read_text())
     scoring_path = Path(config["scoring_config"])
     scoring = yaml.safe_load((root / scoring_path).read_text())
+    calibration_path = Path(config["optic_hex_axis_evidence"])
+    calibration = json.loads((root / calibration_path).read_text())
+    if calibration["protocol"]["T5_used_for_fit_or_model_selection"]:
+        raise ValueError("T5 axis comparison requires a T4-only calibration")
     probe = MassBalancedVisualProbe(root, lamina)
     raw = load_graph(root / "data/processed/malecns-v1.0", normalized=False).adjacency
     _, coordinates = _node_annotations(root, probe)
@@ -222,6 +226,7 @@ def evaluate_v7_t5_source_axis_audit(root: Path) -> dict:
                 str(lamina_path): _sha256(root / lamina_path),
                 str(LAMINA_SPLIT_IMPLEMENTATION): _sha256(root / LAMINA_SPLIT_IMPLEMENTATION),
                 str(scoring_path): _sha256(root / scoring_path),
+                str(calibration_path): _sha256(root / calibration_path),
                 str(ANNOTATIONS): _sha256(root / ANNOTATIONS),
                 str(RAW_ADJACENCY): _sha256(root / RAW_ADJACENCY),
                 str(BODY_IDS): _sha256(root / BODY_IDS),
@@ -237,6 +242,26 @@ def evaluate_v7_t5_source_axis_audit(root: Path) -> dict:
         "population_summaries": summaries,
         "population_mirror": mirrors,
         "within_eye_opponent_axis_pairs": opponent_axes,
+        "independent_T4_axis_calibration": {
+            "fit_source": calibration["protocol"]["fit_source"],
+            "T5_used_for_fit_or_model_selection": calibration["protocol"][
+                "T5_used_for_fit_or_model_selection"
+            ],
+            "held_out_T4_accuracy": calibration["held_out_T4"]["accuracy"],
+            "held_out_T4_median_angle_error_degrees": calibration["held_out_T4"][
+                "median_angle_error_degrees"
+            ],
+            "zero_shot_T5_accuracy": calibration["zero_shot_T5"]["accuracy"],
+            "zero_shot_T5_median_angle_error_degrees": calibration["zero_shot_T5"][
+                "median_angle_error_degrees"
+            ],
+            "cross_eye_maximum_error_degrees": calibration["cross_eye_mirror"][
+                "maximum_degrees"
+            ],
+            "preregistered_gates": calibration["preregistered_gates"],
+            "axis_calibration_passed": calibration["axis_calibration_pass"],
+            "transform_application_authorized": False,
+        },
         "population_gate_passed": population_gate,
         "mirror_gate_passed": mirror_gate,
         "strict_source_axis_gate_passed": strict,

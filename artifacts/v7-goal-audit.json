@@ -4,7 +4,7 @@
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "cb1afec1b71bf2ec079f2ce989c486e7c063ae5c9e6b317eca2dd311373232be",
-      "src/fly_emotion/driving/v7_goal_audit.py": "958dd1ab65fbd476da6932e7f873662da5d416951a0da40c62c7a6e9930124b0",
+      "src/fly_emotion/driving/v7_goal_audit.py": "e3bfdbd2eb49d7b29d33655f8d7ce5916c46035503c6b3c333e824f0a1bdf17d",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -55,7 +55,7 @@
       "artifacts/v7-lc4-input-speed-precheck.json": "f1ed721d4958488762315807871b8e3e67c67b121eedc7de7b77982c73714c07",
       "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
       "artifacts/v7-t5-lamina-scalar-precheck.json": "7335166942c334e5c99a153374de007fb08f9ebc38e12f9fb0619f6d75bc4fd6",
-      "artifacts/v7-t5-source-axis-audit.json": "71a896609e4ba5f85a6b6a00b44c27f45817a620fb100358ae627ececbfaab47",
+      "artifacts/v7-t5-source-axis-audit.json": "5d005802745abb94614a211fb70dd654c00fd7a91701f9bc29e4ea5b5dde77ed",
       "artifacts/v7-lplc1-near-collision-precheck.json": "7c41b998e8b80207e0b4a17141367c0c8338ed5caea7389cbc37c99b10dfc59f",
       "artifacts/v7-lplc1-input-structure.json": "dc005e820af8bdbcd0bc4b7a45ed9385dc17aa7c0f05ac7345c7ef9cb5df095a",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
@@ -396,6 +396,8 @@
         ],
         "T5_source_axis_strict_gate_passed": false,
         "T5_source_axis_dynamic_candidate_authorized": false,
+        "T5_zero_shot_T4_axis_calibration_accuracy": 0.8350454071758225,
+        "T5_source_axis_transform_application_authorized": false,
         "LPLC1_near_collision_direct_input_fraction": {
           "L": 0.9852941176470589,
           "R": 1.0

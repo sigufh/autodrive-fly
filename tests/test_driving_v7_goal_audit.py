@@ -184,6 +184,8 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_source_axis_mirror_passing_subtypes"] == ["c", "d"]
     assert visual["observations"]["T5_source_axis_strict_gate_passed"] is False
     assert visual["observations"]["T5_source_axis_dynamic_candidate_authorized"] is False
+    assert visual["observations"]["T5_zero_shot_T4_axis_calibration_accuracy"] > 0.83
+    assert visual["observations"]["T5_source_axis_transform_application_authorized"] is False
     assert visual["observations"]["LPLC1_near_collision_direct_input_fraction"] == {
         "L": 67 / 68,
         "R": 1.0,

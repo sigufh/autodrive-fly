@@ -4,6 +4,7 @@ observed_on: "2026-09-17"
 lamina_split_evidence: artifacts/v7-t5-lamina-split.json
 lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
 scoring_config: configs/driving-v7-stage1-scoring.yaml
+optic_hex_axis_evidence: artifacts/v7-optic-hex-axis-calibration.json
 source_groups:
   fast: [Tm1, Tm2, Tm4]
   delayed: [Tm9]
@@ -30,3 +31,4 @@ boundary:
   calibration_evaluated: false
   runtime_modified: false
   connect_to_navigation: false
+  fitted_transform_application_authorized: false

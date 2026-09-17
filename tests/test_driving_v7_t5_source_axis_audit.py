@@ -45,3 +45,10 @@ def test_t5_source_axis_is_vertical_only_and_not_authorized() -> None:
     ] < 7.0
     assert report["strict_source_axis_gate_passed"] is False
     assert report["authorize_dynamic_axis_candidate"] is False
+    calibration = report["independent_T4_axis_calibration"]
+    assert calibration["T5_used_for_fit_or_model_selection"] is False
+    assert calibration["zero_shot_T5_accuracy"] > 0.83
+    assert calibration["held_out_T4_accuracy"] < 0.47
+    assert calibration["cross_eye_maximum_error_degrees"] > 36.0
+    assert calibration["axis_calibration_passed"] is False
+    assert calibration["transform_application_authorized"] is False
