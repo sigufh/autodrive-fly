@@ -340,6 +340,11 @@ v7-audit-degree-preserving-control:
 
 .PHONY: v7-audit-degree-preserving-control
 
+v7-freeze-parameter-matched-baselines:
+	.venv/bin/autodrive-fly v7-freeze-parameter-matched-baselines
+
+.PHONY: v7-freeze-parameter-matched-baselines
+
 v7-evaluate-t5-lamina-split:
 	.venv/bin/autodrive-fly v7-evaluate-t5-lamina-split
 

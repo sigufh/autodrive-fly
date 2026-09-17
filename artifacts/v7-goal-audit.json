@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "fa9874573406db3c3707d1ce895782d86d68d77ac96e6a65a903513d2715cef1",
-      "src/fly_emotion/driving/v7_goal_audit.py": "26dadb98f04f24b4b0f0d66bd16afae6154a40429d2dfd0c06a2968be95d42a4",
+      "configs/driving-v7-goal-audit.yaml": "02dec7889637b6edc155c6c318048b5f58c902b4344e99661d13e596f0b12d80",
+      "src/fly_emotion/driving/v7_goal_audit.py": "957816745a2f3fe23a893bb94fcde988e7b2e4b5629784c017aab019ae632230",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -45,6 +45,7 @@
       "artifacts/v7-neural-channel-controls.json": "9115c8d47b8535b53a99c2fb2d7061b5a356a63fd7a56d8cc48310ce4dc96608",
       "artifacts/v7-neural-topology-controls.json": "e6bfed19da363e8d14eaf878362b3063cc569ead8f3f0aa3a5c3b07ecd65ae70",
       "artifacts/v7-degree-preserving-control.json": "39f6fe32cc1796ce529fd0e78e93e35e2022f2d6c09a200d7065915190770ab4",
+      "artifacts/v7-parameter-matched-baselines.json": "8f0682497172d9661b89b6246bded00a0757a024d689a40f2393051365ed701e",
       "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d",
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
@@ -611,6 +612,14 @@
         "compact_neural_calibration_passed": true,
         "compact_neural_real_topology_advantage": true,
         "parameter_matched_linear_mlp_gru_complete": false,
+        "parameter_matched_baseline_protocol_ready": true,
+        "parameter_matched_baseline_budget": 1353,
+        "parameter_matched_baseline_counts": {
+          "linear": 1353,
+          "one_hidden_layer_mlp": 1365,
+          "single_layer_gru": 1365
+        },
+        "parameter_matched_baseline_evaluation_performed": false,
         "downstream_ablations_authorized": false
       }
     },
@@ -805,8 +814,10 @@
     },
     {
       "requirement": "6.parameter_matched_linear_MLP_GRU_baselines",
-      "status": "not_started",
-      "evidence": []
+      "status": "protocol_frozen_not_evaluated",
+      "evidence": [
+        "artifacts/v7-parameter-matched-baselines.json"
+      ]
     },
     {
       "requirement": "6.T4_T5_LPLC_EPG_PFL_DNa_MBON_DAN_ablations",

@@ -60,6 +60,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     neural_channel_controls = reports["neural_channel_controls"]
     neural_topology_controls = reports["neural_topology_controls"]
     degree_preserving_control = reports["degree_preserving_control"]
+    parameter_matched_baselines = reports["parameter_matched_baselines"]
     nested_neural_screen = reports["nested_neural_screen"]
     t4_source_resolved = reports["t4_source_resolved"]
     t4_normalized_correlator = reports["t4_normalized_correlator"]
@@ -766,6 +767,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "real_topology_advantage_passed"
                 ],
                 "parameter_matched_linear_mlp_gru_complete": False,
+                "parameter_matched_baseline_protocol_ready": parameter_matched_baselines[
+                    "protocol_ready"
+                ],
+                "parameter_matched_baseline_budget": parameter_matched_baselines[
+                    "protocol"
+                ]["reference_trainable_parameter_budget"],
+                "parameter_matched_baseline_counts": {
+                    name: result["trainable_parameter_count"]
+                    for name, result in parameter_matched_baselines["architectures"].items()
+                },
+                "parameter_matched_baseline_evaluation_performed": (
+                    parameter_matched_baselines["evaluation_performed"]
+                ),
                 "downstream_ablations_authorized": downstream_authorized,
             },
         },
@@ -929,8 +943,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         },
         {
             "requirement": "6.parameter_matched_linear_MLP_GRU_baselines",
-            "status": "not_started",
-            "evidence": [],
+            "status": "protocol_frozen_not_evaluated",
+            "evidence": [config["evidence"]["parameter_matched_baselines"]],
         },
         {
             "requirement": "6.T4_T5_LPLC_EPG_PFL_DNa_MBON_DAN_ablations",

@@ -1,0 +1,40 @@
+version: 1
+name: v7-parameter-matched-baseline-protocol
+observed_on: "2026-09-17"
+reference_config: configs/driving-v7-neural-channels.yaml
+reference_evidence: artifacts/v7-neural-channels-tuning.json
+navigation_split: configs/driving-v7-navigation-nested.yaml
+architectures: [linear, one_hidden_layer_mlp, single_layer_gru]
+parameter_counting:
+  linear: input_times_output_plus_output_bias
+  one_hidden_layer_mlp: input_times_hidden_plus_hidden_bias_plus_hidden_times_output_plus_output_bias
+  single_layer_gru: input_hidden_plus_hidden_hidden_plus_two_GRU_biases_plus_output_projection
+search:
+  minimum_width: 1
+  maximum_width: 450
+  tie_break: smallest_width
+gate:
+  maximum_relative_parameter_difference: 0.01
+  require_identical_input_dimension: true
+  require_identical_output_dimension: true
+  require_identical_tuning_and_CV_splits: true
+  forbid_calibration_before_visual_gate: true
+training_budget:
+  optimizer: AdamW
+  maximum_optimizer_steps_per_fold: 2000
+  batch_unit: complete_episode_sequence
+  initialization_seeds: [20260917, 20260918, 20260919]
+  early_stopping_metric: tuning_fold_mean_squared_error
+  early_stopping_patience_evaluations: 20
+  evaluation_interval_steps: 25
+  gradient_clip_norm: 1.0
+  calibration_used_for_early_stopping: false
+  external_final_used_for_early_stopping: false
+boundary:
+  protocol_only: true
+  models_trained: false
+  calibration_evaluated: false
+  final_evaluated: false
+  model_selection_performed: false
+  runtime_modified: false
+  visual_gate_required_before_execution: true

@@ -34,6 +34,14 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
     assert topology["strict_visual_target_degree_preserving_control_constructed"] is True
     assert topology["strict_visual_target_degree_preserving_rewired_fraction"] > 0.80
     assert topology["strict_visual_target_control_response_evaluated"] is False
+    assert topology["parameter_matched_baseline_protocol_ready"] is True
+    assert topology["parameter_matched_baseline_budget"] == 1353
+    assert topology["parameter_matched_baseline_counts"] == {
+        "linear": 1353,
+        "one_hidden_layer_mlp": 1365,
+        "single_layer_gru": 1365,
+    }
+    assert topology["parameter_matched_baseline_evaluation_performed"] is False
 
 
 def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:

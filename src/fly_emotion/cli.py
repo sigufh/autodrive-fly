@@ -95,6 +95,7 @@ from .driving.v7_neural_goal_fusion import evaluate_v7_neural_goal_fusion
 from .driving.v7_neural_local_columns import evaluate_v7_neural_local_columns
 from .driving.v7_neural_spectra import evaluate_v7_neural_spectra
 from .driving.v7_neural_topology_controls import evaluate_v7_neural_topology_controls
+from .driving.v7_parameter_matched_baselines import evaluate_v7_parameter_matched_baselines
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
@@ -305,6 +306,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-lc4-position-speed-precheck")
     subparsers.add_parser("v7-evaluate-lc4-input-speed-precheck")
     subparsers.add_parser("v7-audit-degree-preserving-control")
+    subparsers.add_parser("v7-freeze-parameter-matched-baselines")
     subparsers.add_parser("v7-evaluate-t5-lamina-split")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
@@ -948,6 +950,12 @@ def main() -> None:
     if args.command == "v7-audit-degree-preserving-control":
         report = evaluate_v7_degree_preserving_control(root)
         target = root / "artifacts/v7-degree-preserving-control.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-freeze-parameter-matched-baselines":
+        report = evaluate_v7_parameter_matched_baselines(root)
+        target = root / "artifacts/v7-parameter-matched-baselines.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

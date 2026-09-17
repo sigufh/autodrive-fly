@@ -1466,6 +1466,14 @@ neural intent → 固定 motor mapping → safety correction → executed action
 限定为“进入 v7 视觉目标的边”，不是整脑全图。由于真实受控视觉响应门仍失败，按执行
 顺序只完成结构构造，尚未运行该控制的响应比较，也不能据此声称真实拓扑优势。证据见
 `artifacts/v7-degree-preserving-control.json`。
+参数匹配 baseline 也已冻结为协议但未训练：共享现有 450 维 parity-aware 神经特征与
+danger/asymmetry/road-center 三输出，当前线性 readout 的可训练预算为 1,353；最接近的
+单隐层 MLP（宽度 3）和标准双 bias 单层 GRU（hidden=1）均为 1,365，偏差 12（0.887%），
+通过 1% 参数匹配门。三者固定使用同一 tuning 条件、leave-one-mirror-pair-out CV、
+AdamW、每 fold 最多 2,000 步、同一三 seed 与 early-stop 规则；预处理共享且不计作任何
+模型私有参数。由于 controlled visual gate 尚未通过，模型训练、calibration 和 external
+final 均未运行，不能声称基线比较完成。证据见
+`artifacts/v7-parameter-matched-baselines.json`。
 
 ## 文献依据
 

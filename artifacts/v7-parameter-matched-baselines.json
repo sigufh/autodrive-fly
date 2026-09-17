@@ -1,0 +1,112 @@
+{
+  "protocol": {
+    "name": "v7-parameter-matched-baseline-protocol",
+    "dependencies_sha256": {
+      "configs/driving-v7-parameter-matched-baselines.yaml": "0314658e759ac8c79e4ec85e03de8b200da05eb96203f3055b4f729c46c1516c",
+      "src/fly_emotion/driving/v7_parameter_matched_baselines.py": "07042db5f6d512e409fb0fbcae08116c276df62588cd2c6315c15880dfc26daf",
+      "configs/driving-v7-neural-channels.yaml": "dc338741e6fc057b5806f5d3f9cd6de321c0e57a8a880b22e82dc6d17e25d6d3",
+      "artifacts/v7-neural-channels-tuning.json": "cee1c691dd53ca4fa6faedccde1a304fef05a36d6f7ed6789fc204453dd02ed2",
+      "configs/driving-v7-navigation-nested.yaml": "56e977e027549137e6c4110f333130f3fa4b6f8fb75dc54188150100d5a9c97a"
+    },
+    "input_dimension": 450,
+    "output_dimension": 3,
+    "reference_trainable_parameter_budget": 1353,
+    "preprocessing_parameter_counted": false,
+    "preprocessing_shared_identically": true,
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "architectures": {
+    "linear": {
+      "hidden_width": null,
+      "trainable_parameter_count": 1353,
+      "absolute_parameter_difference": 0,
+      "relative_parameter_difference": 0.0,
+      "parameter_tensors": {
+        "input_to_output_weight": 1350,
+        "output_bias": 3
+      }
+    },
+    "one_hidden_layer_mlp": {
+      "hidden_width": 3,
+      "trainable_parameter_count": 1365,
+      "absolute_parameter_difference": 12,
+      "relative_parameter_difference": 0.008869179600886918,
+      "parameter_tensors": {
+        "input_to_hidden_weight": 1350,
+        "hidden_bias": 3,
+        "hidden_to_output_weight": 9,
+        "output_bias": 3
+      }
+    },
+    "single_layer_gru": {
+      "hidden_width": 1,
+      "trainable_parameter_count": 1365,
+      "absolute_parameter_difference": 12,
+      "relative_parameter_difference": 0.008869179600886918,
+      "parameter_tensors": {
+        "input_hidden_weights_three_gates": 1350,
+        "hidden_hidden_weights_three_gates": 3,
+        "input_hidden_biases_three_gates": 3,
+        "hidden_hidden_biases_three_gates": 3,
+        "hidden_to_output_weight": 3,
+        "output_bias": 3
+      }
+    }
+  },
+  "parameter_count_gate_passed": true,
+  "data_contract": {
+    "input_features": "same frozen 450-dimensional parity-aware structured neural features",
+    "outputs": [
+      "danger",
+      "obstacle_asymmetry",
+      "road_center"
+    ],
+    "tuning_conditions": [
+      "NAV-T01",
+      "NAV-T02",
+      "NAV-T03"
+    ],
+    "cross_validation": "leave_one_tuning_mirror_pair_out",
+    "calibration_conditions": [
+      "NAV-C01"
+    ],
+    "external_final_conditions": [
+      "NAV-F01"
+    ],
+    "calibration_access_authorized": false,
+    "external_final_access_authorized": false
+  },
+  "training_contract": {
+    "optimizer": "AdamW",
+    "maximum_optimizer_steps_per_fold": 2000,
+    "batch_unit": "complete_episode_sequence",
+    "initialization_seeds": [
+      20260917,
+      20260918,
+      20260919
+    ],
+    "early_stopping_metric": "tuning_fold_mean_squared_error",
+    "early_stopping_patience_evaluations": 20,
+    "evaluation_interval_steps": 25,
+    "gradient_clip_norm": 1.0,
+    "calibration_used_for_early_stopping": false,
+    "external_final_used_for_early_stopping": false,
+    "selection_metric": "tuning_cross_validation_task_collision_exit_window_steering_drift_mirror",
+    "models_trained": false,
+    "reason_not_run": "controlled visual response gate has not passed"
+  },
+  "protocol_ready": true,
+  "evaluation_performed": false,
+  "advance_to_calibration": false,
+  "advance_to_final": false,
+  "boundary": {
+    "protocol_only": true,
+    "models_trained": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "model_selection_performed": false,
+    "runtime_modified": false,
+    "visual_gate_required_before_execution": true
+  }
+}
