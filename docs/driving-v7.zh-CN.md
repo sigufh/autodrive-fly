@@ -1549,6 +1549,15 @@ static/ordered 为 0.538，也高于 ≤0.50。因此 `direction_scoring_perform
 离散 leak 解释成未知的毫秒时间常数。证据见
 `artifacts/v7-t4-synapse-microstep-precheck.json`。
 
+现有 Fig.3 电生理数据随后被专门审计能否提供下一候选的类型特异动态核。Mi1、Tm3、
+Mi4、C3 确有 1 kHz 平均细胞轨迹，但 source 数组轴只有 ON/OFF、cell、time，没有方向轴
+或 MaleCNS body ID；论文的 PD/ND 输入是把 Mi4/C3 按目标方向分别人工平移 +160/−160
+samples 合成，而非来源类型自身的标签盲因果核。与此同时 v7 物理 dt 未识别，mV 到当前
+normalized state 的映射未定义，也没有独立动态 final。因此四个迁移必要字段和六个门全部
+失败，明确禁止把 160 ms 当作 v7 lag 或由 T4 目标标签反推 source kernel。当前真正的数据
+阻塞是：需要方向独立的 source kernel、可验证身份映射、v7 物理采样间隔和状态单位映射。
+证据见 `artifacts/v7-t4-source-dynamics-transfer-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

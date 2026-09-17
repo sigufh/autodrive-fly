@@ -276,6 +276,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_synapse_microstep_static_energy_ratio"] > 0.53
     assert visual["observations"]["T4_synapse_microstep_temporal_identifiability_passed"] is False
     assert visual["observations"]["T4_synapse_microstep_direction_scoring_performed"] is False
+    assert set(
+        visual["observations"]["T4_source_dynamics_transfer_fields_available"].values()
+    ) == {False}
+    assert visual["observations"]["T4_source_dynamics_transfer_authorized"] is False
+    assert visual["observations"]["T4_source_dynamics_next_candidate_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

@@ -1,0 +1,31 @@
+version: 1
+name: v7-t4-source-dynamics-transfer-audit
+observed_on: "2026-09-17"
+electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
+electrophysiology_interface: artifacts/v7-ephys-interface.json
+timebase_evidence: artifacts/v7-timebase-audit.json
+microstep_evidence: artifacts/v7-t4-synapse-microstep-precheck.json
+official_unified_model_evidence: artifacts/v7-t5-data-audit.json
+required_sources: [Mi1, Tm3, Mi4, C3]
+required_transfer_fields:
+  - direction_independent_source_kernel
+  - source_to_MaleCNS_identity_mapping
+  - physical_v7_sample_interval
+  - millivolts_to_v7_normalized_state_mapping
+gates:
+  require_source_direction_axis: true
+  forbid_target_PD_ND_conditioned_source_shift: true
+  require_physical_timebase: true
+  require_state_unit_mapping: true
+  require_independent_dynamic_validation: true
+boundary:
+  read_only_audit: true
+  parameter_fit: false
+  infer_kernel_from_T4_target_labels: false
+  use_160ms_shift_as_v7_lag: false
+  inject_target_activity: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  T5_and_LPLC_remain_frozen: true

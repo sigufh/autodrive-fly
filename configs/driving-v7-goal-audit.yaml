@@ -67,6 +67,7 @@ evidence:
   t4_synapse_antisymmetric_precheck: artifacts/v7-t4-synapse-antisymmetric-precheck.json
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json
   t4_synapse_microstep_precheck: artifacts/v7-t4-synapse-microstep-precheck.json
+  t4_source_dynamics_transfer_audit: artifacts/v7-t4-source-dynamics-transfer-audit.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json
   four_hop_scalar_precheck: artifacts/v7-four-hop-scalar-precheck.json
   lc4_position_speed_precheck: artifacts/v7-lc4-position-speed-precheck.json

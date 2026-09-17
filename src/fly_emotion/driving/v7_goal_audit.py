@@ -77,6 +77,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_antisymmetric_precheck = reports["t4_synapse_antisymmetric_precheck"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
+    t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -179,6 +180,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
+                config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -582,6 +584,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "T4_synapse_microstep_direction_scoring_performed": (
                     t4_synapse_microstep_precheck["direction_scoring_performed"]
+                ),
+                "T4_source_dynamics_transfer_fields_available": (
+                    t4_source_dynamics_transfer_audit[
+                        "required_transfer_fields_available"
+                    ]
+                ),
+                "T4_source_dynamics_transfer_authorized": (
+                    t4_source_dynamics_transfer_audit["source_dynamics_transfer_authorized"]
+                ),
+                "T4_source_dynamics_next_candidate_authorized": (
+                    t4_source_dynamics_transfer_audit["next_candidate_authorized"]
                 ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]

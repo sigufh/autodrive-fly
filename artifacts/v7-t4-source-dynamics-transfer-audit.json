@@ -1,0 +1,118 @@
+{
+  "protocol": {
+    "name": "v7-t4-source-dynamics-transfer-audit",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "4d2a8467384f7bb86beb09a780f94adb31fe42d0dbfeca3d32629511c222cb7e",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b16c55861b84daf17a18fb581d02e3ef3fb0f6a769e59e4d1e5ad61c96c169ca",
+      "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
+      "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
+      "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019"
+    },
+    "required_sources": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "read_only": true,
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "available_source_recordings": {
+    "axes": [
+      "stimulus_on_off",
+      "cell",
+      "time_milliseconds"
+    ],
+    "sample_interval_milliseconds": 1.0,
+    "sources": {
+      "Mi1": {
+        "cell_count": 24,
+        "sample_interval_milliseconds": 1.0,
+        "stable_MaleCNS_body_ids_available": false
+      },
+      "Tm3": {
+        "cell_count": 12,
+        "sample_interval_milliseconds": 1.0,
+        "stable_MaleCNS_body_ids_available": false
+      },
+      "Mi4": {
+        "cell_count": 19,
+        "sample_interval_milliseconds": 1.0,
+        "stable_MaleCNS_body_ids_available": false
+      },
+      "C3": {
+        "cell_count": 16,
+        "sample_interval_milliseconds": 1.0,
+        "stable_MaleCNS_body_ids_available": false
+      }
+    },
+    "role": "training_reproduction"
+  },
+  "paper_direction_synthesis": {
+    "shift_samples": 160,
+    "signed_shifts_by_target_direction": {
+      "pd": {
+        "Mi1": 0,
+        "Tm3": 0,
+        "Mi4": 160,
+        "C3": 160
+      },
+      "nd": {
+        "Mi1": 0,
+        "Tm3": 0,
+        "Mi4": -160,
+        "C3": -160
+      }
+    },
+    "target_PD_ND_conditioned": true,
+    "may_be_used_as_label_blind_v7_source_kernel": false
+  },
+  "official_unified_model_package": {
+    "doi": "10.25378/janelia.16663486",
+    "article_id": 16663486,
+    "size_bytes": 3630019,
+    "description_names_optTables": true,
+    "file_manifest_retrieved": false,
+    "files_verified": false,
+    "current_environment_access": "official landing, API, files API, and ndownloader returned HTTP 403"
+  },
+  "required_transfer_fields_available": {
+    "direction_independent_source_kernel": false,
+    "source_to_MaleCNS_identity_mapping": false,
+    "physical_v7_sample_interval": false,
+    "millivolts_to_v7_normalized_state_mapping": false
+  },
+  "transfer_gates": {
+    "source_direction_axis_available": false,
+    "source_shift_is_not_target_PD_ND_conditioned": false,
+    "physical_timebase_available": false,
+    "state_unit_mapping_available": false,
+    "independent_dynamic_validation_available": false,
+    "existing_microstep_temporal_control_passed": false
+  },
+  "source_dynamics_transfer_authorized": false,
+  "next_candidate_authorized": false,
+  "blocking_data_requirements": [
+    "direction_independent_source_kernel",
+    "source_to_MaleCNS_identity_mapping",
+    "physical_v7_sample_interval",
+    "millivolts_to_v7_normalized_state_mapping"
+  ],
+  "stop_reason": "published_source_dynamics_not_transferable_to_label_blind_v7",
+  "boundary": {
+    "read_only_audit": true,
+    "parameter_fit": false,
+    "infer_kernel_from_T4_target_labels": false,
+    "use_160ms_shift_as_v7_lag": false,
+    "inject_target_activity": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}
