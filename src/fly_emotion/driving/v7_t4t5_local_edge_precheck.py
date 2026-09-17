@@ -76,7 +76,11 @@ def _compact(score: dict) -> dict:
 
 
 def evaluate_v7_t4t5_local_edge_precheck(
-    root: Path, *, retinal_backend: str | None = None, dynamics_backend: str | None = None
+    root: Path,
+    *,
+    retinal_backend: str | None = None,
+    dynamics_backend: str | None = None,
+    probe_override=None,
 ) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     if retinal_backend is not None:
@@ -96,7 +100,7 @@ def evaluate_v7_t4t5_local_edge_precheck(
         raise ValueError("local edge precheck may consume tuning only")
     if float(config["stimulus"]["noise_standard_deviation"]) != 0.0:
         raise ValueError("local edge precheck is frozen to zero noise")
-    probe = MassBalancedVisualProbe(root, config)
+    probe = probe_override if probe_override is not None else MassBalancedVisualProbe(root, config)
     positions, position_metadata = _infer_t4_t5_positions(root, probe, source)
     finite_positions = positions[np.all(np.isfinite(positions), axis=1)]
     low, high = finite_positions.min(axis=0), finite_positions.max(axis=0)
@@ -220,8 +224,8 @@ def evaluate_v7_t4t5_local_edge_precheck(
             "position_count": len(x_centers) * len(y_centers),
             "stimulus_count": len(responses),
             "noise_standard_deviation": 0.0,
-            "retinal_backend": config["retinal_backend"],
-            "dynamics_backend": config["dynamics_backend"],
+            "retinal_backend": probe.retinal_backend,
+            "dynamics_backend": probe.dynamics_backend,
             "parameter_fit": False,
             "target_activity_injection": False,
             "calibration_evaluated": False,

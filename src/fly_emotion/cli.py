@@ -110,6 +110,7 @@ from .driving.v7_stage1_nested import evaluate_v7_stage1_nested
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
+from .driving.v7_t4_local_correlator_precheck import evaluate_v7_t4_local_correlator_precheck
 from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_correlator
 from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
 from .driving.v7_t4t5_local_edge_backends import evaluate_v7_t4t5_local_edge_backends
@@ -282,6 +283,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-lplc2-position-coverage")
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-precheck")
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-backends")
+    subparsers.add_parser("v7-evaluate-t4-local-correlator-precheck")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
     subparsers.add_parser("v7-freeze-fusion-nested")
     subparsers.add_parser("v7-evaluate-fusion-nested")
@@ -872,6 +874,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t4t5-local-edge-backends":
         report = evaluate_v7_t4t5_local_edge_backends(root)
         target = root / "artifacts/v7-t4t5-local-edge-backends.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-local-correlator-precheck":
+        report = evaluate_v7_t4_local_correlator_precheck(root)
+        target = root / "artifacts/v7-t4-local-correlator-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

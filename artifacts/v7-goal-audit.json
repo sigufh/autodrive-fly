@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "5a80a903bdc1da909e0d8e4c3cdb237c2d338186d9cc44202f04f14b0e984db3",
-      "src/fly_emotion/driving/v7_goal_audit.py": "b156c8e9adcfe017914b98f55f8a5eca030711d68b22598b50afcbb89181ef1a",
+      "configs/driving-v7-goal-audit.yaml": "daa4506974fcd19eb987db91c4233262a0d07e68a5f27599ffb89334798e948c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "d041a6aaa4ea5c483ec847fa04578edc1be0e3879d519813239b283298a3f651",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -46,9 +46,10 @@
       "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d",
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
+      "artifacts/v7-t4-local-correlator-precheck.json": "25594ffa544731ef3acb3a0c4dc55390a9b800fa8e06c8c315574553e66f1718",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
-      "artifacts/v7-t4t5-local-edge-precheck.json": "8b5df01eada7f01b3c09c7fd046195b221a5f83c9b0986c32027e6ede2d8e7bb",
-      "artifacts/v7-t4t5-local-edge-backends.json": "0e3a2a9cf28a196893adf91e3be5c7cc08317c1267c0e8e65e16910c44d5e70d",
+      "artifacts/v7-t4t5-local-edge-precheck.json": "4a13be0c85994ce8946f43e7131172f2aeb480106ea5356d8462d1529c7665a3",
+      "artifacts/v7-t4t5-local-edge-backends.json": "c944084fcbe3f275298d537d090c7117225a4e1030e51a3963154bbfbdd0e08f",
       "artifacts/v7-lplc-typed-screen.json": "ff092b7f7fa340765747102d6e15b32c28e77b1dcf2a451ad744ac62412ab85d",
       "artifacts/v7-lplc2-radial-opponency.json": "2ecbb95b3d1c2b9aa9d3c81fc40baad778133cf0c1938b046ec2dfb3812ca49d",
       "artifacts/v7-lplc2-position-coverage.json": "2447e854c6d7b2ec05b49f63e57bed037a1582f0bd8dce2e907644bb8b88e74a",
@@ -250,6 +251,11 @@
         },
         "T4_source_resolved_passing_variants": [],
         "T4_normalized_correlator_best_gate_count": 16,
+        "T4_local_correlator_direction_pass_counts": {
+          "additive:gain=0.5:lag=1": 0,
+          "multiplicative:gain=4:lag=1": 0
+        },
+        "T4_local_correlator_gate_passed": false,
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
         "local_edge_precheck_direction_pass_count": 0,
         "local_edge_precheck_polarity_pass_count": 0,
@@ -524,6 +530,7 @@
         "artifacts/v7-nested-neural-screen.json",
         "artifacts/v7-t4-source-resolved.json",
         "artifacts/v7-t4-normalized-correlator.json",
+        "artifacts/v7-t4-local-correlator-precheck.json",
         "artifacts/v7-t5-spatial-order.json",
         "artifacts/v7-t4t5-local-edge-precheck.json",
         "artifacts/v7-t4t5-local-edge-backends.json"

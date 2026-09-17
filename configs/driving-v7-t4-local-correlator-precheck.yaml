@@ -1,0 +1,18 @@
+version: 1
+name: v7-t4-normalized-correlator-local-edge-precheck
+observed_on: "2026-09-16"
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+correlator_config: configs/driving-v7-t4-normalized-correlator.yaml
+source_audit_evidence: artifacts/v7-t4-source-audit.json
+frozen_candidates:
+  - {mode: additive, gain: 0.5, lag_substeps: 1}
+  - {mode: multiplicative, gain: 4.0, lag_substeps: 1}
+precheck_gate:
+  minimum_T4_direction_populations_to_expand: 1
+boundary:
+  tuning_only: true
+  frozen_existing_candidates_only: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false

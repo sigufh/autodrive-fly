@@ -1311,6 +1311,11 @@ typed visual subgraph / columnar delay / columnar correlator 的 2×3 组合。�
 correlator 连极性也为 0/16。没有组合达到扩展门，因此现有后端复用方向关闭；下一步必须
 设计新的 lamina→T4/T5 局部时序相关机制，而不是只切换 retinal code 或既有 delay。证据见
 `artifacts/v7-t4t5-local-edge-backends.json`。
+此前全局刺激最好的两个 normalized-correlator 候选也在同一局部解剖刺激上无参数复跑：
+`additive gain=0.5, lag=1` 和 `multiplicative gain=4, lag=1` 的 T4 方向与极性均为
+0/8 群体通过。它们未达到“至少 1 个 T4 方向群体通过”的 stop/go 门，因此不扩三条件，
+也不再以位置覆盖为由继续搜索该公式。证据见
+`artifacts/v7-t4-local-correlator-precheck.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
