@@ -211,6 +211,23 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                 moment=moment,
             )
             matrices[f"rect_pair_{name}_{suffix}"] = matrices[f"pair_{name}_{suffix}"]
+    ones = np.ones(probe.graph.node_count, dtype=np.float64)
+    center_centroid = np.stack(
+        (matrices["pair_center_x"] @ ones, matrices["pair_center_y"] @ ones),
+        axis=1,
+    )
+    proximal_centroid = np.stack(
+        (
+            matrices["pair_proximal_x"] @ ones,
+            matrices["pair_proximal_y"] @ ones,
+        ),
+        axis=1,
+    )
+    anatomy_axis = proximal_centroid - center_centroid
+    anatomy_norm = np.linalg.norm(anatomy_axis, axis=1)
+    anatomy_valid = np.all(np.isfinite(anatomy_axis), axis=1) & (anatomy_norm > 1e-12)
+    anatomy_axis[anatomy_valid] /= anatomy_norm[anatomy_valid, None]
+    anatomy_axis[~anatomy_valid] = np.nan
     positions, _ = _infer_t4_t5_positions(root, probe, source)
     finite = positions[np.all(np.isfinite(positions), axis=1)]
     low, high = finite.min(axis=0), finite.max(axis=0)
@@ -302,6 +319,11 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                     "center_centroid_velocity": centroid_vectors["center"],
                     "proximal_centroid_velocity": centroid_vectors["proximal"],
                     "distal_centroid_velocity": centroid_vectors["distal"],
+                    "anatomy_axis_motion_drive": np.max(
+                        anatomy_axis[None, :, 0] * pairwise_vectors["proximal"][0]
+                        + anatomy_axis[None, :, 1] * pairwise_vectors["proximal"][1],
+                        axis=0,
+                    ),
                 }
     scores = {}
     for population in populations:
@@ -395,6 +417,13 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
             "runtime_modified": False,
         },
         "population_scores": scores,
+        "anatomy_axis": {
+            "valid_target_count": int(np.count_nonzero(anatomy_valid)),
+            "valid_target_fraction": float(np.mean(anatomy_valid)),
+            "invalid_target_body_ids": target_ids[~anatomy_valid].tolist(),
+            "subtype_labels_used_by_axis": False,
+            "sign_search": False,
+        },
         "direction_pass_counts": pass_counts,
         "bilateral_passing_subtypes": bilateral_pairs,
         "maximum_bilateral_direction_pair_count": int(maximum),

@@ -1336,6 +1336,10 @@ medulla 上游池缺少稳定镜像方向编码，而非现有 target 组合漏�
 proximal、distal 三池均为 0/8。最接近的 `T4d_R center` 中位对比约 0.101，但正向
 细胞比例约 59.44%，仍低于 60%，且没有左侧配对。因此活动质心速度也不扩三条件；
 缺口不能靠对现有 source 活动做无参数质心跟踪解决。
+最后将未整流 proximal pairwise motion vector 点乘每个 T4 自身的二维
+`center→proximal` 解剖单位轴；全部 6,861 个 target 均有有效轴，亚型标签不参与轴生成，
+且没有 sign 搜索。结果仍为 0/8，a/b/d 多数组的中位方向对比反而为负。按冻结方向不
+翻转 sign，因此 anatomy-vector target 公式也关闭，不扩三条件。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

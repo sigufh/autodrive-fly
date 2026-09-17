@@ -2,8 +2,8 @@
   "protocol": {
     "name": "v7-t4-local-edge-source-pool-diagnostic",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-pool-local.yaml": "58207b7cae3fa73fd571520f48bc1a46ac15a2497fde9ed7fb70cd623da5970f",
-      "src/fly_emotion/driving/v7_t4_source_pool_local.py": "ca63ff60701023988b707843d882f1b0c6aad13243308ff08d055810f52cc304",
+      "configs/driving-v7-t4-source-pool-local.yaml": "8a9263c097163506623dbc784d53a10327820e886744697c71647e7d2bedf913",
+      "src/fly_emotion/driving/v7_t4_source_pool_local.py": "19d0cad04da2e0ec5e60168dcf09ac22862187c463f289fe0776532e86b4bf88",
       "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
       "src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py": "2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049",
       "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
@@ -436,6 +436,22 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 835,
+        "valid_cell_count": 834,
+        "valid_cell_fraction": 0.9988023952095808,
+        "median_signed_contrast": -0.04450689730209933,
+        "positive_cell_fraction": 0.4460431654676259,
+        "invalid_cell_ids": [
+          106097
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     },
     "T4a_R": {
@@ -722,6 +738,20 @@
           164082,
           179283
         ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 849,
+        "valid_cell_count": 849,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.021611577474716148,
+        "positive_cell_fraction": 0.4534746760895171,
+        "invalid_cell_ids": [],
         "gates": {
           "valid_cell_fraction": true,
           "median_signed_contrast": false,
@@ -1146,6 +1176,20 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 844,
+        "valid_cell_count": 844,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.010900445477858667,
+        "positive_cell_fraction": 0.4703791469194313,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     },
     "T4b_R": {
@@ -1475,6 +1519,20 @@
           130192,
           134894
         ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 846,
+        "valid_cell_count": 846,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.018817208831389626,
+        "positive_cell_fraction": 0.4515366430260047,
+        "invalid_cell_ids": [],
         "gates": {
           "valid_cell_fraction": true,
           "median_signed_contrast": false,
@@ -1920,6 +1978,22 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 895,
+        "valid_cell_count": 894,
+        "valid_cell_fraction": 0.9988826815642458,
+        "median_signed_contrast": 0.02252279405447688,
+        "positive_cell_fraction": 0.5380313199105146,
+        "invalid_cell_ids": [
+          210119
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     },
     "T4c_R": {
@@ -2311,6 +2385,20 @@
           146205,
           152920
         ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 883,
+        "valid_cell_count": 883,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.009759824921309954,
+        "positive_cell_fraction": 0.5198187995469988,
+        "invalid_cell_ids": [],
         "gates": {
           "valid_cell_fraction": true,
           "median_signed_contrast": false,
@@ -2773,6 +2861,20 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 850,
+        "valid_cell_count": 850,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": -0.07173125880714354,
+        "positive_cell_fraction": 0.3564705882352941,
+        "invalid_cell_ids": [],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     },
     "T4d_R": {
@@ -3173,8 +3275,32 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "anatomy_axis_motion_drive": {
+        "cell_count": 859,
+        "valid_cell_count": 857,
+        "valid_cell_fraction": 0.9976717112922002,
+        "median_signed_contrast": -0.07036828328339154,
+        "positive_cell_fraction": 0.3570595099183197,
+        "invalid_cell_ids": [
+          109774,
+          117430
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     }
+  },
+  "anatomy_axis": {
+    "valid_target_count": 6861,
+    "valid_target_fraction": 1.0,
+    "invalid_target_body_ids": [],
+    "subtype_labels_used_by_axis": false,
+    "sign_search": false
   },
   "direction_pass_counts": {
     "center": 0,
@@ -3187,7 +3313,8 @@
     "rectified_pairwise_distal_vector": 0,
     "center_centroid_velocity": 0,
     "proximal_centroid_velocity": 0,
-    "distal_centroid_velocity": 0
+    "distal_centroid_velocity": 0,
+    "anatomy_axis_motion_drive": 0
   },
   "bilateral_passing_subtypes": {
     "center": [],
@@ -3200,7 +3327,8 @@
     "rectified_pairwise_distal_vector": [],
     "center_centroid_velocity": [],
     "proximal_centroid_velocity": [],
-    "distal_centroid_velocity": []
+    "distal_centroid_velocity": [],
+    "anatomy_axis_motion_drive": []
   },
   "maximum_bilateral_direction_pair_count": 0,
   "authorize_new_target_formula": false,

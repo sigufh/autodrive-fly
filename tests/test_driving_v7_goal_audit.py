@@ -94,6 +94,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "center_centroid_velocity": 0,
         "proximal_centroid_velocity": 0,
         "distal_centroid_velocity": 0,
+        "anatomy_axis_motion_drive": 0,
     }
     assert visual["observations"]["T4_source_pool_maximum_bilateral_pair_count"] == 0
     assert visual["observations"]["T4_source_pool_authorizes_target_formula"] is False

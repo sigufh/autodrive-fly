@@ -47,7 +47,7 @@
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t4-local-correlator-precheck.json": "25594ffa544731ef3acb3a0c4dc55390a9b800fa8e06c8c315574553e66f1718",
-      "artifacts/v7-t4-source-pool-local.json": "c71ea26fd8999e6611efe8e80e73f57b787f46edda3a5a11c0669b16eafdb5f0",
+      "artifacts/v7-t4-source-pool-local.json": "1b983d63083c8ab2f748f8741e7c55f97c533c81b889779115522ec8c346dbe7",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-t4t5-local-edge-precheck.json": "4a13be0c85994ce8946f43e7131172f2aeb480106ea5356d8462d1529c7665a3",
       "artifacts/v7-t4t5-local-edge-backends.json": "c944084fcbe3f275298d537d090c7117225a4e1030e51a3963154bbfbdd0e08f",
@@ -268,7 +268,8 @@
           "rectified_pairwise_distal_vector": 0,
           "center_centroid_velocity": 0,
           "proximal_centroid_velocity": 0,
-          "distal_centroid_velocity": 0
+          "distal_centroid_velocity": 0,
+          "anatomy_axis_motion_drive": 0
         },
         "T4_source_pool_maximum_bilateral_pair_count": 0,
         "T4_source_pool_authorizes_target_formula": false,

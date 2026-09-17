@@ -14,7 +14,7 @@ source_groups:
   center: [Mi1, Tm3]
   proximal: [Mi4, C3]
   distal: [Mi9]
-readouts: [center, proximal, distal, center_proximal_correlation, pairwise_proximal_vector, pairwise_distal_vector, rectified_pairwise_proximal_vector, rectified_pairwise_distal_vector, center_centroid_velocity, proximal_centroid_velocity, distal_centroid_velocity]
+readouts: [center, proximal, distal, center_proximal_correlation, pairwise_proximal_vector, pairwise_distal_vector, rectified_pairwise_proximal_vector, rectified_pairwise_distal_vector, center_centroid_velocity, proximal_centroid_velocity, distal_centroid_velocity, anatomy_axis_motion_drive]
 correlation:
   lag_substeps: 1
   formula: orientation*(proximal_now*center_previous-center_now*proximal_previous)/(abs(forward)+abs(reverse)+1e-6)
@@ -35,6 +35,12 @@ centroid_velocity:
   minimum_activity_mass: 0.000001
   direction_labels_used_only_for_final_score_projection: true
   no_parameter_search: true
+anatomy_axis_motion_drive:
+  axis: weighted_centroid(proximal_Mi4_C3)-weighted_centroid(center_Mi1_Tm3)
+  motion_vector: unrectified_pairwise_proximal_vector
+  formula: dot(unit_anatomy_axis, motion_vector)
+  sign_search: false
+  subtype_labels_used_by_dynamics: false
 stop_gate:
   minimum_bilateral_direction_pairs_to_authorize_target_formula: 1
   unilateral_population_pass_is_insufficient: true

@@ -33,6 +33,7 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
         "center_centroid_velocity": 0,
         "proximal_centroid_velocity": 0,
         "distal_centroid_velocity": 0,
+        "anatomy_axis_motion_drive": 0,
     }
     assert all(not values for values in report["bilateral_passing_subtypes"].values())
     assert report["maximum_bilateral_direction_pair_count"] == 0
@@ -55,5 +56,16 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
     assert center_velocity["median_signed_contrast"] > 0.10
     assert center_velocity["positive_cell_fraction"] < 0.60
     assert center_velocity["passed"] is False
+    assert report["anatomy_axis"] == {
+        "valid_target_count": 6861,
+        "valid_target_fraction": 1.0,
+        "invalid_target_body_ids": [],
+        "subtype_labels_used_by_axis": False,
+        "sign_search": False,
+    }
+    assert all(
+        not score["anatomy_axis_motion_drive"]["passed"]
+        for score in report["population_scores"].values()
+    )
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False
