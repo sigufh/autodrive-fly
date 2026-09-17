@@ -1379,6 +1379,15 @@ slow>medium>fast 持续时间积分，不是预期 fast>medium>slow 角速度选
 11/71 与 13/55，正斜率比例为 0% 与 7.7%；中位导数仍随速度提高而下降，尽管负斜率
 回归 R² 约 0.97/0.94。因而问题不是单纯峰值被持续时间积分污染，导数口子也不扩三条件。
 
+T5 的一个隔离组件诊断随后把真实 R1–R6 边按 retinal delta 半波拆到 lamina：L1 接 ON，
+L2/L3 接 OFF；只覆盖这三个具名 lamina target，下游仍走真实视觉子图，且不向 T5 注入
+活动。`S1-T01/T02/T03` 上八个 T5 群体的 OFF 极性门均为 3/3，左右镜像指标也通过，
+说明早期 lamina OFF 分离是可保留组件。但方向门依次仅为
+`[1, 0, 0, 0, 2, 2, 0, 0]`（T5a_L 到 T5d_R）：T5c 也只到 2/3，T5d 为 0/3。
+因此完整 T5 方向选择仍失败，不翻转 c/d 或任何冻结标签，不运行 calibration，也不修改
+runtime。证据见 `artifacts/v7-t5-lamina-split.json`；可用
+`make v7-evaluate-t5-lamina-split` 重建。
+
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
 T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge、危险减速、简单目标记忆、

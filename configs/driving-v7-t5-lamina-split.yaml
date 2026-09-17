@@ -1,0 +1,41 @@
+version: 1
+name: v7-t5-lamina-on-off-split
+observed_on: "2026-09-17"
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+source_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_ids: [S1-T01, S1-T02, S1-T03]
+retinal_backend: signed_frame_difference
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+lamina_split:
+  ON_targets: [L1]
+  OFF_targets: [L2, L3]
+  formula: normalized_real_R1_R6_edges_times_half_wave_retinal_delta
+  gain: 1.0
+  overwrite_only_named_lamina_targets: true
+  all_downstream_nodes_use_real_visual_subgraph: true
+thresholds:
+  minimum_valid_denominator: 0.000001
+  minimum_valid_cell_fraction: 0.80
+  minimum_median_signed_contrast: 0.10
+  minimum_positive_cell_fraction: 0.60
+  minimum_joint_valid_fraction: 0.80
+  minimum_all_condition_success_fraction: 0.60
+  maximum_mirror_error: 0.20
+advance_gate:
+  require_all_T5_direction_populations: true
+  require_all_T5_polarity_populations: true
+  require_all_conditions: true
+  require_mirror: true
+boundary:
+  tuning_only: true
+  T4_is_not_candidate: true
+  labels_changed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false

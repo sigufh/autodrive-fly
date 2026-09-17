@@ -66,6 +66,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
+    t5_lamina_split = reports["t5_lamina_split"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -138,6 +139,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["conductance_t4"],
                 config["evidence"]["fitted_t4"],
                 config["evidence"]["t5_phenotype"],
+                config["evidence"]["t5_lamina_split"],
                 config["evidence"]["lplc2_radial_opponency"],
                 config["evidence"]["lplc2_position_coverage"],
             ],
@@ -356,6 +358,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 },
                 "LC4_position_speed_primary_readout": lc4_position_speed_precheck[
                     "primary_precheck_readout"
+                ],
+                "T5_lamina_split_polarity_passing_condition_counts": {
+                    name: result["polarity"]["passing_condition_count"]
+                    for name, result in t5_lamina_split["population_consistency"].items()
+                },
+                "T5_lamina_split_direction_passing_condition_counts": {
+                    name: result["direction"]["passing_condition_count"]
+                    for name, result in t5_lamina_split["population_consistency"].items()
+                },
+                "T5_lamina_split_mirror_gate_passed": t5_lamina_split[
+                    "mirror_gate_passed"
+                ],
+                "T5_lamina_split_strict_gates_passed": t5_lamina_split[
+                    "strict_T5_gates_passed"
                 ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"

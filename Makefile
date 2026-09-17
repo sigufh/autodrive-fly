@@ -330,6 +330,11 @@ v7-evaluate-lc4-position-speed-precheck:
 
 .PHONY: v7-evaluate-lc4-position-speed-precheck
 
+v7-evaluate-t5-lamina-split:
+	.venv/bin/autodrive-fly v7-evaluate-t5-lamina-split
+
+.PHONY: v7-evaluate-t5-lamina-split
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

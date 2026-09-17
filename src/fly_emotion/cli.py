@@ -121,6 +121,7 @@ from .driving.v7_t4t5_local_edge_precheck import evaluate_v7_t4t5_local_edge_pre
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
+from .driving.v7_t5_lamina_split import evaluate_v7_t5_lamina_split
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
@@ -294,6 +295,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
     subparsers.add_parser("v7-evaluate-four-hop-scalar-precheck")
     subparsers.add_parser("v7-evaluate-lc4-position-speed-precheck")
+    subparsers.add_parser("v7-evaluate-t5-lamina-split")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
     subparsers.add_parser("v7-freeze-fusion-nested")
     subparsers.add_parser("v7-evaluate-fusion-nested")
@@ -920,6 +922,12 @@ def main() -> None:
     if args.command == "v7-evaluate-lc4-position-speed-precheck":
         report = evaluate_v7_lc4_position_speed_precheck(root)
         target = root / "artifacts/v7-lc4-position-speed-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t5-lamina-split":
+        report = evaluate_v7_t5_lamina_split(root)
+        target = root / "artifacts/v7-t5-lamina-split.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

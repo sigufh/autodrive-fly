@@ -134,6 +134,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["LC4_position_speed_primary_readout"] == (
         "peak_positive_state_derivative"
     )
+    assert visual["observations"]["T5_lamina_split_polarity_passing_condition_counts"] == {
+        f"T5{subtype}_{side}": 3 for subtype in "abcd" for side in "LR"
+    }
+    assert list(
+        visual["observations"]["T5_lamina_split_direction_passing_condition_counts"].values()
+    ) == [1, 0, 0, 0, 2, 2, 0, 0]
+    assert visual["observations"]["T5_lamina_split_mirror_gate_passed"] is True
+    assert visual["observations"]["T5_lamina_split_strict_gates_passed"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []
