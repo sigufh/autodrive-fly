@@ -1501,6 +1501,14 @@ T5 约 3 帧。但 temporal shuffle 和 static sham 下也同样各为 8/8，sta
 因此突触级空间结构前置门通过，可支持下一次单条件机制预检；它仍是结构证据，不把 EM
 体积轴解释成相机方向，也不解锁 validation、LPLC 或运行时。原始 6.78 GB 文件受
 `.gitignore` 保护，不提交仓库。证据见 `artifacts/v7-synapse-spatial-audit.json`。
+
+突触三维轴随后只在 T4 上做按 body ID 分层的 50/50 拟合—留出校准：每只眼分别拟合
+3D→2D 半正交 Procrustes 变换，四亚型等权；T5 完全不参与拟合或选模。held-out T4
+共 3,432 个细胞，方向准确率 96.04%、中位角误差 13.06°，最大跨眼镜像误差 1.52°，
+并高于 256 个随机半正交基线的 95 分位 52.41%，故全部预注册 T4 结构轴门通过。相同
+变换零样本应用到 6,718 个 T5 时准确率仅 10.39%、中位角误差 139.41°，因此明确禁止
+T5 映射应用。该结果只授权 T4 的单条件 tuning 预检，不是功能验证或 calibration。证据见
+`artifacts/v7-synapse-axis-calibration.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

@@ -72,6 +72,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
     upstream_latency_audit = reports["upstream_latency_audit"]
     synapse_spatial_audit = reports["synapse_spatial_audit"]
+    synapse_axis_calibration = reports["synapse_axis_calibration"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -472,6 +473,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 },
                 "synapse_spatial_structure_gate_passed": synapse_spatial_audit[
                     "strict_synapse_spatial_structure_gate_passed"
+                ],
+                "synapse_axis_held_out_T4_accuracy": synapse_axis_calibration[
+                    "held_out_T4"
+                ]["accuracy"],
+                "synapse_axis_held_out_T4_median_angle_degrees": synapse_axis_calibration[
+                    "held_out_T4"
+                ]["median_angle_error_degrees"],
+                "synapse_axis_T4_calibration_passed": synapse_axis_calibration[
+                    "T4_synapse_axis_calibration_passed"
+                ],
+                "synapse_axis_zero_shot_T5_accuracy": synapse_axis_calibration[
+                    "zero_shot_T5"
+                ]["accuracy"],
+                "synapse_axis_zero_shot_T5_mapping_passed": synapse_axis_calibration[
+                    "zero_shot_T5_mapping_passed"
+                ],
+                "synapse_axis_T5_mapping_application_authorized": synapse_axis_calibration[
+                    "authorize_T5_mapping_application"
                 ],
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
@@ -1080,6 +1099,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["three_hop_temporal_consistency"],
                 config["evidence"]["upstream_latency_audit"],
                 config["evidence"]["synapse_spatial_audit"],
+                config["evidence"]["synapse_axis_calibration"],
                 config["evidence"]["three_hop_source_coverage"],
                 config["evidence"]["four_hop_scalar_precheck"],
                 config["evidence"]["lc4_position_speed_precheck"],

@@ -230,6 +230,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "T5": True,
     }
     assert visual["observations"]["synapse_spatial_structure_gate_passed"] is True
+    assert visual["observations"]["synapse_axis_held_out_T4_accuracy"] > 0.96
+    assert visual["observations"]["synapse_axis_held_out_T4_median_angle_degrees"] < 14.0
+    assert visual["observations"]["synapse_axis_T4_calibration_passed"] is True
+    assert visual["observations"]["synapse_axis_zero_shot_T5_accuracy"] < 0.11
+    assert visual["observations"]["synapse_axis_zero_shot_T5_mapping_passed"] is False
+    assert visual["observations"]["synapse_axis_T5_mapping_application_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

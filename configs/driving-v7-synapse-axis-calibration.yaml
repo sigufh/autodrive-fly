@@ -1,0 +1,25 @@
+version: 1
+name: v7-synapse-axis-nested-calibration
+observed_on: "2026-09-17"
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+synapse_spatial_evidence: artifacts/v7-synapse-spatial-audit.json
+axis_gate_source: configs/driving-v7.yaml
+split_seed: 20260914
+fit_fraction: 0.50
+random_orthogonal_baselines: 256
+fit_family: T4
+zero_shot_family: T5
+mapping: separate_eye_3D_to_2D_semi_orthogonal_procrustes_with_equal_subtype_weight
+boundary:
+  structure_only: true
+  T5_used_for_fit_or_model_selection: false
+  T4_fit_and_held_out_body_ids_disjoint: true
+  T4_mapping_may_authorize_T4_tuning_precheck_only: true
+  failed_zero_shot_T5_forbids_T5_mapping_application: true
+  parameter_fit: true
+  fit_uses_only_T4_structure_labels: true
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
