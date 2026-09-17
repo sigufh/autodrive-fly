@@ -71,6 +71,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     three_hop_moment = reports["three_hop_moment"]
     three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
     upstream_latency_audit = reports["upstream_latency_audit"]
+    synapse_spatial_audit = reports["synapse_spatial_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -458,6 +459,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "paired_static_residual_temporal_identifiability_passed"
                     ]
                 ),
+                "synapse_spatial_selected_row_count": synapse_spatial_audit["protocol"][
+                    "source_file"
+                ]["selected_row_count"],
+                "synapse_spatial_complete_target_counts": {
+                    family: result["complete_target_count"]
+                    for family, result in synapse_spatial_audit["families"].items()
+                },
+                "synapse_spatial_aggregate_weight_matches": {
+                    family: result["synapse_rows_match_aggregate_graph_weight"]
+                    for family, result in synapse_spatial_audit["families"].items()
+                },
+                "synapse_spatial_structure_gate_passed": synapse_spatial_audit[
+                    "strict_synapse_spatial_structure_gate_passed"
+                ],
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
                 ),
@@ -1064,6 +1079,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["three_hop_moment"],
                 config["evidence"]["three_hop_temporal_consistency"],
                 config["evidence"]["upstream_latency_audit"],
+                config["evidence"]["synapse_spatial_audit"],
                 config["evidence"]["three_hop_source_coverage"],
                 config["evidence"]["four_hop_scalar_precheck"],
                 config["evidence"]["lc4_position_speed_precheck"],

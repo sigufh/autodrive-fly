@@ -1,0 +1,37 @@
+version: 1
+name: v7-t4-t5-synapse-spatial-cluster-audit
+observed_on: "2026-09-17"
+data_manifest: configs/data-manifest.yaml
+synapse_partners: data/raw/malecns-v1.0/syn-partners.feather
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+raw_adjacency: data/processed/malecns-v1.0/adjacency_raw.npz
+body_ids: data/processed/malecns-v1.0/body_ids.npy
+families:
+  T4:
+    target_types: [T4a, T4b, T4c, T4d]
+    fast_sources: [Mi1, Tm3]
+    delayed_sources: [Mi4, C3]
+  T5:
+    target_types: [T5a, T5b, T5c, T5d]
+    fast_sources: [Tm1, Tm2, Tm4]
+    delayed_sources: [Tm9]
+thresholds_from: configs/driving-v7-stage1-scoring.yaml
+threshold_mapping:
+  minimum_complete_target_fraction: minimum_valid_cell_fraction
+  minimum_median_normalized_cluster_separation: minimum_median_signed_contrast
+  minimum_separated_target_fraction: minimum_positive_cell_fraction
+  maximum_median_axis_mirror_error: maximum_energy_weighted_mirror_error
+boundary:
+  structure_only: true
+  synapse_coordinates_are_8nm_voxel_units: true
+  postsynaptic_site_coordinates_used: true
+  no_camera_direction_inferred_from_volume_axes: true
+  target_labels_used_only_for_population_grouping: true
+  thresholds_reused_without_change: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  source_file_is_optional_and_not_committed: true

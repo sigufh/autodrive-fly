@@ -220,6 +220,16 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "upstream_paired_residual_temporal_identifiability_passed"
     ] is False
+    assert visual["observations"]["synapse_spatial_selected_row_count"] == 1_535_378
+    assert visual["observations"]["synapse_spatial_complete_target_counts"] == {
+        "T4": 6860,
+        "T5": 6718,
+    }
+    assert visual["observations"]["synapse_spatial_aggregate_weight_matches"] == {
+        "T4": True,
+        "T5": True,
+    }
+    assert visual["observations"]["synapse_spatial_structure_gate_passed"] is True
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

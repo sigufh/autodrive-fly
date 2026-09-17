@@ -1,0 +1,795 @@
+{
+  "protocol": {
+    "name": "v7-t4-t5-synapse-spatial-cluster-audit",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-synapse-spatial-audit.yaml": "ce72f8560a05554a24681440ce67efd885827266fd77b6c66396678887708d48",
+      "src/fly_emotion/driving/v7_synapse_spatial_audit.py": "446f3496ae96b3dc0f0ec0683576791b1ff2e864fb5782219ee4f5ffcddcf787",
+      "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f"
+    },
+    "source_file": {
+      "path": "data/raw/malecns-v1.0/syn-partners.feather",
+      "bytes": 6777179098,
+      "md5": "58efcf712f8c4d4de5f2ad51e97def76",
+      "source_url": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/syn-partners-male-cns-v1.0-minconf-0.5.feather",
+      "full_row_count": 311833243,
+      "selected_row_count": 1535378,
+      "schema": [
+        "pyarrow.Field<x_pre: int32>",
+        "pyarrow.Field<y_pre: int32>",
+        "pyarrow.Field<z_pre: int32>",
+        "pyarrow.Field<body_pre: int64>",
+        "pyarrow.Field<conf_pre: float>",
+        "pyarrow.Field<x_post: int32>",
+        "pyarrow.Field<y_post: int32>",
+        "pyarrow.Field<z_post: int32>",
+        "pyarrow.Field<body_post: int64>",
+        "pyarrow.Field<conf_post: float>",
+        "pyarrow.Field<primary_post: dictionary<values=string, indices=int16, ordered=1>>"
+      ]
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false
+  },
+  "primary_post_neuropil_counts": {
+    "LO(L)": 333945,
+    "LO(R)": 453235,
+    "LOP(L)": 117,
+    "LOP(R)": 142,
+    "ME(L)": 334769,
+    "ME(R)": 399156,
+    "Optic-unspecified(L)": 16650,
+    "Optic-unspecified(R)": 1696
+  },
+  "families": {
+    "T4": {
+      "target_count": 6861,
+      "complete_target_count": 6860,
+      "complete_target_fraction": 0.9998542486518001,
+      "median_normalized_cluster_separation": 1.140736296372645,
+      "separated_target_fraction": 0.9995627459554001,
+      "selected_synapse_row_count": 741681,
+      "aggregate_graph_synapse_weight": 741681,
+      "aggregate_graph_unique_pair_count": 122017,
+      "synapse_rows_match_aggregate_graph_weight": true,
+      "population_results": {
+        "T4a_L": {
+          "target_count": 835,
+          "complete_target_count": 835,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 490.5866064197141,
+          "median_normalized_cluster_separation": 0.7757940111057176,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            0.4393667735220776,
+            0.3659083058885313,
+            0.8204071854918047
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4a_R": {
+          "target_count": 849,
+          "complete_target_count": 849,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 503.88307706232746,
+          "median_normalized_cluster_separation": 0.7761710347896915,
+          "separated_target_fraction": 0.9988221436984688,
+          "median_unit_displacement": [
+            -0.4222216617465574,
+            0.37432554475280017,
+            0.8255963026185952
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4b_L": {
+          "target_count": 844,
+          "complete_target_count": 844,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 533.0245533614409,
+          "median_normalized_cluster_separation": 0.89354577123542,
+          "separated_target_fraction": 0.9988151658767772,
+          "median_unit_displacement": [
+            -0.7108172199959406,
+            -0.29619060211420084,
+            -0.6379733591432087
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4b_R": {
+          "target_count": 846,
+          "complete_target_count": 846,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 536.1892287192303,
+          "median_normalized_cluster_separation": 0.8891919181287224,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            0.6968649732823406,
+            -0.3357726844328731,
+            -0.633747515498834
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4c_L": {
+          "target_count": 895,
+          "complete_target_count": 894,
+          "complete_target_fraction": 0.9988826815642458,
+          "median_centroid_separation_voxels": 808.9041842609213,
+          "median_normalized_cluster_separation": 1.569257405776323,
+          "separated_target_fraction": 0.9988826815642458,
+          "median_unit_displacement": [
+            -0.3472304816749553,
+            0.9351230683619941,
+            -0.07053963150618077
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4c_R": {
+          "target_count": 883,
+          "complete_target_count": 883,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 798.2147028660797,
+          "median_normalized_cluster_separation": 1.4752632162576385,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            0.40605997312221775,
+            0.9131926005687033,
+            -0.03456258807659585
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4d_L": {
+          "target_count": 850,
+          "complete_target_count": 850,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 911.2002323310206,
+          "median_normalized_cluster_separation": 1.73588127465678,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            0.18803438948592238,
+            -0.9760056245244294,
+            0.10980022435011237
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T4d_R": {
+          "target_count": 859,
+          "complete_target_count": 859,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 898.6186691430892,
+          "median_normalized_cluster_separation": 1.6783488299268332,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            -0.2421256605439507,
+            -0.9678414122616771,
+            0.06825075250484693
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        }
+      },
+      "population_mirror": {
+        "a": {
+          "median_unit_displacement_mirror_error": 0.019792213227650665,
+          "passed": true
+        },
+        "b": {
+          "median_unit_displacement_mirror_error": 0.042181325056783264,
+          "passed": true
+        },
+        "c": {
+          "median_unit_displacement_mirror_error": 0.07236160677811357,
+          "passed": true
+        },
+        "d": {
+          "median_unit_displacement_mirror_error": 0.06869409419422368,
+          "passed": true
+        }
+      },
+      "all_population_structure_gates_passed": true,
+      "all_population_mirror_gates_passed": true,
+      "target_body_ids_sha256": "497eb48314ecd951db28354995aab329c6621cc9578c4b8206aac4369ce8d0f5",
+      "missing_target_body_ids": [
+        210119
+      ],
+      "target_record_examples": [
+        {
+          "body_id": 13882,
+          "type": "T4a",
+          "soma_side": "L",
+          "fast_synapse_count": 91,
+          "delayed_synapse_count": 14,
+          "fast_postsynaptic_centroid_voxels": [
+            82527.14285714286,
+            34009.48351648352,
+            37694.131868131866
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            82438.85714285714,
+            34082.42857142857,
+            37359.642857142855
+          ],
+          "fast_cluster_rms_radius_voxels": 724.0612891131514,
+          "delayed_cluster_rms_radius_voxels": 846.574541361419,
+          "centroid_separation_voxels": 353.5509112706147,
+          "normalized_cluster_separation": 0.4488376257417974
+        },
+        {
+          "body_id": 16122,
+          "type": "T4c",
+          "soma_side": "L",
+          "fast_synapse_count": 64,
+          "delayed_synapse_count": 11,
+          "fast_postsynaptic_centroid_voxels": [
+            73895.21875,
+            31050.53125,
+            28232.53125
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            74147.27272727272,
+            30070.909090909092,
+            28141.090909090908
+          ],
+          "fast_cluster_rms_radius_voxels": 787.300101737141,
+          "delayed_cluster_rms_radius_voxels": 574.925607836642,
+          "centroid_separation_voxels": 1015.6535422999816,
+          "normalized_cluster_separation": 1.4733697006303914
+        },
+        {
+          "body_id": 16310,
+          "type": "T4c",
+          "soma_side": "L",
+          "fast_synapse_count": 82,
+          "delayed_synapse_count": 18,
+          "fast_postsynaptic_centroid_voxels": [
+            75598.81707317074,
+            38469.829268292684,
+            32190.98780487805
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            76244.83333333333,
+            37694.444444444445,
+            32154.722222222223
+          ],
+          "fast_cluster_rms_radius_voxels": 584.4033944828332,
+          "delayed_cluster_rms_radius_voxels": 380.98341722222904,
+          "centroid_separation_voxels": 1009.8880264336206,
+          "normalized_cluster_separation": 2.04723827990873
+        },
+        {
+          "body_id": 16737,
+          "type": "T4a",
+          "soma_side": "L",
+          "fast_synapse_count": 88,
+          "delayed_synapse_count": 15,
+          "fast_postsynaptic_centroid_voxels": [
+            75973.36363636363,
+            36399.27272727273,
+            31152.852272727272
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            75867.13333333333,
+            36183.666666666664,
+            30688.266666666666
+          ],
+          "fast_cluster_rms_radius_voxels": 706.2564150779675,
+          "delayed_cluster_rms_radius_voxels": 571.4029518073979,
+          "centroid_separation_voxels": 523.0780400768851,
+          "normalized_cluster_separation": 0.8142836335542379
+        },
+        {
+          "body_id": 20388,
+          "type": "T4c",
+          "soma_side": "L",
+          "fast_synapse_count": 101,
+          "delayed_synapse_count": 15,
+          "fast_postsynaptic_centroid_voxels": [
+            77585.63366336633,
+            41502.81188118812,
+            36576.80198019802
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            78355.33333333333,
+            40957.933333333334,
+            36585.6
+          ],
+          "fast_cluster_rms_radius_voxels": 591.3334563037281,
+          "delayed_cluster_rms_radius_voxels": 315.2032007742917,
+          "centroid_separation_voxels": 943.0840996496988,
+          "normalized_cluster_separation": 1.9903458930364915
+        },
+        {
+          "body_id": 20607,
+          "type": "T4c",
+          "soma_side": "L",
+          "fast_synapse_count": 56,
+          "delayed_synapse_count": 14,
+          "fast_postsynaptic_centroid_voxels": [
+            84692.60714285714,
+            32044.85714285714,
+            40068.80357142857
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            84978.21428571429,
+            31021.5,
+            40240.857142857145
+          ],
+          "fast_cluster_rms_radius_voxels": 594.8826873184004,
+          "delayed_cluster_rms_radius_voxels": 525.7283092065747,
+          "centroid_separation_voxels": 1076.3055854770428,
+          "normalized_cluster_separation": 1.917279027205302
+        },
+        {
+          "body_id": 20825,
+          "type": "T4c",
+          "soma_side": "L",
+          "fast_synapse_count": 88,
+          "delayed_synapse_count": 16,
+          "fast_postsynaptic_centroid_voxels": [
+            76084.25,
+            33482.693181818184,
+            29899.477272727272
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            76396.75,
+            32593.5625,
+            29880.0
+          ],
+          "fast_cluster_rms_radius_voxels": 567.7727335267481,
+          "delayed_cluster_rms_radius_voxels": 411.1676161783051,
+          "centroid_separation_voxels": 942.6499793154195,
+          "normalized_cluster_separation": 1.90167797227558
+        },
+        {
+          "body_id": 21218,
+          "type": "T4b",
+          "soma_side": "L",
+          "fast_synapse_count": 87,
+          "delayed_synapse_count": 15,
+          "fast_postsynaptic_centroid_voxels": [
+            76848.908045977,
+            34706.89655172414,
+            31068.505747126437
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            77274.4,
+            34554.0,
+            31378.6
+          ],
+          "fast_cluster_rms_radius_voxels": 729.0209391104869,
+          "delayed_cluster_rms_radius_voxels": 570.6498751434917,
+          "centroid_separation_voxels": 548.2510411596551,
+          "normalized_cluster_separation": 0.8374819779095624
+        }
+      ],
+      "stored_example_count": 8,
+      "all_targets_in_aggregate_statistics": true,
+      "strict_structure_gate_passed": true
+    },
+    "T5": {
+      "target_count": 6719,
+      "complete_target_count": 6718,
+      "complete_target_fraction": 0.9998511683286203,
+      "median_normalized_cluster_separation": 0.6500725868668618,
+      "separated_target_fraction": 0.9965768715582676,
+      "selected_synapse_row_count": 793697,
+      "aggregate_graph_synapse_weight": 793697,
+      "aggregate_graph_unique_pair_count": 148631,
+      "synapse_rows_match_aggregate_graph_weight": true,
+      "population_results": {
+        "T5a_L": {
+          "target_count": 826,
+          "complete_target_count": 825,
+          "complete_target_fraction": 0.9987893462469734,
+          "median_centroid_separation_voxels": 284.5132614514184,
+          "median_normalized_cluster_separation": 0.481066476913246,
+          "separated_target_fraction": 0.9951573849878934,
+          "median_unit_displacement": [
+            -0.6842309782790187,
+            -0.2825218882122016,
+            0.6723164069427052
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5a_R": {
+          "target_count": 838,
+          "complete_target_count": 838,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 308.6936022109101,
+          "median_normalized_cluster_separation": 0.508233082505315,
+          "separated_target_fraction": 0.9964200477326969,
+          "median_unit_displacement": [
+            0.6383301017234678,
+            -0.39774640065457256,
+            0.6590390595405097
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5b_L": {
+          "target_count": 863,
+          "complete_target_count": 863,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 261.87308534270386,
+          "median_normalized_cluster_separation": 0.46206502476007244,
+          "separated_target_fraction": 0.9918887601390498,
+          "median_unit_displacement": [
+            0.45864005519057605,
+            0.4753512300069581,
+            -0.7507932524374853
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5b_R": {
+          "target_count": 852,
+          "complete_target_count": 852,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 305.1434782800914,
+          "median_normalized_cluster_separation": 0.5267296406329064,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            -0.473150097256377,
+            0.565744442612663,
+            -0.67532378243267
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5c_L": {
+          "target_count": 862,
+          "complete_target_count": 862,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 406.50736072373434,
+          "median_normalized_cluster_separation": 0.7629035095428476,
+          "separated_target_fraction": 0.9953596287703016,
+          "median_unit_displacement": [
+            0.3764609260215447,
+            -0.9246011578623171,
+            -0.058222590621370036
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5c_R": {
+          "target_count": 858,
+          "complete_target_count": 858,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 500.73727934216356,
+          "median_normalized_cluster_separation": 0.9167553807247805,
+          "separated_target_fraction": 1.0,
+          "median_unit_displacement": [
+            -0.40651411733034565,
+            -0.9121566913600094,
+            -0.052119505161604136
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5d_L": {
+          "target_count": 812,
+          "complete_target_count": 812,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 478.5249428214588,
+          "median_normalized_cluster_separation": 0.8884957936108013,
+          "separated_target_fraction": 0.9950738916256158,
+          "median_unit_displacement": [
+            -0.25094262110089016,
+            0.9615112724376325,
+            -0.11191011522816015
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        },
+        "T5d_R": {
+          "target_count": 808,
+          "complete_target_count": 808,
+          "complete_target_fraction": 1.0,
+          "median_centroid_separation_voxels": 543.4172328205775,
+          "median_normalized_cluster_separation": 1.0191665359283477,
+          "separated_target_fraction": 0.9987623762376238,
+          "median_unit_displacement": [
+            0.3104264177644526,
+            0.9488916052783539,
+            -0.0569224084715163
+          ],
+          "gates": {
+            "complete_target_fraction": true,
+            "median_normalized_cluster_separation": true,
+            "separated_target_fraction": true
+          },
+          "passed": true
+        }
+      },
+      "population_mirror": {
+        "a": {
+          "median_unit_displacement_mirror_error": 0.12473919468310116,
+          "passed": true
+        },
+        "b": {
+          "median_unit_displacement_mirror_error": 0.11864701896271643,
+          "passed": true
+        },
+        "c": {
+          "median_unit_displacement_mirror_error": 0.033095418210073335,
+          "passed": true
+        },
+        "d": {
+          "median_unit_displacement_mirror_error": 0.08198308337137408,
+          "passed": true
+        }
+      },
+      "all_population_structure_gates_passed": true,
+      "all_population_mirror_gates_passed": true,
+      "target_body_ids_sha256": "9e63ab815f0843902f43678708aaeccfd9d5a02c001c8eea4894758a4c7f0f7b",
+      "missing_target_body_ids": [
+        152777
+      ],
+      "target_record_examples": [
+        {
+          "body_id": 14326,
+          "type": "T5b",
+          "soma_side": "L",
+          "fast_synapse_count": 52,
+          "delayed_synapse_count": 28,
+          "fast_postsynaptic_centroid_voxels": [
+            77150.92307692308,
+            27083.634615384617,
+            32764.76923076923
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            77101.67857142857,
+            26968.75,
+            33097.96428571428
+          ],
+          "fast_cluster_rms_radius_voxels": 899.3409230008763,
+          "delayed_cluster_rms_radius_voxels": 725.908847126861,
+          "centroid_separation_voxels": 355.8685723877662,
+          "normalized_cluster_separation": 0.4354524943462743
+        },
+        {
+          "body_id": 18256,
+          "type": "T5b",
+          "soma_side": "L",
+          "fast_synapse_count": 85,
+          "delayed_synapse_count": 27,
+          "fast_postsynaptic_centroid_voxels": [
+            72774.37647058823,
+            37801.2,
+            34160.7294117647
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            72858.14814814815,
+            37582.51851851852,
+            34226.92592592593
+          ],
+          "fast_cluster_rms_radius_voxels": 642.3130474581923,
+          "delayed_cluster_rms_radius_voxels": 643.2375288485298,
+          "centroid_separation_voxels": 243.35419205600948,
+          "normalized_cluster_separation": 0.3785990743820358
+        },
+        {
+          "body_id": 24740,
+          "type": "T5d",
+          "soma_side": "L",
+          "fast_synapse_count": 83,
+          "delayed_synapse_count": 39,
+          "fast_postsynaptic_centroid_voxels": [
+            71466.78313253012,
+            39264.80722891566,
+            34044.5421686747
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            71901.28205128205,
+            38863.8717948718,
+            34037.38461538462
+          ],
+          "fast_cluster_rms_radius_voxels": 491.7527002935349,
+          "delayed_cluster_rms_radius_voxels": 576.4395911410322,
+          "centroid_separation_voxels": 591.2611633091037,
+          "normalized_cluster_separation": 1.103568567091517
+        },
+        {
+          "body_id": 26518,
+          "type": "T5c",
+          "soma_side": "L",
+          "fast_synapse_count": 66,
+          "delayed_synapse_count": 30,
+          "fast_postsynaptic_centroid_voxels": [
+            70651.59090909091,
+            29212.530303030304,
+            38950.36363636364
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            70630.63333333333,
+            29417.8,
+            38984.6
+          ],
+          "fast_cluster_rms_radius_voxels": 423.0575515443859,
+          "delayed_cluster_rms_radius_voxels": 598.5567911421922,
+          "centroid_separation_voxels": 209.15782813632933,
+          "normalized_cluster_separation": 0.403554085438288
+        },
+        {
+          "body_id": 29201,
+          "type": "T5d",
+          "soma_side": "L",
+          "fast_synapse_count": 82,
+          "delayed_synapse_count": 29,
+          "fast_postsynaptic_centroid_voxels": [
+            73578.5,
+            35864.28048780488,
+            34745.64634146341
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            73905.0,
+            35445.55172413793,
+            34832.89655172414
+          ],
+          "fast_cluster_rms_radius_voxels": 526.240691855197,
+          "delayed_cluster_rms_radius_voxels": 718.7017956748425,
+          "centroid_separation_voxels": 538.0972279361723,
+          "normalized_cluster_separation": 0.8543047341155571
+        },
+        {
+          "body_id": 32372,
+          "type": "T5d",
+          "soma_side": "L",
+          "fast_synapse_count": 87,
+          "delayed_synapse_count": 22,
+          "fast_postsynaptic_centroid_voxels": [
+            75151.62068965517,
+            31618.126436781607,
+            35358.402298850575
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            75199.72727272728,
+            30967.545454545456,
+            35280.0
+          ],
+          "fast_cluster_rms_radius_voxels": 501.009314749194,
+          "delayed_cluster_rms_radius_voxels": 390.42656265328833,
+          "centroid_separation_voxels": 657.0515795942385,
+          "normalized_cluster_separation": 1.462928979874385
+        },
+        {
+          "body_id": 34810,
+          "type": "T5d",
+          "soma_side": "L",
+          "fast_synapse_count": 100,
+          "delayed_synapse_count": 35,
+          "fast_postsynaptic_centroid_voxels": [
+            73886.17,
+            36599.59,
+            33914.35
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            74271.57142857143,
+            36192.05714285714,
+            34116.28571428572
+          ],
+          "fast_cluster_rms_radius_voxels": 601.0717515406976,
+          "delayed_cluster_rms_radius_voxels": 666.2441766020975,
+          "centroid_separation_voxels": 596.1504201961161,
+          "normalized_cluster_separation": 0.939566340195506
+        },
+        {
+          "body_id": 34943,
+          "type": "T5d",
+          "soma_side": "L",
+          "fast_synapse_count": 83,
+          "delayed_synapse_count": 36,
+          "fast_postsynaptic_centroid_voxels": [
+            75271.50602409638,
+            33939.42168674699,
+            34447.5421686747
+          ],
+          "delayed_postsynaptic_centroid_voxels": [
+            75412.0,
+            33326.75,
+            34462.083333333336
+          ],
+          "fast_cluster_rms_radius_voxels": 512.901028411016,
+          "delayed_cluster_rms_radius_voxels": 518.8278321798263,
+          "centroid_separation_voxels": 628.7420762731214,
+          "normalized_cluster_separation": 1.2187925072119146
+        }
+      ],
+      "stored_example_count": 8,
+      "all_targets_in_aggregate_statistics": true,
+      "strict_structure_gate_passed": true
+    }
+  },
+  "strict_synapse_spatial_structure_gate_passed": true,
+  "authorize_single_condition_synapse_spatial_precheck": true,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "boundary": {
+    "structure_only": true,
+    "synapse_coordinates_are_8nm_voxel_units": true,
+    "postsynaptic_site_coordinates_used": true,
+    "no_camera_direction_inferred_from_volume_axes": true,
+    "target_labels_used_only_for_population_grouping": true,
+    "thresholds_reused_without_change": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "source_file_is_optional_and_not_committed": true
+  }
+}

@@ -122,6 +122,7 @@ from .driving.v7_stage1_input_audit import evaluate_v7_stage1_input_audit
 from .driving.v7_stage1_nested import evaluate_v7_stage1_nested
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
+from .driving.v7_synapse_spatial_audit import evaluate_v7_synapse_spatial_audit
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
 from .driving.v7_t4_continuous_pair_precheck import (
     evaluate_v7_t4_continuous_pair_precheck,
@@ -320,6 +321,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-continuous-pair-precheck")
     subparsers.add_parser("v7-audit-t4-pair-lags")
     subparsers.add_parser("v7-audit-upstream-latency")
+    subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1046,6 +1048,12 @@ def main() -> None:
     if args.command == "v7-audit-upstream-latency":
         report = evaluate_v7_upstream_latency_audit(root)
         target = root / "artifacts/v7-upstream-latency-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-synapse-spatial":
+        report = evaluate_v7_synapse_spatial_audit(root)
+        target = root / "artifacts/v7-synapse-spatial-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

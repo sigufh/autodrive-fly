@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "e1a31588df97188dcf4c38b012eb93e1dea31c3380131c1719aaa8c8f9bc263b",
-      "src/fly_emotion/driving/v7_goal_audit.py": "c55acbe2bb4d4f155c3f136e0fd9d7a41ac5ecf99852abbcaa7f88cb168f3230",
+      "configs/driving-v7-goal-audit.yaml": "b3d51a53528a076241ae1ecb21b8536e7504c04d92a41daf9468e906781d533b",
+      "src/fly_emotion/driving/v7_goal_audit.py": "45e20b5277eeee366388903dfe8af29fad18f9fa5ad329a48d4e8667f79e4a52",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -56,6 +56,7 @@
       "artifacts/v7-three-hop-moment.json": "cb2fe8928a9115790020d75b8b424182878d697d85b38b51e6d7169bd561c1f9",
       "artifacts/v7-three-hop-temporal-consistency.json": "2f9f75d4eee6b77dc2cab0168d63b7ea93245e5a12c18d844d97fa16406e8050",
       "artifacts/v7-upstream-latency-audit.json": "5c0af06b433a39033e51b75ad34a1875854f5712c0509dfd97dcc1c12eb9c414",
+      "artifacts/v7-synapse-spatial-audit.json": "d7d164e98976162741c905c4dd3b26588f28ffb3191e2ab1a39b899ec081bec0",
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
       "artifacts/v7-four-hop-scalar-precheck.json": "d0c82ac14f42f580cbb9bf1b78f7b4d2a41d7cbaa2a5b28858ff791b34b95b3c",
       "artifacts/v7-lc4-position-speed-precheck.json": "4615ff4eceedc1baf555fa93c074fb2e914411edfa43939e6acccb5c94f9d49e",
@@ -414,6 +415,16 @@
           "T5": 4.407725141420646
         },
         "upstream_paired_residual_temporal_identifiability_passed": false,
+        "synapse_spatial_selected_row_count": 1535378,
+        "synapse_spatial_complete_target_counts": {
+          "T4": 6860,
+          "T5": 6718
+        },
+        "synapse_spatial_aggregate_weight_matches": {
+          "T4": true,
+          "T5": true
+        },
+        "synapse_spatial_structure_gate_passed": true,
         "three_hop_independent_channel_coverage_passed": false,
         "three_hop_scalar_reichardt_authorized": false,
         "four_hop_scalar_ordered_direction_pass_counts": {
@@ -914,6 +925,7 @@
         "artifacts/v7-three-hop-moment.json",
         "artifacts/v7-three-hop-temporal-consistency.json",
         "artifacts/v7-upstream-latency-audit.json",
+        "artifacts/v7-synapse-spatial-audit.json",
         "artifacts/v7-three-hop-source-coverage.json",
         "artifacts/v7-four-hop-scalar-precheck.json",
         "artifacts/v7-lc4-position-speed-precheck.json",

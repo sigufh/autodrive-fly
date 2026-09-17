@@ -1490,6 +1490,17 @@ T5 约 3 帧。但 temporal shuffle 和 static sham 下也同样各为 8/8，sta
 残差：T4/T5 各 0/8 群体通过完整残差门，所有 fast/delayed 通道的 shuffle/ordered
 残差能量比都大于 4.0，最高约 6.17。故即使去掉固有静态滤波，乱序跳变仍主导源层活动。
 证据见 `artifacts/v7-upstream-latency-audit.json`。
+
+为避免继续用细胞级 optic-hex 质心代替局部突触排列，现已获取官方可选的 MaleCNS
+`syn-partners` 表；文件为 6,777,179,098 字节、311,833,243 行，MD5 为
+`58efcf712f8c4d4de5f2ad51e97def76`，包含 pre/post 三维坐标和 primary neuropil。只读
+流式筛选得到 1,535,378 条属于指定 T4/T5 fast/delayed 来源的突触记录。T4 的 741,681
+条、T5 的 793,697 条记录分别与聚合 connectome 的对应权重总和精确一致。T4 有
+6,860/6,861、T5 有 6,718/6,719 个目标同时具有 fast/delayed 突触簇；簇间距离相对簇内
+尺度的中位数分别为 1.141 和 0.650，各亚型左右三维单位位移镜像误差均低于 0.125。
+因此突触级空间结构前置门通过，可支持下一次单条件机制预检；它仍是结构证据，不把 EM
+体积轴解释成相机方向，也不解锁 validation、LPLC 或运行时。原始 6.78 GB 文件受
+`.gitignore` 保护，不提交仓库。证据见 `artifacts/v7-synapse-spatial-audit.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

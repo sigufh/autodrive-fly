@@ -40,7 +40,8 @@ datasets:
         path: "data/raw/malecns-v1.0/syn-partners.feather"
         url: "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/syn-partners-male-cns-v1.0-minconf-0.5.feather"
         optional: true
-        approximate_bytes: 6800000000
+        bytes: 6777179098
+        md5: "58efcf712f8c4d4de5f2ad51e97def76"
     skeletons:
       swc_gs: "gs://flyem-male-cns/v1.0/segmentation/skeletons-malecns/skeletons-swc/"
       precomputed_https: "https://storage.googleapis.com/flyem-male-cns/v1.0/segmentation/skeletons-malecns/skeletons-precomputed"
