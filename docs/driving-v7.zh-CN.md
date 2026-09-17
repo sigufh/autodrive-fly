@@ -1522,6 +1522,8 @@ neural intent → 固定 motor mapping → safety correction → executed action
 审计卡显示 T4/T5、LPLC1、LPLC2、LC4、heading、PFL3/DNa、导航和 external final 门。
 规划器、果蝇局部核与工程执行器贡献分列，v7 明示为未部署；审计哈希失效时接口返回 503，
 前端显示证据不可用而不猜测状态。
+兼容旧客户端的 `/api/autonomy/status` 复用完全相同的只读哈希验证函数与响应，不另建
+状态来源；证据陈旧时两个路径都返回 503。该别名不改变默认 v5/v6 驾驶服务或启用 v7。
 
 严格拓扑对照现已补齐结构构造：在全部 14,331 个 v7 视觉目标的 1,108,726 条真实入边
 上，以固定 seed 对相同权重的两条有向边做 double-edge swap。最终 910,175 条边（82.09%）

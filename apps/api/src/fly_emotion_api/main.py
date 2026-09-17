@@ -165,6 +165,12 @@ def v7_status():
     return _verified_v7_status(ROOT)
 
 
+@app.get("/api/autonomy/status")
+def autonomy_status():
+    """Compatibility alias for clients using the autonomy status route."""
+    return _verified_v7_status(ROOT)
+
+
 def asset(name: Literal["overview", "pathways"]):
     path = ROOT / f"data/processed/malecns-v1.0/{name}.json"
     if not path.exists():

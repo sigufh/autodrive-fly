@@ -46,6 +46,15 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     ] is False
 
 
+def test_autonomy_status_alias_matches_hash_verified_v7_status() -> None:
+    client = TestClient(app)
+    v7 = client.get("/api/v7/status")
+    autonomy = client.get("/api/autonomy/status")
+    assert v7.status_code == 200
+    assert autonomy.status_code == 200
+    assert autonomy.json() == v7.json()
+
+
 def test_v7_status_rejects_stale_evidence(tmp_path, monkeypatch) -> None:
     import hashlib
     import json
@@ -69,6 +78,9 @@ def test_v7_status_rejects_stale_evidence(tmp_path, monkeypatch) -> None:
     response = TestClient(app).get("/api/v7/status")
     assert response.status_code == 503
     assert response.json()["detail"] == "Stale v7 audit dependency: evidence.json"
+    alias = TestClient(app).get("/api/autonomy/status")
+    assert alias.status_code == 503
+    assert alias.json() == response.json()
 
 
 def test_real_cached_skeleton_endpoint() -> None:
