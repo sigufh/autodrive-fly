@@ -35,12 +35,14 @@ def evaluate_v7_lc4_position_speed_precheck(root: Path) -> dict:
     ]
     baseline = np.full((int(config["common_background_frames"]), 24, 48), 0.92, dtype=np.float32)
     base_duration = int(condition["duration_frames"])
-    responses = {side: [] for side in populations}
+    responses = {readout: {side: [] for side in populations} for readout in config["readouts"]}
     durations = []
     for divisor in config["duration_divisors"]:
         duration = max(4, base_duration // int(divisor))
         durations.append(duration)
-        by_position = {side: [] for side in populations}
+        by_position = {
+            readout: {side: [] for side in populations} for readout in config["readouts"]
+        }
         for center_x, center_y in centers:
             frames = _filled_disc(
                 duration,
@@ -59,51 +61,61 @@ def evaluate_v7_lc4_position_speed_precheck(root: Path) -> dict:
             )
             traces = _layer_traces(probe, stimulus, populations)
             for side in populations:
-                by_position[side].append(np.max(traces[side], axis=0))
-        for side in populations:
-            responses[side].append(np.max(np.stack(by_position[side]), axis=0))
+                by_position["state_peak"][side].append(np.max(traces[side], axis=0))
+                derivative = np.diff(traces[side], axis=0)
+                by_position["peak_positive_state_derivative"][side].append(
+                    np.max(np.maximum(derivative, 0.0), axis=0)
+                )
+        for readout in config["readouts"]:
+            for side in populations:
+                responses[readout][side].append(
+                    np.max(np.stack(by_position[readout][side]), axis=0)
+                )
 
     velocities = np.asarray(config["relative_angular_velocities"], dtype=np.float64)
     centered_velocity = velocities - velocities.mean()
     results = {}
-    for side, per_speed in responses.items():
-        matrix = np.stack(per_speed)
-        centered = matrix - matrix.mean(axis=0)
-        slopes = centered_velocity @ centered / float(centered_velocity @ centered_velocity)
-        fitted = matrix.mean(axis=0) + centered_velocity[:, None] * slopes[None, :]
-        residual = np.sum((matrix - fitted) ** 2, axis=0)
-        total = np.sum(centered**2, axis=0)
-        valid = np.isfinite(slopes) & (
-            total >= float(config["thresholds"]["minimum_valid_denominator"])
-        )
-        r_squared = np.full(len(slopes), np.nan, dtype=np.float64)
-        r_squared[valid] = 1.0 - residual[valid] / total[valid]
-        positive_fraction = float(np.mean(slopes[valid] > 0.0)) if np.any(valid) else 0.0
-        monotonic = (matrix[2] > matrix[1]) & (matrix[1] > matrix[0])
-        median_r_squared = float(np.median(r_squared[valid])) if np.any(valid) else None
-        gates = {
-            "valid_cell_fraction": float(np.mean(valid))
-            >= float(config["thresholds"]["minimum_valid_cell_fraction"]),
-            "positive_slope_fraction": positive_fraction
-            >= float(config["thresholds"]["minimum_positive_slope_fraction"]),
-            "median_r_squared": median_r_squared is not None
-            and median_r_squared >= float(config["thresholds"]["minimum_median_r_squared"]),
-            "monotonic_cell_fraction": float(np.mean(monotonic))
-            >= float(config["thresholds"]["minimum_monotonic_cell_fraction"]),
-        }
-        results[side] = {
-            "cell_count": int(len(slopes)),
-            "valid_cell_count": int(np.count_nonzero(valid)),
-            "valid_cell_fraction": float(np.mean(valid)),
-            "positive_slope_fraction": positive_fraction,
-            "median_r_squared": median_r_squared,
-            "monotonic_cell_count": int(np.count_nonzero(monotonic)),
-            "monotonic_cell_fraction": float(np.mean(monotonic)),
-            "median_response_by_speed": np.median(matrix, axis=1).tolist(),
-            "gates": gates,
-            "passed": all(gates.values()),
-        }
-    passed = all(result["passed"] for result in results.values())
+    for readout, by_side in responses.items():
+        results[readout] = {}
+        for side, per_speed in by_side.items():
+            matrix = np.stack(per_speed)
+            centered = matrix - matrix.mean(axis=0)
+            slopes = centered_velocity @ centered / float(centered_velocity @ centered_velocity)
+            fitted = matrix.mean(axis=0) + centered_velocity[:, None] * slopes[None, :]
+            residual = np.sum((matrix - fitted) ** 2, axis=0)
+            total = np.sum(centered**2, axis=0)
+            valid = np.isfinite(slopes) & (
+                total >= float(config["thresholds"]["minimum_valid_denominator"])
+            )
+            r_squared = np.full(len(slopes), np.nan, dtype=np.float64)
+            r_squared[valid] = 1.0 - residual[valid] / total[valid]
+            positive_fraction = float(np.mean(slopes[valid] > 0.0)) if np.any(valid) else 0.0
+            monotonic = (matrix[2] > matrix[1]) & (matrix[1] > matrix[0])
+            median_r_squared = float(np.median(r_squared[valid])) if np.any(valid) else None
+            gates = {
+                "valid_cell_fraction": float(np.mean(valid))
+                >= float(config["thresholds"]["minimum_valid_cell_fraction"]),
+                "positive_slope_fraction": positive_fraction
+                >= float(config["thresholds"]["minimum_positive_slope_fraction"]),
+                "median_r_squared": median_r_squared is not None
+                and median_r_squared >= float(config["thresholds"]["minimum_median_r_squared"]),
+                "monotonic_cell_fraction": float(np.mean(monotonic))
+                >= float(config["thresholds"]["minimum_monotonic_cell_fraction"]),
+            }
+            results[readout][side] = {
+                "cell_count": int(len(slopes)),
+                "valid_cell_count": int(np.count_nonzero(valid)),
+                "valid_cell_fraction": float(np.mean(valid)),
+                "positive_slope_fraction": positive_fraction,
+                "median_r_squared": median_r_squared,
+                "monotonic_cell_count": int(np.count_nonzero(monotonic)),
+                "monotonic_cell_fraction": float(np.mean(monotonic)),
+                "median_response_by_speed": np.median(matrix, axis=1).tolist(),
+                "gates": gates,
+                "passed": all(gates.values()),
+            }
+    primary = config["primary_precheck_readout"]
+    passed = all(result["passed"] for result in results[primary].values())
     return {
         "protocol": {
             "name": config["name"],
@@ -121,7 +133,9 @@ def evaluate_v7_lc4_position_speed_precheck(root: Path) -> dict:
             "calibration_evaluated": False,
             "runtime_modified": False,
         },
-        "per_side": results,
+        "readouts": results,
+        "primary_precheck_readout": primary,
+        "per_side": results[primary],
         "LC4_position_speed_precheck_passed": bool(passed),
         "expand_to_three_conditions": bool(passed),
         "advance_to_calibration": False,

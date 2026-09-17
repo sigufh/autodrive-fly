@@ -354,6 +354,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     side: result["positive_slope_fraction"]
                     for side, result in lc4_position_speed_precheck["per_side"].items()
                 },
+                "LC4_position_speed_primary_readout": lc4_position_speed_precheck[
+                    "primary_precheck_readout"
+                ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"
                 ],

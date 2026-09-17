@@ -4,7 +4,7 @@
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "8710b4994b2abcb9f93956d55c8b3a4b2391424c419301aa3f71573b7919f45c",
-      "src/fly_emotion/driving/v7_goal_audit.py": "5033a658600647e9b5e58e0b8840a16ca2cffb1e2566582139847c845145ce7c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "2a8a5f5e666dd3266343cc420559fe1cb65452be0d60536678166e5b493df3a9",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -51,7 +51,7 @@
       "artifacts/v7-three-hop-moment.json": "cb2fe8928a9115790020d75b8b424182878d697d85b38b51e6d7169bd561c1f9",
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
       "artifacts/v7-four-hop-scalar-precheck.json": "d0c82ac14f42f580cbb9bf1b78f7b4d2a41d7cbaa2a5b28858ff791b34b95b3c",
-      "artifacts/v7-lc4-position-speed-precheck.json": "745b64af0b5516a9ea415b5b96cb2bcdfee8ec727da34f184d66c6ff5cee8d8f",
+      "artifacts/v7-lc4-position-speed-precheck.json": "4615ff4eceedc1baf555fa93c074fb2e914411edfa43939e6acccb5c94f9d49e",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-t4t5-local-edge-precheck.json": "4a13be0c85994ce8946f43e7131172f2aeb480106ea5356d8462d1529c7665a3",
       "artifacts/v7-t4t5-local-edge-backends.json": "c944084fcbe3f275298d537d090c7117225a4e1030e51a3963154bbfbdd0e08f",
@@ -312,13 +312,14 @@
         "four_hop_scalar_gate_passed": false,
         "LC4_position_speed_precheck_passed": false,
         "LC4_position_speed_valid_fraction": {
-          "L": 0.14084507042253522,
-          "R": 0.16363636363636364
+          "L": 0.15492957746478872,
+          "R": 0.23636363636363636
         },
         "LC4_position_speed_positive_slope_fraction": {
           "L": 0.0,
-          "R": 0.0
+          "R": 0.07692307692307693
         },
+        "LC4_position_speed_primary_readout": "peak_positive_state_derivative",
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
         "local_edge_precheck_direction_pass_count": 0,
         "local_edge_precheck_polarity_pass_count": 0,

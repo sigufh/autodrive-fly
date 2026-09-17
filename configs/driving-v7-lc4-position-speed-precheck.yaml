@@ -13,6 +13,8 @@ duration_divisors: [1, 2, 4]
 relative_angular_velocities: [1.0, 2.0, 4.0]
 noise_standard_deviation: 0.0
 position_pooling: maximum_over_fixed_5x3_grid_for_each_speed
+readouts: [state_peak, peak_positive_state_derivative]
+primary_precheck_readout: peak_positive_state_derivative
 thresholds:
   minimum_valid_denominator: 0.000001
   minimum_valid_cell_fraction: 0.80
@@ -26,3 +28,4 @@ boundary:
   target_activity_injection: false
   calibration_evaluated: false
   runtime_modified: false
+  derivative_is_diagnostic_not_injected_activity: true

@@ -18,16 +18,21 @@ def test_lc4_position_speed_precheck_is_tuning_only() -> None:
     assert protocol["target_activity_injection"] is False
     assert protocol["calibration_evaluated"] is False
     assert protocol["runtime_modified"] is False
+    assert report["primary_precheck_readout"] == "peak_positive_state_derivative"
 
 
 def test_lc4_position_speed_has_negative_not_positive_slope() -> None:
     report = json.loads(REPORT.read_text())
     assert report["per_side"]["L"]["cell_count"] == 71
     assert report["per_side"]["R"]["cell_count"] == 55
-    for result in report["per_side"].values():
-        assert result["valid_cell_fraction"] < 0.20
-        assert result["positive_slope_fraction"] == 0.0
-        assert result["median_r_squared"] > 0.80
+    assert report["readouts"]["peak_positive_state_derivative"] == report["per_side"]
+    derivative = report["readouts"]["peak_positive_state_derivative"]
+    assert derivative["L"]["valid_cell_fraction"] < 0.16
+    assert derivative["R"]["valid_cell_fraction"] < 0.24
+    assert derivative["L"]["positive_slope_fraction"] == 0.0
+    assert derivative["R"]["positive_slope_fraction"] < 0.08
+    for result in derivative.values():
+        assert result["median_r_squared"] > 0.90
         assert result["passed"] is False
     assert report["LC4_position_speed_precheck_passed"] is False
     assert report["expand_to_three_conditions"] is False

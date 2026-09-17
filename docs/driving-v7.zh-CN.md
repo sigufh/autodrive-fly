@@ -1375,6 +1375,9 @@ filled looming，直接读取真实 LC4_L/R 状态。仅 10/71 与 9/55 个细�
 slow>medium>fast 持续时间积分，不是预期 fast>medium>slow 角速度选择。因此不扩三条件，
 不能以高 R² 单独宣称 LC4 功能通过。证据见
 `artifacts/v7-lc4-position-speed-precheck.json`。
+同一真实 LC4 trace 的 `peak positive state derivative` follow-up 也失败：有效覆盖仅
+11/71 与 13/55，正斜率比例为 0% 与 7.7%；中位导数仍随速度提高而下降，尽管负斜率
+回归 R² 约 0.97/0.94。因而问题不是单纯峰值被持续时间积分污染，导数口子也不扩三条件。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
