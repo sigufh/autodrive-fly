@@ -14,7 +14,7 @@ source_groups:
   center: [Mi1, Tm3]
   proximal: [Mi4, C3]
   distal: [Mi9]
-readouts: [center, proximal, distal, center_proximal_correlation, pairwise_proximal_vector, pairwise_distal_vector]
+readouts: [center, proximal, distal, center_proximal_correlation, pairwise_proximal_vector, pairwise_distal_vector, rectified_pairwise_proximal_vector, rectified_pairwise_distal_vector]
 correlation:
   lag_substeps: 1
   formula: orientation*(proximal_now*center_previous-center_now*proximal_previous)/(abs(forward)+abs(reverse)+1e-6)
@@ -24,6 +24,11 @@ pairwise_correlation:
   formula: coordinate_first_moment_equivalent_of_all_real_center_x_delayed_edge_pairs
   source_identity_preserved_before_correlation: true
   direction_labels_used_only_for_final_score_projection: true
+rectified_pairwise_correlation:
+  source_nonlinearity: max(source_delta_from_common_baseline, 0)
+  lag_substeps: 1
+  no_gain_or_threshold_search: true
+  target_activity_injection: false
 stop_gate:
   minimum_bilateral_direction_pairs_to_authorize_target_formula: 1
   unilateral_population_pass_is_insufficient: true

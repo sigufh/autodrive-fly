@@ -28,6 +28,8 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
         "center_proximal_correlation": 0,
         "pairwise_proximal_vector": 1,
         "pairwise_distal_vector": 0,
+        "rectified_pairwise_proximal_vector": 0,
+        "rectified_pairwise_distal_vector": 0,
     }
     assert all(not values for values in report["bilateral_passing_subtypes"].values())
     assert report["maximum_bilateral_direction_pair_count"] == 0
@@ -38,5 +40,13 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
     assert left["positive_cell_fraction"] < 0.60
     assert left["passed"] is False
     assert right["passed"] is True
+    assert all(
+        not report["population_scores"][population][readout]["passed"]
+        for population in report["population_scores"]
+        for readout in (
+            "rectified_pairwise_proximal_vector",
+            "rectified_pairwise_distal_vector",
+        )
+    )
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False

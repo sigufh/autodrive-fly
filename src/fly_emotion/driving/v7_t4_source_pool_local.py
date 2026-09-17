@@ -73,7 +73,12 @@ def _projected_traces(probe, stimulus, matrices: dict[str, sparse.csr_matrix]) -
         for _ in range(probe.brain_substeps):
             state = probe._advance(state, drive, history)
             state[probe.retina.node_indices] = baseline_drive
-    baselines = {name: matrix @ state.astype(np.float64) for name, matrix in matrices.items()}
+    baseline_state = state.astype(np.float64)
+    baselines = {
+        name: matrix @ baseline_state
+        for name, matrix in matrices.items()
+        if not name.startswith("rect_")
+    }
     output = {name: [] for name in matrices}
     previous = baseline_values.copy()
     for image in stimulus.frames:
@@ -86,8 +91,13 @@ def _projected_traces(probe, stimulus, matrices: dict[str, sparse.csr_matrix]) -
             state = probe._advance(state, drive, history)
             state[probe.retina.node_indices] = receptor_values
         state64 = state.astype(np.float64)
+        positive_delta = np.maximum(state64 - baseline_state, 0.0)
         for name, matrix in matrices.items():
-            output[name].append(matrix @ state64 - baselines[name])
+            output[name].append(
+                matrix @ positive_delta
+                if name.startswith("rect_")
+                else matrix @ state64 - baselines[name]
+            )
     return {name: np.stack(values) for name, values in output.items()}
 
 
@@ -105,6 +115,33 @@ def _compact(score: dict) -> dict:
             "passed",
         )
     }
+
+
+def _pairwise_vectors(traces: dict[str, np.ndarray], prefix: str) -> dict[str, tuple]:
+    center = traces[f"{prefix}pair_center"]
+    center_previous = np.concatenate((np.zeros_like(center[:1]), center[:-1]))
+    output = {}
+    for delayed_name in ("proximal", "distal"):
+        delayed = traces[f"{prefix}pair_{delayed_name}"]
+        delayed_previous = np.concatenate((np.zeros_like(delayed[:1]), delayed[:-1]))
+        components = []
+        denominators = []
+        for suffix in ("x", "y"):
+            center_moment = traces[f"{prefix}pair_center_{suffix}"]
+            delayed_moment = traces[f"{prefix}pair_{delayed_name}_{suffix}"]
+            center_moment_previous = np.concatenate(
+                (np.zeros_like(center_moment[:1]), center_moment[:-1])
+            )
+            delayed_moment_previous = np.concatenate(
+                (np.zeros_like(delayed_moment[:1]), delayed_moment[:-1])
+            )
+            pair_forward = delayed_moment * center_previous - delayed * center_moment_previous
+            pair_reverse = delayed_moment_previous * center - delayed_previous * center_moment
+            components.append(pair_forward - pair_reverse)
+            denominators.append(np.abs(pair_forward) + np.abs(pair_reverse))
+        denominator = denominators[0] + denominators[1] + 1e-6
+        output[delayed_name] = (components[0] / denominator, components[1] / denominator)
+    return output
 
 
 def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
@@ -137,6 +174,7 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
         matrices[f"pair_{name}"] = _projection_rows(
             probe, targets, tuple(types), coordinates=source_coordinates
         )
+        matrices[f"rect_pair_{name}"] = matrices[f"pair_{name}"]
         for moment, suffix in ((0, "x"), (1, "y")):
             matrices[f"pair_{name}_{suffix}"] = _projection_rows(
                 probe,
@@ -145,6 +183,7 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                 coordinates=source_coordinates,
                 moment=moment,
             )
+            matrices[f"rect_pair_{name}_{suffix}"] = matrices[f"pair_{name}_{suffix}"]
     positions, _ = _infer_t4_t5_positions(root, probe, source)
     finite = positions[np.all(np.isfinite(positions), axis=1)]
     low, high = finite.min(axis=0), finite.max(axis=0)
@@ -212,44 +251,8 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                     * (forward - reverse)
                     / (np.abs(forward) + np.abs(reverse) + 1e-6)
                 )
-                pairwise_vectors = {}
-                for delayed_name in ("proximal", "distal"):
-                    pair_center = traces["pair_center"]
-                    pair_delayed = traces[f"pair_{delayed_name}"]
-                    pair_center_previous = np.concatenate(
-                        (np.zeros_like(pair_center[:1]), pair_center[:-1])
-                    )
-                    delayed_previous = np.concatenate(
-                        (
-                            np.zeros_like(pair_delayed[:1]),
-                            pair_delayed[:-1],
-                        )
-                    )
-                    components = []
-                    denominators = []
-                    for suffix in ("x", "y"):
-                        center_moment = traces[f"pair_center_{suffix}"]
-                        delayed_moment = traces[f"pair_{delayed_name}_{suffix}"]
-                        center_moment_previous = np.concatenate(
-                            (np.zeros_like(center_moment[:1]), center_moment[:-1])
-                        )
-                        delayed_moment_previous = np.concatenate(
-                            (np.zeros_like(delayed_moment[:1]), delayed_moment[:-1])
-                        )
-                        pair_forward = (
-                            delayed_moment * pair_center_previous
-                            - pair_delayed * center_moment_previous
-                        )
-                        pair_reverse = (
-                            delayed_moment_previous * pair_center - delayed_previous * center_moment
-                        )
-                        components.append(pair_forward - pair_reverse)
-                        denominators.append(np.abs(pair_forward) + np.abs(pair_reverse))
-                    denominator = denominators[0] + denominators[1] + 1e-6
-                    pairwise_vectors[delayed_name] = (
-                        components[0] / denominator,
-                        components[1] / denominator,
-                    )
+                pairwise_vectors = _pairwise_vectors(traces, "")
+                rectified_vectors = _pairwise_vectors(traces, "rect_")
                 responses[(x_index, y_index, direction)] = {
                     **{
                         name: np.max(values, axis=0)
@@ -259,6 +262,8 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                     "center_proximal_correlation": np.max(correlation, axis=0),
                     "pairwise_proximal_vector": pairwise_vectors["proximal"],
                     "pairwise_distal_vector": pairwise_vectors["distal"],
+                    "rectified_pairwise_proximal_vector": rectified_vectors["proximal"],
+                    "rectified_pairwise_distal_vector": rectified_vectors["distal"],
                 }
     scores = {}
     for population in populations:
@@ -287,7 +292,7 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                     for y in range(len(y_centers))
                     for x in range(len(x_centers))
                 ]
-                if selected_readout.startswith("pairwise_"):
+                if "pairwise_" in selected_readout:
                     vector = {
                         "left": (-1.0, 0.0),
                         "right": (1.0, 0.0),

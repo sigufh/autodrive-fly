@@ -2,8 +2,8 @@
   "protocol": {
     "name": "v7-t4-local-edge-source-pool-diagnostic",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-pool-local.yaml": "f2f630cad292bc3e48c8d5f7da55de1abe48972d86572eab87db73b358d5b0d5",
-      "src/fly_emotion/driving/v7_t4_source_pool_local.py": "ae471588201647b4b9ab047a0cfab33f77f16d19ef0e65dac0a04ca9148f9dae",
+      "configs/driving-v7-t4-source-pool-local.yaml": "ff6bb4ffed899898722431cabb6d8e09aa1f420fc0e2501a6aaca354bd686ba7",
+      "src/fly_emotion/driving/v7_t4_source_pool_local.py": "04d274ddb6c1b40703fd3f5665a2a113502bbaf65cc717c197ca0f5cdb0a26dd",
       "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
       "src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py": "2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049",
       "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
@@ -188,6 +188,92 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 835,
+        "valid_cell_count": 833,
+        "valid_cell_fraction": 0.9976047904191617,
+        "median_signed_contrast": 0.05386264935257274,
+        "positive_cell_fraction": 0.5354141656662665,
+        "invalid_cell_ids": [
+          101703,
+          196128
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 835,
+        "valid_cell_count": 781,
+        "valid_cell_fraction": 0.9353293413173652,
+        "median_signed_contrast": -0.22662594291254565,
+        "positive_cell_fraction": 0.4058898847631242,
+        "invalid_cell_ids": [
+          26513,
+          27540,
+          51940,
+          53717,
+          54043,
+          57045,
+          64314,
+          64516,
+          86131,
+          90484,
+          91294,
+          91405,
+          92955,
+          94967,
+          95455,
+          95616,
+          97498,
+          100273,
+          100365,
+          100714,
+          102086,
+          102430,
+          103641,
+          104786,
+          105079,
+          105920,
+          106579,
+          106765,
+          111357,
+          127696,
+          128107,
+          129152,
+          130915,
+          133506,
+          133657,
+          137354,
+          143795,
+          149173,
+          160890,
+          163014,
+          168413,
+          179164,
+          194230,
+          515686,
+          523869,
+          524865,
+          532861,
+          548301,
+          550167,
+          550940,
+          551166,
+          551572,
+          551752,
+          570430
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     },
     "T4a_R": {
@@ -305,6 +391,63 @@
           154667,
           157885,
           209645
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 849,
+        "valid_cell_count": 848,
+        "valid_cell_fraction": 0.9988221436984688,
+        "median_signed_contrast": -0.00430738817361426,
+        "positive_cell_fraction": 0.49764150943396224,
+        "invalid_cell_ids": [
+          106875
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 849,
+        "valid_cell_count": 823,
+        "valid_cell_fraction": 0.9693757361601885,
+        "median_signed_contrast": -0.02669081419013618,
+        "positive_cell_fraction": 0.488456865127582,
+        "invalid_cell_ids": [
+          82730,
+          83594,
+          86775,
+          88898,
+          91564,
+          92128,
+          92395,
+          92467,
+          96841,
+          100746,
+          102118,
+          102907,
+          104191,
+          104262,
+          105601,
+          106875,
+          109225,
+          111003,
+          111508,
+          111852,
+          112707,
+          113996,
+          128176,
+          153494,
+          155967,
+          539977
         ],
         "gates": {
           "valid_cell_fraction": true,
@@ -457,6 +600,86 @@
           549478,
           550376,
           550942
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 844,
+        "valid_cell_count": 842,
+        "valid_cell_fraction": 0.9976303317535545,
+        "median_signed_contrast": -0.09200233356318968,
+        "positive_cell_fraction": 0.43705463182897863,
+        "invalid_cell_ids": [
+          80420,
+          518351
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 844,
+        "valid_cell_count": 796,
+        "valid_cell_fraction": 0.943127962085308,
+        "median_signed_contrast": 0.031968404678526845,
+        "positive_cell_fraction": 0.5201005025125628,
+        "invalid_cell_ids": [
+          36853,
+          53304,
+          59456,
+          65072,
+          80420,
+          81876,
+          84943,
+          89914,
+          91245,
+          92220,
+          92340,
+          92667,
+          96678,
+          98162,
+          99780,
+          101352,
+          103317,
+          103692,
+          103697,
+          104171,
+          104405,
+          105467,
+          106660,
+          109137,
+          109488,
+          111009,
+          115332,
+          115811,
+          117979,
+          120218,
+          121001,
+          123058,
+          123161,
+          134880,
+          142777,
+          165906,
+          167333,
+          167354,
+          169849,
+          194619,
+          518351,
+          536905,
+          542611,
+          546005,
+          547114,
+          549655,
+          551924,
+          580892
         ],
         "gates": {
           "valid_cell_fraction": true,
@@ -618,6 +841,61 @@
           141202,
           143641,
           153747
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 846,
+        "valid_cell_count": 843,
+        "valid_cell_fraction": 0.9964539007092199,
+        "median_signed_contrast": 0.031973111815637466,
+        "positive_cell_fraction": 0.5266903914590747,
+        "invalid_cell_ids": [
+          93203,
+          93283,
+          106480
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 846,
+        "valid_cell_count": 824,
+        "valid_cell_fraction": 0.9739952718676123,
+        "median_signed_contrast": -0.050436768488832134,
+        "positive_cell_fraction": 0.45995145631067963,
+        "invalid_cell_ids": [
+          84483,
+          89598,
+          90645,
+          91048,
+          92228,
+          93283,
+          96835,
+          98007,
+          98242,
+          99748,
+          102955,
+          104048,
+          104459,
+          104662,
+          106095,
+          106480,
+          111554,
+          113872,
+          114698,
+          116609,
+          119934,
+          120686
         ],
         "gates": {
           "valid_cell_fraction": true,
@@ -798,6 +1076,74 @@
           181830,
           195420,
           531268
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 895,
+        "valid_cell_count": 863,
+        "valid_cell_fraction": 0.964245810055866,
+        "median_signed_contrast": 0.0815499980957781,
+        "positive_cell_fraction": 0.5619930475086906,
+        "invalid_cell_ids": [
+          16310,
+          37166,
+          46982,
+          69432,
+          72730,
+          76832,
+          82343,
+          88939,
+          92852,
+          95895,
+          106878,
+          109968,
+          110033,
+          110789,
+          113295,
+          115865,
+          119908,
+          121857,
+          122099,
+          122917,
+          124186,
+          166312,
+          201985,
+          210119,
+          245814,
+          518174,
+          530459,
+          541497,
+          548774,
+          551539,
+          551542,
+          553203
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 895,
+        "valid_cell_count": 889,
+        "valid_cell_fraction": 0.9932960893854749,
+        "median_signed_contrast": 0.08030161006360577,
+        "positive_cell_fraction": 0.5759280089988752,
+        "invalid_cell_ids": [
+          100953,
+          116545,
+          135240,
+          181830,
+          531268,
+          551813
         ],
         "gates": {
           "valid_cell_fraction": true,
@@ -991,6 +1337,97 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 883,
+        "valid_cell_count": 824,
+        "valid_cell_fraction": 0.9331823329558324,
+        "median_signed_contrast": -0.024858835548289993,
+        "positive_cell_fraction": 0.4854368932038835,
+        "invalid_cell_ids": [
+          79875,
+          83917,
+          88722,
+          90842,
+          93364,
+          94329,
+          94567,
+          95921,
+          96015,
+          96373,
+          96638,
+          97313,
+          98846,
+          99258,
+          100302,
+          100323,
+          101081,
+          102374,
+          102479,
+          103579,
+          103722,
+          104567,
+          104689,
+          104908,
+          106069,
+          106150,
+          106201,
+          107875,
+          109097,
+          109617,
+          110182,
+          111010,
+          111480,
+          112080,
+          112750,
+          113291,
+          113926,
+          114295,
+          114546,
+          114832,
+          116401,
+          118348,
+          118854,
+          119867,
+          121189,
+          121433,
+          122170,
+          123726,
+          125144,
+          127090,
+          130077,
+          131261,
+          132430,
+          134206,
+          135635,
+          136869,
+          141765,
+          144066,
+          146517
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 883,
+        "valid_cell_count": 881,
+        "valid_cell_fraction": 0.9977349943374858,
+        "median_signed_contrast": -0.051781045572070326,
+        "positive_cell_fraction": 0.4619750283768445,
+        "invalid_cell_ids": [
+          108724,
+          118348
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     },
     "T4d_L": {
@@ -1169,6 +1606,71 @@
           115139,
           143742,
           513616
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 850,
+        "valid_cell_count": 825,
+        "valid_cell_fraction": 0.9705882352941176,
+        "median_signed_contrast": 0.06383734804200367,
+        "positive_cell_fraction": 0.5442424242424242,
+        "invalid_cell_ids": [
+          47786,
+          51014,
+          67092,
+          77334,
+          79900,
+          93574,
+          95986,
+          101943,
+          102252,
+          105281,
+          111712,
+          112949,
+          119755,
+          120324,
+          123979,
+          124603,
+          132107,
+          159009,
+          201144,
+          532455,
+          541735,
+          543357,
+          547318,
+          551512,
+          552965
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 850,
+        "valid_cell_count": 840,
+        "valid_cell_fraction": 0.9882352941176471,
+        "median_signed_contrast": -0.2062374788795542,
+        "positive_cell_fraction": 0.3202380952380952,
+        "invalid_cell_ids": [
+          73952,
+          95378,
+          103297,
+          103534,
+          112597,
+          115139,
+          115654,
+          118762,
+          200176,
+          553567
         ],
         "gates": {
           "valid_cell_fraction": true,
@@ -1371,6 +1873,74 @@
           "positive_cell_fraction": false
         },
         "passed": false
+      },
+      "rectified_pairwise_proximal_vector": {
+        "cell_count": 859,
+        "valid_cell_count": 823,
+        "valid_cell_fraction": 0.9580908032596042,
+        "median_signed_contrast": 0.10907432703849354,
+        "positive_cell_fraction": 0.5674362089914945,
+        "invalid_cell_ids": [
+          82536,
+          85429,
+          88377,
+          90558,
+          91955,
+          99863,
+          99982,
+          101033,
+          102229,
+          103571,
+          103944,
+          104218,
+          105862,
+          107149,
+          107763,
+          109254,
+          109859,
+          109912,
+          110236,
+          111446,
+          111745,
+          112175,
+          113740,
+          116605,
+          116816,
+          117369,
+          118110,
+          118526,
+          118638,
+          119959,
+          120928,
+          121601,
+          121864,
+          133474,
+          134122,
+          183759
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": true,
+          "positive_cell_fraction": false
+        },
+        "passed": false
+      },
+      "rectified_pairwise_distal_vector": {
+        "cell_count": 859,
+        "valid_cell_count": 857,
+        "valid_cell_fraction": 0.9976717112922002,
+        "median_signed_contrast": -0.0918193832617925,
+        "positive_cell_fraction": 0.4340723453908985,
+        "invalid_cell_ids": [
+          99863,
+          100956
+        ],
+        "gates": {
+          "valid_cell_fraction": true,
+          "median_signed_contrast": false,
+          "positive_cell_fraction": false
+        },
+        "passed": false
       }
     }
   },
@@ -1380,7 +1950,9 @@
     "distal": 1,
     "center_proximal_correlation": 0,
     "pairwise_proximal_vector": 1,
-    "pairwise_distal_vector": 0
+    "pairwise_distal_vector": 0,
+    "rectified_pairwise_proximal_vector": 0,
+    "rectified_pairwise_distal_vector": 0
   },
   "bilateral_passing_subtypes": {
     "center": [],
@@ -1388,7 +1960,9 @@
     "distal": [],
     "center_proximal_correlation": [],
     "pairwise_proximal_vector": [],
-    "pairwise_distal_vector": []
+    "pairwise_distal_vector": [],
+    "rectified_pairwise_proximal_vector": [],
+    "rectified_pairwise_distal_vector": []
   },
   "maximum_bilateral_direction_pair_count": 0,
   "authorize_new_target_formula": false,

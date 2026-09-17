@@ -89,6 +89,8 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "center_proximal_correlation": 0,
         "pairwise_proximal_vector": 1,
         "pairwise_distal_vector": 0,
+        "rectified_pairwise_proximal_vector": 0,
+        "rectified_pairwise_distal_vector": 0,
     }
     assert visual["observations"]["T4_source_pool_maximum_bilateral_pair_count"] == 0
     assert visual["observations"]["T4_source_pool_authorizes_target_formula"] is False
