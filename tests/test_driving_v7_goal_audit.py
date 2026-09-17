@@ -156,6 +156,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_source_axis_mirror_passing_subtypes"] == ["c", "d"]
     assert visual["observations"]["T5_source_axis_strict_gate_passed"] is False
     assert visual["observations"]["T5_source_axis_dynamic_candidate_authorized"] is False
+    assert visual["observations"]["LPLC1_near_collision_direct_input_fraction"] == {
+        "L": 67 / 68,
+        "R": 1.0,
+    }
+    assert visual["observations"]["LPLC1_near_collision_response_pass_counts"] == {
+        "near_vs_miss": 0,
+        "approach_vs_recede": 0,
+        "stationary_vs_rotating_background": 0,
+    }
+    assert visual["observations"]["LPLC1_near_collision_stimulus_geometry_passed"] is True
+    assert visual["observations"]["LPLC1_near_collision_mirror_passed"] is True
+    assert visual["observations"]["LPLC1_near_collision_precheck_passed"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

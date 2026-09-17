@@ -69,6 +69,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_lamina_split = reports["t5_lamina_split"]
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
+    lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -144,6 +145,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_lamina_split"],
                 config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["t5_source_axis_audit"],
+                config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc2_radial_opponency"],
                 config["evidence"]["lplc2_position_coverage"],
             ],
@@ -410,6 +412,32 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "T5_source_axis_dynamic_candidate_authorized": t5_source_axis_audit[
                     "authorize_dynamic_axis_candidate"
+                ],
+                "LPLC1_near_collision_direct_input_fraction": {
+                    side: result["targets_with_direct_T4_T5_fraction"]
+                    for side, result in lplc1_near_collision_precheck[
+                        "direct_source_coverage"
+                    ].items()
+                },
+                "LPLC1_near_collision_response_pass_counts": {
+                    name: sum(
+                        lplc1_near_collision_precheck["per_side"][side][name]["passed"]
+                        for side in "LR"
+                    )
+                    for name in (
+                        "near_vs_miss",
+                        "approach_vs_recede",
+                        "stationary_vs_rotating_background",
+                    )
+                },
+                "LPLC1_near_collision_stimulus_geometry_passed": (
+                    lplc1_near_collision_precheck["stimulus_geometry_gate_passed"]
+                ),
+                "LPLC1_near_collision_mirror_passed": lplc1_near_collision_precheck[
+                    "mirror_gate_passed"
+                ],
+                "LPLC1_near_collision_precheck_passed": lplc1_near_collision_precheck[
+                    "LPLC1_near_collision_precheck_passed"
                 ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"

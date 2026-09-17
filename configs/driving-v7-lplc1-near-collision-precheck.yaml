@@ -1,0 +1,47 @@
+version: 1
+name: v7-lplc1-near-collision-stimulus-precheck
+observed_on: "2026-09-17"
+typed_protocol: configs/driving-v7-lplc-typed-screen.yaml
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: LPLC-T01
+retinal_backend: signed_frame_difference
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+stimulus:
+  start_width_pixels: 2
+  start_height_pixels: 3
+  terminal_width_pixels: 5
+  terminal_height_pixels: 7
+  start_margin_pixels: 1.0
+  terminal_center_offset_pixels: 3.0
+  near_collision_vertical_fraction: 0.70
+  matched_miss_vertical_fraction: 0.28
+  background_period_pixels: 10.0
+  background_cycles: 2.0
+  dark_level: 0.08
+  bright_level: 0.92
+  background_contrast: 0.24
+controls:
+  same_noise_realization_within_all_stimuli: true
+  right_stimuli_are_exact_horizontal_mirrors: true
+  receding_is_exact_time_reverse_of_approach: true
+readout: maximum_baseline_subtracted_LPLC1_state
+comparisons: [near_vs_miss, approach_vs_recede, stationary_vs_rotating_background]
+stop_gate:
+  require_every_comparison_for_both_sides: true
+  require_mirror: true
+  maximum_mirror_error: 0.20
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  LPLC1_specific_stimuli: true
+  shared_generic_looming_rule: false
+  pixel_sizes_not_claimed_as_visual_degrees: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  three_condition_evaluation_requires_precheck_pass: true

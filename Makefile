@@ -345,6 +345,11 @@ v7-audit-t5-source-axis:
 
 .PHONY: v7-audit-t5-source-axis
 
+v7-evaluate-lplc1-near-collision-precheck:
+	.venv/bin/autodrive-fly v7-evaluate-lplc1-near-collision-precheck
+
+.PHONY: v7-evaluate-lplc1-near-collision-precheck
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

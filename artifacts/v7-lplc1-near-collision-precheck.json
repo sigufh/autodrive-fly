@@ -1,0 +1,1140 @@
+{
+  "protocol": {
+    "name": "v7-lplc1-near-collision-stimulus-precheck",
+    "dependencies_sha256": {
+      "configs/driving-v7-lplc1-near-collision-precheck.yaml": "be9e6aaca5aa21a95082025f420b16b7645b02ffa793eb53e808697c1041bb70",
+      "src/fly_emotion/driving/v7_lplc1_near_collision_precheck.py": "06a6a4ee5fb7b0ac0da039380db4a003447337f93f8c7304040cfaa98a7b5391",
+      "configs/driving-v7-lplc-typed-screen.yaml": "b53c1438f5b02325f1db7f97eac362975b9790fe95d4fa322f0937ed559100ba",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "src/fly_emotion/driving/v7_t5_lamina_split.py": "d8c3f00cbfe8bb0a6608bba022e9fbdb3607285875032bdb31b4164c65cab9ed",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2"
+    },
+    "condition_id": "LPLC-T01",
+    "stimulus_count": 10,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false
+  },
+  "stimulus_geometry": {
+    "L": {
+      "approach_recede_time_reverse_error": 0.0,
+      "near_miss_equal_dark_pixel_count_per_frame": true
+    },
+    "R": {
+      "approach_recede_time_reverse_error": 0.0,
+      "near_miss_equal_dark_pixel_count_per_frame": true
+    },
+    "near_approach": {
+      "left_right_frame_mirror_error": 0.0
+    },
+    "matched_miss": {
+      "left_right_frame_mirror_error": 0.0
+    },
+    "near_recede": {
+      "left_right_frame_mirror_error": 0.0
+    },
+    "near_stationary_background": {
+      "left_right_frame_mirror_error": 0.0
+    },
+    "near_rotating_background": {
+      "left_right_frame_mirror_error": 0.0
+    }
+  },
+  "direct_source_coverage": {
+    "L": {
+      "target_count": 68,
+      "targets_with_direct_T4_T5_count": 67,
+      "targets_with_direct_T4_T5_fraction": 0.9852941176470589,
+      "targets_with_all_direct_T4_T5_located_count": 67,
+      "targets_with_all_direct_T4_T5_located_fraction": 0.9852941176470589,
+      "direct_T4_T5_source_count_median": 98.0,
+      "located_direct_T4_T5_weight_fraction": 1.0,
+      "target_records": [
+        {
+          "body_id": 12052,
+          "direct_T4_T5_source_count": 89,
+          "located_direct_T4_T5_source_count": 89,
+          "direct_T4_T5_weight": 385.0,
+          "located_direct_T4_T5_weight": 385.0
+        },
+        {
+          "body_id": 12114,
+          "direct_T4_T5_source_count": 131,
+          "located_direct_T4_T5_source_count": 131,
+          "direct_T4_T5_weight": 463.0,
+          "located_direct_T4_T5_weight": 463.0
+        },
+        {
+          "body_id": 12397,
+          "direct_T4_T5_source_count": 76,
+          "located_direct_T4_T5_source_count": 76,
+          "direct_T4_T5_weight": 291.0,
+          "located_direct_T4_T5_weight": 291.0
+        },
+        {
+          "body_id": 12661,
+          "direct_T4_T5_source_count": 64,
+          "located_direct_T4_T5_source_count": 64,
+          "direct_T4_T5_weight": 196.0,
+          "located_direct_T4_T5_weight": 196.0
+        },
+        {
+          "body_id": 13086,
+          "direct_T4_T5_source_count": 150,
+          "located_direct_T4_T5_source_count": 150,
+          "direct_T4_T5_weight": 499.0,
+          "located_direct_T4_T5_weight": 499.0
+        },
+        {
+          "body_id": 13110,
+          "direct_T4_T5_source_count": 103,
+          "located_direct_T4_T5_source_count": 103,
+          "direct_T4_T5_weight": 374.0,
+          "located_direct_T4_T5_weight": 374.0
+        },
+        {
+          "body_id": 13180,
+          "direct_T4_T5_source_count": 89,
+          "located_direct_T4_T5_source_count": 89,
+          "direct_T4_T5_weight": 251.0,
+          "located_direct_T4_T5_weight": 251.0
+        },
+        {
+          "body_id": 14535,
+          "direct_T4_T5_source_count": 0,
+          "located_direct_T4_T5_source_count": 0,
+          "direct_T4_T5_weight": 0.0,
+          "located_direct_T4_T5_weight": 0.0
+        },
+        {
+          "body_id": 14689,
+          "direct_T4_T5_source_count": 104,
+          "located_direct_T4_T5_source_count": 104,
+          "direct_T4_T5_weight": 419.0,
+          "located_direct_T4_T5_weight": 419.0
+        },
+        {
+          "body_id": 14731,
+          "direct_T4_T5_source_count": 82,
+          "located_direct_T4_T5_source_count": 82,
+          "direct_T4_T5_weight": 253.0,
+          "located_direct_T4_T5_weight": 253.0
+        },
+        {
+          "body_id": 15049,
+          "direct_T4_T5_source_count": 107,
+          "located_direct_T4_T5_source_count": 107,
+          "direct_T4_T5_weight": 353.0,
+          "located_direct_T4_T5_weight": 353.0
+        },
+        {
+          "body_id": 15058,
+          "direct_T4_T5_source_count": 118,
+          "located_direct_T4_T5_source_count": 118,
+          "direct_T4_T5_weight": 355.0,
+          "located_direct_T4_T5_weight": 355.0
+        },
+        {
+          "body_id": 15253,
+          "direct_T4_T5_source_count": 48,
+          "located_direct_T4_T5_source_count": 48,
+          "direct_T4_T5_weight": 136.0,
+          "located_direct_T4_T5_weight": 136.0
+        },
+        {
+          "body_id": 15893,
+          "direct_T4_T5_source_count": 83,
+          "located_direct_T4_T5_source_count": 83,
+          "direct_T4_T5_weight": 329.0,
+          "located_direct_T4_T5_weight": 329.0
+        },
+        {
+          "body_id": 16377,
+          "direct_T4_T5_source_count": 107,
+          "located_direct_T4_T5_source_count": 107,
+          "direct_T4_T5_weight": 365.0,
+          "located_direct_T4_T5_weight": 365.0
+        },
+        {
+          "body_id": 16768,
+          "direct_T4_T5_source_count": 115,
+          "located_direct_T4_T5_source_count": 115,
+          "direct_T4_T5_weight": 374.0,
+          "located_direct_T4_T5_weight": 374.0
+        },
+        {
+          "body_id": 17734,
+          "direct_T4_T5_source_count": 95,
+          "located_direct_T4_T5_source_count": 95,
+          "direct_T4_T5_weight": 282.0,
+          "located_direct_T4_T5_weight": 282.0
+        },
+        {
+          "body_id": 17857,
+          "direct_T4_T5_source_count": 85,
+          "located_direct_T4_T5_source_count": 85,
+          "direct_T4_T5_weight": 215.0,
+          "located_direct_T4_T5_weight": 215.0
+        },
+        {
+          "body_id": 18477,
+          "direct_T4_T5_source_count": 99,
+          "located_direct_T4_T5_source_count": 99,
+          "direct_T4_T5_weight": 294.0,
+          "located_direct_T4_T5_weight": 294.0
+        },
+        {
+          "body_id": 18506,
+          "direct_T4_T5_source_count": 117,
+          "located_direct_T4_T5_source_count": 117,
+          "direct_T4_T5_weight": 447.0,
+          "located_direct_T4_T5_weight": 447.0
+        },
+        {
+          "body_id": 19578,
+          "direct_T4_T5_source_count": 113,
+          "located_direct_T4_T5_source_count": 113,
+          "direct_T4_T5_weight": 364.0,
+          "located_direct_T4_T5_weight": 364.0
+        },
+        {
+          "body_id": 19855,
+          "direct_T4_T5_source_count": 90,
+          "located_direct_T4_T5_source_count": 90,
+          "direct_T4_T5_weight": 354.0,
+          "located_direct_T4_T5_weight": 354.0
+        },
+        {
+          "body_id": 20074,
+          "direct_T4_T5_source_count": 70,
+          "located_direct_T4_T5_source_count": 70,
+          "direct_T4_T5_weight": 211.0,
+          "located_direct_T4_T5_weight": 211.0
+        },
+        {
+          "body_id": 20292,
+          "direct_T4_T5_source_count": 126,
+          "located_direct_T4_T5_source_count": 126,
+          "direct_T4_T5_weight": 442.0,
+          "located_direct_T4_T5_weight": 442.0
+        },
+        {
+          "body_id": 20758,
+          "direct_T4_T5_source_count": 100,
+          "located_direct_T4_T5_source_count": 100,
+          "direct_T4_T5_weight": 350.0,
+          "located_direct_T4_T5_weight": 350.0
+        },
+        {
+          "body_id": 21003,
+          "direct_T4_T5_source_count": 103,
+          "located_direct_T4_T5_source_count": 103,
+          "direct_T4_T5_weight": 261.0,
+          "located_direct_T4_T5_weight": 261.0
+        },
+        {
+          "body_id": 21282,
+          "direct_T4_T5_source_count": 90,
+          "located_direct_T4_T5_source_count": 90,
+          "direct_T4_T5_weight": 275.0,
+          "located_direct_T4_T5_weight": 275.0
+        },
+        {
+          "body_id": 21684,
+          "direct_T4_T5_source_count": 128,
+          "located_direct_T4_T5_source_count": 128,
+          "direct_T4_T5_weight": 416.0,
+          "located_direct_T4_T5_weight": 416.0
+        },
+        {
+          "body_id": 21967,
+          "direct_T4_T5_source_count": 94,
+          "located_direct_T4_T5_source_count": 94,
+          "direct_T4_T5_weight": 280.0,
+          "located_direct_T4_T5_weight": 280.0
+        },
+        {
+          "body_id": 22260,
+          "direct_T4_T5_source_count": 63,
+          "located_direct_T4_T5_source_count": 63,
+          "direct_T4_T5_weight": 310.0,
+          "located_direct_T4_T5_weight": 310.0
+        },
+        {
+          "body_id": 22329,
+          "direct_T4_T5_source_count": 106,
+          "located_direct_T4_T5_source_count": 106,
+          "direct_T4_T5_weight": 338.0,
+          "located_direct_T4_T5_weight": 338.0
+        },
+        {
+          "body_id": 22867,
+          "direct_T4_T5_source_count": 80,
+          "located_direct_T4_T5_source_count": 80,
+          "direct_T4_T5_weight": 250.0,
+          "located_direct_T4_T5_weight": 250.0
+        },
+        {
+          "body_id": 24791,
+          "direct_T4_T5_source_count": 93,
+          "located_direct_T4_T5_source_count": 93,
+          "direct_T4_T5_weight": 366.0,
+          "located_direct_T4_T5_weight": 366.0
+        },
+        {
+          "body_id": 24794,
+          "direct_T4_T5_source_count": 119,
+          "located_direct_T4_T5_source_count": 119,
+          "direct_T4_T5_weight": 338.0,
+          "located_direct_T4_T5_weight": 338.0
+        },
+        {
+          "body_id": 24820,
+          "direct_T4_T5_source_count": 88,
+          "located_direct_T4_T5_source_count": 88,
+          "direct_T4_T5_weight": 365.0,
+          "located_direct_T4_T5_weight": 365.0
+        },
+        {
+          "body_id": 25031,
+          "direct_T4_T5_source_count": 120,
+          "located_direct_T4_T5_source_count": 120,
+          "direct_T4_T5_weight": 310.0,
+          "located_direct_T4_T5_weight": 310.0
+        },
+        {
+          "body_id": 25260,
+          "direct_T4_T5_source_count": 97,
+          "located_direct_T4_T5_source_count": 97,
+          "direct_T4_T5_weight": 335.0,
+          "located_direct_T4_T5_weight": 335.0
+        },
+        {
+          "body_id": 25435,
+          "direct_T4_T5_source_count": 101,
+          "located_direct_T4_T5_source_count": 101,
+          "direct_T4_T5_weight": 371.0,
+          "located_direct_T4_T5_weight": 371.0
+        },
+        {
+          "body_id": 25679,
+          "direct_T4_T5_source_count": 89,
+          "located_direct_T4_T5_source_count": 89,
+          "direct_T4_T5_weight": 293.0,
+          "located_direct_T4_T5_weight": 293.0
+        },
+        {
+          "body_id": 26656,
+          "direct_T4_T5_source_count": 88,
+          "located_direct_T4_T5_source_count": 88,
+          "direct_T4_T5_weight": 237.0,
+          "located_direct_T4_T5_weight": 237.0
+        },
+        {
+          "body_id": 28080,
+          "direct_T4_T5_source_count": 97,
+          "located_direct_T4_T5_source_count": 97,
+          "direct_T4_T5_weight": 353.0,
+          "located_direct_T4_T5_weight": 353.0
+        },
+        {
+          "body_id": 28239,
+          "direct_T4_T5_source_count": 91,
+          "located_direct_T4_T5_source_count": 91,
+          "direct_T4_T5_weight": 245.0,
+          "located_direct_T4_T5_weight": 245.0
+        },
+        {
+          "body_id": 28656,
+          "direct_T4_T5_source_count": 80,
+          "located_direct_T4_T5_source_count": 80,
+          "direct_T4_T5_weight": 208.0,
+          "located_direct_T4_T5_weight": 208.0
+        },
+        {
+          "body_id": 29383,
+          "direct_T4_T5_source_count": 108,
+          "located_direct_T4_T5_source_count": 108,
+          "direct_T4_T5_weight": 349.0,
+          "located_direct_T4_T5_weight": 349.0
+        },
+        {
+          "body_id": 29435,
+          "direct_T4_T5_source_count": 103,
+          "located_direct_T4_T5_source_count": 103,
+          "direct_T4_T5_weight": 274.0,
+          "located_direct_T4_T5_weight": 274.0
+        },
+        {
+          "body_id": 30286,
+          "direct_T4_T5_source_count": 69,
+          "located_direct_T4_T5_source_count": 69,
+          "direct_T4_T5_weight": 198.0,
+          "located_direct_T4_T5_weight": 198.0
+        },
+        {
+          "body_id": 30877,
+          "direct_T4_T5_source_count": 113,
+          "located_direct_T4_T5_source_count": 113,
+          "direct_T4_T5_weight": 305.0,
+          "located_direct_T4_T5_weight": 305.0
+        },
+        {
+          "body_id": 31661,
+          "direct_T4_T5_source_count": 85,
+          "located_direct_T4_T5_source_count": 85,
+          "direct_T4_T5_weight": 278.0,
+          "located_direct_T4_T5_weight": 278.0
+        },
+        {
+          "body_id": 32290,
+          "direct_T4_T5_source_count": 112,
+          "located_direct_T4_T5_source_count": 112,
+          "direct_T4_T5_weight": 310.0,
+          "located_direct_T4_T5_weight": 310.0
+        },
+        {
+          "body_id": 33599,
+          "direct_T4_T5_source_count": 64,
+          "located_direct_T4_T5_source_count": 64,
+          "direct_T4_T5_weight": 171.0,
+          "located_direct_T4_T5_weight": 171.0
+        },
+        {
+          "body_id": 33910,
+          "direct_T4_T5_source_count": 121,
+          "located_direct_T4_T5_source_count": 121,
+          "direct_T4_T5_weight": 316.0,
+          "located_direct_T4_T5_weight": 316.0
+        },
+        {
+          "body_id": 82816,
+          "direct_T4_T5_source_count": 120,
+          "located_direct_T4_T5_source_count": 120,
+          "direct_T4_T5_weight": 478.0,
+          "located_direct_T4_T5_weight": 478.0
+        },
+        {
+          "body_id": 115313,
+          "direct_T4_T5_source_count": 91,
+          "located_direct_T4_T5_source_count": 91,
+          "direct_T4_T5_weight": 321.0,
+          "located_direct_T4_T5_weight": 321.0
+        },
+        {
+          "body_id": 116613,
+          "direct_T4_T5_source_count": 94,
+          "located_direct_T4_T5_source_count": 94,
+          "direct_T4_T5_weight": 269.0,
+          "located_direct_T4_T5_weight": 269.0
+        },
+        {
+          "body_id": 117237,
+          "direct_T4_T5_source_count": 95,
+          "located_direct_T4_T5_source_count": 95,
+          "direct_T4_T5_weight": 321.0,
+          "located_direct_T4_T5_weight": 321.0
+        },
+        {
+          "body_id": 125927,
+          "direct_T4_T5_source_count": 94,
+          "located_direct_T4_T5_source_count": 94,
+          "direct_T4_T5_weight": 237.0,
+          "located_direct_T4_T5_weight": 237.0
+        },
+        {
+          "body_id": 512087,
+          "direct_T4_T5_source_count": 94,
+          "located_direct_T4_T5_source_count": 94,
+          "direct_T4_T5_weight": 267.0,
+          "located_direct_T4_T5_weight": 267.0
+        },
+        {
+          "body_id": 514191,
+          "direct_T4_T5_source_count": 139,
+          "located_direct_T4_T5_source_count": 139,
+          "direct_T4_T5_weight": 420.0,
+          "located_direct_T4_T5_weight": 420.0
+        },
+        {
+          "body_id": 514792,
+          "direct_T4_T5_source_count": 135,
+          "located_direct_T4_T5_source_count": 135,
+          "direct_T4_T5_weight": 415.0,
+          "located_direct_T4_T5_weight": 415.0
+        },
+        {
+          "body_id": 514846,
+          "direct_T4_T5_source_count": 135,
+          "located_direct_T4_T5_source_count": 135,
+          "direct_T4_T5_weight": 475.0,
+          "located_direct_T4_T5_weight": 475.0
+        },
+        {
+          "body_id": 517600,
+          "direct_T4_T5_source_count": 99,
+          "located_direct_T4_T5_source_count": 99,
+          "direct_T4_T5_weight": 329.0,
+          "located_direct_T4_T5_weight": 329.0
+        },
+        {
+          "body_id": 518794,
+          "direct_T4_T5_source_count": 72,
+          "located_direct_T4_T5_source_count": 72,
+          "direct_T4_T5_weight": 291.0,
+          "located_direct_T4_T5_weight": 291.0
+        },
+        {
+          "body_id": 519153,
+          "direct_T4_T5_source_count": 120,
+          "located_direct_T4_T5_source_count": 120,
+          "direct_T4_T5_weight": 389.0,
+          "located_direct_T4_T5_weight": 389.0
+        },
+        {
+          "body_id": 520078,
+          "direct_T4_T5_source_count": 103,
+          "located_direct_T4_T5_source_count": 103,
+          "direct_T4_T5_weight": 274.0,
+          "located_direct_T4_T5_weight": 274.0
+        },
+        {
+          "body_id": 526999,
+          "direct_T4_T5_source_count": 127,
+          "located_direct_T4_T5_source_count": 127,
+          "direct_T4_T5_weight": 443.0,
+          "located_direct_T4_T5_weight": 443.0
+        },
+        {
+          "body_id": 534743,
+          "direct_T4_T5_source_count": 64,
+          "located_direct_T4_T5_source_count": 64,
+          "direct_T4_T5_weight": 176.0,
+          "located_direct_T4_T5_weight": 176.0
+        },
+        {
+          "body_id": 536395,
+          "direct_T4_T5_source_count": 113,
+          "located_direct_T4_T5_source_count": 113,
+          "direct_T4_T5_weight": 337.0,
+          "located_direct_T4_T5_weight": 337.0
+        },
+        {
+          "body_id": 555734,
+          "direct_T4_T5_source_count": 119,
+          "located_direct_T4_T5_source_count": 119,
+          "direct_T4_T5_weight": 387.0,
+          "located_direct_T4_T5_weight": 387.0
+        }
+      ]
+    },
+    "R": {
+      "target_count": 66,
+      "targets_with_direct_T4_T5_count": 66,
+      "targets_with_direct_T4_T5_fraction": 1.0,
+      "targets_with_all_direct_T4_T5_located_count": 66,
+      "targets_with_all_direct_T4_T5_located_fraction": 1.0,
+      "direct_T4_T5_source_count_median": 121.0,
+      "located_direct_T4_T5_weight_fraction": 1.0,
+      "target_records": [
+        {
+          "body_id": 18710,
+          "direct_T4_T5_source_count": 77,
+          "located_direct_T4_T5_source_count": 77,
+          "direct_T4_T5_weight": 354.0,
+          "located_direct_T4_T5_weight": 354.0
+        },
+        {
+          "body_id": 18742,
+          "direct_T4_T5_source_count": 186,
+          "located_direct_T4_T5_source_count": 186,
+          "direct_T4_T5_weight": 894.0,
+          "located_direct_T4_T5_weight": 894.0
+        },
+        {
+          "body_id": 19114,
+          "direct_T4_T5_source_count": 159,
+          "located_direct_T4_T5_source_count": 159,
+          "direct_T4_T5_weight": 766.0,
+          "located_direct_T4_T5_weight": 766.0
+        },
+        {
+          "body_id": 19210,
+          "direct_T4_T5_source_count": 120,
+          "located_direct_T4_T5_source_count": 120,
+          "direct_T4_T5_weight": 430.0,
+          "located_direct_T4_T5_weight": 430.0
+        },
+        {
+          "body_id": 19403,
+          "direct_T4_T5_source_count": 144,
+          "located_direct_T4_T5_source_count": 144,
+          "direct_T4_T5_weight": 583.0,
+          "located_direct_T4_T5_weight": 583.0
+        },
+        {
+          "body_id": 19653,
+          "direct_T4_T5_source_count": 130,
+          "located_direct_T4_T5_source_count": 130,
+          "direct_T4_T5_weight": 483.0,
+          "located_direct_T4_T5_weight": 483.0
+        },
+        {
+          "body_id": 19685,
+          "direct_T4_T5_source_count": 98,
+          "located_direct_T4_T5_source_count": 98,
+          "direct_T4_T5_weight": 603.0,
+          "located_direct_T4_T5_weight": 603.0
+        },
+        {
+          "body_id": 20031,
+          "direct_T4_T5_source_count": 121,
+          "located_direct_T4_T5_source_count": 121,
+          "direct_T4_T5_weight": 458.0,
+          "located_direct_T4_T5_weight": 458.0
+        },
+        {
+          "body_id": 20036,
+          "direct_T4_T5_source_count": 201,
+          "located_direct_T4_T5_source_count": 201,
+          "direct_T4_T5_weight": 762.0,
+          "located_direct_T4_T5_weight": 762.0
+        },
+        {
+          "body_id": 20083,
+          "direct_T4_T5_source_count": 159,
+          "located_direct_T4_T5_source_count": 159,
+          "direct_T4_T5_weight": 669.0,
+          "located_direct_T4_T5_weight": 669.0
+        },
+        {
+          "body_id": 20508,
+          "direct_T4_T5_source_count": 94,
+          "located_direct_T4_T5_source_count": 94,
+          "direct_T4_T5_weight": 274.0,
+          "located_direct_T4_T5_weight": 274.0
+        },
+        {
+          "body_id": 20783,
+          "direct_T4_T5_source_count": 122,
+          "located_direct_T4_T5_source_count": 122,
+          "direct_T4_T5_weight": 374.0,
+          "located_direct_T4_T5_weight": 374.0
+        },
+        {
+          "body_id": 20865,
+          "direct_T4_T5_source_count": 96,
+          "located_direct_T4_T5_source_count": 96,
+          "direct_T4_T5_weight": 295.0,
+          "located_direct_T4_T5_weight": 295.0
+        },
+        {
+          "body_id": 21023,
+          "direct_T4_T5_source_count": 174,
+          "located_direct_T4_T5_source_count": 174,
+          "direct_T4_T5_weight": 619.0,
+          "located_direct_T4_T5_weight": 619.0
+        },
+        {
+          "body_id": 21074,
+          "direct_T4_T5_source_count": 205,
+          "located_direct_T4_T5_source_count": 205,
+          "direct_T4_T5_weight": 817.0,
+          "located_direct_T4_T5_weight": 817.0
+        },
+        {
+          "body_id": 21180,
+          "direct_T4_T5_source_count": 171,
+          "located_direct_T4_T5_source_count": 171,
+          "direct_T4_T5_weight": 762.0,
+          "located_direct_T4_T5_weight": 762.0
+        },
+        {
+          "body_id": 21220,
+          "direct_T4_T5_source_count": 87,
+          "located_direct_T4_T5_source_count": 87,
+          "direct_T4_T5_weight": 447.0,
+          "located_direct_T4_T5_weight": 447.0
+        },
+        {
+          "body_id": 21240,
+          "direct_T4_T5_source_count": 121,
+          "located_direct_T4_T5_source_count": 121,
+          "direct_T4_T5_weight": 559.0,
+          "located_direct_T4_T5_weight": 559.0
+        },
+        {
+          "body_id": 21540,
+          "direct_T4_T5_source_count": 121,
+          "located_direct_T4_T5_source_count": 121,
+          "direct_T4_T5_weight": 392.0,
+          "located_direct_T4_T5_weight": 392.0
+        },
+        {
+          "body_id": 21677,
+          "direct_T4_T5_source_count": 125,
+          "located_direct_T4_T5_source_count": 125,
+          "direct_T4_T5_weight": 537.0,
+          "located_direct_T4_T5_weight": 537.0
+        },
+        {
+          "body_id": 21722,
+          "direct_T4_T5_source_count": 146,
+          "located_direct_T4_T5_source_count": 146,
+          "direct_T4_T5_weight": 563.0,
+          "located_direct_T4_T5_weight": 563.0
+        },
+        {
+          "body_id": 21850,
+          "direct_T4_T5_source_count": 100,
+          "located_direct_T4_T5_source_count": 100,
+          "direct_T4_T5_weight": 321.0,
+          "located_direct_T4_T5_weight": 321.0
+        },
+        {
+          "body_id": 22274,
+          "direct_T4_T5_source_count": 108,
+          "located_direct_T4_T5_source_count": 108,
+          "direct_T4_T5_weight": 538.0,
+          "located_direct_T4_T5_weight": 538.0
+        },
+        {
+          "body_id": 22324,
+          "direct_T4_T5_source_count": 203,
+          "located_direct_T4_T5_source_count": 203,
+          "direct_T4_T5_weight": 870.0,
+          "located_direct_T4_T5_weight": 870.0
+        },
+        {
+          "body_id": 22447,
+          "direct_T4_T5_source_count": 115,
+          "located_direct_T4_T5_source_count": 115,
+          "direct_T4_T5_weight": 386.0,
+          "located_direct_T4_T5_weight": 386.0
+        },
+        {
+          "body_id": 22449,
+          "direct_T4_T5_source_count": 84,
+          "located_direct_T4_T5_source_count": 84,
+          "direct_T4_T5_weight": 504.0,
+          "located_direct_T4_T5_weight": 504.0
+        },
+        {
+          "body_id": 22790,
+          "direct_T4_T5_source_count": 66,
+          "located_direct_T4_T5_source_count": 66,
+          "direct_T4_T5_weight": 178.0,
+          "located_direct_T4_T5_weight": 178.0
+        },
+        {
+          "body_id": 22911,
+          "direct_T4_T5_source_count": 80,
+          "located_direct_T4_T5_source_count": 80,
+          "direct_T4_T5_weight": 283.0,
+          "located_direct_T4_T5_weight": 283.0
+        },
+        {
+          "body_id": 23030,
+          "direct_T4_T5_source_count": 145,
+          "located_direct_T4_T5_source_count": 145,
+          "direct_T4_T5_weight": 446.0,
+          "located_direct_T4_T5_weight": 446.0
+        },
+        {
+          "body_id": 23116,
+          "direct_T4_T5_source_count": 116,
+          "located_direct_T4_T5_source_count": 116,
+          "direct_T4_T5_weight": 387.0,
+          "located_direct_T4_T5_weight": 387.0
+        },
+        {
+          "body_id": 23333,
+          "direct_T4_T5_source_count": 180,
+          "located_direct_T4_T5_source_count": 180,
+          "direct_T4_T5_weight": 673.0,
+          "located_direct_T4_T5_weight": 673.0
+        },
+        {
+          "body_id": 23751,
+          "direct_T4_T5_source_count": 129,
+          "located_direct_T4_T5_source_count": 129,
+          "direct_T4_T5_weight": 350.0,
+          "located_direct_T4_T5_weight": 350.0
+        },
+        {
+          "body_id": 23906,
+          "direct_T4_T5_source_count": 115,
+          "located_direct_T4_T5_source_count": 115,
+          "direct_T4_T5_weight": 349.0,
+          "located_direct_T4_T5_weight": 349.0
+        },
+        {
+          "body_id": 23938,
+          "direct_T4_T5_source_count": 83,
+          "located_direct_T4_T5_source_count": 83,
+          "direct_T4_T5_weight": 443.0,
+          "located_direct_T4_T5_weight": 443.0
+        },
+        {
+          "body_id": 23941,
+          "direct_T4_T5_source_count": 77,
+          "located_direct_T4_T5_source_count": 77,
+          "direct_T4_T5_weight": 355.0,
+          "located_direct_T4_T5_weight": 355.0
+        },
+        {
+          "body_id": 24177,
+          "direct_T4_T5_source_count": 111,
+          "located_direct_T4_T5_source_count": 111,
+          "direct_T4_T5_weight": 534.0,
+          "located_direct_T4_T5_weight": 534.0
+        },
+        {
+          "body_id": 24222,
+          "direct_T4_T5_source_count": 129,
+          "located_direct_T4_T5_source_count": 129,
+          "direct_T4_T5_weight": 697.0,
+          "located_direct_T4_T5_weight": 697.0
+        },
+        {
+          "body_id": 24508,
+          "direct_T4_T5_source_count": 148,
+          "located_direct_T4_T5_source_count": 148,
+          "direct_T4_T5_weight": 504.0,
+          "located_direct_T4_T5_weight": 504.0
+        },
+        {
+          "body_id": 24802,
+          "direct_T4_T5_source_count": 128,
+          "located_direct_T4_T5_source_count": 128,
+          "direct_T4_T5_weight": 447.0,
+          "located_direct_T4_T5_weight": 447.0
+        },
+        {
+          "body_id": 24920,
+          "direct_T4_T5_source_count": 91,
+          "located_direct_T4_T5_source_count": 91,
+          "direct_T4_T5_weight": 271.0,
+          "located_direct_T4_T5_weight": 271.0
+        },
+        {
+          "body_id": 25169,
+          "direct_T4_T5_source_count": 125,
+          "located_direct_T4_T5_source_count": 125,
+          "direct_T4_T5_weight": 608.0,
+          "located_direct_T4_T5_weight": 608.0
+        },
+        {
+          "body_id": 25178,
+          "direct_T4_T5_source_count": 109,
+          "located_direct_T4_T5_source_count": 109,
+          "direct_T4_T5_weight": 357.0,
+          "located_direct_T4_T5_weight": 357.0
+        },
+        {
+          "body_id": 25386,
+          "direct_T4_T5_source_count": 84,
+          "located_direct_T4_T5_source_count": 84,
+          "direct_T4_T5_weight": 427.0,
+          "located_direct_T4_T5_weight": 427.0
+        },
+        {
+          "body_id": 25624,
+          "direct_T4_T5_source_count": 151,
+          "located_direct_T4_T5_source_count": 151,
+          "direct_T4_T5_weight": 632.0,
+          "located_direct_T4_T5_weight": 632.0
+        },
+        {
+          "body_id": 25870,
+          "direct_T4_T5_source_count": 160,
+          "located_direct_T4_T5_source_count": 160,
+          "direct_T4_T5_weight": 535.0,
+          "located_direct_T4_T5_weight": 535.0
+        },
+        {
+          "body_id": 26033,
+          "direct_T4_T5_source_count": 143,
+          "located_direct_T4_T5_source_count": 143,
+          "direct_T4_T5_weight": 474.0,
+          "located_direct_T4_T5_weight": 474.0
+        },
+        {
+          "body_id": 26333,
+          "direct_T4_T5_source_count": 104,
+          "located_direct_T4_T5_source_count": 104,
+          "direct_T4_T5_weight": 283.0,
+          "located_direct_T4_T5_weight": 283.0
+        },
+        {
+          "body_id": 26365,
+          "direct_T4_T5_source_count": 109,
+          "located_direct_T4_T5_source_count": 109,
+          "direct_T4_T5_weight": 465.0,
+          "located_direct_T4_T5_weight": 465.0
+        },
+        {
+          "body_id": 26880,
+          "direct_T4_T5_source_count": 105,
+          "located_direct_T4_T5_source_count": 105,
+          "direct_T4_T5_weight": 541.0,
+          "located_direct_T4_T5_weight": 541.0
+        },
+        {
+          "body_id": 28033,
+          "direct_T4_T5_source_count": 120,
+          "located_direct_T4_T5_source_count": 120,
+          "direct_T4_T5_weight": 420.0,
+          "located_direct_T4_T5_weight": 420.0
+        },
+        {
+          "body_id": 28249,
+          "direct_T4_T5_source_count": 152,
+          "located_direct_T4_T5_source_count": 152,
+          "direct_T4_T5_weight": 600.0,
+          "located_direct_T4_T5_weight": 600.0
+        },
+        {
+          "body_id": 28586,
+          "direct_T4_T5_source_count": 105,
+          "located_direct_T4_T5_source_count": 105,
+          "direct_T4_T5_weight": 513.0,
+          "located_direct_T4_T5_weight": 513.0
+        },
+        {
+          "body_id": 28723,
+          "direct_T4_T5_source_count": 147,
+          "located_direct_T4_T5_source_count": 147,
+          "direct_T4_T5_weight": 567.0,
+          "located_direct_T4_T5_weight": 567.0
+        },
+        {
+          "body_id": 29529,
+          "direct_T4_T5_source_count": 128,
+          "located_direct_T4_T5_source_count": 128,
+          "direct_T4_T5_weight": 505.0,
+          "located_direct_T4_T5_weight": 505.0
+        },
+        {
+          "body_id": 29937,
+          "direct_T4_T5_source_count": 115,
+          "located_direct_T4_T5_source_count": 115,
+          "direct_T4_T5_weight": 400.0,
+          "located_direct_T4_T5_weight": 400.0
+        },
+        {
+          "body_id": 30814,
+          "direct_T4_T5_source_count": 139,
+          "located_direct_T4_T5_source_count": 139,
+          "direct_T4_T5_weight": 462.0,
+          "located_direct_T4_T5_weight": 462.0
+        },
+        {
+          "body_id": 31132,
+          "direct_T4_T5_source_count": 124,
+          "located_direct_T4_T5_source_count": 124,
+          "direct_T4_T5_weight": 446.0,
+          "located_direct_T4_T5_weight": 446.0
+        },
+        {
+          "body_id": 31592,
+          "direct_T4_T5_source_count": 151,
+          "located_direct_T4_T5_source_count": 151,
+          "direct_T4_T5_weight": 449.0,
+          "located_direct_T4_T5_weight": 449.0
+        },
+        {
+          "body_id": 32343,
+          "direct_T4_T5_source_count": 104,
+          "located_direct_T4_T5_source_count": 104,
+          "direct_T4_T5_weight": 527.0,
+          "located_direct_T4_T5_weight": 527.0
+        },
+        {
+          "body_id": 33897,
+          "direct_T4_T5_source_count": 91,
+          "located_direct_T4_T5_source_count": 91,
+          "direct_T4_T5_weight": 326.0,
+          "located_direct_T4_T5_weight": 326.0
+        },
+        {
+          "body_id": 36377,
+          "direct_T4_T5_source_count": 149,
+          "located_direct_T4_T5_source_count": 149,
+          "direct_T4_T5_weight": 453.0,
+          "located_direct_T4_T5_weight": 453.0
+        },
+        {
+          "body_id": 37441,
+          "direct_T4_T5_source_count": 145,
+          "located_direct_T4_T5_source_count": 145,
+          "direct_T4_T5_weight": 479.0,
+          "located_direct_T4_T5_weight": 479.0
+        },
+        {
+          "body_id": 39151,
+          "direct_T4_T5_source_count": 71,
+          "located_direct_T4_T5_source_count": 71,
+          "direct_T4_T5_weight": 182.0,
+          "located_direct_T4_T5_weight": 182.0
+        },
+        {
+          "body_id": 39206,
+          "direct_T4_T5_source_count": 101,
+          "located_direct_T4_T5_source_count": 101,
+          "direct_T4_T5_weight": 401.0,
+          "located_direct_T4_T5_weight": 401.0
+        },
+        {
+          "body_id": 42517,
+          "direct_T4_T5_source_count": 107,
+          "located_direct_T4_T5_source_count": 107,
+          "direct_T4_T5_weight": 427.0,
+          "located_direct_T4_T5_weight": 427.0
+        },
+        {
+          "body_id": 107939,
+          "direct_T4_T5_source_count": 122,
+          "located_direct_T4_T5_source_count": 122,
+          "direct_T4_T5_weight": 524.0,
+          "located_direct_T4_T5_weight": 524.0
+        }
+      ]
+    }
+  },
+  "stimulus_manifest": [
+    {
+      "identity": "LPLC-T01:L:near_approach",
+      "frame_sha256": "c7a67f83ef47d88802c18eb791f69ec3955ee60fc7da8539e1fcdcf1fe6e3905"
+    },
+    {
+      "identity": "LPLC-T01:L:matched_miss",
+      "frame_sha256": "e4ef36f697cfd6d773886d183197bf6e42136fcedbe861f293028dc5def79366"
+    },
+    {
+      "identity": "LPLC-T01:L:near_recede",
+      "frame_sha256": "8449342d5bd09bb60ddf6031814893b157dfd1386de0fbdbdd82223cd3d61e8e"
+    },
+    {
+      "identity": "LPLC-T01:L:near_stationary_background",
+      "frame_sha256": "7dc732a5c79567bda61d2fb5237357c1aeddea668a102fa8a04fbbe8091eb5c1"
+    },
+    {
+      "identity": "LPLC-T01:L:near_rotating_background",
+      "frame_sha256": "935208d6977539e6744e85bd0345bbb92d335272c8a55f14f184f944d04e5816"
+    },
+    {
+      "identity": "LPLC-T01:R:near_approach",
+      "frame_sha256": "e5bbf9967e44ee78892191d97392d831ca2ef76ffbeacdedf27fb8330940e1f6"
+    },
+    {
+      "identity": "LPLC-T01:R:matched_miss",
+      "frame_sha256": "82203078b176b9c2ab2f591eec75de7b21481f2e5d355a7b9ac424c373b58214"
+    },
+    {
+      "identity": "LPLC-T01:R:near_recede",
+      "frame_sha256": "44581291176b3b1d4babf4c70fd684345b8789acac40f8cffc243b73b3252ae3"
+    },
+    {
+      "identity": "LPLC-T01:R:near_stationary_background",
+      "frame_sha256": "dfef70b991c3763b168dcbcc31086f6ec9187d798b96b00cf9f5b10bf11be023"
+    },
+    {
+      "identity": "LPLC-T01:R:near_rotating_background",
+      "frame_sha256": "d2f6ffccae2e040f95a6dff7357c3cd2a118d7d1ecd81ec20e6ed9c411cde7cc"
+    }
+  ],
+  "per_side": {
+    "L": {
+      "near_vs_miss": {
+        "cell_count": 68,
+        "valid_cell_count": 68,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 7.018516564707197e-05,
+        "positive_cell_fraction": 0.5,
+        "passed": false
+      },
+      "approach_vs_recede": {
+        "cell_count": 68,
+        "valid_cell_count": 68,
+        "valid_cell_fraction": 1.0,
+        "median_signed_contrast": 0.025804406256284253,
+        "positive_cell_fraction": 0.7352941176470589,
+        "passed": false
+      },
+      "stationary_vs_rotating_background": {
+        "cell_count": 68,
+        "valid_cell_count": 58,
+        "valid_cell_fraction": 0.8529411764705882,
+        "median_signed_contrast": -0.49254739572094564,
+        "positive_cell_fraction": 0.1206896551724138,
+        "passed": false
+      }
+    },
+    "R": {
+      "near_vs_miss": {
+        "cell_count": 66,
+        "valid_cell_count": 64,
+        "valid_cell_fraction": 0.9696969696969697,
+        "median_signed_contrast": 0.0019825847893363384,
+        "positive_cell_fraction": 0.640625,
+        "passed": false
+      },
+      "approach_vs_recede": {
+        "cell_count": 66,
+        "valid_cell_count": 64,
+        "valid_cell_fraction": 0.9696969696969697,
+        "median_signed_contrast": 0.02310193625897068,
+        "positive_cell_fraction": 0.703125,
+        "passed": false
+      },
+      "stationary_vs_rotating_background": {
+        "cell_count": 66,
+        "valid_cell_count": 54,
+        "valid_cell_fraction": 0.8181818181818182,
+        "median_signed_contrast": -0.4881505065841423,
+        "positive_cell_fraction": 0.2037037037037037,
+        "passed": false
+      }
+    }
+  },
+  "mirror": {
+    "near_vs_miss": {
+      "absolute_median_contrast_error": 0.0019123996236892664,
+      "passed": true
+    },
+    "approach_vs_recede": {
+      "absolute_median_contrast_error": 0.002702469997313571,
+      "passed": true
+    },
+    "stationary_vs_rotating_background": {
+      "absolute_median_contrast_error": 0.004396889136803361,
+      "passed": true
+    }
+  },
+  "stimulus_geometry_gate_passed": true,
+  "response_gate_passed": false,
+  "mirror_gate_passed": true,
+  "LPLC1_near_collision_precheck_passed": false,
+  "expand_to_three_conditions": false,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_precheck": true,
+    "LPLC1_specific_stimuli": true,
+    "shared_generic_looming_rule": false,
+    "pixel_sizes_not_claimed_as_visual_degrees": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "three_condition_evaluation_requires_precheck_pass": true
+  }
+}
