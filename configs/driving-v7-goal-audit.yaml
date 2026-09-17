@@ -96,3 +96,10 @@ required_stage_order:
   - mushroom_body_value_learning
   - topology_controls
   - held_out_ood_release
+interface_disclosure:
+  status_endpoint: apps/api/src/fly_emotion_api/main.py
+  frontend_panel: apps/web/src/components/DrivingPanel.tsx
+  frontend_types: apps/web/src/types.ts
+  frontend_api_client: apps/web/src/api.ts
+  frontend_entrypoint: apps/web/src/App.tsx
+  contribution_layers: [upper_planner, fly_local_core, engineering_executor]

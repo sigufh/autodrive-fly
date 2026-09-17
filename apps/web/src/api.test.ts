@@ -1,5 +1,5 @@
 import { afterEach, expect, test, vi } from 'vitest'
-import { streamDriving } from './api'
+import { fetchV7Status, streamDriving } from './api'
 import type { DrivingState } from './types'
 import { stateColor, topologyCurve } from './components/CnsViewer'
 
@@ -27,6 +27,13 @@ test('execution mode sends no learning or exploration by default contract', asyn
   }))
   await streamDriving(false, false, true, 'neural', () => {})
   expect(JSON.parse(body)).toMatchObject({ learning: false, explore: false, safety_constraints: true, control_mode: 'neural' })
+})
+test('fetches the read-only v7 audit status', async () => {
+  vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ version: 'v7-experimental', deployment_enabled: false }))))
+  const status = await fetchV7Status()
+  expect(status.version).toBe('v7-experimental')
+  expect(status.deployment_enabled).toBe(false)
+  expect(fetch).toHaveBeenCalledWith('/api/v7/status')
 })
 test('colors reflect sign and magnitude', () => {
   expect(stateColor(1, 1)).not.toEqual(stateColor(-1, 1))

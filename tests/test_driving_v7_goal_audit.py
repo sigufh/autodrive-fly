@@ -19,6 +19,16 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
     assert report["summary"]["not_authorized_items"] == [5, 7]
     assert report["summary"]["objective_complete"] is False
     assert report["summary"]["current_stage"] == "controlled_vision"
+    disclosure = report["checks"][8]["observations"]
+    assert disclosure["three_way_contribution_report_available"] is True
+    assert disclosure["contribution_layers"] == [
+        "upper_planner",
+        "fly_local_core",
+        "engineering_executor",
+    ]
+    assert disclosure["v7_status_is_offline_only"] is True
+    checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
+    assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
 
 
 def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:

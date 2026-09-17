@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import time
@@ -69,6 +70,61 @@ app.add_middleware(
 )
 
 
+def _verified_v7_status(root: Path) -> dict:
+    path = root / "artifacts/v7-goal-audit.json"
+    if not path.exists():
+        raise HTTPException(status_code=503, detail="Build the v7 goal audit before opening status")
+    report = json.loads(path.read_text(encoding="utf-8"))
+    for relative, expected in report["protocol"]["dependencies_sha256"].items():
+        dependency = root / relative
+        digest = (
+            hashlib.sha256(dependency.read_bytes()).hexdigest()
+            if dependency.exists()
+            else None
+        )
+        if digest != expected:
+            raise HTTPException(status_code=503, detail=f"Stale v7 audit dependency: {relative}")
+    checks = {item["item"]: item for item in report["checks"]}
+    visual = checks[1]["observations"]
+    return {
+        "version": "v7-experimental",
+        "source": "hash-verified-offline-goal-audit",
+        "current_stage": report["summary"]["current_stage"],
+        "objective_complete": report["summary"]["objective_complete"],
+        "deployment_enabled": checks[0]["observations"]["v7_deployment_enabled"],
+        "default_runtime_changed": checks[0]["observations"]["default_runtime_changed"],
+        "gates": {
+            "T4_T5_direction_and_ON_OFF": visual["controlled_response_gates_pass"],
+            "LPLC1_near_collision": visual["LPLC1_near_collision_precheck_passed"],
+            "LPLC2_radial_opponency": visual["LPLC2_radial_opponency_gates_passed"],
+            "LC4_angular_speed": visual["LC4_position_speed_precheck_passed"],
+            "EPG_PEN_PEG_heading": checks[2]["observations"][
+                "EPG_PEN_PEG_heading_assays_passed"
+            ],
+            "PFL3_DNa_transparent_mapping": checks[3]["observations"][
+                "readout_action_equivalence"
+            ],
+            "causal_visual_navigation": checks[4]["observations"]["stage1_pass"],
+            "external_final": checks[7]["observations"]["external_final_evaluated"],
+        },
+        "contributions": {
+            "upper_planner": {
+                "status": "paused",
+                "active_in_default_runtime": False,
+            },
+            "fly_local_core": {
+                "status": "component_only_not_release_authorized",
+                "active_v7_in_default_runtime": False,
+            },
+            "engineering_executor": {
+                "status": "transparent_fixed_mapping_component_passed",
+                "v7_deployment_enabled": False,
+            },
+        },
+        "audit_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+    }
+
+
 @app.get("/api/health")
 def health():
     checkpoint = ROOT / "artifacts/checkpoints/driving-policy.npz"
@@ -102,6 +158,11 @@ def health():
         ),
         "neural_policy_checkpoint_version": neural_checkpoint_version,
     }
+
+
+@app.get("/api/v7/status")
+def v7_status():
+    return _verified_v7_status(ROOT)
 
 
 def asset(name: Literal["overview", "pathways"]):

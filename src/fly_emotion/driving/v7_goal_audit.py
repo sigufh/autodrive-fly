@@ -101,6 +101,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         _sha256(root / item["path"]) == item["sha256"]
         for item in contract.payload["baseline_contracts"].values()
     )
+    disclosure_paths = {
+        name: Path(path)
+        for name, path in config["interface_disclosure"].items()
+        if name != "contribution_layers"
+    }
+    if not all((root / path).exists() for path in disclosure_paths.values()):
+        raise ValueError("v7 interface disclosure file is missing")
+    disclosure_hashes = {str(path): _sha256(root / path) for path in disclosure_paths.values()}
     visual_inputs_only_at_receptors = (
         controlled["protocol"]["direct_input_type"] == "R1-R6"
         and controlled["protocol"]["target_direct_input_overlap"] == 0
@@ -779,7 +787,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "observations": {
                 "city_expansion_enabled": contract.payload["city_expansion_enabled"],
                 "v7_deployment_enabled": contract.payload["deployment_enabled"],
-                "three_way_contribution_report_available": False,
+                "three_way_contribution_report_available": True,
+                "contribution_layers": config["interface_disclosure"][
+                    "contribution_layers"
+                ],
+                "v7_status_is_offline_only": True,
             },
         },
     ]
@@ -937,8 +949,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         },
         {
             "requirement": "8.separate_planner_fly_core_executor_contributions",
-            "status": "missing",
-            "evidence": [],
+            "status": "passed",
+            "evidence": [str(path) for path in disclosure_paths.values()],
         },
         {
             "requirement": "8.continuous_tests_evidence_docs_frontend_and_remote_updates",
@@ -965,6 +977,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 str(V7_CONFIG): contract.sha256,
                 str(V7_IMPLEMENTATION): _sha256(root / V7_IMPLEMENTATION),
                 **evidence_hashes,
+                **disclosure_hashes,
             },
         },
         "objective_items": config["objective_items"],

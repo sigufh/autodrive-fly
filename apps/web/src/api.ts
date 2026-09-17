@@ -1,4 +1,4 @@
-import type { CnsOverview, DrivingEvent, DrivingState, PathwayOverview, SkeletonResponse } from './types'
+import type { CnsOverview, DrivingEvent, DrivingState, PathwayOverview, SkeletonResponse, V7Status } from './types'
 
 async function checked<T>(response: Response): Promise<T> {
   if (!response.ok) throw new Error(`${response.status}: ${await response.text()}`)
@@ -8,6 +8,7 @@ export function fetchSkeleton(bodyId: number) { return fetch(`/api/skeleton/${bo
 export function fetchOverview() { return fetch('/api/connectome/overview').then(checked<CnsOverview>) }
 export function fetchPathways() { return fetch('/api/connectome/pathways').then(checked<PathwayOverview>) }
 export function fetchDrivingState() { return fetch('/api/driving/state').then(checked<DrivingState>) }
+export function fetchV7Status() { return fetch('/api/v7/status').then(checked<V7Status>) }
 export function resetDriving(seed: number, keepLearning: boolean, scenario: 'highway' | 'city' = 'highway', controlMode: 'assisted' | 'neural' = 'assisted') {
   return fetch('/api/driving/reset', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seed, keep_learning: keepLearning, scenario, control_mode: controlMode }) }).then(checked<DrivingState>)
 }

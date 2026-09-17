@@ -24,6 +24,53 @@ def test_health_does_not_mark_obsolete_checkpoint_ready(tmp_path, monkeypatch) -
     assert response.json()["required_policy_version"] == 5
 
 
+def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
+    response = TestClient(app).get("/api/v7/status")
+    assert response.status_code == 200
+    status = response.json()
+    assert status["version"] == "v7-experimental"
+    assert status["source"] == "hash-verified-offline-goal-audit"
+    assert status["current_stage"] == "controlled_vision"
+    assert status["objective_complete"] is False
+    assert status["deployment_enabled"] is False
+    assert status["default_runtime_changed"] is False
+    assert status["gates"]["T4_T5_direction_and_ON_OFF"] is False
+    assert status["gates"]["LPLC1_near_collision"] is False
+    assert status["gates"]["LPLC2_radial_opponency"] is False
+    assert status["gates"]["LC4_angular_speed"] is False
+    assert status["gates"]["EPG_PEN_PEG_heading"] is True
+    assert status["gates"]["PFL3_DNa_transparent_mapping"] is True
+    assert status["contributions"]["upper_planner"]["status"] == "paused"
+    assert status["contributions"]["fly_local_core"][
+        "active_v7_in_default_runtime"
+    ] is False
+
+
+def test_v7_status_rejects_stale_evidence(tmp_path, monkeypatch) -> None:
+    import hashlib
+    import json
+
+    monkeypatch.setattr(api_module, "ROOT", tmp_path)
+    evidence = tmp_path / "evidence.json"
+    evidence.write_text("{}")
+    report = {
+        "protocol": {
+            "dependencies_sha256": {
+                "evidence.json": hashlib.sha256(evidence.read_bytes()).hexdigest()
+            }
+        },
+        "checks": [],
+        "summary": {},
+    }
+    target = tmp_path / "artifacts/v7-goal-audit.json"
+    target.parent.mkdir(parents=True)
+    target.write_text(json.dumps(report))
+    evidence.write_text("stale")
+    response = TestClient(app).get("/api/v7/status")
+    assert response.status_code == 503
+    assert response.json()["detail"] == "Stale v7 audit dependency: evidence.json"
+
+
 def test_real_cached_skeleton_endpoint() -> None:
     response = TestClient(app).get("/api/skeleton/10001?max_edges=20000")
     assert response.status_code == 200

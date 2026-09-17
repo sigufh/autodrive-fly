@@ -1,19 +1,32 @@
-import { render, screen } from '@testing-library/react'
-import { expect, test, vi } from 'vitest'
+import { cleanup, render, screen, within } from '@testing-library/react'
+import { afterEach, expect, test, vi } from 'vitest'
 import App from './App'
+import { fetchV7Status } from './api'
 
 vi.mock('./api', () => ({
   fetchOverview: vi.fn(() => new Promise(() => undefined)),
   fetchPathways: vi.fn(() => new Promise(() => undefined)),
   fetchSkeleton: vi.fn(() => new Promise(() => undefined)),
   fetchDrivingState: vi.fn(() => new Promise(() => undefined)),
+  fetchV7Status: vi.fn(() => new Promise(() => undefined)),
   resetDriving: vi.fn(), stepDriving: vi.fn(), streamDriving: vi.fn(),
 }))
+
+afterEach(() => {
+  cleanup()
+  vi.clearAllMocks()
+})
 
 test('renders connectome and visual driving workspaces', () => {
   render(<App />)
   expect(screen.getByLabelText('MaleCNS 三维神经元')).toBeInTheDocument()
   expect(screen.getByLabelText('果蝇视觉驾驶')).toBeInTheDocument()
+  expect(screen.getByLabelText('实时因果链')).toBeInTheDocument()
+  expect(screen.getByLabelText('v7 离线验证状态')).toBeInTheDocument()
+  expect(screen.getByText(/当前运行链 · assisted-v5/)).toBeInTheDocument()
+  expect(screen.getByText(/果蝇局部核：未知/)).toBeInTheDocument()
+  expect(screen.getByText('工程辅助')).toBeInTheDocument()
+  expect(within(screen.getByLabelText('v7 离线验证状态')).getByText('读取中')).toBeInTheDocument()
   expect(screen.getByText('完整拓扑图')).toBeInTheDocument()
   expect(screen.getByText('在线可塑性（实验）')).toBeInTheDocument()
   expect(screen.getByLabelText('在线可塑性（实验）')).not.toBeChecked()
@@ -21,4 +34,17 @@ test('renders connectome and visual driving workspaces', () => {
   expect(screen.getByLabelText('道路安全约束')).toBeChecked()
   expect(screen.getByLabelText('控制模式')).toHaveValue('assisted')
   expect(screen.queryByText('情绪解码')).not.toBeInTheDocument()
+})
+
+test('renders hash-verified offline v7 gates without presenting v7 as runtime', async () => {
+  vi.mocked(fetchV7Status).mockResolvedValueOnce({
+    version: 'v7-experimental', source: 'hash-verified-offline-goal-audit', current_stage: 'controlled_vision', objective_complete: false, deployment_enabled: false, default_runtime_changed: false, audit_sha256: 'a'.repeat(64),
+    gates: { T4_T5_direction_and_ON_OFF: false, LPLC1_near_collision: false, LPLC2_radial_opponency: false, LC4_angular_speed: false, EPG_PEN_PEG_heading: true, PFL3_DNa_transparent_mapping: true, causal_visual_navigation: false, external_final: false },
+    contributions: { upper_planner: { status: 'paused', active_in_default_runtime: false }, fly_local_core: { status: 'component_only_not_release_authorized', active_v7_in_default_runtime: false }, engineering_executor: { status: 'transparent_fixed_mapping_component_passed', v7_deployment_enabled: false } },
+  })
+  render(<App />)
+  expect(await screen.findByText('T4_T5_direction_and_ON_OFF · STOP')).toBeInTheDocument()
+  expect(screen.getByText('EPG_PEN_PEG_heading · PASS')).toBeInTheDocument()
+  expect(screen.getByText(/当前阶段：controlled_vision · 默认服务未改变/)).toBeInTheDocument()
+  expect(within(screen.getByLabelText('v7 离线验证状态')).getByText('未部署')).toBeInTheDocument()
 })

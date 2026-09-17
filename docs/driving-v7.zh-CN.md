@@ -1435,6 +1435,14 @@ T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge�
 统一 LPLC looming 规则及把冻结方向标签当作上游方向验证。当前阶段仍是 controlled vision；MB 学习、OOD、
 外部 final、城市交通和部署均不授权。
 
+前端披露也按这个边界拆开：`/api/v7/status` 只读取并逐依赖哈希验证
+`artifacts/v7-goal-audit.json`，不实例化 v7 或改变 `/api/driving/*`。页面把当前运行的
+assisted-v5/neural-v6-front 因果链显示为“R1–R6 输入 → T4/T5 flow 与神经状态 → raw
+neural intent → 固定 motor mapping → safety correction → executed action”；另设 v7 离线
+审计卡显示 T4/T5、LPLC1、LPLC2、LC4、heading、PFL3/DNa、导航和 external final 门。
+规划器、果蝇局部核与工程执行器贡献分列，v7 明示为未部署；审计哈希失效时接口返回 503，
+前端显示证据不可用而不猜测状态。
+
 ## 文献依据
 
 - Lappalainen 等，连接组约束视觉模型：

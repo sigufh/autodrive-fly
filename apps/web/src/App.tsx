@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { fetchDrivingState, fetchOverview, fetchPathways, fetchSkeleton, resetDriving, stepDriving, streamDriving } from './api'
+import { fetchDrivingState, fetchOverview, fetchPathways, fetchSkeleton, fetchV7Status, resetDriving, stepDriving, streamDriving } from './api'
 import { CnsViewer } from './components/CnsViewer'
 import { DrivingPanel } from './components/DrivingPanel'
-import type { CnsOverview, DrivingState, PathwayOverview, SkeletonResponse } from './types'
+import type { CnsOverview, DrivingState, PathwayOverview, SkeletonResponse, V7Status } from './types'
 import './styles.css'
 
 export default function App() {
@@ -10,6 +10,8 @@ export default function App() {
   const [overview, setOverview] = useState<CnsOverview>()
   const [pathways, setPathways] = useState<PathwayOverview>()
   const [driving, setDriving] = useState<DrivingState>()
+  const [v7Status, setV7Status] = useState<V7Status>()
+  const [v7StatusError, setV7StatusError] = useState(false)
   const [loading, setLoading] = useState(true), [running, setRunning] = useState(false)
   const [learning, setLearning] = useState(false), [explore, setExplore] = useState(false)
   const [safetyConstraints, setSafetyConstraints] = useState(true)
@@ -27,6 +29,7 @@ export default function App() {
       const drivingState = d.scenario === 'highway' ? d : await resetDriving(0, false, 'highway', 'assisted')
       if (live) { setOverview(o); setPathways(p); setDriving(drivingState) }
     }).catch(e => { if (live) setError(String(e)) })
+    fetchV7Status().then(v7 => { if (live) setV7Status(v7) }).catch(() => { if (live) setV7StatusError(true) })
     fetchSkeleton(10059).then(s => { if (live) setSkeleton(s) })
       .catch(e => { if (live) setError(String(e)) }).finally(() => { if (live) setLoading(false) })
     return () => { live = false; run.current?.abort() }
@@ -48,6 +51,6 @@ export default function App() {
       {error && <p role="alert" className="error global-error">{error}</p>}
       <CnsViewer overview={overview} pathways={pathways} skeleton={skeleton} loading={loading} activity={driving?.activity} phase={running ? 'closed-loop' : 'paused'} onSelect={selectNeuron} />
     </div>
-    <DrivingPanel state={driving} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} controlMode={controlMode} onControlMode={value => { setControlMode(value); reset(false, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
+    <DrivingPanel state={driving} v7Status={v7Status} v7StatusError={v7StatusError} running={running} learning={learning} explore={explore} safetyConstraints={safetyConstraints} controlMode={controlMode} onControlMode={value => { setControlMode(value); reset(false, value) }} onLearning={setLearning} onExplore={setExplore} onSafetyConstraints={setSafetyConstraints} onRun={toggleRun} onStep={step} onReset={reset} />
   </main>
 }

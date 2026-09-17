@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "7daa1fd5f6c3f0d5a914f81d0fce0dd3f3eb987ff2e4f9db38c797b516e6ad99",
-      "src/fly_emotion/driving/v7_goal_audit.py": "9e7fcc2b8ab945b29f2ef5b5dc2a666c218ce56c0550f2109ca32ba30ea3f550",
+      "configs/driving-v7-goal-audit.yaml": "cb1afec1b71bf2ec079f2ce989c486e7c063ae5c9e6b317eca2dd311373232be",
+      "src/fly_emotion/driving/v7_goal_audit.py": "958dd1ab65fbd476da6932e7f873662da5d416951a0da40c62c7a6e9930124b0",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -82,7 +82,12 @@
       "artifacts/v7-fc2-goal-memory.json": "96c605dd0aa12c3582ae161d4a93b0ffb9e2af2179682a9266ec6062b962083a",
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
-      "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5"
+      "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
+      "apps/api/src/fly_emotion_api/main.py": "90590ae10324fd49670bda4231f0eff25f0311f44a17f36ec5aab5b504d72059",
+      "apps/web/src/components/DrivingPanel.tsx": "c7ffc01aca26cc7f128c9d50b0523850294b13e36612d39246fbf5ccfced0010",
+      "apps/web/src/types.ts": "9aec636dcf74d3d7af78eaf408092f865405b5737e3449eb07755085c7316276",
+      "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
+      "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
   },
   "objective_items": {
@@ -652,7 +657,13 @@
       "observations": {
         "city_expansion_enabled": false,
         "v7_deployment_enabled": false,
-        "three_way_contribution_report_available": false
+        "three_way_contribution_report_available": true,
+        "contribution_layers": [
+          "upper_planner",
+          "fly_local_core",
+          "engineering_executor"
+        ],
+        "v7_status_is_offline_only": true
       }
     }
   ],
@@ -842,8 +853,14 @@
     },
     {
       "requirement": "8.separate_planner_fly_core_executor_contributions",
-      "status": "missing",
-      "evidence": []
+      "status": "passed",
+      "evidence": [
+        "apps/api/src/fly_emotion_api/main.py",
+        "apps/web/src/components/DrivingPanel.tsx",
+        "apps/web/src/types.ts",
+        "apps/web/src/api.ts",
+        "apps/web/src/App.tsx"
+      ]
     },
     {
       "requirement": "8.continuous_tests_evidence_docs_frontend_and_remote_updates",
