@@ -28,6 +28,8 @@ def _metrics(horizontal: np.ndarray, vertical: np.ndarray) -> dict[str, np.ndarr
     coherence = mean_magnitude / (path_length + 1e-9)
     sign_persistence = np.linalg.norm(np.mean(np.sign(vectors), axis=0), axis=1) / np.sqrt(2.0)
     return {
+        "normalized_mean_vector_coherence": coherence,
+        "vector_sign_consistency": sign_persistence,
         "mean_vector_magnitude": mean_magnitude,
         "coherence_weighted_magnitude": mean_magnitude * coherence,
         "squared_coherence_weighted_magnitude": mean_magnitude * coherence**2,

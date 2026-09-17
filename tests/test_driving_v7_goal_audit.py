@@ -179,13 +179,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "three_hop_temporal_consistency_passing_family_metrics"
     ] == []
-    assert all(
-        ratio > 2.0
-        for family in visual["observations"][
-            "three_hop_temporal_consistency_minimum_ratios"
-        ].values()
-        for ratio in family.values()
-    )
+    temporal_ratios = visual["observations"][
+        "three_hop_temporal_consistency_minimum_ratios"
+    ]
+    assert all(ratio > 1.0 for family in temporal_ratios.values() for ratio in family.values())
+    for family in temporal_ratios.values():
+        for name in (
+            "mean_vector_magnitude",
+            "coherence_weighted_magnitude",
+            "squared_coherence_weighted_magnitude",
+            "sign_persistence_weighted_magnitude",
+        ):
+            assert family[name] > 2.0
     assert visual["observations"]["three_hop_temporal_consistency_gate_passed"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False

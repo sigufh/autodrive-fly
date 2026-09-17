@@ -10,6 +10,8 @@ families:
   T4: {channel: on, sources: [Mi1, Tm3, Mi4, C3, Mi9, CT1]}
   T5: {channel: off, sources: [Tm1, Tm2, Tm4, Tm9, CT1]}
 metrics:
+  - normalized_mean_vector_coherence
+  - vector_sign_consistency
   - mean_vector_magnitude
   - coherence_weighted_magnitude
   - squared_coherence_weighted_magnitude
@@ -21,6 +23,7 @@ boundary:
   tuning_only: true
   single_condition_audit: true
   label_free_temporal_metrics: true
+  stimulus_direction_used_by_metrics: false
   thresholds_changed: false
   parameter_fit: false
   target_activity_injection: false
