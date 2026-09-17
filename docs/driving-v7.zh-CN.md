@@ -1522,6 +1522,16 @@ conductance 状态，不向 T4 注入活动；对每个 T4 的真实 Mi1/Tm3 fas
 改标签、降阈值或忽略缺失细胞。证据见
 `artifacts/v7-t4-synapse-correlator-precheck.json`。
 
+进一步代数审计发现，上述首次实现的所谓相关项对单个 fast/delayed 突触对会化简为时间
+交叉乘积之和，时间反转不换号，实质是共激活能量而非方向相关器。该负结果没有被覆盖；
+另行冻结了正确反对称的
+`(x_fast-x_delayed)·(fast_now*delayed_previous-delayed_now*fast_previous)` 候选，复用同一
+突触轴、conductance 基线、两个时间归约、四个增益、阈值和 6,861 固定分母。修正后的
+八个候选仍都只有 2/8 T4 方向群体通过，虽保持 8/8 ON 极性，却没有任何左右双侧亚型，
+镜像门也均失败。因此公式错误不是唯一主因；当前上游状态上的单步 fast/delayed
+反对称项仍不足以产生 T4 全群体方向选择。按预注册 stop gate，shuffle/static 和 T02/T03
+仍未运行。证据见 `artifacts/v7-t4-synapse-antisymmetric-precheck.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

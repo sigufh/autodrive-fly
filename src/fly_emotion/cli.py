@@ -133,6 +133,9 @@ from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_corre
 from .driving.v7_t4_pair_lag_audit import evaluate_v7_t4_pair_lag_audit
 from .driving.v7_t4_source_pool_local import evaluate_v7_t4_source_pool_local
 from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
+from .driving.v7_t4_synapse_antisymmetric_precheck import (
+    evaluate_v7_t4_synapse_antisymmetric_precheck,
+)
 from .driving.v7_t4_synapse_correlator_precheck import (
     evaluate_v7_t4_synapse_correlator_precheck,
 )
@@ -328,6 +331,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
+    subparsers.add_parser("v7-evaluate-t4-synapse-antisymmetric-precheck")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1072,6 +1076,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t4-synapse-correlator-precheck":
         report = evaluate_v7_t4_synapse_correlator_precheck(root)
         target = root / "artifacts/v7-t4-synapse-correlator-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-synapse-antisymmetric-precheck":
+        report = evaluate_v7_t4_synapse_antisymmetric_precheck(root)
+        target = root / "artifacts/v7-t4-synapse-antisymmetric-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

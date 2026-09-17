@@ -250,6 +250,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "T4_synapse_correlator_three_condition_evaluation_performed"
     ] is False
+    assert visual["observations"]["T4_synapse_antisymmetric_direction_pass_counts"] == [
+        2
+    ] * 8
+    assert visual["observations"]["T4_synapse_antisymmetric_polarity_pass_counts"] == [8] * 8
+    assert visual["observations"]["T4_synapse_antisymmetric_bilateral_direction_subtypes"] == [
+        [] for _ in range(8)
+    ]
+    assert visual["observations"]["T4_synapse_antisymmetric_controls_evaluated"] is False
+    assert visual["observations"][
+        "T4_synapse_antisymmetric_three_condition_evaluation_performed"
+    ] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {
