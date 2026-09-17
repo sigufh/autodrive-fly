@@ -115,6 +115,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["three_hop_strict_gates_passed"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
+    assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {
+        "T4_proximal": 0,
+        "T4_distal": 1,
+        "T5_tm9": 2,
+    }
+    assert visual["observations"]["four_hop_scalar_shuffle_bilateral_subtypes"] == {
+        "T4_proximal": [],
+        "T4_distal": ["a", "c"],
+        "T5_tm9": ["a"],
+    }
+    assert visual["observations"]["four_hop_scalar_gate_passed"] is False
     assert visual["observations"]["development_geometry_ab_performed"] is True
     assert visual["observations"]["reversed_geometry_development_gates_pass"] is False
     assert visual["observations"]["reversed_geometry_passing_retinal_backends"] == []

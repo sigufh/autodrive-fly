@@ -1363,6 +1363,12 @@ source 合并可接近全覆盖，但会破坏 fast/delayed 分工，不能作�
 不限制中间路径的真实 visual subgraph 在 2–4 跳内可达全部 T4/T5，说明问题是独立通道
 覆盖合同而非整图断连。故不补合成边、不缩分母，也不实现缺路径的标量 target 头。证据见
 `artifacts/v7-three-hop-source-coverage.json`。
+累计最短路径审计同时发现，独立 source 通道在总路径 4 跳时首次全部超过 99.6%，所以
+冻结 4 跳作为唯一 follow-up，不搜索更深路径。三个标量候选 T4 center×proximal、
+T4 center×Mi9、T5 fast×Tm9 在 `S1-T01` ordered 下分别只有 0/8、1/8、2/8 方向
+群体通过，均没有左右双侧亚型；共享 temporal-shuffle 反而让后两者出现 T4 a/c 和 T5 a
+双侧通过。故覆盖充分仍不能恢复正确时间选择，三个候选均不扩三条件。证据见
+`artifacts/v7-four-hop-scalar-precheck.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

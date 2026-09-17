@@ -1,0 +1,31 @@
+version: 1
+name: v7-four-hop-fast-delayed-scalar-precheck
+observed_on: "2026-09-17"
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+source_coverage_evidence: artifacts/v7-three-hop-source-coverage.json
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: S1-T01
+maximum_total_path_length_edges: 4
+candidates:
+  T4_proximal: {family: T4, fast: [Mi1, Tm3], delayed: [Mi4, C3]}
+  T4_distal: {family: T4, fast: [Mi1, Tm3], delayed: [Mi9]}
+  T5_tm9: {family: T5, fast: [Tm1, Tm2, Tm4], delayed: [Tm9]}
+formula: (delayed_now*fast_previous-fast_now*delayed_previous)/(abs(forward)+abs(reverse)+1e-9)
+temporal_reduction: signed_mean
+position_reduction: maximum_over_fixed_5x3_grid
+controls:
+  temporal_shuffle_seed: 20260917
+  shared_permutation_across_directions_and_polarities: true
+  static_first_motion_frame_repeat: true
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_expand: 1
+  require_shuffle_bilateral_failure: true
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  shortest_real_paths_only: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false

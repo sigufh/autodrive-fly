@@ -320,6 +320,11 @@ v7-audit-three-hop-source-coverage:
 
 .PHONY: v7-audit-three-hop-source-coverage
 
+v7-evaluate-four-hop-scalar-precheck:
+	.venv/bin/autodrive-fly v7-evaluate-four-hop-scalar-precheck
+
+.PHONY: v7-evaluate-four-hop-scalar-precheck
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

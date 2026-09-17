@@ -48,6 +48,7 @@ from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
 from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
+from .driving.v7_four_hop_scalar_precheck import evaluate_v7_four_hop_scalar_precheck
 from .driving.v7_fusion_nested import evaluate_v7_fusion_nested
 from .driving.v7_fusion_nested_eval import evaluate_v7_fusion_nested_candidate
 from .driving.v7_gain_audit import evaluate_v7_normalization_gain
@@ -290,6 +291,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
+    subparsers.add_parser("v7-evaluate-four-hop-scalar-precheck")
     subparsers.add_parser("v7-evaluate-neural-goal-fusion")
     subparsers.add_parser("v7-freeze-fusion-nested")
     subparsers.add_parser("v7-evaluate-fusion-nested")
@@ -904,6 +906,12 @@ def main() -> None:
     if args.command == "v7-audit-three-hop-source-coverage":
         report = evaluate_v7_three_hop_source_coverage(root)
         target = root / "artifacts/v7-three-hop-source-coverage.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-four-hop-scalar-precheck":
+        report = evaluate_v7_four_hop_scalar_precheck(root)
+        target = root / "artifacts/v7-four-hop-scalar-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

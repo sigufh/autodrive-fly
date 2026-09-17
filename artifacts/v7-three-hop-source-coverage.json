@@ -2,8 +2,8 @@
   "protocol": {
     "name": "v7-three-hop-source-channel-coverage",
     "dependencies_sha256": {
-      "configs/driving-v7-three-hop-source-coverage.yaml": "4d3ed9b0d4e88c7936fe74e560bd0f55b13b2ec0684927e560bd9c6d7385c7d4",
-      "src/fly_emotion/driving/v7_three_hop_source_coverage.py": "5e02acddd4d1bb6e2e81376d31ad53e3aa9c3c2a41542ddc316b4e3a4f96f165"
+      "configs/driving-v7-three-hop-source-coverage.yaml": "46409cc9c09097c562f827823c2c7e93d5b04bd41d43b127b58e71f93fd6c4bf",
+      "src/fly_emotion/driving/v7_three_hop_source_coverage.py": "29f483bdee1a521479a46869e0c6a06fb837d436d0b6ad77c3c72b8c5cd3eb80"
     },
     "path_length_edges": 3,
     "parameter_fit": false,
@@ -861,7 +861,4817 @@
       }
     }
   },
+  "cumulative_path_coverage": {
+    "balanced_1914": {
+      "T4_center": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 1451,
+          "3": 2368,
+          "4": 8,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 1451,
+            "minimum_population_coverage": 0.47374301675977654,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 401,
+                "reachable_target_fraction": 0.4802395209580838,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 445,
+                "reachable_target_fraction": 0.5241460541813898,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 429,
+                "reachable_target_fraction": 0.5082938388625592,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 462,
+                "reachable_target_fraction": 0.5460992907801419,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 424,
+                "reachable_target_fraction": 0.47374301675977654,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 456,
+                "reachable_target_fraction": 0.5164212910532276,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 412,
+                "reachable_target_fraction": 0.48470588235294115,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 452,
+                "reachable_target_fraction": 0.5261932479627474,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 3819,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T4_proximal": {
+        "source_first_depth_counts": {
+          "1": 188,
+          "2": 971,
+          "3": 2191,
+          "4": 201,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 188,
+            "minimum_population_coverage": 0.10705882352941176,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 120,
+                "reachable_target_fraction": 0.1437125748502994,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 183,
+                "reachable_target_fraction": 0.21554770318021202,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 106,
+                "reachable_target_fraction": 0.12559241706161137,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 169,
+                "reachable_target_fraction": 0.19976359338061467,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 108,
+                "reachable_target_fraction": 0.12067039106145251,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 175,
+                "reachable_target_fraction": 0.19818799546998866,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 91,
+                "reachable_target_fraction": 0.10705882352941176,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 157,
+                "reachable_target_fraction": 0.18277066356228172,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 1159,
+            "minimum_population_coverage": 0.38,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 348,
+                "reachable_target_fraction": 0.4167664670658683,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 367,
+                "reachable_target_fraction": 0.43227326266195526,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 341,
+                "reachable_target_fraction": 0.4040284360189573,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 350,
+                "reachable_target_fraction": 0.41371158392434987,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 366,
+                "reachable_target_fraction": 0.40893854748603353,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 372,
+                "reachable_target_fraction": 0.42129105322763305,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 323,
+                "reachable_target_fraction": 0.38,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 337,
+                "reachable_target_fraction": 0.39231664726426074,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 3350,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T4_distal": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 688,
+          "3": 1079,
+          "4": 8,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 688,
+            "minimum_population_coverage": 0.40893854748603353,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 356,
+                "reachable_target_fraction": 0.42634730538922155,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 388,
+                "reachable_target_fraction": 0.45700824499411075,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 393,
+                "reachable_target_fraction": 0.4656398104265403,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 429,
+                "reachable_target_fraction": 0.5070921985815603,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 366,
+                "reachable_target_fraction": 0.40893854748603353,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 398,
+                "reachable_target_fraction": 0.4507361268403171,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 380,
+                "reachable_target_fraction": 0.4470588235294118,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 418,
+                "reachable_target_fraction": 0.48661233993015135,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 1767,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 893,
+                "reachable_target_fraction": 0.9977653631284916,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T4_all_known": {
+        "source_first_depth_counts": {
+          "1": 188,
+          "2": 3112,
+          "3": 5638,
+          "4": 217,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 188,
+            "minimum_population_coverage": 0.10705882352941176,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 120,
+                "reachable_target_fraction": 0.1437125748502994,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 183,
+                "reachable_target_fraction": 0.21554770318021202,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 106,
+                "reachable_target_fraction": 0.12559241706161137,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 169,
+                "reachable_target_fraction": 0.19976359338061467,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 108,
+                "reachable_target_fraction": 0.12067039106145251,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 175,
+                "reachable_target_fraction": 0.19818799546998866,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 91,
+                "reachable_target_fraction": 0.10705882352941176,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 157,
+                "reachable_target_fraction": 0.18277066356228172,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 3300,
+            "minimum_population_coverage": 0.9940758293838863,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 832,
+                "reachable_target_fraction": 0.9964071856287425,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 848,
+                "reachable_target_fraction": 0.9988221436984688,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 839,
+                "reachable_target_fraction": 0.9940758293838863,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 892,
+                "reachable_target_fraction": 0.9966480446927374,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 0.9988358556461001,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 8938,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T5_fast": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 1983,
+          "3": 3229,
+          "4": 1,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 1983,
+            "minimum_population_coverage": 0.4779582366589327,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 398,
+                "reachable_target_fraction": 0.48184019370460046,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 434,
+                "reachable_target_fraction": 0.5178997613365155,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 446,
+                "reachable_target_fraction": 0.5168018539976825,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 458,
+                "reachable_target_fraction": 0.5375586854460094,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 412,
+                "reachable_target_fraction": 0.4779582366589327,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 436,
+                "reachable_target_fraction": 0.5081585081585082,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 415,
+                "reachable_target_fraction": 0.5110837438423645,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 443,
+                "reachable_target_fraction": 0.5482673267326733,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 5212,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T5_delayed": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 626,
+          "3": 1137,
+          "4": 8,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 626,
+            "minimum_population_coverage": 0.4176334106728538,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 360,
+                "reachable_target_fraction": 0.4358353510895884,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 399,
+                "reachable_target_fraction": 0.47613365155131265,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 403,
+                "reachable_target_fraction": 0.46697566628041715,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 431,
+                "reachable_target_fraction": 0.505868544600939,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 360,
+                "reachable_target_fraction": 0.4176334106728538,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 392,
+                "reachable_target_fraction": 0.4568764568764569,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 382,
+                "reachable_target_fraction": 0.47044334975369456,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 418,
+                "reachable_target_fraction": 0.5173267326732673,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 1763,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T5_all_known": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 2611,
+          "3": 4366,
+          "4": 9,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 2611,
+            "minimum_population_coverage": 0.9976798143851509,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 860,
+                "reachable_target_fraction": 0.9976798143851509,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 811,
+                "reachable_target_fraction": 0.9987684729064039,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 6977,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "all_mapped_3377": {
+      "T4_center": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 2123,
+          "3": 1701,
+          "4": 3,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 2123,
+            "minimum_population_coverage": 0.535195530726257,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 455,
+                "reachable_target_fraction": 0.5449101796407185,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 733,
+                "reachable_target_fraction": 0.8633686690223793,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 484,
+                "reachable_target_fraction": 0.5734597156398105,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 725,
+                "reachable_target_fraction": 0.8569739952718676,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 479,
+                "reachable_target_fraction": 0.535195530726257,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 770,
+                "reachable_target_fraction": 0.8720271800679502,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 470,
+                "reachable_target_fraction": 0.5529411764705883,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 724,
+                "reachable_target_fraction": 0.8428405122235157,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 3824,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 3827,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T4_proximal": {
+        "source_first_depth_counts": {
+          "1": 309,
+          "2": 1396,
+          "3": 1737,
+          "4": 109,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 309,
+            "minimum_population_coverage": 0.12,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 135,
+                "reachable_target_fraction": 0.16167664670658682,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 349,
+                "reachable_target_fraction": 0.4110718492343934,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 122,
+                "reachable_target_fraction": 0.14454976303317535,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 328,
+                "reachable_target_fraction": 0.3877068557919622,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 117,
+                "reachable_target_fraction": 0.13072625698324022,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 343,
+                "reachable_target_fraction": 0.3884484711211778,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 102,
+                "reachable_target_fraction": 0.12,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 318,
+                "reachable_target_fraction": 0.370197904540163,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 1705,
+            "minimum_population_coverage": 0.42,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 384,
+                "reachable_target_fraction": 0.4598802395209581,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 627,
+                "reachable_target_fraction": 0.7385159010600707,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 372,
+                "reachable_target_fraction": 0.44075829383886256,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 623,
+                "reachable_target_fraction": 0.7364066193853428,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 400,
+                "reachable_target_fraction": 0.44692737430167595,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 646,
+                "reachable_target_fraction": 0.7315968289920725,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 357,
+                "reachable_target_fraction": 0.42,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 614,
+                "reachable_target_fraction": 0.7147846332945286,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 3442,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 3551,
+            "minimum_population_coverage": 0.9988826815642458,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T4_distal": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 986,
+          "3": 781,
+          "4": 8,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 986,
+            "minimum_population_coverage": 0.464804469273743,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 404,
+                "reachable_target_fraction": 0.48383233532934133,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 677,
+                "reachable_target_fraction": 0.7974087161366313,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 445,
+                "reachable_target_fraction": 0.5272511848341233,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 697,
+                "reachable_target_fraction": 0.8238770685579196,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 416,
+                "reachable_target_fraction": 0.464804469273743,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 722,
+                "reachable_target_fraction": 0.8176670441676104,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 430,
+                "reachable_target_fraction": 0.5058823529411764,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 685,
+                "reachable_target_fraction": 0.7974388824214202,
+                "passed": false
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 1767,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 893,
+                "reachable_target_fraction": 0.9977653631284916,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 1775,
+            "minimum_population_coverage": 0.9964705882352941,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 833,
+                "reachable_target_fraction": 0.9976047904191617,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 842,
+                "reachable_target_fraction": 0.9976303317535545,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 894,
+                "reachable_target_fraction": 0.9988826815642458,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T4_all_known": {
+        "source_first_depth_counts": {
+          "1": 309,
+          "2": 4507,
+          "3": 4219,
+          "4": 120,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 309,
+            "minimum_population_coverage": 0.12,
+            "all_populations_passed": false,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 135,
+                "reachable_target_fraction": 0.16167664670658682,
+                "passed": false
+              },
+              "T4a_R": {
+                "reachable_target_count": 349,
+                "reachable_target_fraction": 0.4110718492343934,
+                "passed": false
+              },
+              "T4b_L": {
+                "reachable_target_count": 122,
+                "reachable_target_fraction": 0.14454976303317535,
+                "passed": false
+              },
+              "T4b_R": {
+                "reachable_target_count": 328,
+                "reachable_target_fraction": 0.3877068557919622,
+                "passed": false
+              },
+              "T4c_L": {
+                "reachable_target_count": 117,
+                "reachable_target_fraction": 0.13072625698324022,
+                "passed": false
+              },
+              "T4c_R": {
+                "reachable_target_count": 343,
+                "reachable_target_fraction": 0.3884484711211778,
+                "passed": false
+              },
+              "T4d_L": {
+                "reachable_target_count": 102,
+                "reachable_target_fraction": 0.12,
+                "passed": false
+              },
+              "T4d_R": {
+                "reachable_target_count": 318,
+                "reachable_target_fraction": 0.370197904540163,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 4816,
+            "minimum_population_coverage": 0.9940758293838863,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 832,
+                "reachable_target_fraction": 0.9964071856287425,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 839,
+                "reachable_target_fraction": 0.9940758293838863,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 892,
+                "reachable_target_fraction": 0.9966480446927374,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 847,
+                "reachable_target_fraction": 0.9964705882352941,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 9035,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 9155,
+            "minimum_population_coverage": 1.0,
+            "all_populations_passed": true,
+            "populations": {
+              "T4a_L": {
+                "reachable_target_count": 835,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4a_R": {
+                "reachable_target_count": 849,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_L": {
+                "reachable_target_count": 844,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4b_R": {
+                "reachable_target_count": 846,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_L": {
+                "reachable_target_count": 895,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4c_R": {
+                "reachable_target_count": 883,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_L": {
+                "reachable_target_count": 850,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T4d_R": {
+                "reachable_target_count": 859,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T5_fast": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 2872,
+          "3": 2340,
+          "4": 1,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 2872,
+            "minimum_population_coverage": 0.5406032482598608,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 452,
+                "reachable_target_fraction": 0.5472154963680388,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 719,
+                "reachable_target_fraction": 0.8579952267303103,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 496,
+                "reachable_target_fraction": 0.574739281575898,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 731,
+                "reachable_target_fraction": 0.857981220657277,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 466,
+                "reachable_target_fraction": 0.5406032482598608,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 731,
+                "reachable_target_fraction": 0.8519813519813519,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 470,
+                "reachable_target_fraction": 0.5788177339901478,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 693,
+                "reachable_target_fraction": 0.8576732673267327,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 5212,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 5213,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T5_delayed": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 911,
+          "3": 854,
+          "4": 6,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 911,
+            "minimum_population_coverage": 0.46983758700696054,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 403,
+                "reachable_target_fraction": 0.48789346246973364,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 678,
+                "reachable_target_fraction": 0.8090692124105012,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 452,
+                "reachable_target_fraction": 0.5237543453070683,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 706,
+                "reachable_target_fraction": 0.8286384976525821,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 405,
+                "reachable_target_fraction": 0.46983758700696054,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 679,
+                "reachable_target_fraction": 0.7913752913752914,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 431,
+                "reachable_target_fraction": 0.5307881773399015,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 656,
+                "reachable_target_fraction": 0.8118811881188119,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 1765,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 1771,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      },
+      "T5_all_known": {
+        "source_first_depth_counts": {
+          "1": 0,
+          "2": 3785,
+          "3": 3194,
+          "4": 7,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "unreachable_source_count": 0,
+        "by_total_path_length": {
+          "2": {
+            "eligible_source_count": 0,
+            "minimum_population_coverage": 0.0,
+            "all_populations_passed": false,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5a_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5b_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5c_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_L": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              },
+              "T5d_R": {
+                "reachable_target_count": 0,
+                "reachable_target_fraction": 0.0,
+                "passed": false
+              }
+            }
+          },
+          "3": {
+            "eligible_source_count": 3785,
+            "minimum_population_coverage": 0.9976798143851509,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 860,
+                "reachable_target_fraction": 0.9976798143851509,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 811,
+                "reachable_target_fraction": 0.9987684729064039,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "4": {
+            "eligible_source_count": 6979,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "5": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "6": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "7": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          },
+          "8": {
+            "eligible_source_count": 6986,
+            "minimum_population_coverage": 0.9987893462469734,
+            "all_populations_passed": true,
+            "populations": {
+              "T5a_L": {
+                "reachable_target_count": 825,
+                "reachable_target_fraction": 0.9987893462469734,
+                "passed": true
+              },
+              "T5a_R": {
+                "reachable_target_count": 838,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_L": {
+                "reachable_target_count": 863,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5b_R": {
+                "reachable_target_count": 852,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_L": {
+                "reachable_target_count": 862,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5c_R": {
+                "reachable_target_count": 858,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_L": {
+                "reachable_target_count": 812,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              },
+              "T5d_R": {
+                "reachable_target_count": 808,
+                "reachable_target_fraction": 1.0,
+                "passed": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "minimum_sufficient_total_path_length_balanced": 4,
   "independent_fast_delayed_coverage_gate_passed": false,
+  "authorize_four_hop_scalar_reichardt_precheck": true,
   "authorize_scalar_reichardt": false,
   "advance_to_calibration": false,
   "boundary": {

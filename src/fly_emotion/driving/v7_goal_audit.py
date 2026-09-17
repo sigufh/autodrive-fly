@@ -64,6 +64,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_pool_local = reports["t4_source_pool_local"]
     three_hop_moment = reports["three_hop_moment"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
+    four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -329,6 +330,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "three_hop_scalar_reichardt_authorized": three_hop_source_coverage[
                     "authorize_scalar_reichardt"
+                ],
+                "four_hop_scalar_ordered_direction_pass_counts": {
+                    name: result["modes"]["ordered"]["direction_pass_count"]
+                    for name, result in four_hop_scalar_precheck["candidates"].items()
+                },
+                "four_hop_scalar_shuffle_bilateral_subtypes": {
+                    name: result["modes"]["temporal_shuffle"]["bilateral_direction_subtypes"]
+                    for name, result in four_hop_scalar_precheck["candidates"].items()
+                },
+                "four_hop_scalar_gate_passed": four_hop_scalar_precheck[
+                    "four_hop_scalar_gate_passed"
                 ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"
@@ -668,6 +680,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_pool_local"],
                 config["evidence"]["three_hop_moment"],
                 config["evidence"]["three_hop_source_coverage"],
+                config["evidence"]["four_hop_scalar_precheck"],
                 config["evidence"]["t5_spatial_order"],
                 config["evidence"]["t4t5_local_edge_precheck"],
                 config["evidence"]["t4t5_local_edge_backends"],

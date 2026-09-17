@@ -4,6 +4,7 @@ observed_on: "2026-09-17"
 balanced_retina_source: mass_balanced_common_optic_hex_pairs
 retina_modes: [balanced_1914, all_mapped_3377]
 path_length_edges: 3
+cumulative_path_lengths_edges: [2, 3, 4, 5, 6, 7, 8]
 source_groups:
   T4_center: [Mi1, Tm3]
   T4_proximal: [Mi4, C3]
@@ -16,6 +17,7 @@ gate:
   minimum_population_coverage: 0.80
   require_every_population: true
   require_independent_fast_and_delayed_channels: true
+  select_minimum_sufficient_path_length_on_balanced_retina: true
 boundary:
   structure_only: true
   parameter_fit: false
