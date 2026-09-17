@@ -144,6 +144,33 @@ def _pairwise_vectors(traces: dict[str, np.ndarray], prefix: str) -> dict[str, t
     return output
 
 
+def _centroid_velocity(
+    traces: dict[str, np.ndarray], source_name: str, minimum_mass: float
+) -> tuple[np.ndarray, np.ndarray]:
+    mass = traces[f"rect_pair_{source_name}"]
+    valid = mass >= minimum_mass
+    centroid_x = np.full(mass.shape, np.nan, dtype=np.float64)
+    centroid_y = np.full(mass.shape, np.nan, dtype=np.float64)
+    np.divide(
+        traces[f"rect_pair_{source_name}_x"],
+        mass,
+        out=centroid_x,
+        where=valid,
+    )
+    np.divide(
+        traces[f"rect_pair_{source_name}_y"],
+        mass,
+        out=centroid_y,
+        where=valid,
+    )
+    velocity_x = np.full(mass.shape, np.nan, dtype=np.float64)
+    velocity_y = np.full(mass.shape, np.nan, dtype=np.float64)
+    pair_valid = valid[1:] & valid[:-1]
+    velocity_x[1:][pair_valid] = (centroid_x[1:] - centroid_x[:-1])[pair_valid]
+    velocity_y[1:][pair_valid] = (centroid_y[1:] - centroid_y[:-1])[pair_valid]
+    return velocity_x, velocity_y
+
+
 def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     local = yaml.safe_load((root / LOCAL_EDGE_CONFIG).read_text())
@@ -253,6 +280,14 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                 )
                 pairwise_vectors = _pairwise_vectors(traces, "")
                 rectified_vectors = _pairwise_vectors(traces, "rect_")
+                centroid_vectors = {
+                    name: _centroid_velocity(
+                        traces,
+                        name,
+                        float(config["centroid_velocity"]["minimum_activity_mass"]),
+                    )
+                    for name in ("center", "proximal", "distal")
+                }
                 responses[(x_index, y_index, direction)] = {
                     **{
                         name: np.max(values, axis=0)
@@ -264,6 +299,9 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                     "pairwise_distal_vector": pairwise_vectors["distal"],
                     "rectified_pairwise_proximal_vector": rectified_vectors["proximal"],
                     "rectified_pairwise_distal_vector": rectified_vectors["distal"],
+                    "center_centroid_velocity": centroid_vectors["center"],
+                    "proximal_centroid_velocity": centroid_vectors["proximal"],
+                    "distal_centroid_velocity": centroid_vectors["distal"],
                 }
     scores = {}
     for population in populations:
@@ -292,19 +330,23 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                     for y in range(len(y_centers))
                     for x in range(len(x_centers))
                 ]
-                if "pairwise_" in selected_readout:
+                if "pairwise_" in selected_readout or selected_readout.endswith(
+                    "_centroid_velocity"
+                ):
                     vector = {
                         "left": (-1.0, 0.0),
                         "right": (1.0, 0.0),
                         "up": (0.0, -1.0),
                         "down": (0.0, 1.0),
                     }[selected_preferred]
-                    grid = np.stack(
-                        [
-                            np.max(vector[0] * item[0] + vector[1] * item[1], axis=0)
-                            for item in items
-                        ]
-                    )
+                    peaks = []
+                    for item in items:
+                        projected = vector[0] * item[0] + vector[1] * item[1]
+                        finite = np.any(np.isfinite(projected), axis=0)
+                        peak = np.max(np.where(np.isfinite(projected), projected, -np.inf), axis=0)
+                        peak[~finite] = np.nan
+                        peaks.append(peak)
+                    grid = np.stack(peaks)
                 else:
                     grid = np.stack(items)
                 return grid[selected_rows, selected_columns]

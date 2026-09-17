@@ -30,6 +30,9 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
         "pairwise_distal_vector": 0,
         "rectified_pairwise_proximal_vector": 0,
         "rectified_pairwise_distal_vector": 0,
+        "center_centroid_velocity": 0,
+        "proximal_centroid_velocity": 0,
+        "distal_centroid_velocity": 0,
     }
     assert all(not values for values in report["bilateral_passing_subtypes"].values())
     assert report["maximum_bilateral_direction_pair_count"] == 0
@@ -48,5 +51,9 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
             "rectified_pairwise_distal_vector",
         )
     )
+    center_velocity = report["population_scores"]["T4d_R"]["center_centroid_velocity"]
+    assert center_velocity["median_signed_contrast"] > 0.10
+    assert center_velocity["positive_cell_fraction"] < 0.60
+    assert center_velocity["passed"] is False
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False
