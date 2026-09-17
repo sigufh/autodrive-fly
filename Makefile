@@ -335,6 +335,11 @@ v7-evaluate-t5-lamina-split:
 
 .PHONY: v7-evaluate-t5-lamina-split
 
+v7-evaluate-t5-lamina-scalar-precheck:
+	.venv/bin/autodrive-fly v7-evaluate-t5-lamina-scalar-precheck
+
+.PHONY: v7-evaluate-t5-lamina-scalar-precheck
+
 v7-evaluate-neural-goal-fusion:
 	.venv/bin/autodrive-fly v7-evaluate-neural-goal-fusion
 

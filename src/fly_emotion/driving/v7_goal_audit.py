@@ -67,6 +67,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
     t5_lamina_split = reports["t5_lamina_split"]
+    t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_spatial_order = reports["t5_spatial_order"]
     t4t5_local_edge_precheck = reports["t4t5_local_edge_precheck"]
     t4t5_local_edge_backends = reports["t4t5_local_edge_backends"]
@@ -140,6 +141,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fitted_t4"],
                 config["evidence"]["t5_phenotype"],
                 config["evidence"]["t5_lamina_split"],
+                config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["lplc2_radial_opponency"],
                 config["evidence"]["lplc2_position_coverage"],
             ],
@@ -372,6 +374,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "T5_lamina_split_strict_gates_passed": t5_lamina_split[
                     "strict_T5_gates_passed"
+                ],
+                "T5_lamina_scalar_joint_source_fraction": t5_lamina_scalar_precheck[
+                    "source_coverage"
+                ]["joint_present_fraction"],
+                "T5_lamina_scalar_ordered_direction_pass_count": (
+                    t5_lamina_scalar_precheck["modes"]["ordered"]
+                    ["fast_delayed_correlation"]["direction_pass_count"]
+                ),
+                "T5_lamina_scalar_ordered_polarity_pass_count": (
+                    t5_lamina_scalar_precheck["modes"]["ordered"]
+                    ["fast_delayed_correlation"]["polarity_pass_count"]
+                ),
+                "T5_lamina_scalar_shuffle_bilateral_subtypes": (
+                    t5_lamina_scalar_precheck["modes"]["temporal_shuffle"]
+                    ["fast_delayed_correlation"]["bilateral_direction_subtypes"]
+                ),
+                "T5_lamina_scalar_precheck_passed": t5_lamina_scalar_precheck[
+                    "candidate_passed"
                 ],
                 "T5_spatial_order_b_d_reachable_fraction": t5_spatial_order["b_d_reachability"][
                     "reachable_fraction"

@@ -1387,6 +1387,13 @@ L2/L3 接 OFF；只覆盖这三个具名 lamina target，下游仍走真实视�
 因此完整 T5 方向选择仍失败，不翻转 c/d 或任何冻结标签，不运行 calibration，也不修改
 runtime。证据见 `artifacts/v7-t5-lamina-split.json`；可用
 `make v7-evaluate-t5-lamina-split` 重建。
+将这个已通过的 OFF 分流与既有、冻结的 T5 `Tm1/Tm2/Tm4 fast × Tm9 delayed` 标量
+相关式组合后，又做了唯一一次 `S1-T01` stop/go 复验。真实直接 source 对 6,718/6,719
+个 T5 同时可用，说明失败不是 source 缺边；但 fast state peak、Tm9 state peak 和相关输出
+的方向通过数均为 0/8。相关输出仍保持 OFF 极性 8/8 和左右镜像门通过，时间乱序却产生
+T5a 左右双侧方向通过，static sham 才为零。故该组合只保留了极性，既没有 ordered 方向
+选择，也不满足时间顺序反证；按 stop gate 不运行另外两个 tuning 条件，不扩 calibration。
+证据见 `artifacts/v7-t5-lamina-scalar-precheck.json`。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件

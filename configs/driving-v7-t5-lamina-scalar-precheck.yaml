@@ -1,0 +1,37 @@
+version: 1
+name: v7-t5-lamina-fast-delayed-scalar-precheck
+observed_on: "2026-09-17"
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+four_hop_protocol: configs/driving-v7-four-hop-scalar-precheck.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: S1-T01
+source_groups:
+  fast: [Tm1, Tm2, Tm4]
+  delayed: [Tm9]
+formula: (delayed_now*fast_previous-fast_now*delayed_previous)/(abs(forward)+abs(reverse)+1e-9)
+temporal_reduction: signed_mean
+position_reduction: maximum_over_fixed_5x3_grid
+controls:
+  temporal_shuffle_seed: 20260917
+  shared_permutation_across_directions_and_polarities: true
+  static_first_motion_frame_repeat: true
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_expand: 1
+  maximum_mirror_error: 0.20
+  require_all_ordered_polarity_populations: true
+  require_shuffle_bilateral_failure: true
+  require_static_bilateral_failure: true
+  require_ordered_mirror: true
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  direct_real_T5_sources_only: true
+  labels_used_for_scoring_only: true
+  parameter_fit: false
+  labels_changed: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  three_condition_evaluation_requires_precheck_pass: true

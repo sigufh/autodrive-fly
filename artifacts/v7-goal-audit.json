@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "02a7d5382e9aa6c11878075b11e12d64a130ffba06f2cfd8fc2a1af7294295ef",
-      "src/fly_emotion/driving/v7_goal_audit.py": "6b85106d05b092f0cd7907a1ffd0a1fcf6ea8f18828221a3470706f294ad6223",
+      "configs/driving-v7-goal-audit.yaml": "abf77bd08ebdfda7fb2d6269dfc1b784abd9f35bad6b8c1aa7a1fef111fe3576",
+      "src/fly_emotion/driving/v7_goal_audit.py": "2d529522bcf43f839bf4baff89fe3f669e9de46009025b96be8732a1dd4da3e8",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -53,6 +53,7 @@
       "artifacts/v7-four-hop-scalar-precheck.json": "d0c82ac14f42f580cbb9bf1b78f7b4d2a41d7cbaa2a5b28858ff791b34b95b3c",
       "artifacts/v7-lc4-position-speed-precheck.json": "4615ff4eceedc1baf555fa93c074fb2e914411edfa43939e6acccb5c94f9d49e",
       "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
+      "artifacts/v7-t5-lamina-scalar-precheck.json": "7335166942c334e5c99a153374de007fb08f9ebc38e12f9fb0619f6d75bc4fd6",
       "artifacts/v7-t5-spatial-order.json": "14db146d022d116878c43a19acd8ccb88320222013795da8de77d5f782e45e01",
       "artifacts/v7-t4t5-local-edge-precheck.json": "4a13be0c85994ce8946f43e7131172f2aeb480106ea5356d8462d1529c7665a3",
       "artifacts/v7-t4t5-local-edge-backends.json": "c944084fcbe3f275298d537d090c7117225a4e1030e51a3963154bbfbdd0e08f",
@@ -119,6 +120,7 @@
         "artifacts/v7-t4-conductance-fit.json",
         "artifacts/v7-t5-phenotype.json",
         "artifacts/v7-t5-lamina-split.json",
+        "artifacts/v7-t5-lamina-scalar-precheck.json",
         "artifacts/v7-lplc2-radial-opponency.json",
         "artifacts/v7-lplc2-position-coverage.json"
       ],
@@ -344,6 +346,13 @@
         },
         "T5_lamina_split_mirror_gate_passed": true,
         "T5_lamina_split_strict_gates_passed": false,
+        "T5_lamina_scalar_joint_source_fraction": 0.9998511683286203,
+        "T5_lamina_scalar_ordered_direction_pass_count": 0,
+        "T5_lamina_scalar_ordered_polarity_pass_count": 8,
+        "T5_lamina_scalar_shuffle_bilateral_subtypes": [
+          "a"
+        ],
+        "T5_lamina_scalar_precheck_passed": false,
         "T5_spatial_order_b_d_reachable_fraction": 0.046875,
         "local_edge_precheck_direction_pass_count": 0,
         "local_edge_precheck_polarity_pass_count": 0,
