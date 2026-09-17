@@ -1532,6 +1532,14 @@ conductance 状态，不向 T4 注入活动；对每个 T4 的真实 Mi1/Tm3 fas
 反对称项仍不足以产生 T4 全群体方向选择。按预注册 stop gate，shuffle/static 和 T02/T03
 仍未运行。证据见 `artifacts/v7-t4-synapse-antisymmetric-precheck.json`。
 
+最后只在相关器支路把 0–1 normalized source state 减去刺激前灰背景工作点；published
+conductance 主支和实际脑状态不变。八个预注册候选的方向通过数为
+2、2、2、1、2、2、2、2，极性仍全部 8/8，仍无任何双眼方向亚型；controls 与 T02/T03
+未触发。故基线工作点也不是充分解释。至此停止继续排列“同一上游状态＋单步乘积＋突触轴
+投影”的机制族；下一类候选必须为 fast/delayed 上游通道建立显式不同的时间核，并把
+ordered 对 shuffle/static 的可辨识性作为先决条件，不能再扫空间旋转、标签、阈值或加法
+增益。证据见 `artifacts/v7-t4-synapse-centered-precheck.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

@@ -1,0 +1,51 @@
+version: 1
+name: v7-t4-synapse-axis-centered-antisymmetric-precheck
+observed_on: "2026-09-17"
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+synapse_axis_evidence: artifacts/v7-synapse-axis-calibration.json
+prior_antisymmetric_evidence: artifacts/v7-t4-synapse-antisymmetric-precheck.json
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+initial_condition_id: S1-T01
+additional_tuning_condition_ids: [S1-T02, S1-T03]
+source_groups:
+  fast: [Mi1, Tm3]
+  delayed: [Mi4, C3]
+correlator:
+  source_state: normalized_state_minus_stimulus_prebaseline_state
+  source_centering_scope: correlator_branch_only
+  formula: sum_pairs((x_fast-x_delayed)*(fast_now*delayed_previous-delayed_now*fast_previous))
+  normalization: sum_absolute_x_y_pair_terms_plus_1e-6
+  temporal_reductions: [positive_peak, signed_mean]
+  additive_gains: [0.125, 0.5, 2.0, 8.0]
+  base: unchanged_published_T4_conductance_target_state
+controls:
+  temporal_shuffle_seed: 20260917
+  shared_permutation_across_directions_and_polarities: true
+  static_first_motion_frame_repeat: true
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_run_controls: 1
+  require_all_direction_populations: true
+  require_all_polarity_populations: true
+  require_mirror: true
+  require_no_bilateral_direction_subtype_in_each_control: true
+boundary:
+  tuning_only: true
+  T4_only: true
+  T5_mapping_application_forbidden: true
+  prior_antisymmetric_result_preserved: true
+  conductance_base_unchanged: true
+  source_centering_does_not_modify_brain_state: true
+  synapse_axis_fit_frozen_before_functional_precheck: true
+  dynamics_do_not_read_subtype_or_direction_labels: true
+  labels_used_for_posthoc_scoring_only: true
+  fixed_whole_population_denominators: true
+  missing_conductance_targets_count_as_invalid: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true

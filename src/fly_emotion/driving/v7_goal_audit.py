@@ -75,6 +75,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     synapse_axis_calibration = reports["synapse_axis_calibration"]
     t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
     t4_synapse_antisymmetric_precheck = reports["t4_synapse_antisymmetric_precheck"]
+    t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -175,6 +176,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
+                config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -544,6 +546,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     t4_synapse_antisymmetric_precheck[
                         "three_condition_evaluation_performed"
                     ]
+                ),
+                "T4_synapse_centered_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t4_synapse_centered_precheck["ordered_candidates"]
+                ],
+                "T4_synapse_centered_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t4_synapse_centered_precheck["ordered_candidates"]
+                ],
+                "T4_synapse_centered_bilateral_direction_subtypes": [
+                    item["bilateral_direction_subtypes"]
+                    for item in t4_synapse_centered_precheck["ordered_candidates"]
+                ],
+                "T4_synapse_centered_controls_evaluated": t4_synapse_centered_precheck[
+                    "controls_evaluated"
+                ],
+                "T4_synapse_centered_three_condition_evaluation_performed": (
+                    t4_synapse_centered_precheck["three_condition_evaluation_performed"]
                 ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
