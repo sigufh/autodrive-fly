@@ -26,9 +26,17 @@ def test_source_pool_has_only_unilateral_signal_and_does_not_authorize_formula()
         "proximal": 1,
         "distal": 1,
         "center_proximal_correlation": 0,
+        "pairwise_proximal_vector": 1,
+        "pairwise_distal_vector": 0,
     }
     assert all(not values for values in report["bilateral_passing_subtypes"].values())
     assert report["maximum_bilateral_direction_pair_count"] == 0
     assert report["authorize_new_target_formula"] is False
+    left = report["population_scores"]["T4d_L"]["pairwise_proximal_vector"]
+    right = report["population_scores"]["T4d_R"]["pairwise_proximal_vector"]
+    assert left["median_signed_contrast"] > 0.10
+    assert left["positive_cell_fraction"] < 0.60
+    assert left["passed"] is False
+    assert right["passed"] is True
     assert report["advance_to_calibration"] is False
     assert report["advance_to_runtime_integration"] is False

@@ -1323,6 +1323,11 @@ correlator 连极性也为 0/16。没有组合达到扩展门，因此现有后�
 亚型才允许新 target 公式”的门，孤立单侧趋势不足以晋级。当前更准确的缺口是 lamina/
 medulla 上游池缺少稳定镜像方向编码，而非现有 target 组合漏掉普遍信号。证据见
 `artifacts/v7-t4-source-pool-local.json`。
+进一步在相关前保留真实 source 的二维坐标一阶矩，等价计算所有 center×proximal/distal
+真实边对的 pairwise motion vector。修正无坐标 Tm3 的 NaN 污染后，proximal vector
+只有 `T4d_R` 通过；`T4d_L` 的中位方向对比为正且超过 0.10，但正向细胞比例约 59.68%，
+低于冻结 60% 门，其他亚型更弱，distal vector 为 0/8。因此双侧通过亚型仍为 0，不能
+为少数细胞放宽阈值或翻标签，也不扩三条件；该近失只保留为未来新时间滤波公式的定位证据。
 
 因此当前可保留的有效方向是：早期 lamina 局部表示、偶上下文×奇方向的 FC2 目标编码、
 EPG/PEN/PEG 航向保持和 PFL3→DNa02 透明执行链。已证伪或应停止扩展的方向包括：单事件
