@@ -1378,6 +1378,13 @@ slow>medium>fast 持续时间积分，不是预期 fast>medium>slow 角速度选
 同一真实 LC4 trace 的 `peak positive state derivative` follow-up 也失败：有效覆盖仅
 11/71 与 13/55，正斜率比例为 0% 与 7.7%；中位导数仍随速度提高而下降，尽管负斜率
 回归 R² 约 0.97/0.94。因而问题不是单纯峰值被持续时间积分污染，导数口子也不扩三条件。
+进一步在完全相同的 15 位置和 32/16/8 帧刺激上，读取每个 LC4 的全部真实直接
+presynaptic 净输入并排除 LC4→LC4 recurrent 边。输入 peak 仍是 slow>fast；正输入导数
+只有左 1/71、右 3/55 个细胞达到可评分动态范围，全细胞正斜率比例同为 1.41%/5.45%。
+该导数的左右归一化群体曲线镜像误差为 0.0339，说明失败不是左右不一致。主要直接输入
+按权重为 T2、TmY3、Tm4、Tm2、Tm3，结构上也不同于 LPLC2 的 T4/T5 radial 汇聚。
+因此角速度信号在进入 LC4 前就不足，不通过修改 LC4 leak 或输出导数继续搜索。证据见
+`artifacts/v7-lc4-input-speed-precheck.json`。
 
 T5 的一个隔离组件诊断随后把真实 R1–R6 边按 retinal delta 半波拆到 lamina：L1 接 ON，
 L2/L3 接 OFF；只覆盖这三个具名 lamina target，下游仍走真实视觉子图，且不向 T5 注入

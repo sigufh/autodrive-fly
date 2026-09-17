@@ -330,6 +330,11 @@ v7-evaluate-lc4-position-speed-precheck:
 
 .PHONY: v7-evaluate-lc4-position-speed-precheck
 
+v7-evaluate-lc4-input-speed-precheck:
+	.venv/bin/autodrive-fly v7-evaluate-lc4-input-speed-precheck
+
+.PHONY: v7-evaluate-lc4-input-speed-precheck
+
 v7-evaluate-t5-lamina-split:
 	.venv/bin/autodrive-fly v7-evaluate-t5-lamina-split
 

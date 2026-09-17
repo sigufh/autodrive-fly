@@ -66,6 +66,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
+    lc4_input_speed_precheck = reports["lc4_input_speed_precheck"]
     t5_lamina_split = reports["t5_lamina_split"]
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
@@ -148,6 +149,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
+                config["evidence"]["lc4_input_speed_precheck"],
                 config["evidence"]["lplc2_radial_opponency"],
                 config["evidence"]["lplc2_position_coverage"],
             ],
@@ -366,6 +368,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 },
                 "LC4_position_speed_primary_readout": lc4_position_speed_precheck[
                     "primary_precheck_readout"
+                ],
+                "LC4_input_speed_valid_fraction": {
+                    side: result["valid_cell_fraction"]
+                    for side, result in lc4_input_speed_precheck["per_side"].items()
+                },
+                "LC4_input_speed_positive_slope_fraction": {
+                    side: result["positive_slope_fraction_all_cells"]
+                    for side, result in lc4_input_speed_precheck["per_side"].items()
+                },
+                "LC4_input_speed_mirror_passed": lc4_input_speed_precheck["mirror"][
+                    lc4_input_speed_precheck["primary_precheck_readout"]
+                ]["passed"],
+                "LC4_input_speed_precheck_passed": lc4_input_speed_precheck[
+                    "LC4_input_speed_precheck_passed"
                 ],
                 "T5_lamina_split_polarity_passing_condition_counts": {
                     name: result["polarity"]["passing_condition_count"]

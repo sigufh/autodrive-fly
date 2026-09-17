@@ -57,6 +57,7 @@ from .driving.v7_goal_audit import evaluate_v7_goal_coverage
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
 from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
 from .driving.v7_lamina_goal_symmetry import evaluate_v7_lamina_goal_symmetry
+from .driving.v7_lc4_input_speed_precheck import evaluate_v7_lc4_input_speed_precheck
 from .driving.v7_lc4_position_speed_precheck import evaluate_v7_lc4_position_speed_precheck
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
@@ -301,6 +302,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
     subparsers.add_parser("v7-evaluate-four-hop-scalar-precheck")
     subparsers.add_parser("v7-evaluate-lc4-position-speed-precheck")
+    subparsers.add_parser("v7-evaluate-lc4-input-speed-precheck")
     subparsers.add_parser("v7-evaluate-t5-lamina-split")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
@@ -932,6 +934,12 @@ def main() -> None:
     if args.command == "v7-evaluate-lc4-position-speed-precheck":
         report = evaluate_v7_lc4_position_speed_precheck(root)
         target = root / "artifacts/v7-lc4-position-speed-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-lc4-input-speed-precheck":
+        report = evaluate_v7_lc4_input_speed_precheck(root)
+        target = root / "artifacts/v7-lc4-input-speed-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

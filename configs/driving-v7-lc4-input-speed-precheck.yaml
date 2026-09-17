@@ -1,0 +1,37 @@
+version: 1
+name: v7-lc4-direct-input-speed-precheck
+observed_on: "2026-09-17"
+lc4_speed_protocol: configs/driving-v7-lc4-position-speed-precheck.yaml
+lc4_speed_evidence: artifacts/v7-lc4-position-speed-precheck.json
+position_protocol: configs/driving-v7-lplc2-position-coverage.yaml
+typed_stimulus_protocol: configs/driving-v7-lplc-typed-screen.yaml
+condition_id: LPLC-T01
+retinal_backend: linear_luminance
+dynamics_backend: typed_visual_subgraph_v1
+brain_substeps_per_frame: 1
+baseline_frames: 2
+common_background_frames: 2
+duration_divisors: [1, 2, 4]
+relative_angular_velocities: [1.0, 2.0, 4.0]
+position_pooling: maximum_over_fixed_5x3_grid_for_each_speed
+source_pool: all_direct_non_LC4_presynaptic_nodes
+readouts: [input_peak, peak_positive_input_derivative]
+primary_precheck_readout: peak_positive_input_derivative
+thresholds:
+  minimum_valid_denominator: 0.000001
+  minimum_valid_cell_fraction: 0.80
+  minimum_positive_slope_fraction: 0.60
+  minimum_median_r_squared: 0.50
+  minimum_monotonic_cell_fraction: 0.60
+  maximum_normalized_population_curve_error: 0.20
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  direct_presynaptic_readout_only: true
+  LC4_recurrent_sources_excluded: true
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  three_condition_evaluation_requires_precheck_pass: true
