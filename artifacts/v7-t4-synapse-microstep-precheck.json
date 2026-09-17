@@ -1,0 +1,76 @@
+{
+  "protocol": {
+    "name": "v7-t4-synapse-axis-microstep-correlator-precheck",
+    "observed_on": "2026-09-17",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-synapse-microstep-precheck.yaml": "ca4273d0c57beb014adf0f9644834b9031231c196f44bbb56b03f3e8f1cd94eb",
+      "src/fly_emotion/driving/v7_t4_synapse_microstep_precheck.py": "a5f8666f252535bd910afc1045fe98ffdf8068b374c8b772b0198d959bc63937",
+      "src/fly_emotion/driving/v7_t4_synapse_centered_precheck.py": "352c3e950301fc967c315f85501a40d7e34f2f3f9bed78b90f304a39d3e7aab9",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "artifacts/v7-synapse-axis-calibration.json": "b4483743c987130039baa9c5dda2d307d31b4c455dd7358ad8b58319a2a49b2f",
+      "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
+      "configs/driving-v7-t4-conductance.yaml": "47d358b4c49908f5f155e6e55f46c4ca57fc97b4a9802b3d06ce47f2bf77c841",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "configs/driving-v7-synapse-spatial-audit.yaml": "ce72f8560a05554a24681440ce67efd885827266fd77b6c66396678887708d48"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count": 8,
+    "brain_substeps_per_frame": 4,
+    "baseline_prefix_frames_in_controls": 8,
+    "frozen_source_leaks_per_substep": {
+      "Mi1": 0.24,
+      "Tm3": 0.62,
+      "Mi4": 0.14,
+      "C3": 0.16
+    },
+    "candidate_count_if_temporal_gate_passes": 8,
+    "T5_evaluated": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "diagnostic_target_count": 6749,
+  "diagnostic_valid_target_count": 6749,
+  "fixed_T4_population_denominator": 6861,
+  "temporal_identifiability": {
+    "ordered_mean_absolute_energy": 0.0004795731893791044,
+    "static_mean_absolute_energy": 0.0002581279558846712,
+    "ordered_minus_static_mean_absolute_energy": 0.00035687651286798376,
+    "shuffle_minus_static_mean_absolute_energy": 0.000684269720646778,
+    "shuffle_to_ordered_residual_energy_ratio": 1.9173851345602673,
+    "static_to_ordered_energy_ratio": 0.538245176338705,
+    "gates": {
+      "shuffle_residual_attenuated": false,
+      "static_energy_attenuated": false
+    },
+    "passed": false
+  },
+  "direction_scoring_performed": false,
+  "ordered_candidates": [],
+  "advancing_candidates": [],
+  "advance_to_three_tuning_conditions": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "microstep_temporal_identifiability_gate_failed",
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_precheck": true,
+    "T4_only": true,
+    "T5_mapping_application_forbidden": true,
+    "existing_type_specific_leaks_reused_without_search": true,
+    "physical_time_constant_claimed": false,
+    "source_centering_does_not_modify_brain_state": true,
+    "dynamics_do_not_read_subtype_or_direction_labels": true,
+    "labels_used_for_posthoc_scoring_only": true,
+    "fixed_whole_population_denominators": true,
+    "missing_conductance_targets_count_as_invalid": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "LPLC_experiments_authorized_only_after_strict_T4_T5_gate": true
+  }
+}

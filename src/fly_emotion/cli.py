@@ -142,6 +142,9 @@ from .driving.v7_t4_synapse_centered_precheck import (
 from .driving.v7_t4_synapse_correlator_precheck import (
     evaluate_v7_t4_synapse_correlator_precheck,
 )
+from .driving.v7_t4_synapse_microstep_precheck import (
+    evaluate_v7_t4_synapse_microstep_precheck,
+)
 from .driving.v7_t4t5_local_edge_backends import evaluate_v7_t4t5_local_edge_backends
 from .driving.v7_t4t5_local_edge_precheck import evaluate_v7_t4t5_local_edge_precheck
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
@@ -336,6 +339,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-antisymmetric-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
+    subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1092,6 +1096,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t4-synapse-centered-precheck":
         report = evaluate_v7_t4_synapse_centered_precheck(root)
         target = root / "artifacts/v7-t4-synapse-centered-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-synapse-microstep-precheck":
+        report = evaluate_v7_t4_synapse_microstep_precheck(root)
+        target = root / "artifacts/v7-t4-synapse-microstep-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

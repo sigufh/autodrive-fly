@@ -1540,6 +1540,15 @@ conductance 主支和实际脑状态不变。八个预注册候选的方向通�
 ordered 对 shuffle/static 的可辨识性作为先决条件，不能再扫空间旋转、标签、阈值或加法
 增益。证据见 `artifacts/v7-t4-synapse-centered-precheck.json`。
 
+显式时间核的第一步没有新增或拟合毫秒常数，而是复用 v7 已冻结的 Mi1/Tm3
+`0.24/0.62` 与 Mi4/C3 `0.14/0.16` 每微步 leak，并把突触相关器从每帧末取样改为每个
+既有脑微步取样。时间控制也改为读取 conductance 的 8 帧 baseline 前缀。方向评分被前置
+时序门硬阻断：`shuffle−static / ordered−static` 相关能量比为 1.917，远高于 ≤0.50；
+static/ordered 为 0.538，也高于 ≤0.50。因此 `direction_scoring_performed=false`，不产生
+方向候选分数。现有类型特异 leak 在微步尺度仍不能把有序运动与乱序帧跳变分开，且未把
+离散 leak 解释成未知的毫秒时间常数。证据见
+`artifacts/v7-t4-synapse-microstep-precheck.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

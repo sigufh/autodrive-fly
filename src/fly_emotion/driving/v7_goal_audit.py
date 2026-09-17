@@ -76,6 +76,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
     t4_synapse_antisymmetric_precheck = reports["t4_synapse_antisymmetric_precheck"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
+    t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -177,6 +178,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
                 config["evidence"]["t4_synapse_centered_precheck"],
+                config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -564,6 +566,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "T4_synapse_centered_three_condition_evaluation_performed": (
                     t4_synapse_centered_precheck["three_condition_evaluation_performed"]
+                ),
+                "T4_synapse_microstep_shuffle_residual_ratio": (
+                    t4_synapse_microstep_precheck["temporal_identifiability"][
+                        "shuffle_to_ordered_residual_energy_ratio"
+                    ]
+                ),
+                "T4_synapse_microstep_static_energy_ratio": (
+                    t4_synapse_microstep_precheck["temporal_identifiability"][
+                        "static_to_ordered_energy_ratio"
+                    ]
+                ),
+                "T4_synapse_microstep_temporal_identifiability_passed": (
+                    t4_synapse_microstep_precheck["temporal_identifiability"]["passed"]
+                ),
+                "T4_synapse_microstep_direction_scoring_performed": (
+                    t4_synapse_microstep_precheck["direction_scoring_performed"]
                 ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
