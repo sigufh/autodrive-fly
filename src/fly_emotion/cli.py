@@ -123,6 +123,9 @@ from .driving.v7_stage1_nested import evaluate_v7_stage1_nested
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
+from .driving.v7_t4_continuous_pair_precheck import (
+    evaluate_v7_t4_continuous_pair_precheck,
+)
 from .driving.v7_t4_local_correlator_precheck import evaluate_v7_t4_local_correlator_precheck
 from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_correlator
 from .driving.v7_t4_source_pool_local import evaluate_v7_t4_source_pool_local
@@ -309,6 +312,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-precheck")
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-backends")
     subparsers.add_parser("v7-evaluate-t4-local-correlator-precheck")
+    subparsers.add_parser("v7-evaluate-t4-continuous-pair-precheck")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1010,6 +1014,12 @@ def main() -> None:
     if args.command == "v7-evaluate-t5-continuous-moment-precheck":
         report = evaluate_v7_t5_continuous_moment_precheck(root)
         target = root / "artifacts/v7-t5-continuous-moment-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-continuous-pair-precheck":
+        report = evaluate_v7_t4_continuous_pair_precheck(root)
+        target = root / "artifacts/v7-t4-continuous-pair-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

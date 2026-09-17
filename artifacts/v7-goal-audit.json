@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "4dceb433d13ba956c5978d1092c8c8e63a45cab8ab7e058df64c9205585a5e9f",
-      "src/fly_emotion/driving/v7_goal_audit.py": "0cf6952d4098056d1ec80cadc26bf51103918758db9b6d1d182f86b3ecde4c73",
+      "configs/driving-v7-goal-audit.yaml": "1ec66d35814e877702543fc7b89e615e588dcc8cc6759df3022a3d5c064b12c4",
+      "src/fly_emotion/driving/v7_goal_audit.py": "73a2a2b2ff489d2bc6efbbbd1c653c6af5c4a2cef111f814cb28aa19eb2a1ed9",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -48,6 +48,7 @@
       "artifacts/v7-parameter-matched-baselines.json": "8f0682497172d9661b89b6246bded00a0757a024d689a40f2393051365ed701e",
       "artifacts/v7-nested-neural-screen.json": "9840d970d2d0393c7e51a981c902c8c0b3a4aae6a2b1f0c118e9e9ed32e01b0d",
       "artifacts/v7-t4-source-resolved.json": "c83faf29ebd1b5ff7f0b9a204d330f3eabfbf8f2bd4183e437b9a251df4d5616",
+      "artifacts/v7-t4-continuous-pair-precheck.json": "0808f1412447cf7757567269118016dd5206c395c758e65447212fecbcd85950",
       "artifacts/v7-t4-normalized-correlator.json": "a9b56138ba3ba1835a01060f6da91aa2dcc527bd368ebe305b351a4211d8be4a",
       "artifacts/v7-t4-local-correlator-precheck.json": "25594ffa544731ef3acb3a0c4dc55390a9b800fa8e06c8c315574553e66f1718",
       "artifacts/v7-t4-source-pool-local.json": "1b983d63083c8ab2f748f8741e7c55f97c533c81b889779115522ec8c346dbe7",
@@ -286,6 +287,21 @@
           }
         },
         "T4_source_resolved_passing_variants": [],
+        "T4_continuous_pair_structural_axis_passed": true,
+        "T4_continuous_pair_direction_pass_counts": {
+          "signed_mean": 0,
+          "maximum": 0,
+          "positive_mean": 0,
+          "terminal_sum": 0
+        },
+        "T4_continuous_pair_polarity_pass_counts": {
+          "signed_mean": 0,
+          "maximum": 0,
+          "positive_mean": 0,
+          "terminal_sum": 0
+        },
+        "T4_continuous_pair_controls_evaluated": false,
+        "T4_continuous_pair_three_condition_evaluation_performed": false,
         "T4_normalized_correlator_best_gate_count": 16,
         "T4_local_correlator_direction_pass_counts": {
           "additive:gain=0.5:lag=1": 0,
@@ -815,6 +831,7 @@
         "artifacts/v7-t5-conductance-audit.json",
         "artifacts/v7-ephys-interface.json",
         "artifacts/v7-t4-source-resolved.json",
+        "artifacts/v7-t4-continuous-pair-precheck.json",
         "artifacts/v7-t4-normalized-correlator.json",
         "artifacts/v7-t4-local-correlator-precheck.json",
         "artifacts/v7-t4-source-pool-local.json",

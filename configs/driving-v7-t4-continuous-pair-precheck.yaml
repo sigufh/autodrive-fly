@@ -1,0 +1,43 @@
+version: 1
+name: v7-t4-continuous-source-pair-precheck
+observed_on: "2026-09-17"
+source_audit_evidence: artifacts/v7-t4-source-audit.json
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+condition_id: S1-T01
+source_groups:
+  direct: [Mi1]
+  offset: [Mi4, C3]
+structural_axis:
+  formula: direct_centroid_minus_offset_centroid
+  coordinate_transform: frozen_nested_CV_T4_transform_by_eye
+activity_pair:
+  source_state: positive_baseline_subtracted_state
+  formula: axis_dot_sum_over_all_direct_offset_pairs_of_spatial_displacement_times_reichardt
+  normalization: sum_absolute_xy_pair_terms_plus_1e-9
+  temporal_reductions: [signed_mean, maximum, positive_mean, terminal_sum]
+  position_reduction: maximum_over_fixed_5x3_grid
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_run_controls: 1
+  require_all_structural_axis_populations: true
+controls_after_ordered_gate: [temporal_shuffle, static_sham]
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  axis_transform_was_fitted_only_in_prior_nested_T4_structure_audit: true
+  structural_axis_is_not_independent_functional_validation: true
+  dynamics_do_not_read_subtype_or_direction_labels: true
+  labels_used_for_posthoc_scoring_only: true
+  diagnostic_head_not_target_activity: true
+  fixed_whole_population_denominators: true
+  direct_real_T4_sources_only: true
+  labels_changed: false
+  thresholds_changed: false
+  parameter_fit_in_this_precheck: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true

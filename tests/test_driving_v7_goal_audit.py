@@ -140,6 +140,23 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["T4_source_pool_maximum_bilateral_pair_count"] == 0
     assert visual["observations"]["T4_source_pool_authorizes_target_formula"] is False
+    assert visual["observations"]["T4_continuous_pair_structural_axis_passed"] is True
+    assert visual["observations"]["T4_continuous_pair_direction_pass_counts"] == {
+        "signed_mean": 0,
+        "maximum": 0,
+        "positive_mean": 0,
+        "terminal_sum": 0,
+    }
+    assert visual["observations"]["T4_continuous_pair_polarity_pass_counts"] == {
+        "signed_mean": 0,
+        "maximum": 0,
+        "positive_mean": 0,
+        "terminal_sum": 0,
+    }
+    assert visual["observations"]["T4_continuous_pair_controls_evaluated"] is False
+    assert visual["observations"][
+        "T4_continuous_pair_three_condition_evaluation_performed"
+    ] is False
     assert visual["observations"]["three_hop_main_direction_bilateral_populations"] == [
         "T4a",
         "T4b",

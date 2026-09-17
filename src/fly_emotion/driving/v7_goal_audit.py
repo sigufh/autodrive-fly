@@ -63,6 +63,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     parameter_matched_baselines = reports["parameter_matched_baselines"]
     nested_neural_screen = reports["nested_neural_screen"]
     t4_source_resolved = reports["t4_source_resolved"]
+    t4_continuous_pair_precheck = reports["t4_continuous_pair_precheck"]
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t4_local_correlator_precheck = reports["t4_local_correlator_precheck"]
     t4_source_pool_local = reports["t4_source_pool_local"]
@@ -334,6 +335,28 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "nested_neural_strict_screen": nested_neural_screen["summaries"],
                 "T4_source_resolved_passing_variants": t4_source_resolved["passing_variants"],
+                "T4_continuous_pair_structural_axis_passed": (
+                    t4_continuous_pair_precheck["structural_axis"]
+                    ["all_population_and_mirror_gates_passed"]
+                ),
+                "T4_continuous_pair_direction_pass_counts": {
+                    name: result["direction_pass_count"]
+                    for name, result in t4_continuous_pair_precheck[
+                        "ordered_activity_pair"
+                    ].items()
+                },
+                "T4_continuous_pair_polarity_pass_counts": {
+                    name: result["polarity_pass_count"]
+                    for name, result in t4_continuous_pair_precheck[
+                        "ordered_activity_pair"
+                    ].items()
+                },
+                "T4_continuous_pair_controls_evaluated": t4_continuous_pair_precheck[
+                    "controls_evaluated"
+                ],
+                "T4_continuous_pair_three_condition_evaluation_performed": (
+                    t4_continuous_pair_precheck["three_condition_evaluation_performed"]
+                ),
                 "T4_normalized_correlator_best_gate_count": t4_normalized_correlator[
                     "selected_candidate"
                 ]["passed_gate_count"],
@@ -969,6 +992,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_repository"],
                 config["evidence"]["ephys_interface"],
                 config["evidence"]["t4_source_resolved"],
+                config["evidence"]["t4_continuous_pair_precheck"],
                 config["evidence"]["t4_normalized_correlator"],
                 config["evidence"]["t4_local_correlator_precheck"],
                 config["evidence"]["t4_source_pool_local"],
