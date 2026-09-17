@@ -5,10 +5,10 @@
     "advance_allowed": false,
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-data-audit.yaml": "112b9c5e937c4152ff93f34620a31ae0511ba9e2eafd788bbd7a0a59295c7eb6",
-      "src/fly_emotion/driving/v7_t5_data_audit.py": "a00be4fd5916bedd496c8ed3baa712e8b35b6911fc035f2ae1a84b189d30f3e2",
-      "configs/driving-v7-ephys-interface.yaml": "8d464400b1b8115854bbea619cef8f38c39f40e64868cda93b9b3bee9883f846",
-      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3"
+      "configs/driving-v7-t5-data-audit.yaml": "f221ac1acbb276ca4d62aab6bb314306dfc7e9d2c830cafb228e5600de44f6bd",
+      "src/fly_emotion/driving/v7_t5_data_audit.py": "fa4878a31d9e73c06898b4d61963db1602e08d075d016efd9f4a6fdcf799fa2e",
+      "configs/driving-v7-ephys-interface.yaml": "50cf22f120ab6b5d332f9ed40df1b55e31cd2ac22772706949dcba2d0be4abff",
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae"
     },
     "large_raw_files_downloaded": false,
     "parameter_fitting": false
@@ -125,6 +125,24 @@
         "article_page": {
           "status_code": 403,
           "accessible": false
+        },
+        "official_endpoints": {
+          "article_api": {
+            "status_code": 403,
+            "accessible": false
+          },
+          "landing_page": {
+            "status_code": 202,
+            "accessible": true
+          },
+          "versioned_archive": {
+            "status_code": 202,
+            "accessible": true
+          },
+          "article_archive": {
+            "status_code": 202,
+            "accessible": true
+          }
         }
       },
       "supporting_functions": {
@@ -148,7 +166,14 @@
     "wienecke_2018_voltage_imaging": {
       "paper_doi": "10.1016/j.neuron.2018.07.005",
       "http_status": 200,
-      "page_sha256": "1c975c96fa10827dfc432e7a7e497c74c7aacb3b1bb78ee7b649788df55dba3e",
+      "page_sha256": "324ffef8eb6edef83af3ffeeb75821aec9b734f8005146ec7c555e4df245fc32",
+      "required_phrase_checks": {
+        "genetically encoded voltage indicator": true,
+        "acquired at ~15 Hz": true,
+        "quantified as \u2212\u0394F/F": true,
+        "57 single T5 cells": true
+      },
+      "required_phrases_verified": true,
       "signal_unit": "inverted_relative_fluorescence",
       "absolute_millivolts_possible": false,
       "modality": "two_photon_ASAP2f_voltage_imaging",
@@ -166,7 +191,14 @@
     "ramos_2021_calcium": {
       "paper_doi": "10.1038/s41467-021-24986-w",
       "http_status": 200,
-      "page_sha256": "2b63e92669ef40c83c59508512ce990d58e5d83f8244a4fd117f5281a3360ef4",
+      "page_sha256": "37218c05baaba2b7d95ffb5eca37bb8ea21e7323f58745ee4fd54db8d3aca361",
+      "required_phrase_checks": {
+        "two-photon calcium imaging": false,
+        "Tm9 and T5": false,
+        "Source data are provided": false,
+        "G-NODE": false
+      },
+      "required_phrases_verified": false,
       "signal_unit": "relative_calcium_fluorescence",
       "absolute_millivolts_possible": false,
       "modality": "two_photon_calcium_imaging",
@@ -204,6 +236,28 @@
     "processed_baseline_subtracted_T5_voltage_files_verified": true,
     "processed_T5_repository_commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
     "processed_T5_cell_count": 17,
+    "processed_T5_cells_with_both_moving_bar_direction_codes": 17,
+    "processed_T5_native_time_vectors_verified": true,
+    "processed_T5_direction_code_to_PD_ND_mapping_verified": false,
+    "processed_T5_stable_biological_cell_ids_available": false,
+    "processed_T5_independent_cell_holdout_available": false,
+    "unified_model_package_within_download_budget": true,
+    "unified_model_file_manifest_retrieved": false,
+    "unified_model_files_verified": false,
+    "replay_ready": true,
+    "readiness_gates": {
+      "processed_repository_files_verified": true,
+      "native_time_vectors_verified": true,
+      "both_moving_bar_direction_codes_present": true,
+      "direction_code_to_PD_ND_mapping_verified": false,
+      "stable_biological_cell_ids_available": false,
+      "independent_cell_holdout_available": false,
+      "untouched_final_test_available": false,
+      "published_parameter_package_files_verified": false
+    },
+    "fit_ready": false,
+    "independent_validation_ready": false,
+    "final_test_ready": false,
     "T5_fit_allowed": false,
     "reason": "The 2021 raw whole-cell datasets still lack a verified file manifest here. A separate fixed-commit audit verified processed baseline-subtracted 2019 T5 voltage traces and added a read-only, native-time interface; it is same-cell condition generalization and remains unavailable for fitting."
   },
@@ -221,6 +275,8 @@
     "fit_T5_parameters": false,
     "change_visual_gates": false,
     "require_file_manifest_and_hashes_before_import": true,
+    "require_verified_direction_code_semantics_before_fit": true,
+    "require_stable_biological_cell_ids_before_cross_cell_split": true,
     "require_signal_specific_loss_before_fit": true,
     "require_untouched_final_test": true
   },
@@ -228,6 +284,7 @@
     "Figshare access codes are dated environment observations, not permanence claims.",
     "DataCite descriptions establish scope, not file integrity or array axes.",
     "The 6.32-GB and 4.31-GB datasets were not downloaded under the bounded audit.",
+    "The 3.63-MB unified-model package is within the download budget, but the official article API, landing page and ndownloader returned HTTP 403 in this environment; DataCite exposes package metadata but no file IDs.",
     "Verified 2019 processed T5 traces do not verify the separate 2021 raw datasets.",
     "ASAP2f is relative fluorescence at about 15 Hz, not patch-clamp millivolts.",
     "Calcium imaging and connectome structure cannot calibrate membrane voltage."

@@ -256,6 +256,15 @@ def evaluate_v7_ephys_interface(root: Path) -> dict:
             "spfr_is_exact_subset_of_all": t5_verified["subset_verification"][
                 "all_spfr_traces_byte_exact_with_condition_matched_all_trace"
             ],
+            "cells_with_both_moving_bar_direction_codes": t5_verified[
+                "direction_and_identity_readiness"
+            ]["cells_with_both_moving_bar_direction_codes"],
+            "direction_code_to_PD_ND_mapping_verified": t5_verified[
+                "direction_and_identity_readiness"
+            ]["direction_code_to_PD_ND_mapping_verified"],
+            "stable_biological_cell_ids_available": t5_verified[
+                "direction_and_identity_readiness"
+            ]["stable_biological_cell_ids_available"],
         }
     dependencies = {
         str(CONFIG): _sha256(root / CONFIG),

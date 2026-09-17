@@ -35,6 +35,11 @@ sources:
         doi: 10.25378/janelia.16663486
         article_id: 16663486
         datacite_url: https://api.datacite.org/dois/10.25378/janelia.16663486
+        access_endpoints:
+          article_api: https://api.figshare.com/v2/articles/16663486
+          landing_page: https://janelia.figshare.com/articles/software/Non-preferred_contrast_responses_unified_model_implementation_and_simulation/16663486/1
+          versioned_archive: https://janelia.figshare.com/ndownloader/articles/16663486/versions/1
+          article_archive: https://janelia.figshare.com/ndownloader/articles/16663486
         expected_size_bytes: 3630019
         required_description_phrases: [optTables.mat, T4 and T5 averaged cells, quality control statistics]
         stimulus_scope: model code and fitted parameter tables
@@ -94,5 +99,7 @@ audit_boundary:
   fit_T5_parameters: false
   change_visual_gates: false
   require_file_manifest_and_hashes_before_import: true
+  require_verified_direction_code_semantics_before_fit: true
+  require_stable_biological_cell_ids_before_cross_cell_split: true
   require_signal_specific_loss_before_fit: true
   require_untouched_final_test: true

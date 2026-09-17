@@ -100,6 +100,9 @@ def test_saved_interface_is_hash_bound_native_1khz_and_runtime_isolated() -> Non
     }
     assert t5["native_sample_intervals_milliseconds"] == {"2.5": 1905, "5": 1666}
     assert t5["spfr_is_exact_subset_of_all"] is True
+    assert t5["cells_with_both_moving_bar_direction_codes"] == 17
+    assert t5["direction_code_to_PD_ND_mapping_verified"] is False
+    assert t5["stable_biological_cell_ids_available"] is False
     assert all(item["all_finite"] for item in arrays["fig3_inputs"].values())
     for path in (
         ROOT / "src/fly_emotion/driving/engine.py",

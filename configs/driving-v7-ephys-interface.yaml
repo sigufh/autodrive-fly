@@ -37,6 +37,8 @@ split_contract:
   t5_data_available: true
   t5_same_cells_used_for_fit_and_prediction: true
   t5_independent_cell_holdout: false
+  t5_direction_code_to_PD_ND_mapping_verified: false
+  t5_stable_biological_cell_ids_available: false
   t5_native_sample_intervals_milliseconds: [2.5, 5.0]
   t5_resampled_to_1khz: false
   fig3_conditions_available: [on_pd, on_nd, off_pd, off_nd]

@@ -46,6 +46,14 @@ def test_saved_t5_conductance_audit_is_complete_and_hash_bound() -> None:
         report["subset_verification"]["all_spfr_traces_byte_exact_with_condition_matched_all_trace"]
         is True
     )
+    readiness = report["direction_and_identity_readiness"]
+    assert readiness["cells_with_both_moving_bar_direction_codes"] == 17
+    assert readiness["direction_code_to_PD_ND_mapping_verified"] is False
+    assert readiness["stable_biological_cell_ids_available"] is False
+    assert readiness["native_time_vectors_verified"] is True
+    assert readiness["independent_cell_holdout_available"] is False
+    assert readiness["untouched_final_test_available"] is False
+    assert all(cell["both_moving_bar_direction_codes_present"] for cell in report["cells"])
     semantics = report["data_semantics"]
     assert semantics["response_quantity"] == "baseline_subtracted_membrane_voltage"
     assert semantics["native_sample_intervals_milliseconds"] == {"2.5": 1905, "5": 1666}
@@ -53,6 +61,8 @@ def test_saved_t5_conductance_audit_is_complete_and_hash_bound() -> None:
     assert split["same_cells_used_for_fit_and_prediction"] is True
     assert split["independent_cell_holdout"] is False
     assert split["untouched_final_test"] is False
+    assert split["direction_code_to_PD_ND_mapping_verified"] is False
+    assert split["stable_biological_cell_ids_available"] is False
     assert report["optimizer_reconciliation"]["paper_1000_start_selection_reproduced"] is False
     assert report["advance_to_T5_fit"] is False
     assert report["advance_to_visual_gate"] is False

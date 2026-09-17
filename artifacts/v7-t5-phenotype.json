@@ -8,7 +8,7 @@
       "configs/driving-v7-t5-phenotype.yaml": "05678278b88f40c8ac27685b553f8fdc624a7161d77c460a12f59cab104bfad8",
       "src/fly_emotion/driving/v7_t5_phenotype.py": "fb48b42a192f045005cc0b505eeeacc1493a708fa7d5f76e38202aa0fef3f70c",
       "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
-      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3"
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae"
     },
     "parameter_fitting": false,
     "model_simulation": false,

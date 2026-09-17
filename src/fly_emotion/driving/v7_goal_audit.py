@@ -32,6 +32,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     manifest = reports["manifest"]
     controlled = reports["controlled_vision"]
     t5 = reports["t5_phenotype"]
+    t5_data = reports["t5_data"]
+    t5_conductance = reports["t5_repository"]
     t5_labels = reports["t5_label_audit"]
     interface = reports["ephys_interface"]
     stage1_split = reports["stage1_split"]
@@ -176,6 +178,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_model_scoring_allowed": t5["label_boundary"]["model_scoring_allowed"],
                 "T5_published_fitted_parameter_vectors_available": t5_supplement["replay_status"][
                     "published_17_cell_parameter_values_available"
+                ],
+                "T5_processed_cells_with_both_direction_codes": t5_conductance[
+                    "direction_and_identity_readiness"
+                ]["cells_with_both_moving_bar_direction_codes"],
+                "T5_processed_direction_code_mapping_verified": t5_data[
+                    "interface_status"
+                ]["processed_T5_direction_code_to_PD_ND_mapping_verified"],
+                "T5_processed_stable_biological_ids_available": t5_data[
+                    "interface_status"
+                ]["processed_T5_stable_biological_cell_ids_available"],
+                "T5_processed_independent_cell_holdout_available": t5_data[
+                    "interface_status"
+                ]["processed_T5_independent_cell_holdout_available"],
+                "T5_unified_model_files_verified": t5_data["interface_status"][
+                    "unified_model_files_verified"
                 ],
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"
@@ -837,6 +854,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
             "status": "failed",
             "evidence": [
                 config["evidence"]["nested_neural_screen"],
+                config["evidence"]["t5_data"],
+                config["evidence"]["t5_repository"],
+                config["evidence"]["ephys_interface"],
                 config["evidence"]["t4_source_resolved"],
                 config["evidence"]["t4_normalized_correlator"],
                 config["evidence"]["t4_local_correlator_precheck"],

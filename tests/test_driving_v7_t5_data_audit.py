@@ -81,13 +81,39 @@ def test_saved_T5_data_audit_is_hash_bound_and_non_advancing() -> None:
     assert status["absolute_T5_voltage_files_verified"] is False
     assert status["processed_baseline_subtracted_T5_voltage_files_verified"] is True
     assert status["processed_T5_cell_count"] == 17
+    assert status["processed_T5_cells_with_both_moving_bar_direction_codes"] == 17
+    assert status["processed_T5_native_time_vectors_verified"] is True
+    assert status["processed_T5_direction_code_to_PD_ND_mapping_verified"] is False
+    assert status["processed_T5_stable_biological_cell_ids_available"] is False
+    assert status["processed_T5_independent_cell_holdout_available"] is False
+    assert status["unified_model_package_within_download_budget"] is True
+    assert status["unified_model_file_manifest_retrieved"] is False
+    assert status["unified_model_files_verified"] is False
+    assert status["replay_ready"] is True
+    assert status["readiness_gates"] == {
+        "processed_repository_files_verified": True,
+        "native_time_vectors_verified": True,
+        "both_moving_bar_direction_codes_present": True,
+        "direction_code_to_PD_ND_mapping_verified": False,
+        "stable_biological_cell_ids_available": False,
+        "independent_cell_holdout_available": False,
+        "untouched_final_test_available": False,
+        "published_parameter_package_files_verified": False,
+    }
+    assert status["fit_ready"] is False
+    assert status["independent_validation_ready"] is False
+    assert status["final_test_ready"] is False
     assert status["T5_fit_allowed"] is False
     other = report["other_modalities"]
     assert other["wienecke_2018_voltage_imaging"]["signal_unit"] == (
         "inverted_relative_fluorescence"
     )
     assert other["wienecke_2018_voltage_imaging"]["absolute_millivolts_possible"] is False
+    assert isinstance(
+        other["wienecke_2018_voltage_imaging"]["required_phrases_verified"], bool
+    )
     assert other["ramos_2021_calcium"]["supports_calcium_activity_validation"] is True
+    assert isinstance(other["ramos_2021_calcium"]["required_phrases_verified"], bool)
     assert other["shinomiya_2025_connectome"]["supports_topology_only"] is True
     assert report["advance_to_T5_fit"] is False
     assert report["advance_to_visual_gate"] is False

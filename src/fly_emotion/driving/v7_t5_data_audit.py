@@ -120,18 +120,25 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
                 f"https://janelia.figshare.com/articles/_/{expected['article_id']}", method="HEAD"
             ),
         }
+        if name == "unified_model":
+            access[name]["official_endpoints"] = {
+                endpoint: _observe(url, method="GET")
+                for endpoint, url in expected["access_endpoints"].items()
+            }
     inspected = {}
     for name in ("wienecke_2018_voltage_imaging", "ramos_2021_calcium"):
         item = config["sources"][name]
         raw, status = _fetch(item["pmc_url"])
         text = raw.decode("utf-8")
-        for phrase in item["required_phrases"]:
-            if phrase.lower() not in text.lower():
-                raise ValueError(f"{name} is missing expected phrase: {phrase}")
+        phrase_checks = {
+            phrase: phrase.lower() in text.lower() for phrase in item["required_phrases"]
+        }
         inspected[name] = {
             "paper_doi": item["paper_doi"],
             "http_status": status,
             "page_sha256": hashlib.sha256(raw).hexdigest(),
+            "required_phrase_checks": phrase_checks,
+            "required_phrases_verified": all(phrase_checks.values()),
             "signal_unit": item["signal_unit"],
             "absolute_millivolts_possible": item["absolute_millivolts_possible"],
             **evidence_classification(item["modality"], config["allowed_roles"]),
@@ -140,6 +147,31 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
     raw, status = _fetch(connectome["datacite_url"])
     connectome_attributes = json.loads(raw)["data"]["attributes"]
     interface_has_t5 = bool(interface["split_contract"]["t5_data_available"])
+    readiness_gates = {
+        "processed_repository_files_verified": bool(t5_conductance["repository"]["files"]),
+        "native_time_vectors_verified": t5_conductance[
+            "direction_and_identity_readiness"
+        ]["native_time_vectors_verified"],
+        "both_moving_bar_direction_codes_present": (
+            t5_conductance["direction_and_identity_readiness"]
+            ["cells_with_both_moving_bar_direction_codes"]
+            == t5_conductance["direction_and_identity_readiness"]["recorded_cell_count"]
+        ),
+        "direction_code_to_PD_ND_mapping_verified": t5_conductance[
+            "direction_and_identity_readiness"
+        ]["direction_code_to_PD_ND_mapping_verified"],
+        "stable_biological_cell_ids_available": t5_conductance[
+            "direction_and_identity_readiness"
+        ]["stable_biological_cell_ids_available"],
+        "independent_cell_holdout_available": t5_conductance[
+            "direction_and_identity_readiness"
+        ]["independent_cell_holdout_available"],
+        "untouched_final_test_available": t5_conductance[
+            "direction_and_identity_readiness"
+        ]["untouched_final_test_available"],
+        "published_parameter_package_files_verified": False,
+    }
+    fit_ready = all(readiness_gates.values())
     return {
         "protocol": {
             "name": config["name"],
@@ -193,7 +225,33 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
             "processed_baseline_subtracted_T5_voltage_files_verified": True,
             "processed_T5_repository_commit": t5_conductance["repository"]["commit"],
             "processed_T5_cell_count": len(t5_conductance["cells"]),
-            "T5_fit_allowed": False,
+            "processed_T5_cells_with_both_moving_bar_direction_codes": t5_conductance[
+                "direction_and_identity_readiness"
+            ]["cells_with_both_moving_bar_direction_codes"],
+            "processed_T5_native_time_vectors_verified": t5_conductance[
+                "direction_and_identity_readiness"
+            ]["native_time_vectors_verified"],
+            "processed_T5_direction_code_to_PD_ND_mapping_verified": t5_conductance[
+                "direction_and_identity_readiness"
+            ]["direction_code_to_PD_ND_mapping_verified"],
+            "processed_T5_stable_biological_cell_ids_available": t5_conductance[
+                "direction_and_identity_readiness"
+            ]["stable_biological_cell_ids_available"],
+            "processed_T5_independent_cell_holdout_available": t5_conductance[
+                "direction_and_identity_readiness"
+            ]["independent_cell_holdout_available"],
+            "unified_model_package_within_download_budget": (
+                datasets["unified_model"]["size_bytes"]
+                <= int(config["audit_boundary"]["maximum_download_bytes"])
+            ),
+            "unified_model_file_manifest_retrieved": False,
+            "unified_model_files_verified": False,
+            "replay_ready": True,
+            "readiness_gates": readiness_gates,
+            "fit_ready": fit_ready,
+            "independent_validation_ready": False,
+            "final_test_ready": False,
+            "T5_fit_allowed": fit_ready,
             "reason": (
                 "The 2021 raw whole-cell datasets still lack a verified file manifest here. "
                 "A separate fixed-commit audit verified processed baseline-subtracted 2019 T5 "
@@ -207,6 +265,11 @@ def evaluate_v7_t5_data_audit(root: Path) -> dict:
             "Figshare access codes are dated environment observations, not permanence claims.",
             "DataCite descriptions establish scope, not file integrity or array axes.",
             "The 6.32-GB and 4.31-GB datasets were not downloaded under the bounded audit.",
+            (
+                "The 3.63-MB unified-model package is within the download budget, but the "
+                "official article API, landing page and ndownloader returned HTTP 403 in "
+                "this environment; DataCite exposes package metadata but no file IDs."
+            ),
             "Verified 2019 processed T5 traces do not verify the separate 2021 raw datasets.",
             "ASAP2f is relative fluorescence at about 15 Hz, not patch-clamp millivolts.",
             "Calcium imaging and connectome structure cannot calibrate membrane voltage.",

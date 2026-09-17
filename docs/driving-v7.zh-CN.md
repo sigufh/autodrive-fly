@@ -1415,6 +1415,14 @@ delayed 的突触权重质心，以 `fast→Tm9` 位移作为无标签生成轴�
 准确率为 83.50%、中位角误差 19.38°；但 held-out T4 准确率只有 46.61%，跨眼最大
 误差 36.20° 也超过 30° 门，整个轴校准未通过。因此该结果可以说明坐标约定可能造成
 T5 横轴冲突，却不能授权把拟合变换应用到新动态模型。
+对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
+成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
+它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有
+能连接到 MaleCNS body ID 的稳定生物身份；拟合与预测还复用同一批 17 个细胞，没有独立
+细胞 holdout 或 untouched final。另一个 3.63 MB published unified-model 包虽低于 10 MB
+审计上限，但本环境下官方 article API、landing page 和 ndownloader 均返回 HTTP 403，
+DataCite 只给出包级描述、没有 file ID，因此其 `optTables.mat` 仍未做文件级验证。现阶段
+只能保留 native-time read-only 重放接口，不能据此拟合 T5、校准方向标签或推进视觉门。
 
 LPLC1 也完成了独立的近碰撞单条件 precheck，不复用 LPLC2 radial 或 LC4 speed 规则。
 新刺激让小暗物体从外侧向前方接近并同步由 2×3 增长到 5×7 像素，配套相同逐帧面积的

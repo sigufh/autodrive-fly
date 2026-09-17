@@ -6,7 +6,7 @@
     "observed_on": "2026-09-15",
     "dependencies_sha256": {
       "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
-      "src/fly_emotion/driving/v7_t5_conductance_audit.py": "d9925e14c0f432a0bf4cc684034afd2e8a542ac3822b241dd562afe33eed6e0d"
+      "src/fly_emotion/driving/v7_t5_conductance_audit.py": "a97e58a612aab2e7eac9d13bef9a1bd8a3e35c1378cbe89167862f3bd37f956f"
     },
     "parameter_fitting": false,
     "model_simulation": false,
@@ -325,6 +325,12 @@
           "samples": 0
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 9,
+        "1": 9
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -10.512842383624559,
       "response_delta_voltage_millivolts_maximum": 25.30334017024837
@@ -357,6 +363,12 @@
           "samples": 5500
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 12,
+        "1": 12
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -7.289916938754601,
       "response_delta_voltage_millivolts_maximum": 29.013199233768837
@@ -389,6 +401,12 @@
           "samples": 0
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 12,
+        "1": 12
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -13.628900085723458,
       "response_delta_voltage_millivolts_maximum": 25.526484679196578
@@ -421,6 +439,12 @@
           "samples": 0
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 3,
+        "1": 3
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -5.45278337517761,
       "response_delta_voltage_millivolts_maximum": 25.356129933735687
@@ -453,6 +477,12 @@
           "samples": 5520
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 9,
+        "1": 9
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -7.099057297132816,
       "response_delta_voltage_millivolts_maximum": 23.394665426032596
@@ -485,6 +515,12 @@
           "samples": 5508
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 9,
+        "1": 9
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -10.469930848586017,
       "response_delta_voltage_millivolts_maximum": 30.649124196362333
@@ -517,6 +553,12 @@
           "samples": 5511
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 9,
+        "1": 9
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -8.337608312614684,
       "response_delta_voltage_millivolts_maximum": 29.34043376620251
@@ -549,6 +591,12 @@
           "samples": 0
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 9,
+        "1": 9
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -10.742799648073309,
       "response_delta_voltage_millivolts_maximum": 23.710175172934647
@@ -581,6 +629,12 @@
           "samples": 5513
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 7,
+        "1": 7
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -15.152386353960928,
       "response_delta_voltage_millivolts_maximum": 24.826953874066866
@@ -613,6 +667,12 @@
           "samples": 5525
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 8,
+        "1": 8
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -8.618250911427715,
       "response_delta_voltage_millivolts_maximum": 25.169318425379878
@@ -645,6 +705,12 @@
           "samples": 0
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 3,
+        "1": 3
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -9.192071487622641,
       "response_delta_voltage_millivolts_maximum": 29.676419417734223
@@ -677,6 +743,12 @@
           "samples": 0
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 8,
+        "1": 8
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -11.528438098045662,
       "response_delta_voltage_millivolts_maximum": 33.795663823156985
@@ -709,6 +781,12 @@
           "samples": 5497
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 8,
+        "1": 8
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -8.716330024128204,
       "response_delta_voltage_millivolts_maximum": 37.73009281257205
@@ -741,6 +819,12 @@
           "samples": 5506
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 8,
+        "1": 8
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -10.575277426064652,
       "response_delta_voltage_millivolts_maximum": 23.679825617466264
@@ -773,6 +857,12 @@
           "samples": 5537
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -11.75520197077337,
       "response_delta_voltage_millivolts_maximum": 24.765358263608334
@@ -805,6 +895,12 @@
           "samples": 5518
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 8,
+        "1": 8
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -12.259947452086877,
       "response_delta_voltage_millivolts_maximum": 28.824017031965
@@ -837,6 +933,12 @@
           "samples": 5527
         }
       },
+      "moving_bar_direction_code_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "both_moving_bar_direction_codes_present": true,
+      "stable_biological_identity_fields": [],
       "all_values_finite": true,
       "response_delta_voltage_millivolts_minimum": -7.998054159638684,
       "response_delta_voltage_millivolts_maximum": 26.168689054842254
@@ -861,6 +963,19 @@
     "spfr_conditions_found_in_all": 973,
     "all_spfr_traces_byte_exact_with_condition_matched_all_trace": true
   },
+  "direction_and_identity_readiness": {
+    "cells_with_both_moving_bar_direction_codes": 17,
+    "recorded_cell_count": 17,
+    "direction_codes_present": [
+      0,
+      1
+    ],
+    "direction_code_to_PD_ND_mapping_verified": false,
+    "stable_biological_cell_ids_available": false,
+    "native_time_vectors_verified": true,
+    "independent_cell_holdout_available": false,
+    "untouched_final_test_available": false
+  },
   "split_contract": {
     "fit_source": "same-cell width-2 single-bar flash traces from _spfr files",
     "prediction_conditions": [
@@ -873,7 +988,9 @@
     "same_cells_used_for_fit_and_prediction": true,
     "independent_cell_holdout": false,
     "untouched_final_test": false,
-    "classification": "within_cell_stimulus_condition_generalization"
+    "classification": "within_cell_stimulus_condition_generalization",
+    "direction_code_to_PD_ND_mapping_verified": false,
+    "stable_biological_cell_ids_available": false
   },
   "optimizer_reconciliation": {
     "paper_protocol": "1000 random initializations per cell; best-error 1% used for predictions",

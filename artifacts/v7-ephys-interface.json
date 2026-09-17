@@ -4,15 +4,15 @@
     "exploratory": true,
     "advance_allowed": false,
     "dependencies_sha256": {
-      "configs/driving-v7-ephys-interface.yaml": "8d464400b1b8115854bbea619cef8f38c39f40e64868cda93b9b3bee9883f846",
-      "src/fly_emotion/driving/v7_ephys_interface.py": "98b17128a92574e2894bdc95228933263ac06363e98cbe4adde82f9ce0b7bf68",
+      "configs/driving-v7-ephys-interface.yaml": "50cf22f120ab6b5d332f9ed40df1b55e31cd2ac22772706949dcba2d0be4abff",
+      "src/fly_emotion/driving/v7_ephys_interface.py": "879b8cd7498e49fefef9486ddf7ae91162b4ea72499538a2305fdc7e36fa5076",
       "configs/driving-v7-electrophysiology-audit.yaml": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
       "configs/driving-v7-fig5-validation.yaml": "e62c0dfd7a94ee783d991856ca5cd4af0bdc4a0c5f1ff8e7f04470c7ae16cb49",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig5-validation.json": "c98dec3b65c6998b4087e4acf4251b7830fc6b5e4dea42b38fe79ad64f4f9a96",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
       "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
-      "artifacts/v7-t5-conductance-audit.json": "23d0c534c56755ffd6ddb88603435c142513d72f1fe6e55bfb6c990fb054d2d3"
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae"
     },
     "parameter_fitting": false,
     "runtime_imports_interface": false,
@@ -48,6 +48,8 @@
     "t5_data_available": true,
     "t5_same_cells_used_for_fit_and_prediction": true,
     "t5_independent_cell_holdout": false,
+    "t5_direction_code_to_PD_ND_mapping_verified": false,
+    "t5_stable_biological_cell_ids_available": false,
     "t5_native_sample_intervals_milliseconds": [
       2.5,
       5.0
@@ -458,7 +460,10 @@
     "ragged_trace_lengths": true,
     "repository_commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
     "manifest_sha256": "1db6da29a948fa80039b551db5c6020dbbbea666491bb133001e9113f2c360fa",
-    "spfr_is_exact_subset_of_all": true
+    "spfr_is_exact_subset_of_all": true,
+    "cells_with_both_moving_bar_direction_codes": 17,
+    "direction_code_to_PD_ND_mapping_verified": false,
+    "stable_biological_cell_ids_available": false
   },
   "available_final_test": false,
   "limitations": [

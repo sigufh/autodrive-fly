@@ -151,6 +151,13 @@ def audit_t5_conductance_repository(source: Path, config: dict) -> dict:
         spfr_widths = _vector(spfr_protocol.width_sb).astype(int)
         protocols = _vector(all_protocol.protocol).astype(int)
         times = list(_vector(all_protocol.t))
+        moving_bar_directions = _vector(all_protocol.direction_mb).astype(int)
+        direction_counts = Counter(map(int, moving_bar_directions))
+        identity_fields = [
+            name
+            for name in all_protocol._fieldnames
+            if name.lower() in {"bodyid", "body_id", "flyid", "cellid", "cell_id"}
+        ]
         if len(times) != protocols.size:
             raise ValueError(f"protocol/time count mismatch for cell {cell_id}")
         for time in times:
@@ -224,6 +231,11 @@ def audit_t5_conductance_repository(source: Path, config: dict) -> dict:
                 "training_width2_samples": training_samples,
                 "spfr_conditions_exactly_present_in_all": exact_matches,
                 "all_modalities": modality,
+                "moving_bar_direction_code_counts": {
+                    str(key): int(direction_counts[key]) for key in sorted(direction_counts)
+                },
+                "both_moving_bar_direction_codes_present": set(direction_counts) == {0, 1},
+                "stable_biological_identity_fields": identity_fields,
                 "all_values_finite": finite,
                 "response_delta_voltage_millivolts_minimum": voltage_min,
                 "response_delta_voltage_millivolts_maximum": voltage_max,
@@ -263,6 +275,20 @@ def audit_t5_conductance_repository(source: Path, config: dict) -> dict:
                 sum(cell["spfr_conditions_exactly_present_in_all"] for cell in cells)
             ),
             "all_spfr_traces_byte_exact_with_condition_matched_all_trace": True,
+        },
+        "direction_and_identity_readiness": {
+            "cells_with_both_moving_bar_direction_codes": int(
+                sum(cell["both_moving_bar_direction_codes_present"] for cell in cells)
+            ),
+            "recorded_cell_count": len(cells),
+            "direction_codes_present": [0, 1],
+            "direction_code_to_PD_ND_mapping_verified": False,
+            "stable_biological_cell_ids_available": bool(
+                all(cell["stable_biological_identity_fields"] for cell in cells)
+            ),
+            "native_time_vectors_verified": True,
+            "independent_cell_holdout_available": False,
+            "untouched_final_test_available": False,
         },
     }
 
@@ -304,6 +330,8 @@ def evaluate_v7_t5_conductance_audit(root: Path) -> dict:
             "independent_cell_holdout": False,
             "untouched_final_test": False,
             "classification": "within_cell_stimulus_condition_generalization",
+            "direction_code_to_PD_ND_mapping_verified": False,
+            "stable_biological_cell_ids_available": False,
         },
         "optimizer_reconciliation": {
             "paper_protocol": (
