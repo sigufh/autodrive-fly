@@ -2,8 +2,8 @@
   "protocol": {
     "name": "v7-three-hop-on-off-moment-reichardt",
     "dependencies_sha256": {
-      "configs/driving-v7-three-hop-moment.yaml": "a913c9061d39929f29ae84f5298eaec2d89458fe333bd858de8c0dab596ac690",
-      "src/fly_emotion/driving/v7_three_hop_moment.py": "ed447fb97e70acaff427f4d28fc70a572cf9490c778051fc6ef09bf2e6939dbd",
+      "configs/driving-v7-three-hop-moment.yaml": "a1ffc58850598935b0c98568a5f9277bff10e1dcfae0e40e52e05139e9ed219e",
+      "src/fly_emotion/driving/v7_three_hop_moment.py": "401b834f6d9c74326b91469a7cac3f280daa8cb16017aae8a98f1cf7f877e111",
       "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
       "src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py": "2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049",
       "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
@@ -15,6 +15,7 @@
       "S1-T03"
     ],
     "stimulus_count": 360,
+    "temporal_reduction": "signed_mean",
     "parameter_fit": false,
     "target_activity_injection": false,
     "calibration_evaluated": false,
@@ -39,15 +40,14 @@
       "T4a_L": {
         "direction": {
           "cell_count": 835,
-          "valid_cell_count": 831,
-          "valid_cell_fraction": 0.9952095808383233,
+          "valid_cell_count": 832,
+          "valid_cell_fraction": 0.9964071856287425,
           "median_signed_contrast": 1.0,
           "positive_cell_fraction": 1.0,
           "invalid_cell_ids": [
             79400,
             203620,
-            207048,
-            551389
+            207048
           ],
           "cell_ids": [
             13882,
@@ -1692,7 +1692,7 @@
             1.0,
             1.0,
             1.0,
-            null,
+            1.0,
             1.0,
             1.0,
             1.0,
@@ -20913,12 +20913,11 @@
       "T4d_L": {
         "direction": {
           "cell_count": 850,
-          "valid_cell_count": 846,
-          "valid_cell_fraction": 0.9952941176470588,
+          "valid_cell_count": 847,
+          "valid_cell_fraction": 0.9964705882352941,
           "median_signed_contrast": 1.0,
           "positive_cell_fraction": 1.0,
           "invalid_cell_ids": [
-            85449,
             100631,
             119291,
             212853
@@ -21871,7 +21870,7 @@
             1.0,
             1.0,
             1.0,
-            null,
+            1.0,
             1.0,
             1.0,
             1.0,
@@ -165025,9 +165024,9 @@
         "required_condition_count": 3,
         "coverage": {
           "cell_count": 835,
-          "joint_valid_fraction": 0.9952095808383233,
-          "all_condition_success_count": 831,
-          "all_condition_success_fraction": 0.9952095808383233
+          "joint_valid_fraction": 0.9964071856287425,
+          "all_condition_success_count": 832,
+          "all_condition_success_fraction": 0.9964071856287425
         },
         "passed": true
       },
@@ -165438,6 +165437,13 @@
     "T5c",
     "T5d"
   ],
+  "interpretation": {
+    "diagnostic_output": "target-specific two-dimensional path-weighted optical flow",
+    "subtype_label_used_for_final_projection": true,
+    "subtype_label_used_for_activity_generation": false,
+    "may_validate_target_cell_direction_selectivity": false,
+    "main_score_is_not_a_T4_T5_scalar_activity_response": true
+  },
   "strict_three_hop_gates_passed": false,
   "advance_to_target_dynamics": false,
   "advance_to_calibration": false,
@@ -165449,6 +165455,8 @@
     "parameter_fit": false,
     "calibration_evaluated": false,
     "runtime_modified": false,
-    "connect_to_navigation": false
+    "connect_to_navigation": false,
+    "label_conditioned_vector_projection_is_not_target_activity": true,
+    "may_validate_T4_T5_cell_direction_selectivity": false
   }
 }

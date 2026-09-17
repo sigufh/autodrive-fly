@@ -16,6 +16,7 @@ motion_energy:
   formula: coordinate_moment_now*mass_previous-mass_now*coordinate_moment_previous
   normalization: sum_absolute_horizontal_and_vertical_terms_plus_1e-9
   position_pooling: maximum_over_same_fixed_5x3_grid
+  temporal_reduction: signed_mean_over_time_and_fixed_position_grid
   subtype_labels_used_by_activity_generation: false
 stimulus:
   family: local_moving_step_edge
@@ -53,3 +54,5 @@ boundary:
   calibration_evaluated: false
   runtime_modified: false
   connect_to_navigation: false
+  label_conditioned_vector_projection_is_not_target_activity: true
+  may_validate_T4_T5_cell_direction_selectivity: false

@@ -18,6 +18,13 @@ def test_three_hop_moment_is_read_only_and_uses_known_sources() -> None:
     assert protocol["runtime_modified"] is False
     assert report["path_summary"]["T4"]["reachable_target_fraction"] > 0.99
     assert report["path_summary"]["T5"]["reachable_target_fraction"] > 0.99
+    assert report["interpretation"] == {
+        "diagnostic_output": "target-specific two-dimensional path-weighted optical flow",
+        "subtype_label_used_for_final_projection": True,
+        "subtype_label_used_for_activity_generation": False,
+        "may_validate_target_cell_direction_selectivity": False,
+        "main_score_is_not_a_T4_T5_scalar_activity_response": True,
+    }
 
 
 def test_three_hop_main_pass_is_rejected_by_temporal_shuffle() -> None:

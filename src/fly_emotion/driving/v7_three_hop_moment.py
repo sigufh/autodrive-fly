@@ -116,11 +116,22 @@ def _energy(
     return (forward_x - reverse_x) / denominator, (forward_y - reverse_y) / denominator
 
 
-def _peak(values: list[tuple[np.ndarray, np.ndarray]], vector: tuple[float, float]) -> np.ndarray:
+def _peak(
+    values: list[tuple[np.ndarray, np.ndarray]],
+    vector: tuple[float, float],
+    temporal_reduction: str = "maximum",
+) -> np.ndarray:
     by_position = []
     for x, y in values:
-        by_position.append(np.max(vector[0] * x + vector[1] * y, axis=0))
-    return np.max(np.stack(by_position), axis=0)
+        projected = vector[0] * x + vector[1] * y
+        if temporal_reduction == "maximum":
+            by_position.append(np.max(projected, axis=0))
+        elif temporal_reduction == "signed_mean":
+            by_position.append(np.mean(projected, axis=0))
+        else:
+            raise ValueError(f"unknown temporal reduction: {temporal_reduction}")
+    stacked = np.stack(by_position)
+    return np.max(stacked, axis=0) if temporal_reduction == "maximum" else np.mean(stacked, axis=0)
 
 
 def _compact(score: dict) -> dict:
@@ -167,6 +178,7 @@ def _score_energies(
     x_centers: np.ndarray,
     y_centers: np.ndarray,
     scoring: dict,
+    temporal_reduction: str = "maximum",
 ) -> tuple[dict, dict]:
     condition_scores = {}
     raw = {}
@@ -206,7 +218,7 @@ def _score_energies(
                 for yi in range(len(y_centers))
                 for xi in range(len(x_centers))
             ]
-            return _peak(values, selected_vector)
+            return _peak(values, selected_vector, temporal_reduction)
 
         preferred = response(expected_polarity, expected_direction)
         direction_score = strict_contrast_summary(
@@ -240,6 +252,12 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
     if any(conditions[name]["role"] != "tuning" for name in config["condition_ids"]):
         raise ValueError("three-hop moment diagnostic may consume tuning only")
     probe = MassBalancedVisualProbe(root, local)
+    temporal_reduction = (
+        "signed_mean"
+        if config["motion_energy"]["temporal_reduction"]
+        == "signed_mean_over_time_and_fixed_position_grid"
+        else "maximum"
+    )
     populations = {
         f"{family}{subtype}_{side}": probe.populations[f"{family}{subtype}_{side}"]
         for family in ("T4", "T5")
@@ -294,7 +312,14 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
                                 probe, stimulus, family_data[family]["matrix"], x, y, channel
                             )
         condition_scores, condition_raw = _score_energies(
-            probe, populations, family_data, energies, x_centers, y_centers, scoring
+            probe,
+            populations,
+            family_data,
+            energies,
+            x_centers,
+            y_centers,
+            scoring,
+            temporal_reduction,
         )
         for name in populations:
             raw_scores[name]["direction"].append(condition_raw[name]["direction"])
@@ -321,13 +346,10 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
                             baseline_count = int(config["stimulus"]["common_background_frames"])
                             prefix = stimulus.frames[:baseline_count]
                             moving = stimulus.frames[baseline_count:]
-                            key = ("left", "right", "up", "down").index(direction)
                             order = np.random.default_rng(
                                 int(config["controls"]["temporal_shuffle_seed"])
                                 + xi * 1000
                                 + yi * 100
-                                + (0 if polarity == "on" else 10)
-                                + key
                             ).permutation(len(moving))
                             variants = {
                                 "temporal_shuffle": np.concatenate((prefix, moving[order])),
@@ -363,6 +385,7 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
                     x_centers,
                     y_centers,
                     scoring,
+                    temporal_reduction,
                 )
                 controls[control_name] = {
                     "condition_id": condition_id,
@@ -428,6 +451,7 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
             },
             "condition_ids": config["condition_ids"],
             "stimulus_count": len(set(stimulus_hashes)),
+            "temporal_reduction": temporal_reduction,
             "parameter_fit": False,
             "target_activity_injection": False,
             "calibration_evaluated": False,
@@ -440,6 +464,13 @@ def evaluate_v7_three_hop_moment(root: Path) -> dict:
         "temporal_shuffle_control_passed": temporal_shuffle_failed,
         "static_sham_control_passed": static_failed,
         "bilateral_direction_populations": bilateral_direction,
+        "interpretation": {
+            "diagnostic_output": "target-specific two-dimensional path-weighted optical flow",
+            "subtype_label_used_for_final_projection": True,
+            "subtype_label_used_for_activity_generation": False,
+            "may_validate_target_cell_direction_selectivity": False,
+            "main_score_is_not_a_T4_T5_scalar_activity_response": True,
+        },
         "strict_three_hop_gates_passed": bool(
             all_passed and temporal_shuffle_failed and static_failed
         ),
