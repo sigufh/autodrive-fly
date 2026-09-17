@@ -1,0 +1,27 @@
+version: 1
+name: v7-t4-continuous-pair-lag-audit
+observed_on: "2026-09-17"
+base_protocol: configs/driving-v7-t4-continuous-pair-precheck.yaml
+base_evidence: artifacts/v7-t4-continuous-pair-precheck.json
+lag_source_protocol: configs/driving-v7-t4-source-resolved.yaml
+condition_id: S1-T01
+lags_frames: [1, 2, 3, 4]
+temporal_reductions: [signed_mean, maximum, positive_mean]
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_expand: 1
+boundary:
+  tuning_only: true
+  single_condition_lag_audit: true
+  lag_range_previously_frozen: true
+  no_additional_formula_or_gain_search: true
+  labels_used_for_posthoc_scoring_only: true
+  fixed_whole_population_denominators: true
+  labels_changed: false
+  thresholds_changed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true

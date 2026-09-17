@@ -54,6 +54,7 @@ evidence:
   nested_neural_screen: artifacts/v7-nested-neural-screen.json
   t4_source_resolved: artifacts/v7-t4-source-resolved.json
   t4_continuous_pair_precheck: artifacts/v7-t4-continuous-pair-precheck.json
+  t4_pair_lag_audit: artifacts/v7-t4-pair-lag-audit.json
   t4_normalized_correlator: artifacts/v7-t4-normalized-correlator.json
   t4_local_correlator_precheck: artifacts/v7-t4-local-correlator-precheck.json
   t4_source_pool_local: artifacts/v7-t4-source-pool-local.json

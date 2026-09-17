@@ -1472,6 +1472,13 @@ sham 和三条件扩展均未运行，LPLC 阶段仍未授权。证据见
 6.44 和 6.42。时间一致性加权没有抑制乱序，反而进一步偏好帧跳变。因此 three-hop
 motion-field 机制族停止，不授权新候选、三条件扩展或 LPLC。证据见
 `artifacts/v7-three-hop-temporal-consistency.json`。
+
+最后又复用了 T4 source-resolved 协议早已冻结的 `1–4` 步 lag 范围，不新增延迟值、
+公式或增益搜索。二维 Mi1 与 Mi4/C3 来源对在 `signed mean`、`maximum`、
+`positive mean` 三种时间归约下形成 12 个候选；全部方向 0/8、ON 极性 0/8，方向
+中位 contrast 对 lag 几乎不变，约为 -0.003 到 0.002。没有候选形成任何双侧方向亚型，
+说明失败不是单步延迟选择错误。该来源对机制族至此停止，不扩展三组 tuning、LPLC 或
+下游实验。证据见 `artifacts/v7-t4-pair-lag-audit.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

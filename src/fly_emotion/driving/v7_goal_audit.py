@@ -64,6 +64,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     nested_neural_screen = reports["nested_neural_screen"]
     t4_source_resolved = reports["t4_source_resolved"]
     t4_continuous_pair_precheck = reports["t4_continuous_pair_precheck"]
+    t4_pair_lag_audit = reports["t4_pair_lag_audit"]
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t4_local_correlator_precheck = reports["t4_local_correlator_precheck"]
     t4_source_pool_local = reports["t4_source_pool_local"]
@@ -358,6 +359,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_continuous_pair_three_condition_evaluation_performed": (
                     t4_continuous_pair_precheck["three_condition_evaluation_performed"]
                 ),
+                "T4_pair_lag_candidate_count": t4_pair_lag_audit["protocol"][
+                    "candidate_count"
+                ],
+                "T4_pair_lag_direction_pass_counts": {
+                    name: result["direction_pass_count"]
+                    for name, result in t4_pair_lag_audit["candidates"].items()
+                },
+                "T4_pair_lag_polarity_pass_counts": {
+                    name: result["polarity_pass_count"]
+                    for name, result in t4_pair_lag_audit["candidates"].items()
+                },
+                "T4_pair_lag_audit_passed": t4_pair_lag_audit["lag_audit_passed"],
                 "T4_normalized_correlator_best_gate_count": t4_normalized_correlator[
                     "selected_candidate"
                 ]["passed_gate_count"],
@@ -1009,6 +1022,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["ephys_interface"],
                 config["evidence"]["t4_source_resolved"],
                 config["evidence"]["t4_continuous_pair_precheck"],
+                config["evidence"]["t4_pair_lag_audit"],
                 config["evidence"]["t4_normalized_correlator"],
                 config["evidence"]["t4_local_correlator_precheck"],
                 config["evidence"]["t4_source_pool_local"],

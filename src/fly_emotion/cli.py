@@ -128,6 +128,7 @@ from .driving.v7_t4_continuous_pair_precheck import (
 )
 from .driving.v7_t4_local_correlator_precheck import evaluate_v7_t4_local_correlator_precheck
 from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_correlator
+from .driving.v7_t4_pair_lag_audit import evaluate_v7_t4_pair_lag_audit
 from .driving.v7_t4_source_pool_local import evaluate_v7_t4_source_pool_local
 from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
 from .driving.v7_t4t5_local_edge_backends import evaluate_v7_t4t5_local_edge_backends
@@ -316,6 +317,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-backends")
     subparsers.add_parser("v7-evaluate-t4-local-correlator-precheck")
     subparsers.add_parser("v7-evaluate-t4-continuous-pair-precheck")
+    subparsers.add_parser("v7-audit-t4-pair-lags")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1030,6 +1032,12 @@ def main() -> None:
     if args.command == "v7-audit-three-hop-temporal-consistency":
         report = evaluate_v7_three_hop_temporal_consistency(root)
         target = root / "artifacts/v7-three-hop-temporal-consistency.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-pair-lags":
+        report = evaluate_v7_t4_pair_lag_audit(root)
+        target = root / "artifacts/v7-t4-pair-lag-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

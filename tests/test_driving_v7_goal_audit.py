@@ -157,6 +157,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "T4_continuous_pair_three_condition_evaluation_performed"
     ] is False
+    assert visual["observations"]["T4_pair_lag_candidate_count"] == 12
+    assert set(visual["observations"]["T4_pair_lag_direction_pass_counts"].values()) == {0}
+    assert set(visual["observations"]["T4_pair_lag_polarity_pass_counts"].values()) == {0}
+    assert visual["observations"]["T4_pair_lag_audit_passed"] is False
     assert visual["observations"]["three_hop_main_direction_bilateral_populations"] == [
         "T4a",
         "T4b",
