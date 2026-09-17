@@ -1,0 +1,57 @@
+{
+  "protocol": {
+    "name": "v7-visual-target-degree-preserving-control",
+    "dependencies_sha256": {
+      "configs/driving-v7-degree-preserving-control.yaml": "4036ac61a50fa83c37580b0aca02b830ca92ce5015ded38d84edb7b00146b7e0",
+      "src/fly_emotion/driving/v7_degree_preserving_control.py": "fc8667afca466bf411976060f3e89ec517174ddc05800ee520093f4abadfcee5",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
+      "artifacts/v7-controlled-vision.json": "44e1f5289a78b493cd7ac6560a690b46617c896467837ad85cbafaa8935275d8",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/processed/malecns-v1.0/adjacency_target_norm.npz": "59c80de1ad03492dd0bf94e208fd58710d03f878ee975cc95588108ed3129b6b",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f"
+    },
+    "seed": 20260917,
+    "scope": "all_edges_into_v7_visual_target_populations",
+    "node_count": 166700,
+    "target_count": 14331,
+    "edge_count": 1108726,
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "swap_statistics": {
+    "attempted_swaps": 11087260,
+    "accepted_swaps": 8243510,
+    "accepted_swap_fraction": 0.7435119226932534,
+    "rewired_edge_count": 910175,
+    "rewired_edge_fraction": 0.8209196861983935
+  },
+  "invariants": {
+    "edge_count_preserved": true,
+    "each_target_indegree_preserved": true,
+    "each_source_outdegree_within_scope_preserved": true,
+    "each_target_incoming_weight_multiset_preserved": true,
+    "each_source_outgoing_weight_multiset_within_scope_preserved": true,
+    "global_weight_multiset_preserved": true,
+    "duplicate_edges_absent": true,
+    "new_self_loops_absent": true,
+    "deterministic_replay": true,
+    "minimum_rewired_edge_fraction": true
+  },
+  "original_edge_sha256": "f83782a90c34de8371656e299192be4d9862f4ccfb6830f7082b86b5202d69a3",
+  "shuffled_edge_sha256": "b1f717d940ddb21c8051c782e645f9747226e1c0d2b81e2ba65c8625a24db122",
+  "strict_degree_preserving_control_constructed": true,
+  "visual_response_evaluation_performed": false,
+  "real_topology_advantage_established_by_this_control": false,
+  "advance_to_model_selection": false,
+  "boundary": {
+    "structure_only": true,
+    "visual_response_evaluation_deferred_until_visual_candidate_passes": true,
+    "control_used_for_model_selection": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false
+  }
+}

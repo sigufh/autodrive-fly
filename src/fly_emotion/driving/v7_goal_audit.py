@@ -59,6 +59,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     neural_channels_calibration = reports["neural_channels_calibration"]
     neural_channel_controls = reports["neural_channel_controls"]
     neural_topology_controls = reports["neural_topology_controls"]
+    degree_preserving_control = reports["degree_preserving_control"]
     nested_neural_screen = reports["nested_neural_screen"]
     t4_source_resolved = reports["t4_source_resolved"]
     t4_normalized_correlator = reports["t4_normalized_correlator"]
@@ -745,6 +746,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "strict_degree_preserving_control_complete": controlled[
                     "strict_degree_preserving_control_complete"
                 ],
+                "strict_visual_target_degree_preserving_control_constructed": (
+                    degree_preserving_control["strict_degree_preserving_control_constructed"]
+                ),
+                "strict_visual_target_degree_preserving_rewired_fraction": (
+                    degree_preserving_control["swap_statistics"]["rewired_edge_fraction"]
+                ),
+                "strict_visual_target_control_response_evaluated": (
+                    degree_preserving_control["visual_response_evaluation_performed"]
+                ),
                 "real_topology_advantage": controlled["real_topology_advantage"],
                 "structured_neural_topology_control_successes": {
                     name: item["success_count"]
@@ -842,7 +852,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         {
             "requirement": "1.controlled_brightness_on_off_motion_looming_flow_mirror_stimuli",
             "status": "passed",
-            "evidence": [config["evidence"]["controlled_vision"]],
+            "evidence": [
+                config["evidence"]["controlled_vision"],
+                config["evidence"]["degree_preserving_control"],
+            ],
         },
         {
             "requirement": "1.external_visual_input_only_via_R1_R6",

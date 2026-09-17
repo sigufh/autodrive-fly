@@ -49,6 +49,7 @@ evidence:
   neural_channels_calibration: artifacts/v7-neural-channels-calibration.json
   neural_channel_controls: artifacts/v7-neural-channel-controls.json
   neural_topology_controls: artifacts/v7-neural-topology-controls.json
+  degree_preserving_control: artifacts/v7-degree-preserving-control.json
   nested_neural_screen: artifacts/v7-nested-neural-screen.json
   t4_source_resolved: artifacts/v7-t4-source-resolved.json
   t4_normalized_correlator: artifacts/v7-t4-normalized-correlator.json

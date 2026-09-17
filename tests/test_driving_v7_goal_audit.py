@@ -29,6 +29,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
     assert disclosure["v7_status_is_offline_only"] is True
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
+    topology = report["checks"][6]["observations"]
+    assert topology["strict_degree_preserving_control_complete"] is False
+    assert topology["strict_visual_target_degree_preserving_control_constructed"] is True
+    assert topology["strict_visual_target_degree_preserving_rewired_fraction"] > 0.80
+    assert topology["strict_visual_target_control_response_evaluated"] is False
 
 
 def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:

@@ -1,0 +1,28 @@
+version: 1
+name: v7-visual-target-degree-preserving-control
+observed_on: "2026-09-17"
+v7_config: configs/driving-v7.yaml
+controlled_vision_evidence: artifacts/v7-controlled-vision.json
+seed: 20260917
+scope: all_edges_into_v7_visual_target_populations
+swap_attempt_multiplier: 10
+minimum_rewired_edge_fraction: 0.80
+requirements:
+  preserve_each_target_indegree: true
+  preserve_each_source_outdegree_within_scope: true
+  swap_only_equal_weight_edges: true
+  preserve_each_target_incoming_weight: true
+  preserve_each_source_outgoing_weight_within_scope: true
+  preserve_global_weight_multiset: true
+  forbid_duplicate_edges: true
+  forbid_new_self_loops: true
+  deterministic_seed: true
+boundary:
+  structure_only: true
+  visual_response_evaluation_deferred_until_visual_candidate_passes: true
+  control_used_for_model_selection: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false

@@ -41,6 +41,7 @@ from .driving.v7_closed_loop_multi import evaluate_v7_closed_loop_multi
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_danger_throttle import evaluate_v7_danger_throttle
+from .driving.v7_degree_preserving_control import evaluate_v7_degree_preserving_control
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
@@ -303,6 +304,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-four-hop-scalar-precheck")
     subparsers.add_parser("v7-evaluate-lc4-position-speed-precheck")
     subparsers.add_parser("v7-evaluate-lc4-input-speed-precheck")
+    subparsers.add_parser("v7-audit-degree-preserving-control")
     subparsers.add_parser("v7-evaluate-t5-lamina-split")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
@@ -940,6 +942,12 @@ def main() -> None:
     if args.command == "v7-evaluate-lc4-input-speed-precheck":
         report = evaluate_v7_lc4_input_speed_precheck(root)
         target = root / "artifacts/v7-lc4-input-speed-precheck.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-degree-preserving-control":
+        report = evaluate_v7_degree_preserving_control(root)
+        target = root / "artifacts/v7-degree-preserving-control.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

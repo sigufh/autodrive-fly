@@ -335,6 +335,11 @@ v7-evaluate-lc4-input-speed-precheck:
 
 .PHONY: v7-evaluate-lc4-input-speed-precheck
 
+v7-audit-degree-preserving-control:
+	.venv/bin/autodrive-fly v7-audit-degree-preserving-control
+
+.PHONY: v7-audit-degree-preserving-control
+
 v7-evaluate-t5-lamina-split:
 	.venv/bin/autodrive-fly v7-evaluate-t5-lamina-split
 
