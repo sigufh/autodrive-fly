@@ -70,6 +70,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_pool_local = reports["t4_source_pool_local"]
     three_hop_moment = reports["three_hop_moment"]
     three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
+    upstream_latency_audit = reports["upstream_latency_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -422,6 +423,23 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 },
                 "three_hop_temporal_consistency_gate_passed": (
                     three_hop_temporal_consistency["temporal_consistency_gate_passed"]
+                ),
+                "upstream_ordered_latency_passing_populations": {
+                    family: result["passing_population_count"]
+                    for family, result in upstream_latency_audit["modes"]["ordered"].items()
+                },
+                "upstream_shuffle_latency_passing_populations": {
+                    family: result["passing_population_count"]
+                    for family, result in upstream_latency_audit["modes"][
+                        "temporal_shuffle"
+                    ].items()
+                },
+                "upstream_static_latency_passing_populations": {
+                    family: result["passing_population_count"]
+                    for family, result in upstream_latency_audit["modes"]["static_sham"].items()
+                },
+                "upstream_source_latency_temporal_identifiability_passed": (
+                    upstream_latency_audit["source_latency_temporal_identifiability_passed"]
                 ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]
@@ -1028,6 +1046,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_pool_local"],
                 config["evidence"]["three_hop_moment"],
                 config["evidence"]["three_hop_temporal_consistency"],
+                config["evidence"]["upstream_latency_audit"],
                 config["evidence"]["three_hop_source_coverage"],
                 config["evidence"]["four_hop_scalar_precheck"],
                 config["evidence"]["lc4_position_speed_precheck"],

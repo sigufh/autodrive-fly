@@ -1,0 +1,45 @@
+version: 1
+name: v7-upstream-fast-delayed-latency-audit
+observed_on: "2026-09-17"
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+source_position_protocol: configs/driving-v7-lplc2-radial-opponency.yaml
+condition_id: S1-T01
+families:
+  T4:
+    polarity: on
+    fast_sources: [Mi1, Tm3]
+    delayed_sources: [Mi4, C3]
+  T5:
+    polarity: off
+    fast_sources: [Tm1, Tm2, Tm4]
+    delayed_sources: [Tm9]
+directions: [left, right, up, down]
+modes: [ordered, temporal_shuffle, static_sham]
+temporal_shuffle_seed: 20260917
+thresholds:
+  minimum_activity: 0.000001
+  minimum_joint_active_comparison_fraction: 0.80
+  minimum_median_delayed_minus_fast_peak_frames: 1.0
+  minimum_delayed_later_fraction_all_comparisons: 0.60
+stop_gate:
+  require_every_population_on_ordered: true
+boundary:
+  tuning_only: true
+  single_condition_audit: true
+  all_four_directions_used_without_preferred_direction_selection: true
+  target_labels_used_only_for_population_reporting: true
+  fixed_whole_population_times_four_directions_denominator: true
+  source_activity_readout_only: true
+  source_sign_not_used_to_define_latency: true
+  source_latency_is_not_target_direction_selectivity: true
+  labels_changed: false
+  thresholds_changed: false
+  parameter_fit: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_experiments_authorized_only_after_strict_T4_T5_gate: true

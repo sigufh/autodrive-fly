@@ -1479,6 +1479,14 @@ motion-field 机制族停止，不授权新候选、三条件扩展或 LPLC。�
 中位 contrast 对 lag 几乎不变，约为 -0.003 到 0.002。没有候选形成任何双侧方向亚型，
 说明失败不是单步延迟选择错误。该来源对机制族至此停止，不扩展三组 tuning、LPLC 或
 下游实验。证据见 `artifacts/v7-t4-pair-lag-audit.json`。
+
+诊断随后前移到上游源层，不再组合新的 T4/T5 输出公式。对每个目标按解剖推断 RF 绑定
+固定局部刺激，并读取其真实加权来源输入：T4 的 Mi1/Tm3 对 Mi4/C3，T5 的
+Tm1/Tm2/Tm4 对 Tm9。ordered 条件下，两家族各 8/8 群体都达到固定活动覆盖、慢源峰值
+中位至少晚 1 帧、且至少 60% 全体“目标×四方向”比较中慢源较晚；T4 中位差约 1–2 帧，
+T5 约 3 帧。但 temporal shuffle 和 static sham 下也同样各为 8/8，static 甚至更一致。
+因此该差异只是当前代理通道的固有滤波时间常数，不是运动顺序可辨识性，不能授权新的
+目标动力学。证据见 `artifacts/v7-upstream-latency-audit.json`。
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

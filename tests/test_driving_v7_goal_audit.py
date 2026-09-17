@@ -192,6 +192,21 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         ):
             assert family[name] > 2.0
     assert visual["observations"]["three_hop_temporal_consistency_gate_passed"] is False
+    assert visual["observations"]["upstream_ordered_latency_passing_populations"] == {
+        "T4": 8,
+        "T5": 8,
+    }
+    assert visual["observations"]["upstream_shuffle_latency_passing_populations"] == {
+        "T4": 8,
+        "T5": 8,
+    }
+    assert visual["observations"]["upstream_static_latency_passing_populations"] == {
+        "T4": 8,
+        "T5": 8,
+    }
+    assert visual["observations"][
+        "upstream_source_latency_temporal_identifiability_passed"
+    ] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {
