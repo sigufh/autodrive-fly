@@ -29,6 +29,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
     fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
+    timing_models_path = Path(config["timing_models_source_filter_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -47,6 +48,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / fig1_temporal_path).read_text(encoding="utf-8")
     )
     c3_filter = json.loads((root / c3_filter_path).read_text(encoding="utf-8"))
+    timing_models = json.loads(
+        (root / timing_models_path).read_text(encoding="utf-8")
+    )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -126,6 +130,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_strf_path): _sha256(root / c3_strf_path),
                 str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
                 str(c3_filter_path): _sha256(root / c3_filter_path),
+                str(timing_models_path): _sha256(root / timing_models_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -282,6 +287,21 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "source_filter_transfer_authorized": c3_filter[
                 "C3_analytic_filter_transfer_authorized"
+            ],
+        },
+        "verified_TimingModels_source_filter_readiness": {
+            "repository_commit": timing_models["protocol"]["repository_commit"],
+            "covered_source_filter_stability_verified": timing_models[
+                "covered_source_filter_stability_verified"
+            ],
+            "current_source_coverage_fraction": timing_models[
+                "current_v7_source_contract"
+            ]["coverage_fraction"],
+            "missing_current_sources": timing_models["current_v7_source_contract"][
+                "missing_sources"
+            ],
+            "complete_source_filter_candidate_authorized": timing_models[
+                "complete_source_filter_candidate_authorized"
             ],
         },
         "required_transfer_fields_available": fields,

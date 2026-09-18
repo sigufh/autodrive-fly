@@ -87,6 +87,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "fig1_source_temporal_readiness_audit"
     ]
     c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
+    timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -197,6 +198,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["c3_strf_source_dynamics_audit"],
                 config["evidence"]["fig1_source_temporal_readiness_audit"],
                 config["evidence"]["c3_analytic_filter_precheck"],
+                config["evidence"]["timing_models_source_filter_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -710,6 +712,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "C3_analytic_filter_transfer_authorized": (
                     c3_analytic_filter_precheck[
                         "C3_analytic_filter_transfer_authorized"
+                    ]
+                ),
+                "TimingModels_covered_source_filters_stable": (
+                    timing_models_source_filter_audit[
+                        "covered_source_filter_stability_verified"
+                    ]
+                ),
+                "TimingModels_current_source_coverage_fraction": (
+                    timing_models_source_filter_audit["current_v7_source_contract"][
+                        "coverage_fraction"
+                    ]
+                ),
+                "TimingModels_missing_current_sources": (
+                    timing_models_source_filter_audit["current_v7_source_contract"][
+                        "missing_sources"
+                    ]
+                ),
+                "TimingModels_complete_source_candidate_authorized": (
+                    timing_models_source_filter_audit[
+                        "complete_source_filter_candidate_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

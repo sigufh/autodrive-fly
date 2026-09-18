@@ -1,0 +1,65 @@
+version: 1
+name: v7-clark-timing-models-source-filter-audit
+observed_on: "2026-09-18"
+repository:
+  url: https://github.com/ClarkLabCode/TimingModels
+  commit: 100bb2f52cb9628477c3883e4b17774b0b244e67
+  checkout_commit_path: data/raw/t4-external-models/TimingModels/.git/refs/heads/main
+filter_files:
+  - calcium_deconvolution_milliseconds: 200
+    path: data/raw/t4-external-models/TimingModels/CircuitModel/filterData_200ms_deconv_20220206.mat
+    bytes: 27168
+    sha256: 171a0ff885525d0dd3de4a9ea2f05d49c13a8437416d74a3a385a9ed05053f5f
+  - calcium_deconvolution_milliseconds: 250
+    path: data/raw/t4-external-models/TimingModels/CircuitModel/filterData_250ms_deconv_20220206.mat
+    bytes: 27168
+    sha256: 9b2651a7f55c06723397362725549cb6664c4d71159e9999157cc1e637e65005
+  - calcium_deconvolution_milliseconds: 300
+    path: data/raw/t4-external-models/TimingModels/CircuitModel/filterData_300ms_deconv_20220206.mat
+    bytes: 27168
+    sha256: 16960b96843c6e3acdca872deba03a8e02439b6239d9edb112a1804880167dfb
+code_files:
+  - path: data/raw/t4-external-models/TimingModels/CircuitModel/SetConfiguration.m
+    bytes: 878
+    sha256: 4fa3885e64fad7d9ff285b999be4617b97e4d228dce34fb3620986cd585979c6
+  - path: data/raw/t4-external-models/TimingModels/CircuitModel/SetModelParameters.m
+    bytes: 4406
+    sha256: aa4a14c766aa36356bbdfdc6e470a41494c8959b1108270e7699103e3665329b
+  - path: data/raw/t4-external-models/TimingModels/CircuitModel/models/ComputeSynapticModelResponseWithMeasuredFilters.m
+    bytes: 4239
+    sha256: 985711690a3b9361254411918a0ab5183fdb05407e31d41d71c93b3b5982188a
+  - path: data/raw/t4-external-models/TimingModels/CircuitModel/utils/LoadAndUpsampleMeasuredTemporalFilters.m
+    bytes: 3228
+    sha256: a928a44b361b60699f1720818abed9f4ea4cc1e2d8ec13eb3708d71a1b50cc9a
+current_source_contract: [Mi1, Tm3, Mi4, C3]
+expected_filter_list:
+  - Mi1
+  - Tm3
+  - Mi4
+  - CT1
+  - Mi9
+  - Mi1_Slo
+  - Mi1_SloRNAi
+  - Tm3_Slo
+  - Tm3_SloRNAi
+  - Mi4_CacRNAi
+  - CT1_CacRNAi
+  - Mi9_CacRNAi
+expected_shape: [60, 12]
+expected_sample_interval_seconds: 0.03333333333333333
+expected_time_seconds: [0.0, 1.9666666666666666]
+gates:
+  minimum_pairwise_deconvolution_kernel_correlation: 0.98
+  require_every_current_source_type: true
+  require_independent_cell_holdout: true
+boundary:
+  read_only_external_model_audit: true
+  filters_are_type_average_not_individual_cell: true
+  C3_absent_from_filter_files_and_model_code: true
+  Mi4_or_CT1_must_not_substitute_for_C3: true
+  model_spatially_shifts_source_arms: true
+  model_uses_source_names_not_MaleCNS_body_IDs: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

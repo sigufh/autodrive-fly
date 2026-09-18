@@ -1637,6 +1637,15 @@ source dynamics。Edmond 的 `fig1d_receptive_fields.npy` manifest 与 NPY heade
 解析 C3 kernel 或 T4 功能候选。证据见
 `artifacts/v7-c3-analytic-filter-precheck.json`。
 
+Clark Lab 的公开 `TimingModels` 仓库（固定提交 `100bb2f5…`）又提供了三份
+source-type 实测时间核：分别按 200/250/300 ms 钙低通假设去卷积，均为 60 点、
+33.3 ms 步长、0–1.967 s。Mi1/Tm3/Mi4 在三种假设间的最小两两核相关均大于
+0.984，说明这三类类型平均核对去卷积常数相当稳健。代码也明确以独立 Mi9、Mi1、Tm3、
+Mi4、CT1 核驱动三臂突触模型，默认仿真步长为 1/240 s。可是仓库的 filter list 和模型
+代码都没有 C3，也没有逐细胞 holdout 或记录细胞→MaleCNS body 映射；Mi4/CT1 不得
+冒充 C3。因此它只把当前四类合同中的 3/4 提升为稳健外部证据，仍不授权完整 T4
+source-filter 候选。证据见 `artifacts/v7-timing-models-source-filter-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

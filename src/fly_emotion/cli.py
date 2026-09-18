@@ -187,6 +187,9 @@ from .driving.v7_three_hop_temporal_consistency import (
     evaluate_v7_three_hop_temporal_consistency,
 )
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
+from .driving.v7_timing_models_source_filter_audit import (
+    evaluate_v7_timing_models_source_filter_audit,
+)
 from .driving.v7_unified_model_package_audit import evaluate_v7_unified_model_package_audit
 from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audit
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
@@ -367,6 +370,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
+    subparsers.add_parser("v7-audit-timing-models-source-filters")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1174,6 +1178,14 @@ def main() -> None:
     if args.command == "v7-precheck-c3-analytic-filter":
         report = evaluate_v7_c3_analytic_filter_precheck(root)
         target = root / "artifacts/v7-c3-analytic-filter-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-timing-models-source-filters":
+        report = evaluate_v7_timing_models_source_filter_audit(root)
+        target = root / "artifacts/v7-timing-models-source-filter-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

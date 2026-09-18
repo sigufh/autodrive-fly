@@ -95,6 +95,12 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert c3_filter["median_leave_one_fly_out_correlation"] > 0.84
     assert c3_filter["filter_family_precheck_passed"] is False
     assert c3_filter["source_filter_transfer_authorized"] is False
+    timing = report["verified_TimingModels_source_filter_readiness"]
+    assert timing["repository_commit"] == "100bb2f52cb9628477c3883e4b17774b0b244e67"
+    assert timing["covered_source_filter_stability_verified"] is True
+    assert timing["current_source_coverage_fraction"] == 0.75
+    assert timing["missing_current_sources"] == ["C3"]
+    assert timing["complete_source_filter_candidate_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

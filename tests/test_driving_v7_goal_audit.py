@@ -305,6 +305,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["C3_analytic_filter_minimum_LOFO_correlation"] < 0.67
     assert visual["observations"]["C3_analytic_filter_family_precheck_passed"] is False
     assert visual["observations"]["C3_analytic_filter_transfer_authorized"] is False
+    assert visual["observations"]["TimingModels_covered_source_filters_stable"] is True
+    assert visual["observations"]["TimingModels_current_source_coverage_fraction"] == 0.75
+    assert visual["observations"]["TimingModels_missing_current_sources"] == ["C3"]
+    assert visual["observations"]["TimingModels_complete_source_candidate_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

@@ -1,0 +1,162 @@
+{
+  "protocol": {
+    "name": "v7-clark-timing-models-source-filter-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-timing-models-source-filter-audit.yaml": "fffaa64fd43a4127c056da205d1f6eb3242b84ece34e0a77bcbff57f5bd02cb4",
+      "src/fly_emotion/driving/v7_timing_models_source_filter_audit.py": "8c852b795004ecd15efa98a2561f4a564653f4e4645ebf14b83a8930cf831c7f"
+    },
+    "repository_url": "https://github.com/ClarkLabCode/TimingModels",
+    "repository_commit": "100bb2f52cb9628477c3883e4b17774b0b244e67",
+    "verified_files": [
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/filterData_200ms_deconv_20220206.mat",
+        "bytes": 27168,
+        "sha256": "171a0ff885525d0dd3de4a9ea2f05d49c13a8437416d74a3a385a9ed05053f5f"
+      },
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/filterData_250ms_deconv_20220206.mat",
+        "bytes": 27168,
+        "sha256": "9b2651a7f55c06723397362725549cb6664c4d71159e9999157cc1e637e65005"
+      },
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/filterData_300ms_deconv_20220206.mat",
+        "bytes": 27168,
+        "sha256": "16960b96843c6e3acdca872deba03a8e02439b6239d9edb112a1804880167dfb"
+      },
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/SetConfiguration.m",
+        "bytes": 878,
+        "sha256": "4fa3885e64fad7d9ff285b999be4617b97e4d228dce34fb3620986cd585979c6"
+      },
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/SetModelParameters.m",
+        "bytes": 4406,
+        "sha256": "aa4a14c766aa36356bbdfdc6e470a41494c8959b1108270e7699103e3665329b"
+      },
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/models/ComputeSynapticModelResponseWithMeasuredFilters.m",
+        "bytes": 4239,
+        "sha256": "985711690a3b9361254411918a0ab5183fdb05407e31d41d71c93b3b5982188a"
+      },
+      {
+        "path": "data/raw/t4-external-models/TimingModels/CircuitModel/utils/LoadAndUpsampleMeasuredTemporalFilters.m",
+        "bytes": 3228,
+        "sha256": "a928a44b361b60699f1720818abed9f4ea4cc1e2d8ec13eb3708d71a1b50cc9a"
+      }
+    ],
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "filter_data": {
+    "calcium_deconvolution_milliseconds": [
+      200,
+      250,
+      300
+    ],
+    "filter_list": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "CT1",
+      "Mi9",
+      "Mi1_Slo",
+      "Mi1_SloRNAi",
+      "Tm3_Slo",
+      "Tm3_SloRNAi",
+      "Mi4_CacRNAi",
+      "CT1_CacRNAi",
+      "Mi9_CacRNAi"
+    ],
+    "filter_shape": [
+      60,
+      12
+    ],
+    "sample_interval_seconds": 0.03333333333333333,
+    "time_start_seconds": 0.0,
+    "time_stop_seconds": 1.9666666666666666,
+    "pairwise_deconvolution_kernel_correlations": {
+      "Mi1": {
+        "200_vs_250_ms": 0.9960268220545415,
+        "200_vs_300_ms": 0.9887079043389537,
+        "250_vs_300_ms": 0.998124788271991
+      },
+      "Mi4": {
+        "200_vs_250_ms": 0.9947557259576929,
+        "200_vs_300_ms": 0.9846469012826097,
+        "250_vs_300_ms": 0.9973368004496155
+      },
+      "Tm3": {
+        "200_vs_250_ms": 0.9962135237390319,
+        "200_vs_300_ms": 0.989251783343429,
+        "250_vs_300_ms": 0.9982185996172899
+      }
+    },
+    "minimum_pairwise_correlation_by_current_source": {
+      "Mi1": 0.9887079043389537,
+      "Mi4": 0.9846469012826097,
+      "Tm3": 0.989251783343429
+    },
+    "stability_gates": {
+      "Mi1": true,
+      "Mi4": true,
+      "Tm3": true
+    }
+  },
+  "current_v7_source_contract": {
+    "required_sources": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "covered_sources": [
+      "Mi1",
+      "Mi4",
+      "Tm3"
+    ],
+    "missing_sources": [
+      "C3"
+    ],
+    "coverage_fraction": 0.75,
+    "noncontract_model_sources": [
+      "CT1",
+      "CT1_CacRNAi",
+      "Mi1_Slo",
+      "Mi1_SloRNAi",
+      "Mi4_CacRNAi",
+      "Mi9",
+      "Mi9_CacRNAi",
+      "Tm3_Slo",
+      "Tm3_SloRNAi"
+    ]
+  },
+  "transfer_gates": {
+    "repository_and_files_verified": true,
+    "covered_source_filters_stable_across_deconvolution_assumptions": true,
+    "every_current_source_type_covered": false,
+    "independent_cell_holdout_available": false,
+    "stable_recorded_cell_to_MaleCNS_mapping_available": false
+  },
+  "covered_source_filter_stability_verified": true,
+  "complete_source_filter_candidate_authorized": false,
+  "advance_to_T4_functional_precheck": false,
+  "blocking_requirements": [
+    "every_current_source_type_covered",
+    "independent_cell_holdout_available",
+    "stable_recorded_cell_to_MaleCNS_mapping_available"
+  ],
+  "stop_reason": "TimingModels_filters_missing_C3_and_independent_identity_validation",
+  "boundary": {
+    "read_only_external_model_audit": true,
+    "filters_are_type_average_not_individual_cell": true,
+    "C3_absent_from_filter_files_and_model_code": true,
+    "Mi4_or_CT1_must_not_substitute_for_C3": true,
+    "model_spatially_shifts_source_arms": true,
+    "model_uses_source_names_not_MaleCNS_body_IDs": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}
