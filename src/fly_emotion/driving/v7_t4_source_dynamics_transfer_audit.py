@@ -27,6 +27,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig3_robustness_path = Path(config["fig3_source_kernel_robustness_evidence"])
     arenz_path = Path(config["arenz_source_dynamics_evidence"])
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
+    c3_strf_flash_path = Path(config["c3_strf_flash_transfer_evidence"])
     fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
@@ -48,6 +49,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     )
     arenz = json.loads((root / arenz_path).read_text(encoding="utf-8"))
     c3_strf = json.loads((root / c3_strf_path).read_text(encoding="utf-8"))
+    c3_strf_flash = json.loads(
+        (root / c3_strf_flash_path).read_text(encoding="utf-8")
+    )
     fig1_temporal = json.loads(
         (root / fig1_temporal_path).read_text(encoding="utf-8")
     )
@@ -142,6 +146,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(fig3_robustness_path): _sha256(root / fig3_robustness_path),
                 str(arenz_path): _sha256(root / arenz_path),
                 str(c3_strf_path): _sha256(root / c3_strf_path),
+                str(c3_strf_flash_path): _sha256(root / c3_strf_flash_path),
                 str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
@@ -268,6 +273,27 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ]["C3_membrane_voltage_or_validated_deconvolved_kernel_available"],
             "source_filter_candidate_authorized": c3_strf[
                 "C3_source_filter_candidate_authorized"
+            ],
+        },
+        "verified_C3_STRF_to_independent_flash_transfer": {
+            "source_fly_axis_unit_count": c3_strf_flash["cohorts"][
+                "source_fly_axis_unit_count"
+            ],
+            "external_flash_fly_count": c3_strf_flash["cohorts"][
+                "external_flash_fly_count"
+            ],
+            "mean_waveform_correlation": c3_strf_flash["external_validation"][
+                "mean_waveform_correlation"
+            ],
+            "minimum_external_fly_correlation": c3_strf_flash[
+                "external_validation"
+            ]["per_fly_correlation_summary"]["minimum"],
+            "bootstrap_correlation_p05": c3_strf_flash["external_validation"][
+                "bootstrap"
+            ]["correlation_p05"],
+            "transfer_passed": c3_strf_flash["C3_STRF_to_flash_transfer_passed"],
+            "source_kernel_candidate_authorized": c3_strf_flash[
+                "C3_source_kernel_candidate_authorized"
             ],
         },
         "verified_Fig1_source_temporal_readiness": {

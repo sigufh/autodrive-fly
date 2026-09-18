@@ -1,0 +1,40 @@
+version: 1
+name: v7-c3-strf-to-independent-flash-transfer
+observed_on: "2026-09-18"
+strf_protocol: configs/driving-v7-c3-strf-source-dynamics-audit.yaml
+strf_evidence: artifacts/v7-c3-strf-source-dynamics-audit.json
+flash_preregistration: artifacts/v7-c3-flash-preregistration.json
+source_cohort:
+  fly_ids: [200121_Fly3, 200121_Fly4, 200121_Fly5, 200121_Fly9, 200127_Fly1]
+  unit: fly_axis
+  expected_unit_count: 7
+external_flash_cohort:
+  exclude_source_cohort_fly_ids: true
+  expected_fly_count: 22
+transfer:
+  operation: causal_cumulative_sum_of_raw_STRF_temporal_kernel
+  fit_parameters: false
+  source_sample_interval_seconds: 0.05
+  external_sample_interval_seconds: 0.10
+  comparison_window_seconds: [0.0, 2.0]
+  baseline_reference: first_sample_of_each_compared_trace
+  normalization: unit_L2_after_baseline_reference
+  aggregation: equal_weight_per_source_fly_axis_and_external_fly
+bootstrap:
+  seed: 20260918
+  replicates: 1000
+gates:
+  minimum_external_mean_correlation: 0.80
+  minimum_median_external_fly_correlation: 0.80
+  minimum_external_fly_correlation: 0.0
+  minimum_bootstrap_correlation_p05: 0.80
+  minimum_source_leave_one_fly_out_correlation: 0.80
+boundary:
+  source_and_external_fly_ids_disjoint: true
+  raw_STRF_not_fit_or_deconvolved: true
+  moving_edge_voltage_not_used: true
+  no_T4_response_or_direction_label_used: true
+  source_kernel_not_yet_mapped_to_MaleCNS_bodies: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

@@ -88,6 +88,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         8,
     ]
     assert visual["observations"]["T5_typed_spatial_pair_control_eligible"] is False
+    assert visual["observations"]["source_type_temporal_passing_counts"] == {
+        "T4": {"passed": 0, "denominator": 32},
+        "T5": {"passed": 0, "denominator": 32},
+    }
+    assert visual["observations"]["source_type_temporal_identifiability_passed"] is False
     assert visual["observations"]["T5_processed_independent_cell_holdout_available"] is False
     assert visual["observations"]["T5_unified_model_files_verified"] is False
     assert visual["observations"]["physical_timebase_identified"] is False
@@ -340,6 +345,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["C3_measured_filter_minimum_LOFO_by_assumption"].values()
     ) < 0.58
     assert visual["observations"]["C3_measured_filter_type_shared_kernel_authorized"] is False
+    assert visual["observations"]["C3_STRF_flash_external_fly_count"] == 22
+    assert visual["observations"]["C3_STRF_flash_mean_correlation"] > 0.97
+    assert visual["observations"]["C3_STRF_flash_bootstrap_p05"] < 0.62
+    assert visual["observations"]["C3_STRF_flash_transfer_passed"] is False
     assert visual["observations"]["public_T4_models_C3_specific_parameters_available"] is False
     assert visual["observations"]["public_T4_models_complete_source_transfer_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False

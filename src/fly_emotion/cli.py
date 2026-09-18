@@ -44,6 +44,7 @@ from .driving.v7_c3_flash_preregistration import (
 from .driving.v7_c3_measured_filter_robustness import (
     evaluate_v7_c3_measured_filter_robustness,
 )
+from .driving.v7_c3_strf_flash_transfer import evaluate_v7_c3_strf_flash_transfer
 from .driving.v7_c3_strf_source_dynamics_audit import (
     evaluate_v7_c3_strf_source_dynamics_audit,
 )
@@ -145,6 +146,9 @@ from .driving.v7_r1r6_multi import (
 )
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
+from .driving.v7_source_type_temporal_identifiability import (
+    evaluate_v7_source_type_temporal_identifiability,
+)
 from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
 from .driving.v7_stage1_development import evaluate_v7_stage1_development
@@ -375,6 +379,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-continuous-pair-precheck")
     subparsers.add_parser("v7-audit-t4-pair-lags")
     subparsers.add_parser("v7-audit-upstream-latency")
+    subparsers.add_parser("v7-audit-source-type-temporal-identifiability")
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
@@ -388,6 +393,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
     subparsers.add_parser("v7-audit-c3-flash-preregistration")
+    subparsers.add_parser("v7-audit-c3-strf-flash-transfer")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-c3-measured-filter-robustness")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
@@ -1121,6 +1127,14 @@ def main() -> None:
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return
+    if args.command == "v7-audit-source-type-temporal-identifiability":
+        report = evaluate_v7_source_type_temporal_identifiability(root)
+        target = root / "artifacts/v7-source-type-temporal-identifiability.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
     if args.command == "v7-audit-t4-pair-lags":
         report = evaluate_v7_t4_pair_lag_audit(root)
         target = root / "artifacts/v7-t4-pair-lag-audit.json"
@@ -1210,6 +1224,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-flash-preregistration":
         report = evaluate_v7_c3_flash_preregistration(root)
         target = root / "artifacts/v7-c3-flash-preregistration.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-c3-strf-flash-transfer":
+        report = evaluate_v7_c3_strf_flash_transfer(root)
+        target = root / "artifacts/v7-c3-strf-flash-transfer.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -71,6 +71,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     three_hop_moment = reports["three_hop_moment"]
     three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
     upstream_latency_audit = reports["upstream_latency_audit"]
+    source_type_temporal_identifiability = reports[
+        "source_type_temporal_identifiability"
+    ]
     synapse_spatial_audit = reports["synapse_spatial_audit"]
     synapse_axis_calibration = reports["synapse_axis_calibration"]
     t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
@@ -83,6 +86,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
     arenz_source_dynamics_audit = reports["arenz_source_dynamics_audit"]
     c3_strf_source_dynamics_audit = reports["c3_strf_source_dynamics_audit"]
+    c3_strf_flash_transfer = reports["c3_strf_flash_transfer"]
     fig1_source_temporal_readiness_audit = reports[
         "fig1_source_temporal_readiness_audit"
     ]
@@ -200,12 +204,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
+                config["evidence"]["source_type_temporal_identifiability"],
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
                 config["evidence"]["arenz_source_dynamics_audit"],
                 config["evidence"]["c3_strf_source_dynamics_audit"],
+                config["evidence"]["c3_strf_flash_transfer"],
                 config["evidence"]["fig1_source_temporal_readiness_audit"],
                 config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["timing_models_source_filter_audit"],
@@ -633,6 +639,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_synapse_microstep_direction_scoring_performed": (
                     t4_synapse_microstep_precheck["direction_scoring_performed"]
                 ),
+                "source_type_temporal_passing_counts": {
+                    family: {
+                        "passed": item["passing_source_population_count"],
+                        "denominator": item["source_population_denominator"],
+                    }
+                    for family, item in source_type_temporal_identifiability[
+                        "families"
+                    ].items()
+                },
+                "source_type_temporal_identifiability_passed": (
+                    source_type_temporal_identifiability[
+                        "source_type_temporal_identifiability_passed"
+                    ]
+                ),
                 "T4_source_dynamics_transfer_fields_available": (
                     t4_source_dynamics_transfer_audit[
                         "required_transfer_fields_available"
@@ -819,6 +839,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "C3_type_shared_kernel_authorized"
                     ]
                 ),
+                "C3_STRF_flash_external_fly_count": c3_strf_flash_transfer[
+                    "cohorts"
+                ]["external_flash_fly_count"],
+                "C3_STRF_flash_mean_correlation": c3_strf_flash_transfer[
+                    "external_validation"
+                ]["mean_waveform_correlation"],
+                "C3_STRF_flash_bootstrap_p05": c3_strf_flash_transfer[
+                    "external_validation"
+                ]["bootstrap"]["correlation_p05"],
+                "C3_STRF_flash_transfer_passed": c3_strf_flash_transfer[
+                    "C3_STRF_to_flash_transfer_passed"
+                ],
                 "public_T4_models_C3_specific_parameters_available": (
                     public_t4_model_source_coverage_audit["transfer_gates"][
                         "C3_specific_parameters_available"

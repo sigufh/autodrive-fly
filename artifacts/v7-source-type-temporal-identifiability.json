@@ -1,0 +1,1107 @@
+{
+  "protocol": {
+    "name": "v7-source-type-temporal-identifiability-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-source-type-temporal-identifiability.yaml": "8873470713fb4af25efae0acfde4c8d6e5e15dd82998ae891b87aa2f911218fd",
+      "src/fly_emotion/driving/v7_source_type_temporal_identifiability.py": "29c6612617abf23b0815cb70d7491cd49b1eaace0c5ab97d3b6f93dc4da226c0",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "configs/driving-v7-lplc2-radial-opponency.yaml": "c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac",
+      "artifacts/v7-upstream-latency-audit.json": "5c0af06b433a39033e51b75ad34a1875854f5712c0509dfd97dcc1c12eb9c414"
+    },
+    "condition_id": "S1-T01",
+    "position_count": 15,
+    "direction_count": 4,
+    "mode_count": 3,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false
+  },
+  "source_groups": {
+    "T4": {
+      "polarity": "on",
+      "source_types": [
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "C3"
+      ]
+    },
+    "T5": {
+      "polarity": "off",
+      "source_types": [
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9"
+      ]
+    }
+  },
+  "position_inference": {
+    "families": {
+      "T4": {
+        "source_count": 6861,
+        "mapped_source_count": 6861,
+        "mapped_source_fraction": 1.0,
+        "coordinate_source_types": [
+          "Mi1",
+          "Tm3",
+          "Mi4",
+          "Mi9",
+          "C3"
+        ]
+      },
+      "T5": {
+        "source_count": 6719,
+        "mapped_source_count": 6718,
+        "mapped_source_fraction": 0.9998511683286203,
+        "coordinate_source_types": [
+          "Tm1",
+          "Tm2",
+          "Tm4",
+          "Tm9"
+        ]
+      }
+    },
+    "mapped_source_count": 13579,
+    "source_record_count": 13580,
+    "inferred_positions_sha256": "c7e04ad63cecfe0512b1e2f0f4493e89d282da0d54c9b75046eb5064117890dc",
+    "position_rule": "raw-edge-weighted centroid of the source cell's coordinate-bearing direct inputs; left-eye horizontal coordinate reflected into common image coordinates",
+    "target_label_used_for_position": false
+  },
+  "families": {
+    "T4": {
+      "populations": {
+        "T4a_L": {
+          "target_count": 835,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3340,
+              "active_comparison_count": 3312,
+              "active_comparison_fraction": 0.9916167664670659,
+              "ordered_residual_mean_absolute_energy": 0.0009755467181093991,
+              "shuffle_residual_mean_absolute_energy": 0.004051933065056801,
+              "shuffle_to_ordered_residual_energy_ratio": 4.153499765659006,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3340,
+              "active_comparison_count": 3340,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0015163578791543841,
+              "shuffle_residual_mean_absolute_energy": 0.007379183080047369,
+              "shuffle_to_ordered_residual_energy_ratio": 4.866386214949773,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3340,
+              "active_comparison_count": 3326,
+              "active_comparison_fraction": 0.9958083832335329,
+              "ordered_residual_mean_absolute_energy": 0.0002097500255331397,
+              "shuffle_residual_mean_absolute_energy": 0.0015967302024364471,
+              "shuffle_to_ordered_residual_energy_ratio": 7.612538775039004,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3340,
+              "active_comparison_count": 3317,
+              "active_comparison_fraction": 0.9931137724550898,
+              "ordered_residual_mean_absolute_energy": 0.0017555855447426438,
+              "shuffle_residual_mean_absolute_energy": 0.006426708772778511,
+              "shuffle_to_ordered_residual_energy_ratio": 3.660720944088555,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4a_R": {
+          "target_count": 849,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3396,
+              "active_comparison_count": 3390,
+              "active_comparison_fraction": 0.9982332155477032,
+              "ordered_residual_mean_absolute_energy": 0.0010188462911173701,
+              "shuffle_residual_mean_absolute_energy": 0.004454841371625662,
+              "shuffle_to_ordered_residual_energy_ratio": 4.372437148237573,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3396,
+              "active_comparison_count": 3392,
+              "active_comparison_fraction": 0.9988221436984688,
+              "ordered_residual_mean_absolute_energy": 0.00167312182020396,
+              "shuffle_residual_mean_absolute_energy": 0.008504855446517467,
+              "shuffle_to_ordered_residual_energy_ratio": 5.0832254673964465,
+              "ordered_median_peak_frame": 21.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3396,
+              "active_comparison_count": 3390,
+              "active_comparison_fraction": 0.9982332155477032,
+              "ordered_residual_mean_absolute_energy": 0.0002291428972966969,
+              "shuffle_residual_mean_absolute_energy": 0.0016079283086583018,
+              "shuffle_to_ordered_residual_energy_ratio": 7.017142262002289,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3396,
+              "active_comparison_count": 3380,
+              "active_comparison_fraction": 0.9952885747938751,
+              "ordered_residual_mean_absolute_energy": 0.0018521519377827644,
+              "shuffle_residual_mean_absolute_energy": 0.007118836976587772,
+              "shuffle_to_ordered_residual_energy_ratio": 3.843549134046652,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4b_L": {
+          "target_count": 844,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3376,
+              "active_comparison_count": 3353,
+              "active_comparison_fraction": 0.9931872037914692,
+              "ordered_residual_mean_absolute_energy": 0.0009821983985602856,
+              "shuffle_residual_mean_absolute_energy": 0.004042988643050194,
+              "shuffle_to_ordered_residual_energy_ratio": 4.116264747505636,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3376,
+              "active_comparison_count": 3376,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0015115599380806088,
+              "shuffle_residual_mean_absolute_energy": 0.00729928957298398,
+              "shuffle_to_ordered_residual_energy_ratio": 4.828977924787209,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3376,
+              "active_comparison_count": 3365,
+              "active_comparison_fraction": 0.9967417061611374,
+              "ordered_residual_mean_absolute_energy": 0.000205531032406725,
+              "shuffle_residual_mean_absolute_energy": 0.001541783451102674,
+              "shuffle_to_ordered_residual_energy_ratio": 7.501463078585824,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3376,
+              "active_comparison_count": 3345,
+              "active_comparison_fraction": 0.9908175355450237,
+              "ordered_residual_mean_absolute_energy": 0.0015884495805948973,
+              "shuffle_residual_mean_absolute_energy": 0.005803779698908329,
+              "shuffle_to_ordered_residual_energy_ratio": 3.6537386957757447,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4b_R": {
+          "target_count": 846,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3384,
+              "active_comparison_count": 3374,
+              "active_comparison_fraction": 0.9970449172576832,
+              "ordered_residual_mean_absolute_energy": 0.0010309222852811217,
+              "shuffle_residual_mean_absolute_energy": 0.004480722360312939,
+              "shuffle_to_ordered_residual_energy_ratio": 4.346324086971398,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3384,
+              "active_comparison_count": 3384,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0016750203212723136,
+              "shuffle_residual_mean_absolute_energy": 0.008547156117856503,
+              "shuffle_to_ordered_residual_energy_ratio": 5.102717865156553,
+              "ordered_median_peak_frame": 21.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3384,
+              "active_comparison_count": 3375,
+              "active_comparison_fraction": 0.9973404255319149,
+              "ordered_residual_mean_absolute_energy": 0.00022047314269002527,
+              "shuffle_residual_mean_absolute_energy": 0.0015537524595856667,
+              "shuffle_to_ordered_residual_energy_ratio": 7.047354796271801,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3384,
+              "active_comparison_count": 3369,
+              "active_comparison_fraction": 0.9955673758865248,
+              "ordered_residual_mean_absolute_energy": 0.0017837935592979193,
+              "shuffle_residual_mean_absolute_energy": 0.006887960713356733,
+              "shuffle_to_ordered_residual_energy_ratio": 3.861411359769544,
+              "ordered_median_peak_frame": 26.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4c_L": {
+          "target_count": 895,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3580,
+              "active_comparison_count": 3549,
+              "active_comparison_fraction": 0.991340782122905,
+              "ordered_residual_mean_absolute_energy": 0.0008567007025703788,
+              "shuffle_residual_mean_absolute_energy": 0.003527470398694277,
+              "shuffle_to_ordered_residual_energy_ratio": 4.117506135002255,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3580,
+              "active_comparison_count": 3576,
+              "active_comparison_fraction": 0.9988826815642458,
+              "ordered_residual_mean_absolute_energy": 0.0012986481888219714,
+              "shuffle_residual_mean_absolute_energy": 0.0062899538315832615,
+              "shuffle_to_ordered_residual_energy_ratio": 4.843462521815858,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3580,
+              "active_comparison_count": 3559,
+              "active_comparison_fraction": 0.9941340782122905,
+              "ordered_residual_mean_absolute_energy": 0.00022781129518989474,
+              "shuffle_residual_mean_absolute_energy": 0.0016490904381498694,
+              "shuffle_to_ordered_residual_energy_ratio": 7.238844047549315,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3580,
+              "active_comparison_count": 3403,
+              "active_comparison_fraction": 0.9505586592178771,
+              "ordered_residual_mean_absolute_energy": 0.0016935155726969242,
+              "shuffle_residual_mean_absolute_energy": 0.006179014686495066,
+              "shuffle_to_ordered_residual_energy_ratio": 3.6486317493112757,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4c_R": {
+          "target_count": 883,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3532,
+              "active_comparison_count": 3514,
+              "active_comparison_fraction": 0.9949037372593431,
+              "ordered_residual_mean_absolute_energy": 0.0009364506113342941,
+              "shuffle_residual_mean_absolute_energy": 0.004098554607480764,
+              "shuffle_to_ordered_residual_energy_ratio": 4.376690620812316,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3532,
+              "active_comparison_count": 3528,
+              "active_comparison_fraction": 0.9988674971687429,
+              "ordered_residual_mean_absolute_energy": 0.0015036927070468664,
+              "shuffle_residual_mean_absolute_energy": 0.0077050975523889065,
+              "shuffle_to_ordered_residual_energy_ratio": 5.124117125979223,
+              "ordered_median_peak_frame": 21.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3532,
+              "active_comparison_count": 3526,
+              "active_comparison_fraction": 0.9983012457531144,
+              "ordered_residual_mean_absolute_energy": 0.0002342268853681162,
+              "shuffle_residual_mean_absolute_energy": 0.0016314157983288169,
+              "shuffle_to_ordered_residual_energy_ratio": 6.965109047003069,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3532,
+              "active_comparison_count": 3460,
+              "active_comparison_fraction": 0.9796149490373726,
+              "ordered_residual_mean_absolute_energy": 0.0018784143030643463,
+              "shuffle_residual_mean_absolute_energy": 0.007337165996432304,
+              "shuffle_to_ordered_residual_energy_ratio": 3.906042444663479,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4d_L": {
+          "target_count": 850,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3400,
+              "active_comparison_count": 3374,
+              "active_comparison_fraction": 0.9923529411764705,
+              "ordered_residual_mean_absolute_energy": 0.000921896134968847,
+              "shuffle_residual_mean_absolute_energy": 0.00382159068249166,
+              "shuffle_to_ordered_residual_energy_ratio": 4.145359262864032,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3400,
+              "active_comparison_count": 3400,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0015028177294880152,
+              "shuffle_residual_mean_absolute_energy": 0.007242357358336449,
+              "shuffle_to_ordered_residual_energy_ratio": 4.819185464895865,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3400,
+              "active_comparison_count": 3391,
+              "active_comparison_fraction": 0.9973529411764706,
+              "ordered_residual_mean_absolute_energy": 0.00015467208868358284,
+              "shuffle_residual_mean_absolute_energy": 0.001237348886206746,
+              "shuffle_to_ordered_residual_energy_ratio": 7.999820114526457,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3400,
+              "active_comparison_count": 3287,
+              "active_comparison_fraction": 0.966764705882353,
+              "ordered_residual_mean_absolute_energy": 0.0011904427083209157,
+              "shuffle_residual_mean_absolute_energy": 0.004557491280138493,
+              "shuffle_to_ordered_residual_energy_ratio": 3.828400349116086,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T4d_R": {
+          "target_count": 859,
+          "source_types": {
+            "Mi1": {
+              "comparison_count": 3436,
+              "active_comparison_count": 3424,
+              "active_comparison_fraction": 0.9965075669383003,
+              "ordered_residual_mean_absolute_energy": 0.0010011601261794567,
+              "shuffle_residual_mean_absolute_energy": 0.004388779867440462,
+              "shuffle_to_ordered_residual_energy_ratio": 4.383694229002663,
+              "ordered_median_peak_frame": 24.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm3": {
+              "comparison_count": 3436,
+              "active_comparison_count": 3436,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0016721982974559069,
+              "shuffle_residual_mean_absolute_energy": 0.008564787916839123,
+              "shuffle_to_ordered_residual_energy_ratio": 5.121873362668557,
+              "ordered_median_peak_frame": 21.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Mi4": {
+              "comparison_count": 3436,
+              "active_comparison_count": 3430,
+              "active_comparison_fraction": 0.9982537834691502,
+              "ordered_residual_mean_absolute_energy": 0.00017657174612395465,
+              "shuffle_residual_mean_absolute_energy": 0.0013217254308983684,
+              "shuffle_to_ordered_residual_energy_ratio": 7.485486551005207,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "C3": {
+              "comparison_count": 3436,
+              "active_comparison_count": 3370,
+              "active_comparison_fraction": 0.980791618160652,
+              "ordered_residual_mean_absolute_energy": 0.001506277360022068,
+              "shuffle_residual_mean_absolute_energy": 0.0059210993349552155,
+              "shuffle_to_ordered_residual_energy_ratio": 3.930948902311369,
+              "ordered_median_peak_frame": 25.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        }
+      },
+      "passing_source_population_count": 0,
+      "source_population_denominator": 32,
+      "all_source_types_and_populations_passed": false
+    },
+    "T5": {
+      "populations": {
+        "T5a_L": {
+          "target_count": 826,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3304,
+              "active_comparison_count": 3300,
+              "active_comparison_fraction": 0.9987893462469734,
+              "ordered_residual_mean_absolute_energy": 0.0013173219049349427,
+              "shuffle_residual_mean_absolute_energy": 0.005895861424505711,
+              "shuffle_to_ordered_residual_energy_ratio": 4.47564213607826,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3304,
+              "active_comparison_count": 3300,
+              "active_comparison_fraction": 0.9987893462469734,
+              "ordered_residual_mean_absolute_energy": 0.0021759425289928913,
+              "shuffle_residual_mean_absolute_energy": 0.008962846361100674,
+              "shuffle_to_ordered_residual_energy_ratio": 4.119063919049838,
+              "ordered_median_peak_frame": 18.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3304,
+              "active_comparison_count": 3300,
+              "active_comparison_fraction": 0.9987893462469734,
+              "ordered_residual_mean_absolute_energy": 0.0012564031640067697,
+              "shuffle_residual_mean_absolute_energy": 0.006712162401527166,
+              "shuffle_to_ordered_residual_energy_ratio": 5.34236349749514,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3304,
+              "active_comparison_count": 3300,
+              "active_comparison_fraction": 0.9987893462469734,
+              "ordered_residual_mean_absolute_energy": 0.000955086899921298,
+              "shuffle_residual_mean_absolute_energy": 0.005915055051445961,
+              "shuffle_to_ordered_residual_energy_ratio": 6.193211373680635,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5a_R": {
+          "target_count": 838,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3352,
+              "active_comparison_count": 3351,
+              "active_comparison_fraction": 0.9997016706443914,
+              "ordered_residual_mean_absolute_energy": 0.0013958096969872713,
+              "shuffle_residual_mean_absolute_energy": 0.006629271898418665,
+              "shuffle_to_ordered_residual_energy_ratio": 4.749409545389566,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3352,
+              "active_comparison_count": 3352,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.002183861332014203,
+              "shuffle_residual_mean_absolute_energy": 0.009711158461868763,
+              "shuffle_to_ordered_residual_energy_ratio": 4.446783465373252,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3352,
+              "active_comparison_count": 3348,
+              "active_comparison_fraction": 0.9988066825775657,
+              "ordered_residual_mean_absolute_energy": 0.001377022941596806,
+              "shuffle_residual_mean_absolute_energy": 0.007715600077062845,
+              "shuffle_to_ordered_residual_energy_ratio": 5.603102057338114,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3352,
+              "active_comparison_count": 3352,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0009235440520569682,
+              "shuffle_residual_mean_absolute_energy": 0.005718942731618881,
+              "shuffle_to_ordered_residual_energy_ratio": 6.192387595243927,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5b_L": {
+          "target_count": 863,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3452,
+              "active_comparison_count": 3452,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0014330504927784204,
+              "shuffle_residual_mean_absolute_energy": 0.006414303556084633,
+              "shuffle_to_ordered_residual_energy_ratio": 4.475978751906,
+              "ordered_median_peak_frame": 19.5,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3452,
+              "active_comparison_count": 3452,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0022554779425263405,
+              "shuffle_residual_mean_absolute_energy": 0.009229909628629684,
+              "shuffle_to_ordered_residual_energy_ratio": 4.092218972574543,
+              "ordered_median_peak_frame": 18.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3452,
+              "active_comparison_count": 3452,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0012996119912713766,
+              "shuffle_residual_mean_absolute_energy": 0.006954554468393326,
+              "shuffle_to_ordered_residual_energy_ratio": 5.3512544629492576,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3452,
+              "active_comparison_count": 3452,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0009890652727335691,
+              "shuffle_residual_mean_absolute_energy": 0.006113670766353607,
+              "shuffle_to_ordered_residual_energy_ratio": 6.181261171425726,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5b_R": {
+          "target_count": 852,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3408,
+              "active_comparison_count": 3407,
+              "active_comparison_fraction": 0.999706572769953,
+              "ordered_residual_mean_absolute_energy": 0.00142962415702641,
+              "shuffle_residual_mean_absolute_energy": 0.006874858867377043,
+              "shuffle_to_ordered_residual_energy_ratio": 4.808857512366476,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3408,
+              "active_comparison_count": 3408,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0021881035063415766,
+              "shuffle_residual_mean_absolute_energy": 0.009779500775039196,
+              "shuffle_to_ordered_residual_energy_ratio": 4.469395870303292,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3408,
+              "active_comparison_count": 3408,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.001356180408038199,
+              "shuffle_residual_mean_absolute_energy": 0.007623536512255669,
+              "shuffle_to_ordered_residual_energy_ratio": 5.621329188263085,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3408,
+              "active_comparison_count": 3408,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0010164895793423057,
+              "shuffle_residual_mean_absolute_energy": 0.006310058292001486,
+              "shuffle_to_ordered_residual_energy_ratio": 6.207695996336974,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5c_L": {
+          "target_count": 862,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3448,
+              "active_comparison_count": 3448,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0011752232676371932,
+              "shuffle_residual_mean_absolute_energy": 0.005196878220885992,
+              "shuffle_to_ordered_residual_energy_ratio": 4.4220348286112525,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3448,
+              "active_comparison_count": 3448,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.001890913350507617,
+              "shuffle_residual_mean_absolute_energy": 0.0076195718720555305,
+              "shuffle_to_ordered_residual_energy_ratio": 4.029572201185237,
+              "ordered_median_peak_frame": 18.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3448,
+              "active_comparison_count": 3448,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0010507181286811829,
+              "shuffle_residual_mean_absolute_energy": 0.005531675647944212,
+              "shuffle_to_ordered_residual_energy_ratio": 5.264661850735685,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3448,
+              "active_comparison_count": 3448,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0007325860788114369,
+              "shuffle_residual_mean_absolute_energy": 0.004476322326809168,
+              "shuffle_to_ordered_residual_energy_ratio": 6.11030219693998,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5c_R": {
+          "target_count": 858,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3432,
+              "active_comparison_count": 3432,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.001201568404212594,
+              "shuffle_residual_mean_absolute_energy": 0.005762041080743074,
+              "shuffle_to_ordered_residual_energy_ratio": 4.795433252523836,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3432,
+              "active_comparison_count": 3432,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0019402526086196303,
+              "shuffle_residual_mean_absolute_energy": 0.008618582971394062,
+              "shuffle_to_ordered_residual_energy_ratio": 4.44199014762601,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3432,
+              "active_comparison_count": 3432,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0011512167984619737,
+              "shuffle_residual_mean_absolute_energy": 0.006506120320409536,
+              "shuffle_to_ordered_residual_energy_ratio": 5.651516142834015,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3432,
+              "active_comparison_count": 3432,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0007237563841044903,
+              "shuffle_residual_mean_absolute_energy": 0.0044983141124248505,
+              "shuffle_to_ordered_residual_energy_ratio": 6.215232378213356,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5d_L": {
+          "target_count": 812,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3248,
+              "active_comparison_count": 3248,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.001367739518173039,
+              "shuffle_residual_mean_absolute_energy": 0.006083302199840546,
+              "shuffle_to_ordered_residual_energy_ratio": 4.44770522384725,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3248,
+              "active_comparison_count": 3248,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.002133636036887765,
+              "shuffle_residual_mean_absolute_energy": 0.00878210086375475,
+              "shuffle_to_ordered_residual_energy_ratio": 4.116025747561327,
+              "ordered_median_peak_frame": 18.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3248,
+              "active_comparison_count": 3248,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0013018366880714893,
+              "shuffle_residual_mean_absolute_energy": 0.0069522615522146225,
+              "shuffle_to_ordered_residual_energy_ratio": 5.340348459923604,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3248,
+              "active_comparison_count": 3248,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0011278731981292367,
+              "shuffle_residual_mean_absolute_energy": 0.0069139376282691956,
+              "shuffle_to_ordered_residual_energy_ratio": 6.130066429220145,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        },
+        "T5d_R": {
+          "target_count": 808,
+          "source_types": {
+            "Tm1": {
+              "comparison_count": 3232,
+              "active_comparison_count": 3232,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0014170133508741856,
+              "shuffle_residual_mean_absolute_energy": 0.00675209891051054,
+              "shuffle_to_ordered_residual_energy_ratio": 4.7650213784824444,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm2": {
+              "comparison_count": 3232,
+              "active_comparison_count": 3232,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.002152789384126663,
+              "shuffle_residual_mean_absolute_energy": 0.00958328228443861,
+              "shuffle_to_ordered_residual_energy_ratio": 4.45156519030603,
+              "ordered_median_peak_frame": 19.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm4": {
+              "comparison_count": 3232,
+              "active_comparison_count": 3232,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.0014090624172240496,
+              "shuffle_residual_mean_absolute_energy": 0.007918191142380238,
+              "shuffle_to_ordered_residual_energy_ratio": 5.619475081863032,
+              "ordered_median_peak_frame": 20.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            },
+            "Tm9": {
+              "comparison_count": 3232,
+              "active_comparison_count": 3232,
+              "active_comparison_fraction": 1.0,
+              "ordered_residual_mean_absolute_energy": 0.001102673588320613,
+              "shuffle_residual_mean_absolute_energy": 0.006839639041572809,
+              "shuffle_to_ordered_residual_energy_ratio": 6.202777607097377,
+              "ordered_median_peak_frame": 28.0,
+              "gates": {
+                "activity_coverage": true,
+                "shuffle_attenuation": false
+              },
+              "passed": false
+            }
+          },
+          "all_source_types_passed": false
+        }
+      },
+      "passing_source_population_count": 0,
+      "source_population_denominator": 32,
+      "all_source_types_and_populations_passed": false
+    }
+  },
+  "source_type_temporal_identifiability_passed": false,
+  "authorize_source_time_constant_candidate": false,
+  "advance_to_three_tuning_conditions": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "stop_reason": "source_type_motion_residual_not_attenuated_by_temporal_shuffle",
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_audit": true,
+    "all_four_directions_used_without_preferred_direction_selection": true,
+    "target_labels_used_only_for_population_reporting": true,
+    "fixed_whole_population_times_four_directions_denominator": true,
+    "source_activity_readout_only": true,
+    "static_sham_subtracted_before_residual_scoring": true,
+    "labels_changed": false,
+    "thresholds_changed": false,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "LPLC_experiments_authorized_only_after_strict_T4_T5_gate": true
+  }
+}

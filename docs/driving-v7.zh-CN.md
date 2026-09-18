@@ -1692,6 +1692,26 @@ Tm2×Tm9，垂直分支只用 Tm9×Tm1，并在每个源类型内保留真实突
 简单来自混合 fast 类型或丢失源内空间矩。证据见
 `artifacts/v7-t5-typed-spatial-pair-precheck.json`。
 
+为判断失败是否只是 target readout 形式不当，又将诊断前移到每个具名 source type。
+T4 的 Mi1/Tm3/Mi4/C3 和 T5 的 Tm1/Tm2/Tm4/Tm9 均在同一 `S1-T01`、固定
+15 个 RF 位置与四方向下比较 ordered、temporal-shuffle 和 static-sham；每个 target
+保留在固定分母中，先减 static，再要求 shuffle/ordered 残差能量比不超过 0.5。T4 和
+T5 各 32 个 source-type×population 单元均为 0/32 通过；T4 比值约 3.65–8.00，T5
+约 4.03–6.22。当前 source 状态的 apparent fast/delayed 峰差也存在于 static sham，
+而真正运动残差被 shuffle 放大，不能作为可识别的方向时间结构。故停止继续堆叠相关器，
+下一候选必须来自独立 source 时间数据与显式物理时基。证据见
+`artifacts/v7-source-type-temporal-identifiability.json`。
+
+同一 Henning 研究还允许一个不拟合参数的交叉模态检验：把 5 只 source-cohort fly 的
+7 个 C3 fly×axis 白噪声 STRF 原始时间核做因果累积，直接预测阶跃；再从 flash 数据中
+排除这 5 只重叠 fly，只在其余 22 只独立 fly 上比较 0–2 s 波形。独立 fly 的相关范围为
+0.840–0.977，中位约 0.938，群体均值相关约 0.973；每次留掉一只 source fly 后的外部
+均值相关仍为 0.935–0.973。但对 source unit 与 external fly 同时重采样的 1,000 次严格
+bootstrap，其相关 5% 分位仅约 0.619，低于继承的 0.80 门。因此这证明 C3 STRF 在群体
+平均层面有真实跨模态预测力，却仍不足以授权一个稳健的共享 C3 kernel，更没有完成到
+MaleCNS body 与 v7 状态单位的映射。证据见
+`artifacts/v7-c3-strf-flash-transfer.json`。
+
 另外核验了两套常被引用的公开 T4 模型。Clark Lab `SynapticModel` 固定提交
 `18b9db5f…` 使用 1/240 s 步长和统一 150 ms low/high-pass，但三个输入臂只标为
 Mi9、Mi1、Mi4，当前 Mi1/Tm3/Mi4/C3 合同仅覆盖 2/4。ModelDB 239435 的 51,324-byte

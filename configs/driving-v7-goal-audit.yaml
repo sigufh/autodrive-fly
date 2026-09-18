@@ -61,6 +61,7 @@ evidence:
   three_hop_moment: artifacts/v7-three-hop-moment.json
   three_hop_temporal_consistency: artifacts/v7-three-hop-temporal-consistency.json
   upstream_latency_audit: artifacts/v7-upstream-latency-audit.json
+  source_type_temporal_identifiability: artifacts/v7-source-type-temporal-identifiability.json
   synapse_spatial_audit: artifacts/v7-synapse-spatial-audit.json
   synapse_axis_calibration: artifacts/v7-synapse-axis-calibration.json
   t4_synapse_correlator_precheck: artifacts/v7-t4-synapse-correlator-precheck.json
@@ -73,6 +74,7 @@ evidence:
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json
   arenz_source_dynamics_audit: artifacts/v7-arenz-source-dynamics-audit.json
   c3_strf_source_dynamics_audit: artifacts/v7-c3-strf-source-dynamics-audit.json
+  c3_strf_flash_transfer: artifacts/v7-c3-strf-flash-transfer.json
   fig1_source_temporal_readiness_audit: artifacts/v7-fig1-source-temporal-readiness-audit.json
   c3_analytic_filter_precheck: artifacts/v7-c3-analytic-filter-precheck.json
   timing_models_source_filter_audit: artifacts/v7-timing-models-source-filter-audit.json

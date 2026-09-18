@@ -1,0 +1,163 @@
+{
+  "protocol": {
+    "name": "v7-c3-strf-to-independent-flash-transfer",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-c3-strf-flash-transfer.yaml": "bbaf137ec59e793d9732b7ed9407a7befb97ac2a49688f4d6c31c20d6ef2d306",
+      "src/fly_emotion/driving/v7_c3_strf_flash_transfer.py": "c5262a66a4d9b06c6479691921678ab327a5a4da36c9c0afb9ab15238890361d",
+      "configs/driving-v7-c3-strf-source-dynamics-audit.yaml": "50d6d1149feebc6ad349bd308594fb9364ecb58192f1265c31dfc390fa742f4f",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-c3-flash-preregistration.json": "d1d75b92cdbe7fc480ddf378e635d199ec1a50380512a47969623ea1b494bc74",
+      "pyproject.toml": "2ede0081f08b0a3337f80332391a9c3136d3564d63972b0ddcfeb00b7d1a0ae3"
+    },
+    "parameter_fit": false,
+    "T4_response_used": false,
+    "direction_label_used": false,
+    "runtime_modified": false
+  },
+  "transfer_contract": {
+    "operation": "causal_cumulative_sum_of_raw_STRF_temporal_kernel",
+    "fit_parameters": false,
+    "source_sample_interval_seconds": 0.05,
+    "external_sample_interval_seconds": 0.1,
+    "comparison_window_seconds": [
+      0.0,
+      2.0
+    ],
+    "baseline_reference": "first_sample_of_each_compared_trace",
+    "normalization": "unit_L2_after_baseline_reference",
+    "aggregation": "equal_weight_per_source_fly_axis_and_external_fly"
+  },
+  "cohorts": {
+    "source_fly_ids": [
+      "200121_Fly3",
+      "200121_Fly4",
+      "200121_Fly5",
+      "200121_Fly9",
+      "200127_Fly1"
+    ],
+    "source_fly_axis_unit_count": 7,
+    "flash_fly_count_before_exclusion": 27,
+    "overlapping_fly_ids_excluded": [
+      "200121_Fly3",
+      "200121_Fly4",
+      "200121_Fly5",
+      "200121_Fly9",
+      "200127_Fly1"
+    ],
+    "external_flash_fly_ids": [
+      "170808_Fly1",
+      "170808_Fly2",
+      "170808_Fly3",
+      "170811_Fly3",
+      "170814_Fly3",
+      "170814_Fly4",
+      "170821_Fly2",
+      "170824_Fly3",
+      "170824_Fly4",
+      "170824_Fly5",
+      "170831_Fly1",
+      "170831_Fly2",
+      "171110_Fly4",
+      "171124_Fly1",
+      "171129_Fly1",
+      "171201_Fly1",
+      "171201_Fly2",
+      "171205_Fly1",
+      "171205_Fly2",
+      "200121_Fly6",
+      "200121_Fly7",
+      "200121_Fly8"
+    ],
+    "external_flash_fly_count": 22
+  },
+  "external_validation": {
+    "mean_waveform_correlation": 0.9728821998445658,
+    "per_fly_correlations": {
+      "170808_Fly1": 0.9390627857295103,
+      "170808_Fly2": 0.9773704397858861,
+      "170808_Fly3": 0.9110652989170133,
+      "170811_Fly3": 0.9456762895945282,
+      "170814_Fly3": 0.9594094852906973,
+      "170814_Fly4": 0.9129998362688243,
+      "170821_Fly2": 0.9548009081737416,
+      "170824_Fly3": 0.839742402466547,
+      "170824_Fly4": 0.9098908495547927,
+      "170824_Fly5": 0.930510910401112,
+      "170831_Fly1": 0.9516092713093269,
+      "170831_Fly2": 0.9773404857562878,
+      "171110_Fly4": 0.9647166939906289,
+      "171124_Fly1": 0.9423490310690685,
+      "171129_Fly1": 0.9291892284075283,
+      "171201_Fly1": 0.911263192756649,
+      "171201_Fly2": 0.9348793981696754,
+      "171205_Fly1": 0.9364887066844173,
+      "171205_Fly2": 0.8946838042520554,
+      "200121_Fly6": 0.9546379736127119,
+      "200121_Fly7": 0.9250050331777694,
+      "200121_Fly8": 0.9456911410045628
+    },
+    "per_fly_correlation_summary": {
+      "count": 22,
+      "minimum": 0.839742402466547,
+      "q05": 0.8954441565171922,
+      "median": 0.9377757462069638,
+      "maximum": 0.9773704397858861
+    },
+    "source_leave_one_fly_out": [
+      {
+        "held_out_fly": "200121_Fly3",
+        "training_unit_count": 6,
+        "external_mean_correlation": 0.9731412045836045
+      },
+      {
+        "held_out_fly": "200121_Fly4",
+        "training_unit_count": 5,
+        "external_mean_correlation": 0.9501309204365996
+      },
+      {
+        "held_out_fly": "200121_Fly5",
+        "training_unit_count": 5,
+        "external_mean_correlation": 0.9348834855929585
+      },
+      {
+        "held_out_fly": "200121_Fly9",
+        "training_unit_count": 6,
+        "external_mean_correlation": 0.9601979270946256
+      },
+      {
+        "held_out_fly": "200127_Fly1",
+        "training_unit_count": 6,
+        "external_mean_correlation": 0.9503616394578002
+      }
+    ],
+    "bootstrap": {
+      "seed": 20260918,
+      "replicates": 1000,
+      "correlation_p05": 0.6192335647249534,
+      "correlation_median": 0.9360259033563882
+    }
+  },
+  "transfer_gates": {
+    "external_mean_correlation": true,
+    "median_external_fly_correlation": true,
+    "minimum_external_fly_correlation": true,
+    "bootstrap_correlation_p05": false,
+    "source_leave_one_fly_out_correlation": true,
+    "source_and_external_fly_ids_disjoint": true
+  },
+  "C3_STRF_to_flash_transfer_passed": false,
+  "C3_source_kernel_candidate_authorized": false,
+  "advance_to_T4_functional_precheck": false,
+  "stop_reason": "C3_STRF_step_prediction_failed_independent_flash_robustness",
+  "boundary": {
+    "source_and_external_fly_ids_disjoint": true,
+    "raw_STRF_not_fit_or_deconvolved": true,
+    "moving_edge_voltage_not_used": true,
+    "no_T4_response_or_direction_label_used": true,
+    "source_kernel_not_yet_mapped_to_MaleCNS_bodies": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

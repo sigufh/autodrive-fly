@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "101d1f7611eb579da7371f65b0af9398af49b0997e6a74792e853c9caaee4ddf",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "4a9f2a4935170990ca2bc6ac8fb5727efd5563d712824fb6d3accd3f5e2bf278",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "81c1aea8d92c87d189e86b95ec56bb01bdc58eecffac225a13eaae71e1e8d383",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "131dfc81953cfe15759a79348b3c436c3dfdd0699ac5d757bca7e8979b694b0a",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -15,6 +15,7 @@
       "artifacts/v7-fig3-source-kernel-robustness.json": "1bc2e15b5603a2c544d0e5f508e1e6c36eb09f5f55d1539163ed762524cf3ea2",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-c3-strf-flash-transfer.json": "e8fdfa10473be92d454eebe94bd6fedd6df0d668cea8611c716ab6093f757275",
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "351443a9495853fa9925980114f7538cbaa85835bee0e2bd589c8a164a910c78",
       "artifacts/v7-c3-analytic-filter-precheck.json": "572f7f31042d3f30db3db3a61b3171413553f5806e8fcf76a53790c4c6ed4aa9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
@@ -144,6 +145,15 @@
     "all_required_sources_share_one_transferable_parameterization": false,
     "membrane_voltage_or_validated_deconvolved_kernel_available": false,
     "source_filter_candidate_authorized": false
+  },
+  "verified_C3_STRF_to_independent_flash_transfer": {
+    "source_fly_axis_unit_count": 7,
+    "external_flash_fly_count": 22,
+    "mean_waveform_correlation": 0.9728821998445658,
+    "minimum_external_fly_correlation": 0.839742402466547,
+    "bootstrap_correlation_p05": 0.6192335647249534,
+    "transfer_passed": false,
+    "source_kernel_candidate_authorized": false
   },
   "verified_Fig1_source_temporal_readiness": {
     "workbooks_verified": true,

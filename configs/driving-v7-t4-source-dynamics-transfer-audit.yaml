@@ -11,6 +11,7 @@ fig3_source_kernel_evidence: artifacts/v7-fig3-source-kernel-audit.json
 fig3_source_kernel_robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
 arenz_source_dynamics_evidence: artifacts/v7-arenz-source-dynamics-audit.json
 c3_strf_source_dynamics_evidence: artifacts/v7-c3-strf-source-dynamics-audit.json
+c3_strf_flash_transfer_evidence: artifacts/v7-c3-strf-flash-transfer.json
 fig1_source_temporal_readiness_evidence: artifacts/v7-fig1-source-temporal-readiness-audit.json
 c3_analytic_filter_evidence: artifacts/v7-c3-analytic-filter-precheck.json
 timing_models_source_filter_evidence: artifacts/v7-timing-models-source-filter-audit.json

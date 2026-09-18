@@ -82,6 +82,14 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert c3["all_required_sources_share_one_transferable_parameterization"] is False
     assert c3["membrane_voltage_or_validated_deconvolved_kernel_available"] is False
     assert c3["source_filter_candidate_authorized"] is False
+    flash = report["verified_C3_STRF_to_independent_flash_transfer"]
+    assert flash["source_fly_axis_unit_count"] == 7
+    assert flash["external_flash_fly_count"] == 22
+    assert flash["mean_waveform_correlation"] > 0.97
+    assert flash["minimum_external_fly_correlation"] > 0.83
+    assert flash["bootstrap_correlation_p05"] < 0.62
+    assert flash["transfer_passed"] is False
+    assert flash["source_kernel_candidate_authorized"] is False
     fig1 = report["verified_Fig1_source_temporal_readiness"]
     assert fig1["workbooks_verified"] is True
     assert fig1["source_average_tables_have_time_axis"] is False
