@@ -152,6 +152,9 @@ from .driving.v7_r1r6_multi import (
 )
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
+from .driving.v7_source_dynamics_external_evidence_contract import (
+    evaluate_v7_source_dynamics_external_evidence_contract,
+)
 from .driving.v7_source_type_temporal_identifiability import (
     evaluate_v7_source_type_temporal_identifiability,
 )
@@ -432,6 +435,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-pair-lags")
     subparsers.add_parser("v7-audit-upstream-latency")
     subparsers.add_parser("v7-audit-source-type-temporal-identifiability")
+    subparsers.add_parser("v7-freeze-source-dynamics-external-evidence-contract")
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
@@ -1286,6 +1290,14 @@ def main() -> None:
     if args.command == "v7-audit-source-type-temporal-identifiability":
         report = evaluate_v7_source_type_temporal_identifiability(root)
         target = root / "artifacts/v7-source-type-temporal-identifiability.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-freeze-source-dynamics-external-evidence-contract":
+        report = evaluate_v7_source_dynamics_external_evidence_contract(root)
+        target = root / "artifacts/v7-source-dynamics-external-evidence-contract.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

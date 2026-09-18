@@ -1,0 +1,125 @@
+{
+  "protocol": {
+    "name": "v7-source-dynamics-external-evidence-contract",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-source-dynamics-external-evidence-contract.yaml": "529c5b0afe574e5074c4539bfe4e8dcf4c935fef8fe297fc8ac6afd31e0dc249",
+      "src/fly_emotion/driving/v7_source_dynamics_external_evidence_contract.py": "15a713080d907d2b5aac53057da7fb2a4e1b24954f2842404b8b4d4d4c4e86f0",
+      "artifacts/v7-t4t5-source-dynamics-readiness.json": "e587a42d7fe62fdd8a5c4c15c33c8892b19dc1403e1f18aa0c9c86c4d44c3f95",
+      "configs/driving-v7-t4t5-source-dynamics-readiness.yaml": "42c27f92ff51db151ce09b03870496ecfb654cd89a587a88bc5b9283f13acfa3"
+    },
+    "parameter_fit": false,
+    "external_payload_evaluated": false,
+    "runtime_modified": false
+  },
+  "required_families": {
+    "T4": {
+      "source_types": [
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "C3"
+      ],
+      "polarity": true
+    },
+    "T5": {
+      "source_types": [
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+        "CT1"
+      ],
+      "polarity": false
+    }
+  },
+  "required_recording_fields": [
+    "source_type",
+    "stable_recording_unit_id",
+    "biological_individual_id",
+    "cohort_role",
+    "stimulus_id",
+    "stimulus_family",
+    "stimulus_polarity",
+    "stimulus_direction",
+    "stimulus_angular_position_degrees",
+    "stimulus_angular_speed_degrees_per_second",
+    "time_seconds",
+    "response_values",
+    "response_unit",
+    "baseline_window_seconds",
+    "sample_interval_seconds"
+  ],
+  "required_mapping_fields": [
+    "source_type_to_MaleCNS_type_exact",
+    "recording_unit_to_MaleCNS_body_id_or_explicit_type_average",
+    "eye_or_soma_side",
+    "optic_hex_or_retinotopic_coordinate"
+  ],
+  "required_split_roles": [
+    "training",
+    "validation",
+    "external_final"
+  ],
+  "allowed_response_units": [
+    "millivolts",
+    "normalized_membrane_voltage"
+  ],
+  "gates": {
+    "minimum_recording_units_per_source_per_training_cohort": 5,
+    "minimum_recording_units_per_source_per_validation_cohort": 3,
+    "require_every_source_in_every_required_split": true,
+    "require_body_or_explicit_type_average_mapping": true,
+    "require_physical_time_and_angular_stimulus_units": true,
+    "require_external_final_commitment_before_model_selection": true,
+    "forbid_target_T4_T5_response_as_source_kernel": true
+  },
+  "manifest_template": {
+    "schema_version": 1,
+    "dataset_id": null,
+    "dataset_version": null,
+    "license": null,
+    "source_url": null,
+    "payload_sha256": null,
+    "recording_fields": {
+      "source_type": null,
+      "stable_recording_unit_id": null,
+      "biological_individual_id": null,
+      "cohort_role": null,
+      "stimulus_id": null,
+      "stimulus_family": null,
+      "stimulus_polarity": null,
+      "stimulus_direction": null,
+      "stimulus_angular_position_degrees": null,
+      "stimulus_angular_speed_degrees_per_second": null,
+      "time_seconds": null,
+      "response_values": null,
+      "response_unit": null,
+      "baseline_window_seconds": null,
+      "sample_interval_seconds": null
+    },
+    "mapping_fields": {
+      "source_type_to_MaleCNS_type_exact": null,
+      "recording_unit_to_MaleCNS_body_id_or_explicit_type_average": null,
+      "eye_or_soma_side": null,
+      "optic_hex_or_retinotopic_coordinate": null
+    },
+    "external_final_commitment_sha256": null,
+    "external_final_custodian": null,
+    "external_final_consumed": false
+  },
+  "external_payload_present": false,
+  "contract_satisfied": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "external_source_dynamics_payload_not_present",
+  "boundary": {
+    "contract_only_no_external_payload_present": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

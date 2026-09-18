@@ -1,0 +1,49 @@
+version: 1
+name: v7-source-dynamics-external-evidence-contract
+observed_on: "2026-09-18"
+readiness_evidence: artifacts/v7-t4t5-source-dynamics-readiness.json
+readiness_protocol: configs/driving-v7-t4t5-source-dynamics-readiness.yaml
+required_families:
+  T4:
+    source_types: [Mi1, Tm3, Mi4, C3]
+    polarity: ON
+  T5:
+    source_types: [Tm1, Tm2, Tm4, Tm9, CT1]
+    polarity: OFF
+required_recording_fields:
+  - source_type
+  - stable_recording_unit_id
+  - biological_individual_id
+  - cohort_role
+  - stimulus_id
+  - stimulus_family
+  - stimulus_polarity
+  - stimulus_direction
+  - stimulus_angular_position_degrees
+  - stimulus_angular_speed_degrees_per_second
+  - time_seconds
+  - response_values
+  - response_unit
+  - baseline_window_seconds
+  - sample_interval_seconds
+required_mapping_fields:
+  - source_type_to_MaleCNS_type_exact
+  - recording_unit_to_MaleCNS_body_id_or_explicit_type_average
+  - eye_or_soma_side
+  - optic_hex_or_retinotopic_coordinate
+required_split_roles: [training, validation, external_final]
+allowed_response_units: [millivolts, normalized_membrane_voltage]
+gates:
+  minimum_recording_units_per_source_per_training_cohort: 5
+  minimum_recording_units_per_source_per_validation_cohort: 3
+  require_every_source_in_every_required_split: true
+  require_body_or_explicit_type_average_mapping: true
+  require_physical_time_and_angular_stimulus_units: true
+  require_external_final_commitment_before_model_selection: true
+  forbid_target_T4_T5_response_as_source_kernel: true
+boundary:
+  contract_only_no_external_payload_present: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

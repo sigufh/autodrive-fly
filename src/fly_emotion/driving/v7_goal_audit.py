@@ -142,6 +142,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t5_physical_time_transfer_audit = reports["t5_physical_time_transfer_audit"]
     t4t5_source_dynamics_readiness = reports["t4t5_source_dynamics_readiness"]
+    source_dynamics_external_evidence_contract = reports[
+        "source_dynamics_external_evidence_contract"
+    ]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -243,6 +246,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_axis_sequence_identifiability"],
                 config["evidence"]["t5_physical_time_transfer_audit"],
                 config["evidence"]["t4t5_source_dynamics_readiness"],
+                config["evidence"]["source_dynamics_external_evidence_contract"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_crossfit_axis_audit"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
@@ -497,6 +501,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_T5_source_dynamics_authorizes_new_candidate": (
                     t4t5_source_dynamics_readiness[
                         "authorize_new_T4_or_T5_functional_candidate"
+                    ]
+                ),
+                "source_dynamics_external_contract_satisfied": (
+                    source_dynamics_external_evidence_contract["contract_satisfied"]
+                ),
+                "source_dynamics_external_payload_present": (
+                    source_dynamics_external_evidence_contract[
+                        "external_payload_present"
+                    ]
+                ),
+                "source_dynamics_external_required_split_roles": (
+                    source_dynamics_external_evidence_contract[
+                        "required_split_roles"
                     ]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][

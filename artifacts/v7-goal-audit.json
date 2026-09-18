@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "8fe01452416b4d8a3071667605d623853b9204ef484427b7a6aefd2b84b25020",
-      "src/fly_emotion/driving/v7_goal_audit.py": "1fcce0c413f982166abd87cbb1a590ae8becde44b0b781706170434d8ad9bceb",
+      "configs/driving-v7-goal-audit.yaml": "d047f1fb26b00393b20ac2204a15eb6a7f8b3caa3d4406b01cfb1fe80091f22d",
+      "src/fly_emotion/driving/v7_goal_audit.py": "b117986568e806b325c6cbb1e34a07b705baaac819ba14801247269da648bd76",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -103,6 +103,7 @@
       "artifacts/v7-t5-ct1-axis-sequence-identifiability.json": "d9aa5acd185e0c5666415ed379bcfc6f57b1a3e618d1638f33ff36e114d20261",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "e1d4693643f1c0fbd1dc538e7734e48218755f5f25e3e755b55d0911455c6588",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "e587a42d7fe62fdd8a5c4c15c33c8892b19dc1403e1f18aa0c9c86c4d44c3f95",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "a4bfaf45a0d75c0ec13feb40a9a2905b7eb9024ca3e2ad70e27593c6f56d1a3b",
       "artifacts/v7-t5-continuous-moment-precheck.json": "79b4b0d9a396b326bf871b943e5e9646bd5f3a741e1cb8243d5a5462243e3ec2",
       "artifacts/v7-lplc1-near-collision-precheck.json": "7c41b998e8b80207e0b4a17141367c0c8338ed5caea7389cbc37c99b10dfc59f",
       "artifacts/v7-lplc1-input-structure.json": "dc005e820af8bdbcd0bc4b7a45ed9385dc17aa7c0f05ac7345c7ef9cb5df095a",
@@ -194,6 +195,7 @@
         "artifacts/v7-t5-ct1-axis-sequence-identifiability.json",
         "artifacts/v7-t5-physical-time-transfer-audit.json",
         "artifacts/v7-t4t5-source-dynamics-readiness.json",
+        "artifacts/v7-source-dynamics-external-evidence-contract.json",
         "artifacts/v7-t5-continuous-moment-precheck.json",
         "artifacts/v7-t4-synapse-crossfit-axis-audit.json",
         "artifacts/v7-t4-synapse-correlator-precheck.json",
@@ -407,6 +409,13 @@
           "independent_dynamic_validation"
         ],
         "T4_T5_source_dynamics_authorizes_new_candidate": false,
+        "source_dynamics_external_contract_satisfied": false,
+        "source_dynamics_external_payload_present": false,
+        "source_dynamics_external_required_split_roles": [
+          "training",
+          "validation",
+          "external_final"
+        ],
         "physical_timebase_identified": false,
         "strict_scoring_contract_frozen": true,
         "development_R1_R6_input_gates_pass": true,

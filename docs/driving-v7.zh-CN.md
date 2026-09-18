@@ -1878,6 +1878,14 @@ IQR/median 超过冻结的 0.50 门。参数来自 Sintel 光流任务和 FIB25/
 动态验证均失败。在获得新的外部源级动力学证据前，不再创建 target 端公式候选；这是为
 防止在同一 tuning 条件上反复试参造成选择偏差，并不表示机制原则上无解。
 
+为使后续解锁条件可执行而非笼统写成“需要更多数据”，另冻结
+`artifacts/v7-source-dynamics-external-evidence-contract.json`。合同要求 T4 的
+Mi1/Tm3/Mi4/C3 与 T5 的 Tm1/Tm2/Tm4/Tm9/CT1 全部提供源级记录；每条记录必须带
+稳定 recording-unit 和个体 ID、训练/验证/外部 final 角色、刺激角位置与角速度、物理
+时间轴、响应单位、基线窗、采样间隔，以及 source→MaleCNS 类型/身体或明确 type-average
+映射。目标 T4/T5 响应不得冒充 source kernel，外部 final 必须在模型选择前提交承诺。
+当前没有满足该 schema 的 payload，所以合同只定义解锁接口，不授权拟合或下游实验。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

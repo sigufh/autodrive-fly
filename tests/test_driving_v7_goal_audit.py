@@ -217,6 +217,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "independent_dynamic_validation",
     }
     assert visual["observations"]["T4_T5_source_dynamics_authorizes_new_candidate"] is False
+    assert visual["observations"]["source_dynamics_external_contract_satisfied"] is False
+    assert visual["observations"]["source_dynamics_external_payload_present"] is False
+    assert visual["observations"]["source_dynamics_external_required_split_roles"] == [
+        "training",
+        "validation",
+        "external_final",
+    ]
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},
