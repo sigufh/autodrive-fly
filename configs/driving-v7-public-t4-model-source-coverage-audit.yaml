@@ -1,0 +1,60 @@
+version: 1
+name: v7-public-T4-model-source-coverage-audit
+observed_on: "2026-09-18"
+required_sources: [Mi1, Tm3, Mi4, C3]
+synaptic_model:
+  repository_url: https://github.com/ClarkLabCode/SynapticModel
+  commit: 18b9db5f0ac09033d7d9b297ca706e4dcb6f626c
+  checkout_commit_path: data/raw/t4-external-models/SynapticModel/.git/refs/heads/master
+  files:
+    - path: data/raw/t4-external-models/SynapticModel/SetModelParameters.m
+      bytes: 2675
+      sha256: e6d0355fa098b3b2903751aed10d2dff2dc2ae34d6c850f80839fd288d30a07d
+    - path: data/raw/t4-external-models/SynapticModel/utils/MakeModelFilters.m
+      bytes: 679
+      sha256: 930314f39227cd5f8b8a1a4d3c36e467600a9fc84f6c6bf84bfd193ae11c15f7
+    - path: data/raw/t4-external-models/SynapticModel/models/ComputeThreeInputModelResponse.m
+      bytes: 1999
+      sha256: becf8bde419060b66d9a90f68111d95e08078172dea43db8fd459befd0789b83
+  source_arm_annotations: {input_1: Mi9, input_2: Mi1, input_3: Mi4}
+  independent_source_types: [Mi9, Mi1, Mi4]
+  time_step_seconds: 0.004166666666666667
+  low_pass_seconds: 0.15
+  high_pass_seconds: 0.15
+modeldb_239435:
+  model_url: https://modeldb.science/239435
+  archive_url: https://modeldb.science/download/239435
+  archive_path: data/raw/t4-external-models/modeldb-239435.zip
+  archive_bytes: 51324
+  archive_sha256: 9967dc09e216cfdce7afe1c70cc08ea39ceacb26f2cc97760317190aaac8fb94
+  files:
+    - path: data/raw/t4-external-models/modeldb-239435/Figure5_Neuron_simulation_files/README.txt
+      bytes: 4055
+      sha256: 6e428314fe52c69114bcf0f2479ad5fbb08fc94e8c48ee209bd070e662f15e7f
+    - path: data/raw/t4-external-models/modeldb-239435/Figure5_Neuron_simulation_files/moving_PD_start.hoc
+      bytes: 2387
+      sha256: 7fc80bc15c91a6b900a740942b8f4303514aff59adc25eae385fcc74da8eb5a7
+    - path: data/raw/t4-external-models/modeldb-239435/Figure5_Neuron_simulation_files/moving_ND_start.hoc
+      bytes: 2384
+      sha256: 4aa6441ab42e07b4b8295ad7be7d2da943e08a9be428da0310ac961a6d336abd
+    - path: data/raw/t4-external-models/modeldb-239435/Figure5_Neuron_simulation_files/parameters.dat
+      bytes: 193
+      sha256: 1f0c1aabca34e3ae1e4c709803bde555f835ecee46d4dff4d509eefcd1ce78e9
+  source_arm_annotations: [excitatory, inhibitory]
+  independent_source_types: []
+  solver_step_milliseconds: 0.1
+  moving_bar_durations_milliseconds: [20, 40, 80, 160]
+gates:
+  require_every_source_type_independently_parameterized: true
+  require_C3_specific_parameters: true
+  require_source_type_to_MaleCNS_body_mapping: true
+  require_independent_cell_holdout: true
+boundary:
+  read_only_public_model_audit: true
+  abstract_fast_slow_or_excitatory_inhibitory_arms_are_not_source_types: true
+  Mi4_must_not_substitute_for_C3: true
+  pooled_inhibitory_arm_must_not_substitute_for_Mi4_and_C3: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

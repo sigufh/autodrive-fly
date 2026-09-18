@@ -119,6 +119,12 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert max(measured["minimum_held_out_correlation_by_assumption"].values()) < 0.58
     assert measured["every_deconvolution_assumption_passed"] is False
     assert measured["type_shared_kernel_authorized"] is False
+    public_models = report["verified_public_T4_model_source_coverage"]
+    assert public_models["Clark_required_source_coverage_fraction"] == 0.5
+    assert public_models["Clark_missing_required_sources"] == ["C3", "Tm3"]
+    assert public_models["ModelDB_required_source_coverage_fraction"] == 0.0
+    assert public_models["C3_specific_parameters_available"] is False
+    assert public_models["complete_source_dynamics_transfer_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

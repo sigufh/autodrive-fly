@@ -1,0 +1,93 @@
+{
+  "protocol": {
+    "name": "v7-public-T4-model-source-coverage-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-public-t4-model-source-coverage-audit.yaml": "30a61ee6cb8fe19ce0a7e37e121b6e1089036e83a46a9662dc101c6bc948f5f7",
+      "src/fly_emotion/driving/v7_public_t4_model_source_coverage_audit.py": "aee252679d7a722d585d557a6c025324c745248c6773fff9abd61a6214502fcb"
+    },
+    "required_sources": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "models": {
+    "Clark_SynapticModel": {
+      "model_url": "https://github.com/ClarkLabCode/SynapticModel",
+      "version": "18b9db5f0ac09033d7d9b297ca706e4dcb6f626c",
+      "source_arm_annotations": {
+        "input_1": "Mi9",
+        "input_2": "Mi1",
+        "input_3": "Mi4"
+      },
+      "independently_parameterized_source_types": [
+        "Mi9",
+        "Mi1",
+        "Mi4"
+      ],
+      "required_source_coverage_fraction": 0.5,
+      "missing_required_sources": [
+        "C3",
+        "Tm3"
+      ],
+      "time_step_seconds": 0.004166666666666667,
+      "time_parameters_seconds": {
+        "low_pass": 0.15,
+        "high_pass": 0.15
+      }
+    },
+    "ModelDB_239435": {
+      "model_url": "https://modeldb.science/239435",
+      "archive_url": "https://modeldb.science/download/239435",
+      "archive_entries": 30,
+      "source_arm_annotations": [
+        "excitatory",
+        "inhibitory"
+      ],
+      "independently_parameterized_source_types": [],
+      "required_source_coverage_fraction": 0.0,
+      "missing_required_sources": [
+        "C3",
+        "Mi1",
+        "Mi4",
+        "Tm3"
+      ],
+      "solver_step_milliseconds": 0.1,
+      "moving_bar_durations_milliseconds": [
+        20,
+        40,
+        80,
+        160
+      ]
+    }
+  },
+  "transfer_gates": {
+    "every_required_source_independently_parameterized": false,
+    "C3_specific_parameters_available": false,
+    "source_type_to_MaleCNS_body_mapping_available": false,
+    "independent_cell_holdout_available": false
+  },
+  "complete_source_dynamics_transfer_authorized": false,
+  "advance_to_T4_functional_precheck": false,
+  "blocking_requirements": [
+    "every_required_source_independently_parameterized",
+    "C3_specific_parameters_available",
+    "source_type_to_MaleCNS_body_mapping_available",
+    "independent_cell_holdout_available"
+  ],
+  "stop_reason": "public_T4_models_use_incomplete_or_abstract_source_arms",
+  "boundary": {
+    "read_only_public_model_audit": true,
+    "abstract_fast_slow_or_excitatory_inhibitory_arms_are_not_source_types": true,
+    "Mi4_must_not_substitute_for_C3": true,
+    "pooled_inhibitory_arm_must_not_substitute_for_Mi4_and_C3": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

@@ -125,6 +125,9 @@ from .driving.v7_parameter_matched_baselines import evaluate_v7_parameter_matche
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
+from .driving.v7_public_t4_model_source_coverage_audit import (
+    evaluate_v7_public_t4_model_source_coverage_audit,
+)
 from .driving.v7_r1r6_local import (
     evaluate_v7_r1r6_local_calibration,
     evaluate_v7_r1r6_local_tuning,
@@ -379,6 +382,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-c3-measured-filter-robustness")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
     subparsers.add_parser("v7-audit-flyvis-c3-time-constant")
+    subparsers.add_parser("v7-audit-public-t4-model-source-coverage")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1210,6 +1214,14 @@ def main() -> None:
     if args.command == "v7-audit-flyvis-c3-time-constant":
         report = evaluate_v7_flyvis_c3_time_constant_audit(root)
         target = root / "artifacts/v7-flyvis-c3-time-constant-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-public-t4-model-source-coverage":
+        report = evaluate_v7_public_t4_model_source_coverage_audit(root)
+        target = root / "artifacts/v7-public-t4-model-source-coverage-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -90,6 +90,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
     flyvis_c3_time_constant_audit = reports["flyvis_c3_time_constant_audit"]
     c3_measured_filter_robustness = reports["c3_measured_filter_robustness"]
+    public_t4_model_source_coverage_audit = reports[
+        "public_t4_model_source_coverage_audit"
+    ]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -203,6 +206,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["timing_models_source_filter_audit"],
                 config["evidence"]["flyvis_c3_time_constant_audit"],
                 config["evidence"]["c3_measured_filter_robustness"],
+                config["evidence"]["public_t4_model_source_coverage_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -770,6 +774,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "C3_measured_filter_type_shared_kernel_authorized": (
                     c3_measured_filter_robustness[
                         "C3_type_shared_kernel_authorized"
+                    ]
+                ),
+                "public_T4_models_C3_specific_parameters_available": (
+                    public_t4_model_source_coverage_audit["transfer_gates"][
+                        "C3_specific_parameters_available"
+                    ]
+                ),
+                "public_T4_models_complete_source_transfer_authorized": (
+                    public_t4_model_source_coverage_audit[
+                        "complete_source_dynamics_transfer_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

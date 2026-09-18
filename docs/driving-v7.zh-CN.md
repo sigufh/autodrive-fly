@@ -1665,6 +1665,14 @@ fly×axis 独立平均，分别假设 200/250/300/350 ms 一阶钙低通，在�
 该路线不授权 type-shared C3 kernel，也不进入 T4 功能预检。证据见
 `artifacts/v7-c3-measured-filter-robustness.json`。
 
+另外核验了两套常被引用的公开 T4 模型。Clark Lab `SynapticModel` 固定提交
+`18b9db5f…` 使用 1/240 s 步长和统一 150 ms low/high-pass，但三个输入臂只标为
+Mi9、Mi1、Mi4，当前 Mi1/Tm3/Mi4/C3 合同仅覆盖 2/4。ModelDB 239435 的 51,324-byte
+官方包使用 0.1 ms NEURON 步长、20/40/80/160 ms 移动条持续时间和共享的 excitatory/
+inhibitory rise/decay 参数，却没有任何 source-type 独立映射。抽象兴奋/抑制臂不能替代
+Mi4 与 C3，Mi4 也不能替代 C3；因此两套模型都不能补齐当前 source 合同。证据见
+`artifacts/v7-public-t4-model-source-coverage-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

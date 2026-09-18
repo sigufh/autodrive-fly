@@ -32,6 +32,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     c3_measured_path = Path(config["c3_measured_filter_robustness_evidence"])
+    public_models_path = Path(config["public_t4_model_source_coverage_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -56,6 +57,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     c3_measured = json.loads(
         (root / c3_measured_path).read_text(encoding="utf-8")
+    )
+    public_models = json.loads(
+        (root / public_models_path).read_text(encoding="utf-8")
     )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
@@ -139,6 +143,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(timing_models_path): _sha256(root / timing_models_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(c3_measured_path): _sha256(root / c3_measured_path),
+                str(public_models_path): _sha256(root / public_models_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -341,6 +346,23 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "type_shared_kernel_authorized": c3_measured[
                 "C3_type_shared_kernel_authorized"
+            ],
+        },
+        "verified_public_T4_model_source_coverage": {
+            "Clark_required_source_coverage_fraction": public_models["models"][
+                "Clark_SynapticModel"
+            ]["required_source_coverage_fraction"],
+            "Clark_missing_required_sources": public_models["models"][
+                "Clark_SynapticModel"
+            ]["missing_required_sources"],
+            "ModelDB_required_source_coverage_fraction": public_models["models"][
+                "ModelDB_239435"
+            ]["required_source_coverage_fraction"],
+            "C3_specific_parameters_available": public_models["transfer_gates"][
+                "C3_specific_parameters_available"
+            ],
+            "complete_source_dynamics_transfer_authorized": public_models[
+                "complete_source_dynamics_transfer_authorized"
             ],
         },
         "required_transfer_fields_available": fields,
