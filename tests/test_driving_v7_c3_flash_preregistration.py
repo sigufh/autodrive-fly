@@ -44,8 +44,17 @@ def test_external_comparison_was_frozen_without_model_output() -> None:
     contract = report["comparison_contract"]
     assert report["comparison_metrics_frozen"] is True
     assert contract["model_sample_intervals_seconds"] == [0.005, 0.02]
+    assert contract["permitted_external_input_cell_types"] == [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+    ]
     assert contract["calcium_forward_time_constants_seconds"] == [0.2, 0.25, 0.3, 0.35]
     assert contract["inherited_minimum_correlation"] == 0.8
     assert contract["no_threshold_selection_after_model_observation"] is True
     assert report["boundary"]["no_target_activity_injection"] is True
+    assert report["boundary"]["R7_R8_external_input_excluded"] is True
     assert report["boundary"]["T5_and_LPLC_remain_frozen"] is True

@@ -37,6 +37,8 @@ author_analysis_contract:
   roi_selection: positive_correlation_with_mean_stimulus
   aggregation_order: repetitions_then_ROIs_within_fly_then_flies
 comparison_contract:
+  permitted_external_input_cell_types: [R1, R2, R3, R4, R5, R6]
+  excluded_flyvis_input_cell_types: [R7, R8]
   stimulus:
     dynamic_range: [0.0, 1.0]
     radius: -1
@@ -60,7 +62,7 @@ comparison_contract:
   require_every_calcium_assumption_external_correlation: true
   external_feature_interval: empirical_fly_2.5_to_97.5_percentile
   no_threshold_selection_after_model_observation: true
-official_reproduction_contract:
+flyvis_official_timing_sensitivity_contract:
   stimulus:
     dynamic_range: [0.0, 1.0]
     radius: -1
@@ -69,12 +71,15 @@ official_reproduction_contract:
     ON_seconds: 1.0
     post_seconds: 1.0
   model_sample_intervals_seconds: [0.005, 0.02]
+  exact_native_FlyVis_input_reproduction: false
+  reason: native_FlyVis_video_input_also_targets_R7_R8_but_v7_permits_only_R1_R6
 boundary:
   preregistered_before_ensemble_generation: true
   author_code_does_not_define_peak_plateau_or_recovery_thresholds: true
   empirical_intervals_are_descriptive_not_author_thresholds: true
   calcium_trace_is_not_membrane_voltage: true
   flyvis_effective_response_is_not_a_MaleCNS_body_specific_kernel: true
+  R7_R8_external_input_excluded: true
   no_target_activity_injection: true
   no_runtime_change: true
   T5_and_LPLC_remain_frozen: true

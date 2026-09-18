@@ -151,7 +151,9 @@ def evaluate_v7_c3_flash_preregistration(root: Path) -> dict:
         },
         "author_analysis_contract": config["author_analysis_contract"],
         "comparison_contract": contract,
-        "official_reproduction_contract": config["official_reproduction_contract"],
+        "flyvis_official_timing_sensitivity_contract": config[
+            "flyvis_official_timing_sensitivity_contract"
+        ],
         "empirical_C3_flash": empirical,
         "comparison_metrics_frozen": True,
         "boundary": config["boundary"],
