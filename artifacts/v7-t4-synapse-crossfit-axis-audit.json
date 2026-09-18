@@ -1,0 +1,224 @@
+{
+  "protocol": {
+    "name": "v7-t4-synapse-two-fold-crossfit-axis-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-synapse-crossfit-axis-audit.yaml": "5d2bffabd3365c948a1288593b91e5ba25eb7a733883bf382d01abddffadea2b",
+      "src/fly_emotion/driving/v7_t4_synapse_crossfit_axis_audit.py": "caea3c25955fa5e52de3f05755f8eb08369295a9f1bc1ec58eb471befb9a3a64",
+      "src/fly_emotion/driving/v7_synapse_axis_calibration.py": "59c8732b83fe33d5c745eb3d9107691ab1f63b1f994450219fb30e0f53e23ec7",
+      "configs/driving-v7-synapse-spatial-audit.yaml": "ce72f8560a05554a24681440ce67efd885827266fd77b6c66396678887708d48",
+      "artifacts/v7-synapse-spatial-audit.json": "d7d164e98976162741c905c4dd3b26588f28ffb3191e2ab1a39b899ec081bec0",
+      "artifacts/v7-synapse-axis-calibration.json": "b4483743c987130039baa9c5dda2d307d31b4c455dd7358ad8b58319a2a49b2f",
+      "configs/driving-v7-synapse-axis-calibration.yaml": "be0b410ff28c725a7ba817a25bd42fa8124ecf18e11d6a10f9284777bbd98b60",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf"
+    },
+    "parameter_fit": true,
+    "fit_uses_neural_response": false,
+    "functional_stimulus_evaluated": false,
+    "runtime_modified": false
+  },
+  "mapping": "separate_eye_two_fold_crossfit_3D_to_2D_semi_orthogonal_procrustes",
+  "valid_target_count": 6860,
+  "fixed_target_denominator": 6861,
+  "fold_counts": {
+    "0": 3428,
+    "1": 3432
+  },
+  "transforms_by_eye_and_training_fold": {
+    "L": {
+      "fit_fold_0_apply_fold_1": [
+        [
+          -0.582415081860153,
+          0.3052202243023641
+        ],
+        [
+          -0.2943646120187576,
+          -0.9431190019481769
+        ],
+        [
+          -0.7577216821583485,
+          0.13178453187339223
+        ]
+      ],
+      "fit_fold_1_apply_fold_0": [
+        [
+          -0.5941891984557618,
+          0.2980314500259367
+        ],
+        [
+          -0.29160419573373,
+          -0.9454481195483269
+        ],
+        [
+          -0.7496040217801555,
+          0.13154888079330213
+        ]
+      ]
+    },
+    "R": {
+      "fit_fold_0_apply_fold_1": [
+        [
+          -0.5715021865540844,
+          -0.35562837303479683
+        ],
+        [
+          0.31303030562770573,
+          -0.927545961862107
+        ],
+        [
+          0.7585494568731336,
+          0.11483444137506038
+        ]
+      ],
+      "fit_fold_1_apply_fold_0": [
+        [
+          -0.5777052480772015,
+          -0.3706044077845066
+        ],
+        [
+          0.3215582330966761,
+          -0.9222642335455604
+        ],
+        [
+          0.7502379283079489,
+          0.10991385924129128
+        ]
+      ]
+    }
+  },
+  "fit_application_counts": {
+    "L": {
+      "fit_fold_0_apply_fold_1": {
+        "fit_count": 1711,
+        "application_count": 1712,
+        "body_id_overlap": 0
+      },
+      "fit_fold_1_apply_fold_0": {
+        "fit_count": 1712,
+        "application_count": 1711,
+        "body_id_overlap": 0
+      }
+    },
+    "R": {
+      "fit_fold_0_apply_fold_1": {
+        "fit_count": 1717,
+        "application_count": 1720,
+        "body_id_overlap": 0
+      },
+      "fit_fold_1_apply_fold_0": {
+        "fit_count": 1720,
+        "application_count": 1717,
+        "body_id_overlap": 0
+      }
+    }
+  },
+  "out_of_fold_predictions_sha256": "ff5cfae40c9447a62cd8d8a993770504e0be0c4c6d65442b14a476c9756cd4bf",
+  "out_of_fold_overall": {
+    "count": 6860,
+    "accuracy": 0.9583090379008746,
+    "median_angle_error_degrees": 13.034342331733662,
+    "mean_angle_error_degrees": 16.46536580315969
+  },
+  "out_of_fold_by_population": {
+    "T4a_L": {
+      "count": 835,
+      "accuracy": 0.9389221556886228,
+      "median_angle_error_degrees": 16.40777848306179,
+      "mean_angle_error_degrees": 19.54443460233028,
+      "fixed_target_denominator": 835,
+      "valid_target_fraction": 1.0
+    },
+    "T4a_R": {
+      "count": 849,
+      "accuracy": 0.9599528857479388,
+      "median_angle_error_degrees": 15.763009553757605,
+      "mean_angle_error_degrees": 18.711028078988345,
+      "fixed_target_denominator": 849,
+      "valid_target_fraction": 1.0
+    },
+    "T4b_L": {
+      "count": 844,
+      "accuracy": 0.9300947867298578,
+      "median_angle_error_degrees": 14.664855682860685,
+      "mean_angle_error_degrees": 18.906391936088966,
+      "fixed_target_denominator": 844,
+      "valid_target_fraction": 1.0
+    },
+    "T4b_R": {
+      "count": 846,
+      "accuracy": 0.9408983451536643,
+      "median_angle_error_degrees": 14.829277128753251,
+      "mean_angle_error_degrees": 18.302634045016863,
+      "fixed_target_denominator": 846,
+      "valid_target_fraction": 1.0
+    },
+    "T4c_L": {
+      "count": 894,
+      "accuracy": 0.9686800894854586,
+      "median_angle_error_degrees": 11.493113372021632,
+      "mean_angle_error_degrees": 15.03223197666949,
+      "fixed_target_denominator": 895,
+      "valid_target_fraction": 0.9988826815642458
+    },
+    "T4c_R": {
+      "count": 883,
+      "accuracy": 0.9592298980747452,
+      "median_angle_error_degrees": 11.728993331402132,
+      "mean_angle_error_degrees": 14.945422207683913,
+      "fixed_target_denominator": 883,
+      "valid_target_fraction": 1.0
+    },
+    "T4d_L": {
+      "count": 850,
+      "accuracy": 0.9835294117647059,
+      "median_angle_error_degrees": 10.704344151965826,
+      "mean_angle_error_degrees": 13.430249792315243,
+      "fixed_target_denominator": 850,
+      "valid_target_fraction": 1.0
+    },
+    "T4d_R": {
+      "count": 859,
+      "accuracy": 0.9837019790454016,
+      "median_angle_error_degrees": 10.429494417393217,
+      "mean_angle_error_degrees": 13.102194367322294,
+      "fixed_target_denominator": 859,
+      "valid_target_fraction": 1.0
+    }
+  },
+  "cross_eye_mirror_angle_error_degrees_by_subtype": {
+    "a": 0.3375605743427361,
+    "b": 1.0891236953148666,
+    "c": 0.60734570839645,
+    "d": 0.7443707618986649
+  },
+  "random_orthogonal_baseline": {
+    "count": 256,
+    "out_of_fold_accuracy_p95": 0.4447521865889213
+  },
+  "gates": {
+    "valid_target_fraction_each_population": true,
+    "overall_out_of_fold_accuracy": true,
+    "out_of_fold_accuracy_each_population": true,
+    "overall_out_of_fold_angle": true,
+    "cross_eye_mirror": true,
+    "accuracy_above_random_p95": true
+  },
+  "T4_synapse_crossfit_axis_passed": true,
+  "authorize_T4_crossfit_single_condition_precheck": true,
+  "advance_to_calibration": false,
+  "advance_to_runtime_integration": false,
+  "v7_deployment_enabled": false,
+  "stop_reason": null,
+  "boundary": {
+    "structure_only": true,
+    "every_target_scored_out_of_fold": true,
+    "fold_assignment_uses_body_id_hash_only": true,
+    "transform_selection_does_not_read_subtype_or_direction": true,
+    "all_four_T4_subtypes_equal_weight_in_each_fit": true,
+    "T5_used_for_fit_or_model_selection": false,
+    "target_activity_injection": false,
+    "functional_stimulus_not_evaluated": true,
+    "runtime_modified": false,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

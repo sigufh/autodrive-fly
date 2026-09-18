@@ -76,8 +76,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     synapse_spatial_audit = reports["synapse_spatial_audit"]
     synapse_axis_calibration = reports["synapse_axis_calibration"]
+    t4_synapse_crossfit_axis_audit = reports["t4_synapse_crossfit_axis_audit"]
     t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
     t4_synapse_antisymmetric_precheck = reports["t4_synapse_antisymmetric_precheck"]
+    t4_synapse_crossfit_precheck = reports["t4_synapse_crossfit_precheck"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
@@ -231,8 +233,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_axis_sequence_identifiability"],
                 config["evidence"]["t5_physical_time_transfer_audit"],
                 config["evidence"]["t5_continuous_moment_precheck"],
+                config["evidence"]["t4_synapse_crossfit_axis_audit"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
+                config["evidence"]["t4_synapse_crossfit_precheck"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -742,6 +746,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "synapse_axis_T4_calibration_passed": synapse_axis_calibration[
                     "T4_synapse_axis_calibration_passed"
                 ],
+                "T4_synapse_crossfit_axis_accuracy": t4_synapse_crossfit_axis_audit[
+                    "out_of_fold_overall"
+                ]["accuracy"],
+                "T4_synapse_crossfit_axis_median_angle_degrees": (
+                    t4_synapse_crossfit_axis_audit["out_of_fold_overall"]
+                    ["median_angle_error_degrees"]
+                ),
+                "T4_synapse_crossfit_axis_passed": t4_synapse_crossfit_axis_audit[
+                    "T4_synapse_crossfit_axis_passed"
+                ],
                 "synapse_axis_zero_shot_T5_accuracy": synapse_axis_calibration[
                     "zero_shot_T5"
                 ]["accuracy"],
@@ -800,6 +814,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "three_condition_evaluation_performed"
                     ]
                 ),
+                "T4_synapse_crossfit_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t4_synapse_crossfit_precheck["ordered_candidates"]
+                ],
+                "T4_synapse_crossfit_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t4_synapse_crossfit_precheck["ordered_candidates"]
+                ],
+                "T4_synapse_crossfit_controls_evaluated": t4_synapse_crossfit_precheck[
+                    "controls_evaluated"
+                ],
+                "T4_synapse_crossfit_candidate_passed": t4_synapse_crossfit_precheck[
+                    "candidate_passed"
+                ],
                 "T4_synapse_centered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t4_synapse_centered_precheck["ordered_candidates"]

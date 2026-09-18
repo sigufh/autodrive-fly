@@ -1,0 +1,30 @@
+version: 1
+name: v7-t4-synapse-two-fold-crossfit-axis-audit
+observed_on: "2026-09-18"
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+synapse_spatial_evidence: artifacts/v7-synapse-spatial-audit.json
+prior_axis_calibration: artifacts/v7-synapse-axis-calibration.json
+prior_axis_protocol: configs/driving-v7-synapse-axis-calibration.yaml
+axis_gate_source: configs/driving-v7.yaml
+split_seed: 20260914
+fit_fraction: 0.50
+random_orthogonal_baselines: 256
+mapping: separate_eye_two_fold_crossfit_3D_to_2D_semi_orthogonal_procrustes
+gates:
+  minimum_valid_target_fraction_each_population: 0.80
+  minimum_overall_out_of_fold_accuracy: 0.75
+  minimum_out_of_fold_accuracy_each_population: 0.60
+  maximum_overall_out_of_fold_median_angle_error_degrees: 35.0
+  maximum_cross_eye_mirror_angle_error_degrees: 30.0
+  require_accuracy_above_random_p95: true
+boundary:
+  structure_only: true
+  every_target_scored_out_of_fold: true
+  fold_assignment_uses_body_id_hash_only: true
+  transform_selection_does_not_read_subtype_or_direction: true
+  all_four_T4_subtypes_equal_weight_in_each_fit: true
+  T5_used_for_fit_or_model_selection: false
+  target_activity_injection: false
+  functional_stimulus_not_evaluated: true
+  runtime_modified: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

@@ -369,6 +369,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["synapse_axis_held_out_T4_accuracy"] > 0.96
     assert visual["observations"]["synapse_axis_held_out_T4_median_angle_degrees"] < 14.0
     assert visual["observations"]["synapse_axis_T4_calibration_passed"] is True
+    assert visual["observations"]["T4_synapse_crossfit_axis_accuracy"] > 0.95
+    assert visual["observations"]["T4_synapse_crossfit_axis_median_angle_degrees"] < 14
+    assert visual["observations"]["T4_synapse_crossfit_axis_passed"] is True
     assert visual["observations"]["synapse_axis_zero_shot_T5_accuracy"] < 0.11
     assert visual["observations"]["synapse_axis_zero_shot_T5_mapping_passed"] is False
     assert visual["observations"]["synapse_axis_T5_mapping_application_authorized"] is False
@@ -394,6 +397,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         [] for _ in range(8)
     ]
     assert visual["observations"]["T4_synapse_antisymmetric_controls_evaluated"] is False
+    assert visual["observations"]["T4_synapse_crossfit_direction_pass_counts"] == [2] * 8
+    assert visual["observations"]["T4_synapse_crossfit_polarity_pass_counts"] == [8] * 8
+    assert visual["observations"]["T4_synapse_crossfit_controls_evaluated"] is False
+    assert visual["observations"]["T4_synapse_crossfit_candidate_passed"] is False
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

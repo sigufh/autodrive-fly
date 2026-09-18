@@ -183,6 +183,12 @@ from .driving.v7_t4_synapse_centered_precheck import (
 from .driving.v7_t4_synapse_correlator_precheck import (
     evaluate_v7_t4_synapse_correlator_precheck,
 )
+from .driving.v7_t4_synapse_crossfit_axis_audit import (
+    evaluate_v7_t4_synapse_crossfit_axis_audit,
+)
+from .driving.v7_t4_synapse_crossfit_precheck import (
+    evaluate_v7_t4_synapse_crossfit_precheck,
+)
 from .driving.v7_t4_synapse_microstep_precheck import (
     evaluate_v7_t4_synapse_microstep_precheck,
 )
@@ -416,6 +422,8 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
+    subparsers.add_parser("v7-audit-t4-synapse-crossfit-axis")
+    subparsers.add_parser("v7-evaluate-t4-synapse-crossfit-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-antisymmetric-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
@@ -1287,6 +1295,22 @@ def main() -> None:
         report = evaluate_v7_t4_synapse_correlator_precheck(root)
         target = root / "artifacts/v7-t4-synapse-correlator-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-synapse-crossfit-axis":
+        report = evaluate_v7_t4_synapse_crossfit_axis_audit(root)
+        target = root / "artifacts/v7-t4-synapse-crossfit-axis-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-evaluate-t4-synapse-crossfit-precheck":
+        report = evaluate_v7_t4_synapse_crossfit_precheck(root)
+        target = root / "artifacts/v7-t4-synapse-crossfit-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-evaluate-t4-synapse-antisymmetric-precheck":

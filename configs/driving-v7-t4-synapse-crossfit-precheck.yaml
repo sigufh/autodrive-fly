@@ -1,0 +1,45 @@
+version: 1
+name: v7-t4-synapse-crossfit-antisymmetric-precheck
+observed_on: "2026-09-18"
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t4-synapse-crossfit-axis-audit.yaml
+prior_antisymmetric_evidence: artifacts/v7-t4-synapse-antisymmetric-precheck.json
+prior_antisymmetric_protocol: configs/driving-v7-t4-synapse-antisymmetric-precheck.yaml
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: S1-T01
+source_groups:
+  fast: [Mi1, Tm3]
+  delayed: [Mi4, C3]
+correlator:
+  formula: sum_pairs((x_fast-x_delayed)*(fast_now*delayed_previous-delayed_now*fast_previous))
+  normalization: sum_absolute_x_y_pair_terms_plus_1e-6
+  temporal_reductions: [positive_peak, signed_mean]
+  additive_gains: [0.125, 0.5, 2.0, 8.0]
+  base: published_T4_conductance_target_state
+controls:
+  temporal_shuffle_seed: 20260918
+  modes: [temporal_shuffle, static_sham]
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_run_controls: 1
+  require_all_direction_populations: true
+  require_all_polarity_populations: true
+  require_mirror: true
+  require_no_bilateral_direction_subtype_in_each_control: true
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  T4_only: true
+  every_valid_target_axis_is_out_of_fold: true
+  transform_selection_uses_body_id_hash_only: true
+  dynamics_do_not_read_subtype_or_direction_labels: true
+  labels_used_for_posthoc_scoring_only: true
+  fixed_whole_population_denominators: true
+  missing_conductance_targets_count_as_invalid: true
+  parameter_fit_to_neural_response: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

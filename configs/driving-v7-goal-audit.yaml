@@ -64,8 +64,10 @@ evidence:
   source_type_temporal_identifiability: artifacts/v7-source-type-temporal-identifiability.json
   synapse_spatial_audit: artifacts/v7-synapse-spatial-audit.json
   synapse_axis_calibration: artifacts/v7-synapse-axis-calibration.json
+  t4_synapse_crossfit_axis_audit: artifacts/v7-t4-synapse-crossfit-axis-audit.json
   t4_synapse_correlator_precheck: artifacts/v7-t4-synapse-correlator-precheck.json
   t4_synapse_antisymmetric_precheck: artifacts/v7-t4-synapse-antisymmetric-precheck.json
+  t4_synapse_crossfit_precheck: artifacts/v7-t4-synapse-crossfit-precheck.json
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json
   t4_synapse_microstep_precheck: artifacts/v7-t4-synapse-microstep-precheck.json
   t4_source_dynamics_transfer_audit: artifacts/v7-t4-source-dynamics-transfer-audit.json

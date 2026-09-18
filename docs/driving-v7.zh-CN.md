@@ -1828,6 +1828,16 @@ ordered 最好仍只有 T5d 左右（2/8），其余亚型未恢复；shuffle/st
 `artifacts/v7-t5-physical-time-transfer-audit.json`；该审计不猜测 `dt`、不拟合参数，也不
 授权新的 T5、LPLC 或车辆实验。
 
+T4 结构轴也按相同原则补做二折 cross-fit，以排除旧功能 precheck 对约一半结构拟合集
+复用 transform 的问题。6,860/6,861 个结构有效 target 均由不含自身 body ID 的另一折
+变换预测；整体准确率约 95.83%，八群体最低约 93.01%，中位角误差约 13.03°，最大
+跨眼镜像角误差约 1.09°。随后只在已有 published-conductance target 子集 6,749 个
+细胞上重放原反对称 Mi1/Tm3 fast × Mi4/C3 delayed 候选，仍保留 6,861 固定总分母。
+八个 reduction×gain 候选均为方向 2/8、ON 极性 8/8，但没有任何双侧方向亚型，故未运行
+controls、T02/T03 或 calibration。证据见 `artifacts/v7-t4-synapse-crossfit-axis-audit.json`
+与 `artifacts/v7-t4-synapse-crossfit-precheck.json`。因此 T4 失败也不是结构 transform
+的 in-sample 泄漏所致，后续工作应转向有物理时间约束的源动力学。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。
