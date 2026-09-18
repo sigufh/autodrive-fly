@@ -13,6 +13,8 @@ def test_retrieval_audit_is_hash_bound_and_read_only() -> None:
     assert report["protocol"]["parameter_fit"] is False
     assert report["protocol"]["target_activity_injection"] is False
     assert report["protocol"]["runtime_modified"] is False
+    assert report["retrieval_helper"]["workflow_trigger"] == "manual_only"
+    assert report["retrieval_helper"]["workflow_artifact_retention_days"] == 1
 
 
 def test_four_file_manifest_is_exact_and_cross_checked() -> None:
@@ -29,6 +31,20 @@ def test_four_file_manifest_is_exact_and_cross_checked() -> None:
     assert report["manifest_cross_check"][
         "all_four_files_match_prior_config_report_and_headers"
     ] is True
+    assert {name: item["storage_identifier"] for name, item in manifest.items()} == {
+        "fig3_Tm3.npy": "54://edmond-objstor-prod:17f0cb650f4-f91d07bbefa2",
+        "fig3_Mi1.npy": "54://edmond-objstor-prod:17f0cb645cf-a96b88e2ea5d",
+        "fig3_Mi4.npy": "54://edmond-objstor-prod:17f0cb64779-b6b6bcb4d49c",
+        "fig3_C3.npy": "54://edmond-objstor-prod:17f0cb642f6-202dfaea2a06",
+    }
+    history = report["historical_manifest_observation"]
+    assert history["dataset_id"] == 104764
+    assert history["dataset_version_id"] == 398
+    assert history["version_state"] == "RELEASED"
+    assert history["response_bytes"] == 61600
+    assert history["response_sha256"] == (
+        "a61613ae5a62f25b07c5a961a967effab74ff68fbade90aae740536ce192c54a"
+    )
 
 
 def test_network_unavailability_does_not_become_scientific_rejection() -> None:

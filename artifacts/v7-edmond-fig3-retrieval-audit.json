@@ -3,12 +3,14 @@
     "name": "v7-edmond-fig3-1khz-retrieval-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-edmond-fig3-retrieval-audit.yaml": "b5c10fb4ebcbd61e68bb8bce6538213a79ed4bb9bb4bd819c483c24668f57499",
-      "src/fly_emotion/driving/v7_edmond_fig3_retrieval_audit.py": "13afdd563c934c36bb7645b401a8db0b2fc849af9e4612ef9fc82d023814a3da",
+      "configs/driving-v7-edmond-fig3-retrieval-audit.yaml": "7b60f8bfbad312d8f51e1ac3918c1f90b4becfdaccb23f82d2e35e7818234e05",
+      "src/fly_emotion/driving/v7_edmond_fig3_retrieval_audit.py": "83cddf3817683f214375fcdaa71283d0ecddd15e222ba0f167242044d9df190f",
       "configs/driving-v7-electrophysiology-audit.yaml": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
-      "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd"
+      "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
+      "scripts/recover_v7_edmond_fig3.py": "3bbc882be8daf95c33d445133ffb3a81c018432a3dbc814c1d74f5f977d39d24",
+      ".github/workflows/recover-v7-edmond-fig3.yml": "c783c4ef5e82a305ba212c1b1e02da8e7561250930bca740fc1791849f806b72"
     },
     "parameter_fit": false,
     "target_activity_injection": false,
@@ -26,6 +28,7 @@
   "frozen_file_manifest": {
     "fig3_Tm3.npy": {
       "id": 104816,
+      "storage_identifier": "54://edmond-objstor-prod:17f0cb650f4-f91d07bbefa2",
       "bytes": 1536128,
       "md5": "e001e3d8d3ca32ca11417965bb182616",
       "sha256": "07797ccd2ce72d3ea89c9ca01ba641c7c92d3d6dd198d6324596f2cf16b0fb82",
@@ -38,6 +41,7 @@
     },
     "fig3_Mi1.npy": {
       "id": 104811,
+      "storage_identifier": "54://edmond-objstor-prod:17f0cb645cf-a96b88e2ea5d",
       "bytes": 3072128,
       "md5": "1964e0a136ed93f74b215f2a11dc0c25",
       "sha256": "351e9e791a30d1c5bac329165934fbc05dbcfbb038b4b6e940e2531de1d61cce",
@@ -50,6 +54,7 @@
     },
     "fig3_Mi4.npy": {
       "id": 104812,
+      "storage_identifier": "54://edmond-objstor-prod:17f0cb64779-b6b6bcb4d49c",
       "bytes": 2432128,
       "md5": "c2ef2980d423f322730dfaded3fa5a07",
       "sha256": "9309bb6deadcb8bf5c9a52267ef6564c314a04212af81c129b0754cf4de1f791",
@@ -62,6 +67,7 @@
     },
     "fig3_C3.npy": {
       "id": 104809,
+      "storage_identifier": "54://edmond-objstor-prod:17f0cb642f6-202dfaea2a06",
       "bytes": 2048128,
       "md5": "714a097178d0cc202b1a4698a95852bf",
       "sha256": "b9118e32cfb0d22acd4da41aee6931923ea33e4dda258df2abd26fd252e21be6",
@@ -72,6 +78,17 @@
       ],
       "dtype": "float64"
     }
+  },
+  "historical_manifest_observation": {
+    "retrieved_at_utc": "2026-09-15T02:58:41.203Z",
+    "response_bytes": 61600,
+    "response_sha256": "a61613ae5a62f25b07c5a961a967effab74ff68fbade90aae740536ce192c54a",
+    "dataset_id": 104764,
+    "dataset_version_id": 398,
+    "version_number": 1,
+    "version_state": "RELEASED",
+    "dataset_storage_identifier": "54://10.17617/3.8g",
+    "source": "successful_official_Dataverse_API_response_preserved_in_local_audit_session_log"
   },
   "manifest_cross_check": {
     "all_four_files_match_prior_config_report_and_headers": true,
@@ -116,6 +133,12 @@
   "mirror_search": {
     "verified_candidate_count": 0,
     "adoption_rule": "exact_filename_and_bytes_and_md5_and_sha256_must_all_match_frozen_manifest"
+  },
+  "retrieval_helper": {
+    "path": "scripts/recover_v7_edmond_fig3.py",
+    "workflow": ".github/workflows/recover-v7-edmond-fig3.yml",
+    "workflow_trigger": "manual_only",
+    "workflow_artifact_retention_days": 1
   },
   "local_candidates": {
     "fig3_Tm3.npy": {

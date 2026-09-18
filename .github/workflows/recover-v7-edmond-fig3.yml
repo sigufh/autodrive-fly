@@ -1,0 +1,35 @@
+name: Recover v7 Edmond Fig. 3 arrays
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check numpy
+      - name: Retrieve and verify public source arrays
+        run: |
+          python scripts/recover_v7_edmond_fig3.py \
+            --manifest artifacts/v7-edmond-fig3-retrieval-audit.json \
+            --output /tmp/v7-edmond-fig3 \
+            --endpoint https://edmond.mpg.de/api/access/datafile \
+            --endpoint https://edmond.mpdl.mpg.de/api/access/datafile \
+            --endpoint https://data.mpg.de/api/access/datafile \
+            --timeout 90
+      - name: Preserve verified payload or retrieval diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v7-edmond-fig3-recovery
+          path: /tmp/v7-edmond-fig3
+          if-no-files-found: error
+          retention-days: 1

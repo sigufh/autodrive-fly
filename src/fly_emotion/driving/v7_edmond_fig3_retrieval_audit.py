@@ -70,14 +70,15 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
         configured = ephys_config["files"][name]
         verified = ephys_report["verified_files"][name]
         header = ephys_report["array_headers"][name]
-        if {
+        cross_check = {
             "id": int(configured["id"]),
             "bytes": int(configured["size"]),
             "md5": configured["md5"],
             "sha256": configured["sha256"],
             "shape": header["shape"],
             "dtype": header["dtype"],
-        } != expected:
+        }
+        if any(cross_check[key] != expected[key] for key in cross_check):
             raise ValueError(f"frozen Edmond manifest mismatch for {name}")
         if verified != {key: expected[key] for key in ("id", "bytes", "md5", "sha256")}:
             raise ValueError(f"prior verified Edmond payload mismatch for {name}")
@@ -94,6 +95,12 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
     if workbook_steps != {10.0}:
         raise ValueError("frozen workbook is no longer a 10-ms source")
     payload_dir = root / config["dataset"]["local_payload_directory"]
+    helper_paths = [
+        Path(config["retrieval_helper"]["path"]),
+        Path(config["retrieval_helper"]["workflow"]),
+    ]
+    if any(not (root / path).is_file() for path in helper_paths):
+        raise ValueError("Edmond retrieval helper or manual workflow is missing")
     candidates = {
         name: _inspect_candidate(payload_dir / name, expected)
         for name, expected in required.items()
@@ -114,6 +121,7 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 **{str(path): _sha256(root / path) for path in evidence_paths.values()},
+                **{str(path): _sha256(root / path) for path in helper_paths},
             },
             "parameter_fit": False,
             "target_activity_injection": False,
@@ -121,6 +129,7 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
         },
         "dataset": config["dataset"],
         "frozen_file_manifest": required,
+        "historical_manifest_observation": config["historical_manifest_observation"],
         "manifest_cross_check": {
             "all_four_files_match_prior_config_report_and_headers": True,
             "prior_payload_verification_existed": True,
@@ -129,6 +138,7 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
         "datacite_observation": config["datacite_observation"],
         "retrieval_observations": config["retrieval_observations"],
         "mirror_search": config["mirror_search"],
+        "retrieval_helper": config["retrieval_helper"],
         "local_candidates": candidates,
         "workbook_resolution_boundary": {
             "sample_interval_milliseconds": 10.0,

@@ -2177,6 +2177,11 @@ individual split 重算。网络失败不构成科学否决；当前 10 ms 工�
 才可在完全不改 split、标签、阈值、固定分母和失败规则的前提下重算。当前仍只有
 `on:Tm3` 通过既有 split，全部下游门保持关闭。证据见
 `artifacts/v7-edmond-fig3-retrieval-audit.json`。
+历史成功返回的官方 Dataverse manifest 还保留了四个文件各自的
+`54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
+及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个
+官方域名；下载先落到 `.part`，只有通过完整 manifest 后才原子提升，远端 artifact 只保留
+一天且不会提交到 Git。
 
 前端披露也按这个边界拆开：`/api/v7/status` 只读取并逐依赖哈希验证
 `artifacts/v7-goal-audit.json`，不实例化 v7 或改变 `/api/driving/*`。页面把当前运行的
