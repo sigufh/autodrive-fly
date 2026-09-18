@@ -100,6 +100,7 @@ evidence:
   ct1_extreme_compartmentalization_audit: artifacts/v7-ct1-extreme-compartmentalization-audit.json
   malecns_source_mapping_readiness_audit: artifacts/v7-malecns-source-mapping-readiness-audit.json
   source_evidence_matrix: artifacts/v7-source-evidence-matrix.json
+  source_type_average_mapping_contract: artifacts/v7-source-type-average-mapping-contract.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json
   four_hop_scalar_precheck: artifacts/v7-four-hop-scalar-precheck.json
   lc4_position_speed_precheck: artifacts/v7-lc4-position-speed-precheck.json

@@ -17,6 +17,7 @@ evidence:
   arenz_t4: artifacts/v7-arenz-source-dynamics-audit.json
   arenz_t5: artifacts/v7-arenz-t5-source-dynamics-audit.json
   malecns_mapping: artifacts/v7-malecns-source-mapping-readiness-audit.json
+  type_average_mapping: artifacts/v7-source-type-average-mapping-contract.json
 source_order: [Mi1, Tm3, Mi4, C3, Tm1, Tm2, Tm4, Tm9, CT1]
 source_family:
   Mi1: T4

@@ -3,8 +3,8 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "7b97760c71e6e4495fa6623d0134192792011dc721857cad776b308cf1d263a8",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "da61040725d8dfe0205ae7be0b4af81519abcf612fe3ce4cda12209b8594d63c",
+      "configs/driving-v7-source-evidence-matrix.yaml": "8037685154bc218f7b3ccc400343715d1f567ce055417b7a5409311bbea585c8",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "61ac86524c3a4cbc6e269a07beccb29ceac42a3609d3215ca000e09e70d1ad03",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
@@ -19,7 +19,8 @@
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-arenz-t5-source-dynamics-audit.json": "a1442bf2ea0f8bf82929594bc25aa9f6915be3c4bf4e7099a225a4b635d88a14",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766"
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
+      "artifacts/v7-source-type-average-mapping-contract.json": "c9036f6b378c06e1fbba6c1c1f7f535f22649537299d8f8b1cdf4c309d0a3d8f"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -79,14 +80,13 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -134,14 +134,13 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -186,14 +185,13 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -237,14 +235,13 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -292,7 +289,7 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
@@ -300,7 +297,6 @@
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -348,7 +344,7 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
@@ -356,7 +352,6 @@
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -402,7 +397,7 @@
         "soma_side": true,
         "complete_columnar_retinotopy": true,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
@@ -410,7 +405,6 @@
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -456,7 +450,7 @@
         "soma_side": true,
         "complete_columnar_retinotopy": false,
         "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
-        "external_recording_to_body_or_explicit_type_average": false,
+        "external_recording_to_body_or_explicit_type_average": true,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
@@ -465,7 +459,6 @@
         "stable_biological_individual_id_on_allowed_payload",
         "complete_columnar_retinotopy",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
-        "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]
@@ -520,8 +513,8 @@
         "numerical_allowed_response_unit",
         "stable_biological_individual_id_on_allowed_payload",
         "complete_columnar_retinotopy",
-        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "training_validation_external_final_roles",
         "external_final_commitment"
       ]

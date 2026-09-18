@@ -1,0 +1,190 @@
+{
+  "protocol": {
+    "name": "v7-source-type-average-mapping-contract",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-source-type-average-mapping-contract.yaml": "699a5f1198517e9756d1917a780a8ca4bff686b9a0ad6f09d5e24f29a3b2654e",
+      "src/fly_emotion/driving/v7_source_type_average_mapping_contract.py": "c38a309bb2cb3738c9716c049c173294a141779374656eee04b58347a548db8d",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
+      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "source_mappings": {
+    "Mi1": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1773,
+      "MaleCNS_body_ids_sha256": "c6fdbdec747a4be3ba59de83f310e738afc2b5b977b8e2c72ec6efd0e5a5aba3",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "Tm3": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 2054,
+      "MaleCNS_body_ids_sha256": "4dd4a51b41ee9b34361817a2bd8d0587037a087a8a24856b0e762cb970fe02e8",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "Mi4": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1772,
+      "MaleCNS_body_ids_sha256": "f5e10f234fbe69bc503b369d69428ea7ef19d0e3a6e15a2de73db737bfe02b80",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "C3": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1779,
+      "MaleCNS_body_ids_sha256": "a76d7bca49f67fdeac2ff4d5cf862f92f531214ca4c08b9fa66e0a63e3547d78",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "Tm1": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1777,
+      "MaleCNS_body_ids_sha256": "55c5903251cd03aeea968bd1813660b4e34abc62a4438b9f7adfc6090cd216a8",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "Tm2": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1766,
+      "MaleCNS_body_ids_sha256": "30c90f92a7c92144758aa4892518e083ef7c9b10015a2431281c414e27d7fbfd",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "Tm4": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1670,
+      "MaleCNS_body_ids_sha256": "a93d4d4946beb39f459a6c3889174e2f7610370dd74c20dfe037c1d995c0c00a",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": true
+      },
+      "mapping_contract_complete": true
+    },
+    "Tm9": {
+      "mapping_mode": "exact_type_average",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 1771,
+      "MaleCNS_body_ids_sha256": "f596bb1eac601eabb996b78884de95f2a46a812bb02acf8a8bbd67d11c713424",
+      "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
+      "gates": {
+        "local_allowed_unit_payload_available": true,
+        "explicit_exact_type_average_declared": true,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": false
+      },
+      "mapping_contract_complete": false
+    },
+    "CT1": {
+      "mapping_mode": "unavailable",
+      "recording_level_body_assignment": false,
+      "source_recording_identity_support_available": true,
+      "MaleCNS_body_count": 2,
+      "MaleCNS_body_ids_sha256": "5c416e1bbe7c842d2fc730aacedf4dda50ccf43b9dd760800614f26de48c2b3e",
+      "broadcast_rule": null,
+      "gates": {
+        "local_allowed_unit_payload_available": false,
+        "explicit_exact_type_average_declared": false,
+        "exact_MaleCNS_type_body_set_available": true,
+        "soma_side_available": true,
+        "complete_columnar_retinotopy_available": false
+      },
+      "mapping_contract_complete": false
+    }
+  },
+  "sources_with_explicit_type_average_mapping": [
+    "Mi1",
+    "Tm3",
+    "Mi4",
+    "C3",
+    "Tm1",
+    "Tm2",
+    "Tm4",
+    "Tm9"
+  ],
+  "all_nine_source_mapping_contracts_complete": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "CT1_and_Tm9_retinotopy_or_allowed_payload_mapping_gates_incomplete",
+  "boundary": {
+    "type_average_is_a_modeling_declaration_not_recording_body_identity": true,
+    "one_population_kernel_is_shared_across_exact_same_type_bodies": true,
+    "individual_recordings_are_never_assigned_to_specific_MaleCNS_bodies": true,
+    "soma_side_and_retinotopy_come_only_from_MaleCNS": true,
+    "incomplete_Tm9_coordinate_is_not_imputed": true,
+    "CT1_Lo1_requires_experimental_allowed_unit_payload_and_columnar_coordinates": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

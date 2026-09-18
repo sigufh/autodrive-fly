@@ -290,6 +290,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["source_evidence_matrix_C3_fixed_external_robustness_passed"]
         is False
     )
+    assert visual["observations"]["source_type_average_mapped_sources"] == [
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "C3",
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+    ]
+    assert visual["observations"]["source_type_average_all_nine_mapping_complete"] is False
     assert visual["observations"]["TimingModels_CT1_type_average_dynamics_verified"] is True
     assert visual["observations"]["TimingModels_T5_lobula_CT1_phenotype_published"] is True
     assert visual["observations"]["TimingModels_T5_lobula_CT1_numerical_payload_verified"] is False

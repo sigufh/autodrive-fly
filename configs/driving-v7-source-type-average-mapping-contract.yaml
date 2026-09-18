@@ -1,0 +1,28 @@
+version: 1
+name: v7-source-type-average-mapping-contract
+observed_on: "2026-09-19"
+external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+malecns_mapping: artifacts/v7-malecns-source-mapping-readiness-audit.json
+T4_identity: artifacts/v7-t4-source-identity-readiness-audit.json
+T5_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
+mapping_modes:
+  Mi1: exact_type_average
+  Tm3: exact_type_average
+  Mi4: exact_type_average
+  C3: exact_type_average
+  Tm1: exact_type_average
+  Tm2: exact_type_average
+  Tm4: exact_type_average
+  Tm9: exact_type_average
+  CT1: unavailable
+boundary:
+  type_average_is_a_modeling_declaration_not_recording_body_identity: true
+  one_population_kernel_is_shared_across_exact_same_type_bodies: true
+  individual_recordings_are_never_assigned_to_specific_MaleCNS_bodies: true
+  soma_side_and_retinotopy_come_only_from_MaleCNS: true
+  incomplete_Tm9_coordinate_is_not_imputed: true
+  CT1_Lo1_requires_experimental_allowed_unit_payload_and_columnar_coordinates: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

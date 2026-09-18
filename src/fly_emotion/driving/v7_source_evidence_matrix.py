@@ -56,6 +56,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     arenz_t4 = set(evidence["arenz_t4"]["current_v7_source_contract"]["covered_by_Arenz"])
     arenz_t5 = set(evidence["arenz_t5"]["T5_source_contract"]["covered_sources"])
     mapping = evidence["malecns_mapping"]["source_mapping"]
+    type_average_mapping = evidence["type_average_mapping"]["source_mappings"]
 
     c3_numerical = bool(evidence["c3_dynamics"]["C3_STRF_numerical_data_verified"])
     c3_ids = bool(evidence["c3_dynamics"]["C3_dataset"]["fly_count"] > 0)
@@ -109,6 +110,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         allowed_numerical = local_voltage
         individual_ids_on_allowed_payload = family == "T4" and individual_ids_any_numerical
         map_row = mapping[source]
+        type_average_row = type_average_mapping[source]
 
         evidence_components = {
             "local_numerical_membrane_voltage": local_voltage,
@@ -183,10 +185,11 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             missing.append("stable_biological_individual_id_on_allowed_payload")
         if not map_row["columnar_retinotopy_available"]:
             missing.append("complete_columnar_retinotopy")
+        if not type_average_row["gates"]["explicit_exact_type_average_declared"]:
+            missing.append("external_recording_to_body_or_explicit_type_average")
         missing.extend(
             [
                 "complete_stimulus_and_baseline_fields_on_allowed_payload",
-                "external_recording_to_body_or_explicit_type_average",
                 "training_validation_external_final_roles",
                 "external_final_commitment",
             ]
@@ -203,7 +206,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "soma_side": bool(map_row["soma_side_complete"]),
             "complete_columnar_retinotopy": bool(map_row["columnar_retinotopy_available"]),
             "complete_stimulus_and_baseline_fields_on_allowed_payload": False,
-            "external_recording_to_body_or_explicit_type_average": False,
+            "external_recording_to_body_or_explicit_type_average": bool(
+                type_average_row["gates"]["explicit_exact_type_average_declared"]
+            ),
             "training_validation_external_final_roles": False,
             "external_final_commitment": False,
         }

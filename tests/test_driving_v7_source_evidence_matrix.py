@@ -76,6 +76,19 @@ def test_independent_T4_fast_phenotype_is_not_counted_as_numeric_payload() -> No
         )
 
 
+def test_exact_type_average_mapping_is_explicit_without_body_assignment() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in ("Mi1", "Tm3", "Mi4", "C3", "Tm1", "Tm2", "Tm4", "Tm9"):
+        assert (
+            report["matrix"][source]["gates"]["external_recording_to_body_or_explicit_type_average"]
+            is True
+        )
+    assert (
+        report["matrix"]["CT1"]["gates"]["external_recording_to_body_or_explicit_type_average"]
+        is False
+    )
+
+
 def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     report = json.loads(REPORT.read_text())
     assert report["family_summary"]["T5"]["numerical_membrane_voltage_count"] == 4

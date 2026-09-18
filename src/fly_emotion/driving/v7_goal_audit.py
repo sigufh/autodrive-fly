@@ -138,6 +138,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "malecns_source_mapping_readiness_audit"
     ]
     source_evidence_matrix = reports["source_evidence_matrix"]
+    source_type_average_mapping_contract = reports[
+        "source_type_average_mapping_contract"
+    ]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -311,6 +314,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
                 config["evidence"]["source_evidence_matrix"],
+                config["evidence"]["source_type_average_mapping_contract"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -764,6 +768,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     source_evidence_matrix["matrix"]["C3"][
                         "evidence_components"
                     ]["fixed_external_robustness_gate_passed"]
+                ),
+                "source_type_average_mapped_sources": (
+                    source_type_average_mapping_contract[
+                        "sources_with_explicit_type_average_mapping"
+                    ]
+                ),
+                "source_type_average_all_nine_mapping_complete": (
+                    source_type_average_mapping_contract[
+                        "all_nine_source_mapping_contracts_complete"
+                    ]
                 ),
                 "TimingModels_CT1_type_average_dynamics_verified": (
                     timing_models_ct1_compartment_audit[

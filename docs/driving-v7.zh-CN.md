@@ -2039,6 +2039,15 @@ Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；�
 钙表型与模拟区室化成立，但合规数值电压、biological ID、MaleCNS 映射和 split 仍缺失。
 证据见 `artifacts/v7-ct1-extreme-compartmentalization-audit.json`。
 
+外部 recording 与 MaleCNS 的映射合同随后也拆成两种合法模式：逐 recording→body，或明确
+声明 type-average。当前不伪造任何跨果蝇 body 对应，而是对已有本地膜电位的八类 source
+明确采用 `exact_type_average`：每类只把自己的群体平均核广播到 MaleCNS 中同名类型的
+完整 body 集合，soma side 与柱坐标只取自 MaleCNS。Mi1/Tm3/Mi4/C3 与
+Tm1/Tm2/Tm4 因 exact type/body、side 和完整坐标可满足该映射子合同；Tm9 虽可声明
+type-average，仍有 body `532266` 无柱坐标；CT1 既缺实验合规膜电位，也缺逐柱 Lo1
+坐标，因此九源 mapping 总门仍关闭。该声明不向任何神经元注入活动、不运行模型、不拟合
+参数。证据见 `artifacts/v7-source-type-average-mapping-contract.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

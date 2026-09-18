@@ -174,6 +174,9 @@ from .driving.v7_source_dynamics_external_evidence_contract import (
     evaluate_v7_source_dynamics_external_evidence_contract,
 )
 from .driving.v7_source_evidence_matrix import evaluate_v7_source_evidence_matrix
+from .driving.v7_source_type_average_mapping_contract import (
+    evaluate_v7_source_type_average_mapping_contract,
+)
 from .driving.v7_source_type_temporal_identifiability import (
     evaluate_v7_source_type_temporal_identifiability,
 )
@@ -470,6 +473,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-source-type-temporal-identifiability")
     subparsers.add_parser("v7-freeze-source-dynamics-external-evidence-contract")
     subparsers.add_parser("v7-audit-source-evidence-matrix")
+    subparsers.add_parser("v7-audit-source-type-average-mapping")
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
@@ -1620,6 +1624,14 @@ def main() -> None:
     if args.command == "v7-audit-source-evidence-matrix":
         report = evaluate_v7_source_evidence_matrix(root)
         target = root / "artifacts/v7-source-evidence-matrix.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-source-type-average-mapping":
+        report = evaluate_v7_source_type_average_mapping_contract(root)
+        target = root / "artifacts/v7-source-type-average-mapping-contract.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
