@@ -5,6 +5,7 @@ contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 evidence:
   t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
   t4_individual_split: artifacts/v7-t4-individual-split-audit.json
+  edmond_fig3_retrieval: artifacts/v7-edmond-fig3-retrieval-audit.json
   behnia_t4_fast: artifacts/v7-behnia-t4-fast-source-audit.json
   t4_inhibitory_external: artifacts/v7-t4-inhibitory-source-external-audit.json
   borst_2025_temporal_filtering: artifacts/v7-borst-2025-temporal-filtering-audit.json
@@ -49,4 +50,6 @@ boundary:
   no_parameter_fit: true
   no_target_activity_injection: true
   no_runtime_change: true
+  missing_repository_payload_is_not_scientific_rejection: true
+  workbook_interpolation_is_not_repository_voltage: true
   T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

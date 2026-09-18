@@ -238,6 +238,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "on:Tm3"
     ]
     assert visual["observations"]["T4_all_individual_split_gates_passed"] is False
+    assert visual["observations"]["Edmond_Fig3_frozen_four_file_manifest_complete"] is True
+    assert visual["observations"]["Edmond_Fig3_1khz_payload_currently_verified"] is False
+    assert (
+        visual["observations"]["Edmond_Fig3_full_resolution_recompute_authorized"]
+        is False
+    )
+    assert visual["observations"]["Edmond_network_failure_is_scientific_rejection"] is False
     assert visual["observations"]["Behnia_T4_independent_fast_source_phenotypes"] == [
         "Mi1",
         "Tm3",

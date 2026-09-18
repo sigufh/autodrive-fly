@@ -1,0 +1,174 @@
+{
+  "protocol": {
+    "name": "v7-edmond-fig3-1khz-retrieval-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-edmond-fig3-retrieval-audit.yaml": "b5c10fb4ebcbd61e68bb8bce6538213a79ed4bb9bb4bd819c483c24668f57499",
+      "src/fly_emotion/driving/v7_edmond_fig3_retrieval_audit.py": "13afdd563c934c36bb7645b401a8db0b2fc849af9e4612ef9fc82d023814a3da",
+      "configs/driving-v7-electrophysiology-audit.yaml": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
+      "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
+      "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
+      "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "dataset": {
+    "doi": "10.17617/3.8G",
+    "alternate_identifier": "collection:lNKnQnTToiRUgTtk",
+    "license": "CC BY 4.0",
+    "repository_rate_hz": 1000,
+    "raw_acquisition_rate_hz": 10000,
+    "trace_samples": 8000,
+    "local_payload_directory": "data/raw/t4-fig3-source-dynamics/edmond-1khz"
+  },
+  "frozen_file_manifest": {
+    "fig3_Tm3.npy": {
+      "id": 104816,
+      "bytes": 1536128,
+      "md5": "e001e3d8d3ca32ca11417965bb182616",
+      "sha256": "07797ccd2ce72d3ea89c9ca01ba641c7c92d3d6dd198d6324596f2cf16b0fb82",
+      "shape": [
+        2,
+        12,
+        8000
+      ],
+      "dtype": "float64"
+    },
+    "fig3_Mi1.npy": {
+      "id": 104811,
+      "bytes": 3072128,
+      "md5": "1964e0a136ed93f74b215f2a11dc0c25",
+      "sha256": "351e9e791a30d1c5bac329165934fbc05dbcfbb038b4b6e940e2531de1d61cce",
+      "shape": [
+        2,
+        24,
+        8000
+      ],
+      "dtype": "float64"
+    },
+    "fig3_Mi4.npy": {
+      "id": 104812,
+      "bytes": 2432128,
+      "md5": "c2ef2980d423f322730dfaded3fa5a07",
+      "sha256": "9309bb6deadcb8bf5c9a52267ef6564c314a04212af81c129b0754cf4de1f791",
+      "shape": [
+        2,
+        19,
+        8000
+      ],
+      "dtype": "float64"
+    },
+    "fig3_C3.npy": {
+      "id": 104809,
+      "bytes": 2048128,
+      "md5": "714a097178d0cc202b1a4698a95852bf",
+      "sha256": "b9118e32cfb0d22acd4da41aee6931923ea33e4dda258df2abd26fd252e21be6",
+      "shape": [
+        2,
+        16,
+        8000
+      ],
+      "dtype": "float64"
+    }
+  },
+  "manifest_cross_check": {
+    "all_four_files_match_prior_config_report_and_headers": true,
+    "prior_payload_verification_existed": true,
+    "current_payload_retained_by_prior_audit": false
+  },
+  "datacite_observation": {
+    "api_url": "https://api.datacite.org/dois/10.17617/3.8g",
+    "response_status": 200,
+    "content_url_present": false,
+    "object_count": 76,
+    "required_size_zero_based_positions": {
+      "fig3_C3.npy": 44,
+      "fig3_Mi1.npy": 46,
+      "fig3_Mi4.npy": 47,
+      "fig3_Tm3.npy": 51
+    },
+    "limitation": "sizes_and_formats_are_ordered_but_filenames_checksums_and_download_URLs_are_absent"
+  },
+  "retrieval_observations": [
+    {
+      "endpoint": "https://edmond.mpg.de/api/access/datafile/104816",
+      "layer": "tcp_connect",
+      "result": "timeout"
+    },
+    {
+      "endpoint": "https://edmond.mpdl.mpg.de/api/access/datafile/104816",
+      "layer": "tcp_connect",
+      "result": "timeout"
+    },
+    {
+      "endpoint": "https://api.allorigins.win/raw?url=https%3A%2F%2Fedmond.mpg.de%2Fapi%2Fdatasets%2F%3ApersistentId%2F%3FpersistentId%3Ddoi%3A10.17617%2F3.8G",
+      "layer": "upstream_origin",
+      "result": "HTTP_522"
+    },
+    {
+      "endpoint": "https://web.archive.org/cdx/search/cdx?url=edmond.mpg.de/api/access/datafile/104816",
+      "layer": "archive_index",
+      "result": "no_capture"
+    }
+  ],
+  "mirror_search": {
+    "verified_candidate_count": 0,
+    "adoption_rule": "exact_filename_and_bytes_and_md5_and_sha256_must_all_match_frozen_manifest"
+  },
+  "local_candidates": {
+    "fig3_Tm3.npy": {
+      "present": false,
+      "fully_verified": false
+    },
+    "fig3_Mi1.npy": {
+      "present": false,
+      "fully_verified": false
+    },
+    "fig3_Mi4.npy": {
+      "present": false,
+      "fully_verified": false
+    },
+    "fig3_C3.npy": {
+      "present": false,
+      "fully_verified": false
+    }
+  },
+  "workbook_resolution_boundary": {
+    "sample_interval_milliseconds": 10.0,
+    "repository_array_interval_milliseconds": 1.0,
+    "workbook_is_repository_array": false,
+    "interpolation_authorized_as_repository_array": false
+  },
+  "prior_fixed_individual_split": {
+    "passing_source_conditions": [
+      "on:Tm3"
+    ],
+    "all_source_conditions_passed": false,
+    "rules_may_change_for_full_resolution_recompute": false
+  },
+  "gates": {
+    "frozen_four_file_manifest_complete": true,
+    "all_four_local_payloads_hash_and_structure_verified": false,
+    "one_khz_cell_order_identity_verified": false,
+    "full_resolution_fixed_split_recompute_authorized": false,
+    "scientific_source_rejected": false,
+    "workbook_interpolation_authorized": false
+  },
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "verified_1khz_payload_not_currently_available_and_array_to_workbook_identity_order_unverified",
+  "boundary": {
+    "network_failure_is_not_scientific_rejection": true,
+    "ten_millisecond_workbook_is_not_one_khz_payload": true,
+    "workbook_interpolation_cannot_substitute_for_repository_array": true,
+    "no_threshold_label_split_denominator_or_failure_rule_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

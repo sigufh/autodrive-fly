@@ -32,6 +32,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
 
     t4_voltage = evidence["t4_voltage"]
     t4_split = evidence["t4_individual_split"]
+    edmond_retrieval = evidence["edmond_fig3_retrieval"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
@@ -167,6 +168,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     t4_split["conditions"][condition]["sources"][source]["passed"]
                     for condition in ("on", "off")
                 )
+            ),
+            "Edmond_1khz_payload_currently_verified": (
+                family == "T4"
+                and edmond_retrieval["gates"][
+                    "all_four_local_payloads_hash_and_structure_verified"
+                ]
+            ),
+            "Edmond_1khz_fixed_split_recompute_authorized": (
+                family == "T4"
+                and edmond_retrieval["gates"][
+                    "full_resolution_fixed_split_recompute_authorized"
+                ]
             ),
             "independent_whole_cell_voltage_phenotype_without_numeric_payload": (
                 source in behnia_fast_sources

@@ -81,6 +81,9 @@ from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7
 from .driving.v7_dryad_l1l2_source_dynamics_audit import (
     evaluate_v7_dryad_l1l2_source_dynamics_audit,
 )
+from .driving.v7_edmond_fig3_retrieval_audit import (
+    evaluate_v7_edmond_fig3_retrieval_audit,
+)
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
 from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
@@ -503,6 +506,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
     subparsers.add_parser("v7-audit-t4-source-dynamics-transfer")
+    subparsers.add_parser("v7-audit-edmond-fig3-retrieval")
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
     subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
@@ -1467,6 +1471,14 @@ def main() -> None:
         report = evaluate_v7_t4_source_dynamics_transfer_audit(root)
         target = root / "artifacts/v7-t4-source-dynamics-transfer-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-edmond-fig3-retrieval":
+        report = evaluate_v7_edmond_fig3_retrieval_audit(root)
+        target = root / "artifacts/v7-edmond-fig3-retrieval-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-t4-source-identity-readiness":

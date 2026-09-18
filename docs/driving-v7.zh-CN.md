@@ -2164,6 +2164,20 @@ T4/T5、多障碍全局聚合、单纯提高空间 bin 数、继续扩大 ridge�
 统一 LPLC looming 规则及把冻结方向标签当作上游方向验证。当前阶段仍是 controlled vision；MB 学习、OOD、
 外部 final、城市交通和部署均不授权。
 
+Edmond Fig. 3 的 1 kHz 原始 source 数组检索边界也已单独冻结。所需的
+`fig3_Tm3.npy`、`fig3_Mi1.npy`、`fig3_Mi4.npy`、`fig3_C3.npy` 均保留固定
+datafile ID、字节数、MD5、SHA-256、float64 dtype 与 `[on/off, cell, 8000 ms]`
+shape，并与此前成功下载的正式电生理审计逐项交叉核对。DataCite 仍返回 DOI、imeji
+collection 标识及 76 个对象的有序 size/format，但没有 filename、checksum 或 content URL；
+两个 Edmond 域名在 TCP 建连阶段超时，第三方回源为 HTTP 522，Wayback 没有对应
+datafile capture，当前 ignored 本地目录中也没有四个载荷。因此本轮不能执行 1 kHz
+individual split 重算。网络失败不构成科学否决；当前 10 ms 工作簿也不得插值后冒充
+1 kHz repository array。只有候选文件同时匹配固定文件名、字节数、MD5、SHA-256、dtype
+和 shape，并进一步验证数组 cell 顺序与 workbook pseudonymous individual ordinal 的对应，
+才可在完全不改 split、标签、阈值、固定分母和失败规则的前提下重算。当前仍只有
+`on:Tm3` 通过既有 split，全部下游门保持关闭。证据见
+`artifacts/v7-edmond-fig3-retrieval-audit.json`。
+
 前端披露也按这个边界拆开：`/api/v7/status` 只读取并逐依赖哈希验证
 `artifacts/v7-goal-audit.json`，不实例化 v7 或改变 `/api/driving/*`。页面把当前运行的
 assisted-v5/neural-v6-front 因果链显示为“R1–R6 输入 → T4/T5 flow 与神经状态 → raw

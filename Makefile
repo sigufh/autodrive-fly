@@ -128,6 +128,10 @@ v7-evaluate-neural-spectra:
 v7-audit-electrophysiology:
 	.venv/bin/autodrive-fly v7-audit-electrophysiology
 
+.PHONY: v7-audit-edmond-fig3-retrieval
+v7-audit-edmond-fig3-retrieval:
+	.venv/bin/autodrive-fly v7-audit-edmond-fig3-retrieval
+
 v7-audit-timebase:
 	.venv/bin/autodrive-fly v7-audit-timebase
 

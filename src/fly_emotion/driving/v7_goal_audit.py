@@ -93,6 +93,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t4_source_identity_readiness_audit"
     ]
     t4_individual_split_audit = reports["t4_individual_split_audit"]
+    edmond_fig3_retrieval_audit = reports["edmond_fig3_retrieval_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     t4_inhibitory_source_external_audit = reports[
         "t4_inhibitory_source_external_audit"
@@ -305,6 +306,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["t4_source_identity_readiness_audit"],
                 config["evidence"]["t4_individual_split_audit"],
+                config["evidence"]["edmond_fig3_retrieval_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
                 config["evidence"]["unified_model_package_audit"],
@@ -594,6 +596,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     t4_individual_split_audit[
                         "all_source_condition_individual_split_gates_passed"
                     ]
+                ),
+                "Edmond_Fig3_frozen_four_file_manifest_complete": (
+                    edmond_fig3_retrieval_audit["gates"][
+                        "frozen_four_file_manifest_complete"
+                    ]
+                ),
+                "Edmond_Fig3_1khz_payload_currently_verified": (
+                    edmond_fig3_retrieval_audit["gates"][
+                        "all_four_local_payloads_hash_and_structure_verified"
+                    ]
+                ),
+                "Edmond_Fig3_full_resolution_recompute_authorized": (
+                    edmond_fig3_retrieval_audit["gates"][
+                        "full_resolution_fixed_split_recompute_authorized"
+                    ]
+                ),
+                "Edmond_network_failure_is_scientific_rejection": (
+                    edmond_fig3_retrieval_audit["gates"]["scientific_source_rejected"]
                 ),
                 "Behnia_T4_independent_fast_source_phenotypes": sorted(
                     behnia_t4_fast_source_audit["source_evidence"]

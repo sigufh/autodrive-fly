@@ -41,6 +41,18 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             ]
             is False
         )
+        assert (
+            report["matrix"][source]["evidence_components"][
+                "Edmond_1khz_payload_currently_verified"
+            ]
+            is False
+        )
+        assert (
+            report["matrix"][source]["evidence_components"][
+                "Edmond_1khz_fixed_split_recompute_authorized"
+            ]
+            is False
+        )
 
 
 def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:
