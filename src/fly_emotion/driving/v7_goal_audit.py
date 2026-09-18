@@ -92,6 +92,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_identity_readiness_audit = reports[
         "t4_source_identity_readiness_audit"
     ]
+    t4_individual_split_audit = reports["t4_individual_split_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -283,6 +284,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["source_type_temporal_identifiability"],
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["t4_source_identity_readiness_audit"],
+                config["evidence"]["t4_individual_split_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -550,6 +552,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_individual_level_source_validation_ready": (
                     t4_source_identity_readiness_audit[
                         "T4_individual_level_source_validation_ready"
+                    ]
+                ),
+                "T4_individual_split_passing_source_conditions": [
+                    f"{condition}:{source}"
+                    for condition, details in t4_individual_split_audit[
+                        "conditions"
+                    ].items()
+                    for source, result in details["sources"].items()
+                    if result["passed"]
+                ],
+                "T4_all_individual_split_gates_passed": (
+                    t4_individual_split_audit[
+                        "all_source_condition_individual_split_gates_passed"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (

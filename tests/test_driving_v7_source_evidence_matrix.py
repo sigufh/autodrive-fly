@@ -35,6 +35,9 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             report["matrix"][source]["gates"]["stable_biological_individual_id_on_allowed_payload"]
             is True
         )
+        assert report["matrix"][source]["evidence_components"][
+            "fixed_T4_individual_split_passed_for_ON_and_OFF"
+        ] is False
 
 
 def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:

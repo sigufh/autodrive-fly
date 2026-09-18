@@ -194,6 +194,7 @@ from .driving.v7_t4_crossfit_retinal_symmetry_audit import (
 from .driving.v7_t4_crossfit_sequence_identifiability import (
     evaluate_v7_t4_crossfit_sequence_identifiability,
 )
+from .driving.v7_t4_individual_split_audit import evaluate_v7_t4_individual_split_audit
 from .driving.v7_t4_local_correlator_precheck import evaluate_v7_t4_local_correlator_precheck
 from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_correlator
 from .driving.v7_t4_pair_lag_audit import evaluate_v7_t4_pair_lag_audit
@@ -478,6 +479,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
     subparsers.add_parser("v7-audit-t4-source-dynamics-transfer")
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
+    subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
@@ -1438,6 +1440,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-source-identity-readiness":
         report = evaluate_v7_t4_source_identity_readiness_audit(root)
         target = root / "artifacts/v7-t4-source-identity-readiness-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t4-individual-split":
+        report = evaluate_v7_t4_individual_split_audit(root)
+        target = root / "artifacts/v7-t4-individual-split-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

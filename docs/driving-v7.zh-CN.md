@@ -1953,8 +1953,14 @@ body ID，也不提供 external-final 身份或预注册 split 角色。此前�
 固定门下没有一种
 T4 source 同时通过 ON 与 OFF 的逐细胞稳健性：Mi1、C3 峰时延离散显著，Mi4 存在负的
 leave-one-cell-out 个例，而且 Mi4 的 ON 中位峰反而早于 Tm3/Mi1，违反预注册的
-fast/delayed 顺序。因而 alternating-cell split 只能作诊断，不能冒充按 fly 独立验证，
-T4 也不能单独先解锁。证据见 `artifacts/v7-t4-source-identity-readiness-audit.json`。
+fast/delayed 顺序。原 alternating-cell split 只能作诊断；在恢复 ordinal 的一细胞一动物
+语义后，又冻结 3 个连续 individual 作 validation、其余作 training，并用尾部折覆盖余数，
+确保每个 individual 至少验证一次且每折 train/validation 不相交。固定阈值下 8 个
+source×polarity 组合只有 Tm3-ON 通过：Mi1-ON、Mi4-ON/OFF 仍出现负的个体相关，
+C3-ON 的最差 validation-fold correlation 约 0.373。该 split 是观察过全体指标后的诊断，
+不是 external final，也未移除异常值；因此 T4 仍不能单独解锁。证据见
+`artifacts/v7-t4-source-identity-readiness-audit.json` 与
+`artifacts/v7-t4-individual-split-audit.json`。
 
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529

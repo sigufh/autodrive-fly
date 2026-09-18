@@ -31,6 +31,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         raise ValueError("source evidence matrix order differs from contract")
 
     t4_voltage = evidence["t4_voltage"]
+    t4_split = evidence["t4_individual_split"]
     gou = evidence["gou_partial"]
     gou_sources = set(gou["source_evidence"])
     # The Gou archive was not downloaded or hash-verified. Its README describes
@@ -133,6 +134,13 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "C3" and c3_external_disjoint
             ),
             "fixed_external_robustness_gate_passed": (source == "C3" and c3_robustness),
+            "fixed_T4_individual_split_passed_for_ON_and_OFF": (
+                family == "T4"
+                and all(
+                    t4_split["conditions"][condition]["sources"][source]["passed"]
+                    for condition in ("on", "off")
+                )
+            ),
         }
         numerical_sources = []
         phenotype_sources = []

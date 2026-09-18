@@ -1,0 +1,1848 @@
+{
+  "protocol": {
+    "name": "v7-t4-individual-split-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-individual-split-audit.yaml": "75780a6cd9ad7c48881d975a8ee04df73bdf314cea615fa92dbd9893eebf3052",
+      "src/fly_emotion/driving/v7_t4_individual_split_audit.py": "481a66f90aa6a54aa518f37b6beaf5cecdf29321beba62463f8343fd1d389aed",
+      "configs/driving-v7-fig3-source-kernel-audit.yaml": "19747480f323fa2e6eea60caff394f40162f76ce1a03f9c115ef0a36c9637248",
+      "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "split_contract": {
+    "validation_individual_count": 3,
+    "construction": "contiguous_source_ordinal_blocks_with_final_tail_block",
+    "every_individual_appears_in_validation_at_least_once": true
+  },
+  "conditions": {
+    "on": {
+      "sources": {
+        "Tm3": {
+          "individual_count": 12,
+          "fold_count": 4,
+          "validation_coverage_count": 12,
+          "minimum_validation_fold_correlation": 0.9680445005248384,
+          "median_validation_fold_correlation": 0.9802737264584898,
+          "median_individual_correlation": 0.9635198444453579,
+          "minimum_individual_correlation": 0.813095323836553,
+          "negative_individual_correlation_fraction": 0.0,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6",
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9",
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "validation_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9692013815932332,
+              "validation_individual_correlations": [
+                0.9805390712382178,
+                0.9625191663237261,
+                0.8199300699032218
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3",
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9",
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "validation_individual_ids": [
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9680445005248384,
+              "validation_individual_correlations": [
+                0.9347419506495289,
+                0.9244415705406555,
+                0.9838148842999372
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3",
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6",
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "validation_individual_ids": [
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9913460713237463,
+              "validation_individual_correlations": [
+                0.9645205225669895,
+                0.9917781191121895,
+                0.955062104623993
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3",
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6",
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9"
+              ],
+              "validation_individual_ids": [
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9914811355555354,
+              "validation_individual_correlations": [
+                0.9880893564212027,
+                0.813095323836553,
+                0.9924653408789565
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": true,
+            "median_individual_correlation": true,
+            "minimum_individual_correlation": true,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": true
+        },
+        "Mi1": {
+          "individual_count": 24,
+          "fold_count": 8,
+          "validation_coverage_count": 24,
+          "minimum_validation_fold_correlation": 0.3222857083875585,
+          "median_validation_fold_correlation": 0.6989228879762883,
+          "median_individual_correlation": 0.5979669586621776,
+          "minimum_individual_correlation": -0.6871647653577108,
+          "negative_individual_correlation_fraction": 0.2916666666666667,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8310443107009898,
+              "validation_individual_correlations": [
+                0.6038932286480893,
+                0.5892951569742149,
+                0.7595843149623325
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.3222857083875585,
+              "validation_individual_correlations": [
+                0.6759676739757697,
+                0.6879401916013309,
+                -0.392399136327869
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.900450573721562,
+              "validation_individual_correlations": [
+                0.6480544930446791,
+                0.7997553450458872,
+                -0.32594308919676795
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.5921333585033027,
+              "validation_individual_correlations": [
+                -0.5377577068703088,
+                -0.6871647653577108,
+                0.8077432887640301
+              ]
+            },
+            {
+              "fold_index": 4,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.898022660793085,
+              "validation_individual_correlations": [
+                0.4650649301634417,
+                0.8827059994964677,
+                0.7758329916951361
+              ]
+            },
+            {
+              "fold_index": 5,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.47291428904918087,
+              "validation_individual_correlations": [
+                -0.2807340034659359,
+                -0.11821715708504905,
+                0.7738991799181456
+              ]
+            },
+            {
+              "fold_index": 6,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.6459099198686253,
+              "validation_individual_correlations": [
+                0.6998920577293808,
+                -0.050962425662708,
+                0.5920406886762659
+              ]
+            },
+            {
+              "fold_index": 7,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21"
+              ],
+              "validation_individual_ids": [
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.7519358560839514,
+              "validation_individual_correlations": [
+                0.10362827140785959,
+                0.7818027601945763,
+                0.5160372902089763
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": false,
+            "median_individual_correlation": false,
+            "minimum_individual_correlation": false,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        },
+        "Mi4": {
+          "individual_count": 19,
+          "fold_count": 7,
+          "validation_coverage_count": 19,
+          "minimum_validation_fold_correlation": 0.697283353245164,
+          "median_validation_fold_correlation": 0.9373571354674475,
+          "median_individual_correlation": 0.9141231341815655,
+          "minimum_individual_correlation": -0.6405636340922504,
+          "negative_individual_correlation_fraction": 0.09523809523809523,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9373571354674475,
+              "validation_individual_correlations": [
+                0.9499029001171713,
+                0.4612874527872437,
+                0.9698687769408338
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9229036618723884,
+              "validation_individual_correlations": [
+                0.9141231341815655,
+                0.9644330222063934,
+                -0.5197411002316152
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9341795269812386,
+              "validation_individual_correlations": [
+                0.9602294898493425,
+                -0.6405636340922504,
+                0.8339061771293769
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.697283353245164,
+              "validation_individual_correlations": [
+                0.5504133143861804,
+                0.3399011969829471,
+                0.8591227364381925
+              ]
+            },
+            {
+              "fold_index": 4,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9701347802510465,
+              "validation_individual_correlations": [
+                0.8302381454694929,
+                0.9166158588301421,
+                0.9690509041844844
+              ]
+            },
+            {
+              "fold_index": 5,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9827121531539699,
+              "validation_individual_correlations": [
+                0.9778472034247219,
+                0.950737298823781,
+                0.8960748513712129
+              ]
+            },
+            {
+              "fold_index": 6,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16"
+              ],
+              "validation_individual_ids": [
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9898656404978037,
+              "validation_individual_correlations": [
+                0.953224929717729,
+                0.9064694059657971,
+                0.9650434712659856
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": false,
+            "median_individual_correlation": true,
+            "minimum_individual_correlation": false,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        },
+        "C3": {
+          "individual_count": 16,
+          "fold_count": 6,
+          "validation_coverage_count": 16,
+          "minimum_validation_fold_correlation": 0.3728017311569671,
+          "median_validation_fold_correlation": 0.8629221427350335,
+          "median_individual_correlation": 0.5986153629806525,
+          "minimum_individual_correlation": 0.0914367850555808,
+          "negative_individual_correlation_fraction": 0.0,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9604224806791752,
+              "validation_individual_correlations": [
+                0.40864867925759796,
+                0.6133385752509225,
+                0.7861480485567061
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-4",
+                "C3-5",
+                "C3-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8597593937372238,
+              "validation_individual_correlations": [
+                0.767855392111468,
+                0.5702272201385702,
+                0.6843398184866696
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-7",
+                "C3-8",
+                "C3-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9386088769378018,
+              "validation_individual_correlations": [
+                0.5517319052285496,
+                0.5372634978493503,
+                0.8564692963058048
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-10",
+                "C3-11",
+                "C3-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.6348686828856095,
+              "validation_individual_correlations": [
+                0.7054480371092837,
+                0.5838921507103827,
+                0.4460615110719374
+              ]
+            },
+            {
+              "fold_index": 4,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-13",
+                "C3-14",
+                "C3-15"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.3728017311569671,
+              "validation_individual_correlations": [
+                0.0914367850555808,
+                0.38675467221808657,
+                0.9646228747553639
+              ]
+            },
+            {
+              "fold_index": 5,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13"
+              ],
+              "validation_individual_ids": [
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8660848917328434,
+              "validation_individual_correlations": [
+                0.6634364465697875,
+                0.9451513425597144,
+                0.518982826197563
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": false,
+            "median_individual_correlation": false,
+            "minimum_individual_correlation": true,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        }
+      },
+      "all_sources_passed": false
+    },
+    "off": {
+      "sources": {
+        "Tm3": {
+          "individual_count": 12,
+          "fold_count": 4,
+          "validation_coverage_count": 12,
+          "minimum_validation_fold_correlation": 0.8667782145955292,
+          "median_validation_fold_correlation": 0.9125350312098848,
+          "median_individual_correlation": 0.7975511026458284,
+          "minimum_individual_correlation": -0.1018517272967946,
+          "negative_individual_correlation_fraction": 0.08333333333333333,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6",
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9",
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "validation_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9230271007018789,
+              "validation_individual_correlations": [
+                0.6133250817240553,
+                0.9833678761021872,
+                0.7594656717651911
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3",
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9",
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "validation_individual_ids": [
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8667782145955292,
+              "validation_individual_correlations": [
+                0.9612131932262299,
+                -0.1018517272967946,
+                0.9563405087452262
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3",
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6",
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "validation_individual_ids": [
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9071541116003957,
+              "validation_individual_correlations": [
+                0.5938337317647361,
+                0.9478029603100385,
+                0.5263137806630852
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "Tm3-1",
+                "Tm3-2",
+                "Tm3-3",
+                "Tm3-4",
+                "Tm3-5",
+                "Tm3-6",
+                "Tm3-7",
+                "Tm3-8",
+                "Tm3-9"
+              ],
+              "validation_individual_ids": [
+                "Tm3-10",
+                "Tm3-11",
+                "Tm3-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9179159508193739,
+              "validation_individual_correlations": [
+                0.8356365335264658,
+                0.7049365952556907,
+                0.945884453848709
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": true,
+            "median_individual_correlation": false,
+            "minimum_individual_correlation": false,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        },
+        "Mi1": {
+          "individual_count": 24,
+          "fold_count": 8,
+          "validation_coverage_count": 24,
+          "minimum_validation_fold_correlation": 0.7110805046035962,
+          "median_validation_fold_correlation": 0.9528687064485042,
+          "median_individual_correlation": 0.9432784380907916,
+          "minimum_individual_correlation": 0.15726106479255092,
+          "negative_individual_correlation_fraction": 0.0,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.7110805046035962,
+              "validation_individual_correlations": [
+                0.9598112246817045,
+                0.9570410416544097,
+                0.15726106479255092
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9023304620212554,
+              "validation_individual_correlations": [
+                0.9575338705480281,
+                0.9155267501277922,
+                0.8397388380687373
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9625599445032462,
+              "validation_individual_correlations": [
+                0.24938482656679484,
+                0.9775705152211869,
+                0.9093565106288511
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9898669428856953,
+              "validation_individual_correlations": [
+                0.9399470331055734,
+                0.9923925124922595,
+                0.6075432766912652
+              ]
+            },
+            {
+              "fold_index": 4,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9828106706077472,
+              "validation_individual_correlations": [
+                0.9633555384565988,
+                0.9724601050065101,
+                0.6789537160318262
+              ]
+            },
+            {
+              "fold_index": 5,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9829746380654509,
+              "validation_individual_correlations": [
+                0.9256583001325996,
+                0.9783763224740707,
+                0.9823962121492262
+              ]
+            },
+            {
+              "fold_index": 6,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "validation_individual_ids": [
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.943177468393762,
+              "validation_individual_correlations": [
+                0.2978424083219048,
+                0.9246101648121943,
+                0.9775157171761091
+              ]
+            },
+            {
+              "fold_index": 7,
+              "training_individual_ids": [
+                "Mi1-1",
+                "Mi1-2",
+                "Mi1-3",
+                "Mi1-4",
+                "Mi1-5",
+                "Mi1-6",
+                "Mi1-7",
+                "Mi1-8",
+                "Mi1-9",
+                "Mi1-10",
+                "Mi1-11",
+                "Mi1-12",
+                "Mi1-13",
+                "Mi1-14",
+                "Mi1-15",
+                "Mi1-16",
+                "Mi1-17",
+                "Mi1-18",
+                "Mi1-19",
+                "Mi1-20",
+                "Mi1-21"
+              ],
+              "validation_individual_ids": [
+                "Mi1-22",
+                "Mi1-23",
+                "Mi1-24"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.906436901578652,
+              "validation_individual_correlations": [
+                0.5417305749702893,
+                0.987019993592216,
+                0.9466098430760098
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": false,
+            "median_individual_correlation": true,
+            "minimum_individual_correlation": true,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        },
+        "Mi4": {
+          "individual_count": 19,
+          "fold_count": 7,
+          "validation_coverage_count": 19,
+          "minimum_validation_fold_correlation": 0.25170013955256704,
+          "median_validation_fold_correlation": 0.9162935676689979,
+          "median_individual_correlation": 0.8858712098460555,
+          "minimum_individual_correlation": -0.386517787926027,
+          "negative_individual_correlation_fraction": 0.09523809523809523,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.915236553034453,
+              "validation_individual_correlations": [
+                0.8014720104281168,
+                0.9090734801807664,
+                0.7739395678122007
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9162935676689979,
+              "validation_individual_correlations": [
+                0.821890794706257,
+                0.9318858637976999,
+                0.9220235558791103
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9795608898122985,
+              "validation_individual_correlations": [
+                0.9514833055884869,
+                0.26734790318002044,
+                0.918176009472701
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.25170013955256704,
+              "validation_individual_correlations": [
+                0.016526222290441636,
+                0.3869776692325709,
+                0.9187051459827218
+              ]
+            },
+            {
+              "fold_index": 4,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9186046670112924,
+              "validation_individual_correlations": [
+                -0.386517787926027,
+                0.9674010781879813,
+                0.9855290045179547
+              ]
+            },
+            {
+              "fold_index": 5,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-19"
+              ],
+              "validation_individual_ids": [
+                "Mi4-16",
+                "Mi4-17",
+                "Mi4-18"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9564597833366961,
+              "validation_individual_correlations": [
+                -0.30815273985173763,
+                0.9124457680527726,
+                0.7855252135886518
+              ]
+            },
+            {
+              "fold_index": 6,
+              "training_individual_ids": [
+                "Mi4-1",
+                "Mi4-2",
+                "Mi4-3",
+                "Mi4-4",
+                "Mi4-5",
+                "Mi4-6",
+                "Mi4-7",
+                "Mi4-8",
+                "Mi4-9",
+                "Mi4-10",
+                "Mi4-11",
+                "Mi4-12",
+                "Mi4-13",
+                "Mi4-14",
+                "Mi4-15",
+                "Mi4-16"
+              ],
+              "validation_individual_ids": [
+                "Mi4-17",
+                "Mi4-18",
+                "Mi4-19"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8791761047168699,
+              "validation_individual_correlations": [
+                0.8858712098460555,
+                0.7484647293440404,
+                0.9330451612767068
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": false,
+            "median_individual_correlation": true,
+            "minimum_individual_correlation": false,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        },
+        "C3": {
+          "individual_count": 16,
+          "fold_count": 6,
+          "validation_coverage_count": 16,
+          "minimum_validation_fold_correlation": 0.7624556927781007,
+          "median_validation_fold_correlation": 0.8830752632701038,
+          "median_individual_correlation": 0.8751660601694555,
+          "minimum_individual_correlation": 0.3304832660563794,
+          "negative_individual_correlation_fraction": 0.0,
+          "folds": [
+            {
+              "fold_index": 0,
+              "training_individual_ids": [
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.7624556927781007,
+              "validation_individual_correlations": [
+                0.9463924578762016,
+                0.8851282677340958,
+                0.5033057226080855
+              ]
+            },
+            {
+              "fold_index": 1,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-4",
+                "C3-5",
+                "C3-6"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8667609874773676,
+              "validation_individual_correlations": [
+                0.3304832660563794,
+                0.8565457124755688,
+                0.9233288226766804
+              ]
+            },
+            {
+              "fold_index": 2,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-7",
+                "C3-8",
+                "C3-9"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8923686030323261,
+              "validation_individual_correlations": [
+                0.8511654766821946,
+                0.8757883343557039,
+                0.8745437859832071
+              ]
+            },
+            {
+              "fold_index": 3,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-13",
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-10",
+                "C3-11",
+                "C3-12"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9586052126761515,
+              "validation_individual_correlations": [
+                0.9800738016717928,
+                0.9448890283359274,
+                0.6341958040107918
+              ]
+            },
+            {
+              "fold_index": 4,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-16"
+              ],
+              "validation_individual_ids": [
+                "C3-13",
+                "C3-14",
+                "C3-15"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.8737819235078813,
+              "validation_individual_correlations": [
+                0.8786698734243688,
+                0.8490728074836732,
+                0.8640553010205292
+              ]
+            },
+            {
+              "fold_index": 5,
+              "training_individual_ids": [
+                "C3-1",
+                "C3-2",
+                "C3-3",
+                "C3-4",
+                "C3-5",
+                "C3-6",
+                "C3-7",
+                "C3-8",
+                "C3-9",
+                "C3-10",
+                "C3-11",
+                "C3-12",
+                "C3-13"
+              ],
+              "validation_individual_ids": [
+                "C3-14",
+                "C3-15",
+                "C3-16"
+              ],
+              "training_validation_disjoint": true,
+              "validation_kernel_correlation": 0.9276214194627692,
+              "validation_individual_correlations": [
+                0.9039253854084677,
+                0.9151976366913158,
+                0.5032646258581447
+              ]
+            }
+          ],
+          "gates": {
+            "minimum_validation_fold_correlation": false,
+            "median_individual_correlation": true,
+            "minimum_individual_correlation": true,
+            "every_individual_validated": true,
+            "every_fold_training_validation_disjoint": true
+          },
+          "passed": false
+        }
+      },
+      "all_sources_passed": false
+    }
+  },
+  "all_source_condition_individual_split_gates_passed": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "seven_of_eight_source_condition_individual_splits_fail",
+  "boundary": {
+    "post_hoc_diagnostic_after_full_population_metrics_were_observed": true,
+    "not_external_final": true,
+    "all_cells_retained": true,
+    "no_outlier_removal": true,
+    "no_threshold_or_label_change": true,
+    "no_T4_response_used": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}
