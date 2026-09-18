@@ -1,6 +1,6 @@
 version: 1
 name: v7-objective-coverage-audit
-observed_on: "2026-09-15"
+observed_on: "2026-09-18"
 objective_items:
   "0": version_and_claim_boundaries
   "1": controlled_causal_visual_chain
@@ -96,6 +96,7 @@ evidence:
   t5_ct1_terminal_axis_audit: artifacts/v7-t5-ct1-terminal-axis-audit.json
   t5_ct1_axis_calibration: artifacts/v7-t5-ct1-axis-calibration.json
   t5_ct1_source_dynamics_precheck: artifacts/v7-t5-ct1-source-dynamics-precheck.json
+  t5_ct1_multiplicative_precheck: artifacts/v7-t5-ct1-multiplicative-precheck.json
   t5_continuous_moment_precheck: artifacts/v7-t5-continuous-moment-precheck.json
   lplc1_near_collision_precheck: artifacts/v7-lplc1-near-collision-precheck.json
   lplc1_input_structure: artifacts/v7-lplc1-input-structure.json

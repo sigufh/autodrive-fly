@@ -195,6 +195,9 @@ from .driving.v7_t5_continuous_moment_precheck import (
 from .driving.v7_t5_ct1_axis_calibration import (
     evaluate_v7_t5_ct1_axis_calibration,
 )
+from .driving.v7_t5_ct1_multiplicative_precheck import (
+    evaluate_v7_t5_ct1_multiplicative_precheck,
+)
 from .driving.v7_t5_ct1_source_dynamics_precheck import (
     evaluate_v7_t5_ct1_source_dynamics_precheck,
 )
@@ -435,6 +438,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-ct1-terminal-axis")
     subparsers.add_parser("v7-calibrate-t5-ct1-axis")
     subparsers.add_parser("v7-evaluate-t5-ct1-source-dynamics")
+    subparsers.add_parser("v7-evaluate-t5-ct1-multiplicative-precheck")
     subparsers.add_parser("v7-evaluate-t5-continuous-moment-precheck")
     subparsers.add_parser("v7-evaluate-lplc1-near-collision-precheck")
     subparsers.add_parser("v7-audit-lplc1-input-structure")
@@ -1156,6 +1160,14 @@ def main() -> None:
     if args.command == "v7-evaluate-t5-ct1-source-dynamics":
         report = evaluate_v7_t5_ct1_source_dynamics_precheck(root)
         target = root / "artifacts/v7-t5-ct1-source-dynamics-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-evaluate-t5-ct1-multiplicative-precheck":
+        report = evaluate_v7_t5_ct1_multiplicative_precheck(root)
+        target = root / "artifacts/v7-t5-ct1-multiplicative-precheck.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

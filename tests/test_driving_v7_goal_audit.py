@@ -123,6 +123,29 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         for value in counts
     ) == {0}
     assert visual["observations"]["T5_CT1_dynamics_strict_candidate_passed"] is False
+    assert visual["observations"]["T5_CT1_multiplicative_ordered_direction_pass_counts"] == [
+        0,
+        0,
+        0,
+        2,
+    ]
+    assert visual["observations"]["T5_CT1_multiplicative_ordered_polarity_pass_counts"] == [
+        8,
+        8,
+        8,
+        8,
+    ]
+    assert visual["observations"]["T5_CT1_multiplicative_control_eligible_gains"] == [
+        8.0
+    ]
+    assert visual["observations"]["T5_CT1_multiplicative_controls_evaluated"] is True
+    assert visual["observations"]["T5_CT1_multiplicative_strict_candidate_passed"] is False
+    assert (
+        visual["observations"][
+            "T5_CT1_multiplicative_three_condition_evaluation_performed"
+        ]
+        is False
+    )
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},

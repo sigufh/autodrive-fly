@@ -1776,6 +1776,16 @@ native-time 方向差模板；`authorize_T5_direction_template=false`，拟合�
 证据见 `artifacts/v7-t5-ct1-axis-calibration.json` 与
 `artifacts/v7-t5-ct1-source-dynamics-precheck.json`。
 
+随后仅在同一 `S1-T01` 上检验预注册的乘法变体：保留 Tm9 OFF 基线，按
+`Tm9_peak×(1+gain×positive_sequence_peak)` 调制，仍不向 T5 注入活动、不读取方向标签，
+也不复用 T4 mapping。T5-only CT1 axis calibration 在这里仅作为“允许做一次候选检查”的
+前置证据；其 transform 没有进入标量动态公式。四个 gain 的 OFF 极性均恢复为 8/8，
+但方向通过数依次为 0/8、0/8、0/8、2/8；只有 gain=8 的 T5d 达到最低双侧门，因此
+只对该 gain 运行 temporal-shuffle 和 static-sham，两者方向均为 0/8。完整 8/8 方向门
+仍失败，故不运行 T02/T03、不做 calibration，也不解冻 LPLC 或车辆实验。证据见
+`artifacts/v7-t5-ct1-multiplicative-precheck.json`。这个结果说明乘法门控能保住 OFF 基线，
+但单一全局 CT1 时序标量仍不足以恢复四个 T5 亚型的方向动力学。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-objective-coverage-audit",
-    "observed_on": "2026-09-15",
+    "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "aad5278f60a840345382feb1bdcb659293ae405416c04395242023af2492f001",
-      "src/fly_emotion/driving/v7_goal_audit.py": "5326874058c183c07655166465795ebd5f5b2b8ddbd9c623b0f3841e91caec71",
+      "configs/driving-v7-goal-audit.yaml": "088bd2b73bb57c5a6a79fa11e1448a69c9e7d006a4eef31baa0dc351d301d42c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "32b00b1d805e6f979eb61cb4db695e8780b41ee96bee88ba7063cdd690fc94b5",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -91,6 +91,7 @@
       "artifacts/v7-t5-ct1-terminal-axis-audit.json": "ee966705a60fca883ad6e04cf47e058c69fa5d04dd0adef0c076320584067a64",
       "artifacts/v7-t5-ct1-axis-calibration.json": "a9a3d3d4e92a3c8e1045f8f458f815a2d97fc1264b770e7379228ab51fbd5c63",
       "artifacts/v7-t5-ct1-source-dynamics-precheck.json": "c75c0297b812e2fe70c4dfa58619e287f2553712b77cb36b14e242185e74cb76",
+      "artifacts/v7-t5-ct1-multiplicative-precheck.json": "acc172064f4974b6a525964a38826a93686704857cf1385bcb11e40e02ed0c23",
       "artifacts/v7-t5-continuous-moment-precheck.json": "79b4b0d9a396b326bf871b943e5e9646bd5f3a741e1cb8243d5a5462243e3ec2",
       "artifacts/v7-lplc1-near-collision-precheck.json": "7c41b998e8b80207e0b4a17141367c0c8338ed5caea7389cbc37c99b10dfc59f",
       "artifacts/v7-lplc1-input-structure.json": "dc005e820af8bdbcd0bc4b7a45ed9385dc17aa7c0f05ac7345c7ef9cb5df095a",
@@ -175,6 +176,7 @@
         "artifacts/v7-t5-ct1-terminal-axis-audit.json",
         "artifacts/v7-t5-ct1-axis-calibration.json",
         "artifacts/v7-t5-ct1-source-dynamics-precheck.json",
+        "artifacts/v7-t5-ct1-multiplicative-precheck.json",
         "artifacts/v7-t5-continuous-moment-precheck.json",
         "artifacts/v7-t4-synapse-correlator-precheck.json",
         "artifacts/v7-t4-synapse-antisymmetric-precheck.json",
@@ -289,6 +291,24 @@
           ]
         },
         "T5_CT1_dynamics_strict_candidate_passed": false,
+        "T5_CT1_multiplicative_ordered_direction_pass_counts": [
+          0,
+          0,
+          0,
+          2
+        ],
+        "T5_CT1_multiplicative_ordered_polarity_pass_counts": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "T5_CT1_multiplicative_control_eligible_gains": [
+          8.0
+        ],
+        "T5_CT1_multiplicative_controls_evaluated": true,
+        "T5_CT1_multiplicative_strict_candidate_passed": false,
+        "T5_CT1_multiplicative_three_condition_evaluation_performed": false,
         "physical_timebase_identified": false,
         "strict_scoring_contract_frozen": true,
         "development_R1_R6_input_gates_pass": true,
