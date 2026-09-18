@@ -310,6 +310,9 @@ from .driving.v7_timing_models_ct1_compartment_audit import (
 from .driving.v7_timing_models_source_filter_audit import (
     evaluate_v7_timing_models_source_filter_audit,
 )
+from .driving.v7_tm9_coordinate_identifiability_audit import (
+    evaluate_v7_tm9_coordinate_identifiability_audit,
+)
 from .driving.v7_unified_model_package_audit import evaluate_v7_unified_model_package_audit
 from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audit
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
@@ -526,6 +529,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
     subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
     subparsers.add_parser("v7-audit-ct1-experimental-voltage-boundary")
+    subparsers.add_parser("v7-audit-tm9-coordinate-identifiability")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1696,6 +1700,14 @@ def main() -> None:
     if args.command == "v7-audit-ct1-experimental-voltage-boundary":
         report = evaluate_v7_ct1_experimental_voltage_boundary_audit(root)
         target = root / "artifacts/v7-ct1-experimental-voltage-boundary-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-tm9-coordinate-identifiability":
+        report = evaluate_v7_tm9_coordinate_identifiability_audit(root)
+        target = root / "artifacts/v7-tm9-coordinate-identifiability-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

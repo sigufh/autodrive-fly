@@ -1,0 +1,244 @@
+{
+  "protocol": {
+    "name": "v7-tm9-coordinate-identifiability-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "e60cc9ce3ab4fba5ddb75355f6cced2139eb738798019aba1d080f776c00f46d",
+      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "e0f3c6d249ac39c8f27fc2f19d857874e7875f83f8707d273ab341de5c54269c",
+      "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/raw/malecns-v1.0/connectome-weights.feather": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
+      "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b74c91098794594bc1e327c786c3b41b79af5733d6c0f60b35c04a6007527990",
+      "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "target": {
+    "body_id": 532266,
+    "annotation": {
+      "type": "Tm9",
+      "flywireType": "Tm9",
+      "instance": "Tm9_L",
+      "somaSide": "L",
+      "status": "Traced",
+      "statusLabel": "Reviewed",
+      "superclass": "ol_intrinsic",
+      "group": 16250
+    },
+    "native_optic_hex_available": false,
+    "existing_one_hop_optic_hex_available": false,
+    "skeleton": {
+      "path": "data/raw/malecns-v1.0/skeletons/532266.swc",
+      "bytes": 8454,
+      "sha256": "9952254d5bb312690c8027b40080c8e6e13a8738fb359584a9c3b6b7d4e4b910",
+      "node_count": 266,
+      "actual_sha256": "9952254d5bb312690c8027b40080c8e6e13a8738fb359584a9c3b6b7d4e4b910",
+      "minimum_xyz": [
+        71552.0,
+        40128.0,
+        31424.0
+      ],
+      "maximum_xyz": [
+        82368.0,
+        46592.0,
+        39808.0
+      ],
+      "centroid_xyz": [
+        77331.3484962406,
+        43645.37330827068,
+        37168.20037593985
+      ],
+      "root_xyz": [
+        81984.0,
+        45568.0,
+        38720.0
+      ],
+      "coordinate_semantics": "MaleCNS_tissue_xyz_not_optic_hex"
+    }
+  },
+  "graph_evidence": {
+    "canonical_incoming_edge_count": 19,
+    "canonical_incoming_synapse_weight": 45,
+    "canonical_outgoing_edge_count": 18,
+    "canonical_outgoing_synapse_weight": 53,
+    "native_coordinate_incoming_edge_count": 0,
+    "native_coordinate_incoming_synapse_weight": 0,
+    "native_coordinate_outgoing_edge_count": 1,
+    "native_coordinate_outgoing_synapse_weight": 1,
+    "raw_incoming_edge_count": 22,
+    "raw_incoming_synapse_weight": 49,
+    "raw_noncanonical_incoming_body_ids": [
+      550956,
+      438651274,
+      582390771
+    ],
+    "raw_noncanonical_incoming_bodies_with_annotations": [],
+    "canonical_filter_removed_coordinate_support": false
+  },
+  "Tm9_population": {
+    "body_count": 1771,
+    "native_coordinate_count": 1743,
+    "missing_native_coordinate_count": 28,
+    "one_hop_inferred_count": 27,
+    "one_hop_unlocated_count": 1
+  },
+  "candidate_diagnostics": {
+    "same_side_recursive_incoming": {
+      "coordinate": [
+        16.166666666666668,
+        2.7499999999999996
+      ],
+      "rounded_coordinate": [
+        16,
+        3
+      ],
+      "support_count": 3,
+      "support_synapse_weight": 8,
+      "support": [
+        {
+          "body_id": 50848,
+          "type": "Mi4",
+          "side": "L",
+          "weight": 4,
+          "coordinate": [
+            16.0,
+            2.6666666666666665
+          ],
+          "coordinate_is_native": false,
+          "coordinate_is_one_hop_inferred": true
+        },
+        {
+          "body_id": 101030,
+          "type": "Tm1",
+          "side": "L",
+          "weight": 3,
+          "coordinate": [
+            16.555555555555557,
+            3.0
+          ],
+          "coordinate_is_native": false,
+          "coordinate_is_one_hop_inferred": true
+        },
+        {
+          "body_id": 105024,
+          "type": "C3",
+          "side": "L",
+          "weight": 1,
+          "coordinate": [
+            15.666666666666666,
+            2.3333333333333335
+          ],
+          "coordinate_is_native": false,
+          "coordinate_is_one_hop_inferred": true
+        }
+      ],
+      "occupied_by_Tm9_body_ids": [
+        514902
+      ],
+      "unoccupied_coordinate": false,
+      "authorized_for_mapping": false
+    },
+    "native_outgoing": {
+      "coordinate": [
+        15.0,
+        2.0
+      ],
+      "rounded_coordinate": [
+        15,
+        2
+      ],
+      "support_count": 1,
+      "support_synapse_weight": 1,
+      "support": [
+        {
+          "body_id": 141921,
+          "type": "Tm9",
+          "side": "L",
+          "weight": 1,
+          "coordinate": [
+            15.0,
+            2.0
+          ],
+          "coordinate_is_native": true,
+          "coordinate_is_one_hop_inferred": false
+        }
+      ],
+      "occupied_by_Tm9_body_ids": [
+        141921
+      ],
+      "unoccupied_coordinate": false,
+      "authorized_for_mapping": false
+    }
+  },
+  "blind_replay_on_native_Tm9": {
+    "native_input": {
+      "native_Tm9_count": 1743,
+      "coverage_fraction": 0.9994262765347103,
+      "evaluated_count": 1742,
+      "median_error": 0.07142857142857117,
+      "p90_error": 0.2003084041924439,
+      "p95_error": 0.2727272727272734,
+      "maximum_error": 0.9751056480867838,
+      "rounded_exact_fraction": 0.9908151549942594,
+      "median_support_count": 9.0,
+      "median_support_weight": 41.0
+    },
+    "same_side_recursive_input": {
+      "native_Tm9_count": 1743,
+      "coverage_fraction": 1.0,
+      "evaluated_count": 1743,
+      "median_error": 0.07211102550927824,
+      "p90_error": 0.20570612049160808,
+      "p95_error": 0.2784887667670907,
+      "maximum_error": 0.9751056480867838,
+      "rounded_exact_fraction": 0.9913941480206541,
+      "median_support_count": 9.0,
+      "median_support_weight": 42.0
+    },
+    "native_output": {
+      "native_Tm9_count": 1743,
+      "coverage_fraction": 0.8995983935742972,
+      "evaluated_count": 1568,
+      "median_error": 0.0,
+      "p90_error": 0.5,
+      "p95_error": 0.9258753938783049,
+      "maximum_error": 2.23606797749979,
+      "rounded_exact_fraction": 0.8973214285714286,
+      "median_support_count": 2.0,
+      "median_support_weight": 3.0
+    }
+  },
+  "candidate_validation_gates": {
+    "same_side_recursive_replay_accuracy": true,
+    "same_side_recursive_p95_error": true,
+    "same_side_recursive_candidate_unoccupied": false,
+    "native_outgoing_candidate_unoccupied": false,
+    "candidate_methods_agree": false
+  },
+  "Tm9_532266_coordinate_identifiable_under_existing_rule": false,
+  "Tm9_532266_coordinate_repair_authorized": false,
+  "complete_Tm9_columnar_retinotopy_available": false,
+  "authorize_source_mapping_update": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "existing_rule_has_no_native_input_support_and_post_hoc_candidates_conflict_or_are_occupied",
+  "boundary": {
+    "existing_one_hop_native_input_rule_is_unchanged": true,
+    "recursive_two_hop_candidate_is_post_hoc_diagnostic_only": true,
+    "outgoing_neighbor_candidate_is_post_hoc_diagnostic_only": true,
+    "occupied_candidate_coordinates_are_not_overwritten": true,
+    "no_nearest_neighbor_or_same_type_coordinate_imputation": true,
+    "skeleton_xyz_is_not_optic_hex": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

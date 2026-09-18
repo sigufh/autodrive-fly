@@ -3,8 +3,8 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "0e787505145be77dc4c7dcba1f8dc55baedb9054283b9aa3cf3c8469e1b38d82",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "631c5dae5220ae0fa15f3eb024e4bc9b08915c33d37e2269fce2f0c2292dd73e",
+      "configs/driving-v7-source-evidence-matrix.yaml": "e60f9bbb58b72e0fa6bbb46770832b1bcebbff2491ccdb55b1ace1c132409f9f",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "539f9a178bb45062a970e6ca80520fb8eb58109890220a9c69c89fabefed8ff6",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
@@ -24,7 +24,8 @@
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-arenz-t5-source-dynamics-audit.json": "a1442bf2ea0f8bf82929594bc25aa9f6915be3c4bf4e7099a225a4b635d88a14",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
-      "artifacts/v7-source-type-average-mapping-contract.json": "c9036f6b378c06e1fbba6c1c1f7f535f22649537299d8f8b1cdf4c309d0a3d8f"
+      "artifacts/v7-source-type-average-mapping-contract.json": "c9036f6b378c06e1fbba6c1c1f7f535f22649537299d8f8b1cdf4c309d0a3d8f",
+      "artifacts/v7-tm9-coordinate-identifiability-audit.json": "856e3263b1d1ae0892ecf8909626ccda6be9a38cf44538d93a53b6e7ace92538"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -66,7 +67,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": true,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -131,7 +134,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": true,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -196,7 +201,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": false,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -257,7 +264,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": false,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -316,7 +325,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": true,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -382,7 +393,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": true,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -448,7 +461,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": false,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -511,7 +526,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": false,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -575,7 +592,9 @@
         "Borst_2025_target_is_experimental_membrane_voltage": false,
         "Pirogova_2023_local_numeric_calcium_time_series": false,
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
-        "Pirogova_2023_biological_individual_id_available": false
+        "Pirogova_2023_biological_individual_id_available": false,
+        "Tm9_coordinate_identifiable_under_existing_rule": false,
+        "Tm9_post_hoc_coordinate_repair_authorized": false
       },
       "numerical_membrane_voltage": false,
       "published_optical_voltage_phenotype": false,

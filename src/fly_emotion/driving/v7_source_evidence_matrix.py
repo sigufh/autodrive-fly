@@ -62,6 +62,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     arenz_t5 = set(evidence["arenz_t5"]["T5_source_contract"]["covered_sources"])
     mapping = evidence["malecns_mapping"]["source_mapping"]
     type_average_mapping = evidence["type_average_mapping"]["source_mappings"]
+    tm9_coordinate = evidence["tm9_coordinate_identifiability"]
 
     c3_numerical = bool(evidence["c3_dynamics"]["C3_STRF_numerical_data_verified"])
     c3_ids = bool(evidence["c3_dynamics"]["C3_dataset"]["fly_count"] > 0)
@@ -196,6 +197,16 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and pirogova["source_payloads"][source][
                     "biological_individual_id_available"
                 ]
+            ),
+            "Tm9_coordinate_identifiable_under_existing_rule": (
+                source == "Tm9"
+                and tm9_coordinate[
+                    "Tm9_532266_coordinate_identifiable_under_existing_rule"
+                ]
+            ),
+            "Tm9_post_hoc_coordinate_repair_authorized": (
+                source == "Tm9"
+                and tm9_coordinate["Tm9_532266_coordinate_repair_authorized"]
             ),
         }
         numerical_sources = []

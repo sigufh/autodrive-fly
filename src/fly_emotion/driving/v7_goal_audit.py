@@ -151,6 +151,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     source_type_average_mapping_contract = reports[
         "source_type_average_mapping_contract"
     ]
+    tm9_coordinate_identifiability_audit = reports[
+        "tm9_coordinate_identifiability_audit"
+    ]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -329,6 +332,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
                 config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["source_type_average_mapping_contract"],
+                config["evidence"]["tm9_coordinate_identifiability_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -813,6 +817,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "MaleCNS_Tm9_unlocated_source_body_count": len(
                     malecns_source_mapping_readiness_audit["source_mapping"]["Tm9"][
                         "unlocated_body_ids"
+                    ]
+                ),
+                "MaleCNS_Tm9_532266_existing_rule_identifiable": (
+                    tm9_coordinate_identifiability_audit[
+                        "Tm9_532266_coordinate_identifiable_under_existing_rule"
+                    ]
+                ),
+                "MaleCNS_Tm9_532266_post_hoc_repair_authorized": (
+                    tm9_coordinate_identifiability_audit[
+                        "Tm9_532266_coordinate_repair_authorized"
+                    ]
+                ),
+                "MaleCNS_Tm9_complete_columnar_retinotopy_after_audit": (
+                    tm9_coordinate_identifiability_audit[
+                        "complete_Tm9_columnar_retinotopy_available"
                     ]
                 ),
                 "MaleCNS_CT1_columnar_Lo1_retinotopy_available": (

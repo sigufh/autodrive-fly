@@ -125,6 +125,9 @@ def test_exact_type_average_mapping_is_explicit_without_body_assignment() -> Non
         report["matrix"]["CT1"]["gates"]["external_recording_to_body_or_explicit_type_average"]
         is False
     )
+    tm9 = report["matrix"]["Tm9"]["evidence_components"]
+    assert tm9["Tm9_coordinate_identifiable_under_existing_rule"] is False
+    assert tm9["Tm9_post_hoc_coordinate_repair_authorized"] is False
 
 
 def test_T5_modalities_are_not_combined_into_false_completeness() -> None:

@@ -1,0 +1,71 @@
+version: 1
+name: v7-tm9-coordinate-identifiability-audit
+observed_on: "2026-09-19"
+target_body_id: 532266
+data_manifest: configs/data-manifest.yaml
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+raw_connections: data/raw/malecns-v1.0/connectome-weights.feather
+adjacency_raw: data/processed/malecns-v1.0/adjacency_raw.npz
+body_ids: data/processed/malecns-v1.0/body_ids.npy
+graph_metadata: data/processed/malecns-v1.0/graph.json
+target_skeleton:
+  path: data/raw/malecns-v1.0/skeletons/532266.swc
+  bytes: 8454
+  sha256: 9952254d5bb312690c8027b40080c8e6e13a8738fb359584a9c3b6b7d4e4b910
+  node_count: 266
+mapping_evidence: artifacts/v7-malecns-source-mapping-readiness-audit.json
+mapping_config: configs/driving-v7-malecns-source-mapping-readiness-audit.yaml
+expected_annotation:
+  type: Tm9
+  flywireType: Tm9
+  instance: Tm9_L
+  somaSide: L
+  status: Traced
+  statusLabel: Reviewed
+  superclass: ol_intrinsic
+  group: 16250
+expected_graph:
+  canonical_incoming_edge_count: 19
+  canonical_incoming_synapse_weight: 45
+  canonical_outgoing_edge_count: 18
+  canonical_outgoing_synapse_weight: 53
+  raw_incoming_edge_count: 22
+  raw_incoming_synapse_weight: 49
+  raw_noncanonical_incoming_body_ids: [550956, 438651274, 582390771]
+  native_coordinate_incoming_edge_count: 0
+  native_coordinate_incoming_synapse_weight: 0
+  native_coordinate_outgoing_edge_count: 1
+  native_coordinate_outgoing_synapse_weight: 1
+expected_Tm9_population:
+  body_count: 1771
+  native_coordinate_count: 1743
+  missing_native_coordinate_count: 28
+  one_hop_inferred_count: 27
+  one_hop_unlocated_count: 1
+candidate_diagnostics:
+  same_side_recursive_incoming:
+    support_count: 3
+    support_weight: 8
+    coordinate: [16.166666666666668, 2.75]
+    rounded_coordinate: [16, 3]
+    occupied_by_body_ids: [514902]
+  native_outgoing:
+    support_count: 1
+    support_weight: 1
+    coordinate: [15.0, 2.0]
+    rounded_coordinate: [15, 2]
+    occupied_by_body_ids: [141921]
+validation_gates:
+  minimum_same_side_recursive_rounded_exact_fraction: 0.98
+  maximum_same_side_recursive_p95_error: 0.5
+boundary:
+  existing_one_hop_native_input_rule_is_unchanged: true
+  recursive_two_hop_candidate_is_post_hoc_diagnostic_only: true
+  outgoing_neighbor_candidate_is_post_hoc_diagnostic_only: true
+  occupied_candidate_coordinates_are_not_overwritten: true
+  no_nearest_neighbor_or_same_type_coordinate_imputation: true
+  skeleton_xyz_is_not_optic_hex: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

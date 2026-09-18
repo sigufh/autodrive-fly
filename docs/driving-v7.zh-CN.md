@@ -2097,6 +2097,18 @@ type-average，仍有 body `532266` 无柱坐标；CT1 既缺实验合规膜电�
 坐标，因此九源 mapping 总门仍关闭。该声明不向任何神经元注入活动、不运行模型、不拟合
 参数。证据见 `artifacts/v7-source-type-average-mapping-contract.json`。
 
+Tm9 唯一未定位 body `532266` 也已单独做可识别性审计。它在 MaleCNS v1.0 中是
+Reviewed/Traced 的 `Tm9_L`，位于 canonical graph，但原生 optic-hex 为空。canonical 图中
+它有 19 条入边、总权重 45；没有一个直接输入带原生 optic-hex。回到过滤前的原始连接表
+只多出 3 个无 annotation 的上游 body，也没有被 canonical 规则漏掉的坐标支持。现有
+`one_hop_absolute_raw_synapse_weighted_centroid_of_native_coordinate_inputs` 因此严格无解。
+作为 post-hoc 诊断，同侧递归二跳在 1,743 个原生 Tm9 上的四舍五入准确率约 99.14%，
+但给目标的候选 `[16,3]` 已被左侧 Tm9 `514902` 占用；反向使用唯一原生出边得到
+`[15,2]`，该位置也已被 `141921` 占用，且两种候选不一致。目标入/出权重又都处于 Tm9
+总体约最低 1–2%。因此不改变冻结的一跳规则、不反向用出边、不覆盖已占列，也不按同类型
+邻居或 skeleton xyz 猜测 optic-hex；Tm9 完整 columnar retinotopy 继续失败。证据见
+`artifacts/v7-tm9-coordinate-identifiability-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型
