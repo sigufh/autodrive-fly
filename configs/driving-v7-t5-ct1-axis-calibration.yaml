@@ -1,0 +1,26 @@
+version: 1
+name: v7-t5-ct1-axis-nested-calibration
+observed_on: "2026-09-18"
+axis_evidence: artifacts/v7-t5-ct1-terminal-axis-audit.json
+axis_protocol: configs/driving-v7-t5-ct1-terminal-axis-audit.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+split_seed: 20260918
+fit_fraction: 0.50
+random_orthogonal_baselines: 256
+mapping: separate_eye_2D_to_2D_orthogonal_procrustes_with_equal_subtype_weight
+gates:
+  minimum_held_out_accuracy: 0.75
+  maximum_held_out_median_angle_error_degrees: 35.0
+  maximum_cross_eye_mirror_angle_error_degrees: 30.0
+  require_accuracy_above_random_p95: true
+boundary:
+  structure_only: true
+  T5_fit_and_held_out_body_ids_disjoint: true
+  all_four_T5_subtypes_equal_weight_in_fit: true
+  no_T4_mapping_reused: true
+  fit_uses_T5_structure_labels_only: true
+  target_activity_injection: false
+  calibration_stimulus_not_evaluated: true
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

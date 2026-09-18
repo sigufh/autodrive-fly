@@ -1,0 +1,106 @@
+{
+  "protocol": {
+    "name": "v7-t5-ct1-axis-nested-calibration",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-ct1-axis-calibration.yaml": "dcacef59ffb8a17a97ce59651cf73e0308d76cdfff4e1f0c03e27fc5657bf5a6",
+      "src/fly_emotion/driving/v7_t5_ct1_axis_calibration.py": "e1c7aa2f4d943a1d5ede7cd418b5fc0c6713b38db3a17531789eaeaa2ae27bea",
+      "artifacts/v7-t5-ct1-terminal-axis-audit.json": "ee966705a60fca883ad6e04cf47e058c69fa5d04dd0adef0c076320584067a64",
+      "configs/driving-v7-t5-ct1-terminal-axis-audit.yaml": "d9f7d0d0be10814672c1a3cccaa5aea26328962f3e632f637af20f5335bf05f1",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "parameter_fit": true,
+    "fit_uses_neural_response": false,
+    "runtime_modified": false
+  },
+  "dataset": {
+    "valid_target_count": 6713,
+    "fit_count": 3301,
+    "held_out_count": 3412,
+    "fit_held_out_body_id_overlap": 0
+  },
+  "transforms_by_eye": {
+    "L": [
+      [
+        -0.9215776408040325,
+        -0.38819409059138704
+      ],
+      [
+        -0.3881940905913871,
+        0.9215776408040324
+      ]
+    ],
+    "R": [
+      [
+        -0.9301712122942167,
+        0.3671260217133987
+      ],
+      [
+        0.3671260217133988,
+        0.930171212294217
+      ]
+    ]
+  },
+  "fit_by_eye": {
+    "L": {
+      "count": 1638,
+      "accuracy": 0.8675213675213675,
+      "median_angle_error_degrees": 14.486794129697074,
+      "mean_angle_error_degrees": 21.475907367287697
+    },
+    "R": {
+      "count": 1663,
+      "accuracy": 0.9049909801563439,
+      "median_angle_error_degrees": 14.354217351274169,
+      "mean_angle_error_degrees": 19.869728558340565
+    }
+  },
+  "held_out_by_eye": {
+    "L": {
+      "count": 1719,
+      "accuracy": 0.8720186154741129,
+      "median_angle_error_degrees": 15.09170614441935,
+      "mean_angle_error_degrees": 21.06198625783246
+    },
+    "R": {
+      "count": 1693,
+      "accuracy": 0.8978145304193739,
+      "median_angle_error_degrees": 13.632661445621627,
+      "mean_angle_error_degrees": 19.676189290515868
+    }
+  },
+  "held_out_accuracy_mean": 0.8849165729467434,
+  "held_out_median_angle_error_mean_degrees": 14.362183795020488,
+  "cross_eye_mirror_error_by_subtype": {
+    "a": 0.03820028450332738,
+    "b": 0.09405081559493332,
+    "c": 0.04863193991137215,
+    "d": 0.004848850582722157
+  },
+  "random_orthogonal_baseline": {
+    "count": 256,
+    "held_out_accuracy_p95": 0.605816751521424
+  },
+  "gates": {
+    "held_out_accuracy": true,
+    "held_out_angle": true,
+    "cross_eye_mirror": true,
+    "held_out_accuracy_above_random_p95": true
+  },
+  "T5_CT1_axis_calibration_passed": true,
+  "authorize_T5_single_condition_precheck": true,
+  "advance_to_calibration_stimulus": false,
+  "advance_to_runtime_integration": false,
+  "boundary": {
+    "structure_only": true,
+    "T5_fit_and_held_out_body_ids_disjoint": true,
+    "all_four_T5_subtypes_equal_weight_in_fit": true,
+    "no_T4_mapping_reused": true,
+    "fit_uses_T5_structure_labels_only": true,
+    "target_activity_injection": false,
+    "calibration_stimulus_not_evaluated": true,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}
