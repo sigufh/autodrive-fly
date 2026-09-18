@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-17",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "4d2a8467384f7bb86beb09a780f94adb31fe42d0dbfeca3d32629511c222cb7e",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b16c55861b84daf17a18fb581d02e3ef3fb0f6a769e59e4d1e5ad61c96c169ca",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "946d10117a6b1b69bac46279a1da2d9ae2f99131f98779283ba2bc3abd52583e",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0b9323a8b3c6874f133961304a48c360b4a78cc78e27cece33b6781e534cde61",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -76,8 +76,21 @@
     "article_id": 16663486,
     "size_bytes": 3630019,
     "description_names_optTables": true,
-    "file_manifest_retrieved": false,
+    "prior_live_audit_file_manifest_retrieved": false,
+    "recovered_file_manifest": {
+      "recovery_source": "internet_archive_official_page_snapshot",
+      "snapshot_timestamp": "20241127113612",
+      "file_id": 31067761,
+      "file_name": "modelFigure.zip",
+      "size_bytes": 3630019,
+      "md5": "14ba0fa761a513d55cacc41610881e80",
+      "mime_type": "application/zip",
+      "official_download_url": "https://janelia.figshare.com/ndownloader/files/31067761"
+    },
+    "recovered_manifest_consistent": true,
+    "file_manifest_retrieved": true,
     "files_verified": false,
+    "payload_retrieved": false,
     "current_environment_access": "official landing, API, files API, and ndownloader returned HTTP 403"
   },
   "required_transfer_fields_available": {
@@ -108,6 +121,7 @@
     "parameter_fit": false,
     "infer_kernel_from_T4_target_labels": false,
     "use_160ms_shift_as_v7_lag": false,
+    "archived_manifest_does_not_substitute_for_payload": true,
     "inject_target_activity": false,
     "calibration_evaluated": false,
     "final_evaluated": false,

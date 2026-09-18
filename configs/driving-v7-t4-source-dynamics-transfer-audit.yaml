@@ -6,6 +6,17 @@ electrophysiology_interface: artifacts/v7-ephys-interface.json
 timebase_evidence: artifacts/v7-timebase-audit.json
 microstep_evidence: artifacts/v7-t4-synapse-microstep-precheck.json
 official_unified_model_evidence: artifacts/v7-t5-data-audit.json
+official_unified_model_recovered_manifest:
+  recovery_source: internet_archive_official_page_snapshot
+  snapshot_timestamp: "20241127113612"
+  article_id: 16663486
+  file_id: 31067761
+  file_name: modelFigure.zip
+  size_bytes: 3630019
+  md5: 14ba0fa761a513d55cacc41610881e80
+  mime_type: application/zip
+  official_download_url: https://janelia.figshare.com/ndownloader/files/31067761
+  payload_retrieved: false
 required_sources: [Mi1, Tm3, Mi4, C3]
 required_transfer_fields:
   - direction_independent_source_kernel
@@ -23,6 +34,7 @@ boundary:
   parameter_fit: false
   infer_kernel_from_T4_target_labels: false
   use_160ms_shift_as_v7_lag: false
+  archived_manifest_does_not_substitute_for_payload: true
   inject_target_activity: false
   calibration_evaluated: false
   final_evaluated: false

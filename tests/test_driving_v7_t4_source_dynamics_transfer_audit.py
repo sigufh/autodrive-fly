@@ -38,7 +38,22 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert package["article_id"] == 16663486
     assert package["size_bytes"] == 3_630_019
     assert package["description_names_optTables"] is True
-    assert package["file_manifest_retrieved"] is False
+    assert package["prior_live_audit_file_manifest_retrieved"] is False
+    assert package["file_manifest_retrieved"] is True
+    assert package["recovered_manifest_consistent"] is True
+    assert package["recovered_file_manifest"] == {
+        "recovery_source": "internet_archive_official_page_snapshot",
+        "snapshot_timestamp": "20241127113612",
+        "file_id": 31067761,
+        "file_name": "modelFigure.zip",
+        "size_bytes": 3_630_019,
+        "md5": "14ba0fa761a513d55cacc41610881e80",
+        "mime_type": "application/zip",
+        "official_download_url": (
+            "https://janelia.figshare.com/ndownloader/files/31067761"
+        ),
+    }
+    assert package["payload_retrieved"] is False
     assert package["files_verified"] is False
 
 
@@ -51,4 +66,5 @@ def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:
     )
     assert report["boundary"]["infer_kernel_from_T4_target_labels"] is False
     assert report["boundary"]["use_160ms_shift_as_v7_lag"] is False
+    assert report["boundary"]["archived_manifest_does_not_substitute_for_payload"] is True
     assert report["boundary"]["T5_and_LPLC_remain_frozen"] is True

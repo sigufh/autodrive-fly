@@ -76,6 +76,15 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         ]["passed"],
     }
     transferable = all(gates.values()) and all(fields.values())
+    recovered = config["official_unified_model_recovered_manifest"]
+    package = unified["whole_cell_candidate"]["datasets"]["unified_model"]
+    manifest_consistent = bool(
+        int(recovered["article_id"]) == 16663486
+        and recovered["file_name"] == "modelFigure.zip"
+        and int(recovered["size_bytes"]) == int(package["size_bytes"])
+        and recovered["mime_type"] == "application/zip"
+        and len(recovered["md5"]) == 32
+    )
     return {
         "protocol": {
             "name": config["name"],
@@ -107,23 +116,33 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "may_be_used_as_label_blind_v7_source_kernel": False,
         },
         "official_unified_model_package": {
-            "doi": unified["whole_cell_candidate"]["datasets"][
-                "unified_model"
-            ]["doi"],
-            "article_id": 16663486,
-            "size_bytes": unified["whole_cell_candidate"]["datasets"][
-                "unified_model"
-            ]["size_bytes"],
+            "doi": package["doi"],
+            "article_id": recovered["article_id"],
+            "size_bytes": package["size_bytes"],
             "description_names_optTables": "optTables.mat"
-            in unified["whole_cell_candidate"]["datasets"]["unified_model"][
-                "description"
-            ],
-            "file_manifest_retrieved": unified["interface_status"][
+            in package["description"],
+            "prior_live_audit_file_manifest_retrieved": unified["interface_status"][
                 "unified_model_file_manifest_retrieved"
             ],
+            "recovered_file_manifest": {
+                key: recovered[key]
+                for key in (
+                    "recovery_source",
+                    "snapshot_timestamp",
+                    "file_id",
+                    "file_name",
+                    "size_bytes",
+                    "md5",
+                    "mime_type",
+                    "official_download_url",
+                )
+            },
+            "recovered_manifest_consistent": manifest_consistent,
+            "file_manifest_retrieved": manifest_consistent,
             "files_verified": unified["interface_status"][
                 "unified_model_files_verified"
             ],
+            "payload_retrieved": recovered["payload_retrieved"],
             "current_environment_access": (
                 "official landing, API, files API, and ndownloader returned HTTP 403"
             ),

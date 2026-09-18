@@ -1557,6 +1557,13 @@ normalized state 的映射未定义，也没有独立动态 final。因此四个
 失败，明确禁止把 160 ms 当作 v7 lag 或由 T4 目标标签反推 source kernel。当前真正的数据
 阻塞是：需要方向独立的 source kernel、可验证身份映射、v7 物理采样间隔和状态单位映射。
 证据见 `artifacts/v7-t4-source-dynamics-transfer-audit.json`。
+官方页面的 Internet Archive 快照随后恢复了精确文件清单：article `16663486` 只有一个
+`modelFigure.zip`，file ID `31067761`，大小 3,630,019 bytes，官方 MD5
+`14ba0fa761a513d55cacc41610881e80`。这修正了“缺文件 manifest”的旧状态，但官方文件
+端点仍被 WAF 拒绝，Internet Archive、Common Crawl 与其它公开索引也没有 payload
+副本；故只能标记 `file_manifest_retrieved=true`、`payload_retrieved=false`、
+`files_verified=false`。归档网页元数据不能代替对 `optTables.mat` 与 MATLAB 模型代码的
+内容审计，仍不授权新动力学候选。
 
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
