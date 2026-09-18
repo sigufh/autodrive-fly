@@ -40,7 +40,7 @@ def test_fig1_xlsx_exports_source_spatial_but_not_temporal_fields() -> None:
     assert extended["contains_source_time_axis"] is False
 
 
-def test_unavailable_object_payload_keeps_source_filter_fit_closed() -> None:
+def test_safely_loaded_object_payload_keeps_non_voltage_transfer_closed() -> None:
     report = json.loads(REPORT.read_text())
     payload = report["edmond_object_payload"]
     assert payload["file_id"] == 104768
@@ -49,9 +49,24 @@ def test_unavailable_object_payload_keeps_source_filter_fit_closed() -> None:
         "0dd4a309e3ddec79b5898b4764e0dec12d707c14bb0865c4aae45f5f0d381d82"
     )
     assert payload["header"]["contains_python_objects"] is True
-    assert payload["locally_available"] is False
-    assert payload["hash_verified"] is False
-    assert payload["safely_inspected"] is False
+    assert payload["locally_available"] is True
+    assert payload["hash_verified"] is True
+    assert payload["safely_inspected"] is True
+    assert payload["pickle_globals"] == [
+        "_codecs encode",
+        "numpy dtype",
+        "numpy ndarray",
+        "numpy.core.multiarray _reconstruct",
+    ]
+    assert set(payload["source_arrays"]) == {"Mi9", "Tm3", "Mi1", "Mi4", "C3"}
+    assert all(item["all_finite"] for item in payload["source_arrays"].values())
+    assert all(
+        item["all_ordinals_match"]
+        for item in report["individual_spatial_workbook_cross_check"].values()
+    )
+    assert report["observations"]["individual_source_temporal_RF_arrays_available"] is True
+    assert report["source_filter_fit_gates"]["allowed_membrane_voltage_response_unit"] is False
+    assert report["source_filter_fit_gates"]["independent_from_Fig3_training_cohort"] is False
     assert report["source_temporal_kernel_transfer_authorized"] is False
     assert report["advance_to_source_filter_fit"] is False
     assert report["boundary"]["moving_edge_trace_conflates_spatial_and_temporal_filtering"] is True

@@ -2216,6 +2216,18 @@ relation 为空，链接仅为论文 HTML/PDF；DataCite 按论文 DOI 查询无
 上述已审计公共索引，不声称数据在全球范围绝对不存在；论文图中的个体曲线不做数字化。
 因此独立 Mi1/Tm3 时序表型仍可作为定性支持，但不能提供可重算的独立数值 cohort。证据见
 `artifacts/v7-behnia-t4-fast-source-availability-audit.json`。
+
+Edmond 的 `fig1d_receptive_fields.npy` 也已按冻结的 35,520,207 bytes、MD5 和
+SHA-256 下载。先静态扫描 pickle opcode，只发现 NumPy `_reconstruct`、`ndarray`、
+`dtype` 与 `_codecs.encode` 四个全局，再由严格白名单 unpickler 在只读审计中解析。
+结果为 Mi9/Tm3/Mi1/Mi4/C3 五个 float64、全有限的逐细胞
+`[13 elevation, 13 azimuth, 210 lag, cell]` 时空 RF 数组，时间步为 16.667 ms、零延迟
+索引为 180。对所有 81 个 source cell，以 `174:180` 时间窗求均值后都逐 ordinal 精确
+复现 Extended Fig.1 的 13×13 表格，最大误差约 `1.0e-15`。这修正了此前“object
+payload 未安全检查、source temporal kernel 不可用”的状态。但这些数组单位是刺激—膜电位
+相关系数 a.u.，不是允许的膜电位；Fig.1 与 Fig.3 记录个体是否互斥也没有 identity 证据。
+因此它们可作为数值时空 RF 证据，但不授权 source filter transfer 或参数拟合。证据见
+`artifacts/v7-fig1-source-temporal-readiness-audit.json`。
 完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个

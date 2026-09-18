@@ -11,7 +11,7 @@
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
       "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b74c91098794594bc1e327c786c3b41b79af5733d6c0f60b35c04a6007527990",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7"
     },

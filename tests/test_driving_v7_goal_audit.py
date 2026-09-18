@@ -646,7 +646,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["C3_source_filter_candidate_authorized"] is False
     assert visual["observations"]["Fig1_source_spatial_tables_verified"] is True
     assert visual["observations"]["Fig1_source_average_tables_have_time_axis"] is False
-    assert visual["observations"]["Fig1_source_object_payload_safely_inspected"] is False
+    assert visual["observations"]["Fig1_source_object_payload_safely_inspected"] is True
+    assert visual["observations"]["Fig1_individual_source_temporal_RF_arrays_available"] is True
+    assert visual["observations"]["Fig1_source_ordinals_match_extended_workbook"] is True
+    assert visual["observations"]["Fig1_source_temporal_RF_has_allowed_voltage_unit"] is False
+    assert visual["observations"]["Fig1_source_temporal_RF_independent_from_Fig3"] is False
     assert visual["observations"]["Fig1_source_temporal_kernel_transfer_authorized"] is False
     assert visual["observations"]["C3_analytic_filter_band_pass_preferred"] is True
     assert visual["observations"]["C3_analytic_filter_minimum_LOFO_correlation"] < 0.67

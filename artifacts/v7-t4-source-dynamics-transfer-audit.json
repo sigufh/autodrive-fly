@@ -16,7 +16,7 @@
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
-      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "0ce73a18283cbe7e3b058f7e90516ec4e4abcebf1a81fc71a53323882aeb2ea5",
+      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e",
       "artifacts/v7-c3-analytic-filter-precheck.json": "c500295463922199d074fdfcb3fc1511836bbc7e3c0c1a091cb937ec4ddc5da9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
@@ -164,8 +164,8 @@
     "workbooks_verified": true,
     "source_average_tables_have_time_axis": false,
     "individual_source_tables_have_time_axis": false,
-    "object_payload_hash_verified": false,
-    "object_payload_safely_inspected": false,
+    "object_payload_hash_verified": true,
+    "object_payload_safely_inspected": true,
     "source_temporal_kernel_transfer_authorized": false
   },
   "verified_C3_analytic_filter_precheck": {

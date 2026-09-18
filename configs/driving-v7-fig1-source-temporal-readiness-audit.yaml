@@ -46,12 +46,31 @@ edmond_payload:
     dtype: object
     contains_python_objects: true
   local_path: data/raw/t4-fig3-source-dynamics/fig1d_receptive_fields.npy
+  safe_local_path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig1d_receptive_fields.npy
+  allowed_pickle_globals:
+    - _codecs encode
+    - numpy dtype
+    - numpy ndarray
+    - numpy.core.multiarray _reconstruct
+  source_shapes:
+    Mi9: [13, 13, 210, 22]
+    Tm3: [13, 13, 210, 11]
+    Mi1: [13, 13, 210, 22]
+    Mi4: [13, 13, 210, 10]
+    C3: [13, 13, 210, 16]
+  dtype: float64
+  axes: [elevation_pixel, azimuth_pixel, lag_sample, cell]
+  zero_lag_sample: 180
+  sample_interval_milliseconds: 16.666666666666668
+  workbook_spatial_average_samples: [174, 180]
 prior_evidence: artifacts/v7-electrophysiology-audit.json
 boundary:
   read_only_source_data_audit: true
   source_spatial_RF_does_not_imply_source_temporal_kernel: true
   T4_spatiotemporal_RF_must_not_define_source_dynamics: true
   object_array_requires_isolated_pickle_inspection: true
+  receptive_field_unit_is_correlation_arbitrary_units_not_membrane_voltage: true
+  Fig1_to_Fig3_individual_disjointness_unverified: true
   moving_edge_trace_conflates_spatial_and_temporal_filtering: true
   no_parameter_fit: true
   no_target_activity_injection: true

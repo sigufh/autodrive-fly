@@ -99,8 +99,8 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert fig1["workbooks_verified"] is True
     assert fig1["source_average_tables_have_time_axis"] is False
     assert fig1["individual_source_tables_have_time_axis"] is False
-    assert fig1["object_payload_hash_verified"] is False
-    assert fig1["object_payload_safely_inspected"] is False
+    assert fig1["object_payload_hash_verified"] is True
+    assert fig1["object_payload_safely_inspected"] is True
     assert fig1["source_temporal_kernel_transfer_authorized"] is False
     c3_filter = report["verified_C3_analytic_filter_precheck"]
     assert c3_filter["band_pass_BIC_below_low_pass_BIC"] is True

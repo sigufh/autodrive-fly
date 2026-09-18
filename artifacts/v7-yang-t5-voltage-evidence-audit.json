@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-yang-t5-voltage-evidence-audit.yaml": "d0a4a5e0dc3f65693ac773f51738309c95dafdcd0430a620858c5818efb9adbf",
       "src/fly_emotion/driving/v7_yang_t5_voltage_evidence_audit.py": "fb6d4e4de838fea9406449974b2015f103e14fed64064568b2c933fbc1fc3bdd",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5"
     },
     "paper": {
       "doi": "10.1016/j.cell.2016.05.031",

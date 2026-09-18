@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-behnia-t4-fast-source-audit.yaml": "e3358d3f507310878b525d716ad8020cf2d8370796f7fa8a076290b3b74e04a1",
       "src/fly_emotion/driving/v7_behnia_t4_fast_source_audit.py": "50968684796c9f0f03c1ea9c440afa9543076d25c4dd3a714a880bc7b2a61921",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5"
     },
     "paper": {
       "title": "Processing properties of ON and OFF pathways for Drosophila motion detection",

@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-dryad-l1l2-source-dynamics-audit.yaml": "02908a52a8464fd7d4d1c570716fa51dcee16f58f05120174dc98aff6e7b549b",
       "src/fly_emotion/driving/v7_dryad_l1l2_source_dynamics_audit.py": "ac8aaae8cb059f39541d61b2bb884898074a3f757a10b527945388665d635098",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5"
     },
     "parameter_fit": false,
     "external_payload_evaluated": false,

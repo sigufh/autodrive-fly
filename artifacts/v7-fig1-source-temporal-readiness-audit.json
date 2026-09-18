@@ -3,8 +3,8 @@
     "name": "v7-fig1-source-temporal-readiness-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-fig1-source-temporal-readiness-audit.yaml": "672ad9a50f96d5997f905ef50ca99461e80081d5de98733ba025c9246d0cbc71",
-      "src/fly_emotion/driving/v7_fig1_source_temporal_readiness_audit.py": "ffb6e720a9e4243805f2dca0fffd1ffcb7332386325cda8154a5a9da159bd40a",
+      "configs/driving-v7-fig1-source-temporal-readiness-audit.yaml": "6969ea92e93ad749fc29884b05825719c2538fc134d85ea26336c9cbcf3765fe",
+      "src/fly_emotion/driving/v7_fig1_source_temporal_readiness_audit.py": "0afd7728dc9a23e3a1261a700ed9b356746068df94fb305c6250e3c6b79ea854",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "pyproject.toml": "e6272a4a96f32d31b04f99698b96aa72b87c6f49fd27012e37f001f369d85662"
     },
@@ -109,35 +109,137 @@
       "dtype": "object",
       "contains_python_objects": true
     },
-    "local_path": "data/raw/t4-fig3-source-dynamics/fig1d_receptive_fields.npy",
-    "locally_available": false,
-    "hash_verified": false,
-    "safely_inspected": false
+    "safe_local_path": "data/raw/t4-fig3-source-dynamics/edmond-1khz/fig1d_receptive_fields.npy",
+    "locally_available": true,
+    "hash_verified": true,
+    "safely_inspected": true,
+    "pickle_globals": [
+      "_codecs encode",
+      "numpy dtype",
+      "numpy ndarray",
+      "numpy.core.multiarray _reconstruct"
+    ],
+    "source_arrays": {
+      "C3": {
+        "shape": [
+          13,
+          13,
+          210,
+          16
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "Mi1": {
+        "shape": [
+          13,
+          13,
+          210,
+          22
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "Tm3": {
+        "shape": [
+          13,
+          13,
+          210,
+          11
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "Mi9": {
+        "shape": [
+          13,
+          13,
+          210,
+          22
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "Mi4": {
+        "shape": [
+          13,
+          13,
+          210,
+          10
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      }
+    },
+    "axes": [
+      "elevation_pixel",
+      "azimuth_pixel",
+      "lag_sample",
+      "cell"
+    ],
+    "zero_lag_sample": 180,
+    "sample_interval_milliseconds": 16.666666666666668,
+    "time_range_milliseconds": [
+      -3000.0,
+      483.33333333333337
+    ]
+  },
+  "individual_spatial_workbook_cross_check": {
+    "Mi9": {
+      "cell_count": 22,
+      "maximum_absolute_error": 9.992007221626409e-16,
+      "all_ordinals_match": true
+    },
+    "Tm3": {
+      "cell_count": 11,
+      "maximum_absolute_error": 9.992007221626409e-16,
+      "all_ordinals_match": true
+    },
+    "Mi1": {
+      "cell_count": 22,
+      "maximum_absolute_error": 9.992007221626409e-16,
+      "all_ordinals_match": true
+    },
+    "Mi4": {
+      "cell_count": 10,
+      "maximum_absolute_error": 9.992007221626409e-16,
+      "all_ordinals_match": true
+    },
+    "C3": {
+      "cell_count": 16,
+      "maximum_absolute_error": 9.992007221626409e-16,
+      "all_ordinals_match": true
+    }
   },
   "observations": {
     "official_Fig1_workbooks_verified": true,
     "source_type_average_tables_have_time_axis": false,
     "individual_source_tables_have_time_axis": false,
-    "official_fig1d_object_payload_locally_available": false
+    "official_fig1d_object_payload_locally_available": true,
+    "individual_source_temporal_RF_arrays_available": true,
+    "individual_source_ordinals_match_extended_Fig1_workbook": true
   },
   "source_filter_fit_gates": {
-    "official_fig1d_object_payload_hash_verified": false,
-    "official_fig1d_object_payload_safely_inspected": false,
-    "source_temporal_kernel_numerically_available": false
+    "official_fig1d_object_payload_hash_verified": true,
+    "official_fig1d_object_payload_safely_inspected": true,
+    "source_temporal_kernel_numerically_available": true,
+    "allowed_membrane_voltage_response_unit": false,
+    "independent_from_Fig3_training_cohort": false
   },
   "source_temporal_kernel_transfer_authorized": false,
   "advance_to_source_filter_fit": false,
   "blocking_requirements": [
-    "official_fig1d_object_payload_hash_verified",
-    "official_fig1d_object_payload_safely_inspected",
-    "source_temporal_kernel_numerically_available"
+    "allowed_membrane_voltage_response_unit",
+    "independent_from_Fig3_training_cohort"
   ],
-  "stop_reason": "published_Fig1_tables_lack_source_time_axis_and_object_payload_unavailable",
+  "stop_reason": "temporal_RF_is_correlation_AU_and_Fig1_Fig3_individual_disjointness_is_unverified",
   "boundary": {
     "read_only_source_data_audit": true,
     "source_spatial_RF_does_not_imply_source_temporal_kernel": true,
     "T4_spatiotemporal_RF_must_not_define_source_dynamics": true,
     "object_array_requires_isolated_pickle_inspection": true,
+    "receptive_field_unit_is_correlation_arbitrary_units_not_membrane_voltage": true,
+    "Fig1_to_Fig3_individual_disjointness_unverified": true,
     "moving_edge_trace_conflates_spatial_and_temporal_filtering": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

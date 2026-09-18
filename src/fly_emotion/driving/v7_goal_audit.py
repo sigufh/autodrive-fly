@@ -1542,6 +1542,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "safely_inspected"
                     ]
                 ),
+                "Fig1_individual_source_temporal_RF_arrays_available": (
+                    fig1_source_temporal_readiness_audit["observations"][
+                        "individual_source_temporal_RF_arrays_available"
+                    ]
+                ),
+                "Fig1_source_ordinals_match_extended_workbook": (
+                    fig1_source_temporal_readiness_audit["observations"][
+                        "individual_source_ordinals_match_extended_Fig1_workbook"
+                    ]
+                ),
+                "Fig1_source_temporal_RF_has_allowed_voltage_unit": (
+                    fig1_source_temporal_readiness_audit["source_filter_fit_gates"][
+                        "allowed_membrane_voltage_response_unit"
+                    ]
+                ),
+                "Fig1_source_temporal_RF_independent_from_Fig3": (
+                    fig1_source_temporal_readiness_audit["source_filter_fit_gates"][
+                        "independent_from_Fig3_training_cohort"
+                    ]
+                ),
                 "Fig1_source_temporal_kernel_transfer_authorized": (
                     fig1_source_temporal_readiness_audit[
                         "source_temporal_kernel_transfer_authorized"
