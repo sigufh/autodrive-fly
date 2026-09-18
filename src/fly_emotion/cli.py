@@ -35,6 +35,9 @@ from .driving.v7_arenz_source_dynamics_audit import (
     evaluate_v7_arenz_source_dynamics_audit,
 )
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
+from .driving.v7_c3_analytic_filter_precheck import (
+    evaluate_v7_c3_analytic_filter_precheck,
+)
 from .driving.v7_c3_strf_source_dynamics_audit import (
     evaluate_v7_c3_strf_source_dynamics_audit,
 )
@@ -363,6 +366,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
+    subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1162,6 +1166,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-strf-source-dynamics":
         report = evaluate_v7_c3_strf_source_dynamics_audit(root)
         target = root / "artifacts/v7-c3-strf-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-precheck-c3-analytic-filter":
+        report = evaluate_v7_c3_analytic_filter_precheck(root)
+        target = root / "artifacts/v7-c3-analytic-filter-precheck.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

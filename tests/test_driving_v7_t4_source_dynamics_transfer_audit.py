@@ -89,6 +89,12 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert fig1["object_payload_hash_verified"] is False
     assert fig1["object_payload_safely_inspected"] is False
     assert fig1["source_temporal_kernel_transfer_authorized"] is False
+    c3_filter = report["verified_C3_analytic_filter_precheck"]
+    assert c3_filter["band_pass_BIC_below_low_pass_BIC"] is True
+    assert c3_filter["minimum_leave_one_fly_out_correlation"] < 0.67
+    assert c3_filter["median_leave_one_fly_out_correlation"] > 0.84
+    assert c3_filter["filter_family_precheck_passed"] is False
+    assert c3_filter["source_filter_transfer_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

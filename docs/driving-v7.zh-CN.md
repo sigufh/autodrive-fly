@@ -1628,6 +1628,15 @@ source dynamics。Edmond 的 `fig1d_receptive_fields.npy` manifest 与 NPY heade
 去拟合 source 时间常数。证据见
 `artifacts/v7-fig1-source-temporal-readiness-audit.json`。
 
+在可用的 Henning C3 STRF 上另做了 source-only 解析滤波族预检。每个 fly×axis 先独立
+平均其通过作者 `corrcoef >= 0.27` 筛选的 ROI，再去均值、单位范数化并等权；留一折
+会同时移除该果蝇的所有轴。候选仅比较一阶 low-pass 与一阶 high-pass×low-pass，并明确
+把 Arenz 的 350 ms GCaMP6f low-pass 标为跨论文假设。带通族相对低通族有更低 BIC，
+留出相关中位数约 0.849，但最差仅约 0.660，未达到继承自既有稳健性协议的 0.80
+全折门；而且 C3 实验自身没有经验证的钙核。因此该结果支持“C3 更像带通形状”，但不授权
+解析 C3 kernel 或 T4 功能候选。证据见
+`artifacts/v7-c3-analytic-filter-precheck.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

@@ -74,6 +74,7 @@ evidence:
   arenz_source_dynamics_audit: artifacts/v7-arenz-source-dynamics-audit.json
   c3_strf_source_dynamics_audit: artifacts/v7-c3-strf-source-dynamics-audit.json
   fig1_source_temporal_readiness_audit: artifacts/v7-fig1-source-temporal-readiness-audit.json
+  c3_analytic_filter_precheck: artifacts/v7-c3-analytic-filter-precheck.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json
   four_hop_scalar_precheck: artifacts/v7-four-hop-scalar-precheck.json
   lc4_position_speed_precheck: artifacts/v7-lc4-position-speed-precheck.json

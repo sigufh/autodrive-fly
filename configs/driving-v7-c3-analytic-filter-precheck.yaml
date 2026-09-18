@@ -1,0 +1,42 @@
+version: 1
+name: v7-c3-analytic-filter-family-precheck
+observed_on: "2026-09-18"
+source_config: configs/driving-v7-c3-strf-source-dynamics-audit.yaml
+source_evidence: artifacts/v7-c3-strf-source-dynamics-audit.json
+arenz_evidence: artifacts/v7-arenz-source-dynamics-audit.json
+inherited_robustness_protocol: configs/driving-v7-fig3-source-kernel-robustness.yaml
+model_contract:
+  families: [low_pass, band_pass]
+  calcium_low_pass_seconds: 0.350
+  calcium_constant_provenance: cross_paper_Arenz_2017_GCaMP6f_approximation
+  sample_interval_seconds: 0.05
+  causal_duration_seconds: 2.0
+  filter_parameter_bounds_seconds: [0.001, 5.0]
+  low_pass_initial_seconds: [0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0]
+  band_pass_low_initial_seconds: [0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5]
+  band_pass_separation_initial_seconds: [0.005, 0.02, 0.1, 0.3, 1.0, 3.0]
+  optimizer: scipy_least_squares_log_time_constants
+unit_contract:
+  unit: fly_axis_mean
+  spatial_trace: mean_of_peak_row_and_available_immediate_neighbors
+  temporal_orientation: response_age_zero_to_1.95_seconds
+  centering: subtract_temporal_mean_per_fly_axis
+  normalization: divide_by_temporal_l2_norm_per_fly_axis
+  weighting: equal_weight_per_fly_axis
+  split: leave_one_fly_out_with_all_axes_of_that_fly_held_out
+gates:
+  minimum_held_out_correlation: 0.80
+  minimum_median_held_out_correlation: 0.80
+  require_every_held_out_fly_axis: true
+  require_band_pass_BIC_below_low_pass_BIC: true
+  require_same_experiment_calcium_kernel: true
+boundary:
+  exploratory_source_only_precheck: true
+  inherited_threshold_not_changed: true
+  C3_only: true
+  no_T4_response_or_direction_label_used: true
+  cross_paper_calcium_constant_is_unvalidated_for_C3_dataset: true
+  fit_not_connected_to_runtime: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

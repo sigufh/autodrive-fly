@@ -86,6 +86,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     fig1_source_temporal_readiness_audit = reports[
         "fig1_source_temporal_readiness_audit"
     ]
+    c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -195,6 +196,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["arenz_source_dynamics_audit"],
                 config["evidence"]["c3_strf_source_dynamics_audit"],
                 config["evidence"]["fig1_source_temporal_readiness_audit"],
+                config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -688,6 +690,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Fig1_source_temporal_kernel_transfer_authorized": (
                     fig1_source_temporal_readiness_audit[
                         "source_temporal_kernel_transfer_authorized"
+                    ]
+                ),
+                "C3_analytic_filter_band_pass_preferred": (
+                    c3_analytic_filter_precheck[
+                        "band_pass_BIC_below_low_pass_BIC"
+                    ]
+                ),
+                "C3_analytic_filter_minimum_LOFO_correlation": (
+                    c3_analytic_filter_precheck["model_families"]["band_pass"][
+                        "cross_validation"
+                    ]["minimum_held_out_correlation"]
+                ),
+                "C3_analytic_filter_family_precheck_passed": (
+                    c3_analytic_filter_precheck[
+                        "C3_analytic_filter_family_precheck_passed"
+                    ]
+                ),
+                "C3_analytic_filter_transfer_authorized": (
+                    c3_analytic_filter_precheck[
+                        "C3_analytic_filter_transfer_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

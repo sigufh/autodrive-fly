@@ -1,0 +1,363 @@
+{
+  "protocol": {
+    "name": "v7-c3-analytic-filter-family-precheck",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-c3-analytic-filter-precheck.yaml": "54e54c9e2aca03da000823e1951d39b6909c4c5e8b3aebcf99e9424dd2273980",
+      "src/fly_emotion/driving/v7_c3_analytic_filter_precheck.py": "f52a826e4cd793516ad2a85940dd45fb027981a0b34eeb65585686efaffe5a35",
+      "configs/driving-v7-c3-strf-source-dynamics-audit.yaml": "50d6d1149feebc6ad349bd308594fb9364ecb58192f1265c31dfc390fa742f4f",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
+      "configs/driving-v7-fig3-source-kernel-robustness.yaml": "29d69e7a50f4ff460edbc2e865f4443f7399f8cc7261744de76b2f9b47d6eaa4",
+      "pyproject.toml": "2ede0081f08b0a3337f80332391a9c3136d3564d63972b0ddcfeb00b7d1a0ae3"
+    },
+    "parameter_fit": true,
+    "fit_scope": "C3_source_STRF_only",
+    "T4_response_used": false,
+    "direction_label_used": false,
+    "runtime_modified": false
+  },
+  "unit_contract": {
+    "unit": "fly_axis_mean",
+    "spatial_trace": "mean_of_peak_row_and_available_immediate_neighbors",
+    "temporal_orientation": "response_age_zero_to_1.95_seconds",
+    "centering": "subtract_temporal_mean_per_fly_axis",
+    "normalization": "divide_by_temporal_l2_norm_per_fly_axis",
+    "weighting": "equal_weight_per_fly_axis",
+    "split": "leave_one_fly_out_with_all_axes_of_that_fly_held_out"
+  },
+  "model_contract": {
+    "families": [
+      "low_pass",
+      "band_pass"
+    ],
+    "calcium_low_pass_seconds": 0.35,
+    "calcium_constant_provenance": "cross_paper_Arenz_2017_GCaMP6f_approximation",
+    "sample_interval_seconds": 0.05,
+    "causal_duration_seconds": 2.0,
+    "filter_parameter_bounds_seconds": [
+      0.001,
+      5.0
+    ],
+    "low_pass_initial_seconds": [
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "band_pass_low_initial_seconds": [
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.5
+    ],
+    "band_pass_separation_initial_seconds": [
+      0.005,
+      0.02,
+      0.1,
+      0.3,
+      1.0,
+      3.0
+    ],
+    "optimizer": "scipy_least_squares_log_time_constants"
+  },
+  "source_units": [
+    {
+      "fly": "200121_Fly3",
+      "axis": "El",
+      "ROI_count": 1
+    },
+    {
+      "fly": "200121_Fly4",
+      "axis": "Az",
+      "ROI_count": 3
+    },
+    {
+      "fly": "200121_Fly4",
+      "axis": "El",
+      "ROI_count": 1
+    },
+    {
+      "fly": "200121_Fly5",
+      "axis": "Az",
+      "ROI_count": 15
+    },
+    {
+      "fly": "200121_Fly5",
+      "axis": "El",
+      "ROI_count": 8
+    },
+    {
+      "fly": "200121_Fly9",
+      "axis": "Az",
+      "ROI_count": 2
+    },
+    {
+      "fly": "200127_Fly1",
+      "axis": "Az",
+      "ROI_count": 5
+    }
+  ],
+  "model_families": {
+    "low_pass": {
+      "full_data_parameters": {
+        "tLP_seconds": 0.0011693617154191571
+      },
+      "full_data_residual_sum_squares": 4.904554557681001,
+      "full_data_BIC": -1126.860302294006,
+      "cross_validation": {
+        "folds": [
+          {
+            "held_out_fly": "200121_Fly3",
+            "training_unit_count": 6,
+            "parameters": {
+              "tLP_seconds": 0.0012206816710282847
+            },
+            "held_out": [
+              {
+                "axis": "El",
+                "ROI_count": 1,
+                "correlation": 0.5063978316073796
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200121_Fly4",
+            "training_unit_count": 5,
+            "parameters": {
+              "tLP_seconds": 0.001000971685069322
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 3,
+                "correlation": 0.7211160607008538
+              },
+              {
+                "axis": "El",
+                "ROI_count": 1,
+                "correlation": 0.7512698757583279
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200121_Fly5",
+            "training_unit_count": 5,
+            "parameters": {
+              "tLP_seconds": 0.0010057154930874473
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 15,
+                "correlation": 0.8645325866802862
+              },
+              {
+                "axis": "El",
+                "ROI_count": 8,
+                "correlation": 0.8642777727858366
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200121_Fly9",
+            "training_unit_count": 6,
+            "parameters": {
+              "tLP_seconds": 0.0010035231715094857
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 2,
+                "correlation": 0.4266271079124477
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200127_Fly1",
+            "training_unit_count": 6,
+            "parameters": {
+              "tLP_seconds": 0.0012725925031039705
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 5,
+                "correlation": 0.41350148571436596
+              }
+            ]
+          }
+        ],
+        "held_out_unit_count": 7,
+        "minimum_held_out_correlation": 0.41350148571436596,
+        "median_held_out_correlation": 0.7211160607008538,
+        "held_out_correlations": [
+          0.5063978316073796,
+          0.7211160607008538,
+          0.7512698757583279,
+          0.8645325866802862,
+          0.8642777727858366,
+          0.4266271079124477,
+          0.41350148571436596
+        ]
+      },
+      "gates": {
+        "minimum_held_out_correlation": false,
+        "median_held_out_correlation": false,
+        "every_held_out_fly_axis": false
+      },
+      "passed": false
+    },
+    "band_pass": {
+      "full_data_parameters": {
+        "tLP_seconds": 0.031019411768182573,
+        "tHP_seconds": 0.18654609734760141
+      },
+      "full_data_residual_sum_squares": 2.0765947441134642,
+      "full_data_BIC": -1361.867274915137,
+      "cross_validation": {
+        "folds": [
+          {
+            "held_out_fly": "200121_Fly3",
+            "training_unit_count": 6,
+            "parameters": {
+              "tLP_seconds": 0.030631568100670366,
+              "tHP_seconds": 0.22575509059142915
+            },
+            "held_out": [
+              {
+                "axis": "El",
+                "ROI_count": 1,
+                "correlation": 0.761354631744611
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200121_Fly4",
+            "training_unit_count": 5,
+            "parameters": {
+              "tLP_seconds": 0.02526368656870809,
+              "tHP_seconds": 0.19324759542161216
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 3,
+                "correlation": 0.9284110975829064
+              },
+              {
+                "axis": "El",
+                "ROI_count": 1,
+                "correlation": 0.9426194215382422
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200121_Fly5",
+            "training_unit_count": 5,
+            "parameters": {
+              "tLP_seconds": 0.03470111721337261,
+              "tHP_seconds": 0.12349139632840342
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 15,
+                "correlation": 0.8490139312304211
+              },
+              {
+                "axis": "El",
+                "ROI_count": 8,
+                "correlation": 0.8522619412866531
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200121_Fly9",
+            "training_unit_count": 6,
+            "parameters": {
+              "tLP_seconds": 0.03860527681524011,
+              "tHP_seconds": 0.16651293842500822
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 2,
+                "correlation": 0.6601293774641868
+              }
+            ]
+          },
+          {
+            "held_out_fly": "200127_Fly1",
+            "training_unit_count": 6,
+            "parameters": {
+              "tLP_seconds": 0.030140110325628702,
+              "tHP_seconds": 0.21847322738694414
+            },
+            "held_out": [
+              {
+                "axis": "Az",
+                "ROI_count": 5,
+                "correlation": 0.7626642281652318
+              }
+            ]
+          }
+        ],
+        "held_out_unit_count": 7,
+        "minimum_held_out_correlation": 0.6601293774641868,
+        "median_held_out_correlation": 0.8490139312304211,
+        "held_out_correlations": [
+          0.761354631744611,
+          0.9284110975829064,
+          0.9426194215382422,
+          0.8490139312304211,
+          0.8522619412866531,
+          0.6601293774641868,
+          0.7626642281652318
+        ]
+      },
+      "gates": {
+        "minimum_held_out_correlation": false,
+        "median_held_out_correlation": true,
+        "every_held_out_fly_axis": false
+      },
+      "passed": false
+    }
+  },
+  "band_pass_BIC_below_low_pass_BIC": true,
+  "C3_analytic_filter_family_precheck_passed": false,
+  "transfer_gates": {
+    "band_pass_source_shape_cross_fly_validated": false,
+    "same_experiment_calcium_kernel_available": false,
+    "physical_v7_timebase_available": false,
+    "stable_recorded_cell_to_MaleCNS_mapping_available": false
+  },
+  "C3_analytic_filter_transfer_authorized": false,
+  "advance_to_T4_functional_precheck": false,
+  "blocking_requirements": [
+    "band_pass_source_shape_cross_fly_validated",
+    "same_experiment_calcium_kernel_available",
+    "physical_v7_timebase_available",
+    "stable_recorded_cell_to_MaleCNS_mapping_available"
+  ],
+  "stop_reason": "C3_analytic_filter_not_cross_fly_and_cross_paper_transfer_ready",
+  "boundary": {
+    "exploratory_source_only_precheck": true,
+    "inherited_threshold_not_changed": true,
+    "C3_only": true,
+    "no_T4_response_or_direction_label_used": true,
+    "cross_paper_calcium_constant_is_unvalidated_for_C3_dataset": true,
+    "fit_not_connected_to_runtime": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

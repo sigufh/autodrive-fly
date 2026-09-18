@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "fc6cfdb9e13a4dd68ea06cc7bc7139e6b14893f483a88a47e6b6a3d60a9a1942",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "e61f0f50e5fd61810853ce63e5b5e8ff9a7754f843bf2345efbd908fb99b5d58",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "5efb8669ce32f0b18433173e83820537b07212dd6ca67e745ba7c7952f94c5e1",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "d6ceb9b4a2b56992d9afdbf764d41aab4ba9c5e95592878e7b3c92d72e22d36f",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -15,7 +15,8 @@
       "artifacts/v7-fig3-source-kernel-robustness.json": "1bc2e15b5603a2c544d0e5f508e1e6c36eb09f5f55d1539163ed762524cf3ea2",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
-      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "351443a9495853fa9925980114f7538cbaa85835bee0e2bd589c8a164a910c78"
+      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "351443a9495853fa9925980114f7538cbaa85835bee0e2bd589c8a164a910c78",
+      "artifacts/v7-c3-analytic-filter-precheck.json": "572f7f31042d3f30db3db3a61b3171413553f5806e8fcf76a53790c4c6ed4aa9"
     },
     "required_sources": [
       "Mi1",
@@ -146,6 +147,13 @@
     "object_payload_hash_verified": false,
     "object_payload_safely_inspected": false,
     "source_temporal_kernel_transfer_authorized": false
+  },
+  "verified_C3_analytic_filter_precheck": {
+    "band_pass_BIC_below_low_pass_BIC": true,
+    "minimum_leave_one_fly_out_correlation": 0.6601293774641868,
+    "median_leave_one_fly_out_correlation": 0.8490139312304211,
+    "filter_family_precheck_passed": false,
+    "source_filter_transfer_authorized": false
   },
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,

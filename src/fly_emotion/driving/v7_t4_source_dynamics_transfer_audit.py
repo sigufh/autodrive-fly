@@ -28,6 +28,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     arenz_path = Path(config["arenz_source_dynamics_evidence"])
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
     fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
+    c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -45,6 +46,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig1_temporal = json.loads(
         (root / fig1_temporal_path).read_text(encoding="utf-8")
     )
+    c3_filter = json.loads((root / c3_filter_path).read_text(encoding="utf-8"))
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -123,6 +125,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(arenz_path): _sha256(root / arenz_path),
                 str(c3_strf_path): _sha256(root / c3_strf_path),
                 str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
+                str(c3_filter_path): _sha256(root / c3_filter_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -262,6 +265,23 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ]["safely_inspected"],
             "source_temporal_kernel_transfer_authorized": fig1_temporal[
                 "source_temporal_kernel_transfer_authorized"
+            ],
+        },
+        "verified_C3_analytic_filter_precheck": {
+            "band_pass_BIC_below_low_pass_BIC": c3_filter[
+                "band_pass_BIC_below_low_pass_BIC"
+            ],
+            "minimum_leave_one_fly_out_correlation": c3_filter["model_families"][
+                "band_pass"
+            ]["cross_validation"]["minimum_held_out_correlation"],
+            "median_leave_one_fly_out_correlation": c3_filter["model_families"][
+                "band_pass"
+            ]["cross_validation"]["median_held_out_correlation"],
+            "filter_family_precheck_passed": c3_filter[
+                "C3_analytic_filter_family_precheck_passed"
+            ],
+            "source_filter_transfer_authorized": c3_filter[
+                "C3_analytic_filter_transfer_authorized"
             ],
         },
         "required_transfer_fields_available": fields,
