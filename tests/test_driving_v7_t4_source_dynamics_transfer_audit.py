@@ -32,7 +32,12 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert synthesis["target_PD_ND_conditioned"] is True
     assert synthesis["may_be_used_as_label_blind_v7_source_kernel"] is False
     assert set(report["required_transfer_fields_available"].values()) == {False}
-    assert set(report["transfer_gates"].values()) == {False}
+    assert report["transfer_gates"]["crossfit_structure_axis_passed"] is True
+    assert not any(
+        value
+        for name, value in report["transfer_gates"].items()
+        if name != "crossfit_structure_axis_passed"
+    )
     package = report["official_unified_model_package"]
     assert package["doi"] == "10.25378/janelia.16663486"
     assert package["article_id"] == 16663486
@@ -146,6 +151,13 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert public_models["ModelDB_required_source_coverage_fraction"] == 0.0
     assert public_models["C3_specific_parameters_available"] is False
     assert public_models["complete_source_dynamics_transfer_authorized"] is False
+    crossfit = report["crossfit_dynamic_readiness"]
+    assert crossfit["structure_axis_passed"] is True
+    assert crossfit["functional_candidate_passed"] is False
+    assert crossfit["maximum_ordered_source_sequence_direction_pass_count"] == 2
+    assert all(not values for values in crossfit["ordered_bilateral_direction_subtypes"].values())
+    assert crossfit["shuffle_signed_mean_bilateral_direction_subtypes"] == ["a"]
+    assert crossfit["source_sequence_candidate_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:
@@ -159,3 +171,9 @@ def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:
     assert report["boundary"]["use_160ms_shift_as_v7_lag"] is False
     assert report["boundary"]["archived_manifest_does_not_substitute_for_payload"] is True
     assert report["boundary"]["T5_and_LPLC_remain_frozen"] is True
+    assert (
+        report["boundary"][
+            "prohibit_further_target_formula_scan_without_new_source_dynamics_evidence"
+        ]
+        is True
+    )

@@ -35,6 +35,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
     c3_measured_path = Path(config["c3_measured_filter_robustness_evidence"])
     public_models_path = Path(config["public_t4_model_source_coverage_evidence"])
+    crossfit_axis_path = Path(config["crossfit_axis_evidence"])
+    crossfit_functional_path = Path(config["crossfit_functional_evidence"])
+    crossfit_sequence_path = Path(config["crossfit_sequence_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -68,6 +71,13 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     )
     public_models = json.loads(
         (root / public_models_path).read_text(encoding="utf-8")
+    )
+    crossfit_axis = json.loads((root / crossfit_axis_path).read_text(encoding="utf-8"))
+    crossfit_functional = json.loads(
+        (root / crossfit_functional_path).read_text(encoding="utf-8")
+    )
+    crossfit_sequence = json.loads(
+        (root / crossfit_sequence_path).read_text(encoding="utf-8")
     )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
@@ -106,6 +116,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         "millivolts_to_v7_normalized_state_mapping": interface["interface_boundary"][
             "convert_millivolts_to_normalized_drive"
         ],
+        "ordered_source_sequence_identifiability": bool(
+            crossfit_sequence["authorize_new_functional_candidate"]
+        ),
     }
     gates = {
         "source_direction_axis_available": source_direction_axis,
@@ -118,6 +131,15 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         "existing_microstep_temporal_control_passed": microstep[
             "temporal_identifiability"
         ]["passed"],
+        "crossfit_structure_axis_passed": crossfit_axis[
+            "T4_synapse_crossfit_axis_passed"
+        ],
+        "crossfit_functional_candidate_passed": crossfit_functional[
+            "candidate_passed"
+        ],
+        "ordered_source_sequence_passed": crossfit_sequence[
+            "authorize_new_functional_candidate"
+        ],
     }
     transferable = all(gates.values()) and all(fields.values())
     recovered = config["official_unified_model_recovered_manifest"]
@@ -154,6 +176,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
                 str(c3_measured_path): _sha256(root / c3_measured_path),
                 str(public_models_path): _sha256(root / public_models_path),
+                str(crossfit_axis_path): _sha256(root / crossfit_axis_path),
+                str(crossfit_functional_path): _sha256(root / crossfit_functional_path),
+                str(crossfit_sequence_path): _sha256(root / crossfit_sequence_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -417,6 +442,25 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "complete_source_dynamics_transfer_authorized": public_models[
                 "complete_source_dynamics_transfer_authorized"
+            ],
+        },
+        "crossfit_dynamic_readiness": {
+            "structure_axis_passed": crossfit_axis[
+                "T4_synapse_crossfit_axis_passed"
+            ],
+            "functional_candidate_passed": crossfit_functional["candidate_passed"],
+            "maximum_ordered_source_sequence_direction_pass_count": (
+                crossfit_sequence["maximum_ordered_direction_pass_count"]
+            ),
+            "ordered_bilateral_direction_subtypes": crossfit_sequence[
+                "ordered_bilateral_direction_subtypes_by_reduction"
+            ],
+            "shuffle_signed_mean_bilateral_direction_subtypes": (
+                crossfit_sequence["mode_reduction_results"]["temporal_shuffle"]
+                ["signed_mean"]["bilateral_direction_subtypes"]
+            ),
+            "source_sequence_candidate_authorized": crossfit_sequence[
+                "authorize_new_functional_candidate"
             ],
         },
         "required_transfer_fields_available": fields,

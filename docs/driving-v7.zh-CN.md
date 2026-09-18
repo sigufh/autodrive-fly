@@ -1844,6 +1844,11 @@ controls、T02/T03 或 calibration。证据见 `artifacts/v7-t4-synapse-crossfit
 static-sham 的 positive-peak 也有两个单侧群体通过。故当前源序列未表现出所需的有序
 时间特异性，不能把电导基线解释为唯一问题，也不能继续从这些归约中挑候选。证据见
 `artifacts/v7-t4-crossfit-sequence-identifiability.json`。
+这一诊断现已回写 `artifacts/v7-t4-source-dynamics-transfer-audit.json`：虽然 cross-fit
+结构轴通过，功能候选与 ordered source sequence 均失败；direction-independent source
+kernel、source→MaleCNS 身份映射、物理 v7 采样间隔和 mV→归一化状态映射也仍缺失。
+因此 `next_candidate_authorized=false`，在新增可验证的 source-dynamics 证据前禁止继续
+扫描 T4 target 端公式。
 
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，

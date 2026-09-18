@@ -66,7 +66,7 @@
       "artifacts/v7-t4-crossfit-sequence-identifiability.json": "41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60",
       "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
-      "artifacts/v7-t4-source-dynamics-transfer-audit.json": "47767e60d51bad22c2de732e9bf8ec960a10d99519ab616b516954b5f61d48ba",
+      "artifacts/v7-t4-source-dynamics-transfer-audit.json": "7dca73dc838a6d2ad019c424bec98384b6df8b6cdd94aad76eaccb53fd56c203",
       "artifacts/v7-unified-model-package-audit.json": "fba08d06da7f8189cbfa8fc6c6c9ea19c9564f0ed9054791273b988dab365a89",
       "artifacts/v7-fig3-source-kernel-audit.json": "919a985db8afe88ee852977b4ebd551e145fe9bff639dd82c1e7c8c77d967aa6",
       "artifacts/v7-fig3-source-kernel-robustness.json": "1bc2e15b5603a2c544d0e5f508e1e6c36eb09f5f55d1539163ed762524cf3ea2",
@@ -798,7 +798,8 @@
           "direction_independent_source_kernel": false,
           "source_to_MaleCNS_identity_mapping": false,
           "physical_v7_sample_interval": false,
-          "millivolts_to_v7_normalized_state_mapping": false
+          "millivolts_to_v7_normalized_state_mapping": false,
+          "ordered_source_sequence_identifiability": false
         },
         "T4_source_dynamics_transfer_authorized": false,
         "T4_source_dynamics_next_candidate_authorized": false,

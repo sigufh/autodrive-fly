@@ -19,6 +19,9 @@ flyvis_c3_time_constant_evidence: artifacts/v7-flyvis-c3-time-constant-audit.jso
 flyvis_c3_effective_dynamics_evidence: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
 c3_measured_filter_robustness_evidence: artifacts/v7-c3-measured-filter-robustness.json
 public_t4_model_source_coverage_evidence: artifacts/v7-public-t4-model-source-coverage-audit.json
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+crossfit_functional_evidence: artifacts/v7-t4-synapse-crossfit-precheck.json
+crossfit_sequence_evidence: artifacts/v7-t4-crossfit-sequence-identifiability.json
 official_unified_model_recovered_manifest:
   recovery_source: internet_archive_official_page_snapshot
   snapshot_timestamp: "20241127113612"
@@ -54,3 +57,4 @@ boundary:
   runtime_modified: false
   connect_to_navigation: false
   T5_and_LPLC_remain_frozen: true
+  prohibit_further_target_formula_scan_without_new_source_dynamics_evidence: true
