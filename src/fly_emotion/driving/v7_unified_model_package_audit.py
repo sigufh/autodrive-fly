@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import importlib.metadata
+import re
 import zipfile
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -57,6 +58,46 @@ def _member(archive: zipfile.ZipFile, name: str, expected: dict | str) -> dict:
     return {
         "bytes": len(raw),
         "sha256": hashlib.sha256(raw).hexdigest(),
+    }
+
+
+def _scan_text_members(archives: list[tuple[str, zipfile.ZipFile]], config: dict) -> dict:
+    extensions = tuple(config["text_member_extensions"])
+    source_names = list(config["source_mapping_requirements"])
+    hits = {name: [] for name in source_names}
+    abstract_hits = {name: [] for name in ("E2", "I2")}
+    scanned = []
+    for package, archive in archives:
+        for member in archive.namelist():
+            if member.startswith("__MACOSX/") or not member.endswith(extensions):
+                continue
+            text = archive.read(member).decode("utf-8", errors="replace")
+            scanned.append(f"{package}:{member}")
+            for name in source_names:
+                pattern = rf"(?<![A-Za-z0-9_]){re.escape(name)}(?![A-Za-z0-9_])"
+                lines = [
+                    index
+                    for index, line in enumerate(text.splitlines(), start=1)
+                    if re.search(pattern, line, flags=re.IGNORECASE)
+                ]
+                if lines:
+                    hits[name].append({"member": member, "lines": lines})
+            for name in abstract_hits:
+                pattern = rf"(?<![A-Za-z0-9_]){name}(?![A-Za-z0-9_])"
+                lines = [
+                    index
+                    for index, line in enumerate(text.splitlines(), start=1)
+                    if re.search(pattern, line)
+                ]
+                if lines:
+                    abstract_hits[name].append({"member": member, "lines": lines})
+    return {
+        "extensions": list(extensions),
+        "member_count": len(scanned),
+        "members": scanned,
+        "source_type_token_hits": hits,
+        "abstract_component_token_hits": abstract_hits,
+        "any_source_type_token_found": any(hits.values()),
     }
 
 
@@ -115,7 +156,9 @@ def evaluate_v7_unified_model_package_audit(root: Path) -> dict:
     support_result = _verify_package(
         support_path, support_spec, md5_key="observed_md5"
     )
-    with zipfile.ZipFile(model_path) as model_archive:
+    with zipfile.ZipFile(model_path) as model_archive, zipfile.ZipFile(
+        support_path
+    ) as support_archive:
         model_members = {
             name: _member(model_archive, name, expected)
             for name, expected in model_spec["members"].items()
@@ -131,7 +174,6 @@ def evaluate_v7_unified_model_package_audit(root: Path) -> dict:
                     "the unified-model audit requires the 'mat-io' development dependency"
                 ) from error
             tables = matio.load_from_mat(mat_path)
-    with zipfile.ZipFile(support_path) as support_archive:
         support_members = {
             name: _member(support_archive, name, expected)
             for name, expected in support_spec["required_members"].items()
@@ -139,6 +181,9 @@ def evaluate_v7_unified_model_package_audit(root: Path) -> dict:
         t4_source = support_archive.read(
             "supportingFunctions/t4_simple_wrap.m"
         ).decode()
+        package_text_scan = _scan_text_members(
+            [("model", model_archive), ("supporting", support_archive)], config
+        )
     expected_tables = config["expected_tables"]
     if sorted(tables) != sorted(expected_tables):
         raise ValueError("unified-model MAT table names differ from frozen manifest")
@@ -179,9 +224,9 @@ def evaluate_v7_unified_model_package_audit(root: Path) -> dict:
         "author_preselected_T4_rows_available": config["T4_candidate_selection"][
             "author_preselected_T4_rows_available"
         ],
-        "E_I_E2_I2_to_MaleCNS_source_mapping_available": any(
-            source_mapping_mentions.values()
-        ),
+        "E_I_E2_I2_to_MaleCNS_source_mapping_available": package_text_scan[
+            "any_source_type_token_found"
+        ],
         "cardinal_diagonal_to_T4_subtype_mapping_available": False,
         "independent_cell_holdout_available": config["boundary"][
             "independent_cell_holdout_available"
@@ -233,6 +278,7 @@ def evaluate_v7_unified_model_package_audit(root: Path) -> dict:
             "parameter_blocks": ["mu", "sigma", "amplitude", "Tr", "Td", "m", "b", "Ti"],
             "parameter_count": int(config["expected_parameter_count"]),
             "source_type_mentions_in_t4_model": source_mapping_mentions,
+            "package_text_scan": package_text_scan,
             "manual_photoreceptor_to_target_delay_milliseconds": 30.0,
             "ON_OFF_parameter_block_reordering_present": (
                 "if spfr_data.val == 1" in t4_source

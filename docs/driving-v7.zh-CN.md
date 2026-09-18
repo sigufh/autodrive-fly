@@ -1723,6 +1723,13 @@ inhibitory rise/decay 参数，却没有任何 source-type 独立映射。抽象
 Mi4 与 C3，Mi4 也不能替代 C3；因此两套模型都不能补齐当前 source 合同。证据见
 `artifacts/v7-public-t4-model-source-coverage-audit.json`。
 
+对已校验的官方 unified-model 两个 ZIP 又做了全成员文本扫描，而不再只检查
+`t4_simple_wrap.m`：共 9 个非 macOS 元数据的 `.m/.txt/.md` 成员，`Mi1`、`Tm3`、
+`Mi4`、`C3` 四个精确 source-type token 均为零命中；`E2/I2` 只出现在 T4/T5 wrapper
+的抽象四分量说明和方程变量中。因此“缺少 E/I/E2/I2→MaleCNS source 映射”现在是
+包级结论，不是单文件搜索遗漏；target-level 参数仍不得冒充 source-specific kernel。
+更新证据见 `artifacts/v7-unified-model-package-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

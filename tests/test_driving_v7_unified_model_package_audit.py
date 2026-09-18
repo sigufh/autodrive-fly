@@ -48,6 +48,11 @@ def test_verified_target_RF_parameters_do_not_authorize_MaleCNS_transfer() -> No
     assert semantics["target_component_model_verified"] is True
     assert semantics["components"] == ["E", "I", "E2", "I2"]
     assert set(semantics["source_type_mentions_in_t4_model"].values()) == {False}
+    scan = semantics["package_text_scan"]
+    assert scan["member_count"] == 9
+    assert scan["any_source_type_token_found"] is False
+    assert all(not matches for matches in scan["source_type_token_hits"].values())
+    assert all(scan["abstract_component_token_hits"][name] for name in ("E2", "I2"))
     assert semantics["manual_photoreceptor_to_target_delay_milliseconds"] == 30.0
     assert semantics["ON_OFF_parameter_block_reordering_present"] is True
     gates = report["transfer_gates"]

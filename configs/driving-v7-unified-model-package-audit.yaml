@@ -47,10 +47,12 @@ T4_candidate_selection:
   status: derived_by_applying_author_T5_objective_to_T4_tables
   author_preselected_T4_rows_available: false
 source_mapping_requirements: [Mi1, Tm3, Mi4, C3]
+text_member_extensions: [.m, .txt, .md]
 boundary:
   raw_packages_ignored_and_not_committed: true
   model_is_target_level_receptive_field_model: true
   E_I_E2_I2_are_not_verified_MaleCNS_source_type_assignments: true
+  all_text_members_scanned_for_source_type_mapping: true
   cardinal_diagonal_to_T4_subtype_mapping_not_verified: true
   parameters_fit_to_averaged_cells: true
   independent_cell_holdout_available: false

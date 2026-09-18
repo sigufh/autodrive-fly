@@ -3,8 +3,8 @@
     "name": "v7-official-unified-model-package-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-unified-model-package-audit.yaml": "1ab10ea38f88afe05b6b2b0c4953b77a7c38fb9791cf738b9a0a5ee0e215978c",
-      "src/fly_emotion/driving/v7_unified_model_package_audit.py": "cfb769eaaf46c1856df18d02a85352f4c54463116e0f898e9868c8400c27f09d",
+      "configs/driving-v7-unified-model-package-audit.yaml": "68676b2716bf4d738d19dbb481cf263e579c40c94c448cc0d1242d451607ab4d",
+      "src/fly_emotion/driving/v7_unified_model_package_audit.py": "95bf94aeacf327fb1f42a3c3de2cd1cd0f6e256c5762389d0e34a45785668c0b",
       "pyproject.toml": "2ede0081f08b0a3337f80332391a9c3136d3564d63972b0ddcfeb00b7d1a0ae3"
     },
     "mat_parser": {
@@ -305,6 +305,68 @@
       "Mi4": false,
       "C3": false
     },
+    "package_text_scan": {
+      "extensions": [
+        ".m",
+        ".txt",
+        ".md"
+      ],
+      "member_count": 9,
+      "members": [
+        "model:modelFigure/README.txt",
+        "model:modelFigure/modelFigureCode.m",
+        "supporting:supportingFunctions/plotBoxandJitterDots.m",
+        "supporting:supportingFunctions/padRespVecGen.m",
+        "supporting:supportingFunctions/extract_params2.m",
+        "supporting:supportingFunctions/t5_simple_wrap.m",
+        "supporting:supportingFunctions/t4_simple_wrap.m",
+        "supporting:supportingFunctions/generatePositionCell.m",
+        "supporting:supportingFunctions/extrapolateShiftedVec.m"
+      ],
+      "source_type_token_hits": {
+        "Mi1": [],
+        "Tm3": [],
+        "Mi4": [],
+        "C3": []
+      },
+      "abstract_component_token_hits": {
+        "E2": [
+          {
+            "member": "supportingFunctions/t5_simple_wrap.m",
+            "lines": [
+              11
+            ]
+          },
+          {
+            "member": "supportingFunctions/t4_simple_wrap.m",
+            "lines": [
+              11
+            ]
+          }
+        ],
+        "I2": [
+          {
+            "member": "supportingFunctions/t5_simple_wrap.m",
+            "lines": [
+              11,
+              391,
+              407,
+              411
+            ]
+          },
+          {
+            "member": "supportingFunctions/t4_simple_wrap.m",
+            "lines": [
+              11,
+              408,
+              424,
+              428
+            ]
+          }
+        ]
+      },
+      "any_source_type_token_found": false
+    },
     "manual_photoreceptor_to_target_delay_milliseconds": 30.0,
     "ON_OFF_parameter_block_reordering_present": true
   },
@@ -327,6 +389,7 @@
     "raw_packages_ignored_and_not_committed": true,
     "model_is_target_level_receptive_field_model": true,
     "E_I_E2_I2_are_not_verified_MaleCNS_source_type_assignments": true,
+    "all_text_members_scanned_for_source_type_mapping": true,
     "cardinal_diagonal_to_T4_subtype_mapping_not_verified": true,
     "parameters_fit_to_averaged_cells": true,
     "independent_cell_holdout_available": false,

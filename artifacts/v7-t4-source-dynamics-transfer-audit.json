@@ -10,7 +10,7 @@
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
-      "artifacts/v7-unified-model-package-audit.json": "fba08d06da7f8189cbfa8fc6c6c9ea19c9564f0ed9054791273b988dab365a89",
+      "artifacts/v7-unified-model-package-audit.json": "86983f6389d99c1a5a5932eef9d629f15a5aee1732c39a73186cdc361f8ef08c",
       "artifacts/v7-fig3-source-kernel-audit.json": "919a985db8afe88ee852977b4ebd551e145fe9bff639dd82c1e7c8c77d967aa6",
       "artifacts/v7-fig3-source-kernel-robustness.json": "1bc2e15b5603a2c544d0e5f508e1e6c36eb09f5f55d1539163ed762524cf3ea2",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
