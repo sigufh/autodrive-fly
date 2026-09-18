@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "685c5eb160d2b9afc85961cae8cc7c301e4d04df51c5b0f3046ee72d3b10319e",
-      "src/fly_emotion/driving/v7_goal_audit.py": "1995ccaf4513434bba982c37d332bb942185ac8e185a7eb5f200b5029bf26bc0",
+      "configs/driving-v7-goal-audit.yaml": "539f3a2fb72157e4039a72cdea2a80bcdbf5001d2410d1f6a02a727e6668b7c9",
+      "src/fly_emotion/driving/v7_goal_audit.py": "516172caaa20d68d7299fc4a3808afbda8aeb58c466cc3bd48bb4757f8f8e447",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -71,6 +71,7 @@
       "artifacts/v7-t4-source-identity-readiness-audit.json": "789bc5dedce9f7d1079740d4b230ded020ba51e974ae83555249ada2b972e2e2",
       "artifacts/v7-t4-individual-split-1khz-audit.json": "b0f3624c022fb6614a2a345ebc28f596d87e4e917dfba00958d0f462f91bd587",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
+      "artifacts/v7-t4-recording-field-audit.json": "cb75c5e1fcc22af80d704d35af9221e11fa089824a0be0f59a5ce6d271718c15",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "1b40930a7aa44a1ab5d174358474a10c9ada6064f1643e97962ae462dd814bdf",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "f72f4cefbddd7eaff3150d9949a9283ff3787179b44736dfb0303934475016e6",
       "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
@@ -100,7 +101,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "15de176bde8485f00725f27195770721204b5ed4228c2d36f58c851bb64b2bcb",
       "artifacts/v7-pirogova-source-calcium-audit.json": "aef806af4cdd259d0af7406d8959ff7fb2a3a882fa7a5434bc547364adf1e24d",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
-      "artifacts/v7-source-evidence-matrix.json": "1e44f910109fc14a0c7f0f95eebf694b0be15de2b49929a26bba9cc0210c7578",
+      "artifacts/v7-source-evidence-matrix.json": "cbd1ea4801d9b82b8542f5dcef446188175aeafed7d233a2f59b6d265afcda94",
       "artifacts/v7-source-type-average-mapping-contract.json": "21d3c8408ebfc9cc6d4fe69ec42254e13fb883093b9984f2da7777c34ca1d809",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "856e3263b1d1ae0892ecf8909626ccda6be9a38cf44538d93a53b6e7ace92538",
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
@@ -230,6 +231,7 @@
         "artifacts/v7-t4-source-identity-readiness-audit.json",
         "artifacts/v7-t4-individual-split-1khz-audit.json",
         "artifacts/v7-edmond-fig3-retrieval-audit.json",
+        "artifacts/v7-t4-recording-field-audit.json",
         "artifacts/v7-behnia-t4-fast-source-audit.json",
         "artifacts/v7-t4-inhibitory-source-external-audit.json",
         "artifacts/v7-unified-model-package-audit.json",
@@ -462,6 +464,16 @@
         "Edmond_Fig3_1khz_payload_currently_verified": true,
         "Edmond_Fig3_full_resolution_recompute_authorized": true,
         "Edmond_network_failure_is_scientific_rejection": false,
+        "T4_recording_field_count_available": 10,
+        "T4_recording_field_count_required": 15,
+        "T4_missing_recording_fields": [
+          "cohort_role",
+          "stimulus_id",
+          "stimulus_direction",
+          "stimulus_angular_position_degrees",
+          "baseline_window_seconds"
+        ],
+        "T4_complete_stimulus_and_baseline_fields": false,
         "Behnia_T4_independent_fast_source_phenotypes": [
           "Mi1",
           "Tm3"

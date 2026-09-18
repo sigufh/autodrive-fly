@@ -33,6 +33,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     t4_voltage = evidence["t4_voltage"]
     t4_split = evidence["t4_individual_split"]
     edmond_retrieval = evidence["edmond_fig3_retrieval"]
+    t4_fields = evidence["t4_recording_fields"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
@@ -308,7 +309,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "MaleCNS_exact_type_body_set": bool(map_row["all_bodies_in_canonical_graph"]),
             "soma_side": bool(map_row["soma_side_complete"]),
             "complete_columnar_retinotopy": bool(map_row["columnar_retinotopy_available"]),
-            "complete_stimulus_and_baseline_fields_on_allowed_payload": False,
+            "complete_stimulus_and_baseline_fields_on_allowed_payload": (
+                family == "T4"
+                and t4_fields[
+                    "complete_stimulus_and_baseline_fields_on_allowed_payload"
+                ]
+            ),
             "external_recording_to_body_or_explicit_type_average": bool(
                 type_average_row["gates"]["explicit_exact_type_average_declared"]
             ),

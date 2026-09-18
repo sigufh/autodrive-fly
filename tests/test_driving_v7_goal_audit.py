@@ -250,6 +250,16 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is True
     )
     assert visual["observations"]["Edmond_network_failure_is_scientific_rejection"] is False
+    assert visual["observations"]["T4_recording_field_count_available"] == 10
+    assert visual["observations"]["T4_recording_field_count_required"] == 15
+    assert visual["observations"]["T4_missing_recording_fields"] == [
+        "cohort_role",
+        "stimulus_id",
+        "stimulus_direction",
+        "stimulus_angular_position_degrees",
+        "baseline_window_seconds",
+    ]
+    assert visual["observations"]["T4_complete_stimulus_and_baseline_fields"] is False
     assert visual["observations"]["Behnia_T4_independent_fast_source_phenotypes"] == [
         "Mi1",
         "Tm3",

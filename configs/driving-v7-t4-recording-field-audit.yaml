@@ -1,0 +1,80 @@
+version: 1
+name: v7-t4-fig3-recording-field-audit
+observed_on: "2026-09-19"
+contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+retrieval_evidence: artifacts/v7-edmond-fig3-retrieval-audit.json
+identity_evidence: artifacts/v7-t4-source-identity-readiness-audit.json
+split_evidence: artifacts/v7-t4-individual-split-1khz-audit.json
+paper_pdf:
+  path: data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf
+  bytes: 8482179
+  sha256: f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b
+  pages: 22
+notebook:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3.ipynb
+  bytes: 263853
+  sha256: ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695
+led_array:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3_led.npy
+  bytes: 256128
+  md5: 1d43f6f1ee6ef4f73be584c489e35136
+  sha256: 8d158e5a2abee4cbc77ccc7eda7b77cac31550dd3a20a2142638e7c257ca734b
+  shape: [2, 2, 8000]
+  dtype: float64
+source_types: [Mi1, Tm3, Mi4, C3]
+field_status:
+  source_type:
+    available: true
+    provenance: verified_filename_workbook_header_and_paper
+  stable_recording_unit_id:
+    available: true
+    provenance: verified_source_type_cell_ordinal
+  biological_individual_id:
+    available: true
+    provenance: paper_one_recorded_cell_per_different_animal_plus_verified_ordinal
+  cohort_role:
+    available: false
+    provenance: absent_from_repository_payload_and_publication
+  stimulus_id:
+    available: false
+    provenance: no_stable_per_recording_stimulus_identifier
+  stimulus_family:
+    available: true
+    provenance: paper_Fig3_moving_contrast_edges
+  stimulus_polarity:
+    available: true
+    provenance: verified_array_axis_and_notebook_on_off_labels
+  stimulus_direction:
+    available: false
+    provenance: source_arrays_have_no_direction_axis_and_notebook_PD_ND_is_post_hoc_shift_synthesis
+  stimulus_angular_position_degrees:
+    available: false
+    provenance: receptive_field_alignment_reported_but_per_recording_positions_absent
+  stimulus_angular_speed_degrees_per_second:
+    available: true
+    provenance: paper_Fig3_30_degrees_per_second
+  time_seconds:
+    available: true
+    provenance: verified_8000_samples_at_notebook_1000_hz
+  response_values:
+    available: true
+    provenance: verified_float64_repository_arrays
+  response_unit:
+    available: true
+    provenance: paper_and_Fig3_axis_membrane_voltage_millivolts
+  baseline_window_seconds:
+    available: false
+    provenance: current_2.5_to_3.5_second_window_is_analysis_protocol_not_repository_field
+  sample_interval_seconds:
+    available: true
+    provenance: verified_notebook_fs_1000_hz
+boundary:
+  source_array_axes_are_on_off_cell_time_only: true
+  PD_ND_for_source_inputs_is_synthesized_not_recorded: true
+  baseline_window_is_post_hoc_analysis_protocol: true
+  paper_and_notebook_can_supply_linked_semantics_but_not_missing_per_recording_fields: true
+  no_threshold_label_split_denominator_or_failure_rule_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

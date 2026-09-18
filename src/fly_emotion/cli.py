@@ -225,6 +225,7 @@ from .driving.v7_t4_inhibitory_source_external_audit import (
 from .driving.v7_t4_local_correlator_precheck import evaluate_v7_t4_local_correlator_precheck
 from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_correlator
 from .driving.v7_t4_pair_lag_audit import evaluate_v7_t4_pair_lag_audit
+from .driving.v7_t4_recording_field_audit import evaluate_v7_t4_recording_field_audit
 from .driving.v7_t4_source_dynamics_transfer_audit import (
     evaluate_v7_t4_source_dynamics_transfer_audit,
 )
@@ -513,6 +514,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
     subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-t4-individual-split-1khz")
+    subparsers.add_parser("v7-audit-t4-recording-fields")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
@@ -1504,6 +1506,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-individual-split-1khz":
         report = evaluate_v7_t4_individual_split_1khz_audit(root)
         target = root / "artifacts/v7-t4-individual-split-1khz-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t4-recording-fields":
+        report = evaluate_v7_t4_recording_field_audit(root)
+        target = root / "artifacts/v7-t4-recording-field-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -94,6 +94,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t4_individual_split_1khz_audit = reports["t4_individual_split_1khz_audit"]
     edmond_fig3_retrieval_audit = reports["edmond_fig3_retrieval_audit"]
+    t4_recording_field_audit = reports["t4_recording_field_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     t4_inhibitory_source_external_audit = reports[
         "t4_inhibitory_source_external_audit"
@@ -307,6 +308,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_identity_readiness_audit"],
                 config["evidence"]["t4_individual_split_1khz_audit"],
                 config["evidence"]["edmond_fig3_retrieval_audit"],
+                config["evidence"]["t4_recording_field_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
                 config["evidence"]["unified_model_package_audit"],
@@ -624,6 +626,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "Edmond_network_failure_is_scientific_rejection": (
                     edmond_fig3_retrieval_audit["gates"]["scientific_source_rejected"]
+                ),
+                "T4_recording_field_count_available": (
+                    t4_recording_field_audit["available_field_count"]
+                ),
+                "T4_recording_field_count_required": (
+                    t4_recording_field_audit["required_field_count"]
+                ),
+                "T4_missing_recording_fields": t4_recording_field_audit[
+                    "missing_fields"
+                ],
+                "T4_complete_stimulus_and_baseline_fields": (
+                    t4_recording_field_audit[
+                        "complete_stimulus_and_baseline_fields_on_allowed_payload"
+                    ]
                 ),
                 "Behnia_T4_independent_fast_source_phenotypes": sorted(
                     behnia_t4_fast_source_audit["source_evidence"]

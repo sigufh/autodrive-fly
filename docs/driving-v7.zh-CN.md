@@ -2186,6 +2186,16 @@ ON/OFF 符号、2.5–3.5 s baseline、1.5 s response window，以及 0.80/0.80/
 没有删异常值、改标签、调阈值或拟合参数。因此高时间分辨率排除了“10 ms 抽样导致七项
 失败”的解释，但仍不授权 T4 source fit、T4/T5 functional precheck 或任何下游推进。证据见
 `artifacts/v7-t4-individual-split-1khz-audit.json`。
+
+对外部证据合同的 15 个 recording 字段进一步逐项审计后，T4 Fig. 3 当前可支持其中
+10 项：source type、pseudonymous recording/animal ordinal、edge family、ON/OFF polarity、
+30°/s 速度、1 kHz 时间轴、膜电位值与单位。仍缺 5 项：预先声明的 cohort role、稳定的
+逐记录 stimulus ID、source-array 原生 direction、逐记录 angular position，以及载荷内预先
+声明的 baseline window。尤其 source 数组只有 `[ON/OFF, cell, time]` 三个轴；notebook 中
+的 PD/ND 是对群体平均输入做 ±160 ms 位移后合成，不能倒填成逐细胞实测 direction。
+当前 2.5–3.5 s baseline 也是冻结分析协议，不是原始载荷字段。因此
+`complete_stimulus_and_baseline_fields_on_allowed_payload` 继续失败，不因恢复 1 kHz 数据而
+放宽九源合同。证据见 `artifacts/v7-t4-recording-field-audit.json`。
 完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个

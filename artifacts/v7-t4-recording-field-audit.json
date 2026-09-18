@@ -1,0 +1,161 @@
+{
+  "protocol": {
+    "name": "v7-t4-fig3-recording-field-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-recording-field-audit.yaml": "dcedf867d9596771d943c1af15f45c11125f191634f2dd610ee434f8e5cd0a33",
+      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "2394b898bb1d674780167b35519f1b0b53c944c754da14deffb6d73641338b25",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
+      "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "789bc5dedce9f7d1079740d4b230ded020ba51e974ae83555249ada2b972e2e2",
+      "artifacts/v7-t4-individual-split-1khz-audit.json": "b0f3624c022fb6614a2a345ebc28f596d87e4e917dfba00958d0f462f91bd587",
+      "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "sources": [
+    "Mi1",
+    "Tm3",
+    "Mi4",
+    "C3"
+  ],
+  "array_axes": [
+    "stimulus_on_off",
+    "cell",
+    "time_milliseconds"
+  ],
+  "array_has_direction_axis": false,
+  "paper_evidence": {
+    "moving_edge_family": true,
+    "ON_OFF_polarity": true,
+    "speed_degrees_per_second": 30.0,
+    "one_recorded_cell_per_different_animal": true,
+    "responses_temporally_aligned_post_hoc": true
+  },
+  "notebook_evidence": {
+    "sample_rate_hz": 1000,
+    "source_stimulus_axis_labels": [
+      "on",
+      "off"
+    ],
+    "PD_ND_labels_apply_after_source_average_and_synthetic_shift": true
+  },
+  "led_evidence": {
+    "shape": [
+      2,
+      2,
+      8000
+    ],
+    "dtype": "float64",
+    "half_intensity_crossing_samples": {
+      "on_pd": 4004,
+      "on_nd": 4005,
+      "off_pd": 3998,
+      "off_nd": 3998
+    },
+    "per_recording_stimulus_identifier_present": false,
+    "per_recording_angular_position_present": false
+  },
+  "field_status": {
+    "source_type": {
+      "available": true,
+      "provenance": "verified_filename_workbook_header_and_paper"
+    },
+    "stable_recording_unit_id": {
+      "available": true,
+      "provenance": "verified_source_type_cell_ordinal"
+    },
+    "biological_individual_id": {
+      "available": true,
+      "provenance": "paper_one_recorded_cell_per_different_animal_plus_verified_ordinal"
+    },
+    "cohort_role": {
+      "available": false,
+      "provenance": "absent_from_repository_payload_and_publication"
+    },
+    "stimulus_id": {
+      "available": false,
+      "provenance": "no_stable_per_recording_stimulus_identifier"
+    },
+    "stimulus_family": {
+      "available": true,
+      "provenance": "paper_Fig3_moving_contrast_edges"
+    },
+    "stimulus_polarity": {
+      "available": true,
+      "provenance": "verified_array_axis_and_notebook_on_off_labels"
+    },
+    "stimulus_direction": {
+      "available": false,
+      "provenance": "source_arrays_have_no_direction_axis_and_notebook_PD_ND_is_post_hoc_shift_synthesis"
+    },
+    "stimulus_angular_position_degrees": {
+      "available": false,
+      "provenance": "receptive_field_alignment_reported_but_per_recording_positions_absent"
+    },
+    "stimulus_angular_speed_degrees_per_second": {
+      "available": true,
+      "provenance": "paper_Fig3_30_degrees_per_second"
+    },
+    "time_seconds": {
+      "available": true,
+      "provenance": "verified_8000_samples_at_notebook_1000_hz"
+    },
+    "response_values": {
+      "available": true,
+      "provenance": "verified_float64_repository_arrays"
+    },
+    "response_unit": {
+      "available": true,
+      "provenance": "paper_and_Fig3_axis_membrane_voltage_millivolts"
+    },
+    "baseline_window_seconds": {
+      "available": false,
+      "provenance": "current_2.5_to_3.5_second_window_is_analysis_protocol_not_repository_field"
+    },
+    "sample_interval_seconds": {
+      "available": true,
+      "provenance": "verified_notebook_fs_1000_hz"
+    }
+  },
+  "available_fields": [
+    "source_type",
+    "stable_recording_unit_id",
+    "biological_individual_id",
+    "stimulus_family",
+    "stimulus_polarity",
+    "stimulus_angular_speed_degrees_per_second",
+    "time_seconds",
+    "response_values",
+    "response_unit",
+    "sample_interval_seconds"
+  ],
+  "missing_fields": [
+    "cohort_role",
+    "stimulus_id",
+    "stimulus_direction",
+    "stimulus_angular_position_degrees",
+    "baseline_window_seconds"
+  ],
+  "available_field_count": 10,
+  "required_field_count": 15,
+  "all_required_recording_fields_available": false,
+  "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "five_required_recording_fields_absent",
+  "boundary": {
+    "source_array_axes_are_on_off_cell_time_only": true,
+    "PD_ND_for_source_inputs_is_synthesized_not_recorded": true,
+    "baseline_window_is_post_hoc_analysis_protocol": true,
+    "paper_and_notebook_can_supply_linked_semantics_but_not_missing_per_recording_fields": true,
+    "no_threshold_label_split_denominator_or_failure_rule_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

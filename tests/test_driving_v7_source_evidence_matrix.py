@@ -36,6 +36,12 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             is True
         )
         assert (
+            report["matrix"][source]["gates"][
+                "complete_stimulus_and_baseline_fields_on_allowed_payload"
+            ]
+            is False
+        )
+        assert (
             report["matrix"][source]["evidence_components"][
                 "fixed_T4_individual_split_passed_for_ON_and_OFF"
             ]
