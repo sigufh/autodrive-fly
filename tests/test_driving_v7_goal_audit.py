@@ -88,6 +88,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         8,
     ]
     assert visual["observations"]["T5_typed_spatial_pair_control_eligible"] is False
+    assert visual["observations"]["T5_native_waveform_condition_count"] == 12
+    assert visual["observations"]["T5_native_waveform_passing_condition_count"] == 1
+    assert visual["observations"]["T5_native_waveform_template_authorized"] is False
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},

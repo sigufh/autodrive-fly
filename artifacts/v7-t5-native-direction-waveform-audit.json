@@ -1,0 +1,1037 @@
+{
+  "protocol": {
+    "name": "v7-t5-native-direction-waveform-robustness-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-native-direction-waveform-audit.yaml": "8ee86a59a3391048f9ee3e95a5fe030686d0b1acfad624fc20bb66eb06f0cecf",
+      "src/fly_emotion/driving/v7_t5_native_direction_waveform_audit.py": "1f9cb67a6d739a7f72029c7607257c2046514730f427c5a9b38a50fdc2ea581f",
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae",
+      "artifacts/v7-t5-label-audit.json": "6225d7374c67e6a34f778e55ae266641eda35ad0e30d3c6dcf0f8ef20cd85a7e",
+      "artifacts/v7-t5-phenotype.json": "bb15d5f9f3f107ba56cc3a97896095582915d736ecd68bbcb312f8cb14b73737"
+    },
+    "repository_commit": "fe52053dda84d49a124e6c1f141dd461eba9630c",
+    "recording_file_count": 17,
+    "paired_condition_count": 134,
+    "parameter_fit": false,
+    "model_simulation": false,
+    "runtime_modified": false
+  },
+  "analysis_contract": {
+    "recorded_file_count": 17,
+    "direction_mapping": {
+      "0": "ND",
+      "1": "PD"
+    },
+    "grouping": [
+      "width_pixels",
+      "step_duration_milliseconds"
+    ],
+    "waveform": "PD_minus_ND",
+    "time_alignment": "interpolate_each_pair_to_overlap_at_slower_native_interval",
+    "baseline": "mean_of_available_negative_time_samples",
+    "normalization": "unit_L2_after_baseline_subtraction",
+    "validation": "leave_one_recording_file_out_within_condition",
+    "preserve_all_conditions": true
+  },
+  "conditions": {
+    "width=1:duration=20ms": {
+      "width_pixels": 1,
+      "step_duration_milliseconds": 20,
+      "recording_file_count": 3,
+      "recording_file_ids": [
+        1,
+        2,
+        3
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 187,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.40833262047078217
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.6779223761143447
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": -0.2974910861281082
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 3,
+        "finite_count": 3,
+        "undefined_count": 0,
+        "minimum": -0.2974910861281082,
+        "q25": 0.05542076717133698,
+        "median": 0.40833262047078217,
+        "q75": 0.5431274982925635,
+        "maximum": 0.6779223761143447
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": false
+      },
+      "passed": false
+    },
+    "width=1:duration=40ms": {
+      "width_pixels": 1,
+      "step_duration_milliseconds": 40,
+      "recording_file_count": 15,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 207,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.6289387654261253
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.6795590007019409
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.5760990943393158
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.8113882273150024
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.7328299064646628
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.3344224690737052
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.6539284903516531
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.24454225815369474
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.8086875816065419
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.6265211262180517
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.8328082189425648
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.884738244060162
+        },
+        {
+          "held_out_recording_file": 15,
+          "correlation": 0.8516788054315881
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.6481137321574142
+        },
+        {
+          "held_out_recording_file": 17,
+          "correlation": 0.5248385315108594
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 15,
+        "finite_count": 15,
+        "undefined_count": 0,
+        "minimum": 0.24454225815369474,
+        "q25": 0.6013101102786838,
+        "median": 0.6539284903516531,
+        "q75": 0.8100379044607722,
+        "maximum": 0.884738244060162
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": false
+      },
+      "passed": false
+    },
+    "width=1:duration=80ms": {
+      "width_pixels": 1,
+      "step_duration_milliseconds": 80,
+      "recording_file_count": 9,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 279,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.7643747349250555
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.8669120553808268
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.8567587398233388
+        },
+        {
+          "held_out_recording_file": 4,
+          "correlation": -0.5724631241900953
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.8265154751680956
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.7082532715036287
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.16266665162778954
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.37633851317971395
+        },
+        {
+          "held_out_recording_file": 11,
+          "correlation": 0.35932888653336154
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 9,
+        "finite_count": 9,
+        "undefined_count": 0,
+        "minimum": -0.5724631241900953,
+        "q25": 0.35932888653336154,
+        "median": 0.7082532715036287,
+        "q75": 0.8265154751680956,
+        "maximum": 0.8669120553808268
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": false
+      },
+      "passed": false
+    },
+    "width=1:duration=160ms": {
+      "width_pixels": 1,
+      "step_duration_milliseconds": 160,
+      "recording_file_count": 15,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 423,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.8788464182051431
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.8266671110533026
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.8269225603883399
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.9475540341518747
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.8329192041156342
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.737896077763487
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.3407905450403496
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.44699460401174107
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.8452750538263025
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.8701495329340818
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9228634017369655
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.9454086596590405
+        },
+        {
+          "held_out_recording_file": 15,
+          "correlation": 0.9129208405827968
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.7672113925370025
+        },
+        {
+          "held_out_recording_file": 17,
+          "correlation": 0.6673714834939205
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 15,
+        "finite_count": 15,
+        "undefined_count": 0,
+        "minimum": 0.3407905450403496,
+        "q25": 0.7525537351502447,
+        "median": 0.8329192041156342,
+        "q75": 0.8958836293939699,
+        "maximum": 0.9475540341518747
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    },
+    "width=2:duration=20ms": {
+      "width_pixels": 2,
+      "step_duration_milliseconds": 20,
+      "recording_file_count": 3,
+      "recording_file_ids": [
+        1,
+        2,
+        3
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 192,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.30090720607959603
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.6252492945426047
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.7457499152160402
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 3,
+        "finite_count": 3,
+        "undefined_count": 0,
+        "minimum": 0.30090720607959603,
+        "q25": 0.4630782503111004,
+        "median": 0.6252492945426047,
+        "q75": 0.6854996048793225,
+        "maximum": 0.7457499152160402
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": false
+      },
+      "passed": false
+    },
+    "width=2:duration=40ms": {
+      "width_pixels": 2,
+      "step_duration_milliseconds": 40,
+      "recording_file_count": 15,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 213,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.816881233414697
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.7181903533098319
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.4661466272832879
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.887779566136489
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.8746732570736845
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.6601480064221261
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.6604520470422406
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.5598009260031632
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.9326728264095316
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.8773906650913184
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9428957060878904
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.9575589892955884
+        },
+        {
+          "held_out_recording_file": 15,
+          "correlation": 0.8068471108222318
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.4044485808756498
+        },
+        {
+          "held_out_recording_file": 17,
+          "correlation": 0.80847864258116
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 15,
+        "finite_count": 15,
+        "undefined_count": 0,
+        "minimum": 0.4044485808756498,
+        "q25": 0.6603000267321834,
+        "median": 0.80847864258116,
+        "q75": 0.8825851156139037,
+        "maximum": 0.9575589892955884
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    },
+    "width=2:duration=80ms": {
+      "width_pixels": 2,
+      "step_duration_milliseconds": 80,
+      "recording_file_count": 15,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 295,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.9609133791617342
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.8778726200582825
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.8504755974782944
+        },
+        {
+          "held_out_recording_file": 4,
+          "correlation": -0.3521286478366576
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.9138640497379213
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.8769966347823815
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.8166265254826559
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.5738788134141478
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.6272068691223699
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.7037695871380943
+        },
+        {
+          "held_out_recording_file": 11,
+          "correlation": 0.5658607980665094
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.8252135910967225
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9202569878327774
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.9247847429750635
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.7693868111407005
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 15,
+        "finite_count": 15,
+        "undefined_count": 0,
+        "minimum": -0.3521286478366576,
+        "q25": 0.6654882281302321,
+        "median": 0.8252135910967225,
+        "q75": 0.8958683348981019,
+        "maximum": 0.9609133791617342
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    },
+    "width=2:duration=160ms": {
+      "width_pixels": 2,
+      "step_duration_milliseconds": 160,
+      "recording_file_count": 15,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 454,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.9609559122834282
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.8053775025402892
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.85023215656156
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.9604156199672104
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.9681487039339842
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.7323091165268011
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.7747236985712742
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.5981196166940964
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.8504934409482136
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.9652529666392572
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9793985334275068
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.9744104361141019
+        },
+        {
+          "held_out_recording_file": 15,
+          "correlation": 0.8840315822732951
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.7415659026874912
+        },
+        {
+          "held_out_recording_file": 17,
+          "correlation": 0.8930578515659532
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 15,
+        "finite_count": 15,
+        "undefined_count": 0,
+        "minimum": 0.5981196166940964,
+        "q25": 0.7900506005557817,
+        "median": 0.8840315822732951,
+        "q75": 0.9631044394613427,
+        "maximum": 0.9793985334275068
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    },
+    "width=4:duration=20ms": {
+      "width_pixels": 4,
+      "step_duration_milliseconds": 20,
+      "recording_file_count": 2,
+      "recording_file_ids": [
+        2,
+        3
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 198,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.923207724625342
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.923207724625342
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 2,
+        "finite_count": 2,
+        "undefined_count": 0,
+        "minimum": 0.923207724625342,
+        "q25": 0.923207724625342,
+        "median": 0.923207724625342,
+        "q75": 0.923207724625342,
+        "maximum": 0.923207724625342
+      },
+      "gates": {
+        "every_held_out_file": true,
+        "median_held_out_correlation": true
+      },
+      "passed": true
+    },
+    "width=4:duration=40ms": {
+      "width_pixels": 4,
+      "step_duration_milliseconds": 40,
+      "recording_file_count": 14,
+      "recording_file_ids": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 233,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.7906508411499511
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.9035547396051232
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.9731947267206963
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.9554909153780771
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.832361478664287
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.8457202849823598
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.5782604965392811
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.8848258417904424
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.8072466737523989
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9697081663676739
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.9045944398451381
+        },
+        {
+          "held_out_recording_file": 15,
+          "correlation": 0.92967190620118
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.7033861974845683
+        },
+        {
+          "held_out_recording_file": 17,
+          "correlation": 0.971472917302524
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 14,
+        "finite_count": 14,
+        "undefined_count": 0,
+        "minimum": 0.5782604965392811,
+        "q25": 0.8135253749803709,
+        "median": 0.8941902906977828,
+        "q75": 0.9490361630838529,
+        "maximum": 0.9731947267206963
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    },
+    "width=4:duration=80ms": {
+      "width_pixels": 4,
+      "step_duration_milliseconds": 80,
+      "recording_file_count": 14,
+      "recording_file_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 327,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 1,
+          "correlation": 0.8953983581235871
+        },
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.979270069810558
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.9168718922191071
+        },
+        {
+          "held_out_recording_file": 4,
+          "correlation": -0.307032942770172
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.9570660499379889
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.961029005489187
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.7304839796766044
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.9686809593303889
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.7919334523894903
+        },
+        {
+          "held_out_recording_file": 11,
+          "correlation": 0.28930987504072236
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.8731874658092081
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9650436945698737
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.8643486058436181
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.785905491900944
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 14,
+        "finite_count": 14,
+        "undefined_count": 0,
+        "minimum": -0.307032942770172,
+        "q25": 0.7874124820230806,
+        "median": 0.8842929119663976,
+        "q75": 0.9600382666013875,
+        "maximum": 0.979270069810558
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    },
+    "width=4:duration=160ms": {
+      "width_pixels": 4,
+      "step_duration_milliseconds": 160,
+      "recording_file_count": 14,
+      "recording_file_ids": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "common_interval_milliseconds": 5.0,
+      "common_sample_count": 520,
+      "leave_one_recording_file_out": [
+        {
+          "held_out_recording_file": 2,
+          "correlation": 0.9777944052478125
+        },
+        {
+          "held_out_recording_file": 3,
+          "correlation": 0.8943632965815325
+        },
+        {
+          "held_out_recording_file": 5,
+          "correlation": 0.9218120619956487
+        },
+        {
+          "held_out_recording_file": 6,
+          "correlation": 0.9496132884880512
+        },
+        {
+          "held_out_recording_file": 7,
+          "correlation": 0.7942447917031819
+        },
+        {
+          "held_out_recording_file": 8,
+          "correlation": 0.883346332088048
+        },
+        {
+          "held_out_recording_file": 9,
+          "correlation": 0.7311177658333318
+        },
+        {
+          "held_out_recording_file": 10,
+          "correlation": 0.913109989312074
+        },
+        {
+          "held_out_recording_file": 12,
+          "correlation": 0.8685675308250885
+        },
+        {
+          "held_out_recording_file": 13,
+          "correlation": 0.9709235424318068
+        },
+        {
+          "held_out_recording_file": 14,
+          "correlation": 0.9672037370839387
+        },
+        {
+          "held_out_recording_file": 15,
+          "correlation": 0.9160302059555595
+        },
+        {
+          "held_out_recording_file": 16,
+          "correlation": 0.8963368724857904
+        },
+        {
+          "held_out_recording_file": 17,
+          "correlation": 0.9182660498383888
+        }
+      ],
+      "correlation_summary": {
+        "fixed_denominator": 14,
+        "finite_count": 14,
+        "undefined_count": 0,
+        "minimum": 0.7311177658333318,
+        "q25": 0.8861005732114191,
+        "median": 0.9145700976338167,
+        "q75": 0.9426629818649506,
+        "maximum": 0.9777944052478125
+      },
+      "gates": {
+        "every_held_out_file": false,
+        "median_held_out_correlation": true
+      },
+      "passed": false
+    }
+  },
+  "condition_count": 12,
+  "passing_condition_count": 1,
+  "all_native_direction_waveform_gates_passed": false,
+  "authorize_T5_direction_template": false,
+  "advance_to_T5_fit": false,
+  "advance_to_visual_gate": false,
+  "stop_reason": "T5_PD_minus_ND_waveform_failed_leave_one_recording_file_out_robustness",
+  "boundary": {
+    "recording_file_is_not_claimed_as_independent_fly_identity": true,
+    "stable_biological_identity_unavailable": true,
+    "no_parameter_fit": true,
+    "no_response_magnitude_label_inference": true,
+    "native_time_preserved_within_pair": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

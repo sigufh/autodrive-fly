@@ -193,6 +193,9 @@ from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_lamina_scalar_precheck import evaluate_v7_t5_lamina_scalar_precheck
 from .driving.v7_t5_lamina_split import evaluate_v7_t5_lamina_split
+from .driving.v7_t5_native_direction_waveform_audit import (
+    evaluate_v7_t5_native_direction_waveform_audit,
+)
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_source_axis_audit import evaluate_v7_t5_source_axis_audit
 from .driving.v7_t5_source_pair_precheck import evaluate_v7_t5_source_pair_precheck
@@ -415,6 +418,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-source-axis")
     subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
     subparsers.add_parser("v7-evaluate-t5-typed-spatial-pair-precheck")
+    subparsers.add_parser("v7-audit-t5-native-direction-waveforms")
     subparsers.add_parser("v7-evaluate-t5-continuous-moment-precheck")
     subparsers.add_parser("v7-evaluate-lplc1-near-collision-precheck")
     subparsers.add_parser("v7-audit-lplc1-input-structure")
@@ -1104,6 +1108,14 @@ def main() -> None:
     if args.command == "v7-evaluate-t5-typed-spatial-pair-precheck":
         report = evaluate_v7_t5_typed_spatial_pair_precheck(root)
         target = root / "artifacts/v7-t5-typed-spatial-pair-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-native-direction-waveforms":
+        report = evaluate_v7_t5_native_direction_waveform_audit(root)
+        target = root / "artifacts/v7-t5-native-direction-waveform-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

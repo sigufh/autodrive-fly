@@ -109,6 +109,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_source_axis_audit = reports["t5_source_axis_audit"]
     t5_source_pair_precheck = reports["t5_source_pair_precheck"]
     t5_typed_spatial_pair_precheck = reports["t5_typed_spatial_pair_precheck"]
+    t5_native_direction_waveform_audit = reports[
+        "t5_native_direction_waveform_audit"
+    ]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -199,6 +202,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["t5_source_pair_precheck"],
                 config["evidence"]["t5_typed_spatial_pair_precheck"],
+                config["evidence"]["t5_native_direction_waveform_audit"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
@@ -271,6 +275,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "T5_typed_spatial_pair_control_eligible": bool(
                     t5_typed_spatial_pair_precheck["control_eligible_candidates"]
+                ),
+                "T5_native_waveform_condition_count": (
+                    t5_native_direction_waveform_audit["condition_count"]
+                ),
+                "T5_native_waveform_passing_condition_count": (
+                    t5_native_direction_waveform_audit["passing_condition_count"]
+                ),
+                "T5_native_waveform_template_authorized": (
+                    t5_native_direction_waveform_audit[
+                        "authorize_T5_direction_template"
+                    ]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"
