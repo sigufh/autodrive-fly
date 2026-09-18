@@ -194,6 +194,9 @@ from .driving.v7_t5_source_axis_audit import evaluate_v7_t5_source_axis_audit
 from .driving.v7_t5_source_pair_precheck import evaluate_v7_t5_source_pair_precheck
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
+from .driving.v7_t5_typed_spatial_pair_precheck import (
+    evaluate_v7_t5_typed_spatial_pair_precheck,
+)
 from .driving.v7_target_fit import evaluate_v7_target_fit_contract
 from .driving.v7_temporal_audit import evaluate_v7_temporal_input_audit
 from .driving.v7_three_hop_moment import evaluate_v7_three_hop_moment
@@ -405,6 +408,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
     subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
+    subparsers.add_parser("v7-evaluate-t5-typed-spatial-pair-precheck")
     subparsers.add_parser("v7-evaluate-t5-continuous-moment-precheck")
     subparsers.add_parser("v7-evaluate-lplc1-near-collision-precheck")
     subparsers.add_parser("v7-audit-lplc1-input-structure")
@@ -1089,6 +1093,14 @@ def main() -> None:
         report = evaluate_v7_t5_source_pair_precheck(root)
         target = root / "artifacts/v7-t5-source-pair-precheck.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-evaluate-t5-typed-spatial-pair-precheck":
+        report = evaluate_v7_t5_typed_spatial_pair_precheck(root)
+        target = root / "artifacts/v7-t5-typed-spatial-pair-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-evaluate-t5-continuous-moment-precheck":

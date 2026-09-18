@@ -1683,6 +1683,15 @@ fly×axis 独立平均，分别假设 200/250/300/350 ms 一阶钙低通，在�
 该路线不授权 type-shared C3 kernel，也不进入 T4 功能预检。证据见
 `artifacts/v7-c3-measured-filter-robustness.json`。
 
+在这两个失败诊断之后，又做了一个严格限定的正交组合 stop/go：水平分支只用
+Tm2×Tm9，垂直分支只用 Tm9×Tm1，并在每个源类型内保留真实突触位置矩；Tm4 仍作为
+快源经原始网络存在，CT1 保持独立，未并入 Tm9。刺激按既有无标签 RF 位置绑定到固定
+5×3 网格，读出是 Tm9 的 OFF source 峰加四个预注册 gain 之一的正时序项。结构覆盖为
+6,716/6,719，但四个 gain 的方向门都为 0/8；OFF 极性均为 8/8，却没有任何左右双侧
+方向亚型，因此按 stop gate 没有运行扰乱对照或另外两个 tuning 条件。这说明失败并非
+简单来自混合 fast 类型或丢失源内空间矩。证据见
+`artifacts/v7-t5-typed-spatial-pair-precheck.json`。
+
 另外核验了两套常被引用的公开 T4 模型。Clark Lab `SynapticModel` 固定提交
 `18b9db5f…` 使用 1/240 s 步长和统一 150 ms low/high-pass，但三个输入臂只标为
 Mi9、Mi1、Mi4，当前 Mi1/Tm3/Mi4/C3 合同仅覆盖 2/4。ModelDB 239435 的 51,324-byte

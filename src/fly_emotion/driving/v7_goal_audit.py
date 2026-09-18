@@ -104,6 +104,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
     t5_source_pair_precheck = reports["t5_source_pair_precheck"]
+    t5_typed_spatial_pair_precheck = reports["t5_typed_spatial_pair_precheck"]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -193,6 +194,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["t5_source_axis_audit"],
                 config["evidence"]["t5_source_pair_precheck"],
+                config["evidence"]["t5_typed_spatial_pair_precheck"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
@@ -248,6 +250,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_unified_model_files_verified": t5_data["interface_status"][
                     "unified_model_files_verified"
                 ],
+                "T5_typed_spatial_pair_joint_source_fraction": (
+                    t5_typed_spatial_pair_precheck["source_coverage"][
+                        "joint_valid_fraction"
+                    ]
+                ),
+                "T5_typed_spatial_pair_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t5_typed_spatial_pair_precheck["ordered_candidates"]
+                ],
+                "T5_typed_spatial_pair_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t5_typed_spatial_pair_precheck["ordered_candidates"]
+                ],
+                "T5_typed_spatial_pair_control_eligible": bool(
+                    t5_typed_spatial_pair_precheck["control_eligible_candidates"]
+                ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"
                 ],

@@ -74,6 +74,20 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_processed_cells_with_both_direction_codes"] == 17
     assert visual["observations"]["T5_processed_direction_code_mapping_verified"] is False
     assert visual["observations"]["T5_processed_stable_biological_ids_available"] is False
+    assert visual["observations"]["T5_typed_spatial_pair_joint_source_fraction"] > 0.999
+    assert visual["observations"]["T5_typed_spatial_pair_direction_pass_counts"] == [
+        0,
+        0,
+        0,
+        0,
+    ]
+    assert visual["observations"]["T5_typed_spatial_pair_polarity_pass_counts"] == [
+        8,
+        8,
+        8,
+        8,
+    ]
+    assert visual["observations"]["T5_typed_spatial_pair_control_eligible"] is False
     assert visual["observations"]["T5_processed_independent_cell_holdout_available"] is False
     assert visual["observations"]["T5_unified_model_files_verified"] is False
     assert visual["observations"]["physical_timebase_identified"] is False

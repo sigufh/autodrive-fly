@@ -88,6 +88,7 @@ evidence:
   t5_lamina_scalar_precheck: artifacts/v7-t5-lamina-scalar-precheck.json
   t5_source_axis_audit: artifacts/v7-t5-source-axis-audit.json
   t5_source_pair_precheck: artifacts/v7-t5-source-pair-precheck.json
+  t5_typed_spatial_pair_precheck: artifacts/v7-t5-typed-spatial-pair-precheck.json
   t5_continuous_moment_precheck: artifacts/v7-t5-continuous-moment-precheck.json
   lplc1_near_collision_precheck: artifacts/v7-lplc1-near-collision-precheck.json
   lplc1_input_structure: artifacts/v7-lplc1-input-structure.json
