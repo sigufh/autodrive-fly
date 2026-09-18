@@ -3,11 +3,11 @@
     "name": "v7-timing-models-ct1-compartment-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "0e285324966da8473f83729dd96a1f7ac27c7269d7bd27aa9a8339ed9ff05cc6",
-      "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "1931edd413b8fdfbfec1b43ca7426886040ad1a77e3f80f2b7179f90c86e0530",
+      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "b9df0d74c665476d9c5892ea6d91020268f532bd477e21266817864c9e4e06be",
+      "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "032f30a63f005e3442e20be1d88bffc5bc9e6550d52ff2e61acc3a9f24b98581",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "configs/driving-v7-timing-models-source-filter-audit.yaml": "fffaa64fd43a4127c056da205d1f6eb3242b84ece34e0a77bcbff57f5bd02cb4",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "0e13cd6fe1a7d4031e4b0f420e56a46135d8578f09f7b97071c43dd2f0308315"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
     },
     "paper": {
       "doi": "10.1016/j.cub.2022.06.075",
@@ -21,6 +21,33 @@
       ],
       "lobula_results_location": "supplementary_figure_S5"
     },
+    "supplements": [
+      {
+        "path": "data/raw/timing-models-supplement/S0960982222010806-mmc1.pdf",
+        "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0960982222010806-mmc1.pdf",
+        "bytes": 5902308,
+        "sha256": "179ca89862a19ef2255b509e4cd7f7b8691e04366a1a4e88f7af4a66a89123bf",
+        "pages": 21,
+        "figure_S5_page_one_based": 13,
+        "actual_sha256": "179ca89862a19ef2255b509e4cd7f7b8691e04366a1a4e88f7af4a66a89123bf",
+        "actual_pages": 21,
+        "embedded_attachment_count": 0,
+        "Figure_S5_caption_verified": true
+      },
+      {
+        "path": "data/raw/timing-models-supplement/S0960982222010806-mmc2.pdf",
+        "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0960982222010806-mmc2.pdf",
+        "bytes": 9887297,
+        "sha256": "1bb34c97bddf297d54fe0e97af5443d1694eefcaaf808c4f7a7c343491f66b07",
+        "pages": 47,
+        "figure_S5_page_one_based": 39,
+        "actual_sha256": "1bb34c97bddf297d54fe0e97af5443d1694eefcaaf808c4f7a7c343491f66b07",
+        "actual_pages": 47,
+        "embedded_attachment_count": 0,
+        "Figure_S5_caption_verified": true
+      }
+    ],
+    "pypdf_version": "6.1.1",
     "parameter_fit": false,
     "runtime_modified": false
   },
@@ -84,10 +111,20 @@
     "filter_file_compartment_field_present": false,
     "filter_label_compartment_present": false,
     "CT1_column_explicitly_linked_to_lobula_L1_Lo1": false,
+    "separate_lobula_L1_Lo1_dynamic_phenotype_published": true,
+    "separate_lobula_L1_Lo1_numerical_payload_verified": false,
     "stable_individual_ids_present": false,
     "MaleCNS_mapping_present": false,
     "required_split_roles_present": false,
     "response_unit": "deconvolved_calcium_kernel"
+  },
+  "supplement_S5_evidence": {
+    "wild_type_lobula_CT1_fly_count": 17,
+    "cac_RNAi_lobula_CT1_fly_count": 10,
+    "frame_interval_seconds": 0.03333333333333333,
+    "lobula_kernel_phenotype_published": true,
+    "numerical_per_fly_time_series_in_supplement": false,
+    "embedded_numeric_attachment_present": false
   },
   "transfer_gates": {
     "repository_and_filter_files_verified": true,
@@ -95,12 +132,16 @@
     "CT1_column_distinct_from_Mi4_and_Tm9": true,
     "CT1_stable_across_deconvolution_assumptions": true,
     "CT1_lobula_L1_Lo1_provenance_available": false,
+    "separate_lobula_L1_Lo1_dynamic_phenotype_published": true,
+    "lobula_L1_Lo1_numerical_time_series_payload_available": false,
     "allowed_response_unit_available": false,
     "stable_individual_ids_available": false,
     "MaleCNS_mapping_available": false,
     "required_split_roles_present": false
   },
   "CT1_type_average_dynamics_verified": true,
+  "T5_lobula_CT1_dynamic_phenotype_published": true,
+  "T5_lobula_CT1_numerical_payload_verified": false,
   "T5_lobula_CT1_dynamics_verified": false,
   "T5_CT1_source_dynamics_transfer_authorized": false,
   "authorize_T5_functional_precheck": false,
@@ -108,6 +149,7 @@
   "advance_to_vehicle_experiments": false,
   "blocking_requirements": [
     "CT1_lobula_L1_Lo1_provenance_available",
+    "lobula_L1_Lo1_numerical_time_series_payload_available",
     "allowed_response_unit_available",
     "stable_individual_ids_available",
     "MaleCNS_mapping_available",
@@ -118,6 +160,7 @@
     "read_only_external_model_audit": true,
     "same_CT1_cell_type_does_not_authorize_cross_compartment_transfer": true,
     "medulla_M10_evidence_must_not_substitute_for_lobula_L1_Lo1": true,
+    "published_lobula_phenotype_is_not_a_numerical_payload": true,
     "deconvolved_calcium_is_not_membrane_voltage": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

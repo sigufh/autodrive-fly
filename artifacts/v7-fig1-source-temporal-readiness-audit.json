@@ -6,7 +6,7 @@
       "configs/driving-v7-fig1-source-temporal-readiness-audit.yaml": "672ad9a50f96d5997f905ef50ca99461e80081d5de98733ba025c9246d0cbc71",
       "src/fly_emotion/driving/v7_fig1_source_temporal_readiness_audit.py": "ffb6e720a9e4243805f2dca0fffd1ffcb7332386325cda8154a5a9da159bd40a",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
-      "pyproject.toml": "6de539084f2ae82a366d591e37488005340612df18c3581e3d39595fd18936c3"
+      "pyproject.toml": "e6272a4a96f32d31b04f99698b96aa72b87c6f49fd27012e37f001f369d85662"
     },
     "paper_doi": "10.1038/s41586-022-04428-3",
     "data_doi": "10.17617/3.8G",

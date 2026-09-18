@@ -9,7 +9,7 @@
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "configs/driving-v7-fig3-source-kernel-robustness.yaml": "29d69e7a50f4ff460edbc2e865f4443f7399f8cc7261744de76b2f9b47d6eaa4",
-      "pyproject.toml": "6de539084f2ae82a366d591e37488005340612df18c3581e3d39595fd18936c3"
+      "pyproject.toml": "e6272a4a96f32d31b04f99698b96aa72b87c6f49fd27012e37f001f369d85662"
     },
     "parameter_fit": true,
     "fit_scope": "C3_source_STRF_only",

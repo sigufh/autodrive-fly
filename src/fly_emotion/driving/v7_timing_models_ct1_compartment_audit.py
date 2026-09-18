@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib.metadata
 import json
 from itertools import combinations
 from pathlib import Path
@@ -9,6 +10,7 @@ from pathlib import Path
 import h5py
 import numpy as np
 import yaml
+from pypdf import PdfReader
 
 from fly_emotion.driving.v7_geometry_sign import _sha256
 
@@ -68,6 +70,37 @@ def evaluate_v7_timing_models_ct1_compartment_audit(root: Path) -> dict:
     timing_protocol = yaml.safe_load((root / timing_protocol_path).read_text(encoding="utf-8"))
     contract_path = Path(config["required_contract"])
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
+    verified_supplements = []
+    required_caption_fragments = (
+        "Figure S5.",
+        "CT1 lobula terminals",
+        "wild-type CT1 (CT1 > GC6f, n = 17)",
+        "Frames are 1/30 of a second",
+    )
+    for spec in config["supplements"]:
+        path = root / spec["path"]
+        if path.stat().st_size != int(spec["bytes"]) or _sha256(path) != spec["sha256"]:
+            raise ValueError("TimingModels supplement identity mismatch")
+        reader = PdfReader(path)
+        if len(reader.pages) != int(spec["pages"]):
+            raise ValueError("TimingModels supplement page count mismatch")
+        caption = " ".join(
+            (reader.pages[int(spec["figure_S5_page_one_based"]) - 1].extract_text() or "").split()
+        )
+        if any(fragment not in caption for fragment in required_caption_fragments):
+            raise ValueError("TimingModels supplement Figure S5 caption mismatch")
+        attachment_count = len(reader.attachments or {})
+        if attachment_count != 0:
+            raise ValueError("TimingModels supplement unexpectedly embeds attachments")
+        verified_supplements.append(
+            {
+                **spec,
+                "actual_sha256": _sha256(path),
+                "actual_pages": len(reader.pages),
+                "embedded_attachment_count": attachment_count,
+                "Figure_S5_caption_verified": True,
+            }
+        )
     ct1_name = config["CT1_filter_name"]
     comparisons = list(config["comparison_sources"])
     required_columns = [ct1_name, *comparisons]
@@ -125,6 +158,12 @@ def evaluate_v7_timing_models_ct1_compartment_audit(root: Path) -> dict:
         "CT1_lobula_L1_Lo1_provenance_available": bool(
             provenance["CT1_column_explicitly_linked_to_lobula_L1_Lo1"]
         ),
+        "separate_lobula_L1_Lo1_dynamic_phenotype_published": bool(
+            provenance["separate_lobula_L1_Lo1_dynamic_phenotype_published"]
+        ),
+        "lobula_L1_Lo1_numerical_time_series_payload_available": bool(
+            provenance["separate_lobula_L1_Lo1_numerical_payload_verified"]
+        ),
         "allowed_response_unit_available": response_unit_allowed,
         "stable_individual_ids_available": bool(provenance["stable_individual_ids_present"]),
         "MaleCNS_mapping_available": bool(provenance["MaleCNS_mapping_present"]),
@@ -145,6 +184,8 @@ def evaluate_v7_timing_models_ct1_compartment_audit(root: Path) -> dict:
                 str(contract_path): _sha256(root / contract_path),
             },
             "paper": config["paper"],
+            "supplements": verified_supplements,
+            "pypdf_version": importlib.metadata.version("pypdf"),
             "parameter_fit": False,
             "runtime_modified": False,
         },
@@ -165,9 +206,19 @@ def evaluate_v7_timing_models_ct1_compartment_audit(root: Path) -> dict:
             "distinction_from_comparison_sources": distinction,
         },
         "compartment_provenance": provenance,
+        "supplement_S5_evidence": config["supplement_S5_evidence"],
         "transfer_gates": gates,
         "CT1_type_average_dynamics_verified": True,
-        "T5_lobula_CT1_dynamics_verified": bool(gates["CT1_lobula_L1_Lo1_provenance_available"]),
+        "T5_lobula_CT1_dynamic_phenotype_published": bool(
+            gates["separate_lobula_L1_Lo1_dynamic_phenotype_published"]
+        ),
+        "T5_lobula_CT1_numerical_payload_verified": bool(
+            gates["lobula_L1_Lo1_numerical_time_series_payload_available"]
+        ),
+        "T5_lobula_CT1_dynamics_verified": bool(
+            gates["CT1_lobula_L1_Lo1_provenance_available"]
+            and gates["lobula_L1_Lo1_numerical_time_series_payload_available"]
+        ),
         "T5_CT1_source_dynamics_transfer_authorized": transferable,
         "authorize_T5_functional_precheck": transferable,
         "advance_to_LPLC_mechanism_repair": False,

@@ -1928,6 +1928,13 @@ Mi9 都不完全相同；论文报告主 CT1 cohort 为 17 flies。可是 MAT �
 响应仍是去卷积钙核而非允许的膜电位单位，也无 MaleCNS body/split 映射，T5 门保持关闭。
 证据见 `artifacts/v7-timing-models-ct1-compartment-audit.json`。
 
+随后又按正式 PII `S0960982222010806` 取得 Elsevier 的两个补充 PDF（5,902,308 与
+9,887,297 bytes，SHA-256 分别为 `179ca898…`、`1bb34c97…`）。Figure S5 明确
+证明 Lo1/lobula CT1 动态表型被测量：wild-type 17 flies、cac-RNAi 10 flies，帧间隔
+1/30 s；两个 PDF 均无嵌入附件，内容只有曲线图和汇总量，没有逐 fly×time 数值表。
+因此当前更精确的边界是“Lo1 动态表型已发表，但 Lo1 数值 payload 未验证”，仍不能满足
+外部 evidence contract 或授权 T5 source fit。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

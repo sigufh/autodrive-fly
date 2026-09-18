@@ -596,6 +596,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "T5_lobula_CT1_dynamics_verified"
                     ]
                 ),
+                "TimingModels_T5_lobula_CT1_phenotype_published": (
+                    timing_models_ct1_compartment_audit[
+                        "T5_lobula_CT1_dynamic_phenotype_published"
+                    ]
+                ),
+                "TimingModels_T5_lobula_CT1_numerical_payload_verified": (
+                    timing_models_ct1_compartment_audit[
+                        "T5_lobula_CT1_numerical_payload_verified"
+                    ]
+                ),
                 "TimingModels_T5_CT1_transfer_authorized": (
                     timing_models_ct1_compartment_audit[
                         "T5_CT1_source_dynamics_transfer_authorized"
