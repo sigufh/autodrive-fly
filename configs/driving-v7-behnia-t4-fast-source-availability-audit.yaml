@@ -1,0 +1,44 @@
+version: 1
+name: v7-behnia-t4-fast-source-availability-audit
+observed_on: "2026-09-19"
+paper_evidence: artifacts/v7-behnia-t4-fast-source-audit.json
+metadata_snapshots:
+  europe_pmc:
+    path: data/raw/t4-behnia-2014/metadata/europepmc-search.json
+    bytes: 1030
+    sha256: 3489083fd729ef9afbd6ef30e6c08befa4064bbee0a0fbfab2bbf3b503d31014
+  crossref:
+    path: data/raw/t4-behnia-2014/metadata/crossref-work.json
+    bytes: 16868
+    sha256: 88e21458593b2a77d52af1eb6842859a08647674cfb4055126daffa49e97858b
+  datacite_related:
+    path: data/raw/t4-behnia-2014/metadata/datacite-related.json
+    bytes: 198
+    sha256: 43a3c2b97f3f37b6870ee5275654aefd8bc987018286fdd739a1274315cad091
+  zenodo_title_search:
+    path: data/raw/t4-behnia-2014/metadata/zenodo-search.json
+    bytes: 476
+    sha256: c9a355c8ff70727923913ee9363d0e70e9016029ae2bdd57be17abaeced3e272
+  github_doi_search:
+    path: data/raw/t4-behnia-2014/metadata/github-doi-search.json
+    bytes: 82533
+    sha256: 09f35272849a3dd379b3399da09215cec720eeea084b2f00a78d97beffe061f1
+  github_title_search:
+    path: data/raw/t4-behnia-2014/metadata/github-title-search.json
+    bytes: 102252
+    sha256: 5ca23049c8c88e1522315b998ca154d84b512ea283f685d76c864dc36e79d2c6
+github_DOI_data_like_hits:
+  - {repository: gumuxiansheng/AltmetricGrab, path: data/outputs/Nature/all_altmetric_id.csv, classification: bibliographic_index}
+  - {repository: lagotto/data-quality, path: alerts/crossref_files/net_httpunauthorized_error_2014-11-14.csv, classification: Crossref_HTTP_error_log}
+  - {repository: lagotto/data-quality, path: alerts/crossref_files/net_httpunauthorized_error_2014-10-29.csv, classification: Crossref_HTTP_error_log}
+  - {repository: lagotto/data-quality, path: alerts/crossref_files/net_httpunauthorized_error_2014-11-18.csv, classification: Crossref_HTTP_error_log}
+boundary:
+  audited_public_indexes_only_not_proof_of_global_nonexistence: true
+  article_figures_are_not_numeric_payloads: true
+  no_curve_digitization: true
+  no_cross_paper_identity_inference: true
+  no_threshold_label_split_denominator_or_failure_rule_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

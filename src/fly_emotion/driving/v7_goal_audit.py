@@ -97,6 +97,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_recording_field_audit = reports["t4_recording_field_audit"]
     t5_recording_field_audit = reports["t5_recording_field_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
+    behnia_t4_fast_source_availability_audit = reports[
+        "behnia_t4_fast_source_availability_audit"
+    ]
     t4_inhibitory_source_external_audit = reports[
         "t4_inhibitory_source_external_audit"
     ]
@@ -312,6 +315,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_recording_field_audit"],
                 config["evidence"]["t5_recording_field_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
+                config["evidence"]["behnia_t4_fast_source_availability_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
@@ -659,6 +663,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Behnia_T4_independent_numeric_payload_verified": (
                     behnia_t4_fast_source_audit["transfer_gates"][
                         "local_numeric_trace_payload_verified"
+                    ]
+                ),
+                "Behnia_T4_numeric_payload_found_in_audited_public_indexes": (
+                    behnia_t4_fast_source_availability_audit[
+                        "local_numeric_trace_payload_found_in_audited_indexes"
                     ]
                 ),
                 "Behnia_T4_independent_transfer_authorized": (

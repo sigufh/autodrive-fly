@@ -1,0 +1,93 @@
+{
+  "protocol": {
+    "name": "v7-behnia-t4-fast-source-availability-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-behnia-t4-fast-source-availability-audit.yaml": "b9df9bfb03f42a5b76d8b33036a4a5afe73cc8f5af1adfc13acb4313504f643b",
+      "src/fly_emotion/driving/v7_behnia_t4_fast_source_availability_audit.py": "b88d758748e9ef50e8c384a0a44286541d477d9b0cfa682bbd0399568c4870e7",
+      "artifacts/v7-behnia-t4-fast-source-audit.json": "1b40930a7aa44a1ab5d174358474a10c9ada6064f1643e97962ae462dd814bdf",
+      "data/raw/t4-behnia-2014/metadata/europepmc-search.json": "3489083fd729ef9afbd6ef30e6c08befa4064bbee0a0fbfab2bbf3b503d31014",
+      "data/raw/t4-behnia-2014/metadata/crossref-work.json": "88e21458593b2a77d52af1eb6842859a08647674cfb4055126daffa49e97858b",
+      "data/raw/t4-behnia-2014/metadata/datacite-related.json": "43a3c2b97f3f37b6870ee5275654aefd8bc987018286fdd739a1274315cad091",
+      "data/raw/t4-behnia-2014/metadata/zenodo-search.json": "c9a355c8ff70727923913ee9363d0e70e9016029ae2bdd57be17abaeced3e272",
+      "data/raw/t4-behnia-2014/metadata/github-doi-search.json": "09f35272849a3dd379b3399da09215cec720eeea084b2f00a78d97beffe061f1",
+      "data/raw/t4-behnia-2014/metadata/github-title-search.json": "5ca23049c8c88e1522315b998ca154d84b512ea283f685d76c864dc36e79d2c6"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Processing properties of ON and OFF pathways for Drosophila motion detection",
+    "doi": "10.1038/nature13427",
+    "pmid": 25043016,
+    "pmcid": "PMC4243710"
+  },
+  "audited_public_indexes": {
+    "europe_PMC": {
+      "exact_record_count": 1,
+      "is_open_access": false,
+      "has_supplementary_files": false,
+      "has_database_cross_references": false
+    },
+    "Crossref": {
+      "relation_count": 0,
+      "links": [
+        "http://www.nature.com/articles/nature13427.pdf",
+        "http://www.nature.com/articles/nature13427",
+        "http://www.nature.com/articles/nature13427.pdf"
+      ],
+      "numeric_data_links": []
+    },
+    "DataCite": {
+      "related_dataset_count": 0
+    },
+    "Zenodo": {
+      "exact_title_result_count": 0
+    },
+    "GitHub": {
+      "exact_DOI_result_count": 16,
+      "exact_title_result_count": 19,
+      "exact_title_numeric_file_hits": [],
+      "exact_DOI_data_like_hits": [
+        {
+          "repository": "gumuxiansheng/AltmetricGrab",
+          "path": "data/outputs/Nature/all_altmetric_id.csv",
+          "classification": "bibliographic_index"
+        },
+        {
+          "repository": "lagotto/data-quality",
+          "path": "alerts/crossref_files/net_httpunauthorized_error_2014-11-14.csv",
+          "classification": "Crossref_HTTP_error_log"
+        },
+        {
+          "repository": "lagotto/data-quality",
+          "path": "alerts/crossref_files/net_httpunauthorized_error_2014-10-29.csv",
+          "classification": "Crossref_HTTP_error_log"
+        },
+        {
+          "repository": "lagotto/data-quality",
+          "path": "alerts/crossref_files/net_httpunauthorized_error_2014-11-18.csv",
+          "classification": "Crossref_HTTP_error_log"
+        }
+      ],
+      "exact_DOI_neuronal_payload_hits": []
+    }
+  },
+  "local_numeric_trace_payload_found_in_audited_indexes": false,
+  "independent_Mi1_Tm3_numeric_transfer_authorized": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "audited_public_indexes_expose_article_metadata_but_no_numeric_trace_payload",
+  "boundary": {
+    "audited_public_indexes_only_not_proof_of_global_nonexistence": true,
+    "article_figures_are_not_numeric_payloads": true,
+    "no_curve_digitization": true,
+    "no_cross_paper_identity_inference": true,
+    "no_threshold_label_split_denominator_or_failure_rule_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

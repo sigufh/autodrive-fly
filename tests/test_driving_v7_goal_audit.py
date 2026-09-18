@@ -272,6 +272,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "Tm3",
     ]
     assert visual["observations"]["Behnia_T4_independent_numeric_payload_verified"] is False
+    assert (
+        visual["observations"][
+            "Behnia_T4_numeric_payload_found_in_audited_public_indexes"
+        ]
+        is False
+    )
     assert visual["observations"]["Behnia_T4_independent_transfer_authorized"] is False
     assert visual["observations"]["T4_inhibitory_external_Mi4_allowed_unit"] is False
     assert visual["observations"]["T4_inhibitory_external_C3_allowed_unit"] is False

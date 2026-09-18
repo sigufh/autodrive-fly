@@ -40,6 +40,9 @@ from .driving.v7_arenz_t5_source_dynamics_audit import (
 from .driving.v7_behnia_t4_fast_source_audit import (
     evaluate_v7_behnia_t4_fast_source_audit,
 )
+from .driving.v7_behnia_t4_fast_source_availability_audit import (
+    evaluate_v7_behnia_t4_fast_source_availability_audit,
+)
 from .driving.v7_borst_2025_temporal_filtering_audit import (
     evaluate_v7_borst_2025_temporal_filtering_audit,
 )
@@ -518,6 +521,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-recording-fields")
     subparsers.add_parser("v7-audit-t5-recording-fields")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
+    subparsers.add_parser("v7-audit-behnia-t4-fast-source-availability")
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
     subparsers.add_parser("v7-audit-unified-model-package")
@@ -1532,6 +1536,14 @@ def main() -> None:
     if args.command == "v7-audit-behnia-t4-fast-sources":
         report = evaluate_v7_behnia_t4_fast_source_audit(root)
         target = root / "artifacts/v7-behnia-t4-fast-source-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-behnia-t4-fast-source-availability":
+        report = evaluate_v7_behnia_t4_fast_source_availability_audit(root)
+        target = root / "artifacts/v7-behnia-t4-fast-source-availability-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -93,6 +93,12 @@ def test_independent_T4_fast_phenotype_is_not_counted_as_numeric_payload() -> No
             is True
         )
         assert "Behnia_2014_whole_cell_voltage_phenotype" in row["phenotype_evidence_sources"]
+        assert (
+            row["evidence_components"][
+                "Behnia_2014_numeric_payload_found_in_audited_public_indexes"
+            ]
+            is False
+        )
     for source in ("Mi4", "C3"):
         assert (
             report["matrix"][source]["evidence_components"][

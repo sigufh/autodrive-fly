@@ -2207,6 +2207,15 @@ flash duration 也不能代替运动方向、位置或速度。作者代码中�
 选择属于分析参数，不是 payload 中预声明的 baseline window。不同模态字段的并集明确禁止
 拼成一条完整 recording，CT1 实验膜电位仍缺失。证据见
 `artifacts/v7-t5-recording-field-audit.json`。
+
+Behnia 2014 的独立 Mi1/Tm3 whole-cell 表型也重新做了公共载荷可用性审计。固定的
+Europe PMC 记录标记 `hasSuppl=N`、`isOpenAccess=N` 且无数据库交叉引用；Crossref
+relation 为空，链接仅为论文 HTML/PDF；DataCite 按论文 DOI 查询无关联数据集，Zenodo
+精确标题查询无记录，GitHub 精确标题查询也没有数值数据文件。GitHub DOI 查询出现的四个
+`.csv` 仅是 bibliographic index 或 Crossref HTTP 错误日志，不是神经记录。该结论仅覆盖
+上述已审计公共索引，不声称数据在全球范围绝对不存在；论文图中的个体曲线不做数字化。
+因此独立 Mi1/Tm3 时序表型仍可作为定性支持，但不能提供可重算的独立数值 cohort。证据见
+`artifacts/v7-behnia-t4-fast-source-availability-audit.json`。
 完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个

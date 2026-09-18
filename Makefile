@@ -144,6 +144,10 @@ v7-audit-t4-recording-fields:
 v7-audit-t5-recording-fields:
 	.venv/bin/autodrive-fly v7-audit-t5-recording-fields
 
+.PHONY: v7-audit-behnia-t4-fast-source-availability
+v7-audit-behnia-t4-fast-source-availability:
+	.venv/bin/autodrive-fly v7-audit-behnia-t4-fast-source-availability
+
 v7-audit-timebase:
 	.venv/bin/autodrive-fly v7-audit-timebase
 

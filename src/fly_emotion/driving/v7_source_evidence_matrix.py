@@ -35,6 +35,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     edmond_retrieval = evidence["edmond_fig3_retrieval"]
     t4_fields = evidence["t4_recording_fields"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
+    behnia_availability = evidence["behnia_t4_fast_availability"]
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
@@ -190,6 +191,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             ),
             "independent_whole_cell_voltage_phenotype_without_numeric_payload": (
                 source in behnia_fast_sources
+            ),
+            "Behnia_2014_numeric_payload_found_in_audited_public_indexes": (
+                source in behnia_fast_sources
+                and behnia_availability[
+                    "local_numeric_trace_payload_found_in_audited_indexes"
+                ]
             ),
             "independent_inhibitory_source_physiology_published": (
                 source in inhibitory_external
