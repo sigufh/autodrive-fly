@@ -94,6 +94,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t4_individual_split_audit = reports["t4_individual_split_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
+    t4_inhibitory_source_external_audit = reports[
+        "t4_inhibitory_source_external_audit"
+    ]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -290,6 +293,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_identity_readiness_audit"],
                 config["evidence"]["t4_individual_split_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
+                config["evidence"]["t4_inhibitory_source_external_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -584,6 +588,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Behnia_T4_independent_transfer_authorized": (
                     behnia_t4_fast_source_audit[
                         "independent_T4_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "T4_inhibitory_external_Mi4_allowed_unit": (
+                    t4_inhibitory_source_external_audit["source_evidence"]["Mi4"][
+                        "allowed_response_unit"
+                    ]
+                ),
+                "T4_inhibitory_external_C3_allowed_unit": (
+                    t4_inhibitory_source_external_audit["source_evidence"]["C3"][
+                        "allowed_response_unit"
+                    ]
+                ),
+                "T4_inhibitory_external_C3_fixed_robustness_passed": (
+                    t4_inhibitory_source_external_audit["source_evidence"]["C3"][
+                        "independent_fixed_robustness_passed"
+                    ]
+                ),
+                "T4_inhibitory_external_transfer_authorized": (
+                    t4_inhibitory_source_external_audit[
+                        "both_inhibitory_sources_have_transferable_external_validation"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (

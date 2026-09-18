@@ -33,6 +33,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     t4_voltage = evidence["t4_voltage"]
     t4_split = evidence["t4_individual_split"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
+    inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     gou = evidence["gou_partial"]
     gou_sources = set(gou["source_evidence"])
     # The Gou archive was not downloaded or hash-verified. Its README describes
@@ -146,6 +147,14 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             ),
             "independent_whole_cell_voltage_phenotype_without_numeric_payload": (
                 source in behnia_fast_sources
+            ),
+            "independent_inhibitory_source_physiology_published": (
+                source in inhibitory_external
+                and inhibitory_external[source]["independent_physiology_published"]
+            ),
+            "independent_inhibitory_source_allowed_unit": (
+                source in inhibitory_external
+                and inhibitory_external[source]["allowed_response_unit"]
             ),
         }
         numerical_sources = []

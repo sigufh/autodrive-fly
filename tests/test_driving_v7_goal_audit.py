@@ -230,6 +230,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     ]
     assert visual["observations"]["Behnia_T4_independent_numeric_payload_verified"] is False
     assert visual["observations"]["Behnia_T4_independent_transfer_authorized"] is False
+    assert visual["observations"]["T4_inhibitory_external_Mi4_allowed_unit"] is False
+    assert visual["observations"]["T4_inhibitory_external_C3_allowed_unit"] is False
+    assert (
+        visual["observations"]["T4_inhibitory_external_C3_fixed_robustness_passed"]
+        is False
+    )
+    assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
     assert visual["observations"]["source_dynamics_external_contract_satisfied"] is False
     assert visual["observations"]["source_dynamics_external_payload_present"] is False
     assert visual["observations"]["Dryad_L1L2_required_source_coverage_count"] == 0

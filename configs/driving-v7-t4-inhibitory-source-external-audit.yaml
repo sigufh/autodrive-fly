@@ -1,0 +1,34 @@
+version: 1
+name: v7-t4-inhibitory-source-external-audit
+observed_on: "2026-09-19"
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+Mi4_paper:
+  title: Behavioral state modulates the ON visual motion pathway of Drosophila
+  doi: 10.1073/pnas.1703090115
+  pmid: 29255026
+  pmcid: PMC5776785
+  source:
+    path: data/raw/t4-inhibitory-source-external/PMC5776785.html
+    bytes: 234753
+    sha256: 2d1f4cbc18f4f9fa96ac0b105f20ec2376bea4140649e602a1d4b031666f302c
+  measurement:
+    indicators: [GCaMP6f, GCaMP6s]
+    response_unit: deltaF_over_F
+    moving_grating_individual_count: 5
+    Mi4_optogenetic_individual_count: 6
+    numeric_payload_publicly_deposited: false
+    data_availability: upon_request
+C3_evidence:
+  STRF: artifacts/v7-c3-strf-source-dynamics-audit.json
+  independent_flash: artifacts/v7-c3-strf-flash-transfer.json
+boundary:
+  calcium_and_STRF_units_are_not_allowed_membrane_voltage: true
+  data_available_upon_request_is_not_a_local_numeric_payload: true
+  published_Mi4_kinetics_are_indicator_and_stimulus_limited: true
+  C3_mean_correlation_does_not_override_fixed_bootstrap_p05: true
+  no_curve_digitization: true
+  no_threshold_or_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_and_vehicle_experiments_remain_frozen: true

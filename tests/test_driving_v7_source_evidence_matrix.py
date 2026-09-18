@@ -118,6 +118,14 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     assert report["family_summary"]["T5"]["all_sources_contract_complete"] is False
 
 
+def test_inhibitory_source_external_evidence_does_not_cross_modalities() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in ("Mi4", "C3"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["independent_inhibitory_source_physiology_published"] is True
+        assert components["independent_inhibitory_source_allowed_unit"] is False
+
+
 def test_C3_identity_and_external_cohort_are_preserved_without_false_authorization() -> None:
     report = json.loads(REPORT.read_text())
     row = report["matrix"]["C3"]

@@ -1,0 +1,90 @@
+{
+  "protocol": {
+    "name": "v7-t4-inhibitory-source-external-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "471df3419b0269a2fcd39c5cd0095ce1f27074b1ef6efcbc5b80fc6fb2b0c32d",
+      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "cd9fc04de3c32f7f401eef3b095de9360079c4c540a1accf72c9f3eda2e250ae",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea"
+    },
+    "Mi4_paper": {
+      "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
+      "doi": "10.1073/pnas.1703090115",
+      "pmid": 29255026,
+      "pmcid": "PMC5776785",
+      "source": {
+        "path": "data/raw/t4-inhibitory-source-external/PMC5776785.html",
+        "bytes": 234753,
+        "sha256": "2d1f4cbc18f4f9fa96ac0b105f20ec2376bea4140649e602a1d4b031666f302c"
+      },
+      "measurement": {
+        "indicators": [
+          "GCaMP6f",
+          "GCaMP6s"
+        ],
+        "response_unit": "deltaF_over_F",
+        "moving_grating_individual_count": 5,
+        "Mi4_optogenetic_individual_count": 6,
+        "numeric_payload_publicly_deposited": false,
+        "data_availability": "upon_request"
+      },
+      "source_actual_sha256": "2d1f4cbc18f4f9fa96ac0b105f20ec2376bea4140649e602a1d4b031666f302c"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "source_evidence": {
+    "Mi4": {
+      "independent_physiology_published": true,
+      "measurement": {
+        "indicators": [
+          "GCaMP6f",
+          "GCaMP6s"
+        ],
+        "response_unit": "deltaF_over_F",
+        "moving_grating_individual_count": 5,
+        "Mi4_optogenetic_individual_count": 6,
+        "numeric_payload_publicly_deposited": false,
+        "data_availability": "upon_request"
+      },
+      "public_numeric_payload_links_found": [],
+      "local_numeric_payload_verified": false,
+      "allowed_response_unit": false,
+      "independent_fixed_robustness_passed": false
+    },
+    "C3": {
+      "independent_physiology_published": true,
+      "measurement": {
+        "response_unit": "stimulus_response_correlation",
+        "STRF_fly_count": 8,
+        "external_flash_fly_count": 22,
+        "source_and_external_fly_ids_disjoint": true,
+        "mean_waveform_correlation": 0.9728821998445658,
+        "bootstrap_correlation_p05": 0.10741691515057676
+      },
+      "local_numeric_payload_verified": true,
+      "allowed_response_unit": false,
+      "independent_fixed_robustness_passed": false
+    }
+  },
+  "both_inhibitory_sources_have_transferable_external_validation": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "Mi4_public_evidence_is_calcium_only_and_C3_fixed_robustness_fails",
+  "boundary": {
+    "calcium_and_STRF_units_are_not_allowed_membrane_voltage": true,
+    "data_available_upon_request_is_not_a_local_numeric_payload": true,
+    "published_Mi4_kinetics_are_indicator_and_stimulus_limited": true,
+    "C3_mean_correlation_does_not_override_fixed_bootstrap_p05": true,
+    "no_curve_digitization": true,
+    "no_threshold_or_label_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

@@ -1971,6 +1971,15 @@ current-clamp cohort：Mi1/Tm3 对全场闪光与 Gaussian noise 的群体波形
 固定 robustness、不能覆盖 Mi4/C3，也不能作为 external final。证据见
 `artifacts/v7-behnia-t4-fast-source-audit.json`。
 
+对 T4 两个 delayed/inhibitory source 的独立证据也分开核验。Strother 等 2018（DOI
+`10.1073/pnas.1703090115`）确有 Mi4 的行为状态、移动光栅和光遗传响应，但测量均为
+GCaMP6f/6s ΔF/F；作者还明确指出 Mi4 时程受慢钙指示器与 Chrimson 刺激限制，未必反映
+真实动力学。PMC 附件只有补充 PDF 和视频，数据声明为 upon request，没有公开数值表。
+C3 则已有本地 STRF 数值和 8-fly source / 22-fly 独立 flash cohort，均值相关约 0.973，
+但单位为 stimulus-response correlation 且固定 bootstrap p05 仅 0.107。因此 Mi4/C3 都有
+独立生理证据，却都没有同时满足允许单位和固定稳健性门；不能据此替换 Fig.3 电压核或推进
+功能拟合。证据见 `artifacts/v7-t4-inhibitory-source-external-audit.json`。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确
