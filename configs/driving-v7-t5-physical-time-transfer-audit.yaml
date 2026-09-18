@@ -1,0 +1,32 @@
+version: 1
+name: v7-t5-physical-time-and-source-transfer-readiness-audit
+observed_on: "2026-09-18"
+stage1_split_evidence: artifacts/v7-stage1-split.json
+stage1_split_protocol: configs/driving-v7-stage1-split.yaml
+timebase_evidence: artifacts/v7-timebase-audit.json
+timebase_protocol: configs/driving-v7-timebase-audit.yaml
+t5_target_data_evidence: artifacts/v7-t5-conductance-audit.json
+t5_target_data_protocol: configs/driving-v7-t5-conductance-audit.yaml
+t5_source_filter_evidence: artifacts/v7-arenz-t5-source-dynamics-audit.json
+t5_source_filter_protocol: configs/driving-v7-arenz-t5-source-dynamics-audit.yaml
+source_identifiability_evidence: artifacts/v7-source-type-temporal-identifiability.json
+source_identifiability_protocol: configs/driving-v7-source-type-temporal-identifiability.yaml
+required_sources: [Tm1, Tm2, Tm4, Tm9, CT1]
+required_fields:
+  - v7_physical_frame_interval
+  - v7_physical_solver_interval
+  - v7_camera_angular_calibration
+  - Tm1_Tm2_Tm4_Tm9_membrane_like_kernels
+  - CT1_membrane_like_kernel
+  - stable_source_or_target_cell_to_MaleCNS_mapping
+  - independent_dynamic_validation_cohort
+boundary:
+  read_only_audit: true
+  engineering_scheduler_interval_is_not_biological_timebase: true
+  T5_target_voltage_is_not_source_type_dynamics: true
+  raw_calcium_filters_are_not_membrane_like_kernels: true
+  no_inferred_dt: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

@@ -1818,6 +1818,16 @@ ordered 最好仍只有 T5d 左右（2/8），其余亚型未恢复；shuffle/st
 继续扫描 target 端 gain 或归约。证据见
 `artifacts/v7-t5-ct1-axis-sequence-identifiability.json`。
 
+进一步把可用时间证据按语义分层后，`10 ms/frame` 只属于 stage-1 确定性刺激调度，
+配置明确写着未应用到当前神经运行时且未经生物校准；T5 仓库中的 2.5/5 ms 是目标 T5
+膜电位轨迹的原生采样间隔，并不测量 Tm1/Tm2/Tm4/Tm9/CT1 源动态；Arenz Table S2
+虽覆盖前四类源且 raw calcium 拟合完整，但去卷积的 Tm9 R² 仅 0.273，CT1 又完全缺席。
+因此不能拼接这些局部时间量来宣称 v7 已有物理时间基准。当前七项 transfer 字段均未齐：
+物理帧间隔、物理解算步长、相机角标定、四类 Tm 膜电位型核、CT1 膜电位型核、稳定
+记录细胞到 MaleCNS 映射、独立动态验证 cohort。证据见
+`artifacts/v7-t5-physical-time-transfer-audit.json`；该审计不猜测 `dt`、不拟合参数，也不
+授权新的 T5、LPLC 或车辆实验。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

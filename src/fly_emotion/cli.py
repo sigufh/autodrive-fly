@@ -224,6 +224,9 @@ from .driving.v7_t5_native_direction_waveform_audit import (
     evaluate_v7_t5_native_direction_waveform_audit,
 )
 from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
+from .driving.v7_t5_physical_time_transfer_audit import (
+    evaluate_v7_t5_physical_time_transfer_audit,
+)
 from .driving.v7_t5_source_axis_audit import evaluate_v7_t5_source_axis_audit
 from .driving.v7_t5_source_pair_precheck import evaluate_v7_t5_source_pair_precheck
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
@@ -447,6 +450,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
     subparsers.add_parser("v7-evaluate-t5-typed-spatial-pair-precheck")
     subparsers.add_parser("v7-audit-t5-native-direction-waveforms")
+    subparsers.add_parser("v7-audit-t5-physical-time-transfer")
     subparsers.add_parser("v7-audit-t5-ct1-terminal-axis")
     subparsers.add_parser("v7-calibrate-t5-ct1-axis")
     subparsers.add_parser("v7-audit-t5-ct1-crossfit-axis")
@@ -1152,6 +1156,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-native-direction-waveforms":
         report = evaluate_v7_t5_native_direction_waveform_audit(root)
         target = root / "artifacts/v7-t5-native-direction-waveform-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-physical-time-transfer":
+        report = evaluate_v7_t5_physical_time_transfer_audit(root)
+        target = root / "artifacts/v7-t5-physical-time-transfer-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

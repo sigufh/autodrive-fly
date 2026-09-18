@@ -192,6 +192,19 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["T5_CT1_axis_sequence_authorizes_functional_candidate"]
         is False
     )
+    assert set(visual["observations"]["T5_physical_source_transfer_missing_fields"]) == {
+        "v7_physical_frame_interval",
+        "v7_physical_solver_interval",
+        "v7_camera_angular_calibration",
+        "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels",
+        "CT1_membrane_like_kernel",
+        "stable_source_or_target_cell_to_MaleCNS_mapping",
+        "independent_dynamic_validation_cohort",
+    }
+    assert not any(
+        visual["observations"]["T5_physical_source_transfer_required_fields"].values()
+    )
+    assert visual["observations"]["T5_physical_source_transfer_ready"] is False
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},

@@ -1,0 +1,90 @@
+{
+  "protocol": {
+    "name": "v7-t5-physical-time-and-source-transfer-readiness-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-physical-time-transfer-audit.yaml": "3ae2c4bc48e9665e4b44b7b057c34a6aa4def6dc1c6f7a1eb34c06885223b950",
+      "src/fly_emotion/driving/v7_t5_physical_time_transfer_audit.py": "8ef6e34b94913af3ea9b7c74a1cae553c7b22c23caf1dadcc39be7b92b41ce25",
+      "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
+      "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "configs/driving-v7-timebase-audit.yaml": "462f2a84f2578c752fbc8d3692798ecebdb6d3b1212c466ea730937f88863f64",
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae",
+      "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
+      "artifacts/v7-arenz-t5-source-dynamics-audit.json": "a1442bf2ea0f8bf82929594bc25aa9f6915be3c4bf4e7099a225a4b635d88a14",
+      "configs/driving-v7-arenz-t5-source-dynamics-audit.yaml": "526e4a442e36373b18330b09e3144bbf40c5dd315aeb46d83e994de688806efa",
+      "artifacts/v7-source-type-temporal-identifiability.json": "5c080811d8084b5bd58608f3bfe5355a6c5260b197fbe7193715b853436d4b0f",
+      "configs/driving-v7-source-type-temporal-identifiability.yaml": "8873470713fb4af25efae0acfde4c8d6e5e15dd82998ae891b87aa2f911218fd"
+    },
+    "parameter_fit": false,
+    "functional_stimulus_evaluated": false,
+    "runtime_modified": false
+  },
+  "time_layers": {
+    "stage1_scheduler": {
+      "frame_interval_milliseconds": 10.0,
+      "nominal_substep_interval_milliseconds": 2.5,
+      "applied_to_current_runtime": false,
+      "biologically_calibrated": false,
+      "permitted_use": "deterministic_stimulus_scheduling_only"
+    },
+    "T5_target_voltage": {
+      "native_sample_intervals_milliseconds": {
+        "2.5": 1905,
+        "5": 1666
+      },
+      "native_time_vectors_verified": true,
+      "measures_source_types": false
+    },
+    "T5_source_filters": {
+      "covered_sources": [
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9"
+      ],
+      "raw_calcium_contract_complete": true,
+      "deconvolved_contract_complete": false,
+      "missing_CT1": true
+    }
+  },
+  "current_source_temporal_identifiability": {
+    "passing_T5_source_population_count": 0,
+    "T5_source_population_denominator": 32,
+    "passed": false
+  },
+  "required_fields": {
+    "v7_physical_frame_interval": false,
+    "v7_physical_solver_interval": false,
+    "v7_camera_angular_calibration": false,
+    "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels": false,
+    "CT1_membrane_like_kernel": false,
+    "stable_source_or_target_cell_to_MaleCNS_mapping": false,
+    "independent_dynamic_validation_cohort": false
+  },
+  "missing_fields": [
+    "v7_physical_frame_interval",
+    "v7_physical_solver_interval",
+    "v7_camera_angular_calibration",
+    "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels",
+    "CT1_membrane_like_kernel",
+    "stable_source_or_target_cell_to_MaleCNS_mapping",
+    "independent_dynamic_validation_cohort"
+  ],
+  "T5_physical_source_transfer_ready": false,
+  "authorize_physical_source_dynamics_candidate": false,
+  "advance_to_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "stop_reason": "physical_time_or_source_specific_T5_transfer_evidence_incomplete",
+  "boundary": {
+    "read_only_audit": true,
+    "engineering_scheduler_interval_is_not_biological_timebase": true,
+    "T5_target_voltage_is_not_source_type_dynamics": true,
+    "raw_calcium_filters_are_not_membrane_like_kernels": true,
+    "no_inferred_dt": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}
