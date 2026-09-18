@@ -37,6 +37,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     behnia_availability = evidence["behnia_t4_fast_availability"]
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
+    mi4_c3_candidates = evidence["mi4_c3_whole_cell_candidates"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -205,6 +206,19 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "independent_inhibitory_source_allowed_unit": (
                 source in inhibitory_external
                 and inhibitory_external[source]["allowed_response_unit"]
+            ),
+            "bounded_candidate_set_direct_Mi4_C3_voltage_reference": (
+                source in {"Mi4", "C3"}
+                and mi4_c3_candidates["candidate_summary"][
+                    "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
+                ]
+                == ["Groschner_2022"]
+            ),
+            "bounded_candidate_set_independent_Mi4_C3_voltage_found": (
+                source in {"Mi4", "C3"}
+                and mi4_c3_candidates["transfer_gates"][
+                    "independent_Mi4_C3_numeric_membrane_voltage_candidate_found"
+                ]
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources

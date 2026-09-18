@@ -1,0 +1,203 @@
+{
+  "protocol": {
+    "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "acf84d15774b2b5e2b210d9c471aa779fa774ced1364f00722f0ef3b73fd9124",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "d65cd4d178046b6bd547102ebe678515963aa5a5cd0f15ac27cd0b52b61fbab9",
+      "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "eecc6490570ad2613157ca0fcc48e1e59bb9c03b01c2810f6ef797335ba84b19",
+      "artifacts/v7-t4-inhibitory-source-external-audit.json": "6ed264736b860064117a606f640c21cc3f24abb673a0e960c3b5bfcb4eb3191d",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
+      "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
+      "artifacts/v7-borst-2025-temporal-filtering-audit.json": "a49c99c5f0a7ada9757bc920e399ee39b6b8d96ae6f39716d3e80bfc3c62c8ae"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "reference_document": {
+    "path": "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf",
+    "bytes": 8482179,
+    "sha256": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
+    "actual_sha256": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
+    "pages": 22
+  },
+  "candidate_matrix": {
+    "Groschner_2022": {
+      "title": "A biophysical account of multiplication by a single neuron",
+      "doi": "10.1038/s41586-022-04428-3",
+      "target_neurons": [
+        "Mi9",
+        "Tm3",
+        "Mi1",
+        "Mi4",
+        "C3",
+        "T4"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4",
+        "C3"
+      ],
+      "measurement_modality": "in_vivo_whole_cell_electrophysiology",
+      "response_unit": "millivolts",
+      "experimental_membrane_voltage": true,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": false,
+      "exclusion_reason": "same_reference_cohort_not_independent_validation",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Strother_2018": {
+      "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
+      "doi": "10.1073/pnas.1703090115",
+      "target_neurons": [
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "Mi9"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4"
+      ],
+      "measurement_modality": "two_photon_GCaMP6f_GCaMP6s_calcium_imaging",
+      "response_unit": "deltaF_over_F",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "Mi4_measurement_is_calcium_not_membrane_voltage",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Henning_2025": {
+      "title": "Inhibitory columnar feedback neurons are involved in motion processing in Drosophila",
+      "doi": "10.7554/eLife.108529",
+      "target_neurons": [
+        "C2",
+        "C3"
+      ],
+      "directly_measured_required_sources": [
+        "C3"
+      ],
+      "measurement_modality": "calcium_imaging_white_noise_reverse_correlation",
+      "response_unit": "stimulus_response_correlation",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "C3_numeric_STRF_is_not_membrane_voltage",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Kohn_Portes_2021": {
+      "title": "Flexible filtering by neural inputs supports motion computation across states and stimuli",
+      "doi": "10.1016/j.cub.2021.09.061",
+      "target_neurons": [
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "in_vivo_whole_cell_electrophysiology",
+      "response_unit": "millivolts",
+      "experimental_membrane_voltage": true,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "whole_cell_targets_are_T5_sources_not_Mi4_or_C3",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Gruntman_2021": {
+      "title": "Non-preferred contrast responses in the Drosophila motion pathways reveal a receptive field structure that explains a common visual illusion",
+      "doi": "10.1016/j.cub.2021.09.072",
+      "target_neurons": [
+        "T4",
+        "T5"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "in_vivo_whole_cell_electrophysiology",
+      "response_unit": "membrane_voltage",
+      "experimental_membrane_voltage": true,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "whole_cell_targets_are_T4_T5_not_Mi4_or_C3",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Borst_2025": {
+      "title": "Differential temporal filtering in the fly optic lobe",
+      "doi": "10.1007/s10827-025-00914-5",
+      "target_neurons": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "Mi9",
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4"
+      ],
+      "measurement_modality": "calcium_derived_parameterized_model_target",
+      "response_unit": "arbitrary_20mV_model_comparison_scale",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "Mi4_target_is_calcium_derived_model_scale_not_measured_voltage",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    }
+  },
+  "candidate_summary": {
+    "audited_candidate_count": 6,
+    "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
+      "Groschner_2022"
+    ],
+    "independent_direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [],
+    "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence"
+  },
+  "transfer_gates": {
+    "bounded_candidate_set_audited": true,
+    "reference_Mi4_C3_numeric_membrane_voltage_verified": true,
+    "independent_Mi4_C3_numeric_membrane_voltage_candidate_found": false,
+    "independent_candidate_has_stable_biological_individual_ids": false,
+    "independent_candidate_has_required_recording_fields": false,
+    "independent_candidate_has_preregistered_split_roles": false,
+    "independent_candidate_has_external_final_commitment": false
+  },
+  "independent_Mi4_C3_voltage_transfer_authorized": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "independent_Mi4_C3_numeric_membrane_voltage_candidate_found",
+    "independent_candidate_has_stable_biological_individual_ids",
+    "independent_candidate_has_required_recording_fields",
+    "independent_candidate_has_preregistered_split_roles",
+    "independent_candidate_has_external_final_commitment"
+  ],
+  "stop_reason": "only_reference_cohort_has_direct_Mi4_C3_numeric_membrane_voltage",
+  "boundary": {
+    "bounded_audited_candidate_set_not_global_nonexistence": true,
+    "both_required_source_types_must_be_directly_measured": true,
+    "independent_biological_study_must_not_reuse_reference_cohort": true,
+    "calcium_STRF_and_model_voltage_are_not_experimental_membrane_voltage": true,
+    "T4_T5_target_voltage_does_not_substitute_for_source_voltage": true,
+    "T5_source_voltage_does_not_substitute_for_Mi4_or_C3": true,
+    "no_curve_digitization": true,
+    "no_cross_paper_field_or_modality_imputation": true,
+    "no_threshold_label_split_denominator_or_failure_rule_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

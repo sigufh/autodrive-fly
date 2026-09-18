@@ -81,6 +81,7 @@ evidence:
   behnia_t4_fast_source_audit: artifacts/v7-behnia-t4-fast-source-audit.json
   behnia_t4_fast_source_availability_audit: artifacts/v7-behnia-t4-fast-source-availability-audit.json
   t4_inhibitory_source_external_audit: artifacts/v7-t4-inhibitory-source-external-audit.json
+  mi4_c3_whole_cell_candidate_audit: artifacts/v7-mi4-c3-whole-cell-candidate-audit.json
   unified_model_package_audit: artifacts/v7-unified-model-package-audit.json
   fig3_source_kernel_audit: artifacts/v7-fig3-source-kernel-audit.json
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json

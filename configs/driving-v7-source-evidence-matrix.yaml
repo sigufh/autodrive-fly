@@ -10,6 +10,7 @@ evidence:
   behnia_t4_fast: artifacts/v7-behnia-t4-fast-source-audit.json
   behnia_t4_fast_availability: artifacts/v7-behnia-t4-fast-source-availability-audit.json
   t4_inhibitory_external: artifacts/v7-t4-inhibitory-source-external-audit.json
+  mi4_c3_whole_cell_candidates: artifacts/v7-mi4-c3-whole-cell-candidate-audit.json
   borst_2025_temporal_filtering: artifacts/v7-borst-2025-temporal-filtering-audit.json
   pirogova_source_calcium: artifacts/v7-pirogova-source-calcium-audit.json
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json

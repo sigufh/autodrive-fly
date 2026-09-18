@@ -224,6 +224,12 @@ def test_inhibitory_source_external_evidence_does_not_cross_modalities() -> None
         components = report["matrix"][source]["evidence_components"]
         assert components["independent_inhibitory_source_physiology_published"] is True
         assert components["independent_inhibitory_source_allowed_unit"] is False
+        assert components[
+            "bounded_candidate_set_direct_Mi4_C3_voltage_reference"
+        ] is True
+        assert components[
+            "bounded_candidate_set_independent_Mi4_C3_voltage_found"
+        ] is False
 
 
 def test_C3_identity_and_external_cohort_are_preserved_without_false_authorization() -> None:

@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "94556e37139888667aece20317dd63b248106d6442b4c33676240658a5b19c4b",
-      "src/fly_emotion/driving/v7_goal_audit.py": "6bec6cbae7b875745b232a666f45391b9f4bb457325001c2518ef9bbd68cfcae",
+      "configs/driving-v7-goal-audit.yaml": "cb99ac03b82d627ccabec787acdb800574db2bec0d98ecd25ca6ac0d5086b80d",
+      "src/fly_emotion/driving/v7_goal_audit.py": "82169661481d3b81a32770a3bbda70523a1bd36eb19478c6c7f41082e28d977d",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -76,6 +76,7 @@
       "artifacts/v7-behnia-t4-fast-source-audit.json": "a7fc3192368194905d02d03c8aa02f70368fbc4e762984c08797aa9f9145fbbe",
       "artifacts/v7-behnia-t4-fast-source-availability-audit.json": "52540f717d777965c3bf863abfc408731d5d91b20e61eb88a39ad02fe0f10ee6",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "6ed264736b860064117a606f640c21cc3f24abb673a0e960c3b5bfcb4eb3191d",
+      "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json": "7ed8b07701b4ce1298a026bd4d8da4c0dbff3f3bb2aeb2d28065ee335661ad21",
       "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
@@ -103,7 +104,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "a49c99c5f0a7ada9757bc920e399ee39b6b8d96ae6f39716d3e80bfc3c62c8ae",
       "artifacts/v7-pirogova-source-calcium-audit.json": "96a44d68f675ddb5495d361c25f1bcd61d4e16e8527ec60d81bbb0dd77c1389d",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
-      "artifacts/v7-source-evidence-matrix.json": "3720cf9f477c5517a4f47b0adc9f852d3c96b8b647fe914fabb3b1ac94d30736",
+      "artifacts/v7-source-evidence-matrix.json": "f9920f76d80af7249b41001e58230d0c28db8f151eb185fbf01f52d067616890",
       "artifacts/v7-source-type-average-mapping-contract.json": "010e93dd621f5b87068709f254ef6364580939ee1318e4e09ebd31c138c16126",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "303b3c8bb413a6a9a7c56259f48aeb8b6df495135f01645686718f570f5551fa",
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
@@ -238,6 +239,7 @@
         "artifacts/v7-behnia-t4-fast-source-audit.json",
         "artifacts/v7-behnia-t4-fast-source-availability-audit.json",
         "artifacts/v7-t4-inhibitory-source-external-audit.json",
+        "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json",
         "artifacts/v7-unified-model-package-audit.json",
         "artifacts/v7-fig3-source-kernel-audit.json",
         "artifacts/v7-fig3-source-kernel-robustness.json",
@@ -496,6 +498,12 @@
         "T4_inhibitory_external_C3_allowed_unit": false,
         "T4_inhibitory_external_C3_fixed_robustness_passed": false,
         "T4_inhibitory_external_transfer_authorized": false,
+        "Mi4_C3_candidate_count_audited": 6,
+        "Mi4_C3_direct_numeric_voltage_candidates": [
+          "Groschner_2022"
+        ],
+        "Mi4_C3_independent_numeric_voltage_candidates": [],
+        "Mi4_C3_independent_voltage_transfer_authorized": false,
         "source_dynamics_external_contract_satisfied": false,
         "source_dynamics_external_payload_present": false,
         "source_dynamics_external_required_split_roles": [

@@ -286,6 +286,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 6
+    assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
+        "Groschner_2022"
+    ]
+    assert visual["observations"]["Mi4_C3_independent_numeric_voltage_candidates"] == []
+    assert (
+        visual["observations"]["Mi4_C3_independent_voltage_transfer_authorized"]
+        is False
+    )
     assert visual["observations"]["source_dynamics_external_contract_satisfied"] is False
     assert visual["observations"]["source_dynamics_external_payload_present"] is False
     assert visual["observations"]["Dryad_L1L2_required_source_coverage_count"] == 0

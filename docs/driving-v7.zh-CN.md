@@ -1980,6 +1980,15 @@ C3 则已有本地 STRF 数值和 8-fly source / 22-fly 独立 flash cohort，�
 独立生理证据，却都没有同时满足允许单位和固定稳健性门；不能据此替换 Fig.3 电压核或推进
 功能拟合。证据见 `artifacts/v7-t4-inhibitory-source-external-audit.json`。
 
+进一步把最相关的 whole-cell 候选按 target neuron、测量模态、响应单位、数值载荷与
+cohort 独立性做成固定矩阵。六组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4
+和 C3、使用实验膜电位且有本地核验数值载荷的研究；但它正是当前 Fig.3 参考 cohort，
+不是独立验证。Strother 2018 的 Mi4 与 Henning 2025 的 C3 是钙/STRF；Kohn–Portes
+2021 记录的是 Tm1/Tm2/Tm4/Tm9；Gruntman 2021 记录的是 T4/T5；Borst 2025 的
+Mi4 目标则是钙派生的参数化模型尺度。因此，在这组有界候选内，独立 Mi4+C3 数值膜电位
+候选仍为零；这不是对全球数据不存在的断言。证据见
+`artifacts/v7-mi4-c3-whole-cell-candidate-audit.json`。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确

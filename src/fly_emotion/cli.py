@@ -146,6 +146,9 @@ from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
 from .driving.v7_malecns_source_mapping_readiness_audit import (
     evaluate_v7_malecns_source_mapping_readiness_audit,
 )
+from .driving.v7_mi4_c3_whole_cell_candidate_audit import (
+    evaluate_v7_mi4_c3_whole_cell_candidate_audit,
+)
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_navigation_nested import evaluate_v7_navigation_nested
 from .driving.v7_navigation_nested_eval import evaluate_v7_navigation_nested_candidate
@@ -524,6 +527,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-behnia-t4-fast-source-availability")
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
+    subparsers.add_parser("v7-audit-mi4-c3-whole-cell-candidates")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
@@ -1560,6 +1564,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-inhibitory-source-external":
         report = evaluate_v7_t4_inhibitory_source_external_audit(root)
         target = root / "artifacts/v7-t4-inhibitory-source-external-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-mi4-c3-whole-cell-candidates":
+        report = evaluate_v7_mi4_c3_whole_cell_candidate_audit(root)
+        target = root / "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

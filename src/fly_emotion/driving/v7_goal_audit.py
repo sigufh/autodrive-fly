@@ -103,6 +103,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_inhibitory_source_external_audit = reports[
         "t4_inhibitory_source_external_audit"
     ]
+    mi4_c3_whole_cell_candidate_audit = reports[
+        "mi4_c3_whole_cell_candidate_audit"
+    ]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -317,6 +320,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["behnia_t4_fast_source_availability_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
+                config["evidence"]["mi4_c3_whole_cell_candidate_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -693,6 +697,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_inhibitory_external_transfer_authorized": (
                     t4_inhibitory_source_external_audit[
                         "both_inhibitory_sources_have_transferable_external_validation"
+                    ]
+                ),
+                "Mi4_C3_candidate_count_audited": (
+                    mi4_c3_whole_cell_candidate_audit["candidate_summary"][
+                        "audited_candidate_count"
+                    ]
+                ),
+                "Mi4_C3_direct_numeric_voltage_candidates": (
+                    mi4_c3_whole_cell_candidate_audit["candidate_summary"][
+                        "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
+                    ]
+                ),
+                "Mi4_C3_independent_numeric_voltage_candidates": (
+                    mi4_c3_whole_cell_candidate_audit["candidate_summary"][
+                        "independent_direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
+                    ]
+                ),
+                "Mi4_C3_independent_voltage_transfer_authorized": (
+                    mi4_c3_whole_cell_candidate_audit[
+                        "independent_Mi4_C3_voltage_transfer_authorized"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (
