@@ -95,6 +95,7 @@ evidence:
   t5_contrast_opponency_source_data_audit: artifacts/v7-t5-contrast-opponency-source-data-audit.json
   yang_t5_voltage_evidence_audit: artifacts/v7-yang-t5-voltage-evidence-audit.json
   kohn_portes_t5_ephys_audit: artifacts/v7-kohn-portes-t5-ephys-audit.json
+  ct1_extreme_compartmentalization_audit: artifacts/v7-ct1-extreme-compartmentalization-audit.json
   malecns_source_mapping_readiness_audit: artifacts/v7-malecns-source-mapping-readiness-audit.json
   source_evidence_matrix: artifacts/v7-source-evidence-matrix.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json

@@ -3,13 +3,14 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "f63946efcbab83515c4a75d90a9fd652533ac418c209263070b77cc8a699cf71",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "67d3783ad8ada9e554938a1d1da9c857581b180159e7d047b433f99263fbf040",
+      "configs/driving-v7-source-evidence-matrix.yaml": "4cedd2f3b876691ca275df4cf2eed8ac87845e6d3dc25be915bbe1c3d60f10e8",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "b574ada334972bfbea4766fa7d07ab4482eadef7aa85cdd94ab3d45ba55d77bc",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "f1449ff2b1ee719fd90fdcd708fe3f735bc5195bdd6fd8b1cd80b8121f7e34dc",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "46b02199673096681d3665428cb94e0e36432caec96d3a7270771a604a9f1057",
+      "artifacts/v7-ct1-extreme-compartmentalization-audit.json": "9fc040650cecd64a5151df4d109497751add32ee2a188ce986133d13cc2116b6",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "42b00f711f08212c07a6dad2d24abfbe0fa9fd18c9fb24957f5a3fec42236c24",
       "artifacts/v7-timing-models-ct1-compartment-audit.json": "4d0038fe1db7bbf6fb64d07396fddacb4b99fac9fad63a062f051106502249b1",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
@@ -44,6 +45,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -96,6 +98,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -148,6 +151,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": false,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -198,6 +202,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": false,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": true,
         "fixed_external_robustness_gate_passed": false
@@ -247,6 +252,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -300,6 +306,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -353,6 +360,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": false,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -404,6 +412,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": false,
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": false,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
@@ -456,6 +465,7 @@
         "publisher_described_numerical_calcium_payload_not_locally_verified": false,
         "published_lobula_Lo1_dynamic_phenotype_only": true,
         "local_lobula_Lo1_numerical_time_series": false,
+        "simulated_compartmental_model_voltage_not_experimental": true,
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false

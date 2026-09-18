@@ -1,0 +1,118 @@
+{
+  "protocol": {
+    "name": "v7-ct1-extreme-compartmentalization-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-ct1-extreme-compartmentalization-audit.yaml": "7b8e93ffccd014b4fe0f67ff72e32311928c5b803e2b6846c468b0e19e94fb48",
+      "src/fly_emotion/driving/v7_ct1_extreme_compartmentalization_audit.py": "58122b25492cfe784c4b42a1120c05988ae29cca73ab21a703d5c41888c9c332",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "paper": {
+      "title": "Extreme Compartmentalization in a Drosophila Amacrine Cell",
+      "doi": "10.1016/j.cub.2019.03.070",
+      "pii": "S0960982219303987",
+      "measurement": "two_photon_GCaMP6f_calcium_imaging"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "official_supplements": {
+    "mmc1": {
+      "path": "data/raw/ct1-extreme-compartmentalization/S0960982219303987-mmc1.pdf",
+      "bytes": 743934,
+      "sha256": "ea7bb0161807cf49b11786a5f235134a27ab5c9dbab9b1e326b2798e873a2757",
+      "pages": 2,
+      "actual_sha256": "ea7bb0161807cf49b11786a5f235134a27ab5c9dbab9b1e326b2798e873a2757",
+      "actual_pages": 2,
+      "embedded_attachment_names": []
+    },
+    "mmc2": {
+      "path": "data/raw/ct1-extreme-compartmentalization/S0960982219303987-mmc2.pdf",
+      "bytes": 3363695,
+      "sha256": "3a042052d53b026595aa53bfb3492b9dbb8a7514a1602678edea0e5d49b5b6db",
+      "pages": 11,
+      "actual_sha256": "3a042052d53b026595aa53bfb3492b9dbb8a7514a1602678edea0e5d49b5b6db",
+      "actual_pages": 11,
+      "embedded_attachment_names": []
+    }
+  },
+  "zenodo_model_release": {
+    "id": 2636606,
+    "doi": "10.5281/zenodo.2636606",
+    "title": "Code for: Extreme Compartmentalization in a Drosophila Amacrine Cell",
+    "license": "CC-BY-NC-SA-4.0",
+    "archive": {
+      "path": "data/raw/ct1-extreme-compartmentalization/ct1_paper-v1.0.zip",
+      "bytes": 49324,
+      "publisher_md5": "c672c26f4c9f3a8346e0bdc4b914bb31",
+      "sha256": "b27a9131ec59ba50aa892804c9d5f1801f96ff27b24b18f02eb7cd966cb5c447"
+    },
+    "expected_members": [
+      "borstlab-ct1_paper-78685e2/BigCT1.swc",
+      "borstlab-ct1_paper-78685e2/CT1CompModeling.py",
+      "borstlab-ct1_paper-78685e2/CT1Stitcher.py"
+    ],
+    "actual_archive_sha256": "b27a9131ec59ba50aa892804c9d5f1801f96ff27b24b18f02eb7cd966cb5c447",
+    "actual_members": [
+      "borstlab-ct1_paper-78685e2/BigCT1.swc",
+      "borstlab-ct1_paper-78685e2/CT1CompModeling.py",
+      "borstlab-ct1_paper-78685e2/CT1Stitcher.py"
+    ],
+    "model_generated_output_names": [
+      "RecFields",
+      "VmDistribution",
+      "Vm_Ratio"
+    ]
+  },
+  "experimental_evidence": {
+    "response_unit": "deltaF_over_F0",
+    "indicator": "GCaMP6f",
+    "per_ROI_time_trace_derived_in_paper": true,
+    "experimental_numeric_time_series_publicly_deposited": false,
+    "experimental_membrane_voltage_measured": false,
+    "stable_biological_individual_ids_publicly_deposited": false,
+    "source_to_MaleCNS_mapping_present": false,
+    "required_split_roles_present": false
+  },
+  "model_evidence": {
+    "injected_current_picoamperes": 10,
+    "membrane_resistance_ohm_cm2": 8000,
+    "axial_resistance_ohm_cm": 400,
+    "membrane_capacitance_microfarad_per_cm2": 0.6,
+    "output_unit": "millivolts",
+    "output_is_simulated": true
+  },
+  "transfer_gates": {
+    "official_supplement_PDFs_verified": true,
+    "supplement_PDFs_have_no_embedded_attachments": true,
+    "Zenodo_model_archive_verified": true,
+    "experimental_CT1_calcium_phenotype_verified": true,
+    "experimental_CT1_numeric_time_series_publicly_deposited": false,
+    "experimental_CT1_allowed_response_unit_available": false,
+    "stable_biological_individual_ids_available": false,
+    "source_to_MaleCNS_mapping_available": false,
+    "required_split_roles_available": false
+  },
+  "CT1_experimental_source_dynamics_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "experimental_CT1_numeric_time_series_publicly_deposited",
+    "experimental_CT1_allowed_response_unit_available",
+    "stable_biological_individual_ids_available",
+    "source_to_MaleCNS_mapping_available",
+    "required_split_roles_available"
+  ],
+  "stop_reason": "published_CT1_calcium_and_simulated_voltage_do_not_supply_experimental_voltage",
+  "boundary": {
+    "simulated_model_voltage_is_not_experimental_CT1_voltage": true,
+    "calcium_phenotype_is_not_allowed_membrane_voltage": true,
+    "PDF_figures_are_not_numerical_payloads": true,
+    "no_curve_digitization": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

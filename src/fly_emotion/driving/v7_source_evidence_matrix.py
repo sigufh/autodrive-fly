@@ -70,6 +70,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     ct1_lobula_payload = bool(
         evidence["ct1_compartment"]["T5_lobula_CT1_numerical_payload_verified"]
     )
+    ct1_simulated_voltage = bool(
+        evidence["ct1_extreme_compartmentalization"]["model_evidence"]["output_is_simulated"]
+    )
 
     rows = {}
     for source in order:
@@ -118,6 +121,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "CT1" and ct1_lobula_phenotype
             ),
             "local_lobula_Lo1_numerical_time_series": (source == "CT1" and ct1_lobula_payload),
+            "simulated_compartmental_model_voltage_not_experimental": (
+                source == "CT1" and ct1_simulated_voltage
+            ),
             "stable_biological_individual_ids_in_any_numerical_payload": (
                 individual_ids_any_numerical
             ),

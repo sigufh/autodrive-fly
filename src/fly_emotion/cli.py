@@ -59,6 +59,9 @@ from .driving.v7_closed_loop_controls import evaluate_v7_closed_loop_controls
 from .driving.v7_closed_loop_multi import evaluate_v7_closed_loop_multi
 from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
+from .driving.v7_ct1_extreme_compartmentalization_audit import (
+    evaluate_v7_ct1_extreme_compartmentalization_audit,
+)
 from .driving.v7_danger_throttle import evaluate_v7_danger_throttle
 from .driving.v7_degree_preserving_control import evaluate_v7_degree_preserving_control
 from .driving.v7_descending_path_audit import evaluate_v7_descending_path_audit
@@ -496,6 +499,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
     subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
+    subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1602,6 +1606,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-t5-ephys":
         report = evaluate_v7_kohn_portes_t5_ephys_audit(root)
         target = root / "artifacts/v7-kohn-portes-t5-ephys-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-ct1-extreme-compartmentalization":
+        report = evaluate_v7_ct1_extreme_compartmentalization_audit(root)
+        target = root / "artifacts/v7-ct1-extreme-compartmentalization-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

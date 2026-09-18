@@ -2005,6 +2005,17 @@ Tm9 单列。flash 汇总 pickle 删除了 `recording_id` 和 fly ID，只保留
 参数拟合。证据见
 `artifacts/v7-kohn-portes-t5-ephys-audit.json`。
 
+CT1 的 2019 年极端区室化论文也已按正式 PII `S0960982219303987` 复核。Elsevier 只提供
+两份 PDF（743,934 与 3,363,695 bytes；SHA-256 分别为 `ea7bb016…`、`3a042052…`），
+均无嵌入附件。实验测量明确是 GCaMP6f 双光子钙成像，并从 ROI 生成 ΔF/F 时间轨迹；
+论文中以 mV 表示的结果则来自被动 compartmental model，而不是 CT1 whole-cell 或电压成像。
+Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；其 49,324-byte
+固定归档已校验，内容仅为 `BigCT1.swc`、`CT1CompModeling.py`、`CT1Stitcher.py`。模型代码
+用 10 pA 电流注入和假定的 Rm/Ra/Cm 解线性方程后换算为 mV，生成的 `VmDistribution`、
+`Vm_Ratio` 与 `RecFields` 都是模拟输出，不能冒充 Lo1 CT1 的实验膜电位。故 CT1 的局部
+钙表型与模拟区室化成立，但合规数值电压、biological ID、MaleCNS 映射和 split 仍缺失。
+证据见 `artifacts/v7-ct1-extreme-compartmentalization-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

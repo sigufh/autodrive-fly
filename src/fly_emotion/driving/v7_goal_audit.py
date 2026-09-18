@@ -129,6 +129,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     yang_t5_voltage_evidence_audit = reports["yang_t5_voltage_evidence_audit"]
     kohn_portes_t5_ephys_audit = reports["kohn_portes_t5_ephys_audit"]
+    ct1_extreme_compartmentalization_audit = reports[
+        "ct1_extreme_compartmentalization_audit"
+    ]
     malecns_source_mapping_readiness_audit = reports[
         "malecns_source_mapping_readiness_audit"
     ]
@@ -301,6 +304,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
+                config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
                 config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["lplc1_near_collision_precheck"],
@@ -658,6 +662,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_transfer_authorized": (
                     kohn_portes_t5_ephys_audit[
                         "T5_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "CT1_extreme_experimental_calcium_verified": (
+                    ct1_extreme_compartmentalization_audit["transfer_gates"][
+                        "experimental_CT1_calcium_phenotype_verified"
+                    ]
+                ),
+                "CT1_extreme_model_voltage_is_simulated": (
+                    ct1_extreme_compartmentalization_audit["model_evidence"][
+                        "output_is_simulated"
+                    ]
+                ),
+                "CT1_extreme_experimental_voltage_available": (
+                    ct1_extreme_compartmentalization_audit["transfer_gates"][
+                        "experimental_CT1_allowed_response_unit_available"
+                    ]
+                ),
+                "CT1_extreme_transfer_authorized": (
+                    ct1_extreme_compartmentalization_audit[
+                        "CT1_experimental_source_dynamics_transfer_authorized"
                     ]
                 ),
                 "MaleCNS_nine_source_type_body_sets_available": (

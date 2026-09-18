@@ -259,6 +259,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["Kohn_Portes_T5_transfer_authorized"] is False
+    assert visual["observations"]["CT1_extreme_experimental_calcium_verified"] is True
+    assert visual["observations"]["CT1_extreme_model_voltage_is_simulated"] is True
+    assert visual["observations"]["CT1_extreme_experimental_voltage_available"] is False
+    assert visual["observations"]["CT1_extreme_transfer_authorized"] is False
     assert visual["observations"]["MaleCNS_nine_source_type_body_sets_available"] is True
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 1

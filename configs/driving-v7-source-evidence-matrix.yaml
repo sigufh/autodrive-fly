@@ -7,6 +7,7 @@ evidence:
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json
   t5_voltage: artifacts/v7-yang-t5-voltage-evidence-audit.json
   kohn_portes_t5_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
+  ct1_extreme_compartmentalization: artifacts/v7-ct1-extreme-compartmentalization-audit.json
   t5_calcium: artifacts/v7-t5-contrast-opponency-source-data-audit.json
   ct1_compartment: artifacts/v7-timing-models-ct1-compartment-audit.json
   c3_dynamics: artifacts/v7-c3-strf-source-dynamics-audit.json
