@@ -83,6 +83,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
     arenz_source_dynamics_audit = reports["arenz_source_dynamics_audit"]
     c3_strf_source_dynamics_audit = reports["c3_strf_source_dynamics_audit"]
+    fig1_source_temporal_readiness_audit = reports[
+        "fig1_source_temporal_readiness_audit"
+    ]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -191,6 +194,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fig3_source_kernel_robustness"],
                 config["evidence"]["arenz_source_dynamics_audit"],
                 config["evidence"]["c3_strf_source_dynamics_audit"],
+                config["evidence"]["fig1_source_temporal_readiness_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -664,6 +668,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "C3_source_filter_candidate_authorized": (
                     c3_strf_source_dynamics_audit[
                         "C3_source_filter_candidate_authorized"
+                    ]
+                ),
+                "Fig1_source_spatial_tables_verified": (
+                    fig1_source_temporal_readiness_audit["observations"][
+                        "official_Fig1_workbooks_verified"
+                    ]
+                ),
+                "Fig1_source_average_tables_have_time_axis": (
+                    fig1_source_temporal_readiness_audit["observations"][
+                        "source_type_average_tables_have_time_axis"
+                    ]
+                ),
+                "Fig1_source_object_payload_safely_inspected": (
+                    fig1_source_temporal_readiness_audit["edmond_object_payload"][
+                        "safely_inspected"
+                    ]
+                ),
+                "Fig1_source_temporal_kernel_transfer_authorized": (
+                    fig1_source_temporal_readiness_audit[
+                        "source_temporal_kernel_transfer_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

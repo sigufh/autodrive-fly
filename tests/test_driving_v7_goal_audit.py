@@ -297,6 +297,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["combined_source_temporal_evidence_complete"] is True
     assert visual["observations"]["combined_source_parameterization_transferable"] is False
     assert visual["observations"]["C3_source_filter_candidate_authorized"] is False
+    assert visual["observations"]["Fig1_source_spatial_tables_verified"] is True
+    assert visual["observations"]["Fig1_source_average_tables_have_time_axis"] is False
+    assert visual["observations"]["Fig1_source_object_payload_safely_inspected"] is False
+    assert visual["observations"]["Fig1_source_temporal_kernel_transfer_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

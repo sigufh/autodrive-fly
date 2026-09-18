@@ -1618,6 +1618,16 @@ C3 数据是未去卷积的钙成像 stimulus-response correlation STRF，没有
 Arenz 的去卷积滤波参数拼成统一 source kernel。该负边界继续冻结功能候选，证据见
 `artifacts/v7-c3-strf-source-dynamics-audit.json`。
 
+此外，PMC 的 Fig.1 source-data 工作簿已做字段级审计。主表中 Mi9/Tm3/Mi1/Mi4/C3
+五张表均为 131×131 的类型平均二维空间 RF，首轴是 elevation/azimuth，并无 source
+时间轴；Extended Fig.1 虽提供 Mi9=22、Tm3=11、Mi1=22、Mi4=10、C3=16 个逐细胞
+二维空间 RF，也仍没有 source 时间维。该工作簿中的完整时空轨迹只属于 T4，禁止反推
+source dynamics。Edmond 的 `fig1d_receptive_fields.npy` manifest 与 NPY header 已验证，
+但它是需要 pickle 的标量 object-array，当前官方主机不可达且没有公共归档 payload，故
+尚未在隔离环境安全解析。移动边缘电压又同时卷入空间 RF 和时间滤波，不能替代该 payload
+去拟合 source 时间常数。证据见
+`artifacts/v7-fig1-source-temporal-readiness-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

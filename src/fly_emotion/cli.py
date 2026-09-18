@@ -57,6 +57,9 @@ from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
 from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
+from .driving.v7_fig1_source_temporal_readiness_audit import (
+    evaluate_v7_fig1_source_temporal_readiness_audit,
+)
 from .driving.v7_fig3_source_kernel_audit import evaluate_v7_fig3_source_kernel_audit
 from .driving.v7_fig3_source_kernel_robustness import (
     evaluate_v7_fig3_source_kernel_robustness,
@@ -360,6 +363,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
+    subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1158,6 +1162,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-strf-source-dynamics":
         report = evaluate_v7_c3_strf_source_dynamics_audit(root)
         target = root / "artifacts/v7-c3-strf-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-fig1-source-temporal-readiness":
+        report = evaluate_v7_fig1_source_temporal_readiness_audit(root)
+        target = root / "artifacts/v7-fig1-source-temporal-readiness-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

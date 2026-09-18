@@ -82,6 +82,13 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert c3["all_required_sources_share_one_transferable_parameterization"] is False
     assert c3["membrane_voltage_or_validated_deconvolved_kernel_available"] is False
     assert c3["source_filter_candidate_authorized"] is False
+    fig1 = report["verified_Fig1_source_temporal_readiness"]
+    assert fig1["workbooks_verified"] is True
+    assert fig1["source_average_tables_have_time_axis"] is False
+    assert fig1["individual_source_tables_have_time_axis"] is False
+    assert fig1["object_payload_hash_verified"] is False
+    assert fig1["object_payload_safely_inspected"] is False
+    assert fig1["source_temporal_kernel_transfer_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

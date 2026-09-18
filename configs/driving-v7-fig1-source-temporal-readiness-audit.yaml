@@ -1,0 +1,59 @@
+version: 1
+name: v7-fig1-source-temporal-readiness-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.1038/s41586-022-04428-3
+  data_doi: 10.17617/3.8G
+source_data:
+  figure_1:
+    path: data/raw/t4-fig3-source-dynamics/SourceDataFig1.xlsx
+    bytes: 4021187
+    sha256: 218eaca70ddbf2d073695c376e19eea4a75a15f0fd3a44e219b33f56cef9b421
+    expected_sheets:
+      - Fig. 1d, Mi9
+      - Fig. 1d, Tm3
+      - Fig. 1d, Mi1
+      - Fig. 1d, Mi4
+      - Fig. 1d, C3
+      - Fig. 1e, tail
+      - Fig. 1e, peak
+      - Fig. 1e, right
+      - Fig. 1f
+      - Fig. 1g
+  extended_figure_1:
+    path: data/raw/t4-fig3-source-dynamics/SourceDataExtendedFig1.xlsx
+    bytes: 351680
+    sha256: 418da8fc20565af66fc66ba8ebce4c6f61a11b11e46a4788c5323da17ec05da4
+    sheet: ED Fig. 1b
+source_types: [Mi9, Tm3, Mi1, Mi4, C3]
+expected_individual_spatial_RF_counts:
+  Mi9: 22
+  Tm3: 11
+  Mi1: 22
+  Mi4: 10
+  C3: 16
+expected_T4_spatial_RF_count: 46
+edmond_payload:
+  filename: fig1d_receptive_fields.npy
+  file_id: 104768
+  bytes: 35520207
+  md5: 85832a84de6e8d246401c37ff0ab1eca
+  sha256: 0dd4a309e3ddec79b5898b4764e0dec12d707c14bb0865c4aae45f5f0d381d82
+  header:
+    format_version: [1, 0]
+    shape: []
+    fortran_order: false
+    dtype: object
+    contains_python_objects: true
+  local_path: data/raw/t4-fig3-source-dynamics/fig1d_receptive_fields.npy
+prior_evidence: artifacts/v7-electrophysiology-audit.json
+boundary:
+  read_only_source_data_audit: true
+  source_spatial_RF_does_not_imply_source_temporal_kernel: true
+  T4_spatiotemporal_RF_must_not_define_source_dynamics: true
+  object_array_requires_isolated_pickle_inspection: true
+  moving_edge_trace_conflates_spatial_and_temporal_filtering: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

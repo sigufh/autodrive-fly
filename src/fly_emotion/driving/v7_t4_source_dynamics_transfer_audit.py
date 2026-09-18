@@ -27,6 +27,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig3_robustness_path = Path(config["fig3_source_kernel_robustness_evidence"])
     arenz_path = Path(config["arenz_source_dynamics_evidence"])
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
+    fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -41,6 +42,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     )
     arenz = json.loads((root / arenz_path).read_text(encoding="utf-8"))
     c3_strf = json.loads((root / c3_strf_path).read_text(encoding="utf-8"))
+    fig1_temporal = json.loads(
+        (root / fig1_temporal_path).read_text(encoding="utf-8")
+    )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -66,7 +70,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         for name in required_sources
     )
     fields = {
-        "direction_independent_source_kernel": False,
+        "direction_independent_source_kernel": fig1_temporal[
+            "source_temporal_kernel_transfer_authorized"
+        ],
         "source_to_MaleCNS_identity_mapping": all(
             item["stable_MaleCNS_body_ids_available"] for item in verified_sources.values()
         ),
@@ -116,6 +122,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(fig3_robustness_path): _sha256(root / fig3_robustness_path),
                 str(arenz_path): _sha256(root / arenz_path),
                 str(c3_strf_path): _sha256(root / c3_strf_path),
+                str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -235,6 +242,26 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ]["C3_membrane_voltage_or_validated_deconvolved_kernel_available"],
             "source_filter_candidate_authorized": c3_strf[
                 "C3_source_filter_candidate_authorized"
+            ],
+        },
+        "verified_Fig1_source_temporal_readiness": {
+            "workbooks_verified": fig1_temporal["observations"][
+                "official_Fig1_workbooks_verified"
+            ],
+            "source_average_tables_have_time_axis": fig1_temporal["observations"][
+                "source_type_average_tables_have_time_axis"
+            ],
+            "individual_source_tables_have_time_axis": fig1_temporal["observations"][
+                "individual_source_tables_have_time_axis"
+            ],
+            "object_payload_hash_verified": fig1_temporal["edmond_object_payload"][
+                "hash_verified"
+            ],
+            "object_payload_safely_inspected": fig1_temporal[
+                "edmond_object_payload"
+            ]["safely_inspected"],
+            "source_temporal_kernel_transfer_authorized": fig1_temporal[
+                "source_temporal_kernel_transfer_authorized"
             ],
         },
         "required_transfer_fields_available": fields,
