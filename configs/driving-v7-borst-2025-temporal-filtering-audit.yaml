@@ -1,0 +1,63 @@
+version: 1
+name: v7-borst-2025-temporal-filtering-provenance-audit
+observed_on: "2026-09-19"
+paper:
+  title: Differential temporal filtering in the fly optic lobe
+  doi: 10.1007/s10827-025-00914-5
+  pmid: 41003956
+  pmcid: PMC12672718
+  full_text:
+    path: data/raw/borst-temporal-filtering/PMC12672718.xml
+    bytes: 75932
+    sha256: 2d85d11bc23abbfc0353ee6db7b395a1b76b28857589c154d22199eaa2e4756f
+repository:
+  url: https://github.com/axelborst/temporal_filtering
+  commit: 2e277fef43139230fafc598c93301bf7b27645dd
+  archive:
+    path: data/raw/borst-temporal-filtering/temporal_filtering-2e277fef.zip
+    bytes: 644123
+    sha256: cac33e1ec33646f07fb0278a73d29d4e4a4e5b06b4203cd490af3bcff1e06d3f
+  archive_member_count: 49
+  file_count: 39
+  code_paths:
+    library: SimulationCode/Medulla_Library.py
+    python_model: SimulationCode/FiveCol_MedSim_Python.py
+    pytorch_model: SimulationCode/FiveCol_MedSim_Pytorch.py
+    figure_one: FigureCode/Borst_Fig1.py
+  data_copies:
+    - FigureCode/Models/data.npy
+    - SimulationCode/Models/data.npy
+  data_sha256: 6dc4ec7c4031394efeb7f7721c808043d3f98d2cb6995a1b912a04cd677741d4
+target_contract:
+  upstream_studies:
+    - doi: 10.1016/j.cub.2017.01.051
+      citation: Arenz_et_al_2017
+    - doi: 10.1016/j.cub.2019.12.012
+      citation: Drews_et_al_2020
+  cell_type_order: [L1, L2, L3, L4, L5, Mi1, Tm3, Mi4, Mi9, Tm1, Tm2, Tm4, Tm9]
+  shape: [13, 9, 200]
+  dtype: float64
+  time_step_milliseconds: 10
+  duration_seconds: 2.0
+  stimulus_onset_seconds: 0.5
+  calcium_low_pass_milliseconds: 50
+  arbitrary_peak_response_millivolts: 20
+  source_measurement: calcium_imaging_white_noise_reverse_correlation
+  source_representation: normalized_impulse_responses_integrated_to_step_responses
+  source_contains_membrane_voltage_information: false
+  target_is_individual_recording_payload: false
+  stable_recording_ids_present: false
+  biological_individual_ids_present: false
+  source_to_MaleCNS_mapping_present: false
+  preregistered_split_roles_present: false
+  external_final_commitment_present: false
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+boundary:
+  local_data_npy_is_a_parameterized_calcium_derived_fit_target: true
+  arbitrary_20mV_scaling_is_not_measured_membrane_voltage: true
+  repository_model_outputs_are_not_independent_validation: true
+  no_cross_source_or_cross_modality_imputation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

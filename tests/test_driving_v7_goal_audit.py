@@ -67,6 +67,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     visual = saved["checks"][1]
     assert visual["observations"]["visual_inputs_only_at_receptors"] is True
     assert visual["observations"]["controlled_response_gates_pass"] is False
+    assert visual["observations"]["Borst_2025_parameterized_target_verified"] is True
+    assert (
+        visual["observations"]["Borst_2025_target_is_experimental_membrane_voltage"]
+        is False
+    )
+    assert visual["observations"]["Borst_2025_source_transfer_authorized"] is False
     assert visual["observations"]["T5_biological_PD_code_assigned"] == 1
     assert visual["observations"]["T5_external_direction_label_map_verified"] is True
     assert visual["observations"]["T5_model_scoring_allowed"] is True

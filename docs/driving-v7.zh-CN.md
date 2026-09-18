@@ -2048,6 +2048,19 @@ Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；�
 钙表型与模拟区室化成立，但合规数值电压、biological ID、MaleCNS 映射和 split 仍缺失。
 证据见 `artifacts/v7-ct1-extreme-compartmentalization-audit.json`。
 
+Borst 2025《Differential temporal filtering in the fly optic lobe》（DOI
+`10.1007/s10827-025-00914-5`）及其 GitHub 固定提交 `2e277fef…` 也已做 provenance
+审计。仓库两个 `data.npy` 副本哈希完全相同，均为 `13×9×200`、10 ms 步长的数值目标，
+覆盖 Mi1/Tm3/Mi4 与 Tm1/Tm2/Tm4/Tm9，但不含 C3 或 CT1。论文 Methods 明确说明原始
+来源是 Arenz 2017 与 Drews 2020 的钙成像白噪声反向相关：归一化 impulse response 经时间
+积分成为 step response，且“不含 membrane voltage 信息”；为与模拟膜电位比较，作者把所有
+数据峰值任意设为 20 mV。代码进一步确认目标由硬编码 Difference-of-Gaussian 空间参数与
+解析 low-pass/band-pass 时间滤波器外积构造，再乘 20。因此本地 NPY 是可重复的
+calcium-derived parameterized fit target，不是逐细胞膜电位载荷；没有 recording/fly identity、
+MaleCNS 映射、预注册 split 或 external final。它保留为模型/表型证据，但不计入新的合规
+membrane-voltage source，也不改变 0/9 完整、source fit/T4-T5/LPLC/车辆全部冻结的结论。
+证据见 `artifacts/v7-borst-2025-temporal-filtering-audit.json`。
+
 外部 recording 与 MaleCNS 的映射合同随后也拆成两种合法模式：逐 recording→body，或明确
 声明 type-average。当前不伪造任何跨果蝇 body 对应，而是对已有本地膜电位的八类 source
 明确采用 `exact_type_average`：每类只把自己的群体平均核广播到 MaleCNS 中同名类型的

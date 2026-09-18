@@ -137,6 +137,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ct1_extreme_compartmentalization_audit = reports[
         "ct1_extreme_compartmentalization_audit"
     ]
+    borst_2025_temporal_filtering_audit = reports[
+        "borst_2025_temporal_filtering_audit"
+    ]
     malecns_source_mapping_readiness_audit = reports[
         "malecns_source_mapping_readiness_audit"
     ]
@@ -316,6 +319,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
+                config["evidence"]["borst_2025_temporal_filtering_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
                 config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["source_type_average_mapping_contract"],
@@ -740,6 +744,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "CT1_extreme_transfer_authorized": (
                     ct1_extreme_compartmentalization_audit[
                         "CT1_experimental_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "Borst_2025_parameterized_target_verified": (
+                    borst_2025_temporal_filtering_audit["transfer_gates"][
+                        "local_numeric_parameterized_target_verified"
+                    ]
+                ),
+                "Borst_2025_target_is_experimental_membrane_voltage": (
+                    borst_2025_temporal_filtering_audit["transfer_gates"][
+                        "experimental_membrane_voltage_payload"
+                    ]
+                ),
+                "Borst_2025_source_transfer_authorized": (
+                    borst_2025_temporal_filtering_audit[
+                        "source_dynamics_transfer_authorized"
                     ]
                 ),
                 "MaleCNS_nine_source_type_body_sets_available": (

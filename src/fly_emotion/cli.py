@@ -37,10 +37,13 @@ from .driving.v7_arenz_source_dynamics_audit import (
 from .driving.v7_arenz_t5_source_dynamics_audit import (
     evaluate_v7_arenz_t5_source_dynamics_audit,
 )
-from .driving.v7_branched import evaluate_v7_branched_t4_candidate
 from .driving.v7_behnia_t4_fast_source_audit import (
     evaluate_v7_behnia_t4_fast_source_audit,
 )
+from .driving.v7_borst_2025_temporal_filtering_audit import (
+    evaluate_v7_borst_2025_temporal_filtering_audit,
+)
+from .driving.v7_branched import evaluate_v7_branched_t4_candidate
 from .driving.v7_c3_analytic_filter_precheck import (
     evaluate_v7_c3_analytic_filter_precheck,
 )
@@ -107,11 +110,11 @@ from .driving.v7_gou_sparsity_source_dynamics_audit import (
     evaluate_v7_gou_sparsity_source_dynamics_audit,
 )
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
-from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
-from .driving.v7_lamina_goal_symmetry import evaluate_v7_lamina_goal_symmetry
 from .driving.v7_kohn_portes_t5_ephys_audit import (
     evaluate_v7_kohn_portes_t5_ephys_audit,
 )
+from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
+from .driving.v7_lamina_goal_symmetry import evaluate_v7_lamina_goal_symmetry
 from .driving.v7_lc4_input_speed_precheck import evaluate_v7_lc4_input_speed_precheck
 from .driving.v7_lc4_position_speed_precheck import evaluate_v7_lc4_position_speed_precheck
 from .driving.v7_local_input_audit import (
@@ -491,6 +494,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
     subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
+    subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
@@ -1468,6 +1472,14 @@ def main() -> None:
     if args.command == "v7-audit-behnia-t4-fast-sources":
         report = evaluate_v7_behnia_t4_fast_source_audit(root)
         target = root / "artifacts/v7-behnia-t4-fast-source-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-borst-2025-temporal-filtering":
+        report = evaluate_v7_borst_2025_temporal_filtering_audit(root)
+        target = root / "artifacts/v7-borst-2025-temporal-filtering-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

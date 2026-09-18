@@ -1,0 +1,277 @@
+{
+  "protocol": {
+    "name": "v7-borst-2025-temporal-filtering-provenance-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-borst-2025-temporal-filtering-audit.yaml": "267822aed1a3d3d63a2f361528d6ce6865253917c9f3794377b7373abf7ea0c3",
+      "src/fly_emotion/driving/v7_borst_2025_temporal_filtering_audit.py": "a22bc68f9fe769f01fd5e775998317ef10c3d2861987b8533cc7b1f1b4ba5faa",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "paper": {
+      "title": "Differential temporal filtering in the fly optic lobe",
+      "doi": "10.1007/s10827-025-00914-5",
+      "pmid": 41003956,
+      "pmcid": "PMC12672718",
+      "full_text": {
+        "path": "data/raw/borst-temporal-filtering/PMC12672718.xml",
+        "bytes": 75932,
+        "sha256": "2d85d11bc23abbfc0353ee6db7b395a1b76b28857589c154d22199eaa2e4756f"
+      }
+    },
+    "repository": {
+      "url": "https://github.com/axelborst/temporal_filtering",
+      "commit": "2e277fef43139230fafc598c93301bf7b27645dd",
+      "archive": {
+        "path": "data/raw/borst-temporal-filtering/temporal_filtering-2e277fef.zip",
+        "bytes": 644123,
+        "sha256": "cac33e1ec33646f07fb0278a73d29d4e4a4e5b06b4203cd490af3bcff1e06d3f"
+      },
+      "archive_member_count": 49,
+      "file_count": 39,
+      "code_paths": {
+        "library": "SimulationCode/Medulla_Library.py",
+        "python_model": "SimulationCode/FiveCol_MedSim_Python.py",
+        "pytorch_model": "SimulationCode/FiveCol_MedSim_Pytorch.py",
+        "figure_one": "FigureCode/Borst_Fig1.py"
+      },
+      "data_copies": [
+        "FigureCode/Models/data.npy",
+        "SimulationCode/Models/data.npy"
+      ],
+      "data_sha256": "6dc4ec7c4031394efeb7f7721c808043d3f98d2cb6995a1b912a04cd677741d4",
+      "actual_archive_sha256": "cac33e1ec33646f07fb0278a73d29d4e4a4e5b06b4203cd490af3bcff1e06d3f"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "repository_inventory": {
+    "archive_member_count": 49,
+    "file_count": 39,
+    "data_copies": [
+      {
+        "path": "FigureCode/Models/data.npy",
+        "bytes": 187328,
+        "sha256": "6dc4ec7c4031394efeb7f7721c808043d3f98d2cb6995a1b912a04cd677741d4",
+        "shape": [
+          13,
+          9,
+          200
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "minimum": -20.0,
+        "maximum": 20.0,
+        "pre_stimulus_absolute_maximum": 0.0
+      },
+      {
+        "path": "SimulationCode/Models/data.npy",
+        "bytes": 187328,
+        "sha256": "6dc4ec7c4031394efeb7f7721c808043d3f98d2cb6995a1b912a04cd677741d4",
+        "shape": [
+          13,
+          9,
+          200
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "minimum": -20.0,
+        "maximum": 20.0,
+        "pre_stimulus_absolute_maximum": 0.0
+      }
+    ],
+    "data_copies_identical": true
+  },
+  "target_provenance": {
+    "upstream_studies": [
+      {
+        "doi": "10.1016/j.cub.2017.01.051",
+        "citation": "Arenz_et_al_2017"
+      },
+      {
+        "doi": "10.1016/j.cub.2019.12.012",
+        "citation": "Drews_et_al_2020"
+      }
+    ],
+    "cell_type_order": [
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "Mi9",
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "shape": [
+      13,
+      9,
+      200
+    ],
+    "dtype": "float64",
+    "time_step_milliseconds": 10,
+    "duration_seconds": 2.0,
+    "stimulus_onset_seconds": 0.5,
+    "calcium_low_pass_milliseconds": 50,
+    "arbitrary_peak_response_millivolts": 20,
+    "source_measurement": "calcium_imaging_white_noise_reverse_correlation",
+    "source_representation": "normalized_impulse_responses_integrated_to_step_responses",
+    "source_contains_membrane_voltage_information": false,
+    "target_is_individual_recording_payload": false,
+    "stable_recording_ids_present": false,
+    "biological_individual_ids_present": false,
+    "source_to_MaleCNS_mapping_present": false,
+    "preregistered_split_roles_present": false,
+    "external_final_commitment_present": false,
+    "construction": "hard_coded_spatial_DoG_parameters_times_analytic_temporal_filter",
+    "hard_coded_parameters": {
+      "RF_center_width": [
+        6.0,
+        7.0,
+        6.0,
+        8.0,
+        7.0,
+        6.0,
+        12.0,
+        6.0,
+        6.0,
+        8.0,
+        8.0,
+        11.0,
+        7.0
+      ],
+      "RF_surrnd_width": [
+        41.0,
+        29.0,
+        15.0,
+        33.0,
+        31.0,
+        29.0,
+        7.0,
+        16.0,
+        24.0,
+        27.0,
+        31.0,
+        35.0,
+        24.0
+      ],
+      "RF_surrnd_weight": [
+        0.012,
+        0.013,
+        0.19,
+        0.046,
+        0.035,
+        0.022,
+        0.0,
+        0.132,
+        0.063,
+        0.04,
+        0.035,
+        0.054,
+        0.046
+      ],
+      "RF_sign": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "IR_hp": [
+        39.1,
+        28.8,
+        0.0,
+        38.1,
+        12.7,
+        31.8,
+        26.0,
+        0.0,
+        0.0,
+        29.6,
+        15.3,
+        24.9,
+        0.0
+      ],
+      "IR_lp": [
+        3.8,
+        5.8,
+        5.4,
+        2.3,
+        4.2,
+        5.4,
+        2.7,
+        3.8,
+        7.7,
+        4.4,
+        1.4,
+        2.4,
+        10.7
+      ]
+    },
+    "numeric_target_unit_semantics": "arbitrary_20mV_model_comparison_scale",
+    "measured_membrane_voltage": false
+  },
+  "v7_source_coverage": {
+    "covered_sources": [
+      "Mi1",
+      "Mi4",
+      "Tm1",
+      "Tm2",
+      "Tm3",
+      "Tm4",
+      "Tm9"
+    ],
+    "missing_sources": [
+      "C3",
+      "CT1"
+    ],
+    "covered_source_count": 7,
+    "required_source_count": 9
+  },
+  "transfer_gates": {
+    "fixed_repository_archive_verified": true,
+    "paper_full_text_verified": true,
+    "local_numeric_parameterized_target_verified": true,
+    "all_nine_required_sources_covered": false,
+    "experimental_membrane_voltage_payload": false,
+    "stable_biological_individual_ids_available": false,
+    "source_to_MaleCNS_mapping_available": false,
+    "required_split_roles_available": false,
+    "external_final_commitment_available": false
+  },
+  "source_dynamics_transfer_authorized": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "all_nine_required_sources_covered",
+    "experimental_membrane_voltage_payload",
+    "stable_biological_individual_ids_available",
+    "source_to_MaleCNS_mapping_available",
+    "required_split_roles_available",
+    "external_final_commitment_available"
+  ],
+  "stop_reason": "calcium_derived_parameterized_target_is_not_individual_membrane_voltage",
+  "boundary": {
+    "local_data_npy_is_a_parameterized_calcium_derived_fit_target": true,
+    "arbitrary_20mV_scaling_is_not_measured_membrane_voltage": true,
+    "repository_model_outputs_are_not_independent_validation": true,
+    "no_cross_source_or_cross_modality_imputation": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

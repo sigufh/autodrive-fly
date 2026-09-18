@@ -34,6 +34,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     t4_split = evidence["t4_individual_split"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
+    borst_2025 = evidence["borst_2025_temporal_filtering"]
+    borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     gou = evidence["gou_partial"]
     gou_sources = set(gou["source_evidence"])
     # The Gou archive was not downloaded or hash-verified. Its README describes
@@ -156,6 +158,13 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in inhibitory_external
                 and inhibitory_external[source]["allowed_response_unit"]
             ),
+            "Borst_2025_parameterized_calcium_derived_target": (
+                source in borst_2025_sources
+            ),
+            "Borst_2025_target_is_experimental_membrane_voltage": (
+                source in borst_2025_sources
+                and borst_2025["transfer_gates"]["experimental_membrane_voltage_payload"]
+            ),
         }
         numerical_sources = []
         phenotype_sources = []
@@ -186,6 +195,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             phenotype_sources.append("Yang_2016_optical_voltage_figure")
         if source == "CT1" and ct1_lobula_phenotype:
             phenotype_sources.append("TimingModels_lobula_Lo1_CT1_supplement_figure")
+        if source in borst_2025_sources:
+            phenotype_sources.append("Borst_2025_parameterized_calcium_derived_fit_target")
 
         missing = []
         if not allowed_numerical:

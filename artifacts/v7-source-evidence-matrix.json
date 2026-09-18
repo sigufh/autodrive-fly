@@ -3,13 +3,14 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "a21ca19d2403507c69ecb26dd7e434a3b0598eb65ac20545def8a9b192f7957d",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "5f91d479df77e88d09075c6b3739321edd4dcc39729f7e56d99b247f07d0eb06",
+      "configs/driving-v7-source-evidence-matrix.yaml": "f7cf02412ec2d8b7435ff7bcb53bd19a76d43061089b0d3a9c37ba15f48ae1f3",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "4aafb8693d931e76b33a11df3ab2951901575d50808c8e7b4ada5624251f1011",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "1b40930a7aa44a1ab5d174358474a10c9ada6064f1643e97962ae462dd814bdf",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "f72f4cefbddd7eaff3150d9949a9283ff3787179b44736dfb0303934475016e6",
+      "artifacts/v7-borst-2025-temporal-filtering-audit.json": "4aa87656e640510b86e0246892e6c37eb0579abcf3aa1a324a530c92fe9f579f",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
@@ -56,7 +57,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": true,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -71,7 +74,8 @@
       ],
       "phenotype_evidence_sources": [
         "Arenz_2017_calcium_filter_parameters",
-        "Behnia_2014_whole_cell_voltage_phenotype"
+        "Behnia_2014_whole_cell_voltage_phenotype",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 1773,
       "MaleCNS_located_fraction": 1.0,
@@ -112,7 +116,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": true,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -127,7 +133,8 @@
       ],
       "phenotype_evidence_sources": [
         "Arenz_2017_calcium_filter_parameters",
-        "Behnia_2014_whole_cell_voltage_phenotype"
+        "Behnia_2014_whole_cell_voltage_phenotype",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 2054,
       "MaleCNS_located_fraction": 1.0,
@@ -168,7 +175,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": true,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -180,7 +189,8 @@
       ],
       "publisher_described_sources": [],
       "phenotype_evidence_sources": [
-        "Arenz_2017_calcium_filter_parameters"
+        "Arenz_2017_calcium_filter_parameters",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 1772,
       "MaleCNS_located_fraction": 1.0,
@@ -221,7 +231,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": true,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": false,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -273,7 +285,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -288,7 +302,8 @@
       ],
       "phenotype_evidence_sources": [
         "Arenz_2017_calcium_filter_parameters",
-        "Yang_2016_optical_voltage_figure"
+        "Yang_2016_optical_voltage_figure",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 1777,
       "MaleCNS_located_fraction": 1.0,
@@ -330,7 +345,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -345,7 +362,8 @@
       ],
       "phenotype_evidence_sources": [
         "Arenz_2017_calcium_filter_parameters",
-        "Yang_2016_optical_voltage_figure"
+        "Yang_2016_optical_voltage_figure",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 1766,
       "MaleCNS_located_fraction": 1.0,
@@ -387,7 +405,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -400,7 +420,8 @@
       ],
       "publisher_described_sources": [],
       "phenotype_evidence_sources": [
-        "Arenz_2017_calcium_filter_parameters"
+        "Arenz_2017_calcium_filter_parameters",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 1670,
       "MaleCNS_located_fraction": 1.0,
@@ -442,7 +463,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": true,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -455,7 +478,8 @@
       ],
       "publisher_described_sources": [],
       "phenotype_evidence_sources": [
-        "Arenz_2017_calcium_filter_parameters"
+        "Arenz_2017_calcium_filter_parameters",
+        "Borst_2025_parameterized_calcium_derived_fit_target"
       ],
       "MaleCNS_body_count": 1771,
       "MaleCNS_located_fraction": 0.9994353472614342,
@@ -498,7 +522,9 @@
         "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
         "independent_whole_cell_voltage_phenotype_without_numeric_payload": false,
         "independent_inhibitory_source_physiology_published": false,
-        "independent_inhibitory_source_allowed_unit": false
+        "independent_inhibitory_source_allowed_unit": false,
+        "Borst_2025_parameterized_calcium_derived_target": false,
+        "Borst_2025_target_is_experimental_membrane_voltage": false
       },
       "numerical_membrane_voltage": false,
       "published_optical_voltage_phenotype": false,
