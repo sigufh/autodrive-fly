@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "ce509de408f896338bff9d69db6f79d332e1d3fc9ee9d629367c04459479b26c",
-      "src/fly_emotion/driving/v7_goal_audit.py": "500397f564af730ae78d52d1f2427def338c4196b9d872cb9c5683b95329d805",
+      "configs/driving-v7-goal-audit.yaml": "acf6e9d97ac461871a04353693f5000f0c7e8350058db989a83b5c601a9b29bd",
+      "src/fly_emotion/driving/v7_goal_audit.py": "381de219e6107d6e55a30806b7d7013f2aae791a394ed966ca20abe17452d868",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -63,6 +63,7 @@
       "artifacts/v7-t4-synapse-correlator-precheck.json": "7506cd0df65513f399ed22e69287a3559731aabedacedaf93f779a4796b3ef5d",
       "artifacts/v7-t4-synapse-antisymmetric-precheck.json": "2ddd9d90b0f5c8ad5737b7846ad4d495d4a6cedadf9dc8c35052a93a8bcc5857",
       "artifacts/v7-t4-synapse-crossfit-precheck.json": "1a52b2154ee31d6a7faeb69840b225ebd3f61ec39f0b87c91c0db90167321116",
+      "artifacts/v7-t4-crossfit-sequence-identifiability.json": "41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60",
       "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t4-source-dynamics-transfer-audit.json": "47767e60d51bad22c2de732e9bf8ec960a10d99519ab616b516954b5f61d48ba",
@@ -194,6 +195,7 @@
         "artifacts/v7-t4-synapse-correlator-precheck.json",
         "artifacts/v7-t4-synapse-antisymmetric-precheck.json",
         "artifacts/v7-t4-synapse-crossfit-precheck.json",
+        "artifacts/v7-t4-crossfit-sequence-identifiability.json",
         "artifacts/v7-t4-synapse-centered-precheck.json",
         "artifacts/v7-t4-synapse-microstep-precheck.json",
         "artifacts/v7-source-type-temporal-identifiability.json",
@@ -736,6 +738,15 @@
         ],
         "T4_synapse_crossfit_controls_evaluated": false,
         "T4_synapse_crossfit_candidate_passed": false,
+        "T4_crossfit_sequence_maximum_direction_pass_count": 2,
+        "T4_crossfit_sequence_ordered_bilateral_subtypes": {
+          "positive_peak": [],
+          "signed_mean": []
+        },
+        "T4_crossfit_sequence_shuffle_signed_mean_bilateral_subtypes": [
+          "a"
+        ],
+        "T4_crossfit_sequence_authorizes_functional_candidate": false,
         "T4_synapse_centered_direction_pass_counts": [
           2,
           2,

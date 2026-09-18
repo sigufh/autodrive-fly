@@ -401,6 +401,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_synapse_crossfit_polarity_pass_counts"] == [8] * 8
     assert visual["observations"]["T4_synapse_crossfit_controls_evaluated"] is False
     assert visual["observations"]["T4_synapse_crossfit_candidate_passed"] is False
+    assert visual["observations"]["T4_crossfit_sequence_maximum_direction_pass_count"] == 2
+    assert all(
+        not values
+        for values in visual["observations"][
+            "T4_crossfit_sequence_ordered_bilateral_subtypes"
+        ].values()
+    )
+    assert visual["observations"][
+        "T4_crossfit_sequence_shuffle_signed_mean_bilateral_subtypes"
+    ] == ["a"]
+    assert visual["observations"]["T4_crossfit_sequence_authorizes_functional_candidate"] is False
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

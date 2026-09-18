@@ -80,6 +80,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
     t4_synapse_antisymmetric_precheck = reports["t4_synapse_antisymmetric_precheck"]
     t4_synapse_crossfit_precheck = reports["t4_synapse_crossfit_precheck"]
+    t4_crossfit_sequence_identifiability = reports[
+        "t4_crossfit_sequence_identifiability"
+    ]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
@@ -237,6 +240,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
                 config["evidence"]["t4_synapse_crossfit_precheck"],
+                config["evidence"]["t4_crossfit_sequence_identifiability"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -828,6 +832,27 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_synapse_crossfit_candidate_passed": t4_synapse_crossfit_precheck[
                     "candidate_passed"
                 ],
+                "T4_crossfit_sequence_maximum_direction_pass_count": (
+                    t4_crossfit_sequence_identifiability[
+                        "maximum_ordered_direction_pass_count"
+                    ]
+                ),
+                "T4_crossfit_sequence_ordered_bilateral_subtypes": (
+                    t4_crossfit_sequence_identifiability[
+                        "ordered_bilateral_direction_subtypes_by_reduction"
+                    ]
+                ),
+                "T4_crossfit_sequence_shuffle_signed_mean_bilateral_subtypes": (
+                    t4_crossfit_sequence_identifiability["mode_reduction_results"]
+                    ["temporal_shuffle"]["signed_mean"][
+                        "bilateral_direction_subtypes"
+                    ]
+                ),
+                "T4_crossfit_sequence_authorizes_functional_candidate": (
+                    t4_crossfit_sequence_identifiability[
+                        "authorize_new_functional_candidate"
+                    ]
+                ),
                 "T4_synapse_centered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t4_synapse_centered_precheck["ordered_candidates"]

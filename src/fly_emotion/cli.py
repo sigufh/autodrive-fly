@@ -166,6 +166,9 @@ from .driving.v7_synchronous import evaluate_v7_synchronous_update
 from .driving.v7_t4_continuous_pair_precheck import (
     evaluate_v7_t4_continuous_pair_precheck,
 )
+from .driving.v7_t4_crossfit_sequence_identifiability import (
+    evaluate_v7_t4_crossfit_sequence_identifiability,
+)
 from .driving.v7_t4_local_correlator_precheck import evaluate_v7_t4_local_correlator_precheck
 from .driving.v7_t4_normalized_correlator import evaluate_v7_t4_normalized_correlator
 from .driving.v7_t4_pair_lag_audit import evaluate_v7_t4_pair_lag_audit
@@ -424,6 +427,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
     subparsers.add_parser("v7-audit-t4-synapse-crossfit-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-crossfit-precheck")
+    subparsers.add_parser("v7-audit-t4-crossfit-sequence-identifiability")
     subparsers.add_parser("v7-evaluate-t4-synapse-antisymmetric-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
@@ -1308,6 +1312,14 @@ def main() -> None:
     if args.command == "v7-evaluate-t4-synapse-crossfit-precheck":
         report = evaluate_v7_t4_synapse_crossfit_precheck(root)
         target = root / "artifacts/v7-t4-synapse-crossfit-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t4-crossfit-sequence-identifiability":
+        report = evaluate_v7_t4_crossfit_sequence_identifiability(root)
+        target = root / "artifacts/v7-t4-crossfit-sequence-identifiability.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

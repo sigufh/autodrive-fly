@@ -1838,6 +1838,13 @@ controls、T02/T03 或 calibration。证据见 `artifacts/v7-t4-synapse-crossfit
 与 `artifacts/v7-t4-synapse-crossfit-precheck.json`。因此 T4 失败也不是结构 transform
 的 in-sample 泄漏所致，后续工作应转向有物理时间约束的源动力学。
 
+随后直接对 cross-fit 轴上的 source sequence 做 post-failure 诊断，不叠加 T4 电导
+基线、不选择参数。ordered 的 positive-peak 最多仍只有两个单侧群体通过，signed-mean
+为 0/8，二者都没有双侧亚型；temporal-shuffle 的 signed-mean 反而让 T4a 双侧通过，
+static-sham 的 positive-peak 也有两个单侧群体通过。故当前源序列未表现出所需的有序
+时间特异性，不能把电导基线解释为唯一问题，也不能继续从这些归约中挑候选。证据见
+`artifacts/v7-t4-crossfit-sequence-identifiability.json`。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。
