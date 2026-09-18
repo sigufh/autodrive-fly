@@ -78,7 +78,7 @@
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "0ce73a18283cbe7e3b058f7e90516ec4e4abcebf1a81fc71a53323882aeb2ea5",
       "artifacts/v7-c3-analytic-filter-precheck.json": "c500295463922199d074fdfcb3fc1511836bbc7e3c0c1a091cb937ec4ddc5da9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
-      "artifacts/v7-timing-models-ct1-compartment-audit.json": "3019b7cd0679d8c8c7c9561847703a9b4702952de9f1f3da476ea17fa4d10573",
+      "artifacts/v7-timing-models-ct1-compartment-audit.json": "4d0038fe1db7bbf6fb64d07396fddacb4b99fac9fad63a062f051106502249b1",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",

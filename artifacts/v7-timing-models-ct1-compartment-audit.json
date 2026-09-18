@@ -3,8 +3,8 @@
     "name": "v7-timing-models-ct1-compartment-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "b9df0d74c665476d9c5892ea6d91020268f532bd477e21266817864c9e4e06be",
-      "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "032f30a63f005e3442e20be1d88bffc5bc9e6550d52ff2e61acc3a9f24b98581",
+      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "c145b6a62a5cb3199c71eccccfbd073b00f8089457a6aa32ae2ac51cdcab1cd0",
+      "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "21adb640f5fc4fceb11e7c25558907f128e283b713aa1d6b6629b4fb14bd221d",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "configs/driving-v7-timing-models-source-filter-audit.yaml": "fffaa64fd43a4127c056da205d1f6eb3242b84ece34e0a77bcbff57f5bd02cb4",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
@@ -20,6 +20,24 @@
         "lobula_L1_Lo1"
       ],
       "lobula_results_location": "supplementary_figure_S5"
+    },
+    "repository_history": {
+      "head_commit": "100bb2f52cb9628477c3883e4b17774b0b244e67",
+      "commit_count": 10,
+      "unique_path_count": 46,
+      "filter_history": {
+        "CircuitModel/filterData_200ms_deconv_20220206.mat": [
+          "79276ddb2a1a56f021ec4ddf5dcabc9493cafdf9"
+        ],
+        "CircuitModel/filterData_250ms_deconv_20220206.mat": [
+          "79276ddb2a1a56f021ec4ddf5dcabc9493cafdf9"
+        ],
+        "CircuitModel/filterData_300ms_deconv_20220206.mat": [
+          "79276ddb2a1a56f021ec4ddf5dcabc9493cafdf9"
+        ]
+      },
+      "lobula_raw_or_individual_payload_paths": [],
+      "complete_history_inspected": true
     },
     "supplements": [
       {
@@ -161,6 +179,7 @@
     "same_CT1_cell_type_does_not_authorize_cross_compartment_transfer": true,
     "medulla_M10_evidence_must_not_substitute_for_lobula_L1_Lo1": true,
     "published_lobula_phenotype_is_not_a_numerical_payload": true,
+    "complete_public_git_history_has_no_lobula_numeric_payload": true,
     "deconvolved_calcium_is_not_membrane_voltage": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

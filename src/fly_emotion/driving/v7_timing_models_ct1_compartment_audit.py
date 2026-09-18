@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.metadata
 import json
+import subprocess
 from itertools import combinations
 from pathlib import Path
 
@@ -70,6 +71,47 @@ def evaluate_v7_timing_models_ct1_compartment_audit(root: Path) -> dict:
     timing_protocol = yaml.safe_load((root / timing_protocol_path).read_text(encoding="utf-8"))
     contract_path = Path(config["required_contract"])
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
+    history = config["repository_history"]
+    repository = root / history["checkout_path"]
+
+    def git(*args: str) -> list[str]:
+        result = subprocess.run(
+            ["git", "-C", str(repository), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        return [line for line in result.stdout.splitlines() if line]
+
+    commits = git("rev-list", "--all")
+    if len(commits) != int(history["commit_count"]):
+        raise ValueError("TimingModels public commit count mismatch")
+    if git("rev-parse", "HEAD") != [history["head_commit"]]:
+        raise ValueError("TimingModels public history head mismatch")
+    paths = sorted(
+        {path for commit in commits for path in git("ls-tree", "-r", "--name-only", commit)}
+    )
+    if len(paths) != int(history["unique_path_count"]):
+        raise ValueError("TimingModels unique historical path count mismatch")
+    filter_history = {}
+    for path in history["filter_paths"]:
+        revisions = git("log", "--all", "--format=%H", "--", path)
+        if revisions != [history["filter_introduction_commit"]]:
+            raise ValueError("TimingModels filter file history mismatch")
+        filter_history[path] = revisions
+    forbidden_tokens = [token.lower() for token in history["forbidden_missing_path_tokens"]]
+    possible_payload_paths = [
+        path for path in paths if any(token in path.lower() for token in forbidden_tokens)
+    ]
+    possible_payload_paths = [
+        path
+        for path in possible_payload_paths
+        if path not in history["filter_paths"]
+        and "measuredfilter" not in path.lower()
+        and "kernel" not in Path(path).name.lower()
+    ]
+    if possible_payload_paths:
+        raise ValueError("TimingModels history gained an unreviewed lobula or raw payload")
     verified_supplements = []
     required_caption_fragments = (
         "Figure S5.",
@@ -184,6 +226,14 @@ def evaluate_v7_timing_models_ct1_compartment_audit(root: Path) -> dict:
                 str(contract_path): _sha256(root / contract_path),
             },
             "paper": config["paper"],
+            "repository_history": {
+                "head_commit": commits[0],
+                "commit_count": len(commits),
+                "unique_path_count": len(paths),
+                "filter_history": filter_history,
+                "lobula_raw_or_individual_payload_paths": possible_payload_paths,
+                "complete_history_inspected": True,
+            },
             "supplements": verified_supplements,
             "pypdf_version": importlib.metadata.version("pypdf"),
             "parameter_fit": False,

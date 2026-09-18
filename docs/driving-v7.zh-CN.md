@@ -1935,6 +1935,11 @@ Mi9 都不完全相同；论文报告主 CT1 cohort 为 17 flies。可是 MAT �
 因此当前更精确的边界是“Lo1 动态表型已发表，但 Lo1 数值 payload 未验证”，仍不能满足
 外部 evidence contract 或授权 T5 source fit。
 
+TimingModels checkout 也已补成完整公开历史并逐提交枚举：共 10 commits、46 个唯一文件
+路径；三个 `filterData_*` 只在 `79276ddb…` 一次性引入，之后未更新。任一提交中均无
+Lo1/lobula/raw/fly/individual source-data 路径。因此 Lo1 数值载荷缺失不是 shallow checkout
+造成的假象，而是当前完整公开 Git 历史的边界。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

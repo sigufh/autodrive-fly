@@ -23,6 +23,16 @@ def test_CT1_compartment_audit_is_hash_bound_and_read_only() -> None:
     assert report["CT1_filter_evidence"]["sample_count"] == 60
     assert report["CT1_filter_evidence"]["sample_interval_seconds"] == 1 / 30
     assert report["CT1_filter_evidence"]["control_fly_count_reported_in_paper"] == 17
+    history = report["protocol"]["repository_history"]
+    assert history["head_commit"] == "100bb2f52cb9628477c3883e4b17774b0b244e67"
+    assert history["commit_count"] == 10
+    assert history["unique_path_count"] == 46
+    assert history["complete_history_inspected"] is True
+    assert history["lobula_raw_or_individual_payload_paths"] == []
+    assert all(
+        revisions == ["79276ddb2a1a56f021ec4ddf5dcabc9493cafdf9"]
+        for revisions in history["filter_history"].values()
+    )
 
 
 def test_CT1_filter_is_stable_and_not_a_Mi4_or_Tm9_copy() -> None:
@@ -52,3 +62,4 @@ def test_unlabeled_CT1_compartment_cannot_satisfy_T5_contract() -> None:
     assert report["advance_to_LPLC_mechanism_repair"] is False
     assert report["advance_to_vehicle_experiments"] is False
     assert report["boundary"]["medulla_M10_evidence_must_not_substitute_for_lobula_L1_Lo1"] is True
+    assert report["boundary"]["complete_public_git_history_has_no_lobula_numeric_payload"] is True

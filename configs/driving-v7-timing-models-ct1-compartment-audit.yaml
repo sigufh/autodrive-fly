@@ -31,6 +31,17 @@ supplement_S5_evidence:
   embedded_numeric_attachment_present: false
 timing_models_evidence: artifacts/v7-timing-models-source-filter-audit.json
 timing_models_protocol: configs/driving-v7-timing-models-source-filter-audit.yaml
+repository_history:
+  checkout_path: data/raw/t4-external-models/TimingModels
+  head_commit: 100bb2f52cb9628477c3883e4b17774b0b244e67
+  commit_count: 10
+  unique_path_count: 46
+  filter_introduction_commit: 79276ddb2a1a56f021ec4ddf5dcabc9493cafdf9
+  filter_paths:
+    - CircuitModel/filterData_200ms_deconv_20220206.mat
+    - CircuitModel/filterData_250ms_deconv_20220206.mat
+    - CircuitModel/filterData_300ms_deconv_20220206.mat
+  forbidden_missing_path_tokens: [Lo1, lobula, raw, fly, individual, source_data, kernel_data]
 required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 CT1_filter_name: CT1
 comparison_sources: [Mi4, Mi9]
@@ -56,6 +67,7 @@ boundary:
   same_CT1_cell_type_does_not_authorize_cross_compartment_transfer: true
   medulla_M10_evidence_must_not_substitute_for_lobula_L1_Lo1: true
   published_lobula_phenotype_is_not_a_numerical_payload: true
+  complete_public_git_history_has_no_lobula_numeric_payload: true
   deconvolved_calcium_is_not_membrane_voltage: true
   no_parameter_fit: true
   no_target_activity_injection: true
