@@ -1,0 +1,209 @@
+{
+  "protocol": {
+    "name": "v7-t5-ct1-two-fold-crossfit-axis-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-ct1-crossfit-axis-audit.yaml": "1509fbb72e77412863b1f979d4064d46a37287e5ce13c1ec92e606cfd7e49397",
+      "src/fly_emotion/driving/v7_t5_ct1_crossfit_axis_audit.py": "4253037d665759e1211397d661fa55406281dc930d7c65275e8deb04cedd3d56",
+      "artifacts/v7-t5-ct1-terminal-axis-audit.json": "ee966705a60fca883ad6e04cf47e058c69fa5d04dd0adef0c076320584067a64",
+      "configs/driving-v7-t5-ct1-terminal-axis-audit.yaml": "d9f7d0d0be10814672c1a3cccaa5aea26328962f3e632f637af20f5335bf05f1",
+      "artifacts/v7-t5-ct1-axis-calibration.json": "a9a3d3d4e92a3c8e1045f8f458f815a2d97fc1264b770e7379228ab51fbd5c63",
+      "configs/driving-v7-t5-ct1-axis-calibration.yaml": "dcacef59ffb8a17a97ce59651cf73e0308d76cdfff4e1f0c03e27fc5657bf5a6",
+      "src/fly_emotion/driving/v7_t5_ct1_axis_calibration.py": "e1c7aa2f4d943a1d5ede7cd418b5fc0c6713b38db3a17531789eaeaa2ae27bea",
+      "src/fly_emotion/driving/v7_source_audit.py": "e400a4fd630adf7ecab2916d2cdda06cf0a4a8ccae38f803d947c5a0dec9b9dd",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "parameter_fit": true,
+    "fit_uses_neural_response": false,
+    "functional_stimulus_evaluated": false,
+    "runtime_modified": false
+  },
+  "mapping": "separate_eye_two_fold_crossfit_2D_orthogonal_procrustes",
+  "valid_target_count": 6713,
+  "fixed_target_denominator": 6719,
+  "fold_counts": {
+    "0": 3412,
+    "1": 3301
+  },
+  "transforms_by_eye_and_training_fold": {
+    "L": {
+      "fit_fold_0_apply_fold_1": [
+        [
+          -0.9242750526275659,
+          -0.3817271631549298
+        ],
+        [
+          -0.3817271631549298,
+          0.9242750526275658
+        ]
+      ],
+      "fit_fold_1_apply_fold_0": [
+        [
+          -0.9215776408040325,
+          -0.38819409059138704
+        ],
+        [
+          -0.3881940905913871,
+          0.9215776408040324
+        ]
+      ]
+    },
+    "R": {
+      "fit_fold_0_apply_fold_1": [
+        [
+          -0.933052216800084,
+          0.35974096336732114
+        ],
+        [
+          0.3597409633673211,
+          0.9330522168000841
+        ]
+      ],
+      "fit_fold_1_apply_fold_0": [
+        [
+          -0.9301712122942167,
+          0.3671260217133987
+        ],
+        [
+          0.3671260217133988,
+          0.930171212294217
+        ]
+      ]
+    }
+  },
+  "out_of_fold_predictions_sha256": "b628a8151c66a88d57438a261226e9e1d50b672e87a3a278b87e0f5375f0f0be",
+  "fit_application_counts": {
+    "L": {
+      "fit_fold_0_apply_fold_1": {
+        "fit_count": 1719,
+        "application_count": 1638,
+        "body_id_overlap": 0
+      },
+      "fit_fold_1_apply_fold_0": {
+        "fit_count": 1638,
+        "application_count": 1719,
+        "body_id_overlap": 0
+      }
+    },
+    "R": {
+      "fit_fold_0_apply_fold_1": {
+        "fit_count": 1693,
+        "application_count": 1663,
+        "body_id_overlap": 0
+      },
+      "fit_fold_1_apply_fold_0": {
+        "fit_count": 1663,
+        "application_count": 1693,
+        "body_id_overlap": 0
+      }
+    }
+  },
+  "out_of_fold_overall": {
+    "count": 6713,
+    "accuracy": 0.8861909727394608,
+    "median_angle_error_degrees": 14.466393824620162,
+    "mean_angle_error_degrees": 20.560604940210712
+  },
+  "out_of_fold_by_population": {
+    "T5a_L": {
+      "count": 825,
+      "accuracy": 0.7890909090909091,
+      "median_angle_error_degrees": 28.2878834980965,
+      "mean_angle_error_degrees": 29.80556246714654,
+      "fixed_target_denominator": 826,
+      "valid_target_fraction": 0.9987893462469734
+    },
+    "T5a_R": {
+      "count": 838,
+      "accuracy": 0.8532219570405728,
+      "median_angle_error_degrees": 24.026862728524208,
+      "mean_angle_error_degrees": 26.267520837550283,
+      "fixed_target_denominator": 838,
+      "valid_target_fraction": 1.0
+    },
+    "T5b_L": {
+      "count": 863,
+      "accuracy": 0.727694090382387,
+      "median_angle_error_degrees": 32.13772260724925,
+      "mean_angle_error_degrees": 33.413079631479256,
+      "fixed_target_denominator": 863,
+      "valid_target_fraction": 1.0
+    },
+    "T5b_R": {
+      "count": 852,
+      "accuracy": 0.7875586854460094,
+      "median_angle_error_degrees": 29.51015846700586,
+      "mean_angle_error_degrees": 30.49163117350422,
+      "fixed_target_denominator": 852,
+      "valid_target_fraction": 1.0
+    },
+    "T5c_L": {
+      "count": 859,
+      "accuracy": 0.9825378346915018,
+      "median_angle_error_degrees": 8.003188443526263,
+      "mean_angle_error_degrees": 11.02507505936862,
+      "fixed_target_denominator": 862,
+      "valid_target_fraction": 0.9965197215777262
+    },
+    "T5c_R": {
+      "count": 858,
+      "accuracy": 0.9825174825174825,
+      "median_angle_error_degrees": 8.907945405941355,
+      "mean_angle_error_degrees": 11.598211894446449,
+      "fixed_target_denominator": 858,
+      "valid_target_fraction": 1.0
+    },
+    "T5d_L": {
+      "count": 810,
+      "accuracy": 0.9876543209876543,
+      "median_angle_error_degrees": 8.173907962358069,
+      "mean_angle_error_degrees": 10.622502932633738,
+      "fixed_target_denominator": 812,
+      "valid_target_fraction": 0.9975369458128078
+    },
+    "T5d_R": {
+      "count": 808,
+      "accuracy": 0.9863861386138614,
+      "median_angle_error_degrees": 8.692488233840969,
+      "mean_angle_error_degrees": 10.620271445189706,
+      "fixed_target_denominator": 808,
+      "valid_target_fraction": 1.0
+    }
+  },
+  "cross_eye_mirror_angle_error_degrees_by_subtype": {
+    "a": 0.020109370670670847,
+    "b": 3.151766017690092,
+    "c": 2.3025920328724556,
+    "d": 0.8925912922080512
+  },
+  "random_orthogonal_baseline": {
+    "count": 256,
+    "out_of_fold_accuracy_p95": 0.49158349471175333
+  },
+  "gates": {
+    "valid_target_fraction_each_population": true,
+    "overall_out_of_fold_accuracy": true,
+    "out_of_fold_accuracy_each_population": true,
+    "overall_out_of_fold_angle": true,
+    "cross_eye_mirror": true,
+    "accuracy_above_random_p95": true
+  },
+  "T5_CT1_crossfit_axis_passed": true,
+  "authorize_axis_aware_single_condition_precheck": true,
+  "advance_to_functional_calibration": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": null,
+  "boundary": {
+    "structure_only": true,
+    "every_target_scored_out_of_fold": true,
+    "fold_assignment_uses_body_id_hash_only": true,
+    "transform_selection_does_not_read_subtype_or_direction": true,
+    "all_four_T5_subtypes_equal_weight_in_each_fit": true,
+    "no_T4_mapping_reused": true,
+    "target_activity_injection": false,
+    "functional_stimulus_not_evaluated": true,
+    "runtime_modified": false,
+    "connect_to_navigation": false,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

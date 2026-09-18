@@ -103,6 +103,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_CT1_axis_held_out_accuracy"] > 0.88
     assert visual["observations"]["T5_CT1_axis_held_out_median_angle_degrees"] < 15
     assert visual["observations"]["T5_CT1_axis_calibration_passed"] is True
+    assert visual["observations"]["T5_CT1_crossfit_axis_accuracy"] > 0.88
+    assert visual["observations"]["T5_CT1_crossfit_axis_median_angle_degrees"] < 15
+    assert visual["observations"]["T5_CT1_crossfit_axis_passed"] is True
     assert visual["observations"]["T5_CT1_dynamics_ordered_direction_pass_counts"] == [
         2,
         2,
@@ -144,6 +147,24 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"][
             "T5_CT1_multiplicative_three_condition_evaluation_performed"
         ]
+        is False
+    )
+    assert visual["observations"]["T5_CT1_axis_aware_ordered_direction_pass_counts"] == [
+        0,
+        0,
+        0,
+        0,
+    ]
+    assert visual["observations"]["T5_CT1_axis_aware_ordered_polarity_pass_counts"] == [
+        8,
+        8,
+        8,
+        8,
+    ]
+    assert visual["observations"]["T5_CT1_axis_aware_controls_evaluated"] is False
+    assert visual["observations"]["T5_CT1_axis_aware_strict_candidate_passed"] is False
+    assert (
+        visual["observations"]["T5_CT1_axis_aware_three_condition_evaluation_performed"]
         is False
     )
     assert visual["observations"]["source_type_temporal_passing_counts"] == {

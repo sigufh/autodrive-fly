@@ -1,0 +1,32 @@
+version: 1
+name: v7-t5-ct1-two-fold-crossfit-axis-audit
+observed_on: "2026-09-18"
+terminal_axis_evidence: artifacts/v7-t5-ct1-terminal-axis-audit.json
+terminal_axis_protocol: configs/driving-v7-t5-ct1-terminal-axis-audit.yaml
+prior_axis_calibration: artifacts/v7-t5-ct1-axis-calibration.json
+prior_axis_protocol: configs/driving-v7-t5-ct1-axis-calibration.yaml
+prior_axis_implementation: src/fly_emotion/driving/v7_t5_ct1_axis_calibration.py
+source_axis_implementation: src/fly_emotion/driving/v7_source_audit.py
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+split_seed: 20260918
+random_orthogonal_baselines: 256
+mapping: separate_eye_two_fold_crossfit_2D_orthogonal_procrustes
+gates:
+  minimum_valid_target_fraction_each_population: 0.80
+  minimum_overall_out_of_fold_accuracy: 0.75
+  minimum_out_of_fold_accuracy_each_population: 0.60
+  maximum_overall_out_of_fold_median_angle_error_degrees: 35.0
+  maximum_cross_eye_mirror_angle_error_degrees: 30.0
+  require_accuracy_above_random_p95: true
+boundary:
+  structure_only: true
+  every_target_scored_out_of_fold: true
+  fold_assignment_uses_body_id_hash_only: true
+  transform_selection_does_not_read_subtype_or_direction: true
+  all_four_T5_subtypes_equal_weight_in_each_fit: true
+  no_T4_mapping_reused: true
+  target_activity_injection: false
+  functional_stimulus_not_evaluated: true
+  runtime_modified: false
+  connect_to_navigation: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

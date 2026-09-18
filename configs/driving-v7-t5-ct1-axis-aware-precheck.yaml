@@ -1,0 +1,57 @@
+version: 1
+name: v7-t5-ct1-crossfit-axis-aware-precheck
+observed_on: "2026-09-18"
+crossfit_axis_evidence: artifacts/v7-t5-ct1-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t5-ct1-crossfit-axis-audit.yaml
+terminal_axis_evidence: artifacts/v7-t5-ct1-terminal-axis-audit.json
+terminal_axis_protocol: configs/driving-v7-t5-ct1-terminal-axis-audit.yaml
+prior_multiplicative_evidence: artifacts/v7-t5-ct1-multiplicative-precheck.json
+prior_multiplicative_protocol: configs/driving-v7-t5-ct1-multiplicative-precheck.yaml
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+lamina_split_evidence: artifacts/v7-t5-lamina-split.json
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+synapse_partners: data/raw/malecns-v1.0/syn-partners.feather
+condition_id: S1-T01
+source_roles:
+  mapping_anchors: [Tm1, Tm2, Tm9]
+  fast_excitation: [Tm1, Tm2, Tm4]
+  enhancer_base: [Tm9]
+  slow_inhibition: [CT1]
+mechanism:
+  terminal_position_mapping: affine_postsynaptic_xyz_to_optic_hex_xy_per_eye
+  target_axis: out_of_fold_T5_only_CT1_axis
+  sequence: CT1_previous_then_fast_now_minus_reverse_order
+  sequence_formula: dot(crossfit_axis,(fast_position_now*CT1_mass_previous-fast_mass_now*CT1_position_previous)-(CT1_position_now*fast_mass_previous-CT1_mass_now*fast_position_previous))
+  normalization: sum_absolute_x_y_pair_terms_plus_1e-9
+  temporal_reduction: positive_peak
+  output_formula: Tm9_peak*(1+gain*positive_axis_sequence_peak)
+  gains: [0.125, 0.5, 2.0, 8.0]
+  position_reduction: target_RF_assignment_over_fixed_5x3_grid
+controls:
+  temporal_shuffle_seed: 20260918
+  modes: [temporal_shuffle, static_sham]
+stop_gate:
+  minimum_bilateral_direction_subtypes_to_run_controls: 1
+  require_all_direction_populations: true
+  require_all_polarity_populations: true
+  require_mirror: true
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  every_valid_target_axis_is_out_of_fold: true
+  transform_selection_uses_body_id_hash_only: true
+  source_activity_driven_only_from_R1_R6_propagation: true
+  dynamics_do_not_read_subtype_or_direction_labels: true
+  labels_used_for_posthoc_scoring_only: true
+  fixed_whole_population_denominators: true
+  Tm9_and_CT1_not_merged: true
+  no_T4_mapping_reused: true
+  labels_changed: false
+  thresholds_changed: false
+  parameter_fit_to_neural_response: false
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

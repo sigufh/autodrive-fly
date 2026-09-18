@@ -1786,6 +1786,21 @@ native-time 方向差模板；`authorize_T5_direction_template=false`，拟合�
 `artifacts/v7-t5-ct1-multiplicative-precheck.json`。这个结果说明乘法门控能保住 OFF 基线，
 但单一全局 CT1 时序标量仍不足以恢复四个 T5 亚型的方向动力学。
 
+为让结构轴真正进入动态公式、又不把拟合集标签泄漏给同一 target，随后按 body-ID 哈希
+构造 T5-only 二折 cross-fit：每眼、每折都只用另一折的四亚型等权结构样本拟合正交变换，
+再应用到当前折。6,713 个有效 target 全部为 out-of-fold 预测，固定分母仍是 6,719；
+整体准确率约 88.62%，八群体最低约 72.77%，整体中位角误差约 14.47°，最大跨眼镜像
+角误差约 3.15°，所有 fit/application body-ID 重叠均为 0。该结构门通过，只授权一次
+axis-aware `S1-T01`，证据见 `artifacts/v7-t5-ct1-crossfit-axis-audit.json`。
+
+axis-aware 候选按每个 target 的 out-of-fold 轴，将真实 Tm1/Tm2/Tm4 与 CT1 在 T5 上的
+突触终末一阶矩时序投影到该轴，再乘法调制独立 Tm9 OFF 基线。四个预注册 gain 的 OFF
+极性均为 8/8，但方向均为 0/8，没有任何 gain 达到最低双侧方向 control 门，因此未运行
+shuffle/static，也未运行 T02/T03 或 calibration。证据见
+`artifacts/v7-t5-ct1-axis-aware-precheck.json`。这进一步限定了失败来源：T5 结构轴本身可
+cross-fit 预测标签，但当前 R1–R6 驱动的 source dynamics 沿该轴仍不可辨识；不能把结构
+准确率当作功能方向选择，也不能因此解冻 LPLC 或车辆实验。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

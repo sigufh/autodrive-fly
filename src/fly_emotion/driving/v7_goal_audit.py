@@ -115,12 +115,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t5_ct1_terminal_axis_audit = reports["t5_ct1_terminal_axis_audit"]
     t5_ct1_axis_calibration = reports["t5_ct1_axis_calibration"]
+    t5_ct1_crossfit_axis_audit = reports["t5_ct1_crossfit_axis_audit"]
     t5_ct1_source_dynamics_precheck = reports[
         "t5_ct1_source_dynamics_precheck"
     ]
     t5_ct1_multiplicative_precheck = reports[
         "t5_ct1_multiplicative_precheck"
     ]
+    t5_ct1_axis_aware_precheck = reports["t5_ct1_axis_aware_precheck"]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -214,8 +216,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_native_direction_waveform_audit"],
                 config["evidence"]["t5_ct1_terminal_axis_audit"],
                 config["evidence"]["t5_ct1_axis_calibration"],
+                config["evidence"]["t5_ct1_crossfit_axis_audit"],
                 config["evidence"]["t5_ct1_source_dynamics_precheck"],
                 config["evidence"]["t5_ct1_multiplicative_precheck"],
+                config["evidence"]["t5_ct1_axis_aware_precheck"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
@@ -330,6 +334,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_CT1_axis_calibration_passed": t5_ct1_axis_calibration[
                     "T5_CT1_axis_calibration_passed"
                 ],
+                "T5_CT1_crossfit_axis_accuracy": t5_ct1_crossfit_axis_audit[
+                    "out_of_fold_overall"
+                ]["accuracy"],
+                "T5_CT1_crossfit_axis_median_angle_degrees": (
+                    t5_ct1_crossfit_axis_audit["out_of_fold_overall"]
+                    ["median_angle_error_degrees"]
+                ),
+                "T5_CT1_crossfit_axis_passed": t5_ct1_crossfit_axis_audit[
+                    "T5_CT1_crossfit_axis_passed"
+                ],
                 "T5_CT1_dynamics_ordered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t5_ct1_source_dynamics_precheck[
@@ -378,6 +392,23 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     t5_ct1_multiplicative_precheck[
                         "three_condition_evaluation_performed"
                     ]
+                ),
+                "T5_CT1_axis_aware_ordered_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t5_ct1_axis_aware_precheck["ordered_candidates"]
+                ],
+                "T5_CT1_axis_aware_ordered_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t5_ct1_axis_aware_precheck["ordered_candidates"]
+                ],
+                "T5_CT1_axis_aware_controls_evaluated": t5_ct1_axis_aware_precheck[
+                    "controls_evaluated"
+                ],
+                "T5_CT1_axis_aware_strict_candidate_passed": (
+                    t5_ct1_axis_aware_precheck["candidate_passed"]
+                ),
+                "T5_CT1_axis_aware_three_condition_evaluation_performed": (
+                    t5_ct1_axis_aware_precheck["three_condition_evaluation_performed"]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"
