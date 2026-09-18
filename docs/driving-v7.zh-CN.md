@@ -1961,6 +1961,17 @@ bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件�
 成训练 payload，也不能补齐 Tm4/Tm9/CT1 的电压证据或解锁 T5。证据见
 `artifacts/v7-yang-t5-voltage-evidence-audit.json`。
 
+MaleCNS v1.0 本地映射也单独核验。九类 source 都有精确 type→body 集合且全部 body 位于
+canonical graph：Mi1 1773、Tm3 2054、Mi4 1772、C3 1779、Tm1 1777、Tm2 1766、
+Tm4 1670、Tm9 1771、CT1 2；soma side 全部存在。原生 optic-hex 缺失时，沿用已验证的
+一跳真实上游绝对突触权重质心规则后，Tm3 2054 个与 Tm4 缺失的 837 个均可定位，Tm9
+仍有 1 个 body 不可定位。CT1 是左右各一个覆盖整个 M10/Lo1 的巨型神经元，左右 body
+集合可确认，但单个全局质心不是逐柱 Lo1 retinotopy。更重要的是，另一只实验果蝇的 ROI
+不能被指派为某个 MaleCNS body；只有外部 payload 明确声明 type-average 时，才可广播到
+对应类型集合。因此连接组可补齐 exact type/body 与 side 子字段，却不能凭空补齐
+recording→body、CT1 柱坐标或实验 split。证据见
+`artifacts/v7-malecns-source-mapping-readiness-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

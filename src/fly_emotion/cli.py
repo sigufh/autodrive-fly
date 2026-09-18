@@ -119,6 +119,9 @@ from .driving.v7_lplc2_phenotype import evaluate_v7_lplc2_phenotype
 from .driving.v7_lplc2_position_coverage import evaluate_v7_lplc2_position_coverage
 from .driving.v7_lplc2_radial_opponency import evaluate_v7_lplc2_radial_opponency
 from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
+from .driving.v7_malecns_source_mapping_readiness_audit import (
+    evaluate_v7_malecns_source_mapping_readiness_audit,
+)
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
 from .driving.v7_navigation_nested import evaluate_v7_navigation_nested
 from .driving.v7_navigation_nested_eval import evaluate_v7_navigation_nested_candidate
@@ -387,6 +390,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-spectral-controls")
     subparsers.add_parser("v7-evaluate-neural-spectra")
     subparsers.add_parser("v7-audit-electrophysiology")
+    subparsers.add_parser("v7-audit-malecns-source-mapping-readiness")
     subparsers.add_parser("v7-audit-timebase")
     subparsers.add_parser("v7-validate-published-fig5")
     subparsers.add_parser("v7-build-ephys-interface")
@@ -781,6 +785,14 @@ def main() -> None:
         report = evaluate_v7_t5_data_audit(root)
         target = root / "artifacts/v7-t5-data-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-malecns-source-mapping-readiness":
+        report = evaluate_v7_malecns_source_mapping_readiness_audit(root)
+        target = root / "artifacts/v7-malecns-source-mapping-readiness-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-t5-conductance":

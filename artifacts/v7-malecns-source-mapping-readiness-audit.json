@@ -1,0 +1,236 @@
+{
+  "protocol": {
+    "name": "v7-malecns-source-mapping-readiness-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b74c91098794594bc1e327c786c3b41b79af5733d6c0f60b35c04a6007527990",
+      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "1bee9c04aaebaadcc008831b1995b30217886bdd78fbca35a0e3b6223962e400",
+      "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
+      "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
+      "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "MaleCNS_release": "v1.0",
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "coordinate_rule": {
+    "native": "assignedOlHex1_assignedOlHex2",
+    "fallback": "one_hop_absolute_raw_synapse_weighted_centroid_of_native_coordinate_inputs"
+  },
+  "source_mapping": {
+    "Mi1": {
+      "family": "T4",
+      "body_count": 1773,
+      "body_ids_sha256": "c6fdbdec747a4be3ba59de83f310e738afc2b5b977b8e2c72ec6efd0e5a5aba3",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 886,
+        "R": 887
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 1762,
+      "one_hop_inferred_coordinate_count": 11,
+      "located_count": 1773,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "Tm3": {
+      "family": "T4",
+      "body_count": 2054,
+      "body_ids_sha256": "4dd4a51b41ee9b34361817a2bd8d0587037a087a8a24856b0e762cb970fe02e8",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 1017,
+        "R": 1037
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 0,
+      "one_hop_inferred_coordinate_count": 2054,
+      "located_count": 2054,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "Mi4": {
+      "family": "T4",
+      "body_count": 1772,
+      "body_ids_sha256": "f5e10f234fbe69bc503b369d69428ea7ef19d0e3a6e15a2de73db737bfe02b80",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 883,
+        "R": 889
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 1758,
+      "one_hop_inferred_coordinate_count": 14,
+      "located_count": 1772,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "C3": {
+      "family": "T4",
+      "body_count": 1779,
+      "body_ids_sha256": "a76d7bca49f67fdeac2ff4d5cf862f92f531214ca4c08b9fa66e0a63e3547d78",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 887,
+        "R": 892
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 1770,
+      "one_hop_inferred_coordinate_count": 9,
+      "located_count": 1779,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "Tm1": {
+      "family": "T5",
+      "body_count": 1777,
+      "body_ids_sha256": "55c5903251cd03aeea968bd1813660b4e34abc62a4438b9f7adfc6090cd216a8",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 887,
+        "R": 890
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 1767,
+      "one_hop_inferred_coordinate_count": 10,
+      "located_count": 1777,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "Tm2": {
+      "family": "T5",
+      "body_count": 1766,
+      "body_ids_sha256": "30c90f92a7c92144758aa4892518e083ef7c9b10015a2431281c414e27d7fbfd",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 883,
+        "R": 883
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 1758,
+      "one_hop_inferred_coordinate_count": 8,
+      "located_count": 1766,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "Tm4": {
+      "family": "T5",
+      "body_count": 1670,
+      "body_ids_sha256": "a93d4d4946beb39f459a6c3889174e2f7610370dd74c20dfe037c1d995c0c00a",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 837,
+        "R": 833
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 833,
+      "one_hop_inferred_coordinate_count": 837,
+      "located_count": 1670,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": true
+    },
+    "Tm9": {
+      "family": "T5",
+      "body_count": 1771,
+      "body_ids_sha256": "f596bb1eac601eabb996b78884de95f2a46a812bb02acf8a8bbd67d11c713424",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 884,
+        "R": 887
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 1743,
+      "one_hop_inferred_coordinate_count": 27,
+      "located_count": 1770,
+      "located_fraction": 0.9994353472614342,
+      "unlocated_body_ids": [
+        532266
+      ],
+      "columnar_retinotopy_available": false
+    },
+    "CT1": {
+      "family": "T5",
+      "body_count": 2,
+      "body_ids_sha256": "5c416e1bbe7c842d2fc730aacedf4dda50ccf43b9dd760800614f26de48c2b3e",
+      "all_bodies_in_canonical_graph": true,
+      "soma_side_counts": {
+        "L": 1,
+        "R": 1
+      },
+      "soma_side_complete": true,
+      "external_annotation_ids_complete": true,
+      "native_optic_hex_count": 0,
+      "one_hop_inferred_coordinate_count": 2,
+      "located_count": 2,
+      "located_fraction": 1.0,
+      "unlocated_body_ids": [],
+      "columnar_retinotopy_available": false
+    }
+  },
+  "CT1": {
+    "body_ids": [
+      10009,
+      10157
+    ],
+    "body_count": 2,
+    "sides": [
+      "L",
+      "R"
+    ],
+    "one_body_per_side": true,
+    "one_hop_global_centroid_available": true,
+    "columnar_Lo1_retinotopy_available": false
+  },
+  "mapping_gates": {
+    "every_source_type_has_exact_MaleCNS_body_set": true,
+    "every_source_body_has_soma_side": true,
+    "every_source_body_has_columnar_retinotopic_coordinate": false,
+    "external_recording_declares_explicit_type_average_or_body_mapping": false,
+    "external_recording_to_specific_MaleCNS_body_identified": false
+  },
+  "MaleCNS_type_average_body_sets_available": true,
+  "external_source_mapping_contract_satisfied": false,
+  "authorize_external_source_payload": false,
+  "advance_to_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "every_source_body_has_columnar_retinotopic_coordinate",
+    "external_recording_declares_explicit_type_average_or_body_mapping",
+    "external_recording_to_specific_MaleCNS_body_identified"
+  ],
+  "stop_reason": "MaleCNS_type_body_sets_exist_but_external_recording_identity_and_columnar_mapping_do_not",
+  "boundary": {
+    "read_only_MaleCNS_v1_0_mapping_audit": true,
+    "exact_type_to_body_sets_are_available": true,
+    "external_recordings_are_not_assigned_to_specific_MaleCNS_bodies": true,
+    "explicit_type_average_declaration_is_required_from_external_payload": true,
+    "one_hop_centroids_are_inferred_not_native_coordinates": true,
+    "CT1_global_centroid_is_not_columnar_Lo1_retinotopy": true,
+    "incomplete_Tm9_coordinate_is_not_imputed": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

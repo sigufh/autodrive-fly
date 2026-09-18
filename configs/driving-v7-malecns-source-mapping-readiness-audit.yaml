@@ -1,0 +1,35 @@
+version: 1
+name: v7-malecns-source-mapping-readiness-audit
+observed_on: "2026-09-19"
+data_manifest: configs/data-manifest.yaml
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+adjacency_raw: data/processed/malecns-v1.0/adjacency_raw.npz
+body_ids: data/processed/malecns-v1.0/body_ids.npy
+graph_metadata: data/processed/malecns-v1.0/graph.json
+external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+required_sources:
+  Mi1: {family: T4, count: 1773, left: 886, right: 887, native: 1762, inferred: 11, unlocated: 0}
+  Tm3: {family: T4, count: 2054, left: 1017, right: 1037, native: 0, inferred: 2054, unlocated: 0}
+  Mi4: {family: T4, count: 1772, left: 883, right: 889, native: 1758, inferred: 14, unlocated: 0}
+  C3: {family: T4, count: 1779, left: 887, right: 892, native: 1770, inferred: 9, unlocated: 0}
+  Tm1: {family: T5, count: 1777, left: 887, right: 890, native: 1767, inferred: 10, unlocated: 0}
+  Tm2: {family: T5, count: 1766, left: 883, right: 883, native: 1758, inferred: 8, unlocated: 0}
+  Tm4: {family: T5, count: 1670, left: 837, right: 833, native: 833, inferred: 837, unlocated: 0}
+  Tm9: {family: T5, count: 1771, left: 884, right: 887, native: 1743, inferred: 27, unlocated: 1}
+  CT1: {family: T5, count: 2, left: 1, right: 1, native: 0, inferred: 2, unlocated: 0}
+CT1_expected_body_ids: [10009, 10157]
+coordinate_rule:
+  native: assignedOlHex1_assignedOlHex2
+  fallback: one_hop_absolute_raw_synapse_weighted_centroid_of_native_coordinate_inputs
+boundary:
+  read_only_MaleCNS_v1_0_mapping_audit: true
+  exact_type_to_body_sets_are_available: true
+  external_recordings_are_not_assigned_to_specific_MaleCNS_bodies: true
+  explicit_type_average_declaration_is_required_from_external_payload: true
+  one_hop_centroids_are_inferred_not_native_coordinates: true
+  CT1_global_centroid_is_not_columnar_Lo1_retinotopy: true
+  incomplete_Tm9_coordinate_is_not_imputed: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true
