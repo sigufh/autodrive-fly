@@ -477,6 +477,8 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert 0.066 < visual["observations"]["FlyVis_C3_median_time_constant_seconds"] < 0.068
     assert visual["observations"]["FlyVis_C3_models_at_or_below_solver_dt"] == 21
     assert visual["observations"]["FlyVis_C3_time_constant_transfer_authorized"] is False
+    assert visual["observations"]["FlyVis_visual_source_coverage_complete"] is True
+    assert visual["observations"]["FlyVis_visual_source_time_constants_transferable"] is False
     assert visual["observations"]["FlyVis_C3_effective_cross_dt_minimum_correlation"] < 0.67
     assert min(
         visual["observations"]["FlyVis_C3_effective_LOMO_minimum_by_dt"].values()

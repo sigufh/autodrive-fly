@@ -30,6 +30,8 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
             "t5_source_filter_protocol",
             "source_identifiability_evidence",
             "source_identifiability_protocol",
+            "flyvis_source_time_evidence",
+            "flyvis_source_time_protocol",
         )
     }
     reports = {
@@ -42,6 +44,7 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
     target = reports["t5_target_data_evidence"]
     source = reports["t5_source_filter_evidence"]
     identifiability = reports["source_identifiability_evidence"]
+    flyvis = reports["flyvis_source_time_evidence"]
     scheduler = split["engineering_timebase"]
     target_ready = target["direction_and_identity_readiness"]
     source_gates = source["transfer_gates"]
@@ -116,6 +119,20 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
                 ],
                 "missing_CT1": "CT1"
                 not in source["T5_source_contract"]["covered_sources"],
+            },
+            "FlyVis_source_time_constants": {
+                "required_types_present": not flyvis["source_coverage"]["T5"][
+                    "missing"
+                ],
+                "all_above_solver_dt": flyvis["gates"][
+                    "every_source_above_solver_dt_in_every_model"
+                ],
+                "all_cross_model_IQR_stable": flyvis["gates"][
+                    "every_source_cross_model_IQR_stable"
+                ],
+                "transferable": flyvis[
+                    "FlyVis_visual_source_time_constants_transferable"
+                ],
             },
         },
         "current_source_temporal_identifiability": {

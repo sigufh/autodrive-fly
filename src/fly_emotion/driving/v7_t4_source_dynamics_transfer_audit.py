@@ -32,6 +32,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
+    flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
     c3_measured_path = Path(config["c3_measured_filter_robustness_evidence"])
     public_models_path = Path(config["public_t4_model_source_coverage_evidence"])
@@ -64,6 +65,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / timing_models_path).read_text(encoding="utf-8")
     )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
+    flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
         (root / flyvis_effective_path).read_text(encoding="utf-8")
     )
@@ -177,6 +179,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
+                str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
                 str(c3_measured_path): _sha256(root / c3_measured_path),
                 str(public_models_path): _sha256(root / public_models_path),
@@ -413,6 +416,22 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             },
             "effective_dynamics_transfer_authorized": flyvis_effective[
                 "FlyVis_C3_effective_dynamics_transfer_authorized"
+            ],
+        },
+        "verified_FlyVis_visual_source_time_constants": {
+            "T4_missing_sources": flyvis_visual["source_coverage"]["T4"]["missing"],
+            "T5_missing_sources": flyvis_visual["source_coverage"]["T5"]["missing"],
+            "all_values_finite_and_positive": flyvis_visual["gates"][
+                "all_models_finite_and_positive"
+            ],
+            "all_above_solver_dt": flyvis_visual["gates"][
+                "every_source_above_solver_dt_in_every_model"
+            ],
+            "all_cross_model_IQR_stable": flyvis_visual["gates"][
+                "every_source_cross_model_IQR_stable"
+            ],
+            "transferable": flyvis_visual[
+                "FlyVis_visual_source_time_constants_transferable"
             ],
         },
         "verified_C3_measured_filter_robustness": {

@@ -134,6 +134,13 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
         for value in by_tau.values()
     ) < 0.72
     assert effective["effective_dynamics_transfer_authorized"] is False
+    visual_time = report["verified_FlyVis_visual_source_time_constants"]
+    assert visual_time["T4_missing_sources"] == []
+    assert visual_time["T5_missing_sources"] == []
+    assert visual_time["all_values_finite_and_positive"] is True
+    assert visual_time["all_above_solver_dt"] is False
+    assert visual_time["all_cross_model_IQR_stable"] is False
+    assert visual_time["transferable"] is False
     measured = report["verified_C3_measured_filter_robustness"]
     assert measured["cross_deconvolution_stability_passed"] is True
     assert set(measured["minimum_held_out_correlation_by_assumption"]) == {

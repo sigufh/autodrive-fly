@@ -1864,6 +1864,15 @@ kernel、source→MaleCNS 身份映射、物理 v7 采样间隔和 mV→归一�
 严格镜像输入也不能恢复有序时间特异性；这只是工程归因消融，不是生物视网膜重建，也不
 授权候选。证据见 `artifacts/v7-t4-crossfit-retinal-symmetry-audit.json`。
 
+对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
+其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
+Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型
+的时间常数不高于 20 ms solver 步长；C3、CT1(Lo1)、Tm1、Tm2、Tm4 的跨模型
+IQR/median 超过冻结的 0.50 门。参数来自 Sintel 光流任务和 FIB25/FIB19 平均连接组，
+没有 source physiology 监督、MaleCNS body 映射或独立动态验证；CT1(Lo1) 也不被假定
+等同于 MaleCNS 的全部 CT1。故只确认“类型存在”，不授权生成新的 source response 或
+迁移到 v7。证据见 `artifacts/v7-flyvis-visual-source-time-constants.json`。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

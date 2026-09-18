@@ -3,8 +3,8 @@
     "name": "v7-t5-physical-time-and-source-transfer-readiness-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-physical-time-transfer-audit.yaml": "3ae2c4bc48e9665e4b44b7b057c34a6aa4def6dc1c6f7a1eb34c06885223b950",
-      "src/fly_emotion/driving/v7_t5_physical_time_transfer_audit.py": "8ef6e34b94913af3ea9b7c74a1cae553c7b22c23caf1dadcc39be7b92b41ce25",
+      "configs/driving-v7-t5-physical-time-transfer-audit.yaml": "dce09ec8a4ac6fcbc8aca1ddaf62ffc7d55034d6230964f34fec7ad3c53a157d",
+      "src/fly_emotion/driving/v7_t5_physical_time_transfer_audit.py": "f2351b5f7b9d76a847a18f6cf4cbcda83a83d67805f6e0b8e9842de515f38b44",
       "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
       "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -14,7 +14,9 @@
       "artifacts/v7-arenz-t5-source-dynamics-audit.json": "a1442bf2ea0f8bf82929594bc25aa9f6915be3c4bf4e7099a225a4b635d88a14",
       "configs/driving-v7-arenz-t5-source-dynamics-audit.yaml": "526e4a442e36373b18330b09e3144bbf40c5dd315aeb46d83e994de688806efa",
       "artifacts/v7-source-type-temporal-identifiability.json": "5c080811d8084b5bd58608f3bfe5355a6c5260b197fbe7193715b853436d4b0f",
-      "configs/driving-v7-source-type-temporal-identifiability.yaml": "8873470713fb4af25efae0acfde4c8d6e5e15dd82998ae891b87aa2f911218fd"
+      "configs/driving-v7-source-type-temporal-identifiability.yaml": "8873470713fb4af25efae0acfde4c8d6e5e15dd82998ae891b87aa2f911218fd",
+      "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
+      "configs/driving-v7-flyvis-visual-source-time-constants.yaml": "7b7a7d8307497b56a0f3e33cbd267d98f2fd49bf1389168bcd10999ee39d513f"
     },
     "parameter_fit": false,
     "functional_stimulus_evaluated": false,
@@ -46,6 +48,12 @@
       "raw_calcium_contract_complete": true,
       "deconvolved_contract_complete": false,
       "missing_CT1": true
+    },
+    "FlyVis_source_time_constants": {
+      "required_types_present": true,
+      "all_above_solver_dt": false,
+      "all_cross_model_IQR_stable": false,
+      "transferable": false
     }
   },
   "current_source_temporal_identifiability": {

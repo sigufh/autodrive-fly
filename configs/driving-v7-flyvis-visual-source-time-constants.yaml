@@ -1,0 +1,50 @@
+version: 1
+name: v7-flyvis-visual-source-time-constant-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.1038/s41586-024-07939-3
+repository:
+  url: https://github.com/TuragaLab/flyvis
+  commit: 92b3845cc426dd309a1a0e1b3890156c42e14021
+  checkout_head_path: data/raw/t4-external-models/flyvis/.git/HEAD
+pretrained_archive:
+  path: data/raw/t4-external-models/flyvis/results_pretrained_models.zip
+  bytes: 3417042
+  sha256: 71c78d4070556a536b13b23ee3139cd2788aa2a9d07d430a223b4edead281db1
+  ensemble_path: results/flow/0000
+  expected_model_count: 50
+connectome:
+  path: data/raw/t4-external-models/flyvis/flyvis/connectome/fib25-fib19_v2.2.json
+  bytes: 618148
+  sha256: bfbb0766251ff09e22723d0ebbf7b14793e70b3ae8ad0eea64eac9d28223351a
+checkpoint_contract:
+  state_key: nodes_time_const
+  storage_member_index: 1
+  expected_cell_type_count: 65
+  expected_dtype: little_endian_float32
+  T4_required_sources: [Mi1, Tm3, Mi4, C3]
+  T5_required_sources: [Tm1, Tm2, Tm4, Tm9, CT1(Lo1)]
+training_contract:
+  task: Sintel_optic_flow
+  dataset_dt_seconds: 0.02
+  dynamics: passive_point_neurons_with_instantaneous_graded_release_synapses
+  time_constant_grouping: cell_type
+gates:
+  require_every_source_in_connectome: true
+  require_all_models_finite_and_positive: true
+  require_every_source_above_solver_dt_in_every_model: true
+  maximum_interquartile_to_median_ratio: 0.50
+  require_physiology_supervision: true
+  require_MaleCNS_topology_and_body_mapping: true
+  require_independent_dynamic_validation: true
+boundary:
+  read_only_external_model_audit: true
+  checkpoint_pickle_not_executed: true
+  checkpoint_tensor_storage_read_as_declared_little_endian_float32: true
+  trained_on_optic_flow_not_source_physiology: true
+  uses_FIB25_FIB19_average_filter_connectome_not_MaleCNS: true
+  CT1_Lo1_is_not_asserted_equivalent_to_all_MaleCNS_CT1: true
+  cell_type_time_constant_not_body_specific: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

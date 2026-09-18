@@ -35,6 +35,11 @@ def test_t5_physical_time_transfer_stays_closed_on_all_missing_fields() -> None:
     assert report["time_layers"]["T5_source_filters"]["raw_calcium_contract_complete"]
     assert not report["time_layers"]["T5_source_filters"]["deconvolved_contract_complete"]
     assert report["time_layers"]["T5_source_filters"]["missing_CT1"]
+    flyvis = report["time_layers"]["FlyVis_source_time_constants"]
+    assert flyvis["required_types_present"] is True
+    assert flyvis["all_above_solver_dt"] is False
+    assert flyvis["all_cross_model_IQR_stable"] is False
+    assert flyvis["transferable"] is False
     assert report["current_source_temporal_identifiability"] == {
         "passing_T5_source_population_count": 0,
         "T5_source_population_denominator": 32,

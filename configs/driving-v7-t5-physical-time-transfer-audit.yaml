@@ -11,6 +11,8 @@ t5_source_filter_evidence: artifacts/v7-arenz-t5-source-dynamics-audit.json
 t5_source_filter_protocol: configs/driving-v7-arenz-t5-source-dynamics-audit.yaml
 source_identifiability_evidence: artifacts/v7-source-type-temporal-identifiability.json
 source_identifiability_protocol: configs/driving-v7-source-type-temporal-identifiability.yaml
+flyvis_source_time_evidence: artifacts/v7-flyvis-visual-source-time-constants.json
+flyvis_source_time_protocol: configs/driving-v7-flyvis-visual-source-time-constants.yaml
 required_sources: [Tm1, Tm2, Tm4, Tm9, CT1]
 required_fields:
   - v7_physical_frame_interval

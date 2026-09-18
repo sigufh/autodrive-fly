@@ -102,6 +102,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
     timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
     flyvis_c3_time_constant_audit = reports["flyvis_c3_time_constant_audit"]
+    flyvis_visual_source_time_constants = reports[
+        "flyvis_visual_source_time_constants"
+    ]
     flyvis_c3_effective_dynamics_audit = reports[
         "flyvis_c3_effective_dynamics_audit"
     ]
@@ -260,6 +263,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["timing_models_source_filter_audit"],
                 config["evidence"]["flyvis_c3_time_constant_audit"],
+                config["evidence"]["flyvis_visual_source_time_constants"],
                 config["evidence"]["flyvis_c3_effective_dynamics_audit"],
                 config["evidence"]["c3_measured_filter_robustness"],
                 config["evidence"]["public_t4_model_source_coverage_audit"],
@@ -1081,6 +1085,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "FlyVis_C3_time_constant_transfer_authorized": (
                     flyvis_c3_time_constant_audit[
                         "C3_time_constant_transfer_authorized"
+                    ]
+                ),
+                "FlyVis_visual_source_coverage_complete": all(
+                    not item["missing"]
+                    for item in flyvis_visual_source_time_constants[
+                        "source_coverage"
+                    ].values()
+                ),
+                "FlyVis_visual_source_time_constants_transferable": (
+                    flyvis_visual_source_time_constants[
+                        "FlyVis_visual_source_time_constants_transferable"
                     ]
                 ),
                 "FlyVis_C3_effective_cross_dt_minimum_correlation": (

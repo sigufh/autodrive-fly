@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "29149ddd99a4535b811adf409d8c06512de93bfec440b7caf835931cbb937571",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "5b567e358cd20e0aa5c82c32d6b51d14bb2fb2c0508861146aa2b4628ebc057b",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "404c0749a4c1bc44b18627c0ff024660bb8f31fc8ccc114b0920d0897cdd4d6e",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "991cfe0edecc340bc59b7ccdfbdf334886355b60a4b4e9daf190b543037a5004",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -20,6 +20,7 @@
       "artifacts/v7-c3-analytic-filter-precheck.json": "572f7f31042d3f30db3db3a61b3171413553f5806e8fcf76a53790c4c6ed4aa9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
+      "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
       "artifacts/v7-c3-measured-filter-robustness.json": "5079d054a2fb93d8ea1626e8241c3f48909315ee772a464dda9ca7cacb875f35",
       "artifacts/v7-public-t4-model-source-coverage-audit.json": "07097b03afa0c2d22778dc474750c6394f0a7bf3a98964ab723adeae558de644",
@@ -214,6 +215,14 @@
       }
     },
     "effective_dynamics_transfer_authorized": false
+  },
+  "verified_FlyVis_visual_source_time_constants": {
+    "T4_missing_sources": [],
+    "T5_missing_sources": [],
+    "all_values_finite_and_positive": true,
+    "all_above_solver_dt": false,
+    "all_cross_model_IQR_stable": false,
+    "transferable": false
   },
   "verified_C3_measured_filter_robustness": {
     "cross_deconvolution_stability_passed": true,
