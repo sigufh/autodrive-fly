@@ -88,6 +88,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
     timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
+    flyvis_c3_time_constant_audit = reports["flyvis_c3_time_constant_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -199,6 +200,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fig1_source_temporal_readiness_audit"],
                 config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["timing_models_source_filter_audit"],
+                config["evidence"]["flyvis_c3_time_constant_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -732,6 +734,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "TimingModels_complete_source_candidate_authorized": (
                     timing_models_source_filter_audit[
                         "complete_source_filter_candidate_authorized"
+                    ]
+                ),
+                "FlyVis_C3_pretrained_model_count": flyvis_c3_time_constant_audit[
+                    "training_contract"
+                ]["model_count"],
+                "FlyVis_C3_median_time_constant_seconds": (
+                    flyvis_c3_time_constant_audit["source_time_constants"]["C3"][
+                        "median_seconds"
+                    ]
+                ),
+                "FlyVis_C3_models_at_or_below_solver_dt": (
+                    flyvis_c3_time_constant_audit["source_time_constants"]["C3"][
+                        "models_at_or_below_solver_dt"
+                    ]
+                ),
+                "FlyVis_C3_time_constant_transfer_authorized": (
+                    flyvis_c3_time_constant_audit[
+                        "C3_time_constant_transfer_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

@@ -30,6 +30,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
+    flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -51,6 +52,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     timing_models = json.loads(
         (root / timing_models_path).read_text(encoding="utf-8")
     )
+    flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -131,6 +133,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
+                str(flyvis_path): _sha256(root / flyvis_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -302,6 +305,20 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "complete_source_filter_candidate_authorized": timing_models[
                 "complete_source_filter_candidate_authorized"
+            ],
+        },
+        "verified_FlyVis_C3_time_constant_readiness": {
+            "repository_commit": flyvis["protocol"]["repository_commit"],
+            "pretrained_model_count": flyvis["training_contract"]["model_count"],
+            "solver_dt_seconds": flyvis["training_contract"]["dataset_dt_seconds"],
+            "C3_median_time_constant_seconds": flyvis["source_time_constants"]["C3"][
+                "median_seconds"
+            ],
+            "C3_models_at_or_below_solver_dt": flyvis["source_time_constants"]["C3"][
+                "models_at_or_below_solver_dt"
+            ],
+            "C3_time_constant_transfer_authorized": flyvis[
+                "C3_time_constant_transfer_authorized"
             ],
         },
         "required_transfer_fields_available": fields,

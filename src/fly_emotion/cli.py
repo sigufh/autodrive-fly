@@ -69,6 +69,9 @@ from .driving.v7_fig3_source_kernel_robustness import (
 )
 from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
+from .driving.v7_flyvis_c3_time_constant_audit import (
+    evaluate_v7_flyvis_c3_time_constant_audit,
+)
 from .driving.v7_four_hop_scalar_precheck import evaluate_v7_four_hop_scalar_precheck
 from .driving.v7_fusion_nested import evaluate_v7_fusion_nested
 from .driving.v7_fusion_nested_eval import evaluate_v7_fusion_nested_candidate
@@ -371,6 +374,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
+    subparsers.add_parser("v7-audit-flyvis-c3-time-constant")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1186,6 +1190,14 @@ def main() -> None:
     if args.command == "v7-audit-timing-models-source-filters":
         report = evaluate_v7_timing_models_source_filter_audit(root)
         target = root / "artifacts/v7-timing-models-source-filter-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-flyvis-c3-time-constant":
+        report = evaluate_v7_flyvis_c3_time_constant_audit(root)
+        target = root / "artifacts/v7-flyvis-c3-time-constant-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

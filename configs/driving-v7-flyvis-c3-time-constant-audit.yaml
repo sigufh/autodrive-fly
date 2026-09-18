@@ -1,0 +1,59 @@
+version: 1
+name: v7-flyvis-c3-time-constant-transfer-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.1038/s41586-024-07939-3
+repository:
+  url: https://github.com/TuragaLab/flyvis
+  commit: 92b3845cc426dd309a1a0e1b3890156c42e14021
+  checkout_head_path: data/raw/t4-external-models/flyvis/.git/HEAD
+pretrained_archive:
+  path: data/raw/t4-external-models/flyvis/results_pretrained_models.zip
+  google_drive_file_id: 13cJr2nMn89j-jBAd5RduYRJpBcXwoNrC
+  bytes: 3417042
+  sha256: 71c78d4070556a536b13b23ee3139cd2788aa2a9d07d430a223b4edead281db1
+  ensemble_path: results/flow/0000
+  expected_model_count: 50
+code_files:
+  - path: data/raw/t4-external-models/flyvis/flyvis_cli/download_pretrained_models.py
+    bytes: 4692
+    sha256: ce48e7d6571f0738aafda6ab2e38614899b6fb699814f0c2b2696d29dc490be9
+  - path: data/raw/t4-external-models/flyvis/flyvis/network/dynamics.py
+    bytes: 8291
+    sha256: e77d9e049661321798f213b9c7e98b58945214ad94ab11c5c1ee930bfaacbc86
+  - path: data/raw/t4-external-models/flyvis/flyvis/network/initialization.py
+    bytes: 21822
+    sha256: 5ae82fdaa0361afb0f1646aba1f8abfeb89870c6747ccdd968d5f88eda3ab82c
+  - path: data/raw/t4-external-models/flyvis/flyvis/network/network.py
+    bytes: 32126
+    sha256: eb172be7db1727a2b1af9f4211c2e1a8655004e8602a4db677e56702a3dfeb43
+  - path: data/raw/t4-external-models/flyvis/flyvis/connectome/fib25-fib19_v2.2.json
+    bytes: 618148
+    sha256: bfbb0766251ff09e22723d0ebbf7b14793e70b3ae8ad0eea64eac9d28223351a
+checkpoint_contract:
+  state_key: nodes_time_const
+  storage_member_index: 1
+  expected_cell_type_count: 65
+  expected_dtype: little_endian_float32
+  required_source_types: [C3, Mi1, Tm3, Mi4]
+training_contract:
+  task: Sintel_optic_flow
+  dataset_dt_seconds: 0.02
+  dynamics: passive_point_neurons_with_instantaneous_graded_release_synapses
+  time_constant_grouping: cell_type
+  initial_time_constant_seconds: 0.05
+gates:
+  require_C3_above_solver_resolution_in_every_model: true
+  require_C3_physiology_supervision: true
+  require_independent_C3_holdout: true
+  require_MaleCNS_topology_and_body_mapping: true
+boundary:
+  read_only_external_model_audit: true
+  checkpoint_pickle_not_executed: true
+  checkpoint_tensor_storage_read_as_declared_little_endian_float32: true
+  trained_on_optic_flow_not_C3_physiology: true
+  uses_FIB25_FIB19_average_filter_connectome_not_MaleCNS: true
+  cell_type_time_constant_not_body_specific: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

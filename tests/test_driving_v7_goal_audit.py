@@ -309,6 +309,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["TimingModels_current_source_coverage_fraction"] == 0.75
     assert visual["observations"]["TimingModels_missing_current_sources"] == ["C3"]
     assert visual["observations"]["TimingModels_complete_source_candidate_authorized"] is False
+    assert visual["observations"]["FlyVis_C3_pretrained_model_count"] == 50
+    assert 0.066 < visual["observations"]["FlyVis_C3_median_time_constant_seconds"] < 0.068
+    assert visual["observations"]["FlyVis_C3_models_at_or_below_solver_dt"] == 21
+    assert visual["observations"]["FlyVis_C3_time_constant_transfer_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

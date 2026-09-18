@@ -1,0 +1,134 @@
+{
+  "protocol": {
+    "name": "v7-flyvis-c3-time-constant-transfer-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-flyvis-c3-time-constant-audit.yaml": "c861e843adcd50e4c425b9122ad8b49d894ac6f6d414fbd332c51bf43c0bd8ee",
+      "src/fly_emotion/driving/v7_flyvis_c3_time_constant_audit.py": "22e64198cf348da5aa38dcc90b6aae57bb6f97780a80eb2cf363653ba4a62017"
+    },
+    "paper_doi": "10.1038/s41586-024-07939-3",
+    "repository_url": "https://github.com/TuragaLab/flyvis",
+    "repository_commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
+    "pretrained_archive": {
+      "path": "data/raw/t4-external-models/flyvis/results_pretrained_models.zip",
+      "google_drive_file_id": "13cJr2nMn89j-jBAd5RduYRJpBcXwoNrC",
+      "bytes": 3417042,
+      "sha256": "71c78d4070556a536b13b23ee3139cd2788aa2a9d07d430a223b4edead281db1",
+      "entry_count": 353,
+      "integrity_verified": true
+    },
+    "code_files": [
+      {
+        "path": "data/raw/t4-external-models/flyvis/flyvis_cli/download_pretrained_models.py",
+        "bytes": 4692,
+        "sha256": "ce48e7d6571f0738aafda6ab2e38614899b6fb699814f0c2b2696d29dc490be9"
+      },
+      {
+        "path": "data/raw/t4-external-models/flyvis/flyvis/network/dynamics.py",
+        "bytes": 8291,
+        "sha256": "e77d9e049661321798f213b9c7e98b58945214ad94ab11c5c1ee930bfaacbc86"
+      },
+      {
+        "path": "data/raw/t4-external-models/flyvis/flyvis/network/initialization.py",
+        "bytes": 21822,
+        "sha256": "5ae82fdaa0361afb0f1646aba1f8abfeb89870c6747ccdd968d5f88eda3ab82c"
+      },
+      {
+        "path": "data/raw/t4-external-models/flyvis/flyvis/network/network.py",
+        "bytes": 32126,
+        "sha256": "eb172be7db1727a2b1af9f4211c2e1a8655004e8602a4db677e56702a3dfeb43"
+      },
+      {
+        "path": "data/raw/t4-external-models/flyvis/flyvis/connectome/fib25-fib19_v2.2.json",
+        "bytes": 618148,
+        "sha256": "bfbb0766251ff09e22723d0ebbf7b14793e70b3ae8ad0eea64eac9d28223351a"
+      }
+    ],
+    "checkpoint_pickle_executed": false,
+    "runtime_modified": false
+  },
+  "training_contract": {
+    "task": "Sintel_optic_flow",
+    "dataset_dt_seconds": 0.02,
+    "dynamics": "passive_point_neurons_with_instantaneous_graded_release_synapses",
+    "time_constant_grouping": "cell_type",
+    "initial_time_constant_seconds": 0.05,
+    "model_count": 50,
+    "cell_type_count": 65,
+    "metadata_contract_sha256": "2aa8a9505324c82bbb4011ee2f7c375b5f8b1bddde1a5281e038baecf91fc5dd"
+  },
+  "source_time_constants": {
+    "C3": {
+      "minimum_seconds": 0.019576145336031914,
+      "q25_seconds": 0.01982661709189415,
+      "median_seconds": 0.06680329144001007,
+      "q75_seconds": 0.13666942715644836,
+      "maximum_seconds": 0.5430768132209778,
+      "mean_seconds": 0.10001588612794876,
+      "standard_deviation_seconds": 0.10996045917272568,
+      "models_at_or_below_solver_dt": 21,
+      "fraction_at_or_below_solver_dt": 0.42
+    },
+    "Mi1": {
+      "minimum_seconds": 0.01948104053735733,
+      "q25_seconds": 0.019761502742767334,
+      "median_seconds": 0.01982908695936203,
+      "q75_seconds": 0.019878391176462173,
+      "maximum_seconds": 0.019939033314585686,
+      "mean_seconds": 0.019802654162049294,
+      "standard_deviation_seconds": 0.00010259870032314211,
+      "models_at_or_below_solver_dt": 50,
+      "fraction_at_or_below_solver_dt": 1.0
+    },
+    "Tm3": {
+      "minimum_seconds": 0.019542956724762917,
+      "q25_seconds": 0.01972431130707264,
+      "median_seconds": 0.019794052466750145,
+      "q75_seconds": 0.01986818015575409,
+      "maximum_seconds": 0.04252099618315697,
+      "mean_seconds": 0.020245378836989403,
+      "standard_deviation_seconds": 0.0032157429959625006,
+      "models_at_or_below_solver_dt": 49,
+      "fraction_at_or_below_solver_dt": 0.98
+    },
+    "Mi4": {
+      "minimum_seconds": 0.019247258082032204,
+      "q25_seconds": 0.019814686849713326,
+      "median_seconds": 0.01991603523492813,
+      "q75_seconds": 0.022612081840634346,
+      "maximum_seconds": 0.0764525756239891,
+      "mean_seconds": 0.023743264377117157,
+      "standard_deviation_seconds": 0.010168987326323986,
+      "models_at_or_below_solver_dt": 35,
+      "fraction_at_or_below_solver_dt": 0.7
+    }
+  },
+  "C3_identifiability": {
+    "all_models_above_solver_dt": false,
+    "C3_physiology_supervision_available": false,
+    "independent_C3_holdout_available": false,
+    "MaleCNS_topology_used": false,
+    "stable_FlyVis_type_to_MaleCNS_body_mapping_available": false
+  },
+  "C3_time_constant_transfer_authorized": false,
+  "advance_to_T4_functional_precheck": false,
+  "blocking_requirements": [
+    "all_models_above_solver_dt",
+    "C3_physiology_supervision_available",
+    "independent_C3_holdout_available",
+    "MaleCNS_topology_used",
+    "stable_FlyVis_type_to_MaleCNS_body_mapping_available"
+  ],
+  "stop_reason": "FlyVis_C3_time_constant_not_physiologically_or_MaleCNS_identified",
+  "boundary": {
+    "read_only_external_model_audit": true,
+    "checkpoint_pickle_not_executed": true,
+    "checkpoint_tensor_storage_read_as_declared_little_endian_float32": true,
+    "trained_on_optic_flow_not_C3_physiology": true,
+    "uses_FIB25_FIB19_average_filter_connectome_not_MaleCNS": true,
+    "cell_type_time_constant_not_body_specific": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

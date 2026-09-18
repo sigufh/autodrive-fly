@@ -101,6 +101,13 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert timing["current_source_coverage_fraction"] == 0.75
     assert timing["missing_current_sources"] == ["C3"]
     assert timing["complete_source_filter_candidate_authorized"] is False
+    flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
+    assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
+    assert flyvis["pretrained_model_count"] == 50
+    assert flyvis["solver_dt_seconds"] == 0.02
+    assert 0.066 < flyvis["C3_median_time_constant_seconds"] < 0.068
+    assert flyvis["C3_models_at_or_below_solver_dt"] == 21
+    assert flyvis["C3_time_constant_transfer_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

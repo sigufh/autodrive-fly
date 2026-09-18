@@ -1646,6 +1646,17 @@ Mi4、CT1 核驱动三臂突触模型，默认仿真步长为 1/240 s。可是�
 冒充 C3。因此它只把当前四类合同中的 3/4 提升为稳健外部证据，仍不授权完整 T4
 source-filter 候选。证据见 `artifacts/v7-timing-models-source-filter-audit.json`。
 
+FlyVis 官方实现（固定提交 `92b3845…`）及其 SHA-256 冻结的 3,417,042-byte
+pretrained 包也已审计。该包包含 50 个 optic-flow 模型，训练数据步长为 20 ms；checkpoint
+不执行 pickle，而是静态核对 `nodes_time_const` 字段并直接读取声明的 float32 tensor
+storage。C3 的 cell-type 共享时间常数跨模型范围约 19.6–543 ms，中位约 66.8 ms，且
+21/50 模型落在或低于 20 ms solver 分辨率边界。相比之下 Mi1 全部、Tm3 49/50、Mi4
+35/50 也落在该边界附近，说明很多 source 时间参数由数值步长截断。更重要的是，这些参数
+由 Sintel optic-flow 任务训练，没有 C3 生理监督或独立 C3 holdout，使用的是 FIB25/FIB19
+average-filter connectome 而非 MaleCNS，也没有 type→MaleCNS body 稳定映射。因此 C3
+数值虽存在，却不可作为 v7 的已识别生理时间常数。证据见
+`artifacts/v7-flyvis-c3-time-constant-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有
