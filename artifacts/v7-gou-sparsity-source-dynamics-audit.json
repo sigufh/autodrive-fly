@@ -1,0 +1,228 @@
+{
+  "protocol": {
+    "name": "v7-gou-sparsity-source-dynamics-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "c13b0f9ade584c57f215efbb50cc3a96848fc13c6b1513245b0a6b0fb0d4d5a3",
+      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "7fccb164cb3617a020666562fb9af63417d009eaa08546a9afdc264bfbab2400",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "a4bfaf45a0d75c0ec13feb40a9a2905b7eb9024ca3e2ad70e27593c6f56d1a3b"
+    },
+    "paper": {
+      "doi": "10.1016/j.cub.2024.10.053",
+      "pmcid": "PMC11834764",
+      "title": "Adaptation to visual sparsity enhances responses to isolated stimuli"
+    },
+    "parameter_fit": false,
+    "external_payload_evaluated": false,
+    "runtime_modified": false
+  },
+  "repositories": {
+    "Dryad": {
+      "identifier": "doi:10.5061/dryad.t1g1jwtbs",
+      "dataset_id": 142517,
+      "version_id": 402168,
+      "version_number": 4,
+      "publication_date": "2025-10-13",
+      "license": "CC0-1.0",
+      "metadata_url": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.t1g1jwtbs",
+      "landing_page_url": "https://datadryad.org/dataset/doi:10.5061/dryad.t1g1jwtbs",
+      "files": {
+        "README.md": {
+          "file_id": 4404320,
+          "bytes": 12130,
+          "publisher_reported_sha256": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261"
+        },
+        "sparsity_Dryad_upload.zip": {
+          "file_id": 4404307,
+          "bytes": 180331689,
+          "publisher_reported_sha256": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f"
+        }
+      },
+      "payload_download_status": 403,
+      "payload_downloaded": false,
+      "payload_sha256_locally_verified": false
+    },
+    "DANDI": {
+      "identifier": "DANDI:001205",
+      "version": "0.250602.0251",
+      "doi": "10.48324/dandi.001205/0.250602.0251",
+      "license": "CC-BY-4.0",
+      "asset_count": 282,
+      "total_bytes": 138946618210,
+      "format": "NWB",
+      "distinct_subject_ids_reported": 282,
+      "representative_asset": {
+        "asset_id": "c64d3f67-dc54-413d-892e-6e4fd167cf3f",
+        "subject_id": "10176231931525660316",
+        "bytes": 431090205,
+        "publisher_reported_sha256": "6b62a518bfbb194f4e9f5dd1fce43f4f6ca943c3eb5f837c6873d004d005f726",
+        "range_read_status": "timeout"
+      },
+      "payload_downloaded": false
+    }
+  },
+  "source_evidence": {
+    "Mi1": {
+      "family": "T4",
+      "modalities": [
+        "GCaMP6f",
+        "GCaMP7b",
+        "ArcLight",
+        "GACh3.0",
+        "iGluSnFR"
+      ],
+      "processed_arrays_keep_fly_axis": true,
+      "flash_time_series": true,
+      "spatial_RF": true,
+      "moving_bar_both_directions": true,
+      "moving_bar_speed_sweep_degrees_per_second": [
+        30,
+        60,
+        120,
+        240
+      ],
+      "response_unit_contract_satisfied": false
+    },
+    "Tm3": {
+      "family": "T4",
+      "modalities": [
+        "GCaMP6f"
+      ],
+      "processed_arrays_keep_fly_axis": true,
+      "flash_time_series": true,
+      "spatial_RF": false,
+      "moving_bar_both_directions": true,
+      "moving_bar_speed_sweep_degrees_per_second": [],
+      "response_unit_contract_satisfied": false
+    },
+    "Tm1": {
+      "family": "T5",
+      "modalities": [
+        "GCaMP6f"
+      ],
+      "processed_arrays_keep_fly_axis": true,
+      "flash_time_series": true,
+      "spatial_RF": false,
+      "moving_bar_both_directions": true,
+      "moving_bar_speed_sweep_degrees_per_second": [],
+      "response_unit_contract_satisfied": false
+    },
+    "Tm2": {
+      "family": "T5",
+      "modalities": [
+        "GCaMP6f"
+      ],
+      "processed_arrays_keep_fly_axis": true,
+      "flash_time_series": true,
+      "spatial_RF": false,
+      "moving_bar_both_directions": true,
+      "moving_bar_speed_sweep_degrees_per_second": [],
+      "response_unit_contract_satisfied": false
+    }
+  },
+  "stimulus_and_recording": {
+    "imaging_rate_hz_approximate": 13,
+    "ternary_stimulus_update_rate_hz": 30,
+    "moving_stimulus_update_rate_hz": 180,
+    "moving_bar_width_degrees": 5,
+    "standard_moving_bar_speed_degrees_per_second": 60,
+    "standard_moving_bar_directions": [
+      "left",
+      "right"
+    ],
+    "response_storage": "per_fly_by_time_processed_matrices",
+    "processed_fly_rows_to_DANDI_subject_ids_verified": false,
+    "exact_sample_timestamps_verified_from_payload": false,
+    "baseline_windows_verified_from_payload": false,
+    "MaleCNS_mapping_present": false,
+    "preregistered_training_validation_external_final_roles_present": false
+  },
+  "required_sources_by_family": {
+    "T4": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "T5": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ]
+  },
+  "covered_required_sources_by_family": {
+    "T4": [
+      "Mi1",
+      "Tm3"
+    ],
+    "T5": [
+      "Tm1",
+      "Tm2"
+    ]
+  },
+  "missing_required_sources_by_family": {
+    "T4": [
+      "Mi4",
+      "C3"
+    ],
+    "T5": [
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ]
+  },
+  "covered_required_source_count": 4,
+  "required_source_count": 9,
+  "coverage_fraction": 0.4444444444444444,
+  "source_response_unit_gates": {
+    "Mi1": false,
+    "Tm3": false,
+    "Tm1": false,
+    "Tm2": false
+  },
+  "transfer_gates": {
+    "every_T4_source_type_measured": false,
+    "every_T5_source_type_measured": false,
+    "every_covered_source_has_allowed_response_unit": false,
+    "processed_rows_linked_to_stable_subject_ids": false,
+    "exact_sample_timestamps_and_baselines_verified": false,
+    "source_type_to_MaleCNS_mapping_available": false,
+    "required_split_roles_present": false,
+    "payload_hash_locally_verified": false
+  },
+  "partial_source_dynamics_evidence_present": true,
+  "complete_external_source_dynamics_evidence": false,
+  "authorize_source_dynamics_fit": false,
+  "advance_to_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "every_T4_source_type_measured",
+    "every_T5_source_type_measured",
+    "every_covered_source_has_allowed_response_unit",
+    "processed_rows_linked_to_stable_subject_ids",
+    "exact_sample_timestamps_and_baselines_verified",
+    "source_type_to_MaleCNS_mapping_available",
+    "required_split_roles_present",
+    "payload_hash_locally_verified"
+  ],
+  "stop_reason": "partial_Mi1_Tm3_Tm1_Tm2_fluorescence_evidence_does_not_satisfy_unified_contract",
+  "download_disposition": {
+    "Dryad_archive_download_authorized": false,
+    "DANDI_bulk_download_authorized": false,
+    "reason": "metadata establishes incomplete source and unit coverage; retain as a candidate for later source-specific calcium validation only"
+  },
+  "boundary": {
+    "official_metadata_README_and_article_only": true,
+    "publisher_hashes_are_not_claimed_as_locally_verified": true,
+    "calcium_and_optical_voltage_fluorescence_are_not_membrane_voltage_units": true,
+    "partial_source_coverage_does_not_satisfy_the_unified_contract": true,
+    "no_large_payload_download": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

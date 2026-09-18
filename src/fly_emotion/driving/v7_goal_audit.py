@@ -115,6 +115,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     dryad_l1l2_source_dynamics_audit = reports[
         "dryad_l1l2_source_dynamics_audit"
     ]
+    gou_sparsity_source_dynamics_audit = reports[
+        "gou_sparsity_source_dynamics_audit"
+    ]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -277,6 +280,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["c3_measured_filter_robustness"],
                 config["evidence"]["public_t4_model_source_coverage_audit"],
                 config["evidence"]["dryad_l1l2_source_dynamics_audit"],
+                config["evidence"]["gou_sparsity_source_dynamics_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -534,6 +538,30 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     dryad_l1l2_source_dynamics_audit["download_disposition"][
                         "large_dataset_download_authorized"
                     ]
+                ),
+                "Gou_sparsity_required_source_coverage_count": (
+                    gou_sparsity_source_dynamics_audit[
+                        "covered_required_source_count"
+                    ]
+                ),
+                "Gou_sparsity_partial_source_evidence_present": (
+                    gou_sparsity_source_dynamics_audit[
+                        "partial_source_dynamics_evidence_present"
+                    ]
+                ),
+                "Gou_sparsity_source_dynamics_transfer_authorized": (
+                    gou_sparsity_source_dynamics_audit[
+                        "complete_external_source_dynamics_evidence"
+                    ]
+                ),
+                "Gou_sparsity_bulk_download_authorized": any(
+                    gou_sparsity_source_dynamics_audit["download_disposition"][
+                        name
+                    ]
+                    for name in (
+                        "Dryad_archive_download_authorized",
+                        "DANDI_bulk_download_authorized",
+                    )
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"

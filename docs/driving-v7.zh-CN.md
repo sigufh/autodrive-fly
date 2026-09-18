@@ -1895,6 +1895,18 @@ SHA-256 已记录，但当前下载端点分别返回 401/403，文件字节未�
 写成“本地复算通过”；科学否决只依据官方实验范围，而不依据下载失败。证据见
 `artifacts/v7-dryad-l1l2-source-dynamics-audit.json`。
 
+另审计 Dryad `doi:10.5061/dryad.t1g1jwtbs` 与其原始数据镜像 DANDI:001205。该候选
+比 L1/L2 数据更相关：官方 README 分别列出 Mi1、Tm3、Tm1、Tm2 的 fly×time 闪光
+响应和双向移动条响应，Mi1 另有 ArcLight 电压、空间 RF 与 30/60/120/240 °/s 速度扫描；
+实验刺激以 30 Hz（移动刺激 180 Hz）更新，成像约 13 Hz。DANDI 固定发布版
+`0.250602.0251` 有 282 个独立 subject 的 NWB，共 138,946,618,210 bytes。可是当前
+合同只覆盖 4/9：仍缺 Mi4、C3、Tm4、Tm9、CT1；Tm3/Tm1/Tm2 只有 GCaMP6f，
+处理后 fly 行与 DANDI subject 的逐项对应、精确采样时间/基线窗、MaleCNS 映射和
+training/validation/external-final 承诺也未验证。Dryad 归档下载返回 403，DANDI 代表
+NWB 的范围读取超时，所以发布者哈希没有冒充本地复算。暂不下载 180 MB/139 GB
+载荷，只保留为后续源特异钙成像验证候选，不授权 source fit 或 T4/T5/LPLC/车辆推进。
+证据见 `artifacts/v7-gou-sparsity-source-dynamics-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型
