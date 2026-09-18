@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from fly_emotion.driving.v7_t5_phenotype import CONFIG, direction_contrast
+from fly_emotion.driving.v7_t5_phenotype import CONFIG, direction_contrast, published_dsi
 
 ROOT = Path(__file__).parents[1]
 
@@ -14,15 +14,17 @@ def test_direction_contrast_is_label_symmetric_and_zero_safe() -> None:
     assert direction_contrast(2.0, 6.0) == pytest.approx(2 / 3)
     assert direction_contrast(6.0, 2.0) == pytest.approx(-2 / 3)
     assert direction_contrast(0.0, 0.0) == 0.0
+    assert published_dsi(6.0, 2.0) == pytest.approx(2 / 3)
+    assert published_dsi(0.0, 0.0) is None
 
 
 def test_t5_phenotype_contract_forbids_posthoc_pd_assignment() -> None:
     config = yaml.safe_load((ROOT / CONFIG).read_text())
     boundary = config["interpretation_boundary"]
-    assert boundary["repository_maps_numeric_code_to_PD_ND"] is False
+    assert boundary["repository_maps_numeric_code_to_PD_ND"] is True
     assert boundary["infer_PD_from_larger_response"] is False
     assert boundary["fit_allowed"] is False
-    assert boundary["model_scoring_allowed"] is False
+    assert boundary["model_scoring_allowed"] is True
     assert boundary["change_visual_gate"] is False
 
 
@@ -45,8 +47,15 @@ def test_saved_t5_phenotype_retains_pairs_controls_and_label_uncertainty() -> No
     )
     assert report["negative_controls"]["swap_negation_maximum_error"] == 0.0
     boundary = report["label_boundary"]
-    assert boundary["biological_PD_code_assigned"] is None
+    assert boundary["direction_code_to_PD_ND_mapping_verified"] is True
+    assert boundary["biological_PD_code_assigned"] == 1
+    assert boundary["biological_ND_code_assigned"] == 0
     assert boundary["infer_PD_from_larger_response"] is False
+    assert report["summary"]["published_DSI_all_pairs"]["pair_count"] == 134
+    assert report["summary"]["published_DSI_all_pairs"]["median_contrast"] == pytest.approx(
+        0.4922425318290533
+    )
+    assert report["summary"]["cells_with_positive_median_published_DSI"] == 17
     assert report["advance_to_T5_fit"] is False
     assert report["advance_to_visual_gate"] is False
     assert report["advance_to_central_complex"] is False

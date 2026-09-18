@@ -31,6 +31,12 @@ def direction_contrast(direction_0_peak: float, direction_1_peak: float) -> floa
     return float((direction_1_peak - direction_0_peak) / denominator)
 
 
+def published_dsi(pd_peak: float, nd_peak: float) -> float | None:
+    if not np.isfinite(pd_peak) or not np.isfinite(nd_peak) or pd_peak <= 0:
+        return None
+    return float((pd_peak - nd_peak) / pd_peak)
+
+
 def _summary(values: list[float]) -> dict:
     array = np.asarray(values, dtype=float)
     return {
@@ -78,6 +84,9 @@ def extract_moving_bar_pairs(source: Path, recorded_cells: int) -> list[dict]:
                     "direction_1_minus_0_normalized_contrast": direction_contrast(
                         peaks[0], peaks[1]
                     ),
+                    "ND_peak_millivolts": peaks[0],
+                    "PD_peak_millivolts": peaks[1],
+                    "published_DSI": published_dsi(peaks[1], peaks[0]),
                 }
             )
     return pairs
@@ -111,8 +120,15 @@ def evaluate_v7_t5_phenotype(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
     repository_config_path = Path(config["source"]["repository_config"])
     repository_evidence_path = Path(config["source"]["repository_evidence"])
+    label_evidence_path = Path(config["source"]["label_evidence"])
     repository_config = yaml.safe_load((root / repository_config_path).read_text(encoding="utf-8"))
     repository_evidence = json.loads((root / repository_evidence_path).read_text(encoding="utf-8"))
+    label_evidence = json.loads((root / label_evidence_path).read_text(encoding="utf-8"))
+    if label_evidence["label_status"]["direction_code_to_PD_ND"] != {
+        "0": "ND",
+        "1": "PD",
+    }:
+        raise ValueError("T5 phenotype requires verified 0=ND, 1=PD mapping")
     if not config["exploratory"] or config["advance_allowed"]:
         raise ValueError("T5 phenotype extraction must remain exploratory and non-advancing")
     if repository_evidence["advance_to_T5_fit"]:
@@ -140,6 +156,9 @@ def evaluate_v7_t5_phenotype(root: Path) -> dict:
             raise ValueError("T5 phenotype repository differs from audited evidence")
         pairs = extract_moving_bar_pairs(source, int(repository_config["paper"]["recorded_cells"]))
     contrasts = [item["direction_1_minus_0_normalized_contrast"] for item in pairs]
+    dsis = [item["published_DSI"] for item in pairs]
+    if any(value is None for value in dsis):
+        raise ValueError("T5 published DSI is undefined for a nonpositive PD peak")
     rng = np.random.default_rng(int(config["analysis"]["permutation_seed"]))
     signs = rng.choice(np.array([-1.0, 1.0]), size=len(contrasts), replace=True)
     permuted = (np.asarray(contrasts) * signs).tolist()
@@ -155,6 +174,14 @@ def evaluate_v7_t5_phenotype(root: Path) -> dict:
         )
         for cell_id in range(1, int(repository_config["paper"]["recorded_cells"]) + 1)
     }
+    cell_median_dsis = {
+        str(cell_id): float(
+            np.median(
+                [item["published_DSI"] for item in pairs if item["cell_id"] == cell_id]
+            )
+        )
+        for cell_id in range(1, int(repository_config["paper"]["recorded_cells"]) + 1)
+    }
     return {
         "protocol": {
             "name": config["name"],
@@ -166,6 +193,7 @@ def evaluate_v7_t5_phenotype(root: Path) -> dict:
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(repository_config_path): _sha256(root / repository_config_path),
                 str(repository_evidence_path): _sha256(root / repository_evidence_path),
+                str(label_evidence_path): _sha256(root / label_evidence_path),
             },
             "parameter_fitting": False,
             "model_simulation": False,
@@ -195,6 +223,11 @@ def evaluate_v7_t5_phenotype(root: Path) -> dict:
             "by_step_duration_milliseconds": _group_summaries(pairs, "step_duration_milliseconds"),
             "cell_median_contrast": cell_medians,
             "cells_with_positive_median": int(sum(value > 0 for value in cell_medians.values())),
+            "published_DSI_all_pairs": _summary(dsis),
+            "cell_median_published_DSI": cell_median_dsis,
+            "cells_with_positive_median_published_DSI": int(
+                sum(value > 0 for value in cell_median_dsis.values())
+            ),
         },
         "negative_controls": {
             "swap_direction_codes_median_contrast": float(np.median(-np.asarray(contrasts))),
@@ -207,18 +240,19 @@ def evaluate_v7_t5_phenotype(root: Path) -> dict:
             **config["interpretation_boundary"],
             "direction_1_has_larger_peak_pairs": int(sum(value > 0 for value in contrasts)),
             "direction_1_has_larger_peak_fraction": float(np.mean(np.asarray(contrasts) > 0)),
-            "biological_PD_code_assigned": None,
+            "direction_code_to_PD_ND_mapping_verified": True,
+            "biological_PD_code_assigned": 1,
+            "biological_ND_code_assigned": 0,
             "reason": (
-                "The paper states that traces were aligned to each cell's PD-ND axis, but the "
-                "audited repository does not label numeric direction codes as PD or ND. Response "
-                "magnitude is therefore not used to assign the biological label."
+                "Official Figure 4 plotting code maps direction 0 to ND and direction 1 "
+                "to PD independently of response magnitude."
             ),
         },
         "limitations": [
             "This report describes measured T5 phenotype and does not score a v7 model.",
             (
-                "Direction-code asymmetry is not biological direction correctness without "
-                "a source label map."
+                "The verified direction mapping supports measured phenotype scoring but "
+                "does not create an independent-cell model validation split."
             ),
             "The moving-bar cells are the same cells whose width-2 flashes define model fits.",
             "The processed 2.5/5-ms traces are not the raw 20-kHz acquisition.",

@@ -1736,7 +1736,11 @@ DataCite 只给出包级描述、没有 file ID，因此其 `optTables.mat` 仍�
 `sourceDataPlottingFig4Script.m` 断言方向顺序为 `[0,1]`，并明确把第一个赋给
 `dataND/modelND`、第二个赋给 `dataPD/modelPD`。因此可独立确定 `0→ND、1→PD`，
 不依赖响应幅值，也不翻转生物标签。该证据只解除 numeric mapping 阻塞；stable biological
-ID、独立 cell holdout 和 untouched final 仍缺失，旧 phenotype 工件也不会被追溯改写。
+ID、独立 cell holdout 和 untouched final 仍缺失。随后只重算 measured phenotype 的标签
+语义，不改变任何原始对：134 个 width×step-duration 配对中 130 个 PD 峰高于 ND，
+17/17 个 recording file 的中位 published DSI `(PDmax-NDmax)/PDmax` 为正；全配对中位
+DSI 约 0.492。这里的 17 个只是文件级 recording 单元，不能宣称为稳定身份的独立 fly
+holdout，因此仍不授权拟合、视觉门或运行时接入。
 证据见 `artifacts/v7-t5-label-audit.json`。
 
 LPLC1 也完成了独立的近碰撞单条件 precheck，不复用 LPLC2 radial 或 LC4 speed 规则。
