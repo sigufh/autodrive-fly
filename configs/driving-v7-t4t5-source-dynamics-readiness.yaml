@@ -1,0 +1,27 @@
+version: 1
+name: v7-t4-t5-source-dynamics-readiness-gate
+observed_on: "2026-09-18"
+t4_transfer_evidence: artifacts/v7-t4-source-dynamics-transfer-audit.json
+t4_transfer_protocol: configs/driving-v7-t4-source-dynamics-transfer-audit.yaml
+t5_transfer_evidence: artifacts/v7-t5-physical-time-transfer-audit.json
+t5_transfer_protocol: configs/driving-v7-t5-physical-time-transfer-audit.yaml
+flyvis_source_time_evidence: artifacts/v7-flyvis-visual-source-time-constants.json
+flyvis_source_time_protocol: configs/driving-v7-flyvis-visual-source-time-constants.yaml
+t4_crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+t5_crossfit_axis_evidence: artifacts/v7-t5-ct1-crossfit-axis-audit.json
+required_gates:
+  - T4_crossfit_structure_axis
+  - T5_crossfit_structure_axis
+  - T4_source_dynamics_transfer
+  - T5_source_dynamics_transfer
+  - shared_physical_v7_timebase
+  - independent_dynamic_validation
+boundary:
+  read_only_gate: true
+  structural_axis_success_is_not_functional_success: true
+  external_model_coverage_is_not_transfer_validation: true
+  no_new_target_formula_scan_until_gate_passes: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

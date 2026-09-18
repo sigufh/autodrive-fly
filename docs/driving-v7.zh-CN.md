@@ -1864,6 +1864,20 @@ kernel、source→MaleCNS 身份映射、物理 v7 采样间隔和 mV→归一�
 严格镜像输入也不能恢复有序时间特异性；这只是工程归因消融，不是生物视网膜重建，也不
 授权候选。证据见 `artifacts/v7-t4-crossfit-retinal-symmetry-audit.json`。
 
+对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了不执行 pickle 的静态张量审计。
+其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
+Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型
+的时间常数不高于 20 ms solver 步长；C3、CT1(Lo1)、Tm1、Tm2、Tm4 的跨模型
+IQR/median 超过冻结的 0.50 门。参数来自 Sintel 光流任务和 FIB25/FIB19 平均连接组，
+没有 source physiology 监督、MaleCNS body 映射或独立动态验证；CT1(Lo1) 也不被假定
+等同于 MaleCNS 的全部 CT1。故只确认“类型存在”，不授权生成新的 source response 或
+迁移到 v7。证据见 `artifacts/v7-flyvis-visual-source-time-constants.json`。
+
+`artifacts/v7-t4t5-source-dynamics-readiness.json` 把这些结论汇总为统一停止门：T4/T5
+两项结构轴 cross-fit 通过，但 T4/T5 source-dynamics transfer、共享物理时间基准和独立
+动态验证均失败。在获得新的外部源级动力学证据前，不再创建 target 端公式候选；这是为
+防止在同一 tuning 条件上反复试参造成选择偏差，并不表示机制原则上无解。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

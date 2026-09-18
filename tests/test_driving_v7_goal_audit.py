@@ -205,6 +205,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["T5_physical_source_transfer_required_fields"].values()
     )
     assert visual["observations"]["T5_physical_source_transfer_ready"] is False
+    assert visual["observations"]["T4_T5_source_dynamics_ready"] is False
+    assert visual["observations"]["T4_T5_source_dynamics_passing_gates"] == [
+        "T4_crossfit_structure_axis",
+        "T5_crossfit_structure_axis",
+    ]
+    assert set(visual["observations"]["T4_T5_source_dynamics_failing_gates"]) == {
+        "T4_source_dynamics_transfer",
+        "T5_source_dynamics_transfer",
+        "shared_physical_v7_timebase",
+        "independent_dynamic_validation",
+    }
+    assert visual["observations"]["T4_T5_source_dynamics_authorizes_new_candidate"] is False
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},
