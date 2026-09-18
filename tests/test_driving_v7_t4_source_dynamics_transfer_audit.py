@@ -108,6 +108,19 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert 0.066 < flyvis["C3_median_time_constant_seconds"] < 0.068
     assert flyvis["C3_models_at_or_below_solver_dt"] == 21
     assert flyvis["C3_time_constant_transfer_authorized"] is False
+    effective = report["verified_FlyVis_C3_effective_dynamics_readiness"]
+    assert effective["pretrained_model_count"] == 50
+    assert effective["fixed_denominator"] == 50
+    assert effective["cross_dt_minimum_correlation"] < 0.67
+    assert min(effective["leave_one_model_out_minimum_correlation_by_dt"].values()) < -0.81
+    assert max(
+        value
+        for by_tau in effective[
+            "external_ensemble_correlation_by_dt_and_calcium_assumption"
+        ].values()
+        for value in by_tau.values()
+    ) < 0.72
+    assert effective["effective_dynamics_transfer_authorized"] is False
     measured = report["verified_C3_measured_filter_robustness"]
     assert measured["cross_deconvolution_stability_passed"] is True
     assert set(measured["minimum_held_out_correlation_by_assumption"]) == {

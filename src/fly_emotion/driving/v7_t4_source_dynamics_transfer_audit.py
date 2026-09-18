@@ -31,6 +31,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
+    flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
     c3_measured_path = Path(config["c3_measured_filter_robustness_evidence"])
     public_models_path = Path(config["public_t4_model_source_coverage_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
@@ -55,6 +56,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / timing_models_path).read_text(encoding="utf-8")
     )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
+    flyvis_effective = json.loads(
+        (root / flyvis_effective_path).read_text(encoding="utf-8")
+    )
     c3_measured = json.loads(
         (root / c3_measured_path).read_text(encoding="utf-8")
     )
@@ -142,6 +146,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
+                str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
                 str(c3_measured_path): _sha256(root / c3_measured_path),
                 str(public_models_path): _sha256(root / public_models_path),
             },
@@ -329,6 +334,29 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "C3_time_constant_transfer_authorized": flyvis[
                 "C3_time_constant_transfer_authorized"
+            ],
+        },
+        "verified_FlyVis_C3_effective_dynamics_readiness": {
+            "pretrained_model_count": flyvis_effective["protocol"]["model_count"],
+            "fixed_denominator": flyvis_effective["protocol"]["fixed_denominator"],
+            "cross_dt_minimum_correlation": flyvis_effective["cross_dt_summary"][
+                "minimum"
+            ],
+            "leave_one_model_out_minimum_correlation_by_dt": {
+                name: item["unit_shape_leave_one_model_out_summary"]["minimum"]
+                for name, item in flyvis_effective["ensemble_stability"].items()
+            },
+            "external_ensemble_correlation_by_dt_and_calcium_assumption": {
+                dt: {
+                    tau: item["ensemble_equal_shape_correlation"]
+                    for tau, item in by_tau.items()
+                }
+                for dt, by_tau in flyvis_effective[
+                    "external_C3_flash_consistency"
+                ].items()
+            },
+            "effective_dynamics_transfer_authorized": flyvis_effective[
+                "FlyVis_C3_effective_dynamics_transfer_authorized"
             ],
         },
         "verified_C3_measured_filter_robustness": {

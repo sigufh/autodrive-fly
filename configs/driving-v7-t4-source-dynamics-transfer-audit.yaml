@@ -15,6 +15,7 @@ fig1_source_temporal_readiness_evidence: artifacts/v7-fig1-source-temporal-readi
 c3_analytic_filter_evidence: artifacts/v7-c3-analytic-filter-precheck.json
 timing_models_source_filter_evidence: artifacts/v7-timing-models-source-filter-audit.json
 flyvis_c3_time_constant_evidence: artifacts/v7-flyvis-c3-time-constant-audit.json
+flyvis_c3_effective_dynamics_evidence: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
 c3_measured_filter_robustness_evidence: artifacts/v7-c3-measured-filter-robustness.json
 public_t4_model_source_coverage_evidence: artifacts/v7-public-t4-model-source-coverage-audit.json
 official_unified_model_recovered_manifest:

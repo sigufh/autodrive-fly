@@ -1657,6 +1657,24 @@ average-filter connectome 而非 MaleCNS，也没有 type→MaleCNS body 稳定�
 数值虽存在，却不可作为 v7 的已识别生理时间常数。证据见
 `artifacts/v7-flyvis-c3-time-constant-audit.json`。
 
+随后在观察 50 模型 ensemble 输出前，先按 Henning 作者原始 flash 代码冻结了独立比较
+合同。作者数据为 10 Hz、5 s 暗基线→5 s 亮刺激→至少 3 s 恢复；354 个 C3 ROI 中
+332 个通过作者的刺激正相关筛选，按 27 只 fly 先内后外平均。作者代码没有定义额外的
+peak/plateau/recovery 阈值，所以审计只预注册透明时间窗、实验 fly 的 2.5–97.5% 描述区间
+以及继承且不改动的 0.80 波形相关门。预注册证据见
+`artifacts/v7-c3-flash-preregistration.json`。
+
+在此合同下，50 个官方 FlyVis 模型均以完整递归网络运行 5 ms 与训练时 20 ms 两种步长；
+外部视觉输入只写入 R1–R6，FlyVis 原生入口中的 R7/R8 明确保持为零，C3 只读取不注入。
+同一模型跨步长波形相关最差为 0.660，未满足每模型 0.80；5 ms 与 20 ms 下的等权单位形状
+leave-one-model-out 最差相关分别约 −0.812 与 −0.792，说明 ensemble 并不存在稳定的共享
+C3 有效响应。将模型状态分别通过 200/250/300/350 ms 一阶钙低通后，与 Henning 平均
+flash 波形的等权形状相关仅约 0.674–0.711，全部低于 0.80；峰时延虽落入实验区间，但
+全部八个 dt×钙常数组合的平台/峰值比例都高于实验 fly 的预注册区间。原始幅度加权结果
+还会被少数极大模型主导，因此只作为敏感性而不用于救门。这条“完整网络有效 C3 动力学”
+路线同样被拒绝，不授权迁移到 MaleCNS 或进入 T4 功能预检。证据见
+`artifacts/v7-flyvis-c3-effective-dynamics-audit.json`。
+
 最后按 `TimingModels` 的公开处理代码对 Henning C3 STRF 做同构敏感性审计：每个
 fly×axis 独立平均，分别假设 200/250/300/350 ms 一阶钙低通，在频域去卷积后投影到
 5 阶、α=0.2 的 Laguerre 基，再执行整只果蝇留出。每个单位跨四种去卷积假设的最小

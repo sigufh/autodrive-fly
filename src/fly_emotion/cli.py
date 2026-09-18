@@ -38,6 +38,9 @@ from .driving.v7_branched import evaluate_v7_branched_t4_candidate
 from .driving.v7_c3_analytic_filter_precheck import (
     evaluate_v7_c3_analytic_filter_precheck,
 )
+from .driving.v7_c3_flash_preregistration import (
+    evaluate_v7_c3_flash_preregistration,
+)
 from .driving.v7_c3_measured_filter_robustness import (
     evaluate_v7_c3_measured_filter_robustness,
 )
@@ -72,6 +75,9 @@ from .driving.v7_fig3_source_kernel_robustness import (
 )
 from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
+from .driving.v7_flyvis_c3_effective_dynamics_audit import (
+    evaluate_v7_flyvis_c3_effective_dynamics_audit,
+)
 from .driving.v7_flyvis_c3_time_constant_audit import (
     evaluate_v7_flyvis_c3_time_constant_audit,
 )
@@ -378,10 +384,12 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
+    subparsers.add_parser("v7-audit-c3-flash-preregistration")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-c3-measured-filter-robustness")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
     subparsers.add_parser("v7-audit-flyvis-c3-time-constant")
+    subparsers.add_parser("v7-audit-flyvis-c3-effective-dynamics")
     subparsers.add_parser("v7-audit-public-t4-model-source-coverage")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
@@ -1187,6 +1195,14 @@ def main() -> None:
         )
         print(target)
         return
+    if args.command == "v7-audit-c3-flash-preregistration":
+        report = evaluate_v7_c3_flash_preregistration(root)
+        target = root / "artifacts/v7-c3-flash-preregistration.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
     if args.command == "v7-precheck-c3-analytic-filter":
         report = evaluate_v7_c3_analytic_filter_precheck(root)
         target = root / "artifacts/v7-c3-analytic-filter-precheck.json"
@@ -1214,6 +1230,14 @@ def main() -> None:
     if args.command == "v7-audit-flyvis-c3-time-constant":
         report = evaluate_v7_flyvis_c3_time_constant_audit(root)
         target = root / "artifacts/v7-flyvis-c3-time-constant-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-flyvis-c3-effective-dynamics":
+        report = evaluate_v7_flyvis_c3_effective_dynamics_audit(root)
+        target = root / "artifacts/v7-flyvis-c3-effective-dynamics-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

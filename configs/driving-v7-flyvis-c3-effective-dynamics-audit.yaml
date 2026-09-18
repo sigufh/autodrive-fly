@@ -1,0 +1,48 @@
+version: 1
+name: v7-flyvis-c3-effective-dynamics-audit
+observed_on: "2026-09-18"
+preregistration_evidence: artifacts/v7-c3-flash-preregistration.json
+static_parameter_evidence: artifacts/v7-flyvis-c3-time-constant-audit.json
+raw_response_payload:
+  path: data/raw/t4-external-models/flyvis-c3-flash-responses.json
+  bytes: 3959520
+  sha256: bd44e339ae09a7b7dc899cffefa20fd857482cff2c56ec72cd62ac6378db3eff
+generator:
+  path: scripts/generate-v7-flyvis-c3-flash-responses.py
+  sha256: 94cf5a85e3414b8f95b343a9c1821a9d27cd58e0bb0f10d10befd2ab4b6f607d
+flyvis_code:
+  - path: data/raw/t4-external-models/flyvis/flyvis/network/dynamics.py
+    sha256: e77d9e049661321798f213b9c7e98b58945214ad94ab11c5c1ee930bfaacbc86
+  - path: data/raw/t4-external-models/flyvis/flyvis/network/network.py
+    sha256: eb172be7db1727a2b1af9f4211c2e1a8655004e8602a4db677e56702a3dfeb43
+  - path: data/raw/t4-external-models/flyvis/flyvis/network/stimulus.py
+    sha256: bed184c91e3c5908f6b6853929cb5996af7165580bc5bc6a6b65e51c25c827b0
+analysis_contract:
+  model_count: 50
+  fixed_denominator: 50
+  cell_type: C3
+  column: {u: 0, v: 0}
+  comparison_protocol: henning_matched
+  timing_sensitivity_protocol: flyvis_official
+  comparison_rate_hz: 10
+  shape_normalization: baseline_center_then_unit_L2
+  ensemble_aggregation: equal_weight_per_unit_shape
+  report_raw_activity_weighted_ensemble_as_sensitivity: true
+  silent_or_undefined_is_failure: true
+gates:
+  minimum_correlation: 0.80
+  require_every_model_cross_dt: true
+  require_every_model_leave_one_model_out_at_each_dt: true
+  require_every_calcium_assumption_ensemble_external_correlation: true
+  require_every_calcium_assumption_ensemble_features_in_empirical_intervals: true
+  require_all_50_models_in_denominator: true
+boundary:
+  external_input_only_R1_R6: true
+  R7_R8_held_at_zero: true
+  C3_is_observed_not_injected: true
+  no_direction_label_used: true
+  no_threshold_changed: true
+  no_parameter_fit_or_search: true
+  no_runtime_change: true
+  effective_response_does_not_identify_a_MaleCNS_body_specific_kernel: true
+  T5_and_LPLC_remain_frozen: true

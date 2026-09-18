@@ -77,6 +77,7 @@ evidence:
   c3_analytic_filter_precheck: artifacts/v7-c3-analytic-filter-precheck.json
   timing_models_source_filter_audit: artifacts/v7-timing-models-source-filter-audit.json
   flyvis_c3_time_constant_audit: artifacts/v7-flyvis-c3-time-constant-audit.json
+  flyvis_c3_effective_dynamics_audit: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
   c3_measured_filter_robustness: artifacts/v7-c3-measured-filter-robustness.json
   public_t4_model_source_coverage_audit: artifacts/v7-public-t4-model-source-coverage-audit.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json

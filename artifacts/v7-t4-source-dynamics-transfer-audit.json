@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "42a9b28a76244ecb56e3fe9f3d664a30460b06066c99684e5a123ef264fd0da7",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "475b3f9aa6ad195ec8bafbfc7849b54ae9d06e4921e64c7f0689a142e085a927",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "101d1f7611eb579da7371f65b0af9398af49b0997e6a74792e853c9caaee4ddf",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "4a9f2a4935170990ca2bc6ac8fb5727efd5563d712824fb6d3accd3f5e2bf278",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -19,6 +19,7 @@
       "artifacts/v7-c3-analytic-filter-precheck.json": "572f7f31042d3f30db3db3a61b3171413553f5806e8fcf76a53790c4c6ed4aa9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
+      "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
       "artifacts/v7-c3-measured-filter-robustness.json": "5079d054a2fb93d8ea1626e8241c3f48909315ee772a464dda9ca7cacb875f35",
       "artifacts/v7-public-t4-model-source-coverage-audit.json": "07097b03afa0c2d22778dc474750c6394f0a7bf3a98964ab723adeae558de644"
     },
@@ -175,6 +176,30 @@
     "C3_median_time_constant_seconds": 0.06680329144001007,
     "C3_models_at_or_below_solver_dt": 21,
     "C3_time_constant_transfer_authorized": false
+  },
+  "verified_FlyVis_C3_effective_dynamics_readiness": {
+    "pretrained_model_count": 50,
+    "fixed_denominator": 50,
+    "cross_dt_minimum_correlation": 0.6602482362027021,
+    "leave_one_model_out_minimum_correlation_by_dt": {
+      "5ms": -0.8117479304463266,
+      "20ms": -0.7922649969023104
+    },
+    "external_ensemble_correlation_by_dt_and_calcium_assumption": {
+      "5ms": {
+        "200ms": 0.7109142746631849,
+        "250ms": 0.7015547096301827,
+        "300ms": 0.6886230303024474,
+        "350ms": 0.6735805292972736
+      },
+      "20ms": {
+        "200ms": 0.7086453482356984,
+        "250ms": 0.7017416084774266,
+        "300ms": 0.6904733222353298,
+        "350ms": 0.6765945563356658
+      }
+    },
+    "effective_dynamics_transfer_authorized": false
   },
   "verified_C3_measured_filter_robustness": {
     "cross_deconvolution_stability_passed": true,

@@ -89,6 +89,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
     timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
     flyvis_c3_time_constant_audit = reports["flyvis_c3_time_constant_audit"]
+    flyvis_c3_effective_dynamics_audit = reports[
+        "flyvis_c3_effective_dynamics_audit"
+    ]
     c3_measured_filter_robustness = reports["c3_measured_filter_robustness"]
     public_t4_model_source_coverage_audit = reports[
         "public_t4_model_source_coverage_audit"
@@ -205,6 +208,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["timing_models_source_filter_audit"],
                 config["evidence"]["flyvis_c3_time_constant_audit"],
+                config["evidence"]["flyvis_c3_effective_dynamics_audit"],
                 config["evidence"]["c3_measured_filter_robustness"],
                 config["evidence"]["public_t4_model_source_coverage_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
@@ -758,6 +762,27 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "FlyVis_C3_time_constant_transfer_authorized": (
                     flyvis_c3_time_constant_audit[
                         "C3_time_constant_transfer_authorized"
+                    ]
+                ),
+                "FlyVis_C3_effective_cross_dt_minimum_correlation": (
+                    flyvis_c3_effective_dynamics_audit["cross_dt_summary"]["minimum"]
+                ),
+                "FlyVis_C3_effective_LOMO_minimum_by_dt": {
+                    name: item["unit_shape_leave_one_model_out_summary"]["minimum"]
+                    for name, item in flyvis_c3_effective_dynamics_audit[
+                        "ensemble_stability"
+                    ].items()
+                },
+                "FlyVis_C3_effective_external_maximum_correlation": max(
+                    item["ensemble_equal_shape_correlation"]
+                    for by_tau in flyvis_c3_effective_dynamics_audit[
+                        "external_C3_flash_consistency"
+                    ].values()
+                    for item in by_tau.values()
+                ),
+                "FlyVis_C3_effective_dynamics_transfer_authorized": (
+                    flyvis_c3_effective_dynamics_audit[
+                        "FlyVis_C3_effective_dynamics_transfer_authorized"
                     ]
                 ),
                 "C3_measured_filter_cross_deconvolution_stable": (
