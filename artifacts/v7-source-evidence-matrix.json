@@ -3,14 +3,15 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "f7cf02412ec2d8b7435ff7bcb53bd19a76d43061089b0d3a9c37ba15f48ae1f3",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "4aafb8693d931e76b33a11df3ab2951901575d50808c8e7b4ada5624251f1011",
+      "configs/driving-v7-source-evidence-matrix.yaml": "1c6c2df53a4a7e34cc85549c01f7007d603bc68ab31fc4f76b333f82241a811f",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "79a88709d0cf46e839cf5b3219dcdc29f77b7ca966d4929ec5993bab8093e4cc",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "1b40930a7aa44a1ab5d174358474a10c9ada6064f1643e97962ae462dd814bdf",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "f72f4cefbddd7eaff3150d9949a9283ff3787179b44736dfb0303934475016e6",
-      "artifacts/v7-borst-2025-temporal-filtering-audit.json": "4aa87656e640510b86e0246892e6c37eb0579abcf3aa1a324a530c92fe9f579f",
+      "artifacts/v7-borst-2025-temporal-filtering-audit.json": "15de176bde8485f00725f27195770721204b5ed4228c2d36f58c851bb64b2bcb",
+      "artifacts/v7-pirogova-source-calcium-audit.json": "aef806af4cdd259d0af7406d8959ff7fb2a3a882fa7a5434bc547364adf1e24d",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
@@ -44,7 +45,7 @@
       "evidence_components": {
         "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": false,
-        "local_numerical_temporal_calcium_or_STRF": false,
+        "local_numerical_temporal_calcium_or_STRF": true,
         "local_numerical_spatial_calcium_only": false,
         "local_uncompartmented_type_average_deconvolved_calcium": false,
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
@@ -59,15 +60,19 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": true,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
-      "local_numerical_calcium_or_deconvolved_calcium": false,
+      "local_numerical_calcium_or_deconvolved_calcium": true,
       "publisher_described_unverified_numerical_payload": true,
       "published_calcium_phenotype": true,
       "numerical_evidence_sources": [
-        "T4_Fig3_millivolt_workbook"
+        "T4_Fig3_millivolt_workbook",
+        "Pirogova_2023_historical_GCaMP6f_time_series"
       ],
       "publisher_described_sources": [
         "Gou_Dryad_README_and_repository_metadata"
@@ -103,7 +108,7 @@
       "evidence_components": {
         "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": false,
-        "local_numerical_temporal_calcium_or_STRF": false,
+        "local_numerical_temporal_calcium_or_STRF": true,
         "local_numerical_spatial_calcium_only": false,
         "local_uncompartmented_type_average_deconvolved_calcium": false,
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
@@ -118,15 +123,19 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": true,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
-      "local_numerical_calcium_or_deconvolved_calcium": false,
+      "local_numerical_calcium_or_deconvolved_calcium": true,
       "publisher_described_unverified_numerical_payload": true,
       "published_calcium_phenotype": true,
       "numerical_evidence_sources": [
-        "T4_Fig3_millivolt_workbook"
+        "T4_Fig3_millivolt_workbook",
+        "Pirogova_2023_historical_GCaMP6f_time_series"
       ],
       "publisher_described_sources": [
         "Gou_Dryad_README_and_repository_metadata"
@@ -177,7 +186,10 @@
         "independent_inhibitory_source_physiology_published": true,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": false,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -233,7 +245,10 @@
         "independent_inhibitory_source_physiology_published": true,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": false,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": false,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -272,7 +287,7 @@
       "evidence_components": {
         "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": true,
-        "local_numerical_temporal_calcium_or_STRF": false,
+        "local_numerical_temporal_calcium_or_STRF": true,
         "local_numerical_spatial_calcium_only": false,
         "local_uncompartmented_type_average_deconvolved_calcium": false,
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
@@ -287,15 +302,19 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": true,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
-      "local_numerical_calcium_or_deconvolved_calcium": false,
+      "local_numerical_calcium_or_deconvolved_calcium": true,
       "publisher_described_unverified_numerical_payload": true,
       "published_calcium_phenotype": true,
       "numerical_evidence_sources": [
-        "Kohn_Portes_whole_cell_voltage_flash_payload"
+        "Kohn_Portes_whole_cell_voltage_flash_payload",
+        "Pirogova_2023_historical_GCaMP6f_time_series"
       ],
       "publisher_described_sources": [
         "Gou_Dryad_README_and_repository_metadata"
@@ -332,7 +351,7 @@
       "evidence_components": {
         "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": true,
-        "local_numerical_temporal_calcium_or_STRF": false,
+        "local_numerical_temporal_calcium_or_STRF": true,
         "local_numerical_spatial_calcium_only": false,
         "local_uncompartmented_type_average_deconvolved_calcium": false,
         "publisher_described_numerical_calcium_payload_not_locally_verified": true,
@@ -347,15 +366,19 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": true,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
-      "local_numerical_calcium_or_deconvolved_calcium": false,
+      "local_numerical_calcium_or_deconvolved_calcium": true,
       "publisher_described_unverified_numerical_payload": true,
       "published_calcium_phenotype": true,
       "numerical_evidence_sources": [
-        "Kohn_Portes_whole_cell_voltage_flash_payload"
+        "Kohn_Portes_whole_cell_voltage_flash_payload",
+        "Pirogova_2023_historical_GCaMP6f_time_series"
       ],
       "publisher_described_sources": [
         "Gou_Dryad_README_and_repository_metadata"
@@ -407,7 +430,10 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": false,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -465,7 +491,10 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": true,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": false,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -524,7 +553,10 @@
         "independent_inhibitory_source_physiology_published": false,
         "independent_inhibitory_source_allowed_unit": false,
         "Borst_2025_parameterized_calcium_derived_target": false,
-        "Borst_2025_target_is_experimental_membrane_voltage": false
+        "Borst_2025_target_is_experimental_membrane_voltage": false,
+        "Pirogova_2023_local_numeric_calcium_time_series": false,
+        "Pirogova_2023_allowed_membrane_voltage_unit": false,
+        "Pirogova_2023_biological_individual_id_available": false
       },
       "numerical_membrane_voltage": false,
       "published_optical_voltage_phenotype": false,
@@ -576,7 +608,7 @@
       "source_count": 4,
       "numerical_membrane_voltage_count": 4,
       "published_optical_voltage_phenotype_count": 0,
-      "local_numerical_calcium_or_deconvolved_count": 1,
+      "local_numerical_calcium_or_deconvolved_count": 3,
       "publisher_described_unverified_numerical_payload_count": 2,
       "all_sources_contract_complete": false
     },
@@ -591,7 +623,7 @@
       "source_count": 5,
       "numerical_membrane_voltage_count": 4,
       "published_optical_voltage_phenotype_count": 2,
-      "local_numerical_calcium_or_deconvolved_count": 3,
+      "local_numerical_calcium_or_deconvolved_count": 5,
       "publisher_described_unverified_numerical_payload_count": 2,
       "all_sources_contract_complete": false
     }

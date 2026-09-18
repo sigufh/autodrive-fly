@@ -73,6 +73,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["Borst_2025_source_transfer_authorized"] is False
+    assert visual["observations"]["Pirogova_numeric_calcium_sources"] == [
+        "Mi1",
+        "Tm1",
+        "Tm2",
+        "Tm3",
+    ]
+    assert visual["observations"]["Pirogova_biological_individual_ids_available"] is False
+    assert visual["observations"]["Pirogova_source_transfer_authorized"] is False
     assert visual["observations"]["T5_biological_PD_code_assigned"] == 1
     assert visual["observations"]["T5_external_direction_label_map_verified"] is True
     assert visual["observations"]["T5_model_scoring_allowed"] is True
@@ -293,7 +301,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["source_evidence_matrix_all_nine_complete"] is False
     assert visual["observations"]["source_evidence_matrix_authorizes_fit"] is False
     assert visual["observations"]["source_evidence_matrix_T4_local_millivolt_count"] == 4
-    assert visual["observations"]["source_evidence_matrix_T5_local_calcium_count"] == 3
+    assert visual["observations"]["source_evidence_matrix_T5_local_calcium_count"] == 5
     assert visual["observations"]["source_evidence_matrix_T5_local_millivolt_count"] == 4
     assert (
         visual["observations"]["source_evidence_matrix_C3_has_any_numerical_fly_IDs"]

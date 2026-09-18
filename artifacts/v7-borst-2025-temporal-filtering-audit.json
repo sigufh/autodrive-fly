@@ -3,7 +3,7 @@
     "name": "v7-borst-2025-temporal-filtering-provenance-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-borst-2025-temporal-filtering-audit.yaml": "267822aed1a3d3d63a2f361528d6ce6865253917c9f3794377b7373abf7ea0c3",
+      "configs/driving-v7-borst-2025-temporal-filtering-audit.yaml": "cd4200afadd4112081820d64315862868fe99550dd5264237170728b3bbb1f97",
       "src/fly_emotion/driving/v7_borst_2025_temporal_filtering_audit.py": "a22bc68f9fe769f01fd5e775998317ef10c3d2861987b8533cc7b1f1b4ba5faa",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
     },
@@ -88,7 +88,7 @@
         "citation": "Arenz_et_al_2017"
       },
       {
-        "doi": "10.1016/j.cub.2019.12.012",
+        "doi": "10.1016/j.cub.2019.10.035",
         "citation": "Drews_et_al_2020"
       }
     ],

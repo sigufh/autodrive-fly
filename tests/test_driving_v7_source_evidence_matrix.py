@@ -94,6 +94,26 @@ def test_borst_2025_parameterized_target_is_not_counted_as_measured_voltage() ->
         )
 
 
+def test_pirogova_numeric_calcium_does_not_cross_unit_or_identity_boundaries() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in ("Mi1", "Tm3", "Tm1", "Tm2"):
+        row = report["matrix"][source]
+        components = row["evidence_components"]
+        assert components["Pirogova_2023_local_numeric_calcium_time_series"] is True
+        assert components["Pirogova_2023_allowed_membrane_voltage_unit"] is False
+        assert components["Pirogova_2023_biological_individual_id_available"] is False
+        assert "Pirogova_2023_historical_GCaMP6f_time_series" in (
+            row["numerical_evidence_sources"]
+        )
+    for source in ("Mi4", "C3", "Tm4", "Tm9", "CT1"):
+        assert (
+            report["matrix"][source]["evidence_components"][
+                "Pirogova_2023_local_numeric_calcium_time_series"
+            ]
+            is False
+        )
+
+
 def test_exact_type_average_mapping_is_explicit_without_body_assignment() -> None:
     report = json.loads(REPORT.read_text())
     for source in ("Mi1", "Tm3", "Mi4", "C3", "Tm1", "Tm2", "Tm4", "Tm9"):
@@ -111,7 +131,7 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     report = json.loads(REPORT.read_text())
     assert report["family_summary"]["T5"]["numerical_membrane_voltage_count"] == 4
     assert report["family_summary"]["T5"]["published_optical_voltage_phenotype_count"] == 2
-    assert report["family_summary"]["T5"]["local_numerical_calcium_or_deconvolved_count"] == 3
+    assert report["family_summary"]["T5"]["local_numerical_calcium_or_deconvolved_count"] == 5
     assert (
         report["matrix"]["Tm4"]["evidence_components"]["local_numerical_temporal_calcium_or_STRF"]
         is True

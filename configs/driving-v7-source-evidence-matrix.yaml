@@ -1,4 +1,4 @@
-version: 3
+version: 4
 name: v7-source-evidence-matrix
 observed_on: "2026-09-19"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -8,6 +8,7 @@ evidence:
   behnia_t4_fast: artifacts/v7-behnia-t4-fast-source-audit.json
   t4_inhibitory_external: artifacts/v7-t4-inhibitory-source-external-audit.json
   borst_2025_temporal_filtering: artifacts/v7-borst-2025-temporal-filtering-audit.json
+  pirogova_source_calcium: artifacts/v7-pirogova-source-calcium-audit.json
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json
   t5_voltage: artifacts/v7-yang-t5-voltage-evidence-audit.json
   kohn_portes_t5_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json

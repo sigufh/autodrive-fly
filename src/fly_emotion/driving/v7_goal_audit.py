@@ -140,6 +140,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     borst_2025_temporal_filtering_audit = reports[
         "borst_2025_temporal_filtering_audit"
     ]
+    pirogova_source_calcium_audit = reports["pirogova_source_calcium_audit"]
     malecns_source_mapping_readiness_audit = reports[
         "malecns_source_mapping_readiness_audit"
     ]
@@ -320,6 +321,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["borst_2025_temporal_filtering_audit"],
+                config["evidence"]["pirogova_source_calcium_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
                 config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["source_type_average_mapping_contract"],
@@ -760,6 +762,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     borst_2025_temporal_filtering_audit[
                         "source_dynamics_transfer_authorized"
                     ]
+                ),
+                "Pirogova_numeric_calcium_sources": (
+                    pirogova_source_calcium_audit["source_coverage"][
+                        "covered_required_sources"
+                    ]
+                ),
+                "Pirogova_biological_individual_ids_available": (
+                    pirogova_source_calcium_audit["transfer_gates"][
+                        "biological_individual_ids_available"
+                    ]
+                ),
+                "Pirogova_source_transfer_authorized": (
+                    pirogova_source_calcium_audit["source_dynamics_transfer_authorized"]
                 ),
                 "MaleCNS_nine_source_type_body_sets_available": (
                     malecns_source_mapping_readiness_audit[

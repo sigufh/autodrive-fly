@@ -36,6 +36,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
+    pirogova = evidence["pirogova_source_calcium"]
+    pirogova_sources = set(pirogova["source_payloads"])
     gou = evidence["gou_partial"]
     gou_sources = set(gou["source_evidence"])
     # The Gou archive was not downloaded or hash-verified. Its README describes
@@ -87,7 +89,11 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             family == "T4" and source in t4_voltage["source_summary"]
         ) or source in kohn_portes_voltage_sources
         published_voltage = source in yang_sources
-        local_temporal_calcium = source in t5_dynamic or (source == "C3" and c3_numerical)
+        local_temporal_calcium = (
+            source in t5_dynamic
+            or source in pirogova_sources
+            or (source == "C3" and c3_numerical)
+        )
         local_spatial_calcium = source in t5_spatial
         local_type_average_deconvolved = source == "CT1" and ct1_type_average
         publisher_described_unverified = source in gou_sources and not gou_payload_local
@@ -165,6 +171,19 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in borst_2025_sources
                 and borst_2025["transfer_gates"]["experimental_membrane_voltage_payload"]
             ),
+            "Pirogova_2023_local_numeric_calcium_time_series": (
+                source in pirogova_sources
+            ),
+            "Pirogova_2023_allowed_membrane_voltage_unit": (
+                source in pirogova_sources
+                and pirogova["transfer_gates"]["allowed_membrane_voltage_response_unit"]
+            ),
+            "Pirogova_2023_biological_individual_id_available": (
+                source in pirogova_sources
+                and pirogova["source_payloads"][source][
+                    "biological_individual_id_available"
+                ]
+            ),
         }
         numerical_sources = []
         phenotype_sources = []
@@ -197,6 +216,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             phenotype_sources.append("TimingModels_lobula_Lo1_CT1_supplement_figure")
         if source in borst_2025_sources:
             phenotype_sources.append("Borst_2025_parameterized_calcium_derived_fit_target")
+        if source in pirogova_sources:
+            numerical_sources.append("Pirogova_2023_historical_GCaMP6f_time_series")
 
         missing = []
         if not allowed_numerical:

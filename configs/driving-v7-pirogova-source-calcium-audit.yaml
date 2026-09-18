@@ -1,0 +1,91 @@
+version: 1
+name: v7-pirogova-source-calcium-provenance-audit
+observed_on: "2026-09-19"
+paper:
+  title: Contrast normalization affects response time-course of visual interneurons
+  doi: 10.1371/journal.pone.0285686
+  pmid: 37294743
+  pmcid: PMC10256145
+  full_text:
+    path: data/raw/pirogova-signal-time-course/PMC10256145.xml
+    bytes: 180191
+    sha256: d5e4f8f8c25b16d0dfeb9c50e34f6bf6caafc359157e10cbc9e4a212a056ed25
+repository:
+  url: https://github.com/nopirogova/paper_signal_time-course
+  latest_commit: 77f16072de363dac2e079b07be93d2b08d4f8fb7
+  historical_data_commit: e320792a88e4f5a7d467dccc107e3f1010fe1db2
+  historical_notebook_commit: 3869cc011ecf0e8bc467d2b611b889d593e0280a
+  latest_archive:
+    path: data/raw/pirogova-signal-time-course/paper_signal_time-course-77f16072de363dac2e079b07be93d2b08d4f8fb7.zip
+    bytes: 4702654
+    sha256: 3d5bea5cfb849983f0c4698dfb67314d7b67ba44edaa149fe3d4ae7e9f1a92b6
+    archive_member_count: 13
+    file_count: 12
+  history_support:
+    README.md:
+      path: data/raw/pirogova-signal-time-course/history-e320792a/README.md
+      bytes: 1699
+      sha256: 3a85c6c7aca6e8e5155cfaeb19cd32bc87e932669e074406a0551d6a21ea2426
+      git_blob: 9a058f401e5d0ca89bde1b0ed65664570aee655f
+    notebook:
+      path: data/raw/pirogova-signal-time-course/history-e320792a/Figure-2-3-5-S1-S2-3869cc.ipynb
+      bytes: 532315
+      sha256: 7e37fe1802bce606c8b5435fa05ce22ec727f2089f4e8e66be26e1dc99300ca9
+      git_blob: 620dca2677e621f60909a0842855a9fd0dc8dc7f
+source_files:
+  Mi1:
+    path: data/raw/pirogova-signal-time-course/history-e320792a/Mi1_data.pkl
+    bytes: 2522376
+    sha256: 12607f6c42c0d3842b41f5294480fc469561610aa7c69d0a2f7bb6b65d1e5b3c
+    git_blob: f9656ffd2e446c6796c08a7013567424b80133f1
+    expected_shape: [1069, 294]
+    expected_cell_groups: 98
+    expected_unique_cell_labels: 26
+    paper_fly_count: 25
+  Tm3:
+    path: data/raw/pirogova-signal-time-course/history-e320792a/Tm3_data.pkl
+    bytes: 1674930
+    sha256: c1291c2f5b694c7782c30986db4426e918afae2655045505f93d41316fefe544
+    git_blob: 6cce363739381732d1ba97fe22d45c4abe09b702
+    expected_shape: [1069, 195]
+    expected_cell_groups: 65
+    expected_unique_cell_labels: 23
+    paper_fly_count: 16
+  Tm1:
+    path: data/raw/pirogova-signal-time-course/history-e320792a/Tm1_data.pkl
+    bytes: 295787
+    sha256: e0af04735d7adc0b7383e467ee6ddfd1725f55e213a6c235ca786ba501bed595
+    git_blob: 156b7548f6b25a832e06cd76a0758b8f65e0a3d8
+    expected_shape: [506, 72]
+    expected_cell_groups: 24
+    expected_unique_cell_labels: 24
+    paper_fly_count: 9
+  Tm2:
+    path: data/raw/pirogova-signal-time-course/history-e320792a/Tm2_data.pkl
+    bytes: 273044
+    sha256: 2d380f3c8071927df8e261fa843787c31cf32430c73154f2a25801f338c55fe5
+    git_blob: c8b688e54ee3594b7cc804ab6c023a109ba13107
+    expected_shape: [509, 66]
+    expected_cell_groups: 22
+    expected_unique_cell_labels: 22
+    paper_fly_count: 7
+expected_index_names: [step_dts, velocities, time]
+expected_column_names: [cell, trial]
+expected_trial_labels: ["0", "1", "2"]
+expected_time_count: 91
+expected_sample_interval_seconds: 0.08403361344537817
+expected_imaging_rate_hz: 11.9
+reported_acquisition_rate_hz: 11.8
+response_modality: two_photon_GCaMP6f_calcium_imaging
+response_unit: calcium_fluorescence_or_normalized_arbitrary_units
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+boundary:
+  historical_git_payload_is_public_numeric_calcium_evidence: true
+  repository_cell_labels_are_not_fly_ids: true
+  repeated_cell_labels_are_not_disambiguated_by_invention: true
+  calcium_and_normalized_arbitrary_units_are_not_membrane_voltage: true
+  no_cross_modality_validation_claim: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

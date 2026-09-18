@@ -2061,6 +2061,21 @@ MaleCNS 映射、预注册 split 或 external final。它保留为模型/表型�
 membrane-voltage source，也不改变 0/9 完整、source fit/T4-T5/LPLC/车辆全部冻结的结论。
 证据见 `artifacts/v7-borst-2025-temporal-filtering-audit.json`。
 
+沿 Borst 2025 引用链继续检查后，Pirogova 与 Borst 2023（DOI
+`10.1371/journal.pone.0285686`）提供了一组新的公开 GCaMP6f 数值证据。GitHub 当前
+HEAD `77f16072…` 已不含 Tm1/Tm2 pickle，但仓库最早的数据提交 `e320792a…` 仍固定保留
+Mi1、Tm3、Tm1、Tm2 四类载荷，随后 `3869cc0…` 的 notebook 明确读取这些文件。所有
+pickle 均先静态检查 opcode/global，再只允许固定 pandas/NumPy 容器的 restricted unpickler；
+未执行仓库代码。恢复的 DataFrame 分别含 Mi1 98、Tm3 65、Tm1 24、Tm2 22 个
+cell×3 trials，时间轴为 91 点、约 11.9 Hz，并保留 gray、moving/static grating、pixel
+noise 等条件。论文报告的 biological fly 数则分别为 25、16、9、7，payload 没有
+cell→fly 对应；Mi1/Tm3 的 `cell1…` 标签还会在合并块中重复。因此这些标签既不是稳定
+fly ID，也不能用于按动物互斥 split。响应是 ΔF/F 或经峰值归一化的 arbitrary units，
+不属于允许的 membrane-voltage 单位；数据也不覆盖 Mi4、C3、Tm4、Tm9、CT1，没有
+MaleCNS 映射、预注册角色或 external-final 承诺。矩阵据此增加四类本地数值钙证据，但不
+增加合规膜电位计数，0/9 和全部冻结门不变。证据见
+`artifacts/v7-pirogova-source-calcium-audit.json`。
+
 外部 recording 与 MaleCNS 的映射合同随后也拆成两种合法模式：逐 recording→body，或明确
 声明 type-average。当前不伪造任何跨果蝇 body 对应，而是对已有本地膜电位的八类 source
 明确采用 `exact_type_average`：每类只把自己的群体平均核广播到 MaleCNS 中同名类型的

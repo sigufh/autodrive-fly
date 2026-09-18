@@ -158,6 +158,9 @@ from .driving.v7_neural_topology_controls import evaluate_v7_neural_topology_con
 from .driving.v7_parameter_matched_baselines import evaluate_v7_parameter_matched_baselines
 from .driving.v7_perturbation import evaluate_v7_perturbation
 from .driving.v7_phase_motion import evaluate_v7_phase_motion
+from .driving.v7_pirogova_source_calcium_audit import (
+    evaluate_v7_pirogova_source_calcium_audit,
+)
 from .driving.v7_pixel_sampling import evaluate_v7_pixel_sampling
 from .driving.v7_public_t4_model_source_coverage_audit import (
     evaluate_v7_public_t4_model_source_coverage_audit,
@@ -514,6 +517,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-public-t4-model-source-coverage")
     subparsers.add_parser("v7-audit-dryad-l1l2-source-dynamics")
     subparsers.add_parser("v7-audit-gou-sparsity-source-dynamics")
+    subparsers.add_parser("v7-audit-pirogova-source-calcium")
     subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
     subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
@@ -1624,6 +1628,14 @@ def main() -> None:
     if args.command == "v7-audit-gou-sparsity-source-dynamics":
         report = evaluate_v7_gou_sparsity_source_dynamics_audit(root)
         target = root / "artifacts/v7-gou-sparsity-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-pirogova-source-calcium":
+        report = evaluate_v7_pirogova_source_calcium_audit(root)
+        target = root / "artifacts/v7-pirogova-source-calcium-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
