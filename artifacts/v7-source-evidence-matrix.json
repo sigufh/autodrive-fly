@@ -4,9 +4,9 @@
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
       "configs/driving-v7-source-evidence-matrix.yaml": "4cedd2f3b876691ca275df4cf2eed8ac87845e6d3dc25be915bbe1c3d60f10e8",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "b574ada334972bfbea4766fa7d07ab4482eadef7aa85cdd94ab3d45ba55d77bc",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "aa4fdb26aa663ac7bfb25f18a56c6ffb929581e733a40b5a11e70efdc3a4c02c",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
-      "artifacts/v7-t4-source-identity-readiness-audit.json": "f1449ff2b1ee719fd90fdcd708fe3f735bc5195bdd6fd8b1cd80b8121f7e34dc",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
@@ -46,7 +46,7 @@
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
         "simulated_compartmental_model_voltage_not_experimental": false,
-        "stable_biological_individual_ids_in_any_numerical_payload": false,
+        "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
@@ -69,7 +69,7 @@
       "gates": {
         "numerical_allowed_response_unit": true,
         "local_numerical_physical_time_axis": true,
-        "stable_biological_individual_id_on_allowed_payload": false,
+        "stable_biological_individual_id_on_allowed_payload": true,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
@@ -80,7 +80,6 @@
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
@@ -99,7 +98,7 @@
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
         "simulated_compartmental_model_voltage_not_experimental": false,
-        "stable_biological_individual_ids_in_any_numerical_payload": false,
+        "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
@@ -122,7 +121,7 @@
       "gates": {
         "numerical_allowed_response_unit": true,
         "local_numerical_physical_time_axis": true,
-        "stable_biological_individual_id_on_allowed_payload": false,
+        "stable_biological_individual_id_on_allowed_payload": true,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
@@ -133,7 +132,6 @@
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
@@ -152,7 +150,7 @@
         "published_lobula_Lo1_dynamic_phenotype_only": false,
         "local_lobula_Lo1_numerical_time_series": false,
         "simulated_compartmental_model_voltage_not_experimental": false,
-        "stable_biological_individual_ids_in_any_numerical_payload": false,
+        "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
@@ -173,7 +171,7 @@
       "gates": {
         "numerical_allowed_response_unit": true,
         "local_numerical_physical_time_axis": true,
-        "stable_biological_individual_id_on_allowed_payload": false,
+        "stable_biological_individual_id_on_allowed_payload": true,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
@@ -184,7 +182,6 @@
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
@@ -223,7 +220,7 @@
       "gates": {
         "numerical_allowed_response_unit": true,
         "local_numerical_physical_time_axis": true,
-        "stable_biological_individual_id_on_allowed_payload": false,
+        "stable_biological_individual_id_on_allowed_payload": true,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
@@ -234,7 +231,6 @@
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "stable_biological_individual_id_on_allowed_payload",
         "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",

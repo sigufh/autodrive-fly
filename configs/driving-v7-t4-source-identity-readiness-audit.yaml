@@ -12,6 +12,12 @@ source_workbook:
     - Fig. 3b, right (on ND)
     - Fig. 3c, left (off PD)
     - Fig. 3c, right (off ND)
+paper_pdf:
+  path: data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf
+  bytes: 8482179
+  sha256: f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b
+  pages: 22
+  doi: 10.1038/s41586-022-04428-3
 source_types: {Tm3: 12, Mi1: 24, Mi4: 19, C3: 16}
 source_header_sheets: ["Fig. 3a, left (on)", "Fig. 3a, right (off)"]
 identity_tokens: [fly, animal, recording, specimen, individual, subject]
@@ -37,6 +43,8 @@ boundary:
   current_verified_Edmond_subset_only: true
   Edmond_API_unavailable_during_identity_recheck: true
   anonymous_cell_ordinals_are_not_fly_IDs: true
+  paper_declared_one_cell_per_animal_makes_ordinals_pseudonymous_individual_keys: true
+  pseudonymous_individual_keys_are_not_MaleCNS_body_IDs: true
   alternating_cell_split_is_not_individual_holdout: true
   every_recorded_cell_retained_in_existing_robustness_audit: true
   no_threshold_or_label_change: true

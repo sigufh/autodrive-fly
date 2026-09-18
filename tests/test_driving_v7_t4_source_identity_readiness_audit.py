@@ -18,6 +18,12 @@ def test_T4_identity_audit_is_hash_bound_and_read_only() -> None:
     assert workbook["custom_document_property_count"] == 0
     assert workbook["identity_fields"] == []
     assert workbook["header_semantics"] == "anonymous_source_type_cell_ordinal_only"
+    assert all(workbook["ON_OFF_ordinals_pair_by_source"].values())
+    paper = report["paper_identity_provenance"]
+    assert paper["actual_pages"] == 22
+    assert paper["embedded_attachment_names"] == []
+    assert paper["one_electrophysiology_cell_per_different_animal_declared"] is True
+    assert paper["source_cell_ordinals_are_pseudonymous_individual_keys"] is True
 
 
 def test_verified_Edmond_subset_has_no_identity_sidecar() -> None:
@@ -45,8 +51,10 @@ def test_T4_individual_validation_and_downstream_gates_remain_closed() -> None:
     gates = report["transfer_gates"]
     assert gates["all_four_T4_source_types_have_millivolt_traces"] is True
     assert gates["physical_source_time_axis_available"] is True
-    assert gates["stable_biological_individual_ID_available"] is False
-    assert gates["individual_disjoint_split_constructible"] is False
+    assert gates["stable_pseudonymous_biological_individual_ID_available"] is True
+    assert gates["individual_disjoint_training_validation_split_constructible"] is True
+    assert report["minimum_unique_individuals_for_training_and_validation"] == 8
+    assert all(report["training_validation_capacity_by_source"].values())
     assert gates["every_source_passes_both_robustness_conditions"] is False
     assert report["T4_individual_level_source_validation_ready"] is False
     assert report["authorize_T4_source_dynamics_fit"] is False

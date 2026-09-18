@@ -218,7 +218,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["T4_T5_source_dynamics_authorizes_new_candidate"] is False
     assert visual["observations"]["T4_millivolt_source_types_complete"] is True
-    assert visual["observations"]["T4_source_biological_individual_ID_available"] is False
+    assert visual["observations"]["T4_source_biological_individual_ID_available"] is True
     assert visual["observations"]["T4_individual_level_source_validation_ready"] is False
     assert visual["observations"]["source_dynamics_external_contract_satisfied"] is False
     assert visual["observations"]["source_dynamics_external_payload_present"] is False

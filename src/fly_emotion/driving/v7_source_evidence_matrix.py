@@ -98,12 +98,14 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             and ct1_lobula_phenotype
         )
         physical_time = local_voltage or local_temporal_calcium or local_type_average_deconvolved
-        individual_ids_any_numerical = source == "C3" and c3_ids
-        # Only millivolts or normalized membrane voltage are admissible. C3's
-        # fly IDs belong to a stimulus-response-correlation STRF, not its
-        # millivolt workbook, so no admissible payload currently carries IDs.
+        individual_ids_any_numerical = (
+            family == "T4"
+            and evidence["t4_voltage"]["transfer_gates"][
+                "stable_pseudonymous_biological_individual_ID_available"
+            ]
+        ) or (source == "C3" and c3_ids)
         allowed_numerical = local_voltage
-        individual_ids_on_allowed_payload = False
+        individual_ids_on_allowed_payload = family == "T4" and individual_ids_any_numerical
         map_row = mapping[source]
 
         evidence_components = {

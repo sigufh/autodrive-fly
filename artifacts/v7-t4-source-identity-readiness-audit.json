@@ -3,8 +3,9 @@
     "name": "v7-t4-source-identity-readiness-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-identity-readiness-audit.yaml": "7a4c34f882229db20ac710237380f8c552d662ac23b11c83b25032c6cc7378c7",
-      "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "85fb7523d98f2645966d7dc9ee14c752e1462399411ec8f8d95cc5b43aa5f868",
+      "configs/driving-v7-t4-source-identity-readiness-audit.yaml": "f39367c2614c9a3308bc6d55965655605e8ebc319db7a0b0342a376c369886be",
+      "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "fac619fba6585f358207922f9420dc62b51d6f092db57ce26ed268a5f2acee5d",
+      "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
@@ -184,7 +185,25 @@
         ]
       }
     },
-    "header_semantics": "anonymous_source_type_cell_ordinal_only"
+    "header_semantics": "anonymous_source_type_cell_ordinal_only",
+    "ON_OFF_ordinals_pair_by_source": {
+      "Tm3": true,
+      "Mi1": true,
+      "Mi4": true,
+      "C3": true
+    }
+  },
+  "paper_identity_provenance": {
+    "path": "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf",
+    "bytes": 8482179,
+    "sha256": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
+    "pages": 22,
+    "doi": "10.1038/s41586-022-04428-3",
+    "actual_sha256": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
+    "actual_pages": 22,
+    "embedded_attachment_names": [],
+    "one_electrophysiology_cell_per_different_animal_declared": true,
+    "source_cell_ordinals_are_pseudonymous_individual_keys": true
   },
   "verified_Edmond_subset_identity_audit": {
     "file_count": 13,
@@ -261,6 +280,13 @@
       "all_robustness_conditions_ready": false
     }
   },
+  "training_validation_capacity_by_source": {
+    "Tm3": true,
+    "Mi1": true,
+    "Mi4": true,
+    "C3": true
+  },
+  "minimum_unique_individuals_for_training_and_validation": 8,
   "prior_group_ordering": {
     "fast_sources": [
       "Tm3",
@@ -283,8 +309,8 @@
     "physical_source_time_axis_available": true,
     "every_source_passes_both_kernel_conditions": false,
     "every_source_passes_both_robustness_conditions": false,
-    "stable_biological_individual_ID_available": false,
-    "individual_disjoint_split_constructible": false,
+    "stable_pseudonymous_biological_individual_ID_available": true,
+    "individual_disjoint_training_validation_split_constructible": true,
     "source_type_to_MaleCNS_mapping_available": false,
     "required_split_roles_available": false
   },
@@ -296,16 +322,16 @@
   "blocking_requirements": [
     "every_source_passes_both_kernel_conditions",
     "every_source_passes_both_robustness_conditions",
-    "stable_biological_individual_ID_available",
-    "individual_disjoint_split_constructible",
     "source_type_to_MaleCNS_mapping_available",
     "required_split_roles_available"
   ],
-  "stop_reason": "T4_millivolt_cells_lack_fly_identity_and_fail_fixed_kernel_robustness_or_ordering",
+  "stop_reason": "T4_millivolt_cells_have_pseudonymous_individual_identity_but_fail_fixed_kernel_robustness_mapping_and_split_role_gates",
   "boundary": {
     "current_verified_Edmond_subset_only": true,
     "Edmond_API_unavailable_during_identity_recheck": true,
     "anonymous_cell_ordinals_are_not_fly_IDs": true,
+    "paper_declared_one_cell_per_animal_makes_ordinals_pseudonymous_individual_keys": true,
+    "pseudonymous_individual_keys_are_not_MaleCNS_body_IDs": true,
     "alternating_cell_split_is_not_individual_holdout": true,
     "every_recorded_cell_retained_in_existing_robustness_audit": true,
     "no_threshold_or_label_change": true,

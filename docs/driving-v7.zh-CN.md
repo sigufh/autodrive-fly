@@ -1941,10 +1941,16 @@ Lo1/lobula/raw/fly/individual source-data 路径。因此 Lo1 数值载荷缺失
 造成的假象，而是当前完整公开 Git 历史的边界。
 
 T4 四源膜电位证据另做了 identity-readiness 审计。官方 Fig.3 工作簿确实完整覆盖
-Tm3 12、Mi1 24、Mi4 19、C3 16 个 millivolt 记录，并有约 10 ms 物理采样间隔；但
-6 个可见 sheet 的全部字符串、自定义属性和列头均无 fly/animal/recording/subject 字段，
-只给出 `Mi1-1…` 等匿名 cell ordinal。此前已校验的 13 个 Edmond 文件中也没有 identity
-sidecar；本轮 Edmond API 超时，故结论严格限定于当前已验证文件子集。固定门下没有一种
+Tm3 12、Mi1 24、Mi4 19、C3 16 个 millivolt 记录，并有约 10 ms 物理采样间隔。工作簿
+6 个可见 sheet 的全部字符串、自定义属性和列头均无实名 fly/animal/recording/subject 字段，
+只给出 `Mi1-1…` 等匿名 cell ordinal；但 ON/OFF 两张 source sheet 的 ordinal 按类型完全
+一一对应。随后取得并校验 Nature 正式 22 页 PDF（8,482,179 bytes，SHA-256
+`f914da58…`），Methods 明确声明所有电生理 sample size 都是 cell 数，且每个 cell 来自
+不同 animal。因此这些 ordinal 可以作为该论文内部稳定的 pseudonymous biological
+individual key，四源数量也都足以划分至少 5 training + 3 validation；它们仍不是 MaleCNS
+body ID，也不提供 external-final 身份或预注册 split 角色。此前已校验的 13 个 Edmond 文件
+中没有独立 identity sidecar；本轮 Edmond API 仍超时，故完整远端 manifest 继续留作未核验。
+固定门下没有一种
 T4 source 同时通过 ON 与 OFF 的逐细胞稳健性：Mi1、C3 峰时延离散显著，Mi4 存在负的
 leave-one-cell-out 个例，而且 Mi4 的 ON 中位峰反而早于 Tm3/Mi1，违反预注册的
 fast/delayed 顺序。因而 alternating-cell split 只能作诊断，不能冒充按 fly 独立验证，

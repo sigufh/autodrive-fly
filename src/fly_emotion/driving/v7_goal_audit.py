@@ -544,7 +544,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "T4_source_biological_individual_ID_available": (
                     t4_source_identity_readiness_audit["transfer_gates"][
-                        "stable_biological_individual_ID_available"
+                        "stable_pseudonymous_biological_individual_ID_available"
                     ]
                 ),
                 "T4_individual_level_source_validation_ready": (

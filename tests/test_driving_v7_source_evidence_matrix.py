@@ -33,7 +33,7 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert report["matrix"][source]["numerical_membrane_voltage"] is True
         assert (
             report["matrix"][source]["gates"]["stable_biological_individual_id_on_allowed_payload"]
-            is False
+            is True
         )
 
 
@@ -87,7 +87,7 @@ def test_C3_identity_and_external_cohort_are_preserved_without_false_authorizati
     assert components["stable_biological_individual_ids_in_any_numerical_payload"] is True
     assert components["independent_external_cohort_with_disjoint_individual_ids"] is True
     assert components["fixed_external_robustness_gate_passed"] is False
-    assert row["gates"]["stable_biological_individual_id_on_allowed_payload"] is False
+    assert row["gates"]["stable_biological_individual_id_on_allowed_payload"] is True
     assert row["gates"]["complete_stimulus_and_baseline_fields_on_allowed_payload"] is False
     assert row["all_contract_gates_passed"] is False
 
