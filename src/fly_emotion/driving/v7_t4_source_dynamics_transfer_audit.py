@@ -38,6 +38,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     crossfit_axis_path = Path(config["crossfit_axis_evidence"])
     crossfit_functional_path = Path(config["crossfit_functional_evidence"])
     crossfit_sequence_path = Path(config["crossfit_sequence_evidence"])
+    retinal_symmetry_path = Path(config["retinal_symmetry_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -78,6 +79,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     )
     crossfit_sequence = json.loads(
         (root / crossfit_sequence_path).read_text(encoding="utf-8")
+    )
+    retinal_symmetry = json.loads(
+        (root / retinal_symmetry_path).read_text(encoding="utf-8")
     )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
@@ -179,6 +183,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(crossfit_axis_path): _sha256(root / crossfit_axis_path),
                 str(crossfit_functional_path): _sha256(root / crossfit_functional_path),
                 str(crossfit_sequence_path): _sha256(root / crossfit_sequence_path),
+                str(retinal_symmetry_path): _sha256(root / retinal_symmetry_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -462,6 +467,14 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "source_sequence_candidate_authorized": crossfit_sequence[
                 "authorize_new_functional_candidate"
             ],
+            "balanced_retina_ordered_direction_pass_count": retinal_symmetry[
+                "maximum_balanced_ordered_direction_pass_count"
+            ],
+            "retinal_sampling_imbalance_explains_direction_failure": (
+                retinal_symmetry[
+                    "retinal_sampling_imbalance_explains_direction_failure"
+                ]
+            ),
         },
         "required_transfer_fields_available": fields,
         "transfer_gates": gates,

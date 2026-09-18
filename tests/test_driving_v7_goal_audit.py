@@ -412,6 +412,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "T4_crossfit_sequence_shuffle_signed_mean_bilateral_subtypes"
     ] == ["a"]
     assert visual["observations"]["T4_crossfit_sequence_authorizes_functional_candidate"] is False
+    assert visual["observations"]["T4_balanced_retina_ordered_direction_pass_count"] == 0
+    assert (
+        visual["observations"]["T4_retinal_sampling_imbalance_explains_direction_failure"]
+        is False
+    )
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

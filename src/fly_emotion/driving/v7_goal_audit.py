@@ -83,6 +83,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_crossfit_sequence_identifiability = reports[
         "t4_crossfit_sequence_identifiability"
     ]
+    t4_crossfit_retinal_symmetry_audit = reports[
+        "t4_crossfit_retinal_symmetry_audit"
+    ]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
@@ -241,6 +244,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
                 config["evidence"]["t4_synapse_crossfit_precheck"],
                 config["evidence"]["t4_crossfit_sequence_identifiability"],
+                config["evidence"]["t4_crossfit_retinal_symmetry_audit"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -851,6 +855,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_crossfit_sequence_authorizes_functional_candidate": (
                     t4_crossfit_sequence_identifiability[
                         "authorize_new_functional_candidate"
+                    ]
+                ),
+                "T4_balanced_retina_ordered_direction_pass_count": (
+                    t4_crossfit_retinal_symmetry_audit[
+                        "maximum_balanced_ordered_direction_pass_count"
+                    ]
+                ),
+                "T4_retinal_sampling_imbalance_explains_direction_failure": (
+                    t4_crossfit_retinal_symmetry_audit[
+                        "retinal_sampling_imbalance_explains_direction_failure"
                     ]
                 ),
                 "T4_synapse_centered_direction_pass_counts": [

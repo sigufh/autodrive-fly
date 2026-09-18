@@ -22,6 +22,7 @@ public_t4_model_source_coverage_evidence: artifacts/v7-public-t4-model-source-co
 crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
 crossfit_functional_evidence: artifacts/v7-t4-synapse-crossfit-precheck.json
 crossfit_sequence_evidence: artifacts/v7-t4-crossfit-sequence-identifiability.json
+retinal_symmetry_evidence: artifacts/v7-t4-crossfit-retinal-symmetry-audit.json
 official_unified_model_recovered_manifest:
   recovery_source: internet_archive_official_page_snapshot
   snapshot_timestamp: "20241127113612"

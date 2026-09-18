@@ -1857,6 +1857,13 @@ kernel、source→MaleCNS 身份映射、物理 v7 采样间隔和 mV→归一�
 因此 `next_candidate_authorized=false`，在新增可验证的 source-dynamics 证据前禁止继续
 扫描 T4 target 端公式。
 
+为检验 T4 的单侧通过是否只是原始受体数量偏差（左 1,107、右 2,237）造成，又复用
+已有的严格配对视网膜控制：每眼各 957 个受体，镜像刺激下逐像素输入误差为零。该控制
+下 source-sequence 的 ordered 方向从原来的最多 2/8 降为 0/8，shuffle signed-mean
+和 static positive-peak 仍分别出现双侧伪阳性。故受体数量不平衡不能解释 T4 方向失败，
+严格镜像输入也不能恢复有序时间特异性；这只是工程归因消融，不是生物视网膜重建，也不
+授权候选。证据见 `artifacts/v7-t4-crossfit-retinal-symmetry-audit.json`。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

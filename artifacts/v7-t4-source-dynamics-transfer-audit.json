@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "335701c2ebfd4ffec25bba131956a9e2ad937231b72ca3367e584303c0482451",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "a7218d9611751eabc24b0273d3208ca899661f1df542a0d6cc04fbf511eff9c9",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "29149ddd99a4535b811adf409d8c06512de93bfec440b7caf835931cbb937571",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "5b567e358cd20e0aa5c82c32d6b51d14bb2fb2c0508861146aa2b4628ebc057b",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -25,7 +25,8 @@
       "artifacts/v7-public-t4-model-source-coverage-audit.json": "07097b03afa0c2d22778dc474750c6394f0a7bf3a98964ab723adeae558de644",
       "artifacts/v7-t4-synapse-crossfit-axis-audit.json": "502767c85c7bc5a6ef68bb57b5d867332e0ef1993e9eb8119794e6bea66ba731",
       "artifacts/v7-t4-synapse-crossfit-precheck.json": "1a52b2154ee31d6a7faeb69840b225ebd3f61ec39f0b87c91c0db90167321116",
-      "artifacts/v7-t4-crossfit-sequence-identifiability.json": "41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60"
+      "artifacts/v7-t4-crossfit-sequence-identifiability.json": "41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60",
+      "artifacts/v7-t4-crossfit-retinal-symmetry-audit.json": "dd3e22253ca8587e299363f8d138836ee83b297816a251244cba55b70051b1ed"
     },
     "required_sources": [
       "Mi1",
@@ -246,7 +247,9 @@
     "shuffle_signed_mean_bilateral_direction_subtypes": [
       "a"
     ],
-    "source_sequence_candidate_authorized": false
+    "source_sequence_candidate_authorized": false,
+    "balanced_retina_ordered_direction_pass_count": 0,
+    "retinal_sampling_imbalance_explains_direction_failure": false
   },
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,

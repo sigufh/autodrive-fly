@@ -1,0 +1,34 @@
+version: 1
+name: v7-t4-crossfit-retinal-symmetry-audit
+observed_on: "2026-09-18"
+reference_sequence_evidence: artifacts/v7-t4-crossfit-sequence-identifiability.json
+reference_sequence_protocol: configs/driving-v7-t4-crossfit-sequence-identifiability.yaml
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t4-synapse-crossfit-axis-audit.yaml
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+retina_audit_evidence: artifacts/v7-retina-column-audit.json
+condition_id: S1-T01
+reference_retinal_geometry: nested_t4_axis_v1
+control_retinal_geometry: balanced_exact_mirror_v1
+source_groups:
+  fast: [Mi1, Tm3]
+  delayed: [Mi4, C3]
+temporal_reductions: [positive_peak, signed_mean]
+modes: [ordered, temporal_shuffle, static_sham]
+temporal_shuffle_seed: 20260918
+boundary:
+  post_failure_diagnostic_only: true
+  balanced_retina_is_engineering_ablation_not_biological_reconstruction: true
+  no_candidate_selected: true
+  no_parameter_fit: true
+  no_gate_authorization: true
+  every_valid_target_axis_is_out_of_fold: true
+  target_labels_used_only_for_posthoc_scoring: true
+  fixed_whole_population_denominators: true
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

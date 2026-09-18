@@ -158,6 +158,8 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert all(not values for values in crossfit["ordered_bilateral_direction_subtypes"].values())
     assert crossfit["shuffle_signed_mean_bilateral_direction_subtypes"] == ["a"]
     assert crossfit["source_sequence_candidate_authorized"] is False
+    assert crossfit["balanced_retina_ordered_direction_pass_count"] == 0
+    assert crossfit["retinal_sampling_imbalance_explains_direction_failure"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:
