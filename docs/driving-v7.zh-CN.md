@@ -1761,6 +1761,21 @@ native-time 方向差模板；`authorize_T5_direction_template=false`，拟合�
 这不授权翻转 a/b 标签，也不授权 CT1 动态候选。证据见
 `artifacts/v7-t5-ct1-terminal-axis-audit.json`。
 
+原生 CT1 轴的 a/b 系统反向、c/d 正向且镜像通过，提示坐标约定而非随机噪声。为避免
+复用 T4 mapping，随后只用 T5 自身结构做每眼独立的 nested 标定：四亚型各一半 body
+拟合二维正交/反射变换，另一半 held out。6,713 个有效 target 中 fit/held-out 为
+3,301/3,412、body ID 零重叠；held-out 平均准确率约 88.5%，中位角误差约 14.4°，
+高于 256 个 random orthogonal baseline 的 95 分位约 60.6%，镜像门也通过。该结果只
+授权一个单条件 tuning precheck，不是功能验证。
+
+获授权的 `S1-T01` 候选严格拆分 Tm1/Tm2/Tm4 快兴奋、Tm9 独立 enhancer 与 CT1
+慢抑制，计算 `fast_now×CT1_prev−CT1_now×fast_prev`，不读取 subtype 或方向标签。四个
+预注册 gain 均只让 T5d 左右双侧方向通过（方向 2/8），而 OFF 极性为 0/8；按最低门
+补跑的 temporal-shuffle 与 static-sham 均为方向 0/8，说明 T5d 分量确实依赖有序运动。
+然而完整方向/极性门均未过，因此不运行 T02/T03、不接 calibration，也不解冻 LPLC。
+证据见 `artifacts/v7-t5-ct1-axis-calibration.json` 与
+`artifacts/v7-t5-ct1-source-dynamics-precheck.json`。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

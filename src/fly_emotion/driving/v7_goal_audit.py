@@ -114,6 +114,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t5_native_direction_waveform_audit"
     ]
     t5_ct1_terminal_axis_audit = reports["t5_ct1_terminal_axis_audit"]
+    t5_ct1_axis_calibration = reports["t5_ct1_axis_calibration"]
+    t5_ct1_source_dynamics_precheck = reports[
+        "t5_ct1_source_dynamics_precheck"
+    ]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -206,6 +210,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_typed_spatial_pair_precheck"],
                 config["evidence"]["t5_native_direction_waveform_audit"],
                 config["evidence"]["t5_ct1_terminal_axis_audit"],
+                config["evidence"]["t5_ct1_axis_calibration"],
+                config["evidence"]["t5_ct1_source_dynamics_precheck"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
@@ -308,6 +314,40 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     t5_ct1_terminal_axis_audit[
                         "authorize_CT1_spatial_dynamics_candidate"
                     ]
+                ),
+                "T5_CT1_axis_held_out_accuracy": t5_ct1_axis_calibration[
+                    "held_out_accuracy_mean"
+                ],
+                "T5_CT1_axis_held_out_median_angle_degrees": (
+                    t5_ct1_axis_calibration[
+                        "held_out_median_angle_error_mean_degrees"
+                    ]
+                ),
+                "T5_CT1_axis_calibration_passed": t5_ct1_axis_calibration[
+                    "T5_CT1_axis_calibration_passed"
+                ],
+                "T5_CT1_dynamics_ordered_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t5_ct1_source_dynamics_precheck[
+                        "ordered_candidates"
+                    ]
+                ],
+                "T5_CT1_dynamics_ordered_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t5_ct1_source_dynamics_precheck[
+                        "ordered_candidates"
+                    ]
+                ],
+                "T5_CT1_dynamics_control_direction_pass_counts": {
+                    mode: [
+                        item["direction_pass_count"] for item in by_gain.values()
+                    ]
+                    for mode, by_gain in t5_ct1_source_dynamics_precheck[
+                        "control_results"
+                    ].items()
+                },
+                "T5_CT1_dynamics_strict_candidate_passed": (
+                    t5_ct1_source_dynamics_precheck["ordered_precheck_passed"]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"

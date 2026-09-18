@@ -100,6 +100,29 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "T5d_R",
     ]
     assert visual["observations"]["T5_CT1_terminal_axis_candidate_authorized"] is False
+    assert visual["observations"]["T5_CT1_axis_held_out_accuracy"] > 0.88
+    assert visual["observations"]["T5_CT1_axis_held_out_median_angle_degrees"] < 15
+    assert visual["observations"]["T5_CT1_axis_calibration_passed"] is True
+    assert visual["observations"]["T5_CT1_dynamics_ordered_direction_pass_counts"] == [
+        2,
+        2,
+        2,
+        2,
+    ]
+    assert visual["observations"]["T5_CT1_dynamics_ordered_polarity_pass_counts"] == [
+        0,
+        0,
+        0,
+        0,
+    ]
+    assert set(
+        value
+        for counts in visual["observations"][
+            "T5_CT1_dynamics_control_direction_pass_counts"
+        ].values()
+        for value in counts
+    ) == {0}
+    assert visual["observations"]["T5_CT1_dynamics_strict_candidate_passed"] is False
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},
