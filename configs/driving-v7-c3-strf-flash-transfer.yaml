@@ -23,6 +23,8 @@ transfer:
 bootstrap:
   seed: 20260918
   replicates: 1000
+  source_unit: fly_with_all_available_axes_retained
+  external_unit: fly
 gates:
   minimum_external_mean_correlation: 0.80
   minimum_median_external_fly_correlation: 0.80
@@ -31,6 +33,7 @@ gates:
   minimum_source_leave_one_fly_out_correlation: 0.80
 boundary:
   source_and_external_fly_ids_disjoint: true
+  source_axes_not_treated_as_independent_bootstrap_units: true
   raw_STRF_not_fit_or_deconvolved: true
   moving_edge_voltage_not_used: true
   no_T4_response_or_direction_label_used: true

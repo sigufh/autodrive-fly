@@ -1707,7 +1707,10 @@ T5 各 32 个 source-type×population 单元均为 0/32 通过；T4 比值约 3.
 排除这 5 只重叠 fly，只在其余 22 只独立 fly 上比较 0–2 s 波形。独立 fly 的相关范围为
 0.840–0.977，中位约 0.938，群体均值相关约 0.973；每次留掉一只 source fly 后的外部
 均值相关仍为 0.935–0.973。但对 source unit 与 external fly 同时重采样的 1,000 次严格
-bootstrap，其相关 5% 分位仅约 0.619，低于继承的 0.80 门。因此这证明 C3 STRF 在群体
+bootstrap 必须以整只 source fly 为单位并同时保留该 fly 的所有轴；修正后相关 5% 分位
+仅约 0.111（此前把 7 个 fly×axis 当独立 source 单元得到的 0.619 不再作为正式结果），
+低于继承的 0.80 门。external-only bootstrap 5% 仍约 0.941，说明不确定性主要来自只有
+5 只 STRF source fly。因此这证明 C3 STRF 在群体
 平均层面有真实跨模态预测力，却仍不足以授权一个稳健的共享 C3 kernel，更没有完成到
 MaleCNS body 与 v7 状态单位的映射。证据见
 `artifacts/v7-c3-strf-flash-transfer.json`。

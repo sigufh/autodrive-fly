@@ -29,6 +29,10 @@ def test_c3_strf_step_prediction_obeys_preregistered_robustness_gate() -> None:
     validation = report["external_validation"]
     assert validation["mean_waveform_correlation"] > 0.80
     assert validation["per_fly_correlation_summary"]["count"] == 22
+    assert validation["bootstrap"]["source_resampling_unit"] == (
+        "fly_with_all_available_axes_retained"
+    )
+    assert validation["bootstrap"]["correlation_p05"] < 0.12
     assert report["C3_source_kernel_candidate_authorized"] is False
     assert report["advance_to_T4_functional_precheck"] is False
     assert report["boundary"]["source_kernel_not_yet_mapped_to_MaleCNS_bodies"] is True

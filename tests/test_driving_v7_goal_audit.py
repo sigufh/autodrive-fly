@@ -364,7 +364,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["C3_measured_filter_type_shared_kernel_authorized"] is False
     assert visual["observations"]["C3_STRF_flash_external_fly_count"] == 22
     assert visual["observations"]["C3_STRF_flash_mean_correlation"] > 0.97
-    assert visual["observations"]["C3_STRF_flash_bootstrap_p05"] < 0.62
+    assert visual["observations"]["C3_STRF_flash_bootstrap_p05"] < 0.12
     assert visual["observations"]["C3_STRF_flash_transfer_passed"] is False
     assert visual["observations"]["public_T4_models_C3_specific_parameters_available"] is False
     assert visual["observations"]["public_T4_models_complete_source_transfer_authorized"] is False

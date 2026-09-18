@@ -135,10 +135,27 @@ def evaluate_v7_c3_strf_flash_transfer(root: Path) -> dict:
             }
         )
     rng = np.random.default_rng(int(config["bootstrap"]["seed"]))
+    source_fly_predictions = {
+        fly: np.mean(
+            [
+                prediction
+                for prediction, item in zip(predictions, units, strict=True)
+                if item["fly"] == fly
+            ],
+            axis=0,
+        )
+        for fly in source_flies
+    }
     bootstrap = []
     for _ in range(int(config["bootstrap"]["replicates"])):
+        sampled_source_indices = rng.integers(
+            0, len(source_flies), len(source_flies)
+        )
         sampled_prediction = _unit(
-            np.mean(predictions[rng.integers(0, len(predictions), len(predictions))], axis=0)
+            np.mean(
+                [source_fly_predictions[source_flies[index]] for index in sampled_source_indices],
+                axis=0,
+            )
         )
         sampled_external = _unit(
             np.mean(
@@ -205,6 +222,8 @@ def evaluate_v7_c3_strf_flash_transfer(root: Path) -> dict:
                 "replicates": int(config["bootstrap"]["replicates"]),
                 "correlation_p05": float(np.quantile(bootstrap, 0.05)),
                 "correlation_median": float(np.median(bootstrap)),
+                "source_resampling_unit": config["bootstrap"]["source_unit"],
+                "external_resampling_unit": config["bootstrap"]["external_unit"],
             },
         },
         "transfer_gates": gate_values,

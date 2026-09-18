@@ -87,7 +87,7 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert flash["external_flash_fly_count"] == 22
     assert flash["mean_waveform_correlation"] > 0.97
     assert flash["minimum_external_fly_correlation"] > 0.83
-    assert flash["bootstrap_correlation_p05"] < 0.62
+    assert flash["bootstrap_correlation_p05"] < 0.12
     assert flash["transfer_passed"] is False
     assert flash["source_kernel_candidate_authorized"] is False
     fig1 = report["verified_Fig1_source_temporal_readiness"]

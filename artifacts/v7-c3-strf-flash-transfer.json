@@ -3,8 +3,8 @@
     "name": "v7-c3-strf-to-independent-flash-transfer",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-c3-strf-flash-transfer.yaml": "bbaf137ec59e793d9732b7ed9407a7befb97ac2a49688f4d6c31c20d6ef2d306",
-      "src/fly_emotion/driving/v7_c3_strf_flash_transfer.py": "c5262a66a4d9b06c6479691921678ab327a5a4da36c9c0afb9ab15238890361d",
+      "configs/driving-v7-c3-strf-flash-transfer.yaml": "f57deebc2c1c7070253f6ca5e1af5f8490eadb305b7fe743e144e15a7db7acb8",
+      "src/fly_emotion/driving/v7_c3_strf_flash_transfer.py": "97a66b9d761da76e58eebb9a617729ceb00dda1e5cfda62d26b3c90e9f711459",
       "configs/driving-v7-c3-strf-source-dynamics-audit.yaml": "50d6d1149feebc6ad349bd308594fb9364ecb58192f1265c31dfc390fa742f4f",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-c3-flash-preregistration.json": "d1d75b92cdbe7fc480ddf378e635d199ec1a50380512a47969623ea1b494bc74",
@@ -134,8 +134,10 @@
     "bootstrap": {
       "seed": 20260918,
       "replicates": 1000,
-      "correlation_p05": 0.6192335647249534,
-      "correlation_median": 0.9360259033563882
+      "correlation_p05": 0.10741691515057676,
+      "correlation_median": 0.8902024316499483,
+      "source_resampling_unit": "fly_with_all_available_axes_retained",
+      "external_resampling_unit": "fly"
     }
   },
   "transfer_gates": {
@@ -152,6 +154,7 @@
   "stop_reason": "C3_STRF_step_prediction_failed_independent_flash_robustness",
   "boundary": {
     "source_and_external_fly_ids_disjoint": true,
+    "source_axes_not_treated_as_independent_bootstrap_units": true,
     "raw_STRF_not_fit_or_deconvolved": true,
     "moving_edge_voltage_not_used": true,
     "no_T4_response_or_direction_label_used": true,
