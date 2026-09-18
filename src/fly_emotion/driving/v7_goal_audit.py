@@ -85,6 +85,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
     arenz_source_dynamics_audit = reports["arenz_source_dynamics_audit"]
+    arenz_t5_source_dynamics_audit = reports["arenz_t5_source_dynamics_audit"]
     c3_strf_source_dynamics_audit = reports["c3_strf_source_dynamics_audit"]
     c3_strf_flash_transfer = reports["c3_strf_flash_transfer"]
     fig1_source_temporal_readiness_audit = reports[
@@ -112,6 +113,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_native_direction_waveform_audit = reports[
         "t5_native_direction_waveform_audit"
     ]
+    t5_ct1_terminal_axis_audit = reports["t5_ct1_terminal_axis_audit"]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -203,6 +205,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_source_pair_precheck"],
                 config["evidence"]["t5_typed_spatial_pair_precheck"],
                 config["evidence"]["t5_native_direction_waveform_audit"],
+                config["evidence"]["t5_ct1_terminal_axis_audit"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
@@ -214,6 +217,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
                 config["evidence"]["arenz_source_dynamics_audit"],
+                config["evidence"]["arenz_t5_source_dynamics_audit"],
                 config["evidence"]["c3_strf_source_dynamics_audit"],
                 config["evidence"]["c3_strf_flash_transfer"],
                 config["evidence"]["fig1_source_temporal_readiness_audit"],
@@ -285,6 +289,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_native_waveform_template_authorized": (
                     t5_native_direction_waveform_audit[
                         "authorize_T5_direction_template"
+                    ]
+                ),
+                "T5_CT1_terminal_mapping_R2_by_eye": {
+                    eye: item["R2_by_coordinate"]
+                    for eye, item in t5_ct1_terminal_axis_audit[
+                        "mapping_holdout"
+                    ].items()
+                },
+                "T5_CT1_terminal_axis_passing_populations": [
+                    name
+                    for name, item in t5_ct1_terminal_axis_audit[
+                        "population_results"
+                    ].items()
+                    if item["passed"]
+                ],
+                "T5_CT1_terminal_axis_candidate_authorized": (
+                    t5_ct1_terminal_axis_audit[
+                        "authorize_CT1_spatial_dynamics_candidate"
                     ]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
@@ -716,6 +738,25 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Arenz_source_filter_candidate_authorized": arenz_source_dynamics_audit[
                     "source_filter_candidate_authorized"
                 ],
+                "Arenz_T5_source_coverage_fraction": arenz_t5_source_dynamics_audit[
+                    "T5_source_contract"
+                ]["coverage_fraction"],
+                "Arenz_T5_raw_filter_contract_complete": arenz_t5_source_dynamics_audit[
+                    "raw_T5_calcium_filter_contract_complete"
+                ],
+                "Arenz_T5_deconvolved_filter_contract_complete": (
+                    arenz_t5_source_dynamics_audit[
+                        "deconvolved_T5_filter_contract_complete"
+                    ]
+                ),
+                "Arenz_T5_Tm9_deconvolved_R2": arenz_t5_source_dynamics_audit[
+                    "paper_model"
+                ]["parameters"]["Tm9"]["deconvolved"]["R2"],
+                "Arenz_T5_source_filter_transfer_authorized": (
+                    arenz_t5_source_dynamics_audit[
+                        "T5_source_filter_transfer_authorized"
+                    ]
+                ),
                 "C3_STRF_numerical_data_verified": c3_strf_source_dynamics_audit[
                     "C3_STRF_numerical_data_verified"
                 ],

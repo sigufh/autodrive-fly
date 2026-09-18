@@ -1,0 +1,145 @@
+{
+  "protocol": {
+    "name": "v7-arenz-2017-t5-source-dynamics-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-arenz-t5-source-dynamics-audit.yaml": "526e4a442e36373b18330b09e3144bbf40c5dd315aeb46d83e994de688806efa",
+      "src/fly_emotion/driving/v7_arenz_t5_source_dynamics_audit.py": "895071f0e92b45072af06b63677b4b7f3c7645c9dd9ab8844ee393dc88d5f181",
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "artifacts/v7-t5-label-audit.json": "6225d7374c67e6a34f778e55ae266641eda35ad0e30d3c6dcf0f8ef20cd85a7e"
+    },
+    "paper_doi": "10.1016/j.cub.2017.01.051",
+    "supplement": {
+      "path": "data/raw/t4-fig3-source-dynamics/Arenz2017-Supplement.pdf",
+      "bytes": 5368176,
+      "sha256": "492f7349d196dfd1630f29639f0ce98c163dedf12f6bf305e075b454666fc455",
+      "table": "S2",
+      "page_one_based": 11,
+      "actual_sha256": "492f7349d196dfd1630f29639f0ce98c163dedf12f6bf305e075b454666fc455"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "T5_source_contract": {
+    "required_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "covered_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "coverage_fraction": 1.0
+  },
+  "paper_model": {
+    "GCaMP6f_deconvolution_low_pass_seconds": 0.35,
+    "parameter_source": "manually_transcribed_and_visually_verified_from_official_Table_S2",
+    "parameters": {
+      "Tm1": {
+        "class": "band_pass",
+        "raw": {
+          "amplitude": 1.419,
+          "tHP_seconds": 0.632,
+          "tLP_seconds": 0.271,
+          "R2": 0.978
+        },
+        "deconvolved": {
+          "amplitude": 1.117,
+          "tHP_seconds": 0.296,
+          "tLP_seconds": 0.044,
+          "R2": 0.895
+        }
+      },
+      "Tm2": {
+        "class": "band_pass",
+        "raw": {
+          "amplitude": 1.068,
+          "tHP_seconds": 0.962,
+          "tLP_seconds": 0.113,
+          "R2": 0.979
+        },
+        "deconvolved": {
+          "amplitude": 1.038,
+          "tHP_seconds": 0.153,
+          "tLP_seconds": 0.014,
+          "R2": 0.893
+        }
+      },
+      "Tm4": {
+        "class": "band_pass",
+        "raw": {
+          "amplitude": 1.218,
+          "tHP_seconds": 0.788,
+          "tLP_seconds": 0.186,
+          "R2": 0.972
+        },
+        "deconvolved": {
+          "amplitude": 1.018,
+          "tHP_seconds": 0.249,
+          "tLP_seconds": 0.024,
+          "R2": 0.807
+        }
+      },
+      "Tm9": {
+        "class": "low_pass",
+        "raw": {
+          "amplitude": 0.961,
+          "tLP_seconds": 0.462,
+          "R2": 0.985
+        },
+        "deconvolved": {
+          "amplitude": 0.827,
+          "tLP_seconds": 0.017,
+          "R2": 0.273
+        }
+      }
+    },
+    "raw_temporal_fit_gates": {
+      "Tm1": true,
+      "Tm2": true,
+      "Tm4": true,
+      "Tm9": true
+    },
+    "deconvolved_temporal_fit_gates": {
+      "Tm1": true,
+      "Tm2": true,
+      "Tm4": true,
+      "Tm9": false
+    }
+  },
+  "transfer_gates": {
+    "supplement_verified": true,
+    "every_required_source_covered": true,
+    "every_raw_temporal_fit_passed": true,
+    "every_deconvolved_temporal_fit_passed": false,
+    "physical_v7_timebase_available": false,
+    "stable_recorded_cell_to_MaleCNS_mapping_available": false
+  },
+  "raw_T5_calcium_filter_contract_complete": true,
+  "deconvolved_T5_filter_contract_complete": false,
+  "T5_source_filter_transfer_authorized": false,
+  "advance_to_T5_functional_precheck": false,
+  "blocking_requirements": [
+    "every_deconvolved_temporal_fit_passed",
+    "physical_v7_timebase_available",
+    "stable_recorded_cell_to_MaleCNS_mapping_available"
+  ],
+  "stop_reason": "Arenz_T5_filters_fail_deconvolution_or_v7_transfer_identifiability",
+  "boundary": {
+    "read_only_literature_audit": true,
+    "calcium_filters_are_not_membrane_voltage_kernels": true,
+    "deconvolution_uses_assumed_GCaMP6f_350ms_low_pass": true,
+    "raw_filters_may_describe_calcium_only": true,
+    "Tm1_Tm2_Tm4_remain_fast_sources": true,
+    "Tm9_kept_separate_from_CT1": true,
+    "no_T4_axis_mapping_reused": true,
+    "no_parameter_fit_in_this_audit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

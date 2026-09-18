@@ -1749,6 +1749,24 @@ recording file 内的 `PD−ND` 波形，并在条件内共同时间交集上做
 剔除 cell。故公开数据支持稳定的正 DSI 表型，却不支持一个跨 recording file 共享的
 native-time 方向差模板；`authorize_T5_direction_template=false`，拟合和视觉门继续冻结。
 证据见 `artifacts/v7-t5-native-direction-waveform-audit.json`。
+
+按论文“trailing-side 慢抑制”机制又对 CT1 做了纯结构终末定位，而没有把 CT1 与 Tm9
+合并。用 Tm1/Tm2/Tm9 的已知 optic-hex 身份和其落在 T5 上的突触终末，按 source body
+五折拟合每眼独立的 3D 终末坐标→二维视网膜坐标映射。两眼留出坐标 R² 均超过 0.987，
+但中位误差约 1.76/1.96 hex，略高于预注册的 √3 门；从 CT1 终末指向 Tm1/Tm2/Tm4
+快源终末的轴仅 T5c/d 四群体符合冻结方向，T5a/b 四群体系统性反向，镜像本身通过。
+这不授权翻转 a/b 标签，也不授权 CT1 动态候选。证据见
+`artifacts/v7-t5-ct1-terminal-axis-audit.json`。
+
+重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
+Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
+Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。
+对应 raw 时间常数为 Tm1 `tHP=0.632 s,tLP=0.271 s`、Tm2
+`0.962/0.113 s`、Tm4 `0.788/0.186 s`、Tm9 `tLP=0.462 s`。但按跨实验假设的
+350 ms GCaMP6f 低通去卷积后，Tm9 的 R² 只有 0.273，远低于 0.80；v7 的物理 dt
+和记录细胞→MaleCNS body 映射也仍缺失。因此 raw calcium filter 合同完整，但不可当作
+已验证膜电位核或直接接入 T5。证据见
+`artifacts/v7-arenz-t5-source-dynamics-audit.json`。
 证据见 `artifacts/v7-t5-label-audit.json`。
 
 LPLC1 也完成了独立的近碰撞单条件 precheck，不复用 LPLC2 radial 或 LC4 speed 规则。

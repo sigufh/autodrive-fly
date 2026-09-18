@@ -1,0 +1,42 @@
+version: 1
+name: v7-t5-ct1-terminal-axis-audit
+observed_on: "2026-09-18"
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+synapse_partners: data/raw/malecns-v1.0/syn-partners.feather
+body_ids: data/processed/malecns-v1.0/body_ids.npy
+label_evidence: artifacts/v7-t5-label-audit.json
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+mapping:
+  anchors: [Tm1, Tm2, Tm9]
+  predicted_sources: [Tm1, Tm2, Tm4, CT1]
+  predictor: affine_postsynaptic_xyz_to_optic_hex_xy_per_eye
+  source_unit: presynaptic_body_contact_centroid_over_T5_targets
+  split: five_fold_by_source_body_id
+  split_seed: 20260918
+  left_eye_horizontal_reflection: true
+axis:
+  fast_sources: [Tm1, Tm2, Tm4]
+  suppressor: CT1
+  enhancer_kept_separate: Tm9
+  definition: fast_terminal_centroid_minus_CT1_terminal_centroid
+  literature_role: slow_inhibition_on_trailing_side_points_from_CT1_toward_fast_as_PD
+gates:
+  minimum_holdout_R2_each_coordinate: 0.80
+  maximum_holdout_median_error_hex_units: 1.7320508075688772
+  minimum_target_valid_fraction: 0.80
+  minimum_median_expected_cosine: 0.10
+  minimum_positive_alignment_fraction: 0.60
+  maximum_population_mirror_axis_error: 0.20
+  require_every_population_and_mirror: true
+boundary:
+  structure_only: true
+  source_body_holdout_disjoint: true
+  no_T5_subtype_or_direction_label_used_for_mapping: true
+  labels_used_only_for_posthoc_axis_scoring: true
+  Tm1_Tm2_Tm4_remain_fast_sources: true
+  Tm9_and_CT1_not_merged: true
+  CT1_is_not_treated_as_C3: true
+  no_parameter_fit_to_neural_response: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

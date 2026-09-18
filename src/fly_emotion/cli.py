@@ -34,6 +34,9 @@ from .driving.v7 import (
 from .driving.v7_arenz_source_dynamics_audit import (
     evaluate_v7_arenz_source_dynamics_audit,
 )
+from .driving.v7_arenz_t5_source_dynamics_audit import (
+    evaluate_v7_arenz_t5_source_dynamics_audit,
+)
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
 from .driving.v7_c3_analytic_filter_precheck import (
     evaluate_v7_c3_analytic_filter_precheck,
@@ -188,6 +191,9 @@ from .driving.v7_t4t5_local_edge_precheck import evaluate_v7_t4t5_local_edge_pre
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_continuous_moment_precheck import (
     evaluate_v7_t5_continuous_moment_precheck,
+)
+from .driving.v7_t5_ct1_terminal_axis_audit import (
+    evaluate_v7_t5_ct1_terminal_axis_audit,
 )
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
@@ -394,6 +400,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
+    subparsers.add_parser("v7-audit-arenz-t5-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
     subparsers.add_parser("v7-audit-c3-flash-preregistration")
     subparsers.add_parser("v7-audit-c3-strf-flash-transfer")
@@ -419,6 +426,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
     subparsers.add_parser("v7-evaluate-t5-typed-spatial-pair-precheck")
     subparsers.add_parser("v7-audit-t5-native-direction-waveforms")
+    subparsers.add_parser("v7-audit-t5-ct1-terminal-axis")
     subparsers.add_parser("v7-evaluate-t5-continuous-moment-precheck")
     subparsers.add_parser("v7-evaluate-lplc1-near-collision-precheck")
     subparsers.add_parser("v7-audit-lplc1-input-structure")
@@ -1121,6 +1129,14 @@ def main() -> None:
         )
         print(target)
         return
+    if args.command == "v7-audit-t5-ct1-terminal-axis":
+        report = evaluate_v7_t5_ct1_terminal_axis_audit(root)
+        target = root / "artifacts/v7-t5-ct1-terminal-axis-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
     if args.command == "v7-evaluate-t5-continuous-moment-precheck":
         report = evaluate_v7_t5_continuous_moment_precheck(root)
         target = root / "artifacts/v7-t5-continuous-moment-precheck.json"
@@ -1223,6 +1239,14 @@ def main() -> None:
         report = evaluate_v7_arenz_source_dynamics_audit(root)
         target = root / "artifacts/v7-arenz-source-dynamics-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-arenz-t5-source-dynamics":
+        report = evaluate_v7_arenz_t5_source_dynamics_audit(root)
+        target = root / "artifacts/v7-arenz-t5-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-c3-strf-source-dynamics":

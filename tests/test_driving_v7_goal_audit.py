@@ -91,6 +91,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_native_waveform_condition_count"] == 12
     assert visual["observations"]["T5_native_waveform_passing_condition_count"] == 1
     assert visual["observations"]["T5_native_waveform_template_authorized"] is False
+    for values in visual["observations"]["T5_CT1_terminal_mapping_R2_by_eye"].values():
+        assert min(values) > 0.98
+    assert visual["observations"]["T5_CT1_terminal_axis_passing_populations"] == [
+        "T5c_L",
+        "T5c_R",
+        "T5d_L",
+        "T5d_R",
+    ]
+    assert visual["observations"]["T5_CT1_terminal_axis_candidate_authorized"] is False
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},
@@ -314,6 +323,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Arenz_current_source_coverage_fraction"] == 0.75
     assert visual["observations"]["Arenz_missing_current_sources"] == ["C3"]
     assert visual["observations"]["Arenz_source_filter_candidate_authorized"] is False
+    assert visual["observations"]["Arenz_T5_source_coverage_fraction"] == 1.0
+    assert visual["observations"]["Arenz_T5_raw_filter_contract_complete"] is True
+    assert visual["observations"]["Arenz_T5_deconvolved_filter_contract_complete"] is False
+    assert visual["observations"]["Arenz_T5_Tm9_deconvolved_R2"] == 0.273
+    assert visual["observations"]["Arenz_T5_source_filter_transfer_authorized"] is False
     assert visual["observations"]["C3_STRF_numerical_data_verified"] is True
     assert visual["observations"]["C3_direct_temporal_measurement_available"] is True
     assert visual["observations"]["combined_source_temporal_evidence_complete"] is True

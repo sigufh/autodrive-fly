@@ -73,6 +73,7 @@ evidence:
   fig3_source_kernel_audit: artifacts/v7-fig3-source-kernel-audit.json
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json
   arenz_source_dynamics_audit: artifacts/v7-arenz-source-dynamics-audit.json
+  arenz_t5_source_dynamics_audit: artifacts/v7-arenz-t5-source-dynamics-audit.json
   c3_strf_source_dynamics_audit: artifacts/v7-c3-strf-source-dynamics-audit.json
   c3_strf_flash_transfer: artifacts/v7-c3-strf-flash-transfer.json
   fig1_source_temporal_readiness_audit: artifacts/v7-fig1-source-temporal-readiness-audit.json
@@ -92,6 +93,7 @@ evidence:
   t5_source_pair_precheck: artifacts/v7-t5-source-pair-precheck.json
   t5_typed_spatial_pair_precheck: artifacts/v7-t5-typed-spatial-pair-precheck.json
   t5_native_direction_waveform_audit: artifacts/v7-t5-native-direction-waveform-audit.json
+  t5_ct1_terminal_axis_audit: artifacts/v7-t5-ct1-terminal-axis-audit.json
   t5_continuous_moment_precheck: artifacts/v7-t5-continuous-moment-precheck.json
   lplc1_near_collision_precheck: artifacts/v7-lplc1-near-collision-precheck.json
   lplc1_input_structure: artifacts/v7-lplc1-input-structure.json
