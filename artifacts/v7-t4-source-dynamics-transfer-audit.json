@@ -3,14 +3,15 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-17",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "32ffbd624435ba776dc83f3152fcbcbcb173c6121a669467cb204d6b41e4a265",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b55241f76d121a997b377a9374c02004a872020452d1dc917838ed8444a427ec",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "772645069d26ab26ad28d53da6aa5387c00408bbfdb4d5d3812dfea2f21a750f",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "3186384d172ac15b9beeb8b2361a9b7dd136f332ce73522bcd39fb2f1b737a61",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
-      "artifacts/v7-unified-model-package-audit.json": "364f69f255962bc50aeb7f4e15dd220fac284cae2b6a98a5c49f8be36aeb4358"
+      "artifacts/v7-unified-model-package-audit.json": "fba08d06da7f8189cbfa8fc6c6c9ea19c9564f0ed9054791273b988dab365a89",
+      "artifacts/v7-fig3-source-kernel-audit.json": "919a985db8afe88ee852977b4ebd551e145fe9bff639dd82c1e7c8c77d967aa6"
     },
     "required_sources": [
       "Mi1",
@@ -109,6 +110,12 @@
     "cardinal_diagonal_to_subtype_mapping_available": false,
     "independent_cell_holdout_available": false,
     "MaleCNS_source_kernel_transfer_authorized": false
+  },
+  "verified_fig3_source_kernel_readiness": {
+    "source_workbook_verified": true,
+    "ON_source_specific_kernels_ready": false,
+    "prior_two_pool_kernel_authorized": false,
+    "source_specific_kernel_candidate_authorized": false
   },
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,

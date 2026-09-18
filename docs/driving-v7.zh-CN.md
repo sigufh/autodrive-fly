@@ -1578,6 +1578,18 @@ cardinal/diagonal 到 T4a–d 的映射和独立细胞 holdout 也不存在。�
 模型包和 T4 目标级参数已验证”，但仍不能声称得到 MaleCNS source-type 动态核，也不授权
 功能候选。证据见 `artifacts/v7-unified-model-package-audit.json`。
 
+Edmond 主机暂时不可连接后，PMC 随论文提供的 `Source Data Fig. 3` XLSX 经浏览器 POW
+challenge 成功取得并验证。其 ON/OFF 两张表完整包含 Mi9=29、Tm3=12、Mi1=24、
+Mi4=19、C3=16 个逐细胞轨迹，0–7.99 s、10 ms 步长；另外四张表含五类合成
+conductance 和 33 个 T4 电压。使用既有 LED crossing，只从 source 轨迹、固定
+2.5–3.5 s 基线和 1.5 s 响应窗提取标签盲经验核。ON 条件下 Tm3/Mi1/Mi4/C3
+逐细胞峰时中位约为 125/175/110/480 ms；Mi4 比 Tm3/Mi1 反而早约 15/65 ms，只有
+C3 晚约 305–355 ms。因此原 `[Tm3,Mi1]` fast 对 `[Mi4,C3]` delayed 二池假设不成立。
+稳定性方面 Tm3、Mi4 通过，但 Mi1 奇偶细胞核相关仅 0.650，C3 峰时 IQR 约
+762.5 ms，未通过预注册门；OFF 条件也未达到四类全通过。故既不授权旧二池 kernel，
+也不授权直接使用四类 source-specific kernel。证据见
+`artifacts/v7-fig3-source-kernel-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

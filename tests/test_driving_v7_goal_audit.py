@@ -284,6 +284,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["unified_model_package_files_verified"] is True
     assert visual["observations"]["unified_model_T4_target_parameters_available"] is True
     assert visual["observations"]["unified_model_MaleCNS_source_transfer_authorized"] is False
+    assert visual["observations"]["fig3_ON_source_specific_kernels_ready"] is False
+    assert visual["observations"]["fig3_prior_two_pool_kernel_authorized"] is False
+    assert visual["observations"]["fig3_source_specific_kernel_candidate_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

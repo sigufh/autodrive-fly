@@ -23,6 +23,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     microstep_path = Path(config["microstep_evidence"])
     unified_path = Path(config["official_unified_model_evidence"])
     verified_unified_path = Path(config["verified_unified_model_evidence"])
+    fig3_kernel_path = Path(config["fig3_source_kernel_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -31,6 +32,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     verified_unified = json.loads(
         (root / verified_unified_path).read_text(encoding="utf-8")
     )
+    fig3_kernel = json.loads((root / fig3_kernel_path).read_text(encoding="utf-8"))
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -102,6 +104,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(microstep_path): _sha256(root / microstep_path),
                 str(unified_path): _sha256(root / unified_path),
                 str(verified_unified_path): _sha256(root / verified_unified_path),
+                str(fig3_kernel_path): _sha256(root / fig3_kernel_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -173,6 +176,18 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "MaleCNS_source_kernel_transfer_authorized": verified_unified[
                 "MaleCNS_source_kernel_transfer_authorized"
+            ],
+        },
+        "verified_fig3_source_kernel_readiness": {
+            "source_workbook_verified": True,
+            "ON_source_specific_kernels_ready": fig3_kernel[
+                "ON_source_specific_kernels_ready"
+            ],
+            "prior_two_pool_kernel_authorized": fig3_kernel[
+                "prior_two_pool_kernel_authorized"
+            ],
+            "source_specific_kernel_candidate_authorized": fig3_kernel[
+                "source_specific_kernel_candidate_authorized"
             ],
         },
         "required_transfer_fields_available": fields,

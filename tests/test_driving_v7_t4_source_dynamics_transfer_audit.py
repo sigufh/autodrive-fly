@@ -63,6 +63,11 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert semantics["cardinal_diagonal_to_subtype_mapping_available"] is False
     assert semantics["independent_cell_holdout_available"] is False
     assert semantics["MaleCNS_source_kernel_transfer_authorized"] is False
+    fig3 = report["verified_fig3_source_kernel_readiness"]
+    assert fig3["source_workbook_verified"] is True
+    assert fig3["ON_source_specific_kernels_ready"] is False
+    assert fig3["prior_two_pool_kernel_authorized"] is False
+    assert fig3["source_specific_kernel_candidate_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

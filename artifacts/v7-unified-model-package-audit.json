@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-unified-model-package-audit.yaml": "1ab10ea38f88afe05b6b2b0c4953b77a7c38fb9791cf738b9a0a5ee0e215978c",
       "src/fly_emotion/driving/v7_unified_model_package_audit.py": "cfb769eaaf46c1856df18d02a85352f4c54463116e0f898e9868c8400c27f09d",
-      "pyproject.toml": "8dbcc1e6e27ed22a7f59dad66d175d761a205087c920cdd75262f203ef669a94"
+      "pyproject.toml": "2ede0081f08b0a3337f80332391a9c3136d3564d63972b0ddcfeb00b7d1a0ae3"
     },
     "mat_parser": {
       "package": "mat-io",

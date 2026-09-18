@@ -1,0 +1,274 @@
+{
+  "protocol": {
+    "name": "v7-fig3-source-type-kernel-readiness-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-fig3-source-kernel-audit.yaml": "19747480f323fa2e6eea60caff394f40162f76ce1a03f9c115ef0a36c9637248",
+      "src/fly_emotion/driving/v7_fig3_source_kernel_audit.py": "13daa807fb9f8a6de0528bc784768a72286b00a5755d548d9747ac5ed0910367",
+      "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
+      "pyproject.toml": "2ede0081f08b0a3337f80332391a9c3136d3564d63972b0ddcfeb00b7d1a0ae3"
+    },
+    "source_file": {
+      "path": "data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/8891015/bin/41586_2022_4428_MOESM5_ESM.xlsx",
+      "bytes": 1906405,
+      "sha256": "dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3",
+      "workbook_sheet_count": 6,
+      "required_source_sheets": [
+        "Fig. 3a, left (on)",
+        "Fig. 3a, right (off)"
+      ]
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "conditions": {
+    "on": {
+      "source_results": {
+        "Tm3": {
+          "cell_count": 12,
+          "expected_response_sign": 1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 18.459854125976566,
+          "median_cell_SNR": 19.97950043298148,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 119.99999999999788,
+          "median_cell_peak_latency_milliseconds": 124.99999999999778,
+          "cell_peak_latency_IQR_milliseconds": 124.99999999999733,
+          "alternating_split_kernel_correlation": 0.9910914335047462,
+          "normalized_population_kernel_sha256": "0b84d416d4a0a4c213c87e7a661311756795be56862754e8f04616da4a9e96c0",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": true
+          },
+          "ready": true
+        },
+        "Mi1": {
+          "cell_count": 24,
+          "expected_response_sign": 1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 19.771120283338764,
+          "median_cell_SNR": 20.971919002275804,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 139.99999999999747,
+          "median_cell_peak_latency_milliseconds": 174.9999999999967,
+          "cell_peak_latency_IQR_milliseconds": 722.4999999999847,
+          "alternating_split_kernel_correlation": 0.6500561825309054,
+          "normalized_population_kernel_sha256": "810c10a2b12453910d580df6360a35f666208af8e97d43833052685f3489e13f",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": false,
+            "cell_peak_latency_IQR": false
+          },
+          "ready": false
+        },
+        "Mi4": {
+          "cell_count": 19,
+          "expected_response_sign": 1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 12.632579067297158,
+          "median_cell_SNR": 16.738639399345395,
+          "positive_peak_cell_fraction": 0.9473684210526315,
+          "population_mean_peak_latency_milliseconds": 99.99999999999831,
+          "median_cell_peak_latency_milliseconds": 109.9999999999981,
+          "cell_peak_latency_IQR_milliseconds": 139.99999999999702,
+          "alternating_split_kernel_correlation": 0.9715979851525667,
+          "normalized_population_kernel_sha256": "32f304ab630132c38310803af199f0d9992aa0155a14a240238d139d61b8cf46",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": true
+          },
+          "ready": true
+        },
+        "C3": {
+          "cell_count": 16,
+          "expected_response_sign": 1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 13.399016062418628,
+          "median_cell_SNR": 5.08463636109171,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 329.9999999999934,
+          "median_cell_peak_latency_milliseconds": 479.9999999999902,
+          "cell_peak_latency_IQR_milliseconds": 762.4999999999837,
+          "alternating_split_kernel_correlation": 0.9569907642567685,
+          "normalized_population_kernel_sha256": "2c8460cf50ef0f77062d28e98f68789a60e8657ac77e5d82447bbb9b1f9ce4a7",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": false
+          },
+          "ready": false
+        }
+      },
+      "all_source_types_ready": false
+    },
+    "off": {
+      "source_results": {
+        "Tm3": {
+          "cell_count": 12,
+          "expected_response_sign": -1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 9.549645317925345,
+          "median_cell_SNR": 10.504637499663582,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 479.9999999999902,
+          "median_cell_peak_latency_milliseconds": 489.99999999999,
+          "cell_peak_latency_IQR_milliseconds": 449.9999999999904,
+          "alternating_split_kernel_correlation": 0.9793535759582856,
+          "normalized_population_kernel_sha256": "f92853ce3f3a45d8f4d95974eb47124fb569c268f5854f19743bfd4bc06856b6",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": true
+          },
+          "ready": true
+        },
+        "Mi1": {
+          "cell_count": 24,
+          "expected_response_sign": -1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 16.265862782796223,
+          "median_cell_SNR": 14.35454431330633,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 1499.9999999999684,
+          "median_cell_peak_latency_milliseconds": 974.9999999999797,
+          "cell_peak_latency_IQR_milliseconds": 819.9999999999825,
+          "alternating_split_kernel_correlation": 0.8883100448232526,
+          "normalized_population_kernel_sha256": "8154903b79573da667a94b9d1c9a64956539471b6d20169f7673b9f80198bd6d",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": false
+          },
+          "ready": false
+        },
+        "Mi4": {
+          "cell_count": 19,
+          "expected_response_sign": -1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 4.897146124588813,
+          "median_cell_SNR": 7.982096668939983,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 949.9999999999802,
+          "median_cell_peak_latency_milliseconds": 1099.999999999977,
+          "cell_peak_latency_IQR_milliseconds": 744.9999999999841,
+          "alternating_split_kernel_correlation": 0.9653900743221588,
+          "normalized_population_kernel_sha256": "dc4b2730ea6d7f488a41e6d0bf5b573b7142a371e4b52ec05b05553967973c46",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": false
+          },
+          "ready": false
+        },
+        "C3": {
+          "cell_count": 16,
+          "expected_response_sign": -1,
+          "baseline_window_seconds": [
+            2.5,
+            3.5
+          ],
+          "response_onset_seconds": 3.9999999999999587,
+          "response_sample_count": 151,
+          "response_sample_interval_milliseconds": 9.999999999999787,
+          "population_positive_peak_millivolts": 17.574195861816396,
+          "median_cell_SNR": 13.906021199722531,
+          "positive_peak_cell_fraction": 1.0,
+          "population_mean_peak_latency_milliseconds": 529.9999999999892,
+          "median_cell_peak_latency_milliseconds": 789.9999999999836,
+          "cell_peak_latency_IQR_milliseconds": 842.499999999982,
+          "alternating_split_kernel_correlation": 0.9526554244538955,
+          "normalized_population_kernel_sha256": "7e2be64acedcccca75c6fa986357567bd3696fc55a2d179e9f9b1ba1e5fdb48b",
+          "gates": {
+            "median_cell_SNR": true,
+            "alternating_split_kernel_correlation": true,
+            "cell_peak_latency_IQR": false
+          },
+          "ready": false
+        }
+      },
+      "all_source_types_ready": false
+    }
+  },
+  "prior_fast_delayed_grouping": {
+    "fast_sources": [
+      "Tm3",
+      "Mi1"
+    ],
+    "delayed_sources": [
+      "Mi4",
+      "C3"
+    ],
+    "pairwise_ON_median_peak_latency_differences_milliseconds": {
+      "Mi4_minus_Tm3": -14.999999999999687,
+      "Mi4_minus_Mi1": -64.99999999999861,
+      "C3_minus_Tm3": 354.99999999999244,
+      "C3_minus_Mi1": 304.9999999999935
+    },
+    "every_delayed_source_later_than_every_fast_source": false
+  },
+  "all_condition_source_kernels_ready": false,
+  "ON_source_specific_kernels_ready": false,
+  "prior_two_pool_kernel_authorized": false,
+  "source_specific_kernel_candidate_authorized": false,
+  "stop_reason": "source_kernel_stability_and_prior_fast_delayed_ordering_gates_failed",
+  "boundary": {
+    "read_only_source_kernel_audit": true,
+    "xlsx_is_decimated_to_10ms_from_verified_1ms_repository_arrays": true,
+    "source_type_identity_available": true,
+    "stable_recorded_cell_to_MaleCNS_body_ID_mapping_available": false,
+    "physical_v7_frame_duration_available": false,
+    "millivolts_to_v7_state_mapping_available": false,
+    "no_T4_response_used_for_kernel_selection": true,
+    "no_PD_ND_label_used_for_kernel_extraction": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

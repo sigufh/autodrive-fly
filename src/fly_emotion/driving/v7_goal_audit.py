@@ -79,6 +79,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
+    fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -183,6 +184,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["unified_model_package_audit"],
+                config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -608,6 +610,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     unified_model_package_audit[
                         "MaleCNS_source_kernel_transfer_authorized"
                     ]
+                ),
+                "fig3_ON_source_specific_kernels_ready": fig3_source_kernel_audit[
+                    "ON_source_specific_kernels_ready"
+                ],
+                "fig3_prior_two_pool_kernel_authorized": fig3_source_kernel_audit[
+                    "prior_two_pool_kernel_authorized"
+                ],
+                "fig3_source_specific_kernel_candidate_authorized": (
+                    fig3_source_kernel_audit["source_specific_kernel_candidate_authorized"]
                 ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]

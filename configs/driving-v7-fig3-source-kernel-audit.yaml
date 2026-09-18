@@ -1,0 +1,50 @@
+version: 1
+name: v7-fig3-source-type-kernel-readiness-audit
+observed_on: "2026-09-18"
+source_data:
+  path: data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx
+  url: https://pmc.ncbi.nlm.nih.gov/articles/instance/8891015/bin/41586_2022_4428_MOESM5_ESM.xlsx
+  bytes: 1906405
+  sha256: dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3
+ephys_evidence: artifacts/v7-electrophysiology-audit.json
+source_types:
+  Tm3: 12
+  Mi1: 24
+  Mi4: 19
+  C3: 16
+source_groups:
+  prior_fast: [Tm3, Mi1]
+  prior_delayed: [Mi4, C3]
+conditions:
+  "on":
+    sheet: Fig. 3a, left (on)
+    expected_sign: 1
+    onset_evidence_keys: [on_pd, on_nd]
+  "off":
+    sheet: Fig. 3a, right (off)
+    expected_sign: -1
+    onset_evidence_keys: [off_pd, off_nd]
+kernel_protocol:
+  baseline_seconds: [2.5, 3.5]
+  response_duration_seconds: 1.5
+  cell_split: alternating_source_cell_ordinal
+  normalization: oriented_population_mean_divided_by_its_positive_peak
+gates:
+  minimum_median_cell_SNR: 3.0
+  minimum_alternating_split_kernel_correlation: 0.80
+  maximum_cell_peak_latency_IQR_milliseconds: 500.0
+  require_every_source_type_ready: true
+  require_every_prior_delayed_source_later_than_every_prior_fast_source: true
+boundary:
+  read_only_source_kernel_audit: true
+  xlsx_is_decimated_to_10ms_from_verified_1ms_repository_arrays: true
+  source_type_identity_available: true
+  stable_recorded_cell_to_MaleCNS_body_ID_mapping_available: false
+  physical_v7_frame_duration_available: false
+  millivolts_to_v7_state_mapping_available: false
+  no_T4_response_used_for_kernel_selection: true
+  no_PD_ND_label_used_for_kernel_extraction: true
+  parameter_fit: false
+  target_activity_injection: false
+  runtime_modified: false
+  T5_and_LPLC_remain_frozen: true
