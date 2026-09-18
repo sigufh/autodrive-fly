@@ -80,6 +80,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
+    fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -185,6 +186,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
+                config["evidence"]["fig3_source_kernel_robustness"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -619,6 +621,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ],
                 "fig3_source_specific_kernel_candidate_authorized": (
                     fig3_source_kernel_audit["source_specific_kernel_candidate_authorized"]
+                ),
+                "fig3_source_kernel_cross_cell_robustness_passed": (
+                    fig3_source_kernel_robustness[
+                        "all_source_kernel_robustness_gates_passed"
+                    ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (
                     three_hop_source_coverage["independent_fast_delayed_coverage_gate_passed"]

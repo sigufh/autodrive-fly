@@ -1589,6 +1589,13 @@ C3 晚约 305–355 ms。因此原 `[Tm3,Mi1]` fast 对 `[Mi4,C3]` delayed 二�
 762.5 ms，未通过预注册门；OFF 条件也未达到四类全通过。故既不授权旧二池 kernel，
 也不授权直接使用四类 source-specific kernel。证据见
 `artifacts/v7-fig3-source-kernel-audit.json`。
+进一步的 leave-one-cell-out 与 bootstrap 稳健性审计保留全部记录细胞，不移除离群点，也
+不读取 T4 响应或方向标签。ON 条件只有 Tm3 通过全部门：Mi1 的 LOO 中位相关仅 0.602，
+29.2% 单细胞与其余细胞平均核负相关，bootstrap split 的 5% 分位为 0.652；Mi4 虽整体
+相关较高，但最差 LOO 为 -0.644；C3 的均值—中位数核相关 0.717，bootstrap 5% 分位
+0.703。OFF 条件也只有 Mi1/C3 通过。因此失败不是奇偶分组偶然性，类型平均经验核不足以
+泛化到未见记录细胞，更不能迁移到无稳定身份映射的 MaleCNS body。该路线停止，不进入
+功能预检。证据见 `artifacts/v7-fig3-source-kernel-robustness.json`。
 
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此

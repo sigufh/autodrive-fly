@@ -8,6 +8,7 @@ microstep_evidence: artifacts/v7-t4-synapse-microstep-precheck.json
 official_unified_model_evidence: artifacts/v7-t5-data-audit.json
 verified_unified_model_evidence: artifacts/v7-unified-model-package-audit.json
 fig3_source_kernel_evidence: artifacts/v7-fig3-source-kernel-audit.json
+fig3_source_kernel_robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
 official_unified_model_recovered_manifest:
   recovery_source: internet_archive_official_page_snapshot
   snapshot_timestamp: "20241127113612"

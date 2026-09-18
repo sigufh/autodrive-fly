@@ -68,6 +68,7 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert fig3["ON_source_specific_kernels_ready"] is False
     assert fig3["prior_two_pool_kernel_authorized"] is False
     assert fig3["source_specific_kernel_candidate_authorized"] is False
+    assert fig3["cross_cell_robustness_passed"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

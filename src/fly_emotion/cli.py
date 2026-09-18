@@ -52,6 +52,9 @@ from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
 from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
 from .driving.v7_fig3_source_kernel_audit import evaluate_v7_fig3_source_kernel_audit
+from .driving.v7_fig3_source_kernel_robustness import (
+    evaluate_v7_fig3_source_kernel_robustness,
+)
 from .driving.v7_fig5_validation import evaluate_v7_fig5_validation
 from .driving.v7_fit import fit_v7_t4_conductance
 from .driving.v7_four_hop_scalar_precheck import evaluate_v7_four_hop_scalar_precheck
@@ -348,6 +351,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-source-dynamics-transfer")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
+    subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1128,6 +1132,12 @@ def main() -> None:
     if args.command == "v7-audit-fig3-source-kernels":
         report = evaluate_v7_fig3_source_kernel_audit(root)
         target = root / "artifacts/v7-fig3-source-kernel-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-fig3-source-kernel-robustness":
+        report = evaluate_v7_fig3_source_kernel_robustness(root)
+        target = root / "artifacts/v7-fig3-source-kernel-robustness.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

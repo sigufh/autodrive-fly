@@ -1,0 +1,31 @@
+version: 1
+name: v7-fig3-source-kernel-robustness-audit
+observed_on: "2026-09-18"
+source_protocol: configs/driving-v7-fig3-source-kernel-audit.yaml
+source_evidence: artifacts/v7-fig3-source-kernel-audit.json
+conditions:
+  "on": {sheet: "Fig. 3a, left (on)", onset_seconds: 4.005, sign: 1}
+  "off": {sheet: "Fig. 3a, right (off)", onset_seconds: 3.998, sign: -1}
+source_types: [Tm3, Mi1, Mi4, C3]
+baseline_seconds: [2.5, 3.5]
+response_duration_seconds: 1.5
+bootstrap:
+  seed: 20260918
+  replicates: 256
+gates:
+  minimum_mean_median_kernel_correlation: 0.80
+  minimum_median_leave_one_cell_out_correlation: 0.80
+  minimum_leave_one_cell_out_correlation: 0.0
+  minimum_bootstrap_split_correlation_p05: 0.80
+  require_every_source_type_and_condition: true
+boundary:
+  read_only_robustness_audit: true
+  every_recorded_cell_retained: true
+  no_outlier_removal: true
+  no_T4_response_used: true
+  no_direction_label_used: true
+  no_threshold_or_source_group_change: true
+  parameter_fit: false
+  target_activity_injection: false
+  runtime_modified: false
+  T5_and_LPLC_remain_frozen: true

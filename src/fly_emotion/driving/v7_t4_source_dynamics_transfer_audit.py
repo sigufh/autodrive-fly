@@ -24,6 +24,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     unified_path = Path(config["official_unified_model_evidence"])
     verified_unified_path = Path(config["verified_unified_model_evidence"])
     fig3_kernel_path = Path(config["fig3_source_kernel_evidence"])
+    fig3_robustness_path = Path(config["fig3_source_kernel_robustness_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -33,6 +34,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / verified_unified_path).read_text(encoding="utf-8")
     )
     fig3_kernel = json.loads((root / fig3_kernel_path).read_text(encoding="utf-8"))
+    fig3_robustness = json.loads(
+        (root / fig3_robustness_path).read_text(encoding="utf-8")
+    )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -105,6 +109,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(unified_path): _sha256(root / unified_path),
                 str(verified_unified_path): _sha256(root / verified_unified_path),
                 str(fig3_kernel_path): _sha256(root / fig3_kernel_path),
+                str(fig3_robustness_path): _sha256(root / fig3_robustness_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -188,6 +193,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "source_specific_kernel_candidate_authorized": fig3_kernel[
                 "source_specific_kernel_candidate_authorized"
+            ],
+            "cross_cell_robustness_passed": fig3_robustness[
+                "all_source_kernel_robustness_gates_passed"
             ],
         },
         "required_transfer_fields_available": fields,
