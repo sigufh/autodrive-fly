@@ -80,9 +80,20 @@ def test_white_noise_payload_preserves_recording_metadata_but_not_fly_identity()
     assert report["white_noise_payloads"]["Tm1"]["recording_ids_unique"] is False
     contract = report["T5_source_contract"]
     assert contract["minimum_unique_recording_ids_for_training_and_validation"] == 8
-    assert contract["enough_unique_recording_ids_for_training_and_validation_by_source"] == {
+    assert contract["recording_id_upper_bound_enough_for_training_and_validation_by_source"] == {
         "Tm1": False,
         "Tm2": False,
         "Tm4": False,
         "Tm9": False,
     }
+    combined = {
+        source: item["combined_unique_recording_id_count"]
+        for source, item in report["white_noise_OA_payloads"].items()
+    }
+    assert combined == {"Tm1": 7, "Tm2": 7, "Tm4": 7, "Tm9": 6}
+    assert report["white_noise_OA_payloads"]["Tm1"]["overlapping_saline_recording_ids"] == [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+    ]

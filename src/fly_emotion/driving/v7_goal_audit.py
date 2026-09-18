@@ -656,7 +656,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "Kohn_Portes_T5_minimum_train_validation_capacity_ready": (
                     kohn_portes_t5_ephys_audit["transfer_gates"][
-                        "enough_unique_recording_ids_for_minimum_training_and_validation"
+                        "even_recording_id_upper_bound_enough_for_training_and_validation"
                     ]
                 ),
                 "Kohn_Portes_T5_transfer_authorized": (

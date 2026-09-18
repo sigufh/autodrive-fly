@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import math
@@ -47,6 +48,12 @@ def _verify_file(root: Path, spec: dict) -> Path:
         raise ValueError(f"size mismatch for {spec['path']}")
     if _sha256(path) != spec["sha256"]:
         raise ValueError(f"SHA-256 mismatch for {spec['path']}")
+    if "git_blob" in spec:
+        contents = path.read_bytes()
+        prefix = f"blob {len(contents)}\0".encode()
+        actual_blob = hashlib.sha1(prefix + contents, usedforsecurity=False).hexdigest()
+        if actual_blob != spec["git_blob"]:
+            raise ValueError(f"Git blob mismatch for {spec['path']}")
     return path
 
 
@@ -194,6 +201,46 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
             "physical_timestamps_retained": True,
         }
 
+    white_noise_OA_payloads = {}
+    for source, spec in config["white_noise_OA_files"].items():
+        path = _verify_file(root, spec)
+        payload = _load_restricted(path)
+        if not isinstance(payload, list) or len(payload) != int(spec["expected_record_count"]):
+            raise ValueError(f"unexpected OA white-noise record count for {source}")
+        if any(record.get("cell_type") != source for record in payload):
+            raise ValueError(f"OA white-noise source label changed for {source}")
+        if any(record.get("bath_solution") != "OA" for record in payload):
+            raise ValueError(f"OA white-noise bath label changed for {source}")
+        recording_ids = [str(record["recording_id"]) for record in payload]
+        if len(set(recording_ids)) != int(spec["expected_unique_recording_id_count"]):
+            raise ValueError(f"OA white-noise recording-ID count changed for {source}")
+        for record in payload:
+            trace = np.asarray(record["ephys_trace"], dtype=float)
+            timestamps = np.asarray(record["timestamps"], dtype=float)
+            if trace.ndim != 1 or timestamps.shape != trace.shape:
+                raise ValueError(f"OA raw voltage/time shape changed for {source}")
+            if not np.isfinite(trace).all() or not np.isfinite(timestamps).all():
+                raise ValueError(f"non-finite OA white-noise values for {source}")
+            if not math.isclose(
+                float(record["sampling_rate"]), expected_dt, rel_tol=0.0, abs_tol=1e-15
+            ):
+                raise ValueError(f"OA white-noise sample interval changed for {source}")
+        saline_ids = {record["recording_id"] for record in white_noise_payloads[source]["records"]}
+        oa_ids = set(recording_ids)
+        combined_ids = saline_ids | oa_ids
+        expected_combined = int(config["expected_combined_unique_recording_id_counts"][source])
+        if len(combined_ids) != expected_combined:
+            raise ValueError(f"combined white-noise recording-ID count changed for {source}")
+        white_noise_OA_payloads[source] = {
+            "file": spec,
+            "record_count": len(payload),
+            "unique_recording_id_count": len(oa_ids),
+            "recording_ids": recording_ids,
+            "overlapping_saline_recording_ids": sorted(saline_ids & oa_ids),
+            "combined_unique_recording_id_count": len(combined_ids),
+            "explicit_biological_individual_id_field_retained": False,
+        }
+
     covered = list(source_payloads)
     required = contract["required_families"]["T5"]["source_types"]
     missing = [source for source in required if source not in covered]
@@ -201,9 +248,9 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
     minimum_validation = int(
         contract["gates"]["minimum_recording_units_per_source_per_validation_cohort"]
     )
-    enough_for_train_and_validation = {
-        source: payload["unique_recording_id_count"] >= minimum_train + minimum_validation
-        for source, payload in white_noise_payloads.items()
+    recording_id_upper_bound_enough = {
+        source: payload["combined_unique_recording_id_count"] >= minimum_train + minimum_validation
+        for source, payload in white_noise_OA_payloads.items()
     }
     fields = config["fields"]
     gates = {
@@ -235,8 +282,8 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
         "required_split_roles_present": bool(
             fields["preregistered_training_validation_external_final_roles_present"]
         ),
-        "enough_unique_recording_ids_for_minimum_training_and_validation": all(
-            enough_for_train_and_validation.values()
+        "even_recording_id_upper_bound_enough_for_training_and_validation": all(
+            recording_id_upper_bound_enough.values()
         ),
         "external_final_commitment_present": bool(fields["external_final_commitment_present"]),
     }
@@ -258,6 +305,7 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
         },
         "source_payloads": source_payloads,
         "white_noise_payloads": white_noise_payloads,
+        "white_noise_OA_payloads": white_noise_OA_payloads,
         "T5_source_contract": {
             "required_sources": required,
             "sources_with_local_numeric_membrane_voltage": covered,
@@ -268,8 +316,8 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
             "minimum_unique_recording_ids_for_training_and_validation": (
                 minimum_train + minimum_validation
             ),
-            "enough_unique_recording_ids_for_training_and_validation_by_source": (
-                enough_for_train_and_validation
+            "recording_id_upper_bound_enough_for_training_and_validation_by_source": (
+                recording_id_upper_bound_enough
             ),
         },
         "transfer_gates": gates,

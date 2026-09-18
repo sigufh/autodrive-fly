@@ -3,8 +3,8 @@
     "name": "v7-kohn-portes-t5-ephys-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "1400d5be2aa3deec77dc2b4496439871200084772faa1dc0985c28af9d525673",
-      "src/fly_emotion/driving/v7_kohn_portes_t5_ephys_audit.py": "09edc35f0bc6ea1ef67c12bde0c52319a577c65c91caeee1e5df955813d53132",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "src/fly_emotion/driving/v7_kohn_portes_t5_ephys_audit.py": "673443bb17e97f161fdcd1ce2d45196e04513cf8d8b6f8771dc350097505fc6f",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
     },
     "paper": {
@@ -1063,6 +1063,109 @@
       "physical_timestamps_retained": true
     }
   },
+  "white_noise_OA_payloads": {
+    "Tm1": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm1_OA.pickle",
+        "bytes": 105298578,
+        "sha256": "60697091eb983d51e81bd7917277e077daa6463cc741ecb5b5ecbf85ee139268",
+        "git_blob": "033d7f301e84a192003d3aeadd33e00fddb2ea73",
+        "expected_record_count": 4,
+        "expected_unique_recording_id_count": 4
+      },
+      "record_count": 4,
+      "unique_recording_id_count": 4,
+      "recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722"
+      ],
+      "overlapping_saline_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722"
+      ],
+      "combined_unique_recording_id_count": 7,
+      "explicit_biological_individual_id_field_retained": false
+    },
+    "Tm2": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm2_OA.pickle",
+        "bytes": 142295242,
+        "sha256": "a6fe13c364394003c14d265a4f8b3b6523b115653671a2e645f376f499bbe490",
+        "git_blob": "ec3743582daefdd9fbdb8fcc1090f6fd8d9c564f",
+        "expected_record_count": 5,
+        "expected_unique_recording_id_count": 5
+      },
+      "record_count": 5,
+      "unique_recording_id_count": 5,
+      "recording_ids": [
+        "201013",
+        "201119",
+        "210718",
+        "210719",
+        "210721"
+      ],
+      "overlapping_saline_recording_ids": [
+        "201013",
+        "201119",
+        "210721"
+      ],
+      "combined_unique_recording_id_count": 7,
+      "explicit_biological_individual_id_field_retained": false
+    },
+    "Tm4": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm4_OA.pickle",
+        "bytes": 137332932,
+        "sha256": "0c2c41038618db6fdb6d9668be1895d3131fa0e103eee1d4cf3a752008bb92c2",
+        "git_blob": "2dd1aeff7d82f7a2644e8ffa019e780fd1333910",
+        "expected_record_count": 4,
+        "expected_unique_recording_id_count": 4
+      },
+      "record_count": 4,
+      "unique_recording_id_count": 4,
+      "recording_ids": [
+        "200209",
+        "200703",
+        "200706",
+        "210803"
+      ],
+      "overlapping_saline_recording_ids": [
+        "200209",
+        "200703",
+        "200706"
+      ],
+      "combined_unique_recording_id_count": 7,
+      "explicit_biological_individual_id_field_retained": false
+    },
+    "Tm9": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm9_OA.pickle",
+        "bytes": 108561110,
+        "sha256": "52cd60bc002a43525f8ff60c49950c50a5d3da916542eac52fdadd0508b8c9c9",
+        "git_blob": "8b6ded3f85d2dcbb76e32ef19f57ef6a350cb863",
+        "expected_record_count": 3,
+        "expected_unique_recording_id_count": 3
+      },
+      "record_count": 3,
+      "unique_recording_id_count": 3,
+      "recording_ids": [
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "overlapping_saline_recording_ids": [
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "combined_unique_recording_id_count": 6,
+      "explicit_biological_individual_id_field_retained": false
+    }
+  },
   "T5_source_contract": {
     "required_sources": [
       "Tm1",
@@ -1088,7 +1191,7 @@
     ],
     "delayed_source_kept_separate": "Tm9",
     "minimum_unique_recording_ids_for_training_and_validation": 8,
-    "enough_unique_recording_ids_for_training_and_validation_by_source": {
+    "recording_id_upper_bound_enough_for_training_and_validation_by_source": {
       "Tm1": false,
       "Tm2": false,
       "Tm4": false,
@@ -1106,7 +1209,7 @@
     "baseline_window_seconds_retained": false,
     "source_to_MaleCNS_body_mapping_present": false,
     "required_split_roles_present": false,
-    "enough_unique_recording_ids_for_minimum_training_and_validation": false,
+    "even_recording_id_upper_bound_enough_for_training_and_validation": false,
     "external_final_commitment_present": false
   },
   "T5_source_dynamics_transfer_authorized": false,
@@ -1120,7 +1223,7 @@
     "baseline_window_seconds_retained",
     "source_to_MaleCNS_body_mapping_present",
     "required_split_roles_present",
-    "enough_unique_recording_ids_for_minimum_training_and_validation",
+    "even_recording_id_upper_bound_enough_for_training_and_validation",
     "external_final_commitment_present"
   ],
   "stop_reason": "four_Tm_voltage_payloads_lack_identity_mapping_splits_and_CT1_coverage",
@@ -1130,6 +1233,7 @@
     "anonymous_all_arrays_are_not_stable_recording_or_fly_IDs": true,
     "recording_date_and_recording_id_are_not_asserted_to_be_fly_IDs": true,
     "duplicate_recording_ids_are_reported_not_silently_renamed": true,
+    "saline_and_OA_recording_ids_are_deduplicated_not_added": true,
     "flash_duration_does_not_supply_direction_position_or_speed_fields": true,
     "n_metadata_is_not_an_identity_mapping": true,
     "Tm1_Tm2_Tm4_fast_sources_remain_distinct_from_Tm9": true,

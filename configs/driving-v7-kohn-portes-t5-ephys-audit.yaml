@@ -75,6 +75,40 @@ white_noise_files:
     git_blob: 61cf990715404a7146c981d4602b725b05920181
     expected_record_count: 6
     expected_unique_recording_id_count: 6
+white_noise_OA_files:
+  Tm1:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm1_OA.pickle
+    bytes: 105298578
+    sha256: 60697091eb983d51e81bd7917277e077daa6463cc741ecb5b5ecbf85ee139268
+    git_blob: 033d7f301e84a192003d3aeadd33e00fddb2ea73
+    expected_record_count: 4
+    expected_unique_recording_id_count: 4
+  Tm2:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm2_OA.pickle
+    bytes: 142295242
+    sha256: a6fe13c364394003c14d265a4f8b3b6523b115653671a2e645f376f499bbe490
+    git_blob: ec3743582daefdd9fbdb8fcc1090f6fd8d9c564f
+    expected_record_count: 5
+    expected_unique_recording_id_count: 5
+  Tm4:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm4_OA.pickle
+    bytes: 137332932
+    sha256: 0c2c41038618db6fdb6d9668be1895d3131fa0e103eee1d4cf3a752008bb92c2
+    git_blob: 2dd1aeff7d82f7a2644e8ffa019e780fd1333910
+    expected_record_count: 4
+    expected_unique_recording_id_count: 4
+  Tm9:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm9_OA.pickle
+    bytes: 108561110
+    sha256: 52cd60bc002a43525f8ff60c49950c50a5d3da916542eac52fdadd0508b8c9c9
+    git_blob: 8b6ded3f85d2dcbb76e32ef19f57ef6a350cb863
+    expected_record_count: 3
+    expected_unique_recording_id_count: 3
+expected_combined_unique_recording_id_counts:
+  Tm1: 7
+  Tm2: 7
+  Tm4: 7
+  Tm9: 6
 expected_conditions:
   - FFF_uniform_20msimpulse_10int saline
   - FFF_uniform_40msimpulse_10int saline
@@ -107,6 +141,7 @@ boundary:
   anonymous_all_arrays_are_not_stable_recording_or_fly_IDs: true
   recording_date_and_recording_id_are_not_asserted_to_be_fly_IDs: true
   duplicate_recording_ids_are_reported_not_silently_renamed: true
+  saline_and_OA_recording_ids_are_deduplicated_not_added: true
   flash_duration_does_not_supply_direction_position_or_speed_fields: true
   n_metadata_is_not_an_identity_mapping: true
   Tm1_Tm2_Tm4_fast_sources_remain_distinct_from_Tm9: true

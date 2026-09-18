@@ -1998,8 +1998,10 @@ Tm9 单列。flash 汇总 pickle 删除了 `recording_id` 和 fly ID，只保留
 确认它们保留原始 voltage trace、timestamps、`recording_id`、recording date、cell number
 （部分为空）、sex 和 5°/20 Hz 刺激元数据；Tm1/Tm2/Tm4/Tm9 分别为 8/5/6/6 条记录。
 不过 Tm1 的 8 条记录只有 7 个唯一 `recording_id`，所有文件均无明确 fly/animal ID，
-不能把日期或 recording ID 自行解释为 biological individual。后三类的记录数也不足以同时
-满足每源至少 5 training 与 3 validation，更无独立 external final。CT1 完全不在该数据集。
+不能把日期或 recording ID 自行解释为 biological individual。OA white-noise 文件也已逐一
+核验；它们与 saline 大量复用 ID，按 ID 去重后 Tm1/Tm2/Tm4/Tm9 也只有 7/7/7/6。即使
+把每个 ID 都宽松视作独立个体的上限，仍不足以同时满足每源至少 5 training 与 3 validation，
+更无独立 external final。CT1 完全不在该数据集。
 因此仍无法构造按个体不重叠 split、recording→MaleCNS 映射或 external-final 承诺，0/9
 完整合同结论和所有冻结门保持不变。许可证为 CC BY-NC-ND 4.0，原始文件不提交，也未作
 参数拟合。证据见
