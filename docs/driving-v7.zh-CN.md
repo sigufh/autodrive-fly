@@ -2037,6 +2037,18 @@ Tm9 单列。flash 汇总 pickle 删除了 `recording_id` 和 fly ID，只保留
 参数拟合。证据见
 `artifacts/v7-kohn-portes-t5-ephys-audit.json`。
 
+随后又审计了该 GitLab 固定提交及其完整 20-commit 公共历史，而不仅是主分析 pickle。
+固定 HEAD 有 95 个 tree entry，完整历史共有 111 个唯一路径，没有 animal/subject/identity/
+metadata sidecar。新增检查的 low-contrast flash 文件只保留匿名 `all/n` 数组；drifting-grating
+文件和历史 `wn_Tm9_*_all` 则保留 recording-level 元数据。作者代码明确说明同一
+`recording_id` 可有多个 `subrecording_number`，并先“average within cell”，因此可把 ID
+视为 cell-level 聚合键，但论文与 payload 都未声明它等于 biological fly ID。跨 white-noise、
+drifting-grating 和 `_all` 文件去重后，Tm1/Tm2/Tm4/Tm9 的完整仓库 recording-key 上限由
+主分析的 7/7/7/6 更新为 8/7/7/13；只有 Tm1/Tm9 达到纯数字的 5+3 上限，Tm2/Tm4
+仍不足。更重要的是，四类都没有明确 fly identity，日期格式 recording key 不能自行升级为
+animal ID，因而没有任何来源获准构造按动物互斥的 5 training + 3 validation split。证据见
+`artifacts/v7-kohn-portes-identity-history-audit.json`。
+
 CT1 的 2019 年极端区室化论文也已按正式 PII `S0960982219303987` 复核。Elsevier 只提供
 两份 PDF（743,934 与 3,363,695 bytes；SHA-256 分别为 `ea7bb016…`、`3a042052…`），
 均无嵌入附件。实验测量明确是 GCaMP6f 双光子钙成像，并从 ROI 生成 ΔF/F 时间轨迹；

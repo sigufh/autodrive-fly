@@ -290,6 +290,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["Kohn_Portes_T5_transfer_authorized"] is False
+    assert visual["observations"]["Kohn_Portes_full_repository_recording_ID_upper_bounds"] == {
+        "Tm1": 8,
+        "Tm2": 7,
+        "Tm4": 7,
+        "Tm9": 13,
+    }
+    assert visual["observations"][
+        "Kohn_Portes_sources_meeting_numeric_5_plus_3_recording_ID_upper_bound"
+    ] == ["Tm1", "Tm9"]
+    assert visual["observations"]["Kohn_Portes_biological_individual_semantics_verified"] is False
+    assert visual["observations"]["Kohn_Portes_biological_individual_split_authorized"] is False
     assert visual["observations"]["CT1_extreme_experimental_calcium_verified"] is True
     assert visual["observations"]["CT1_extreme_model_voltage_is_simulated"] is True
     assert visual["observations"]["CT1_extreme_experimental_voltage_available"] is False

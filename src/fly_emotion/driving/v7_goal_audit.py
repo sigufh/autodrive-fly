@@ -134,6 +134,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     yang_t5_voltage_evidence_audit = reports["yang_t5_voltage_evidence_audit"]
     kohn_portes_t5_ephys_audit = reports["kohn_portes_t5_ephys_audit"]
+    kohn_portes_identity_history_audit = reports[
+        "kohn_portes_identity_history_audit"
+    ]
     ct1_extreme_compartmentalization_audit = reports[
         "ct1_extreme_compartmentalization_audit"
     ]
@@ -325,6 +328,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
+                config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_experimental_voltage_boundary_audit"],
                 config["evidence"]["borst_2025_temporal_filtering_audit"],
@@ -734,6 +738,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_transfer_authorized": (
                     kohn_portes_t5_ephys_audit[
                         "T5_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "Kohn_Portes_full_repository_recording_ID_upper_bounds": {
+                    source: details[
+                        "full_repository_unique_recording_id_upper_bound"
+                    ]
+                    for source, details in kohn_portes_identity_history_audit[
+                        "source_capacity"
+                    ].items()
+                },
+                "Kohn_Portes_sources_meeting_numeric_5_plus_3_recording_ID_upper_bound": [
+                    source
+                    for source, details in kohn_portes_identity_history_audit[
+                        "source_capacity"
+                    ].items()
+                    if details["recording_id_upper_bound_meets_numeric_5_plus_3"]
+                ],
+                "Kohn_Portes_biological_individual_semantics_verified": (
+                    kohn_portes_identity_history_audit["transfer_gates"][
+                        "biological_individual_semantics_verified"
+                    ]
+                ),
+                "Kohn_Portes_biological_individual_split_authorized": (
+                    kohn_portes_identity_history_audit[
+                        "T5_biological_individual_split_authorized"
                     ]
                 ),
                 "CT1_extreme_experimental_calcium_verified": (

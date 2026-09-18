@@ -1,0 +1,670 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-identity-history-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-identity-history-audit.yaml": "33599926b06a51b5e455c1d4dccf03fb2575312c6f758ca1795a63d1160a1d07",
+      "src/fly_emotion/driving/v7_kohn_portes_identity_history_audit.py": "b57a7b1c10330f34c824679e7ffe987562ad916388ed07564ae6aba095f04eb6",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
+      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e"
+    },
+    "repository": {
+      "url": "https://gitlab.com/rbehnialab/flexible-filtering",
+      "project_id": 29848973,
+      "commit": "ecc7703e506d7491d01532e9e339f2246648447f",
+      "current_tree": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/tree.jsonl",
+        "bytes": 15167,
+        "sha256": "66a18fa4b181cf57984ca3b679fee75e8e6724a285c96f925ac95a35220ec9d0",
+        "entry_count": 95,
+        "blob_count": 81,
+        "tree_count": 14
+      },
+      "commits": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/commits.json",
+        "bytes": 12884,
+        "sha256": "68378004965095caa2aaf370b9585bfe8a08846c63d4f8fa03ddb9f3a102d8e8",
+        "count": 20
+      },
+      "historical_paths": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/historical-paths.tsv",
+        "bytes": 112728,
+        "sha256": "a2d5cc14869f3d5f825a3daae238b728db5254ef24bf50d32cbacf8fd036bf76",
+        "commit_path_row_count": 891,
+        "unique_path_count": 111
+      },
+      "forbidden_identity_sidecar_tokens": [
+        "animal",
+        "subject",
+        "identity",
+        "metadata"
+      ]
+    },
+    "paper": {
+      "path": "data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml",
+      "bytes": 134179,
+      "sha256": "639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f",
+      "doi": "10.1016/j.cub.2021.09.061"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "repository_history": {
+    "commit_count": 20,
+    "fixed_tree_entry_count": 95,
+    "historical_commit_path_row_count": 891,
+    "historical_unique_path_count": 111,
+    "identity_sidecar_paths": [],
+    "complete_public_history_inspected": true
+  },
+  "author_identity_semantics": {
+    "recording_id_is_used_as_cell_aggregation_key": true,
+    "multiple_subrecording_numbers_per_recording_id_documented": true,
+    "recording_id_is_date_formatted_in_payloads": true,
+    "explicit_biological_fly_id_field_in_payloads": false,
+    "paper_states_one_recording_cell_per_fly": false,
+    "recording_id_promoted_to_biological_individual_id": false
+  },
+  "contrast_flash_payloads": {
+    "Tm1": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/Tm1_flash_dict_contrast.pickle",
+        "bytes": 5401638,
+        "sha256": "e47a8c1b4158f79b1cbd63023600f4e309d365e4c4ab2e4d9c9ab53335836ee2",
+        "git_blob": "c202af13690cf23f162e1e91d4cec089fc466843"
+      },
+      "condition_count": 4,
+      "condition_trace_counts": {
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 saline": 5,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 saline": 6,
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 OA": 4,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 OA": 4
+      },
+      "recording_id_retained": false,
+      "biological_individual_id_retained": false
+    },
+    "Tm2": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/Tm2_flash_dict_contrast.pickle",
+        "bytes": 8801423,
+        "sha256": "71f0d381db2e401583cbae304cd3bdd8a1041c2ed876f5d626f8d6180caf4c65",
+        "git_blob": "34addf4d226ce477493c29a5a4c203d47a3f84f5"
+      },
+      "condition_count": 4,
+      "condition_trace_counts": {
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 saline": 4,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 saline": 5,
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 OA": 2,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 OA": 3
+      },
+      "recording_id_retained": false,
+      "biological_individual_id_retained": false
+    },
+    "Tm4": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/Tm4_flash_dict_contrast.pickle",
+        "bytes": 7601294,
+        "sha256": "0c2262a1200f4306995475bd30c9826688ddb8c405746066ccd07edb0e2ed3e8",
+        "git_blob": "e286cd9dc49a888ad0a1627e734bdeb88ae787bd"
+      },
+      "condition_count": 4,
+      "condition_trace_counts": {
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 saline": 2,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 saline": 3,
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 OA": 3,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 OA": 3
+      },
+      "recording_id_retained": false,
+      "biological_individual_id_retained": false
+    },
+    "Tm9": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/history/Tm9_flash_dict_contrast.pickle",
+        "bytes": 3001121,
+        "sha256": "95a50c8499a1e674bb7ae5de2e9f964ef42cd8825e53a0b2ca6be66254c2c161",
+        "git_blob": "043f9560b250045f0f85914532a574bd9659a69f"
+      },
+      "condition_count": 4,
+      "condition_trace_counts": {
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 saline": 1,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 saline": 2,
+        "FFF_uniform_20msimpulse_10int_lowcontrast0to01 OA": 2,
+        "FFF_uniform_160msimpulse_10int_lowcontrast0to01 OA": 2
+      },
+      "recording_id_retained": false,
+      "biological_individual_id_retained": false
+    }
+  },
+  "drifting_grating_payloads": {
+    "Tm1_SA": {
+      "file": {
+        "source": "Tm1",
+        "bath": "saline",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm1_SA.pickle",
+        "bytes": 176898274,
+        "sha256": "ed3b527a8ac83f48e5288754a52c5e0e7c21745448f2ba3460024ef50e7027a4",
+        "git_blob": "bcb7890a355fe80607610a81383ae07bd20b0d66"
+      },
+      "record_count": 6,
+      "recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+        "190724",
+        "201201"
+      ],
+      "unique_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+        "190724",
+        "201201"
+      ],
+      "unique_recording_id_count": 6,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2019-07-01",
+        "2019-07-08",
+        "2019-07-15",
+        "2019-07-22",
+        "2019-07-24",
+        "2020-12-01"
+      ],
+      "all_cell_number_fields_missing": false,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm1_OA": {
+      "file": {
+        "source": "Tm1",
+        "bath": "OA",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm1_OA.pickle",
+        "bytes": 142875329,
+        "sha256": "d0b08c64b52438633ae4c423881c7f052baf5dc6f0479b867a80c8aa5c74bfaa",
+        "git_blob": "b981d4f1d8d35feb5a78136d05234b0e3eb6e3cb"
+      },
+      "record_count": 5,
+      "recording_ids": [
+        "190701",
+        "190701",
+        "190708",
+        "190722",
+        "201201"
+      ],
+      "unique_recording_ids": [
+        "190701",
+        "190708",
+        "190722",
+        "201201"
+      ],
+      "unique_recording_id_count": 4,
+      "duplicate_recording_ids": [
+        "190701"
+      ],
+      "recording_dates": [
+        "2019-07-01",
+        "2019-07-01",
+        "2019-07-08",
+        "2019-07-22",
+        "2020-12-01"
+      ],
+      "all_cell_number_fields_missing": false,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm2_SA": {
+      "file": {
+        "source": "Tm2",
+        "bath": "saline",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm2_SA.pickle",
+        "bytes": 53658536,
+        "sha256": "10ebd074c60db0681a2814bd4a5d0d68e4000e30d4c1388e3a2a4a56e3d3e49d",
+        "git_blob": "399450c19ddead85c8a0f96b1fe1830452d25cc8"
+      },
+      "record_count": 2,
+      "recording_ids": [
+        "201013",
+        "201119"
+      ],
+      "unique_recording_ids": [
+        "201013",
+        "201119"
+      ],
+      "unique_recording_id_count": 2,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2020-10-13",
+        "2020-11-19"
+      ],
+      "all_cell_number_fields_missing": true,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm2_OA": {
+      "file": {
+        "source": "Tm2",
+        "bath": "OA",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm2_OA.pickle",
+        "bytes": 52758579,
+        "sha256": "77a7ca5d967823d4e33dc6a3b72a485d140f42af312788af9f6461a6630d8880",
+        "git_blob": "9e697f464efc938c5d8f1cd31396695cf5f6ea8f"
+      },
+      "record_count": 2,
+      "recording_ids": [
+        "201013",
+        "201119"
+      ],
+      "unique_recording_ids": [
+        "201013",
+        "201119"
+      ],
+      "unique_recording_id_count": 2,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2020-10-13",
+        "2020-11-19"
+      ],
+      "all_cell_number_fields_missing": true,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm4_SA": {
+      "file": {
+        "source": "Tm4",
+        "bath": "saline",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm4_SA.pickle",
+        "bytes": 54252537,
+        "sha256": "92bb9af12580b0eb05b777b9b52f6e5570043e58bc3a7d2cc75bc338a0bbb133",
+        "git_blob": "a39ddbcfa6bb58338f7044c9353c33f5beebea6a"
+      },
+      "record_count": 2,
+      "recording_ids": [
+        "200209",
+        "200823"
+      ],
+      "unique_recording_ids": [
+        "200209",
+        "200823"
+      ],
+      "unique_recording_id_count": 2,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2020-02-09",
+        "2020-08-23"
+      ],
+      "all_cell_number_fields_missing": false,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm4_OA": {
+      "file": {
+        "source": "Tm4",
+        "bath": "OA",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm4_OA.pickle",
+        "bytes": 53478531,
+        "sha256": "84561101d7d34c334db2f4595d14fe5a1858ecb0f5dde349851b78858ec1f665",
+        "git_blob": "16e1a56a4f5cea9472947cc963d956136fc2e74f"
+      },
+      "record_count": 2,
+      "recording_ids": [
+        "200209",
+        "200706"
+      ],
+      "unique_recording_ids": [
+        "200209",
+        "200706"
+      ],
+      "unique_recording_id_count": 2,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2020-02-09",
+        "2020-07-06"
+      ],
+      "all_cell_number_fields_missing": false,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm9_SA": {
+      "file": {
+        "source": "Tm9",
+        "bath": "saline",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm9_SA.pickle",
+        "bytes": 88383472,
+        "sha256": "6ec5db16490167f59a756d28bcd8ce17edbf4bd479a9f7d39adbb1eb3da671ec",
+        "git_blob": "1da9af175f12567a4a79d6ddcdd1369f624c13de"
+      },
+      "record_count": 3,
+      "recording_ids": [
+        "190812",
+        "191112",
+        "200720"
+      ],
+      "unique_recording_ids": [
+        "190812",
+        "191112",
+        "200720"
+      ],
+      "unique_recording_id_count": 3,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2019-08-12",
+        "2019-11-12",
+        "2020-07-20"
+      ],
+      "all_cell_number_fields_missing": true,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "Tm9_OA": {
+      "file": {
+        "source": "Tm9",
+        "bath": "OA",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/dg_Tm9_OA.pickle",
+        "bytes": 114708468,
+        "sha256": "2767d3d60a036ac120db7cd49a28000ab0cd06086d0a5690175b363ea3fff515",
+        "git_blob": "93f17457d15567afdf20b3fd1a391d216712e667"
+      },
+      "record_count": 4,
+      "recording_ids": [
+        "190812",
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "unique_recording_ids": [
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "unique_recording_id_count": 3,
+      "duplicate_recording_ids": [
+        "190812"
+      ],
+      "recording_dates": [
+        "2019-08-12",
+        "2019-08-12",
+        "2019-12-03",
+        "2020-01-15"
+      ],
+      "all_cell_number_fields_missing": true,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    }
+  },
+  "Tm9_all_white_noise_payloads": {
+    "SA": {
+      "file": {
+        "source": "Tm9",
+        "bath": "saline",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/wn_Tm9_SA_all.pickle",
+        "bytes": 535454940,
+        "sha256": "3880963e8822e3b6fba256fa4d043795fd448431cc8ec1c85a770e0ffb2c08d8",
+        "git_blob": "4844567707426453eae63006d467df70ae9cc9e0",
+        "expected_record_count": 15,
+        "expected_unique_recording_id_count": 13
+      },
+      "record_count": 15,
+      "recording_ids": [
+        "190807",
+        "190812",
+        "190920",
+        "190920",
+        "191023",
+        "191023",
+        "191112",
+        "191203",
+        "191209",
+        "200115",
+        "200123",
+        "200716",
+        "200717",
+        "200720",
+        "200727"
+      ],
+      "unique_recording_ids": [
+        "190807",
+        "190812",
+        "190920",
+        "191023",
+        "191112",
+        "191203",
+        "191209",
+        "200115",
+        "200123",
+        "200716",
+        "200717",
+        "200720",
+        "200727"
+      ],
+      "unique_recording_id_count": 13,
+      "duplicate_recording_ids": [
+        "190920",
+        "191023"
+      ],
+      "recording_dates": [
+        "2019-08-07",
+        "2019-08-12",
+        "2019-09-20",
+        "2019-09-20",
+        "2019-10-23",
+        "2019-10-23",
+        "2019-11-12",
+        "2019-12-03",
+        "2019-12-09",
+        "2020-01-15",
+        "2020-01-23",
+        "2020-07-16",
+        "2020-07-17",
+        "2020-07-20",
+        "2020-07-27"
+      ],
+      "all_cell_number_fields_missing": true,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    },
+    "OA": {
+      "file": {
+        "source": "Tm9",
+        "bath": "OA",
+        "path": "data/raw/kohn-portes-flexible-filtering/history/wn_Tm9_OA_all.pickle",
+        "bytes": 216395769,
+        "sha256": "039577e79071643de0883fbf88463c97f3e3caf95b4f3fc787d45313da228d5f",
+        "git_blob": "a45b86a609a32b24c5722f0b63206c332c1f04a9",
+        "expected_record_count": 6,
+        "expected_unique_recording_id_count": 6
+      },
+      "record_count": 6,
+      "recording_ids": [
+        "190807",
+        "190812",
+        "191023",
+        "191203",
+        "200115",
+        "200123"
+      ],
+      "unique_recording_ids": [
+        "190807",
+        "190812",
+        "191023",
+        "191203",
+        "200115",
+        "200123"
+      ],
+      "unique_recording_id_count": 6,
+      "duplicate_recording_ids": [],
+      "recording_dates": [
+        "2019-08-07",
+        "2019-08-12",
+        "2019-10-23",
+        "2019-12-03",
+        "2020-01-15",
+        "2020-01-23"
+      ],
+      "all_cell_number_fields_missing": true,
+      "raw_voltage_trace_present": true,
+      "physical_timestamps_present": true
+    }
+  },
+  "source_capacity": {
+    "Tm1": {
+      "main_selected_unique_recording_id_count": 7,
+      "full_repository_unique_recording_id_upper_bound": 8,
+      "main_selected_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+        "190729",
+        "201201",
+        "210126"
+      ],
+      "full_repository_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+        "190724",
+        "190729",
+        "201201",
+        "210126"
+      ],
+      "new_ids_beyond_main_selection": [
+        "190724"
+      ],
+      "minimum_training_plus_validation_count": 8,
+      "recording_id_upper_bound_meets_numeric_5_plus_3": true,
+      "biological_individual_count_verified": false,
+      "biological_individual_5_plus_3_split_authorized": false
+    },
+    "Tm2": {
+      "main_selected_unique_recording_id_count": 7,
+      "full_repository_unique_recording_id_upper_bound": 7,
+      "main_selected_recording_ids": [
+        "200927",
+        "201013",
+        "201119",
+        "201125",
+        "210718",
+        "210719",
+        "210721"
+      ],
+      "full_repository_recording_ids": [
+        "200927",
+        "201013",
+        "201119",
+        "201125",
+        "210718",
+        "210719",
+        "210721"
+      ],
+      "new_ids_beyond_main_selection": [],
+      "minimum_training_plus_validation_count": 8,
+      "recording_id_upper_bound_meets_numeric_5_plus_3": false,
+      "biological_individual_count_verified": false,
+      "biological_individual_5_plus_3_split_authorized": false
+    },
+    "Tm4": {
+      "main_selected_unique_recording_id_count": 7,
+      "full_repository_unique_recording_id_upper_bound": 7,
+      "main_selected_recording_ids": [
+        "200209",
+        "200621",
+        "200703",
+        "200706",
+        "200823",
+        "200826",
+        "210803"
+      ],
+      "full_repository_recording_ids": [
+        "200209",
+        "200621",
+        "200703",
+        "200706",
+        "200823",
+        "200826",
+        "210803"
+      ],
+      "new_ids_beyond_main_selection": [],
+      "minimum_training_plus_validation_count": 8,
+      "recording_id_upper_bound_meets_numeric_5_plus_3": false,
+      "biological_individual_count_verified": false,
+      "biological_individual_5_plus_3_split_authorized": false
+    },
+    "Tm9": {
+      "main_selected_unique_recording_id_count": 6,
+      "full_repository_unique_recording_id_upper_bound": 13,
+      "main_selected_recording_ids": [
+        "190812",
+        "191112",
+        "191203",
+        "191209",
+        "200115",
+        "200720"
+      ],
+      "full_repository_recording_ids": [
+        "190807",
+        "190812",
+        "190920",
+        "191023",
+        "191112",
+        "191203",
+        "191209",
+        "200115",
+        "200123",
+        "200716",
+        "200717",
+        "200720",
+        "200727"
+      ],
+      "new_ids_beyond_main_selection": [
+        "190807",
+        "190920",
+        "191023",
+        "200123",
+        "200716",
+        "200717",
+        "200727"
+      ],
+      "minimum_training_plus_validation_count": 8,
+      "recording_id_upper_bound_meets_numeric_5_plus_3": true,
+      "biological_individual_count_verified": false,
+      "biological_individual_5_plus_3_split_authorized": false
+    }
+  },
+  "transfer_gates": {
+    "fixed_repository_tree_verified": true,
+    "complete_public_commit_history_paths_verified": true,
+    "no_identity_sidecar_in_public_history": true,
+    "author_uses_recording_id_as_cell_aggregation_key": true,
+    "every_source_recording_id_upper_bound_meets_numeric_5_plus_3": false,
+    "biological_individual_semantics_verified": false,
+    "every_source_biological_individual_5_plus_3_split_authorized": false,
+    "external_final_commitment_available": false
+  },
+  "T5_biological_individual_split_authorized": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "every_source_recording_id_upper_bound_meets_numeric_5_plus_3",
+    "biological_individual_semantics_verified",
+    "every_source_biological_individual_5_plus_3_split_authorized",
+    "external_final_commitment_available"
+  ],
+  "stop_reason": "expanded_recording_key_capacity_still_lacks_biological_individual_semantics_and_all_source_5_plus_3",
+  "boundary": {
+    "recording_id_is_an_author_cell_aggregation_key": true,
+    "recording_id_is_not_asserted_to_be_biological_fly_id": true,
+    "recording_id_encodes_recording_date": true,
+    "multiple_subrecordings_per_recording_id_are_deduplicated": true,
+    "cross_stimulus_union_is_an_upper_bound_not_a_common_protocol_cohort": true,
+    "anonymous_contrast_flash_arrays_do_not_add_identity": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

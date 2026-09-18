@@ -3,8 +3,8 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "e60f9bbb58b72e0fa6bbb46770832b1bcebbff2491ccdb55b1ace1c132409f9f",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "539f9a178bb45062a970e6ca80520fb8eb58109890220a9c69c89fabefed8ff6",
+      "configs/driving-v7-source-evidence-matrix.yaml": "ad0e2036a746d0c9829ac281258301a741293d0efd2860a646f9cb6f27b24087",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "33f0bcd3c755009cde3b8816c88d4f05060bd828740d2f741bb391aae763f11f",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
@@ -15,6 +15,7 @@
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
+      "artifacts/v7-kohn-portes-identity-history-audit.json": "77033024cb0d114085c644a5b1a0dc8fa133b3eb89e93f8f78e4a93b670512fb",
       "artifacts/v7-ct1-extreme-compartmentalization-audit.json": "9fc040650cecd64a5151df4d109497751add32ee2a188ce986133d13cc2116b6",
       "artifacts/v7-ct1-experimental-voltage-boundary-audit.json": "b4c66504120c2c19486b088c2680a899618e02cbfb43cebdc7130e8f2156989b",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "42b00f711f08212c07a6dad2d24abfbe0fa9fd18c9fb24957f5a3fec42236c24",
@@ -69,7 +70,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -136,7 +140,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -203,7 +210,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -266,7 +276,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -327,7 +340,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 8,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": true,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -395,7 +411,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 7,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -463,7 +482,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 7,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -528,7 +550,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 13,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": true,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -594,7 +619,10 @@
         "Pirogova_2023_allowed_membrane_voltage_unit": false,
         "Pirogova_2023_biological_individual_id_available": false,
         "Tm9_coordinate_identifiable_under_existing_rule": false,
-        "Tm9_post_hoc_coordinate_repair_authorized": false
+        "Tm9_post_hoc_coordinate_repair_authorized": false,
+        "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
       },
       "numerical_membrane_voltage": false,
       "published_optical_voltage_phenotype": false,

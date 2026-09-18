@@ -1,0 +1,97 @@
+version: 1
+name: v7-kohn-portes-identity-history-audit
+observed_on: "2026-09-19"
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+prior_evidence: artifacts/v7-kohn-portes-t5-ephys-audit.json
+repository:
+  url: https://gitlab.com/rbehnialab/flexible-filtering
+  project_id: 29848973
+  commit: ecc7703e506d7491d01532e9e339f2246648447f
+  current_tree:
+    path: data/raw/kohn-portes-flexible-filtering/history/tree.jsonl
+    bytes: 15167
+    sha256: 66a18fa4b181cf57984ca3b679fee75e8e6724a285c96f925ac95a35220ec9d0
+    entry_count: 95
+    blob_count: 81
+    tree_count: 14
+  commits:
+    path: data/raw/kohn-portes-flexible-filtering/history/commits.json
+    bytes: 12884
+    sha256: 68378004965095caa2aaf370b9585bfe8a08846c63d4f8fa03ddb9f3a102d8e8
+    count: 20
+  historical_paths:
+    path: data/raw/kohn-portes-flexible-filtering/history/historical-paths.tsv
+    bytes: 112728
+    sha256: a2d5cc14869f3d5f825a3daae238b728db5254ef24bf50d32cbacf8fd036bf76
+    commit_path_row_count: 891
+    unique_path_count: 111
+  forbidden_identity_sidecar_tokens: [animal, subject, identity, metadata]
+paper:
+  path: data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml
+  bytes: 134179
+  sha256: 639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f
+  doi: 10.1016/j.cub.2021.09.061
+author_code:
+  returnmeans:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/analysis_returnmeans.py
+    bytes: 21225
+    sha256: bc7dae22a5f53504f9a1111a645b34a79505f72cc0dbfa98cd4ba6a0c7e20474
+  white_noise_notebook:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb
+    bytes: 960396
+    sha256: 1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f
+  historical_Tm9_notebook:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig3-ImpulseResponses-checkpoint.ipynb
+    bytes: 1834100
+    sha256: 2668ab95fd8c6a5131ea89ed74cda6a71fcc33d93af3e5bc119217f8b4b8766b
+contrast_flash_files:
+  Tm1:
+    path: data/raw/kohn-portes-flexible-filtering/history/Tm1_flash_dict_contrast.pickle
+    bytes: 5401638
+    sha256: e47a8c1b4158f79b1cbd63023600f4e309d365e4c4ab2e4d9c9ab53335836ee2
+    git_blob: c202af13690cf23f162e1e91d4cec089fc466843
+  Tm2:
+    path: data/raw/kohn-portes-flexible-filtering/history/Tm2_flash_dict_contrast.pickle
+    bytes: 8801423
+    sha256: 71f0d381db2e401583cbae304cd3bdd8a1041c2ed876f5d626f8d6180caf4c65
+    git_blob: 34addf4d226ce477493c29a5a4c203d47a3f84f5
+  Tm4:
+    path: data/raw/kohn-portes-flexible-filtering/history/Tm4_flash_dict_contrast.pickle
+    bytes: 7601294
+    sha256: 0c2262a1200f4306995475bd30c9826688ddb8c405746066ccd07edb0e2ed3e8
+    git_blob: e286cd9dc49a888ad0a1627e734bdeb88ae787bd
+  Tm9:
+    path: data/raw/kohn-portes-flexible-filtering/history/Tm9_flash_dict_contrast.pickle
+    bytes: 3001121
+    sha256: 95a50c8499a1e674bb7ae5de2e9f964ef42cd8825e53a0b2ca6be66254c2c161
+    git_blob: 043f9560b250045f0f85914532a574bd9659a69f
+drifting_grating_files:
+  Tm1_SA: {source: Tm1, bath: saline, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm1_SA.pickle, bytes: 176898274, sha256: ed3b527a8ac83f48e5288754a52c5e0e7c21745448f2ba3460024ef50e7027a4, git_blob: bcb7890a355fe80607610a81383ae07bd20b0d66}
+  Tm1_OA: {source: Tm1, bath: OA, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm1_OA.pickle, bytes: 142875329, sha256: d0b08c64b52438633ae4c423881c7f052baf5dc6f0479b867a80c8aa5c74bfaa, git_blob: b981d4f1d8d35feb5a78136d05234b0e3eb6e3cb}
+  Tm2_SA: {source: Tm2, bath: saline, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm2_SA.pickle, bytes: 53658536, sha256: 10ebd074c60db0681a2814bd4a5d0d68e4000e30d4c1388e3a2a4a56e3d3e49d, git_blob: 399450c19ddead85c8a0f96b1fe1830452d25cc8}
+  Tm2_OA: {source: Tm2, bath: OA, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm2_OA.pickle, bytes: 52758579, sha256: 77a7ca5d967823d4e33dc6a3b72a485d140f42af312788af9f6461a6630d8880, git_blob: 9e697f464efc938c5d8f1cd31396695cf5f6ea8f}
+  Tm4_SA: {source: Tm4, bath: saline, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm4_SA.pickle, bytes: 54252537, sha256: 92bb9af12580b0eb05b777b9b52f6e5570043e58bc3a7d2cc75bc338a0bbb133, git_blob: a39ddbcfa6bb58338f7044c9353c33f5beebea6a}
+  Tm4_OA: {source: Tm4, bath: OA, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm4_OA.pickle, bytes: 53478531, sha256: 84561101d7d34c334db2f4595d14fe5a1858ecb0f5dde349851b78858ec1f665, git_blob: 16e1a56a4f5cea9472947cc963d956136fc2e74f}
+  Tm9_SA: {source: Tm9, bath: saline, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm9_SA.pickle, bytes: 88383472, sha256: 6ec5db16490167f59a756d28bcd8ce17edbf4bd479a9f7d39adbb1eb3da671ec, git_blob: 1da9af175f12567a4a79d6ddcdd1369f624c13de}
+  Tm9_OA: {source: Tm9, bath: OA, path: data/raw/kohn-portes-flexible-filtering/history/dg_Tm9_OA.pickle, bytes: 114708468, sha256: 2767d3d60a036ac120db7cd49a28000ab0cd06086d0a5690175b363ea3fff515, git_blob: 93f17457d15567afdf20b3fd1a391d216712e667}
+Tm9_all_white_noise_files:
+  SA: {source: Tm9, bath: saline, path: data/raw/kohn-portes-flexible-filtering/history/wn_Tm9_SA_all.pickle, bytes: 535454940, sha256: 3880963e8822e3b6fba256fa4d043795fd448431cc8ec1c85a770e0ffb2c08d8, git_blob: 4844567707426453eae63006d467df70ae9cc9e0, expected_record_count: 15, expected_unique_recording_id_count: 13}
+  OA: {source: Tm9, bath: OA, path: data/raw/kohn-portes-flexible-filtering/history/wn_Tm9_OA_all.pickle, bytes: 216395769, sha256: 039577e79071643de0883fbf88463c97f3e3caf95b4f3fc787d45313da228d5f, git_blob: a45b86a609a32b24c5722f0b63206c332c1f04a9, expected_record_count: 6, expected_unique_recording_id_count: 6}
+expected_main_selected_unique_recording_ids: {Tm1: 7, Tm2: 7, Tm4: 7, Tm9: 6}
+expected_full_repository_unique_recording_id_upper_bounds: {Tm1: 8, Tm2: 7, Tm4: 7, Tm9: 13}
+expected_new_ids_beyond_main_selection:
+  Tm1: ["190724"]
+  Tm2: []
+  Tm4: []
+  Tm9: ["190807", "190920", "191023", "200123", "200716", "200717", "200727"]
+boundary:
+  recording_id_is_an_author_cell_aggregation_key: true
+  recording_id_is_not_asserted_to_be_biological_fly_id: true
+  recording_id_encodes_recording_date: true
+  multiple_subrecordings_per_recording_id_are_deduplicated: true
+  cross_stimulus_union_is_an_upper_bound_not_a_common_protocol_cohort: true
+  anonymous_contrast_flash_arrays_do_not_add_identity: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

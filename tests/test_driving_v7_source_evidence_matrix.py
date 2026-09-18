@@ -161,6 +161,27 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     assert report["family_summary"]["T5"]["all_sources_contract_complete"] is False
 
 
+def test_Kohn_Portes_recording_capacity_does_not_replace_biological_identity() -> None:
+    report = json.loads(REPORT.read_text())
+    expected = {"Tm1": 8, "Tm2": 7, "Tm4": 7, "Tm9": 13}
+    for source, count in expected.items():
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Kohn_Portes_full_repository_recording_id_upper_bound"] == count
+        assert components["Kohn_Portes_biological_individual_5_plus_3_authorized"] is False
+    assert report["matrix"]["Tm1"]["evidence_components"][
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3"
+    ] is True
+    assert report["matrix"]["Tm9"]["evidence_components"][
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3"
+    ] is True
+    assert report["matrix"]["Tm2"]["evidence_components"][
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3"
+    ] is False
+    assert report["matrix"]["Tm4"]["evidence_components"][
+        "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3"
+    ] is False
+
+
 def test_inhibitory_source_external_evidence_does_not_cross_modalities() -> None:
     report = json.loads(REPORT.read_text())
     for source in ("Mi4", "C3"):

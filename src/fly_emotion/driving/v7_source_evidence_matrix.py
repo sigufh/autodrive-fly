@@ -52,6 +52,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "sources_with_local_numeric_membrane_voltage"
         ]
     )
+    kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_dynamic = {
         item["source_type"] for item in evidence["t5_calcium"]["verified_dynamic_blocks"].values()
     }
@@ -207,6 +208,25 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Tm9_post_hoc_coordinate_repair_authorized": (
                 source == "Tm9"
                 and tm9_coordinate["Tm9_532266_coordinate_repair_authorized"]
+            ),
+            "Kohn_Portes_full_repository_recording_id_upper_bound": (
+                kohn_portes_identity["source_capacity"][source][
+                    "full_repository_unique_recording_id_upper_bound"
+                ]
+                if source in kohn_portes_voltage_sources
+                else 0
+            ),
+            "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": (
+                source in kohn_portes_voltage_sources
+                and kohn_portes_identity["source_capacity"][source][
+                    "recording_id_upper_bound_meets_numeric_5_plus_3"
+                ]
+            ),
+            "Kohn_Portes_biological_individual_5_plus_3_authorized": (
+                source in kohn_portes_voltage_sources
+                and kohn_portes_identity["source_capacity"][source][
+                    "biological_individual_5_plus_3_split_authorized"
+                ]
             ),
         }
         numerical_sources = []
