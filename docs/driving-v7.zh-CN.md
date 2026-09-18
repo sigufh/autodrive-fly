@@ -1907,6 +1907,17 @@ NWB 的范围读取超时，所以发布者哈希没有冒充本地复算。暂�
 载荷，只保留为后续源特异钙成像验证候选，不授权 source fit 或 T4/T5/LPLC/车辆推进。
 证据见 `artifacts/v7-gou-sparsity-source-dynamics-audit.json`。
 
+T5 余缺口另用 Ramos-Traslosheros 与 Silies 2021 的官方 4,459,008-byte Source Data
+工作簿核验（SHA-256 `a7fa2843…`，32 sheets）。工作簿确有 Tm4 与 Tm9 的独立
+`time_seconds × ROI` 波形：全场闪光均为 122 点、0.1 s 步长，分别 131 与 119 个
+ROI；补充表中的长条刺激块有按区段留空的响应单元，未插零或算作完整时间块。
+CT1 的 162 个 ROI、15 flies 也有 ON/OFF 空间位置响应，但只有 position×ROI 曲线，
+没有 CT1 时间轴。所有这些响应仍是 GCaMP6f/jRGECO1a ΔF/F0，动态 ROI 没有逐项
+fly/body 映射，也没有预注册的 training/validation/external-final 角色。因此该数据只把
+T5 的独立实测动态覆盖补到 Tm4/Tm9，并验证 CT1 空间极性；不能把 CT1 空间曲线伪装成
+CT1 动力学，更不能直接当作膜电位核或解锁 T5。证据见
+`artifacts/v7-t5-contrast-opponency-source-data-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

@@ -219,6 +219,9 @@ from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_continuous_moment_precheck import (
     evaluate_v7_t5_continuous_moment_precheck,
 )
+from .driving.v7_t5_contrast_opponency_source_data_audit import (
+    evaluate_v7_t5_contrast_opponency_source_data_audit,
+)
 from .driving.v7_t5_ct1_axis_aware_antisymmetric_precheck import (
     evaluate_v7_t5_ct1_axis_aware_antisymmetric_precheck,
 )
@@ -470,6 +473,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-public-t4-model-source-coverage")
     subparsers.add_parser("v7-audit-dryad-l1l2-source-dynamics")
     subparsers.add_parser("v7-audit-gou-sparsity-source-dynamics")
+    subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1520,6 +1524,14 @@ def main() -> None:
     if args.command == "v7-audit-gou-sparsity-source-dynamics":
         report = evaluate_v7_gou_sparsity_source_dynamics_audit(root)
         target = root / "artifacts/v7-gou-sparsity-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-contrast-opponency-source-data":
+        report = evaluate_v7_t5_contrast_opponency_source_data_audit(root)
+        target = root / "artifacts/v7-t5-contrast-opponency-source-data-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

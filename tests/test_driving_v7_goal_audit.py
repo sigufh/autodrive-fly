@@ -226,6 +226,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Gou_sparsity_partial_source_evidence_present"] is True
     assert visual["observations"]["Gou_sparsity_source_dynamics_transfer_authorized"] is False
     assert visual["observations"]["Gou_sparsity_bulk_download_authorized"] is False
+    assert visual["observations"]["T5_contrast_opponency_temporal_sources"] == [
+        "Tm4",
+        "Tm9",
+    ]
+    assert visual["observations"]["T5_contrast_opponency_spatial_only_sources"] == [
+        "CT1"
+    ]
+    assert visual["observations"]["T5_contrast_opponency_transfer_authorized"] is False
     assert visual["observations"]["source_dynamics_external_required_split_roles"] == [
         "training",
         "validation",

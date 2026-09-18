@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "c13b0f9ade584c57f215efbb50cc3a96848fc13c6b1513245b0a6b0fb0d4d5a3",
       "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "7fccb164cb3617a020666562fb9af63417d009eaa08546a9afdc264bfbab2400",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "a4bfaf45a0d75c0ec13feb40a9a2905b7eb9024ca3e2ad70e27593c6f56d1a3b"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "0e13cd6fe1a7d4031e4b0f420e56a46135d8578f09f7b97071c43dd2f0308315"
     },
     "paper": {
       "doi": "10.1016/j.cub.2024.10.053",

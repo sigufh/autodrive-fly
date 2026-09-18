@@ -1,0 +1,98 @@
+version: 1
+name: v7-t5-contrast-opponency-source-data-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.1038/s41467-021-24986-w
+  pmcid: PMC8371135
+  title: The physiological basis for contrast opponency in motion computation in Drosophila
+source_data:
+  path: data/raw/t5-contrast-opponency/41467_2021_24986_MOESM4_ESM.xls
+  url: https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-021-24986-w/MediaObjects/41467_2021_24986_MOESM4_ESM.xls
+  bytes: 4459008
+  sha256: a7fa28438b16ba9a3316e25fde9d173f39d24469b0d6e58f9333cfdc583a0bb8
+  sheet_count: 32
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+dynamic_blocks:
+  Tm4_full_field:
+    source_type: Tm4
+    sheet: Fig3b
+    header_row_zero_based: 0
+    expected_header: Time_seconds_Tm4
+    expected_time_samples: 122
+    expected_roi_count: 131
+    expected_start_seconds: 0.0
+    expected_end_seconds: 12.1
+    expected_time_step_seconds: 0.1
+    response_unit: deltaF_over_F0
+    indicator: jRGECO1a
+  Tm9_full_field:
+    source_type: Tm9
+    sheet: Fig3b
+    header_row_zero_based: 124
+    expected_header: Time_seconds_Tm9
+    expected_time_samples: 122
+    expected_roi_count: 119
+    expected_start_seconds: 0.0
+    expected_end_seconds: 12.1
+    expected_time_step_seconds: 0.1
+    response_unit: deltaF_over_F0
+    indicator: GCaMP6f
+  Tm9_control_full_field:
+    source_type: Tm9
+    sheet: Fig7f
+    header_row_zero_based: 0
+    expected_header: Tm9_Control_OFFON_fullfield_time_seconds
+    expected_time_samples: 122
+    expected_roi_count: 70
+    expected_start_seconds: 0.1
+    expected_end_seconds: 12.2
+    expected_time_step_seconds: 0.1
+    response_unit: deltaF_over_F0
+    indicator: GCaMP6f
+spatial_blocks:
+  CT1_OFF_horizontal:
+    source_type: CT1
+    sheet: Fig5b-d
+    header_row_zero_based: 0
+    expected_header: CT1_OFF_horizontal_position_deg
+    expected_position_samples: 25
+    expected_roi_count: 162
+    expected_start_degrees: 2.0
+    expected_end_degrees: 50.0
+    expected_position_step_degrees: 2.0
+    response_unit: deltaF_over_F0
+    indicator: GCaMP6f
+  CT1_ON_horizontal:
+    source_type: CT1
+    sheet: Fig5b-d
+    header_row_zero_based: 54
+    expected_header: CT1_ON_horizontal_position_deg
+    expected_position_samples: 25
+    expected_roi_count: 162
+    expected_start_degrees: 2.0
+    expected_end_degrees: 50.0
+    expected_position_step_degrees: 2.0
+    response_unit: deltaF_over_F0
+    indicator: GCaMP6f
+published_cohorts:
+  Tm4_Tm9_dual_color_fly_count: 11
+  CT1_roi_count: 162
+  CT1_fly_count: 15
+transfer_fields:
+  stable_ROI_labels_present: true
+  per_ROI_to_fly_mapping_for_dynamic_blocks_present: false
+  source_type_to_MaleCNS_body_mapping_present: false
+  preregistered_training_validation_external_final_roles_present: false
+excluded_blocks:
+  - sheets: [SupFig3ac, SupFig3bd]
+    reason: response columns contain intentional empty intervals on a shared long time axis
+    treatment: not_counted_as_complete_temporal_blocks
+boundary:
+  read_only_official_source_data_audit: true
+  calcium_fluorescence_is_not_membrane_voltage: true
+  CT1_spatial_response_is_not_CT1_temporal_dynamics: true
+  incomplete_time_blocks_are_not_imputed_as_zero: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

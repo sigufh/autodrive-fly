@@ -1,0 +1,149 @@
+{
+  "protocol": {
+    "name": "v7-t5-contrast-opponency-source-data-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-contrast-opponency-source-data-audit.yaml": "ade767e5c672c4d856754bc92f06b5e96bde71fe9e6b8ee5a82c8fc0ac59f6c6",
+      "src/fly_emotion/driving/v7_t5_contrast_opponency_source_data_audit.py": "683000abe96119556e4479aa2fd6e83a781dd62a1cd9b907a5f64de8f898224e",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "0e13cd6fe1a7d4031e4b0f420e56a46135d8578f09f7b97071c43dd2f0308315"
+    },
+    "paper": {
+      "doi": "10.1038/s41467-021-24986-w",
+      "pmcid": "PMC8371135",
+      "title": "The physiological basis for contrast opponency in motion computation in Drosophila"
+    },
+    "source_data": {
+      "path": "data/raw/t5-contrast-opponency/41467_2021_24986_MOESM4_ESM.xls",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-021-24986-w/MediaObjects/41467_2021_24986_MOESM4_ESM.xls",
+      "bytes": 4459008,
+      "sha256": "a7fa28438b16ba9a3316e25fde9d173f39d24469b0d6e58f9333cfdc583a0bb8",
+      "sheet_count": 32,
+      "actual_sha256": "a7fa28438b16ba9a3316e25fde9d173f39d24469b0d6e58f9333cfdc583a0bb8",
+      "actual_sheet_count": 32,
+      "xlrd_version": "2.0.1"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "verified_dynamic_blocks": {
+    "Tm4_full_field": {
+      "source_type": "Tm4",
+      "sheet": "Fig3b",
+      "header_row_one_based": 1,
+      "time_samples": 122,
+      "roi_count": 131,
+      "time_start_seconds": 0.0,
+      "time_end_seconds": 12.1,
+      "median_time_step_seconds": 0.09999999999999964,
+      "response_unit": "deltaF_over_F0",
+      "indicator": "jRGECO1a"
+    },
+    "Tm9_full_field": {
+      "source_type": "Tm9",
+      "sheet": "Fig3b",
+      "header_row_one_based": 125,
+      "time_samples": 122,
+      "roi_count": 119,
+      "time_start_seconds": 0.0,
+      "time_end_seconds": 12.1,
+      "median_time_step_seconds": 0.09999999999999964,
+      "response_unit": "deltaF_over_F0",
+      "indicator": "GCaMP6f"
+    },
+    "Tm9_control_full_field": {
+      "source_type": "Tm9",
+      "sheet": "Fig7f",
+      "header_row_one_based": 1,
+      "time_samples": 122,
+      "roi_count": 70,
+      "time_start_seconds": 0.1,
+      "time_end_seconds": 12.2,
+      "median_time_step_seconds": 0.09999999999999964,
+      "response_unit": "deltaF_over_F0",
+      "indicator": "GCaMP6f"
+    }
+  },
+  "verified_spatial_blocks": {
+    "CT1_OFF_horizontal": {
+      "source_type": "CT1",
+      "sheet": "Fig5b-d",
+      "header_row_one_based": 1,
+      "position_samples": 25,
+      "roi_count": 162,
+      "position_start_degrees": 2.0,
+      "position_end_degrees": 50.0,
+      "median_position_step_degrees": 2.0,
+      "response_unit": "deltaF_over_F0",
+      "indicator": "GCaMP6f"
+    },
+    "CT1_ON_horizontal": {
+      "source_type": "CT1",
+      "sheet": "Fig5b-d",
+      "header_row_one_based": 55,
+      "position_samples": 25,
+      "roi_count": 162,
+      "position_start_degrees": 2.0,
+      "position_end_degrees": 50.0,
+      "median_position_step_degrees": 2.0,
+      "response_unit": "deltaF_over_F0",
+      "indicator": "GCaMP6f"
+    }
+  },
+  "published_cohorts": {
+    "Tm4_Tm9_dual_color_fly_count": 11,
+    "CT1_roi_count": 162,
+    "CT1_fly_count": 15
+  },
+  "T5_source_contract": {
+    "required_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ],
+    "sources_with_verified_temporal_blocks": [
+      "Tm4",
+      "Tm9"
+    ],
+    "sources_with_verified_spatial_but_not_temporal_blocks": [
+      "CT1"
+    ],
+    "missing_temporal_sources": [
+      "Tm1",
+      "Tm2",
+      "CT1"
+    ],
+    "temporal_coverage_fraction": 0.4
+  },
+  "transfer_gates": {
+    "official_workbook_verified": true,
+    "every_T5_source_has_temporal_dynamics": false,
+    "every_dynamic_source_has_allowed_response_unit": false,
+    "dynamic_ROIs_map_to_stable_individual_ids": false,
+    "source_type_to_MaleCNS_body_mapping_available": false,
+    "required_split_roles_present": false
+  },
+  "complete_T5_source_dynamics_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "every_T5_source_has_temporal_dynamics",
+    "every_dynamic_source_has_allowed_response_unit",
+    "dynamic_ROIs_map_to_stable_individual_ids",
+    "source_type_to_MaleCNS_body_mapping_available",
+    "required_split_roles_present"
+  ],
+  "stop_reason": "Tm4_Tm9_calcium_dynamics_and_CT1_spatial_responses_do_not_supply_CT1_temporal_or_membrane_voltage_evidence",
+  "boundary": {
+    "read_only_official_source_data_audit": true,
+    "calcium_fluorescence_is_not_membrane_voltage": true,
+    "CT1_spatial_response_is_not_CT1_temporal_dynamics": true,
+    "incomplete_time_blocks_are_not_imputed_as_zero": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}
