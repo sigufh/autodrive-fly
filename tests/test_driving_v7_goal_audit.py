@@ -179,6 +179,19 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "T5_CT1_axis_aware_antisymmetric_candidate_passed"
     ] is False
+    assert visual["observations"]["T5_CT1_axis_sequence_maximum_direction_pass_count"] == 2
+    assert set(
+        subtype
+        for values in visual["observations"][
+            "T5_CT1_axis_sequence_ordered_bilateral_subtypes"
+        ].values()
+        for subtype in values
+    ) == {"d"}
+    assert visual["observations"]["T5_CT1_axis_sequence_candidate_selected"] is False
+    assert (
+        visual["observations"]["T5_CT1_axis_sequence_authorizes_functional_candidate"]
+        is False
+    )
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},

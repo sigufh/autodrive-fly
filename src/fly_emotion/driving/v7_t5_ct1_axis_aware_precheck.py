@@ -272,11 +272,15 @@ def _trace(
                 (axes[:, 0] * components[0] + axes[:, 1] * components[1]) / denominator
             )
         previous = current
+    sequence = np.stack(sequence_values)
     return {
         "Tm9_peak": np.max(np.stack(tm9_values), axis=0),
         "positive_axis_sequence_peak": np.max(
-            np.maximum(np.stack(sequence_values), 0.0), axis=0
+            np.maximum(sequence, 0.0), axis=0
         ),
+        "positive_axis_sequence_mean": np.mean(np.maximum(sequence, 0.0), axis=0),
+        "signed_axis_sequence_mean": np.mean(sequence, axis=0),
+        "signed_axis_sequence_terminal": sequence[-1],
     }
 
 

@@ -1810,6 +1810,14 @@ cross-fit 预测标签，但当前 R1–R6 驱动的 source dynamics 沿该轴�
 `artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json`。因此“axis-aware CT1
 反对称一阶矩 × Tm9 基线”也被当前严格门否决。
 
+失败后只做非授权诊断：对同一反对称轴序列分别查看 positive peak、positive mean、
+signed mean 与 terminal 四种归约，并同时保留 ordered、temporal-shuffle、static-sham。
+ordered 最好仍只有 T5d 左右（2/8），其余亚型未恢复；shuffle/static 的方向均为 0/8。
+诊断没有选择候选，也不授权新功能实验。结合既有 source-type temporal audit 的 T5
+0/32，可把下一阻塞明确为可迁移的物理时间基准和 Tm1/Tm2/Tm4/Tm9/CT1 源动态，而不是
+继续扫描 target 端 gain 或归约。证据见
+`artifacts/v7-t5-ct1-axis-sequence-identifiability.json`。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "8e127d241135e73894ba5dd2d8a91dd2928255f1c954308d059ecd1ac2c14b86",
-      "src/fly_emotion/driving/v7_goal_audit.py": "c354d2323c39317fb7c89efec2e869993a6ae626f8c7fa06878d8423873eb2d1",
+      "configs/driving-v7-goal-audit.yaml": "195372d1f4899d984ca8c53f0b2653f36f22a7343885d885e0be84aa523fd852",
+      "src/fly_emotion/driving/v7_goal_audit.py": "e7a8785c940c1a467769d11470eb73fb0b5ff0dd67b2d5e18ceb1f7b0947b1c8",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -93,8 +93,9 @@
       "artifacts/v7-t5-ct1-crossfit-axis-audit.json": "773eebc9520f386e947841f1821df88012e34e0dc495dbe7d67a1c55f0b93c78",
       "artifacts/v7-t5-ct1-source-dynamics-precheck.json": "c75c0297b812e2fe70c4dfa58619e287f2553712b77cb36b14e242185e74cb76",
       "artifacts/v7-t5-ct1-multiplicative-precheck.json": "acc172064f4974b6a525964a38826a93686704857cf1385bcb11e40e02ed0c23",
-      "artifacts/v7-t5-ct1-axis-aware-precheck.json": "7fc83e5b4d034ad6a3f03e46655b8aea267d48f149e22025af554e5b02adaba9",
-      "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json": "dddb815bce5c8749e596bde51f2e801ab6ddb194400f657181ace1b2f063fab9",
+      "artifacts/v7-t5-ct1-axis-aware-precheck.json": "e25faed214ef26783c08fdfc1e09bf73366d39f45c4ddc5bb3a3ee8cc45d41f2",
+      "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json": "170523ce0186bc0acc39caa77e414e90c47865781dcc0cea70f7980edcba484a",
+      "artifacts/v7-t5-ct1-axis-sequence-identifiability.json": "d9aa5acd185e0c5666415ed379bcfc6f57b1a3e618d1638f33ff36e114d20261",
       "artifacts/v7-t5-continuous-moment-precheck.json": "79b4b0d9a396b326bf871b943e5e9646bd5f3a741e1cb8243d5a5462243e3ec2",
       "artifacts/v7-lplc1-near-collision-precheck.json": "7c41b998e8b80207e0b4a17141367c0c8338ed5caea7389cbc37c99b10dfc59f",
       "artifacts/v7-lplc1-input-structure.json": "dc005e820af8bdbcd0bc4b7a45ed9385dc17aa7c0f05ac7345c7ef9cb5df095a",
@@ -183,6 +184,7 @@
         "artifacts/v7-t5-ct1-multiplicative-precheck.json",
         "artifacts/v7-t5-ct1-axis-aware-precheck.json",
         "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json",
+        "artifacts/v7-t5-ct1-axis-sequence-identifiability.json",
         "artifacts/v7-t5-continuous-moment-precheck.json",
         "artifacts/v7-t4-synapse-correlator-precheck.json",
         "artifacts/v7-t4-synapse-antisymmetric-precheck.json",
@@ -347,6 +349,19 @@
         ],
         "T5_CT1_axis_aware_antisymmetric_controls_evaluated": false,
         "T5_CT1_axis_aware_antisymmetric_candidate_passed": false,
+        "T5_CT1_axis_sequence_maximum_direction_pass_count": 2,
+        "T5_CT1_axis_sequence_ordered_bilateral_subtypes": {
+          "positive_axis_sequence_peak": [],
+          "positive_axis_sequence_mean": [
+            "d"
+          ],
+          "signed_axis_sequence_mean": [
+            "d"
+          ],
+          "signed_axis_sequence_terminal": []
+        },
+        "T5_CT1_axis_sequence_candidate_selected": false,
+        "T5_CT1_axis_sequence_authorizes_functional_candidate": false,
         "physical_timebase_identified": false,
         "strict_scoring_contract_frozen": true,
         "development_R1_R6_input_gates_pass": true,

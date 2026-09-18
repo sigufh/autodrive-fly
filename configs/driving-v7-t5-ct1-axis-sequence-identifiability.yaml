@@ -1,0 +1,41 @@
+version: 1
+name: v7-t5-ct1-axis-sequence-identifiability-audit
+observed_on: "2026-09-18"
+base_evidence: artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json
+base_protocol: configs/driving-v7-t5-ct1-axis-aware-antisymmetric-precheck.yaml
+crossfit_axis_evidence: artifacts/v7-t5-ct1-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t5-ct1-crossfit-axis-audit.yaml
+terminal_axis_evidence: artifacts/v7-t5-ct1-terminal-axis-audit.json
+terminal_axis_protocol: configs/driving-v7-t5-ct1-terminal-axis-audit.yaml
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+synapse_partners: data/raw/malecns-v1.0/syn-partners.feather
+condition_id: S1-T01
+source_roles:
+  mapping_anchors: [Tm1, Tm2, Tm9]
+  fast_excitation: [Tm1, Tm2, Tm4]
+  enhancer_base: [Tm9]
+  slow_inhibition: [CT1]
+reverse_order_coefficient: 1.0
+temporal_reductions:
+  - positive_axis_sequence_peak
+  - positive_axis_sequence_mean
+  - signed_axis_sequence_mean
+  - signed_axis_sequence_terminal
+modes: [ordered, temporal_shuffle, static_sham]
+temporal_shuffle_seed: 20260918
+boundary:
+  post_failure_diagnostic_only: true
+  no_candidate_selected: true
+  no_parameter_fit: true
+  no_gate_authorization: true
+  every_valid_target_axis_is_out_of_fold: true
+  source_activity_driven_only_from_R1_R6_propagation: true
+  target_labels_used_only_for_posthoc_scoring: true
+  fixed_whole_population_denominators: true
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  LPLC_and_vehicle_experiments_remain_frozen: true

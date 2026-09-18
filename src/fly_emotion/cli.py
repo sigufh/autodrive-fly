@@ -201,6 +201,9 @@ from .driving.v7_t5_ct1_axis_aware_precheck import (
 from .driving.v7_t5_ct1_axis_calibration import (
     evaluate_v7_t5_ct1_axis_calibration,
 )
+from .driving.v7_t5_ct1_axis_sequence_identifiability import (
+    evaluate_v7_t5_ct1_axis_sequence_identifiability,
+)
 from .driving.v7_t5_ct1_crossfit_axis_audit import (
     evaluate_v7_t5_ct1_crossfit_axis_audit,
 )
@@ -449,6 +452,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-ct1-crossfit-axis")
     subparsers.add_parser("v7-evaluate-t5-ct1-axis-aware-precheck")
     subparsers.add_parser("v7-evaluate-t5-ct1-axis-aware-antisymmetric-precheck")
+    subparsers.add_parser("v7-audit-t5-ct1-axis-sequence-identifiability")
     subparsers.add_parser("v7-evaluate-t5-ct1-source-dynamics")
     subparsers.add_parser("v7-evaluate-t5-ct1-multiplicative-precheck")
     subparsers.add_parser("v7-evaluate-t5-continuous-moment-precheck")
@@ -1188,6 +1192,14 @@ def main() -> None:
     if args.command == "v7-evaluate-t5-ct1-axis-aware-antisymmetric-precheck":
         report = evaluate_v7_t5_ct1_axis_aware_antisymmetric_precheck(root)
         target = root / "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-ct1-axis-sequence-identifiability":
+        report = evaluate_v7_t5_ct1_axis_sequence_identifiability(root)
+        target = root / "artifacts/v7-t5-ct1-axis-sequence-identifiability.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
