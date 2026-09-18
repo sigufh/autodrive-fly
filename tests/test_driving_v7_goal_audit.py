@@ -237,6 +237,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "CT1"
     ]
     assert visual["observations"]["T5_contrast_opponency_transfer_authorized"] is False
+    assert visual["observations"]["Yang_T5_optical_voltage_phenotype_sources"] == [
+        "Tm1",
+        "Tm2",
+    ]
+    assert visual["observations"]["Yang_T5_numerical_voltage_payload_verified"] is False
+    assert visual["observations"]["Yang_T5_voltage_transfer_authorized"] is False
     assert visual["observations"]["TimingModels_CT1_type_average_dynamics_verified"] is True
     assert visual["observations"]["TimingModels_T5_lobula_CT1_phenotype_published"] is True
     assert visual["observations"]["TimingModels_T5_lobula_CT1_numerical_payload_verified"] is False

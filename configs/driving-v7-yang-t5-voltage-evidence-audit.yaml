@@ -1,0 +1,57 @@
+version: 1
+name: v7-yang-t5-voltage-evidence-audit
+observed_on: "2026-09-19"
+paper:
+  doi: 10.1016/j.cell.2016.05.031
+  pmcid: PMC5606228
+  pii: S0092867416305827
+  title: Subcellular Imaging of Voltage and Calcium Signals Reveals Neural Processing In Vivo
+supplements:
+  - path: data/raw/t5-yang-voltage/S0092867416305827-mmc1.pdf
+    url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867416305827-mmc1.pdf
+    bytes: 246935
+    sha256: b6f878b99b931ca35567008e6d40496c52b400ed12855432e014f6316b34da3d
+    pages: 9
+  - path: data/raw/t5-yang-voltage/S0092867416305827-mmc2.pdf
+    url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867416305827-mmc2.pdf
+    bytes: 5383594
+    sha256: 7c2ee9e240d8c1f0e6af871e281a7fe8476cb5ce15a312120449bc7ea004149e
+    pages: 31
+evidence:
+  acquisition_rate_hz: 38.9
+  posthoc_resample_rate_hz: 120
+  stimulus_flash_duration_milliseconds: 25
+  stimulus_gray_interleave_milliseconds: 500
+  stimulus_contrast: 0.5
+  Tm1:
+    compartment: lobula_Lo1
+    indicator: ASAP2f
+    voltage_response_cell_count: 30
+    voltage_response_fly_count: 3
+    phenotype_reported: true
+  Tm2:
+    compartment: medulla_M2
+    indicator: ASAP2f
+    voltage_response_cell_count: 89
+    main_figure_voltage_response_fly_count: 4
+    supplementary_figure_voltage_response_fly_count: 6
+    fly_count_report_consistent: false
+    phenotype_reported: true
+payload:
+  numerical_per_fly_time_series_present: false
+  embedded_attachment_present: false
+  stable_recording_unit_ids_present: false
+  stable_biological_individual_ids_present: false
+  baseline_window_seconds_present: false
+  source_type_to_MaleCNS_mapping_present: false
+  required_split_roles_present: false
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+boundary:
+  official_supplement_audit_only: true
+  optical_voltage_phenotype_is_not_a_numerical_payload: true
+  plotted_mean_and_SEM_are_not_individual_time_series: true
+  no_curve_digitization: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

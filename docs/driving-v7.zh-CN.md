@@ -1950,6 +1950,17 @@ leave-one-cell-out 个例，而且 Mi4 的 ON 中位峰反而早于 Tm3/Mi1，�
 fast/delayed 顺序。因而 alternating-cell split 只能作诊断，不能冒充按 fly 独立验证，
 T4 也不能单独先解锁。证据见 `artifacts/v7-t4-source-identity-readiness-audit.json`。
 
+T5 的允许响应单位另审计 Yang et al. 2016（DOI
+`10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
+bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确
+提供 Tm1-Lo1 与 Tm2-M2 的 ASAP2f 光学电压表型，采集 38.9 Hz、后处理重采样 120 Hz，
+并使用 25 ms 明/暗闪光与 500 ms 灰背景；Tm1-Lo1 为 30 cells/3 flies。Tm2 为
+89 cells，但主图与补图文字分别报告 4 和 6 flies，存在 cohort 数量不一致。更关键的是，
+补充材料只给出均值±SEM 曲线和汇总统计，没有逐 fly×time 数值、稳定 recording ID、
+基线窗、MaleCNS 映射或 split 角色。故可确认 Tm1/Tm2 电压表型存在，不能曲线数字化
+成训练 payload，也不能补齐 Tm4/Tm9/CT1 的电压证据或解锁 T5。证据见
+`artifacts/v7-yang-t5-voltage-evidence-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

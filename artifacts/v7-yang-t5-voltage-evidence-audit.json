@@ -1,0 +1,132 @@
+{
+  "protocol": {
+    "name": "v7-yang-t5-voltage-evidence-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-yang-t5-voltage-evidence-audit.yaml": "d0a4a5e0dc3f65693ac773f51738309c95dafdcd0430a620858c5818efb9adbf",
+      "src/fly_emotion/driving/v7_yang_t5_voltage_evidence_audit.py": "fb6d4e4de838fea9406449974b2015f103e14fed64064568b2c933fbc1fc3bdd",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "paper": {
+      "doi": "10.1016/j.cell.2016.05.031",
+      "pmcid": "PMC5606228",
+      "pii": "S0092867416305827",
+      "title": "Subcellular Imaging of Voltage and Calcium Signals Reveals Neural Processing In Vivo"
+    },
+    "supplements": [
+      {
+        "path": "data/raw/t5-yang-voltage/S0092867416305827-mmc1.pdf",
+        "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0092867416305827-mmc1.pdf",
+        "bytes": 246935,
+        "sha256": "b6f878b99b931ca35567008e6d40496c52b400ed12855432e014f6316b34da3d",
+        "pages": 9,
+        "actual_sha256": "b6f878b99b931ca35567008e6d40496c52b400ed12855432e014f6316b34da3d",
+        "actual_pages": 9,
+        "embedded_attachment_count": 0
+      },
+      {
+        "path": "data/raw/t5-yang-voltage/S0092867416305827-mmc2.pdf",
+        "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0092867416305827-mmc2.pdf",
+        "bytes": 5383594,
+        "sha256": "7c2ee9e240d8c1f0e6af871e281a7fe8476cb5ce15a312120449bc7ea004149e",
+        "pages": 31,
+        "actual_sha256": "7c2ee9e240d8c1f0e6af871e281a7fe8476cb5ce15a312120449bc7ea004149e",
+        "actual_pages": 31,
+        "embedded_attachment_count": 0
+      }
+    ],
+    "pypdf_version": "6.1.1",
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "measurement_protocol": {
+    "acquisition_rate_hz": 38.9,
+    "posthoc_resample_rate_hz": 120,
+    "stimulus_flash_duration_milliseconds": 25,
+    "stimulus_gray_interleave_milliseconds": 500,
+    "stimulus_contrast": 0.5
+  },
+  "source_evidence": {
+    "Tm1": {
+      "compartment": "lobula_Lo1",
+      "indicator": "ASAP2f",
+      "voltage_response_cell_count": 30,
+      "voltage_response_fly_count": 3,
+      "phenotype_reported": true
+    },
+    "Tm2": {
+      "compartment": "medulla_M2",
+      "indicator": "ASAP2f",
+      "voltage_response_cell_count": 89,
+      "main_figure_voltage_response_fly_count": 4,
+      "supplementary_figure_voltage_response_fly_count": 6,
+      "fly_count_report_consistent": false,
+      "phenotype_reported": true
+    }
+  },
+  "T5_source_contract": {
+    "required_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ],
+    "sources_with_optical_voltage_phenotype": [
+      "Tm1",
+      "Tm2"
+    ],
+    "sources_without_optical_voltage_phenotype": [
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ],
+    "phenotype_coverage_fraction": 0.4
+  },
+  "payload": {
+    "numerical_per_fly_time_series_present": false,
+    "embedded_attachment_present": false,
+    "stable_recording_unit_ids_present": false,
+    "stable_biological_individual_ids_present": false,
+    "baseline_window_seconds_present": false,
+    "source_type_to_MaleCNS_mapping_present": false,
+    "required_split_roles_present": false
+  },
+  "transfer_gates": {
+    "Tm1_lobula_Lo1_optical_voltage_phenotype_published": true,
+    "Tm2_medulla_M2_optical_voltage_phenotype_published": true,
+    "Tm2_fly_count_report_consistent": false,
+    "every_T5_source_type_covered": false,
+    "numerical_per_fly_time_series_available": false,
+    "stable_recording_and_individual_IDs_available": false,
+    "baseline_window_available": false,
+    "MaleCNS_mapping_available": false,
+    "required_split_roles_available": false
+  },
+  "T5_partial_optical_voltage_phenotype_verified": true,
+  "T5_numerical_voltage_payload_verified": false,
+  "T5_source_dynamics_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "Tm2_fly_count_report_consistent",
+    "every_T5_source_type_covered",
+    "numerical_per_fly_time_series_available",
+    "stable_recording_and_individual_IDs_available",
+    "baseline_window_available",
+    "MaleCNS_mapping_available",
+    "required_split_roles_available"
+  ],
+  "stop_reason": "Tm1_Tm2_voltage_phenotypes_lack_numerical_individual_payload_and_full_T5_coverage",
+  "boundary": {
+    "official_supplement_audit_only": true,
+    "optical_voltage_phenotype_is_not_a_numerical_payload": true,
+    "plotted_mean_and_SEM_are_not_individual_time_series": true,
+    "no_curve_digitization": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

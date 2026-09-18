@@ -286,6 +286,9 @@ from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audi
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
 from .driving.v7_visual_layer_locality import evaluate_v7_visual_layer_locality
 from .driving.v7_visual_target_input_audit import evaluate_v7_visual_target_input_audit
+from .driving.v7_yang_t5_voltage_evidence_audit import (
+    evaluate_v7_yang_t5_voltage_evidence_audit,
+)
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -482,6 +485,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-dryad-l1l2-source-dynamics")
     subparsers.add_parser("v7-audit-gou-sparsity-source-dynamics")
     subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
+    subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1556,6 +1560,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-contrast-opponency-source-data":
         report = evaluate_v7_t5_contrast_opponency_source_data_audit(root)
         target = root / "artifacts/v7-t5-contrast-opponency-source-data-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-yang-t5-voltage-evidence":
+        report = evaluate_v7_yang_t5_voltage_evidence_audit(root)
+        target = root / "artifacts/v7-yang-t5-voltage-evidence-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

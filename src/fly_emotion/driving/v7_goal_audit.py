@@ -127,6 +127,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_contrast_opponency_source_data_audit = reports[
         "t5_contrast_opponency_source_data_audit"
     ]
+    yang_t5_voltage_evidence_audit = reports["yang_t5_voltage_evidence_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -293,6 +294,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["dryad_l1l2_source_dynamics_audit"],
                 config["evidence"]["gou_sparsity_source_dynamics_audit"],
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
+                config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -603,6 +605,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_contrast_opponency_transfer_authorized": (
                     t5_contrast_opponency_source_data_audit[
                         "complete_T5_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "Yang_T5_optical_voltage_phenotype_sources": (
+                    yang_t5_voltage_evidence_audit["T5_source_contract"][
+                        "sources_with_optical_voltage_phenotype"
+                    ]
+                ),
+                "Yang_T5_numerical_voltage_payload_verified": (
+                    yang_t5_voltage_evidence_audit[
+                        "T5_numerical_voltage_payload_verified"
+                    ]
+                ),
+                "Yang_T5_voltage_transfer_authorized": (
+                    yang_t5_voltage_evidence_audit[
+                        "T5_source_dynamics_transfer_authorized"
                     ]
                 ),
                 "TimingModels_CT1_type_average_dynamics_verified": (
