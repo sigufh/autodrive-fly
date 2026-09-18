@@ -1597,6 +1597,27 @@ C3 晚约 305–355 ms。因此原 `[Tm3,Mi1]` fast 对 `[Mi4,C3]` delayed 二�
 泛化到未见记录细胞，更不能迁移到无稳定身份映射的 MaleCNS body。该路线停止，不进入
 功能预检。证据见 `artifacts/v7-fig3-source-kernel-robustness.json`。
 
+进一步审计 Arenz 等 2017 对输入元件时间调谐的直接测量（DOI
+`10.1016/j.cub.2017.01.051`），并从 Elsevier 官方 CDN 验证 5,368,176-byte Supplemental
+Document S1。Table S1 给出 control 条件的一阶滤波拟合：Mi1/Tm3 是 band-pass，raw
+`tHP/tLP` 分别为 `1.078/0.266 s` 与 `1.769/0.158 s`；Mi4/Mi9 是 low-pass，raw `tLP`
+为 `0.519/0.546 s`，四类 raw 时间拟合 R² 均大于 0.97。去卷积参数依赖作者假定的
+350 ms GCaMP6f 低通，不能当作直接膜电位 kernel。当前 v7 T4 source 合同为
+Mi1/Tm3/Mi4/C3，因此该论文只覆盖 3/4；C3 没有被测，Mi9 又不在当前合同内。加上 v7
+物理 dt 与记录细胞→MaleCNS body 映射仍缺，故参数虽已验证，完整 source-filter 候选仍
+不授权。证据见 `artifacts/v7-arenz-source-dynamics-audit.json`。
+
+随后对 Henning 等 2025（DOI `10.7554/eLife.108529`）公开仓库的固定修订
+`745c6114…` 做了文件级 C3 STRF 审计。`RF_DATA_C2C3_posTime.mat` 的 Git blob、大小和
+SHA-256 均被冻结；数据含 8 只 C3 果蝇、Az/El 两个空间轴以及每个 ROI 的 80×12
+时空相关场。严格复现作者脚本的 `corrcoef >= 0.27`、50 ms bin 和因果侧前 40 bin 后，
+Az/El 分别保留 25/10 个 ROI，ON 峰均值为 -82/-85 ms；两轴的无权重因果时间核相关为
+0.953。至此 Mi1/Tm3/Mi4/C3 四类都有某种直接时间测量，C3 不再是“无数值数据”。但
+C3 数据是未去卷积的钙成像 stimulus-response correlation STRF，没有 Arenz 模型同构的
+解析滤波参数，也没有跨论文幅值/状态单位或记录细胞→MaleCNS body 映射；因此不能把它与
+Arenz 的去卷积滤波参数拼成统一 source kernel。该负边界继续冻结功能候选，证据见
+`artifacts/v7-c3-strf-source-dynamics-audit.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

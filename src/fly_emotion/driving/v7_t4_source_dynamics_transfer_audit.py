@@ -25,6 +25,8 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     verified_unified_path = Path(config["verified_unified_model_evidence"])
     fig3_kernel_path = Path(config["fig3_source_kernel_evidence"])
     fig3_robustness_path = Path(config["fig3_source_kernel_robustness_evidence"])
+    arenz_path = Path(config["arenz_source_dynamics_evidence"])
+    c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -37,6 +39,8 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig3_robustness = json.loads(
         (root / fig3_robustness_path).read_text(encoding="utf-8")
     )
+    arenz = json.loads((root / arenz_path).read_text(encoding="utf-8"))
+    c3_strf = json.loads((root / c3_strf_path).read_text(encoding="utf-8"))
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -110,6 +114,8 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(verified_unified_path): _sha256(root / verified_unified_path),
                 str(fig3_kernel_path): _sha256(root / fig3_kernel_path),
                 str(fig3_robustness_path): _sha256(root / fig3_robustness_path),
+                str(arenz_path): _sha256(root / arenz_path),
+                str(c3_strf_path): _sha256(root / c3_strf_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -198,13 +204,50 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 "all_source_kernel_robustness_gates_passed"
             ],
         },
+        "verified_Arenz_source_filter_readiness": {
+            "filter_parameters_verified": arenz["Arenz_filter_parameters_verified"],
+            "current_source_coverage_fraction": arenz["current_v7_source_contract"][
+                "coverage_fraction"
+            ],
+            "missing_current_sources": arenz["current_v7_source_contract"][
+                "missing_from_Arenz"
+            ],
+            "physical_time_transfer_authorized": arenz[
+                "physical_time_transfer_authorized"
+            ],
+            "source_filter_candidate_authorized": arenz[
+                "source_filter_candidate_authorized"
+            ],
+        },
+        "verified_C3_STRF_readiness": {
+            "numerical_data_verified": c3_strf["C3_STRF_numerical_data_verified"],
+            "direct_temporal_measurement_available": c3_strf[
+                "combined_source_contract"
+            ]["C3_direct_temporal_measurement_available"],
+            "all_required_sources_have_some_direct_temporal_evidence": c3_strf[
+                "combined_source_contract"
+            ]["all_source_types_have_some_direct_temporal_evidence"],
+            "all_required_sources_share_one_transferable_parameterization": c3_strf[
+                "combined_source_contract"
+            ]["all_source_types_share_one_transferable_parameterization"],
+            "membrane_voltage_or_validated_deconvolved_kernel_available": c3_strf[
+                "transfer_gates"
+            ]["C3_membrane_voltage_or_validated_deconvolved_kernel_available"],
+            "source_filter_candidate_authorized": c3_strf[
+                "C3_source_filter_candidate_authorized"
+            ],
+        },
         "required_transfer_fields_available": fields,
         "transfer_gates": gates,
         "source_dynamics_transfer_authorized": transferable,
-        "next_candidate_authorized": False,
+        "next_candidate_authorized": transferable,
         "blocking_data_requirements": [
             name for name, available in fields.items() if not available
         ],
-        "stop_reason": "published_source_dynamics_not_transferable_to_label_blind_v7",
+        "stop_reason": (
+            None
+            if transferable
+            else "published_source_dynamics_not_transferable_to_label_blind_v7"
+        ),
         "boundary": config["boundary"],
     }

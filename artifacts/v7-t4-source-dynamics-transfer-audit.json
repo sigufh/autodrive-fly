@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-t4-source-dynamics-transfer-audit",
-    "observed_on": "2026-09-17",
+    "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "9dbb18c11203ec0676df50c0ec6dc9eb8ca9c15f5e7660245d2fb5364f0a59a6",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "3598b857232fd548b66b7310b6f90742d75d7a2be6e016e1b6a53857dcaf8451",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "f4081285c2bf36ac9f49caf4b521102510fcda620923bdf53576ba10452e276c",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "5dfb31f6a464b4d5679ff6880239a143baea37296216e1c92aa61d8880deb130",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -12,7 +12,9 @@
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
       "artifacts/v7-unified-model-package-audit.json": "fba08d06da7f8189cbfa8fc6c6c9ea19c9564f0ed9054791273b988dab365a89",
       "artifacts/v7-fig3-source-kernel-audit.json": "919a985db8afe88ee852977b4ebd551e145fe9bff639dd82c1e7c8c77d967aa6",
-      "artifacts/v7-fig3-source-kernel-robustness.json": "1bc2e15b5603a2c544d0e5f508e1e6c36eb09f5f55d1539163ed762524cf3ea2"
+      "artifacts/v7-fig3-source-kernel-robustness.json": "1bc2e15b5603a2c544d0e5f508e1e6c36eb09f5f55d1539163ed762524cf3ea2",
+      "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a"
     },
     "required_sources": [
       "Mi1",
@@ -118,6 +120,23 @@
     "prior_two_pool_kernel_authorized": false,
     "source_specific_kernel_candidate_authorized": false,
     "cross_cell_robustness_passed": false
+  },
+  "verified_Arenz_source_filter_readiness": {
+    "filter_parameters_verified": true,
+    "current_source_coverage_fraction": 0.75,
+    "missing_current_sources": [
+      "C3"
+    ],
+    "physical_time_transfer_authorized": false,
+    "source_filter_candidate_authorized": false
+  },
+  "verified_C3_STRF_readiness": {
+    "numerical_data_verified": true,
+    "direct_temporal_measurement_available": true,
+    "all_required_sources_have_some_direct_temporal_evidence": true,
+    "all_required_sources_share_one_transferable_parameterization": false,
+    "membrane_voltage_or_validated_deconvolved_kernel_available": false,
+    "source_filter_candidate_authorized": false
   },
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,

@@ -1,6 +1,6 @@
 version: 1
 name: v7-t4-source-dynamics-transfer-audit
-observed_on: "2026-09-17"
+observed_on: "2026-09-18"
 electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
 electrophysiology_interface: artifacts/v7-ephys-interface.json
 timebase_evidence: artifacts/v7-timebase-audit.json
@@ -9,6 +9,8 @@ official_unified_model_evidence: artifacts/v7-t5-data-audit.json
 verified_unified_model_evidence: artifacts/v7-unified-model-package-audit.json
 fig3_source_kernel_evidence: artifacts/v7-fig3-source-kernel-audit.json
 fig3_source_kernel_robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
+arenz_source_dynamics_evidence: artifacts/v7-arenz-source-dynamics-audit.json
+c3_strf_source_dynamics_evidence: artifacts/v7-c3-strf-source-dynamics-audit.json
 official_unified_model_recovered_manifest:
   recovery_source: internet_archive_official_page_snapshot
   snapshot_timestamp: "20241127113612"

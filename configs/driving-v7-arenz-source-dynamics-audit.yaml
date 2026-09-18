@@ -1,0 +1,52 @@
+version: 1
+name: v7-arenz-2017-source-dynamics-transfer-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.1016/j.cub.2017.01.051
+  title: The Temporal Tuning of the Drosophila Motion Detectors Is Determined by the Dynamics of Their Input Elements
+  archived_fulltext_sha256: 7633c8e068edd43c4e42295751296f117131b755e254a6113c4cfc6eeffd1e91
+supplement:
+  path: data/raw/t4-fig3-source-dynamics/Arenz2017-Supplement.pdf
+  url: https://ars.els-cdn.com/content/image/1-s2.0-S0960982217300866-mmc1.pdf
+  bytes: 5368176
+  sha256: 492f7349d196dfd1630f29639f0ce98c163dedf12f6bf305e075b454666fc455
+  table: S1
+current_timebase_evidence: artifacts/v7-timebase-audit.json
+current_source_protocol: configs/driving-v7-t4-synapse-microstep-precheck.yaml
+GCaMP6f_deconvolution_low_pass_seconds: 0.350
+simulation_step_seconds: 0.010
+control_parameters:
+  Mi1:
+    class: band_pass
+    raw: {amplitude: 1.271, tHP_seconds: 1.078, tLP_seconds: 0.266, R2: 0.975}
+    deconvolved: {amplitude: 1.146, tHP_seconds: 0.318, tLP_seconds: 0.054, R2: 0.872}
+  Tm3:
+    class: band_pass
+    raw: {amplitude: 0.996, tHP_seconds: 1.769, tLP_seconds: 0.158, R2: 0.971}
+    deconvolved: {amplitude: 1.035, tHP_seconds: 0.260, tLP_seconds: 0.027, R2: 0.768}
+  Mi4:
+    class: low_pass
+    raw: {amplitude: 1.007, tLP_seconds: 0.519, R2: 0.984}
+    deconvolved: {amplitude: 0.831, tLP_seconds: 0.038, R2: 0.666}
+  Mi9:
+    class: low_pass
+    raw: {amplitude: 0.982, tLP_seconds: 0.546, R2: 0.982}
+    deconvolved: {amplitude: 0.789, tLP_seconds: 0.077, R2: 0.832}
+CDM_parameters_recorded: true
+parameter_source: manually_transcribed_and_visually_verified_from_official_Table_S1
+gates:
+  minimum_raw_temporal_fit_R2: 0.95
+  require_every_current_source_type: true
+  require_physical_v7_timebase: true
+  require_stable_recorded_cell_to_MaleCNS_mapping: true
+boundary:
+  read_only_literature_audit: true
+  calcium_filters_are_not_membrane_voltage_kernels: true
+  deconvolution_uses_assumed_GCaMP6f_350ms_low_pass: true
+  source_polarities_ignored_in_paper_simulation: true
+  C3_not_measured_in_Arenz_2017: true
+  Mi9_not_in_current_v7_T4_source_contract: true
+  no_parameter_fit_in_this_audit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true

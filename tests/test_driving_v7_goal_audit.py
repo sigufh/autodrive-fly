@@ -288,6 +288,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["fig3_prior_two_pool_kernel_authorized"] is False
     assert visual["observations"]["fig3_source_specific_kernel_candidate_authorized"] is False
     assert visual["observations"]["fig3_source_kernel_cross_cell_robustness_passed"] is False
+    assert visual["observations"]["Arenz_source_filter_parameters_verified"] is True
+    assert visual["observations"]["Arenz_current_source_coverage_fraction"] == 0.75
+    assert visual["observations"]["Arenz_missing_current_sources"] == ["C3"]
+    assert visual["observations"]["Arenz_source_filter_candidate_authorized"] is False
+    assert visual["observations"]["C3_STRF_numerical_data_verified"] is True
+    assert visual["observations"]["C3_direct_temporal_measurement_available"] is True
+    assert visual["observations"]["combined_source_temporal_evidence_complete"] is True
+    assert visual["observations"]["combined_source_parameterization_transferable"] is False
+    assert visual["observations"]["C3_source_filter_candidate_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

@@ -81,6 +81,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
+    arenz_source_dynamics_audit = reports["arenz_source_dynamics_audit"]
+    c3_strf_source_dynamics_audit = reports["c3_strf_source_dynamics_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -187,6 +189,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
+                config["evidence"]["arenz_source_dynamics_audit"],
+                config["evidence"]["c3_strf_source_dynamics_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -625,6 +629,41 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "fig3_source_kernel_cross_cell_robustness_passed": (
                     fig3_source_kernel_robustness[
                         "all_source_kernel_robustness_gates_passed"
+                    ]
+                ),
+                "Arenz_source_filter_parameters_verified": arenz_source_dynamics_audit[
+                    "Arenz_filter_parameters_verified"
+                ],
+                "Arenz_current_source_coverage_fraction": arenz_source_dynamics_audit[
+                    "current_v7_source_contract"
+                ]["coverage_fraction"],
+                "Arenz_missing_current_sources": arenz_source_dynamics_audit[
+                    "current_v7_source_contract"
+                ]["missing_from_Arenz"],
+                "Arenz_source_filter_candidate_authorized": arenz_source_dynamics_audit[
+                    "source_filter_candidate_authorized"
+                ],
+                "C3_STRF_numerical_data_verified": c3_strf_source_dynamics_audit[
+                    "C3_STRF_numerical_data_verified"
+                ],
+                "C3_direct_temporal_measurement_available": (
+                    c3_strf_source_dynamics_audit["combined_source_contract"][
+                        "C3_direct_temporal_measurement_available"
+                    ]
+                ),
+                "combined_source_temporal_evidence_complete": (
+                    c3_strf_source_dynamics_audit["combined_source_contract"][
+                        "all_source_types_have_some_direct_temporal_evidence"
+                    ]
+                ),
+                "combined_source_parameterization_transferable": (
+                    c3_strf_source_dynamics_audit["combined_source_contract"][
+                        "all_source_types_share_one_transferable_parameterization"
+                    ]
+                ),
+                "C3_source_filter_candidate_authorized": (
+                    c3_strf_source_dynamics_audit[
+                        "C3_source_filter_candidate_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

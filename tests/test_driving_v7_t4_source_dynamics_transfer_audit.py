@@ -69,6 +69,19 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert fig3["prior_two_pool_kernel_authorized"] is False
     assert fig3["source_specific_kernel_candidate_authorized"] is False
     assert fig3["cross_cell_robustness_passed"] is False
+    arenz = report["verified_Arenz_source_filter_readiness"]
+    assert arenz["filter_parameters_verified"] is True
+    assert arenz["current_source_coverage_fraction"] == 0.75
+    assert arenz["missing_current_sources"] == ["C3"]
+    assert arenz["physical_time_transfer_authorized"] is False
+    assert arenz["source_filter_candidate_authorized"] is False
+    c3 = report["verified_C3_STRF_readiness"]
+    assert c3["numerical_data_verified"] is True
+    assert c3["direct_temporal_measurement_available"] is True
+    assert c3["all_required_sources_have_some_direct_temporal_evidence"] is True
+    assert c3["all_required_sources_share_one_transferable_parameterization"] is False
+    assert c3["membrane_voltage_or_validated_deconvolved_kernel_available"] is False
+    assert c3["source_filter_candidate_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

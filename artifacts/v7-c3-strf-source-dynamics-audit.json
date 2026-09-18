@@ -1,0 +1,183 @@
+{
+  "protocol": {
+    "name": "v7-c3-strf-source-dynamics-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-c3-strf-source-dynamics-audit.yaml": "50d6d1149feebc6ad349bd308594fb9364ecb58192f1265c31dfc390fa742f4f",
+      "src/fly_emotion/driving/v7_c3_strf_source_dynamics_audit.py": "28d432e1a5de941514062261090608a9e31c00ce0e7401e09e8a1f6fe8ff13fa",
+      "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d"
+    },
+    "paper_doi": "10.7554/eLife.108529",
+    "repository_url": "https://github.com/silieslab/C2C3_feedback_Henning",
+    "archived_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf",
+    "checked_out_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf",
+    "checkout_head": {
+      "path": "data/raw/t4-c3-strf/repository/.git/HEAD",
+      "bytes": 41,
+      "sha256": "7cc3aa0e9ede9a82aa29ff56220d48b28033f6bf17f5dc646bc6fb3b3afb2a2a"
+    },
+    "source_data": {
+      "path": "data/raw/t4-c3-strf/repository/Data/Figure3-SourceData3/RF_DATA_C2C3_posTime.mat",
+      "bytes": 16593794,
+      "git_blob_sha1": "7933bd47daa9aec542755470d8ed264a15791820",
+      "sha256": "d35a64e1ee0daa1c0ec79f18153244a345981b87bca14d1e06fc34acc6615383"
+    },
+    "source_code": [
+      {
+        "path": "data/raw/t4-c3-strf/repository/Figure3_SourceCode3_STRFs_C2C3.m",
+        "bytes": 4867,
+        "git_blob_sha1": "1e42a1dea6560775e8b1a5d4ab8a6255ec8e1be4",
+        "sha256": "774041cd146091c07c799959439ff16ad4945133f9f66c2e741701c7926308a2"
+      },
+      {
+        "path": "data/raw/t4-c3-strf/repository/subscripts/Plot_timeSectionSTRFC2C3_gh.m",
+        "bytes": 6882,
+        "git_blob_sha1": "da2db57ac78ebdc14ab778dc25638e3d742584f7",
+        "sha256": "710dde7df3dcbbc1fa28d6098de68b3da944a78fbb684d6394c595ec4bdd9c2e"
+      },
+      {
+        "path": "data/raw/t4-c3-strf/repository/subscripts/Average_STRFsC2C3.m",
+        "bytes": 8460,
+        "git_blob_sha1": "40cb51ae2ab0f7d7a389053453a372ddfb2485e6",
+        "sha256": "55bf6dad2ff2a11ac4e667156fab9455083979d0f4ecb3de074dfc37980c807c"
+      }
+    ],
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "author_analysis_contract": {
+    "condition": "C3",
+    "axes": [
+      "Az",
+      "El"
+    ],
+    "author_prediction_correlation_threshold": 0.27,
+    "strf_shape": [
+      80,
+      12
+    ],
+    "time_start_seconds": -1.95,
+    "time_stop_seconds": 2.0,
+    "sample_interval_seconds": 0.05,
+    "causal_peak_bin_count": 40,
+    "retain_peak_after_seconds": -0.5,
+    "azimuth_spatial_flip": true,
+    "expected_reproduction": {
+      "Az": {
+        "selected_ROIs": 25,
+        "retained_ROIs": 25,
+        "mean_ON_peak_seconds": -0.082
+      },
+      "El": {
+        "selected_ROIs": 10,
+        "retained_ROIs": 10,
+        "mean_ON_peak_seconds": -0.085
+      }
+    },
+    "reproduction_absolute_tolerance_seconds": 1e-06
+  },
+  "C3_dataset": {
+    "fly_count": 8,
+    "STRF_units": "stimulus_response_correlation",
+    "time_bin_seconds": 0.05,
+    "axes": {
+      "Az": {
+        "total_ROIs": 95,
+        "selected_ROIs": 25,
+        "retained_ROIs": 25,
+        "retained_fly_count": 4,
+        "prediction_correlation_minimum": 0.2724113464355469,
+        "prediction_correlation_median": 0.3464885354042053,
+        "prediction_correlation_maximum": 0.4472281038761139,
+        "mean_ON_peak_seconds": -0.08199999999999828,
+        "median_ON_peak_seconds": -0.09999999999999831,
+        "ON_peak_standard_deviation_seconds": 0.031885210782848346,
+        "alternating_ROI_split_causal_kernel_correlation": 0.9858045666716859,
+        "leave_one_fly_out_causal_kernel_correlations": {
+          "200121_Fly4": 0.9990195823531995,
+          "200121_Fly5": 0.9681928477761893,
+          "200121_Fly9": 0.9989061856707693,
+          "200127_Fly1": 0.9829169784793643
+        },
+        "unweighted_normalized_temporal_kernel_sha256": "a3ab1458a1db29250aaf5fe29abc94e780e7b6197ff859f492d2f6c45dbd0839",
+        "author_weighted_normalized_temporal_kernel_sha256": "a0260621c9315322c6cd33818cd0f8b6a191bf5b95dbc636b79c89ea116c82be"
+      },
+      "El": {
+        "total_ROIs": 107,
+        "selected_ROIs": 10,
+        "retained_ROIs": 10,
+        "retained_fly_count": 3,
+        "prediction_correlation_minimum": 0.29023709893226624,
+        "prediction_correlation_median": 0.3372919410467148,
+        "prediction_correlation_maximum": 0.38395804166793823,
+        "mean_ON_peak_seconds": -0.0849999999999983,
+        "median_ON_peak_seconds": -0.09999999999999831,
+        "ON_peak_standard_deviation_seconds": 0.024152294576982418,
+        "alternating_ROI_split_causal_kernel_correlation": 0.969971076187549,
+        "leave_one_fly_out_causal_kernel_correlations": {
+          "200121_Fly3": 0.9947645654137333,
+          "200121_Fly4": 0.9993704319606711,
+          "200121_Fly5": 0.9535829125031163
+        },
+        "unweighted_normalized_temporal_kernel_sha256": "c6af61d27b34f78ac1e2127f6636867478a3f586ec8f3065095456b86b444846",
+        "author_weighted_normalized_temporal_kernel_sha256": "6675fbd7322b86bc31911aad402cec080df81a2d15f580ef4d6b2aeba15cdf11"
+      }
+    },
+    "cross_axis_unweighted_causal_kernel_correlation": 0.952585618201284,
+    "author_reproduction_by_axis": {
+      "Az": true,
+      "El": true
+    }
+  },
+  "combined_source_contract": {
+    "required_source_types": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "Arenz_analytic_filter_source_types": [
+      "Mi1",
+      "Mi4",
+      "Tm3"
+    ],
+    "C3_direct_temporal_measurement_available": true,
+    "all_source_types_have_some_direct_temporal_evidence": true,
+    "all_source_types_share_one_transferable_parameterization": false
+  },
+  "transfer_gates": {
+    "published_C3_numerical_STRFs_available": true,
+    "author_selection_and_ON_peak_summary_reproduced": true,
+    "same_measurement_and_parameterization_as_Arenz_filters": false,
+    "C3_membrane_voltage_or_validated_deconvolved_kernel_available": false,
+    "C3_analytic_filter_parameters_available": false,
+    "physical_v7_timebase_available": false,
+    "stable_recorded_cell_to_MaleCNS_mapping_available": false,
+    "cross_paper_state_unit_mapping_available": false
+  },
+  "C3_STRF_numerical_data_verified": true,
+  "C3_source_filter_candidate_authorized": false,
+  "advance_to_functional_precheck": false,
+  "blocking_data_requirements": [
+    "same_measurement_and_parameterization_as_Arenz_filters",
+    "C3_membrane_voltage_or_validated_deconvolved_kernel_available",
+    "C3_analytic_filter_parameters_available",
+    "physical_v7_timebase_available",
+    "stable_recorded_cell_to_MaleCNS_mapping_available",
+    "cross_paper_state_unit_mapping_available"
+  ],
+  "stop_reason": "C3_calcium_STRF_not_a_cross_paper_or_v7_state_kernel",
+  "boundary": {
+    "read_only_literature_audit": true,
+    "C3_STRF_is_source_level_not_T4_target_activity": true,
+    "calcium_STRF_is_not_a_membrane_voltage_kernel": true,
+    "no_C3_analytic_filter_parameters_published": true,
+    "repository_threshold_is_prediction_correlation_not_an_R2_refit": true,
+    "no_cross_paper_amplitude_or_state_unit_mapping": true,
+    "no_parameter_fit_in_this_audit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

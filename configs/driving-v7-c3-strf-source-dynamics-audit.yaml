@@ -1,0 +1,64 @@
+version: 1
+name: v7-c3-strf-source-dynamics-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.7554/eLife.108529
+  title: Inhibitory columnar feedback neurons are involved in motion processing in Drosophila
+repository:
+  url: https://github.com/silieslab/C2C3_feedback_Henning
+  archived_revision: 745c6114b72a61dabc9389a1f024dbe22f679edf
+  checkout_head_path: data/raw/t4-c3-strf/repository/.git/HEAD
+  checkout_head_bytes: 41
+  checkout_head_sha256: 7cc3aa0e9ede9a82aa29ff56220d48b28033f6bf17f5dc646bc6fb3b3afb2a2a
+source_data:
+  path: data/raw/t4-c3-strf/repository/Data/Figure3-SourceData3/RF_DATA_C2C3_posTime.mat
+  bytes: 16593794
+  git_blob_sha1: 7933bd47daa9aec542755470d8ed264a15791820
+  sha256: d35a64e1ee0daa1c0ec79f18153244a345981b87bca14d1e06fc34acc6615383
+source_code:
+  - path: data/raw/t4-c3-strf/repository/Figure3_SourceCode3_STRFs_C2C3.m
+    bytes: 4867
+    git_blob_sha1: 1e42a1dea6560775e8b1a5d4ab8a6255ec8e1be4
+    sha256: 774041cd146091c07c799959439ff16ad4945133f9f66c2e741701c7926308a2
+  - path: data/raw/t4-c3-strf/repository/subscripts/Plot_timeSectionSTRFC2C3_gh.m
+    bytes: 6882
+    git_blob_sha1: da2db57ac78ebdc14ab778dc25638e3d742584f7
+    sha256: 710dde7df3dcbbc1fa28d6098de68b3da944a78fbb684d6394c595ec4bdd9c2e
+  - path: data/raw/t4-c3-strf/repository/subscripts/Average_STRFsC2C3.m
+    bytes: 8460
+    git_blob_sha1: 40cb51ae2ab0f7d7a389053453a372ddfb2485e6
+    sha256: 55bf6dad2ff2a11ac4e667156fab9455083979d0f4ecb3de074dfc37980c807c
+analysis_contract:
+  condition: C3
+  axes: [Az, El]
+  author_prediction_correlation_threshold: 0.27
+  strf_shape: [80, 12]
+  time_start_seconds: -1.95
+  time_stop_seconds: 2.0
+  sample_interval_seconds: 0.05
+  causal_peak_bin_count: 40
+  retain_peak_after_seconds: -0.5
+  azimuth_spatial_flip: true
+  expected_reproduction:
+    Az: {selected_ROIs: 25, retained_ROIs: 25, mean_ON_peak_seconds: -0.082}
+    El: {selected_ROIs: 10, retained_ROIs: 10, mean_ON_peak_seconds: -0.085}
+  reproduction_absolute_tolerance_seconds: 0.000001
+transfer_contract:
+  current_timebase_evidence: artifacts/v7-timebase-audit.json
+  arenz_source_dynamics_evidence: artifacts/v7-arenz-source-dynamics-audit.json
+  required_source_types: [Mi1, Tm3, Mi4, C3]
+  require_same_measurement_and_parameterization_contract: true
+  require_membrane_voltage_or_validated_deconvolution: true
+  require_physical_v7_timebase: true
+  require_stable_recorded_cell_to_MaleCNS_mapping: true
+boundary:
+  read_only_literature_audit: true
+  C3_STRF_is_source_level_not_T4_target_activity: true
+  calcium_STRF_is_not_a_membrane_voltage_kernel: true
+  no_C3_analytic_filter_parameters_published: true
+  repository_threshold_is_prediction_correlation_not_an_R2_refit: true
+  no_cross_paper_amplitude_or_state_unit_mapping: true
+  no_parameter_fit_in_this_audit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true
