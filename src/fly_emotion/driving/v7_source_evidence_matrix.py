@@ -55,6 +55,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         ]
     )
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
+    t5_fields = evidence["t5_recording_fields"]
     t5_dynamic = {
         item["source_type"] for item in evidence["t5_calcium"]["verified_dynamic_blocks"].values()
     }
@@ -310,9 +311,10 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "soma_side": bool(map_row["soma_side_complete"]),
             "complete_columnar_retinotopy": bool(map_row["columnar_retinotopy_available"]),
             "complete_stimulus_and_baseline_fields_on_allowed_payload": (
-                family == "T4"
-                and t4_fields[
-                    "complete_stimulus_and_baseline_fields_on_allowed_payload"
+                t4_fields["complete_stimulus_and_baseline_fields_on_allowed_payload"]
+                if family == "T4"
+                else t5_fields[
+                    "all_five_T5_sources_have_complete_coexisting_recording_fields"
                 ]
             ),
             "external_recording_to_body_or_explicit_type_average": bool(

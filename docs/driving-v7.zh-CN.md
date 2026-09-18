@@ -2196,6 +2196,17 @@ ON/OFF 符号、2.5–3.5 s baseline、1.5 s response window，以及 0.80/0.80/
 当前 2.5–3.5 s baseline 也是冻结分析协议，不是原始载荷字段。因此
 `complete_stimulus_and_baseline_fields_on_allowed_payload` 继续失败，不因恢复 1 kHz 数据而
 放宽九源合同。证据见 `artifacts/v7-t4-recording-field-audit.json`。
+
+T5 的 Kohn–Portes 合规膜电位载荷也按同一 15 字段合同做了逐模态共存性审计。聚合
+full-field OFF flash、raw white noise、raw drifting grating 分别只有 7、8、9 项字段可用；
+没有任一模态在同一 recording 中包含全部字段。white-noise 与 drifting-grating 的
+`recording_id + subrecording_number` 可标识作者的 cell/subrecording，但日期编码
+`recording_id` 仍不能当 biological fly ID；flash 聚合矩阵则已丢失这些键。drifting-grating
+保留 temporal/spatial frequency，可计算角速度，但没有 direction 或 angular position；
+flash duration 也不能代替运动方向、位置或速度。作者代码中的 start/end/minimum baseline
+选择属于分析参数，不是 payload 中预声明的 baseline window。不同模态字段的并集明确禁止
+拼成一条完整 recording，CT1 实验膜电位仍缺失。证据见
+`artifacts/v7-t5-recording-field-audit.json`。
 完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个

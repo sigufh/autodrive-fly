@@ -260,6 +260,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "baseline_window_seconds",
     ]
     assert visual["observations"]["T4_complete_stimulus_and_baseline_fields"] is False
+    assert visual["observations"]["T5_voltage_modality_field_counts"] == {
+        "aggregated_full_field_OFF_flash": 7,
+        "raw_white_noise": 8,
+        "raw_drifting_grating": 9,
+    }
+    assert visual["observations"]["T5_cross_modality_field_union_accepted"] is False
+    assert visual["observations"]["T5_all_five_complete_recording_fields"] is False
     assert visual["observations"]["Behnia_T4_independent_fast_source_phenotypes"] == [
         "Mi1",
         "Tm3",

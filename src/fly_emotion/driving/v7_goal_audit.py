@@ -95,6 +95,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_individual_split_1khz_audit = reports["t4_individual_split_1khz_audit"]
     edmond_fig3_retrieval_audit = reports["edmond_fig3_retrieval_audit"]
     t4_recording_field_audit = reports["t4_recording_field_audit"]
+    t5_recording_field_audit = reports["t5_recording_field_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     t4_inhibitory_source_external_audit = reports[
         "t4_inhibitory_source_external_audit"
@@ -309,6 +310,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_individual_split_1khz_audit"],
                 config["evidence"]["edmond_fig3_retrieval_audit"],
                 config["evidence"]["t4_recording_field_audit"],
+                config["evidence"]["t5_recording_field_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
                 config["evidence"]["unified_model_package_audit"],
@@ -641,6 +643,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "complete_stimulus_and_baseline_fields_on_allowed_payload"
                     ]
                 ),
+                "T5_voltage_modality_field_counts": {
+                    name: item["available_field_count"]
+                    for name, item in t5_recording_field_audit["modalities"].items()
+                },
+                "T5_cross_modality_field_union_accepted": t5_recording_field_audit[
+                    "cross_modality_union"
+                ]["accepted_as_single_recording_payload"],
+                "T5_all_five_complete_recording_fields": t5_recording_field_audit[
+                    "all_five_T5_sources_have_complete_coexisting_recording_fields"
+                ],
                 "Behnia_T4_independent_fast_source_phenotypes": sorted(
                     behnia_t4_fast_source_audit["source_evidence"]
                 ),

@@ -1,0 +1,68 @@
+version: 1
+name: v7-t5-recording-field-coexistence-audit
+observed_on: "2026-09-19"
+contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+kohn_portes_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
+kohn_portes_identity: artifacts/v7-kohn-portes-identity-history-audit.json
+source_types: [Tm1, Tm2, Tm4, Tm9]
+missing_source_type: CT1
+modalities:
+  aggregated_full_field_OFF_flash:
+    source_type: {available: true, provenance: frozen_source_file_and_condition_key}
+    stable_recording_unit_id: {available: false, provenance: aggregate_all_matrix_has_anonymous_rows}
+    biological_individual_id: {available: false, provenance: absent}
+    cohort_role: {available: false, provenance: absent}
+    stimulus_id: {available: false, provenance: condition_name_is_not_per_recording_stimulus_id}
+    stimulus_family: {available: true, provenance: FFF_uniform_condition_key}
+    stimulus_polarity: {available: true, provenance: full_field_OFF_flash}
+    stimulus_direction: {available: false, provenance: flash_has_no_motion_direction}
+    stimulus_angular_position_degrees: {available: false, provenance: absent}
+    stimulus_angular_speed_degrees_per_second: {available: false, provenance: flash_has_no_motion_speed}
+    time_seconds: {available: true, provenance: sample_count_times_sampling_rate}
+    response_values: {available: true, provenance: verified_all_float_arrays}
+    response_unit: {available: true, provenance: volts_with_author_code_exact_1000x_millivolt_scale}
+    baseline_window_seconds: {available: false, provenance: author_baseline_argument_is_analysis_choice_not_payload_field}
+    sample_interval_seconds: {available: true, provenance: sampling_rate_field}
+  raw_white_noise:
+    source_type: {available: true, provenance: cell_type_field}
+    stable_recording_unit_id: {available: true, provenance: recording_id_plus_subrecording_number}
+    biological_individual_id: {available: false, provenance: recording_id_is_date_encoded_cell_aggregation_key}
+    cohort_role: {available: false, provenance: absent}
+    stimulus_id: {available: true, provenance: stimulus_path_plus_subrecording_number}
+    stimulus_family: {available: true, provenance: stimulus_type_WN_and_stimulus_name}
+    stimulus_polarity: {available: false, provenance: binary_white_noise_has_no_single_ON_OFF_polarity}
+    stimulus_direction: {available: false, provenance: wn_orientation_is_null}
+    stimulus_angular_position_degrees: {available: false, provenance: bar_width_present_but_position_sequence_not_embedded}
+    stimulus_angular_speed_degrees_per_second: {available: false, provenance: not_a_motion_speed_stimulus}
+    time_seconds: {available: true, provenance: timestamps_field}
+    response_values: {available: true, provenance: ephys_trace_field}
+    response_unit: {available: true, provenance: volts_with_author_code_exact_1000x_millivolt_scale}
+    baseline_window_seconds: {available: false, provenance: author_baseline_argument_is_analysis_choice_not_payload_field}
+    sample_interval_seconds: {available: true, provenance: sampling_rate_field}
+  raw_drifting_grating:
+    source_type: {available: true, provenance: cell_type_field}
+    stable_recording_unit_id: {available: true, provenance: recording_id_plus_subrecording_number}
+    biological_individual_id: {available: false, provenance: recording_id_is_date_encoded_cell_aggregation_key}
+    cohort_role: {available: false, provenance: absent}
+    stimulus_id: {available: true, provenance: stimulus_path_plus_subrecording_number}
+    stimulus_family: {available: true, provenance: stimulus_type_DG_and_stimulus_name}
+    stimulus_polarity: {available: false, provenance: drifting_grating_has_no_single_ON_OFF_polarity}
+    stimulus_direction: {available: false, provenance: no_direction_field_and_orientation_is_null}
+    stimulus_angular_position_degrees: {available: false, provenance: spatial_period_is_not_position}
+    stimulus_angular_speed_degrees_per_second: {available: true, provenance: temporal_frequency_hz_divided_by_spatial_frequency_cycles_per_degree}
+    time_seconds: {available: true, provenance: timestamps_field}
+    response_values: {available: true, provenance: ephys_trace_field}
+    response_unit: {available: true, provenance: volts_with_author_code_exact_1000x_millivolt_scale}
+    baseline_window_seconds: {available: false, provenance: author_uses_trace_minimum_not_predeclared_window}
+    sample_interval_seconds: {available: true, provenance: sampling_rate_field}
+boundary:
+  fields_must_coexist_in_one_allowed_payload: true
+  cross_modality_field_union_is_not_a_complete_record: true
+  recording_id_is_not_asserted_to_be_biological_individual_id: true
+  flash_duration_is_not_motion_direction_position_or_speed: true
+  spatial_period_is_not_angular_position: true
+  no_threshold_label_split_denominator_or_failure_rule_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

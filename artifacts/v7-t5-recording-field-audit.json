@@ -1,0 +1,373 @@
+{
+  "protocol": {
+    "name": "v7-t5-recording-field-coexistence-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-recording-field-audit.yaml": "2508fa0d5b441bd44cae5d1d9ae1fdefa875e9ae8e41de2f85d2313ca20e8482",
+      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "8eb25163f194feb743ae6e6b0096f9bee28a5a4edad5ce76c0dfdf5ea62c5fa1",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
+      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
+      "artifacts/v7-kohn-portes-identity-history-audit.json": "77033024cb0d114085c644a5b1a0dc8fa133b3eb89e93f8f78e4a93b670512fb"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "required_fields": [
+    "source_type",
+    "stable_recording_unit_id",
+    "biological_individual_id",
+    "cohort_role",
+    "stimulus_id",
+    "stimulus_family",
+    "stimulus_polarity",
+    "stimulus_direction",
+    "stimulus_angular_position_degrees",
+    "stimulus_angular_speed_degrees_per_second",
+    "time_seconds",
+    "response_values",
+    "response_unit",
+    "baseline_window_seconds",
+    "sample_interval_seconds"
+  ],
+  "modalities": {
+    "aggregated_full_field_OFF_flash": {
+      "field_status": {
+        "source_type": {
+          "available": true,
+          "provenance": "frozen_source_file_and_condition_key"
+        },
+        "stable_recording_unit_id": {
+          "available": false,
+          "provenance": "aggregate_all_matrix_has_anonymous_rows"
+        },
+        "biological_individual_id": {
+          "available": false,
+          "provenance": "absent"
+        },
+        "cohort_role": {
+          "available": false,
+          "provenance": "absent"
+        },
+        "stimulus_id": {
+          "available": false,
+          "provenance": "condition_name_is_not_per_recording_stimulus_id"
+        },
+        "stimulus_family": {
+          "available": true,
+          "provenance": "FFF_uniform_condition_key"
+        },
+        "stimulus_polarity": {
+          "available": true,
+          "provenance": "full_field_OFF_flash"
+        },
+        "stimulus_direction": {
+          "available": false,
+          "provenance": "flash_has_no_motion_direction"
+        },
+        "stimulus_angular_position_degrees": {
+          "available": false,
+          "provenance": "absent"
+        },
+        "stimulus_angular_speed_degrees_per_second": {
+          "available": false,
+          "provenance": "flash_has_no_motion_speed"
+        },
+        "time_seconds": {
+          "available": true,
+          "provenance": "sample_count_times_sampling_rate"
+        },
+        "response_values": {
+          "available": true,
+          "provenance": "verified_all_float_arrays"
+        },
+        "response_unit": {
+          "available": true,
+          "provenance": "volts_with_author_code_exact_1000x_millivolt_scale"
+        },
+        "baseline_window_seconds": {
+          "available": false,
+          "provenance": "author_baseline_argument_is_analysis_choice_not_payload_field"
+        },
+        "sample_interval_seconds": {
+          "available": true,
+          "provenance": "sampling_rate_field"
+        }
+      },
+      "available_fields": [
+        "source_type",
+        "stimulus_family",
+        "stimulus_polarity",
+        "time_seconds",
+        "response_values",
+        "response_unit",
+        "sample_interval_seconds"
+      ],
+      "missing_fields": [
+        "stable_recording_unit_id",
+        "biological_individual_id",
+        "cohort_role",
+        "stimulus_id",
+        "stimulus_direction",
+        "stimulus_angular_position_degrees",
+        "stimulus_angular_speed_degrees_per_second",
+        "baseline_window_seconds"
+      ],
+      "available_field_count": 7,
+      "required_field_count": 15,
+      "all_required_fields_coexist": false
+    },
+    "raw_white_noise": {
+      "field_status": {
+        "source_type": {
+          "available": true,
+          "provenance": "cell_type_field"
+        },
+        "stable_recording_unit_id": {
+          "available": true,
+          "provenance": "recording_id_plus_subrecording_number"
+        },
+        "biological_individual_id": {
+          "available": false,
+          "provenance": "recording_id_is_date_encoded_cell_aggregation_key"
+        },
+        "cohort_role": {
+          "available": false,
+          "provenance": "absent"
+        },
+        "stimulus_id": {
+          "available": true,
+          "provenance": "stimulus_path_plus_subrecording_number"
+        },
+        "stimulus_family": {
+          "available": true,
+          "provenance": "stimulus_type_WN_and_stimulus_name"
+        },
+        "stimulus_polarity": {
+          "available": false,
+          "provenance": "binary_white_noise_has_no_single_ON_OFF_polarity"
+        },
+        "stimulus_direction": {
+          "available": false,
+          "provenance": "wn_orientation_is_null"
+        },
+        "stimulus_angular_position_degrees": {
+          "available": false,
+          "provenance": "bar_width_present_but_position_sequence_not_embedded"
+        },
+        "stimulus_angular_speed_degrees_per_second": {
+          "available": false,
+          "provenance": "not_a_motion_speed_stimulus"
+        },
+        "time_seconds": {
+          "available": true,
+          "provenance": "timestamps_field"
+        },
+        "response_values": {
+          "available": true,
+          "provenance": "ephys_trace_field"
+        },
+        "response_unit": {
+          "available": true,
+          "provenance": "volts_with_author_code_exact_1000x_millivolt_scale"
+        },
+        "baseline_window_seconds": {
+          "available": false,
+          "provenance": "author_baseline_argument_is_analysis_choice_not_payload_field"
+        },
+        "sample_interval_seconds": {
+          "available": true,
+          "provenance": "sampling_rate_field"
+        }
+      },
+      "available_fields": [
+        "source_type",
+        "stable_recording_unit_id",
+        "stimulus_id",
+        "stimulus_family",
+        "time_seconds",
+        "response_values",
+        "response_unit",
+        "sample_interval_seconds"
+      ],
+      "missing_fields": [
+        "biological_individual_id",
+        "cohort_role",
+        "stimulus_polarity",
+        "stimulus_direction",
+        "stimulus_angular_position_degrees",
+        "stimulus_angular_speed_degrees_per_second",
+        "baseline_window_seconds"
+      ],
+      "available_field_count": 8,
+      "required_field_count": 15,
+      "all_required_fields_coexist": false
+    },
+    "raw_drifting_grating": {
+      "field_status": {
+        "source_type": {
+          "available": true,
+          "provenance": "cell_type_field"
+        },
+        "stable_recording_unit_id": {
+          "available": true,
+          "provenance": "recording_id_plus_subrecording_number"
+        },
+        "biological_individual_id": {
+          "available": false,
+          "provenance": "recording_id_is_date_encoded_cell_aggregation_key"
+        },
+        "cohort_role": {
+          "available": false,
+          "provenance": "absent"
+        },
+        "stimulus_id": {
+          "available": true,
+          "provenance": "stimulus_path_plus_subrecording_number"
+        },
+        "stimulus_family": {
+          "available": true,
+          "provenance": "stimulus_type_DG_and_stimulus_name"
+        },
+        "stimulus_polarity": {
+          "available": false,
+          "provenance": "drifting_grating_has_no_single_ON_OFF_polarity"
+        },
+        "stimulus_direction": {
+          "available": false,
+          "provenance": "no_direction_field_and_orientation_is_null"
+        },
+        "stimulus_angular_position_degrees": {
+          "available": false,
+          "provenance": "spatial_period_is_not_position"
+        },
+        "stimulus_angular_speed_degrees_per_second": {
+          "available": true,
+          "provenance": "temporal_frequency_hz_divided_by_spatial_frequency_cycles_per_degree"
+        },
+        "time_seconds": {
+          "available": true,
+          "provenance": "timestamps_field"
+        },
+        "response_values": {
+          "available": true,
+          "provenance": "ephys_trace_field"
+        },
+        "response_unit": {
+          "available": true,
+          "provenance": "volts_with_author_code_exact_1000x_millivolt_scale"
+        },
+        "baseline_window_seconds": {
+          "available": false,
+          "provenance": "author_uses_trace_minimum_not_predeclared_window"
+        },
+        "sample_interval_seconds": {
+          "available": true,
+          "provenance": "sampling_rate_field"
+        }
+      },
+      "available_fields": [
+        "source_type",
+        "stable_recording_unit_id",
+        "stimulus_id",
+        "stimulus_family",
+        "stimulus_angular_speed_degrees_per_second",
+        "time_seconds",
+        "response_values",
+        "response_unit",
+        "sample_interval_seconds"
+      ],
+      "missing_fields": [
+        "biological_individual_id",
+        "cohort_role",
+        "stimulus_polarity",
+        "stimulus_direction",
+        "stimulus_angular_position_degrees",
+        "baseline_window_seconds"
+      ],
+      "available_field_count": 9,
+      "required_field_count": 15,
+      "all_required_fields_coexist": false
+    }
+  },
+  "cross_modality_union": {
+    "available_fields": [
+      "source_type",
+      "stable_recording_unit_id",
+      "stimulus_id",
+      "stimulus_family",
+      "stimulus_polarity",
+      "stimulus_angular_speed_degrees_per_second",
+      "time_seconds",
+      "response_values",
+      "response_unit",
+      "sample_interval_seconds"
+    ],
+    "available_field_count": 10,
+    "accepted_as_single_recording_payload": false
+  },
+  "source_checks": {
+    "Tm1": {
+      "full_field_flash_condition_count": 8,
+      "full_field_flash_all_conditions_have_voltage": true,
+      "white_noise_record_count": 8,
+      "white_noise_stable_recording_id_field_retained": true,
+      "full_repository_recording_id_upper_bound": 8,
+      "biological_individual_semantics_verified": false,
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+    },
+    "Tm2": {
+      "full_field_flash_condition_count": 8,
+      "full_field_flash_all_conditions_have_voltage": true,
+      "white_noise_record_count": 5,
+      "white_noise_stable_recording_id_field_retained": true,
+      "full_repository_recording_id_upper_bound": 7,
+      "biological_individual_semantics_verified": false,
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+    },
+    "Tm4": {
+      "full_field_flash_condition_count": 8,
+      "full_field_flash_all_conditions_have_voltage": true,
+      "white_noise_record_count": 6,
+      "white_noise_stable_recording_id_field_retained": true,
+      "full_repository_recording_id_upper_bound": 7,
+      "biological_individual_semantics_verified": false,
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+    },
+    "Tm9": {
+      "full_field_flash_condition_count": 8,
+      "full_field_flash_all_conditions_have_voltage": true,
+      "white_noise_record_count": 6,
+      "white_noise_stable_recording_id_field_retained": true,
+      "full_repository_recording_id_upper_bound": 13,
+      "biological_individual_semantics_verified": false,
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+    },
+    "CT1": {
+      "full_field_flash_condition_count": 0,
+      "full_field_flash_all_conditions_have_voltage": false,
+      "white_noise_record_count": 0,
+      "white_noise_stable_recording_id_field_retained": false,
+      "full_repository_recording_id_upper_bound": 0,
+      "biological_individual_semantics_verified": false,
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+    }
+  },
+  "all_five_T5_sources_have_complete_coexisting_recording_fields": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "no_voltage_modality_contains_all_required_fields_and_CT1_voltage_is_absent",
+  "boundary": {
+    "fields_must_coexist_in_one_allowed_payload": true,
+    "cross_modality_field_union_is_not_a_complete_record": true,
+    "recording_id_is_not_asserted_to_be_biological_individual_id": true,
+    "flash_duration_is_not_motion_direction_position_or_speed": true,
+    "spatial_period_is_not_angular_position": true,
+    "no_threshold_label_split_denominator_or_failure_rule_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

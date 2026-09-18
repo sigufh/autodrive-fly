@@ -299,6 +299,7 @@ from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_physical_time_transfer_audit import (
     evaluate_v7_t5_physical_time_transfer_audit,
 )
+from .driving.v7_t5_recording_field_audit import evaluate_v7_t5_recording_field_audit
 from .driving.v7_t5_source_axis_audit import evaluate_v7_t5_source_axis_audit
 from .driving.v7_t5_source_pair_precheck import evaluate_v7_t5_source_pair_precheck
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
@@ -515,6 +516,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-t4-individual-split-1khz")
     subparsers.add_parser("v7-audit-t4-recording-fields")
+    subparsers.add_parser("v7-audit-t5-recording-fields")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
@@ -1514,6 +1516,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-recording-fields":
         report = evaluate_v7_t4_recording_field_audit(root)
         target = root / "artifacts/v7-t4-recording-field-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-recording-fields":
+        report = evaluate_v7_t5_recording_field_audit(root)
+        target = root / "artifacts/v7-t5-recording-field-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

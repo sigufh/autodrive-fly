@@ -3,8 +3,8 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "d3702006e8ffbf7e982863d730a3a23b2198e9d3d031e22b417f6c7921f5d40e",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "a81168aaba09547f14d8a1bfb06125b6ad00265bc6618cbc1fde7bd8046c5207",
+      "configs/driving-v7-source-evidence-matrix.yaml": "a05c4860e28672e5d237a6315446cc4d896ffa0658e18a1330610b99e144b968",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "3464fc4a7dd51540a78920cc9f28acc9ed0b42bb77982d224604e6509ba49c7a",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "789bc5dedce9f7d1079740d4b230ded020ba51e974ae83555249ada2b972e2e2",
       "artifacts/v7-t4-individual-split-1khz-audit.json": "b0f3624c022fb6614a2a345ebc28f596d87e4e917dfba00958d0f462f91bd587",
@@ -18,6 +18,7 @@
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "77033024cb0d114085c644a5b1a0dc8fa133b3eb89e93f8f78e4a93b670512fb",
+      "artifacts/v7-t5-recording-field-audit.json": "bd02ec4be569f79c2749e059a4a8993f6de7bfc899d93f052ffd9a0e4cc26d47",
       "artifacts/v7-ct1-extreme-compartmentalization-audit.json": "9fc040650cecd64a5151df4d109497751add32ee2a188ce986133d13cc2116b6",
       "artifacts/v7-ct1-experimental-voltage-boundary-audit.json": "b4c66504120c2c19486b088c2680a899618e02cbfb43cebdc7130e8f2156989b",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "42b00f711f08212c07a6dad2d24abfbe0fa9fd18c9fb24957f5a3fec42236c24",

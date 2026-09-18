@@ -185,6 +185,10 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     assert ct1["audited_CT1_candidate_set_has_direct_experimental_voltage"] is False
     assert ct1["audited_CT1_candidate_set_has_direct_Lo1_experimental_voltage"] is False
     assert report["family_summary"]["T5"]["all_sources_contract_complete"] is False
+    for source in report["family_summary"]["T5"]["sources"]:
+        assert report["matrix"][source]["gates"][
+            "complete_stimulus_and_baseline_fields_on_allowed_payload"
+        ] is False
 
 
 def test_Kohn_Portes_recording_capacity_does_not_replace_biological_identity() -> None:

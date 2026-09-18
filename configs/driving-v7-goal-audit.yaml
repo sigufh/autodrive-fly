@@ -77,6 +77,7 @@ evidence:
   t4_individual_split_1khz_audit: artifacts/v7-t4-individual-split-1khz-audit.json
   edmond_fig3_retrieval_audit: artifacts/v7-edmond-fig3-retrieval-audit.json
   t4_recording_field_audit: artifacts/v7-t4-recording-field-audit.json
+  t5_recording_field_audit: artifacts/v7-t5-recording-field-audit.json
   behnia_t4_fast_source_audit: artifacts/v7-behnia-t4-fast-source-audit.json
   t4_inhibitory_source_external_audit: artifacts/v7-t4-inhibitory-source-external-audit.json
   unified_model_package_audit: artifacts/v7-unified-model-package-audit.json
