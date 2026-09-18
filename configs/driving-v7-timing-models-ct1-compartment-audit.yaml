@@ -1,0 +1,40 @@
+version: 1
+name: v7-timing-models-ct1-compartment-audit
+observed_on: "2026-09-18"
+paper:
+  doi: 10.1016/j.cub.2022.07.024
+  pmcid: PMC9474608
+  title: Excitatory and inhibitory neural dynamics jointly tune motion detection
+  main_figure_2_circuit_target: T4
+  main_CT1_control_fly_count: 17
+  recorded_compartments: [medulla_M10, lobula_L1_Lo1]
+  lobula_results_location: supplementary_figure_S5
+timing_models_evidence: artifacts/v7-timing-models-source-filter-audit.json
+timing_models_protocol: configs/driving-v7-timing-models-source-filter-audit.yaml
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+CT1_filter_name: CT1
+comparison_sources: [Mi4, Mi9]
+gates:
+  minimum_cross_deconvolution_correlation: 0.98
+  require_explicit_lobula_Lo1_provenance_for_T5: true
+  require_allowed_response_unit: true
+  require_individual_identity_mapping: true
+  require_MaleCNS_mapping: true
+  require_split_roles: true
+provenance:
+  filter_file_compartment_field_present: false
+  filter_label_compartment_present: false
+  CT1_column_explicitly_linked_to_lobula_L1_Lo1: false
+  stable_individual_ids_present: false
+  MaleCNS_mapping_present: false
+  required_split_roles_present: false
+  response_unit: deconvolved_calcium_kernel
+boundary:
+  read_only_external_model_audit: true
+  same_CT1_cell_type_does_not_authorize_cross_compartment_transfer: true
+  medulla_M10_evidence_must_not_substitute_for_lobula_L1_Lo1: true
+  deconvolved_calcium_is_not_membrane_voltage: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

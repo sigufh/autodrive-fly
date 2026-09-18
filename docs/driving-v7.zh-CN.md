@@ -1918,6 +1918,16 @@ T5 的独立实测动态覆盖补到 Tm4/Tm9，并验证 CT1 空间极性；不�
 CT1 动力学，更不能直接当作膜电位核或解锁 T5。证据见
 `artifacts/v7-t5-contrast-opponency-source-data-audit.json`。
 
+TimingModels 固定提交中的三个去卷积滤波文件还包含一个独立 `CT1` 列：均为 60 点、
+33.3 ms 步长，200/250/300 ms 指示器假设之间的形状相关最低约 0.983，且与 Mi4、
+Mi9 都不完全相同；论文报告主 CT1 cohort 为 17 flies。可是 MAT 根字段只有
+`filterList/filterLabel/filterMat/filterSem/tSec/dtFilter`，`CT1` 标签没有 M10/Lo1
+区室或 individual ID。论文主 Figure 2 面向 T4，方法同时说明 CT1 记录来自 medulla M10
+与 lobula L1（Lo1），后者另列在补充 Figure S5。故该 type-average 动态存在，但不能判定
+默认列就是 T5 所需的 Lo1 末端；同一巨型 CT1 的 M10 证据不得跨区室替代 Lo1。再加上
+响应仍是去卷积钙核而非允许的膜电位单位，也无 MaleCNS body/split 映射，T5 门保持关闭。
+证据见 `artifacts/v7-timing-models-ct1-compartment-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

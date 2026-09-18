@@ -101,6 +101,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
     timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
+    timing_models_ct1_compartment_audit = reports[
+        "timing_models_ct1_compartment_audit"
+    ]
     flyvis_c3_time_constant_audit = reports["flyvis_c3_time_constant_audit"]
     flyvis_visual_source_time_constants = reports[
         "flyvis_visual_source_time_constants"
@@ -277,6 +280,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["fig1_source_temporal_readiness_audit"],
                 config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["timing_models_source_filter_audit"],
+                config["evidence"]["timing_models_ct1_compartment_audit"],
                 config["evidence"]["flyvis_c3_time_constant_audit"],
                 config["evidence"]["flyvis_visual_source_time_constants"],
                 config["evidence"]["flyvis_c3_effective_dynamics_audit"],
@@ -580,6 +584,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_contrast_opponency_transfer_authorized": (
                     t5_contrast_opponency_source_data_audit[
                         "complete_T5_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "TimingModels_CT1_type_average_dynamics_verified": (
+                    timing_models_ct1_compartment_audit[
+                        "CT1_type_average_dynamics_verified"
+                    ]
+                ),
+                "TimingModels_T5_lobula_CT1_dynamics_verified": (
+                    timing_models_ct1_compartment_audit[
+                        "T5_lobula_CT1_dynamics_verified"
+                    ]
+                ),
+                "TimingModels_T5_CT1_transfer_authorized": (
+                    timing_models_ct1_compartment_audit[
+                        "T5_CT1_source_dynamics_transfer_authorized"
                     ]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][

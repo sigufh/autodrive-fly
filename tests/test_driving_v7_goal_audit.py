@@ -234,6 +234,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "CT1"
     ]
     assert visual["observations"]["T5_contrast_opponency_transfer_authorized"] is False
+    assert visual["observations"]["TimingModels_CT1_type_average_dynamics_verified"] is True
+    assert visual["observations"]["TimingModels_T5_lobula_CT1_dynamics_verified"] is False
+    assert visual["observations"]["TimingModels_T5_CT1_transfer_authorized"] is False
     assert visual["observations"]["source_dynamics_external_required_split_roles"] == [
         "training",
         "validation",

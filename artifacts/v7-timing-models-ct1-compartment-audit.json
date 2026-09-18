@@ -1,0 +1,127 @@
+{
+  "protocol": {
+    "name": "v7-timing-models-ct1-compartment-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "6a86febd965213a3e773ffbc42c9c464b8744b2f7613a9b94e2e5ab7372fa779",
+      "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "1931edd413b8fdfbfec1b43ca7426886040ad1a77e3f80f2b7179f90c86e0530",
+      "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
+      "configs/driving-v7-timing-models-source-filter-audit.yaml": "fffaa64fd43a4127c056da205d1f6eb3242b84ece34e0a77bcbff57f5bd02cb4",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "0e13cd6fe1a7d4031e4b0f420e56a46135d8578f09f7b97071c43dd2f0308315"
+    },
+    "paper": {
+      "doi": "10.1016/j.cub.2022.07.024",
+      "pmcid": "PMC9474608",
+      "title": "Excitatory and inhibitory neural dynamics jointly tune motion detection",
+      "main_figure_2_circuit_target": "T4",
+      "main_CT1_control_fly_count": 17,
+      "recorded_compartments": [
+        "medulla_M10",
+        "lobula_L1_Lo1"
+      ],
+      "lobula_results_location": "supplementary_figure_S5"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "CT1_filter_evidence": {
+    "filter_name": "CT1",
+    "filter_label": "CT1",
+    "source_file_root_fields": [
+      "dtFilter",
+      "filterLabel",
+      "filterList",
+      "filterMat",
+      "filterSem",
+      "tSec"
+    ],
+    "sample_count": 60,
+    "sample_interval_seconds": 0.03333333333333333,
+    "time_start_seconds": 0.0,
+    "time_stop_seconds": 1.9666666666666666,
+    "control_fly_count_reported_in_paper": 17,
+    "response_unit": "deconvolved_calcium_kernel",
+    "cross_deconvolution_correlations": {
+      "200_vs_250_ms": 0.9943491129409432,
+      "200_vs_300_ms": 0.9831839736189424,
+      "250_vs_300_ms": 0.997014732036797
+    },
+    "minimum_cross_deconvolution_correlation": 0.9831839736189424,
+    "distinction_from_comparison_sources": {
+      "200": {
+        "Mi4": {
+          "exactly_equal": false,
+          "correlation": 0.9262926555470385
+        },
+        "Mi9": {
+          "exactly_equal": false,
+          "correlation": 0.9277461191674833
+        }
+      },
+      "250": {
+        "Mi4": {
+          "exactly_equal": false,
+          "correlation": 0.9178383933874789
+        },
+        "Mi9": {
+          "exactly_equal": false,
+          "correlation": 0.9230711734978031
+        }
+      },
+      "300": {
+        "Mi4": {
+          "exactly_equal": false,
+          "correlation": 0.912438695137321
+        },
+        "Mi9": {
+          "exactly_equal": false,
+          "correlation": 0.9199267475624263
+        }
+      }
+    }
+  },
+  "compartment_provenance": {
+    "filter_file_compartment_field_present": false,
+    "filter_label_compartment_present": false,
+    "CT1_column_explicitly_linked_to_lobula_L1_Lo1": false,
+    "stable_individual_ids_present": false,
+    "MaleCNS_mapping_present": false,
+    "required_split_roles_present": false,
+    "response_unit": "deconvolved_calcium_kernel"
+  },
+  "transfer_gates": {
+    "repository_and_filter_files_verified": true,
+    "CT1_column_present_with_finite_SEM": true,
+    "CT1_column_distinct_from_Mi4_and_Tm9": true,
+    "CT1_stable_across_deconvolution_assumptions": true,
+    "CT1_lobula_L1_Lo1_provenance_available": false,
+    "allowed_response_unit_available": false,
+    "stable_individual_ids_available": false,
+    "MaleCNS_mapping_available": false,
+    "required_split_roles_present": false
+  },
+  "CT1_type_average_dynamics_verified": true,
+  "T5_lobula_CT1_dynamics_verified": false,
+  "T5_CT1_source_dynamics_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "CT1_lobula_L1_Lo1_provenance_available",
+    "allowed_response_unit_available",
+    "stable_individual_ids_available",
+    "MaleCNS_mapping_available",
+    "required_split_roles_present"
+  ],
+  "stop_reason": "TimingModels_CT1_type_average_has_no_lobula_Lo1_or_individual_identity_provenance",
+  "boundary": {
+    "read_only_external_model_audit": true,
+    "same_CT1_cell_type_does_not_authorize_cross_compartment_transfer": true,
+    "medulla_M10_evidence_must_not_substitute_for_lobula_L1_Lo1": true,
+    "deconvolved_calcium_is_not_membrane_voltage": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

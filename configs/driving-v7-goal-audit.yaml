@@ -83,6 +83,7 @@ evidence:
   fig1_source_temporal_readiness_audit: artifacts/v7-fig1-source-temporal-readiness-audit.json
   c3_analytic_filter_precheck: artifacts/v7-c3-analytic-filter-precheck.json
   timing_models_source_filter_audit: artifacts/v7-timing-models-source-filter-audit.json
+  timing_models_ct1_compartment_audit: artifacts/v7-timing-models-ct1-compartment-audit.json
   flyvis_c3_time_constant_audit: artifacts/v7-flyvis-c3-time-constant-audit.json
   flyvis_visual_source_time_constants: artifacts/v7-flyvis-visual-source-time-constants.json
   flyvis_c3_effective_dynamics_audit: artifacts/v7-flyvis-c3-effective-dynamics-audit.json

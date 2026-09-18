@@ -272,6 +272,9 @@ from .driving.v7_three_hop_temporal_consistency import (
     evaluate_v7_three_hop_temporal_consistency,
 )
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
+from .driving.v7_timing_models_ct1_compartment_audit import (
+    evaluate_v7_timing_models_ct1_compartment_audit,
+)
 from .driving.v7_timing_models_source_filter_audit import (
     evaluate_v7_timing_models_source_filter_audit,
 )
@@ -467,6 +470,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-c3-measured-filter-robustness")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
+    subparsers.add_parser("v7-audit-timing-models-ct1-compartment")
     subparsers.add_parser("v7-audit-flyvis-c3-time-constant")
     subparsers.add_parser("v7-audit-flyvis-visual-source-time-constants")
     subparsers.add_parser("v7-audit-flyvis-c3-effective-dynamics")
@@ -1476,6 +1480,14 @@ def main() -> None:
     if args.command == "v7-audit-timing-models-source-filters":
         report = evaluate_v7_timing_models_source_filter_audit(root)
         target = root / "artifacts/v7-timing-models-source-filter-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-timing-models-ct1-compartment":
+        report = evaluate_v7_timing_models_ct1_compartment_audit(root)
+        target = root / "artifacts/v7-timing-models-ct1-compartment-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
