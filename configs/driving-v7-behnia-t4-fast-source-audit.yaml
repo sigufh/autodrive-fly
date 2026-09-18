@@ -1,0 +1,48 @@
+version: 1
+name: v7-behnia-t4-fast-source-audit
+observed_on: "2026-09-19"
+paper:
+  title: Processing properties of ON and OFF pathways for Drosophila motion detection
+  doi: 10.1038/nature13427
+  pmid: 25043016
+  pmcid: PMC4243710
+source:
+  path: data/raw/t4-behnia-2014/PMC4243710.html
+  bytes: 210434
+  sha256: e8e7c4c7c64c56a1fcbdc55a604a981975e8ca4ec05198149ae716f5a52535b4
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+reported_evidence:
+  measurement: in_vivo_whole_cell_current_clamp
+  sources:
+    Mi1:
+      full_field_flash_cell_count: 7
+      Gaussian_noise_cell_count: 7
+      mean_peak_latency_milliseconds: 71
+      peak_latency_SEM_milliseconds: 3.8
+    Tm3:
+      full_field_flash_cell_count: 10
+      Gaussian_noise_cell_count: 11
+      mean_peak_latency_milliseconds: 53
+      peak_latency_SEM_milliseconds: 5.2
+  Mi1_minus_Tm3_peak_latency_milliseconds: 18
+  Gaussian_noise_correlation_time_milliseconds: 10
+  full_field_flash_durations_milliseconds: [200, 1000]
+  moving_bar_speeds_degrees_per_second: [100, 400]
+public_resource_inventory:
+  local_numeric_trace_payload_present: false
+  stable_recording_ids_present: false
+  biological_individual_ids_present: false
+  source_to_MaleCNS_mapping_present: false
+  preregistered_split_roles_present: false
+  external_final_commitment_present: false
+  linked_file_types: [pdf]
+boundary:
+  published_group_traces_and_individual_filter_figures_are_not_numeric_payloads: true
+  Mi1_Tm3_evidence_does_not_cover_Mi4_or_C3: true
+  published_latency_agreement_is_qualitative_external_support: true
+  no_curve_digitization: true
+  no_threshold_or_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_and_vehicle_experiments_remain_frozen: true

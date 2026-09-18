@@ -1,0 +1,102 @@
+{
+  "protocol": {
+    "name": "v7-behnia-t4-fast-source-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-behnia-t4-fast-source-audit.yaml": "e3358d3f507310878b525d716ad8020cf2d8370796f7fa8a076290b3b74e04a1",
+      "src/fly_emotion/driving/v7_behnia_t4_fast_source_audit.py": "50968684796c9f0f03c1ea9c440afa9543076d25c4dd3a714a880bc7b2a61921",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "paper": {
+      "title": "Processing properties of ON and OFF pathways for Drosophila motion detection",
+      "doi": "10.1038/nature13427",
+      "pmid": 25043016,
+      "pmcid": "PMC4243710"
+    },
+    "source": {
+      "path": "data/raw/t4-behnia-2014/PMC4243710.html",
+      "bytes": 210434,
+      "sha256": "e8e7c4c7c64c56a1fcbdc55a604a981975e8ca4ec05198149ae716f5a52535b4",
+      "actual_sha256": "e8e7c4c7c64c56a1fcbdc55a604a981975e8ca4ec05198149ae716f5a52535b4"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "source_evidence": {
+    "Mi1": {
+      "full_field_flash_cell_count": 7,
+      "Gaussian_noise_cell_count": 7,
+      "mean_peak_latency_milliseconds": 71,
+      "peak_latency_SEM_milliseconds": 3.8,
+      "numerical_membrane_voltage_phenotype_published": true,
+      "local_numeric_payload_verified": false
+    },
+    "Tm3": {
+      "full_field_flash_cell_count": 10,
+      "Gaussian_noise_cell_count": 11,
+      "mean_peak_latency_milliseconds": 53,
+      "peak_latency_SEM_milliseconds": 5.2,
+      "numerical_membrane_voltage_phenotype_published": true,
+      "local_numeric_payload_verified": false
+    }
+  },
+  "reported_protocol": {
+    "measurement": "in_vivo_whole_cell_current_clamp",
+    "Mi1_minus_Tm3_peak_latency_milliseconds": 18,
+    "Gaussian_noise_correlation_time_milliseconds": 10,
+    "full_field_flash_durations_milliseconds": [
+      200,
+      1000
+    ],
+    "moving_bar_speeds_degrees_per_second": [
+      100,
+      400
+    ]
+  },
+  "public_resource_inventory": {
+    "local_numeric_trace_payload_present": false,
+    "stable_recording_ids_present": false,
+    "biological_individual_ids_present": false,
+    "source_to_MaleCNS_mapping_present": false,
+    "preregistered_split_roles_present": false,
+    "external_final_commitment_present": false,
+    "linked_file_types": [
+      "pdf"
+    ],
+    "numeric_payload_links_found": []
+  },
+  "transfer_gates": {
+    "independent_Mi1_Tm3_whole_cell_phenotype_published": true,
+    "independent_Mi1_later_than_Tm3_phenotype_published": true,
+    "all_four_T4_sources_covered": false,
+    "local_numeric_trace_payload_verified": false,
+    "stable_biological_individual_ids_available": false,
+    "source_to_MaleCNS_mapping_available": false,
+    "required_split_roles_available": false,
+    "external_final_commitment_available": false
+  },
+  "independent_T4_source_dynamics_transfer_authorized": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "all_four_T4_sources_covered",
+    "local_numeric_trace_payload_verified",
+    "stable_biological_individual_ids_available",
+    "source_to_MaleCNS_mapping_available",
+    "required_split_roles_available",
+    "external_final_commitment_available"
+  ],
+  "stop_reason": "independent_Mi1_Tm3_phenotype_lacks_numeric_payload_and_Mi4_C3_coverage",
+  "boundary": {
+    "published_group_traces_and_individual_filter_figures_are_not_numeric_payloads": true,
+    "Mi1_Tm3_evidence_does_not_cover_Mi4_or_C3": true,
+    "published_latency_agreement_is_qualitative_external_support": true,
+    "no_curve_digitization": true,
+    "no_threshold_or_label_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

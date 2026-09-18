@@ -32,6 +32,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
 
     t4_voltage = evidence["t4_voltage"]
     t4_split = evidence["t4_individual_split"]
+    behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     gou = evidence["gou_partial"]
     gou_sources = set(gou["source_evidence"])
     # The Gou archive was not downloaded or hash-verified. Its README describes
@@ -141,6 +142,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     for condition in ("on", "off")
                 )
             ),
+            "independent_whole_cell_voltage_phenotype_without_numeric_payload": (
+                source in behnia_fast_sources
+            ),
         }
         numerical_sources = []
         phenotype_sources = []
@@ -165,6 +169,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             numerical_sources.append("TimingModels_uncompartmented_type_average_CT1_filter")
         if source in arenz_t4 or source in arenz_t5:
             phenotype_sources.append("Arenz_2017_calcium_filter_parameters")
+        if source in behnia_fast_sources:
+            phenotype_sources.append("Behnia_2014_whole_cell_voltage_phenotype")
         if published_voltage:
             phenotype_sources.append("Yang_2016_optical_voltage_figure")
         if source == "CT1" and ct1_lobula_phenotype:

@@ -3,11 +3,12 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "4adfa6eed4a02677f352be40aa7648b17f6c7676fa548312dbba12ba730de20c",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "662a6ea91b1654504dd5e45cd3d0d997033fb552f633a40754b5e22a9abba0b7",
+      "configs/driving-v7-source-evidence-matrix.yaml": "7b97760c71e6e4495fa6623d0134192792011dc721857cad776b308cf1d263a8",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "da61040725d8dfe0205ae7be0b4af81519abcf612fe3ce4cda12209b8594d63c",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
       "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
+      "artifacts/v7-behnia-t4-fast-source-audit.json": "1b40930a7aa44a1ab5d174358474a10c9ada6064f1643e97962ae462dd814bdf",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e",
@@ -50,7 +51,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": true
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -64,7 +66,8 @@
         "Gou_Dryad_README_and_repository_metadata"
       ],
       "phenotype_evidence_sources": [
-        "Arenz_2017_calcium_filter_parameters"
+        "Arenz_2017_calcium_filter_parameters",
+        "Behnia_2014_whole_cell_voltage_phenotype"
       ],
       "MaleCNS_body_count": 1773,
       "MaleCNS_located_fraction": 1.0,
@@ -103,7 +106,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": true
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -117,7 +121,8 @@
         "Gou_Dryad_README_and_repository_metadata"
       ],
       "phenotype_evidence_sources": [
-        "Arenz_2017_calcium_filter_parameters"
+        "Arenz_2017_calcium_filter_parameters",
+        "Behnia_2014_whole_cell_voltage_phenotype"
       ],
       "MaleCNS_body_count": 2054,
       "MaleCNS_located_fraction": 1.0,
@@ -156,7 +161,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -207,7 +213,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": true,
         "independent_external_cohort_with_disjoint_individual_ids": true,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -257,7 +264,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -312,7 +320,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -367,7 +376,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -420,7 +430,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -474,7 +485,8 @@
         "stable_biological_individual_ids_in_any_numerical_payload": false,
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false,
-        "fixed_T4_individual_split_passed_for_ON_and_OFF": false
+        "fixed_T4_individual_split_passed_for_ON_and_OFF": false,
+        "independent_whole_cell_voltage_phenotype_without_numeric_payload": false
       },
       "numerical_membrane_voltage": false,
       "published_optical_voltage_phenotype": false,

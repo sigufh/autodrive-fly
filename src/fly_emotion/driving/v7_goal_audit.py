@@ -93,6 +93,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t4_source_identity_readiness_audit"
     ]
     t4_individual_split_audit = reports["t4_individual_split_audit"]
+    behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -285,6 +286,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["t4_source_identity_readiness_audit"],
                 config["evidence"]["t4_individual_split_audit"],
+                config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -565,6 +567,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_all_individual_split_gates_passed": (
                     t4_individual_split_audit[
                         "all_source_condition_individual_split_gates_passed"
+                    ]
+                ),
+                "Behnia_T4_independent_fast_source_phenotypes": sorted(
+                    behnia_t4_fast_source_audit["source_evidence"]
+                ),
+                "Behnia_T4_independent_numeric_payload_verified": (
+                    behnia_t4_fast_source_audit["transfer_gates"][
+                        "local_numeric_trace_payload_verified"
+                    ]
+                ),
+                "Behnia_T4_independent_transfer_authorized": (
+                    behnia_t4_fast_source_audit[
+                        "independent_T4_source_dynamics_transfer_authorized"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (

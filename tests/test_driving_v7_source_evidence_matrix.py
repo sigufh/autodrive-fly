@@ -35,9 +35,12 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             report["matrix"][source]["gates"]["stable_biological_individual_id_on_allowed_payload"]
             is True
         )
-        assert report["matrix"][source]["evidence_components"][
-            "fixed_T4_individual_split_passed_for_ON_and_OFF"
-        ] is False
+        assert (
+            report["matrix"][source]["evidence_components"][
+                "fixed_T4_individual_split_passed_for_ON_and_OFF"
+            ]
+            is False
+        )
 
 
 def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:
@@ -51,6 +54,26 @@ def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:
         report["family_summary"]["T4"]["publisher_described_unverified_numerical_payload_count"]
         == 2
     )
+
+
+def test_independent_T4_fast_phenotype_is_not_counted_as_numeric_payload() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in ("Mi1", "Tm3"):
+        row = report["matrix"][source]
+        assert (
+            row["evidence_components"][
+                "independent_whole_cell_voltage_phenotype_without_numeric_payload"
+            ]
+            is True
+        )
+        assert "Behnia_2014_whole_cell_voltage_phenotype" in row["phenotype_evidence_sources"]
+    for source in ("Mi4", "C3"):
+        assert (
+            report["matrix"][source]["evidence_components"][
+                "independent_whole_cell_voltage_phenotype_without_numeric_payload"
+            ]
+            is False
+        )
 
 
 def test_T5_modalities_are_not_combined_into_false_completeness() -> None:

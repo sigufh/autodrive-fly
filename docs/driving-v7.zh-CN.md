@@ -1962,6 +1962,15 @@ C3-ON 的最差 validation-fold correlation 约 0.373。该 split 是观察过�
 `artifacts/v7-t4-source-identity-readiness-audit.json` 与
 `artifacts/v7-t4-individual-split-audit.json`。
 
+独立文献 Behnia 等 2014（DOI `10.1038/nature13427`）确实提供了另一个 whole-cell
+current-clamp cohort：Mi1/Tm3 对全场闪光与 Gaussian noise 的群体波形分别含约 7 与
+10–11 个 cells，并报告 Mi1 峰时延 71±3.8 ms、Tm3 为 53±5.2 ms，即 Mi1 比 Tm3
+晚 18 ms。这与 fast-source 内部的 Tm3→Mi1 顺序一致。但固定 PMCID `PMC4243710`
+页面的全部链接只含论文 PDF，没有 XLS/XLSX/CSV/NPY/ZIP/MAT 数值 payload，也没有
+数据仓库链接；个体 filter 只以图形发表。该证据因此只支持独立实验的定性顺序，不能重算
+固定 robustness、不能覆盖 Mi4/C3，也不能作为 external final。证据见
+`artifacts/v7-behnia-t4-fast-source-audit.json`。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确
