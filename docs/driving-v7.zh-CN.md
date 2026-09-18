@@ -1993,10 +1993,16 @@ NumPy ndarray/dtype 构造器的受限 unpickler 验证了每类 8 个 saline/OA
 波形 50,000 点、`dt=0.0002 s`、长度 10 s。作者分析代码说明 `all` 保存逐记录平均波形，
 绘图代码明确原值以 volts 存储并乘 1000 显示为 mV。因此 Tm1/Tm2/Tm4/Tm9 的
 “本地数值膜电位 + 物理时间轴”证据已补齐，T5 fast sources 仍严格是 Tm1/Tm2/Tm4，
-Tm9 单列。可是预处理 pickle 删除了 `recording_id` 和 fly ID，只保留匿名数组与 `n`；
-部分条件的 `n` 还与 `all` 长度不相等。CT1 也完全不在该数据集。因此无法构造按个体
-不重叠 split、recording→MaleCNS 映射或 external-final 承诺，0/9 完整合同结论和所有冻结
-门保持不变。许可证为 CC BY-NC-ND 4.0，原始文件不提交，也未作参数拟合。证据见
+Tm9 单列。flash 汇总 pickle 删除了 `recording_id` 和 fly ID，只保留匿名数组与 `n`，
+部分条件的 `n` 还与 `all` 长度不相等。进一步核验四类 saline white-noise pickle 后，
+确认它们保留原始 voltage trace、timestamps、`recording_id`、recording date、cell number
+（部分为空）、sex 和 5°/20 Hz 刺激元数据；Tm1/Tm2/Tm4/Tm9 分别为 8/5/6/6 条记录。
+不过 Tm1 的 8 条记录只有 7 个唯一 `recording_id`，所有文件均无明确 fly/animal ID，
+不能把日期或 recording ID 自行解释为 biological individual。后三类的记录数也不足以同时
+满足每源至少 5 training 与 3 validation，更无独立 external final。CT1 完全不在该数据集。
+因此仍无法构造按个体不重叠 split、recording→MaleCNS 映射或 external-final 承诺，0/9
+完整合同结论和所有冻结门保持不变。许可证为 CC BY-NC-ND 4.0，原始文件不提交，也未作
+参数拟合。证据见
 `artifacts/v7-kohn-portes-t5-ephys-audit.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。

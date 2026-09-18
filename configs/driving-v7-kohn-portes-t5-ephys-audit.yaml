@@ -46,6 +46,35 @@ source_files:
     bytes: 20402866
     sha256: 88b099d0b69dcc6952d6021f9b668307f537507c883ebaa8167a77d5314d4762
     git_blob: 498767361ff0f219bbf37ad50a72444b9f885476
+white_noise_files:
+  Tm1:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle
+    bytes: 220242954
+    sha256: 7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584
+    git_blob: 5c6f07539e34eb280f1dcb7c6494ba96630178d0
+    expected_record_count: 8
+    expected_unique_recording_id_count: 7
+  Tm2:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle
+    bytes: 129578743
+    sha256: d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98
+    git_blob: 98c7c7a7952202bf25074566a8f006aae6cafe6b
+    expected_record_count: 5
+    expected_unique_recording_id_count: 5
+  Tm4:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle
+    bytes: 189865684
+    sha256: 21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d
+    git_blob: 06da3386d8ac17c03c7ddb718d3d56434ae847ed
+    expected_record_count: 6
+    expected_unique_recording_id_count: 6
+  Tm9:
+    path: data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle
+    bytes: 214848976
+    sha256: cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3
+    git_blob: 61cf990715404a7146c981d4602b725b05920181
+    expected_record_count: 6
+    expected_unique_recording_id_count: 6
 expected_conditions:
   - FFF_uniform_20msimpulse_10int saline
   - FFF_uniform_40msimpulse_10int saline
@@ -63,7 +92,7 @@ stimulus:
   inter_flash_interval_seconds: 10
   saline_and_octopamine_conditions: true
 fields:
-  stable_recording_ids_retained_in_pickle: false
+  stable_recording_id_field_retained_in_white_noise_pickle: true
   biological_individual_ids_retained_in_pickle: false
   stimulus_direction_retained_in_pickle: false
   stimulus_angular_position_degrees_retained_in_pickle: false
@@ -76,6 +105,8 @@ boundary:
   restricted_unpickler_only: true
   voltage_scale_is_documented_by_author_plotting_code: true
   anonymous_all_arrays_are_not_stable_recording_or_fly_IDs: true
+  recording_date_and_recording_id_are_not_asserted_to_be_fly_IDs: true
+  duplicate_recording_ids_are_reported_not_silently_renamed: true
   flash_duration_does_not_supply_direction_position_or_speed_fields: true
   n_metadata_is_not_an_identity_mapping: true
   Tm1_Tm2_Tm4_fast_sources_remain_distinct_from_Tm9: true

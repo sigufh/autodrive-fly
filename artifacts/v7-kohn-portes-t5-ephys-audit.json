@@ -3,8 +3,8 @@
     "name": "v7-kohn-portes-t5-ephys-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "9af519813494a5dd6fb0863fd80429cd5854ef4cc8c1c1e57b725c70be35c2cc",
-      "src/fly_emotion/driving/v7_kohn_portes_t5_ephys_audit.py": "56a40ae6b87c5556def583a928adc18c93bcf2fcfe6ac3fd0391279cc16c3d2d",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "1400d5be2aa3deec77dc2b4496439871200084772faa1dc0985c28af9d525673",
+      "src/fly_emotion/driving/v7_kohn_portes_t5_ephys_audit.py": "09edc35f0bc6ea1ef67c12bde0c52319a577c65c91caeee1e5df955813d53132",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
     },
     "paper": {
@@ -485,6 +485,584 @@
       "biological_individual_ids_retained": false
     }
   },
+  "white_noise_payloads": {
+    "Tm1": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle",
+        "bytes": 220242954,
+        "sha256": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+        "git_blob": "5c6f07539e34eb280f1dcb7c6494ba96630178d0",
+        "expected_record_count": 8,
+        "expected_unique_recording_id_count": 7
+      },
+      "record_count": 8,
+      "unique_recording_id_count": 7,
+      "recording_ids_unique": false,
+      "records": [
+        {
+          "recording_id": "190701",
+          "recording_date": "07/01/2019",
+          "cell_number": null,
+          "subrecording_number": "7",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 789000,
+          "timestamp_sample_count": 789000,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.0659,
+          "raw_voltage_maximum_volts": -0.0415125,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "190708",
+          "recording_date": "07/08/2019",
+          "cell_number": "4",
+          "subrecording_number": "4",
+          "fly_sex": null,
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 804250,
+          "timestamp_sample_count": 804250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.0625,
+          "raw_voltage_maximum_volts": -0.03465625,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "190715",
+          "recording_date": "07/15/2019",
+          "cell_number": "1",
+          "subrecording_number": "3",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1748500,
+          "timestamp_sample_count": 1748500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07779375000000001,
+          "raw_voltage_maximum_volts": -0.03823125,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "190722",
+          "recording_date": "07/22/2019",
+          "cell_number": null,
+          "subrecording_number": "4",
+          "fly_sex": null,
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1760000,
+          "timestamp_sample_count": 1760000,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06813125,
+          "raw_voltage_maximum_volts": -0.037075000000000004,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "190722",
+          "recording_date": "07/22/2019",
+          "cell_number": null,
+          "subrecording_number": "5",
+          "fly_sex": null,
+          "stimulus_name": "WhiteNoiseBars_1_vert_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": "vertical",
+          "raw_voltage_sample_count": 826250,
+          "timestamp_sample_count": 826250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06835000000000001,
+          "raw_voltage_maximum_volts": -0.039218750000000004,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "190729",
+          "recording_date": "07/29/2019",
+          "cell_number": null,
+          "subrecording_number": "8",
+          "fly_sex": null,
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1512500,
+          "timestamp_sample_count": 1512500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07320625,
+          "raw_voltage_maximum_volts": -0.037943750000000005,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "201201",
+          "recording_date": "12/01/2020",
+          "cell_number": null,
+          "subrecording_number": "10",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 757500,
+          "timestamp_sample_count": 757500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07253125,
+          "raw_voltage_maximum_volts": -0.03690625,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "210126",
+          "recording_date": "01/26/2021",
+          "cell_number": null,
+          "subrecording_number": "14",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 833750,
+          "timestamp_sample_count": 833750,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06565625,
+          "raw_voltage_maximum_volts": -0.03621875,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        }
+      ],
+      "stable_recording_id_field_retained": true,
+      "explicit_biological_individual_id_field_retained": false,
+      "raw_numerical_membrane_voltage_retained": true,
+      "physical_timestamps_retained": true
+    },
+    "Tm2": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle",
+        "bytes": 129578743,
+        "sha256": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+        "git_blob": "98c7c7a7952202bf25074566a8f006aae6cafe6b",
+        "expected_record_count": 5,
+        "expected_unique_recording_id_count": 5
+      },
+      "record_count": 5,
+      "unique_recording_id_count": 5,
+      "recording_ids_unique": true,
+      "records": [
+        {
+          "recording_id": "200927",
+          "recording_date": "2020-09-27",
+          "cell_number": "1",
+          "subrecording_number": "13",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1396000,
+          "timestamp_sample_count": 1396000,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.0756875,
+          "raw_voltage_maximum_volts": -0.035437500000000004,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "201013",
+          "recording_date": "2020-10-13",
+          "cell_number": null,
+          "subrecording_number": "13",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 838250,
+          "timestamp_sample_count": 838250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.0840625,
+          "raw_voltage_maximum_volts": -0.03328125,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "201119",
+          "recording_date": "2020-11-19",
+          "cell_number": null,
+          "subrecording_number": "14",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 759250,
+          "timestamp_sample_count": 759250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.0826875,
+          "raw_voltage_maximum_volts": -0.035562500000000004,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "201125",
+          "recording_date": "2020-11-25",
+          "cell_number": null,
+          "subrecording_number": "13",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 794500,
+          "timestamp_sample_count": 794500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.05440625,
+          "raw_voltage_maximum_volts": -0.03596875,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "210721",
+          "recording_date": "2021-07-21",
+          "cell_number": "1",
+          "subrecording_number": "4",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1540000,
+          "timestamp_sample_count": 1540000,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.19653125,
+          "raw_voltage_maximum_volts": 0.048,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        }
+      ],
+      "stable_recording_id_field_retained": true,
+      "explicit_biological_individual_id_field_retained": false,
+      "raw_numerical_membrane_voltage_retained": true,
+      "physical_timestamps_retained": true
+    },
+    "Tm4": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle",
+        "bytes": 189865684,
+        "sha256": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+        "git_blob": "06da3386d8ac17c03c7ddb718d3d56434ae847ed",
+        "expected_record_count": 6,
+        "expected_unique_recording_id_count": 6
+      },
+      "record_count": 6,
+      "unique_recording_id_count": 6,
+      "recording_ids_unique": true,
+      "records": [
+        {
+          "recording_id": "200209",
+          "recording_date": "2020-02-09",
+          "cell_number": null,
+          "subrecording_number": "7",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1410500,
+          "timestamp_sample_count": 1410500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06603125,
+          "raw_voltage_maximum_volts": -0.03175,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "200621",
+          "recording_date": "2020-06-21",
+          "cell_number": "1",
+          "subrecording_number": "11",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1412750,
+          "timestamp_sample_count": 1412750,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07728125,
+          "raw_voltage_maximum_volts": -0.0305,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "200703",
+          "recording_date": "2020-07-03",
+          "cell_number": "1",
+          "subrecording_number": "7",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1401750,
+          "timestamp_sample_count": 1401750,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07640625,
+          "raw_voltage_maximum_volts": -0.03746875,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "200706",
+          "recording_date": "2020-07-06",
+          "cell_number": "1",
+          "subrecording_number": "12",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1391500,
+          "timestamp_sample_count": 1391500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06678125,
+          "raw_voltage_maximum_volts": -0.03334375,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "200823",
+          "recording_date": "2020-08-23",
+          "cell_number": "1",
+          "subrecording_number": "12",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1428250,
+          "timestamp_sample_count": 1428250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07315625,
+          "raw_voltage_maximum_volts": -0.03896875,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "200826",
+          "recording_date": "2020-08-26",
+          "cell_number": "1",
+          "subrecording_number": "20",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 753750,
+          "timestamp_sample_count": 753750,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.07571875,
+          "raw_voltage_maximum_volts": -0.04409375,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        }
+      ],
+      "stable_recording_id_field_retained": true,
+      "explicit_biological_individual_id_field_retained": false,
+      "raw_numerical_membrane_voltage_retained": true,
+      "physical_timestamps_retained": true
+    },
+    "Tm9": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle",
+        "bytes": 214848976,
+        "sha256": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3",
+        "git_blob": "61cf990715404a7146c981d4602b725b05920181",
+        "expected_record_count": 6,
+        "expected_unique_recording_id_count": 6
+      },
+      "record_count": 6,
+      "unique_recording_id_count": 6,
+      "recording_ids_unique": true,
+      "records": [
+        {
+          "recording_id": "190812",
+          "recording_date": "2019-08-12",
+          "cell_number": null,
+          "subrecording_number": "3",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1508250,
+          "timestamp_sample_count": 1508250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06889375,
+          "raw_voltage_maximum_volts": -0.0524,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "191112",
+          "recording_date": "2019-11-12",
+          "cell_number": null,
+          "subrecording_number": "5",
+          "fly_sex": "F",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1431500,
+          "timestamp_sample_count": 1431500,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06346875,
+          "raw_voltage_maximum_volts": -0.051562500000000004,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "191203",
+          "recording_date": "2019-12-03",
+          "cell_number": null,
+          "subrecording_number": "4",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1530250,
+          "timestamp_sample_count": 1530250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.08034375,
+          "raw_voltage_maximum_volts": -0.050812500000000003,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "191209",
+          "recording_date": "2019-12-09",
+          "cell_number": null,
+          "subrecording_number": "3",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1475250,
+          "timestamp_sample_count": 1475250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06734375000000001,
+          "raw_voltage_maximum_volts": -0.04440625,
+          "temporal_filter_shape": [
+            500,
+            1
+          ]
+        },
+        {
+          "recording_id": "200115",
+          "recording_date": "2020-01-15",
+          "cell_number": null,
+          "subrecording_number": "11",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1414000,
+          "timestamp_sample_count": 1414000,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.063625,
+          "raw_voltage_maximum_volts": -0.0495,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        },
+        {
+          "recording_id": "200720",
+          "recording_date": "2020-07-20",
+          "cell_number": null,
+          "subrecording_number": "7",
+          "fly_sex": "M",
+          "stimulus_name": "WhiteNoiseBars_1_horz_20hz_5deg",
+          "white_noise_temporal_frequency_hz": 20,
+          "bar_width_degrees": 5,
+          "orientation": null,
+          "raw_voltage_sample_count": 1475250,
+          "timestamp_sample_count": 1475250,
+          "sample_interval_seconds": 0.0002,
+          "raw_voltage_minimum_volts": -0.06309375,
+          "raw_voltage_maximum_volts": -0.03675,
+          "temporal_filter_shape": [
+            499,
+            1
+          ]
+        }
+      ],
+      "stable_recording_id_field_retained": true,
+      "explicit_biological_individual_id_field_retained": false,
+      "raw_numerical_membrane_voltage_retained": true,
+      "physical_timestamps_retained": true
+    }
+  },
   "T5_source_contract": {
     "required_sources": [
       "Tm1",
@@ -508,19 +1086,27 @@
       "Tm2",
       "Tm4"
     ],
-    "delayed_source_kept_separate": "Tm9"
+    "delayed_source_kept_separate": "Tm9",
+    "minimum_unique_recording_ids_for_training_and_validation": 8,
+    "enough_unique_recording_ids_for_training_and_validation_by_source": {
+      "Tm1": false,
+      "Tm2": false,
+      "Tm4": false,
+      "Tm9": false
+    }
   },
   "transfer_gates": {
     "Tm1_Tm2_Tm4_Tm9_local_numeric_membrane_voltage_verified": true,
     "physical_time_axis_verified": true,
     "allowed_response_unit_documented": true,
     "every_T5_source_covered": false,
-    "stable_recording_ids_retained": false,
+    "stable_recording_id_field_retained": true,
     "biological_individual_ids_retained": false,
     "required_angular_stimulus_fields_retained": false,
     "baseline_window_seconds_retained": false,
     "source_to_MaleCNS_body_mapping_present": false,
     "required_split_roles_present": false,
+    "enough_unique_recording_ids_for_minimum_training_and_validation": false,
     "external_final_commitment_present": false
   },
   "T5_source_dynamics_transfer_authorized": false,
@@ -529,12 +1115,12 @@
   "advance_to_vehicle_experiments": false,
   "blocking_requirements": [
     "every_T5_source_covered",
-    "stable_recording_ids_retained",
     "biological_individual_ids_retained",
     "required_angular_stimulus_fields_retained",
     "baseline_window_seconds_retained",
     "source_to_MaleCNS_body_mapping_present",
     "required_split_roles_present",
+    "enough_unique_recording_ids_for_minimum_training_and_validation",
     "external_final_commitment_present"
   ],
   "stop_reason": "four_Tm_voltage_payloads_lack_identity_mapping_splits_and_CT1_coverage",
@@ -542,6 +1128,8 @@
     "restricted_unpickler_only": true,
     "voltage_scale_is_documented_by_author_plotting_code": true,
     "anonymous_all_arrays_are_not_stable_recording_or_fly_IDs": true,
+    "recording_date_and_recording_id_are_not_asserted_to_be_fly_IDs": true,
+    "duplicate_recording_ids_are_reported_not_silently_renamed": true,
     "flash_duration_does_not_supply_direction_position_or_speed_fields": true,
     "n_metadata_is_not_an_identity_mapping": true,
     "Tm1_Tm2_Tm4_fast_sources_remain_distinct_from_Tm9": true,

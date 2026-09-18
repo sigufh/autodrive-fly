@@ -6,6 +6,8 @@ import io
 import json
 import math
 import pickle
+from collections import OrderedDict
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -21,6 +23,8 @@ class _RestrictedNumpyUnpickler(pickle.Unpickler):
     """Permit only the three NumPy constructors used by these plain arrays."""
 
     _allowed = {
+        ("collections", "OrderedDict"): OrderedDict,
+        ("datetime", "date"): date,
         ("numpy.core.multiarray", "_reconstruct"): np._core.multiarray._reconstruct,
         ("numpy", "ndarray"): np.ndarray,
         ("numpy", "dtype"): np.dtype,
@@ -119,9 +123,88 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
             "biological_individual_ids_retained": False,
         }
 
+    white_noise_payloads = {}
+    for source, spec in config["white_noise_files"].items():
+        path = _verify_file(root, spec)
+        payload = _load_restricted(path)
+        if not isinstance(payload, list) or len(payload) != int(spec["expected_record_count"]):
+            raise ValueError(f"unexpected white-noise record count for {source}")
+        required_fields = {
+            "recording_id",
+            "recording_date",
+            "cell_type",
+            "subrecording_number",
+            "fly_sex",
+            "stimulus_name",
+            "wn_temporal_freq",
+            "wn_bar_width",
+            "wn_orientation",
+            "ephys_trace",
+            "timestamps",
+            "sampling_rate",
+            "temporal_filter",
+        }
+        if any(not required_fields.issubset(record) for record in payload):
+            raise ValueError(f"white-noise fields changed for {source}")
+        if any(record["cell_type"] != source for record in payload):
+            raise ValueError(f"white-noise source label changed for {source}")
+        recording_ids = [str(record["recording_id"]) for record in payload]
+        if len(set(recording_ids)) != int(spec["expected_unique_recording_id_count"]):
+            raise ValueError(f"white-noise recording-ID count changed for {source}")
+        records = []
+        for record in payload:
+            trace = np.asarray(record["ephys_trace"], dtype=float)
+            timestamps = np.asarray(record["timestamps"], dtype=float)
+            temporal_filter = np.asarray(record["temporal_filter"])
+            dt = float(record["sampling_rate"])
+            if trace.ndim != 1 or timestamps.shape != trace.shape:
+                raise ValueError(f"raw voltage/time shape changed for {source}")
+            if not np.isfinite(trace).all() or not np.isfinite(timestamps).all():
+                raise ValueError(f"non-finite white-noise values for {source}")
+            if not math.isclose(dt, expected_dt, rel_tol=0.0, abs_tol=1e-15):
+                raise ValueError(f"white-noise sample interval changed for {source}")
+            records.append(
+                {
+                    "recording_id": str(record["recording_id"]),
+                    "recording_date": str(record["recording_date"]),
+                    "cell_number": record.get("cell_number"),
+                    "subrecording_number": str(record["subrecording_number"]),
+                    "fly_sex": record["fly_sex"],
+                    "stimulus_name": record["stimulus_name"],
+                    "white_noise_temporal_frequency_hz": int(record["wn_temporal_freq"]),
+                    "bar_width_degrees": int(record["wn_bar_width"]),
+                    "orientation": record["wn_orientation"],
+                    "raw_voltage_sample_count": int(trace.size),
+                    "timestamp_sample_count": int(timestamps.size),
+                    "sample_interval_seconds": dt,
+                    "raw_voltage_minimum_volts": float(np.min(trace)),
+                    "raw_voltage_maximum_volts": float(np.max(trace)),
+                    "temporal_filter_shape": list(temporal_filter.shape),
+                }
+            )
+        white_noise_payloads[source] = {
+            "file": spec,
+            "record_count": len(records),
+            "unique_recording_id_count": len(set(recording_ids)),
+            "recording_ids_unique": len(set(recording_ids)) == len(records),
+            "records": records,
+            "stable_recording_id_field_retained": True,
+            "explicit_biological_individual_id_field_retained": False,
+            "raw_numerical_membrane_voltage_retained": True,
+            "physical_timestamps_retained": True,
+        }
+
     covered = list(source_payloads)
     required = contract["required_families"]["T5"]["source_types"]
     missing = [source for source in required if source not in covered]
+    minimum_train = int(contract["gates"]["minimum_recording_units_per_source_per_training_cohort"])
+    minimum_validation = int(
+        contract["gates"]["minimum_recording_units_per_source_per_validation_cohort"]
+    )
+    enough_for_train_and_validation = {
+        source: payload["unique_recording_id_count"] >= minimum_train + minimum_validation
+        for source, payload in white_noise_payloads.items()
+    }
     fields = config["fields"]
     gates = {
         "Tm1_Tm2_Tm4_Tm9_local_numeric_membrane_voltage_verified": covered
@@ -129,7 +212,9 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
         "physical_time_axis_verified": True,
         "allowed_response_unit_documented": "millivolts" in contract["allowed_response_units"],
         "every_T5_source_covered": not missing,
-        "stable_recording_ids_retained": bool(fields["stable_recording_ids_retained_in_pickle"]),
+        "stable_recording_id_field_retained": bool(
+            fields["stable_recording_id_field_retained_in_white_noise_pickle"]
+        ),
         "biological_individual_ids_retained": bool(
             fields["biological_individual_ids_retained_in_pickle"]
         ),
@@ -150,6 +235,9 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
         "required_split_roles_present": bool(
             fields["preregistered_training_validation_external_final_roles_present"]
         ),
+        "enough_unique_recording_ids_for_minimum_training_and_validation": all(
+            enough_for_train_and_validation.values()
+        ),
         "external_final_commitment_present": bool(fields["external_final_commitment_present"]),
     }
     transferable = all(gates.values())
@@ -169,6 +257,7 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
             "runtime_modified": False,
         },
         "source_payloads": source_payloads,
+        "white_noise_payloads": white_noise_payloads,
         "T5_source_contract": {
             "required_sources": required,
             "sources_with_local_numeric_membrane_voltage": covered,
@@ -176,6 +265,12 @@ def evaluate_v7_kohn_portes_t5_ephys_audit(root: Path) -> dict:
             "coverage_fraction": len(covered) / len(required),
             "fast_sources": ["Tm1", "Tm2", "Tm4"],
             "delayed_source_kept_separate": "Tm9",
+            "minimum_unique_recording_ids_for_training_and_validation": (
+                minimum_train + minimum_validation
+            ),
+            "enough_unique_recording_ids_for_training_and_validation_by_source": (
+                enough_for_train_and_validation
+            ),
         },
         "transfer_gates": gates,
         "T5_source_dynamics_transfer_authorized": transferable,

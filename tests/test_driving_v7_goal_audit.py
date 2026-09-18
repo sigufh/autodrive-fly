@@ -251,6 +251,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     ]
     assert visual["observations"]["Kohn_Portes_T5_missing_voltage_sources"] == ["CT1"]
     assert visual["observations"]["Kohn_Portes_T5_identity_retained"] is False
+    assert visual["observations"]["Kohn_Portes_T5_recording_ID_field_retained"] is True
+    assert (
+        visual["observations"][
+            "Kohn_Portes_T5_minimum_train_validation_capacity_ready"
+        ]
+        is False
+    )
     assert visual["observations"]["Kohn_Portes_T5_transfer_authorized"] is False
     assert visual["observations"]["MaleCNS_nine_source_type_body_sets_available"] is True
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False

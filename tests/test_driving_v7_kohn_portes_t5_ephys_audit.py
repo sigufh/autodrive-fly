@@ -50,7 +50,7 @@ def test_anonymous_preprocessing_does_not_authorize_transfer() -> None:
         for payload in report["source_payloads"].values()
         for condition in payload["conditions"].values()
     )
-    assert report["transfer_gates"]["stable_recording_ids_retained"] is False
+    assert report["transfer_gates"]["stable_recording_id_field_retained"] is True
     assert report["transfer_gates"]["biological_individual_ids_retained"] is False
     assert report["transfer_gates"]["required_angular_stimulus_fields_retained"] is False
     assert report["transfer_gates"]["baseline_window_seconds_retained"] is False
@@ -59,3 +59,30 @@ def test_anonymous_preprocessing_does_not_authorize_transfer() -> None:
     assert report["authorize_T5_functional_precheck"] is False
     assert report["advance_to_LPLC_mechanism_repair"] is False
     assert report["advance_to_vehicle_experiments"] is False
+
+
+def test_white_noise_payload_preserves_recording_metadata_but_not_fly_identity() -> None:
+    report = json.loads(REPORT.read_text())
+    expected = {"Tm1": (8, 7), "Tm2": (5, 5), "Tm4": (6, 6), "Tm9": (6, 6)}
+    for source, (records, unique_ids) in expected.items():
+        payload = report["white_noise_payloads"][source]
+        assert payload["record_count"] == records
+        assert payload["unique_recording_id_count"] == unique_ids
+        assert payload["stable_recording_id_field_retained"] is True
+        assert payload["explicit_biological_individual_id_field_retained"] is False
+        assert payload["raw_numerical_membrane_voltage_retained"] is True
+        assert payload["physical_timestamps_retained"] is True
+        for record in payload["records"]:
+            assert record["raw_voltage_sample_count"] == record["timestamp_sample_count"]
+            assert record["sample_interval_seconds"] == 0.0002
+            assert record["bar_width_degrees"] == 5
+            assert record["white_noise_temporal_frequency_hz"] == 20
+    assert report["white_noise_payloads"]["Tm1"]["recording_ids_unique"] is False
+    contract = report["T5_source_contract"]
+    assert contract["minimum_unique_recording_ids_for_training_and_validation"] == 8
+    assert contract["enough_unique_recording_ids_for_training_and_validation_by_source"] == {
+        "Tm1": False,
+        "Tm2": False,
+        "Tm4": False,
+        "Tm9": False,
+    }

@@ -645,6 +645,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "biological_individual_ids_retained"
                     ]
                 ),
+                "Kohn_Portes_T5_recording_ID_field_retained": (
+                    kohn_portes_t5_ephys_audit["transfer_gates"][
+                        "stable_recording_id_field_retained"
+                    ]
+                ),
+                "Kohn_Portes_T5_minimum_train_validation_capacity_ready": (
+                    kohn_portes_t5_ephys_audit["transfer_gates"][
+                        "enough_unique_recording_ids_for_minimum_training_and_validation"
+                    ]
+                ),
                 "Kohn_Portes_T5_transfer_authorized": (
                     kohn_portes_t5_ephys_audit[
                         "T5_source_dynamics_transfer_authorized"
