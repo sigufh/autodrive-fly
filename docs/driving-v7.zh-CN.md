@@ -1801,6 +1801,15 @@ shuffle/static，也未运行 T02/T03 或 calibration。证据见
 cross-fit 预测标签，但当前 R1–R6 驱动的 source dynamics 沿该轴仍不可辨识；不能把结构
 准确率当作功能方向选择，也不能因此解冻 LPLC 或车辆实验。
 
+复核四项空间展开时发现，上述首版 axis-aware 候选的 reverse-order 空间项符号使恒定质心
+极限退化为时间和，而非反对称时间差。该首版负结果保留且明确标记
+`reverse_order_coefficient=-1`；随后用代数单测冻结纠正版 `+1`，使公式在恒定快/CT1
+质心时严格化为 `(fast_position-CT1_position)×(fast_now×CT1_prev-CT1_now×fast_prev)`。
+纠正版仍只运行同一 `S1-T01` 和同一四个 gain，结果依然为方向 0/8、OFF 极性 8/8，
+没有 gain 获得 control 资格，故停止于单条件。证据见
+`artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json`。因此“axis-aware CT1
+反对称一阶矩 × Tm9 基线”也被当前严格门否决。
+
 重新逐页核对 Arenz 2017 官方补充材料后，发现此前只审计 Table S1（T4/ON）漏掉了
 Table S2（T5/OFF）。Table S2 完整覆盖 Tm1/Tm2/Tm4/Tm9：前三者为 band-pass，
 Tm9 为 low-pass；control raw calcium fit 的 R² 分别为 0.978/0.979/0.972/0.985。

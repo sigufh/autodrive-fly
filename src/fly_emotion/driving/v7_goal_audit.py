@@ -123,6 +123,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t5_ct1_multiplicative_precheck"
     ]
     t5_ct1_axis_aware_precheck = reports["t5_ct1_axis_aware_precheck"]
+    t5_ct1_axis_aware_antisymmetric_precheck = reports[
+        "t5_ct1_axis_aware_antisymmetric_precheck"
+    ]
     t5_continuous_moment_precheck = reports["t5_continuous_moment_precheck"]
     lplc1_near_collision_precheck = reports["lplc1_near_collision_precheck"]
     lplc1_input_structure = reports["lplc1_input_structure"]
@@ -220,6 +223,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_source_dynamics_precheck"],
                 config["evidence"]["t5_ct1_multiplicative_precheck"],
                 config["evidence"]["t5_ct1_axis_aware_precheck"],
+                config["evidence"]["t5_ct1_axis_aware_antisymmetric_precheck"],
                 config["evidence"]["t5_continuous_moment_precheck"],
                 config["evidence"]["t4_synapse_correlator_precheck"],
                 config["evidence"]["t4_synapse_antisymmetric_precheck"],
@@ -409,6 +413,24 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "T5_CT1_axis_aware_three_condition_evaluation_performed": (
                     t5_ct1_axis_aware_precheck["three_condition_evaluation_performed"]
+                ),
+                "T5_CT1_axis_aware_antisymmetric_direction_pass_counts": [
+                    item["direction_pass_count"]
+                    for item in t5_ct1_axis_aware_antisymmetric_precheck[
+                        "ordered_candidates"
+                    ]
+                ],
+                "T5_CT1_axis_aware_antisymmetric_polarity_pass_counts": [
+                    item["polarity_pass_count"]
+                    for item in t5_ct1_axis_aware_antisymmetric_precheck[
+                        "ordered_candidates"
+                    ]
+                ],
+                "T5_CT1_axis_aware_antisymmetric_controls_evaluated": (
+                    t5_ct1_axis_aware_antisymmetric_precheck["controls_evaluated"]
+                ),
+                "T5_CT1_axis_aware_antisymmetric_candidate_passed": (
+                    t5_ct1_axis_aware_antisymmetric_precheck["candidate_passed"]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][
                     "physical_timebase_identified"

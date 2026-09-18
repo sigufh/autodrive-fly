@@ -1,12 +1,12 @@
 version: 1
-name: v7-t5-ct1-crossfit-axis-aware-precheck
+name: v7-t5-ct1-crossfit-axis-aware-antisymmetric-precheck
 observed_on: "2026-09-18"
 crossfit_axis_evidence: artifacts/v7-t5-ct1-crossfit-axis-audit.json
 crossfit_axis_protocol: configs/driving-v7-t5-ct1-crossfit-axis-audit.yaml
 terminal_axis_evidence: artifacts/v7-t5-ct1-terminal-axis-audit.json
 terminal_axis_protocol: configs/driving-v7-t5-ct1-terminal-axis-audit.yaml
-prior_multiplicative_evidence: artifacts/v7-t5-ct1-multiplicative-precheck.json
-prior_multiplicative_protocol: configs/driving-v7-t5-ct1-multiplicative-precheck.yaml
+prior_multiplicative_evidence: artifacts/v7-t5-ct1-axis-aware-precheck.json
+prior_multiplicative_protocol: configs/driving-v7-t5-ct1-axis-aware-precheck.yaml
 lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
 lamina_split_evidence: artifacts/v7-t5-lamina-split.json
 stage1_protocol: configs/driving-v7-stage1-nested.yaml
@@ -22,9 +22,9 @@ source_roles:
 mechanism:
   terminal_position_mapping: affine_postsynaptic_xyz_to_optic_hex_xy_per_eye
   target_axis: out_of_fold_T5_only_CT1_axis
-  sequence: CT1_previous_then_fast_now_minus_reverse_order
-  sequence_formula: dot(crossfit_axis,(fast_position_now*CT1_mass_previous-fast_mass_now*CT1_position_previous)-(CT1_position_now*fast_mass_previous-CT1_mass_now*fast_position_previous))
-  reverse_order_coefficient: -1.0
+  sequence: antisymmetric_CT1_previous_then_fast_now_minus_fast_previous_then_CT1_now
+  sequence_formula: dot(crossfit_axis,(fast_position_now*CT1_mass_previous-fast_mass_now*CT1_position_previous)+(CT1_position_now*fast_mass_previous-CT1_mass_now*fast_position_previous))
+  reverse_order_coefficient: 1.0
   normalization: sum_absolute_x_y_pair_terms_plus_1e-9
   temporal_reduction: positive_peak
   output_formula: Tm9_peak*(1+gain*positive_axis_sequence_peak)
@@ -41,6 +41,7 @@ stop_gate:
 boundary:
   tuning_only: true
   single_condition_precheck: true
+  corrects_prior_spatial_reverse_order_sign: true
   every_valid_target_axis_is_out_of_fold: true
   transform_selection_uses_body_id_hash_only: true
   source_activity_driven_only_from_R1_R6_propagation: true

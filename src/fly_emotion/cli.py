@@ -192,6 +192,9 @@ from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_continuous_moment_precheck import (
     evaluate_v7_t5_continuous_moment_precheck,
 )
+from .driving.v7_t5_ct1_axis_aware_antisymmetric_precheck import (
+    evaluate_v7_t5_ct1_axis_aware_antisymmetric_precheck,
+)
 from .driving.v7_t5_ct1_axis_aware_precheck import (
     evaluate_v7_t5_ct1_axis_aware_precheck,
 )
@@ -445,6 +448,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-calibrate-t5-ct1-axis")
     subparsers.add_parser("v7-audit-t5-ct1-crossfit-axis")
     subparsers.add_parser("v7-evaluate-t5-ct1-axis-aware-precheck")
+    subparsers.add_parser("v7-evaluate-t5-ct1-axis-aware-antisymmetric-precheck")
     subparsers.add_parser("v7-evaluate-t5-ct1-source-dynamics")
     subparsers.add_parser("v7-evaluate-t5-ct1-multiplicative-precheck")
     subparsers.add_parser("v7-evaluate-t5-continuous-moment-precheck")
@@ -1176,6 +1180,14 @@ def main() -> None:
     if args.command == "v7-evaluate-t5-ct1-axis-aware-precheck":
         report = evaluate_v7_t5_ct1_axis_aware_precheck(root)
         target = root / "artifacts/v7-t5-ct1-axis-aware-precheck.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-evaluate-t5-ct1-axis-aware-antisymmetric-precheck":
+        report = evaluate_v7_t5_ct1_axis_aware_antisymmetric_precheck(root)
+        target = root / "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

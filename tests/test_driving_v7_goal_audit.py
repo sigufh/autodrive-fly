@@ -167,6 +167,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["T5_CT1_axis_aware_three_condition_evaluation_performed"]
         is False
     )
+    assert visual["observations"][
+        "T5_CT1_axis_aware_antisymmetric_direction_pass_counts"
+    ] == [0, 0, 0, 0]
+    assert visual["observations"][
+        "T5_CT1_axis_aware_antisymmetric_polarity_pass_counts"
+    ] == [8, 8, 8, 8]
+    assert visual["observations"][
+        "T5_CT1_axis_aware_antisymmetric_controls_evaluated"
+    ] is False
+    assert visual["observations"][
+        "T5_CT1_axis_aware_antisymmetric_candidate_passed"
+    ] is False
     assert visual["observations"]["source_type_temporal_passing_counts"] == {
         "T4": {"passed": 0, "denominator": 32},
         "T5": {"passed": 0, "denominator": 32},

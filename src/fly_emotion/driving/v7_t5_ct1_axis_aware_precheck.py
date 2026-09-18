@@ -206,7 +206,29 @@ def _terminal_moments(
     }
 
 
-def _trace(probe, stimulus, moments: dict, tm9) -> dict[str, np.ndarray]:
+def _axis_pair_component(
+    current: dict[str, np.ndarray],
+    previous: dict[str, np.ndarray],
+    component: str,
+    reverse_order_coefficient: float,
+) -> tuple[np.ndarray, tuple[np.ndarray, ...]]:
+    terms = (
+        current[f"fast_{component}"] * previous["CT1_mass"],
+        current["fast_mass"] * previous[f"CT1_{component}"],
+        current[f"CT1_{component}"] * previous["fast_mass"],
+        current["CT1_mass"] * previous[f"fast_{component}"],
+    )
+    return (
+        terms[0]
+        - terms[1]
+        + reverse_order_coefficient * (terms[2] - terms[3]),
+        terms,
+    )
+
+
+def _trace(
+    probe, stimulus, moments: dict, tm9, reverse_order_coefficient: float
+) -> dict[str, np.ndarray]:
     state = np.zeros(probe.graph.node_count, dtype=np.float32)
     history = [state.copy()]
     baseline_image = stimulus.frames[0]
@@ -240,13 +262,10 @@ def _trace(probe, stimulus, moments: dict, tm9) -> dict[str, np.ndarray]:
             components = []
             denominator_terms = []
             for component in ("x", "y"):
-                terms = (
-                    current[f"fast_{component}"] * previous["CT1_mass"],
-                    current["fast_mass"] * previous[f"CT1_{component}"],
-                    current[f"CT1_{component}"] * previous["fast_mass"],
-                    current["CT1_mass"] * previous[f"fast_{component}"],
+                value, terms = _axis_pair_component(
+                    current, previous, component, reverse_order_coefficient
                 )
-                components.append(terms[0] - terms[1] - terms[2] + terms[3])
+                components.append(value)
                 denominator_terms.extend(terms)
             denominator = sum(np.abs(term) for term in denominator_terms) + 1e-9
             sequence_values.append(
@@ -355,8 +374,12 @@ def _score(
     }
 
 
-def evaluate_v7_t5_ct1_axis_aware_precheck(root: Path) -> dict:
-    config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
+def _evaluate(
+    root: Path,
+    config_path: Path = CONFIG,
+    implementation_path: Path = IMPLEMENTATION,
+) -> dict:
+    config = yaml.safe_load((root / config_path).read_text(encoding="utf-8"))
     config["crossfit_split_seed"] = yaml.safe_load(
         (root / config["crossfit_axis_protocol"]).read_text()
     )["split_seed"]
@@ -442,6 +465,7 @@ def evaluate_v7_t5_ct1_axis_aware_precheck(root: Path) -> dict:
                             ),
                             moments,
                             tm9,
+                            float(config["mechanism"]["reverse_order_coefficient"]),
                         )
         return responses
 
@@ -521,8 +545,8 @@ def evaluate_v7_t5_ct1_axis_aware_precheck(root: Path) -> dict:
             "name": config["name"],
             "observed_on": config["observed_on"],
             "dependencies_sha256": {
-                str(CONFIG): _sha256(root / CONFIG),
-                str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
+                str(config_path): _sha256(root / config_path),
+                str(implementation_path): _sha256(root / implementation_path),
                 **{str(path): _sha256(root / path) for path in SOURCE_IMPLEMENTATIONS},
                 **{str(path): _sha256(root / path) for path in dependency_paths},
                 str(local_path): _sha256(root / local_path),
@@ -564,3 +588,7 @@ def evaluate_v7_t5_ct1_axis_aware_precheck(root: Path) -> dict:
         ),
         "boundary": config["boundary"],
     }
+
+
+def evaluate_v7_t5_ct1_axis_aware_precheck(root: Path) -> dict:
+    return _evaluate(root)
