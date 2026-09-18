@@ -313,6 +313,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert 0.066 < visual["observations"]["FlyVis_C3_median_time_constant_seconds"] < 0.068
     assert visual["observations"]["FlyVis_C3_models_at_or_below_solver_dt"] == 21
     assert visual["observations"]["FlyVis_C3_time_constant_transfer_authorized"] is False
+    assert visual["observations"]["C3_measured_filter_cross_deconvolution_stable"] is True
+    assert max(
+        visual["observations"]["C3_measured_filter_minimum_LOFO_by_assumption"].values()
+    ) < 0.58
+    assert visual["observations"]["C3_measured_filter_type_shared_kernel_authorized"] is False
     assert visual["observations"]["three_hop_independent_channel_coverage_passed"] is False
     assert visual["observations"]["three_hop_scalar_reichardt_authorized"] is False
     assert visual["observations"]["four_hop_scalar_ordered_direction_pass_counts"] == {

@@ -108,6 +108,17 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert 0.066 < flyvis["C3_median_time_constant_seconds"] < 0.068
     assert flyvis["C3_models_at_or_below_solver_dt"] == 21
     assert flyvis["C3_time_constant_transfer_authorized"] is False
+    measured = report["verified_C3_measured_filter_robustness"]
+    assert measured["cross_deconvolution_stability_passed"] is True
+    assert set(measured["minimum_held_out_correlation_by_assumption"]) == {
+        "200ms",
+        "250ms",
+        "300ms",
+        "350ms",
+    }
+    assert max(measured["minimum_held_out_correlation_by_assumption"].values()) < 0.58
+    assert measured["every_deconvolution_assumption_passed"] is False
+    assert measured["type_shared_kernel_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

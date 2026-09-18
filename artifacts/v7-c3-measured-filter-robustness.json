@@ -1,0 +1,317 @@
+{
+  "protocol": {
+    "name": "v7-c3-measured-filter-deconvolution-robustness",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-c3-measured-filter-robustness.yaml": "20e1889eed5a2ecd509af615a1425b555191adfda15b8d54fc186afa9aa6efd8",
+      "src/fly_emotion/driving/v7_c3_measured_filter_robustness.py": "5003d7955529874f3c495ab211c43849f1c3571669d13b3f30d70b3db8a84f45",
+      "configs/driving-v7-c3-strf-source-dynamics-audit.yaml": "50d6d1149feebc6ad349bd308594fb9364ecb58192f1265c31dfc390fa742f4f",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
+      "data/raw/t4-external-models/TimingModels/CircuitModel/utils/getLaguerrePolys.m": "b44d489aee55bdee96c0d6b984c32ee8385274523d39a299f73423a6a814a7fd",
+      "pyproject.toml": "2ede0081f08b0a3337f80332391a9c3136d3564d63972b0ddcfeb00b7d1a0ae3"
+    },
+    "parameter_fit": false,
+    "T4_response_used": false,
+    "direction_label_used": false,
+    "runtime_modified": false
+  },
+  "processing_contract": {
+    "calcium_low_pass_seconds": [
+      0.2,
+      0.25,
+      0.3,
+      0.35
+    ],
+    "sample_interval_seconds": 0.05,
+    "deconvolution": "divide_FFT_by_first_order_low_pass_FFT",
+    "laguerre_basis_order": 5,
+    "laguerre_alpha": 0.2,
+    "temporal_orientation": "response_age_zero_to_1.95_seconds",
+    "spatial_trace": "mean_of_peak_row_and_available_immediate_neighbors",
+    "unit": "fly_axis_mean",
+    "normalization": "subtract_first_sample_then_temporal_l2_norm",
+    "weighting": "equal_weight_per_fly_axis",
+    "split": "leave_one_fly_out_with_all_axes_of_that_fly_held_out"
+  },
+  "source_units": [
+    {
+      "fly": "200121_Fly3",
+      "axis": "El",
+      "ROI_count": 1
+    },
+    {
+      "fly": "200121_Fly4",
+      "axis": "Az",
+      "ROI_count": 3
+    },
+    {
+      "fly": "200121_Fly4",
+      "axis": "El",
+      "ROI_count": 1
+    },
+    {
+      "fly": "200121_Fly5",
+      "axis": "Az",
+      "ROI_count": 15
+    },
+    {
+      "fly": "200121_Fly5",
+      "axis": "El",
+      "ROI_count": 8
+    },
+    {
+      "fly": "200121_Fly9",
+      "axis": "Az",
+      "ROI_count": 2
+    },
+    {
+      "fly": "200127_Fly1",
+      "axis": "Az",
+      "ROI_count": 5
+    }
+  ],
+  "minimum_cross_deconvolution_correlation_by_unit": {
+    "200121_Fly3:El": 0.9902001664394249,
+    "200121_Fly4:Az": 0.9871390310016307,
+    "200121_Fly4:El": 0.9845648475993227,
+    "200121_Fly5:Az": 0.9847739937118564,
+    "200121_Fly5:El": 0.9848013965345767,
+    "200121_Fly9:Az": 0.9910820807239368,
+    "200127_Fly1:Az": 0.9909519868424475
+  },
+  "cross_deconvolution_stability_passed": true,
+  "leave_one_fly_out_by_assumption": {
+    "200ms": {
+      "folds": [
+        {
+          "held_out_fly": "200121_Fly3",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.8992571513886554
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "Az",
+          "ROI_count": 3,
+          "correlation": 0.9525227860103624
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.9921541347451714
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "Az",
+          "ROI_count": 15,
+          "correlation": 0.8508479604463726
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "El",
+          "ROI_count": 8,
+          "correlation": 0.8624432506527916
+        },
+        {
+          "held_out_fly": "200121_Fly9",
+          "axis": "Az",
+          "ROI_count": 2,
+          "correlation": 0.5752385953859596
+        },
+        {
+          "held_out_fly": "200127_Fly1",
+          "axis": "Az",
+          "ROI_count": 5,
+          "correlation": 0.7611538159221279
+        }
+      ],
+      "minimum_held_out_correlation": 0.5752385953859596,
+      "median_held_out_correlation": 0.8624432506527916,
+      "gates": {
+        "minimum_held_out_fly_axis_correlation": false,
+        "median_held_out_fly_axis_correlation": true,
+        "every_held_out_fly_axis": false
+      },
+      "passed": false
+    },
+    "250ms": {
+      "folds": [
+        {
+          "held_out_fly": "200121_Fly3",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.9010590716787695
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "Az",
+          "ROI_count": 3,
+          "correlation": 0.9512862673206477
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.9920627482420851
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "Az",
+          "ROI_count": 15,
+          "correlation": 0.8479964357813887
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "El",
+          "ROI_count": 8,
+          "correlation": 0.8600645633306737
+        },
+        {
+          "held_out_fly": "200121_Fly9",
+          "axis": "Az",
+          "ROI_count": 2,
+          "correlation": 0.5649795914877442
+        },
+        {
+          "held_out_fly": "200127_Fly1",
+          "axis": "Az",
+          "ROI_count": 5,
+          "correlation": 0.7649385092681266
+        }
+      ],
+      "minimum_held_out_correlation": 0.5649795914877442,
+      "median_held_out_correlation": 0.8600645633306737,
+      "gates": {
+        "minimum_held_out_fly_axis_correlation": false,
+        "median_held_out_fly_axis_correlation": true,
+        "every_held_out_fly_axis": false
+      },
+      "passed": false
+    },
+    "300ms": {
+      "folds": [
+        {
+          "held_out_fly": "200121_Fly3",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.902321731329099
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "Az",
+          "ROI_count": 3,
+          "correlation": 0.9503855818892187
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.9920159282869475
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "Az",
+          "ROI_count": 15,
+          "correlation": 0.8461375698706889
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "El",
+          "ROI_count": 8,
+          "correlation": 0.8585169626051056
+        },
+        {
+          "held_out_fly": "200121_Fly9",
+          "axis": "Az",
+          "ROI_count": 2,
+          "correlation": 0.5590746581720173
+        },
+        {
+          "held_out_fly": "200127_Fly1",
+          "axis": "Az",
+          "ROI_count": 5,
+          "correlation": 0.7674191182029164
+        }
+      ],
+      "minimum_held_out_correlation": 0.5590746581720173,
+      "median_held_out_correlation": 0.8585169626051056,
+      "gates": {
+        "minimum_held_out_fly_axis_correlation": false,
+        "median_held_out_fly_axis_correlation": true,
+        "every_held_out_fly_axis": false
+      },
+      "passed": false
+    },
+    "350ms": {
+      "folds": [
+        {
+          "held_out_fly": "200121_Fly3",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.9032362240109908
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "Az",
+          "ROI_count": 3,
+          "correlation": 0.9497112409002437
+        },
+        {
+          "held_out_fly": "200121_Fly4",
+          "axis": "El",
+          "ROI_count": 1,
+          "correlation": 0.991985417983787
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "Az",
+          "ROI_count": 15,
+          "correlation": 0.8448525082454232
+        },
+        {
+          "held_out_fly": "200121_Fly5",
+          "axis": "El",
+          "ROI_count": 8,
+          "correlation": 0.857447181854805
+        },
+        {
+          "held_out_fly": "200121_Fly9",
+          "axis": "Az",
+          "ROI_count": 2,
+          "correlation": 0.5554195012707969
+        },
+        {
+          "held_out_fly": "200127_Fly1",
+          "axis": "Az",
+          "ROI_count": 5,
+          "correlation": 0.7691375418761667
+        }
+      ],
+      "minimum_held_out_correlation": 0.5554195012707969,
+      "median_held_out_correlation": 0.857447181854805,
+      "gates": {
+        "minimum_held_out_fly_axis_correlation": false,
+        "median_held_out_fly_axis_correlation": true,
+        "every_held_out_fly_axis": false
+      },
+      "passed": false
+    }
+  },
+  "every_deconvolution_assumption_passed": false,
+  "C3_measured_filter_robustness_passed": false,
+  "C3_type_shared_kernel_authorized": false,
+  "advance_to_T4_functional_precheck": false,
+  "stop_reason": "C3_deconvolved_kernel_failed_cross_fly_generalization",
+  "boundary": {
+    "read_only_C3_source_precheck": true,
+    "inherited_threshold_not_changed": true,
+    "no_T4_response_or_direction_label_used": true,
+    "deconvolution_constants_are_sensitivity_assumptions_not_fitted_C3_parameters": true,
+    "type_shared_kernel_requires_cross_fly_generalization": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_and_LPLC_remain_frozen": true
+  }
+}

@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "508f0303417646b6b6a9a78850ee1c3734c2ae0ee1892e62801d21d977719195",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b877aa9fec9d6dec82ce2ab09df75027e5797468d85a853e0a34b48e19ea373d",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "7ad1c8b98461a7ac4a740e7de48d8db549f9ca64acda0357349429df01a7bf21",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "dc0e83a5e7c65845864e2c0cdd47d4b2979c122017a81d6511ecfac2a9884fd9",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -18,7 +18,8 @@
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "351443a9495853fa9925980114f7538cbaa85835bee0e2bd589c8a164a910c78",
       "artifacts/v7-c3-analytic-filter-precheck.json": "572f7f31042d3f30db3db3a61b3171413553f5806e8fcf76a53790c4c6ed4aa9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
-      "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789"
+      "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
+      "artifacts/v7-c3-measured-filter-robustness.json": "5079d054a2fb93d8ea1626e8241c3f48909315ee772a464dda9ca7cacb875f35"
     },
     "required_sources": [
       "Mi1",
@@ -173,6 +174,17 @@
     "C3_median_time_constant_seconds": 0.06680329144001007,
     "C3_models_at_or_below_solver_dt": 21,
     "C3_time_constant_transfer_authorized": false
+  },
+  "verified_C3_measured_filter_robustness": {
+    "cross_deconvolution_stability_passed": true,
+    "minimum_held_out_correlation_by_assumption": {
+      "200ms": 0.5752385953859596,
+      "250ms": 0.5649795914877442,
+      "300ms": 0.5590746581720173,
+      "350ms": 0.5554195012707969
+    },
+    "every_deconvolution_assumption_passed": false,
+    "type_shared_kernel_authorized": false
   },
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,

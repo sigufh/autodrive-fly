@@ -1657,6 +1657,14 @@ average-filter connectome 而非 MaleCNS，也没有 type→MaleCNS body 稳定�
 数值虽存在，却不可作为 v7 的已识别生理时间常数。证据见
 `artifacts/v7-flyvis-c3-time-constant-audit.json`。
 
+最后按 `TimingModels` 的公开处理代码对 Henning C3 STRF 做同构敏感性审计：每个
+fly×axis 独立平均，分别假设 200/250/300/350 ms 一阶钙低通，在频域去卷积后投影到
+5 阶、α=0.2 的 Laguerre 基，再执行整只果蝇留出。每个单位跨四种去卷积假设的最小
+相关均大于 0.984，说明结论不依赖钙常数选择；但四种假设的最差留出相关仅约
+0.555–0.575，全部低于继承的 0.80 门。失败因此是跨果蝇泛化，而不是选错去卷积常数。
+该路线不授权 type-shared C3 kernel，也不进入 T4 功能预检。证据见
+`artifacts/v7-c3-measured-filter-robustness.json`。
+
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有

@@ -89,6 +89,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     c3_analytic_filter_precheck = reports["c3_analytic_filter_precheck"]
     timing_models_source_filter_audit = reports["timing_models_source_filter_audit"]
     flyvis_c3_time_constant_audit = reports["flyvis_c3_time_constant_audit"]
+    c3_measured_filter_robustness = reports["c3_measured_filter_robustness"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -201,6 +202,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["c3_analytic_filter_precheck"],
                 config["evidence"]["timing_models_source_filter_audit"],
                 config["evidence"]["flyvis_c3_time_constant_audit"],
+                config["evidence"]["c3_measured_filter_robustness"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -752,6 +754,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "FlyVis_C3_time_constant_transfer_authorized": (
                     flyvis_c3_time_constant_audit[
                         "C3_time_constant_transfer_authorized"
+                    ]
+                ),
+                "C3_measured_filter_cross_deconvolution_stable": (
+                    c3_measured_filter_robustness[
+                        "cross_deconvolution_stability_passed"
+                    ]
+                ),
+                "C3_measured_filter_minimum_LOFO_by_assumption": {
+                    name: item["minimum_held_out_correlation"]
+                    for name, item in c3_measured_filter_robustness[
+                        "leave_one_fly_out_by_assumption"
+                    ].items()
+                },
+                "C3_measured_filter_type_shared_kernel_authorized": (
+                    c3_measured_filter_robustness[
+                        "C3_type_shared_kernel_authorized"
                     ]
                 ),
                 "three_hop_independent_channel_coverage_passed": (

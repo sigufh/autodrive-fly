@@ -31,6 +31,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
+    c3_measured_path = Path(config["c3_measured_filter_robustness_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
@@ -53,6 +54,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / timing_models_path).read_text(encoding="utf-8")
     )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
+    c3_measured = json.loads(
+        (root / c3_measured_path).read_text(encoding="utf-8")
+    )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -134,6 +138,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
+                str(c3_measured_path): _sha256(root / c3_measured_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -319,6 +324,23 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "C3_time_constant_transfer_authorized": flyvis[
                 "C3_time_constant_transfer_authorized"
+            ],
+        },
+        "verified_C3_measured_filter_robustness": {
+            "cross_deconvolution_stability_passed": c3_measured[
+                "cross_deconvolution_stability_passed"
+            ],
+            "minimum_held_out_correlation_by_assumption": {
+                name: item["minimum_held_out_correlation"]
+                for name, item in c3_measured[
+                    "leave_one_fly_out_by_assumption"
+                ].items()
+            },
+            "every_deconvolution_assumption_passed": c3_measured[
+                "every_deconvolution_assumption_passed"
+            ],
+            "type_shared_kernel_authorized": c3_measured[
+                "C3_type_shared_kernel_authorized"
             ],
         },
         "required_transfer_fields_available": fields,

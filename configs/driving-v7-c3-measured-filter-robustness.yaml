@@ -1,0 +1,37 @@
+version: 1
+name: v7-c3-measured-filter-deconvolution-robustness
+observed_on: "2026-09-18"
+source_config: configs/driving-v7-c3-strf-source-dynamics-audit.yaml
+source_evidence: artifacts/v7-c3-strf-source-dynamics-audit.json
+timing_models_evidence: artifacts/v7-timing-models-source-filter-audit.json
+timing_models_code:
+  path: data/raw/t4-external-models/TimingModels/CircuitModel/utils/getLaguerrePolys.m
+  bytes: 951
+  sha256: b44d489aee55bdee96c0d6b984c32ee8385274523d39a299f73423a6a814a7fd
+processing_contract:
+  calcium_low_pass_seconds: [0.200, 0.250, 0.300, 0.350]
+  sample_interval_seconds: 0.05
+  deconvolution: divide_FFT_by_first_order_low_pass_FFT
+  laguerre_basis_order: 5
+  laguerre_alpha: 0.2
+  temporal_orientation: response_age_zero_to_1.95_seconds
+  spatial_trace: mean_of_peak_row_and_available_immediate_neighbors
+  unit: fly_axis_mean
+  normalization: subtract_first_sample_then_temporal_l2_norm
+  weighting: equal_weight_per_fly_axis
+  split: leave_one_fly_out_with_all_axes_of_that_fly_held_out
+gates:
+  minimum_cross_deconvolution_correlation: 0.80
+  minimum_held_out_fly_axis_correlation: 0.80
+  minimum_median_held_out_fly_axis_correlation: 0.80
+  require_every_deconvolution_assumption: true
+  require_every_held_out_fly_axis: true
+boundary:
+  read_only_C3_source_precheck: true
+  inherited_threshold_not_changed: true
+  no_T4_response_or_direction_label_used: true
+  deconvolution_constants_are_sensitivity_assumptions_not_fitted_C3_parameters: true
+  type_shared_kernel_requires_cross_fly_generalization: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true
