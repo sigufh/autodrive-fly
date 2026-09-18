@@ -1729,9 +1729,15 @@ Mi4 与 C3，Mi4 也不能替代 C3；因此两套模型都不能补齐当前 so
 DataCite 只给出包级描述、没有 file ID，因此其 `optTables.mat` 仍未做文件级验证。现阶段
 只能保留 native-time read-only 重放接口，不能据此拟合 T5、校准方向标签或推进视觉门。
 进一步比对固定仓库代码和论文结构化全文：`direction_mb` 的 0/1 只控制内部位置数组按
-正序或反序播放；论文则说明测量结果已按每个细胞先验确定的 PD–ND 轴对齐，却没有把该
-数字码映射到 PD/ND。两份信息都不能独立导出 `0→PD` 或 `1→PD`，因此仍禁止依据响应
-峰值大小反推方向标签。该边界已纳入 `artifacts/v7-t5-label-audit.json`。
+正序或反序播放；论文则说明测量结果已按每个细胞先验确定的 PD–ND 轴对齐。现已通过
+官方 Figure 4 article `11328086` 的文件清单，对 1.39 GB ZIP 只做 567,316-byte 中央目录
+和四个小文件的 HTTP Range 提取，不下载主数据。ZIP size/CRC 与各文件 SHA-256 均验证；
+`organizingClusterData.m` 将 `p.direction_mb` 原样写入 direction 列，随后
+`sourceDataPlottingFig4Script.m` 断言方向顺序为 `[0,1]`，并明确把第一个赋给
+`dataND/modelND`、第二个赋给 `dataPD/modelPD`。因此可独立确定 `0→ND、1→PD`，
+不依赖响应幅值，也不翻转生物标签。该证据只解除 numeric mapping 阻塞；stable biological
+ID、独立 cell holdout 和 untouched final 仍缺失，旧 phenotype 工件也不会被追溯改写。
+证据见 `artifacts/v7-t5-label-audit.json`。
 
 LPLC1 也完成了独立的近碰撞单条件 precheck，不复用 LPLC2 radial 或 LC4 speed 规则。
 新刺激让小暗物体从外侧向前方接近并同步由 2×3 增长到 5×7 像素，配套相同逐帧面积的

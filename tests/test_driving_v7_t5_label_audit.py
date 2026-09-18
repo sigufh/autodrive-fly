@@ -30,7 +30,16 @@ def test_saved_label_audit_is_hash_bound_and_stays_non_advancing() -> None:
     decision = report["bounded_download_decision"]
     assert decision["archive_exceeds_budget"] is True
     assert decision["archive_downloaded"] is False
-    assert decision["file_manifest_retrieved"] is False
+    assert decision["file_manifest_retrieved"] is True
+    assert decision["official_file"] == {
+        "id": 20087477,
+        "name": "figure4DataAndCode.zip",
+        "size_bytes": 1_391_804_749,
+        "md5": "d9a347064c43471f95e8c1e27dd50831",
+    }
+    assert decision["central_directory_bytes_retrieved"] == 567_316
+    assert decision["archive_entry_count"] == 6003
+    assert all(item["archive_entry_verified"] for item in decision["extracted_files"])
     repository = report["processed_repository_evidence"]
     assert repository["recorded_cell_count"] == 17
     assert repository["cells_with_both_direction_codes"] == 17
@@ -41,8 +50,13 @@ def test_saved_label_audit_is_hash_bound_and_stays_non_advancing() -> None:
     assert repository["direction_code_to_PD_ND_mapping_verified"] is False
     assert repository["stable_biological_cell_ids_available"] is False
     assert report["paper_alignment_evidence"]["required_phrases_verified"] is True
-    assert report["label_status"]["direction_code_to_PD_ND_mapping_verified"] is False
-    assert report["label_status"]["biological_PD_code_assigned"] is None
-    assert report["advance_to_model_scoring"] is False
+    assert report["label_status"]["direction_code_to_PD_ND_mapping_verified"] is True
+    assert report["label_status"]["direction_code_to_PD_ND"] == {
+        "0": "ND",
+        "1": "PD",
+    }
+    assert report["label_status"]["biological_PD_code_assigned"] == 1
+    assert report["label_status"]["biological_ND_code_assigned"] == 0
+    assert report["advance_to_model_scoring"] is True
     assert report["advance_to_visual_gate"] is False
     assert report["advance_to_central_complex"] is False

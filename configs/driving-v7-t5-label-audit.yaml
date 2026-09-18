@@ -11,7 +11,8 @@ repository_direction_semantics:
   direction_field: direction_mb
   code_values: [0, 1]
   code_effect: selects_forward_or_reversed_internal_position_sequence
-  PD_ND_mapping_present: false
+  PD_ND_mapping_present: true
+  verified_mapping: {0: ND, 1: PD}
 figure4_dataset:
   doi: 10.25378/janelia.11328086.v1
   datacite_url: https://api.datacite.org/dois/10.25378/janelia.11328086.v1
@@ -23,6 +24,37 @@ figure4_dataset:
   expected_size_bytes: 1391804749
   expected_license: cc-by-nc-4.0
   required_description_phrases: [Figure 4 data and code, readme.txt]
+  official_file:
+    id: 20087477
+    name: figure4DataAndCode.zip
+    size_bytes: 1391804749
+    md5: d9a347064c43471f95e8c1e27dd50831
+  local_article_metadata:
+    path: data/raw/t5-figure4-source/article-11328086.json
+    bytes: 2916
+    sha256: 356ac0c451281571c9acc15db2002526b16ed64cd147f374eb2c6ce68f2fb0a6
+  central_directory:
+    path: data/raw/t5-figure4-source/figure4DataAndCode.central-directory.bin
+    bytes: 567316
+    sha256: 5f13e8ad175ef2a3f84eb44a62136e0c585369272c7e4ebbde15000cf862094e
+    archive_entry_count: 6003
+  extracted_files:
+    - path: data/raw/t5-figure4-source/README.txt
+      bytes: 2699
+      zip_crc32: b9c0d809
+      sha256: 62a3f2f467e9aa5a1da153b2eb244709a43d5edf48f2dc4a71e4dc85a4885853
+    - path: data/raw/t5-figure4-source/generatePositionCell.m
+      bytes: 2892
+      zip_crc32: 23a72fb6
+      sha256: fabe85740e101cb14efafdf0621d4e9854c9209f4c6deaa92c72e9621f343f07
+    - path: data/raw/t5-figure4-source/organizingClusterData.m
+      bytes: 13489
+      zip_crc32: a630d1bf
+      sha256: bdc6919b53b431fbffb41d49f14d64ebff3b0cb6ff05fa3fa496a80f16d3f05c
+    - path: data/raw/t5-figure4-source/sourceDataPlottingFig4Script.m
+      bytes: 13675
+      zip_crc32: 3c4a43eb
+      sha256: b922052214603dfa24f2435b2d595e592627f239a2873af736937cd5a26e7e93
 audit_boundary:
   maximum_download_bytes: 10000000
   download_full_archive: false
