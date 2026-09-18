@@ -73,6 +73,7 @@ evidence:
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json
   t4_synapse_microstep_precheck: artifacts/v7-t4-synapse-microstep-precheck.json
   t4_source_dynamics_transfer_audit: artifacts/v7-t4-source-dynamics-transfer-audit.json
+  t4_source_identity_readiness_audit: artifacts/v7-t4-source-identity-readiness-audit.json
   unified_model_package_audit: artifacts/v7-unified-model-package-audit.json
   fig3_source_kernel_audit: artifacts/v7-fig3-source-kernel-audit.json
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json

@@ -89,6 +89,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
+    t4_source_identity_readiness_audit = reports[
+        "t4_source_identity_readiness_audit"
+    ]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -270,6 +273,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
+                config["evidence"]["t4_source_identity_readiness_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -517,6 +521,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_T5_source_dynamics_authorizes_new_candidate": (
                     t4t5_source_dynamics_readiness[
                         "authorize_new_T4_or_T5_functional_candidate"
+                    ]
+                ),
+                "T4_millivolt_source_types_complete": (
+                    t4_source_identity_readiness_audit["transfer_gates"][
+                        "all_four_T4_source_types_have_millivolt_traces"
+                    ]
+                ),
+                "T4_source_biological_individual_ID_available": (
+                    t4_source_identity_readiness_audit["transfer_gates"][
+                        "stable_biological_individual_ID_available"
+                    ]
+                ),
+                "T4_individual_level_source_validation_ready": (
+                    t4_source_identity_readiness_audit[
+                        "T4_individual_level_source_validation_ready"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (

@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "fee61295b20c40029472d4730c803e42326988a1b2b5bcf037d01e4f7f424b4a",
-      "src/fly_emotion/driving/v7_goal_audit.py": "9cf48dd89cee6b9512740e92aa5f038a8f7ce5b9183e757ef21961241f033066",
+      "configs/driving-v7-goal-audit.yaml": "e9f4e85160d55fe4b25cdea4ed601e9ea7a7f7b56dd7d7c23dbac9a737034095",
+      "src/fly_emotion/driving/v7_goal_audit.py": "8f04c7f44191661f8a622662f3f2e15365a51b2c2b22755966045a676d44a7fc",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -68,6 +68,7 @@
       "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t4-source-dynamics-transfer-audit.json": "60aa9d3056237cc610bf53927ee69cf26309a75983fc309ae392035f3523ff5f",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "f1449ff2b1ee719fd90fdcd708fe3f735bc5195bdd6fd8b1cd80b8121f7e34dc",
       "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
@@ -211,6 +212,7 @@
         "artifacts/v7-t4-synapse-microstep-precheck.json",
         "artifacts/v7-source-type-temporal-identifiability.json",
         "artifacts/v7-t4-source-dynamics-transfer-audit.json",
+        "artifacts/v7-t4-source-identity-readiness-audit.json",
         "artifacts/v7-unified-model-package-audit.json",
         "artifacts/v7-fig3-source-kernel-audit.json",
         "artifacts/v7-fig3-source-kernel-robustness.json",
@@ -417,6 +419,9 @@
           "independent_dynamic_validation"
         ],
         "T4_T5_source_dynamics_authorizes_new_candidate": false,
+        "T4_millivolt_source_types_complete": true,
+        "T4_source_biological_individual_ID_available": false,
+        "T4_individual_level_source_validation_ready": false,
         "source_dynamics_external_contract_satisfied": false,
         "source_dynamics_external_payload_present": false,
         "source_dynamics_external_required_split_roles": [

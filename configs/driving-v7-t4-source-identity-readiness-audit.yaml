@@ -1,0 +1,46 @@
+version: 1
+name: v7-t4-source-identity-readiness-audit
+observed_on: "2026-09-19"
+source_workbook:
+  path: data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx
+  bytes: 1906405
+  sha256: dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3
+  expected_sheets:
+    - Fig. 3a, left (on)
+    - Fig. 3a, right (off)
+    - Fig. 3b, left (on PD)
+    - Fig. 3b, right (on ND)
+    - Fig. 3c, left (off PD)
+    - Fig. 3c, right (off ND)
+source_types: {Tm3: 12, Mi1: 24, Mi4: 19, C3: 16}
+source_header_sheets: ["Fig. 3a, left (on)", "Fig. 3a, right (off)"]
+identity_tokens: [fly, animal, recording, specimen, individual, subject]
+ephys_evidence: artifacts/v7-electrophysiology-audit.json
+kernel_evidence: artifacts/v7-fig3-source-kernel-audit.json
+robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
+external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+expected_verified_edmond_files:
+  - readme.txt
+  - fig1.ipynb
+  - fig1d_receptive_fields.npy
+  - fig1e_receptive_fields.npy
+  - fig3.ipynb
+  - fig3_C3.npy
+  - fig3_Mi1.npy
+  - fig3_Mi4.npy
+  - fig3_Mi9.npy
+  - fig3_T4r.npy
+  - fig3_T4v.npy
+  - fig3_Tm3.npy
+  - fig3_led.npy
+boundary:
+  current_verified_Edmond_subset_only: true
+  Edmond_API_unavailable_during_identity_recheck: true
+  anonymous_cell_ordinals_are_not_fly_IDs: true
+  alternating_cell_split_is_not_individual_holdout: true
+  every_recorded_cell_retained_in_existing_robustness_audit: true
+  no_threshold_or_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_and_vehicle_experiments_remain_frozen: true

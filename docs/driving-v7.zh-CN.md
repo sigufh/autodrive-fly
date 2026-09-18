@@ -1940,6 +1940,16 @@ TimingModels checkout 也已补成完整公开历史并逐提交枚举：共 10 
 Lo1/lobula/raw/fly/individual source-data 路径。因此 Lo1 数值载荷缺失不是 shallow checkout
 造成的假象，而是当前完整公开 Git 历史的边界。
 
+T4 四源膜电位证据另做了 identity-readiness 审计。官方 Fig.3 工作簿确实完整覆盖
+Tm3 12、Mi1 24、Mi4 19、C3 16 个 millivolt 记录，并有约 10 ms 物理采样间隔；但
+6 个可见 sheet 的全部字符串、自定义属性和列头均无 fly/animal/recording/subject 字段，
+只给出 `Mi1-1…` 等匿名 cell ordinal。此前已校验的 13 个 Edmond 文件中也没有 identity
+sidecar；本轮 Edmond API 超时，故结论严格限定于当前已验证文件子集。固定门下没有一种
+T4 source 同时通过 ON 与 OFF 的逐细胞稳健性：Mi1、C3 峰时延离散显著，Mi4 存在负的
+leave-one-cell-out 个例，而且 Mi4 的 ON 中位峰反而早于 Tm3/Mi1，违反预注册的
+fast/delayed 顺序。因而 alternating-cell split 只能作诊断，不能冒充按 fly 独立验证，
+T4 也不能单独先解锁。证据见 `artifacts/v7-t4-source-identity-readiness-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

@@ -1,0 +1,317 @@
+{
+  "protocol": {
+    "name": "v7-t4-source-identity-readiness-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-source-identity-readiness-audit.yaml": "7a4c34f882229db20ac710237380f8c552d662ac23b11c83b25032c6cc7378c7",
+      "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "85fb7523d98f2645966d7dc9ee14c752e1462399411ec8f8d95cc5b43aa5f868",
+      "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
+      "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
+      "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "workbook_identity_audit": {
+    "path": "data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx",
+    "sha256": "dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3",
+    "sheet_count": 6,
+    "all_sheets_visible": true,
+    "custom_document_property_count": 0,
+    "identity_fields": [],
+    "source_headers": {
+      "Fig. 3a, left (on)": {
+        "Tm3": [
+          "Tm3-1",
+          "Tm3-2",
+          "Tm3-3",
+          "Tm3-4",
+          "Tm3-5",
+          "Tm3-6",
+          "Tm3-7",
+          "Tm3-8",
+          "Tm3-9",
+          "Tm3-10",
+          "Tm3-11",
+          "Tm3-12"
+        ],
+        "Mi1": [
+          "Mi1-1",
+          "Mi1-2",
+          "Mi1-3",
+          "Mi1-4",
+          "Mi1-5",
+          "Mi1-6",
+          "Mi1-7",
+          "Mi1-8",
+          "Mi1-9",
+          "Mi1-10",
+          "Mi1-11",
+          "Mi1-12",
+          "Mi1-13",
+          "Mi1-14",
+          "Mi1-15",
+          "Mi1-16",
+          "Mi1-17",
+          "Mi1-18",
+          "Mi1-19",
+          "Mi1-20",
+          "Mi1-21",
+          "Mi1-22",
+          "Mi1-23",
+          "Mi1-24"
+        ],
+        "Mi4": [
+          "Mi4-1",
+          "Mi4-2",
+          "Mi4-3",
+          "Mi4-4",
+          "Mi4-5",
+          "Mi4-6",
+          "Mi4-7",
+          "Mi4-8",
+          "Mi4-9",
+          "Mi4-10",
+          "Mi4-11",
+          "Mi4-12",
+          "Mi4-13",
+          "Mi4-14",
+          "Mi4-15",
+          "Mi4-16",
+          "Mi4-17",
+          "Mi4-18",
+          "Mi4-19"
+        ],
+        "C3": [
+          "C3-1",
+          "C3-2",
+          "C3-3",
+          "C3-4",
+          "C3-5",
+          "C3-6",
+          "C3-7",
+          "C3-8",
+          "C3-9",
+          "C3-10",
+          "C3-11",
+          "C3-12",
+          "C3-13",
+          "C3-14",
+          "C3-15",
+          "C3-16"
+        ]
+      },
+      "Fig. 3a, right (off)": {
+        "Tm3": [
+          "Tm3-1",
+          "Tm3-2",
+          "Tm3-3",
+          "Tm3-4",
+          "Tm3-5",
+          "Tm3-6",
+          "Tm3-7",
+          "Tm3-8",
+          "Tm3-9",
+          "Tm3-10",
+          "Tm3-11",
+          "Tm3-12"
+        ],
+        "Mi1": [
+          "Mi1-1",
+          "Mi1-2",
+          "Mi1-3",
+          "Mi1-4",
+          "Mi1-5",
+          "Mi1-6",
+          "Mi1-7",
+          "Mi1-8",
+          "Mi1-9",
+          "Mi1-10",
+          "Mi1-11",
+          "Mi1-12",
+          "Mi1-13",
+          "Mi1-14",
+          "Mi1-15",
+          "Mi1-16",
+          "Mi1-17",
+          "Mi1-18",
+          "Mi1-19",
+          "Mi1-20",
+          "Mi1-21",
+          "Mi1-22",
+          "Mi1-23",
+          "Mi1-24"
+        ],
+        "Mi4": [
+          "Mi4-1",
+          "Mi4-2",
+          "Mi4-3",
+          "Mi4-4",
+          "Mi4-5",
+          "Mi4-6",
+          "Mi4-7",
+          "Mi4-8",
+          "Mi4-9",
+          "Mi4-10",
+          "Mi4-11",
+          "Mi4-12",
+          "Mi4-13",
+          "Mi4-14",
+          "Mi4-15",
+          "Mi4-16",
+          "Mi4-17",
+          "Mi4-18",
+          "Mi4-19"
+        ],
+        "C3": [
+          "C3-1",
+          "C3-2",
+          "C3-3",
+          "C3-4",
+          "C3-5",
+          "C3-6",
+          "C3-7",
+          "C3-8",
+          "C3-9",
+          "C3-10",
+          "C3-11",
+          "C3-12",
+          "C3-13",
+          "C3-14",
+          "C3-15",
+          "C3-16"
+        ]
+      }
+    },
+    "header_semantics": "anonymous_source_type_cell_ordinal_only"
+  },
+  "verified_Edmond_subset_identity_audit": {
+    "file_count": 13,
+    "files": [
+      "fig1.ipynb",
+      "fig1d_receptive_fields.npy",
+      "fig1e_receptive_fields.npy",
+      "fig3.ipynb",
+      "fig3_C3.npy",
+      "fig3_Mi1.npy",
+      "fig3_Mi4.npy",
+      "fig3_Mi9.npy",
+      "fig3_T4r.npy",
+      "fig3_T4v.npy",
+      "fig3_Tm3.npy",
+      "fig3_led.npy",
+      "readme.txt"
+    ],
+    "identity_sidecars": [],
+    "complete_dataset_manifest_rechecked": false,
+    "reason": "Edmond_API_connection_timeout_during_this_audit"
+  },
+  "source_summary": {
+    "Tm3": {
+      "cell_count": 12,
+      "kernel_ready_by_condition": {
+        "on": true,
+        "off": true
+      },
+      "robustness_ready_by_condition": {
+        "on": true,
+        "off": false
+      },
+      "all_kernel_conditions_ready": true,
+      "all_robustness_conditions_ready": false
+    },
+    "Mi1": {
+      "cell_count": 24,
+      "kernel_ready_by_condition": {
+        "on": false,
+        "off": false
+      },
+      "robustness_ready_by_condition": {
+        "on": false,
+        "off": true
+      },
+      "all_kernel_conditions_ready": false,
+      "all_robustness_conditions_ready": false
+    },
+    "Mi4": {
+      "cell_count": 19,
+      "kernel_ready_by_condition": {
+        "on": true,
+        "off": false
+      },
+      "robustness_ready_by_condition": {
+        "on": false,
+        "off": false
+      },
+      "all_kernel_conditions_ready": false,
+      "all_robustness_conditions_ready": false
+    },
+    "C3": {
+      "cell_count": 16,
+      "kernel_ready_by_condition": {
+        "on": false,
+        "off": false
+      },
+      "robustness_ready_by_condition": {
+        "on": false,
+        "off": true
+      },
+      "all_kernel_conditions_ready": false,
+      "all_robustness_conditions_ready": false
+    }
+  },
+  "prior_group_ordering": {
+    "fast_sources": [
+      "Tm3",
+      "Mi1"
+    ],
+    "delayed_sources": [
+      "Mi4",
+      "C3"
+    ],
+    "pairwise_ON_median_peak_latency_differences_milliseconds": {
+      "Mi4_minus_Tm3": -14.999999999999687,
+      "Mi4_minus_Mi1": -64.99999999999861,
+      "C3_minus_Tm3": 354.99999999999244,
+      "C3_minus_Mi1": 304.9999999999935
+    },
+    "every_delayed_source_later_than_every_fast_source": false
+  },
+  "transfer_gates": {
+    "all_four_T4_source_types_have_millivolt_traces": true,
+    "physical_source_time_axis_available": true,
+    "every_source_passes_both_kernel_conditions": false,
+    "every_source_passes_both_robustness_conditions": false,
+    "stable_biological_individual_ID_available": false,
+    "individual_disjoint_split_constructible": false,
+    "source_type_to_MaleCNS_mapping_available": false,
+    "required_split_roles_available": false
+  },
+  "T4_individual_level_source_validation_ready": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "every_source_passes_both_kernel_conditions",
+    "every_source_passes_both_robustness_conditions",
+    "stable_biological_individual_ID_available",
+    "individual_disjoint_split_constructible",
+    "source_type_to_MaleCNS_mapping_available",
+    "required_split_roles_available"
+  ],
+  "stop_reason": "T4_millivolt_cells_lack_fly_identity_and_fail_fixed_kernel_robustness_or_ordering",
+  "boundary": {
+    "current_verified_Edmond_subset_only": true,
+    "Edmond_API_unavailable_during_identity_recheck": true,
+    "anonymous_cell_ordinals_are_not_fly_IDs": true,
+    "alternating_cell_split_is_not_individual_holdout": true,
+    "every_recorded_cell_retained_in_existing_robustness_audit": true,
+    "no_threshold_or_label_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}
