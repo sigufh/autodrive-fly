@@ -52,7 +52,7 @@ def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:
 
 def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     report = json.loads(REPORT.read_text())
-    assert report["family_summary"]["T5"]["numerical_membrane_voltage_count"] == 0
+    assert report["family_summary"]["T5"]["numerical_membrane_voltage_count"] == 4
     assert report["family_summary"]["T5"]["published_optical_voltage_phenotype_count"] == 2
     assert report["family_summary"]["T5"]["local_numerical_calcium_or_deconvolved_count"] == 3
     assert (
@@ -65,6 +65,11 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     )
     assert report["matrix"]["CT1"]["published_calcium_phenotype"] is True
     assert report["matrix"]["CT1"]["numerical_membrane_voltage"] is False
+    for source in ("Tm1", "Tm2", "Tm4", "Tm9"):
+        assert report["matrix"][source]["numerical_membrane_voltage"] is True
+        assert report["matrix"][source]["numerical_evidence_sources"][0] == (
+            "Kohn_Portes_whole_cell_voltage_flash_payload"
+        )
     ct1 = report["matrix"]["CT1"]["evidence_components"]
     assert ct1["local_numerical_spatial_calcium_only"] is True
     assert ct1["local_uncompartmented_type_average_deconvolved_calcium"] is True
@@ -82,6 +87,7 @@ def test_C3_identity_and_external_cohort_are_preserved_without_false_authorizati
     assert components["independent_external_cohort_with_disjoint_individual_ids"] is True
     assert components["fixed_external_robustness_gate_passed"] is False
     assert row["gates"]["stable_biological_individual_id_on_allowed_payload"] is False
+    assert row["gates"]["complete_stimulus_and_baseline_fields_on_allowed_payload"] is False
     assert row["all_contract_gates_passed"] is False
 
 

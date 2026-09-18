@@ -103,6 +103,9 @@ from .driving.v7_gou_sparsity_source_dynamics_audit import (
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
 from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
 from .driving.v7_lamina_goal_symmetry import evaluate_v7_lamina_goal_symmetry
+from .driving.v7_kohn_portes_t5_ephys_audit import (
+    evaluate_v7_kohn_portes_t5_ephys_audit,
+)
 from .driving.v7_lc4_input_speed_precheck import evaluate_v7_lc4_input_speed_precheck
 from .driving.v7_lc4_position_speed_precheck import evaluate_v7_lc4_position_speed_precheck
 from .driving.v7_local_input_audit import (
@@ -492,6 +495,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-gou-sparsity-source-dynamics")
     subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
     subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
+    subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1590,6 +1594,14 @@ def main() -> None:
     if args.command == "v7-audit-source-evidence-matrix":
         report = evaluate_v7_source_evidence_matrix(root)
         target = root / "artifacts/v7-source-evidence-matrix.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-kohn-portes-t5-ephys":
+        report = evaluate_v7_kohn_portes_t5_ephys_audit(root)
+        target = root / "artifacts/v7-kohn-portes-t5-ephys-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

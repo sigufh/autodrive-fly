@@ -40,6 +40,11 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         and gou["repositories"]["Dryad"]["payload_sha256_locally_verified"]
     )
     yang_sources = set(evidence["t5_voltage"]["source_evidence"])
+    kohn_portes_voltage_sources = set(
+        evidence["kohn_portes_t5_ephys"]["T5_source_contract"][
+            "sources_with_local_numeric_membrane_voltage"
+        ]
+    )
     t5_dynamic = {
         item["source_type"] for item in evidence["t5_calcium"]["verified_dynamic_blocks"].values()
     }
@@ -69,7 +74,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     rows = {}
     for source in order:
         family = config["source_family"][source]
-        local_voltage = family == "T4" and source in t4_voltage["source_summary"]
+        local_voltage = (
+            family == "T4" and source in t4_voltage["source_summary"]
+        ) or source in kohn_portes_voltage_sources
         published_voltage = source in yang_sources
         local_temporal_calcium = source in t5_dynamic or (source == "C3" and c3_numerical)
         local_spatial_calcium = source in t5_spatial
@@ -123,7 +130,11 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         phenotype_sources = []
         publisher_described_sources = []
         if local_voltage:
-            numerical_sources.append("T4_Fig3_millivolt_workbook")
+            numerical_sources.append(
+                "Kohn_Portes_whole_cell_voltage_flash_payload"
+                if source in kohn_portes_voltage_sources
+                else "T4_Fig3_millivolt_workbook"
+            )
         if source in gou_sources and gou_payload_local:
             numerical_sources.append("Gou_Dryad_processed_calcium")
         elif publisher_described_unverified:
@@ -152,6 +163,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             missing.append("complete_columnar_retinotopy")
         missing.extend(
             [
+                "complete_stimulus_and_baseline_fields_on_allowed_payload",
                 "external_recording_to_body_or_explicit_type_average",
                 "training_validation_external_final_roles",
                 "external_final_commitment",
@@ -168,6 +180,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "MaleCNS_exact_type_body_set": bool(map_row["all_bodies_in_canonical_graph"]),
             "soma_side": bool(map_row["soma_side_complete"]),
             "complete_columnar_retinotopy": bool(map_row["columnar_retinotopy_available"]),
+            "complete_stimulus_and_baseline_fields_on_allowed_payload": False,
             "external_recording_to_body_or_explicit_type_average": False,
             "training_validation_external_final_roles": False,
             "external_final_commitment": False,

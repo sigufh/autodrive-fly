@@ -6,6 +6,7 @@ evidence:
   t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json
   t5_voltage: artifacts/v7-yang-t5-voltage-evidence-audit.json
+  kohn_portes_t5_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
   t5_calcium: artifacts/v7-t5-contrast-opponency-source-data-audit.json
   ct1_compartment: artifacts/v7-timing-models-ct1-compartment-audit.json
   c3_dynamics: artifacts/v7-c3-strf-source-dynamics-audit.json
@@ -33,6 +34,7 @@ boundary:
   phenotype_figures_are_not_numerical_payloads: true
   type_body_sets_do_not_identify_external_recordings: true
   every_required_gate_must_hold_within_each_source: true
+  required_recording_fields_must_coexist_in_the_allowed_payload: true
   no_cross_source_imputation: true
   no_parameter_fit: true
   no_target_activity_injection: true

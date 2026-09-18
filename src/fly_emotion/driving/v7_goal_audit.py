@@ -128,6 +128,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t5_contrast_opponency_source_data_audit"
     ]
     yang_t5_voltage_evidence_audit = reports["yang_t5_voltage_evidence_audit"]
+    kohn_portes_t5_ephys_audit = reports["kohn_portes_t5_ephys_audit"]
     malecns_source_mapping_readiness_audit = reports[
         "malecns_source_mapping_readiness_audit"
     ]
@@ -299,6 +300,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["gou_sparsity_source_dynamics_audit"],
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
+                config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
                 config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["lplc1_near_collision_precheck"],
@@ -628,6 +630,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "T5_source_dynamics_transfer_authorized"
                     ]
                 ),
+                "Kohn_Portes_T5_numeric_voltage_sources": (
+                    kohn_portes_t5_ephys_audit["T5_source_contract"][
+                        "sources_with_local_numeric_membrane_voltage"
+                    ]
+                ),
+                "Kohn_Portes_T5_missing_voltage_sources": (
+                    kohn_portes_t5_ephys_audit["T5_source_contract"][
+                        "missing_numeric_membrane_voltage_sources"
+                    ]
+                ),
+                "Kohn_Portes_T5_identity_retained": (
+                    kohn_portes_t5_ephys_audit["transfer_gates"][
+                        "biological_individual_ids_retained"
+                    ]
+                ),
+                "Kohn_Portes_T5_transfer_authorized": (
+                    kohn_portes_t5_ephys_audit[
+                        "T5_source_dynamics_transfer_authorized"
+                    ]
+                ),
                 "MaleCNS_nine_source_type_body_sets_available": (
                     malecns_source_mapping_readiness_audit[
                         "MaleCNS_type_average_body_sets_available"
@@ -662,6 +684,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "source_evidence_matrix_T5_local_calcium_count": (
                     source_evidence_matrix["family_summary"]["T5"][
                         "local_numerical_calcium_or_deconvolved_count"
+                    ]
+                ),
+                "source_evidence_matrix_T5_local_millivolt_count": (
+                    source_evidence_matrix["family_summary"]["T5"][
+                        "numerical_membrane_voltage_count"
                     ]
                 ),
                 "source_evidence_matrix_C3_has_any_numerical_fly_IDs": (

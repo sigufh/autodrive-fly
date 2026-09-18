@@ -1,0 +1,86 @@
+version: 1
+name: v7-kohn-portes-t5-ephys-audit
+observed_on: "2026-09-19"
+paper:
+  title: Flexible filtering by neural inputs supports motion computation across states and stimuli
+  doi: 10.1016/j.cub.2021.09.061
+  pmcid: PMC8725177
+repository:
+  url: https://gitlab.com/rbehnialab/flexible-filtering
+  project_id: 29848973
+  commit: ecc7703e506d7491d01532e9e339f2246648447f
+  license: CC-BY-NC-ND-4.0
+  license_requires_contact_for_new_published_analysis: true
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+support_files:
+  README.md:
+    path: data/raw/kohn-portes-flexible-filtering/README.md
+    bytes: 1213
+    sha256: fe444c375322c8ec16dac25cb3a94b5e32e0e3b62b115c3ef39c0ca7926e5e93
+  flash_analysis.py:
+    path: data/raw/kohn-portes-flexible-filtering/flash_analysis.py
+    bytes: 21543
+    sha256: 7d6e049dee702dcda285443f66a5b8687426233ecd7f7687a6e768900769c27a
+  ephysplot.py:
+    path: data/raw/kohn-portes-flexible-filtering/ephysplot.py
+    bytes: 39144
+    sha256: 0063a93ea494265cfa9151e3c760d999111959fa04c2ecf7ff2c3c8715e23cdc
+source_files:
+  Tm1:
+    path: data/raw/kohn-portes-flexible-filtering/Tm1_flash_dict.pickle
+    bytes: 22803124
+    sha256: 991d9ad61ad78c4a73290457b087d4c471de8a2177b52efa68e931bb0427670e
+    git_blob: 2530c37054eb39b2dc4b779626f8f239be63fc14
+  Tm2:
+    path: data/raw/kohn-portes-flexible-filtering/Tm2_flash_dict.pickle
+    bytes: 19202737
+    sha256: b187dfc061ca10802adc561b12b30768e000461a4c178c53ca87d7aa6d4c1605
+    git_blob: a122c2d46845ddd02d23e72a3eb54b7a5dd6ab97
+  Tm4:
+    path: data/raw/kohn-portes-flexible-filtering/Tm4_flash_dict.pickle
+    bytes: 29203812
+    sha256: 68b6564e99c0df73e1534a8410a70ecb4a4dcef0e1c43db9783738e63b322e9d
+    git_blob: df3aefd6f78e21c48a9790034e9ef288027dffe6
+  Tm9:
+    path: data/raw/kohn-portes-flexible-filtering/Tm9_flash_dict.pickle
+    bytes: 20402866
+    sha256: 88b099d0b69dcc6952d6021f9b668307f537507c883ebaa8167a77d5314d4762
+    git_blob: 498767361ff0f219bbf37ad50a72444b9f885476
+expected_conditions:
+  - FFF_uniform_20msimpulse_10int saline
+  - FFF_uniform_40msimpulse_10int saline
+  - FFF_uniform_80msimpulse_10int saline
+  - FFF_uniform_160msimpulse_10int saline
+  - FFF_uniform_20msimpulse_10int OA
+  - FFF_uniform_40msimpulse_10int OA
+  - FFF_uniform_80msimpulse_10int OA
+  - FFF_uniform_160msimpulse_10int OA
+expected_sample_interval_seconds: 0.0002
+expected_samples_per_trace: 50000
+stimulus:
+  family: full_field_OFF_flash
+  durations_milliseconds: [20, 40, 80, 160]
+  inter_flash_interval_seconds: 10
+  saline_and_octopamine_conditions: true
+fields:
+  stable_recording_ids_retained_in_pickle: false
+  biological_individual_ids_retained_in_pickle: false
+  stimulus_direction_retained_in_pickle: false
+  stimulus_angular_position_degrees_retained_in_pickle: false
+  stimulus_angular_speed_degrees_per_second_retained_in_pickle: false
+  baseline_window_seconds_retained_in_pickle: false
+  source_to_MaleCNS_body_mapping_present: false
+  preregistered_training_validation_external_final_roles_present: false
+  external_final_commitment_present: false
+boundary:
+  restricted_unpickler_only: true
+  voltage_scale_is_documented_by_author_plotting_code: true
+  anonymous_all_arrays_are_not_stable_recording_or_fly_IDs: true
+  flash_duration_does_not_supply_direction_position_or_speed_fields: true
+  n_metadata_is_not_an_identity_mapping: true
+  Tm1_Tm2_Tm4_fast_sources_remain_distinct_from_Tm9: true
+  CT1_is_not_covered: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

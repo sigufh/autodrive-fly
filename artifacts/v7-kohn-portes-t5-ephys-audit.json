@@ -1,0 +1,554 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-t5-ephys-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "9af519813494a5dd6fb0863fd80429cd5854ef4cc8c1c1e57b725c70be35c2cc",
+      "src/fly_emotion/driving/v7_kohn_portes_t5_ephys_audit.py": "56a40ae6b87c5556def583a928adc18c93bcf2fcfe6ac3fd0391279cc16c3d2d",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+    },
+    "paper": {
+      "title": "Flexible filtering by neural inputs supports motion computation across states and stimuli",
+      "doi": "10.1016/j.cub.2021.09.061",
+      "pmcid": "PMC8725177"
+    },
+    "repository": {
+      "url": "https://gitlab.com/rbehnialab/flexible-filtering",
+      "project_id": 29848973,
+      "commit": "ecc7703e506d7491d01532e9e339f2246648447f",
+      "license": "CC-BY-NC-ND-4.0",
+      "license_requires_contact_for_new_published_analysis": true
+    },
+    "support_files": {
+      "README.md": {
+        "path": "data/raw/kohn-portes-flexible-filtering/README.md",
+        "bytes": 1213,
+        "sha256": "fe444c375322c8ec16dac25cb3a94b5e32e0e3b62b115c3ef39c0ca7926e5e93"
+      },
+      "flash_analysis.py": {
+        "path": "data/raw/kohn-portes-flexible-filtering/flash_analysis.py",
+        "bytes": 21543,
+        "sha256": "7d6e049dee702dcda285443f66a5b8687426233ecd7f7687a6e768900769c27a"
+      },
+      "ephysplot.py": {
+        "path": "data/raw/kohn-portes-flexible-filtering/ephysplot.py",
+        "bytes": 39144,
+        "sha256": "0063a93ea494265cfa9151e3c760d999111959fa04c2ecf7ff2c3c8715e23cdc"
+      }
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "source_payloads": {
+    "Tm1": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/Tm1_flash_dict.pickle",
+        "bytes": 22803124,
+        "sha256": "991d9ad61ad78c4a73290457b087d4c471de8a2177b52efa68e931bb0427670e",
+        "git_blob": "2530c37054eb39b2dc4b779626f8f239be63fc14"
+      },
+      "condition_count": 8,
+      "conditions": {
+        "FFF_uniform_20msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.010789565937500002,
+          "maximum_volts": 0.015723050625000005
+        },
+        "FFF_uniform_40msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.012018029062499998,
+          "maximum_volts": 0.021304864687499994
+        },
+        "FFF_uniform_80msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.012638956875000001,
+          "maximum_volts": 0.019458435625
+        },
+        "FFF_uniform_160msimpulse_10int saline": {
+          "reported_cell_count_n": 6,
+          "anonymous_trace_count": 6,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.012659689062500007,
+          "maximum_volts": 0.022317029687499997
+        },
+        "FFF_uniform_20msimpulse_10int OA": {
+          "reported_cell_count_n": 4,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.005934876250000002,
+          "maximum_volts": 0.01575197000000001
+        },
+        "FFF_uniform_40msimpulse_10int OA": {
+          "reported_cell_count_n": 4,
+          "anonymous_trace_count": 4,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.006434074062500001,
+          "maximum_volts": 0.0175508534375
+        },
+        "FFF_uniform_80msimpulse_10int OA": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.007288494374999999,
+          "maximum_volts": 0.0175703440625
+        },
+        "FFF_uniform_160msimpulse_10int OA": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 6,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.010149429687499998,
+          "maximum_volts": 0.018526203124999994
+        }
+      },
+      "all_conditions_have_physical_time_axis": true,
+      "all_conditions_have_numerical_membrane_voltage": true,
+      "stable_recording_ids_retained": false,
+      "biological_individual_ids_retained": false
+    },
+    "Tm2": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/Tm2_flash_dict.pickle",
+        "bytes": 19202737,
+        "sha256": "b187dfc061ca10802adc561b12b30768e000461a4c178c53ca87d7aa6d4c1605",
+        "git_blob": "a122c2d46845ddd02d23e72a3eb54b7a5dd6ab97"
+      },
+      "condition_count": 8,
+      "conditions": {
+        "FFF_uniform_20msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.006601889374999996,
+          "maximum_volts": 0.021410678437500004
+        },
+        "FFF_uniform_40msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.008326561250000005,
+          "maximum_volts": 0.028873508124999996
+        },
+        "FFF_uniform_80msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.007816238750000001,
+          "maximum_volts": 0.02827639041666667
+        },
+        "FFF_uniform_160msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 5,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.011217490312499998,
+          "maximum_volts": 0.02789352208333333
+        },
+        "FFF_uniform_20msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 3,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.010925839375000001,
+          "maximum_volts": 0.0108870425
+        },
+        "FFF_uniform_40msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 3,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0128537403125,
+          "maximum_volts": 0.015040321874999997
+        },
+        "FFF_uniform_80msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 3,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0129199434375,
+          "maximum_volts": 0.014968335312499999
+        },
+        "FFF_uniform_160msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 3,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.014093599687500007,
+          "maximum_volts": 0.017742010625
+        }
+      },
+      "all_conditions_have_physical_time_axis": true,
+      "all_conditions_have_numerical_membrane_voltage": true,
+      "stable_recording_ids_retained": false,
+      "biological_individual_ids_retained": false
+    },
+    "Tm4": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/Tm4_flash_dict.pickle",
+        "bytes": 29203812,
+        "sha256": "68b6564e99c0df73e1534a8410a70ecb4a4dcef0e1c43db9783738e63b322e9d",
+        "git_blob": "df3aefd6f78e21c48a9790034e9ef288027dffe6"
+      },
+      "condition_count": 8,
+      "conditions": {
+        "FFF_uniform_20msimpulse_10int saline": {
+          "reported_cell_count_n": 6,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.00640847386500509,
+          "maximum_volts": 0.014304118884642381
+        },
+        "FFF_uniform_40msimpulse_10int saline": {
+          "reported_cell_count_n": 7,
+          "anonymous_trace_count": 8,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.010389470885953727,
+          "maximum_volts": 0.02131721977616118
+        },
+        "FFF_uniform_80msimpulse_10int saline": {
+          "reported_cell_count_n": 7,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.010100519380518508,
+          "maximum_volts": 0.020748025826656993
+        },
+        "FFF_uniform_160msimpulse_10int saline": {
+          "reported_cell_count_n": 7,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.01192454718547191,
+          "maximum_volts": 0.02402945083039281
+        },
+        "FFF_uniform_20msimpulse_10int OA": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.01105455675396562,
+          "maximum_volts": 0.013097359973001267
+        },
+        "FFF_uniform_40msimpulse_10int OA": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.011396156465127812,
+          "maximum_volts": 0.01598795213033053
+        },
+        "FFF_uniform_80msimpulse_10int OA": {
+          "reported_cell_count_n": 6,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.012747656677887156,
+          "maximum_volts": 0.015730544511932773
+        },
+        "FFF_uniform_160msimpulse_10int OA": {
+          "reported_cell_count_n": 6,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0112827968675832,
+          "maximum_volts": 0.014956309203328765
+        }
+      },
+      "all_conditions_have_physical_time_axis": true,
+      "all_conditions_have_numerical_membrane_voltage": true,
+      "stable_recording_ids_retained": false,
+      "biological_individual_ids_retained": false
+    },
+    "Tm9": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/Tm9_flash_dict.pickle",
+        "bytes": 20402866,
+        "sha256": "88b099d0b69dcc6952d6021f9b668307f537507c883ebaa8167a77d5314d4762",
+        "git_blob": "498767361ff0f219bbf37ad50a72444b9f885476"
+      },
+      "condition_count": 8,
+      "conditions": {
+        "FFF_uniform_20msimpulse_10int saline": {
+          "reported_cell_count_n": 5,
+          "anonymous_trace_count": 6,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0015321524215868815,
+          "maximum_volts": 0.0082856519540465
+        },
+        "FFF_uniform_40msimpulse_10int saline": {
+          "reported_cell_count_n": 4,
+          "anonymous_trace_count": 4,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0015134269151997615,
+          "maximum_volts": 0.011378949987024971
+        },
+        "FFF_uniform_80msimpulse_10int saline": {
+          "reported_cell_count_n": 4,
+          "anonymous_trace_count": 4,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0019373927039802973,
+          "maximum_volts": 0.014204574238099628
+        },
+        "FFF_uniform_160msimpulse_10int saline": {
+          "reported_cell_count_n": 6,
+          "anonymous_trace_count": 7,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.002115579443329468,
+          "maximum_volts": 0.017744348462226323
+        },
+        "FFF_uniform_20msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 4,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.00211071821041334,
+          "maximum_volts": 0.007274664716792577
+        },
+        "FFF_uniform_40msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 3,
+          "reported_n_equals_trace_count": true,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.002111726018287175,
+          "maximum_volts": 0.007782206876254862
+        },
+        "FFF_uniform_80msimpulse_10int OA": {
+          "reported_cell_count_n": 3,
+          "anonymous_trace_count": 4,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.003516832521757959,
+          "maximum_volts": 0.010475504896121736
+        },
+        "FFF_uniform_160msimpulse_10int OA": {
+          "reported_cell_count_n": 2,
+          "anonymous_trace_count": 3,
+          "reported_n_equals_trace_count": false,
+          "sample_count": 50000,
+          "sample_interval_seconds": 0.0002,
+          "duration_seconds": 10.0,
+          "stored_response_unit": "volts",
+          "contract_response_unit_after_exact_scale": "millivolts",
+          "minimum_volts": -0.0038666258585730306,
+          "maximum_volts": 0.013394238618259667
+        }
+      },
+      "all_conditions_have_physical_time_axis": true,
+      "all_conditions_have_numerical_membrane_voltage": true,
+      "stable_recording_ids_retained": false,
+      "biological_individual_ids_retained": false
+    }
+  },
+  "T5_source_contract": {
+    "required_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ],
+    "sources_with_local_numeric_membrane_voltage": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "missing_numeric_membrane_voltage_sources": [
+      "CT1"
+    ],
+    "coverage_fraction": 0.8,
+    "fast_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4"
+    ],
+    "delayed_source_kept_separate": "Tm9"
+  },
+  "transfer_gates": {
+    "Tm1_Tm2_Tm4_Tm9_local_numeric_membrane_voltage_verified": true,
+    "physical_time_axis_verified": true,
+    "allowed_response_unit_documented": true,
+    "every_T5_source_covered": false,
+    "stable_recording_ids_retained": false,
+    "biological_individual_ids_retained": false,
+    "required_angular_stimulus_fields_retained": false,
+    "baseline_window_seconds_retained": false,
+    "source_to_MaleCNS_body_mapping_present": false,
+    "required_split_roles_present": false,
+    "external_final_commitment_present": false
+  },
+  "T5_source_dynamics_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "blocking_requirements": [
+    "every_T5_source_covered",
+    "stable_recording_ids_retained",
+    "biological_individual_ids_retained",
+    "required_angular_stimulus_fields_retained",
+    "baseline_window_seconds_retained",
+    "source_to_MaleCNS_body_mapping_present",
+    "required_split_roles_present",
+    "external_final_commitment_present"
+  ],
+  "stop_reason": "four_Tm_voltage_payloads_lack_identity_mapping_splits_and_CT1_coverage",
+  "boundary": {
+    "restricted_unpickler_only": true,
+    "voltage_scale_is_documented_by_author_plotting_code": true,
+    "anonymous_all_arrays_are_not_stable_recording_or_fly_IDs": true,
+    "flash_duration_does_not_supply_direction_position_or_speed_fields": true,
+    "n_metadata_is_not_an_identity_mapping": true,
+    "Tm1_Tm2_Tm4_fast_sources_remain_distinct_from_Tm9": true,
+    "CT1_is_not_covered": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

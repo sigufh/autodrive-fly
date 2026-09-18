@@ -3,12 +3,13 @@
     "name": "v7-source-evidence-matrix",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-source-evidence-matrix.yaml": "7b0a623ee1def351032925c9915ef6b3012210fe8c0bc91a79ae76c8aa307a39",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "91dfecc740e221dc41cc68ebacd2b6ae95bf0d32824502a1d9038bb4b2aa70f8",
+      "configs/driving-v7-source-evidence-matrix.yaml": "f63946efcbab83515c4a75d90a9fd652533ac418c209263070b77cc8a699cf71",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "67d3783ad8ada9e554938a1d1da9c857581b180159e7d047b433f99263fbf040",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "f1449ff2b1ee719fd90fdcd708fe3f735bc5195bdd6fd8b1cd80b8121f7e34dc",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "7deddbb22bc4527c4df19c6495f65972f23426562f729fefadf087b838d4d2fb",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "9f585e0b319076eaeede77da3797906d5413d1b04e0eea3b76af2e303c5f18b6",
+      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "571c5acdd68a3a5d7ba37a088851f1d6891b1eee8928b481bbed7607006168c4",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "42b00f711f08212c07a6dad2d24abfbe0fa9fd18c9fb24957f5a3fec42236c24",
       "artifacts/v7-timing-models-ct1-compartment-audit.json": "4d0038fe1db7bbf6fb64d07396fddacb4b99fac9fad63a062f051106502249b1",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
@@ -70,6 +71,7 @@
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
@@ -77,6 +79,7 @@
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -120,6 +123,7 @@
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
@@ -127,6 +131,7 @@
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -168,6 +173,7 @@
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
@@ -175,6 +181,7 @@
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -215,6 +222,7 @@
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
@@ -222,6 +230,7 @@
       "all_contract_gates_passed": false,
       "missing_requirements": [
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -230,7 +239,7 @@
     "Tm1": {
       "family": "T5",
       "evidence_components": {
-        "local_numerical_membrane_voltage": false,
+        "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": true,
         "local_numerical_temporal_calcium_or_STRF": false,
         "local_numerical_spatial_calcium_only": false,
@@ -242,12 +251,14 @@
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
-      "numerical_membrane_voltage": false,
+      "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
       "local_numerical_calcium_or_deconvolved_calcium": false,
       "publisher_described_unverified_numerical_payload": true,
       "published_calcium_phenotype": true,
-      "numerical_evidence_sources": [],
+      "numerical_evidence_sources": [
+        "Kohn_Portes_whole_cell_voltage_flash_payload"
+      ],
       "publisher_described_sources": [
         "Gou_Dryad_README_and_repository_metadata"
       ],
@@ -258,30 +269,30 @@
       "MaleCNS_body_count": 1777,
       "MaleCNS_located_fraction": 1.0,
       "gates": {
-        "numerical_allowed_response_unit": false,
-        "local_numerical_physical_time_axis": false,
+        "numerical_allowed_response_unit": true,
+        "local_numerical_physical_time_axis": true,
         "stable_biological_individual_id_on_allowed_payload": false,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "numerical_allowed_response_unit",
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
-        "external_final_commitment",
-        "local_numerical_physical_time_axis"
+        "external_final_commitment"
       ]
     },
     "Tm2": {
       "family": "T5",
       "evidence_components": {
-        "local_numerical_membrane_voltage": false,
+        "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": true,
         "local_numerical_temporal_calcium_or_STRF": false,
         "local_numerical_spatial_calcium_only": false,
@@ -293,12 +304,14 @@
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
-      "numerical_membrane_voltage": false,
+      "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
       "local_numerical_calcium_or_deconvolved_calcium": false,
       "publisher_described_unverified_numerical_payload": true,
       "published_calcium_phenotype": true,
-      "numerical_evidence_sources": [],
+      "numerical_evidence_sources": [
+        "Kohn_Portes_whole_cell_voltage_flash_payload"
+      ],
       "publisher_described_sources": [
         "Gou_Dryad_README_and_repository_metadata"
       ],
@@ -309,30 +322,30 @@
       "MaleCNS_body_count": 1766,
       "MaleCNS_located_fraction": 1.0,
       "gates": {
-        "numerical_allowed_response_unit": false,
-        "local_numerical_physical_time_axis": false,
+        "numerical_allowed_response_unit": true,
+        "local_numerical_physical_time_axis": true,
         "stable_biological_individual_id_on_allowed_payload": false,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "numerical_allowed_response_unit",
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
-        "external_final_commitment",
-        "local_numerical_physical_time_axis"
+        "external_final_commitment"
       ]
     },
     "Tm4": {
       "family": "T5",
       "evidence_components": {
-        "local_numerical_membrane_voltage": false,
+        "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": false,
         "local_numerical_temporal_calcium_or_STRF": true,
         "local_numerical_spatial_calcium_only": false,
@@ -344,12 +357,13 @@
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
-      "numerical_membrane_voltage": false,
+      "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
       "local_numerical_calcium_or_deconvolved_calcium": true,
       "publisher_described_unverified_numerical_payload": false,
       "published_calcium_phenotype": true,
       "numerical_evidence_sources": [
+        "Kohn_Portes_whole_cell_voltage_flash_payload",
         "Ramos_Traslosheros_temporal_calcium_workbook"
       ],
       "publisher_described_sources": [],
@@ -359,20 +373,21 @@
       "MaleCNS_body_count": 1670,
       "MaleCNS_located_fraction": 1.0,
       "gates": {
-        "numerical_allowed_response_unit": false,
+        "numerical_allowed_response_unit": true,
         "local_numerical_physical_time_axis": true,
         "stable_biological_individual_id_on_allowed_payload": false,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": true,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "numerical_allowed_response_unit",
         "stable_biological_individual_id_on_allowed_payload",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -381,7 +396,7 @@
     "Tm9": {
       "family": "T5",
       "evidence_components": {
-        "local_numerical_membrane_voltage": false,
+        "local_numerical_membrane_voltage": true,
         "published_optical_voltage_phenotype_only": false,
         "local_numerical_temporal_calcium_or_STRF": true,
         "local_numerical_spatial_calcium_only": false,
@@ -393,12 +408,13 @@
         "independent_external_cohort_with_disjoint_individual_ids": false,
         "fixed_external_robustness_gate_passed": false
       },
-      "numerical_membrane_voltage": false,
+      "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
       "local_numerical_calcium_or_deconvolved_calcium": true,
       "publisher_described_unverified_numerical_payload": false,
       "published_calcium_phenotype": true,
       "numerical_evidence_sources": [
+        "Kohn_Portes_whole_cell_voltage_flash_payload",
         "Ramos_Traslosheros_temporal_calcium_workbook"
       ],
       "publisher_described_sources": [],
@@ -408,21 +424,22 @@
       "MaleCNS_body_count": 1771,
       "MaleCNS_located_fraction": 0.9994353472614342,
       "gates": {
-        "numerical_allowed_response_unit": false,
+        "numerical_allowed_response_unit": true,
         "local_numerical_physical_time_axis": true,
         "stable_biological_individual_id_on_allowed_payload": false,
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": false,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
       },
       "all_contract_gates_passed": false,
       "missing_requirements": [
-        "numerical_allowed_response_unit",
         "stable_biological_individual_id_on_allowed_payload",
         "complete_columnar_retinotopy",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -465,6 +482,7 @@
         "MaleCNS_exact_type_body_set": true,
         "soma_side": true,
         "complete_columnar_retinotopy": false,
+        "complete_stimulus_and_baseline_fields_on_allowed_payload": false,
         "external_recording_to_body_or_explicit_type_average": false,
         "training_validation_external_final_roles": false,
         "external_final_commitment": false
@@ -474,6 +492,7 @@
         "numerical_allowed_response_unit",
         "stable_biological_individual_id_on_allowed_payload",
         "complete_columnar_retinotopy",
+        "complete_stimulus_and_baseline_fields_on_allowed_payload",
         "external_recording_to_body_or_explicit_type_average",
         "training_validation_external_final_roles",
         "external_final_commitment"
@@ -504,7 +523,7 @@
         "CT1"
       ],
       "source_count": 5,
-      "numerical_membrane_voltage_count": 0,
+      "numerical_membrane_voltage_count": 4,
       "published_optical_voltage_phenotype_count": 2,
       "local_numerical_calcium_or_deconvolved_count": 3,
       "publisher_described_unverified_numerical_payload_count": 2,
@@ -518,9 +537,9 @@
   "advance_to_vehicle_experiments": false,
   "global_missing_requirements": [
     "complete_columnar_retinotopy",
+    "complete_stimulus_and_baseline_fields_on_allowed_payload",
     "external_final_commitment",
     "external_recording_to_body_or_explicit_type_average",
-    "local_numerical_physical_time_axis",
     "numerical_allowed_response_unit",
     "stable_biological_individual_id_on_allowed_payload",
     "training_validation_external_final_roles"
@@ -535,6 +554,7 @@
     "phenotype_figures_are_not_numerical_payloads": true,
     "type_body_sets_do_not_identify_external_recordings": true,
     "every_required_gate_must_hold_within_each_source": true,
+    "required_recording_fields_must_coexist_in_the_allowed_payload": true,
     "no_cross_source_imputation": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

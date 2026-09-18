@@ -1985,6 +1985,20 @@ type-average 去卷积核；Tm1/Tm2 仍只是已发表 ASAP2f 电压表型。CT1
 表型和缺失的 Lo1 数值时间序列也分列，互不替代。矩阵结果为 0/9 来源完整，source fit、
 T4/T5 functional precheck、LPLC 机制修复和车辆实验继续冻结。
 
+继续沿 T5 允许响应单位检索后，找到 Kohn、Portes 等 2021 的作者 GitLab 固定提交
+`ecc7703e…`。论文正式 DOI 为 `10.1016/j.cub.2021.09.061`，PMC 稿的资源表仍写
+`link TBD`，但作者仓库后来公开了 Tm1/Tm2/Tm4/Tm9 的预处理 whole-cell patch-clamp
+pickle。审计从该固定提交下载四个 high-contrast flash 文件并本地核对 SHA-256；仅允许
+NumPy ndarray/dtype 构造器的受限 unpickler 验证了每类 8 个 saline/OA 条件，每条匿名
+波形 50,000 点、`dt=0.0002 s`、长度 10 s。作者分析代码说明 `all` 保存逐记录平均波形，
+绘图代码明确原值以 volts 存储并乘 1000 显示为 mV。因此 Tm1/Tm2/Tm4/Tm9 的
+“本地数值膜电位 + 物理时间轴”证据已补齐，T5 fast sources 仍严格是 Tm1/Tm2/Tm4，
+Tm9 单列。可是预处理 pickle 删除了 `recording_id` 和 fly ID，只保留匿名数组与 `n`；
+部分条件的 `n` 还与 `all` 长度不相等。CT1 也完全不在该数据集。因此无法构造按个体
+不重叠 split、recording→MaleCNS 映射或 external-final 承诺，0/9 完整合同结论和所有冻结
+门保持不变。许可证为 CC BY-NC-ND 4.0，原始文件不提交，也未作参数拟合。证据见
+`artifacts/v7-kohn-portes-t5-ephys-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

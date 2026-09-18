@@ -243,6 +243,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     ]
     assert visual["observations"]["Yang_T5_numerical_voltage_payload_verified"] is False
     assert visual["observations"]["Yang_T5_voltage_transfer_authorized"] is False
+    assert visual["observations"]["Kohn_Portes_T5_numeric_voltage_sources"] == [
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+    ]
+    assert visual["observations"]["Kohn_Portes_T5_missing_voltage_sources"] == ["CT1"]
+    assert visual["observations"]["Kohn_Portes_T5_identity_retained"] is False
+    assert visual["observations"]["Kohn_Portes_T5_transfer_authorized"] is False
     assert visual["observations"]["MaleCNS_nine_source_type_body_sets_available"] is True
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 1
@@ -251,6 +260,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["source_evidence_matrix_authorizes_fit"] is False
     assert visual["observations"]["source_evidence_matrix_T4_local_millivolt_count"] == 4
     assert visual["observations"]["source_evidence_matrix_T5_local_calcium_count"] == 3
+    assert visual["observations"]["source_evidence_matrix_T5_local_millivolt_count"] == 4
     assert (
         visual["observations"]["source_evidence_matrix_C3_has_any_numerical_fly_IDs"]
         is True
