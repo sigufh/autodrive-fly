@@ -164,6 +164,7 @@ from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_source_dynamics_external_evidence_contract import (
     evaluate_v7_source_dynamics_external_evidence_contract,
 )
+from .driving.v7_source_evidence_matrix import evaluate_v7_source_evidence_matrix
 from .driving.v7_source_type_temporal_identifiability import (
     evaluate_v7_source_type_temporal_identifiability,
 )
@@ -458,6 +459,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-upstream-latency")
     subparsers.add_parser("v7-audit-source-type-temporal-identifiability")
     subparsers.add_parser("v7-freeze-source-dynamics-external-evidence-contract")
+    subparsers.add_parser("v7-audit-source-evidence-matrix")
     subparsers.add_parser("v7-audit-synapse-spatial")
     subparsers.add_parser("v7-calibrate-synapse-axis")
     subparsers.add_parser("v7-evaluate-t4-synapse-correlator-precheck")
@@ -1580,6 +1582,14 @@ def main() -> None:
     if args.command == "v7-audit-yang-t5-voltage-evidence":
         report = evaluate_v7_yang_t5_voltage_evidence_audit(root)
         target = root / "artifacts/v7-yang-t5-voltage-evidence-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-source-evidence-matrix":
+        report = evaluate_v7_source_evidence_matrix(root)
+        target = root / "artifacts/v7-source-evidence-matrix.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

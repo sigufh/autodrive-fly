@@ -131,6 +131,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     malecns_source_mapping_readiness_audit = reports[
         "malecns_source_mapping_readiness_audit"
     ]
+    source_evidence_matrix = reports["source_evidence_matrix"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -299,6 +300,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
+                config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -645,6 +647,32 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     malecns_source_mapping_readiness_audit["CT1"][
                         "columnar_Lo1_retinotopy_available"
                     ]
+                ),
+                "source_evidence_matrix_all_nine_complete": (
+                    source_evidence_matrix["all_nine_sources_contract_complete"]
+                ),
+                "source_evidence_matrix_authorizes_fit": (
+                    source_evidence_matrix["authorize_source_dynamics_fit"]
+                ),
+                "source_evidence_matrix_T4_local_millivolt_count": (
+                    source_evidence_matrix["family_summary"]["T4"][
+                        "numerical_membrane_voltage_count"
+                    ]
+                ),
+                "source_evidence_matrix_T5_local_calcium_count": (
+                    source_evidence_matrix["family_summary"]["T5"][
+                        "local_numerical_calcium_or_deconvolved_count"
+                    ]
+                ),
+                "source_evidence_matrix_C3_has_any_numerical_fly_IDs": (
+                    source_evidence_matrix["matrix"]["C3"][
+                        "evidence_components"
+                    ]["stable_biological_individual_ids_in_any_numerical_payload"]
+                ),
+                "source_evidence_matrix_C3_fixed_external_robustness_passed": (
+                    source_evidence_matrix["matrix"]["C3"][
+                        "evidence_components"
+                    ]["fixed_external_robustness_gate_passed"]
                 ),
                 "TimingModels_CT1_type_average_dynamics_verified": (
                     timing_models_ct1_compartment_audit[

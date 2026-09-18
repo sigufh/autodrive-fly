@@ -247,6 +247,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 1
     assert visual["observations"]["MaleCNS_CT1_columnar_Lo1_retinotopy_available"] is False
+    assert visual["observations"]["source_evidence_matrix_all_nine_complete"] is False
+    assert visual["observations"]["source_evidence_matrix_authorizes_fit"] is False
+    assert visual["observations"]["source_evidence_matrix_T4_local_millivolt_count"] == 4
+    assert visual["observations"]["source_evidence_matrix_T5_local_calcium_count"] == 3
+    assert (
+        visual["observations"]["source_evidence_matrix_C3_has_any_numerical_fly_IDs"]
+        is True
+    )
+    assert (
+        visual["observations"]["source_evidence_matrix_C3_fixed_external_robustness_passed"]
+        is False
+    )
     assert visual["observations"]["TimingModels_CT1_type_average_dynamics_verified"] is True
     assert visual["observations"]["TimingModels_T5_lobula_CT1_phenotype_published"] is True
     assert visual["observations"]["TimingModels_T5_lobula_CT1_numerical_payload_verified"] is False

@@ -1972,6 +1972,19 @@ Tm4 1670、Tm9 1771、CT1 2；soma side 全部存在。原生 optic-hex 缺失�
 recording→body、CT1 柱坐标或实验 split。证据见
 `artifacts/v7-malecns-source-mapping-readiness-audit.json`。
 
+上述分散证据现已冻结为统一九源矩阵
+`artifacts/v7-source-evidence-matrix.json`，且每个来源必须在自身行内满足所有合同门，禁止
+跨来源拼接。T4 四源都有本地 millivolt 波形，但其允许单位 payload 均无 biological
+individual ID。C3 另有带 fly ID 的本地数值 STRF（8 flies）和互斥的 22-fly flash cohort，
+这两项身份事实被保留；不过 STRF 单位为 stimulus-response correlation，且固定 bootstrap
+相关 p05 仅 `0.1074`，所以不能把它计作合规膜电位 payload 或稳健外部验证。Gou 数据中
+Mi1/Tm3/Tm1/Tm2 的 fly×time 数组仅由发布者 README 描述，归档未本地下载校验，因此
+矩阵单列为 publisher-described，而不计入 local numerical。T5 本地数值钙/去卷积证据只
+覆盖三类：Tm4、Tm9 的 ΔF/F0 时间序列，以及 CT1 的空间曲线和未标 M10/Lo1 区室的
+type-average 去卷积核；Tm1/Tm2 仍只是已发表 ASAP2f 电压表型。CT1 的已发表 Lo1 动态
+表型和缺失的 Lo1 数值时间序列也分列，互不替代。矩阵结果为 0/9 来源完整，source fit、
+T4/T5 functional precheck、LPLC 机制修复和车辆实验继续冻结。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型

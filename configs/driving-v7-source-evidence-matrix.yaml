@@ -1,0 +1,40 @@
+version: 2
+name: v7-source-evidence-matrix
+observed_on: "2026-09-19"
+contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+evidence:
+  t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
+  gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json
+  t5_voltage: artifacts/v7-yang-t5-voltage-evidence-audit.json
+  t5_calcium: artifacts/v7-t5-contrast-opponency-source-data-audit.json
+  ct1_compartment: artifacts/v7-timing-models-ct1-compartment-audit.json
+  c3_dynamics: artifacts/v7-c3-strf-source-dynamics-audit.json
+  c3_external_flash: artifacts/v7-c3-strf-flash-transfer.json
+  arenz_t4: artifacts/v7-arenz-source-dynamics-audit.json
+  arenz_t5: artifacts/v7-arenz-t5-source-dynamics-audit.json
+  malecns_mapping: artifacts/v7-malecns-source-mapping-readiness-audit.json
+source_order: [Mi1, Tm3, Mi4, C3, Tm1, Tm2, Tm4, Tm9, CT1]
+source_family:
+  Mi1: T4
+  Tm3: T4
+  Mi4: T4
+  C3: T4
+  Tm1: T5
+  Tm2: T5
+  Tm4: T5
+  Tm9: T5
+  CT1: T5
+boundary:
+  evidence_inventory_only: true
+  evidence_modalities_are_not_interchangeable: true
+  publisher_descriptions_are_not_local_numerical_payloads: true
+  identity_must_be_linked_to_an_allowed_response_payload: true
+  CT1_type_average_and_lobula_Lo1_evidence_are_separate: true
+  phenotype_figures_are_not_numerical_payloads: true
+  type_body_sets_do_not_identify_external_recordings: true
+  every_required_gate_must_hold_within_each_source: true
+  no_cross_source_imputation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true
