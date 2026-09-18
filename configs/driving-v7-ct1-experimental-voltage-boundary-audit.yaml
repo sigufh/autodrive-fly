@@ -1,0 +1,116 @@
+version: 1
+name: v7-ct1-experimental-voltage-boundary-audit
+observed_on: "2026-09-19"
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+evidence:
+  ramos_source_data: artifacts/v7-t5-contrast-opponency-source-data-audit.json
+  meier_extreme_compartmentalization: artifacts/v7-ct1-extreme-compartmentalization-audit.json
+  groschner_compartment: artifacts/v7-timing-models-ct1-compartment-audit.json
+  yang_voltage: artifacts/v7-yang-t5-voltage-evidence-audit.json
+  kohn_portes_voltage: artifacts/v7-kohn-portes-t5-ephys-audit.json
+  flyvis_model: artifacts/v7-flyvis-visual-source-time-constants.json
+candidate_documents:
+  Ramos_Traslosheros_2021:
+    path: data/raw/ct1-voltage-candidates/PMC8371135.xml
+    bytes: 187668
+    sha256: ecf5809ef6f995e413b689828bdc0610ca4fcad68d3056df4eb2412d50cedf06
+    doi: 10.1038/s41467-021-24986-w
+    format: jats_xml
+  Groschner_2022:
+    path: data/raw/ct1-voltage-candidates/PMC9474608.bioc.xml
+    bytes: 238539
+    sha256: 8c971a2c9ae67fa6ba355eb3c3cee919340db9511d4fed2dc094aed08562836a
+    doi: 10.1016/j.cub.2022.06.075
+    format: bioc_xml
+  Braun_2023_supplement:
+    path: data/raw/ct1-voltage-candidates/S0960982223006012-mmc1.pdf
+    bytes: 1388549
+    sha256: 19d1aa7864e7e6c28b09525c2753cbe9ff4b9ecbc2533b7c5e2088e1751c1307
+    pages: 7
+    doi: 10.1016/j.cub.2023.05.007
+    format: pdf
+  Braun_2023_article:
+    path: data/raw/ct1-voltage-candidates/S0960982223006012-mmc2.pdf
+    bytes: 5828545
+    sha256: d880bea10dfb34c7121944f8ad73665c41ed5fd5254c3502dc3741ad1287f7f7
+    pages: 22
+    doi: 10.1016/j.cub.2023.05.007
+    format: pdf
+candidates:
+  Ramos_Traslosheros_2021:
+    compartments: [lobula_Lo1]
+    direct_CT1_measurement: true
+    modality: GCaMP6f_calcium_imaging
+    public_numeric_payload: true
+    public_numeric_temporal_payload: false
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Meier_Borst_2019:
+    compartments: [medulla_M10, lobula_Lo1]
+    direct_CT1_measurement: true
+    modality: GCaMP6f_calcium_imaging_plus_passive_compartment_model
+    public_numeric_payload: false
+    simulated_voltage_present: true
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Groschner_2022:
+    compartments: [medulla_M10, lobula_Lo1]
+    direct_CT1_measurement: true
+    modality: GCaMP6f_calcium_imaging
+    CT1_GCaMP6f_genotype_present: true
+    CT1_ArcLight_genotype_present: false
+    CT1_whole_cell_recording_present: false
+    ArcLight_cells: [Mi1, Tm3]
+    public_experimental_payload: false
+    public_model_payload: true
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Braun_2023:
+    compartments: [lobula_Lo1]
+    direct_CT1_measurement: false
+    modality: downstream_T5_GCaMP6m_with_CT1_perturbation
+    CT1_role: perturbation_and_connectomic_microcircuit
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Yang_2016:
+    compartments: []
+    direct_CT1_measurement: false
+    modality: ASAP2f_voltage_imaging_of_other_cell_types
+    voltage_cell_types: [Tm1, Tm2]
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Kohn_Portes_2021:
+    compartments: []
+    direct_CT1_measurement: false
+    modality: whole_cell_voltage_of_other_cell_types
+    voltage_cell_types: [Tm1, Tm2, Tm4, Tm9]
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Lappalainen_2024:
+    compartments: [medulla_M10, lobula_Lo1]
+    direct_CT1_measurement: false
+    modality: trained_connectome_model_voltage
+    simulated_voltage_present: true
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+search_scope:
+  bounded_not_global_nonexistence_claim: true
+  indexed_queries_observed_on: "2026-09-19"
+  terms:
+    - Drosophila CT1 whole-cell patch-clamp voltage Lo1
+    - Drosophila CT1 voltage imaging ArcLight ASAP
+    - Drosophila complex tangential neuron electrophysiology
+  false_positive_rule: circadian_time_CT1_is_not_the_CT1_neuron
+boundary:
+  direct_CT1_measurement_required: true
+  experimental_voltage_required: true
+  T4_or_T5_voltage_does_not_substitute_for_CT1_voltage: true
+  CT1_M10_does_not_substitute_for_CT1_Lo1: true
+  calcium_and_deconvolved_calcium_are_not_membrane_voltage: true
+  simulated_voltage_is_not_experimental_voltage: true
+  downstream_T4_or_T5_effect_is_not_CT1_voltage: true
+  no_curve_digitization: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_and_vehicle_experiments_remain_frozen: true

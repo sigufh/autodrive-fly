@@ -2048,6 +2048,18 @@ Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；�
 钙表型与模拟区室化成立，但合规数值电压、biological ID、MaleCNS 映射和 split 仍缺失。
 证据见 `artifacts/v7-ct1-extreme-compartmentalization-audit.json`。
 
+CT1 的实验膜电位缺口又按区室和测量对象做了候选集边界审计。已核验的 7 条相关证据链
+中，直接测量 CT1 的只有 Ramos–Traslosheros 2021、Meier–Borst 2019 与 Groschner 2022：
+前两者分别提供 Lo1 空间 GCaMP6f、M10/Lo1 GCaMP6f 与被动区室模型；Groschner 同时报告
+M10/Lo1 CT1 动力学，但正文、基因型表和补图都把 CT1 标为 `CT1 > GC6f`。该论文的
+ArcLight 膜电位实验仅列 Mi1/Tm3，没有 `CT1 > ArcLight`，也没有 CT1 whole-cell 或
+patch-clamp。Braun 2023 提供 CT1 操纵后下游 T5 钙响应和连接组微回路，不是 CT1 本身的
+电压记录；Yang 2016、Kohn–Portes 2021 的电压源均不含 CT1；FlyVis 只提供训练模型的
+CT1(Lo1) 电压/时间常数。因此在这组已审计候选内，直接 CT1 实验电压、Lo1 实验电压及
+公开数值电压载荷均为零。该结论明确限定于已审计候选集，不宣称全局不存在；T5 的 CT1
+合规电压缺口和所有下游冻结门保持不变。证据见
+`artifacts/v7-ct1-experimental-voltage-boundary-audit.json`。
+
 Borst 2025《Differential temporal filtering in the fly optic lobe》（DOI
 `10.1007/s10827-025-00914-5`）及其 GitHub 固定提交 `2e277fef…` 也已做 provenance
 审计。仓库两个 `data.npy` 副本哈希完全相同，均为 `13×9×200`、10 ms 步长的数值目标，

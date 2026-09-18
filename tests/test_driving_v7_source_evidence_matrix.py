@@ -153,6 +153,8 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     assert ct1["published_lobula_Lo1_dynamic_phenotype_only"] is True
     assert ct1["local_lobula_Lo1_numerical_time_series"] is False
     assert ct1["simulated_compartmental_model_voltage_not_experimental"] is True
+    assert ct1["audited_CT1_candidate_set_has_direct_experimental_voltage"] is False
+    assert ct1["audited_CT1_candidate_set_has_direct_Lo1_experimental_voltage"] is False
     assert report["family_summary"]["T5"]["all_sources_contract_complete"] is False
 
 

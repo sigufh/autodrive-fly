@@ -81,6 +81,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     ct1_simulated_voltage = bool(
         evidence["ct1_extreme_compartmentalization"]["model_evidence"]["output_is_simulated"]
     )
+    ct1_voltage_boundary = evidence["ct1_experimental_voltage_boundary"]
 
     rows = {}
     for source in order:
@@ -138,6 +139,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "local_lobula_Lo1_numerical_time_series": (source == "CT1" and ct1_lobula_payload),
             "simulated_compartmental_model_voltage_not_experimental": (
                 source == "CT1" and ct1_simulated_voltage
+            ),
+            "audited_CT1_candidate_set_has_direct_experimental_voltage": (
+                source == "CT1"
+                and ct1_voltage_boundary["transfer_gates"][
+                    "direct_CT1_experimental_voltage_phenotype_found"
+                ]
+            ),
+            "audited_CT1_candidate_set_has_direct_Lo1_experimental_voltage": (
+                source == "CT1"
+                and ct1_voltage_boundary["transfer_gates"][
+                    "direct_CT1_Lo1_experimental_voltage_found"
+                ]
             ),
             "stable_biological_individual_ids_in_any_numerical_payload": (
                 individual_ids_any_numerical

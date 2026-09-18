@@ -137,6 +137,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ct1_extreme_compartmentalization_audit = reports[
         "ct1_extreme_compartmentalization_audit"
     ]
+    ct1_experimental_voltage_boundary_audit = reports[
+        "ct1_experimental_voltage_boundary_audit"
+    ]
     borst_2025_temporal_filtering_audit = reports[
         "borst_2025_temporal_filtering_audit"
     ]
@@ -320,6 +323,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
+                config["evidence"]["ct1_experimental_voltage_boundary_audit"],
                 config["evidence"]["borst_2025_temporal_filtering_audit"],
                 config["evidence"]["pirogova_source_calcium_audit"],
                 config["evidence"]["malecns_source_mapping_readiness_audit"],
@@ -746,6 +750,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "CT1_extreme_transfer_authorized": (
                     ct1_extreme_compartmentalization_audit[
                         "CT1_experimental_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "CT1_voltage_audited_candidate_count": (
+                    ct1_experimental_voltage_boundary_audit["candidate_summary"][
+                        "audited_candidate_count"
+                    ]
+                ),
+                "CT1_direct_experimental_voltage_candidate_found": (
+                    ct1_experimental_voltage_boundary_audit["transfer_gates"][
+                        "direct_CT1_experimental_voltage_phenotype_found"
+                    ]
+                ),
+                "CT1_direct_Lo1_experimental_voltage_candidate_found": (
+                    ct1_experimental_voltage_boundary_audit["transfer_gates"][
+                        "direct_CT1_Lo1_experimental_voltage_found"
+                    ]
+                ),
+                "CT1_experimental_voltage_transfer_authorized": (
+                    ct1_experimental_voltage_boundary_audit[
+                        "CT1_experimental_voltage_transfer_authorized"
                     ]
                 ),
                 "Borst_2025_parameterized_target_verified": (
