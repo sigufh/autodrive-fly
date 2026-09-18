@@ -6,6 +6,7 @@ electrophysiology_interface: artifacts/v7-ephys-interface.json
 timebase_evidence: artifacts/v7-timebase-audit.json
 microstep_evidence: artifacts/v7-t4-synapse-microstep-precheck.json
 official_unified_model_evidence: artifacts/v7-t5-data-audit.json
+verified_unified_model_evidence: artifacts/v7-unified-model-package-audit.json
 official_unified_model_recovered_manifest:
   recovery_source: internet_archive_official_page_snapshot
   snapshot_timestamp: "20241127113612"
@@ -16,7 +17,7 @@ official_unified_model_recovered_manifest:
   md5: 14ba0fa761a513d55cacc41610881e80
   mime_type: application/zip
   official_download_url: https://janelia.figshare.com/ndownloader/files/31067761
-  payload_retrieved: false
+  payload_retrieved: true
 required_sources: [Mi1, Tm3, Mi4, C3]
 required_transfer_fields:
   - direction_independent_source_kernel

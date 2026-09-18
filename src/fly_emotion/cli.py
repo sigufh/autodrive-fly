@@ -171,6 +171,7 @@ from .driving.v7_three_hop_temporal_consistency import (
     evaluate_v7_three_hop_temporal_consistency,
 )
 from .driving.v7_timebase_audit import evaluate_v7_timebase_audit
+from .driving.v7_unified_model_package_audit import evaluate_v7_unified_model_package_audit
 from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audit
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
 from .driving.v7_visual_layer_locality import evaluate_v7_visual_layer_locality
@@ -344,6 +345,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
     subparsers.add_parser("v7-audit-t4-source-dynamics-transfer")
+    subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
@@ -1112,6 +1114,12 @@ def main() -> None:
     if args.command == "v7-audit-t4-source-dynamics-transfer":
         report = evaluate_v7_t4_source_dynamics_transfer_audit(root)
         target = root / "artifacts/v7-t4-source-dynamics-transfer-audit.json"
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-unified-model-package":
+        report = evaluate_v7_unified_model_package_audit(root)
+        target = root / "artifacts/v7-unified-model-package-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         print(target)
         return

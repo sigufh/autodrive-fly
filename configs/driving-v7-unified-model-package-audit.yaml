@@ -1,0 +1,61 @@
+version: 1
+name: v7-official-unified-model-package-audit
+observed_on: "2026-09-18"
+model_package:
+  doi: 10.25378/janelia.16663486
+  article_id: 16663486
+  file_id: 31067761
+  path: data/raw/t4-unified-model/modelFigure.zip
+  bytes: 3630019
+  md5: 14ba0fa761a513d55cacc41610881e80
+  sha256: 684d2fde778ddef5256f280775064f7c68c1224014a30ba2a01fe7485d72dd10
+  members:
+    modelFigure/optTables.mat:
+      bytes: 3624301
+      sha256: 4a4216195f53d18d04302c97aa09da32c616c06ecabc849e1b143ca8f25c9898
+    modelFigure/modelFigureCode.m:
+      bytes: 7139
+      sha256: 3ee28d8af1f8d374ce8e4a70da70c4b928925aeee0b637efe198c8649ae43e0a
+    modelFigure/README.txt:
+      bytes: 1465
+      sha256: a6d3dc9a9236f57b9a627983ad649f53d11c6f7e7cb884e769274a33761e7e60
+supporting_package:
+  doi: 10.25378/janelia.16669378.v1
+  article_id: 16669378
+  file_id: 30862813
+  path: data/raw/t4-unified-model/supportingFunctions.zip
+  bytes: 17374
+  observed_md5: 3d899bec066f152062015d159f46bc6e
+  sha256: e945434ea5e9fe527d380385ab9a3f83d3f73b39dec22647040491a904537aa8
+  required_members:
+    supportingFunctions/t4_simple_wrap.m: 5b79e2ebb8ea5ed379ec0eaa2bdc1126cde7579346e6e50e6ce90aafe31fefd3
+    supportingFunctions/t5_simple_wrap.m: 656fc246beaa5fdba0dc93ba9e0b1b2ab9a2962350821914aa736341e93209d7
+    supportingFunctions/extract_params2.m: d5029dba03e7c6433d29854b7ba51ad8214aa51d410bc55930568422b9a765e5
+mat_parser:
+  package: mat-io
+  version: 1.0.0
+expected_tables: [cardT4OptTab, cardT5OptTab, diagT4OptTab, diagT5OptTab]
+expected_table_shape: [1000, 131]
+parameter_suffix: _p
+expected_parameter_count: 29
+author_selection_reproduction:
+  table: cardT5OptTab
+  one_based_row: 345
+  objective: res_mov_nc_plus_res_mov_pc
+T4_candidate_selection:
+  objective: res_mov_nc_plus_res_mov_pc
+  status: derived_by_applying_author_T5_objective_to_T4_tables
+  author_preselected_T4_rows_available: false
+source_mapping_requirements: [Mi1, Tm3, Mi4, C3]
+boundary:
+  raw_packages_ignored_and_not_committed: true
+  model_is_target_level_receptive_field_model: true
+  E_I_E2_I2_are_not_verified_MaleCNS_source_type_assignments: true
+  cardinal_diagonal_to_T4_subtype_mapping_not_verified: true
+  parameters_fit_to_averaged_cells: true
+  independent_cell_holdout_available: false
+  parameter_fit_in_this_audit: false
+  target_activity_injection: false
+  runtime_modified: false
+  T5_mapping_application_forbidden: true
+  LPLC_and_downstream_remain_frozen: true

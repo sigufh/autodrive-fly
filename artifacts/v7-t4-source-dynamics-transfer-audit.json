@@ -3,13 +3,14 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-17",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "946d10117a6b1b69bac46279a1da2d9ae2f99131f98779283ba2bc3abd52583e",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0b9323a8b3c6874f133961304a48c360b4a78cc78e27cece33b6781e534cde61",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "32ffbd624435ba776dc83f3152fcbcbcb173c6121a669467cb204d6b41e4a265",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b55241f76d121a997b377a9374c02004a872020452d1dc917838ed8444a427ec",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
-      "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019"
+      "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
+      "artifacts/v7-unified-model-package-audit.json": "364f69f255962bc50aeb7f4e15dd220fac284cae2b6a98a5c49f8be36aeb4358"
     },
     "required_sources": [
       "Mi1",
@@ -89,9 +90,25 @@
     },
     "recovered_manifest_consistent": true,
     "file_manifest_retrieved": true,
-    "files_verified": false,
-    "payload_retrieved": false,
-    "current_environment_access": "official landing, API, files API, and ndownloader returned HTTP 403"
+    "prior_live_audit_files_verified": false,
+    "files_verified": true,
+    "payload_retrieved": true,
+    "retrieval_method": "Chrome DevTools after official WAF challenge",
+    "model_package_sha256": "684d2fde778ddef5256f280775064f7c68c1224014a30ba2a01fe7485d72dd10",
+    "supporting_package_sha256": "e945434ea5e9fe527d380385ab9a3f83d3f73b39dec22647040491a904537aa8"
+  },
+  "verified_unified_model_semantics": {
+    "T4_target_model_parameters_available": true,
+    "target_components": [
+      "E",
+      "I",
+      "E2",
+      "I2"
+    ],
+    "source_type_mapping_available": false,
+    "cardinal_diagonal_to_subtype_mapping_available": false,
+    "independent_cell_holdout_available": false,
+    "MaleCNS_source_kernel_transfer_authorized": false
   },
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,

@@ -53,8 +53,16 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
             "https://janelia.figshare.com/ndownloader/files/31067761"
         ),
     }
-    assert package["payload_retrieved"] is False
-    assert package["files_verified"] is False
+    assert package["payload_retrieved"] is True
+    assert package["prior_live_audit_files_verified"] is False
+    assert package["files_verified"] is True
+    semantics = report["verified_unified_model_semantics"]
+    assert semantics["T4_target_model_parameters_available"] is True
+    assert semantics["target_components"] == ["E", "I", "E2", "I2"]
+    assert semantics["source_type_mapping_available"] is False
+    assert semantics["cardinal_diagonal_to_subtype_mapping_available"] is False
+    assert semantics["independent_cell_holdout_available"] is False
+    assert semantics["MaleCNS_source_kernel_transfer_authorized"] is False
 
 
 def test_T4_source_dynamics_transfer_stop_rule_preserves_boundaries() -> None:

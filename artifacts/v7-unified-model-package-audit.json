@@ -1,0 +1,339 @@
+{
+  "protocol": {
+    "name": "v7-official-unified-model-package-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-unified-model-package-audit.yaml": "1ab10ea38f88afe05b6b2b0c4953b77a7c38fb9791cf738b9a0a5ee0e215978c",
+      "src/fly_emotion/driving/v7_unified_model_package_audit.py": "cfb769eaaf46c1856df18d02a85352f4c54463116e0f898e9868c8400c27f09d",
+      "pyproject.toml": "8dbcc1e6e27ed22a7f59dad66d175d761a205087c920cdd75262f203ef669a94"
+    },
+    "mat_parser": {
+      "package": "mat-io",
+      "version": "1.0.0"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "packages": {
+    "model": {
+      "path": "data/raw/t4-unified-model/modelFigure.zip",
+      "bytes": 3630019,
+      "md5": "14ba0fa761a513d55cacc41610881e80",
+      "sha256": "684d2fde778ddef5256f280775064f7c68c1224014a30ba2a01fe7485d72dd10",
+      "zip_integrity_passed": true,
+      "member_count": 8,
+      "doi": "10.25378/janelia.16663486",
+      "file_id": 31067761
+    },
+    "supporting": {
+      "path": "data/raw/t4-unified-model/supportingFunctions.zip",
+      "bytes": 17374,
+      "md5": "3d899bec066f152062015d159f46bc6e",
+      "sha256": "e945434ea5e9fe527d380385ab9a3f83d3f73b39dec22647040491a904537aa8",
+      "zip_integrity_passed": true,
+      "member_count": 16,
+      "doi": "10.25378/janelia.16669378.v1",
+      "file_id": 30862813,
+      "md5_provenance": "observed_download_hash_not_repository_checksum"
+    }
+  },
+  "verified_members": {
+    "model": {
+      "modelFigure/optTables.mat": {
+        "bytes": 3624301,
+        "sha256": "4a4216195f53d18d04302c97aa09da32c616c06ecabc849e1b143ca8f25c9898"
+      },
+      "modelFigure/modelFigureCode.m": {
+        "bytes": 7139,
+        "sha256": "3ee28d8af1f8d374ce8e4a70da70c4b928925aeee0b637efe198c8649ae43e0a"
+      },
+      "modelFigure/README.txt": {
+        "bytes": 1465,
+        "sha256": "a6d3dc9a9236f57b9a627983ad649f53d11c6f7e7cb884e769274a33761e7e60"
+      }
+    },
+    "supporting": {
+      "supportingFunctions/t4_simple_wrap.m": {
+        "bytes": 17335,
+        "sha256": "5b79e2ebb8ea5ed379ec0eaa2bdc1126cde7579346e6e50e6ce90aafe31fefd3"
+      },
+      "supportingFunctions/t5_simple_wrap.m": {
+        "bytes": 16431,
+        "sha256": "656fc246beaa5fdba0dc93ba9e0b1b2ab9a2962350821914aa736341e93209d7"
+      },
+      "supportingFunctions/extract_params2.m": {
+        "bytes": 529,
+        "sha256": "d5029dba03e7c6433d29854b7ba51ad8214aa51d410bc55930568422b9a765e5"
+      }
+    }
+  },
+  "tables": {
+    "names": [
+      "cardT4OptTab",
+      "cardT5OptTab",
+      "diagT4OptTab",
+      "diagT5OptTab"
+    ],
+    "all_shapes": {
+      "cardT4OptTab": [
+        1000,
+        131
+      ],
+      "cardT5OptTab": [
+        1000,
+        131
+      ],
+      "diagT4OptTab": [
+        1000,
+        131
+      ],
+      "diagT5OptTab": [
+        1000,
+        131
+      ]
+    },
+    "all_parameter_column_counts": {
+      "cardT4OptTab": 29,
+      "cardT5OptTab": 29,
+      "diagT4OptTab": 29,
+      "diagT5OptTab": 29
+    },
+    "author_selection_reproduced": true,
+    "author_selected_cardT5_row_one_based": 345,
+    "T4_candidates": {
+      "cardT4OptTab": {
+        "shape": [
+          1000,
+          131
+        ],
+        "parameter_column_count": 29,
+        "parameter_columns": [
+          "muE_p",
+          "muI_p",
+          "muE2_p",
+          "muI2_p",
+          "sigE_p",
+          "sigI_p",
+          "sigE2_p",
+          "sigI2_p",
+          "AE_p",
+          "AI_p",
+          "AE2_p",
+          "AI2_p",
+          "TrE_p",
+          "TrI_p",
+          "TrE2_p",
+          "TrI2_p",
+          "TdE_p",
+          "TdI_p",
+          "TdE2_p",
+          "TdI2_p",
+          "mE_p",
+          "mI_p",
+          "mE2_p",
+          "mI2_p",
+          "bE_p",
+          "bI_p",
+          "bE2_p",
+          "bI2_p",
+          "Ti_p"
+        ],
+        "selected_row_zero_based": 68,
+        "selected_row_one_based": 69,
+        "selected_score": 4.4804140557792955,
+        "second_best_score": 4.520979214196761,
+        "minimum_is_unique": true,
+        "parameters": {
+          "muE_p": 1.063303509342234,
+          "muI_p": 3.0796680710554467,
+          "muE2_p": 3.9340057406043045,
+          "muI2_p": -0.4695136649322394,
+          "sigE_p": 1.9440398764142213,
+          "sigI_p": 1.3543530194222195,
+          "sigE2_p": 0.16237994621442284,
+          "sigI2_p": 1.3530657822772778,
+          "AE_p": 0.44966516768742154,
+          "AI_p": 4.04309452644837,
+          "AE2_p": 0.0033891688201000713,
+          "AI2_p": 0.5364148486890042,
+          "TrE_p": 0.1,
+          "TrI_p": 0.10000012038955446,
+          "TrE2_p": 0.0,
+          "TrI2_p": 2.17850548035461,
+          "TdE_p": 7.698226823536951,
+          "TdI_p": 23.298028614478756,
+          "TdE2_p": 0.0,
+          "TdI2_p": 14.236469591408227,
+          "mE_p": 0.1595607698728569,
+          "mI_p": 0.04040663195778599,
+          "mE2_p": 4.9999927361895375,
+          "mI2_p": 0.4019207845605958,
+          "bE_p": -0.043049727662089775,
+          "bI_p": -0.024448746597164856,
+          "bE2_p": 9.999988625283962,
+          "bI2_p": 0.11964121833942003,
+          "Ti_p": 36.30834091897545
+        },
+        "quality_control": {
+          "res_aiod": 237.51810265831145,
+          "res_spfr_pc": 0.8988979386251491,
+          "res_mov_pc": 2.43178715061204,
+          "res_spfr_nc": 0.7925922638772366,
+          "res_mov_nc": 2.048626905167256,
+          "mse_spfr_pc": 1.9153687337841163,
+          "mse_mov_pc": 10.411292072914854,
+          "mse_spfr_nc": 1.2859195456912087,
+          "mse_mov_nc": 5.584618855699897,
+          "taylor_idx": false,
+          "nan_idx": false,
+          "exitflag": 1.0
+        }
+      },
+      "diagT4OptTab": {
+        "shape": [
+          1000,
+          131
+        ],
+        "parameter_column_count": 29,
+        "parameter_columns": [
+          "muE_p",
+          "muI_p",
+          "muE2_p",
+          "muI2_p",
+          "sigE_p",
+          "sigI_p",
+          "sigE2_p",
+          "sigI2_p",
+          "AE_p",
+          "AI_p",
+          "AE2_p",
+          "AI2_p",
+          "TrE_p",
+          "TrI_p",
+          "TrE2_p",
+          "TrI2_p",
+          "TdE_p",
+          "TdI_p",
+          "TdE2_p",
+          "TdI2_p",
+          "mE_p",
+          "mI_p",
+          "mE2_p",
+          "mI2_p",
+          "bE_p",
+          "bI_p",
+          "bE2_p",
+          "bI2_p",
+          "Ti_p"
+        ],
+        "selected_row_zero_based": 595,
+        "selected_row_one_based": 596,
+        "selected_score": 4.182622009046911,
+        "second_best_score": 4.254842676161702,
+        "minimum_is_unique": true,
+        "parameters": {
+          "muE_p": 3.067541511081048,
+          "muI_p": 5.086167500482699,
+          "muE2_p": 1.454162232787251,
+          "muI2_p": 0.8580139555454717,
+          "sigE_p": 3.631435926860551,
+          "sigI_p": 1.536719268334793,
+          "sigE2_p": 0.12140935315130064,
+          "sigI2_p": 0.19363925149692848,
+          "AE_p": 0.24894043517704445,
+          "AI_p": 3.5876000066565927,
+          "AE2_p": 0.9328077086784189,
+          "AI2_p": 0.1626187047944375,
+          "TrE_p": 0.1,
+          "TrI_p": 0.1091123950709432,
+          "TrE2_p": 0.0,
+          "TrI2_p": 34.668533330997086,
+          "TdE_p": 7.612031594892835,
+          "TdI_p": 17.330119261129653,
+          "TdE2_p": 0.0,
+          "TdI2_p": 34.668598680942594,
+          "mE_p": 0.17182114147321412,
+          "mI_p": 0.06423110155065306,
+          "mE2_p": 4.614336219293017,
+          "mI2_p": 4.5115139951966166,
+          "bE_p": -0.0466255101257008,
+          "bI_p": -0.0299560768169164,
+          "bE2_p": -9.630195047276333,
+          "bI2_p": -0.018794777674088343,
+          "Ti_p": 34.114896081786625
+        },
+        "quality_control": {
+          "res_aiod": 151.91340519134147,
+          "res_spfr_pc": 0.6517455207023228,
+          "res_mov_pc": 2.2460370191623613,
+          "res_spfr_nc": 0.48272378502024044,
+          "res_mov_nc": 1.93658498988455,
+          "mse_spfr_pc": 1.118128014055765,
+          "mse_mov_pc": 9.80578548382253,
+          "mse_spfr_nc": 0.5476466862546534,
+          "mse_mov_nc": 6.172975695617474,
+          "taylor_idx": false,
+          "nan_idx": false,
+          "exitflag": 2.0
+        }
+      }
+    },
+    "T4_selection_status": "derived_by_applying_author_T5_objective_to_T4_tables"
+  },
+  "model_semantics": {
+    "target_component_model_verified": true,
+    "components": [
+      "E",
+      "I",
+      "E2",
+      "I2"
+    ],
+    "parameter_blocks": [
+      "mu",
+      "sigma",
+      "amplitude",
+      "Tr",
+      "Td",
+      "m",
+      "b",
+      "Ti"
+    ],
+    "parameter_count": 29,
+    "source_type_mentions_in_t4_model": {
+      "Mi1": false,
+      "Tm3": false,
+      "Mi4": false,
+      "C3": false
+    },
+    "manual_photoreceptor_to_target_delay_milliseconds": 30.0,
+    "ON_OFF_parameter_block_reordering_present": true
+  },
+  "transfer_gates": {
+    "model_package_verified": true,
+    "supporting_package_verified": true,
+    "four_tables_decoded": true,
+    "author_T5_selection_reproduced": true,
+    "author_preselected_T4_rows_available": false,
+    "E_I_E2_I2_to_MaleCNS_source_mapping_available": false,
+    "cardinal_diagonal_to_T4_subtype_mapping_available": false,
+    "independent_cell_holdout_available": false
+  },
+  "files_verified": true,
+  "T4_target_model_parameters_available": true,
+  "MaleCNS_source_kernel_transfer_authorized": false,
+  "T4_functional_candidate_authorized": false,
+  "stop_reason": "verified_target_RF_parameters_lack_MaleCNS_source_mapping",
+  "boundary": {
+    "raw_packages_ignored_and_not_committed": true,
+    "model_is_target_level_receptive_field_model": true,
+    "E_I_E2_I2_are_not_verified_MaleCNS_source_type_assignments": true,
+    "cardinal_diagonal_to_T4_subtype_mapping_not_verified": true,
+    "parameters_fit_to_averaged_cells": true,
+    "independent_cell_holdout_available": false,
+    "parameter_fit_in_this_audit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false,
+    "T5_mapping_application_forbidden": true,
+    "LPLC_and_downstream_remain_frozen": true
+  }
+}

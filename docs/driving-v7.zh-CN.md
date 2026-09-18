@@ -1564,6 +1564,19 @@ normalized state 的映射未定义，也没有独立动态 final。因此四个
 副本；故只能标记 `file_manifest_retrieved=true`、`payload_retrieved=false`、
 `files_verified=false`。归档网页元数据不能代替对 `optTables.mat` 与 MATLAB 模型代码的
 内容审计，仍不授权新动力学候选。
+随后通过执行 JavaScript 的隔离 Chrome 会话完成官方 WAF challenge，并从 Janelia 的
+短时签名 S3 URL 下载了 `modelFigure.zip`；文件大小与官方 manifest 一致，MD5 为
+`14ba0fa761a513d55cacc41610881e80`，ZIP 全成员通过完整性检查。同时获取了
+Supporting Functions 的 `supportingFunctions.zip`（file ID `30862813`，17,374 bytes，
+本地观测 MD5 `3d899bec066f152062015d159f46bc6e`）。原始包保存在 `.gitignore` 覆盖的数据目录。
+`optTables.mat` 已用 `mat-io 1.0.0` 解出四张 1000×131 表，每张包含 29 个参数列。作者
+脚本的 T5 cardinal 第 345 行确实是 `res_mov_nc + res_mov_pc` 唯一全局最小；同一规则
+外推到 T4 cardinal/diagonal 分别得到第 69/596 行，但作者脚本没有预选这两个 T4 行。
+更重要的是 `t4_simple_wrap` 的 29 参数描述四个目标受体场分量 E/I/E2/I2 的空间中心、
+宽度、幅值、rise/decay 和 Ti，并未出现 Mi1/Tm3/Mi4/C3 名称或验证两者的映射；
+cardinal/diagonal 到 T4a–d 的映射和独立细胞 holdout 也不存在。因此现在可以确认“官方
+模型包和 T4 目标级参数已验证”，但仍不能声称得到 MaleCNS source-type 动态核，也不授权
+功能候选。证据见 `artifacts/v7-unified-model-package-audit.json`。
 
 对固定提交 `fe52053d…` 的 17 个 processed T5 细胞逐文件复核后，17/17 都包含
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此

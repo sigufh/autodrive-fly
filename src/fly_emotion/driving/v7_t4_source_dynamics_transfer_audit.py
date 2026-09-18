@@ -22,11 +22,15 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     timebase_path = Path(config["timebase_evidence"])
     microstep_path = Path(config["microstep_evidence"])
     unified_path = Path(config["official_unified_model_evidence"])
+    verified_unified_path = Path(config["verified_unified_model_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
     microstep = json.loads((root / microstep_path).read_text(encoding="utf-8"))
     unified = json.loads((root / unified_path).read_text(encoding="utf-8"))
+    verified_unified = json.loads(
+        (root / verified_unified_path).read_text(encoding="utf-8")
+    )
     replay = ephys["paper_model_replay"]
     source_axes = replay["array_axes"]["inputs"]
     synthesis = replay["direction_synthesis"]
@@ -97,6 +101,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(timebase_path): _sha256(root / timebase_path),
                 str(microstep_path): _sha256(root / microstep_path),
                 str(unified_path): _sha256(root / unified_path),
+                str(verified_unified_path): _sha256(root / verified_unified_path),
             },
             "required_sources": required_sources,
             "read_only": True,
@@ -139,13 +144,36 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             },
             "recovered_manifest_consistent": manifest_consistent,
             "file_manifest_retrieved": manifest_consistent,
-            "files_verified": unified["interface_status"][
+            "prior_live_audit_files_verified": unified["interface_status"][
                 "unified_model_files_verified"
             ],
+            "files_verified": verified_unified["files_verified"],
             "payload_retrieved": recovered["payload_retrieved"],
-            "current_environment_access": (
-                "official landing, API, files API, and ndownloader returned HTTP 403"
-            ),
+            "retrieval_method": "Chrome DevTools after official WAF challenge",
+            "model_package_sha256": verified_unified["packages"]["model"][
+                "sha256"
+            ],
+            "supporting_package_sha256": verified_unified["packages"][
+                "supporting"
+            ]["sha256"],
+        },
+        "verified_unified_model_semantics": {
+            "T4_target_model_parameters_available": verified_unified[
+                "T4_target_model_parameters_available"
+            ],
+            "target_components": verified_unified["model_semantics"]["components"],
+            "source_type_mapping_available": verified_unified["transfer_gates"][
+                "E_I_E2_I2_to_MaleCNS_source_mapping_available"
+            ],
+            "cardinal_diagonal_to_subtype_mapping_available": verified_unified[
+                "transfer_gates"
+            ]["cardinal_diagonal_to_T4_subtype_mapping_available"],
+            "independent_cell_holdout_available": verified_unified["transfer_gates"][
+                "independent_cell_holdout_available"
+            ],
+            "MaleCNS_source_kernel_transfer_authorized": verified_unified[
+                "MaleCNS_source_kernel_transfer_authorized"
+            ],
         },
         "required_transfer_fields_available": fields,
         "transfer_gates": gates,
