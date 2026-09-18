@@ -3,14 +3,14 @@
     "name": "v7-timing-models-ct1-compartment-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "6a86febd965213a3e773ffbc42c9c464b8744b2f7613a9b94e2e5ab7372fa779",
+      "configs/driving-v7-timing-models-ct1-compartment-audit.yaml": "0e285324966da8473f83729dd96a1f7ac27c7269d7bd27aa9a8339ed9ff05cc6",
       "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "1931edd413b8fdfbfec1b43ca7426886040ad1a77e3f80f2b7179f90c86e0530",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "configs/driving-v7-timing-models-source-filter-audit.yaml": "fffaa64fd43a4127c056da205d1f6eb3242b84ece34e0a77bcbff57f5bd02cb4",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "0e13cd6fe1a7d4031e4b0f420e56a46135d8578f09f7b97071c43dd2f0308315"
     },
     "paper": {
-      "doi": "10.1016/j.cub.2022.07.024",
+      "doi": "10.1016/j.cub.2022.06.075",
       "pmcid": "PMC9474608",
       "title": "Excitatory and inhibitory neural dynamics jointly tune motion detection",
       "main_figure_2_circuit_target": "T4",

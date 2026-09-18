@@ -2,7 +2,7 @@ version: 1
 name: v7-timing-models-ct1-compartment-audit
 observed_on: "2026-09-18"
 paper:
-  doi: 10.1016/j.cub.2022.07.024
+  doi: 10.1016/j.cub.2022.06.075
   pmcid: PMC9474608
   title: Excitatory and inhibitory neural dynamics jointly tune motion detection
   main_figure_2_circuit_target: T4
