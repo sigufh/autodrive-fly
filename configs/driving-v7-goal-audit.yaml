@@ -88,6 +88,7 @@ evidence:
   flyvis_c3_effective_dynamics_audit: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
   c3_measured_filter_robustness: artifacts/v7-c3-measured-filter-robustness.json
   public_t4_model_source_coverage_audit: artifacts/v7-public-t4-model-source-coverage-audit.json
+  dryad_l1l2_source_dynamics_audit: artifacts/v7-dryad-l1l2-source-dynamics-audit.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json
   four_hop_scalar_precheck: artifacts/v7-four-hop-scalar-precheck.json
   lc4_position_speed_precheck: artifacts/v7-lc4-position-speed-precheck.json

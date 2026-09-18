@@ -66,6 +66,9 @@ from .driving.v7_descending_propagation_precheck import (
     evaluate_v7_descending_propagation_precheck,
 )
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
+from .driving.v7_dryad_l1l2_source_dynamics_audit import (
+    evaluate_v7_dryad_l1l2_source_dynamics_audit,
+)
 from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
 from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
@@ -462,6 +465,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-flyvis-visual-source-time-constants")
     subparsers.add_parser("v7-audit-flyvis-c3-effective-dynamics")
     subparsers.add_parser("v7-audit-public-t4-model-source-coverage")
+    subparsers.add_parser("v7-audit-dryad-l1l2-source-dynamics")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1496,6 +1500,14 @@ def main() -> None:
     if args.command == "v7-audit-public-t4-model-source-coverage":
         report = evaluate_v7_public_t4_model_source_coverage_audit(root)
         target = root / "artifacts/v7-public-t4-model-source-coverage-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-dryad-l1l2-source-dynamics":
+        report = evaluate_v7_dryad_l1l2_source_dynamics_audit(root)
+        target = root / "artifacts/v7-dryad-l1l2-source-dynamics-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

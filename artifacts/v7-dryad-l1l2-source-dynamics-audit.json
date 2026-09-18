@@ -1,0 +1,140 @@
+{
+  "protocol": {
+    "name": "v7-dryad-l1l2-source-dynamics-audit",
+    "observed_on": "2026-09-18",
+    "dependencies_sha256": {
+      "configs/driving-v7-dryad-l1l2-source-dynamics-audit.yaml": "02908a52a8464fd7d4d1c570716fa51dcee16f58f05120174dc98aff6e7b549b",
+      "src/fly_emotion/driving/v7_dryad_l1l2_source_dynamics_audit.py": "ac8aaae8cb059f39541d61b2bb884898074a3f757a10b527945388665d635098",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "a4bfaf45a0d75c0ec13feb40a9a2905b7eb9024ca3e2ad70e27593c6f56d1a3b"
+    },
+    "parameter_fit": false,
+    "external_payload_evaluated": false,
+    "runtime_modified": false
+  },
+  "dataset": {
+    "identifier": "doi:10.5061/dryad.ngf1vhj4c",
+    "dataset_id": 142959,
+    "version_id": 335185,
+    "version_number": 3,
+    "publication_date": "2024-12-17",
+    "title": "A recurrent neural circuit in Drosophila temporally sharpens visual inputs",
+    "license": "CC0-1.0",
+    "visibility": "public",
+    "api_metadata_url": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.ngf1vhj4c",
+    "api_files_url": "https://datadryad.org/api/v2/versions/335185/files?per_page=100",
+    "landing_page_url": "https://datadryad.org/dataset/doi:10.5061/dryad.ngf1vhj4c",
+    "related_software_url": "https://github.com/ClandininLab/L1L2-recurrent-feedback",
+    "file_count": 75,
+    "total_bytes": 49600989798
+  },
+  "small_file_integrity": {
+    "files": {
+      "README.md": {
+        "file_id": 3732251,
+        "bytes": 15130,
+        "publisher_reported_sha256": "fbedd08a47ba0927cf416c1a8d73bdd889e5779c309f79f94970b02c1f7f87e7",
+        "api_download_status": 401,
+        "public_stream_status": 403,
+        "local_payload_downloaded": false,
+        "local_sha256_verified": false
+      },
+      "L1L2_Metadata.xlsx": {
+        "file_id": 3732249,
+        "bytes": 195431,
+        "publisher_reported_sha256": "0c6c428b1a297fb7c63b24a6f1a6e60516320ca6bde550614639d865dcdcfcea",
+        "api_download_status": 401,
+        "public_stream_status": 403,
+        "local_payload_downloaded": false,
+        "local_sha256_verified": false
+      }
+    },
+    "publisher_reported_hashes_present": true,
+    "local_payload_hashes_verified": false,
+    "integrity_claim_boundary": "publisher_reported_SHA256_only; payload bytes were not obtained and hashes were not locally recomputed"
+  },
+  "official_scope": {
+    "measured_cell_types": [
+      "L1",
+      "L2"
+    ],
+    "imaging": "in_vivo_two_photon_voltage_imaging",
+    "response_fields": [
+      "stimulus_aligned_deltaF_over_F",
+      "processed_frame_timestamps_seconds",
+      "inter_frame_interval_seconds"
+    ],
+    "stimulus_fields": [
+      "brief_light_and_dark_flashes",
+      "natural_stimuli",
+      "stimulus_transition_timestamps_seconds",
+      "relative_luminance_zero_to_one",
+      "angular_screen_geometry_degrees"
+    ],
+    "stable_recording_identifiers_present": [
+      "seriesID",
+      "flyID",
+      "roiMask"
+    ],
+    "male_cns_mapping_present": false
+  },
+  "required_sources_by_family": {
+    "T4": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "T5": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ]
+  },
+  "covered_required_sources": [],
+  "covered_required_source_count": 0,
+  "required_source_count": 9,
+  "missing_required_sources_by_family": {
+    "T4": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "T5": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "CT1"
+    ]
+  },
+  "transfer_gates": {
+    "every_T4_source_type_measured": false,
+    "every_T5_source_type_measured": false,
+    "source_type_to_MaleCNS_mapping_available": false,
+    "local_payload_hashes_verified_before_use": false
+  },
+  "suitable_external_source_dynamics_evidence": false,
+  "authorize_source_dynamics_fit": false,
+  "advance_to_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "scientific_rejection_reason": "measures_L1_L2_not_any_required_T4_T5_source_type_and_has_no_MaleCNS_mapping",
+  "download_disposition": {
+    "large_dataset_download_authorized": false,
+    "bytes_avoided": 49600989798,
+    "reason": "official_metadata_already_establishes_zero_required_source_coverage"
+  },
+  "boundary": {
+    "official_metadata_only": true,
+    "publisher_hashes_are_not_claimed_as_locally_verified": true,
+    "download_failure_is_not_the_scientific_rejection_reason": true,
+    "no_large_payload_download": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

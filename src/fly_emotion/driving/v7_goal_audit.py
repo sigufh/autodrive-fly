@@ -112,6 +112,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     public_t4_model_source_coverage_audit = reports[
         "public_t4_model_source_coverage_audit"
     ]
+    dryad_l1l2_source_dynamics_audit = reports[
+        "dryad_l1l2_source_dynamics_audit"
+    ]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -273,6 +276,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["flyvis_c3_effective_dynamics_audit"],
                 config["evidence"]["c3_measured_filter_robustness"],
                 config["evidence"]["public_t4_model_source_coverage_audit"],
+                config["evidence"]["dryad_l1l2_source_dynamics_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -514,6 +518,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "source_dynamics_external_required_split_roles": (
                     source_dynamics_external_evidence_contract[
                         "required_split_roles"
+                    ]
+                ),
+                "Dryad_L1L2_required_source_coverage_count": (
+                    dryad_l1l2_source_dynamics_audit[
+                        "covered_required_source_count"
+                    ]
+                ),
+                "Dryad_L1L2_source_dynamics_transfer_authorized": (
+                    dryad_l1l2_source_dynamics_audit[
+                        "suitable_external_source_dynamics_evidence"
+                    ]
+                ),
+                "Dryad_L1L2_large_download_authorized": (
+                    dryad_l1l2_source_dynamics_audit["download_disposition"][
+                        "large_dataset_download_authorized"
                     ]
                 ),
                 "physical_timebase_identified": reports["timebase"]["identifiability"][

@@ -219,6 +219,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_T5_source_dynamics_authorizes_new_candidate"] is False
     assert visual["observations"]["source_dynamics_external_contract_satisfied"] is False
     assert visual["observations"]["source_dynamics_external_payload_present"] is False
+    assert visual["observations"]["Dryad_L1L2_required_source_coverage_count"] == 0
+    assert visual["observations"]["Dryad_L1L2_source_dynamics_transfer_authorized"] is False
+    assert visual["observations"]["Dryad_L1L2_large_download_authorized"] is False
     assert visual["observations"]["source_dynamics_external_required_split_roles"] == [
         "training",
         "validation",

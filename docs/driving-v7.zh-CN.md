@@ -1886,6 +1886,15 @@ Mi1/Tm3/Mi4/C3 与 T5 的 Tm1/Tm2/Tm4/Tm9/CT1 全部提供源级记录；每条�
 映射。目标 T4/T5 响应不得冒充 source kernel，外部 final 必须在模型选择前提交承诺。
 当前没有满足该 schema 的 payload，所以合同只定义解锁接口，不授权拟合或下游实验。
 
+按此合同审计 Dryad `doi:10.5061/dryad.ngf1vhj4c` 后，该候选被明确否决。官方 v3
+元数据和网页 README 将测量对象限定为 L1/L2；数据确实包含秒级帧/刺激时间戳、相对
+亮度、角度屏幕几何、ASAP2f 电压成像与 ΔF/F 字段，但 Mi1/Tm3/Mi4/C3 和
+Tm1/Tm2/Tm4/Tm9/CT1 的覆盖为 0/9，也没有 source→MaleCNS 映射。75 个文件合计
+49,600,989,798 bytes，因此不下载主数据。Dryad API 为 README 与 metadata 公布的
+SHA-256 已记录，但当前下载端点分别返回 401/403，文件字节未取得，故不把发布者哈希
+写成“本地复算通过”；科学否决只依据官方实验范围，而不依据下载失败。证据见
+`artifacts/v7-dryad-l1l2-source-dynamics-audit.json`。
+
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需
 Tm1/Tm2/Tm4/Tm9/CT1(Lo1)，九类时间常数均有限且为正。但所有类型都至少有部分模型
