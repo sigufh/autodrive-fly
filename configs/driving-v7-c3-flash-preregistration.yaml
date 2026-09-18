@@ -1,0 +1,80 @@
+version: 1
+name: v7-c3-flash-preregistration
+observed_on: "2026-09-18"
+paper:
+  doi: 10.7554/eLife.108529
+  title: Inhibitory columnar feedback neurons are involved in motion processing in Drosophila
+repository:
+  url: https://github.com/silieslab/C2C3_feedback_Henning
+  archived_revision: 745c6114b72a61dabc9389a1f024dbe22f679edf
+  checkout_head_path: data/raw/t4-c3-strf/repository/.git/HEAD
+source_data:
+  path: data/raw/t4-c3-strf/repository/Data/Figure3-SourceData1/FFFDATA_C3.mat
+  bytes: 18437984
+  git_blob_sha1: 7e22b9dfed9bdf65d8e77b6118ef6e235ab3b124
+  sha256: 4ba864b0df6e68d101ddee61836ba7bbb34c6b74116be95d7e69f97ef9ff445a
+source_code:
+  - path: data/raw/t4-c3-strf/repository/Figure3_SourceCode1_Plot_ONOFF_FlashAnalysis_C2C3.m
+    bytes: 8890
+    git_blob_sha1: 5806ba69d68642ef3a036665e47f4fdaea41bea8
+    sha256: 21930f2e70edebc1a1582df154436245dbb36b2cfa6aff7435f873cb50a7bf5c
+  - path: data/raw/t4-c3-strf/repository/subscripts/aggregate_fffall_means10Hz_BleedThruFix_v2_mh.m
+    bytes: 3682
+    git_blob_sha1: 643ea7776cdb7e06dbac7f5098caa5b48e16bddd
+    sha256: 324c4ea7141a8f7477bbf236e6201788e1fb71faf7341f2cfc85399c2088b2d4
+  - path: data/raw/t4-c3-strf/repository/subscripts/mean_cat_full.m
+    bytes: 394
+    git_blob_sha1: 493dd497c1c3e523dbe977bd3a35259530b5d466
+    sha256: a32dcb4cbca54d884d91be3a1dda63a9170528b939cb2f209473391ce043c7e8
+author_analysis_contract:
+  source_struct: xCsplitGal4
+  interpolated_rate_hz: 10
+  epoch_anchor: luminance_decrement
+  epoch_period_seconds: 10.0
+  extracted_epoch_seconds: 13.0
+  normalization: whole_recording_mean_delta_F_over_F
+  roi_exclusions: [all_zero, any_NaN]
+  roi_selection: positive_correlation_with_mean_stimulus
+  aggregation_order: repetitions_then_ROIs_within_fly_then_flies
+comparison_contract:
+  stimulus:
+    dynamic_range: [0.0, 1.0]
+    radius: -1
+    alternations: [0, 1, 0]
+    baseline_seconds: 5.0
+    ON_seconds: 5.0
+    post_seconds_available: 3.0
+  baseline_window_seconds: [-1.0, 0.0]
+  onset_peak_window_seconds: [0.0, 1.0]
+  late_plateau_window_seconds: [4.0, 5.0]
+  recovery_window_seconds: [7.0, 8.0]
+  waveform_window_seconds: [-1.0, 8.0]
+  interval_semantics: left_closed_right_open
+  model_sample_intervals_seconds: [0.005, 0.02]
+  comparison_rate_hz: 10
+  calcium_forward_time_constants_seconds: [0.2, 0.25, 0.3, 0.35]
+  inherited_minimum_correlation: 0.8
+  inherited_threshold_evidence: configs/driving-v7-c3-analytic-filter-precheck.yaml
+  require_every_model_cross_dt_correlation: true
+  require_every_model_leave_one_model_out_correlation: true
+  require_every_calcium_assumption_external_correlation: true
+  external_feature_interval: empirical_fly_2.5_to_97.5_percentile
+  no_threshold_selection_after_model_observation: true
+official_reproduction_contract:
+  stimulus:
+    dynamic_range: [0.0, 1.0]
+    radius: -1
+    alternations: [0, 1, 0]
+    baseline_seconds: 1.0
+    ON_seconds: 1.0
+    post_seconds: 1.0
+  model_sample_intervals_seconds: [0.005, 0.02]
+boundary:
+  preregistered_before_ensemble_generation: true
+  author_code_does_not_define_peak_plateau_or_recovery_thresholds: true
+  empirical_intervals_are_descriptive_not_author_thresholds: true
+  calcium_trace_is_not_membrane_voltage: true
+  flyvis_effective_response_is_not_a_MaleCNS_body_specific_kernel: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_and_LPLC_remain_frozen: true
