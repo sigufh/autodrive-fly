@@ -13,7 +13,6 @@ evidence:
   electrophysiology_config: configs/driving-v7-electrophysiology-audit.yaml
   electrophysiology_report: artifacts/v7-electrophysiology-audit.json
   workbook_kernel_report: artifacts/v7-fig3-source-kernel-audit.json
-  individual_split_report: artifacts/v7-t4-individual-split-audit.json
 required_files:
   fig3_Tm3.npy:
     id: 104816
@@ -48,6 +47,20 @@ required_files:
     shape: [2, 16, 8000]
     dtype: float64
 array_axes: [on_off, cell, time]
+ordering_notebook:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3.ipynb
+  id: 104817
+  bytes: 263853
+  md5: 7a84cb74d6a992d7d03f7a0c9a1984df
+  sha256: ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695
+complete_dataset_manifest:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json
+  bytes: 61599
+  sha256: 31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606
+  canonical_json_sha256: 3667f39fb1e82e477f23313d144e3a313c705eec35e42f07866a231e3383e239
+  file_count: 74
+  dataset_id: 104764
+  dataset_version_id: 398
 historical_manifest_observation:
   retrieved_at_utc: "2026-09-15T02:58:41.203Z"
   response_bytes: 61600
@@ -62,7 +75,7 @@ datacite_observation:
   api_url: https://api.datacite.org/dois/10.17617/3.8g
   response_status: 200
   content_url_present: false
-  object_count: 76
+  object_count: 74
   required_size_zero_based_positions:
     fig3_C3.npy: 44
     fig3_Mi1.npy: 46
@@ -82,9 +95,15 @@ retrieval_observations:
   - endpoint: https://web.archive.org/cdx/search/cdx?url=edmond.mpg.de/api/access/datafile/104816
     layer: archive_index
     result: no_capture
+  - endpoint: https://edmond-mpg-de.translate.goog/api/access/datafile/104816
+    layer: read_only_translation_proxy_to_signed_GWDG_object_URL
+    result: verified_payload_retrieved
 mirror_search:
   verified_candidate_count: 0
   adoption_rule: exact_filename_and_bytes_and_md5_and_sha256_must_all_match_frozen_manifest
+retrieval_result:
+  verified_official_payload_count: 4
+  transport: google_translate_proxy_then_signed_GWDG_object_URL
 retrieval_helper:
   path: scripts/recover_v7_edmond_fig3.py
   workflow: .github/workflows/recover-v7-edmond-fig3.yml

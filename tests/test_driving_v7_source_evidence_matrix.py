@@ -43,16 +43,24 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         )
         assert (
             report["matrix"][source]["evidence_components"][
+                "fixed_T4_split_sample_interval_milliseconds"
+            ]
+            == 1.0
+        )
+        assert (
+            report["matrix"][source]["evidence_components"][
                 "Edmond_1khz_payload_currently_verified"
             ]
-            is False
+            is True
         )
         assert (
             report["matrix"][source]["evidence_components"][
                 "Edmond_1khz_fixed_split_recompute_authorized"
             ]
-            is False
+            is True
         )
+        row = report["matrix"][source]
+        assert "T4_Fig3_verified_1khz_millivolt_array" in row["numerical_evidence_sources"]
 
 
 def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:

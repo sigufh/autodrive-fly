@@ -3,13 +3,14 @@
     "name": "v7-t4-source-identity-readiness-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-identity-readiness-audit.yaml": "f39367c2614c9a3308bc6d55965655605e8ebc319db7a0b0342a376c369886be",
-      "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "fac619fba6585f358207922f9420dc62b51d6f092db57ce26ed268a5f2acee5d",
+      "configs/driving-v7-t4-source-identity-readiness-audit.yaml": "1f06e8251930bafc7e307d3b1da37e9797ee1d4bc6f9ce5835467cc48783c365",
+      "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "f6eb35eca4e1e6417455fd7c9188347053c6e61665fc42455a99f0e654e9e8a4",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
+      "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -223,8 +224,10 @@
       "readme.txt"
     ],
     "identity_sidecars": [],
-    "complete_dataset_manifest_rechecked": false,
-    "reason": "Edmond_API_connection_timeout_during_this_audit"
+    "complete_dataset_manifest_rechecked": true,
+    "complete_dataset_file_count": 74,
+    "complete_dataset_identity_sidecar_candidates": [],
+    "reason": "verified_proxy_retrieval_of_official_Dataverse_manifest"
   },
   "source_summary": {
     "Tm3": {
@@ -327,8 +330,8 @@
   ],
   "stop_reason": "T4_millivolt_cells_have_pseudonymous_individual_identity_but_fail_fixed_kernel_robustness_mapping_and_split_role_gates",
   "boundary": {
-    "current_verified_Edmond_subset_only": true,
-    "Edmond_API_unavailable_during_identity_recheck": true,
+    "complete_Edmond_manifest_verified": true,
+    "direct_Edmond_API_unavailable_but_verified_proxy_retrieval_succeeded": true,
     "anonymous_cell_ordinals_are_not_fly_IDs": true,
     "paper_declared_one_cell_per_animal_makes_ordinals_pseudonymous_individual_keys": true,
     "pseudonymous_individual_keys_are_not_MaleCNS_body_IDs": true,

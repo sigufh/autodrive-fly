@@ -169,6 +169,11 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     for condition in ("on", "off")
                 )
             ),
+            "fixed_T4_split_sample_interval_milliseconds": (
+                t4_split["protocol"]["sample_interval_milliseconds"]
+                if family == "T4"
+                else None
+            ),
             "Edmond_1khz_payload_currently_verified": (
                 family == "T4"
                 and edmond_retrieval["gates"][
@@ -249,7 +254,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             numerical_sources.append(
                 "Kohn_Portes_whole_cell_voltage_flash_payload"
                 if source in kohn_portes_voltage_sources
-                else "T4_Fig3_millivolt_workbook"
+                else "T4_Fig3_verified_1khz_millivolt_array"
             )
         if source in gou_sources and gou_payload_local:
             numerical_sources.append("Gou_Dryad_processed_calcium")

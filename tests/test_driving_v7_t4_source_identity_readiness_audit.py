@@ -26,12 +26,14 @@ def test_T4_identity_audit_is_hash_bound_and_read_only() -> None:
     assert paper["source_cell_ordinals_are_pseudonymous_individual_keys"] is True
 
 
-def test_verified_Edmond_subset_has_no_identity_sidecar() -> None:
+def test_complete_Edmond_manifest_has_no_identity_sidecar() -> None:
     subset = json.loads(REPORT.read_text())["verified_Edmond_subset_identity_audit"]
     assert subset["file_count"] == 13
     assert subset["identity_sidecars"] == []
-    assert subset["complete_dataset_manifest_rechecked"] is False
-    assert subset["reason"] == "Edmond_API_connection_timeout_during_this_audit"
+    assert subset["complete_dataset_manifest_rechecked"] is True
+    assert subset["complete_dataset_file_count"] == 74
+    assert subset["complete_dataset_identity_sidecar_candidates"] == []
+    assert subset["reason"] == "verified_proxy_retrieval_of_official_Dataverse_manifest"
 
 
 def test_no_T4_source_passes_both_fixed_robustness_conditions() -> None:

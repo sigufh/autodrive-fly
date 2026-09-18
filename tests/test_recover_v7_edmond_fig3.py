@@ -62,6 +62,39 @@ def test_recovery_accepts_only_fully_verified_payload(tmp_path, monkeypatch) -> 
     assert (output / "source.npy").read_bytes() == payload
 
 
+def test_recovery_supports_proxy_endpoint_templates(tmp_path, monkeypatch) -> None:
+    source = tmp_path / "valid.npy"
+    np.save(source, np.arange(12, dtype=np.float64).reshape(2, 2, 3))
+    payload = source.read_bytes()
+    manifest = tmp_path / "manifest.json"
+    _manifest(manifest, payload)
+    observed_urls = []
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self, size=-1):
+            if not hasattr(self, "position"):
+                self.position = 0
+            chunk = payload[self.position : self.position + size]
+            self.position += len(chunk)
+            return chunk
+
+    def open_request(request, **_kwargs):
+        observed_urls.append(request.full_url)
+        return Response()
+
+    monkeypatch.setattr(MODULE.urllib.request, "urlopen", open_request)
+    endpoint = "https://proxy.invalid/datafile/{id}?transport=test"
+    result = MODULE.recover(manifest, tmp_path / "output", [endpoint], 1.0)
+    assert result["all_four_files_verified"] is True
+    assert observed_urls == ["https://proxy.invalid/datafile/7?transport=test"]
+
+
 def test_recovery_rejects_wrong_bytes_without_promoting_part_file(tmp_path, monkeypatch) -> None:
     source = tmp_path / "valid.npy"
     np.save(source, np.arange(12, dtype=np.float64).reshape(2, 2, 3))

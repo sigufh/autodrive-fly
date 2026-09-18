@@ -215,6 +215,9 @@ from .driving.v7_t4_crossfit_retinal_symmetry_audit import (
 from .driving.v7_t4_crossfit_sequence_identifiability import (
     evaluate_v7_t4_crossfit_sequence_identifiability,
 )
+from .driving.v7_t4_individual_split_1khz_audit import (
+    evaluate_v7_t4_individual_split_1khz_audit,
+)
 from .driving.v7_t4_individual_split_audit import evaluate_v7_t4_individual_split_audit
 from .driving.v7_t4_inhibitory_source_external_audit import (
     evaluate_v7_t4_inhibitory_source_external_audit,
@@ -509,6 +512,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-edmond-fig3-retrieval")
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
     subparsers.add_parser("v7-audit-t4-individual-split")
+    subparsers.add_parser("v7-audit-t4-individual-split-1khz")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
@@ -1492,6 +1496,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-individual-split":
         report = evaluate_v7_t4_individual_split_audit(root)
         target = root / "artifacts/v7-t4-individual-split-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t4-individual-split-1khz":
+        report = evaluate_v7_t4_individual_split_1khz_audit(root)
+        target = root / "artifacts/v7-t4-individual-split-1khz-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -132,6 +132,10 @@ v7-audit-electrophysiology:
 v7-audit-edmond-fig3-retrieval:
 	.venv/bin/autodrive-fly v7-audit-edmond-fig3-retrieval
 
+.PHONY: v7-audit-t4-individual-split-1khz
+v7-audit-t4-individual-split-1khz:
+	.venv/bin/autodrive-fly v7-audit-t4-individual-split-1khz
+
 v7-audit-timebase:
 	.venv/bin/autodrive-fly v7-audit-timebase
 

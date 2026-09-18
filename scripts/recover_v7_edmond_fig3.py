@@ -64,7 +64,11 @@ def recover(manifest_path: Path, output: Path, endpoints: list[str], timeout: fl
         attempts = []
         verified = None
         for endpoint in endpoints:
-            url = f"{endpoint.rstrip('/')}/{expected['id']}"
+            url = (
+                endpoint.format(id=expected["id"])
+                if "{id}" in endpoint
+                else f"{endpoint.rstrip('/')}/{expected['id']}"
+            )
             part = output / f".{name}.{os.getpid()}.part"
             try:
                 request = urllib.request.Request(

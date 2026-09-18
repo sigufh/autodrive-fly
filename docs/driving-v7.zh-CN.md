@@ -2168,16 +2168,25 @@ Edmond Fig. 3 的 1 kHz 原始 source 数组检索边界也已单独冻结。所
 `fig3_Tm3.npy`、`fig3_Mi1.npy`、`fig3_Mi4.npy`、`fig3_C3.npy` 均保留固定
 datafile ID、字节数、MD5、SHA-256、float64 dtype 与 `[on/off, cell, 8000 ms]`
 shape，并与此前成功下载的正式电生理审计逐项交叉核对。DataCite 仍返回 DOI、imeji
-collection 标识及 76 个对象的有序 size/format，但没有 filename、checksum 或 content URL；
-两个 Edmond 域名在 TCP 建连阶段超时，第三方回源为 HTTP 522，Wayback 没有对应
-datafile capture，当前 ignored 本地目录中也没有四个载荷。因此本轮不能执行 1 kHz
-individual split 重算。网络失败不构成科学否决；当前 10 ms 工作簿也不得插值后冒充
-1 kHz repository array。只有候选文件同时匹配固定文件名、字节数、MD5、SHA-256、dtype
-和 shape，并进一步验证数组 cell 顺序与 workbook pseudonymous individual ordinal 的对应，
-才可在完全不改 split、标签、阈值、固定分母和失败规则的前提下重算。当前仍只有
-`on:Tm3` 通过既有 split，全部下游门保持关闭。证据见
-`artifacts/v7-edmond-fig3-retrieval-audit.json`。
-历史成功返回的官方 Dataverse manifest 还保留了四个文件各自的
+collection 标识及 74 个对象的有序 size/format，但没有 filename、checksum 或 content URL；
+两个 Edmond 域名在本机 TCP 建连阶段超时。随后通过 Google Translate 的只读转发取得
+Edmond 302 响应所生成的 GWDG 24 小时签名对象 URL，并将四个数组下载到 ignored 原始数据
+目录。四个文件的字节数、MD5、SHA-256、dtype 和 shape 全部精确匹配冻结清单；未经
+翻译改写的 `fig3.ipynb` 也通过同样的历史清单校验。网络失败从未被当成科学否决，当前
+10 ms 工作簿也没有被插值或冒充为 1 kHz repository array。逐列全矩阵比较进一步证明：
+对 ON/OFF 和全部四类 source，workbook 的每列恰好等于对应数组同 ordinal 行从 0 ms
+开始的 `[::10]` 抽样，最大绝对误差仅约 `7.1e-14 mV`；每列的唯一最近数组行也都是
+同 ordinal，第二近邻最小误差仍超过 `3.87 mV`。因此 pseudonymous individual identity
+顺序得到数值验证。证据见 `artifacts/v7-edmond-fig3-retrieval-audit.json`。
+
+随后在完整 1 kHz、1,501 点响应窗上原样复用了既有 contiguous 3-cell validation folds、
+ON/OFF 符号、2.5–3.5 s baseline、1.5 s response window，以及 0.80/0.80/0.0 三个
+相关门限。结果的 pass/fail 模式与 10 ms 工作簿完全相同：仍只有 `on:Tm3` 通过，另外
+7/8 source×polarity 条件失败。所有记录个体继续进入验证分母，训练/验证 ordinal 不重叠，
+没有删异常值、改标签、调阈值或拟合参数。因此高时间分辨率排除了“10 ms 抽样导致七项
+失败”的解释，但仍不授权 T4 source fit、T4/T5 functional precheck 或任何下游推进。证据见
+`artifacts/v7-t4-individual-split-1khz-audit.json`。
+完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个
 官方域名；下载先落到 `.part`，只有通过完整 manifest 后才原子提升，远端 artifact 只保留

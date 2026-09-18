@@ -95,6 +95,8 @@ def evaluate_v7_t4_source_identity_readiness_audit(root: Path) -> dict:
     reports = {
         name: json.loads((root / path).read_text(encoding="utf-8")) for name, path in paths.items()
     }
+    retrieval_path = Path(config["edmond_retrieval_evidence"])
+    retrieval = json.loads((root / retrieval_path).read_text(encoding="utf-8"))
     ephys = reports["ephys_evidence"]
     verified_files = sorted(ephys["verified_files"])
     if verified_files != sorted(config["expected_verified_edmond_files"]):
@@ -185,6 +187,7 @@ def evaluate_v7_t4_source_identity_readiness_audit(root: Path) -> dict:
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(paper_spec["path"]): _sha256(paper_path),
                 **{str(path): _sha256(root / path) for path in paths.values()},
+                str(retrieval_path): _sha256(root / retrieval_path),
             },
             "parameter_fit": False,
             "runtime_modified": False,
@@ -212,8 +215,14 @@ def evaluate_v7_t4_source_identity_readiness_audit(root: Path) -> dict:
             "file_count": len(verified_files),
             "files": verified_files,
             "identity_sidecars": identity_sidecars,
-            "complete_dataset_manifest_rechecked": False,
-            "reason": "Edmond_API_connection_timeout_during_this_audit",
+            "complete_dataset_manifest_rechecked": True,
+            "complete_dataset_file_count": retrieval["complete_dataset_manifest"][
+                "actual_file_count"
+            ],
+            "complete_dataset_identity_sidecar_candidates": retrieval[
+                "complete_dataset_manifest"
+            ]["identity_sidecar_candidates"],
+            "reason": "verified_proxy_retrieval_of_official_Dataverse_manifest",
         },
         "source_summary": source_summary,
         "training_validation_capacity_by_source": training_validation_capacity,

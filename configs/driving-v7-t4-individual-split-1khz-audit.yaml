@@ -1,0 +1,25 @@
+version: 1
+name: v7-t4-individual-split-1khz-audit
+observed_on: "2026-09-19"
+frozen_split_protocol: configs/driving-v7-t4-individual-split-audit.yaml
+retrieval_evidence: artifacts/v7-edmond-fig3-retrieval-audit.json
+identity_evidence: artifacts/v7-t4-source-identity-readiness-audit.json
+prior_10ms_evidence: artifacts/v7-t4-individual-split-audit.json
+source_directory: data/raw/t4-fig3-source-dynamics/edmond-1khz
+source_files:
+  Tm3: fig3_Tm3.npy
+  Mi1: fig3_Mi1.npy
+  Mi4: fig3_Mi4.npy
+  C3: fig3_C3.npy
+sample_interval_milliseconds: 1.0
+boundary:
+  exact_existing_split_construction_reused: true
+  exact_existing_condition_labels_reused: true
+  exact_existing_thresholds_reused: true
+  all_recorded_individuals_retained: true
+  no_outlier_removal: true
+  no_interpolation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

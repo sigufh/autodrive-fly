@@ -3,14 +3,13 @@
     "name": "v7-edmond-fig3-1khz-retrieval-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-edmond-fig3-retrieval-audit.yaml": "7b60f8bfbad312d8f51e1ac3918c1f90b4becfdaccb23f82d2e35e7818234e05",
-      "src/fly_emotion/driving/v7_edmond_fig3_retrieval_audit.py": "83cddf3817683f214375fcdaa71283d0ecddd15e222ba0f167242044d9df190f",
+      "configs/driving-v7-edmond-fig3-retrieval-audit.yaml": "3a6b70fe78a0f14e76bd07aeed5ceefe4cfc718f6a88c11698a1e26b0275809e",
+      "src/fly_emotion/driving/v7_edmond_fig3_retrieval_audit.py": "480bd506dc28486f90c2ad7eceb101cfe36835cc011fb391cede527e6c71753c",
       "configs/driving-v7-electrophysiology-audit.yaml": "cc9c9168cb9e4190cfd05f7fafb45871555f413258caf6d1da0541f81efca53e",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
-      "artifacts/v7-t4-individual-split-audit.json": "c00a4d83b741a527e735f866baf948fb1f64f5dea84b18158a76c17861f69bcd",
-      "scripts/recover_v7_edmond_fig3.py": "3bbc882be8daf95c33d445133ffb3a81c018432a3dbc814c1d74f5f977d39d24",
-      ".github/workflows/recover-v7-edmond-fig3.yml": "c783c4ef5e82a305ba212c1b1e02da8e7561250930bca740fc1791849f806b72"
+      "scripts/recover_v7_edmond_fig3.py": "25a4f437e44b7ee7432324f2308e534f279aeeb3f211a71ac3c0e03e175f5d9d",
+      ".github/workflows/recover-v7-edmond-fig3.yml": "abf746056f3b80daaf278114c07de4e4804592635792a7c3b8c97bba943ece7f"
     },
     "parameter_fit": false,
     "target_activity_injection": false,
@@ -90,16 +89,29 @@
     "dataset_storage_identifier": "54://10.17617/3.8g",
     "source": "successful_official_Dataverse_API_response_preserved_in_local_audit_session_log"
   },
+  "complete_dataset_manifest": {
+    "path": "data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json",
+    "bytes": 61599,
+    "sha256": "31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606",
+    "canonical_json_sha256": "3667f39fb1e82e477f23313d144e3a313c705eec35e42f07866a231e3383e239",
+    "file_count": 74,
+    "dataset_id": 104764,
+    "dataset_version_id": 398,
+    "actual_file_count": 74,
+    "required_file_entries_verified": true,
+    "identity_sidecar_candidates": []
+  },
   "manifest_cross_check": {
     "all_four_files_match_prior_config_report_and_headers": true,
     "prior_payload_verification_existed": true,
-    "current_payload_retained_by_prior_audit": false
+    "current_payload_retained_by_prior_audit": false,
+    "current_payload_recovered_during_this_audit": true
   },
   "datacite_observation": {
     "api_url": "https://api.datacite.org/dois/10.17617/3.8g",
     "response_status": 200,
     "content_url_present": false,
-    "object_count": 76,
+    "object_count": 74,
     "required_size_zero_based_positions": {
       "fig3_C3.npy": 44,
       "fig3_Mi1.npy": 46,
@@ -128,11 +140,20 @@
       "endpoint": "https://web.archive.org/cdx/search/cdx?url=edmond.mpg.de/api/access/datafile/104816",
       "layer": "archive_index",
       "result": "no_capture"
+    },
+    {
+      "endpoint": "https://edmond-mpg-de.translate.goog/api/access/datafile/104816",
+      "layer": "read_only_translation_proxy_to_signed_GWDG_object_URL",
+      "result": "verified_payload_retrieved"
     }
   ],
   "mirror_search": {
     "verified_candidate_count": 0,
     "adoption_rule": "exact_filename_and_bytes_and_md5_and_sha256_must_all_match_frozen_manifest"
+  },
+  "retrieval_result": {
+    "verified_official_payload_count": 4,
+    "transport": "google_translate_proxy_then_signed_GWDG_object_URL"
   },
   "retrieval_helper": {
     "path": "scripts/recover_v7_edmond_fig3.py",
@@ -142,21 +163,313 @@
   },
   "local_candidates": {
     "fig3_Tm3.npy": {
-      "present": false,
-      "fully_verified": false
+      "present": true,
+      "bytes": 1536128,
+      "md5": "e001e3d8d3ca32ca11417965bb182616",
+      "sha256": "07797ccd2ce72d3ea89c9ca01ba641c7c92d3d6dd198d6324596f2cf16b0fb82",
+      "payload_hash_verified": true,
+      "safe_array_loaded": true,
+      "shape": [
+        2,
+        12,
+        8000
+      ],
+      "dtype": "float64",
+      "finite_fraction": 1.0,
+      "fully_verified": true
     },
     "fig3_Mi1.npy": {
-      "present": false,
-      "fully_verified": false
+      "present": true,
+      "bytes": 3072128,
+      "md5": "1964e0a136ed93f74b215f2a11dc0c25",
+      "sha256": "351e9e791a30d1c5bac329165934fbc05dbcfbb038b4b6e940e2531de1d61cce",
+      "payload_hash_verified": true,
+      "safe_array_loaded": true,
+      "shape": [
+        2,
+        24,
+        8000
+      ],
+      "dtype": "float64",
+      "finite_fraction": 1.0,
+      "fully_verified": true
     },
     "fig3_Mi4.npy": {
-      "present": false,
-      "fully_verified": false
+      "present": true,
+      "bytes": 2432128,
+      "md5": "c2ef2980d423f322730dfaded3fa5a07",
+      "sha256": "9309bb6deadcb8bf5c9a52267ef6564c314a04212af81c129b0754cf4de1f791",
+      "payload_hash_verified": true,
+      "safe_array_loaded": true,
+      "shape": [
+        2,
+        19,
+        8000
+      ],
+      "dtype": "float64",
+      "finite_fraction": 1.0,
+      "fully_verified": true
     },
     "fig3_C3.npy": {
-      "present": false,
-      "fully_verified": false
+      "present": true,
+      "bytes": 2048128,
+      "md5": "714a097178d0cc202b1a4698a95852bf",
+      "sha256": "b9118e32cfb0d22acd4da41aee6931923ea33e4dda258df2abd26fd252e21be6",
+      "payload_hash_verified": true,
+      "safe_array_loaded": true,
+      "shape": [
+        2,
+        16,
+        8000
+      ],
+      "dtype": "float64",
+      "finite_fraction": 1.0,
+      "fully_verified": true
     }
+  },
+  "ordering_notebook": {
+    "path": "data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3.ipynb",
+    "id": 104817,
+    "bytes": 263853,
+    "md5": "7a84cb74d6a992d7d03f7a0c9a1984df",
+    "sha256": "ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695",
+    "fully_verified": true
+  },
+  "array_to_workbook_identity": {
+    "comparison": "workbook column against every array row after exact [::10] sampling",
+    "conditions": {
+      "on:Tm3": {
+        "verified": true,
+        "cell_count": 12,
+        "workbook_column_labels": [
+          "Tm3-1",
+          "Tm3-2",
+          "Tm3-3",
+          "Tm3-4",
+          "Tm3-5",
+          "Tm3-6",
+          "Tm3-7",
+          "Tm3-8",
+          "Tm3-9",
+          "Tm3-10",
+          "Tm3-11",
+          "Tm3-12"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 5.92041015625,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "on:Mi1": {
+        "verified": true,
+        "cell_count": 24,
+        "workbook_column_labels": [
+          "Mi1-1",
+          "Mi1-2",
+          "Mi1-3",
+          "Mi1-4",
+          "Mi1-5",
+          "Mi1-6",
+          "Mi1-7",
+          "Mi1-8",
+          "Mi1-9",
+          "Mi1-10",
+          "Mi1-11",
+          "Mi1-12",
+          "Mi1-13",
+          "Mi1-14",
+          "Mi1-15",
+          "Mi1-16",
+          "Mi1-17",
+          "Mi1-18",
+          "Mi1-19",
+          "Mi1-20",
+          "Mi1-21",
+          "Mi1-22",
+          "Mi1-23",
+          "Mi1-24"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 5.1116943359375,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "on:Mi4": {
+        "verified": true,
+        "cell_count": 19,
+        "workbook_column_labels": [
+          "Mi4-1",
+          "Mi4-2",
+          "Mi4-3",
+          "Mi4-4",
+          "Mi4-5",
+          "Mi4-6",
+          "Mi4-7",
+          "Mi4-8",
+          "Mi4-9",
+          "Mi4-10",
+          "Mi4-11",
+          "Mi4-12",
+          "Mi4-13",
+          "Mi4-14",
+          "Mi4-15",
+          "Mi4-16",
+          "Mi4-17",
+          "Mi4-18",
+          "Mi4-19"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 4.496925354003906,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "on:C3": {
+        "verified": true,
+        "cell_count": 16,
+        "workbook_column_labels": [
+          "C3-1",
+          "C3-2",
+          "C3-3",
+          "C3-4",
+          "C3-5",
+          "C3-6",
+          "C3-7",
+          "C3-8",
+          "C3-9",
+          "C3-10",
+          "C3-11",
+          "C3-12",
+          "C3-13",
+          "C3-14",
+          "C3-15",
+          "C3-16"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 6.3753255208333,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "off:Tm3": {
+        "verified": true,
+        "cell_count": 12,
+        "workbook_column_labels": [
+          "Tm3-1",
+          "Tm3-2",
+          "Tm3-3",
+          "Tm3-4",
+          "Tm3-5",
+          "Tm3-6",
+          "Tm3-7",
+          "Tm3-8",
+          "Tm3-9",
+          "Tm3-10",
+          "Tm3-11",
+          "Tm3-12"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 4.33349609375,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "off:Mi1": {
+        "verified": true,
+        "cell_count": 24,
+        "workbook_column_labels": [
+          "Mi1-1",
+          "Mi1-2",
+          "Mi1-3",
+          "Mi1-4",
+          "Mi1-5",
+          "Mi1-6",
+          "Mi1-7",
+          "Mi1-8",
+          "Mi1-9",
+          "Mi1-10",
+          "Mi1-11",
+          "Mi1-12",
+          "Mi1-13",
+          "Mi1-14",
+          "Mi1-15",
+          "Mi1-16",
+          "Mi1-17",
+          "Mi1-18",
+          "Mi1-19",
+          "Mi1-20",
+          "Mi1-21",
+          "Mi1-22",
+          "Mi1-23",
+          "Mi1-24"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 5.0506591796875,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "off:Mi4": {
+        "verified": true,
+        "cell_count": 19,
+        "workbook_column_labels": [
+          "Mi4-1",
+          "Mi4-2",
+          "Mi4-3",
+          "Mi4-4",
+          "Mi4-5",
+          "Mi4-6",
+          "Mi4-7",
+          "Mi4-8",
+          "Mi4-9",
+          "Mi4-10",
+          "Mi4-11",
+          "Mi4-12",
+          "Mi4-13",
+          "Mi4-14",
+          "Mi4-15",
+          "Mi4-16",
+          "Mi4-17",
+          "Mi4-18",
+          "Mi4-19"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 3.878580729166657,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      },
+      "off:C3": {
+        "verified": true,
+        "cell_count": 16,
+        "workbook_column_labels": [
+          "C3-1",
+          "C3-2",
+          "C3-3",
+          "C3-4",
+          "C3-5",
+          "C3-6",
+          "C3-7",
+          "C3-8",
+          "C3-9",
+          "C3-10",
+          "C3-11",
+          "C3-12",
+          "C3-13",
+          "C3-14",
+          "C3-15",
+          "C3-16"
+        ],
+        "array_downsample_phase_samples": 0,
+        "array_downsample_stride_samples": 10,
+        "maximum_diagonal_absolute_error_millivolts": 7.105427357601002e-14,
+        "minimum_second_best_absolute_error_millivolts": 6.001790364583272,
+        "every_workbook_column_unique_nearest_array_row_at_same_ordinal": true
+      }
+    },
+    "all_four_sources_both_conditions_verified": true
   },
   "workbook_resolution_boundary": {
     "sample_interval_milliseconds": 10.0,
@@ -164,18 +477,11 @@
     "workbook_is_repository_array": false,
     "interpolation_authorized_as_repository_array": false
   },
-  "prior_fixed_individual_split": {
-    "passing_source_conditions": [
-      "on:Tm3"
-    ],
-    "all_source_conditions_passed": false,
-    "rules_may_change_for_full_resolution_recompute": false
-  },
   "gates": {
     "frozen_four_file_manifest_complete": true,
-    "all_four_local_payloads_hash_and_structure_verified": false,
-    "one_khz_cell_order_identity_verified": false,
-    "full_resolution_fixed_split_recompute_authorized": false,
+    "all_four_local_payloads_hash_and_structure_verified": true,
+    "one_khz_cell_order_identity_verified": true,
+    "full_resolution_fixed_split_recompute_authorized": true,
     "scientific_source_rejected": false,
     "workbook_interpolation_authorized": false
   },
@@ -183,7 +489,7 @@
   "authorize_T4_T5_functional_precheck": false,
   "advance_to_LPLC_mechanism_repair": false,
   "advance_to_vehicle_experiments": false,
-  "stop_reason": "verified_1khz_payload_not_currently_available_and_array_to_workbook_identity_order_unverified",
+  "stop_reason": null,
   "boundary": {
     "network_failure_is_not_scientific_rejection": true,
     "ten_millisecond_workbook_is_not_one_khz_payload": true,

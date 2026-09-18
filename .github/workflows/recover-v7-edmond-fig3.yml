@@ -21,6 +21,7 @@ jobs:
           python scripts/recover_v7_edmond_fig3.py \
             --manifest artifacts/v7-edmond-fig3-retrieval-audit.json \
             --output /tmp/v7-edmond-fig3 \
+            --endpoint 'https://edmond-mpg-de.translate.goog/api/access/datafile/{id}?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en' \
             --endpoint https://edmond.mpg.de/api/access/datafile \
             --endpoint https://edmond.mpdl.mpg.de/api/access/datafile \
             --endpoint https://data.mpg.de/api/access/datafile \

@@ -7,7 +7,7 @@
       "src/fly_emotion/driving/v7_source_type_average_mapping_contract.py": "c38a309bb2cb3738c9716c049c173294a141779374656eee04b58347a548db8d",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "1bf4f7ee6c6caacc761740749a45070d8e7ba7c921e7a92db5a9beb62a559a5e",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "4bb19a7e8dbb722ad656244741251be42ac8791d29ee29b1098e54b15311c766",
-      "artifacts/v7-t4-source-identity-readiness-audit.json": "8c3e529ca8fabed6909ab63e82e93266fedbd45a1aa41e1d508709241f8b4ddb",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "789bc5dedce9f7d1079740d4b230ded020ba51e974ae83555249ada2b972e2e2",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6ad662680474eedb36611ee3a8b66f481cd4f41db3450b330321a68924705b5e"
     },
     "parameter_fit": false,

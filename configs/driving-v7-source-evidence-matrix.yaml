@@ -4,7 +4,7 @@ observed_on: "2026-09-19"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 evidence:
   t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
-  t4_individual_split: artifacts/v7-t4-individual-split-audit.json
+  t4_individual_split: artifacts/v7-t4-individual-split-1khz-audit.json
   edmond_fig3_retrieval: artifacts/v7-edmond-fig3-retrieval-audit.json
   behnia_t4_fast: artifacts/v7-behnia-t4-fast-source-audit.json
   t4_inhibitory_external: artifacts/v7-t4-inhibitory-source-external-audit.json

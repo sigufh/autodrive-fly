@@ -92,7 +92,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_identity_readiness_audit = reports[
         "t4_source_identity_readiness_audit"
     ]
-    t4_individual_split_audit = reports["t4_individual_split_audit"]
+    t4_individual_split_1khz_audit = reports["t4_individual_split_1khz_audit"]
     edmond_fig3_retrieval_audit = reports["edmond_fig3_retrieval_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     t4_inhibitory_source_external_audit = reports[
@@ -305,7 +305,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["source_type_temporal_identifiability"],
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
                 config["evidence"]["t4_source_identity_readiness_audit"],
-                config["evidence"]["t4_individual_split_audit"],
+                config["evidence"]["t4_individual_split_1khz_audit"],
                 config["evidence"]["edmond_fig3_retrieval_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
@@ -586,15 +586,25 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "T4_individual_split_passing_source_conditions": [
                     f"{condition}:{source}"
-                    for condition, details in t4_individual_split_audit[
+                    for condition, details in t4_individual_split_1khz_audit[
                         "conditions"
                     ].items()
                     for source, result in details["sources"].items()
                     if result["passed"]
                 ],
                 "T4_all_individual_split_gates_passed": (
-                    t4_individual_split_audit[
+                    t4_individual_split_1khz_audit[
                         "all_source_condition_individual_split_gates_passed"
+                    ]
+                ),
+                "T4_individual_split_sample_interval_milliseconds": (
+                    t4_individual_split_1khz_audit["protocol"][
+                        "sample_interval_milliseconds"
+                    ]
+                ),
+                "T4_1khz_split_pass_fail_pattern_changed_from_10ms": (
+                    t4_individual_split_1khz_audit["comparison_to_10ms"][
+                        "pass_fail_pattern_changed"
                     ]
                 ),
                 "Edmond_Fig3_frozen_four_file_manifest_complete": (

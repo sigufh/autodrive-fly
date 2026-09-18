@@ -25,6 +25,7 @@ ephys_evidence: artifacts/v7-electrophysiology-audit.json
 kernel_evidence: artifacts/v7-fig3-source-kernel-audit.json
 robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
 external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+edmond_retrieval_evidence: artifacts/v7-edmond-fig3-retrieval-audit.json
 expected_verified_edmond_files:
   - readme.txt
   - fig1.ipynb
@@ -40,8 +41,8 @@ expected_verified_edmond_files:
   - fig3_Tm3.npy
   - fig3_led.npy
 boundary:
-  current_verified_Edmond_subset_only: true
-  Edmond_API_unavailable_during_identity_recheck: true
+  complete_Edmond_manifest_verified: true
+  direct_Edmond_API_unavailable_but_verified_proxy_retrieval_succeeded: true
   anonymous_cell_ordinals_are_not_fly_IDs: true
   paper_declared_one_cell_per_animal_makes_ordinals_pseudonymous_individual_keys: true
   pseudonymous_individual_keys_are_not_MaleCNS_body_IDs: true

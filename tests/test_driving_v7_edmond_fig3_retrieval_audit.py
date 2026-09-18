@@ -45,27 +45,42 @@ def test_four_file_manifest_is_exact_and_cross_checked() -> None:
     assert history["response_sha256"] == (
         "a61613ae5a62f25b07c5a961a967effab74ff68fbade90aae740536ce192c54a"
     )
+    manifest = report["complete_dataset_manifest"]
+    assert manifest["actual_file_count"] == 74
+    assert manifest["canonical_json_sha256"] == (
+        "3667f39fb1e82e477f23313d144e3a313c705eec35e42f07866a231e3383e239"
+    )
+    assert manifest["required_file_entries_verified"] is True
+    assert manifest["identity_sidecar_candidates"] == []
 
 
 def test_network_unavailability_does_not_become_scientific_rejection() -> None:
     report = json.loads(REPORT.read_text())
     assert report["datacite_observation"]["response_status"] == 200
     assert report["datacite_observation"]["content_url_present"] is False
+    assert report["datacite_observation"]["object_count"] == 74
     assert report["mirror_search"]["verified_candidate_count"] == 0
+    assert report["retrieval_result"]["verified_official_payload_count"] == 4
     assert report["gates"]["scientific_source_rejected"] is False
     assert report["boundary"]["network_failure_is_not_scientific_rejection"] is True
 
 
-def test_missing_payload_cannot_be_replaced_with_workbook_interpolation() -> None:
+def test_verified_payload_has_exact_workbook_identity_without_interpolation() -> None:
     report = json.loads(REPORT.read_text())
-    assert all(not item["fully_verified"] for item in report["local_candidates"].values())
+    assert all(item["fully_verified"] for item in report["local_candidates"].values())
+    assert report["ordering_notebook"]["fully_verified"] is True
+    identity = report["array_to_workbook_identity"]
+    assert identity["all_four_sources_both_conditions_verified"] is True
+    for item in identity["conditions"].values():
+        assert item["every_workbook_column_unique_nearest_array_row_at_same_ordinal"] is True
+        assert item["maximum_diagonal_absolute_error_millivolts"] <= 1e-12
+        assert item["minimum_second_best_absolute_error_millivolts"] > 1e-6
     boundary = report["workbook_resolution_boundary"]
     assert boundary["sample_interval_milliseconds"] == 10.0
     assert boundary["repository_array_interval_milliseconds"] == 1.0
     assert boundary["workbook_is_repository_array"] is False
     assert boundary["interpolation_authorized_as_repository_array"] is False
-    assert report["gates"]["full_resolution_fixed_split_recompute_authorized"] is False
-    assert report["prior_fixed_individual_split"]["passing_source_conditions"] == ["on:Tm3"]
+    assert report["gates"]["full_resolution_fixed_split_recompute_authorized"] is True
 
 
 def test_all_downstream_gates_remain_closed() -> None:

@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 import yaml
 
 from fly_emotion.driving.v7_geometry_sign import _sha256
@@ -52,6 +53,11 @@ def _inspect_candidate(path: Path, expected: dict) -> dict:
         actual["shape"] == expected["shape"] and actual["dtype"] == expected["dtype"]
     )
     return actual
+
+
+def _canonical_json_sha256(payload: dict) -> str:
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
@@ -106,13 +112,102 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
         for name, expected in required.items()
     }
     all_verified = all(item["fully_verified"] for item in candidates.values())
-    split = evidence["individual_split_report"]
-    prior_passes = sorted(
-        f"{condition}:{source}"
-        for condition, details in split["conditions"].items()
-        for source, result in details["sources"].items()
-        if result["passed"]
+    notebook_spec = config["ordering_notebook"]
+    notebook_path = root / notebook_spec["path"]
+    notebook_verified = (
+        notebook_path.is_file()
+        and notebook_path.stat().st_size == int(notebook_spec["bytes"])
+        and _digest(notebook_path, "md5") == notebook_spec["md5"]
+        and _sha256(notebook_path) == notebook_spec["sha256"]
     )
+    manifest_spec = config["complete_dataset_manifest"]
+    manifest_path = root / manifest_spec["path"]
+    if (
+        manifest_path.stat().st_size != int(manifest_spec["bytes"])
+        or _sha256(manifest_path) != manifest_spec["sha256"]
+    ):
+        raise ValueError("complete Edmond dataset manifest payload changed")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if _canonical_json_sha256(manifest) != manifest_spec["canonical_json_sha256"]:
+        raise ValueError("complete Edmond dataset manifest semantics changed")
+    dataset = manifest["data"]
+    version = dataset["latestVersion"]
+    files = version["files"]
+    if (
+        dataset["id"] != int(manifest_spec["dataset_id"])
+        or version["id"] != int(manifest_spec["dataset_version_id"])
+        or len(files) != int(manifest_spec["file_count"])
+    ):
+        raise ValueError("complete Edmond dataset manifest identity changed")
+    manifest_files = {item["label"]: item["dataFile"] for item in files}
+    for name, expected in required.items():
+        item = manifest_files[name]
+        if any(
+            item[key] != expected[expected_key]
+            for key, expected_key in (
+                ("id", "id"),
+                ("filesize", "bytes"),
+                ("md5", "md5"),
+                ("storageIdentifier", "storage_identifier"),
+            )
+        ):
+            raise ValueError(f"complete Edmond manifest file entry changed for {name}")
+    identity_tokens = (
+        "fly",
+        "animal",
+        "recording",
+        "specimen",
+        "individual",
+        "subject",
+        "meta",
+        "manifest",
+        "index",
+    )
+    identity_sidecars = sorted(
+        name for name in manifest_files if any(token in name.lower() for token in identity_tokens)
+    )
+    workbook_path = root / evidence["workbook_kernel_report"]["protocol"]["source_file"][
+        "path"
+    ]
+    identity_matches = {}
+    condition_sheets = {"on": "Fig. 3a, left (on)", "off": "Fig. 3a, right (off)"}
+    source_names = ("Tm3", "Mi1", "Mi4", "C3")
+    for condition_index, (condition, sheet) in enumerate(condition_sheets.items()):
+        frame = pd.read_excel(workbook_path, sheet_name=sheet)
+        for source in source_names:
+            name = f"fig3_{source}.npy"
+            key = f"{condition}:{source}"
+            if not candidates[name]["fully_verified"]:
+                identity_matches[key] = {"verified": False}
+                continue
+            columns = [column for column in frame if str(column).startswith(f"{source}-")]
+            workbook_values = frame[columns].to_numpy(dtype=np.float64).T
+            array_values = np.load(payload_dir / name, allow_pickle=False)[condition_index, :, ::10]
+            errors = np.max(
+                np.abs(workbook_values[:, None, :] - array_values[None, :, :]), axis=2
+            )
+            nearest = np.argmin(errors, axis=1)
+            diagonal = np.diag(errors)
+            second_best = np.partition(errors, 1, axis=1)[:, 1]
+            identity_matches[key] = {
+                "verified": bool(
+                    np.array_equal(nearest, np.arange(len(columns)))
+                    and np.max(diagonal) <= 1e-12
+                    and np.min(second_best) > 1e-6
+                ),
+                "cell_count": len(columns),
+                "workbook_column_labels": columns,
+                "array_downsample_phase_samples": 0,
+                "array_downsample_stride_samples": 10,
+                "maximum_diagonal_absolute_error_millivolts": float(np.max(diagonal)),
+                "minimum_second_best_absolute_error_millivolts": float(
+                    np.min(second_best)
+                ),
+                "every_workbook_column_unique_nearest_array_row_at_same_ordinal": bool(
+                    np.array_equal(nearest, np.arange(len(columns)))
+                ),
+            }
+    identity_verified = all(item["verified"] for item in identity_matches.values())
     return {
         "protocol": {
             "name": config["name"],
@@ -130,34 +225,48 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
         "dataset": config["dataset"],
         "frozen_file_manifest": required,
         "historical_manifest_observation": config["historical_manifest_observation"],
+        "complete_dataset_manifest": {
+            **manifest_spec,
+            "actual_file_count": len(files),
+            "required_file_entries_verified": True,
+            "identity_sidecar_candidates": identity_sidecars,
+        },
         "manifest_cross_check": {
             "all_four_files_match_prior_config_report_and_headers": True,
             "prior_payload_verification_existed": True,
             "current_payload_retained_by_prior_audit": False,
+            "current_payload_recovered_during_this_audit": all_verified,
         },
         "datacite_observation": config["datacite_observation"],
         "retrieval_observations": config["retrieval_observations"],
         "mirror_search": config["mirror_search"],
+        "retrieval_result": {
+            **config["retrieval_result"],
+            "verified_official_payload_count": sum(
+                item["fully_verified"] for item in candidates.values()
+            ),
+        },
         "retrieval_helper": config["retrieval_helper"],
         "local_candidates": candidates,
+        "ordering_notebook": {**notebook_spec, "fully_verified": notebook_verified},
+        "array_to_workbook_identity": {
+            "comparison": "workbook column against every array row after exact [::10] sampling",
+            "conditions": identity_matches,
+            "all_four_sources_both_conditions_verified": identity_verified,
+        },
         "workbook_resolution_boundary": {
             "sample_interval_milliseconds": 10.0,
             "repository_array_interval_milliseconds": 1.0,
             "workbook_is_repository_array": False,
             "interpolation_authorized_as_repository_array": False,
         },
-        "prior_fixed_individual_split": {
-            "passing_source_conditions": prior_passes,
-            "all_source_conditions_passed": split[
-                "all_source_condition_individual_split_gates_passed"
-            ],
-            "rules_may_change_for_full_resolution_recompute": False,
-        },
         "gates": {
             "frozen_four_file_manifest_complete": True,
             "all_four_local_payloads_hash_and_structure_verified": all_verified,
-            "one_khz_cell_order_identity_verified": False,
-            "full_resolution_fixed_split_recompute_authorized": False,
+            "one_khz_cell_order_identity_verified": identity_verified,
+            "full_resolution_fixed_split_recompute_authorized": (
+                all_verified and identity_verified and notebook_verified
+            ),
             "scientific_source_rejected": False,
             "workbook_interpolation_authorized": False,
         },
@@ -166,9 +275,13 @@ def evaluate_v7_edmond_fig3_retrieval_audit(root: Path) -> dict:
         "advance_to_LPLC_mechanism_repair": False,
         "advance_to_vehicle_experiments": False,
         "stop_reason": (
-            "verified_1khz_payload_not_currently_available_and_array_to_workbook_identity_order_unverified"
+            "verified_1khz_payload_not_currently_available"
             if not all_verified
-            else "array_to_workbook_identity_order_still_requires_notebook_verification"
+            else (
+                "array_to_workbook_identity_order_or_notebook_unverified"
+                if not identity_verified or not notebook_verified
+                else None
+            )
         ),
         "boundary": config["boundary"],
     }
