@@ -60,6 +60,15 @@ def test_complete_dataset_and_workbook_internals_do_not_recover_missing_fields()
     assert index["dataset_file_count"] == 74
     assert index["Fig3_directory_file_count"] == 9
     assert index["Fig3_identity_or_metadata_sidecars"] == []
+    versions = report["public_dataset_version_history"]
+    assert versions["public_version_count"] == 1
+    assert versions["release_id"] == 398
+    assert versions["version"] == "1.0"
+    assert versions["internal_version_number"] == 4
+    assert versions["version_state"] == "RELEASED"
+    assert versions["file_count"] == 74
+    assert versions["older_public_payload_version_available"] is False
+    assert versions["internal_version_number_interpreted_as_public_history"] is False
     workbook = report["source_workbook_package"]
     assert workbook["hidden_sheets"] == []
     assert workbook["connection_count"] == 38

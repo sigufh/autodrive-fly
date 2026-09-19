@@ -2341,6 +2341,9 @@ cohort 重叠或互斥。记录级方向、角位置、stimulus ID、baseline �
 `edfig8.ipynb` 读取 Fig.3 source 数组；它们都直接 `np.load` 数组并沿 cell 轴求群体均值，
 没有引用 recording/animal identity sidecar。其他 notebook 也没有提供可回连 Fig.3 ordinal 的
 实验 manifest，因此跨目录复用不能补齐上述五项缺失字段。
+Edmond dataset-versions API 也只返回一个公开的 `1.0` release（version id 398、74 文件）；
+记录中的 `internalVersionNumber=4` 是仓库内部修订号，不能解释为四个可回退的公开 payload
+版本。因此没有公开旧版可用于恢复被当前 NPY 丢弃的 recording metadata。
 
 前端披露也按这个边界拆开：`/api/v7/status` 只读取并逐依赖哈希验证
 `artifacts/v7-goal-audit.json`，不实例化 v7 或改变 `/api/driving/*`。页面把当前运行的

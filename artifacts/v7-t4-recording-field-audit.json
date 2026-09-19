@@ -3,8 +3,8 @@
     "name": "v7-t4-fig3-recording-field-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-recording-field-audit.yaml": "6e64c9995a19d227bca390a4b6d4bc9007cb45e584a88e5df2913c1ee0b65326",
-      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "1491d85497038c94d65e525fa548de9f748be7e6dd4d0239d2e63cbee59536e2",
+      "configs/driving-v7-t4-recording-field-audit.yaml": "2620f1ca8068b6194f71848ccb906b9637ad599bf6c0a138b41bd0d01e7f9cc4",
+      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "0ef5e33d8c8015a5a5c7ca5bf7d5cddc5f9180b2346279aa7eff6fadb411a4fe",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "eecc6490570ad2613157ca0fcc48e1e59bb9c03b01c2810f6ef797335ba84b19",
@@ -12,6 +12,7 @@
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx": "dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3",
       "data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json": "31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606",
+      "data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-versions.json": "97f3deecd65ff97cc0d57b696c6cd870d5e055a7be27d0ce14092005503fc766",
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e",
       "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig1.ipynb": "38e085d18eab258ef170bd395adfa6ea9aeb85e1f8501cd065037f471b9d6873",
       "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig10.ipynb": "272d9cb750599902a8e43a0cbc3585ffc3f3e77f1a91f2c0727eff69cb891e6a",
@@ -69,6 +70,16 @@
     ],
     "Fig3_directory_file_count": 9,
     "Fig3_identity_or_metadata_sidecars": []
+  },
+  "public_dataset_version_history": {
+    "public_version_count": 1,
+    "release_id": 398,
+    "version": "1.0",
+    "internal_version_number": 4,
+    "version_state": "RELEASED",
+    "file_count": 74,
+    "older_public_payload_version_available": false,
+    "internal_version_number_interpreted_as_public_history": false
   },
   "source_workbook_package": {
     "sheet_names": [
@@ -416,6 +427,7 @@
     "workbook_connection_names_are_export_labels_not_recording_metadata": true,
     "differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness": true,
     "downstream_notebook_reuse_does_not_supply_recording_identity": true,
+    "internal_version_number_is_not_public_version_count": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

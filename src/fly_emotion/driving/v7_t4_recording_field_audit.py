@@ -173,6 +173,31 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         name for name in fig3_files if identity_pattern.search(name)
     ]
 
+    versions_spec = config["dataset_versions"]
+    versions_path = root / versions_spec["path"]
+    if (
+        versions_path.stat().st_size != int(versions_spec["bytes"])
+        or _sha256(versions_path) != versions_spec["sha256"]
+    ):
+        raise ValueError("T4 Edmond dataset version history changed")
+    versions = json.loads(versions_path.read_text(encoding="utf-8"))["data"]
+    if len(versions) != int(versions_spec["expected_public_version_count"]):
+        raise ValueError("T4 Edmond public dataset version count changed")
+    released_version = versions[0]
+    if (
+        int(released_version["id"]) != int(versions_spec["expected_release_id"])
+        or float(
+            f"{released_version['versionNumber']}.{released_version['versionMinorNumber']}"
+        )
+        != float(versions_spec["expected_version"])
+        or int(released_version["internalVersionNumber"])
+        != int(versions_spec["expected_internal_version_number"])
+        or released_version["versionState"] != "RELEASED"
+        or len(released_version["files"])
+        != int(manifest_spec["expected_dataset_file_count"])
+    ):
+        raise ValueError("T4 Edmond released dataset version changed")
+
     metadata_spec = config["dataset_notebook_metadata"]
     metadata_directory = root / metadata_spec["directory"]
     metadata_manifest = {
@@ -320,6 +345,7 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
                 str(paper_spec["path"]): _sha256(paper_path),
                 str(workbook_spec["path"]): _sha256(workbook_path),
                 str(manifest_spec["path"]): _sha256(manifest_path),
+                str(versions_spec["path"]): _sha256(versions_path),
                 str(fig1_path): _sha256(root / fig1_path),
                 **{
                     str(metadata_directory / name): item["sha256"]
@@ -346,6 +372,21 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
             "Fig3_directory_files": fig3_files,
             "Fig3_directory_file_count": len(fig3_files),
             "Fig3_identity_or_metadata_sidecars": fig3_identity_sidecars,
+        },
+        "public_dataset_version_history": {
+            "public_version_count": len(versions),
+            "release_id": int(released_version["id"]),
+            "version": (
+                f"{released_version['versionNumber']}."
+                f"{released_version['versionMinorNumber']}"
+            ),
+            "internal_version_number": int(
+                released_version["internalVersionNumber"]
+            ),
+            "version_state": released_version["versionState"],
+            "file_count": len(released_version["files"]),
+            "older_public_payload_version_available": False,
+            "internal_version_number_interpreted_as_public_history": False,
         },
         "source_workbook_package": {
             "sheet_names": sheet_names,

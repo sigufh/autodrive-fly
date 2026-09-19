@@ -49,6 +49,14 @@ dataset_manifest:
     - fig3_T4v.npy
     - fig3_Tm3.npy
     - fig3_led.npy
+dataset_versions:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-versions.json
+  bytes: 61248
+  sha256: 97f3deecd65ff97cc0d57b696c6cd870d5e055a7be27d0ce14092005503fc766
+  expected_public_version_count: 1
+  expected_release_id: 398
+  expected_version: 1.0
+  expected_internal_version_number: 4
 dataset_notebook_metadata:
   directory: data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks
   expected_file_count: 16
@@ -123,6 +131,7 @@ boundary:
   workbook_connection_names_are_export_labels_not_recording_metadata: true
   differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness: true
   downstream_notebook_reuse_does_not_supply_recording_identity: true
+  internal_version_number_is_not_public_version_count: true
   no_threshold_label_split_denominator_or_failure_rule_change: true
   no_parameter_fit: true
   no_target_activity_injection: true
