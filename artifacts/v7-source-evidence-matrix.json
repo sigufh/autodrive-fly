@@ -32,7 +32,7 @@
       "artifacts/v7-arenz-t5-source-dynamics-audit.json": "a1442bf2ea0f8bf82929594bc25aa9f6915be3c4bf4e7099a225a4b635d88a14",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
       "artifacts/v7-source-type-average-mapping-contract.json": "010e93dd621f5b87068709f254ef6364580939ee1318e4e09ebd31c138c16126",
-      "artifacts/v7-tm9-coordinate-identifiability-audit.json": "560aef5fd0a5e216e940073fc6cc0471c30ae2cb563e0334ffa5a5fc887c9758"
+      "artifacts/v7-tm9-coordinate-identifiability-audit.json": "cbcbfd56b8f330b84f6bc56c8b57685dc1a3fa61719c2b078705e833bed07a46"
     },
     "parameter_fit": false,
     "runtime_modified": false

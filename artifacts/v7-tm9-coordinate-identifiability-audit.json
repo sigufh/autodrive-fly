@@ -3,11 +3,12 @@
     "name": "v7-tm9-coordinate-identifiability-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "e9bfcc5f37c76babc6495a82e9ccb2809d5247e88835066b1abb384fa26718a0",
-      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "c2d07f217a55521102965b2629608575453ca3cf4d39ee44e41d111b726a69be",
+      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "00f80bd4997f9ce080e89605fde4d6d9aec4bd8cf7d7304f58730e91e0c187ae",
+      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "e6b446d4ccf0a7ca7cf19a7c8ef7b3d098ee9a84210582ddbc59f13d5e2b6da2",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/raw/malecns-v1.0/connectome-weights.feather": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1",
+      "data/raw/malecns-v1.0/syn-partners.feather": "959d8ef4173b35382a3e6acfaf5167c795b6d10b877572d146af04e1b487bc07",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
@@ -104,6 +105,37 @@
     ],
     "raw_noncanonical_incoming_bodies_with_annotations": [],
     "canonical_filter_removed_coordinate_support": false
+  },
+  "synapse_level_evidence": {
+    "schema": [
+      "x_pre",
+      "y_pre",
+      "z_pre",
+      "body_pre",
+      "conf_pre",
+      "x_post",
+      "y_post",
+      "z_post",
+      "body_post",
+      "conf_post",
+      "primary_post"
+    ],
+    "target_incoming_rows": 49,
+    "target_outgoing_rows": 140,
+    "target_incoming_unique_bodies": 22,
+    "target_outgoing_unique_bodies": 75,
+    "incoming_primary_post_counts": {
+      "LOP(L)": 1,
+      "ME(L)": 41,
+      "Optic-unspecified(L)": 7
+    },
+    "outgoing_primary_post_counts": {
+      "ME(L)": 21,
+      "Optic-unspecified(L)": 119
+    },
+    "optic_column_ROI_field_present": false,
+    "coordinate_fields_are_tissue_xyz_not_optic_hex": true,
+    "native_optic_hex_recovered": false
   },
   "Tm9_population": {
     "body_count": 1771,
@@ -261,6 +293,8 @@
     "occupied_candidate_coordinates_are_not_overwritten": true,
     "no_nearest_neighbor_or_same_type_coordinate_imputation": true,
     "skeleton_xyz_is_not_optic_hex": true,
+    "synapse_xyz_is_not_optic_hex": true,
+    "coarse_primary_ROI_is_not_columnar_retinotopy": true,
     "latest_public_release_is_still_v1_0": true,
     "current_official_annotation_object_matches_frozen_release": true,
     "authenticated_live_Clio_annotation_is_not_claimed": true,

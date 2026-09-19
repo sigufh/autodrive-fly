@@ -59,6 +59,27 @@ def test_post_hoc_candidates_conflict_and_are_occupied() -> None:
     assert report["candidate_validation_gates"]["native_outgoing_candidate_unoccupied"] is False
 
 
+def test_synapse_level_table_has_only_coarse_ROI_and_tissue_coordinates() -> None:
+    report = json.loads(REPORT.read_text())
+    synapses = report["synapse_level_evidence"]
+    assert synapses["target_incoming_rows"] == 49
+    assert synapses["target_outgoing_rows"] == 140
+    assert synapses["target_incoming_unique_bodies"] == 22
+    assert synapses["target_outgoing_unique_bodies"] == 75
+    assert synapses["incoming_primary_post_counts"] == {
+        "LOP(L)": 1,
+        "ME(L)": 41,
+        "Optic-unspecified(L)": 7,
+    }
+    assert synapses["outgoing_primary_post_counts"] == {
+        "ME(L)": 21,
+        "Optic-unspecified(L)": 119,
+    }
+    assert synapses["optic_column_ROI_field_present"] is False
+    assert synapses["coordinate_fields_are_tissue_xyz_not_optic_hex"] is True
+    assert synapses["native_optic_hex_recovered"] is False
+
+
 def test_Tm9_coordinate_remains_unidentified_and_all_downstream_gates_stay_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert report["Tm9_population"]["one_hop_unlocated_count"] == 1

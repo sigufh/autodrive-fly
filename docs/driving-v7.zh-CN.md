@@ -2188,6 +2188,10 @@ Reviewed/Traced 的 `Tm9_L`，位于 canonical graph，但原生 optic-hex 为�
 `2177e246…`，HTTP ETag/MD5 `50a77187…`）。因此 `532266` 在最新公开 release 中仍是
 reviewed `Tm9_L` 且原生 `assignedOlHex1/2` 为空。该结论仅覆盖公开 release；需要认证的
 实时 Clio 编辑状态未被声称为已审计。
+本地官方 `syn-partners` 逐突触表也已针对 `532266` 核验：49 个入突触、140 个出突触，
+其 `primary_post` 只有 `ME(L)`、`LOP(L)` 和 `Optic-unspecified(L)` 粗 ROI；表结构只含
+突触前后 tissue xyz、body、置信度与粗 ROI，没有 optic-column ROI 或 assigned optic hex。
+因此逐突触位置同样不能被换算或冒充成原生柱坐标，Tm9 映射门保持关闭。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

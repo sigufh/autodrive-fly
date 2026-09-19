@@ -144,6 +144,17 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
     if skeleton["node_count"] != int(skeleton_spec["node_count"]):
         raise ValueError("Tm9 target skeleton node count changed")
 
+    partner_spec = config["synapse_partners"]
+    partner_path = root / partner_spec["path"]
+    if (
+        partner_path.stat().st_size != int(partner_spec["bytes"])
+        or _sha256(partner_path) != partner_spec["sha256"]
+    ):
+        raise ValueError("MaleCNS synapse-partner file changed")
+    partners = dataset.dataset(root / partner_path, format="feather")
+    if partners.schema.names != partner_spec["expected_schema"]:
+        raise ValueError("MaleCNS synapse-partner schema changed")
+
     columns = [
         "bodyId",
         "group",
@@ -161,6 +172,42 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
         root / annotation_path, columns=columns, memory_map=True
     ).to_pandas()
     body_id = int(config["target_body_id"])
+    incoming_synapses = partners.to_table(
+        filter=dataset.field("body_post") == body_id
+    ).to_pandas()
+    outgoing_synapses = partners.to_table(
+        filter=dataset.field("body_pre") == body_id
+    ).to_pandas()
+    incoming_roi_counts = {
+        str(key): int(value)
+        for key, value in incoming_synapses["primary_post"]
+        .astype(object)
+        .value_counts()
+        .sort_index()
+        .items()
+    }
+    outgoing_roi_counts = {
+        str(key): int(value)
+        for key, value in outgoing_synapses["primary_post"]
+        .astype(object)
+        .value_counts()
+        .sort_index()
+        .items()
+    }
+    partner_checks = {
+        "target_incoming_rows": len(incoming_synapses),
+        "target_outgoing_rows": len(outgoing_synapses),
+        "target_incoming_unique_bodies": int(incoming_synapses["body_pre"].nunique()),
+        "target_outgoing_unique_bodies": int(outgoing_synapses["body_post"].nunique()),
+    }
+    for name, value in partner_checks.items():
+        if value != int(partner_spec[f"expected_{name}"]):
+            raise ValueError(f"Tm9 synapse-partner count changed: {name}")
+    if (
+        incoming_roi_counts != partner_spec["expected_incoming_primary_post"]
+        or outgoing_roi_counts != partner_spec["expected_outgoing_primary_post"]
+    ):
+        raise ValueError("Tm9 synapse-partner ROI distribution changed")
     target_rows = annotations.loc[annotations["bodyId"].eq(body_id)]
     if len(target_rows) != 1:
         raise ValueError("Tm9 target annotation is not unique")
@@ -381,6 +428,7 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
                 str(manifest_path): _sha256(root / manifest_path),
                 str(annotation_path): _sha256(root / annotation_path),
                 str(raw_connections_path): _sha256(root / raw_connections_path),
+                str(partner_spec["path"]): _sha256(partner_path),
                 str(Path(config["adjacency_raw"])): _sha256(
                     root / config["adjacency_raw"]
                 ),
@@ -435,6 +483,15 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
                 raw_noncanonical_annotated
             ),
             "canonical_filter_removed_coordinate_support": False,
+        },
+        "synapse_level_evidence": {
+            "schema": partners.schema.names,
+            **partner_checks,
+            "incoming_primary_post_counts": incoming_roi_counts,
+            "outgoing_primary_post_counts": outgoing_roi_counts,
+            "optic_column_ROI_field_present": False,
+            "coordinate_fields_are_tissue_xyz_not_optic_hex": True,
+            "native_optic_hex_recovered": False,
         },
         "Tm9_population": population,
         "candidate_diagnostics": candidate_rows,
