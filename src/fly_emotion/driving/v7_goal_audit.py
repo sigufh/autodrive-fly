@@ -2291,6 +2291,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "contribution_layers"
                 ],
                 "v7_status_is_offline_only": True,
+                "controlled_vision_evidence_boundaries_disclosed": True,
+                "disclosed_boundary_fields": [
+                    "nine_source_contract_complete",
+                    "Mi4_C3_independent_numeric_voltage_candidate_count",
+                    "T5_voltage_field_counts",
+                    "T5_record_specific_stimulus_logs_available",
+                    "T5_generator_defaults_used_as_record_fields",
+                ],
             },
         },
     ]
@@ -2474,6 +2482,18 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "tests",
                 "docs/driving-v7.zh-CN.md",
                 "apps/web/src/components/DrivingPanel.tsx",
+            ],
+        },
+        {
+            "requirement": "8.disclose_controlled_vision_evidence_boundaries",
+            "status": "passed",
+            "evidence": [
+                config["interface_disclosure"]["status_endpoint"],
+                config["interface_disclosure"]["frontend_panel"],
+                config["interface_disclosure"]["frontend_types"],
+                config["evidence"]["source_evidence_matrix"],
+                config["evidence"]["kohn_portes_stimulus_provenance_audit"],
+                config["evidence"]["mi4_c3_whole_cell_candidate_audit"],
             ],
         },
         {

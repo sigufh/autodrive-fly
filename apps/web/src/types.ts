@@ -42,5 +42,14 @@ export type DrivingEvent = ({ type: 'driving_state' } & DrivingState) | { type: 
 export type V7Status = {
   version: 'v7-experimental'; source: 'hash-verified-offline-goal-audit'; current_stage: string; objective_complete: boolean; deployment_enabled: boolean; default_runtime_changed: boolean; audit_sha256: string;
   gates: { T4_T5_direction_and_ON_OFF: boolean; LPLC1_near_collision: boolean; LPLC2_radial_opponency: boolean; LC4_angular_speed: boolean; EPG_PEN_PEG_heading: boolean; PFL3_DNa_transparent_mapping: boolean; causal_visual_navigation: boolean; external_final: boolean };
+  evidence_boundaries: {
+    nine_source_contract_complete: boolean;
+    Mi4_C3_direct_numeric_voltage_candidates: string[];
+    Mi4_C3_independent_numeric_voltage_candidate_count: number;
+    T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
+    T5_record_specific_stimulus_logs_available: boolean;
+    T5_generator_defaults_used_as_record_fields: boolean;
+    T5_stimulus_provenance_complete: boolean;
+  };
   contributions: { upper_planner: { status: string; active_in_default_runtime: boolean }; fly_local_core: { status: string; active_v7_in_default_runtime: boolean }; engineering_executor: { status: string; v7_deployment_enabled: boolean } };
 }

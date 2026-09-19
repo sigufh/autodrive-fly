@@ -111,6 +111,29 @@ def _verified_v7_status(root: Path) -> dict:
                 "causal_visual_navigation": checks[4]["observations"]["stage1_pass"],
                 "external_final": checks[7]["observations"]["external_final_evaluated"],
             },
+            "evidence_boundaries": {
+                "nine_source_contract_complete": visual[
+                    "source_evidence_matrix_all_nine_complete"
+                ],
+                "Mi4_C3_direct_numeric_voltage_candidates": visual[
+                    "Mi4_C3_direct_numeric_voltage_candidates"
+                ],
+                "Mi4_C3_independent_numeric_voltage_candidate_count": len(
+                    visual["Mi4_C3_independent_numeric_voltage_candidates"]
+                ),
+                "T5_voltage_field_counts": visual[
+                    "T5_voltage_modality_field_counts"
+                ],
+                "T5_record_specific_stimulus_logs_available": visual[
+                    "Kohn_Portes_record_specific_stimulus_logs_available"
+                ],
+                "T5_generator_defaults_used_as_record_fields": visual[
+                    "Kohn_Portes_generator_defaults_used_as_record_fields"
+                ],
+                "T5_stimulus_provenance_complete": visual[
+                    "Kohn_Portes_stimulus_provenance_complete"
+                ],
+            },
         }
     except HTTPException:
         raise

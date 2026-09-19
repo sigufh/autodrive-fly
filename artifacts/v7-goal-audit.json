@@ -4,7 +4,7 @@
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "1862d2de58aec33c72059878bdf918f9a3e0c8351d51750ce39fe6063a6ee9dc",
-      "src/fly_emotion/driving/v7_goal_audit.py": "4714a47eb1c00d4de178a0eae518eb66e69e1a31d5c46a1bacc1e93d2289610a",
+      "src/fly_emotion/driving/v7_goal_audit.py": "5d034a7692f4547a787681dffcd509178964bade4a7fbad5557a8a40161445db",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -159,9 +159,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "58f00a85cd2a80c0eda74b7501fc7f1d744b281425f962cce0e45afd9d22b75c",
-      "apps/web/src/components/DrivingPanel.tsx": "c7ffc01aca26cc7f128c9d50b0523850294b13e36612d39246fbf5ccfced0010",
-      "apps/web/src/types.ts": "9aec636dcf74d3d7af78eaf408092f865405b5737e3449eb07755085c7316276",
+      "apps/api/src/fly_emotion_api/main.py": "387d37a0cc4c156235a55e81ab03ddcd2e16068beeb47653f336f66ef987f65c",
+      "apps/web/src/components/DrivingPanel.tsx": "a34f7b913aa7b6b89b09c161255ae0fd7ea3a2120737de1796b8dbd6f4157436",
+      "apps/web/src/types.ts": "36cb22bdfc13d7db8247e94433099ec5606800271faea134a0dd4c4bb64f80e2",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -1530,7 +1530,15 @@
           "fly_local_core",
           "engineering_executor"
         ],
-        "v7_status_is_offline_only": true
+        "v7_status_is_offline_only": true,
+        "controlled_vision_evidence_boundaries_disclosed": true,
+        "disclosed_boundary_fields": [
+          "nine_source_contract_complete",
+          "Mi4_C3_independent_numeric_voltage_candidate_count",
+          "T5_voltage_field_counts",
+          "T5_record_specific_stimulus_logs_available",
+          "T5_generator_defaults_used_as_record_fields"
+        ]
       }
     }
   ],
@@ -1750,6 +1758,18 @@
         "tests",
         "docs/driving-v7.zh-CN.md",
         "apps/web/src/components/DrivingPanel.tsx"
+      ]
+    },
+    {
+      "requirement": "8.disclose_controlled_vision_evidence_boundaries",
+      "status": "passed",
+      "evidence": [
+        "apps/api/src/fly_emotion_api/main.py",
+        "apps/web/src/components/DrivingPanel.tsx",
+        "apps/web/src/types.ts",
+        "artifacts/v7-source-evidence-matrix.json",
+        "artifacts/v7-kohn-portes-stimulus-provenance-audit.json",
+        "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json"
       ]
     },
     {

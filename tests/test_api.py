@@ -44,6 +44,20 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert status["contributions"]["fly_local_core"][
         "active_v7_in_default_runtime"
     ] is False
+    boundaries = status["evidence_boundaries"]
+    assert boundaries["nine_source_contract_complete"] is False
+    assert boundaries["Mi4_C3_direct_numeric_voltage_candidates"] == [
+        "Groschner_2022"
+    ]
+    assert boundaries["Mi4_C3_independent_numeric_voltage_candidate_count"] == 0
+    assert boundaries["T5_voltage_field_counts"] == {
+        "aggregated_full_field_OFF_flash": 7,
+        "raw_white_noise": 8,
+        "raw_drifting_grating": 9,
+    }
+    assert boundaries["T5_record_specific_stimulus_logs_available"] is False
+    assert boundaries["T5_generator_defaults_used_as_record_fields"] is False
+    assert boundaries["T5_stimulus_provenance_complete"] is False
 
 
 def test_autonomy_status_alias_matches_hash_verified_v7_status() -> None:

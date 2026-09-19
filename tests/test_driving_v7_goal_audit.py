@@ -27,8 +27,19 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "engineering_executor",
     ]
     assert disclosure["v7_status_is_offline_only"] is True
+    assert disclosure["controlled_vision_evidence_boundaries_disclosed"] is True
+    assert disclosure["disclosed_boundary_fields"] == [
+        "nine_source_contract_complete",
+        "Mi4_C3_independent_numeric_voltage_candidate_count",
+        "T5_voltage_field_counts",
+        "T5_record_specific_stimulus_logs_available",
+        "T5_generator_defaults_used_as_record_fields",
+    ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
+    assert checklist["8.disclose_controlled_vision_evidence_boundaries"]["status"] == (
+        "passed"
+    )
     topology = report["checks"][6]["observations"]
     assert topology["strict_degree_preserving_control_complete"] is False
     assert topology["strict_visual_target_degree_preserving_control_constructed"] is True
