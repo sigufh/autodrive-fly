@@ -465,7 +465,8 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"][
         "MaleCNS_Tm9_532266_native_coordinate_still_missing_current_release"
     ] is True
-    assert visual["observations"]["MaleCNS_CT1_columnar_Lo1_retinotopy_available"] is False
+    assert visual["observations"]["MaleCNS_CT1_columnar_Lo1_retinotopy_available"] is True
+    assert visual["observations"]["MaleCNS_CT1_complete_official_LO_column_coverage"] is False
     assert visual["observations"]["source_evidence_matrix_all_nine_complete"] is False
     assert visual["observations"]["source_evidence_matrix_authorizes_fit"] is False
     assert visual["observations"]["source_evidence_matrix_T4_local_millivolt_count"] == 4

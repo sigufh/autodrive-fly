@@ -4,9 +4,9 @@
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
       "configs/driving-v7-source-type-average-mapping-contract.yaml": "699a5f1198517e9756d1917a780a8ca4bff686b9a0ad6f09d5e24f29a3b2654e",
-      "src/fly_emotion/driving/v7_source_type_average_mapping_contract.py": "e0aed309fb2e54ba63ed591d61e20453f4608ff30cec387a2286d574bc135716",
+      "src/fly_emotion/driving/v7_source_type_average_mapping_contract.py": "61a50955dd01dac1d04e9b3dd9c61914f8f6a736444d2d600a20b90beabd5bf3",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "966a213beab749f57d714842dc124d7d6f0961270fe0500b6327790f25cd99bb",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "93930b2292413e6c6a2a2abc6e97efc25b64480cb9ab0d454ac2a5d889dc1569",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "eecc6490570ad2613157ca0fcc48e1e59bb9c03b01c2810f6ef797335ba84b19",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8"
     },
@@ -174,7 +174,7 @@
   "authorize_T4_T5_functional_precheck": false,
   "advance_to_LPLC_mechanism_repair": false,
   "advance_to_vehicle_experiments": false,
-  "stop_reason": "CT1_allowed_payload_and_columnar_Lo1_mapping_gates_incomplete",
+  "stop_reason": "CT1_allowed_payload_and_single_body_coordinate_mapping_gates_incomplete",
   "boundary": {
     "type_average_is_a_modeling_declaration_not_recording_body_identity": true,
     "one_population_kernel_is_shared_across_exact_same_type_bodies": true,

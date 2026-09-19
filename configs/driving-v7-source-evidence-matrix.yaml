@@ -33,6 +33,7 @@ evidence:
   type_average_mapping: artifacts/v7-source-type-average-mapping-contract.json
   tm9_coordinate_identifiability: artifacts/v7-tm9-coordinate-identifiability-audit.json
   malecns_synapse_column: artifacts/v7-malecns-synapse-column-audit.json
+  malecns_CT1_columnar: artifacts/v7-malecns-ct1-columnar-audit.json
 source_order: [Mi1, Tm3, Mi4, C3, Tm1, Tm2, Tm4, Tm9, CT1]
 source_family:
   Mi1: T4

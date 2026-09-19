@@ -75,6 +75,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     type_average_mapping = evidence["type_average_mapping"]["source_mappings"]
     tm9_coordinate = evidence["tm9_coordinate_identifiability"]
     malecns_synapse_column = evidence["malecns_synapse_column"]
+    malecns_ct1_columnar = evidence["malecns_CT1_columnar"]
 
     c3_numerical = bool(evidence["c3_dynamics"]["C3_STRF_numerical_data_verified"])
     c3_ids = bool(evidence["c3_dynamics"]["C3_dataset"]["fly_count"] > 0)
@@ -383,6 +384,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Tm9"
                 and tm9_coordinate["latest_public_release_check"][
                     "current_object_matches_frozen_local_annotation"
+                ]
+            ),
+            "CT1_native_per_synapse_Lo1_columnar_retinotopy_available": (
+                source == "CT1"
+                and malecns_ct1_columnar[
+                    "CT1_per_synapse_Lo1_columnar_retinotopy_available"
+                ]
+            ),
+            "CT1_complete_official_LO_column_coverage": (
+                source == "CT1"
+                and malecns_ct1_columnar[
+                    "CT1_complete_official_LO_column_coverage"
                 ]
             ),
             "Kohn_Portes_full_repository_recording_id_upper_bound": (

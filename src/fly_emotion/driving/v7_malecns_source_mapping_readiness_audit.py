@@ -39,6 +39,8 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
     synapse_column_path = Path(config["official_synapse_column_evidence"])
     synapse_column = json.loads((root / synapse_column_path).read_text(encoding="utf-8"))
+    ct1_columnar_path = Path(config["official_CT1_columnar_evidence"])
+    ct1_columnar = json.loads((root / ct1_columnar_path).read_text(encoding="utf-8"))
     expected_types = {
         source
         for family in contract["required_families"].values()
@@ -173,6 +175,7 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 str(ONE_HOP_IMPLEMENTATION): _sha256(root / ONE_HOP_IMPLEMENTATION),
                 str(contract_path): _sha256(root / contract_path),
                 str(synapse_column_path): _sha256(root / synapse_column_path),
+                str(ct1_columnar_path): _sha256(root / ct1_columnar_path),
             },
             "MaleCNS_release": manifest["datasets"]["malecns"]["release"],
             "parameter_fit": False,
@@ -186,7 +189,17 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
             "sides": ["L", "R"],
             "one_body_per_side": True,
             "one_hop_global_centroid_available": True,
-            "columnar_Lo1_retinotopy_available": False,
+            "columnar_Lo1_retinotopy_available": ct1_columnar[
+                "CT1_per_synapse_Lo1_columnar_retinotopy_available"
+            ],
+            "single_body_column_coordinate_available": False,
+            "complete_official_LO_column_coverage": ct1_columnar[
+                "CT1_complete_official_LO_column_coverage"
+            ],
+            "per_body_Lo1_column_counts": {
+                body_id: body["Lo1_column_union"]["column_count"]
+                for body_id, body in ct1_columnar["CT1_bodies"].items()
+            },
         },
         "mapping_gates": gates,
         "MaleCNS_type_average_body_sets_available": exact_type_sets,

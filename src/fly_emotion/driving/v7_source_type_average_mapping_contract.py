@@ -101,7 +101,7 @@ def evaluate_v7_source_type_average_mapping_contract(root: Path) -> dict:
         "stop_reason": (
             None
             if complete
-            else "CT1_allowed_payload_and_columnar_Lo1_mapping_gates_incomplete"
+            else "CT1_allowed_payload_and_single_body_coordinate_mapping_gates_incomplete"
         ),
         "boundary": config["boundary"],
     }

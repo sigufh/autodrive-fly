@@ -32,7 +32,7 @@ def test_eight_voltage_sources_have_explicit_exact_type_average_mapping() -> Non
         assert row["broadcast_rule"] == ("one_population_mean_kernel_to_all_exact_same_type_bodies")
 
 
-def test_incomplete_retinotopy_and_CT1_payload_keep_mapping_contract_closed() -> None:
+def test_CT1_payload_and_mapping_declaration_keep_contract_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert (
         report["source_mappings"]["Tm9"]["gates"]["complete_columnar_retinotopy_available"] is True

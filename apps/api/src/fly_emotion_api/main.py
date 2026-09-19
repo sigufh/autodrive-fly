@@ -176,6 +176,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "CT1_direct_experimental_voltage_candidate_found": visual[
                     "CT1_direct_experimental_voltage_candidate_found"
                 ],
+                "Tm9_official_synapse_coordinate": visual[
+                    "MaleCNS_Tm9_532266_official_synapse_coordinate"
+                ],
+                "CT1_per_synapse_Lo1_columnar_retinotopy_available": visual[
+                    "MaleCNS_CT1_columnar_Lo1_retinotopy_available"
+                ],
+                "CT1_complete_official_LO_column_coverage": visual[
+                    "MaleCNS_CT1_complete_official_LO_column_coverage"
+                ],
             },
         }
     except HTTPException:

@@ -77,6 +77,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["CT1_audited_candidate_count"] == 11
     assert boundaries["CT1_incremental_2025_2026_candidate_count"] == 3
     assert boundaries["CT1_direct_experimental_voltage_candidate_found"] is False
+    assert boundaries["Tm9_official_synapse_coordinate"] == [15, 2]
+    assert boundaries["CT1_per_synapse_Lo1_columnar_retinotopy_available"] is True
+    assert boundaries["CT1_complete_official_LO_column_coverage"] is False
 
 
 def test_autonomy_status_alias_matches_hash_verified_v7_status() -> None:

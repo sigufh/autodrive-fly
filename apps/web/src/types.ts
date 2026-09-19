@@ -65,6 +65,9 @@ export type V7Status = {
     CT1_audited_candidate_count: number;
     CT1_incremental_2025_2026_candidate_count: number;
     CT1_direct_experimental_voltage_candidate_found: boolean;
+    Tm9_official_synapse_coordinate: [number, number];
+    CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean;
+    CT1_complete_official_LO_column_coverage: boolean;
   };
   contributions: { upper_planner: { status: string; active_in_default_runtime: boolean }; fly_local_core: { status: string; active_v7_in_default_runtime: boolean }; engineering_executor: { status: string; v7_deployment_enabled: boolean } };
 }

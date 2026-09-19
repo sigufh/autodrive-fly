@@ -148,6 +148,66 @@ def decode_minishard_index(
     return result
 
 
+def list_shard_keys(payload: bytes, spec: ShardingSpec) -> set[int]:
+    """List every uint64 key stored in one complete shard payload."""
+
+    if len(payload) < spec.shard_index_size:
+        raise ValueError("shard payload is shorter than its fixed index")
+    keys: set[int] = set()
+    for minishard in range(1 << spec.minishard_bits):
+        relative_start, relative_end = struct.unpack_from(
+            "<QQ", payload, minishard * 16
+        )
+        if relative_start == relative_end:
+            continue
+        start = spec.shard_index_size + relative_start
+        end = spec.shard_index_size + relative_end
+        if end > len(payload):
+            raise ValueError("minishard index extends beyond shard payload")
+        entries = decode_minishard_index(
+            payload[start:end],
+            shard_index_size=spec.shard_index_size,
+            encoding=spec.minishard_index_encoding,
+        )
+        overlap = keys.intersection(entries)
+        if overlap:
+            raise ValueError(f"duplicate keys across minishards: {sorted(overlap)}")
+        keys.update(entries)
+    return keys
+
+
+def read_all_shard_values(payload: bytes, spec: ShardingSpec) -> dict[int, bytes]:
+    """Decode every keyed value from one complete shard payload."""
+
+    if len(payload) < spec.shard_index_size:
+        raise ValueError("shard payload is shorter than its fixed index")
+    result: dict[int, bytes] = {}
+    for minishard in range(1 << spec.minishard_bits):
+        relative_start, relative_end = struct.unpack_from(
+            "<QQ", payload, minishard * 16
+        )
+        if relative_start == relative_end:
+            continue
+        start = spec.shard_index_size + relative_start
+        end = spec.shard_index_size + relative_end
+        if end > len(payload):
+            raise ValueError("minishard index extends beyond shard payload")
+        entries = decode_minishard_index(
+            payload[start:end],
+            shard_index_size=spec.shard_index_size,
+            encoding=spec.minishard_index_encoding,
+        )
+        overlap = result.keys() & entries.keys()
+        if overlap:
+            raise ValueError(f"duplicate keys across minishards: {sorted(overlap)}")
+        for key, (data_start, data_size) in entries.items():
+            data_end = data_start + data_size
+            if data_end > len(payload):
+                raise ValueError("data value extends beyond shard payload")
+            result[key] = _decode(payload[data_start:data_end], spec.data_encoding)
+    return result
+
+
 def read_sharded_value(
     key: int,
     spec: ShardingSpec,

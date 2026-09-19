@@ -1,0 +1,74 @@
+version: 1
+name: v7-malecns-ct1-columnar-audit
+observed_on: "2026-09-19"
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+CT1_bodies:
+  10009: {instance: CT1_L, soma_side: L, optic_lobe_side: R}
+  10157: {instance: CT1_R, soma_side: R, optic_lobe_side: L}
+synapse_annotation_info:
+  path: data/raw/malecns-v1.0/optic-column-pins/synapses-info.json
+  bytes: 9221
+  sha256: 78b5607bdf3380e037e3edd84aded38a92d6e6ece644ac9f49613d6cd18bdb7c
+optic_column_pin_info:
+  path: data/raw/malecns-v1.0/optic-column-pins/info.json
+  bytes: 4308
+  sha256: 34ec4b3404c35b02e5068014313590552832e1a9c056b08bb28a3f481a75b5a2
+relationship_shards:
+  body_pre:
+    path: data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_pre/181.shard
+    bytes: 152024604
+    sha256: 41f3fb943ea04dceb368fc38fa5133ccf72c8af144773707ffef358c43e660f8
+    etag_md5: 7006c1b6c24e6bce801b497c17ad67fd
+  body_post:
+    path: data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_post/126.shard
+    bytes: 137838503
+    sha256: baf981bedb6b812e282be1bfa224c1e4cd602e17c3ffdc3d534868f146556549
+    etag_md5: ffd3253f3ab16f39bcd4db13428e869a
+LO_column_shards:
+  L:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_L_column_segment/0.shard
+    bytes: 6667568
+    sha256: 2239834c70541d2fb5b806a5066813d89216a5e9632337b7f29f937adc162faf
+  R:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_R_column_segment/0.shard
+    bytes: 6678667
+    sha256: 8b0337cc0271732f575c9ee2d44e5cada9c977ac10dacf240ed6944a66340999
+official_layer_semantics:
+  repository: https://github.com/reiserlab/male-drosophila-visual-system-connectome-code
+  tag: v1.0
+  commit: c69c85dfc2bf6755be8ab1cdf43013a1397c58bc
+  query_source:
+    path: data/raw/malecns-v1.0/official-code-v1.0/src/queries/webpage_queries.py
+    bytes: 11019
+    sha256: 7ff41846745835dda79692742fc7b266fad822bc3f02acb95bc80c6685fb23e3
+  optic_layer_1_label: LO1
+expected:
+  official_LO_column_count: {L: 867, R: 875}
+  bodies:
+    10009:
+      total_synapses: {body_pre: 188515, body_post: 82705}
+      Lo1_synapses: {body_pre: 105140, body_post: 39643}
+      Lo1_columns: {body_pre: 855, body_post: 868, union: 868, intersection: 855}
+      missing_official_LO_columns: 7
+    10157:
+      total_synapses: {body_pre: 177665, body_post: 75837}
+      Lo1_synapses: {body_pre: 91721, body_post: 34126}
+      Lo1_columns: {body_pre: 749, body_post: 799, union: 802, intersection: 746}
+      missing_official_LO_columns: 65
+  bilateral:
+    observed_column_intersection_count: 792
+    observed_column_union_count: 878
+    official_bilateral_column_intersection_count: 861
+    official_bilateral_column_union_count: 881
+boundary:
+  structural_connectome_evidence_only: true
+  per_synapse_column_and_layer_not_single_body_centroid: true
+  actual_CT1_coverage_is_not_promoted_to_full_official_LO_coverage: true
+  no_missing_columns_are_imputed: true
+  no_tissue_xyz_conversion: true
+  does_not_supply_experimental_voltage: true
+  does_not_link_external_recordings_to_MaleCNS_bodies: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

@@ -148,12 +148,18 @@ from .driving.v7_lplc1_near_collision_precheck import (
 from .driving.v7_lplc2_phenotype import evaluate_v7_lplc2_phenotype
 from .driving.v7_lplc2_position_coverage import evaluate_v7_lplc2_position_coverage
 from .driving.v7_lplc2_radial_opponency import evaluate_v7_lplc2_radial_opponency
-from .driving.v7_matulis_mi1_voltage_availability_audit import (
-    evaluate_v7_matulis_mi1_voltage_availability_audit,
-)
 from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
+from .driving.v7_malecns_ct1_columnar_audit import (
+    evaluate_v7_malecns_ct1_columnar_audit,
+)
 from .driving.v7_malecns_source_mapping_readiness_audit import (
     evaluate_v7_malecns_source_mapping_readiness_audit,
+)
+from .driving.v7_malecns_synapse_column_audit import (
+    evaluate_v7_malecns_synapse_column_audit,
+)
+from .driving.v7_matulis_mi1_voltage_availability_audit import (
+    evaluate_v7_matulis_mi1_voltage_availability_audit,
 )
 from .driving.v7_mi4_c3_whole_cell_candidate_audit import (
     evaluate_v7_mi4_c3_whole_cell_candidate_audit,
@@ -341,9 +347,6 @@ from .driving.v7_timing_models_source_filter_audit import (
 )
 from .driving.v7_tm9_coordinate_identifiability_audit import (
     evaluate_v7_tm9_coordinate_identifiability_audit,
-)
-from .driving.v7_malecns_synapse_column_audit import (
-    evaluate_v7_malecns_synapse_column_audit,
 )
 from .driving.v7_unified_model_package_audit import evaluate_v7_unified_model_package_audit
 from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audit
@@ -574,6 +577,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-ct1-experimental-voltage-boundary")
     subparsers.add_parser("v7-audit-tm9-coordinate-identifiability")
     subparsers.add_parser("v7-audit-malecns-synapse-columns")
+    subparsers.add_parser("v7-audit-malecns-ct1-columns")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1848,6 +1852,14 @@ def main() -> None:
     if args.command == "v7-audit-malecns-synapse-columns":
         report = evaluate_v7_malecns_synapse_column_audit(root)
         target = root / "artifacts/v7-malecns-synapse-column-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-malecns-ct1-columns":
+        report = evaluate_v7_malecns_ct1_columnar_audit(root)
+        target = root / "artifacts/v7-malecns-ct1-columnar-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

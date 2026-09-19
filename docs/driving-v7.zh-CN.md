@@ -2045,7 +2045,8 @@ Tm4 1670、Tm9 1771、CT1 2；soma side 全部存在。原生 optic-hex 缺失�
 一跳真实上游绝对突触权重质心规则后，Tm3 2054 个与 Tm4 缺失的 837 个均可定位，Tm9
 原本剩 1 个 body 无法由该几何规则定位；后续官方 synapse-column 审计已将该 body 从
 最终未定位集合中恢复。CT1 是左右各一个覆盖整个 M10/Lo1 的巨型神经元，左右 body
-集合可确认，但单个全局质心不是逐柱 Lo1 retinotopy。更重要的是，另一只实验果蝇的 ROI
+集合可确认；单个全局质心不是逐柱 Lo1 retinotopy，但后续官方逐突触 column/layer 审计已
+恢复 Lo1 的柱级结构。更重要的是，另一只实验果蝇的 ROI
 不能被指派为某个 MaleCNS body；只有外部 payload 明确声明 type-average 时，才可广播到
 对应类型集合。因此连接组可补齐 exact type/body 与 side 子字段，却不能凭空补齐
 recording→body、CT1 柱坐标或实验 split。证据见
@@ -2191,7 +2192,7 @@ MaleCNS 映射、预注册角色或 external-final 承诺。矩阵据此增加�
 完整 body 集合，soma side 与柱坐标只取自 MaleCNS。Mi1/Tm3/Mi4/C3 与
 Tm1/Tm2/Tm4 因 exact type/body、side 和完整坐标可满足该映射子合同；Tm9 虽可声明
 type-average，且 body `532266` 已由下述官方 synapse-column 共识恢复为 `[15,2]`；CT1
-仍既缺实验合规膜电位，也缺逐柱 Lo1
+的逐柱 Lo1 结构也由官方突触标注恢复，但仍缺实验合规膜电位和明确的 type-average
 坐标，因此九源 mapping 总门仍关闭。该声明不向任何神经元注入活动、不运行模型、不拟合
 参数。证据见 `artifacts/v7-source-type-average-mapping-contract.json`。
 
@@ -2234,6 +2235,15 @@ reviewed `Tm9_L` 且原生 `assignedOlHex1/2` 为空。该结论仅覆盖公开 
 启动 source fit、T4/T5 functional precheck、LPLC 或车辆实验。证据见
 `artifacts/v7-malecns-synapse-column-audit.json` 与
 `artifacts/v7-tm9-coordinate-identifiability-audit.json`。
+
+同一官方 annotation 还允许直接审计两个 CT1 body 的逐突触 Lo1 分布。不能按 `somaSide`
+猜测视觉半球：`10009/CT1_L` 的视觉突触主要位于 `LO(R)`，`10157/CT1_R` 主要位于
+`LO(L)`。两者在 Lo1 的输入和输出突触全部带非零 column ID；`10009` 的输入/输出分别为
+105,140/39,643 个，合计覆盖右侧 875 个官方 LO 柱中的 868 个（99.2%）；`10157` 分别为
+91,721/34,126 个，覆盖左侧 867 柱中的 802 个（92.5%）。左右实际覆盖集合交集为 792，
+Jaccard 为 0.902。故“CT1 逐突触 Lo1 columnar retinotopy 可用”成立，但两个 body 都不是
+100% 全柱覆盖，缺失的 7/65 柱不做补值；该结构证据也不提供任何实验膜电位或外部记录
+身份。证据见 `artifacts/v7-malecns-ct1-columnar-audit.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

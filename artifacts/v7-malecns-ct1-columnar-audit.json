@@ -1,0 +1,406 @@
+{
+  "protocol": {
+    "name": "v7-malecns-ct1-columnar-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-malecns-ct1-columnar-audit.yaml": "5234039c033f7029e4f9fe85e640ecde90668526fa767b8a3aafc3bdb6deea60",
+      "src/fly_emotion/driving/v7_malecns_ct1_columnar_audit.py": "1c7492d7b4fe3755e68214d36894eebdeb40f5753d0e9f6a30cf21dbf945144e",
+      "src/fly_emotion/driving/v7_neuroglancer_sharded.py": "dee6d742d9e467deb6cc8788c614e6508ff7ac5e2342792b60eada8a428b204f",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/raw/malecns-v1.0/optic-column-pins/synapses-info.json": "78b5607bdf3380e037e3edd84aded38a92d6e6ece644ac9f49613d6cd18bdb7c",
+      "data/raw/malecns-v1.0/optic-column-pins/info.json": "34ec4b3404c35b02e5068014313590552832e1a9c056b08bb28a3f481a75b5a2",
+      "data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_pre/181.shard": "41f3fb943ea04dceb368fc38fa5133ccf72c8af144773707ffef358c43e660f8",
+      "data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_post/126.shard": "baf981bedb6b812e282be1bfa224c1e4cd602e17c3ffdc3d534868f146556549",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_L_column_segment/0.shard": "2239834c70541d2fb5b806a5066813d89216a5e9632337b7f29f937adc162faf",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_R_column_segment/0.shard": "8b0337cc0271732f575c9ee2d44e5cada9c977ac10dacf240ed6944a66340999",
+      "data/raw/malecns-v1.0/official-code-v1.0/src/queries/webpage_queries.py": "7ff41846745835dda79692742fc7b266fad822bc3f02acb95bc80c6685fb23e3"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "official_layer_semantics": {
+    "repository": "https://github.com/reiserlab/male-drosophila-visual-system-connectome-code",
+    "tag": "v1.0",
+    "commit": "c69c85dfc2bf6755be8ab1cdf43013a1397c58bc",
+    "query_source": {
+      "path": "data/raw/malecns-v1.0/official-code-v1.0/src/queries/webpage_queries.py",
+      "bytes": 11019,
+      "sha256": "7ff41846745835dda79692742fc7b266fad822bc3f02acb95bc80c6685fb23e3"
+    },
+    "optic_layer_1_label": "LO1"
+  },
+  "official_LO_column_universe": {
+    "L": {
+      "column_count": 867,
+      "column_ids_sha256": "42a78022d6026edeb8fda73a5ae70a98d5c6a87c8229ff2e653c1b132a2118fd"
+    },
+    "R": {
+      "column_count": 875,
+      "column_ids_sha256": "15624cab37f04f2bbfc36fa3585d4dca82f4aacf254299d6bc354a7bfb256650"
+    }
+  },
+  "CT1_bodies": {
+    "10009": {
+      "annotation": {
+        "type": "CT1",
+        "instance": "CT1_L",
+        "soma_side": "L",
+        "optic_lobe_side_from_synapse_ROI": "R"
+      },
+      "relationship_index_provenance": {
+        "body_pre": {
+          "key": 10009,
+          "shard": 385,
+          "minishard": 0,
+          "shard_name": "181.shard",
+          "minishard_index_relative_range": [
+            150210765,
+            150216855
+          ],
+          "minishard_entry_count": 1197,
+          "compressed_data_range": [
+            1830581,
+            7077398
+          ],
+          "compressed_data_bytes": 5246817
+        },
+        "body_post": {
+          "key": 10009,
+          "shard": 294,
+          "minishard": 4,
+          "shard_name": "126.shard",
+          "minishard_index_relative_range": [
+            113174390,
+            113177174
+          ],
+          "minishard_entry_count": 835,
+          "compressed_data_range": [
+            3634230,
+            6541670
+          ],
+          "compressed_data_bytes": 2907440
+        }
+      },
+      "synapse_directions": {
+        "body_pre": {
+          "total_synapse_count": 188515,
+          "primary_roi_counts": {
+            "0": 490,
+            "44": 118128,
+            "46": 6,
+            "48": 69763,
+            "54": 23,
+            "72": 31,
+            "74": 29,
+            "76": 12,
+            "85": 33
+          },
+          "primary_roi_layer_counts": {
+            "0:0": 490,
+            "44:1": 105140,
+            "44:2": 12970,
+            "44:3": 7,
+            "44:4": 6,
+            "44:6": 5,
+            "46:1": 6,
+            "48:9": 2,
+            "48:10": 69761,
+            "54:0": 23,
+            "72:0": 31,
+            "74:0": 29,
+            "76:0": 12,
+            "85:0": 33
+          },
+          "Lo1_synapse_count": 105140,
+          "Lo1_zero_column_synapse_count": 0,
+          "Lo1_all_synapses_have_native_column": true,
+          "Lo1_column_count": 855,
+          "Lo1_column_ids_sha256": "b273e42e0babbe718c7eeb9d1e24aeb541ad34f23f714930d4dbc189fd3e40aa"
+        },
+        "body_post": {
+          "total_synapse_count": 82705,
+          "primary_roi_counts": {
+            "0": 586,
+            "40": 1,
+            "44": 51328,
+            "46": 10,
+            "48": 30734,
+            "54": 2,
+            "72": 6,
+            "74": 8,
+            "85": 30
+          },
+          "primary_roi_layer_counts": {
+            "0:0": 586,
+            "40:0": 1,
+            "44:1": 39643,
+            "44:2": 11678,
+            "44:3": 4,
+            "44:6": 3,
+            "46:1": 10,
+            "48:9": 36,
+            "48:10": 30698,
+            "54:0": 2,
+            "72:0": 6,
+            "74:0": 8,
+            "85:0": 30
+          },
+          "Lo1_synapse_count": 39643,
+          "Lo1_zero_column_synapse_count": 0,
+          "Lo1_all_synapses_have_native_column": true,
+          "Lo1_column_count": 868,
+          "Lo1_column_ids_sha256": "2ff24079d2121ed57909e1c10d06867a4d389f42d64f5b562774cdb36889cc33"
+        }
+      },
+      "Lo1_column_union": {
+        "column_count": 868,
+        "official_LO_column_count": 875,
+        "official_LO_column_fraction": 0.992,
+        "column_ids_sha256": "2ff24079d2121ed57909e1c10d06867a4d389f42d64f5b562774cdb36889cc33",
+        "missing_column_count": 7,
+        "missing_column_ids": [
+          928,
+          1703,
+          2207,
+          2409,
+          3015,
+          3116,
+          3117
+        ],
+        "missing_column_ids_sha256": "1bfd905001d894c862bb242b8896bd38d9f000ecb82c6f524ca15002a1b1261b"
+      },
+      "Lo1_column_intersection": {
+        "column_count": 855,
+        "official_LO_column_fraction": 0.9771428571428571,
+        "column_ids_sha256": "b273e42e0babbe718c7eeb9d1e24aeb541ad34f23f714930d4dbc189fd3e40aa"
+      }
+    },
+    "10157": {
+      "annotation": {
+        "type": "CT1",
+        "instance": "CT1_R",
+        "soma_side": "R",
+        "optic_lobe_side_from_synapse_ROI": "L"
+      },
+      "relationship_index_provenance": {
+        "body_pre": {
+          "key": 10157,
+          "shard": 385,
+          "minishard": 0,
+          "shard_name": "181.shard",
+          "minishard_index_relative_range": [
+            150210765,
+            150216855
+          ],
+          "minishard_entry_count": 1197,
+          "compressed_data_range": [
+            98885330,
+            103885255
+          ],
+          "compressed_data_bytes": 4999925
+        },
+        "body_post": {
+          "key": 10157,
+          "shard": 294,
+          "minishard": 4,
+          "shard_name": "126.shard",
+          "minishard_index_relative_range": [
+            113174390,
+            113177174
+          ],
+          "minishard_entry_count": 835,
+          "compressed_data_range": [
+            78643756,
+            81323246
+          ],
+          "compressed_data_bytes": 2679490
+        }
+      },
+      "synapse_directions": {
+        "body_pre": {
+          "total_synapse_count": 177665,
+          "primary_roi_counts": {
+            "0": 6035,
+            "39": 19,
+            "43": 111441,
+            "45": 3,
+            "47": 60140,
+            "71": 4,
+            "73": 7,
+            "75": 16
+          },
+          "primary_roi_layer_counts": {
+            "0:0": 6035,
+            "39:0": 19,
+            "43:1": 91721,
+            "43:2": 17817,
+            "43:3": 1794,
+            "43:4": 5,
+            "43:6": 6,
+            "43:7": 98,
+            "45:1": 3,
+            "47:8": 75,
+            "47:9": 3437,
+            "47:10": 56628,
+            "71:0": 4,
+            "73:0": 7,
+            "75:0": 16
+          },
+          "Lo1_synapse_count": 91721,
+          "Lo1_zero_column_synapse_count": 0,
+          "Lo1_all_synapses_have_native_column": true,
+          "Lo1_column_count": 749,
+          "Lo1_column_ids_sha256": "84e40710b3b86a73a1b18eb8aab5911913f71a676492f35d88f01ef9738d470c"
+        },
+        "body_post": {
+          "total_synapse_count": 75837,
+          "primary_roi_counts": {
+            "0": 3521,
+            "39": 2,
+            "43": 45963,
+            "45": 15,
+            "47": 26325,
+            "71": 1,
+            "73": 8,
+            "75": 2
+          },
+          "primary_roi_layer_counts": {
+            "0:0": 3521,
+            "39:0": 2,
+            "43:1": 34126,
+            "43:2": 10878,
+            "43:3": 918,
+            "43:4": 4,
+            "43:5": 7,
+            "43:6": 1,
+            "43:7": 29,
+            "45:1": 8,
+            "45:2": 7,
+            "47:7": 1,
+            "47:8": 114,
+            "47:9": 1842,
+            "47:10": 24368,
+            "71:0": 1,
+            "73:0": 8,
+            "75:0": 2
+          },
+          "Lo1_synapse_count": 34126,
+          "Lo1_zero_column_synapse_count": 0,
+          "Lo1_all_synapses_have_native_column": true,
+          "Lo1_column_count": 799,
+          "Lo1_column_ids_sha256": "5107f66b13a074ce66294a3c1c7eeecf46636ea97a3590a4b0e1c65bc59235a7"
+        }
+      },
+      "Lo1_column_union": {
+        "column_count": 802,
+        "official_LO_column_count": 867,
+        "official_LO_column_fraction": 0.9250288350634371,
+        "column_ids_sha256": "b6cb7e6bff403e536fd44063e3b1b5721435de0a855d3989af327f8ca1dfa21e",
+        "missing_column_count": 65,
+        "missing_column_ids": [
+          110,
+          206,
+          405,
+          502,
+          602,
+          926,
+          927,
+          928,
+          1003,
+          1005,
+          1009,
+          1026,
+          1027,
+          1028,
+          1125,
+          1126,
+          1127,
+          1128,
+          1129,
+          1227,
+          1228,
+          1229,
+          1230,
+          1231,
+          1301,
+          1327,
+          1329,
+          1330,
+          1331,
+          1332,
+          1429,
+          1430,
+          1431,
+          1432,
+          1530,
+          1531,
+          1532,
+          1533,
+          1632,
+          1633,
+          1732,
+          1733,
+          1734,
+          1834,
+          1923,
+          1933,
+          1934,
+          2034,
+          2134,
+          2135,
+          2136,
+          2234,
+          2235,
+          2236,
+          2334,
+          2335,
+          2336,
+          2337,
+          2435,
+          2437,
+          2536,
+          2537,
+          2538,
+          2638,
+          2714
+        ],
+        "missing_column_ids_sha256": "c6c9411cdd4eb98767f8a9441bd36f0d8363eecd3397e45837c92eee17e3ec0b"
+      },
+      "Lo1_column_intersection": {
+        "column_count": 746,
+        "official_LO_column_fraction": 0.8604382929642446,
+        "column_ids_sha256": "d3170d7c5cc1ad982d2a558bd4858229d2effa352ed5daa44e8a141b7ddbcecc"
+      }
+    }
+  },
+  "bilateral": {
+    "observed_column_intersection_count": 792,
+    "observed_column_union_count": 878,
+    "observed_jaccard": 0.9020501138952164,
+    "official_bilateral_column_intersection_count": 861,
+    "official_bilateral_column_union_count": 881,
+    "both_CT1_cover_fraction_of_official_common": 0.9198606271777003,
+    "observed_column_intersection_sha256": "e5225c4b2c63a4b9cc7668f8d1ae64e2fc91566b99e71048e5294003e39cf6df",
+    "observed_column_union_sha256": "56b3ae145a03e3a15e1648a5002b240d90fcfc52e5a501ee915e3ad1ac5fb7d7"
+  },
+  "CT1_per_synapse_Lo1_columnar_retinotopy_available": true,
+  "CT1_complete_official_LO_column_coverage": false,
+  "authorize_CT1_experimental_voltage_transfer": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "boundary": {
+    "structural_connectome_evidence_only": true,
+    "per_synapse_column_and_layer_not_single_body_centroid": true,
+    "actual_CT1_coverage_is_not_promoted_to_full_official_LO_coverage": true,
+    "no_missing_columns_are_imputed": true,
+    "no_tissue_xyz_conversion": true,
+    "does_not_supply_experimental_voltage": true,
+    "does_not_link_external_recordings_to_MaleCNS_bodies": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

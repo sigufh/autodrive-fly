@@ -6,7 +6,9 @@ from fly_emotion.driving.v7_neuroglancer_sharded import (
     decode_column_pin_annotations,
     decode_minishard_index,
     decode_synapse_annotations,
+    list_shard_keys,
     murmurhash3_x86_128_low64_uint64,
+    read_all_shard_values,
 )
 
 
@@ -35,6 +37,37 @@ def test_gzip_minishard_delta_decoding() -> None:
     assert decode_minishard_index(
         gzip.compress(raw), shard_index_size=16, encoding="gzip"
     ) == {10: (23, 5), 15: (31, 11)}
+
+
+def test_complete_shard_key_listing() -> None:
+    spec = ShardingSpec(0, 0, 1, minishard_index_encoding="gzip")
+    first = gzip.compress(struct.pack("<3Q", 10, 7, 5))
+    second = gzip.compress(struct.pack("<6Q", 3, 6, 1, 2, 4, 8))
+    index = struct.pack("<4Q", 0, len(first), len(first), len(first) + len(second))
+    assert list_shard_keys(index + first + second, spec) == {3, 9, 10}
+
+
+def test_complete_shard_value_decoding() -> None:
+    spec = ShardingSpec(
+        0, 0, 1, minishard_index_encoding="gzip", data_encoding="gzip"
+    )
+    values = {3: gzip.compress(b"three"), 9: gzip.compress(b"nine")}
+    data = b"".join(values.values())
+    first_index = gzip.compress(struct.pack("<3Q", 3, 0, len(values[3])))
+    second_offset = len(data) + len(first_index)
+    second_index = gzip.compress(
+        struct.pack("<3Q", 9, len(values[3]), len(values[9]))
+    )
+    index = struct.pack(
+        "<4Q",
+        len(data),
+        len(data) + len(first_index),
+        second_offset,
+        second_offset + len(second_index),
+    )
+    assert read_all_shard_values(
+        index + data + first_index + second_index, spec
+    ) == {3: b"three", 9: b"nine"}
 
 
 def test_multiple_annotation_decoders_preserve_ids_and_native_fields() -> None:

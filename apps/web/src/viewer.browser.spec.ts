@@ -27,6 +27,7 @@ test('real topology coverage, driving activity and stable scene', async ({ page 
   await expect(page.getByLabel('实时因果链')).toContainText('工程辅助')
   const v7 = page.getByLabel('v7 离线验证状态')
   await expect(v7).toContainText('当前阶段：controlled_vision')
+  await expect(v7).toContainText('MaleCNS 柱映射：Tm9 532266 → [15, 2]；CT1 Lo1 逐突触列可用，全官方 LO 覆盖不完整')
   await expect(v7).toContainText('未部署')
   await expect(v7).toContainText('T4_T5_direction_and_ON_OFF · STOP')
   await expect(v7).toContainText('九源合同：INCOMPLETE')

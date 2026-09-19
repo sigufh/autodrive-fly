@@ -8,6 +8,7 @@ body_ids: data/processed/malecns-v1.0/body_ids.npy
 graph_metadata: data/processed/malecns-v1.0/graph.json
 external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 official_synapse_column_evidence: artifacts/v7-malecns-synapse-column-audit.json
+official_CT1_columnar_evidence: artifacts/v7-malecns-ct1-columnar-audit.json
 required_sources:
   Mi1: {family: T4, count: 1773, left: 886, right: 887, native: 1762, inferred: 11, unlocated: 0}
   Tm3: {family: T4, count: 2054, left: 1017, right: 1037, native: 0, inferred: 2054, unlocated: 0}
@@ -29,6 +30,7 @@ boundary:
   explicit_type_average_declaration_is_required_from_external_payload: true
   one_hop_centroids_are_inferred_not_native_coordinates: true
   CT1_global_centroid_is_not_columnar_Lo1_retinotopy: true
+  CT1_retinotopy_uses_native_per_synapse_Lo1_columns_not_a_body_centroid: true
   incomplete_Tm9_coordinate_is_not_imputed: true
   official_synapse_column_coordinate_is_not_geometric_imputation: true
   no_parameter_fit: true

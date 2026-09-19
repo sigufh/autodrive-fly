@@ -227,6 +227,8 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
         assert components["Yang_2016_numeric_payload_found_in_successful_public_indexes"] is False
         assert components["Yang_2016_Figshare_search_accessible"] is False
     ct1 = report["matrix"]["CT1"]["evidence_components"]
+    assert ct1["CT1_native_per_synapse_Lo1_columnar_retinotopy_available"] is True
+    assert ct1["CT1_complete_official_LO_column_coverage"] is False
     assert ct1["local_numerical_spatial_calcium_only"] is True
     assert ct1["local_uncompartmented_type_average_deconvolved_calcium"] is True
     assert ct1["published_lobula_Lo1_dynamic_phenotype_only"] is True

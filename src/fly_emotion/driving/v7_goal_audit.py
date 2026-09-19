@@ -176,6 +176,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "tm9_coordinate_identifiability_audit"
     ]
     malecns_synapse_column_audit = reports["malecns_synapse_column_audit"]
+    malecns_ct1_columnar_audit = reports["malecns_CT1_columnar_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -367,6 +368,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["source_type_average_mapping_contract"],
                 config["evidence"]["tm9_coordinate_identifiability_audit"],
                 config["evidence"]["malecns_synapse_column_audit"],
+                config["evidence"]["malecns_CT1_columnar_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -1173,8 +1175,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     ]["target_native_optic_hex_still_missing_in_latest_public_release"]
                 ),
                 "MaleCNS_CT1_columnar_Lo1_retinotopy_available": (
-                    malecns_source_mapping_readiness_audit["CT1"][
-                        "columnar_Lo1_retinotopy_available"
+                    malecns_ct1_columnar_audit[
+                        "CT1_per_synapse_Lo1_columnar_retinotopy_available"
+                    ]
+                ),
+                "MaleCNS_CT1_complete_official_LO_column_coverage": (
+                    malecns_ct1_columnar_audit[
+                        "CT1_complete_official_LO_column_coverage"
                     ]
                 ),
                 "source_evidence_matrix_all_nine_complete": (

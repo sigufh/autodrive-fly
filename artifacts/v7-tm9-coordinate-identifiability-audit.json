@@ -12,12 +12,12 @@
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "966a213beab749f57d714842dc124d7d6f0961270fe0500b6327790f25cd99bb",
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "ac2e2f344b55b36f0241c1f5f3f542b5247f27bc64155ec5b3cfdfb56dc53cd0",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "93930b2292413e6c6a2a2abc6e97efc25b64480cb9ab0d454ac2a5d889dc1569",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "1a2649672ae7e78ab7607c15392225065d9a547a2736d15fb5f2e6b679f2d741",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
       "data/raw/malecns-v1.0/current-release-audit/neuprint-male-cns-datasets.json": "c47435822733836038c86b8d5f74d0138f39b3be687bfc7bf9a367b4b4c7c724",
       "data/raw/malecns-v1.0/current-release-audit/annotation-object-observation.json": "c7f91f53aff463903efc9135860b4d61d6748ce456d16cfce2e49ca4b6db00dd",
-      "artifacts/v7-malecns-synapse-column-audit.json": "3fb54ff47ef6a9c49e7635c18d81e2efe83aa19c811507d893825f786f518bf3"
+      "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6"
     },
     "parameter_fit": false,
     "runtime_modified": false
