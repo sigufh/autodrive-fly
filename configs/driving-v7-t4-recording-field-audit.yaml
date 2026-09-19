@@ -23,6 +23,19 @@ source_workbook:
     - Fig. 3c, right (off ND)
   expected_connection_count: 38
   expected_query_table_count: 38
+  expected_defined_name_count: 38
+  expected_raw_sheet_dimensions: A1:DA801
+  expected_derived_sheet_dimensions: A1:AN201
+  expected_raw_sheet_formula_count: 799
+  expected_derived_sheet_formula_count: 199
+  expected_raw_header_counts:
+    Mi9: 29
+    Tm3: 12
+    Mi1: 24
+    Mi4: 19
+    C3: 16
+  expected_derived_headers: [Time (s), gMi9, gTm3, gMi1, gMi4, gC3, Model]
+  expected_derived_T4_cell_count: 33
   expected_raw_connection_names:
     - sd_fig3a_C3_off
     - sd_fig3a_C3_on
@@ -129,6 +142,10 @@ boundary:
   paper_and_notebook_can_supply_linked_semantics_but_not_missing_per_recording_fields: true
   grating_PD_baseline_must_not_be_imputed_to_Fig3_edge_recordings: true
   workbook_connection_names_are_export_labels_not_recording_metadata: true
+  workbook_raw_sheets_contain_only_time_and_type_ordinal_headers: true
+  workbook_PD_ND_sheets_are_derived_conductance_model_and_T4_outputs: true
+  workbook_has_no_hidden_metadata_container_or_candidate_metadata_string: true
+  receptive_field_alignment_method_does_not_preserve_per_recording_positions: true
   differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness: true
   downstream_notebook_reuse_does_not_supply_recording_identity: true
   internal_version_number_is_not_public_version_count: true

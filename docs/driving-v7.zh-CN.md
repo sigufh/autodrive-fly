@@ -2423,6 +2423,13 @@ property 或 external-link payload。论文给出的 1 秒 prestimulus baseline 
 Mi4/C3 个体计数分别为 22/11/10/16 与 24/12/19/16，且没有跨图共享 ID，故不能由计数推断
 cohort 重叠或互斥。记录级方向、角位置、stimulus ID、baseline 和 cohort role 仍未恢复。
 证据见 `artifacts/v7-t4-recording-field-audit.json`。
+进一步逐单元格检查确认：两个 Fig.3a 原始输入 sheet 的首行只含 `Time (s)` 和
+`Mi9/Tm3/Mi1/Mi4/C3-ordinal`，全部公式只生成 A 列时间；四个带 PD/ND 的 sheet 则只含
+群体电导、模型和 T4 输出。38 个 defined name 都是 sheet-local 且不隐藏，包内也没有隐藏
+行列、table、comment、自定义属性或候选 recording metadata 字符串。论文所述 RF centre
+相对距离只用于跨类型 post-hoc 对齐，未发布逐记录坐标；notebook 的 4.8° 是生成 ±160 ms
+方向时移的平均小眼间角假设。因此这些内容都不能补作 source recording 的 direction、
+angular position、stimulus ID、baseline 或 cohort role；字段状态严格保持 10/15。
 此外已从同一 Edmond manifest 下载并逐 MD5 核验全部 14 个 notebook、根 README 与环境文件
 （共 16 项、5,352,395 bytes）。只有 `fig3.ipynb`、`fig5.ipynb`、`edfig7.ipynb` 和
 `edfig8.ipynb` 读取 Fig.3 source 数组；它们都直接 `np.load` 数组并沿 cell 轴求群体均值，

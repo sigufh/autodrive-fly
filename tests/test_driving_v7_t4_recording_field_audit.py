@@ -76,6 +76,19 @@ def test_complete_dataset_and_workbook_internals_do_not_recover_missing_fields()
     assert len(workbook["raw_input_connection_names"]) == 10
     assert workbook["derived_connection_count"] == 28
     assert workbook["package_metadata_members"] == []
+    assert workbook["table_members"] == []
+    assert workbook["defined_name_count"] == 38
+    assert workbook["all_defined_names_sheet_local"] is True
+    assert workbook["hidden_defined_names"] == []
+    assert workbook["raw_source_headers_are_only_time_and_type_ordinals"] is True
+    assert workbook["PD_ND_headers_are_only_on_derived_sheets"] is True
+    assert workbook["candidate_recording_metadata_strings"] == []
+    assert all(
+        item["hidden_row_count"] == 0
+        and item["hidden_column_range_count"] == 0
+        and item["formulas_restricted_to_time_column_A"] is True
+        for item in workbook["worksheet_structures"].values()
+    )
     assert workbook["recording_metadata_recovered_from_package"] is False
     notebooks = report["cross_directory_notebook_audit"]
     assert notebooks["verified_file_count"] == 16
@@ -111,6 +124,25 @@ def test_complete_dataset_and_workbook_internals_do_not_recover_missing_fields()
     }
     assert cross_figure["shared_stable_individual_identifier_present"] is False
     assert cross_figure["cohort_overlap_or_disjointness_identifiable"] is False
+    assert (
+        report["paper_evidence"][
+            "Fig3_input_classes_aligned_from_template_RF_relative_distances"
+        ]
+        is True
+    )
+    assert (
+        report["paper_evidence"][
+            "per_recording_RF_centres_or_angular_positions_published"
+        ]
+        is False
+    )
+    assert (
+        report["notebook_evidence"][
+            "source_cell_axis_averaged_before_direction_synthesis"
+        ]
+        is True
+    )
+    assert report["notebook_evidence"]["synthetic_PD_ND_shift_samples"] == 160
 
 
 def test_incomplete_fields_keep_all_downstream_gates_closed() -> None:

@@ -35,6 +35,29 @@ def _notebook_source(path: Path) -> str:
     )
 
 
+def _spreadsheet_strings(root: ElementTree.Element, namespace: dict[str, str]) -> list[str]:
+    return [
+        "".join(text.text or "" for text in item.iter(f"{{{namespace['x']}}}t"))
+        for item in root.findall("x:si", namespace)
+    ]
+
+
+def _worksheet_headers(
+    root: ElementTree.Element, shared_strings: list[str], namespace: dict[str, str]
+) -> list[str]:
+    headers = []
+    for cell in root.findall("x:sheetData/x:row[@r='1']/x:c", namespace):
+        value = cell.find("x:v", namespace)
+        if value is None:
+            continue
+        headers.append(
+            shared_strings[int(value.text)]
+            if cell.attrib.get("t") == "s"
+            else str(value.text)
+        )
+    return headers
+
+
 def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
     try:
         from pypdf import PdfReader
@@ -89,6 +112,11 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         "Bright ON and dark OFF edges travelling at a velocity of 30° s−1",
         "number of cells, each of which was recorded in a different animal",
         "The responses of individual neurons of one type were temporally aligned",
+        (
+            "The responses of different input neuron classes were aligned based on "
+            "the relative distances"
+        ),
+        "located at the respective template neuron’s receptive field centre",
         "after subtracting a 1 s prestimulus baseline",
     )
     if not all(phrase in paper_text for phrase in required_paper_phrases):
@@ -101,13 +129,24 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         or _sha256(workbook_path) != workbook_spec["sha256"]
     ):
         raise ValueError("T4 Fig. 3 source workbook changed")
+    namespace = {"x": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
     with zipfile.ZipFile(workbook_path) as workbook_archive:
         member_names = workbook_archive.namelist()
         connection_root = ElementTree.fromstring(
             workbook_archive.read("xl/connections.xml")
         )
         workbook_root = ElementTree.fromstring(workbook_archive.read("xl/workbook.xml"))
-    namespace = {"x": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+        shared_string_root = ElementTree.fromstring(
+            workbook_archive.read("xl/sharedStrings.xml")
+        )
+        worksheet_roots = [
+            ElementTree.fromstring(
+                workbook_archive.read(f"xl/worksheets/sheet{index}.xml")
+            )
+            for index in range(
+                1, len(workbook_root.findall("x:sheets/x:sheet", namespace)) + 1
+            )
+        ]
     connections = connection_root.findall("x:connection", namespace)
     connection_names = [item.attrib["name"] for item in connections]
     raw_connections = sorted(
@@ -147,6 +186,109 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         or name == "docProps/custom.xml"
         or name.startswith("xl/externalLinks/")
     )
+    table_members = sorted(
+        name for name in member_names if name.startswith("xl/tables/")
+    )
+    if package_metadata_members or table_members:
+        raise ValueError("T4 Fig. 3 workbook gained a hidden metadata container")
+    defined_names = workbook_root.findall("x:definedNames/x:definedName", namespace)
+    if (
+        len(defined_names) != int(workbook_spec["expected_defined_name_count"])
+        or any(item.attrib.get("localSheetId") is None for item in defined_names)
+        or any(item.attrib.get("hidden") == "1" for item in defined_names)
+    ):
+        raise ValueError("T4 Fig. 3 workbook defined-name structure changed")
+    shared_strings = _spreadsheet_strings(shared_string_root, namespace)
+    metadata_term_pattern = re.compile(
+        r"cohort|stimulus.?id|direction|angular|position|baseline|prestimulus|"
+        r"animal|fly|subject|specimen|recording",
+        re.I,
+    )
+    candidate_metadata_strings = sorted(
+        {value for value in shared_strings if metadata_term_pattern.search(value)}
+    )
+    sheet_structures = {}
+    for sheet, worksheet_root in zip(sheet_elements, worksheet_roots, strict=True):
+        dimension = worksheet_root.find("x:dimension", namespace)
+        headers = _worksheet_headers(worksheet_root, shared_strings, namespace)
+        formulas = worksheet_root.findall("x:sheetData/x:row/x:c/x:f", namespace)
+        formula_cells = [
+            cell.attrib["r"]
+            for cell in worksheet_root.findall("x:sheetData/x:row/x:c", namespace)
+            if cell.find("x:f", namespace) is not None
+        ]
+        rows = worksheet_root.findall("x:sheetData/x:row", namespace)
+        columns = worksheet_root.findall("x:cols/x:col", namespace)
+        sheet_structures[sheet.attrib["name"]] = {
+            "dimension": dimension.attrib["ref"] if dimension is not None else None,
+            "headers": headers,
+            "formula_count": len(formulas),
+            "formulas_restricted_to_time_column_A": all(
+                re.fullmatch(r"A[1-9][0-9]*", reference) is not None
+                for reference in formula_cells
+            ),
+            "hidden_row_count": sum(
+                row.attrib.get("hidden") == "1" for row in rows
+            ),
+            "hidden_column_range_count": sum(
+                column.attrib.get("hidden") == "1" for column in columns
+            ),
+        }
+    raw_sheet_names = sheet_names[:2]
+    derived_sheet_names = sheet_names[2:]
+    expected_raw_header_counts = workbook_spec["expected_raw_header_counts"]
+    raw_headers_exact = True
+    for name in raw_sheet_names:
+        headers = sheet_structures[name]["headers"]
+        observed_counts = {
+            source: sum(
+                re.fullmatch(rf"{re.escape(source)}-[1-9][0-9]*", header) is not None
+                for header in headers[1:]
+            )
+            for source in expected_raw_header_counts
+        }
+        raw_headers_exact = raw_headers_exact and (
+            headers[0] == "Time (s)"
+            and observed_counts == expected_raw_header_counts
+            and len(headers) == 1 + sum(expected_raw_header_counts.values())
+        )
+    derived_headers_exact = all(
+        sheet_structures[name]["headers"][:7]
+        == workbook_spec["expected_derived_headers"]
+        and sheet_structures[name]["headers"][7:]
+        == [
+            f"T4 cell #{index}"
+            for index in range(
+                1, int(workbook_spec["expected_derived_T4_cell_count"]) + 1
+            )
+        ]
+        for name in derived_sheet_names
+    )
+    if (
+        not raw_headers_exact
+        or not derived_headers_exact
+        or any(
+            sheet_structures[name]["dimension"]
+            != workbook_spec["expected_raw_sheet_dimensions"]
+            or sheet_structures[name]["formula_count"]
+            != int(workbook_spec["expected_raw_sheet_formula_count"])
+            for name in raw_sheet_names
+        )
+        or any(
+            sheet_structures[name]["dimension"]
+            != workbook_spec["expected_derived_sheet_dimensions"]
+            or sheet_structures[name]["formula_count"]
+            != int(workbook_spec["expected_derived_sheet_formula_count"])
+            for name in derived_sheet_names
+        )
+        or any(
+            not item["formulas_restricted_to_time_column_A"]
+            or item["hidden_row_count"]
+            or item["hidden_column_range_count"]
+            for item in sheet_structures.values()
+        )
+    ):
+        raise ValueError("T4 Fig. 3 workbook worksheet structure changed")
 
     manifest_spec = config["dataset_manifest"]
     manifest_path = root / manifest_spec["path"]
@@ -297,6 +439,8 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         "shift = int(4.8*fs/30)",
         "Tm3a = np.load('fig3_Tm3.npy')",
         "cells = [Mi9a, Tm3a, Mi1a, Mi4a, C3a]",
+        "Mi1_ = np.nanmean(Mi1a, axis=1)",
+        "def pdnd_shift",
     )
     if not all(snippet in notebook_source for snippet in required_notebook_snippets):
         raise ValueError("T4 Fig. 3 notebook field semantics changed")
@@ -366,6 +510,8 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
             "responses_temporally_aligned_post_hoc": True,
             "one_second_prestimulus_baseline_applies_to_PD_grating_protocol": True,
             "Fig3_edge_recording_baseline_window_declared": False,
+            "Fig3_input_classes_aligned_from_template_RF_relative_distances": True,
+            "per_recording_RF_centres_or_angular_positions_published": False,
         },
         "complete_public_dataset_index": {
             "dataset_file_count": len(dataset_files),
@@ -398,6 +544,20 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
             "raw_input_connection_names": raw_connections,
             "derived_connection_count": len(derived_connections),
             "package_metadata_members": package_metadata_members,
+            "table_members": table_members,
+            "defined_name_count": len(defined_names),
+            "all_defined_names_sheet_local": all(
+                item.attrib.get("localSheetId") is not None for item in defined_names
+            ),
+            "hidden_defined_names": [
+                item.attrib["name"]
+                for item in defined_names
+                if item.attrib.get("hidden") == "1"
+            ],
+            "worksheet_structures": sheet_structures,
+            "raw_source_headers_are_only_time_and_type_ordinals": raw_headers_exact,
+            "PD_ND_headers_are_only_on_derived_sheets": derived_headers_exact,
+            "candidate_recording_metadata_strings": candidate_metadata_strings,
             "recording_metadata_recovered_from_package": False,
         },
         "cross_directory_notebook_audit": {
@@ -423,6 +583,9 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
             "sample_rate_hz": 1000,
             "source_stimulus_axis_labels": ["on", "off"],
             "PD_ND_labels_apply_after_source_average_and_synthetic_shift": True,
+            "source_cell_axis_averaged_before_direction_synthesis": True,
+            "interommatidial_angle_degrees_is_model_shift_assumption": 4.8,
+            "synthetic_PD_ND_shift_samples": 160,
         },
         "led_evidence": {
             "shape": list(led.shape),

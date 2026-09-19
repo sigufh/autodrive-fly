@@ -9,7 +9,7 @@
       "artifacts/v7-t4-source-identity-readiness-audit.json": "84d8f73b476d98f880ad392f685a39ad2cbd755fadd66f53fa3e7bf1f5441919",
       "artifacts/v7-t4-individual-split-1khz-audit.json": "7aa8bdea01dc8eb5ac1eb65d15d1b9da6d30a9fe0caa157cd51da7f692a16998",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
-      "artifacts/v7-t4-recording-field-audit.json": "d41ba978a222109ac9aa14330981880a917ce4c09f2cd1cf379b2fa53524ec4e",
+      "artifacts/v7-t4-recording-field-audit.json": "cee90b0116dd941bd05596bedc68e306246206dc7d4cfbb754e3552dc6b3bbe4",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "e2beaa69a0d783f7952aaec27119751d4de64f0716c544b631a4ececba00b5e1",
       "artifacts/v7-behnia-t4-fast-source-availability-audit.json": "98ea8c9b0b97b4ef631f6ec0fa1531fd78a40fb697feb5c35a3af7c5762cf1ea",
       "artifacts/v7-matulis-mi1-voltage-availability-audit.json": "0067b38495fca0818e02e28329c3d91d046b0cd6073c40b61b2d976d454592fb",
