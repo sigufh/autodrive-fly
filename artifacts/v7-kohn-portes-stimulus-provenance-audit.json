@@ -3,10 +3,11 @@
     "name": "v7-kohn-portes-t5-stimulus-provenance-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml": "466d1cef63923862ac2580c86c4cad11405c212219df82f12b2842fbef6f0fe3",
-      "src/fly_emotion/driving/v7_kohn_portes_stimulus_provenance_audit.py": "1d71bb5c014af5719f0d250d40605611809e539b4587e4cffe430087f2f47eec",
+      "configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml": "302e8cd1d2a3ed7fa63f82282198d270276f3fceef99800e40d8a56a717c0b02",
+      "src/fly_emotion/driving/v7_kohn_portes_stimulus_provenance_audit.py": "281c2d575b56dd56db4437369b7a330b0f77efb137bbbe9b50344bc072163e24",
       "data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml": "639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f",
       "data/raw/kohn-portes-stimulus-provenance/motyxia2-b589a224.tar.gz": "567822dfaf832e68459f2662fff168145fa5382d1cb5275db7b3c2a235a3cda1",
+      "data/raw/kohn-portes-flexible-filtering/history/historical-paths.tsv": "a2d5cc14869f3d5f825a3daae238b728db5254ef24bf50d32cbacf8fd036bf76",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
       "artifacts/v7-motyxia2-public-history-audit.json": "e0837e830dbb247279cacaa7484481e03d0aec8040d570583c4fe65251ac560b",
@@ -62,6 +63,75 @@
     "publisher_supplements_contain_record_specific_log": false,
     "Figshare_search_endpoint_accessible": false,
     "global_absence_claimed": false,
+    "historical_flash_payloads": {
+      "data/KohnPortes2021/Tm1_flash_dict.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "2530c37054eb39b2dc4b779626f8f239be63fc14"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm1_flash_dict_contrast.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "c202af13690cf23f162e1e91d4cec089fc466843"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm2_flash_dict.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "a122c2d46845ddd02d23e72a3eb54b7a5dd6ab97"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm2_flash_dict_contrast.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "34addf4d226ce477493c29a5a4c203d47a3f84f5"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm4_flash_dict.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "df3aefd6f78e21c48a9790034e9ef288027dffe6"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm4_flash_dict_contrast.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "e286cd9dc49a888ad0a1627e734bdeb88ae787bd"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm9_flash_dict.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "498767361ff0f219bbf37ad50a72444b9f885476"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      },
+      "data/KohnPortes2021/Tm9_flash_dict_contrast.pickle": {
+        "unique_blob_count": 1,
+        "git_blobs": [
+          "043f9560b250045f0f85914532a574bd9659a69f"
+        ],
+        "commit_presence_count": 10,
+        "current_blob_is_only_historical_version": true
+      }
+    },
+    "historical_flash_payload_path_count": 8,
+    "historical_flash_payloads_with_alternate_blob_versions": [],
+    "historical_flash_payloads_restore_record_metadata": false,
     "white_noise_field_inventory": {
       "common_fields": [
         "bath_solution",
@@ -363,6 +433,7 @@
     "random_white_noise_frames_require_the_original_per_recording_log": true,
     "bar_orientation_is_not_motion_direction": true,
     "spatial_frequency_is_not_angular_position": true,
+    "identical_historical_flash_blobs_do_not_restore_discarded_record_metadata": true,
     "no_cross_modality_field_imputation": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

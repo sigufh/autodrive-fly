@@ -47,12 +47,15 @@ expected:
   drifting_grating_spatial_frequencies_cycles_per_degree: [0.4, 0.2, 0.1, 0.08, 0.04, 0.025, 0.02, 0.0125, 0.01, 0.008, 0.005]
   drifting_grating_temporal_frequencies_hz: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
   private_stimulus_path_prefix: /mnt/engram/motyxia_log_ephys_rig2/jko14/
+  historical_flash_payload_path_count: 8
+  historical_flash_payload_commit_presence_count: 10
 boundary:
   generator_capability_is_not_record_specific_provenance: true
   class_defaults_are_not_assigned_to_recordings: true
   random_white_noise_frames_require_the_original_per_recording_log: true
   bar_orientation_is_not_motion_direction: true
   spatial_frequency_is_not_angular_position: true
+  identical_historical_flash_blobs_do_not_restore_discarded_record_metadata: true
   no_cross_modality_field_imputation: true
   no_parameter_fit: true
   no_target_activity_injection: true

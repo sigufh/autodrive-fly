@@ -4,11 +4,11 @@
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
       "configs/driving-v7-t5-recording-field-audit.yaml": "1c013239a6771315b06771c16c6c38c1f0653fe28951cfcf30717a67ff44edc2",
-      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "33594f9cf62669604dc57c95e34c1a788c96cb2063af3c6a3b26f37ec627d9ad",
+      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "75db3f529dacb215c2ce97842476aa56d84216936815ca04a9f8266203b479f2",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
-      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "c7f5c00d458576b5d4ea9bb0e21d55c570b36e1c970887386f90d3deae306cb0",
+      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "b1abd17d1abd42607e86d4ac4a77aab78a596293130d3229e77172e9a37af064",
       "artifacts/v7-braun-t5-source-data-audit.json": "bae592266c0ab1f9a89e005928581ea6bf4b618e0c0e13da40f725898ef90a56"
     },
     "parameter_fit": false,
@@ -317,7 +317,10 @@
     "publisher_supplements_retrieved_and_inspected": true,
     "publisher_supplements_contain_record_specific_log": false,
     "Figshare_search_endpoint_accessible": false,
-    "global_absence_claimed": false
+    "global_absence_claimed": false,
+    "historical_flash_payload_path_count": 8,
+    "historical_flash_payloads_with_alternate_blob_versions": [],
+    "historical_flash_payloads_restore_record_metadata": false
   },
   "independent_incompatible_calcium_evidence": {
     "dataset_doi": "10.17617/3.QE3MFT",

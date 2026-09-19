@@ -132,6 +132,43 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
     white_noise = _load_records(root, source_configs["ephys"]["white_noise_files"])
     drifting = _load_records(root, source_configs["identity"]["drifting_grating_files"])
     expected = config["expected"]
+
+    history_spec = source_configs["identity"]["repository"]["historical_paths"]
+    history_path = _verify_file(root, history_spec)
+    history_rows = [line.split("\t", 3) for line in history_path.read_text().splitlines()]
+    flash_specs = {
+        f"data/KohnPortes2021/{Path(spec['path']).name}": spec["git_blob"]
+        for spec in source_configs["ephys"]["source_files"].values()
+    }
+    flash_specs.update(
+        {
+            f"data/KohnPortes2021/{Path(spec['path']).name}": spec["git_blob"]
+            for spec in source_configs["identity"]["contrast_flash_files"].values()
+        }
+    )
+    if len(flash_specs) != int(expected["historical_flash_payload_path_count"]):
+        raise ValueError("Kohn-Portes expected flash payload set changed")
+    historical_flash_payloads = {}
+    for repository_path, expected_blob in sorted(flash_specs.items()):
+        rows = [row for row in history_rows if row[3] == repository_path]
+        blobs = sorted({row[2] for row in rows})
+        commits = sorted({row[0] for row in rows})
+        if blobs != [expected_blob]:
+            raise ValueError(
+                f"Kohn-Portes historical flash blob set changed: {repository_path}"
+            )
+        if len(commits) != int(
+            expected["historical_flash_payload_commit_presence_count"]
+        ):
+            raise ValueError(
+                f"Kohn-Portes historical flash commit coverage changed: {repository_path}"
+            )
+        historical_flash_payloads[repository_path] = {
+            "unique_blob_count": len(blobs),
+            "git_blobs": blobs,
+            "commit_presence_count": len(commits),
+            "current_blob_is_only_historical_version": True,
+        }
     required_sources = set(expected["source_types"])
     for name, records in (("white_noise", white_noise), ("drifting_grating", drifting)):
         if {str(record["cell_type"]) for record in records} != required_sources:
@@ -270,6 +307,7 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
                 repository["archive"]["path"]: _sha256(
                     root / repository["archive"]["path"]
                 ),
+                history_spec["path"]: _sha256(history_path),
                 **{str(path): _sha256(root / path) for path in evidence_paths.values()},
                 **{path: _sha256(root / path) for path in config["source_configs"].values()},
             },
@@ -312,6 +350,12 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
                 "Figshare_search_endpoint_accessible"
             ],
             "global_absence_claimed": False,
+            "historical_flash_payloads": historical_flash_payloads,
+            "historical_flash_payload_path_count": len(
+                historical_flash_payloads
+            ),
+            "historical_flash_payloads_with_alternate_blob_versions": [],
+            "historical_flash_payloads_restore_record_metadata": False,
             "white_noise_field_inventory": wn_inventory,
             "drifting_grating_field_inventory": dg_inventory,
             "drifting_grating_spatial_frequencies_cycles_per_degree": list(next(iter(sf_arrays))),

@@ -35,6 +35,9 @@ def test_fields_are_not_joined_across_modalities() -> None:
     assert provenance["publisher_supplements_contain_record_specific_log"] is False
     assert provenance["Figshare_search_endpoint_accessible"] is False
     assert provenance["global_absence_claimed"] is False
+    assert provenance["historical_flash_payload_path_count"] == 8
+    assert provenance["historical_flash_payloads_with_alternate_blob_versions"] == []
+    assert provenance["historical_flash_payloads_restore_record_metadata"] is False
 
 
 def test_recording_keys_do_not_become_biological_individuals() -> None:

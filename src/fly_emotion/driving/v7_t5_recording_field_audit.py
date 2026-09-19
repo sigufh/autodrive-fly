@@ -192,6 +192,19 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
             "global_absence_claimed": stimulus_provenance["raw_record_summary"][
                 "global_absence_claimed"
             ],
+            "historical_flash_payload_path_count": stimulus_provenance[
+                "raw_record_summary"
+            ]["historical_flash_payload_path_count"],
+            "historical_flash_payloads_with_alternate_blob_versions": (
+                stimulus_provenance["raw_record_summary"][
+                    "historical_flash_payloads_with_alternate_blob_versions"
+                ]
+            ),
+            "historical_flash_payloads_restore_record_metadata": (
+                stimulus_provenance["raw_record_summary"][
+                    "historical_flash_payloads_restore_record_metadata"
+                ]
+            ),
         },
         "independent_incompatible_calcium_evidence": {
             "dataset_doi": braun["dataset"]["doi"],

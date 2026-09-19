@@ -2006,6 +2006,10 @@ token、两个 white-noise stimulus name、`driftinggrating_05hz` 与内部日�
 可与 Kohn–Portes 电压记录连接。因此已审计的公开 GitLab 历史不能恢复逐记录刺激日志；
 这仍不是对其他未审计位置或全球不存在的断言。证据见
 `artifacts/v7-motyxia2-public-history-audit.json`。
+进一步按 commit/path 清点四个主 flash 与四个 contrast-flash pickle：8 个路径各自在出现的
+10 个公开 commit 中始终只有一个 Git blob，且就是当前已核验的匿名聚合载荷；历史中没有可
+回退的旧 payload 版本来恢复被聚合掉的 recording、fly、stimulus 或 baseline 字段。该结论只
+覆盖已审计的 20-commit 作者仓库历史，不扩大为全局不存在声明。
 
 论文 DOI 的外部索引也与 Git 历史分开审计。Crossref 只给出 bioRxiv preprint 关系和
 Elsevier 正文链接；DataCite 的 related-DOI 与精确题名查询均为 0；Europe PMC 没有数据库

@@ -39,6 +39,15 @@ def test_fixed_generator_does_not_replace_record_specific_logs() -> None:
     assert raw["publisher_supplements_contain_record_specific_log"] is False
     assert raw["Figshare_search_endpoint_accessible"] is False
     assert raw["global_absence_claimed"] is False
+    assert raw["historical_flash_payload_path_count"] == 8
+    assert raw["historical_flash_payloads_with_alternate_blob_versions"] == []
+    assert raw["historical_flash_payloads_restore_record_metadata"] is False
+    assert all(
+        item["unique_blob_count"] == 1
+        and item["commit_presence_count"] == 10
+        and item["current_blob_is_only_historical_version"] is True
+        for item in raw["historical_flash_payloads"].values()
+    )
 
 
 def test_missing_fields_are_not_filled_from_generator_defaults() -> None:
