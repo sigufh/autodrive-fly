@@ -22,6 +22,7 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
             "kohn_portes_ephys",
             "kohn_portes_identity",
             "kohn_portes_stimulus_provenance",
+            "braun_t5_calcium",
         )
     }
     evidence = {
@@ -32,6 +33,7 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
     ephys = evidence["kohn_portes_ephys"]
     identity = evidence["kohn_portes_identity"]
     stimulus_provenance = evidence["kohn_portes_stimulus_provenance"]
+    braun = evidence["braun_t5_calcium"]
     required_fields = contract["required_recording_fields"]
     required_sources = contract["required_families"]["T5"]["source_types"]
     if required_sources != [*config["source_types"], config["missing_source_type"]]:
@@ -94,6 +96,15 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
                 "biological_individual_count_verified"
             ],
             "all_required_fields_coexist_in_any_allowed_voltage_modality": False,
+            "independent_calcium_fly_count": (
+                braun["payloads"].get(source, {}).get("fly_count", 0)
+            ),
+            "independent_calcium_has_stable_fly_IDs": (
+                source in braun["sources_with_stable_pseudonymous_fly_IDs"]
+            ),
+            "independent_calcium_has_complete_condition_grid": (
+                source in braun["sources_with_complete_condition_grid"]
+            ),
         }
     missing_source = config["missing_source_type"]
     source_checks[missing_source] = {
@@ -104,6 +115,11 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
         "full_repository_recording_id_upper_bound": 0,
         "biological_individual_semantics_verified": False,
         "all_required_fields_coexist_in_any_allowed_voltage_modality": False,
+        "independent_calcium_fly_count": braun["payloads"][missing_source][
+            "fly_count"
+        ],
+        "independent_calcium_has_stable_fly_IDs": True,
+        "independent_calcium_has_complete_condition_grid": True,
     }
 
     union_available = [
@@ -176,6 +192,20 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
             "global_absence_claimed": stimulus_provenance["raw_record_summary"][
                 "global_absence_claimed"
             ],
+        },
+        "independent_incompatible_calcium_evidence": {
+            "dataset_doi": braun["dataset"]["doi"],
+            "sources": braun["sources_with_local_temporal_calcium"],
+            "sources_with_stable_fly_IDs": braun[
+                "sources_with_stable_pseudonymous_fly_IDs"
+            ],
+            "sources_with_complete_condition_grid": braun[
+                "sources_with_complete_condition_grid"
+            ],
+            "sources_with_allowed_response_unit": braun[
+                "sources_with_allowed_response_unit"
+            ],
+            "accepted_as_voltage_recording_field_completion": False,
         },
         "source_checks": source_checks,
         "all_five_T5_sources_have_complete_coexisting_recording_fields": complete,

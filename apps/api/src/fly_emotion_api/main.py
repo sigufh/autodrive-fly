@@ -124,6 +124,13 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],
+                "Braun_calcium_fly_counts": visual["Braun_T5_payload_fly_counts"],
+                "Braun_calcium_condition_grids_complete": visual[
+                    "Braun_T5_all_condition_grids_complete"
+                ],
+                "Braun_calcium_allowed_voltage_sources": visual[
+                    "Braun_T5_allowed_voltage_sources"
+                ],
                 "T5_record_specific_stimulus_logs_available": visual[
                     "Kohn_Portes_record_specific_stimulus_logs_available"
                 ],

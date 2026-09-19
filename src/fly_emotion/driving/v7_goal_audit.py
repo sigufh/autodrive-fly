@@ -148,6 +148,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_contrast_opponency_source_data_audit = reports[
         "t5_contrast_opponency_source_data_audit"
     ]
+    braun_t5_source_data_audit = reports["braun_t5_source_data_audit"]
     yang_t5_voltage_evidence_audit = reports["yang_t5_voltage_evidence_audit"]
     kohn_portes_t5_ephys_audit = reports["kohn_portes_t5_ephys_audit"]
     kohn_portes_identity_history_audit = reports[
@@ -351,6 +352,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["dryad_l1l2_source_dynamics_audit"],
                 config["evidence"]["gou_sparsity_source_dynamics_audit"],
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
+                config["evidence"]["braun_t5_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
@@ -888,6 +890,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     t5_contrast_opponency_source_data_audit[
                         "complete_T5_source_dynamics_transfer_authorized"
                     ]
+                ),
+                "Braun_T5_local_calcium_sources": (
+                    braun_t5_source_data_audit["sources_with_local_temporal_calcium"]
+                ),
+                "Braun_T5_sources_with_stable_fly_IDs": (
+                    braun_t5_source_data_audit[
+                        "sources_with_stable_pseudonymous_fly_IDs"
+                    ]
+                ),
+                "Braun_T5_payload_fly_counts": {
+                    source: item["fly_count"]
+                    for source, item in braun_t5_source_data_audit["payloads"].items()
+                },
+                "Braun_T5_all_condition_grids_complete": (
+                    len(braun_t5_source_data_audit["sources_with_complete_condition_grid"])
+                    == 3
+                ),
+                "Braun_T5_allowed_voltage_sources": (
+                    braun_t5_source_data_audit["sources_with_allowed_response_unit"]
+                ),
+                "Braun_T5_baseline_window_declared": (
+                    braun_t5_source_data_audit["baseline_window_declared"]
+                ),
+                "Braun_T5_transfer_authorized": (
+                    braun_t5_source_data_audit["authorize_source_dynamics_fit"]
                 ),
                 "Yang_T5_optical_voltage_phenotype_sources": (
                     yang_t5_voltage_evidence_audit["T5_source_contract"][
@@ -2457,6 +2484,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "nine_source_contract_complete",
                     "Mi4_C3_independent_numeric_voltage_candidate_count",
                     "T5_voltage_field_counts",
+                    "Braun_calcium_fly_counts",
+                    "Braun_calcium_condition_grids_complete",
+                    "Braun_calcium_allowed_voltage_sources",
                     "T5_record_specific_stimulus_logs_available",
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",

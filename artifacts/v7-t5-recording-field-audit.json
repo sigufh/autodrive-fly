@@ -3,12 +3,13 @@
     "name": "v7-t5-recording-field-coexistence-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-recording-field-audit.yaml": "6eb12a31bc95353f571a645dc1d8c8026d3429b0cc4e94cab609987fa406d740",
-      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "787dbcd0ffd22423c3dce271b317f028a0e80df7795e641d3c3090518ceb07b7",
+      "configs/driving-v7-t5-recording-field-audit.yaml": "1c013239a6771315b06771c16c6c38c1f0653fe28951cfcf30717a67ff44edc2",
+      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "33594f9cf62669604dc57c95e34c1a788c96cb2063af3c6a3b26f37ec627d9ad",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
-      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "c7f5c00d458576b5d4ea9bb0e21d55c570b36e1c970887386f90d3deae306cb0"
+      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "c7f5c00d458576b5d4ea9bb0e21d55c570b36e1c970887386f90d3deae306cb0",
+      "artifacts/v7-braun-t5-source-data-audit.json": "bae592266c0ab1f9a89e005928581ea6bf4b618e0c0e13da40f725898ef90a56"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -318,6 +319,26 @@
     "Figshare_search_endpoint_accessible": false,
     "global_absence_claimed": false
   },
+  "independent_incompatible_calcium_evidence": {
+    "dataset_doi": "10.17617/3.QE3MFT",
+    "sources": [
+      "CT1",
+      "Tm2",
+      "Tm9"
+    ],
+    "sources_with_stable_fly_IDs": [
+      "CT1",
+      "Tm2",
+      "Tm9"
+    ],
+    "sources_with_complete_condition_grid": [
+      "CT1",
+      "Tm2",
+      "Tm9"
+    ],
+    "sources_with_allowed_response_unit": [],
+    "accepted_as_voltage_recording_field_completion": false
+  },
   "source_checks": {
     "Tm1": {
       "full_field_flash_condition_count": 8,
@@ -326,7 +347,10 @@
       "white_noise_stable_recording_id_field_retained": true,
       "full_repository_recording_id_upper_bound": 8,
       "biological_individual_semantics_verified": false,
-      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false,
+      "independent_calcium_fly_count": 0,
+      "independent_calcium_has_stable_fly_IDs": false,
+      "independent_calcium_has_complete_condition_grid": false
     },
     "Tm2": {
       "full_field_flash_condition_count": 8,
@@ -335,7 +359,10 @@
       "white_noise_stable_recording_id_field_retained": true,
       "full_repository_recording_id_upper_bound": 7,
       "biological_individual_semantics_verified": false,
-      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false,
+      "independent_calcium_fly_count": 9,
+      "independent_calcium_has_stable_fly_IDs": true,
+      "independent_calcium_has_complete_condition_grid": true
     },
     "Tm4": {
       "full_field_flash_condition_count": 8,
@@ -344,7 +371,10 @@
       "white_noise_stable_recording_id_field_retained": true,
       "full_repository_recording_id_upper_bound": 7,
       "biological_individual_semantics_verified": false,
-      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false,
+      "independent_calcium_fly_count": 0,
+      "independent_calcium_has_stable_fly_IDs": false,
+      "independent_calcium_has_complete_condition_grid": false
     },
     "Tm9": {
       "full_field_flash_condition_count": 8,
@@ -353,7 +383,10 @@
       "white_noise_stable_recording_id_field_retained": true,
       "full_repository_recording_id_upper_bound": 13,
       "biological_individual_semantics_verified": false,
-      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false,
+      "independent_calcium_fly_count": 11,
+      "independent_calcium_has_stable_fly_IDs": true,
+      "independent_calcium_has_complete_condition_grid": true
     },
     "CT1": {
       "full_field_flash_condition_count": 0,
@@ -362,7 +395,10 @@
       "white_noise_stable_recording_id_field_retained": false,
       "full_repository_recording_id_upper_bound": 0,
       "biological_individual_semantics_verified": false,
-      "all_required_fields_coexist_in_any_allowed_voltage_modality": false
+      "all_required_fields_coexist_in_any_allowed_voltage_modality": false,
+      "independent_calcium_fly_count": 9,
+      "independent_calcium_has_stable_fly_IDs": true,
+      "independent_calcium_has_complete_condition_grid": true
     }
   },
   "all_five_T5_sources_have_complete_coexisting_recording_fields": false,
@@ -377,6 +413,7 @@
     "recording_id_is_not_asserted_to_be_biological_individual_id": true,
     "flash_duration_is_not_motion_direction_position_or_speed": true,
     "spatial_period_is_not_angular_position": true,
+    "Braun_calcium_fields_do_not_complete_Kohn_Portes_voltage_records": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

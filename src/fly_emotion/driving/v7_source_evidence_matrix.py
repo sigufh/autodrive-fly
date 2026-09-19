@@ -65,6 +65,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     t5_spatial = {
         item["source_type"] for item in evidence["t5_calcium"]["verified_spatial_blocks"].values()
     }
+    braun = evidence["braun_t5_calcium"]
+    braun_sources = set(braun["sources_with_local_temporal_calcium"])
+    braun_identity_sources = set(braun["sources_with_stable_pseudonymous_fly_IDs"])
     arenz_t4 = set(evidence["arenz_t4"]["current_v7_source_contract"]["covered_by_Arenz"])
     arenz_t5 = set(evidence["arenz_t5"]["T5_source_contract"]["covered_sources"])
     mapping = evidence["malecns_mapping"]["source_mapping"]
@@ -102,6 +105,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         local_temporal_calcium = (
             source in t5_dynamic
             or source in pirogova_sources
+            or source in braun_sources
             or (source == "C3" and c3_numerical)
         )
         local_spatial_calcium = source in t5_spatial
@@ -125,7 +129,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             and evidence["t4_voltage"]["transfer_gates"][
                 "stable_pseudonymous_biological_individual_ID_available"
             ]
-        ) or (source == "C3" and c3_ids)
+        ) or (source == "C3" and c3_ids) or source in braun_identity_sources
         allowed_numerical = local_voltage
         individual_ids_on_allowed_payload = family == "T4" and individual_ids_any_numerical
         map_row = mapping[source]
@@ -322,6 +326,19 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "biological_individual_id_available"
                 ]
             ),
+            "Braun_2023_local_GCaMP7f_time_series": source in braun_sources,
+            "Braun_2023_stable_source_local_fly_IDs": (
+                source in braun_identity_sources
+            ),
+            "Braun_2023_complete_condition_grid": (
+                source in set(braun["sources_with_complete_condition_grid"])
+            ),
+            "Braun_2023_allowed_membrane_voltage_unit": (
+                source in set(braun["sources_with_allowed_response_unit"])
+            ),
+            "Braun_2023_baseline_window_declared": (
+                source in braun_sources and braun["baseline_window_declared"]
+            ),
             "Tm9_coordinate_identifiable_under_existing_rule": (
                 source == "Tm9"
                 and tm9_coordinate[
@@ -404,6 +421,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             phenotype_sources.append("Borst_2025_parameterized_calcium_derived_fit_target")
         if source in pirogova_sources:
             numerical_sources.append("Pirogova_2023_historical_GCaMP6f_time_series")
+        if source in braun_sources:
+            numerical_sources.append("Braun_2023_GCaMP7f_edge_time_series")
 
         missing = []
         if not allowed_numerical:

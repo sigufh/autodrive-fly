@@ -47,6 +47,9 @@ export type V7Status = {
     Mi4_C3_direct_numeric_voltage_candidates: string[];
     Mi4_C3_independent_numeric_voltage_candidate_count: number;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
+    Braun_calcium_fly_counts?: { Tm2: number; Tm9: number; CT1: number };
+    Braun_calcium_condition_grids_complete?: boolean;
+    Braun_calcium_allowed_voltage_sources?: string[];
     T5_record_specific_stimulus_logs_available: boolean;
     Motyxia2_public_history_branch_count: number;
     Motyxia2_public_history_commit_count: number;

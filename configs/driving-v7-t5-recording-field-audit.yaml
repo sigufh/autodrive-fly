@@ -5,6 +5,7 @@ contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 kohn_portes_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
 kohn_portes_identity: artifacts/v7-kohn-portes-identity-history-audit.json
 kohn_portes_stimulus_provenance: artifacts/v7-kohn-portes-stimulus-provenance-audit.json
+braun_t5_calcium: artifacts/v7-braun-t5-source-data-audit.json
 source_types: [Tm1, Tm2, Tm4, Tm9]
 missing_source_type: CT1
 modalities:
@@ -62,6 +63,7 @@ boundary:
   recording_id_is_not_asserted_to_be_biological_individual_id: true
   flash_duration_is_not_motion_direction_position_or_speed: true
   spatial_period_is_not_angular_position: true
+  Braun_calcium_fields_do_not_complete_Kohn_Portes_voltage_records: true
   no_threshold_label_split_denominator_or_failure_rule_change: true
   no_parameter_fit: true
   no_target_activity_injection: true

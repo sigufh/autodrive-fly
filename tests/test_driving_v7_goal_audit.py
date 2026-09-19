@@ -32,6 +32,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "nine_source_contract_complete",
         "Mi4_C3_independent_numeric_voltage_candidate_count",
         "T5_voltage_field_counts",
+        "Braun_calcium_fly_counts",
+        "Braun_calcium_condition_grids_complete",
+        "Braun_calcium_allowed_voltage_sources",
         "T5_record_specific_stimulus_logs_available",
         "Motyxia2_public_history_branch_count",
         "Motyxia2_public_history_commit_count",
@@ -366,6 +369,25 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "CT1"
     ]
     assert visual["observations"]["T5_contrast_opponency_transfer_authorized"] is False
+    assert visual["observations"]["Braun_T5_local_calcium_sources"] == [
+        "CT1",
+        "Tm2",
+        "Tm9",
+    ]
+    assert visual["observations"]["Braun_T5_sources_with_stable_fly_IDs"] == [
+        "CT1",
+        "Tm2",
+        "Tm9",
+    ]
+    assert visual["observations"]["Braun_T5_payload_fly_counts"] == {
+        "Tm2": 9,
+        "Tm9": 11,
+        "CT1": 9,
+    }
+    assert visual["observations"]["Braun_T5_all_condition_grids_complete"] is True
+    assert visual["observations"]["Braun_T5_allowed_voltage_sources"] == []
+    assert visual["observations"]["Braun_T5_baseline_window_declared"] is False
+    assert visual["observations"]["Braun_T5_transfer_authorized"] is False
     assert visual["observations"]["Yang_T5_optical_voltage_phenotype_sources"] == [
         "Tm1",
         "Tm2",

@@ -47,6 +47,20 @@ def test_recording_keys_do_not_become_biological_individuals() -> None:
         assert row["all_required_fields_coexist_in_any_allowed_voltage_modality"] is False
 
 
+def test_braun_calcium_fields_are_visible_but_not_joined_to_voltage() -> None:
+    report = json.loads(REPORT.read_text())
+    calcium = report["independent_incompatible_calcium_evidence"]
+    assert calcium["dataset_doi"] == "10.17617/3.QE3MFT"
+    assert calcium["sources"] == ["CT1", "Tm2", "Tm9"]
+    assert calcium["sources_with_stable_fly_IDs"] == ["CT1", "Tm2", "Tm9"]
+    assert calcium["sources_with_complete_condition_grid"] == ["CT1", "Tm2", "Tm9"]
+    assert calcium["sources_with_allowed_response_unit"] == []
+    assert calcium["accepted_as_voltage_recording_field_completion"] is False
+    assert report["source_checks"]["Tm2"]["independent_calcium_fly_count"] == 9
+    assert report["source_checks"]["Tm9"]["independent_calcium_fly_count"] == 11
+    assert report["source_checks"]["CT1"]["independent_calcium_fly_count"] == 9
+
+
 def test_CT1_and_downstream_gates_remain_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert report["source_checks"]["CT1"]["full_field_flash_all_conditions_have_voltage"] is False

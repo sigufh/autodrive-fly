@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "7a032cf13a6ed7c2fe98bd8f1bfa4f3cb9922780608e465e40b00ed37d8f3138",
-      "src/fly_emotion/driving/v7_goal_audit.py": "bd80a9980c8bcbf16b95544b0f88d6337c73a1d22b5e5d43f4f55ce286021ab2",
+      "configs/driving-v7-goal-audit.yaml": "5239bd50692db5942e9fb717d159a0c93801b90f93b4869498768421efcca4e3",
+      "src/fly_emotion/driving/v7_goal_audit.py": "2c8c0a940ed9776bd5fb0b99636a7d06793b570152214a79cc163d4b71a0be0f",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -72,7 +72,7 @@
       "artifacts/v7-t4-individual-split-1khz-audit.json": "2861009fd6bb9cd20d5004fe2a457a2cd9f7372eb871e6b807f5fb47c41a449d",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
       "artifacts/v7-t4-recording-field-audit.json": "cb75cd6f14ca40abdf08438fba0ffc9ea6a2079e3c07dff3f372826376abe591",
-      "artifacts/v7-t5-recording-field-audit.json": "d4c0696d860d963de781d268a400cade79e157ef82a3ea4e8819758fbe00002b",
+      "artifacts/v7-t5-recording-field-audit.json": "0d7c51df998e1ed73159309977795a5ccf81efed00ae86a063f7239cf23e7c89",
       "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "c7f5c00d458576b5d4ea9bb0e21d55c570b36e1c970887386f90d3deae306cb0",
       "artifacts/v7-motyxia2-public-history-audit.json": "e0837e830dbb247279cacaa7484481e03d0aec8040d570583c4fe65251ac560b",
       "artifacts/v7-kohn-portes-external-index-audit.json": "82f7fa21f5cf6e2c936236602dc563091972a7046c4e1560946ecd678777f3d9",
@@ -99,6 +99,7 @@
       "artifacts/v7-dryad-l1l2-source-dynamics-audit.json": "a11f54e7258ac23c32a0b615b3e228dbe6882b7d578cbe411a73c80abcdaeb26",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "8cd5b3c798e0bf5b6ee22721a74d56d0c136a33921bd58c3b3816bc72208c219",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "11bbde0992709ad061d0d02d0f639b2767483eefcce1c865c118bbe6e4fe4097",
+      "artifacts/v7-braun-t5-source-data-audit.json": "bae592266c0ab1f9a89e005928581ea6bf4b618e0c0e13da40f725898ef90a56",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "4e71a85be0071273e4c6bc397b596c6724098d5c51d1eae7bb76b3c2435f37e7",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
@@ -108,7 +109,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "a49c99c5f0a7ada9757bc920e399ee39b6b8d96ae6f39716d3e80bfc3c62c8ae",
       "artifacts/v7-pirogova-source-calcium-audit.json": "96a44d68f675ddb5495d361c25f1bcd61d4e16e8527ec60d81bbb0dd77c1389d",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
-      "artifacts/v7-source-evidence-matrix.json": "1bba9f1e210a30d2db51eb3c8bcb00c9b38cf702a9efcb33295c1aba450a0a8c",
+      "artifacts/v7-source-evidence-matrix.json": "111960845851afbb4507c3daaf59a9f19edf024210cb290c65a3b7e5f01e2571",
       "artifacts/v7-source-type-average-mapping-contract.json": "010e93dd621f5b87068709f254ef6364580939ee1318e4e09ebd31c138c16126",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "cbcbfd56b8f330b84f6bc56c8b57685dc1a3fa61719c2b078705e833bed07a46",
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
@@ -162,9 +163,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "930983a4326f88b99c251e3e8d0306e828f200d7397ec38c68f4a6f59cc16d60",
-      "apps/web/src/components/DrivingPanel.tsx": "4117ab7fc12c75675763f50304c85f81d15cc4f4d5e1cfd4c95fcb81a2c7dc6c",
-      "apps/web/src/types.ts": "40aaf3ae38c5792558d34bb48e7b5e59de1b3e316db4269cc73bea92676fe02d",
+      "apps/api/src/fly_emotion_api/main.py": "9c05048dbec0dbf26687c653c89527683f8531ac506024f2f03f4e0a3526c065",
+      "apps/web/src/components/DrivingPanel.tsx": "b2d432f9303b1158b6663cacb831d7407f3c71505f4276c90370d236bd980cef",
+      "apps/web/src/types.ts": "9aede1a0c112813adff5ae33f39b6283cf852d474eb4cfac0e9bf90ba32fbf44",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -266,6 +267,7 @@
         "artifacts/v7-dryad-l1l2-source-dynamics-audit.json",
         "artifacts/v7-gou-sparsity-source-dynamics-audit.json",
         "artifacts/v7-t5-contrast-opponency-source-data-audit.json",
+        "artifacts/v7-braun-t5-source-data-audit.json",
         "artifacts/v7-yang-t5-voltage-evidence-audit.json",
         "artifacts/v7-kohn-portes-t5-ephys-audit.json",
         "artifacts/v7-kohn-portes-identity-history-audit.json",
@@ -553,6 +555,25 @@
           "CT1"
         ],
         "T5_contrast_opponency_transfer_authorized": false,
+        "Braun_T5_local_calcium_sources": [
+          "CT1",
+          "Tm2",
+          "Tm9"
+        ],
+        "Braun_T5_sources_with_stable_fly_IDs": [
+          "CT1",
+          "Tm2",
+          "Tm9"
+        ],
+        "Braun_T5_payload_fly_counts": {
+          "Tm2": 9,
+          "Tm9": 11,
+          "CT1": 9
+        },
+        "Braun_T5_all_condition_grids_complete": true,
+        "Braun_T5_allowed_voltage_sources": [],
+        "Braun_T5_baseline_window_declared": false,
+        "Braun_T5_transfer_authorized": false,
         "Yang_T5_optical_voltage_phenotype_sources": [
           "Tm1",
           "Tm2"
@@ -1573,6 +1594,9 @@
           "nine_source_contract_complete",
           "Mi4_C3_independent_numeric_voltage_candidate_count",
           "T5_voltage_field_counts",
+          "Braun_calcium_fly_counts",
+          "Braun_calcium_condition_grids_complete",
+          "Braun_calcium_allowed_voltage_sources",
           "T5_record_specific_stimulus_logs_available",
           "Motyxia2_public_history_branch_count",
           "Motyxia2_public_history_commit_count",

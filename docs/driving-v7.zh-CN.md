@@ -2134,6 +2134,18 @@ PoW 下载并哈希校验后，9 个附件为 7 张单页补图、1 个仅含补
 未解析入口，不作零结果推断。Tm1/Tm2 光学电压继续只算已发表表型，不能升级为本地数值
 载荷或打开 T5 门。证据见 `artifacts/v7-yang-t5-voltage-evidence-audit.json`。
 
+Braun 2023 的数据可用性声明指向 Edmond `10.17617/3.QE3MFT`，现已按 release v1
+完整 manifest 核验：28 个文件、45,441,961 bytes、CC0。对 Figure 5 的 `Tm2.data`、
+`Tm9.data`、`CT1.data` 及分析 notebook 做了 publisher MD5 和 SHA-256 双重校验，并直接
+解析 Pandas HDF5 MultiIndex。三份载荷分别保留 9、11、9 个 source-local `fly_id`，42、64、
+42 个 fly–ROI 对；每对均有 dark/bright edge intensity、四个 rotation、3 trials 和约
+66.56 ms 的物理时间步。响应全有限，论文与 genotype 均明确为 GCaMP7f ΔF/F 钙成像。
+这些 fly ID 可用于各 source 内的动物互斥划分，但不能跨 Tm2/Tm9/CT1 认作同一批动物；
+公开载荷 fly 数又分别比 Figure 5 图注少 2、1、1，因此不能冒充论文完整 cohort。负时间轴
+不是预声明 baseline window，rotation 也不是 MaleCNS optic hex。矩阵据此新增 Tm2/Tm9/
+CT1 的数值钙和稳定动物身份事实，但不把它们拼进 Kohn–Portes 电压记录、不增加合规电压
+计数，也不打开任何下游门。证据见 `artifacts/v7-braun-t5-source-data-audit.json`。
+
 Borst 2025《Differential temporal filtering in the fly optic lobe》（DOI
 `10.1007/s10827-025-00914-5`）及其 GitHub 固定提交 `2e277fef…` 也已做 provenance
 审计。仓库两个 `data.npy` 副本哈希完全相同，均为 `13×9×200`、10 ms 步长的数值目标，

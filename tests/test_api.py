@@ -55,6 +55,13 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         "raw_white_noise": 8,
         "raw_drifting_grating": 9,
     }
+    assert boundaries["Braun_calcium_fly_counts"] == {
+        "Tm2": 9,
+        "Tm9": 11,
+        "CT1": 9,
+    }
+    assert boundaries["Braun_calcium_condition_grids_complete"] is True
+    assert boundaries["Braun_calcium_allowed_voltage_sources"] == []
     assert boundaries["T5_record_specific_stimulus_logs_available"] is False
     assert boundaries["Motyxia2_public_history_branch_count"] == 22
     assert boundaries["Motyxia2_public_history_commit_count"] == 447

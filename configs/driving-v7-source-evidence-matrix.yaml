@@ -22,6 +22,7 @@ evidence:
   ct1_pure_data_index: artifacts/v7-ct1-pure-data-index-audit.json
   ct1_experimental_voltage_boundary: artifacts/v7-ct1-experimental-voltage-boundary-audit.json
   t5_calcium: artifacts/v7-t5-contrast-opponency-source-data-audit.json
+  braun_t5_calcium: artifacts/v7-braun-t5-source-data-audit.json
   ct1_compartment: artifacts/v7-timing-models-ct1-compartment-audit.json
   c3_dynamics: artifacts/v7-c3-strf-source-dynamics-audit.json
   c3_external_flash: artifacts/v7-c3-strf-flash-transfer.json

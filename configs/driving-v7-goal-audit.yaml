@@ -104,6 +104,7 @@ evidence:
   dryad_l1l2_source_dynamics_audit: artifacts/v7-dryad-l1l2-source-dynamics-audit.json
   gou_sparsity_source_dynamics_audit: artifacts/v7-gou-sparsity-source-dynamics-audit.json
   t5_contrast_opponency_source_data_audit: artifacts/v7-t5-contrast-opponency-source-data-audit.json
+  braun_t5_source_data_audit: artifacts/v7-braun-t5-source-data-audit.json
   yang_t5_voltage_evidence_audit: artifacts/v7-yang-t5-voltage-evidence-audit.json
   kohn_portes_t5_ephys_audit: artifacts/v7-kohn-portes-t5-ephys-audit.json
   kohn_portes_identity_history_audit: artifacts/v7-kohn-portes-identity-history-audit.json

@@ -1,0 +1,91 @@
+version: 1
+name: v7-braun-t5-source-data-audit
+observed_on: "2026-09-19"
+paper:
+  title: Disynaptic inhibition shapes tuning of OFF-motion detectors in Drosophila
+  doi: 10.1016/j.cub.2023.05.007
+  pii: S0960982223006012
+  measurement: two_photon_GCaMP7f_calcium_imaging
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+dataset:
+  doi: 10.17617/3.QE3MFT
+  dataset_id: 211400
+  version_id: 938
+  version_number: 1
+  publication_date: "2023-04-04"
+  license: CC0-1.0
+  manifest:
+    path: data/raw/braun-2023-t5-external/dataset-manifest.json
+    bytes: 23229
+    sha256: 32b1d5dbe92547c1cc8039a01bd62d5659ca8b1ebb547f1e3538553875955aa9
+  file_count: 28
+  total_bytes: 45441961
+paper_pdf:
+  path: data/raw/braun-2023-t5-external/S0960982223006012-mmc2.pdf
+  bytes: 5828545
+  sha256: d880bea10dfb34c7121944f8ad73665c41ed5fd5254c3502dc3741ad1287f7f7
+  pages: 22
+payloads:
+  Tm2:
+    path: data/raw/braun-2023-t5-external/Tm2.data
+    file_id: 211446
+    bytes: 2623599
+    publisher_md5: 7a8de376b861faab2f670813f7195266
+    sha256: 073481653779cd15f5274ead1d876b26664039fd027b1cec3fb548e3be5953c3
+    genotype: Tm2_GC7f
+    fly_count: 9
+    paper_figure_5_fly_count: 11
+    fly_roi_pair_count: 42
+    row_count: 289536
+    time_count: 289
+  Tm9:
+    path: data/raw/braun-2023-t5-external/Tm9.data
+    file_id: 211445
+    bytes: 3174840
+    publisher_md5: 9d59624ace5eab8831e2cc776e68d381
+    sha256: b1f3a3ecd6ed43fdd173ed9ba1dfbd31e4a6612ac46d58ba262922f10005cbf2
+    genotype: Tm9_GC7f
+    fly_count: 11
+    paper_figure_5_fly_count: 12
+    fly_roi_pair_count: 64
+    row_count: 441267
+    time_count: 289
+  CT1:
+    path: data/raw/braun-2023-t5-external/CT1.data
+    file_id: 211441
+    bytes: 2112733
+    publisher_md5: 6dffb2d2df3a29a3a18d92e241674aa0
+    sha256: 450d9d4e87a9266f3ce54671351270f84f2d5a9a872b883abf4a2e21dfeda8cb
+    genotype: CT1_GC7f
+    fly_count: 9
+    paper_figure_5_fly_count: 10
+    fly_roi_pair_count: 42
+    row_count: 289455
+    time_count: 288
+notebooks:
+  Tm2: {path: data/raw/braun-2023-t5-external/analyze_Tm2.ipynb, file_id: 211442, bytes: 229644, publisher_md5: d70fcba4b768b921166048925a712c46, sha256: 7ba1b5bb37186ecda0a2957b879004120322df1003db86484762331255c8f354}
+  Tm9: {path: data/raw/braun-2023-t5-external/analyze_Tm9.ipynb, file_id: 211444, bytes: 333306, publisher_md5: f743087f635a98a95888271081e6013e, sha256: c0182a9b306b1751f319faf5effc1c6a09029cd71cf22572762e932c98827d05}
+  CT1: {path: data/raw/braun-2023-t5-external/analyze_CT1.ipynb, file_id: 211440, bytes: 303554, publisher_md5: 5a92ffa4c6590304a5c724dfdf0f89c5, sha256: 2b0b558943b1328d94eb9cec0b566ff91a5825e739acaa4446551d0cd449d830}
+  figure_5: {path: data/raw/braun-2023-t5-external/Make_Fig5.ipynb, file_id: 211439, bytes: 20585, publisher_md5: 2728c62d38c9b7f22cafa10445eb5e76, sha256: 86537781b824b84df55211006a09fc2ddf2fced47dc1d00367ce129814e0094a}
+expected_index_names: [genotype, fly_id, roi_id, roi_index, name, ND, edge_intensity, bg_intensity, "velocity [deg/s]", "rotation [deg]", trial, time]
+expected_common_values:
+  roi_id: [lo]
+  name: [stimuli.default.Edges]
+  ND: [ND0]
+  edge_intensity: [10.0, 190.0]
+  bg_intensity: [100.0]
+  velocity [deg/s]: [50.0]
+  rotation [deg]: [0.0, 90.0, 180.0, 270.0]
+  trial: ["0", "1", "2"]
+expected_time_step_seconds: 0.06656
+boundary:
+  GCaMP7f_deltaF_over_F_is_not_membrane_voltage: true
+  fly_IDs_are_stable_within_source_but_not_linked_across_sources: true
+  local_payload_fly_counts_do_not_equal_all_paper_figure_counts: true
+  negative_stimulus_relative_time_does_not_define_a_baseline_window: true
+  rotation_degrees_are_not_a_MaleCNS_optic_hex_coordinate: true
+  no_cross_modality_imputation_into_Kohn_Portes_voltage: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

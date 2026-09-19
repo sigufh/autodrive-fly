@@ -143,6 +143,21 @@ def test_pirogova_numeric_calcium_does_not_cross_unit_or_identity_boundaries() -
         assert "Pirogova_2023_historical_GCaMP6f_time_series" in (
             row["numerical_evidence_sources"]
         )
+
+
+def test_braun_calcium_keeps_fly_identity_without_crossing_the_voltage_boundary() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in ("Tm2", "Tm9", "CT1"):
+        row = report["matrix"][source]
+        components = row["evidence_components"]
+        assert components["Braun_2023_local_GCaMP7f_time_series"] is True
+        assert components["Braun_2023_stable_source_local_fly_IDs"] is True
+        assert components["Braun_2023_complete_condition_grid"] is True
+        assert components["Braun_2023_allowed_membrane_voltage_unit"] is False
+        assert components["Braun_2023_baseline_window_declared"] is False
+        assert components["stable_biological_individual_ids_in_any_numerical_payload"] is True
+        assert "Braun_2023_GCaMP7f_edge_time_series" in row["numerical_evidence_sources"]
+        assert row["gates"]["stable_biological_individual_id_on_allowed_payload"] is False
     for source in ("Mi4", "C3", "Tm4", "Tm9", "CT1"):
         assert (
             report["matrix"][source]["evidence_components"][
