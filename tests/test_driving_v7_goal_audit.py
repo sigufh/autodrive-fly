@@ -430,7 +430,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["CT1_extreme_experimental_voltage_available"] is False
     assert visual["observations"]["CT1_extreme_transfer_authorized"] is False
     assert visual["observations"]["CT1_PuRe_official_archive_candidate_count"] == 2
-    assert visual["observations"]["CT1_PuRe_archive_contents_verified"] is False
+    assert visual["observations"]["CT1_PuRe_archive_contents_verified"] is True
     assert visual["observations"]["CT1_PuRe_new_numerical_payload_verified"] is False
     assert visual["observations"]["CT1_voltage_audited_candidate_count"] == 11
     assert visual["observations"]["CT1_direct_experimental_voltage_candidate_found"] is False

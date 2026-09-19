@@ -239,7 +239,7 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     assert ct1["CT1_incremental_2025_2026_candidate_count"] == 3
     assert ct1["CT1_incremental_2025_2026_direct_voltage_found"] is False
     assert ct1["CT1_PuRe_official_archive_candidate_count"] == 2
-    assert ct1["CT1_PuRe_archive_contents_verified"] is False
+    assert ct1["CT1_PuRe_archive_contents_verified"] is True
     assert ct1["CT1_PuRe_new_numerical_payload_verified"] is False
     assert report["family_summary"]["T5"]["all_sources_contract_complete"] is False
     for source in report["family_summary"]["T5"]["sources"]:

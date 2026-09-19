@@ -16,36 +16,93 @@ components:
     link_class: pdf
     link_label: publisher-version
     locally_retrieved: false
+    handle: 21.11116/0000-0006-D56F-E
+    handle_snapshot:
+      path: data/raw/ct1-extreme-compartmentalization/pure-index/handle-0000-0006-D56F-E.json
+      bytes: 574
+      sha256: 9c2f855c97101413283b90d9c19bfbafc6c40e6c435b0e4b18cd322337b75a68
   archive_1:
     file_id: file_3247642
     filename: ScienceDirect_files_11Aug2020_12-22-07.314.zip
     link_class: zip
     link_label: ZIP
     local_path: data/raw/ct1-extreme-compartmentalization/pure-index/file3247642.zip
-    locally_retrieved: false
+    locally_retrieved: true
+    bytes: 2750447
+    sha256: 14f1ddcc3655e75443e03af966eac587659d1b64bc13e5f25d1c380188b7214b
+    handle: 21.11116/0000-0006-D570-B
+    handle_snapshot:
+      path: data/raw/ct1-extreme-compartmentalization/pure-index/handle-0000-0006-D570-B.json
+      bytes: 587
+      sha256: 442af548aa589f6b591f099c396a336166444093dec72dcc54704599d8622409
+    wayback_capture_timestamp: "20240422223100"
   archive_2:
     file_id: file_3247643
     filename: ScienceDirect_files_11Aug2020_12-22-54.187.zip
     link_class: zip
     link_label: ZIP
     local_path: data/raw/ct1-extreme-compartmentalization/pure-index/file3247643.zip
-    locally_retrieved: false
+    locally_retrieved: true
+    bytes: 2750447
+    sha256: 71b63c6ebe52697686041a6db061b6c61f903da435492b7b16d4d56cad8909d3
+    handle: 21.11116/0000-0006-D571-A
+    handle_snapshot:
+      path: data/raw/ct1-extreme-compartmentalization/pure-index/handle-0000-0006-D571-A.json
+      bytes: 587
+      sha256: ce705f77b8b8d74f79301efb28ea0d974d4de6a9bcd7147661c9b5fcda3311f2
+    wayback_capture_timestamp: "20240422223019"
+expected_archive_members:
+  - filename: 1-s2.0-S0960982219303987-mmc1.pdf
+    local_path: data/raw/ct1-extreme-compartmentalization/S0960982219303987-mmc1.pdf
+    bytes: 743934
+    sha256: ea7bb0161807cf49b11786a5f235134a27ab5c9dbab9b1e326b2798e873a2757
+  - filename: 1-s2.0-S0960982219303987-mmc2.pdf
+    local_path: data/raw/ct1-extreme-compartmentalization/S0960982219303987-mmc2.pdf
+    bytes: 3363695
+    sha256: 3a042052d53b026595aa53bfb3492b9dbb8a7514a1602678edea0e5d49b5b6db
+aggregated_index:
+  path: data/raw/ct1-extreme-compartmentalization/pure-index/openaire-doi.json
+  bytes: 25661
+  sha256: 88463a1504e1ee2117510e587a60cf6b50f6cd13125920d74ce9cf9baadcc3a7
+  expected_handles:
+    - 21.11116/0000-0005-BDF9-E
+    - 21.11116/0000-0006-D56F-E
+    - 21.11116/0000-0006-D570-B
+    - 21.11116/0000-0006-D571-A
+author_repository_history:
+  repository: borstlab/ct1_paper
+  commit_count: 2
+  commits_snapshot:
+    path: data/raw/ct1-extreme-compartmentalization/pure-index/github-commits.json
+    bytes: 7623
+    sha256: 44d1336a6ac93d790bf0f18f4f9ac8d5fb90e419ea745548c450896af7e0053a
+  initial_tree:
+    path: data/raw/ct1-extreme-compartmentalization/pure-index/github-tree-initial.json
+    bytes: 1050
+    sha256: a5eab290b75e0e7b84e5de2c6aa81f0e1629c81ebc56f93b00aeabc17d994ccf
+  v1_0_tree:
+    path: data/raw/ct1-extreme-compartmentalization/pure-index/github-tree-v1.0.json
+    bytes: 1053
+    sha256: c3035ff0aa5be2c607cfa6f079e142f3f42c11078fca8dbd746f157194bda797
+  expected_all_paths: [BigCT1.swc, CT1CompModeling.py, CT1Stitcher.py, CompModeling.py]
 retrieval_observation:
   path: data/raw/ct1-extreme-compartmentalization/pure-index/retrieval-observation.txt
-  bytes: 411
-  sha256: de9b5b304f22043c087fd0052e6bf29cc7e81379110fffcb8ab16ed7e4271c1d
+  bytes: 731
+  sha256: b5ac0aa3b4fd3212400ec611b39cb6be62b15a5125a0a1a519e42cba70776a9f
   origin_host: pure.mpg.de
-  result: connection_timeout
-  archive_contents_verified: false
+  result: recovered_from_exact_Wayback_REST_content_captures
+  archive_contents_verified: true
   archive_content_type_inferred: false
-  numerical_payload_present: null
-  Lo1_time_series_present: null
-  stable_biological_individual_ids_present: null
-  complete_stimulus_and_baseline_fields_present: null
+  numerical_payload_present: false
+  Lo1_time_series_present: false
+  stable_biological_individual_ids_present: false
+  complete_stimulus_and_baseline_fields_present: false
 boundary:
   official_index_links_are_candidates_not_verified_payloads: true
   ZIP_label_and_ScienceDirect_filename_do_not_establish_archive_contents: true
   inaccessible_component_endpoints_are_not_zero_result_evidence: true
+  archived_component_bytes_are_positive_content_evidence: true
+  conclusions_are_limited_to_the_two_enumerated_PuRe_ZIPs: true
   unresolved_archives_do_not_authorize_cross_modality_or_cross_compartment_transfer: true
   no_curve_digitization: true
   no_parameter_fit: true

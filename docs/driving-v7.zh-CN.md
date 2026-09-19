@@ -2113,10 +2113,14 @@ Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；�
 该论文在 Max Planck 官方出版物页面还有一个此前未纳入审计的数据入口。冻结的页面快照
 （126,912 bytes，SHA-256 `0e515438…`）将同一 DOI 和 PuRe item `item_3185771_4`
 关联到 publisher PDF 以及两个明确标为 ZIP 的组件：`file_3247642` 与
-`file_3247643`。但组件内容端点当前连接超时，两份 ZIP 均未成功取得，页面也没有声明
-它们的内部文件、数值模态或个体字段。因此这里只把它们登记为两个待解析的官方候选包；
-不能把访问失败当作零结果，也不能凭 `ScienceDirect_files` 文件名断定其内容。当前没有新增
-可验证的 CT1 数值载荷、Lo1 时间序列、biological ID 或完整刺激/基线字段，所有门保持关闭。
+`file_3247643`。PuRe 当前组件端点仍连接超时，但 Handle API 为四个组件返回独立持久 PID，
+OpenAIRE 聚合记录也列出这四个 Handle；随后从 Wayback 对精确 PuRe REST-content URL 的
+2024-04-22 成功捕获中恢复了两个 ZIP。两包均通过 CRC，每包只含相同的 `mmc1.pdf` 与
+`mmc2.pdf`，成员大小和 SHA-256 与本地已审计 PDF 完全一致，没有数组、表格或代码成员。
+作者 `borstlab/ct1_paper` 仓库的全部两次提交也只出现 `BigCT1.swc` 及三段模型代码文件。
+因此这两个官方候选不再是未知内容，但只支持“无新增数值载荷”的有界结论；当前仍没有
+可验证的 CT1 数值膜电位、Lo1 时间序列、biological ID 或完整刺激/基线字段，所有动力学门
+保持关闭。
 证据见 `artifacts/v7-ct1-pure-data-index-audit.json`。
 
 CT1 的实验膜电位缺口又按区室和测量对象做了候选集边界审计。当前已核验 11 个候选，

@@ -74,6 +74,9 @@ from .driving.v7_ct1_experimental_voltage_boundary_audit import (
 from .driving.v7_ct1_extreme_compartmentalization_audit import (
     evaluate_v7_ct1_extreme_compartmentalization_audit,
 )
+from .driving.v7_ct1_pure_data_index_audit import (
+    evaluate_v7_ct1_pure_data_index_audit,
+)
 from .driving.v7_danger_throttle import evaluate_v7_danger_throttle
 from .driving.v7_degree_preserving_control import evaluate_v7_degree_preserving_control
 from .driving.v7_descending_path_audit import evaluate_v7_descending_path_audit
@@ -574,6 +577,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-kohn-portes-stimulus-provenance")
     subparsers.add_parser("v7-audit-motyxia2-public-history")
     subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
+    subparsers.add_parser("v7-audit-ct1-pure-data-index")
     subparsers.add_parser("v7-audit-ct1-experimental-voltage-boundary")
     subparsers.add_parser("v7-audit-tm9-coordinate-identifiability")
     subparsers.add_parser("v7-audit-malecns-synapse-columns")
@@ -1828,6 +1832,14 @@ def main() -> None:
     if args.command == "v7-audit-ct1-extreme-compartmentalization":
         report = evaluate_v7_ct1_extreme_compartmentalization_audit(root)
         target = root / "artifacts/v7-ct1-extreme-compartmentalization-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-ct1-pure-data-index":
+        report = evaluate_v7_ct1_pure_data_index_audit(root)
+        target = root / "artifacts/v7-ct1-pure-data-index-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

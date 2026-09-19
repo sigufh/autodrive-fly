@@ -176,6 +176,12 @@ def _verified_v7_status(root: Path) -> dict:
                 "CT1_direct_experimental_voltage_candidate_found": visual[
                     "CT1_direct_experimental_voltage_candidate_found"
                 ],
+                "CT1_PuRe_archive_contents_verified": visual[
+                    "CT1_PuRe_archive_contents_verified"
+                ],
+                "CT1_PuRe_new_numerical_payload_verified": visual[
+                    "CT1_PuRe_new_numerical_payload_verified"
+                ],
                 "Tm9_official_synapse_coordinate": visual[
                     "MaleCNS_Tm9_532266_official_synapse_coordinate"
                 ],

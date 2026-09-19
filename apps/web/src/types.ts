@@ -65,6 +65,8 @@ export type V7Status = {
     CT1_audited_candidate_count: number;
     CT1_incremental_2025_2026_candidate_count: number;
     CT1_direct_experimental_voltage_candidate_found: boolean;
+    CT1_PuRe_archive_contents_verified: boolean;
+    CT1_PuRe_new_numerical_payload_verified: boolean;
     Tm9_official_synapse_coordinate: [number, number];
     CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean;
     CT1_complete_official_LO_column_coverage: boolean;
