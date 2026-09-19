@@ -67,6 +67,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_stimulus_log_global_absence_claimed"] is False
     assert boundaries["T5_generator_defaults_used_as_record_fields"] is False
     assert boundaries["T5_stimulus_provenance_complete"] is False
+    assert boundaries["CT1_audited_candidate_count"] == 10
+    assert boundaries["CT1_incremental_2025_2026_candidate_count"] == 3
+    assert boundaries["CT1_direct_experimental_voltage_candidate_found"] is False
 
 
 def test_autonomy_status_alias_matches_hash_verified_v7_status() -> None:

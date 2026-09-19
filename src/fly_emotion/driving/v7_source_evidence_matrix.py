@@ -159,6 +159,23 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "direct_CT1_Lo1_experimental_voltage_found"
                 ]
             ),
+            "CT1_incremental_2025_2026_candidate_count": (
+                len(
+                    ct1_voltage_boundary["incremental_search_2025_2026"][
+                        "relevant_candidates"
+                    ]
+                )
+                if source == "CT1"
+                else 0
+            ),
+            "CT1_incremental_2025_2026_direct_voltage_found": (
+                source == "CT1"
+                and bool(
+                    ct1_voltage_boundary["incremental_search_2025_2026"][
+                        "new_direct_CT1_experimental_voltage_candidates"
+                    ]
+                )
+            ),
             "stable_biological_individual_ids_in_any_numerical_payload": (
                 individual_ids_any_numerical
             ),

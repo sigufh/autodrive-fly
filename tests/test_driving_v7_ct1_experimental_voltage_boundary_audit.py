@@ -19,7 +19,7 @@ def test_CT1_voltage_boundary_is_hash_bound_and_read_only() -> None:
             assert item["embedded_attachment_names"] == []
     assert report["protocol"]["parameter_fit"] is False
     assert report["protocol"]["runtime_modified"] is False
-    assert report["candidate_summary"]["audited_candidate_count"] == 7
+    assert report["candidate_summary"]["audited_candidate_count"] == 10
     assert report["candidate_summary"]["claim_scope"] == (
         "bounded_audited_candidate_set_not_global_nonexistence"
     )
@@ -62,3 +62,24 @@ def test_other_cell_voltage_and_model_voltage_do_not_unlock_CT1() -> None:
     assert report["authorize_T5_functional_precheck"] is False
     assert report["advance_to_LPLC_mechanism_repair"] is False
     assert report["advance_to_vehicle_experiments"] is False
+
+
+def test_2025_2026_incremental_candidates_are_not_CT1_voltage() -> None:
+    report = json.loads(REPORT.read_text())
+    incremental = report["incremental_search_2025_2026"]
+    assert incremental["date_window"] == ["2025-01-01", "2026-09-19"]
+    assert incremental["Europe_PMC_CT1_title_abstract_hit_count"] == 4
+    assert incremental["Europe_PMC_complex_tangential_hit_count"] == 0
+    assert incremental["new_direct_CT1_experimental_voltage_candidates"] == []
+    matrix = report["candidate_matrix"]
+    assert matrix["Samara_Borst_2025"]["modality"] == (
+        "FlyWire_connectome_polyadic_synapse_structure"
+    )
+    assert matrix["Henning_2026"]["modality"] == (
+        "C2_C3_two_photon_GCaMP_calcium_imaging"
+    )
+    assert matrix["Okuno_2026"]["modality"] == (
+        "reused_whole_brain_calcium_plus_FlyWire_FlyEM_connectomes"
+    )
+    for name in incremental["relevant_candidates"]:
+        assert matrix[name]["direct_CT1_experimental_membrane_voltage"] is False

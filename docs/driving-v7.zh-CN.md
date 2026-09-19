@@ -2016,6 +2016,14 @@ Elsevier 正文链接；DataCite 的 related-DOI 与精确题名查询均为 0�
 不声明附件、Figshare 或全球不存在载荷。证据见
 `artifacts/v7-kohn-portes-external-index-audit.json`。
 
+CT1 允许单位缺口又按 2025-01-01 至 2026-09-19 做了增量检索。新增的三个相关
+候选分别是 Samara–Borst 2025 的 FlyWire T5–CT1 polyadic-synapse 结构分析、
+Henning 等 2026 的 C2/C3 two-photon calcium 研究，以及 Okuno 等 2026 对既有
+8-fly whole-brain calcium 与 FlyWire/FlyEM connectome 的复用分析；CT1 在后者仅作为
+非脉冲神经元的结构示例。三者均无 CT1/Lo1 whole-cell 或 optical-voltage 记录。Europe
+PMC 的标题/摘要查询另有两个医学领域 `CT1` 同名假阳性，`complex tangential` 查询为 0。
+因此有界候选矩阵扩至 10 项，直接 CT1 实验电压候选仍为 0；这不构成全球不存在声明。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确

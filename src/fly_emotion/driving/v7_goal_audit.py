@@ -967,6 +967,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "CT1_experimental_voltage_transfer_authorized"
                     ]
                 ),
+                "CT1_incremental_2025_2026_relevant_candidates": (
+                    ct1_experimental_voltage_boundary_audit[
+                        "incremental_search_2025_2026"
+                    ]["relevant_candidates"]
+                ),
+                "CT1_incremental_2025_2026_direct_voltage_candidates": (
+                    ct1_experimental_voltage_boundary_audit[
+                        "incremental_search_2025_2026"
+                    ]["new_direct_CT1_experimental_voltage_candidates"]
+                ),
                 "Borst_2025_parameterized_target_verified": (
                     borst_2025_temporal_filtering_audit["transfer_gates"][
                         "local_numeric_parameterized_target_verified"

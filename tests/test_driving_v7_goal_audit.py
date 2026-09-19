@@ -397,13 +397,21 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["CT1_extreme_model_voltage_is_simulated"] is True
     assert visual["observations"]["CT1_extreme_experimental_voltage_available"] is False
     assert visual["observations"]["CT1_extreme_transfer_authorized"] is False
-    assert visual["observations"]["CT1_voltage_audited_candidate_count"] == 7
+    assert visual["observations"]["CT1_voltage_audited_candidate_count"] == 10
     assert visual["observations"]["CT1_direct_experimental_voltage_candidate_found"] is False
     assert (
         visual["observations"]["CT1_direct_Lo1_experimental_voltage_candidate_found"]
         is False
     )
     assert visual["observations"]["CT1_experimental_voltage_transfer_authorized"] is False
+    assert visual["observations"]["CT1_incremental_2025_2026_relevant_candidates"] == [
+        "Samara_Borst_2025",
+        "Henning_2026",
+        "Okuno_2026",
+    ]
+    assert visual["observations"][
+        "CT1_incremental_2025_2026_direct_voltage_candidates"
+    ] == []
     assert visual["observations"]["MaleCNS_nine_source_type_body_sets_available"] is True
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 1

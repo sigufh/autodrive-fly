@@ -160,6 +160,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_stimulus_provenance_complete": visual[
                     "Kohn_Portes_stimulus_provenance_complete"
                 ],
+                "CT1_audited_candidate_count": visual[
+                    "CT1_voltage_audited_candidate_count"
+                ],
+                "CT1_incremental_2025_2026_candidate_count": len(
+                    visual["CT1_incremental_2025_2026_relevant_candidates"]
+                ),
+                "CT1_direct_experimental_voltage_candidate_found": visual[
+                    "CT1_direct_experimental_voltage_candidate_found"
+                ],
             },
         }
     except HTTPException:

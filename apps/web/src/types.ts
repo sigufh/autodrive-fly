@@ -59,6 +59,9 @@ export type V7Status = {
     T5_stimulus_log_global_absence_claimed: boolean;
     T5_generator_defaults_used_as_record_fields: boolean;
     T5_stimulus_provenance_complete: boolean;
+    CT1_audited_candidate_count: number;
+    CT1_incremental_2025_2026_candidate_count: number;
+    CT1_direct_experimental_voltage_candidate_found: boolean;
   };
   contributions: { upper_planner: { status: string; active_in_default_runtime: boolean }; fly_local_core: { status: string; active_v7_in_default_runtime: boolean }; engineering_executor: { status: string; v7_deployment_enabled: boolean } };
 }

@@ -61,6 +61,10 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
             text = _xml_text(path)
             documents[name] = {**spec, "actual_sha256": _sha256(path)}
         document_text[name] = text
+    search_snapshots = {}
+    for name, spec in config["incremental_search_snapshots"].items():
+        path = _verify_file(root, spec)
+        search_snapshots[name] = json.loads(path.read_text(encoding="utf-8"))
 
     ramos = document_text["Ramos_Traslosheros_2021"]
     if any(
@@ -101,6 +105,67 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
         raise ValueError("Braun CT1 functional evidence text changed")
     if any(term in braun_article for term in ("ArcLight", "whole-cell", "patch-clamp")):
         raise ValueError("Braun candidate now appears to contain direct voltage recording")
+
+    samara = document_text["Samara_Borst_2025"]
+    if any(
+        phrase not in samara
+        for phrase in (
+            "we use the FlyWire database",
+            "Tm and CT1 cells wire on T5a dendrites via eight polyadic synapse types",
+            "The data are available at Zenodo",
+        )
+    ):
+        raise ValueError("Samara-Borst CT1 structural evidence changed")
+    if any(term in samara.lower() for term in ("whole-cell", "patch clamp", "voltage imaging")):
+        raise ValueError("Samara-Borst now appears to contain direct voltage recording")
+
+    henning = document_text["Henning_2026"]
+    if any(
+        phrase not in henning
+        for phrase in (
+            "using in vivo two-photon calcium imaging",
+            "In vivo calcium imaging data produced for this study",
+            "large amacrine cell CT1",
+        )
+    ):
+        raise ValueError("Henning incremental CT1 context changed")
+    if any(term in henning.lower() for term in ("whole-cell", "patch clamp", "voltage imaging")):
+        raise ValueError("Henning now appears to contain direct voltage recording")
+
+    okuno = document_text["Okuno_2026"]
+    if any(
+        phrase not in okuno
+        for phrase in (
+            "whole-brain calcium imaging data",
+            "CT1-R neuron in the FlyWire",
+            "Whole-brain calcium imaging data and walking behavior data",
+        )
+    ):
+        raise ValueError("Okuno CT1 structural/calcium evidence changed")
+    if any(term in okuno.lower() for term in ("whole-cell", "patch clamp", "voltage imaging")):
+        raise ValueError("Okuno now appears to contain direct voltage recording")
+
+    title_results = search_snapshots["CT1_title_abstract"]
+    if title_results["hitCount"] != 4:
+        raise ValueError("incremental CT1 title/abstract result count changed")
+    result_dois = sorted(
+        item.get("doi") for item in title_results["resultList"]["result"]
+    )
+    expected_dois = sorted(
+        [
+            "10.1021/acsmedchemlett.6c00155",
+            "10.1101/2025.08.04.668437",
+            "10.1186/s40246-026-00913-2",
+            "10.1371/journal.pone.0334925",
+        ]
+    )
+    if result_dois != expected_dois:
+        raise ValueError("incremental CT1 title/abstract candidates changed")
+    if search_snapshots["complex_tangential"]["hitCount"] != 0:
+        raise ValueError("incremental complex-tangential result count changed")
+    okuno_crossref = search_snapshots["Okuno_Crossref"]["message"]
+    if okuno_crossref["DOI"].lower() != "10.7554/elife.107990.2":
+        raise ValueError("Okuno Crossref identity changed")
 
     ramos_report = evidence["ramos_source_data"]
     meier_report = evidence["meier_extreme_compartmentalization"]
@@ -164,6 +229,10 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(contract_path): _sha256(root / contract_path),
                 **{str(path): _sha256(root / path) for path in evidence_paths.values()},
+                **{
+                    spec["path"]: _sha256(root / spec["path"])
+                    for spec in config["incremental_search_snapshots"].values()
+                },
             },
             "parameter_fit": False,
             "runtime_modified": False,
@@ -182,6 +251,23 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
                 lo1_direct_voltage_candidates
             ),
             "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence",
+        },
+        "incremental_search_2025_2026": {
+            "date_window": config["search_scope"]["incremental_window"],
+            "Europe_PMC_CT1_title_abstract_hit_count": title_results["hitCount"],
+            "Europe_PMC_complex_tangential_hit_count": search_snapshots[
+                "complex_tangential"
+            ]["hitCount"],
+            "relevant_candidates": [
+                "Samara_Borst_2025",
+                "Henning_2026",
+                "Okuno_2026",
+            ],
+            "same_token_false_positive_DOIs": [
+                "10.1021/acsmedchemlett.6c00155",
+                "10.1186/s40246-026-00913-2",
+            ],
+            "new_direct_CT1_experimental_voltage_candidates": [],
         },
         "transfer_gates": gates,
         "CT1_experimental_voltage_transfer_authorized": transferable,

@@ -190,6 +190,8 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
     assert ct1["simulated_compartmental_model_voltage_not_experimental"] is True
     assert ct1["audited_CT1_candidate_set_has_direct_experimental_voltage"] is False
     assert ct1["audited_CT1_candidate_set_has_direct_Lo1_experimental_voltage"] is False
+    assert ct1["CT1_incremental_2025_2026_candidate_count"] == 3
+    assert ct1["CT1_incremental_2025_2026_direct_voltage_found"] is False
     assert report["family_summary"]["T5"]["all_sources_contract_complete"] is False
     for source in report["family_summary"]["T5"]["sources"]:
         assert report["matrix"][source]["gates"][

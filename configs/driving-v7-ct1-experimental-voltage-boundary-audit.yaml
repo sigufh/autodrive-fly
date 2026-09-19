@@ -36,6 +36,37 @@ candidate_documents:
     pages: 22
     doi: 10.1016/j.cub.2023.05.007
     format: pdf
+  Samara_Borst_2025:
+    path: data/raw/ct1-voltage-candidates/incremental-2025-2026/PMC12548851.xml
+    bytes: 151363
+    sha256: 49947ef03aaa86b67e3c1302ede2b84dd967837dcabe71f69982bf80cd39df84
+    doi: 10.1371/journal.pone.0334925
+    format: jats_xml
+  Henning_2026:
+    path: data/raw/ct1-voltage-candidates/incremental-2025-2026/PMC13211874.xml
+    bytes: 406871
+    sha256: 4db4a185b08ce10304206300b27b69a669f73ae00fa87023fd9ec2df42b5cb98
+    doi: 10.7554/eLife.108529
+    format: jats_xml
+  Okuno_2026:
+    path: data/raw/ct1-voltage-candidates/incremental-2025-2026/elife-107990-v2.xml
+    bytes: 242085
+    sha256: 774c3eb2012d991975917e56c53287c5cafcd21cade1881171d4d181708b2d9e
+    doi: 10.7554/eLife.107990.2
+    format: jats_xml
+incremental_search_snapshots:
+  CT1_title_abstract:
+    path: data/raw/ct1-voltage-candidates/incremental-2025-2026/europepmc-ct1-title-abstract.json
+    bytes: 3507
+    sha256: 70a51f45a9d2f2e7305995245bdc3ecf0ad6ccd44c92319624f25461a2d94a3b
+  complex_tangential:
+    path: data/raw/ct1-voltage-candidates/incremental-2025-2026/europepmc-complex-tangential.json
+    bytes: 246
+    sha256: 86748af34704ded8dda377243daf7e60ea577c0b2131c00b795ba18fbb037f3f
+  Okuno_Crossref:
+    path: data/raw/ct1-voltage-candidates/incremental-2025-2026/crossref-elife-107990-v2.json
+    bytes: 27762
+    sha256: 282a59c6549ede7c87c28628bb6064e5ebd9e2f42fef1a3579efd03a26c504c5
 candidates:
   Ramos_Traslosheros_2021:
     compartments: [lobula_Lo1]
@@ -93,6 +124,30 @@ candidates:
     simulated_voltage_present: true
     direct_CT1_experimental_membrane_voltage: false
     stable_biological_individual_ids: false
+  Samara_Borst_2025:
+    compartments: [lobula_T5_dendrites]
+    direct_CT1_measurement: false
+    modality: FlyWire_connectome_polyadic_synapse_structure
+    CT1_role: presynaptic_structural_partner_of_T5a
+    public_numeric_payload: true
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Henning_2026:
+    compartments: []
+    direct_CT1_measurement: false
+    modality: C2_C3_two_photon_GCaMP_calcium_imaging
+    CT1_role: incidental_driver_or_connectivity_context_only
+    public_numeric_payload: true
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
+  Okuno_2026:
+    compartments: [whole_brain_connectome]
+    direct_CT1_measurement: false
+    modality: reused_whole_brain_calcium_plus_FlyWire_FlyEM_connectomes
+    CT1_role: structural_nonspiking_neuron_example
+    public_numeric_payload: true
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
 search_scope:
   bounded_not_global_nonexistence_claim: true
   indexed_queries_observed_on: "2026-09-19"
@@ -101,6 +156,7 @@ search_scope:
     - Drosophila CT1 voltage imaging ArcLight ASAP
     - Drosophila complex tangential neuron electrophysiology
   false_positive_rule: circadian_time_CT1_is_not_the_CT1_neuron
+  incremental_window: ["2025-01-01", "2026-09-19"]
 boundary:
   direct_CT1_measurement_required: true
   experimental_voltage_required: true
