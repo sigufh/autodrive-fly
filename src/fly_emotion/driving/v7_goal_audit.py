@@ -1776,6 +1776,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "required_transfer_fields_available"
                     ]
                 ),
+                "T4_source_mapping_mode": t4_source_dynamics_transfer_audit[
+                    "source_to_MaleCNS_mapping"
+                ]["mapping_mode"],
+                "T4_source_recording_level_body_assignment": (
+                    t4_source_dynamics_transfer_audit[
+                        "source_to_MaleCNS_mapping"
+                    ]["recording_level_body_assignment"]
+                ),
+                "T4_exact_type_average_mapping_complete": (
+                    t4_source_dynamics_transfer_audit[
+                        "source_to_MaleCNS_mapping"
+                    ]["all_required_T4_sources_complete"]
+                ),
                 "T4_source_dynamics_transfer_authorized": (
                     t4_source_dynamics_transfer_audit["source_dynamics_transfer_authorized"]
                 ),
@@ -2606,6 +2619,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "v7_offline_frame_interval_milliseconds",
                     "v7_offline_substep_interval_milliseconds",
                     "v7_horizontal_fov_degrees",
+                    "T4_source_mapping_mode",
+                    "T4_source_recording_level_body_assignment",
+                    "T4_exact_type_average_mapping_complete",
                     "T5_record_specific_stimulus_logs_available",
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",

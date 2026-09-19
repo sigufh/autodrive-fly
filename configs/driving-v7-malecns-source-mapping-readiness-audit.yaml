@@ -6,7 +6,6 @@ annotations: data/raw/malecns-v1.0/body-annotations.feather
 adjacency_raw: data/processed/malecns-v1.0/adjacency_raw.npz
 body_ids: data/processed/malecns-v1.0/body_ids.npy
 graph_metadata: data/processed/malecns-v1.0/graph.json
-external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 official_synapse_column_evidence: artifacts/v7-malecns-synapse-column-audit.json
 official_CT1_columnar_evidence: artifacts/v7-malecns-ct1-columnar-audit.json
 required_sources:

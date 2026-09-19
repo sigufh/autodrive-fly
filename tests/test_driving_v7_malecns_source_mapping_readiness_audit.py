@@ -13,6 +13,10 @@ def test_MaleCNS_mapping_audit_is_hash_bound_and_read_only() -> None:
     assert report["protocol"]["MaleCNS_release"] == "v1.0"
     assert report["protocol"]["parameter_fit"] is False
     assert report["protocol"]["runtime_modified"] is False
+    assert (
+        "artifacts/v7-source-dynamics-external-evidence-contract.json"
+        not in report["protocol"]["dependencies_sha256"]
+    )
 
 
 def test_all_nine_exact_type_body_sets_and_sides_exist() -> None:

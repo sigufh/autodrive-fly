@@ -180,6 +180,13 @@ def _verified_v7_status(root: Path) -> dict:
                     "v7_offline_substep_interval_milliseconds"
                 ],
                 "v7_horizontal_fov_degrees": visual["v7_horizontal_fov_degrees"],
+                "T4_source_mapping_mode": visual["T4_source_mapping_mode"],
+                "T4_source_recording_level_body_assignment": visual[
+                    "T4_source_recording_level_body_assignment"
+                ],
+                "T4_exact_type_average_mapping_complete": visual[
+                    "T4_exact_type_average_mapping_complete"
+                ],
                 "T5_record_specific_stimulus_logs_available": visual[
                     "Kohn_Portes_record_specific_stimulus_logs_available"
                 ],

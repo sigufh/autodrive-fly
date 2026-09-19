@@ -52,6 +52,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "v7_offline_frame_interval_milliseconds",
         "v7_offline_substep_interval_milliseconds",
         "v7_horizontal_fov_degrees",
+        "T4_source_mapping_mode",
+        "T4_source_recording_level_body_assignment",
+        "T4_exact_type_average_mapping_complete",
         "T5_record_specific_stimulus_logs_available",
         "Motyxia2_public_history_branch_count",
         "Motyxia2_public_history_commit_count",
@@ -798,12 +801,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_synapse_microstep_direction_scoring_performed"] is False
     assert visual["observations"]["T4_source_dynamics_transfer_fields_available"] == {
         "direction_independent_source_kernel": False,
-        "source_to_MaleCNS_identity_mapping": False,
+        "source_to_MaleCNS_identity_mapping": True,
         "physical_v7_sample_interval": True,
         "millivolts_to_v7_normalized_state_mapping": False,
         "ordered_source_sequence_identifiability": False,
     }
     assert visual["observations"]["T4_source_dynamics_transfer_authorized"] is False
+    assert visual["observations"]["T4_source_mapping_mode"] == "exact_type_average"
+    assert visual["observations"]["T4_source_recording_level_body_assignment"] is False
+    assert visual["observations"]["T4_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T4_source_dynamics_next_candidate_authorized"] is False
     assert visual["observations"]["unified_model_package_files_verified"] is True
     assert visual["observations"]["unified_model_T4_target_parameters_available"] is True

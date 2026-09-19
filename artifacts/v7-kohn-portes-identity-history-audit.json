@@ -5,8 +5,8 @@
     "dependencies_sha256": {
       "configs/driving-v7-kohn-portes-identity-history-audit.yaml": "33599926b06a51b5e455c1d4dccf03fb2575312c6f758ca1795a63d1160a1d07",
       "src/fly_emotion/driving/v7_kohn_portes_identity_history_audit.py": "b57a7b1c10330f34c824679e7ffe987562ad916388ed07564ae6aba095f04eb6",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
-      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "61ecb66fb3133fd296966c755466465fb0b0706976a28686b18e3fda89afc904"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
+      "artifacts/v7-kohn-portes-t5-ephys-audit.json": "6810cb33a86bdd4845226cf1815dec511449cdd2cccf0448a03e02e3c27e84d9"
     },
     "repository": {
       "url": "https://gitlab.com/rbehnialab/flexible-filtering",

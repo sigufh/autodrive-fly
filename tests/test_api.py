@@ -93,6 +93,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["v7_offline_two_dimensional_angular_calibration_complete"] is False
     assert boundaries["v7_offline_frame_interval_milliseconds"] == 10.0
     assert boundaries["v7_offline_substep_interval_milliseconds"] == 2.5
+    assert boundaries["T4_source_mapping_mode"] == "exact_type_average"
+    assert boundaries["T4_source_recording_level_body_assignment"] is False
+    assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T5_record_specific_stimulus_logs_available"] is False
     assert boundaries["Motyxia2_public_history_branch_count"] == 22
     assert boundaries["Motyxia2_public_history_commit_count"] == 447

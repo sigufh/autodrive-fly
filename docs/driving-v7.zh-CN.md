@@ -1851,6 +1851,12 @@ T4 结构轴也按相同原则补做二折 cross-fit，以排除旧功能 preche
 变换预测；整体准确率约 95.83%，八群体最低约 93.01%，中位角误差约 13.03°，最大
 跨眼镜像角误差约 1.09°。随后只在已有 published-conductance target 子集 6,749 个
 细胞上重放原反对称 Mi1/Tm3 fast × Mi4/C3 delayed 候选，仍保留 6,861 固定总分母。
+外部合同允许“逐记录 body ID 或显式 type-average”二选一；现将已有映射证据接入 T4
+transfer：Mi1/Tm3/Mi4/C3 均声明 `exact_type_average`，对应 MaleCNS 精确 type body set、
+soma side 与原生柱坐标完整。该规则只把一个总体平均源核广播到同型 body，明确
+`recording_level_body_assignment=false`，绝不伪造逐记录细胞到具体 MaleCNS body 的对应。
+因此 T4 的 source→MaleCNS mapping 字段转为通过；方向独立源核、非目标条件化时移、
+mV→状态单位映射、独立动态验证及功能时间辨识仍失败，候选授权保持关闭。
 八个 reduction×gain 候选均为方向 2/8、ON 极性 8/8，但没有任何双侧方向亚型，故未运行
 controls、T02/T03 或 calibration。证据见 `artifacts/v7-t4-synapse-crossfit-axis-audit.json`
 与 `artifacts/v7-t4-synapse-crossfit-precheck.json`。因此 T4 失败也不是结构 transform

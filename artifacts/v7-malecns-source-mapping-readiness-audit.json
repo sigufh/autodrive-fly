@@ -3,15 +3,14 @@
     "name": "v7-malecns-source-mapping-readiness-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "1a2649672ae7e78ab7607c15392225065d9a547a2736d15fb5f2e6b679f2d741",
-      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "86a3aea8fd2232d62777a0bffe12d2cad79959a41b9e459bec6bd4b129f3fd32",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "d19d808f503dc007a23c0ca5d9bd4ff0ea0a864e98fe02036b05773aa7ef5831",
+      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "0910232d435c171eb9f0ae66912ce4ffcd94269213b3cc30b7b17521b9a8989d",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
       "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6",
       "artifacts/v7-malecns-ct1-columnar-audit.json": "27682ba74d97a56cc76e5b1668c4f12007288f394b45216420b70e33f617a9f0"
     },

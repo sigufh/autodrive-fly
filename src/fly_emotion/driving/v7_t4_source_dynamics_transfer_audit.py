@@ -22,6 +22,8 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     timebase_path = Path(config["timebase_evidence"])
     coordinate_path = Path(config["stimulus_coordinate_evidence"])
     coordinate_protocol_path = Path(config["stimulus_coordinate_protocol"])
+    malecns_mapping_path = Path(config["malecns_mapping_evidence"])
+    malecns_mapping_protocol_path = Path(config["malecns_mapping_protocol"])
     microstep_path = Path(config["microstep_evidence"])
     unified_path = Path(config["official_unified_model_evidence"])
     verified_unified_path = Path(config["verified_unified_model_evidence"])
@@ -45,6 +47,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
     coordinates = json.loads((root / coordinate_path).read_text(encoding="utf-8"))
+    malecns_mapping = json.loads(
+        (root / malecns_mapping_path).read_text(encoding="utf-8")
+    )
     microstep = json.loads((root / microstep_path).read_text(encoding="utf-8"))
     unified = json.loads((root / unified_path).read_text(encoding="utf-8"))
     verified_unified = json.loads(
@@ -111,13 +116,24 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         and signed_shifts["pd"][name] != 0
         for name in required_sources
     )
+    if list(config["source_mapping_modes"]) != required_sources:
+        raise ValueError("T4 source mapping declaration differs from required order")
+    type_average_rows = {
+        source: malecns_mapping["source_mapping"][source]
+        for source in required_sources
+    }
+    type_average_mapping_complete = all(
+        config["source_mapping_modes"][source] == "exact_type_average"
+        and row["all_bodies_in_canonical_graph"]
+        and row["soma_side_complete"]
+        and row["columnar_retinotopy_available"]
+        for source, row in type_average_rows.items()
+    )
     fields = {
         "direction_independent_source_kernel": fig1_temporal[
             "source_temporal_kernel_transfer_authorized"
         ],
-        "source_to_MaleCNS_identity_mapping": all(
-            item["stable_MaleCNS_body_ids_available"] for item in verified_sources.values()
-        ),
+        "source_to_MaleCNS_identity_mapping": type_average_mapping_complete,
         "physical_v7_sample_interval": coordinates[
             "offline_time_coordinate_contract_complete"
         ],
@@ -173,6 +189,10 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(coordinate_protocol_path): _sha256(
                     root / coordinate_protocol_path
                 ),
+                str(malecns_mapping_path): _sha256(root / malecns_mapping_path),
+                str(malecns_mapping_protocol_path): _sha256(
+                    root / malecns_mapping_protocol_path
+                ),
                 str(microstep_path): _sha256(root / microstep_path),
                 str(unified_path): _sha256(root / unified_path),
                 str(verified_unified_path): _sha256(root / verified_unified_path),
@@ -225,6 +245,24 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "external_recording_alignment_verified": coordinates[
                 "external_recording_alignment_verified"
             ],
+        },
+        "source_to_MaleCNS_mapping": {
+            "accepted_contract_field": (
+                "recording_unit_to_MaleCNS_body_id_or_explicit_type_average"
+            ),
+            "mapping_mode": "exact_type_average",
+            "recording_level_body_assignment": False,
+            "required_sources": required_sources,
+            "source_mapping_complete": {
+                source: bool(
+                    row["all_bodies_in_canonical_graph"]
+                    and row["soma_side_complete"]
+                    and row["columnar_retinotopy_available"]
+                )
+                for source, row in type_average_rows.items()
+            },
+            "all_required_T4_sources_complete": type_average_mapping_complete,
+            "broadcast_rule": "one_population_mean_kernel_to_all_exact_same_type_bodies",
         },
         "paper_direction_synthesis": {
             "shift_samples": synthesis["shift_samples"],

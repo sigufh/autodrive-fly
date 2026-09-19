@@ -5,10 +5,10 @@
     "dependencies_sha256": {
       "configs/driving-v7-t4-recording-field-audit.yaml": "2620f1ca8068b6194f71848ccb906b9637ad599bf6c0a138b41bd0d01e7f9cc4",
       "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "0ef5e33d8c8015a5a5c7ca5bf7d5cddc5f9180b2346279aa7eff6fadb411a4fe",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
-      "artifacts/v7-t4-source-identity-readiness-audit.json": "fce442efc69703c8e8807bc91862064863ac0c045ff7895663180d74d09c3a0e",
-      "artifacts/v7-t4-individual-split-1khz-audit.json": "820bf18e678b99f4f97d6b5a6b4b05e670453138e7332e1a008841ff9473bfcf",
+      "artifacts/v7-t4-source-identity-readiness-audit.json": "84d8f73b476d98f880ad392f685a39ad2cbd755fadd66f53fa3e7bf1f5441919",
+      "artifacts/v7-t4-individual-split-1khz-audit.json": "7aa8bdea01dc8eb5ac1eb65d15d1b9da6d30a9fe0caa157cd51da7f692a16998",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx": "dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3",
       "data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json": "31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606",

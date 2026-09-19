@@ -35,19 +35,26 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
         raise ValueError("MaleCNS annotation size mismatch")
     if _sha256(root / annotation_path) != annotation_spec["sha256"]:
         raise ValueError("MaleCNS annotation SHA-256 mismatch")
-    contract_path = Path(config["external_contract"])
-    contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
     synapse_column_path = Path(config["official_synapse_column_evidence"])
     synapse_column = json.loads((root / synapse_column_path).read_text(encoding="utf-8"))
     ct1_columnar_path = Path(config["official_CT1_columnar_evidence"])
     ct1_columnar = json.loads((root / ct1_columnar_path).read_text(encoding="utf-8"))
-    expected_types = {
-        source
-        for family in contract["required_families"].values()
-        for source in family["source_types"]
+    expected_families = {
+        "Mi1": "T4",
+        "Tm3": "T4",
+        "Mi4": "T4",
+        "C3": "T4",
+        "Tm1": "T5",
+        "Tm2": "T5",
+        "Tm4": "T5",
+        "Tm9": "T5",
+        "CT1": "T5",
     }
-    if set(config["required_sources"]) != expected_types:
-        raise ValueError("MaleCNS mapping audit source types differ from external contract")
+    if {
+        source: item["family"] for source, item in config["required_sources"].items()
+    } != expected_families:
+        raise ValueError("MaleCNS mapping audit source contract changed")
+    expected_types = set(expected_families)
     annotations = feather.read_table(
         root / annotation_path,
         columns=[
@@ -173,7 +180,6 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 str(Path(config["body_ids"])): _sha256(root / config["body_ids"]),
                 str(Path(config["graph_metadata"])): _sha256(root / config["graph_metadata"]),
                 str(ONE_HOP_IMPLEMENTATION): _sha256(root / ONE_HOP_IMPLEMENTATION),
-                str(contract_path): _sha256(root / contract_path),
                 str(synapse_column_path): _sha256(root / synapse_column_path),
                 str(ct1_columnar_path): _sha256(root / ct1_columnar_path),
             },

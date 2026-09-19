@@ -67,6 +67,9 @@ export type V7Status = {
     v7_offline_frame_interval_milliseconds: number;
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;
+    T4_source_mapping_mode: string;
+    T4_source_recording_level_body_assignment: boolean;
+    T4_exact_type_average_mapping_complete: boolean;
     T5_record_specific_stimulus_logs_available: boolean;
     Motyxia2_public_history_branch_count: number;
     Motyxia2_public_history_commit_count: number;

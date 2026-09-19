@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-matulis-mi1-voltage-availability-audit.yaml": "d110e554a3e424a1df3d1c0c6bb17fbc458e4d202ad01363a1176dee8021ab55",
       "src/fly_emotion/driving/v7_matulis_mi1_voltage_availability_audit.py": "b38d3c0bb41b5a81c9cc62e02f71aa4fdcbb2be1a88671f02d10ec065014db94",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
       "data/raw/t4-whole-cell-candidates/PMC7003801.bioc.xml": "a00a7d43ee4657456cb6fbfec6126cce14452fe287a0d20ddc6cf47aa355f42a",
       "data/raw/t4-whole-cell-candidates/S-EPMC7003801.json": "dc9b17bfaa682c06888fd7fa902288f9653c3ec1db71aa00ac0828d2ef6b7a03",
       "data/raw/t4-whole-cell-candidates/NIHMS1545836-supplement-1.docx": "d07e7c7ed255a95875d2fb975b7e8aaa06e0ab00d95b3fc3390786cd2351336e",
