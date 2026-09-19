@@ -20,6 +20,26 @@ def test_yang_voltage_audit_is_hash_bound_and_read_only() -> None:
     )
 
 
+def test_public_indexes_and_all_PMC_attachments_expose_no_numeric_payload() -> None:
+    report = json.loads(REPORT.read_text())
+    index = report["external_index_audit"]
+    assert index["crossref_relation_count"] == 0
+    assert index["crossref_data_links"] == []
+    assert index["datacite_related_count"] == 0
+    assert index["datacite_exact_title_count"] == 0
+    assert index["europe_pmc_has_supplements"] is True
+    assert index["europe_pmc_has_database_cross_references"] is False
+    assert index["pmc_attachment_count"] == 9
+    assert index["pmc_numeric_attachment_count"] == 0
+    assert all(not item["embedded_files"] for item in index["pmc_attachments"])
+    docx = next(item for item in index["pmc_attachments"] if item["name"].endswith(".docx"))
+    assert docx["kind"] == "figure_legends_docx"
+    assert docx["member_count"] == 12
+    assert index["github_exact_title_repository_count"] == 0
+    assert index["zenodo_exact_title_record_count"] == 0
+    assert index["figshare_search_accessible"] is False
+
+
 def test_Tm1_Tm2_optical_voltage_phenotypes_are_physical_but_partial() -> None:
     report = json.loads(REPORT.read_text())
     assert report["measurement_protocol"]["acquisition_rate_hz"] == 38.9

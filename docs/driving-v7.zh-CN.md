@@ -2125,6 +2125,15 @@ CT1(Lo1) 电压/时间常数。因此在这组已审计候选内，直接 CT1 �
 合规电压缺口和所有下游冻结门保持不变。证据见
 `artifacts/v7-ct1-experimental-voltage-boundary-audit.json`。
 
+Yang 2016 的 Tm1/Tm2 ASAP2f 电压表型也补做了外部索引和全部 PMC 附件审计。Crossref
+无数据关系或数据文件链接，DataCite 的 DOI/精确标题查询均为 0，GitHub 与 Zenodo 精确
+标题查询也为 0；Europe PMC 只标记 9 个 supplements 且无数据库交叉引用。通过 PMC 的
+PoW 下载并哈希校验后，9 个附件为 7 张单页补图、1 个仅含补图图注的 DOCX 和 1 份 8 页
+方法 PDF；DOCX 共 12 个普通 OOXML 成员且无 embedded object，所有 PDF 也无嵌入附件。
+因此成功审计的公共入口没有逐 cell/fly 数值时间序列。Figshare API 仍返回 403，只保留为
+未解析入口，不作零结果推断。Tm1/Tm2 光学电压继续只算已发表表型，不能升级为本地数值
+载荷或打开 T5 门。证据见 `artifacts/v7-yang-t5-voltage-evidence-audit.json`。
+
 Borst 2025《Differential temporal filtering in the fly optic lobe》（DOI
 `10.1007/s10827-025-00914-5`）及其 GitHub 固定提交 `2e277fef…` 也已做 provenance
 审计。仓库两个 `data.npy` 副本哈希完全相同，均为 `13×9×200`、10 ms 步长的数值目标，

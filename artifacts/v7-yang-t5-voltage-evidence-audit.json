@@ -3,9 +3,27 @@
     "name": "v7-yang-t5-voltage-evidence-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-yang-t5-voltage-evidence-audit.yaml": "d0a4a5e0dc3f65693ac773f51738309c95dafdcd0430a620858c5818efb9adbf",
-      "src/fly_emotion/driving/v7_yang_t5_voltage_evidence_audit.py": "fb6d4e4de838fea9406449974b2015f103e14fed64064568b2c933fbc1fc3bdd",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5"
+      "configs/driving-v7-yang-t5-voltage-evidence-audit.yaml": "c776ad13f51532a5a598f57c686f1481bcb0fab129d6425c43a4acee1785f7ac",
+      "src/fly_emotion/driving/v7_yang_t5_voltage_evidence_audit.py": "fdda1bbddb4dc73e39dd122c95c5aa77ca3f29841fe7f23bc220cd7ffde1a0ed",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
+      "data/raw/t5-yang-voltage/external-index/crossref.json": "90a9d8e851abc73f35d05c61a14317a353e6bcf38d006381a36cb07e41dc9dca",
+      "data/raw/t5-yang-voltage/external-index/datacite-related.json": "10a227046d8c41d5b14d33aa970482d925e7ea40122987d44ee044789391841c",
+      "data/raw/t5-yang-voltage/external-index/datacite-title.json": "b95611eb5beb357130bdc489b23b350dcf3d6eedae231204011ef0b471c76623",
+      "data/raw/t5-yang-voltage/external-index/europepmc.json": "1e124856370ea0900241bc451b2455ddb4f34c94c2874da0e5f4e7fd2ea16b0d",
+      "data/raw/t5-yang-voltage/external-index/pmc-2.snapshot": "0396702a42c683f57b201db333bbe7555f066e4945a974432ff1603abf94e424",
+      "data/raw/t5-yang-voltage/external-index/github-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
+      "data/raw/t5-yang-voltage/external-index/zenodo-title-exact.json": "a8f47913325a100677aedba9cc0f2cb1a8dcf95affde61a38bf5c57fa3f3b36d",
+      "data/raw/t5-yang-voltage/external-index/figshare-headers.txt": "c39d6066765f2d7a10854690910aabb1c9d90db447e00fdc403506df20600660",
+      "data/raw/t5-yang-voltage/external-index/figshare-response.txt": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-1-real.pdf": "ee4e71623c6404ea26cc88f599d023fa3ffda55ff3c261bf98ba8ee18b429d52",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-2-real.pdf": "71ce38b1428342d53600eea4e7139678d41efbb2694b425ec4b34f779a8e9188",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-3-real.pdf": "24ab251c61401d2066deeeb2b3849f68271e9ac718d9968dda3b2ab9eb987bf3",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-4-real.pdf": "cf3fc155834f711a882d5515fe08d9dd543c9913847c3ce60d1631406e6eeac9",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-5-real.pdf": "ffc9ae24f3832827f47b33a51321999f8ae1170bc2fe5a9829e941c3fee14bc7",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-6-real.pdf": "5bc604a5fbd3627061d1d7061ce99de8922f249550a037ebfd5b92de1a3b513c",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-7-real.pdf": "f713aaf286e02f6508533e133ad0d1a7c55fd05dd873b4921f9844a9c415a786",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-8-real.docx": "c14376c874ea5f7e8cb66819252a0e52ee5cfebf9b8cddf928bf8063754c9a57",
+      "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-9-real.pdf": "9b5a300bb2f90e6fdc59325912a11c594ba5c73ee7d37e09d2328f819f69bc96"
     },
     "paper": {
       "doi": "10.1016/j.cell.2016.05.031",
@@ -45,6 +63,94 @@
     "stimulus_flash_duration_milliseconds": 25,
     "stimulus_gray_interleave_milliseconds": 500,
     "stimulus_contrast": 0.5
+  },
+  "external_index_audit": {
+    "crossref_relation_count": 0,
+    "crossref_data_links": [],
+    "datacite_related_count": 0,
+    "datacite_exact_title_count": 0,
+    "europe_pmc_has_supplements": true,
+    "europe_pmc_has_database_cross_references": false,
+    "pmc_attachment_count": 9,
+    "pmc_attachments": [
+      {
+        "name": "NIHMS785612-supplement-1.pdf",
+        "bytes": 6190165,
+        "sha256": "ee4e71623c6404ea26cc88f599d023fa3ffda55ff3c261bf98ba8ee18b429d52",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-1-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-2.pdf",
+        "bytes": 671825,
+        "sha256": "71ce38b1428342d53600eea4e7139678d41efbb2694b425ec4b34f779a8e9188",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-2-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-3.pdf",
+        "bytes": 2474502,
+        "sha256": "24ab251c61401d2066deeeb2b3849f68271e9ac718d9968dda3b2ab9eb987bf3",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-3-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-4.pdf",
+        "bytes": 482806,
+        "sha256": "cf3fc155834f711a882d5515fe08d9dd543c9913847c3ce60d1631406e6eeac9",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-4-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-5.pdf",
+        "bytes": 916629,
+        "sha256": "ffc9ae24f3832827f47b33a51321999f8ae1170bc2fe5a9829e941c3fee14bc7",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-5-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-6.pdf",
+        "bytes": 859341,
+        "sha256": "5bc604a5fbd3627061d1d7061ce99de8922f249550a037ebfd5b92de1a3b513c",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-6-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-7.pdf",
+        "bytes": 507956,
+        "sha256": "f713aaf286e02f6508533e133ad0d1a7c55fd05dd873b4921f9844a9c415a786",
+        "pages": 1,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-7-real.pdf",
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-8.docx",
+        "bytes": 173719,
+        "sha256": "c14376c874ea5f7e8cb66819252a0e52ee5cfebf9b8cddf928bf8063754c9a57",
+        "kind": "figure_legends_docx",
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-8-real.docx",
+        "member_count": 12,
+        "embedded_files": []
+      },
+      {
+        "name": "NIHMS785612-supplement-9.pdf",
+        "bytes": 231199,
+        "sha256": "9b5a300bb2f90e6fdc59325912a11c594ba5c73ee7d37e09d2328f819f69bc96",
+        "pages": 8,
+        "local_path": "data/raw/t5-yang-voltage/external-index/NIHMS785612-supplement-9-real.pdf",
+        "embedded_files": []
+      }
+    ],
+    "pmc_numeric_attachment_count": 0,
+    "github_exact_title_repository_count": 0,
+    "zenodo_exact_title_record_count": 0,
+    "figshare_search_accessible": false
   },
   "source_evidence": {
     "Tm1": {
@@ -123,6 +229,9 @@
     "official_supplement_audit_only": true,
     "optical_voltage_phenotype_is_not_a_numerical_payload": true,
     "plotted_mean_and_SEM_are_not_individual_time_series": true,
+    "successful_public_indexes_expose_no_numeric_payload": true,
+    "PMC_figure_and_method_attachments_are_not_source_data": true,
+    "inaccessible_Figshare_search_is_not_zero_result_evidence": true,
     "no_curve_digitization": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

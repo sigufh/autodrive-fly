@@ -372,6 +372,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     ]
     assert visual["observations"]["Yang_T5_numerical_voltage_payload_verified"] is False
     assert visual["observations"]["Yang_T5_voltage_transfer_authorized"] is False
+    assert visual["observations"]["Yang_PMC_attachment_count"] == 9
+    assert visual["observations"]["Yang_PMC_numeric_attachment_count"] == 0
+    assert visual["observations"]["Yang_successful_public_indexes_numeric_payload_found"] is False
+    assert visual["observations"]["Yang_Figshare_search_accessible"] is False
     assert visual["observations"]["Kohn_Portes_T5_numeric_voltage_sources"] == [
         "Tm1",
         "Tm2",

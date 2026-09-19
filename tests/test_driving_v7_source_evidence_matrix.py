@@ -190,6 +190,11 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
         assert report["matrix"][source]["numerical_evidence_sources"][0] == (
             "Kohn_Portes_whole_cell_voltage_flash_payload"
         )
+    for source in ("Tm1", "Tm2"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Yang_2016_PMC_attachment_count"] == 9
+        assert components["Yang_2016_numeric_payload_found_in_successful_public_indexes"] is False
+        assert components["Yang_2016_Figshare_search_accessible"] is False
     ct1 = report["matrix"]["CT1"]["evidence_components"]
     assert ct1["local_numerical_spatial_calcium_only"] is True
     assert ct1["local_uncompartmented_type_average_deconvolved_calcium"] is True

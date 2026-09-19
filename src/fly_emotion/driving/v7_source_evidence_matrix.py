@@ -51,6 +51,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         and gou["repositories"]["Dryad"]["payload_sha256_locally_verified"]
     )
     yang_sources = set(evidence["t5_voltage"]["source_evidence"])
+    yang_external_index = evidence["t5_voltage"]["external_index_audit"]
     kohn_portes_voltage_sources = set(
         evidence["kohn_portes_t5_ephys"]["T5_source_contract"][
             "sources_with_local_numeric_membrane_voltage"
@@ -259,6 +260,26 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and behnia_availability[
                     "local_numeric_trace_payload_found_in_audited_indexes"
                 ]
+            ),
+            "Yang_2016_PMC_attachment_count": (
+                yang_external_index["pmc_attachment_count"]
+                if source in yang_sources
+                else 0
+            ),
+            "Yang_2016_numeric_payload_found_in_successful_public_indexes": (
+                source in yang_sources
+                and (
+                    bool(yang_external_index["crossref_data_links"])
+                    or yang_external_index["datacite_related_count"] > 0
+                    or yang_external_index["datacite_exact_title_count"] > 0
+                    or yang_external_index["pmc_numeric_attachment_count"] > 0
+                    or yang_external_index["github_exact_title_repository_count"] > 0
+                    or yang_external_index["zenodo_exact_title_record_count"] > 0
+                )
+            ),
+            "Yang_2016_Figshare_search_accessible": (
+                source in yang_sources
+                and yang_external_index["figshare_search_accessible"]
             ),
             "independent_inhibitory_source_physiology_published": (
                 source in inhibitory_external

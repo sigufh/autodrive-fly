@@ -904,6 +904,46 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "T5_source_dynamics_transfer_authorized"
                     ]
                 ),
+                "Yang_PMC_attachment_count": (
+                    yang_t5_voltage_evidence_audit["external_index_audit"][
+                        "pmc_attachment_count"
+                    ]
+                ),
+                "Yang_PMC_numeric_attachment_count": (
+                    yang_t5_voltage_evidence_audit["external_index_audit"][
+                        "pmc_numeric_attachment_count"
+                    ]
+                ),
+                "Yang_successful_public_indexes_numeric_payload_found": any(
+                    (
+                        bool(
+                            yang_t5_voltage_evidence_audit["external_index_audit"][
+                                "crossref_data_links"
+                            ]
+                        ),
+                        yang_t5_voltage_evidence_audit["external_index_audit"][
+                            "datacite_related_count"
+                        ]
+                        > 0,
+                        yang_t5_voltage_evidence_audit["external_index_audit"][
+                            "pmc_numeric_attachment_count"
+                        ]
+                        > 0,
+                        yang_t5_voltage_evidence_audit["external_index_audit"][
+                            "github_exact_title_repository_count"
+                        ]
+                        > 0,
+                        yang_t5_voltage_evidence_audit["external_index_audit"][
+                            "zenodo_exact_title_record_count"
+                        ]
+                        > 0,
+                    )
+                ),
+                "Yang_Figshare_search_accessible": (
+                    yang_t5_voltage_evidence_audit["external_index_audit"][
+                        "figshare_search_accessible"
+                    ]
+                ),
                 "Kohn_Portes_T5_numeric_voltage_sources": (
                     kohn_portes_t5_ephys_audit["T5_source_contract"][
                         "sources_with_local_numeric_membrane_voltage"

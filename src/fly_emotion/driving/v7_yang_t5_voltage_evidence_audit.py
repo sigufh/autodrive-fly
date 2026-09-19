@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import importlib.metadata
 import json
+import re
+import zipfile
 from pathlib import Path
 
 import yaml
@@ -54,6 +56,83 @@ def evaluate_v7_yang_t5_voltage_evidence_audit(root: Path) -> dict:
     missing_fragments = [fragment for fragment in required_fragments if fragment not in text]
     if missing_fragments:
         raise ValueError(f"Yang supplement evidence changed: {missing_fragments}")
+
+    index_paths = {name: root / spec["path"] for name, spec in config["external_indexes"].items()}
+    for name, path in index_paths.items():
+        spec = config["external_indexes"][name]
+        if path.stat().st_size != int(spec["bytes"]) or _sha256(path) != spec["sha256"]:
+            raise ValueError(f"Yang external-index snapshot changed: {name}")
+    crossref = json.loads(index_paths["crossref"].read_text())["message"]
+    if crossref["DOI"] != config["paper"]["doi"] or crossref.get("relation"):
+        raise ValueError("Yang Crossref identity or relations changed")
+    crossref_data_links = [
+        item["URL"]
+        for item in crossref.get("link", [])
+        if item["URL"]
+        .lower()
+        .split("?", 1)[0]
+        .endswith((".csv", ".json", ".mat", ".npy", ".npz", ".zip"))
+    ]
+    datacite_counts = {
+        name: int(json.loads(index_paths[name].read_text())["meta"]["total"])
+        for name in ("datacite_related", "datacite_title")
+    }
+    if any(datacite_counts.values()):
+        raise ValueError("DataCite gained an unreviewed Yang candidate")
+    europe = json.loads(index_paths["europe_pmc"].read_text())
+    if europe["hitCount"] != 1:
+        raise ValueError("Europe PMC Yang DOI count changed")
+    europe_record = europe["resultList"]["result"][0]
+    if europe_record.get("pmcid") != "PMC5606228":
+        raise ValueError("Europe PMC Yang identity changed")
+    pmc_html = index_paths["pmc_article"].read_text(encoding="utf-8")
+    attachment_names = re.findall(
+        r'href="/articles/instance/5606228/bin/(NIHMS785612-supplement-[^"]+)"',
+        pmc_html,
+    )
+    attachment_names = list(dict.fromkeys(attachment_names))
+    expected_attachment_names = [item["name"] for item in config["pmc_attachments"]]
+    if attachment_names != expected_attachment_names:
+        raise ValueError("PMC Yang attachment listing changed")
+
+    attachment_reports = []
+    attachment_root = root / "data/raw/t5-yang-voltage/external-index"
+    for spec in config["pmc_attachments"]:
+        suffix = spec["name"].rsplit(".", 1)[1]
+        local_name = spec["name"].replace(f".{suffix}", f"-real.{suffix}")
+        path = attachment_root / local_name
+        if path.stat().st_size != int(spec["bytes"]) or _sha256(path) != spec["sha256"]:
+            raise ValueError(f"PMC Yang attachment changed: {spec['name']}")
+        if suffix == "pdf":
+            reader = PdfReader(path)
+            if len(reader.pages) != int(spec["pages"]) or reader.attachments:
+                raise ValueError(f"PMC Yang PDF structure changed: {spec['name']}")
+            attachment_reports.append(
+                {**spec, "local_path": str(path.relative_to(root)), "embedded_files": []}
+            )
+        else:
+            with zipfile.ZipFile(path) as archive:
+                members = sorted(archive.namelist())
+                document_text = archive.read("word/document.xml").decode("utf-8")
+            embedded = [name for name in members if name.startswith("word/embeddings/")]
+            if embedded or "SUPPLEMENTAL FIGURE LEGENDS" not in document_text:
+                raise ValueError("PMC Yang DOCX attachment structure changed")
+            attachment_reports.append(
+                {
+                    **spec,
+                    "local_path": str(path.relative_to(root)),
+                    "member_count": len(members),
+                    "embedded_files": embedded,
+                }
+            )
+    github = json.loads(index_paths["github_exact_title"].read_text())
+    zenodo = json.loads(index_paths["zenodo_exact_title"].read_text())
+    if github["total_count"] != 0 or zenodo["hits"]["total"] != 0:
+        raise ValueError("GitHub or Zenodo gained an unreviewed Yang candidate")
+    figshare_headers = index_paths["figshare_headers"].read_text()
+    figshare_response = index_paths["figshare_response"].read_text()
+    if "403" not in figshare_headers or "403 Forbidden" not in figshare_response:
+        raise ValueError("Figshare Yang access boundary changed")
     contract_path = Path(config["required_contract"])
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
     required = contract["required_families"]["T5"]["source_types"]
@@ -91,6 +170,11 @@ def evaluate_v7_yang_t5_voltage_evidence_audit(root: Path) -> dict:
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(contract_path): _sha256(root / contract_path),
+                **{
+                    str(config["external_indexes"][name]["path"]): _sha256(path)
+                    for name, path in index_paths.items()
+                },
+                **{item["local_path"]: item["sha256"] for item in attachment_reports},
             },
             "paper": config["paper"],
             "supplements": supplement_reports,
@@ -100,6 +184,27 @@ def evaluate_v7_yang_t5_voltage_evidence_audit(root: Path) -> dict:
         },
         "measurement_protocol": {
             key: value for key, value in config["evidence"].items() if key not in ("Tm1", "Tm2")
+        },
+        "external_index_audit": {
+            "crossref_relation_count": sum(
+                len(items) for items in crossref.get("relation", {}).values()
+            ),
+            "crossref_data_links": crossref_data_links,
+            "datacite_related_count": datacite_counts["datacite_related"],
+            "datacite_exact_title_count": datacite_counts["datacite_title"],
+            "europe_pmc_has_supplements": europe_record.get("hasSuppl") == "Y",
+            "europe_pmc_has_database_cross_references": (
+                europe_record.get("hasDbCrossReferences") == "Y"
+            ),
+            "pmc_attachment_count": len(attachment_reports),
+            "pmc_attachments": attachment_reports,
+            "pmc_numeric_attachment_count": sum(
+                item["name"].lower().endswith((".csv", ".json", ".mat", ".npy", ".npz", ".zip"))
+                for item in attachment_reports
+            ),
+            "github_exact_title_repository_count": github["total_count"],
+            "zenodo_exact_title_record_count": zenodo["hits"]["total"],
+            "figshare_search_accessible": False,
         },
         "source_evidence": {
             "Tm1": config["evidence"]["Tm1"],
