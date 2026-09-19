@@ -96,6 +96,15 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T4_source_mapping_mode"] == "exact_type_average"
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
+    assert boundaries["T4_author_minmax_formula_reproduced"] is True
+    assert boundaries["T4_state_mapping_held_out_outside_fraction_by_source"] == {
+        "Mi1": 0.1295625,
+        "Tm3": 0.17478125,
+        "Mi4": 0.2870446428571429,
+        "C3": 0.18847916666666667,
+    }
+    assert boundaries["T4_author_minmax_semantics_match_v7_state"] is False
+    assert boundaries["T4_millivolts_to_v7_state_mapping_available"] is False
     assert boundaries["T5_record_specific_stimulus_logs_available"] is False
     assert boundaries["Motyxia2_public_history_branch_count"] == 22
     assert boundaries["Motyxia2_public_history_commit_count"] == 447

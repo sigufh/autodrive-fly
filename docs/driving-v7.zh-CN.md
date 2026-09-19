@@ -1857,6 +1857,14 @@ soma side 与原生柱坐标完整。该规则只把一个总体平均源核广�
 `recording_level_body_assignment=false`，绝不伪造逐记录细胞到具体 MaleCNS body 的对应。
 因此 T4 的 source→MaleCNS mapping 字段转为通过；方向独立源核、非目标条件化时移、
 mV→状态单位映射、独立动态验证及功能时间辨识仍失败，候选授权保持关闭。
+作者 Fig.3 notebook 的 mV→归一化预处理也已独立复现：它先对每类 source 跨 cell 求均值，
+再以 ON 与 OFF 两条件共同的全 cohort 最小值/最大值映射到 `[0,1]`。该公式用于作者的
+T4 target conductance model，不是对 v7 `signed tanh` 模拟状态的校准。严格复用现有逐个体
+fold，只用 training 个体拟合 min/max 后无 clipping 地映射 validation 个体，Mi1/Tm3/Mi4/C3
+分别有 13.0%/17.5%/28.7%/18.8% 样本越出 `[0,1]`；各 fold 的常数也因 training cohort
+而异，且仓库没有声明部署 training cohort 或 held-out clipping 规则。因此作者公式存在且
+可重算，但不能充当一个冻结、无泄漏、语义一致的 mV→v7 state 映射，该 transfer 字段保持
+false。证据见 `artifacts/v7-t4-state-unit-mapping-audit.json`。
 八个 reduction×gain 候选均为方向 2/8、ON 极性 8/8，但没有任何双侧方向亚型，故未运行
 controls、T02/T03 或 calibration。证据见 `artifacts/v7-t4-synapse-crossfit-axis-audit.json`
 与 `artifacts/v7-t4-synapse-crossfit-precheck.json`。因此 T4 失败也不是结构 transform

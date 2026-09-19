@@ -187,6 +187,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_exact_type_average_mapping_complete": visual[
                     "T4_exact_type_average_mapping_complete"
                 ],
+                "T4_author_minmax_formula_reproduced": visual[
+                    "T4_author_minmax_formula_reproduced"
+                ],
+                "T4_state_mapping_held_out_outside_fraction_by_source": visual[
+                    "T4_state_mapping_held_out_outside_fraction_by_source"
+                ],
+                "T4_author_minmax_semantics_match_v7_state": visual[
+                    "T4_author_minmax_semantics_match_v7_state"
+                ],
+                "T4_millivolts_to_v7_state_mapping_available": visual[
+                    "T4_millivolts_to_v7_state_mapping_available"
+                ],
                 "T5_record_specific_stimulus_logs_available": visual[
                     "Kohn_Portes_record_specific_stimulus_logs_available"
                 ],

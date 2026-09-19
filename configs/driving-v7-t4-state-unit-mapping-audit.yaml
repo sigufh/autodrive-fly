@@ -1,0 +1,43 @@
+version: 1
+name: v7-t4-state-unit-mapping-audit
+observed_on: "2026-09-19"
+source_directory: data/raw/t4-fig3-source-dynamics/edmond-1khz
+source_files:
+  Mi1: fig3_Mi1.npy
+  Tm3: fig3_Tm3.npy
+  Mi4: fig3_Mi4.npy
+  C3: fig3_C3.npy
+notebook:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3.ipynb
+  bytes: 263853
+  sha256: ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695
+retrieval_evidence: artifacts/v7-edmond-fig3-retrieval-audit.json
+individual_split_evidence: artifacts/v7-t4-individual-split-1khz-audit.json
+v7_contract: configs/driving-v7.yaml
+v7_implementation: src/fly_emotion/driving/v7.py
+runtime_engine: src/fly_emotion/driving/engine.py
+source_order: [Mi1, Tm3, Mi4, C3]
+stimulus_order: [on, off]
+author_formula:
+  scope: source_type_population_mean_over_both_on_off_conditions
+  expression: (voltage_millivolts - global_minimum) / (global_maximum - global_minimum)
+  output_interval: [0.0, 1.0]
+held_out_protocol:
+  reuse_exact_individual_split_folds: true
+  fit_constants_on_training_individual_population_mean_only: true
+  evaluate_validation_individual_population_mean_without_clipping: true
+  require_every_validation_sample_in_output_interval: true
+  require_single_training_fitted_mapping_per_fold: true
+boundary:
+  author_formula_is_target_model_preprocessing_not_v7_state_calibration: true
+  author_formula_uses_both_ON_and_OFF_conditions_jointly: true
+  no_designated_deployment_training_cohort_available: true
+  no_clipping_rule_in_author_notebook: true
+  no_arbitrary_extrapolation_or_clipping_added: true
+  v7_state_semantics_are_signed_tanh_simulated_activation: true
+  normalized_voltage_is_not_membrane_voltage: true
+  all_recorded_individuals_retained: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

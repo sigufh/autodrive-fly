@@ -89,6 +89,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
+    t4_state_unit_mapping_audit = reports["t4_state_unit_mapping_audit"]
     t4_source_identity_readiness_audit = reports[
         "t4_source_identity_readiness_audit"
     ]
@@ -325,6 +326,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
                 config["evidence"]["t4_source_dynamics_transfer_audit"],
+                config["evidence"]["t4_state_unit_mapping_audit"],
                 config["evidence"]["t4_source_identity_readiness_audit"],
                 config["evidence"]["t4_individual_split_1khz_audit"],
                 config["evidence"]["edmond_fig3_retrieval_audit"],
@@ -1789,6 +1791,23 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "source_to_MaleCNS_mapping"
                     ]["all_required_T4_sources_complete"]
                 ),
+                "T4_author_minmax_formula_reproduced": t4_state_unit_mapping_audit[
+                    "author_mapping"
+                ]["formula_reproduced_on_full_cohort"],
+                "T4_state_mapping_held_out_outside_fraction_by_source": {
+                    source: item["held_out_outside_interval_fraction"]
+                    for source, item in t4_state_unit_mapping_audit["source_results"].items()
+                },
+                "T4_author_minmax_semantics_match_v7_state": (
+                    t4_state_unit_mapping_audit["v7_state_semantics"][
+                        "author_zero_to_one_voltage_semantics_match_v7_state"
+                    ]
+                ),
+                "T4_millivolts_to_v7_state_mapping_available": (
+                    t4_state_unit_mapping_audit[
+                        "millivolts_to_v7_normalized_state_mapping_available"
+                    ]
+                ),
                 "T4_source_dynamics_transfer_authorized": (
                     t4_source_dynamics_transfer_audit["source_dynamics_transfer_authorized"]
                 ),
@@ -2622,6 +2641,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_source_mapping_mode",
                     "T4_source_recording_level_body_assignment",
                     "T4_exact_type_average_mapping_complete",
+                    "T4_author_minmax_formula_reproduced",
+                    "T4_state_mapping_held_out_outside_fraction_by_source",
+                    "T4_author_minmax_semantics_match_v7_state",
+                    "T4_millivolts_to_v7_state_mapping_available",
                     "T5_record_specific_stimulus_logs_available",
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",

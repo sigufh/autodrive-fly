@@ -73,6 +73,7 @@ evidence:
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json
   t4_synapse_microstep_precheck: artifacts/v7-t4-synapse-microstep-precheck.json
   t4_source_dynamics_transfer_audit: artifacts/v7-t4-source-dynamics-transfer-audit.json
+  t4_state_unit_mapping_audit: artifacts/v7-t4-state-unit-mapping-audit.json
   t4_source_identity_readiness_audit: artifacts/v7-t4-source-identity-readiness-audit.json
   t4_individual_split_1khz_audit: artifacts/v7-t4-individual-split-1khz-audit.json
   edmond_fig3_retrieval_audit: artifacts/v7-edmond-fig3-retrieval-audit.json

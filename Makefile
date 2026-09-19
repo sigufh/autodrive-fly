@@ -140,6 +140,10 @@ v7-audit-t4-individual-split-1khz:
 v7-audit-t4-recording-fields:
 	.venv/bin/autodrive-fly v7-audit-t4-recording-fields
 
+.PHONY: v7-audit-t4-state-unit-mapping
+v7-audit-t4-state-unit-mapping:
+	.venv/bin/autodrive-fly v7-audit-t4-state-unit-mapping
+
 .PHONY: v7-audit-t5-recording-fields
 v7-audit-t5-recording-fields:
 	.venv/bin/autodrive-fly v7-audit-t5-recording-fields

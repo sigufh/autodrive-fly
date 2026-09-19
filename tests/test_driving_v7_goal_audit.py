@@ -55,6 +55,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T4_source_mapping_mode",
         "T4_source_recording_level_body_assignment",
         "T4_exact_type_average_mapping_complete",
+        "T4_author_minmax_formula_reproduced",
+        "T4_state_mapping_held_out_outside_fraction_by_source",
+        "T4_author_minmax_semantics_match_v7_state",
+        "T4_millivolts_to_v7_state_mapping_available",
         "T5_record_specific_stimulus_logs_available",
         "Motyxia2_public_history_branch_count",
         "Motyxia2_public_history_commit_count",
@@ -810,6 +814,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_source_mapping_mode"] == "exact_type_average"
     assert visual["observations"]["T4_source_recording_level_body_assignment"] is False
     assert visual["observations"]["T4_exact_type_average_mapping_complete"] is True
+    assert visual["observations"]["T4_author_minmax_formula_reproduced"] is True
+    assert visual["observations"]["T4_state_mapping_held_out_outside_fraction_by_source"] == {
+        "Mi1": 0.1295625,
+        "Tm3": 0.17478125,
+        "Mi4": 0.2870446428571429,
+        "C3": 0.18847916666666667,
+    }
+    assert visual["observations"]["T4_author_minmax_semantics_match_v7_state"] is False
+    assert visual["observations"]["T4_millivolts_to_v7_state_mapping_available"] is False
     assert visual["observations"]["T4_source_dynamics_next_candidate_authorized"] is False
     assert visual["observations"]["unified_model_package_files_verified"] is True
     assert visual["observations"]["unified_model_T4_target_parameters_available"] is True

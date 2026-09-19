@@ -70,6 +70,10 @@ export type V7Status = {
     T4_source_mapping_mode: string;
     T4_source_recording_level_body_assignment: boolean;
     T4_exact_type_average_mapping_complete: boolean;
+    T4_author_minmax_formula_reproduced: boolean;
+    T4_state_mapping_held_out_outside_fraction_by_source: { Mi1: number; Tm3: number; Mi4: number; C3: number };
+    T4_author_minmax_semantics_match_v7_state: boolean;
+    T4_millivolts_to_v7_state_mapping_available: boolean;
     T5_record_specific_stimulus_logs_available: boolean;
     Motyxia2_public_history_branch_count: number;
     Motyxia2_public_history_commit_count: number;

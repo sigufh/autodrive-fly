@@ -267,6 +267,9 @@ from .driving.v7_t4_source_identity_readiness_audit import (
 )
 from .driving.v7_t4_source_pool_local import evaluate_v7_t4_source_pool_local
 from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
+from .driving.v7_t4_state_unit_mapping_audit import (
+    evaluate_v7_t4_state_unit_mapping_audit,
+)
 from .driving.v7_t4_synapse_antisymmetric_precheck import (
     evaluate_v7_t4_synapse_antisymmetric_precheck,
 )
@@ -545,6 +548,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
     subparsers.add_parser("v7-audit-t4-source-dynamics-transfer")
+    subparsers.add_parser("v7-audit-t4-state-unit-mapping")
     subparsers.add_parser("v7-audit-edmond-fig3-retrieval")
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
     subparsers.add_parser("v7-audit-t4-individual-split")
@@ -1523,6 +1527,14 @@ def main() -> None:
         report = evaluate_v7_t4_source_dynamics_transfer_audit(root)
         target = root / "artifacts/v7-t4-source-dynamics-transfer-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-state-unit-mapping":
+        report = evaluate_v7_t4_state_unit_mapping_audit(root)
+        target = root / "artifacts/v7-t4-state-unit-mapping-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-edmond-fig3-retrieval":
