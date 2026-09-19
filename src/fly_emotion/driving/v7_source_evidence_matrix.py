@@ -165,6 +165,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "stable_biological_individual_ids_verified"
                 ]
             ),
+            "Gou_DANDI_asset_level_stable_participant_IDs_available": (
+                source in gou_sources
+                and gou["DANDI_identity_audit"]["identity_conclusions"][
+                    "DANDI_asset_level_stable_participant_IDs_available"
+                ]
+            ),
+            "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified": (
+                source in gou_sources
+                and gou["DANDI_identity_audit"]["identity_conclusions"][
+                    "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"
+                ]
+            ),
             "Gou_Dryad_experimental_membrane_voltage": (
                 source in gou_sources
                 and gou["local_payload_inventory"]["measurement_boundary"][

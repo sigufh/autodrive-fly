@@ -98,3 +98,20 @@ def test_script_time_axes_baselines_and_identity_boundaries_are_explicit() -> No
     assert inventory["identity_conclusion"]["stable_biological_individual_ids_verified"] is False
     assert inventory["measurement_boundary"]["experimental_membrane_voltage"] is False
     assert report["stimulus_and_recording"]["baseline_windows_verified_from_payload"] is False
+
+
+def test_dandi_has_asset_subjects_but_no_dryad_row_crosswalk() -> None:
+    report = json.loads(REPORT.read_text())
+    identity = report["DANDI_identity_audit"]
+    assert identity["asset_index"]["asset_count"] == 282
+    assert identity["asset_index"]["unique_subject_id_count"] == 282
+    assert identity["asset_index"]["unique_session_start_count"] == 282
+    assert identity["identity_conclusions"][
+        "DANDI_asset_level_stable_participant_IDs_available"
+    ] is True
+    assert identity["Dryad_identity_labels"]["distinct_fliesUsed_label_count"] == 66
+    assert identity["Dryad_identity_labels"]["exact_match_count"] == 0
+    assert identity["identity_conclusions"][
+        "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"
+    ] is False
+    assert report["transfer_gates"]["processed_rows_linked_to_stable_subject_ids"] is False

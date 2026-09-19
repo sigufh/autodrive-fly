@@ -83,6 +83,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     }
     assert boundaries["Gou_Dryad_stable_biological_individual_IDs_verified"] is False
     assert boundaries["Gou_Dryad_experimental_membrane_voltage"] is False
+    assert boundaries["Gou_DANDI_asset_level_stable_participant_IDs_verified"] is True
+    assert boundaries["Gou_DANDI_unique_subject_ID_count"] == 282
+    assert boundaries["Gou_Dryad_distinct_fliesUsed_label_count"] == 66
+    assert boundaries["Gou_Dryad_DANDI_identity_crosswalk_match_count"] == 0
+    assert boundaries["Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified"] is False
     assert boundaries["v7_offline_time_coordinate_contract_complete"] is True
     assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True
     assert boundaries["v7_offline_two_dimensional_angular_calibration_complete"] is False

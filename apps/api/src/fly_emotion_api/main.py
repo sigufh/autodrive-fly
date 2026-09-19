@@ -146,6 +146,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gou_Dryad_stable_biological_individual_IDs_verified": visual[
                     "Gou_Dryad_stable_biological_individual_IDs_verified"
                 ],
+                "Gou_DANDI_asset_level_stable_participant_IDs_verified": visual[
+                    "Gou_DANDI_asset_level_stable_participant_IDs_verified"
+                ],
+                "Gou_DANDI_unique_subject_ID_count": visual[
+                    "Gou_DANDI_unique_subject_ID_count"
+                ],
+                "Gou_Dryad_distinct_fliesUsed_label_count": visual[
+                    "Gou_Dryad_distinct_fliesUsed_label_count"
+                ],
+                "Gou_Dryad_DANDI_identity_crosswalk_match_count": visual[
+                    "Gou_Dryad_DANDI_identity_crosswalk_match_count"
+                ],
+                "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified": visual[
+                    "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified"
+                ],
                 "Gou_Dryad_experimental_membrane_voltage": visual[
                     "Gou_Dryad_experimental_membrane_voltage"
                 ],

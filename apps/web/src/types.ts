@@ -55,6 +55,11 @@ export type V7Status = {
     Gou_Dryad_flash_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
     Gou_Dryad_moving_bar_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
     Gou_Dryad_stable_biological_individual_IDs_verified: boolean;
+    Gou_DANDI_asset_level_stable_participant_IDs_verified: boolean;
+    Gou_DANDI_unique_subject_ID_count: number;
+    Gou_Dryad_distinct_fliesUsed_label_count: number;
+    Gou_Dryad_DANDI_identity_crosswalk_match_count: number;
+    Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified: boolean;
     Gou_Dryad_experimental_membrane_voltage: boolean;
     v7_offline_time_coordinate_contract_complete: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

@@ -1,0 +1,46 @@
+version: 1
+name: v7-gou-dandi-identity-audit
+observed_on: "2026-09-19"
+dataset:
+  identifier: DANDI:001205
+  version: 0.250602.0251
+  doi: 10.48324/dandi.001205/0.250602.0251
+snapshots:
+  version:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/version.json
+    bytes: 3496
+    sha256: 118a80f39da52fd092e1d36427655276556148786920d940ec2a8f2eb42a7639
+  assets_index:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets-index.json
+    bytes: 83477
+    sha256: 0d21ae141a3da733f89e0c38e102bee7c27638abf4ae87f39ee9d42575117949
+  assets_manifest:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets.yaml
+    bytes: 835988
+    sha256: dbbe0ebfbc816acc3f728bef9f8d3ff252da9e68ec878ea05613c744f95de697
+  representative_asset:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-asset.json
+    bytes: 2877
+    sha256: 4f74f678fe239497c63b5a633875d98b6da966c9896a7ac217da67781b850f9c
+    asset_id: c64d3f67-dc54-413d-892e-6e4fd167cf3f
+    asset_path: sub-10176231931525660316/sub-10176231931525660316_ses-20220211T151703_ophys.nwb
+    content_sha256: 6b62a518bfbb194f4e9f5dd1fce43f4f6ca943c3eb5f837c6873d004d005f726
+dryad_inventory:
+  path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
+  bytes: 49835
+  sha256: 7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097
+representative_NWB_range_inspection:
+  path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-nwb-range-metadata.json
+  bytes: 1468
+  sha256: 3ffce7165754bd5e3b15437e8c009ac90f015795cc27bc17b7dfc47513f79c22
+boundary:
+  full_asset_index_was_inspected: true
+  NWB_internal_metadata_is_representative_only: true
+  substring_matches_inside_long_identifiers_are_not_crosswalk_evidence: true
+  opaque_Dryad_labels_are_not_assumed_to_be_biological_IDs: true
+  DANDI_participant_IDs_are_not_assumed_to_equal_Dryad_fliesUsed: true
+  inaccessible_or_unread_NWB_payloads_are_not_zero_result_evidence: true
+  no_bulk_NWB_download: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true

@@ -1923,9 +1923,18 @@ moving-bar 60 Hz（−1/3 到 2 s），并明确给出基线窗；这些分析�
 逐样本原始时间戳。`fliesUsed` 是语义未定义的整数标签，在部分文件中长度与处理后 fly
 轴不等且含重复；flash 的 `indFly` 全空，moving-bar 无该字段，所以不能宣称稳定生物
 个体 ID 或建立互斥拆分。Fig.6 六条件轴只编码 `[1,2,4,6,8,12]/12` 填充率，未保留
-方向轴顺序。DANDI 代表 NWB 的范围读取仍超时，未下载 139 GB 镜像。以上载荷是处理后
+方向轴顺序。DANDI 固定发布版的完整 JSON/YAML 资产索引（282 条）现已本地哈希冻结：
+282 个资产路径、participant ID 和 session start 均唯一，participant 字段只有
+`identifier/age/sex/species`，session 字段只有 `name/description/startDate`；没有 genotype、
+cell type、strain 或内部 experiment-ID 字段。Dryad 的 66 个不同 `fliesUsed` 标签在路径和
+participant 字段中的整值精确命中为 0；长 ID 内的数字子串不计作交叉键。对代表资产
+`c64d3f67…` 只做两段共 7,465,501 bytes 的 HDF5 range 读取，确认 NWB 根 identifier 含
+genotype-like 描述、`subject_id=10176231931525660316`、13 Hz、GC6f、location=T4T5，
+但 scratch/processing 均空，也没有原始 Dryad fly ID。故“DANDI 资产级身份完整”不等于
+“Dryad 处理行已链接身份”，139 GB 镜像仍未批量下载。以上载荷是处理后
 GCaMP6f 荧光，不是实验膜电位；故仍不授权 source fit 或 T4/T5/LPLC/车辆推进。
-证据见 `artifacts/v7-gou-sparsity-source-dynamics-audit.json`。
+证据见 `artifacts/v7-gou-dandi-identity-audit.json` 与
+`artifacts/v7-gou-sparsity-source-dynamics-audit.json`。
 
 T5 余缺口另用 Ramos-Traslosheros 与 Silies 2021 的官方 4,459,008-byte Source Data
 工作簿核验（SHA-256 `a7fa2843…`，32 sheets）。工作簿确有 Tm4 与 Tm9 的独立

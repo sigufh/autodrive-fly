@@ -104,6 +104,18 @@ def test_gou_processed_calcium_is_local_but_not_allowed_voltage() -> None:
             is False
         )
         assert (
+            row["evidence_components"][
+                "Gou_DANDI_asset_level_stable_participant_IDs_available"
+            ]
+            is True
+        )
+        assert (
+            row["evidence_components"][
+                "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified"
+            ]
+            is False
+        )
+        assert (
             row["evidence_components"]["Gou_Dryad_experimental_membrane_voltage"]
             is False
         )

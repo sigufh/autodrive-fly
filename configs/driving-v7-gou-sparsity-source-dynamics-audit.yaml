@@ -49,6 +49,8 @@ local_payload_inventory:
   archive_entry_count: 131
   real_file_count: 55
   real_mat_file_count: 25
+dandi_identity_evidence: artifacts/v7-gou-dandi-identity-audit.json
+dandi_identity_protocol: configs/driving-v7-gou-dandi-identity-audit.yaml
 analysis_scripts:
   flash_Mi1:
     path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/fig1_Mi1GC6f_flash.m
@@ -76,8 +78,12 @@ dandi:
     subject_id: "10176231931525660316"
     bytes: 431090205
     publisher_reported_sha256: 6b62a518bfbb194f4e9f5dd1fce43f4f6ca943c3eb5f837c6873d004d005f726
-    range_read_status: timeout
+    range_read_status: representative_root_metadata_read
+    range_read_bytes: 7465501
   payload_downloaded: false
+  asset_metadata_index_downloaded: true
+  asset_level_stable_participant_ids_verified: true
+  Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified: false
 source_evidence:
   Mi1:
     family: T4
@@ -155,6 +161,11 @@ stimulus_and_recording:
   fliesUsed_can_differ_from_processed_fly_axis_and_contain_duplicates: true
   indFly_has_nonempty_identifiers: false
   processed_fly_rows_to_DANDI_subject_ids_verified: false
+  DANDI_asset_level_stable_participant_ids_verified: true
+  DANDI_unique_subject_id_count: 282
+  DANDI_unique_session_start_count: 282
+  Dryad_distinct_fliesUsed_label_count: 66
+  Dryad_fliesUsed_exact_DANDI_identity_match_count: 0
   stable_biological_individual_ids_verified: false
   exact_sample_timestamps_verified_from_payload: false
   analysis_baseline_windows_verified_from_scripts: true

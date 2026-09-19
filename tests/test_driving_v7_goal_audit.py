@@ -40,6 +40,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gou_Dryad_flash_fly_axis_sizes",
         "Gou_Dryad_moving_bar_fly_axis_sizes",
         "Gou_Dryad_stable_biological_individual_IDs_verified",
+        "Gou_DANDI_asset_level_stable_participant_IDs_verified",
+        "Gou_DANDI_unique_subject_ID_count",
+        "Gou_Dryad_distinct_fliesUsed_label_count",
+        "Gou_Dryad_DANDI_identity_crosswalk_match_count",
+        "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified",
         "Gou_Dryad_experimental_membrane_voltage",
         "v7_offline_time_coordinate_contract_complete",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -416,6 +421,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["Gou_Dryad_experimental_membrane_voltage"] is False
+    assert visual["observations"]["Gou_DANDI_asset_level_stable_participant_IDs_verified"] is True
+    assert visual["observations"]["Gou_DANDI_unique_subject_ID_count"] == 282
+    assert visual["observations"]["Gou_Dryad_distinct_fliesUsed_label_count"] == 66
+    assert visual["observations"]["Gou_Dryad_DANDI_identity_crosswalk_match_count"] == 0
+    assert visual["observations"]["Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified"] is False
     assert visual["observations"]["T5_contrast_opponency_temporal_sources"] == [
         "Tm4",
         "Tm9",

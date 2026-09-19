@@ -935,6 +935,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "stable_biological_individual_ids_verified"
                     ]
                 ),
+                "Gou_DANDI_asset_level_stable_participant_IDs_verified": (
+                    gou_sparsity_source_dynamics_audit["DANDI_identity_audit"][
+                        "identity_conclusions"
+                    ]["DANDI_asset_level_stable_participant_IDs_available"]
+                ),
+                "Gou_DANDI_unique_subject_ID_count": (
+                    gou_sparsity_source_dynamics_audit["DANDI_identity_audit"][
+                        "asset_index"
+                    ]["unique_subject_id_count"]
+                ),
+                "Gou_Dryad_distinct_fliesUsed_label_count": (
+                    gou_sparsity_source_dynamics_audit["DANDI_identity_audit"][
+                        "Dryad_identity_labels"
+                    ]["distinct_fliesUsed_label_count"]
+                ),
+                "Gou_Dryad_DANDI_identity_crosswalk_match_count": (
+                    gou_sparsity_source_dynamics_audit["DANDI_identity_audit"][
+                        "Dryad_identity_labels"
+                    ]["exact_match_count"]
+                ),
+                "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified": (
+                    gou_sparsity_source_dynamics_audit["DANDI_identity_audit"][
+                        "identity_conclusions"
+                    ]["Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"]
+                ),
                 "Gou_Dryad_experimental_membrane_voltage": (
                     gou_sparsity_source_dynamics_audit["local_payload_inventory"][
                         "measurement_boundary"
@@ -2569,6 +2594,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gou_Dryad_flash_fly_axis_sizes",
                     "Gou_Dryad_moving_bar_fly_axis_sizes",
                     "Gou_Dryad_stable_biological_individual_IDs_verified",
+                    "Gou_DANDI_asset_level_stable_participant_IDs_verified",
+                    "Gou_DANDI_unique_subject_ID_count",
+                    "Gou_Dryad_distinct_fliesUsed_label_count",
+                    "Gou_Dryad_DANDI_identity_crosswalk_match_count",
+                    "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified",
                     "Gou_Dryad_experimental_membrane_voltage",
                     "v7_offline_time_coordinate_contract_complete",
                     "v7_offline_horizontal_coordinate_contract_complete",

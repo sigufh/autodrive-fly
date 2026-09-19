@@ -3,14 +3,16 @@
     "name": "v7-gou-sparsity-source-dynamics-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "4a27436d9fe56bc7680f77ab93d0b4fd0c838bf599161ce5129d390b71f073b7",
-      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "53806a5270c5bd8cb9291036beb25bc2d80de535f08f3521f4d7443013e62aa1",
+      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "3ba69e552f97d17015f23af624e700b72e62fddeaed03ec2e6d85500c2f7a343",
+      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "7d9d7e25c6bf7c7d8ff0bd760f92dc53b684a09583993d09b8e1a9a6552f414a",
       "scripts/inspect_gou_sparsity_payload.py": "4a4b780406bee7ef7f279c0654147ae6706bae5a1187217ae65e1dc76992c913",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
       "data/raw/gou-sparsity/dryad-version-402168.zip": "59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f",
       "data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f",
       "data/raw/gou-sparsity/version-402168/README.md": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261",
       "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
+      "artifacts/v7-gou-dandi-identity-audit.json": "8c9114e92d4e1fafc11f4988b0f1920c31d75b9cdb124d2e203f354f41c7cc37",
+      "configs/driving-v7-gou-dandi-identity-audit.yaml": "1d2bea0d260f67e5ab1cc496bac0333cb2b52649a7193a0b5f6b3ff23f0239b7",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/fig1_Mi1GC6f_flash.m": "cd925bd0eb826da21d3095559d592cc085949753e9007bca337ec8146a1f6573",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig4_otherNeurons_flash.m": "10d1e410b3d2eeec49a013b3efcaf71f18c91ab016d83f1123099bd6ceff3e58",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m": "556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab"
@@ -83,9 +85,13 @@
         "subject_id": "10176231931525660316",
         "bytes": 431090205,
         "publisher_reported_sha256": "6b62a518bfbb194f4e9f5dd1fce43f4f6ca943c3eb5f837c6873d004d005f726",
-        "range_read_status": "timeout"
+        "range_read_status": "representative_root_metadata_read",
+        "range_read_bytes": 7465501
       },
-      "payload_downloaded": false
+      "payload_downloaded": false,
+      "asset_metadata_index_downloaded": true,
+      "asset_level_stable_participant_ids_verified": true,
+      "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified": false
     }
   },
   "source_evidence": {
@@ -2005,6 +2011,213 @@
       "target_activity_injection_authorized": false
     }
   },
+  "DANDI_identity_audit": {
+    "protocol": {
+      "name": "v7-gou-dandi-identity-audit",
+      "observed_on": "2026-09-19",
+      "dependencies_sha256": {
+        "configs/driving-v7-gou-dandi-identity-audit.yaml": "1d2bea0d260f67e5ab1cc496bac0333cb2b52649a7193a0b5f6b3ff23f0239b7",
+        "src/fly_emotion/driving/v7_gou_dandi_identity_audit.py": "55ca7eab7ddfb6c2368fac7feb2ef1bf34ac7dfd2da8d9d931927a09bb23fa25",
+        "data/raw/gou-sparsity/dandi-001205-0.250602.0251/version.json": "118a80f39da52fd092e1d36427655276556148786920d940ec2a8f2eb42a7639",
+        "data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets-index.json": "0d21ae141a3da733f89e0c38e102bee7c27638abf4ae87f39ee9d42575117949",
+        "data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets.yaml": "dbbe0ebfbc816acc3f728bef9f8d3ff252da9e68ec878ea05613c744f95de697",
+        "data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-asset.json": "4f74f678fe239497c63b5a633875d98b6da966c9896a7ac217da67781b850f9c",
+        "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
+        "data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-nwb-range-metadata.json": "3ffce7165754bd5e3b15437e8c009ac90f015795cc27bc17b7dfc47513f79c22"
+      },
+      "parameter_fit": false,
+      "runtime_modified": false
+    },
+    "dataset": {
+      "identifier": "DANDI:001205",
+      "version": "0.250602.0251",
+      "doi": "10.48324/dandi.001205/0.250602.0251"
+    },
+    "asset_index": {
+      "asset_count": 282,
+      "manifest_asset_count": 282,
+      "JSON_and_YAML_asset_ids_match": true,
+      "JSON_and_YAML_paths_and_sizes_match": true,
+      "unique_asset_path_count": 282,
+      "unique_subject_id_count": 282,
+      "unique_session_start_count": 282,
+      "one_unique_subject_per_asset": true,
+      "one_unique_session_per_asset": true,
+      "participant_fields": [
+        "age",
+        "identifier",
+        "schemaKey",
+        "sex",
+        "species"
+      ],
+      "session_fields": [
+        "description",
+        "name",
+        "schemaKey",
+        "startDate"
+      ],
+      "genotype_field_present": false,
+      "cell_type_field_present": false,
+      "strain_field_present": false,
+      "internal_experiment_id_field_present": false
+    },
+    "Dryad_identity_labels": {
+      "distinct_fliesUsed_label_count": 66,
+      "values": [
+        7244,
+        7245,
+        7247,
+        7250,
+        7251,
+        7262,
+        7265,
+        7267,
+        7270,
+        7275,
+        7287,
+        7290,
+        7291,
+        7293,
+        7294,
+        7991,
+        8146,
+        8151,
+        8393,
+        8404,
+        8484,
+        8488,
+        8489,
+        8502,
+        8503,
+        8572,
+        8573,
+        8577,
+        8590,
+        8742,
+        8745,
+        8874,
+        8935,
+        8936,
+        8939,
+        9313,
+        9314,
+        9326,
+        9378,
+        9381,
+        9382,
+        9383,
+        9384,
+        9385,
+        9386,
+        9387,
+        9388,
+        9390,
+        9391,
+        9565,
+        9568,
+        9571,
+        9572,
+        9574,
+        9588,
+        9593,
+        9596,
+        9597,
+        9599,
+        9601,
+        9603,
+        11989,
+        12115,
+        12116,
+        12156,
+        12157
+      ],
+      "exact_token_matches_in_DANDI_paths_or_participant_fields": {},
+      "exact_match_count": 0
+    },
+    "representative_NWB_range_inspection": {
+      "asset_id": "c64d3f67-dc54-413d-892e-6e4fd167cf3f",
+      "asset_path": "sub-10176231931525660316/sub-10176231931525660316_ses-20220211T151703_ophys.nwb",
+      "asset_content_sha256": "6b62a518bfbb194f4e9f5dd1fce43f4f6ca943c3eb5f837c6873d004d005f726",
+      "asset_content_bytes": 431090205,
+      "inspection_method": "h5py_fileobj_over_HTTP_range_requests",
+      "ranges": [
+        [
+          0,
+          4194303
+        ],
+        [
+          427819008,
+          431090204
+        ]
+      ],
+      "bytes_read": 7465501,
+      "root_keys": [
+        "acquisition",
+        "analysis",
+        "file_create_date",
+        "general",
+        "identifier",
+        "intervals",
+        "processing",
+        "scratch",
+        "session_description",
+        "session_start_time",
+        "specifications",
+        "stimulus",
+        "timestamps_reference_time"
+      ],
+      "root_identifier": "nSyb-PhiC31_+;R59E08_SPARC-I-GC6f;R42F06_+ecd62e34-314c-4070-bb37-7bf94f75705f",
+      "session_description": "2 Photon Imaging",
+      "session_start_time": "2022-02-11T15:17:03.000000-05:00",
+      "experimenter": [
+        "Tong Gou"
+      ],
+      "institution": "Yale University",
+      "subject": {
+        "subject_id": "10176231931525660316",
+        "description": "nSyb-PhiC31_+;R59E08_SPARC-I-GC6f;R42F06_+",
+        "sex": "F",
+        "age": "P2D/P7D",
+        "genotype_dataset_present": false
+      },
+      "imaging_plane": {
+        "description": "2 Photon Imaging",
+        "imaging_rate_hz": 13.0,
+        "indicator": "GC6f",
+        "location": "T4T5"
+      },
+      "scratch_group_keys": [],
+      "processing_group_keys": [],
+      "Dryad_fliesUsed_value_present_in_inspected_fields": false
+    },
+    "identity_conclusions": {
+      "DANDI_asset_level_stable_participant_IDs_available": true,
+      "DANDI_asset_level_session_timestamps_available": true,
+      "representative_NWB_genotype_like_description_available": true,
+      "representative_NWB_cell_location_available": true,
+      "representative_NWB_original_Dryad_fly_ID_available": false,
+      "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified": false,
+      "Dryad_processed_rows_have_stable_biological_IDs": false,
+      "fit_held_out_biological_ID_disjointness_authorized": false
+    },
+    "authorize_source_dynamics_transfer": false,
+    "advance_to_T4_T5_functional_precheck": false,
+    "advance_to_LPLC_mechanism_repair": false,
+    "advance_to_vehicle_experiments": false,
+    "stop_reason": "DANDI_has_stable_asset_subjects_but_no_verified_Dryad_row_crosswalk",
+    "boundary": {
+      "full_asset_index_was_inspected": true,
+      "NWB_internal_metadata_is_representative_only": true,
+      "substring_matches_inside_long_identifiers_are_not_crosswalk_evidence": true,
+      "opaque_Dryad_labels_are_not_assumed_to_be_biological_IDs": true,
+      "DANDI_participant_IDs_are_not_assumed_to_equal_Dryad_fliesUsed": true,
+      "inaccessible_or_unread_NWB_payloads_are_not_zero_result_evidence": true,
+      "no_bulk_NWB_download": true,
+      "no_parameter_fit": true,
+      "no_target_activity_injection": true,
+      "no_runtime_change": true
+    }
+  },
   "stimulus_and_recording": {
     "imaging_rate_hz_approximate": 13,
     "ternary_stimulus_update_rate_hz": 30,
@@ -2118,6 +2331,11 @@
     "fliesUsed_can_differ_from_processed_fly_axis_and_contain_duplicates": true,
     "indFly_has_nonempty_identifiers": false,
     "processed_fly_rows_to_DANDI_subject_ids_verified": false,
+    "DANDI_asset_level_stable_participant_ids_verified": true,
+    "DANDI_unique_subject_id_count": 282,
+    "DANDI_unique_session_start_count": 282,
+    "Dryad_distinct_fliesUsed_label_count": 66,
+    "Dryad_fliesUsed_exact_DANDI_identity_match_count": 0,
     "stable_biological_individual_ids_verified": false,
     "exact_sample_timestamps_verified_from_payload": false,
     "analysis_baseline_windows_verified_from_scripts": true,

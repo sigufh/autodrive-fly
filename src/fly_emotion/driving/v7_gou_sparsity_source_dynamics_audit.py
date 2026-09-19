@@ -36,6 +36,29 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
         for name, spec in config["analysis_scripts"].items()
     }
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    identity_path = Path(config["dandi_identity_evidence"])
+    identity_protocol_path = Path(config["dandi_identity_protocol"])
+    identity = json.loads((root / identity_path).read_text(encoding="utf-8"))
+    identity_conclusions = identity["identity_conclusions"]
+    if (
+        bool(config["dandi"]["asset_level_stable_participant_ids_verified"])
+        != bool(
+            identity_conclusions[
+                "DANDI_asset_level_stable_participant_IDs_available"
+            ]
+        )
+        or bool(
+            config["dandi"][
+                "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"
+            ]
+        )
+        != bool(
+            identity_conclusions[
+                "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"
+            ]
+        )
+    ):
+        raise ValueError("Gou DANDI identity boundary changed")
     publisher = inventory["archive"]["publisher_archive"]
     if (
         publisher["sha256"]
@@ -94,7 +117,10 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
         "every_T5_source_type_measured": not missing_by_family["T5"],
         "every_covered_source_has_allowed_response_unit": all(source_unit_gates.values()),
         "processed_rows_linked_to_stable_subject_ids": bool(
-            fields["processed_fly_rows_to_DANDI_subject_ids_verified"]
+            identity_conclusions[
+                "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"
+            ]
+            and fields["processed_fly_rows_to_DANDI_subject_ids_verified"]
         ),
         "exact_sample_timestamps_and_baselines_verified": bool(
             fields["exact_sample_timestamps_verified_from_payload"]
@@ -120,6 +146,8 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
                 str(publisher_path.relative_to(root)): _sha256(publisher_path),
                 str(readme_path.relative_to(root)): _sha256(readme_path),
                 str(inventory_path.relative_to(root)): _sha256(inventory_path),
+                str(identity_path): _sha256(root / identity_path),
+                str(identity_protocol_path): _sha256(root / identity_protocol_path),
                 **{str(path.relative_to(root)): _sha256(path) for path in script_paths.values()},
             },
             "paper": config["paper"],
@@ -133,6 +161,7 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
         },
         "source_evidence": evidence,
         "local_payload_inventory": inventory,
+        "DANDI_identity_audit": identity,
         "stimulus_and_recording": fields,
         "required_sources_by_family": required_by_family,
         "covered_required_sources_by_family": covered_by_family,
