@@ -880,6 +880,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "DANDI_bulk_download_authorized",
                     )
                 ),
+                "Gou_Dryad_archive_hash_locally_verified": (
+                    gou_sparsity_source_dynamics_audit["repositories"]["Dryad"][
+                        "payload_sha256_locally_verified"
+                    ]
+                ),
+                "Gou_Dryad_local_processed_calcium_sources": (
+                    gou_sparsity_source_dynamics_audit["stimulus_and_recording"][
+                        "local_processed_numeric_sources"
+                    ]
+                ),
+                "Gou_Dryad_flash_fly_axis_sizes": (
+                    gou_sparsity_source_dynamics_audit["stimulus_and_recording"][
+                        "flash_fly_axis_sizes"
+                    ]
+                ),
+                "Gou_Dryad_moving_bar_fly_axis_sizes": (
+                    gou_sparsity_source_dynamics_audit["stimulus_and_recording"][
+                        "moving_bar_fly_axis_sizes"
+                    ]
+                ),
+                "Gou_Dryad_stable_biological_individual_IDs_verified": (
+                    gou_sparsity_source_dynamics_audit["stimulus_and_recording"][
+                        "stable_biological_individual_ids_verified"
+                    ]
+                ),
+                "Gou_Dryad_experimental_membrane_voltage": (
+                    gou_sparsity_source_dynamics_audit["local_payload_inventory"][
+                        "measurement_boundary"
+                    ]["experimental_membrane_voltage"]
+                ),
                 "T5_contrast_opponency_temporal_sources": (
                     t5_contrast_opponency_source_data_audit["T5_source_contract"][
                         "sources_with_verified_temporal_blocks"
@@ -2504,6 +2534,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Braun_calcium_fly_counts",
                     "Braun_calcium_condition_grids_complete",
                     "Braun_calcium_allowed_voltage_sources",
+                    "Gou_Dryad_archive_hash_locally_verified",
+                    "Gou_Dryad_local_processed_calcium_sources",
+                    "Gou_Dryad_flash_fly_axis_sizes",
+                    "Gou_Dryad_moving_bar_fly_axis_sizes",
+                    "Gou_Dryad_stable_biological_individual_IDs_verified",
+                    "Gou_Dryad_experimental_membrane_voltage",
                     "T5_record_specific_stimulus_logs_available",
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",

@@ -80,16 +80,36 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         ]
 
 
-def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:
+def test_gou_processed_calcium_is_local_but_not_allowed_voltage() -> None:
     report = json.loads(REPORT.read_text())
     for source in ("Mi1", "Tm3", "Tm1", "Tm2"):
         row = report["matrix"][source]
-        assert row["publisher_described_unverified_numerical_payload"] is True
-        assert "Gou_Dryad_processed_calcium" not in row["numerical_evidence_sources"]
-        assert row["publisher_described_sources"] == ["Gou_Dryad_README_and_repository_metadata"]
+        assert row["publisher_described_unverified_numerical_payload"] is False
+        assert "Gou_Dryad_processed_calcium" in row["numerical_evidence_sources"]
+        assert row["publisher_described_sources"] == []
+        assert (
+            row["evidence_components"][
+                "Gou_Dryad_local_processed_calcium_payload_verified"
+            ]
+            is True
+        )
+        assert (
+            row["evidence_components"]["Gou_Dryad_processed_fly_axis_verified"]
+            is True
+        )
+        assert (
+            row["evidence_components"][
+                "Gou_Dryad_stable_biological_individual_ID_verified"
+            ]
+            is False
+        )
+        assert (
+            row["evidence_components"]["Gou_Dryad_experimental_membrane_voltage"]
+            is False
+        )
     assert (
         report["family_summary"]["T4"]["publisher_described_unverified_numerical_payload_count"]
-        == 2
+        == 0
     )
 
 

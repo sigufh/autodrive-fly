@@ -35,6 +35,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Braun_calcium_fly_counts",
         "Braun_calcium_condition_grids_complete",
         "Braun_calcium_allowed_voltage_sources",
+        "Gou_Dryad_archive_hash_locally_verified",
+        "Gou_Dryad_local_processed_calcium_sources",
+        "Gou_Dryad_flash_fly_axis_sizes",
+        "Gou_Dryad_moving_bar_fly_axis_sizes",
+        "Gou_Dryad_stable_biological_individual_IDs_verified",
+        "Gou_Dryad_experimental_membrane_voltage",
         "T5_record_specific_stimulus_logs_available",
         "Motyxia2_public_history_branch_count",
         "Motyxia2_public_history_commit_count",
@@ -361,6 +367,32 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Gou_sparsity_partial_source_evidence_present"] is True
     assert visual["observations"]["Gou_sparsity_source_dynamics_transfer_authorized"] is False
     assert visual["observations"]["Gou_sparsity_bulk_download_authorized"] is False
+    assert visual["observations"]["Gou_Dryad_archive_hash_locally_verified"] is True
+    assert visual["observations"]["Gou_Dryad_local_processed_calcium_sources"] == [
+        "Mi1",
+        "Tm3",
+        "Tm1",
+        "Tm2",
+    ]
+    assert visual["observations"]["Gou_Dryad_flash_fly_axis_sizes"] == {
+        "Mi1": 16,
+        "Tm3": 11,
+        "Tm1": 9,
+        "Tm2": 8,
+    }
+    assert visual["observations"]["Gou_Dryad_moving_bar_fly_axis_sizes"] == {
+        "Mi1": 10,
+        "Tm3": 6,
+        "Tm1": 8,
+        "Tm2": 12,
+    }
+    assert (
+        visual["observations"][
+            "Gou_Dryad_stable_biological_individual_IDs_verified"
+        ]
+        is False
+    )
+    assert visual["observations"]["Gou_Dryad_experimental_membrane_voltage"] is False
     assert visual["observations"]["T5_contrast_opponency_temporal_sources"] == [
         "Tm4",
         "Tm9",

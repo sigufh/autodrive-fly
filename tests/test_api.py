@@ -62,6 +62,27 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     }
     assert boundaries["Braun_calcium_condition_grids_complete"] is True
     assert boundaries["Braun_calcium_allowed_voltage_sources"] == []
+    assert boundaries["Gou_Dryad_archive_hash_locally_verified"] is True
+    assert boundaries["Gou_Dryad_local_processed_calcium_sources"] == [
+        "Mi1",
+        "Tm3",
+        "Tm1",
+        "Tm2",
+    ]
+    assert boundaries["Gou_Dryad_flash_fly_axis_sizes"] == {
+        "Mi1": 16,
+        "Tm3": 11,
+        "Tm1": 9,
+        "Tm2": 8,
+    }
+    assert boundaries["Gou_Dryad_moving_bar_fly_axis_sizes"] == {
+        "Mi1": 10,
+        "Tm3": 6,
+        "Tm1": 8,
+        "Tm2": 12,
+    }
+    assert boundaries["Gou_Dryad_stable_biological_individual_IDs_verified"] is False
+    assert boundaries["Gou_Dryad_experimental_membrane_voltage"] is False
     assert boundaries["T5_record_specific_stimulus_logs_available"] is False
     assert boundaries["Motyxia2_public_history_branch_count"] == 22
     assert boundaries["Motyxia2_public_history_commit_count"] == 447

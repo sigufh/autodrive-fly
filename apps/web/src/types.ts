@@ -50,6 +50,12 @@ export type V7Status = {
     Braun_calcium_fly_counts?: { Tm2: number; Tm9: number; CT1: number };
     Braun_calcium_condition_grids_complete?: boolean;
     Braun_calcium_allowed_voltage_sources?: string[];
+    Gou_Dryad_archive_hash_locally_verified: boolean;
+    Gou_Dryad_local_processed_calcium_sources: string[];
+    Gou_Dryad_flash_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
+    Gou_Dryad_moving_bar_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
+    Gou_Dryad_stable_biological_individual_IDs_verified: boolean;
+    Gou_Dryad_experimental_membrane_voltage: boolean;
     T5_record_specific_stimulus_logs_available: boolean;
     Motyxia2_public_history_branch_count: number;
     Motyxia2_public_history_commit_count: number;

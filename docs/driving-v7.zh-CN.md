@@ -1902,9 +1902,18 @@ SHA-256 已记录，但当前下载端点分别返回 401/403，文件字节未�
 `0.250602.0251` 有 282 个独立 subject 的 NWB，共 138,946,618,210 bytes。可是当前
 合同只覆盖 4/9：仍缺 Mi4、C3、Tm4、Tm9、CT1；Tm3/Tm1/Tm2 只有 GCaMP6f，
 处理后 fly 行与 DANDI subject 的逐项对应、精确采样时间/基线窗、MaleCNS 映射和
-training/validation/external-final 承诺也未验证。Dryad 归档下载返回 403，DANDI 代表
-NWB 的范围读取超时，所以发布者哈希没有冒充本地复算。暂不下载 180 MB/139 GB
-载荷，只保留为后续源特异钙成像验证候选，不授权 source fit 或 T4/T5/LPLC/车辆推进。
+training/validation/external-final 承诺也未验证。现已通过 Dryad version aggregate endpoint
+取得 v4：外层动态归档 180,371,629 bytes；其中发布者文件 180,331,689 bytes，SHA-256
+`83a2bc0c…` 与 file record 完全一致，ZIP CRC 通过。排除目录与 macOS metadata 后为
+55 个文件、25 个 MAT。四源 flash 的滤波数组分别为 16/11/9/8 flies × 70，脉冲响应
+为 ×71；moving-bar 数组分别为 10/6/8/12 flies × 141 × 6，已审计数组均无 NaN/Inf。
+脚本构造的分析轴分别是 flash 30 Hz（滤波 −1/3 到 59/30 s、脉冲 −1/3 到 2 s）和
+moving-bar 60 Hz（−1/3 到 2 s），并明确给出基线窗；这些分析轴不是约 13 Hz 采集的
+逐样本原始时间戳。`fliesUsed` 是语义未定义的整数标签，在部分文件中长度与处理后 fly
+轴不等且含重复；flash 的 `indFly` 全空，moving-bar 无该字段，所以不能宣称稳定生物
+个体 ID 或建立互斥拆分。Fig.6 六条件轴只编码 `[1,2,4,6,8,12]/12` 填充率，未保留
+方向轴顺序。DANDI 代表 NWB 的范围读取仍超时，未下载 139 GB 镜像。以上载荷是处理后
+GCaMP6f 荧光，不是实验膜电位；故仍不授权 source fit 或 T4/T5/LPLC/车辆推进。
 证据见 `artifacts/v7-gou-sparsity-source-dynamics-audit.json`。
 
 T5 余缺口另用 Ramos-Traslosheros 与 Silies 2021 的官方 4,459,008-byte Source Data
@@ -2057,10 +2066,10 @@ recording→body、CT1 柱坐标或实验 split。证据见
 跨来源拼接。T4 四源都有本地 millivolt 波形，但其允许单位 payload 均无 biological
 individual ID。C3 另有带 fly ID 的本地数值 STRF（8 flies）和互斥的 22-fly flash cohort，
 这两项身份事实被保留；不过 STRF 单位为 stimulus-response correlation，且固定 bootstrap
-相关 p05 仅 `0.1074`，所以不能把它计作合规膜电位 payload 或稳健外部验证。Gou 数据中
-Mi1/Tm3/Tm1/Tm2 的 fly×time 数组仅由发布者 README 描述，归档未本地下载校验，因此
-矩阵单列为 publisher-described，而不计入 local numerical。T5 本地数值钙/去卷积证据只
-覆盖三类：Tm4、Tm9 的 ΔF/F0 时间序列，以及 CT1 的空间曲线和未标 M10/Lo1 区室的
+相关 p05 仅 `0.1074`，所以不能把它计作合规膜电位 payload 或稳健外部验证。Gou 的
+Mi1/Tm3/Tm1/Tm2 处理后 GCaMP6f 数组现已本地哈希及结构核验，矩阵计为 local numerical
+calcium；但不计为允许单位，且没有稳定 biological individual ID。T5 其余本地数值钙/
+去卷积证据覆盖 Tm4、Tm9 的 ΔF/F0 时间序列，以及 CT1 的空间曲线和未标 M10/Lo1 区室的
 type-average 去卷积核；Tm1/Tm2 仍只是已发表 ASAP2f 电压表型。CT1 的已发表 Lo1 动态
 表型和缺失的 Lo1 数值时间序列也分列，互不替代。矩阵结果为 0/9 来源完整，source fit、
 T4/T5 functional precheck、LPLC 机制修复和车辆实验继续冻结。

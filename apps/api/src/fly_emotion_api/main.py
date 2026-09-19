@@ -131,6 +131,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "Braun_calcium_allowed_voltage_sources": visual[
                     "Braun_T5_allowed_voltage_sources"
                 ],
+                "Gou_Dryad_archive_hash_locally_verified": visual[
+                    "Gou_Dryad_archive_hash_locally_verified"
+                ],
+                "Gou_Dryad_local_processed_calcium_sources": visual[
+                    "Gou_Dryad_local_processed_calcium_sources"
+                ],
+                "Gou_Dryad_flash_fly_axis_sizes": visual[
+                    "Gou_Dryad_flash_fly_axis_sizes"
+                ],
+                "Gou_Dryad_moving_bar_fly_axis_sizes": visual[
+                    "Gou_Dryad_moving_bar_fly_axis_sizes"
+                ],
+                "Gou_Dryad_stable_biological_individual_IDs_verified": visual[
+                    "Gou_Dryad_stable_biological_individual_IDs_verified"
+                ],
+                "Gou_Dryad_experimental_membrane_voltage": visual[
+                    "Gou_Dryad_experimental_membrane_voltage"
+                ],
                 "T5_record_specific_stimulus_logs_available": visual[
                     "Kohn_Portes_record_specific_stimulus_logs_available"
                 ],

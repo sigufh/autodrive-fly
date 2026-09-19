@@ -1,11 +1,19 @@
 {
   "protocol": {
     "name": "v7-gou-sparsity-source-dynamics-audit",
-    "observed_on": "2026-09-18",
+    "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "c13b0f9ade584c57f215efbb50cc3a96848fc13c6b1513245b0a6b0fb0d4d5a3",
-      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "7fccb164cb3617a020666562fb9af63417d009eaa08546a9afdc264bfbab2400",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5"
+      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "4a27436d9fe56bc7680f77ab93d0b4fd0c838bf599161ce5129d390b71f073b7",
+      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "53806a5270c5bd8cb9291036beb25bc2d80de535f08f3521f4d7443013e62aa1",
+      "scripts/inspect_gou_sparsity_payload.py": "4a4b780406bee7ef7f279c0654147ae6706bae5a1187217ae65e1dc76992c913",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
+      "data/raw/gou-sparsity/dryad-version-402168.zip": "59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f",
+      "data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f",
+      "data/raw/gou-sparsity/version-402168/README.md": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261",
+      "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/fig1_Mi1GC6f_flash.m": "cd925bd0eb826da21d3095559d592cc085949753e9007bca337ec8146a1f6573",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig4_otherNeurons_flash.m": "10d1e410b3d2eeec49a013b3efcaf71f18c91ab016d83f1123099bd6ceff3e58",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m": "556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab"
     },
     "paper": {
       "doi": "10.1016/j.cub.2024.10.053",
@@ -13,7 +21,7 @@
       "title": "Adaptation to visual sparsity enhances responses to isolated stimuli"
     },
     "parameter_fit": false,
-    "external_payload_evaluated": false,
+    "external_payload_evaluated": true,
     "runtime_modified": false
   },
   "repositories": {
@@ -38,9 +46,28 @@
           "publisher_reported_sha256": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f"
         }
       },
-      "payload_download_status": 403,
-      "payload_downloaded": false,
-      "payload_sha256_locally_verified": false
+      "version_download_url": "https://datadryad.org/api/v2/versions/402168/download",
+      "aggregate_download": {
+        "path": "data/raw/gou-sparsity/dryad-version-402168.zip",
+        "bytes": 180371629,
+        "sha256": "59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f",
+        "dynamically_assembled_outer_archive": true
+      },
+      "publisher_archive": {
+        "path": "data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip",
+        "bytes": 180331689,
+        "sha256": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f",
+        "zip_integrity_passed": true
+      },
+      "readme": {
+        "path": "data/raw/gou-sparsity/version-402168/README.md",
+        "bytes": 12130,
+        "sha256": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261"
+      },
+      "payload_download_status": 200,
+      "payload_downloaded": true,
+      "payload_sha256_locally_verified": true,
+      "publisher_archive_hash_matches_file_record": true
     },
     "DANDI": {
       "identifier": "DANDI:001205",
@@ -120,6 +147,1864 @@
       "response_unit_contract_satisfied": false
     }
   },
+  "local_payload_inventory": {
+    "protocol": {
+      "name": "gou-dryad-v4-numerical-payload-inventory",
+      "dataset_doi": "10.5061/dryad.t1g1jwtbs",
+      "dataset_id": 142517,
+      "version_id": 402168,
+      "version_number": 4,
+      "read_only": true,
+      "parameter_fit": false
+    },
+    "archive": {
+      "outer_version_download": {
+        "path": "data/raw/gou-sparsity/dryad-version-402168.zip",
+        "bytes": 180371629,
+        "sha256": "59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f"
+      },
+      "publisher_archive": {
+        "path": "data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip",
+        "bytes": 180331689,
+        "sha256": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f",
+        "zip_integrity_passed": true,
+        "entry_count_including_directories_and_metadata": 131,
+        "real_file_count": 55,
+        "real_mat_file_count": 25
+      },
+      "readme": {
+        "path": "data/raw/gou-sparsity/version-402168/README.md",
+        "bytes": 12130,
+        "sha256": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261"
+      },
+      "extracted_root": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload"
+    },
+    "source_coverage": {
+      "covered_required_sources": [
+        "Mi1",
+        "Tm3",
+        "Tm1",
+        "Tm2"
+      ],
+      "missing_required_sources": [
+        "Mi4",
+        "C3",
+        "Tm4",
+        "Tm9",
+        "CT1"
+      ],
+      "missing_source_name_occurrences_in_real_member_paths": {
+        "Mi4": 0,
+        "C3": 0,
+        "Tm4": 0,
+        "Tm9": 0,
+        "CT1": 0
+      }
+    },
+    "flash": {
+      "Mi1": {
+        "source_type": "Mi1",
+        "protocol": "flash_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig1_Mi1GC6f_flash.mat",
+        "bytes": 19761476,
+        "sha256": "6ab39a93d3c152249d719edabf1a90501a98c4b1968cd35bc1ed17481ade4cdd",
+        "top_level_name": "Mi1_sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 16,
+          "fly_axis_size": 16,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            7244,
+            7245,
+            7247,
+            7250,
+            7251,
+            7262,
+            7265,
+            7267,
+            7270,
+            7275,
+            7991,
+            8146,
+            8151,
+            8393,
+            8404,
+            8488
+          ],
+          "fliesUsed_entry_count": 16,
+          "fliesUsed_unique_count": 16,
+          "fliesUsed_duplicate_count": 0,
+          "fliesUsed_entry_count_matches_fly_axis": true,
+          "indFly": {
+            "present": true,
+            "entry_count": 16,
+            "all_entries_empty": true
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 188,
+        "condition_axis": {
+          "field_prefixes": [
+            "Hz1",
+            "Hz2",
+            "Hz4",
+            "Hz8",
+            "Hz15",
+            "Hz30"
+          ],
+          "fill_fractions": [
+            "1/30",
+            "2/30",
+            "4/30",
+            "8/30",
+            "15/30",
+            "30/30"
+          ]
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.05303126132199727,
+            "maximum": 0.16797489464318385
+          },
+          "Hz1All": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3050375892407132,
+            "maximum": 0.1510342403836778
+          },
+          "Hz1LightImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5804998819887615,
+            "maximum": 0.10830298527290715
+          },
+          "Hz1DarkImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5639532801702255,
+            "maximum": 0.6769454359909802
+          },
+          "Hz2All": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2528519692027187,
+            "maximum": 0.19604324586960026
+          },
+          "Hz2LightImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.4785551820021979,
+            "maximum": 0.15709053070819692
+          },
+          "Hz2DarkImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.4314705548109729,
+            "maximum": 0.28836550747872414
+          },
+          "Hz4All": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.1408703187959834,
+            "maximum": 0.23812604429488263
+          },
+          "Hz4LightImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.43067827453982,
+            "maximum": 0.5906432863059531
+          },
+          "Hz4DarkImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.39940620663676335,
+            "maximum": 0.40917025398020584
+          },
+          "Hz8All": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.12020329469097989,
+            "maximum": 0.21014189510856995
+          },
+          "Hz8LightImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2942924371925961,
+            "maximum": 0.828406209064217
+          },
+          "Hz8DarkImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3556014110777058,
+            "maximum": 0.7815038598429987
+          },
+          "Hz15All": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.08594458036512964,
+            "maximum": 0.21902079714982917
+          },
+          "Hz15LightImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.22842988626432456,
+            "maximum": 1.389342655094957
+          },
+          "Hz15DarkImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3001551199352788,
+            "maximum": 1.3080563546457902
+          },
+          "Hz30All": {
+            "shape": [
+              16,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 1120,
+            "finite_count": 1120,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.03598622486743124,
+            "maximum": 0.2562212693382598
+          },
+          "Hz30LightImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2093645352617612,
+            "maximum": 2.069055247525185
+          },
+          "Hz30DarkImpulse": {
+            "shape": [
+              16,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 1136,
+            "finite_count": 1136,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.25435014101542414,
+            "maximum": 1.9258644426178626
+          }
+        }
+      },
+      "Tm1": {
+        "source_type": "Tm1",
+        "protocol": "flash_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig4_otherNeurons_flash/Tm1GC6f_flash.mat",
+        "bytes": 152317,
+        "sha256": "846fa7873fb9a628c89520cad325c6106d26cab3fd80a2d367d50a1918f11012",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 9,
+          "fly_axis_size": 9,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            9314,
+            9326,
+            9378,
+            9381,
+            9382,
+            9383,
+            9588,
+            9593,
+            9596
+          ],
+          "fliesUsed_entry_count": 9,
+          "fliesUsed_unique_count": 9,
+          "fliesUsed_duplicate_count": 0,
+          "fliesUsed_entry_count_matches_fly_axis": true,
+          "indFly": {
+            "present": true,
+            "entry_count": 9,
+            "all_entries_empty": true
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 111,
+        "condition_axis": {
+          "field_prefixes": [
+            "Hz1",
+            "Hz2",
+            "Hz4",
+            "Hz8",
+            "Hz15",
+            "Hz30"
+          ],
+          "fill_fractions": [
+            "1/30",
+            "2/30",
+            "4/30",
+            "8/30",
+            "15/30",
+            "30/30"
+          ]
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.21356156480236735,
+            "maximum": 0.05547632807105011
+          },
+          "Hz1All": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.31900678608886385,
+            "maximum": 0.38104670273480173
+          },
+          "Hz1LightImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.18421415749221312,
+            "maximum": 0.6041648234661111
+          },
+          "Hz1DarkImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.37011448441905287,
+            "maximum": 0.8847164184007147
+          },
+          "Hz2All": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3131869726643943,
+            "maximum": 0.30309103068613247
+          },
+          "Hz2LightImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.18123762935551999,
+            "maximum": 0.8098657800767788
+          },
+          "Hz2DarkImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3182894691262682,
+            "maximum": 1.0556857548627216
+          },
+          "Hz4All": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3000564716802812,
+            "maximum": 0.17497508802783565
+          },
+          "Hz4LightImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.33733394460882965,
+            "maximum": 0.396734168602517
+          },
+          "Hz4DarkImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.4035846246869343,
+            "maximum": 0.7254410510378592
+          },
+          "Hz8All": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.19049661532861584,
+            "maximum": 0.11405737018371469
+          },
+          "Hz8LightImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.34238967706852863,
+            "maximum": 0.7764422321640693
+          },
+          "Hz8DarkImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.32461570982038207,
+            "maximum": 0.8911221177486452
+          },
+          "Hz15All": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3273469701198061,
+            "maximum": 0.03875913469930469
+          },
+          "Hz15LightImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.34165520500935576,
+            "maximum": 0.7440880270752155
+          },
+          "Hz15DarkImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3391494665833301,
+            "maximum": 1.032456548778794
+          },
+          "Hz30All": {
+            "shape": [
+              9,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 630,
+            "finite_count": 630,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2585259610046286,
+            "maximum": 0.03197174756597983
+          },
+          "Hz30LightImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3377556417223378,
+            "maximum": 1.255909080927062
+          },
+          "Hz30DarkImpulse": {
+            "shape": [
+              9,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 639,
+            "finite_count": 639,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.317616714894311,
+            "maximum": 1.4421692639284702
+          }
+        }
+      },
+      "Tm2": {
+        "source_type": "Tm2",
+        "protocol": "flash_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig4_otherNeurons_flash/Tm2GC6f_flash.mat",
+        "bytes": 135202,
+        "sha256": "f785d5cd8b6d6f07f7b2218d9c3ea6927a74a2dbca369930d5dfd1ebc95981f3",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 8,
+          "fly_axis_size": 8,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            9384,
+            9384,
+            9385,
+            9386,
+            9387,
+            9388,
+            9390,
+            9391,
+            9391,
+            12156,
+            12157
+          ],
+          "fliesUsed_entry_count": 11,
+          "fliesUsed_unique_count": 9,
+          "fliesUsed_duplicate_count": 2,
+          "fliesUsed_entry_count_matches_fly_axis": false,
+          "indFly": {
+            "present": true,
+            "entry_count": 11,
+            "all_entries_empty": true
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 94,
+        "condition_axis": {
+          "field_prefixes": [
+            "Hz1",
+            "Hz2",
+            "Hz4",
+            "Hz8",
+            "Hz15",
+            "Hz30"
+          ],
+          "fill_fractions": [
+            "1/30",
+            "2/30",
+            "4/30",
+            "8/30",
+            "15/30",
+            "30/30"
+          ]
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3521750925152001,
+            "maximum": 0.06524112874737721
+          },
+          "Hz1All": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.36117655864509146,
+            "maximum": 0.32087988225055497
+          },
+          "Hz1LightImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.6136336512713861,
+            "maximum": 0.6623725419017645
+          },
+          "Hz1DarkImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.6598426293310864,
+            "maximum": 0.7843547049255514
+          },
+          "Hz2All": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.4358473457855389,
+            "maximum": 0.2686368115581178
+          },
+          "Hz2LightImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.6573840288478567,
+            "maximum": 0.7628210346918561
+          },
+          "Hz2DarkImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.6061009832580135,
+            "maximum": 0.824733762228871
+          },
+          "Hz4All": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5604085691780019,
+            "maximum": 0.15894465493198567
+          },
+          "Hz4LightImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.23779542554788435,
+            "maximum": 2.8393145682009466
+          },
+          "Hz4DarkImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2941354477708613,
+            "maximum": 3.380259144356534
+          },
+          "Hz8All": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5818714741143084,
+            "maximum": 0.11865921518145364
+          },
+          "Hz8LightImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.3779224539609833,
+            "maximum": 1.4622411778880708
+          },
+          "Hz8DarkImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.36722904367666054,
+            "maximum": 1.8751721773903534
+          },
+          "Hz15All": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5166316689745825,
+            "maximum": 0.05637588777349925
+          },
+          "Hz15LightImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.09707225929461338,
+            "maximum": 1.6788108839639861
+          },
+          "Hz15DarkImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.1121949152562074,
+            "maximum": 2.2399731454513923
+          },
+          "Hz30All": {
+            "shape": [
+              8,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 560,
+            "finite_count": 560,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2999061617939077,
+            "maximum": 0.09963388619641182
+          },
+          "Hz30LightImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.9441251562369253,
+            "maximum": 2.324686055881842
+          },
+          "Hz30DarkImpulse": {
+            "shape": [
+              8,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 568,
+            "finite_count": 568,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 1.0355397072364358,
+            "maximum": 2.622437258452872
+          }
+        }
+      },
+      "Tm3": {
+        "source_type": "Tm3",
+        "protocol": "flash_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig4_otherNeurons_flash/Tm3GC6f_flash.mat",
+        "bytes": 185434,
+        "sha256": "c5a09220db600ef061428d09f2e4e61fdfbfb83dd1d43fca1d94fb3d52bf0ff3",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 11,
+          "fly_axis_size": 11,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            7287,
+            7290,
+            7291,
+            7293,
+            7294,
+            8489,
+            8742,
+            8745,
+            8935,
+            8936,
+            8939
+          ],
+          "fliesUsed_entry_count": 11,
+          "fliesUsed_unique_count": 11,
+          "fliesUsed_duplicate_count": 0,
+          "fliesUsed_entry_count_matches_fly_axis": true,
+          "indFly": {
+            "present": true,
+            "entry_count": 11,
+            "all_entries_empty": true
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 298,
+        "condition_axis": {
+          "field_prefixes": [
+            "Hz1",
+            "Hz2",
+            "Hz4",
+            "Hz8",
+            "Hz15",
+            "Hz30"
+          ],
+          "fill_fractions": [
+            "1/30",
+            "2/30",
+            "4/30",
+            "8/30",
+            "15/30",
+            "30/30"
+          ]
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.11282953721472365,
+            "maximum": 0.3024110932782427
+          },
+          "Hz1All": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.4039953802147126,
+            "maximum": 0.7400269827581356
+          },
+          "Hz1LightImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5122465713488927,
+            "maximum": 1.4191128981534693
+          },
+          "Hz1DarkImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.536495647508341,
+            "maximum": 0.6000209075326702
+          },
+          "Hz2All": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.36919338715394,
+            "maximum": 0.49753623712286343
+          },
+          "Hz2LightImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.18150530854137942,
+            "maximum": 1.157254246025534
+          },
+          "Hz2DarkImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.24346783906473246,
+            "maximum": 0.587720141417651
+          },
+          "Hz4All": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.1835999290096495,
+            "maximum": 0.45949360441965414
+          },
+          "Hz4LightImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.058455747103399874,
+            "maximum": 1.214751912676257
+          },
+          "Hz4DarkImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.04470992394424139,
+            "maximum": 0.7746225767021138
+          },
+          "Hz8All": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.1814530767741386,
+            "maximum": 0.4216999375913406
+          },
+          "Hz8LightImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.010527601499109642,
+            "maximum": 1.5996131496201147
+          },
+          "Hz8DarkImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.015808185711531284,
+            "maximum": 1.087869531942137
+          },
+          "Hz15All": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.1407523003451169,
+            "maximum": 0.2724130972348546
+          },
+          "Hz15LightImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.16818276330591828,
+            "maximum": 1.5054781951443712
+          },
+          "Hz15DarkImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.08911012412042431,
+            "maximum": 1.4234912778380953
+          },
+          "Hz30All": {
+            "shape": [
+              11,
+              70
+            ],
+            "dtype": "float64",
+            "element_count": 770,
+            "finite_count": 770,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.10503797654679208,
+            "maximum": 0.417248713689132
+          },
+          "Hz30LightImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.23387117200906296,
+            "maximum": 2.4146718974028785
+          },
+          "Hz30DarkImpulse": {
+            "shape": [
+              11,
+              71
+            ],
+            "dtype": "float64",
+            "element_count": 781,
+            "finite_count": 781,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 0.16979958401821063,
+            "maximum": 2.160662603417826
+          }
+        }
+      }
+    },
+    "moving_bar": {
+      "Mi1": {
+        "source_type": "Mi1",
+        "protocol": "moving_bar_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Mi1GC6f_movingbar.mat",
+        "bytes": 507461,
+        "sha256": "7b660803daccba452d8fcbdae6f093133c6a0a1bedea816380b5f700f7470d39",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 10,
+          "fly_axis_size": 10,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            8484,
+            8502,
+            8503,
+            8572,
+            8573,
+            8577,
+            8590,
+            8874,
+            12115,
+            12116,
+            12116
+          ],
+          "fliesUsed_entry_count": 11,
+          "fliesUsed_unique_count": 10,
+          "fliesUsed_duplicate_count": 1,
+          "fliesUsed_entry_count_matches_fly_axis": false,
+          "indFly": {
+            "present": false
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 733,
+        "condition_axis": {
+          "axis_index_zero_based": 1,
+          "fill_fractions": [
+            "1/12",
+            "2/12",
+            "4/12",
+            "6/12",
+            "8/12",
+            "12/12"
+          ],
+          "direction_axis_present": false,
+          "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              141,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 1410,
+            "finite_count": 1410,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.46741297886931055,
+            "maximum": 0.850660915072894
+          },
+          "kernels": {
+            "shape": [
+              141,
+              6,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 8460,
+            "finite_count": 8460,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -1.019735560230057,
+            "maximum": 1.5840650757533528
+          },
+          "LightImpulseResps": {
+            "shape": [
+              141,
+              6,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 8460,
+            "finite_count": 8460,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.556319517710563,
+            "maximum": 3.6911817090630508
+          },
+          "DarkImpulseResps": {
+            "shape": [
+              141,
+              6,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 8460,
+            "finite_count": 8460,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.5069119397584833,
+            "maximum": 2.98689987213569
+          }
+        }
+      },
+      "Tm1": {
+        "source_type": "Tm1",
+        "protocol": "moving_bar_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Tm1GC6f_movingbar.mat",
+        "bytes": 406055,
+        "sha256": "97df7e321b04f8633eb67de1c368fb45a57db3fbb9b3b263e769c5282a727b38",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 8,
+          "fly_axis_size": 8,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            9313,
+            9314,
+            9378,
+            9383,
+            9593,
+            9597,
+            9599,
+            9599,
+            9603
+          ],
+          "fliesUsed_entry_count": 9,
+          "fliesUsed_unique_count": 8,
+          "fliesUsed_duplicate_count": 1,
+          "fliesUsed_entry_count_matches_fly_axis": false,
+          "indFly": {
+            "present": false
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 341,
+        "condition_axis": {
+          "axis_index_zero_based": 1,
+          "fill_fractions": [
+            "1/12",
+            "2/12",
+            "4/12",
+            "6/12",
+            "8/12",
+            "12/12"
+          ],
+          "direction_axis_present": false,
+          "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              141,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 1128,
+            "finite_count": 1128,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.6202350889470895,
+            "maximum": 0.3527307498606548
+          },
+          "kernels": {
+            "shape": [
+              141,
+              6,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 6768,
+            "finite_count": 6768,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -1.6005941454586392,
+            "maximum": 0.39291634225638283
+          },
+          "LightImpulseResps": {
+            "shape": [
+              141,
+              6,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 6768,
+            "finite_count": 6768,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2510169190287192,
+            "maximum": 2.4148804896787497
+          },
+          "DarkImpulseResps": {
+            "shape": [
+              141,
+              6,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 6768,
+            "finite_count": 6768,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.2277427998566547,
+            "maximum": 4.291498297080794
+          }
+        }
+      },
+      "Tm2": {
+        "source_type": "Tm2",
+        "protocol": "moving_bar_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Tm2GC6f_movingbar.mat",
+        "bytes": 610446,
+        "sha256": "996c66c2fe525d9b47ef3ab861a6c58798a4ade54c62e8291f7989fb76d6354c",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 12,
+          "fly_axis_size": 12,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            9384,
+            9386,
+            9387,
+            9388,
+            9565,
+            9568,
+            9571,
+            9572,
+            9574,
+            9601,
+            12156,
+            12157
+          ],
+          "fliesUsed_entry_count": 12,
+          "fliesUsed_unique_count": 12,
+          "fliesUsed_duplicate_count": 0,
+          "fliesUsed_entry_count_matches_fly_axis": true,
+          "indFly": {
+            "present": false
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 291,
+        "condition_axis": {
+          "axis_index_zero_based": 1,
+          "fill_fractions": [
+            "1/12",
+            "2/12",
+            "4/12",
+            "6/12",
+            "8/12",
+            "12/12"
+          ],
+          "direction_axis_present": false,
+          "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              141,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 1692,
+            "finite_count": 1692,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -2.6018437774718324,
+            "maximum": 1.1412504579496183
+          },
+          "kernels": {
+            "shape": [
+              141,
+              6,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 10152,
+            "finite_count": 10152,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -4.429257334254488,
+            "maximum": 1.458142912509073
+          },
+          "LightImpulseResps": {
+            "shape": [
+              141,
+              6,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 10152,
+            "finite_count": 10152,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.27051156532739606,
+            "maximum": 10.20039630878049
+          },
+          "DarkImpulseResps": {
+            "shape": [
+              141,
+              6,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 10152,
+            "finite_count": 10152,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.15416887049134004,
+            "maximum": 12.512702613528884
+          }
+        }
+      },
+      "Tm3": {
+        "source_type": "Tm3",
+        "protocol": "moving_bar_sparsity_sweep",
+        "path": "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Tm3GC6f_movingbar.mat",
+        "bytes": 305616,
+        "sha256": "6691464d5eb768cdc62d77c711c53631597bbd9457440b82627ed8f2d20ef5e3",
+        "top_level_name": "sparseSweep_Analysis",
+        "identity": {
+          "numFlies": 6,
+          "fly_axis_size": 6,
+          "numFlies_matches_fly_axis": true,
+          "fliesUsed_dtype": "uint64",
+          "fliesUsed_values": [
+            8742,
+            8745,
+            8935,
+            8935,
+            8936,
+            8939,
+            8939,
+            11989,
+            11989
+          ],
+          "fliesUsed_entry_count": 9,
+          "fliesUsed_unique_count": 6,
+          "fliesUsed_duplicate_count": 3,
+          "fliesUsed_entry_count_matches_fly_axis": false,
+          "indFly": {
+            "present": false
+          },
+          "stable_biological_individual_identity_verified": false,
+          "identity_boundary": "fliesUsed contains opaque integer labels whose entry count can differ from numFlies and the processed fly axis; no archive field defines their biological identity semantics"
+        },
+        "totROI": 365,
+        "condition_axis": {
+          "axis_index_zero_based": 1,
+          "fill_fractions": [
+            "1/12",
+            "2/12",
+            "4/12",
+            "6/12",
+            "8/12",
+            "12/12"
+          ],
+          "direction_axis_present": false,
+          "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "arrays": {
+          "indFilters": {
+            "shape": [
+              141,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 846,
+            "finite_count": 846,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.7845618577260625,
+            "maximum": 1.165958171130948
+          },
+          "kernels": {
+            "shape": [
+              141,
+              6,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 5076,
+            "finite_count": 5076,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.8720486429137065,
+            "maximum": 1.7558831640377806
+          },
+          "LightImpulseResps": {
+            "shape": [
+              141,
+              6,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 5076,
+            "finite_count": 5076,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.15144807898355997,
+            "maximum": 5.223439193182974
+          },
+          "DarkImpulseResps": {
+            "shape": [
+              141,
+              6,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 5076,
+            "finite_count": 5076,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.679632093508739,
+            "maximum": 4.98736778375737
+          }
+        }
+      }
+    },
+    "script_semantics": {
+      "flash": {
+        "analysis_rate_hz": 30,
+        "filter_num_frames_forward": 10,
+        "filter_length": 60,
+        "filter_point_count": 70,
+        "filter_time_start_seconds": -0.3333333333333333,
+        "filter_time_end_seconds": 1.9666666666666666,
+        "impulse_point_count": 71,
+        "impulse_time_start_seconds": -0.3333333333333333,
+        "impulse_time_end_seconds": 2.0,
+        "other_neuron_filter_baseline_matlab_indices_inclusive": [
+          1,
+          9
+        ],
+        "impulse_sparse_baseline_matlab_indices_inclusive": [
+          1,
+          10
+        ]
+      },
+      "moving_bar": {
+        "analysis_rate_hz": 60,
+        "num_frames_forward": 20,
+        "kernel_length": 120,
+        "point_count": 141,
+        "time_start_seconds": -0.3333333333333333,
+        "time_end_seconds": 2.0,
+        "impulse_baseline_matlab_indices_inclusive": [
+          1,
+          20
+        ],
+        "condition_order": [
+          "1/12",
+          "2/12",
+          "4/12",
+          "6/12",
+          "8/12",
+          "12/12"
+        ],
+        "direction_order_not_encoded_in_arrays_or_Fig6_script": true
+      },
+      "analysis_axes_are_not_exact_acquisition_timestamps": true
+    },
+    "identity_conclusion": {
+      "processed_fly_axis_verified": true,
+      "opaque_fliesUsed_labels_present": true,
+      "stable_biological_individual_ids_verified": false,
+      "fit_held_out_identity_disjointness_authorized": false
+    },
+    "measurement_boundary": {
+      "validated_arrays_are_processed_GCaMP6f_fluorescence": true,
+      "experimental_membrane_voltage": false,
+      "cross_modality_transfer_authorized": false,
+      "target_activity_injection_authorized": false
+    }
+  },
   "stimulus_and_recording": {
     "imaging_rate_hz_approximate": 13,
     "ternary_stimulus_update_rate_hz": 30,
@@ -131,8 +2016,111 @@
       "right"
     ],
     "response_storage": "per_fly_by_time_processed_matrices",
+    "local_processed_numeric_payload_verified": true,
+    "local_processed_numeric_sources": [
+      "Mi1",
+      "Tm3",
+      "Tm1",
+      "Tm2"
+    ],
+    "flash_fly_axis_sizes": {
+      "Mi1": 16,
+      "Tm3": 11,
+      "Tm1": 9,
+      "Tm2": 8
+    },
+    "moving_bar_fly_axis_sizes": {
+      "Mi1": 10,
+      "Tm3": 6,
+      "Tm1": 8,
+      "Tm2": 12
+    },
+    "flash_filter_shape_by_source": {
+      "Mi1": [
+        16,
+        70
+      ],
+      "Tm3": [
+        11,
+        70
+      ],
+      "Tm1": [
+        9,
+        70
+      ],
+      "Tm2": [
+        8,
+        70
+      ]
+    },
+    "flash_impulse_time_point_count": 71,
+    "moving_bar_shape_by_source": {
+      "Mi1": [
+        141,
+        6,
+        10
+      ],
+      "Tm3": [
+        141,
+        6,
+        6
+      ],
+      "Tm1": [
+        141,
+        6,
+        8
+      ],
+      "Tm2": [
+        141,
+        6,
+        12
+      ]
+    },
+    "all_audited_arrays_finite": true,
+    "flash_analysis_timebase_hz": 30,
+    "flash_filter_time_bounds_seconds": [
+      -0.3333333333333333,
+      1.9666666666666666
+    ],
+    "flash_impulse_time_bounds_seconds": [
+      -0.3333333333333333,
+      2.0
+    ],
+    "flash_filter_baseline_MATLAB_indices_other_neurons": [
+      1,
+      9
+    ],
+    "flash_impulse_baseline_MATLAB_indices": [
+      1,
+      10
+    ],
+    "moving_bar_analysis_timebase_hz": 60,
+    "moving_bar_time_bounds_seconds": [
+      -0.3333333333333333,
+      2.0
+    ],
+    "moving_bar_baseline_MATLAB_indices": [
+      1,
+      20
+    ],
+    "moving_bar_condition_order_fill_fraction": [
+      "1/12",
+      "2/12",
+      "4/12",
+      "6/12",
+      "8/12",
+      "12/12"
+    ],
+    "moving_bar_direction_axis_present": false,
+    "moving_bar_direction_order_verified_from_payload_or_Fig6_script": false,
+    "analysis_time_axes_are_exact_acquisition_timestamps": false,
+    "fliesUsed_opaque_integer_labels_present": true,
+    "fliesUsed_can_differ_from_processed_fly_axis_and_contain_duplicates": true,
+    "indFly_has_nonempty_identifiers": false,
     "processed_fly_rows_to_DANDI_subject_ids_verified": false,
+    "stable_biological_individual_ids_verified": false,
     "exact_sample_timestamps_verified_from_payload": false,
+    "analysis_baseline_windows_verified_from_scripts": true,
     "baseline_windows_verified_from_payload": false,
     "MaleCNS_mapping_present": false,
     "preregistered_training_validation_external_final_roles_present": false
@@ -190,7 +2178,7 @@
     "exact_sample_timestamps_and_baselines_verified": false,
     "source_type_to_MaleCNS_mapping_available": false,
     "required_split_roles_present": false,
-    "payload_hash_locally_verified": false
+    "payload_hash_locally_verified": true
   },
   "partial_source_dynamics_evidence_present": true,
   "complete_external_source_dynamics_evidence": false,
@@ -205,21 +2193,25 @@
     "processed_rows_linked_to_stable_subject_ids",
     "exact_sample_timestamps_and_baselines_verified",
     "source_type_to_MaleCNS_mapping_available",
-    "required_split_roles_present",
-    "payload_hash_locally_verified"
+    "required_split_roles_present"
   ],
   "stop_reason": "partial_Mi1_Tm3_Tm1_Tm2_fluorescence_evidence_does_not_satisfy_unified_contract",
   "download_disposition": {
+    "Dryad_archive_download_completed": true,
     "Dryad_archive_download_authorized": false,
     "DANDI_bulk_download_authorized": false,
-    "reason": "metadata establishes incomplete source and unit coverage; retain as a candidate for later source-specific calcium validation only"
+    "reason": "the bounded Dryad archive is now locally validated; incomplete source, identity, timestamp, mapping, split-role, and response-unit coverage still forbids fitting and makes further bulk download unnecessary"
   },
   "boundary": {
-    "official_metadata_README_and_article_only": true,
-    "publisher_hashes_are_not_claimed_as_locally_verified": true,
+    "official_metadata_README_and_article_only": false,
+    "publisher_archive_hash_locally_verified": true,
+    "local_numeric_payload_is_processed_calcium_fluorescence": true,
+    "script_analysis_axes_are_not_claimed_as_acquisition_timestamps": true,
+    "opaque_fliesUsed_values_are_not_claimed_as_stable_biological_IDs": true,
     "calcium_and_optical_voltage_fluorescence_are_not_membrane_voltage_units": true,
     "partial_source_coverage_does_not_satisfy_the_unified_contract": true,
-    "no_large_payload_download": true,
+    "Dryad_archive_download_was_completed_for_bounded_local_validation": true,
+    "no_DANDI_bulk_download": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,
     "no_runtime_change": true,

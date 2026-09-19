@@ -45,8 +45,9 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     pirogova_sources = set(pirogova["source_payloads"])
     gou = evidence["gou_partial"]
     gou_sources = set(gou["source_evidence"])
-    # The Gou archive was not downloaded or hash-verified. Its README describes
-    # numerical arrays, but those arrays are deliberately not counted as local data.
+    # Gou's processed fluorescence arrays count as local numerical calcium only
+    # after both download and publisher-hash verification. They remain outside
+    # the allowed experimental membrane-voltage unit contract.
     gou_payload_local = bool(
         gou["repositories"]["Dryad"]["payload_downloaded"]
         and gou["repositories"]["Dryad"]["payload_sha256_locally_verified"]
@@ -148,6 +149,27 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             ),
             "publisher_described_numerical_calcium_payload_not_locally_verified": (
                 publisher_described_unverified
+            ),
+            "Gou_Dryad_local_processed_calcium_payload_verified": (
+                source in gou_sources and gou_payload_local
+            ),
+            "Gou_Dryad_processed_fly_axis_verified": (
+                source in gou_sources
+                and gou["local_payload_inventory"]["identity_conclusion"][
+                    "processed_fly_axis_verified"
+                ]
+            ),
+            "Gou_Dryad_stable_biological_individual_ID_verified": (
+                source in gou_sources
+                and gou["local_payload_inventory"]["identity_conclusion"][
+                    "stable_biological_individual_ids_verified"
+                ]
+            ),
+            "Gou_Dryad_experimental_membrane_voltage": (
+                source in gou_sources
+                and gou["local_payload_inventory"]["measurement_boundary"][
+                    "experimental_membrane_voltage"
+                ]
             ),
             "published_lobula_Lo1_dynamic_phenotype_only": (
                 source == "CT1" and ct1_lobula_phenotype

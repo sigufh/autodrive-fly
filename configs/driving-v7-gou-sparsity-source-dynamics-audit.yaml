@@ -1,6 +1,6 @@
 version: 1
 name: v7-gou-sparsity-source-dynamics-audit
-observed_on: "2026-09-18"
+observed_on: "2026-09-19"
 paper:
   doi: 10.1016/j.cub.2024.10.053
   pmcid: PMC11834764
@@ -23,9 +23,45 @@ dryad:
       file_id: 4404307
       bytes: 180331689
       publisher_reported_sha256: 83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f
-  payload_download_status: 403
-  payload_downloaded: false
-  payload_sha256_locally_verified: false
+  version_download_url: https://datadryad.org/api/v2/versions/402168/download
+  aggregate_download:
+    path: data/raw/gou-sparsity/dryad-version-402168.zip
+    bytes: 180371629
+    sha256: 59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f
+    dynamically_assembled_outer_archive: true
+  publisher_archive:
+    path: data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip
+    bytes: 180331689
+    sha256: 83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f
+    zip_integrity_passed: true
+  readme:
+    path: data/raw/gou-sparsity/version-402168/README.md
+    bytes: 12130
+    sha256: 1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261
+  payload_download_status: 200
+  payload_downloaded: true
+  payload_sha256_locally_verified: true
+  publisher_archive_hash_matches_file_record: true
+local_payload_inventory:
+  path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
+  bytes: 49835
+  sha256: 7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097
+  archive_entry_count: 131
+  real_file_count: 55
+  real_mat_file_count: 25
+analysis_scripts:
+  flash_Mi1:
+    path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/fig1_Mi1GC6f_flash.m
+    bytes: 23237
+    sha256: cd925bd0eb826da21d3095559d592cc085949753e9007bca337ec8146a1f6573
+  flash_other_neurons:
+    path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig4_otherNeurons_flash.m
+    bytes: 13644
+    sha256: 10d1e410b3d2eeec49a013b3efcaf71f18c91ab016d83f1123099bd6ceff3e58
+  moving_bar_other_neurons:
+    path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m
+    bytes: 8361
+    sha256: 556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab
 dandi:
   identifier: DANDI:001205
   version: 0.250602.0251
@@ -87,18 +123,55 @@ stimulus_and_recording:
   standard_moving_bar_speed_degrees_per_second: 60
   standard_moving_bar_directions: [left, right]
   response_storage: per_fly_by_time_processed_matrices
+  local_processed_numeric_payload_verified: true
+  local_processed_numeric_sources: [Mi1, Tm3, Tm1, Tm2]
+  flash_fly_axis_sizes: {Mi1: 16, Tm3: 11, Tm1: 9, Tm2: 8}
+  moving_bar_fly_axis_sizes: {Mi1: 10, Tm3: 6, Tm1: 8, Tm2: 12}
+  flash_filter_shape_by_source:
+    Mi1: [16, 70]
+    Tm3: [11, 70]
+    Tm1: [9, 70]
+    Tm2: [8, 70]
+  flash_impulse_time_point_count: 71
+  moving_bar_shape_by_source:
+    Mi1: [141, 6, 10]
+    Tm3: [141, 6, 6]
+    Tm1: [141, 6, 8]
+    Tm2: [141, 6, 12]
+  all_audited_arrays_finite: true
+  flash_analysis_timebase_hz: 30
+  flash_filter_time_bounds_seconds: [-0.3333333333333333, 1.9666666666666666]
+  flash_impulse_time_bounds_seconds: [-0.3333333333333333, 2.0]
+  flash_filter_baseline_MATLAB_indices_other_neurons: [1, 9]
+  flash_impulse_baseline_MATLAB_indices: [1, 10]
+  moving_bar_analysis_timebase_hz: 60
+  moving_bar_time_bounds_seconds: [-0.3333333333333333, 2.0]
+  moving_bar_baseline_MATLAB_indices: [1, 20]
+  moving_bar_condition_order_fill_fraction: [1/12, 2/12, 4/12, 6/12, 8/12, 12/12]
+  moving_bar_direction_axis_present: false
+  moving_bar_direction_order_verified_from_payload_or_Fig6_script: false
+  analysis_time_axes_are_exact_acquisition_timestamps: false
+  fliesUsed_opaque_integer_labels_present: true
+  fliesUsed_can_differ_from_processed_fly_axis_and_contain_duplicates: true
+  indFly_has_nonempty_identifiers: false
   processed_fly_rows_to_DANDI_subject_ids_verified: false
+  stable_biological_individual_ids_verified: false
   exact_sample_timestamps_verified_from_payload: false
+  analysis_baseline_windows_verified_from_scripts: true
   baseline_windows_verified_from_payload: false
   MaleCNS_mapping_present: false
   preregistered_training_validation_external_final_roles_present: false
 required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 boundary:
-  official_metadata_README_and_article_only: true
-  publisher_hashes_are_not_claimed_as_locally_verified: true
+  official_metadata_README_and_article_only: false
+  publisher_archive_hash_locally_verified: true
+  local_numeric_payload_is_processed_calcium_fluorescence: true
+  script_analysis_axes_are_not_claimed_as_acquisition_timestamps: true
+  opaque_fliesUsed_values_are_not_claimed_as_stable_biological_IDs: true
   calcium_and_optical_voltage_fluorescence_are_not_membrane_voltage_units: true
   partial_source_coverage_does_not_satisfy_the_unified_contract: true
-  no_large_payload_download: true
+  Dryad_archive_download_was_completed_for_bounded_local_validation: true
+  no_DANDI_bulk_download: true
   no_parameter_fit: true
   no_target_activity_injection: true
   no_runtime_change: true

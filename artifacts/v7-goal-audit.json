@@ -4,7 +4,7 @@
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "d8f3589041383c92d8970658d50a408b925b7579427cb811c6c196ea65757920",
-      "src/fly_emotion/driving/v7_goal_audit.py": "61603e4e5bfa799fd25a335de44f5df32d3a474c78586c70be8427c93a8960ac",
+      "src/fly_emotion/driving/v7_goal_audit.py": "8cf7f8fc8a21aa7a39ec40213629382b117f32fcb24222940a270e4b6a328f61",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -97,7 +97,7 @@
       "artifacts/v7-c3-measured-filter-robustness.json": "e966e7870e8a435b84f7a3a5679d7bf71188ca73a35e8e546d8238ea19671f0b",
       "artifacts/v7-public-t4-model-source-coverage-audit.json": "07097b03afa0c2d22778dc474750c6394f0a7bf3a98964ab723adeae558de644",
       "artifacts/v7-dryad-l1l2-source-dynamics-audit.json": "a11f54e7258ac23c32a0b615b3e228dbe6882b7d578cbe411a73c80abcdaeb26",
-      "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "8cd5b3c798e0bf5b6ee22721a74d56d0c136a33921bd58c3b3816bc72208c219",
+      "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "aab86366bb4526d354cd3966764450976b134f41c19b71917f39a027241ec060",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "11bbde0992709ad061d0d02d0f639b2767483eefcce1c865c118bbe6e4fe4097",
       "artifacts/v7-braun-t5-source-data-audit.json": "bae592266c0ab1f9a89e005928581ea6bf4b618e0c0e13da40f725898ef90a56",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "32fcecb31499bdbda0d7f9570f9103e888c5d4460b7a2c5772b4cda335c745fe",
@@ -109,7 +109,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "a49c99c5f0a7ada9757bc920e399ee39b6b8d96ae6f39716d3e80bfc3c62c8ae",
       "artifacts/v7-pirogova-source-calcium-audit.json": "96a44d68f675ddb5495d361c25f1bcd61d4e16e8527ec60d81bbb0dd77c1389d",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "93930b2292413e6c6a2a2abc6e97efc25b64480cb9ab0d454ac2a5d889dc1569",
-      "artifacts/v7-source-evidence-matrix.json": "8b53e9bdb85d286b22567026ed758c68c99907a36e6a5c54d92a62959f909f47",
+      "artifacts/v7-source-evidence-matrix.json": "0e7f5b7dd292c473a5b2be9ab0c07f105fbd56a5f55206dda43feae5c0d430ea",
       "artifacts/v7-source-type-average-mapping-contract.json": "d35acc0b516c3d5ba86e480f06f40402b0dc42ac03e52ba72d8d1a860e076f18",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "4f358fd0152d6b9cf6c127ea86d6a4f3c42cc27e42c9d013fd451fb0d3ce3140",
       "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6",
@@ -165,9 +165,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "aabc4973c2221c3d00197c946ffc437c71b67dc9d8607eee57f5f763381bc548",
-      "apps/web/src/components/DrivingPanel.tsx": "98ce89e4a3c5b2681b05c50aa2d3f96bf5617e151c0eaa8266f60d0035599d27",
-      "apps/web/src/types.ts": "df43b26c798e7ef9afbcc8401965239bb001b3b2e3fb535a453ba70daab93f20",
+      "apps/api/src/fly_emotion_api/main.py": "49a9227f19a2556fd72ec1a50a5a057e4155d8891c9e540c70715e6a0c0469f4",
+      "apps/web/src/components/DrivingPanel.tsx": "8ec834ba631d37750dc01d4347f371499ba8d4c91ce477b956b455e690005532",
+      "apps/web/src/types.ts": "62d98492bc18012f63874b7506a3416a7ee700017c26f74767224d8aa266dde7",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -551,6 +551,27 @@
         "Gou_sparsity_partial_source_evidence_present": true,
         "Gou_sparsity_source_dynamics_transfer_authorized": false,
         "Gou_sparsity_bulk_download_authorized": false,
+        "Gou_Dryad_archive_hash_locally_verified": true,
+        "Gou_Dryad_local_processed_calcium_sources": [
+          "Mi1",
+          "Tm3",
+          "Tm1",
+          "Tm2"
+        ],
+        "Gou_Dryad_flash_fly_axis_sizes": {
+          "Mi1": 16,
+          "Tm3": 11,
+          "Tm1": 9,
+          "Tm2": 8
+        },
+        "Gou_Dryad_moving_bar_fly_axis_sizes": {
+          "Mi1": 10,
+          "Tm3": 6,
+          "Tm1": 8,
+          "Tm2": 12
+        },
+        "Gou_Dryad_stable_biological_individual_IDs_verified": false,
+        "Gou_Dryad_experimental_membrane_voltage": false,
         "T5_contrast_opponency_temporal_sources": [
           "Tm4",
           "Tm9"
@@ -1607,6 +1628,12 @@
           "Braun_calcium_fly_counts",
           "Braun_calcium_condition_grids_complete",
           "Braun_calcium_allowed_voltage_sources",
+          "Gou_Dryad_archive_hash_locally_verified",
+          "Gou_Dryad_local_processed_calcium_sources",
+          "Gou_Dryad_flash_fly_axis_sizes",
+          "Gou_Dryad_moving_bar_fly_axis_sizes",
+          "Gou_Dryad_stable_biological_individual_IDs_verified",
+          "Gou_Dryad_experimental_membrane_voltage",
           "T5_record_specific_stimulus_logs_available",
           "Motyxia2_public_history_branch_count",
           "Motyxia2_public_history_commit_count",
