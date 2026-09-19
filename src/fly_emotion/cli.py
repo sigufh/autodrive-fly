@@ -148,6 +148,9 @@ from .driving.v7_lplc1_near_collision_precheck import (
 from .driving.v7_lplc2_phenotype import evaluate_v7_lplc2_phenotype
 from .driving.v7_lplc2_position_coverage import evaluate_v7_lplc2_position_coverage
 from .driving.v7_lplc2_radial_opponency import evaluate_v7_lplc2_radial_opponency
+from .driving.v7_matulis_mi1_voltage_availability_audit import (
+    evaluate_v7_matulis_mi1_voltage_availability_audit,
+)
 from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
 from .driving.v7_malecns_source_mapping_readiness_audit import (
     evaluate_v7_malecns_source_mapping_readiness_audit,
@@ -534,6 +537,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-recording-fields")
     subparsers.add_parser("v7-audit-behnia-t4-fast-sources")
     subparsers.add_parser("v7-audit-behnia-t4-fast-source-availability")
+    subparsers.add_parser("v7-audit-matulis-mi1-voltage-availability")
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
     subparsers.add_parser("v7-audit-mi4-c3-whole-cell-candidates")
@@ -1560,6 +1564,14 @@ def main() -> None:
     if args.command == "v7-audit-behnia-t4-fast-source-availability":
         report = evaluate_v7_behnia_t4_fast_source_availability_audit(root)
         target = root / "artifacts/v7-behnia-t4-fast-source-availability-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-matulis-mi1-voltage-availability":
+        report = evaluate_v7_matulis_mi1_voltage_availability_audit(root)
+        target = root / "artifacts/v7-matulis-mi1-voltage-availability-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

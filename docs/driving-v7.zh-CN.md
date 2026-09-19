@@ -2308,6 +2308,14 @@ relation 为空，链接仅为论文 HTML/PDF；DataCite 按论文 DOI 查询无
 上述已审计公共索引，不声称数据在全球范围绝对不存在；论文图中的个体曲线不做数字化。
 因此独立 Mi1/Tm3 时序表型仍可作为定性支持，但不能提供可重算的独立数值 cohort。证据见
 `artifacts/v7-behnia-t4-fast-source-availability-audit.json`。
+另一个独立 Mi1 whole-cell 候选是 Matulis 等 2020（DOI
+`10.1016/j.cub.2019.11.077`）。论文明确用 current clamp 记录 3 cells / 3 flies，10 kHz
+采集并与 stimulus timing 配对；刺激为 120 Hz 随机二值闪烁，在 0.2/0.9 对比度之间每 5 s
+切换，总长 12 min。BioStudies `S-EPMC7003801` 公开附件只有 14 页补充图 PDF 和 Key
+Resources DOCX；DOCX 唯一 OLE 对象是 165×163 Photoshop 图像，不是数值表。论文与资源表
+均把原始数据及代码标为 available upon request，因此该研究增加独立 Mi1 膜电位表型，却没有
+可本地验证的 voltage trace、稳定匿名 ID 或 split manifest，不能补齐九源合同。证据见
+`artifacts/v7-matulis-mi1-voltage-availability-audit.json`。
 
 Edmond 的 `fig1d_receptive_fields.npy` 也已按冻结的 35,520,207 bytes、MD5 和
 SHA-256 下载。先静态扫描 pickle opcode，只发现 NumPy `_reconstruct`、`ndarray`、

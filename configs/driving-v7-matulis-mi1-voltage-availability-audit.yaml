@@ -1,0 +1,56 @@
+version: 1
+name: v7-matulis-mi1-voltage-availability-audit
+observed_on: "2026-09-19"
+required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
+paper:
+  title: Heterogeneous Temporal Contrast Adaptation in Drosophila Direction-Selective Circuits
+  doi: 10.1016/j.cub.2019.11.077
+  pmid: "31928874"
+  pmcid: PMC7003801
+  path: data/raw/t4-whole-cell-candidates/PMC7003801.bioc.xml
+  bytes: 160692
+  sha256: a00a7d43ee4657456cb6fbfec6126cce14452fe287a0d20ddc6cf47aa355f42a
+biostudies:
+  path: data/raw/t4-whole-cell-candidates/S-EPMC7003801.json
+  bytes: 6316
+  sha256: dc9b17bfaa682c06888fd7fa902288f9653c3ec1db71aa00ac0828d2ef6b7a03
+  accession: S-EPMC7003801
+  expected_files:
+    NIHMS1545836-supplement-1.docx: 42541
+    NIHMS1545836-supplement-Matulis_Supplemental_Information.pdf: 2224530
+supplements:
+  key_resources:
+    path: data/raw/t4-whole-cell-candidates/NIHMS1545836-supplement-1.docx
+    bytes: 42541
+    sha256: d07e7c7ed255a95875d2fb975b7e8aaa06e0ab00d95b3fc3390786cd2351336e
+    expected_member_count: 21
+    expected_embedded_objects: [word/embeddings/oleObject1.bin]
+  figures:
+    path: data/raw/t4-whole-cell-candidates/NIHMS1545836-supplement.pdf
+    bytes: 2224530
+    sha256: fb6610cca6aaeabdb0c1f183579f6a6e45599e71c2886c0de409e61132d9452b
+    pages: 14
+measurement:
+  source_type: Mi1
+  modality: in_vivo_whole_cell_current_clamp
+  response_unit: millivolts
+  sample_rate_hz: 10000
+  display_update_rate_hz: 240
+  stochastic_stimulus_update_rate_hz: 120
+  low_contrast: 0.2
+  high_contrast: 0.9
+  epoch_duration_seconds: 5
+  total_stimulus_duration_seconds: 720
+  reported_cell_count: 3
+  reported_fly_count: 3
+boundary:
+  equal_cell_and_fly_counts_do_not_supply_stable_pseudonymous_ids: true
+  upon_request_is_not_a_public_numeric_payload: true
+  document_attachments_are_not_numeric_voltage_traces: true
+  embedded_photoshop_image_is_not_a_numeric_voltage_payload: true
+  independent_Mi1_voltage_does_not_complete_Tm3_Mi4_or_C3: true
+  no_curve_digitization: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

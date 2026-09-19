@@ -112,6 +112,16 @@ def test_independent_T4_fast_phenotype_is_not_counted_as_numeric_payload() -> No
             ]
             is False
         )
+    mi1 = report["matrix"]["Mi1"]
+    assert mi1["evidence_components"][
+        "Matulis_2020_independent_Mi1_whole_cell_voltage_phenotype"
+    ] is True
+    assert mi1["evidence_components"][
+        "Matulis_2020_public_numeric_voltage_payload_available"
+    ] is False
+    assert "Matulis_2020_Mi1_whole_cell_voltage_phenotype" in mi1[
+        "phenotype_evidence_sources"
+    ]
 
 
 def test_borst_2025_parameterized_target_is_not_counted_as_measured_voltage() -> None:

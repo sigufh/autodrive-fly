@@ -36,6 +36,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     t4_fields = evidence["t4_recording_fields"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     behnia_availability = evidence["behnia_t4_fast_availability"]
+    matulis_mi1 = evidence["matulis_mi1_voltage_availability"]
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     mi4_c3_candidates = evidence["mi4_c3_whole_cell_candidates"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
@@ -265,6 +266,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "local_numeric_trace_payload_found_in_audited_indexes"
                 ]
             ),
+            "Matulis_2020_independent_Mi1_whole_cell_voltage_phenotype": (
+                source == "Mi1"
+                and matulis_mi1["transfer_gates"][
+                    "independent_Mi1_experimental_voltage_phenotype_verified"
+                ]
+            ),
+            "Matulis_2020_public_numeric_voltage_payload_available": (
+                source == "Mi1"
+                and matulis_mi1["transfer_gates"][
+                    "public_numeric_voltage_payload_available"
+                ]
+            ),
             "Yang_2016_PMC_attachment_count": (
                 yang_external_index["pmc_attachment_count"]
                 if source in yang_sources
@@ -413,6 +426,10 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             phenotype_sources.append("Arenz_2017_calcium_filter_parameters")
         if source in behnia_fast_sources:
             phenotype_sources.append("Behnia_2014_whole_cell_voltage_phenotype")
+        if source == "Mi1" and matulis_mi1["transfer_gates"][
+            "independent_Mi1_experimental_voltage_phenotype_verified"
+        ]:
+            phenotype_sources.append("Matulis_2020_Mi1_whole_cell_voltage_phenotype")
         if published_voltage:
             phenotype_sources.append("Yang_2016_optical_voltage_figure")
         if source == "CT1" and ct1_lobula_phenotype:
