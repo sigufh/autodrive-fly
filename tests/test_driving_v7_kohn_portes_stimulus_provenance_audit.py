@@ -33,6 +33,10 @@ def test_fixed_generator_does_not_replace_record_specific_logs() -> None:
     assert raw["record_specific_stimulus_log_found_in_audited_public_history"] is False
     assert raw["audited_public_history_branch_count"] == 22
     assert raw["audited_public_history_commit_count"] == 447
+    assert raw["external_successful_indexes_linked_log_found"] is False
+    assert raw["PMC_supplement_content_retrieved_and_inspected"] is False
+    assert raw["Figshare_search_endpoint_accessible"] is False
+    assert raw["global_absence_claimed"] is False
 
 
 def test_missing_fields_are_not_filled_from_generator_defaults() -> None:

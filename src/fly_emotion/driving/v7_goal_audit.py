@@ -100,6 +100,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "kohn_portes_stimulus_provenance_audit"
     ]
     motyxia2_public_history_audit = reports["motyxia2_public_history_audit"]
+    kohn_portes_external_index_audit = reports[
+        "kohn_portes_external_index_audit"
+    ]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     behnia_t4_fast_source_availability_audit = reports[
         "behnia_t4_fast_source_availability_audit"
@@ -323,6 +326,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_recording_field_audit"],
                 config["evidence"]["kohn_portes_stimulus_provenance_audit"],
                 config["evidence"]["motyxia2_public_history_audit"],
+                config["evidence"]["kohn_portes_external_index_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["behnia_t4_fast_source_availability_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
@@ -696,6 +700,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_record_log_found_in_Motyxia2_public_history": (
                     motyxia2_public_history_audit[
                         "Kohn_Portes_record_specific_stimulus_log_found_in_audited_public_history"
+                    ]
+                ),
+                "Kohn_Portes_external_successful_indexes_linked_log_found": (
+                    kohn_portes_external_index_audit[
+                        "record_specific_stimulus_log_found_in_successfully_audited_external_indexes"
+                    ]
+                ),
+                "Kohn_Portes_PMC_supplement_content_inspected": (
+                    kohn_portes_external_index_audit["availability_gates"][
+                        "PMC_supplement_content_retrieved_and_inspected"
+                    ]
+                ),
+                "Kohn_Portes_Figshare_search_accessible": (
+                    kohn_portes_external_index_audit["availability_gates"][
+                        "Figshare_search_endpoint_accessible"
+                    ]
+                ),
+                "Kohn_Portes_stimulus_log_global_absence_claimed": (
+                    kohn_portes_external_index_audit[
+                        "record_specific_stimulus_log_global_absence_claimed"
                     ]
                 ),
                 "Behnia_T4_independent_fast_source_phenotypes": sorted(
@@ -2317,6 +2341,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",
                     "T5_record_log_found_in_Motyxia2_public_history",
+                    "T5_external_successful_indexes_linked_log_found",
+                    "T5_PMC_supplement_content_inspected",
+                    "T5_Figshare_search_accessible",
+                    "T5_stimulus_log_global_absence_claimed",
                     "T5_generator_defaults_used_as_record_fields",
                 ],
             },

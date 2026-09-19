@@ -29,6 +29,10 @@ def test_fields_are_not_joined_across_modalities() -> None:
     assert provenance["record_specific_stimulus_logs_locally_available"] is False
     assert provenance["generator_defaults_accepted_as_record_fields"] is False
     assert provenance["stimulus_provenance_contract_complete"] is False
+    assert provenance["external_successful_indexes_linked_log_found"] is False
+    assert provenance["PMC_supplement_content_retrieved_and_inspected"] is False
+    assert provenance["Figshare_search_endpoint_accessible"] is False
+    assert provenance["global_absence_claimed"] is False
 
 
 def test_recording_keys_do_not_become_biological_individuals() -> None:

@@ -29,6 +29,7 @@ evidence:
   kohn_portes_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
   kohn_portes_identity: artifacts/v7-kohn-portes-identity-history-audit.json
   motyxia2_public_history: artifacts/v7-motyxia2-public-history-audit.json
+  external_index_availability: artifacts/v7-kohn-portes-external-index-audit.json
 source_configs:
   ephys: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
   identity: configs/driving-v7-kohn-portes-identity-history-audit.yaml

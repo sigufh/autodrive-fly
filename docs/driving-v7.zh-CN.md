@@ -2007,6 +2007,15 @@ token、两个 white-noise stimulus name、`driftinggrating_05hz` 与内部日�
 这仍不是对其他未审计位置或全球不存在的断言。证据见
 `artifacts/v7-motyxia2-public-history-audit.json`。
 
+论文 DOI 的外部索引也与 Git 历史分开审计。Crossref 只给出 bioRxiv preprint 关系和
+Elsevier 正文链接；DataCite 的 related-DOI 与精确题名查询均为 0；Europe PMC 没有数据库
+交叉引用，但标出一个 20.9 MB supplementary PDF。该 PDF 的普通 HTTP 与真实浏览器下载
+在当前环境分别停留在 proof-of-work 页面和 120 秒无下载事件，故附件内容明确记为“未检查”，
+不能推断其中无数据。Elsevier 仅返回未经授权的最小元数据，Figshare search API 返回 403，
+这些不可访问端点也不计为零结果。因此，成功审计的索引没有发现 DOI-linked 数值日志，但
+不声明附件、Figshare 或全球不存在载荷。证据见
+`artifacts/v7-kohn-portes-external-index-audit.json`。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确

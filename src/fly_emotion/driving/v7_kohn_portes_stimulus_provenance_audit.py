@@ -250,6 +250,15 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
         "Kohn_Portes_record_specific_stimulus_log_found_in_audited_public_history"
     ]:
         raise ValueError("Motyxia2 public history now contains a candidate recording log")
+    external = json.loads(
+        (root / evidence_paths["external_index_availability"]).read_text(
+            encoding="utf-8"
+        )
+    )
+    if external[
+        "record_specific_stimulus_log_found_in_successfully_audited_external_indexes"
+    ]:
+        raise ValueError("external indexes now contain a candidate recording log")
     return {
         "protocol": {
             "name": config["name"],
@@ -289,6 +298,14 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
             "audited_public_history_commit_count": history["repository"][
                 "reachable_commit_count"
             ],
+            "external_successful_indexes_linked_log_found": False,
+            "PMC_supplement_content_retrieved_and_inspected": external[
+                "availability_gates"
+            ]["PMC_supplement_content_retrieved_and_inspected"],
+            "Figshare_search_endpoint_accessible": external["availability_gates"][
+                "Figshare_search_endpoint_accessible"
+            ],
+            "global_absence_claimed": False,
             "white_noise_field_inventory": wn_inventory,
             "drifting_grating_field_inventory": dg_inventory,
             "drifting_grating_spatial_frequencies_cycles_per_degree": list(next(iter(sf_arrays))),

@@ -150,6 +150,22 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
             "stimulus_provenance_contract_complete": stimulus_provenance[
                 "stimulus_provenance_contract_complete"
             ],
+            "external_successful_indexes_linked_log_found": (
+                stimulus_provenance["raw_record_summary"][
+                    "external_successful_indexes_linked_log_found"
+                ]
+            ),
+            "PMC_supplement_content_retrieved_and_inspected": (
+                stimulus_provenance["raw_record_summary"][
+                    "PMC_supplement_content_retrieved_and_inspected"
+                ]
+            ),
+            "Figshare_search_endpoint_accessible": stimulus_provenance[
+                "raw_record_summary"
+            ]["Figshare_search_endpoint_accessible"],
+            "global_absence_claimed": stimulus_provenance["raw_record_summary"][
+                "global_absence_claimed"
+            ],
         },
         "source_checks": source_checks,
         "all_five_T5_sources_have_complete_coexisting_recording_fields": complete,

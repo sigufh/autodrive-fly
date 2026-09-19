@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "567e5348fa33e53305c7f5ce1d3d5a9139edeb71420f5a6b80e33de54bd5e2b9",
-      "src/fly_emotion/driving/v7_goal_audit.py": "5f305edcc1cb1b17ede5e4c6857efd561014c8fea7a86364663196070e0da27a",
+      "configs/driving-v7-goal-audit.yaml": "0c715d2ffee30093ee0a4e93a69930fc79343ba0b46590f080715250b3ff8725",
+      "src/fly_emotion/driving/v7_goal_audit.py": "5f2a041e7a030c87928a13511afac58aa17344eaf2a5bf016c2aa938f0b28bd4",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -72,9 +72,10 @@
       "artifacts/v7-t4-individual-split-1khz-audit.json": "2861009fd6bb9cd20d5004fe2a457a2cd9f7372eb871e6b807f5fb47c41a449d",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
       "artifacts/v7-t4-recording-field-audit.json": "934c7e1a2ec01797b4ef92ca498ae37f4b721a617b768eb6056538eb075180ef",
-      "artifacts/v7-t5-recording-field-audit.json": "5e86be74dec2dadb5067e41a2d6f13da9afff16b976aa37aa2eb9cbe2dd1aafb",
-      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "c9fc7d058880ce801d7d13130ea6dcbb3b97efd38ec11b7fffc1d396991434fe",
+      "artifacts/v7-t5-recording-field-audit.json": "864658f6b56ecefb1542d1652eef2b96463647a787796d276a2e2ba0158aa360",
+      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "e38de9b181c72a89ada54e6e44f6be911723e703fde1058e449463e97a9a3687",
       "artifacts/v7-motyxia2-public-history-audit.json": "e0837e830dbb247279cacaa7484481e03d0aec8040d570583c4fe65251ac560b",
+      "artifacts/v7-kohn-portes-external-index-audit.json": "69a789128f97562afa2f32bed30c53125097bd04774355c26ac629b0f99c3414",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "a7fc3192368194905d02d03c8aa02f70368fbc4e762984c08797aa9f9145fbbe",
       "artifacts/v7-behnia-t4-fast-source-availability-audit.json": "52540f717d777965c3bf863abfc408731d5d91b20e61eb88a39ad02fe0f10ee6",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "6ed264736b860064117a606f640c21cc3f24abb673a0e960c3b5bfcb4eb3191d",
@@ -106,7 +107,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "a49c99c5f0a7ada9757bc920e399ee39b6b8d96ae6f39716d3e80bfc3c62c8ae",
       "artifacts/v7-pirogova-source-calcium-audit.json": "96a44d68f675ddb5495d361c25f1bcd61d4e16e8527ec60d81bbb0dd77c1389d",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
-      "artifacts/v7-source-evidence-matrix.json": "6fbb94662942dd319b07b77feb780053e5a4faf96b31754d79d3fbf05aec6e1f",
+      "artifacts/v7-source-evidence-matrix.json": "c4fc6ba4bff7a6954230ed7c3dc72c4bb14eb318363d9b42577932031bfcb493",
       "artifacts/v7-source-type-average-mapping-contract.json": "010e93dd621f5b87068709f254ef6364580939ee1318e4e09ebd31c138c16126",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "303b3c8bb413a6a9a7c56259f48aeb8b6df495135f01645686718f570f5551fa",
       "artifacts/v7-three-hop-source-coverage.json": "12a5924cc1a55c71aa2ae275cf836260f19987a9db925779f42bc08d09ec707a",
@@ -160,9 +161,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "6f4275a6467d72d37654cda08b25b1df1798d5f2a75748397d6f5a57fcbe654f",
-      "apps/web/src/components/DrivingPanel.tsx": "8a9704d4c0e6e084f388922b39294619a569160556049581539aca86171c7897",
-      "apps/web/src/types.ts": "564c820b2de852098edcab24816ed6125e6776c33e26307ebed73fe2db650258",
+      "apps/api/src/fly_emotion_api/main.py": "9edfff6df78f87b979c0d6c2a631fa762439730340e22876fb4226bb6d9e42f3",
+      "apps/web/src/components/DrivingPanel.tsx": "bc94fb27832b00d3ac2f4ac21049df5bace9f5ac10b1191706318670f00adde7",
+      "apps/web/src/types.ts": "349af1d3d271e1d99649b632364a61e013d788bef0afeb3071651cb3d41c5e29",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -240,6 +241,7 @@
         "artifacts/v7-t5-recording-field-audit.json",
         "artifacts/v7-kohn-portes-stimulus-provenance-audit.json",
         "artifacts/v7-motyxia2-public-history-audit.json",
+        "artifacts/v7-kohn-portes-external-index-audit.json",
         "artifacts/v7-behnia-t4-fast-source-audit.json",
         "artifacts/v7-behnia-t4-fast-source-availability-audit.json",
         "artifacts/v7-t4-inhibitory-source-external-audit.json",
@@ -498,6 +500,10 @@
         "Motyxia2_public_history_branch_count": 22,
         "Motyxia2_public_history_commit_count": 447,
         "Kohn_Portes_record_log_found_in_Motyxia2_public_history": false,
+        "Kohn_Portes_external_successful_indexes_linked_log_found": false,
+        "Kohn_Portes_PMC_supplement_content_inspected": false,
+        "Kohn_Portes_Figshare_search_accessible": false,
+        "Kohn_Portes_stimulus_log_global_absence_claimed": false,
         "Behnia_T4_independent_fast_source_phenotypes": [
           "Mi1",
           "Tm3"
@@ -1545,6 +1551,10 @@
           "Motyxia2_public_history_branch_count",
           "Motyxia2_public_history_commit_count",
           "T5_record_log_found_in_Motyxia2_public_history",
+          "T5_external_successful_indexes_linked_log_found",
+          "T5_PMC_supplement_content_inspected",
+          "T5_Figshare_search_accessible",
+          "T5_stimulus_log_global_absence_claimed",
           "T5_generator_defaults_used_as_record_fields"
         ]
       }

@@ -3,13 +3,14 @@
     "name": "v7-kohn-portes-t5-stimulus-provenance-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml": "7dbc699505b31765a4fd4bddf69ec040201d32b69d8fc7ee9caab4b4a00e8a4d",
-      "src/fly_emotion/driving/v7_kohn_portes_stimulus_provenance_audit.py": "51877071c18f05312abc1299a53506c64f334d9bd981aa1966c494a773e9007d",
+      "configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml": "466d1cef63923862ac2580c86c4cad11405c212219df82f12b2842fbef6f0fe3",
+      "src/fly_emotion/driving/v7_kohn_portes_stimulus_provenance_audit.py": "1f73b570caa59a5d87efb7e023d5ff3aad9a482d5b5630facf86b49fb60594e8",
       "data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml": "639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f",
       "data/raw/kohn-portes-stimulus-provenance/motyxia2-b589a224.tar.gz": "567822dfaf832e68459f2662fff168145fa5382d1cb5275db7b3c2a235a3cda1",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
       "artifacts/v7-motyxia2-public-history-audit.json": "e0837e830dbb247279cacaa7484481e03d0aec8040d570583c4fe65251ac560b",
+      "artifacts/v7-kohn-portes-external-index-audit.json": "69a789128f97562afa2f32bed30c53125097bd04774355c26ac629b0f99c3414",
       "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
       "configs/driving-v7-kohn-portes-identity-history-audit.yaml": "33599926b06a51b5e455c1d4dccf03fb2575312c6f758ca1795a63d1160a1d07"
     },
@@ -55,6 +56,10 @@
     "record_specific_stimulus_log_found_in_audited_public_history": false,
     "audited_public_history_branch_count": 22,
     "audited_public_history_commit_count": 447,
+    "external_successful_indexes_linked_log_found": false,
+    "PMC_supplement_content_retrieved_and_inspected": false,
+    "Figshare_search_endpoint_accessible": false,
+    "global_absence_claimed": false,
     "white_noise_field_inventory": {
       "common_fields": [
         "bath_solution",

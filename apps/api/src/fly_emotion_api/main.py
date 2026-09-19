@@ -136,6 +136,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_record_log_found_in_Motyxia2_public_history": visual[
                     "Kohn_Portes_record_log_found_in_Motyxia2_public_history"
                 ],
+                "T5_external_successful_indexes_linked_log_found": visual[
+                    "Kohn_Portes_external_successful_indexes_linked_log_found"
+                ],
+                "T5_PMC_supplement_content_inspected": visual[
+                    "Kohn_Portes_PMC_supplement_content_inspected"
+                ],
+                "T5_Figshare_search_accessible": visual[
+                    "Kohn_Portes_Figshare_search_accessible"
+                ],
+                "T5_stimulus_log_global_absence_claimed": visual[
+                    "Kohn_Portes_stimulus_log_global_absence_claimed"
+                ],
                 "T5_generator_defaults_used_as_record_fields": visual[
                     "Kohn_Portes_generator_defaults_used_as_record_fields"
                 ],

@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-external-index-availability-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-external-index-audit.yaml": "206f5bb4f2ab2ea58c449e1a86a44ddada297428b546d8812f2bc11db4dd6937",
+      "src/fly_emotion/driving/v7_kohn_portes_external_index_audit.py": "a52396388a578543bf12daf29b42fe0306fca07ad0e20861371e9267b5e7199d",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/crossref-work.json": "3c3ac841720ca68471fd0f0c0728be2a1ecec246abd36884a4005e348a9c9ca4",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/crossref-preprint.json": "8750c366060f341c5f207700b7144ca7f9f5bdadb8ef04f9fce893e60a9fc6f7",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/datacite-related.json": "01188b91d52222c13f0f44b5d4637535c1e382c451d2c4dfd4980ff029999468",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/datacite-title.json": "8d54c1dd2839b06600c6bb647237461cdab3c4458cf12be587ff7754aa84377b",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/europepmc-search.json": "941482dbcafc05e940b9b23b686d325c7560b32912474f21a797132890c2d841",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/pmc-article.html": "3c3bd5c925deb74b5281ee30a53a788637b6456a8f027a0d72725eb285d9f768",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/pmc-supplement-download-response.html": "a6df460054581496ed30cdafc3d4f10fa87f6e08897a9545a01e89a196068980",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/elsevier-minimal-response.xml": "931157f3da57d469e3a22de3dc4144d255d9adeab68717c10a8c6ce804f3884b",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/elsevier-response-headers.txt": "02b36bad45203962deee1f4e9be147acbdf88cedab80115cde645083a33d835e",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/figshare-search-response.html": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "data/raw/kohn-portes-stimulus-provenance/metadata/figshare-search-headers.txt": "425d37e53c60de57758a74ba78dd03c333a4965655cbc1d27cffe2173b2ef264",
+      "artifacts/v7-motyxia2-public-history-audit.json": "e0837e830dbb247279cacaa7484481e03d0aec8040d570583c4fe65251ac560b"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "audited_indexes": {
+    "Crossref": {
+      "preprint_relation": [
+        "10.1101/2021.04.17.440267"
+      ],
+      "article_links": [
+        "https://api.elsevier.com/content/article/PII:S0960982221013178?httpAccept=text/xml",
+        "https://api.elsevier.com/content/article/PII:S0960982221013178?httpAccept=text/plain"
+      ],
+      "numeric_data_links": []
+    },
+    "DataCite": {
+      "related_DOI_result_count": 0,
+      "exact_title_result_count": 0
+    },
+    "Europe_PMC": {
+      "exact_DOI_result_count": 1,
+      "is_open_access": false,
+      "has_supplementary_file": true,
+      "has_database_cross_references": false
+    },
+    "PMC": {
+      "supplement_paths": [
+        "/articles/instance/8725177/bin/NIHMS1750660-supplement-1.pdf"
+      ],
+      "supplement_reported_sizes": [
+        "20.9MB"
+      ],
+      "supplement_content_type": "pdf",
+      "supplement_content_retrieved": false,
+      "download_response_is_proof_of_work_HTML": true,
+      "data_availability_points_to_Motyxia2": true,
+      "analysis_repository_link_remains_placeholder": true
+    },
+    "Elsevier": {
+      "minimal_metadata_only_due_to_unauthorized_request": true
+    },
+    "Figshare": {
+      "search_endpoint_status": 403,
+      "search_result_interpretable": false
+    }
+  },
+  "availability_gates": {
+    "successful_machine_readable_indexes_audited": true,
+    "DOI_linked_numeric_stimulus_log_payload_found": false,
+    "PMC_supplement_content_retrieved_and_inspected": false,
+    "Figshare_search_endpoint_accessible": false,
+    "record_specific_stimulus_log_recovered": false
+  },
+  "record_specific_stimulus_log_found_in_successfully_audited_external_indexes": false,
+  "record_specific_stimulus_log_global_absence_claimed": false,
+  "authorize_recording_field_recovery": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "successful_indexes_expose_no_linked_numeric_log_while_supplement_and_Figshare_contents_remain_uninspected",
+  "boundary": {
+    "successful_zero_result_and_inaccessible_endpoint_are_separate": true,
+    "supplementary_PDF_listing_is_not_a_numeric_payload": true,
+    "inaccessible_supplement_contents_are_not_classified_as_absent": true,
+    "audited_indexes_only_not_proof_of_global_nonexistence": true,
+    "no_curve_digitization": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

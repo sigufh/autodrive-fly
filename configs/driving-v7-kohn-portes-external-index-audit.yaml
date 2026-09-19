@@ -1,0 +1,29 @@
+version: 1
+name: v7-kohn-portes-external-index-availability-audit
+observed_on: "2026-09-19"
+paper_doi: 10.1016/j.cub.2021.09.061
+preprint_doi: 10.1101/2021.04.17.440267
+snapshots:
+  crossref_work: {path: data/raw/kohn-portes-stimulus-provenance/metadata/crossref-work.json, bytes: 19696, sha256: 3c3ac841720ca68471fd0f0c0728be2a1ecec246abd36884a4005e348a9c9ca4}
+  crossref_preprint: {path: data/raw/kohn-portes-stimulus-provenance/metadata/crossref-preprint.json, bytes: 11948, sha256: 8750c366060f341c5f207700b7144ca7f9f5bdadb8ef04f9fce893e60a9fc6f7}
+  datacite_related: {path: data/raw/kohn-portes-stimulus-provenance/metadata/datacite-related.json, bytes: 204, sha256: 01188b91d52222c13f0f44b5d4637535c1e382c451d2c4dfd4980ff029999468}
+  datacite_title: {path: data/raw/kohn-portes-stimulus-provenance/metadata/datacite-title.json, bytes: 264, sha256: 8d54c1dd2839b06600c6bb647237461cdab3c4458cf12be587ff7754aa84377b}
+  europe_pmc: {path: data/raw/kohn-portes-stimulus-provenance/metadata/europepmc-search.json, bytes: 1158, sha256: 941482dbcafc05e940b9b23b686d325c7560b32912474f21a797132890c2d841}
+  pmc_article: {path: data/raw/kohn-portes-stimulus-provenance/metadata/pmc-article.html, bytes: 251034, sha256: 3c3bd5c925deb74b5281ee30a53a788637b6456a8f027a0d72725eb285d9f768}
+  pmc_supplement_response: {path: data/raw/kohn-portes-stimulus-provenance/metadata/pmc-supplement-download-response.html, bytes: 1817, sha256: a6df460054581496ed30cdafc3d4f10fa87f6e08897a9545a01e89a196068980}
+  elsevier_minimal_response: {path: data/raw/kohn-portes-stimulus-provenance/metadata/elsevier-minimal-response.xml, bytes: 2001, sha256: 931157f3da57d469e3a22de3dc4144d255d9adeab68717c10a8c6ce804f3884b}
+  elsevier_headers: {path: data/raw/kohn-portes-stimulus-provenance/metadata/elsevier-response-headers.txt, bytes: 1112, sha256: 02b36bad45203962deee1f4e9be147acbdf88cedab80115cde645083a33d835e}
+  figshare_response: {path: data/raw/kohn-portes-stimulus-provenance/metadata/figshare-search-response.html, bytes: 118, sha256: 58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4}
+  figshare_headers: {path: data/raw/kohn-portes-stimulus-provenance/metadata/figshare-search-headers.txt, bytes: 118, sha256: 425d37e53c60de57758a74ba78dd03c333a4965655cbc1d27cffe2173b2ef264}
+evidence:
+  motyxia2_public_history: artifacts/v7-motyxia2-public-history-audit.json
+boundary:
+  successful_zero_result_and_inaccessible_endpoint_are_separate: true
+  supplementary_PDF_listing_is_not_a_numeric_payload: true
+  inaccessible_supplement_contents_are_not_classified_as_absent: true
+  audited_indexes_only_not_proof_of_global_nonexistence: true
+  no_curve_digitization: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true
