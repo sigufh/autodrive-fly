@@ -54,3 +54,19 @@ def test_upon_request_Mi1_data_does_not_open_any_gate() -> None:
     assert report["authorize_T4_functional_precheck"] is False
     assert report["advance_to_LPLC_mechanism_repair"] is False
     assert report["advance_to_vehicle_experiments"] is False
+
+
+def test_successful_external_indexes_have_no_linked_numeric_payload() -> None:
+    report = json.loads(REPORT.read_text())
+    indexes = report["audited_external_indexes"]
+    assert indexes["Crossref_relation_count"] == 0
+    assert indexes["Crossref_numeric_data_links"] == []
+    assert indexes["DataCite_related_DOI_count"] == 0
+    assert indexes["DataCite_exact_title_count"] == 0
+    assert indexes["Dryad_DOI_count"] == 0
+    assert indexes["Zenodo_exact_title_count"] == 0
+    assert indexes["Zenodo_related_DOI_count"] == 0
+    assert indexes["public_numeric_voltage_payload_found"] is False
+    assert indexes["claim_scope"] == (
+        "bounded_successful_indexes_not_global_nonexistence"
+    )

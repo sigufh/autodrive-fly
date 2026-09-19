@@ -106,6 +106,41 @@ def evaluate_v7_matulis_mi1_voltage_availability_audit(root: Path) -> dict:
     if "Mi1 membrane voltage for a single fly" not in pdf_text:
         raise ValueError("Matulis Mi1 supplement caption changed")
 
+    indexes = {}
+    for name, spec in config["external_indexes"].items():
+        path = _verify_file(root, spec)
+        indexes[name] = json.loads(path.read_text(encoding="utf-8"))
+    crossref = indexes["Crossref"]["message"]
+    if crossref["DOI"] != config["paper"]["doi"]:
+        raise ValueError("Matulis Crossref identity changed")
+    crossref_relation_count = sum(
+        len(items) for items in crossref.get("relation", {}).values()
+    )
+    crossref_data_links = [
+        item["URL"]
+        for item in crossref.get("link", [])
+        if item["URL"].lower().split("?", 1)[0].endswith(
+            (".csv", ".mat", ".npy", ".npz", ".h5", ".zip")
+        )
+    ]
+    datacite_related_count = int(indexes["DataCite_related_DOI"]["meta"]["total"])
+    datacite_title_count = int(indexes["DataCite_exact_title"]["meta"]["total"])
+    dryad_count = int(indexes["Dryad_DOI"]["total"] or 0)
+    zenodo_title_count = int(indexes["Zenodo_exact_title"]["hits"]["total"])
+    zenodo_related_count = int(indexes["Zenodo_related_DOI"]["hits"]["total"])
+    if any(
+        (
+            crossref_relation_count,
+            len(crossref_data_links),
+            datacite_related_count,
+            datacite_title_count,
+            dryad_count,
+            zenodo_title_count,
+            zenodo_related_count,
+        )
+    ):
+        raise ValueError("Matulis external indexes gained an unreviewed data candidate")
+
     measurement = config["measurement"]
     allowed_unit = measurement["response_unit"] in set(
         contract["allowed_response_units"]
@@ -134,6 +169,10 @@ def evaluate_v7_matulis_mi1_voltage_availability_audit(root: Path) -> dict:
                 config["biostudies"]["path"]: _sha256(biostudies_path),
                 docx_spec["path"]: _sha256(docx_path),
                 pdf_spec["path"]: _sha256(pdf_path),
+                **{
+                    spec["path"]: _sha256(root / spec["path"])
+                    for spec in config["external_indexes"].values()
+                },
             },
             "paper": config["paper"],
             "parameter_fit": False,
@@ -155,6 +194,17 @@ def evaluate_v7_matulis_mi1_voltage_availability_audit(root: Path) -> dict:
             "available_upon_request_only": True,
             "local_numeric_voltage_payload_verified": False,
             "global_absence_claimed": False,
+        },
+        "audited_external_indexes": {
+            "Crossref_relation_count": crossref_relation_count,
+            "Crossref_numeric_data_links": crossref_data_links,
+            "DataCite_related_DOI_count": datacite_related_count,
+            "DataCite_exact_title_count": datacite_title_count,
+            "Dryad_DOI_count": dryad_count,
+            "Zenodo_exact_title_count": zenodo_title_count,
+            "Zenodo_related_DOI_count": zenodo_related_count,
+            "public_numeric_voltage_payload_found": False,
+            "claim_scope": "bounded_successful_indexes_not_global_nonexistence",
         },
         "transfer_gates": gates,
         "independent_Mi1_voltage_transfer_authorized": False,

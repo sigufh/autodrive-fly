@@ -12,7 +12,7 @@
       "artifacts/v7-t4-recording-field-audit.json": "4bb85b811060ac4b034f523e7afc67b42741379595c6d8032310002a2b1d9444",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "a7fc3192368194905d02d03c8aa02f70368fbc4e762984c08797aa9f9145fbbe",
       "artifacts/v7-behnia-t4-fast-source-availability-audit.json": "52540f717d777965c3bf863abfc408731d5d91b20e61eb88a39ad02fe0f10ee6",
-      "artifacts/v7-matulis-mi1-voltage-availability-audit.json": "57d7ce53ef51089dadf56296476a5d3a0ec6313a686c4da3263ea7851409b3d1",
+      "artifacts/v7-matulis-mi1-voltage-availability-audit.json": "998cc664b51dc76e93bb170a4b345afdc9daad608b9b4746e6b05ceabb893bc6",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "6ed264736b860064117a606f640c21cc3f24abb673a0e960c3b5bfcb4eb3191d",
       "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json": "7ed8b07701b4ce1298a026bd4d8da4c0dbff3f3bb2aeb2d28065ee335661ad21",
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "a49c99c5f0a7ada9757bc920e399ee39b6b8d96ae6f39716d3e80bfc3c62c8ae",

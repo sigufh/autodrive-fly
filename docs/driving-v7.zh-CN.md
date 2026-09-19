@@ -2316,6 +2316,9 @@ Resources DOCX；DOCX 唯一 OLE 对象是 165×163 Photoshop 图像，不是数
 均把原始数据及代码标为 available upon request，因此该研究增加独立 Mi1 膜电位表型，却没有
 可本地验证的 voltage trace、稳定匿名 ID 或 split manifest，不能补齐九源合同。证据见
 `artifacts/v7-matulis-mi1-voltage-availability-audit.json`。
+后续反向检索也没有把 upon-request 状态误当作全局不存在：Crossref relation/data link、
+DataCite related DOI/精确标题、Dryad DOI、Zenodo 精确标题/related DOI 均成功查询且为 0；
+这一结论只覆盖这些结构化索引。
 
 Edmond 的 `fig1d_receptive_fields.npy` 也已按冻结的 35,520,207 bytes、MD5 和
 SHA-256 下载。先静态扫描 pickle opcode，只发现 NumPy `_reconstruct`、`ndarray`、

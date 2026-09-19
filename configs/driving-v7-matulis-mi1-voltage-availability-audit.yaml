@@ -30,6 +30,31 @@ supplements:
     bytes: 2224530
     sha256: fb6610cca6aaeabdb0c1f183579f6a6e45599e71c2886c0de409e61132d9452b
     pages: 14
+external_indexes:
+  Crossref:
+    path: data/raw/t4-whole-cell-candidates/matulis-crossref.json
+    bytes: 29442
+    sha256: 5c85a46c752a670a44cb3f5b9e467be0fa2686576883d15145f871ad0c34918b
+  DataCite_related_DOI:
+    path: data/raw/t4-whole-cell-candidates/matulis-datacite-related.json
+    bytes: 202
+    sha256: 394daaeec32bc26f0fa9b2897f81e8691557f5a0e187fd58c6c6b2f724ba2c0c
+  DataCite_exact_title:
+    path: data/raw/t4-whole-cell-candidates/matulis-datacite-title.json
+    bytes: 236
+    sha256: 5918b3b9400ac0e19bccd7c3a6dd71df194ed183567722f8a87bee9db73ce9a2
+  Dryad_DOI:
+    path: data/raw/t4-whole-cell-candidates/matulis-dryad-doi.json
+    bytes: 322
+    sha256: c4abadb1134f8b25f3719cd1b3cbc52a67959853d461994be886cbead5518a87
+  Zenodo_exact_title:
+    path: data/raw/t4-whole-cell-candidates/matulis-zenodo-title.json
+    bytes: 532
+    sha256: 640db01fd9f2b23fef024f7c2f295b015113aa0eb1f9cb5470f9054fbc00769e
+  Zenodo_related_DOI:
+    path: data/raw/t4-whole-cell-candidates/matulis-zenodo-related.json
+    bytes: 497
+    sha256: 74097dccb4d621939f9aa19ebae57dc283ada3a2f394c65d0e1d906d3326a2bd
 measurement:
   source_type: Mi1
   modality: in_vivo_whole_cell_current_clamp

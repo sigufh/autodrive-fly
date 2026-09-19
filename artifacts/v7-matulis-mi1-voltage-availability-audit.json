@@ -3,13 +3,19 @@
     "name": "v7-matulis-mi1-voltage-availability-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-matulis-mi1-voltage-availability-audit.yaml": "5498e5a6da2505bea631a9c51da1f3945e541ad376eb8a2d4b2e40c80a748a12",
-      "src/fly_emotion/driving/v7_matulis_mi1_voltage_availability_audit.py": "c9a7b323dc25618b4f734057f2034bdf24ed22bd2010157257a88959ca792ac4",
+      "configs/driving-v7-matulis-mi1-voltage-availability-audit.yaml": "d110e554a3e424a1df3d1c0c6bb17fbc458e4d202ad01363a1176dee8021ab55",
+      "src/fly_emotion/driving/v7_matulis_mi1_voltage_availability_audit.py": "b38d3c0bb41b5a81c9cc62e02f71aa4fdcbb2be1a88671f02d10ec065014db94",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "data/raw/t4-whole-cell-candidates/PMC7003801.bioc.xml": "a00a7d43ee4657456cb6fbfec6126cce14452fe287a0d20ddc6cf47aa355f42a",
       "data/raw/t4-whole-cell-candidates/S-EPMC7003801.json": "dc9b17bfaa682c06888fd7fa902288f9653c3ec1db71aa00ac0828d2ef6b7a03",
       "data/raw/t4-whole-cell-candidates/NIHMS1545836-supplement-1.docx": "d07e7c7ed255a95875d2fb975b7e8aaa06e0ab00d95b3fc3390786cd2351336e",
-      "data/raw/t4-whole-cell-candidates/NIHMS1545836-supplement.pdf": "fb6610cca6aaeabdb0c1f183579f6a6e45599e71c2886c0de409e61132d9452b"
+      "data/raw/t4-whole-cell-candidates/NIHMS1545836-supplement.pdf": "fb6610cca6aaeabdb0c1f183579f6a6e45599e71c2886c0de409e61132d9452b",
+      "data/raw/t4-whole-cell-candidates/matulis-crossref.json": "5c85a46c752a670a44cb3f5b9e467be0fa2686576883d15145f871ad0c34918b",
+      "data/raw/t4-whole-cell-candidates/matulis-datacite-related.json": "394daaeec32bc26f0fa9b2897f81e8691557f5a0e187fd58c6c6b2f724ba2c0c",
+      "data/raw/t4-whole-cell-candidates/matulis-datacite-title.json": "5918b3b9400ac0e19bccd7c3a6dd71df194ed183567722f8a87bee9db73ce9a2",
+      "data/raw/t4-whole-cell-candidates/matulis-dryad-doi.json": "c4abadb1134f8b25f3719cd1b3cbc52a67959853d461994be886cbead5518a87",
+      "data/raw/t4-whole-cell-candidates/matulis-zenodo-title.json": "640db01fd9f2b23fef024f7c2f295b015113aa0eb1f9cb5470f9054fbc00769e",
+      "data/raw/t4-whole-cell-candidates/matulis-zenodo-related.json": "74097dccb4d621939f9aa19ebae57dc283ada3a2f394c65d0e1d906d3326a2bd"
     },
     "paper": {
       "title": "Heterogeneous Temporal Contrast Adaptation in Drosophila Direction-Selective Circuits",
@@ -57,6 +63,17 @@
     "available_upon_request_only": true,
     "local_numeric_voltage_payload_verified": false,
     "global_absence_claimed": false
+  },
+  "audited_external_indexes": {
+    "Crossref_relation_count": 0,
+    "Crossref_numeric_data_links": [],
+    "DataCite_related_DOI_count": 0,
+    "DataCite_exact_title_count": 0,
+    "Dryad_DOI_count": 0,
+    "Zenodo_exact_title_count": 0,
+    "Zenodo_related_DOI_count": 0,
+    "public_numeric_voltage_payload_found": false,
+    "claim_scope": "bounded_successful_indexes_not_global_nonexistence"
   },
   "transfer_gates": {
     "independent_Mi1_experimental_voltage_phenotype_verified": true,
