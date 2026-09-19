@@ -31,6 +31,8 @@ def test_fields_are_not_joined_across_modalities() -> None:
     assert provenance["stimulus_provenance_contract_complete"] is False
     assert provenance["external_successful_indexes_linked_log_found"] is False
     assert provenance["PMC_supplement_content_retrieved_and_inspected"] is False
+    assert provenance["publisher_supplements_retrieved_and_inspected"] is True
+    assert provenance["publisher_supplements_contain_record_specific_log"] is False
     assert provenance["Figshare_search_endpoint_accessible"] is False
     assert provenance["global_absence_claimed"] is False
 

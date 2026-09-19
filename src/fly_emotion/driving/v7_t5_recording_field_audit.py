@@ -160,6 +160,16 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
                     "PMC_supplement_content_retrieved_and_inspected"
                 ]
             ),
+            "publisher_supplements_retrieved_and_inspected": (
+                stimulus_provenance["raw_record_summary"][
+                    "publisher_supplements_retrieved_and_inspected"
+                ]
+            ),
+            "publisher_supplements_contain_record_specific_log": (
+                stimulus_provenance["raw_record_summary"][
+                    "publisher_supplements_contain_record_specific_log"
+                ]
+            ),
             "Figshare_search_endpoint_accessible": stimulus_provenance[
                 "raw_record_summary"
             ]["Figshare_search_endpoint_accessible"],

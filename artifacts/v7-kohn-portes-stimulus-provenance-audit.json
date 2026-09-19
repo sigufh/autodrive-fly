@@ -4,13 +4,13 @@
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
       "configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml": "466d1cef63923862ac2580c86c4cad11405c212219df82f12b2842fbef6f0fe3",
-      "src/fly_emotion/driving/v7_kohn_portes_stimulus_provenance_audit.py": "1f73b570caa59a5d87efb7e023d5ff3aad9a482d5b5630facf86b49fb60594e8",
+      "src/fly_emotion/driving/v7_kohn_portes_stimulus_provenance_audit.py": "1d71bb5c014af5719f0d250d40605611809e539b4587e4cffe430087f2f47eec",
       "data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml": "639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f",
       "data/raw/kohn-portes-stimulus-provenance/motyxia2-b589a224.tar.gz": "567822dfaf832e68459f2662fff168145fa5382d1cb5275db7b3c2a235a3cda1",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
       "artifacts/v7-motyxia2-public-history-audit.json": "e0837e830dbb247279cacaa7484481e03d0aec8040d570583c4fe65251ac560b",
-      "artifacts/v7-kohn-portes-external-index-audit.json": "69a789128f97562afa2f32bed30c53125097bd04774355c26ac629b0f99c3414",
+      "artifacts/v7-kohn-portes-external-index-audit.json": "82f7fa21f5cf6e2c936236602dc563091972a7046c4e1560946ecd678777f3d9",
       "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
       "configs/driving-v7-kohn-portes-identity-history-audit.yaml": "33599926b06a51b5e455c1d4dccf03fb2575312c6f758ca1795a63d1160a1d07"
     },
@@ -58,6 +58,8 @@
     "audited_public_history_commit_count": 447,
     "external_successful_indexes_linked_log_found": false,
     "PMC_supplement_content_retrieved_and_inspected": false,
+    "publisher_supplements_retrieved_and_inspected": true,
+    "publisher_supplements_contain_record_specific_log": false,
     "Figshare_search_endpoint_accessible": false,
     "global_absence_claimed": false,
     "white_noise_field_inventory": {

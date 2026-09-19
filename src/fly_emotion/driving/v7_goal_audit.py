@@ -712,6 +712,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "PMC_supplement_content_retrieved_and_inspected"
                     ]
                 ),
+                "Kohn_Portes_publisher_supplements_inspected": (
+                    kohn_portes_external_index_audit["availability_gates"][
+                        "publisher_supplements_retrieved_and_inspected"
+                    ]
+                ),
+                "Kohn_Portes_publisher_supplements_contain_record_log": (
+                    kohn_portes_external_index_audit["availability_gates"][
+                        "publisher_supplements_contain_record_specific_log"
+                    ]
+                ),
                 "Kohn_Portes_Figshare_search_accessible": (
                     kohn_portes_external_index_audit["availability_gates"][
                         "Figshare_search_endpoint_accessible"
@@ -2343,6 +2353,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_record_log_found_in_Motyxia2_public_history",
                     "T5_external_successful_indexes_linked_log_found",
                     "T5_PMC_supplement_content_inspected",
+                    "T5_publisher_supplements_inspected",
+                    "T5_publisher_supplements_contain_record_log",
                     "T5_Figshare_search_accessible",
                     "T5_stimulus_log_global_absence_claimed",
                     "T5_generator_defaults_used_as_record_fields",

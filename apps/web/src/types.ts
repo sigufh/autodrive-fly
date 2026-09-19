@@ -53,6 +53,8 @@ export type V7Status = {
     T5_record_log_found_in_Motyxia2_public_history: boolean;
     T5_external_successful_indexes_linked_log_found: boolean;
     T5_PMC_supplement_content_inspected: boolean;
+    T5_publisher_supplements_inspected: boolean;
+    T5_publisher_supplements_contain_record_log: boolean;
     T5_Figshare_search_accessible: boolean;
     T5_stimulus_log_global_absence_claimed: boolean;
     T5_generator_defaults_used_as_record_fields: boolean;

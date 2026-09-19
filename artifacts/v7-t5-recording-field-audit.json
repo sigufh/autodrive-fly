@@ -4,11 +4,11 @@
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
       "configs/driving-v7-t5-recording-field-audit.yaml": "6eb12a31bc95353f571a645dc1d8c8026d3429b0cc4e94cab609987fa406d740",
-      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "7660dc42ec4ee064741a7d3b848c398087c3a58cb1bb7272afcb5567869f15df",
+      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "787dbcd0ffd22423c3dce271b317f028a0e80df7795e641d3c3090518ceb07b7",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
-      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "e38de9b181c72a89ada54e6e44f6be911723e703fde1058e449463e97a9a3687"
+      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "c7f5c00d458576b5d4ea9bb0e21d55c570b36e1c970887386f90d3deae306cb0"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -313,6 +313,8 @@
     "stimulus_provenance_contract_complete": false,
     "external_successful_indexes_linked_log_found": false,
     "PMC_supplement_content_retrieved_and_inspected": false,
+    "publisher_supplements_retrieved_and_inspected": true,
+    "publisher_supplements_contain_record_specific_log": false,
     "Figshare_search_endpoint_accessible": false,
     "global_absence_claimed": false
   },

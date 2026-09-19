@@ -302,6 +302,12 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
             "PMC_supplement_content_retrieved_and_inspected": external[
                 "availability_gates"
             ]["PMC_supplement_content_retrieved_and_inspected"],
+            "publisher_supplements_retrieved_and_inspected": external[
+                "availability_gates"
+            ]["publisher_supplements_retrieved_and_inspected"],
+            "publisher_supplements_contain_record_specific_log": external[
+                "availability_gates"
+            ]["publisher_supplements_contain_record_specific_log"],
             "Figshare_search_endpoint_accessible": external["availability_gates"][
                 "Figshare_search_endpoint_accessible"
             ],

@@ -61,6 +61,8 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_record_log_found_in_Motyxia2_public_history"] is False
     assert boundaries["T5_external_successful_indexes_linked_log_found"] is False
     assert boundaries["T5_PMC_supplement_content_inspected"] is False
+    assert boundaries["T5_publisher_supplements_inspected"] is True
+    assert boundaries["T5_publisher_supplements_contain_record_log"] is False
     assert boundaries["T5_Figshare_search_accessible"] is False
     assert boundaries["T5_stimulus_log_global_absence_claimed"] is False
     assert boundaries["T5_generator_defaults_used_as_record_fields"] is False

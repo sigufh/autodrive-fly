@@ -30,8 +30,15 @@ def test_inaccessible_endpoints_are_not_treated_as_absence() -> None:
     indexes = report["audited_indexes"]
     assert indexes["Europe_PMC"]["has_supplementary_file"] is True
     assert indexes["PMC"]["supplement_content_type"] == "pdf"
-    assert indexes["PMC"]["supplement_content_retrieved"] is False
+    assert indexes["PMC"]["PMC_endpoint_content_retrieved"] is False
     assert indexes["PMC"]["download_response_is_proof_of_work_HTML"] is True
+    assert indexes["PMC"]["publisher_equivalent_supplements_retrieved_and_inspected"] is True
+    supplements = indexes["PMC"]["publisher_supplements"]
+    assert supplements["publisher_supplement_1"]["pages"] == 11
+    assert supplements["publisher_supplement_2"]["pages"] == 29
+    assert all(item["recording_token_count_checked"] == 35 for item in supplements.values())
+    assert all(item["embedded_attachment_names"] == [] for item in supplements.values())
+    assert all(not any(item["exact_record_token_counts"].values()) for item in supplements.values())
     assert indexes["Figshare"]["search_endpoint_status"] == 403
     assert indexes["Figshare"]["search_result_interpretable"] is False
     assert report["record_specific_stimulus_log_global_absence_claimed"] is False

@@ -8,6 +8,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 import yaml
+from pypdf import PdfReader
 
 from fly_emotion.driving.v7_geometry_sign import _sha256
 
@@ -100,6 +101,42 @@ def evaluate_v7_kohn_portes_external_index_audit(root: Path) -> dict:
         "Kohn_Portes_record_specific_stimulus_log_found_in_audited_public_history"
     ]:
         raise ValueError("Motyxia2 history boundary changed")
+    recording_tokens = history["search"]["recording_tokens"]
+    if len(recording_tokens) != int(history["search"]["recording_id_count"]):
+        raise ValueError("Motyxia2 history recording-token count changed")
+    exact_tokens = [
+        *recording_tokens,
+        "recording_id",
+        "WhiteNoiseBars_1_horz_20hz_5deg",
+        "WhiteNoiseBars_1_vert_20hz_5deg",
+        "driftinggrating_05hz",
+        "motyxia_log_ephys_rig2",
+    ]
+    supplements = {}
+    for name in ("publisher_supplement_1", "publisher_supplement_2"):
+        spec = config["snapshots"][name]
+        reader = PdfReader(snapshots[name], strict=False)
+        if len(reader.pages) != int(spec["pages"]):
+            raise ValueError(f"Kohn-Portes publisher supplement pages changed: {name}")
+        text = " ".join((page.extract_text() or "") for page in reader.pages)
+        token_counts = {token: text.count(token) for token in exact_tokens}
+        if any(token_counts.values()):
+            raise ValueError(f"publisher supplement gained a record-token hit: {name}")
+        supplements[name] = {
+            "path": spec["path"],
+            "bytes": int(spec["bytes"]),
+            "sha256": spec["sha256"],
+            "pages": len(reader.pages),
+            "embedded_attachment_names": sorted(reader.attachments or {}),
+            "extracted_text_character_count": len(text),
+            "recording_token_count_checked": len(recording_tokens),
+            "exact_record_token_counts": token_counts,
+            "contains_Motyxia2_link": "motyxia2" in text.lower(),
+            "contains_flexible_filtering_link": (
+                "flexible-filtering" in text.lower()
+                or "ﬂexible-ﬁltering" in text.lower()
+            ),
+        }
 
     observations = {
         "Crossref": {
@@ -123,8 +160,11 @@ def evaluate_v7_kohn_portes_external_index_audit(root: Path) -> dict:
             "supplement_paths": supplement_paths,
             "supplement_reported_sizes": supplement_sizes,
             "supplement_content_type": "pdf",
-            "supplement_content_retrieved": False,
+            "PMC_endpoint_content_retrieved": False,
             "download_response_is_proof_of_work_HTML": True,
+            "publisher_equivalent_supplements_retrieved_and_inspected": True,
+            "publisher_supplements": supplements,
+            "publisher_supplements_contain_record_specific_log": False,
             "data_availability_points_to_Motyxia2": True,
             "analysis_repository_link_remains_placeholder": True,
         },
@@ -145,6 +185,8 @@ def evaluate_v7_kohn_portes_external_index_audit(root: Path) -> dict:
         "successful_machine_readable_indexes_audited": True,
         "DOI_linked_numeric_stimulus_log_payload_found": positive_payload,
         "PMC_supplement_content_retrieved_and_inspected": False,
+        "publisher_supplements_retrieved_and_inspected": True,
+        "publisher_supplements_contain_record_specific_log": False,
         "Figshare_search_endpoint_accessible": False,
         "record_specific_stimulus_log_recovered": False,
     }
@@ -176,8 +218,8 @@ def evaluate_v7_kohn_portes_external_index_audit(root: Path) -> dict:
         "advance_to_LPLC_mechanism_repair": False,
         "advance_to_vehicle_experiments": False,
         "stop_reason": (
-            "successful_indexes_expose_no_linked_numeric_log_while_supplement_and_"
-            "Figshare_contents_remain_uninspected"
+            "successful_indexes_and_publisher_supplements_expose_no_linked_numeric_"
+            "log_while_Figshare_remains_inaccessible"
         ),
         "boundary": config["boundary"],
     }

@@ -15,6 +15,8 @@ snapshots:
   elsevier_headers: {path: data/raw/kohn-portes-stimulus-provenance/metadata/elsevier-response-headers.txt, bytes: 1112, sha256: 02b36bad45203962deee1f4e9be147acbdf88cedab80115cde645083a33d835e}
   figshare_response: {path: data/raw/kohn-portes-stimulus-provenance/metadata/figshare-search-response.html, bytes: 118, sha256: 58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4}
   figshare_headers: {path: data/raw/kohn-portes-stimulus-provenance/metadata/figshare-search-headers.txt, bytes: 118, sha256: 425d37e53c60de57758a74ba78dd03c333a4965655cbc1d27cffe2173b2ef264}
+  publisher_supplement_1: {path: data/raw/kohn-portes-stimulus-provenance/metadata/S0960982221013178-mmc1.pdf, bytes: 21949329, sha256: 65b375f86f12234b888ff3c5a306af154181ccd78f6b7999077ae100f778eb58, pages: 11}
+  publisher_supplement_2: {path: data/raw/kohn-portes-stimulus-provenance/metadata/S0960982221013178-mmc2.pdf, bytes: 25220084, sha256: 75443c6697dfd2e3876424157e928b919e796e575791100bc8e4e274897f8de4, pages: 29}
 evidence:
   motyxia2_public_history: artifacts/v7-motyxia2-public-history-audit.json
 boundary:

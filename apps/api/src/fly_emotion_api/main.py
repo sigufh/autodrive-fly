@@ -142,6 +142,12 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_PMC_supplement_content_inspected": visual[
                     "Kohn_Portes_PMC_supplement_content_inspected"
                 ],
+                "T5_publisher_supplements_inspected": visual[
+                    "Kohn_Portes_publisher_supplements_inspected"
+                ],
+                "T5_publisher_supplements_contain_record_log": visual[
+                    "Kohn_Portes_publisher_supplements_contain_record_log"
+                ],
                 "T5_Figshare_search_accessible": visual[
                     "Kohn_Portes_Figshare_search_accessible"
                 ],
