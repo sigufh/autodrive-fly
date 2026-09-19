@@ -280,6 +280,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "baseline_window_seconds",
     ]
     assert visual["observations"]["T4_complete_stimulus_and_baseline_fields"] is False
+    assert visual["observations"]["T4_Edmond_complete_dataset_file_count"] == 74
+    assert visual["observations"]["T4_Edmond_Fig3_directory_file_count"] == 9
+    assert visual["observations"]["T4_Edmond_Fig3_identity_sidecars"] == []
+    assert visual["observations"]["T4_Edmond_workbook_recording_metadata_recovered"] is False
+    assert visual["observations"]["T4_Edmond_Fig1_Fig3_cohort_relation_identifiable"] is False
+    assert visual["observations"]["T4_Edmond_Fig3_edge_baseline_window_declared"] is False
     assert visual["observations"]["T5_voltage_modality_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

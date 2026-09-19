@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import zipfile
 from pathlib import Path
+from xml.etree import ElementTree
 
 import numpy as np
 import yaml
@@ -40,7 +43,12 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
     evidence_paths = {
         name: Path(config[name])
-        for name in ("contract", "retrieval_evidence", "identity_evidence", "split_evidence")
+        for name in (
+            "contract",
+            "retrieval_evidence",
+            "identity_evidence",
+            "split_evidence",
+        )
     }
     evidence = {
         name: json.loads((root / path).read_text(encoding="utf-8"))
@@ -81,9 +89,97 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         "Bright ON and dark OFF edges travelling at a velocity of 30° s−1",
         "number of cells, each of which was recorded in a different animal",
         "The responses of individual neurons of one type were temporally aligned",
+        "after subtracting a 1 s prestimulus baseline",
     )
     if not all(phrase in paper_text for phrase in required_paper_phrases):
         raise ValueError("T4 paper stimulus or identity statement changed")
+
+    workbook_spec = config["source_workbook"]
+    workbook_path = root / workbook_spec["path"]
+    if (
+        workbook_path.stat().st_size != int(workbook_spec["bytes"])
+        or _sha256(workbook_path) != workbook_spec["sha256"]
+    ):
+        raise ValueError("T4 Fig. 3 source workbook changed")
+    with zipfile.ZipFile(workbook_path) as workbook_archive:
+        member_names = workbook_archive.namelist()
+        connection_root = ElementTree.fromstring(
+            workbook_archive.read("xl/connections.xml")
+        )
+        workbook_root = ElementTree.fromstring(workbook_archive.read("xl/workbook.xml"))
+    namespace = {"x": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+    connections = connection_root.findall("x:connection", namespace)
+    connection_names = [item.attrib["name"] for item in connections]
+    raw_connections = sorted(
+        name for name in connection_names if name.startswith("sd_fig3a_")
+    )
+    derived_connections = sorted(
+        name for name in connection_names if name.startswith("sd_fig3b_")
+    )
+    if len(connections) != int(workbook_spec["expected_connection_count"]):
+        raise ValueError("T4 Fig. 3 workbook connection count changed")
+    if raw_connections != sorted(workbook_spec["expected_raw_connection_names"]):
+        raise ValueError("T4 Fig. 3 raw connection names changed")
+    if len(derived_connections) != len(connections) - len(raw_connections):
+        raise ValueError("T4 Fig. 3 derived connection names changed")
+    if any(item.attrib.get("deleted") != "1" for item in connections):
+        raise ValueError("T4 Fig. 3 workbook gained a live external connection")
+    query_tables = [
+        name
+        for name in member_names
+        if name.startswith("xl/queryTables/queryTable") and name.endswith(".xml")
+    ]
+    if len(query_tables) != int(workbook_spec["expected_query_table_count"]):
+        raise ValueError("T4 Fig. 3 workbook query-table count changed")
+    sheet_elements = workbook_root.findall("x:sheets/x:sheet", namespace)
+    sheet_names = [sheet.attrib["name"] for sheet in sheet_elements]
+    if sheet_names != workbook_spec["expected_sheets"]:
+        raise ValueError("T4 Fig. 3 workbook sheet names changed")
+    hidden_sheets = [
+        sheet.attrib["name"]
+        for sheet in sheet_elements
+        if sheet.attrib.get("state", "visible") != "visible"
+    ]
+    package_metadata_members = sorted(
+        name
+        for name in member_names
+        if "comment" in name.lower()
+        or name == "docProps/custom.xml"
+        or name.startswith("xl/externalLinks/")
+    )
+
+    manifest_spec = config["dataset_manifest"]
+    manifest_path = root / manifest_spec["path"]
+    if (
+        manifest_path.stat().st_size != int(manifest_spec["bytes"])
+        or _sha256(manifest_path) != manifest_spec["sha256"]
+    ):
+        raise ValueError("T4 Edmond dataset manifest changed")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    dataset_files = manifest["data"]["latestVersion"]["files"]
+    if len(dataset_files) != int(manifest_spec["expected_dataset_file_count"]):
+        raise ValueError("T4 Edmond dataset file count changed")
+    fig3_files = sorted(
+        item["dataFile"]["filename"]
+        for item in dataset_files
+        if item.get("directoryLabel", "").endswith("/Fig. 3")
+    )
+    if fig3_files != sorted(manifest_spec["expected_fig3_files"]):
+        raise ValueError("T4 Edmond Fig. 3 directory membership changed")
+    identity_pattern = re.compile(
+        r"animal|fly|individual|metadata|recording|specimen|subject", re.I
+    )
+    fig3_identity_sidecars = [
+        name for name in fig3_files if identity_pattern.search(name)
+    ]
+
+    fig1_path = Path(config["fig1_identity_evidence"])
+    fig1 = json.loads((root / fig1_path).read_text(encoding="utf-8"))
+    fig1_counts = fig1["extended_figure_1"]["individual_source_spatial_RF_counts"]
+    fig3_counts = {
+        source: int(identity["source_summary"][source]["cell_count"])
+        for source in config["source_types"]
+    }
 
     notebook_spec = config["notebook"]
     notebook_path = root / notebook_spec["path"]
@@ -146,6 +242,9 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 **{str(path): _sha256(root / path) for path in evidence_paths.values()},
                 str(paper_spec["path"]): _sha256(paper_path),
+                str(workbook_spec["path"]): _sha256(workbook_path),
+                str(manifest_spec["path"]): _sha256(manifest_path),
+                str(fig1_path): _sha256(root / fig1_path),
             },
             "parameter_fit": False,
             "runtime_modified": False,
@@ -159,6 +258,34 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
             "speed_degrees_per_second": 30.0,
             "one_recorded_cell_per_different_animal": True,
             "responses_temporally_aligned_post_hoc": True,
+            "one_second_prestimulus_baseline_applies_to_PD_grating_protocol": True,
+            "Fig3_edge_recording_baseline_window_declared": False,
+        },
+        "complete_public_dataset_index": {
+            "dataset_file_count": len(dataset_files),
+            "Fig3_directory_files": fig3_files,
+            "Fig3_directory_file_count": len(fig3_files),
+            "Fig3_identity_or_metadata_sidecars": fig3_identity_sidecars,
+        },
+        "source_workbook_package": {
+            "sheet_names": sheet_names,
+            "hidden_sheets": hidden_sheets,
+            "connection_count": len(connections),
+            "all_connections_deleted": all(
+                item.attrib.get("deleted") == "1" for item in connections
+            ),
+            "raw_input_connection_names": raw_connections,
+            "derived_connection_count": len(derived_connections),
+            "package_metadata_members": package_metadata_members,
+            "recording_metadata_recovered_from_package": False,
+        },
+        "cross_figure_identity_boundary": {
+            "Fig1_individual_spatial_RF_counts": {
+                source: int(fig1_counts[source]) for source in config["source_types"]
+            },
+            "Fig3_voltage_cell_counts": fig3_counts,
+            "shared_stable_individual_identifier_present": False,
+            "cohort_overlap_or_disjointness_identifiable": False,
         },
         "notebook_evidence": {
             "sample_rate_hz": 1000,

@@ -220,6 +220,37 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "full_resolution_fixed_split_recompute_authorized"
                 ]
             ),
+            "Edmond_complete_public_dataset_file_count": (
+                t4_fields["complete_public_dataset_index"]["dataset_file_count"]
+                if family == "T4"
+                else 0
+            ),
+            "Edmond_Fig3_identity_or_metadata_sidecar_found": (
+                family == "T4"
+                and bool(
+                    t4_fields["complete_public_dataset_index"][
+                        "Fig3_identity_or_metadata_sidecars"
+                    ]
+                )
+            ),
+            "Edmond_workbook_recording_metadata_recovered": (
+                family == "T4"
+                and t4_fields["source_workbook_package"][
+                    "recording_metadata_recovered_from_package"
+                ]
+            ),
+            "Edmond_Fig1_Fig3_cohort_relation_identifiable": (
+                family == "T4"
+                and t4_fields["cross_figure_identity_boundary"][
+                    "cohort_overlap_or_disjointness_identifiable"
+                ]
+            ),
+            "Edmond_Fig3_edge_baseline_window_declared": (
+                family == "T4"
+                and t4_fields["paper_evidence"][
+                    "Fig3_edge_recording_baseline_window_declared"
+                ]
+            ),
             "independent_whole_cell_voltage_phenotype_without_numeric_payload": (
                 source in behnia_fast_sources
             ),

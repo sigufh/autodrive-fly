@@ -2287,6 +2287,17 @@ payload 未安全检查、source temporal kernel 不可用”的状态。但这�
 官方域名；下载先落到 `.part`，只有通过完整 manifest 后才原子提升，远端 artifact 只保留
 一天且不会提交到 Git。
 
+对 Fig.3 刺激与记录字段又做了完整载荷边界检查，而不只检查可见表头。74 文件 manifest
+中的 Fig.3 目录恰有 9 项：notebook、五类输入细胞 NPY、两份 T4 NPY 和 LED NPY；没有
+animal、recording、subject 或 metadata sidecar。`SourceDataFig3.xlsx` 的 OOXML 包有 6 个
+可见 sheet、38 个已删除的 CSV 数据连接和 38 个 query table；其中 10 个原始输入连接只
+编码 source type 与 ON/OFF，另外 28 个是模型/电导/T4 导出项，包内没有 comment、custom
+property 或 external-link payload。论文给出的 1 秒 prestimulus baseline 属于用 grating
+确定 PD 的协议，不能移植为 Fig.3 edge recording 的 baseline。Fig.1 与 Fig.3 的 Mi1/Tm3/
+Mi4/C3 个体计数分别为 22/11/10/16 与 24/12/19/16，且没有跨图共享 ID，故不能由计数推断
+cohort 重叠或互斥。记录级方向、角位置、stimulus ID、baseline 和 cohort role 仍未恢复。
+证据见 `artifacts/v7-t4-recording-field-audit.json`。
+
 前端披露也按这个边界拆开：`/api/v7/status` 只读取并逐依赖哈希验证
 `artifacts/v7-goal-audit.json`，不实例化 v7 或改变 `/api/driving/*`。页面把当前运行的
 assisted-v5/neural-v6-front 因果链显示为“R1–R6 输入 → T4/T5 flow 与神经状态 → raw

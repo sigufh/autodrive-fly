@@ -663,6 +663,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "complete_stimulus_and_baseline_fields_on_allowed_payload"
                     ]
                 ),
+                "T4_Edmond_complete_dataset_file_count": (
+                    t4_recording_field_audit["complete_public_dataset_index"][
+                        "dataset_file_count"
+                    ]
+                ),
+                "T4_Edmond_Fig3_directory_file_count": (
+                    t4_recording_field_audit["complete_public_dataset_index"][
+                        "Fig3_directory_file_count"
+                    ]
+                ),
+                "T4_Edmond_Fig3_identity_sidecars": (
+                    t4_recording_field_audit["complete_public_dataset_index"][
+                        "Fig3_identity_or_metadata_sidecars"
+                    ]
+                ),
+                "T4_Edmond_workbook_recording_metadata_recovered": (
+                    t4_recording_field_audit["source_workbook_package"][
+                        "recording_metadata_recovered_from_package"
+                    ]
+                ),
+                "T4_Edmond_Fig1_Fig3_cohort_relation_identifiable": (
+                    t4_recording_field_audit["cross_figure_identity_boundary"][
+                        "cohort_overlap_or_disjointness_identifiable"
+                    ]
+                ),
+                "T4_Edmond_Fig3_edge_baseline_window_declared": (
+                    t4_recording_field_audit["paper_evidence"][
+                        "Fig3_edge_recording_baseline_window_declared"
+                    ]
+                ),
                 "T5_voltage_modality_field_counts": {
                     name: item["available_field_count"]
                     for name, item in t5_recording_field_audit["modalities"].items()

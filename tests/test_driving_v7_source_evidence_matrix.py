@@ -65,6 +65,12 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             ]
             is True
         )
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Edmond_complete_public_dataset_file_count"] == 74
+        assert components["Edmond_Fig3_identity_or_metadata_sidecar_found"] is False
+        assert components["Edmond_workbook_recording_metadata_recovered"] is False
+        assert components["Edmond_Fig1_Fig3_cohort_relation_identifiable"] is False
+        assert components["Edmond_Fig3_edge_baseline_window_declared"] is False
         row = report["matrix"][source]
         assert "T4_Fig3_verified_1khz_millivolt_array" in row["numerical_evidence_sources"]
 

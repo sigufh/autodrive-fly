@@ -10,6 +10,46 @@ paper_pdf:
   bytes: 8482179
   sha256: f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b
   pages: 22
+source_workbook:
+  path: data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx
+  bytes: 1906405
+  sha256: dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3
+  expected_sheets:
+    - Fig. 3a, left (on)
+    - Fig. 3a, right (off)
+    - Fig. 3b, left (on PD)
+    - Fig. 3b, right (on ND)
+    - Fig. 3c, left (off PD)
+    - Fig. 3c, right (off ND)
+  expected_connection_count: 38
+  expected_query_table_count: 38
+  expected_raw_connection_names:
+    - sd_fig3a_C3_off
+    - sd_fig3a_C3_on
+    - sd_fig3a_Mi1_off
+    - sd_fig3a_Mi1_on
+    - sd_fig3a_Mi4_off
+    - sd_fig3a_Mi4_on
+    - sd_fig3a_Mi9_off
+    - sd_fig3a_Mi9_on
+    - sd_fig3a_Tm3_off
+    - sd_fig3a_Tm3_on
+dataset_manifest:
+  path: data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json
+  bytes: 61599
+  sha256: 31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606
+  expected_dataset_file_count: 74
+  expected_fig3_files:
+    - fig3.ipynb
+    - fig3_C3.npy
+    - fig3_Mi1.npy
+    - fig3_Mi4.npy
+    - fig3_Mi9.npy
+    - fig3_T4r.npy
+    - fig3_T4v.npy
+    - fig3_Tm3.npy
+    - fig3_led.npy
+fig1_identity_evidence: artifacts/v7-fig1-source-temporal-readiness-audit.json
 notebook:
   path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3.ipynb
   bytes: 263853
@@ -73,6 +113,9 @@ boundary:
   PD_ND_for_source_inputs_is_synthesized_not_recorded: true
   baseline_window_is_post_hoc_analysis_protocol: true
   paper_and_notebook_can_supply_linked_semantics_but_not_missing_per_recording_fields: true
+  grating_PD_baseline_must_not_be_imputed_to_Fig3_edge_recordings: true
+  workbook_connection_names_are_export_labels_not_recording_metadata: true
+  differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness: true
   no_threshold_label_split_denominator_or_failure_rule_change: true
   no_parameter_fit: true
   no_target_activity_injection: true

@@ -3,13 +3,16 @@
     "name": "v7-t4-fig3-recording-field-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-recording-field-audit.yaml": "dcedf867d9596771d943c1af15f45c11125f191634f2dd610ee434f8e5cd0a33",
-      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "2394b898bb1d674780167b35519f1b0b53c944c754da14deffb6d73641338b25",
+      "configs/driving-v7-t4-recording-field-audit.yaml": "8c1ba5c053ba026b93e5025eccb77e73701ca6557c55361e1e6071017ac6e9b9",
+      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "0ea320f8a5e06e47123727b4f13e26b553373938b813efdfba9368f28be2e779",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "eecc6490570ad2613157ca0fcc48e1e59bb9c03b01c2810f6ef797335ba84b19",
       "artifacts/v7-t4-individual-split-1khz-audit.json": "2861009fd6bb9cd20d5004fe2a457a2cd9f7372eb871e6b807f5fb47c41a449d",
-      "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b"
+      "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
+      "data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx": "dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3",
+      "data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json": "31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606",
+      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -31,7 +34,69 @@
     "ON_OFF_polarity": true,
     "speed_degrees_per_second": 30.0,
     "one_recorded_cell_per_different_animal": true,
-    "responses_temporally_aligned_post_hoc": true
+    "responses_temporally_aligned_post_hoc": true,
+    "one_second_prestimulus_baseline_applies_to_PD_grating_protocol": true,
+    "Fig3_edge_recording_baseline_window_declared": false
+  },
+  "complete_public_dataset_index": {
+    "dataset_file_count": 74,
+    "Fig3_directory_files": [
+      "fig3.ipynb",
+      "fig3_C3.npy",
+      "fig3_Mi1.npy",
+      "fig3_Mi4.npy",
+      "fig3_Mi9.npy",
+      "fig3_T4r.npy",
+      "fig3_T4v.npy",
+      "fig3_Tm3.npy",
+      "fig3_led.npy"
+    ],
+    "Fig3_directory_file_count": 9,
+    "Fig3_identity_or_metadata_sidecars": []
+  },
+  "source_workbook_package": {
+    "sheet_names": [
+      "Fig. 3a, left (on)",
+      "Fig. 3a, right (off)",
+      "Fig. 3b, left (on PD)",
+      "Fig. 3b, right (on ND)",
+      "Fig. 3c, left (off PD)",
+      "Fig. 3c, right (off ND)"
+    ],
+    "hidden_sheets": [],
+    "connection_count": 38,
+    "all_connections_deleted": true,
+    "raw_input_connection_names": [
+      "sd_fig3a_C3_off",
+      "sd_fig3a_C3_on",
+      "sd_fig3a_Mi1_off",
+      "sd_fig3a_Mi1_on",
+      "sd_fig3a_Mi4_off",
+      "sd_fig3a_Mi4_on",
+      "sd_fig3a_Mi9_off",
+      "sd_fig3a_Mi9_on",
+      "sd_fig3a_Tm3_off",
+      "sd_fig3a_Tm3_on"
+    ],
+    "derived_connection_count": 28,
+    "package_metadata_members": [],
+    "recording_metadata_recovered_from_package": false
+  },
+  "cross_figure_identity_boundary": {
+    "Fig1_individual_spatial_RF_counts": {
+      "Mi1": 22,
+      "Tm3": 11,
+      "Mi4": 10,
+      "C3": 16
+    },
+    "Fig3_voltage_cell_counts": {
+      "Mi1": 24,
+      "Tm3": 12,
+      "Mi4": 19,
+      "C3": 16
+    },
+    "shared_stable_individual_identifier_present": false,
+    "cohort_overlap_or_disjointness_identifiable": false
   },
   "notebook_evidence": {
     "sample_rate_hz": 1000,
@@ -152,6 +217,9 @@
     "PD_ND_for_source_inputs_is_synthesized_not_recorded": true,
     "baseline_window_is_post_hoc_analysis_protocol": true,
     "paper_and_notebook_can_supply_linked_semantics_but_not_missing_per_recording_fields": true,
+    "grating_PD_baseline_must_not_be_imputed_to_Fig3_edge_recordings": true,
+    "workbook_connection_names_are_export_labels_not_recording_metadata": true,
+    "differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

@@ -31,12 +31,58 @@ def test_verified_payload_supports_ten_of_fifteen_fields() -> None:
 def test_PD_ND_synthesis_and_analysis_baseline_do_not_count_as_source_fields() -> None:
     report = json.loads(REPORT.read_text())
     assert report["array_has_direction_axis"] is False
-    assert report["notebook_evidence"][
-        "PD_ND_labels_apply_after_source_average_and_synthetic_shift"
-    ] is True
+    assert (
+        report["notebook_evidence"][
+            "PD_ND_labels_apply_after_source_average_and_synthetic_shift"
+        ]
+        is True
+    )
     assert report["field_status"]["stimulus_direction"]["available"] is False
     assert report["field_status"]["baseline_window_seconds"]["available"] is False
     assert report["boundary"]["baseline_window_is_post_hoc_analysis_protocol"] is True
+    assert (
+        report["paper_evidence"][
+            "one_second_prestimulus_baseline_applies_to_PD_grating_protocol"
+        ]
+        is True
+    )
+    assert (
+        report["paper_evidence"]["Fig3_edge_recording_baseline_window_declared"]
+        is False
+    )
+
+
+def test_complete_dataset_and_workbook_internals_do_not_recover_missing_fields() -> (
+    None
+):
+    report = json.loads(REPORT.read_text())
+    index = report["complete_public_dataset_index"]
+    assert index["dataset_file_count"] == 74
+    assert index["Fig3_directory_file_count"] == 9
+    assert index["Fig3_identity_or_metadata_sidecars"] == []
+    workbook = report["source_workbook_package"]
+    assert workbook["hidden_sheets"] == []
+    assert workbook["connection_count"] == 38
+    assert workbook["all_connections_deleted"] is True
+    assert len(workbook["raw_input_connection_names"]) == 10
+    assert workbook["derived_connection_count"] == 28
+    assert workbook["package_metadata_members"] == []
+    assert workbook["recording_metadata_recovered_from_package"] is False
+    cross_figure = report["cross_figure_identity_boundary"]
+    assert cross_figure["Fig1_individual_spatial_RF_counts"] == {
+        "Mi1": 22,
+        "Tm3": 11,
+        "Mi4": 10,
+        "C3": 16,
+    }
+    assert cross_figure["Fig3_voltage_cell_counts"] == {
+        "Mi1": 24,
+        "Tm3": 12,
+        "Mi4": 19,
+        "C3": 16,
+    }
+    assert cross_figure["shared_stable_individual_identifier_present"] is False
+    assert cross_figure["cohort_overlap_or_disjointness_identifiable"] is False
 
 
 def test_incomplete_fields_keep_all_downstream_gates_closed() -> None:
