@@ -96,6 +96,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     edmond_fig3_retrieval_audit = reports["edmond_fig3_retrieval_audit"]
     t4_recording_field_audit = reports["t4_recording_field_audit"]
     t5_recording_field_audit = reports["t5_recording_field_audit"]
+    kohn_portes_stimulus_provenance_audit = reports[
+        "kohn_portes_stimulus_provenance_audit"
+    ]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     behnia_t4_fast_source_availability_audit = reports[
         "behnia_t4_fast_source_availability_audit"
@@ -317,6 +320,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["edmond_fig3_retrieval_audit"],
                 config["evidence"]["t4_recording_field_audit"],
                 config["evidence"]["t5_recording_field_audit"],
+                config["evidence"]["kohn_portes_stimulus_provenance_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["behnia_t4_fast_source_availability_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
@@ -661,6 +665,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_all_five_complete_recording_fields": t5_recording_field_audit[
                     "all_five_T5_sources_have_complete_coexisting_recording_fields"
                 ],
+                "Kohn_Portes_stimulus_generator_commit": (
+                    kohn_portes_stimulus_provenance_audit["stimulus_repository"][
+                        "commit"
+                    ]
+                ),
+                "Kohn_Portes_record_specific_stimulus_logs_available": (
+                    kohn_portes_stimulus_provenance_audit["raw_record_summary"][
+                        "record_specific_stimulus_logs_locally_available"
+                    ]
+                ),
+                "Kohn_Portes_generator_defaults_used_as_record_fields": False,
+                "Kohn_Portes_stimulus_provenance_complete": (
+                    kohn_portes_stimulus_provenance_audit[
+                        "stimulus_provenance_contract_complete"
+                    ]
+                ),
                 "Behnia_T4_independent_fast_source_phenotypes": sorted(
                     behnia_t4_fast_source_audit["source_evidence"]
                 ),

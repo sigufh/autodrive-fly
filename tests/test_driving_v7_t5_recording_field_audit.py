@@ -22,6 +22,13 @@ def test_fields_are_not_joined_across_modalities() -> None:
     assert modalities["raw_drifting_grating"]["available_field_count"] == 9
     assert all(not item["all_required_fields_coexist"] for item in modalities.values())
     assert report["cross_modality_union"]["accepted_as_single_recording_payload"] is False
+    provenance = report["stimulus_provenance"]
+    assert provenance["fixed_generator_commit"] == (
+        "b589a224493cb66bda4c55f632b213cacb082b24"
+    )
+    assert provenance["record_specific_stimulus_logs_locally_available"] is False
+    assert provenance["generator_defaults_accepted_as_record_fields"] is False
+    assert provenance["stimulus_provenance_contract_complete"] is False
 
 
 def test_recording_keys_do_not_become_biological_individuals() -> None:

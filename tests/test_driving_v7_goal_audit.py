@@ -267,6 +267,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["T5_cross_modality_field_union_accepted"] is False
     assert visual["observations"]["T5_all_five_complete_recording_fields"] is False
+    assert visual["observations"]["Kohn_Portes_stimulus_generator_commit"] == (
+        "b589a224493cb66bda4c55f632b213cacb082b24"
+    )
+    assert visual["observations"]["Kohn_Portes_record_specific_stimulus_logs_available"] is False
+    assert visual["observations"]["Kohn_Portes_generator_defaults_used_as_record_fields"] is False
+    assert visual["observations"]["Kohn_Portes_stimulus_provenance_complete"] is False
     assert visual["observations"]["Behnia_T4_independent_fast_source_phenotypes"] == [
         "Mi1",
         "Tm3",

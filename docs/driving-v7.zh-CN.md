@@ -1989,6 +1989,15 @@ Mi4 目标则是钙派生的参数化模型尺度。因此，在这组有界候�
 候选仍为零；这不是对全球数据不存在的断言。证据见
 `artifacts/v7-mi4-c3-whole-cell-candidate-audit.json`。
 
+Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
+`b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
+drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造
+white-noise 帧；但 25 条 white-noise 和 26 条 drifting-grating 电压记录只保留指向
+`/mnt/engram/...` 的内部逐记录日志路径，这些日志不在公开仓库中。因而不能把生成器
+默认 direction/center/baseline 或重新生成的随机帧冒充实际 recording metadata；现有
+drifting-grating speed 仍只由记录内的 temporal/spatial-frequency 数组确定。证据见
+`artifacts/v7-kohn-portes-stimulus-provenance-audit.json`。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确

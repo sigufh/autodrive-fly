@@ -3,11 +3,12 @@
     "name": "v7-t5-recording-field-coexistence-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-recording-field-audit.yaml": "2508fa0d5b441bd44cae5d1d9ae1fdefa875e9ae8e41de2f85d2313ca20e8482",
-      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "8eb25163f194feb743ae6e6b0096f9bee28a5a4edad5ce76c0dfdf5ea62c5fa1",
+      "configs/driving-v7-t5-recording-field-audit.yaml": "6eb12a31bc95353f571a645dc1d8c8026d3429b0cc4e94cab609987fa406d740",
+      "src/fly_emotion/driving/v7_t5_recording_field_audit.py": "3f1bb5e81bd61b7ed206a5b0d9678ca46cbc5ab1bba08f6d77540107d1935b47",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
-      "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6"
+      "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
+      "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "f8140c8257af479475ef23d00ff1485e36354d0daa14c639d0a94a598fe12fde"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -304,6 +305,12 @@
     ],
     "available_field_count": 10,
     "accepted_as_single_recording_payload": false
+  },
+  "stimulus_provenance": {
+    "fixed_generator_commit": "b589a224493cb66bda4c55f632b213cacb082b24",
+    "record_specific_stimulus_logs_locally_available": false,
+    "generator_defaults_accepted_as_record_fields": false,
+    "stimulus_provenance_contract_complete": false
   },
   "source_checks": {
     "Tm1": {

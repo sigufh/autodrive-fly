@@ -4,7 +4,7 @@
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
       "configs/driving-v7-source-evidence-matrix.yaml": "18903e08dc58b5af3c8832407ebbfc9e44fae4837954d52a4f81d50dc08034a4",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "47abcead2a5ecf014195239acae188e9812a953f9d4f2e556db10e7af1e58358",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "7f06fd94729d91a5d702034c49af11b73bf7ed21d6447de6c804bd97de6d72f6",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "eecc6490570ad2613157ca0fcc48e1e59bb9c03b01c2810f6ef797335ba84b19",
       "artifacts/v7-t4-individual-split-1khz-audit.json": "2861009fd6bb9cd20d5004fe2a457a2cd9f7372eb871e6b807f5fb47c41a449d",
@@ -20,7 +20,7 @@
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "8723c89d1110ad1888f844a639c0d2ed05084528e8dc636d5f9b97de0f28f71c",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "653884c5aeebc459e584394164824c378ac66b6ae16332d09a916e012e7469e8",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "66d8db9735d083b6fbd8b6554b38c64b42a80b08c382e753dc15fa4443357fc6",
-      "artifacts/v7-t5-recording-field-audit.json": "05f5f3cc04ac5015bc82bef29185e892e3aba82b4a4eba9094f91d8a060b8cd4",
+      "artifacts/v7-t5-recording-field-audit.json": "4591f2390d6c502e2fc600ebe7cfa019b8c81c0067eab49e25e601ce193febdd",
       "artifacts/v7-ct1-extreme-compartmentalization-audit.json": "2c2c00b832500eeea7006be32022c9c30265b6c48adc8ae60fb76f9713a9a840",
       "artifacts/v7-ct1-experimental-voltage-boundary-audit.json": "1426b1e2e81795bc364937251c752fbbd5f254713f47c0f1013c090d3c23e109",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "11bbde0992709ad061d0d02d0f639b2767483eefcce1c865c118bbe6e4fe4097",
@@ -84,7 +84,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -160,7 +161,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -236,7 +238,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -308,7 +311,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -378,7 +382,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 8,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": true,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -455,7 +460,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 7,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": true,
@@ -532,7 +538,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 7,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -606,7 +613,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 13,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": true,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": true,
       "published_optical_voltage_phenotype": false,
@@ -681,7 +689,8 @@
         "Tm9_post_hoc_coordinate_repair_authorized": false,
         "Kohn_Portes_full_repository_recording_id_upper_bound": 0,
         "Kohn_Portes_recording_id_upper_bound_meets_5_plus_3": false,
-        "Kohn_Portes_biological_individual_5_plus_3_authorized": false
+        "Kohn_Portes_biological_individual_5_plus_3_authorized": false,
+        "Kohn_Portes_record_specific_stimulus_provenance_complete": false
       },
       "numerical_membrane_voltage": false,
       "published_optical_voltage_phenotype": false,

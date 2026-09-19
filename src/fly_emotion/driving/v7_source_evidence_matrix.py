@@ -269,6 +269,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "biological_individual_5_plus_3_split_authorized"
                 ]
             ),
+            "Kohn_Portes_record_specific_stimulus_provenance_complete": (
+                family == "T5"
+                and t5_fields["stimulus_provenance"][
+                    "stimulus_provenance_contract_complete"
+                ]
+            ),
         }
         numerical_sources = []
         phenotype_sources = []

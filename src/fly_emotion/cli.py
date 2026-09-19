@@ -122,6 +122,9 @@ from .driving.v7_heading_ring import evaluate_v7_heading_ring
 from .driving.v7_kohn_portes_identity_history_audit import (
     evaluate_v7_kohn_portes_identity_history_audit,
 )
+from .driving.v7_kohn_portes_stimulus_provenance_audit import (
+    evaluate_v7_kohn_portes_stimulus_provenance_audit,
+)
 from .driving.v7_kohn_portes_t5_ephys_audit import (
     evaluate_v7_kohn_portes_t5_ephys_audit,
 )
@@ -551,6 +554,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
     subparsers.add_parser("v7-audit-kohn-portes-identity-history")
+    subparsers.add_parser("v7-audit-kohn-portes-stimulus-provenance")
     subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
     subparsers.add_parser("v7-audit-ct1-experimental-voltage-boundary")
     subparsers.add_parser("v7-audit-tm9-coordinate-identifiability")
@@ -1764,6 +1768,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-identity-history":
         report = evaluate_v7_kohn_portes_identity_history_audit(root)
         target = root / "artifacts/v7-kohn-portes-identity-history-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-kohn-portes-stimulus-provenance":
+        report = evaluate_v7_kohn_portes_stimulus_provenance_audit(root)
+        target = root / "artifacts/v7-kohn-portes-stimulus-provenance-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

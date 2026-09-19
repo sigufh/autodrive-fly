@@ -1,0 +1,58 @@
+version: 1
+name: v7-kohn-portes-t5-stimulus-provenance-audit
+observed_on: "2026-09-19"
+paper:
+  title: Flexible filtering by neural inputs supports motion computation across states and stimuli
+  doi: 10.1016/j.cub.2021.09.061
+  path: data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml
+  bytes: 134179
+  sha256: 639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f
+stimulus_repository:
+  url: https://gitlab.com/rbehnialab/motyxia2
+  branch: whitenoise
+  commit: b589a224493cb66bda4c55f632b213cacb082b24
+  archive:
+    path: data/raw/kohn-portes-stimulus-provenance/motyxia2-b589a224.tar.gz
+    bytes: 881710
+    sha256: 567822dfaf832e68459f2662fff168145fa5382d1cb5275db7b3c2a235a3cda1
+    file_count: 85
+  members:
+    stimuli:
+      suffix: /motyxia/allen/stimuli.py
+      bytes: 184639
+      sha256: 812f0594d916ac3b767c408385694d19ca554215425215da44771c08aa1ca48d
+    forms:
+      suffix: /motyxia/forms.py
+      bytes: 37999
+      sha256: 4a89291a16dacc22c27c0f8633ddce9d0124e5e7b667e10bc04bfba3bd41f1b0
+evidence:
+  kohn_portes_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
+  kohn_portes_identity: artifacts/v7-kohn-portes-identity-history-audit.json
+source_configs:
+  ephys: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+  identity: configs/driving-v7-kohn-portes-identity-history-audit.yaml
+expected:
+  source_types: [Tm1, Tm2, Tm4, Tm9]
+  white_noise_record_count: 25
+  white_noise_unique_stimulus_path_count: 25
+  white_noise_stimulus_names:
+    - WhiteNoiseBars_1_horz_20hz_5deg
+    - WhiteNoiseBars_1_vert_20hz_5deg
+  white_noise_orientation_counts: {"null": 24, vertical: 1}
+  drifting_grating_record_count: 26
+  drifting_grating_unique_stimulus_path_count: 26
+  drifting_grating_stimulus_names: [driftinggrating_05hz]
+  drifting_grating_spatial_frequencies_cycles_per_degree: [0.4, 0.2, 0.1, 0.08, 0.04, 0.025, 0.02, 0.0125, 0.01, 0.008, 0.005]
+  drifting_grating_temporal_frequencies_hz: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+  private_stimulus_path_prefix: /mnt/engram/motyxia_log_ephys_rig2/jko14/
+boundary:
+  generator_capability_is_not_record_specific_provenance: true
+  class_defaults_are_not_assigned_to_recordings: true
+  random_white_noise_frames_require_the_original_per_recording_log: true
+  bar_orientation_is_not_motion_direction: true
+  spatial_frequency_is_not_angular_position: true
+  no_cross_modality_field_imputation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

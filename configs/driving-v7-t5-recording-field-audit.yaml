@@ -4,6 +4,7 @@ observed_on: "2026-09-19"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 kohn_portes_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
 kohn_portes_identity: artifacts/v7-kohn-portes-identity-history-audit.json
+kohn_portes_stimulus_provenance: artifacts/v7-kohn-portes-stimulus-provenance-audit.json
 source_types: [Tm1, Tm2, Tm4, Tm9]
 missing_source_type: CT1
 modalities:

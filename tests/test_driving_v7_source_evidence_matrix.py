@@ -195,6 +195,9 @@ def test_T5_modalities_are_not_combined_into_false_completeness() -> None:
         assert report["matrix"][source]["gates"][
             "complete_stimulus_and_baseline_fields_on_allowed_payload"
         ] is False
+        assert report["matrix"][source]["evidence_components"][
+            "Kohn_Portes_record_specific_stimulus_provenance_complete"
+        ] is False
 
 
 def test_Kohn_Portes_recording_capacity_does_not_replace_biological_identity() -> None:

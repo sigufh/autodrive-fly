@@ -17,7 +17,12 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
     evidence_paths = {
         name: Path(config[name])
-        for name in ("contract", "kohn_portes_ephys", "kohn_portes_identity")
+        for name in (
+            "contract",
+            "kohn_portes_ephys",
+            "kohn_portes_identity",
+            "kohn_portes_stimulus_provenance",
+        )
     }
     evidence = {
         name: json.loads((root / path).read_text(encoding="utf-8"))
@@ -26,6 +31,7 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
     contract = evidence["contract"]
     ephys = evidence["kohn_portes_ephys"]
     identity = evidence["kohn_portes_identity"]
+    stimulus_provenance = evidence["kohn_portes_stimulus_provenance"]
     required_fields = contract["required_recording_fields"]
     required_sources = contract["required_families"]["T5"]["source_types"]
     if required_sources != [*config["source_types"], config["missing_source_type"]]:
@@ -33,6 +39,15 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
     for name, fields in config["modalities"].items():
         if list(fields) != required_fields:
             raise ValueError(f"{name} does not preserve recording-field order")
+    for modality in ("raw_white_noise", "raw_drifting_grating"):
+        for field, observed in stimulus_provenance["recording_field_status"][
+            modality
+        ].items():
+            fields = config["modalities"][modality].get(field)
+            if fields and fields["available"] != observed["available"]:
+                raise ValueError(
+                    f"{modality} {field} differs from stimulus-provenance audit"
+                )
 
     expected_voltage_sources = ephys["T5_source_contract"][
         "sources_with_local_numeric_membrane_voltage"
@@ -121,6 +136,20 @@ def evaluate_v7_t5_recording_field_audit(root: Path) -> dict:
             "available_fields": union_available,
             "available_field_count": len(union_available),
             "accepted_as_single_recording_payload": False,
+        },
+        "stimulus_provenance": {
+            "fixed_generator_commit": stimulus_provenance["stimulus_repository"][
+                "commit"
+            ],
+            "record_specific_stimulus_logs_locally_available": (
+                stimulus_provenance["raw_record_summary"][
+                    "record_specific_stimulus_logs_locally_available"
+                ]
+            ),
+            "generator_defaults_accepted_as_record_fields": False,
+            "stimulus_provenance_contract_complete": stimulus_provenance[
+                "stimulus_provenance_contract_complete"
+            ],
         },
         "source_checks": source_checks,
         "all_five_T5_sources_have_complete_coexisting_recording_fields": complete,
