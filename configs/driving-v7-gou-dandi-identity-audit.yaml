@@ -55,8 +55,8 @@ snapshots:
     sha256: 8f40d65f7bfb0360de2ea90191c04a569c3af5f815ad5c48b4020eea295b3795
 dryad_inventory:
   path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
-  bytes: 49835
-  sha256: 7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097
+  bytes: 57800
+  sha256: 270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903
 representative_NWB_range_inspection:
   path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-nwb-range-metadata.json
   bytes: 1468

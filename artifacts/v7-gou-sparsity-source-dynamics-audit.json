@@ -1,18 +1,18 @@
 {
   "protocol": {
     "name": "v7-gou-sparsity-source-dynamics-audit",
-    "observed_on": "2026-09-19",
+    "observed_on": "2026-09-20",
     "dependencies_sha256": {
-      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "3ba69e552f97d17015f23af624e700b72e62fddeaed03ec2e6d85500c2f7a343",
-      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "7d9d7e25c6bf7c7d8ff0bd760f92dc53b684a09583993d09b8e1a9a6552f414a",
-      "scripts/inspect_gou_sparsity_payload.py": "4a4b780406bee7ef7f279c0654147ae6706bae5a1187217ae65e1dc76992c913",
+      "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "e595aee1214dd27f4db4fc6398bcf3d1c5e3971e3ee7c3ffab4d0abb7e94ae2c",
+      "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "b0a6158b937d689c703c51aab6211b43382ebac0c4f816a1b35c7ad14005eceb",
+      "scripts/inspect_gou_sparsity_payload.py": "9ea2d1ba0762bd7dc16396082b71f48bb7f3fea3138db89ebf1c3a7831561e2a",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
       "data/raw/gou-sparsity/dryad-version-402168.zip": "59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f",
       "data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f",
       "data/raw/gou-sparsity/version-402168/README.md": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261",
-      "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
-      "artifacts/v7-gou-dandi-identity-audit.json": "60b887f09554d6d51e1a72936cc20fac8795c3e18e98d1d89e953757da1753b5",
-      "configs/driving-v7-gou-dandi-identity-audit.yaml": "3aadac25622f90ae3c1cf5e182d2de7504bc3a683f83a68772cf652155f51b31",
+      "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903",
+      "artifacts/v7-gou-dandi-identity-audit.json": "fd44d83192220c7a02600338cd702abc306ee57da87ea4f83e34f8383c259916",
+      "configs/driving-v7-gou-dandi-identity-audit.yaml": "717d727388ad169e5076bb82bc90e9a2e044ee28412998a3f348d12a3bd3c15d",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/fig1_Mi1GC6f_flash.m": "cd925bd0eb826da21d3095559d592cc085949753e9007bca337ec8146a1f6573",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig4_otherNeurons_flash.m": "10d1e410b3d2eeec49a013b3efcaf71f18c91ab016d83f1123099bd6ceff3e58",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m": "556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab"
@@ -107,7 +107,8 @@
       "processed_arrays_keep_fly_axis": true,
       "flash_time_series": true,
       "spatial_RF": true,
-      "moving_bar_both_directions": true,
+      "moving_bar_stimulus_present": true,
+      "processed_moving_bar_direction_labels_available": false,
       "moving_bar_speed_sweep_degrees_per_second": [
         30,
         60,
@@ -124,7 +125,8 @@
       "processed_arrays_keep_fly_axis": true,
       "flash_time_series": true,
       "spatial_RF": false,
-      "moving_bar_both_directions": true,
+      "moving_bar_stimulus_present": true,
+      "processed_moving_bar_direction_labels_available": false,
       "moving_bar_speed_sweep_degrees_per_second": [],
       "response_unit_contract_satisfied": false
     },
@@ -136,7 +138,8 @@
       "processed_arrays_keep_fly_axis": true,
       "flash_time_series": true,
       "spatial_RF": false,
-      "moving_bar_both_directions": true,
+      "moving_bar_stimulus_present": true,
+      "processed_moving_bar_direction_labels_available": false,
       "moving_bar_speed_sweep_degrees_per_second": [],
       "response_unit_contract_satisfied": false
     },
@@ -148,7 +151,8 @@
       "processed_arrays_keep_fly_axis": true,
       "flash_time_series": true,
       "spatial_RF": false,
-      "moving_bar_both_directions": true,
+      "moving_bar_stimulus_present": true,
+      "processed_moving_bar_direction_labels_available": false,
       "moving_bar_speed_sweep_degrees_per_second": [],
       "response_unit_contract_satisfied": false
     }
@@ -1562,6 +1566,22 @@
           "direction_axis_present": false,
           "direction_order_recoverable_from_file_or_Fig6_script": false
         },
+        "field_semantics": {
+          "published_Fig6_script_consumed_array_names": [
+            "indFilters",
+            "kernels",
+            "LightImpulseResps",
+            "DarkImpulseResps"
+          ],
+          "additional_unconsumed_array_names": [
+            "whiteKernels",
+            "blackKernels",
+            "probeResps",
+            "temporal_shift_L_allFlies_out"
+          ],
+          "direction_named_field_names": [],
+          "unconsumed_12_condition_arrays_have_published_column_labels": false
+        },
         "arrays": {
           "indFilters": {
             "shape": [
@@ -1621,6 +1641,64 @@
             "zero_count": 0,
             "minimum": -0.5069119397584833,
             "maximum": 2.98689987213569
+          },
+          "whiteKernels": {
+            "shape": [
+              141,
+              12,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 16920,
+            "finite_count": 16920,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -2.2075928750688942,
+            "maximum": 3.8746168854374288
+          },
+          "blackKernels": {
+            "shape": [
+              141,
+              12,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 16920,
+            "finite_count": 16920,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -3.1185133237435316,
+            "maximum": 1.4257904561985042
+          },
+          "probeResps": {
+            "shape": [
+              141,
+              4,
+              10
+            ],
+            "dtype": "float64",
+            "element_count": 5640,
+            "finite_count": 5640,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -7.913880221267856,
+            "maximum": 6.232771020428303
+          },
+          "temporal_shift_L_allFlies_out": {
+            "shape": [
+              11
+            ],
+            "dtype": "uint8",
+            "element_count": 11,
+            "finite_count": 11,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 18.0,
+            "maximum": 100.0
           }
         }
       },
@@ -1670,6 +1748,22 @@
           ],
           "direction_axis_present": false,
           "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "field_semantics": {
+          "published_Fig6_script_consumed_array_names": [
+            "indFilters",
+            "kernels",
+            "LightImpulseResps",
+            "DarkImpulseResps"
+          ],
+          "additional_unconsumed_array_names": [
+            "whiteKernels",
+            "blackKernels",
+            "probeResps",
+            "temporal_shift_L_allFlies_out"
+          ],
+          "direction_named_field_names": [],
+          "unconsumed_12_condition_arrays_have_published_column_labels": false
         },
         "arrays": {
           "indFilters": {
@@ -1730,6 +1824,64 @@
             "zero_count": 0,
             "minimum": -0.2277427998566547,
             "maximum": 4.291498297080794
+          },
+          "whiteKernels": {
+            "shape": [
+              141,
+              12,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 13536,
+            "finite_count": 13536,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.9361909138344027,
+            "maximum": 0.9034202420920052
+          },
+          "blackKernels": {
+            "shape": [
+              141,
+              12,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 13536,
+            "finite_count": 13536,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -4.117262328090498,
+            "maximum": 0.6802485242254253
+          },
+          "probeResps": {
+            "shape": [
+              141,
+              4,
+              8
+            ],
+            "dtype": "float64",
+            "element_count": 4512,
+            "finite_count": 4512,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.7520913579983473,
+            "maximum": 4.819793734379432
+          },
+          "temporal_shift_L_allFlies_out": {
+            "shape": [
+              9
+            ],
+            "dtype": "uint8",
+            "element_count": 9,
+            "finite_count": 9,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 50.0,
+            "maximum": 84.0
           }
         }
       },
@@ -1782,6 +1934,22 @@
           ],
           "direction_axis_present": false,
           "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "field_semantics": {
+          "published_Fig6_script_consumed_array_names": [
+            "indFilters",
+            "kernels",
+            "LightImpulseResps",
+            "DarkImpulseResps"
+          ],
+          "additional_unconsumed_array_names": [
+            "whiteKernels",
+            "blackKernels",
+            "probeResps",
+            "temporal_shift_L_allFlies_out"
+          ],
+          "direction_named_field_names": [],
+          "unconsumed_12_condition_arrays_have_published_column_labels": false
         },
         "arrays": {
           "indFilters": {
@@ -1842,6 +2010,64 @@
             "zero_count": 0,
             "minimum": -0.15416887049134004,
             "maximum": 12.512702613528884
+          },
+          "whiteKernels": {
+            "shape": [
+              141,
+              12,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 20304,
+            "finite_count": 20304,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -6.068141831336548,
+            "maximum": 6.2735778280794445
+          },
+          "blackKernels": {
+            "shape": [
+              141,
+              12,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 20304,
+            "finite_count": 20304,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -12.059662316222882,
+            "maximum": 2.646625026633339
+          },
+          "probeResps": {
+            "shape": [
+              141,
+              4,
+              12
+            ],
+            "dtype": "float64",
+            "element_count": 6768,
+            "finite_count": 6768,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -1.724028268240954,
+            "maximum": 9.935325060360594
+          },
+          "temporal_shift_L_allFlies_out": {
+            "shape": [
+              12
+            ],
+            "dtype": "uint8",
+            "element_count": 12,
+            "finite_count": 12,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 5.0,
+            "maximum": 58.0
           }
         }
       },
@@ -1891,6 +2117,22 @@
           ],
           "direction_axis_present": false,
           "direction_order_recoverable_from_file_or_Fig6_script": false
+        },
+        "field_semantics": {
+          "published_Fig6_script_consumed_array_names": [
+            "indFilters",
+            "kernels",
+            "LightImpulseResps",
+            "DarkImpulseResps"
+          ],
+          "additional_unconsumed_array_names": [
+            "whiteKernels",
+            "blackKernels",
+            "probeResps",
+            "temporal_shift_L_allFlies_out"
+          ],
+          "direction_named_field_names": [],
+          "unconsumed_12_condition_arrays_have_published_column_labels": false
         },
         "arrays": {
           "indFilters": {
@@ -1951,6 +2193,64 @@
             "zero_count": 0,
             "minimum": -0.679632093508739,
             "maximum": 4.98736778375737
+          },
+          "whiteKernels": {
+            "shape": [
+              141,
+              12,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 10152,
+            "finite_count": 10152,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -1.7727905173859104,
+            "maximum": 4.278228082694463
+          },
+          "blackKernels": {
+            "shape": [
+              141,
+              12,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 10152,
+            "finite_count": 10152,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -2.2895645073714537,
+            "maximum": 2.909879171041738
+          },
+          "probeResps": {
+            "shape": [
+              141,
+              4,
+              6
+            ],
+            "dtype": "float64",
+            "element_count": 3384,
+            "finite_count": 3384,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": -0.4846664199440392,
+            "maximum": 9.509704945129492
+          },
+          "temporal_shift_L_allFlies_out": {
+            "shape": [
+              9
+            ],
+            "dtype": "uint8",
+            "element_count": 9,
+            "finite_count": 9,
+            "nan_count": 0,
+            "infinite_count": 0,
+            "zero_count": 0,
+            "minimum": 6.0,
+            "maximum": 63.0
           }
         }
       }
@@ -1994,7 +2294,8 @@
           "8/12",
           "12/12"
         ],
-        "direction_order_not_encoded_in_arrays_or_Fig6_script": true
+        "direction_order_not_encoded_in_arrays_or_Fig6_script": true,
+        "Fig6_script_consumes_six_sparsity_conditions_not_twelve_unlabelled_conditions": true
       },
       "analysis_axes_are_not_exact_acquisition_timestamps": true
     },
@@ -2016,7 +2317,7 @@
       "name": "v7-gou-dandi-identity-audit",
       "observed_on": "2026-09-19",
       "dependencies_sha256": {
-        "configs/driving-v7-gou-dandi-identity-audit.yaml": "3aadac25622f90ae3c1cf5e182d2de7504bc3a683f83a68772cf652155f51b31",
+        "configs/driving-v7-gou-dandi-identity-audit.yaml": "717d727388ad169e5076bb82bc90e9a2e044ee28412998a3f348d12a3bd3c15d",
         "src/fly_emotion/driving/v7_gou_dandi_identity_audit.py": "951ab94beab46176627a8ec0c915afe8e1df1ceb4b905ef5be8afee235b99131",
         "data/raw/gou-sparsity/dandi-001205-0.250602.0251/version.json": "118a80f39da52fd092e1d36427655276556148786920d940ec2a8f2eb42a7639",
         "data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets-index.json": "0d21ae141a3da733f89e0c38e102bee7c27638abf4ae87f39ee9d42575117949",
@@ -2029,7 +2330,7 @@
         "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-git-annex-commits.json": "73e964599b340ec846d53768b33b8a4bd4da69aa5a2949e5ae20f7cb34ae9e0b",
         "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-git-annex.json": "e9b28a60a9a6a05e6613e98dae85504c82a007ded9c71324cb384a566c790baf",
         "data/raw/gou-sparsity/dandi-001205-0.250602.0251/clarklabcode-repositories.json": "8f40d65f7bfb0360de2ea90191c04a569c3af5f815ad5c48b4020eea295b3795",
-        "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
+        "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903",
         "data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-nwb-range-metadata.json": "3ffce7165754bd5e3b15437e8c009ac90f015795cc27bc17b7dfc47513f79c22"
       },
       "parameter_fit": false,
@@ -2263,10 +2564,6 @@
     "moving_stimulus_update_rate_hz": 180,
     "moving_bar_width_degrees": 5,
     "standard_moving_bar_speed_degrees_per_second": 60,
-    "standard_moving_bar_directions": [
-      "left",
-      "right"
-    ],
     "response_storage": "per_fly_by_time_processed_matrices",
     "local_processed_numeric_payload_verified": true,
     "local_processed_numeric_sources": [
@@ -2363,8 +2660,11 @@
       "8/12",
       "12/12"
     ],
-    "moving_bar_direction_axis_present": false,
-    "moving_bar_direction_order_verified_from_payload_or_Fig6_script": false,
+    "reported_moving_bar_direction_labels": [],
+    "processed_moving_bar_direction_axis_present": false,
+    "processed_moving_bar_direction_order_verified_from_payload_or_Fig6_script": false,
+    "moving_bar_six_condition_axis_is_sparsity_not_direction": true,
+    "moving_bar_unconsumed_twelve_condition_arrays_have_direction_labels": false,
     "analysis_time_axes_are_exact_acquisition_timestamps": false,
     "fliesUsed_opaque_integer_labels_present": true,
     "fliesUsed_can_differ_from_processed_fly_axis_and_contain_duplicates": true,
@@ -2427,10 +2727,17 @@
     "Tm1": false,
     "Tm2": false
   },
+  "source_moving_bar_direction_label_gates": {
+    "Mi1": false,
+    "Tm3": false,
+    "Tm1": false,
+    "Tm2": false
+  },
   "transfer_gates": {
     "every_T4_source_type_measured": false,
     "every_T5_source_type_measured": false,
     "every_covered_source_has_allowed_response_unit": false,
+    "every_covered_source_has_record_level_direction_labels": false,
     "processed_rows_linked_to_stable_subject_ids": false,
     "exact_sample_timestamps_and_baselines_verified": false,
     "source_type_to_MaleCNS_mapping_available": false,
@@ -2447,6 +2754,7 @@
     "every_T4_source_type_measured",
     "every_T5_source_type_measured",
     "every_covered_source_has_allowed_response_unit",
+    "every_covered_source_has_record_level_direction_labels",
     "processed_rows_linked_to_stable_subject_ids",
     "exact_sample_timestamps_and_baselines_verified",
     "source_type_to_MaleCNS_mapping_available",
@@ -2466,6 +2774,8 @@
     "script_analysis_axes_are_not_claimed_as_acquisition_timestamps": true,
     "opaque_fliesUsed_values_are_not_claimed_as_stable_biological_IDs": true,
     "calcium_and_optical_voltage_fluorescence_are_not_membrane_voltage_units": true,
+    "moving_bar_protocol_presence_does_not_establish_record_level_direction": true,
+    "unlabeled_twelve_condition_arrays_are_not_split_into_assumed_direction_pairs": true,
     "partial_source_coverage_does_not_satisfy_the_unified_contract": true,
     "Dryad_archive_download_was_completed_for_bounded_local_validation": true,
     "no_DANDI_bulk_download": true,

@@ -143,6 +143,12 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gou_Dryad_moving_bar_fly_axis_sizes": visual[
                     "Gou_Dryad_moving_bar_fly_axis_sizes"
                 ],
+                "Gou_Dryad_Mi1_Tm3_direction_axis_identifiable": visual[
+                    "Gou_Dryad_Mi1_Tm3_direction_axis_identifiable"
+                ],
+                "Gou_Dryad_direction_invariance_evaluated": visual[
+                    "Gou_Dryad_direction_invariance_evaluated"
+                ],
                 "Gou_Dryad_stable_biological_individual_IDs_verified": visual[
                     "Gou_Dryad_stable_biological_individual_IDs_verified"
                 ],

@@ -2415,6 +2415,15 @@ payload 未安全检查、source temporal kernel 不可用”的状态。但这�
 相关系数 a.u.，不是允许的膜电位；Fig.1 与 Fig.3 记录个体是否互斥也没有 identity 证据。
 因此它们可作为数值时空 RF 证据，但不授权 source filter transfer 或参数拟合。证据见
 `artifacts/v7-fig1-source-temporal-readiness-audit.json`。
+Gou Dryad 的 Fig.6 moving-bar 处理载荷也进一步做了字段级方向审计。Mi1/Tm3 的公开
+MAT 虽分别保留 10/6 个 fly 轴，但作者 Fig.6 脚本实际读取的 `kernels`、
+`LightImpulseResps`、`DarkImpulseResps` 都是 141×6×fly，6 个条件明确对应
+`1/12…12/12` sparsity，而非方向。文件还含未被该脚本读取的 141×12×fly
+`whiteKernels/blackKernels`，但 MAT、README 和 Fig.6 脚本均未给这 12 列方向标签或顺序。
+Fig.7 对 T4/T5 target 数组有明确奇偶列→PD/ND 规则，但它属于另一文件和另一细胞族，不能
+移植给 Fig.6 source 数组。因此先前“moving-bar both directions”过度声明已修正为“刺激存在、
+处理后方向标签不可用”；未猜测列配对，也未执行方向不变性统计。证据见
+`artifacts/v7-gou-moving-bar-direction-audit.json`。
 完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个

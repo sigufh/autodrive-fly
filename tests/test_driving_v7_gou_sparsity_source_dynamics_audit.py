@@ -37,6 +37,11 @@ def test_gou_data_cover_only_four_of_nine_required_sources() -> None:
 def test_partial_fluorescence_evidence_does_not_open_any_gate() -> None:
     report = json.loads(REPORT.read_text())
     assert set(report["source_response_unit_gates"].values()) == {False}
+    assert set(report["source_moving_bar_direction_label_gates"].values()) == {False}
+    assert (
+        report["transfer_gates"]["every_covered_source_has_record_level_direction_labels"]
+        is False
+    )
     assert report["complete_external_source_dynamics_evidence"] is False
     assert report["authorize_source_dynamics_fit"] is False
     assert report["advance_to_T4_T5_functional_precheck"] is False
@@ -75,6 +80,9 @@ def test_local_archive_and_processed_calcium_arrays_are_verified() -> None:
         assert item["arrays"]["kernels"]["shape"] == [141, 6, fly_count]
         assert item["arrays"]["LightImpulseResps"]["shape"] == [141, 6, fly_count]
         assert item["arrays"]["DarkImpulseResps"]["shape"] == [141, 6, fly_count]
+        assert item["arrays"]["whiteKernels"]["shape"] == [141, 12, fly_count]
+        assert item["arrays"]["blackKernels"]["shape"] == [141, 12, fly_count]
+        assert item["field_semantics"]["direction_named_field_names"] == []
 
 
 def test_script_time_axes_baselines_and_identity_boundaries_are_explicit() -> None:
@@ -98,6 +106,22 @@ def test_script_time_axes_baselines_and_identity_boundaries_are_explicit() -> No
     assert inventory["identity_conclusion"]["stable_biological_individual_ids_verified"] is False
     assert inventory["measurement_boundary"]["experimental_membrane_voltage"] is False
     assert report["stimulus_and_recording"]["baseline_windows_verified_from_payload"] is False
+    assert report["stimulus_and_recording"]["reported_moving_bar_direction_labels"] == []
+    assert (
+        report["stimulus_and_recording"]["processed_moving_bar_direction_axis_present"]
+        is False
+    )
+    assert (
+        report["stimulus_and_recording"][
+            "processed_moving_bar_direction_order_verified_from_payload_or_Fig6_script"
+        ]
+        is False
+    )
+    assert all(
+        item["moving_bar_stimulus_present"]
+        and not item["processed_moving_bar_direction_labels_available"]
+        for item in report["source_evidence"].values()
+    )
 
 
 def test_dandi_has_asset_subjects_but_no_dryad_row_crosswalk() -> None:

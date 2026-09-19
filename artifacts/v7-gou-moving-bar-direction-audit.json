@@ -1,0 +1,163 @@
+{
+  "protocol": {
+    "name": "v7-gou-moving-bar-direction-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-gou-moving-bar-direction-audit.yaml": "de6109d8b7aac359b7957b8062cfceb1252a45f590de0d30fb73d8765f52c9e3",
+      "src/fly_emotion/driving/v7_gou_moving_bar_direction_audit.py": "6f06267db1f089cadb478a561aeee0d1d3bfeff2896186bfb55541b078f6ba89",
+      "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "55d69f40ddafd63354646f1b7ae38299354ee4df76e443a0049b567e32d04560",
+      "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903",
+      "data/raw/gou-sparsity/version-402168/README.md": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m": "556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig7_T4T5_sparsitySweep.m": "f9105977c7b5018dc11987525f65573835b74121151f16215d7c82202c0fe865",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Mi1GC6f_movingbar.mat": "7b660803daccba452d8fcbdae6f093133c6a0a1bedea816380b5f700f7470d39",
+      "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Tm3GC6f_movingbar.mat": "6691464d5eb768cdc62d77c711c53631597bbd9457440b82627ed8f2d20ef5e3"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "source_results": {
+    "Mi1": {
+      "fly_axis_size": 10,
+      "array_shapes": {
+        "indFilters": [
+          141,
+          10
+        ],
+        "kernels": [
+          141,
+          6,
+          10
+        ],
+        "LightImpulseResps": [
+          141,
+          6,
+          10
+        ],
+        "DarkImpulseResps": [
+          141,
+          6,
+          10
+        ],
+        "whiteKernels": [
+          141,
+          12,
+          10
+        ],
+        "blackKernels": [
+          141,
+          12,
+          10
+        ],
+        "probeResps": [
+          141,
+          4,
+          10
+        ]
+      },
+      "Fig6_consumed_arrays": [
+        "indFilters",
+        "kernels",
+        "LightImpulseResps",
+        "DarkImpulseResps"
+      ],
+      "Fig6_unconsumed_arrays": [
+        "whiteKernels",
+        "blackKernels",
+        "probeResps"
+      ],
+      "direction_named_fields": [],
+      "six_condition_axis_identified_as_sparsity": true,
+      "twelve_condition_array_column_labels_available": false,
+      "record_level_direction_axis_identifiable": false
+    },
+    "Tm3": {
+      "fly_axis_size": 6,
+      "array_shapes": {
+        "indFilters": [
+          141,
+          6
+        ],
+        "kernels": [
+          141,
+          6,
+          6
+        ],
+        "LightImpulseResps": [
+          141,
+          6,
+          6
+        ],
+        "DarkImpulseResps": [
+          141,
+          6,
+          6
+        ],
+        "whiteKernels": [
+          141,
+          12,
+          6
+        ],
+        "blackKernels": [
+          141,
+          12,
+          6
+        ],
+        "probeResps": [
+          141,
+          4,
+          6
+        ]
+      },
+      "Fig6_consumed_arrays": [
+        "indFilters",
+        "kernels",
+        "LightImpulseResps",
+        "DarkImpulseResps"
+      ],
+      "Fig6_unconsumed_arrays": [
+        "whiteKernels",
+        "blackKernels",
+        "probeResps"
+      ],
+      "direction_named_fields": [],
+      "six_condition_axis_identified_as_sparsity": true,
+      "twelve_condition_array_column_labels_available": false,
+      "record_level_direction_axis_identifiable": false
+    }
+  },
+  "script_semantics": {
+    "Fig6_condition_order": [
+      "1/12",
+      "2/12",
+      "4/12",
+      "6/12",
+      "8/12",
+      "12/12"
+    ],
+    "Fig6_condition_axis_is_sparsity": true,
+    "Fig6_reads_unconsumed_twelve_condition_arrays": false,
+    "Fig7_target_direction_rule_explicit": true,
+    "Fig7_target_direction_rule_applied_to_Fig6_source_arrays": false
+  },
+  "inventory_consistency": {
+    "direction_order_not_encoded_in_arrays_or_Fig6_script": true,
+    "processed_source_direction_labels_available": false
+  },
+  "Gou_Mi1_Tm3_record_level_direction_axis_identifiable": false,
+  "authorize_direction_invariance_audit": false,
+  "direction_invariance_evaluated": false,
+  "authorize_T4_source_kernel_transfer": false,
+  "stop_reason": "Fig6_source_array_direction_labels_not_identifiable",
+  "boundary": {
+    "processed_calcium_is_not_membrane_voltage": true,
+    "experiment_name_does_not_define_array_axis_semantics": true,
+    "T4_T5_target_direction_code_must_not_be_reused_for_source_arrays": true,
+    "unconsumed_array_column_pairs_must_not_be_guessed_as_directions": true,
+    "no_direction_invariance_metric_without_verified_labels": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

@@ -1,0 +1,52 @@
+version: 1
+name: v7-gou-moving-bar-direction-audit
+observed_on: "2026-09-20"
+source_audit: artifacts/v7-gou-sparsity-source-dynamics-audit.json
+inventory:
+  path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
+  bytes: 57800
+  sha256: 270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903
+readme:
+  path: data/raw/gou-sparsity/version-402168/README.md
+  bytes: 12130
+  sha256: 1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261
+fig6_script:
+  path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m
+  bytes: 8361
+  sha256: 556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab
+fig7_direction_reference_script:
+  path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig7_T4T5_sparsitySweep.m
+  bytes: 6550
+  sha256: f9105977c7b5018dc11987525f65573835b74121151f16215d7c82202c0fe865
+required_sources: [Mi1, Tm3]
+moving_bar_files:
+  Mi1:
+    path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Mi1GC6f_movingbar.mat
+    bytes: 507461
+    sha256: 7b660803daccba452d8fcbdae6f093133c6a0a1bedea816380b5f700f7470d39
+    fly_axis_size: 10
+  Tm3:
+    path: data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/data/fig6_otherNeurons_movingBar/Tm3GC6f_movingbar.mat
+    bytes: 305616
+    sha256: 6691464d5eb768cdc62d77c711c53631597bbd9457440b82627ed8f2d20ef5e3
+    fly_axis_size: 6
+expected_consumed_arrays:
+  indFilters: [141]
+  kernels: [141, 6]
+  LightImpulseResps: [141, 6]
+  DarkImpulseResps: [141, 6]
+expected_unconsumed_arrays:
+  whiteKernels: [141, 12]
+  blackKernels: [141, 12]
+  probeResps: [141, 4]
+expected_sparsity_order: [1/12, 2/12, 4/12, 6/12, 8/12, 12/12]
+boundary:
+  processed_calcium_is_not_membrane_voltage: true
+  experiment_name_does_not_define_array_axis_semantics: true
+  T4_T5_target_direction_code_must_not_be_reused_for_source_arrays: true
+  unconsumed_array_column_pairs_must_not_be_guessed_as_directions: true
+  no_direction_invariance_metric_without_verified_labels: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

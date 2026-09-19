@@ -1,6 +1,6 @@
 version: 1
 name: v7-gou-sparsity-source-dynamics-audit
-observed_on: "2026-09-19"
+observed_on: "2026-09-20"
 paper:
   doi: 10.1016/j.cub.2024.10.053
   pmcid: PMC11834764
@@ -44,8 +44,8 @@ dryad:
   publisher_archive_hash_matches_file_record: true
 local_payload_inventory:
   path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
-  bytes: 49835
-  sha256: 7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097
+  bytes: 57800
+  sha256: 270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903
   archive_entry_count: 131
   real_file_count: 55
   real_mat_file_count: 25
@@ -91,7 +91,8 @@ source_evidence:
     processed_arrays_keep_fly_axis: true
     flash_time_series: true
     spatial_RF: true
-    moving_bar_both_directions: true
+    moving_bar_stimulus_present: true
+    processed_moving_bar_direction_labels_available: false
     moving_bar_speed_sweep_degrees_per_second: [30, 60, 120, 240]
     response_unit_contract_satisfied: false
   Tm3:
@@ -100,7 +101,8 @@ source_evidence:
     processed_arrays_keep_fly_axis: true
     flash_time_series: true
     spatial_RF: false
-    moving_bar_both_directions: true
+    moving_bar_stimulus_present: true
+    processed_moving_bar_direction_labels_available: false
     moving_bar_speed_sweep_degrees_per_second: []
     response_unit_contract_satisfied: false
   Tm1:
@@ -109,7 +111,8 @@ source_evidence:
     processed_arrays_keep_fly_axis: true
     flash_time_series: true
     spatial_RF: false
-    moving_bar_both_directions: true
+    moving_bar_stimulus_present: true
+    processed_moving_bar_direction_labels_available: false
     moving_bar_speed_sweep_degrees_per_second: []
     response_unit_contract_satisfied: false
   Tm2:
@@ -118,7 +121,8 @@ source_evidence:
     processed_arrays_keep_fly_axis: true
     flash_time_series: true
     spatial_RF: false
-    moving_bar_both_directions: true
+    moving_bar_stimulus_present: true
+    processed_moving_bar_direction_labels_available: false
     moving_bar_speed_sweep_degrees_per_second: []
     response_unit_contract_satisfied: false
 stimulus_and_recording:
@@ -127,7 +131,6 @@ stimulus_and_recording:
   moving_stimulus_update_rate_hz: 180
   moving_bar_width_degrees: 5
   standard_moving_bar_speed_degrees_per_second: 60
-  standard_moving_bar_directions: [left, right]
   response_storage: per_fly_by_time_processed_matrices
   local_processed_numeric_payload_verified: true
   local_processed_numeric_sources: [Mi1, Tm3, Tm1, Tm2]
@@ -154,8 +157,11 @@ stimulus_and_recording:
   moving_bar_time_bounds_seconds: [-0.3333333333333333, 2.0]
   moving_bar_baseline_MATLAB_indices: [1, 20]
   moving_bar_condition_order_fill_fraction: [1/12, 2/12, 4/12, 6/12, 8/12, 12/12]
-  moving_bar_direction_axis_present: false
-  moving_bar_direction_order_verified_from_payload_or_Fig6_script: false
+  reported_moving_bar_direction_labels: []
+  processed_moving_bar_direction_axis_present: false
+  processed_moving_bar_direction_order_verified_from_payload_or_Fig6_script: false
+  moving_bar_six_condition_axis_is_sparsity_not_direction: true
+  moving_bar_unconsumed_twelve_condition_arrays_have_direction_labels: false
   analysis_time_axes_are_exact_acquisition_timestamps: false
   fliesUsed_opaque_integer_labels_present: true
   fliesUsed_can_differ_from_processed_fly_axis_and_contain_duplicates: true
@@ -180,6 +186,8 @@ boundary:
   script_analysis_axes_are_not_claimed_as_acquisition_timestamps: true
   opaque_fliesUsed_values_are_not_claimed_as_stable_biological_IDs: true
   calcium_and_optical_voltage_fluorescence_are_not_membrane_voltage_units: true
+  moving_bar_protocol_presence_does_not_establish_record_level_direction: true
+  unlabeled_twelve_condition_arrays_are_not_split_into_assumed_direction_pairs: true
   partial_source_coverage_does_not_satisfy_the_unified_contract: true
   Dryad_archive_download_was_completed_for_bounded_local_validation: true
   no_DANDI_bulk_download: true

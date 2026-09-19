@@ -92,6 +92,22 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
                     or array["infinite_count"]
                 ):
                     raise ValueError(f"Gou {protocol_name} nonfinite array: {source}")
+    moving_bar = inventory["moving_bar"]
+    fields = config["stimulus_and_recording"]
+    expected_sparsity = fields["moving_bar_condition_order_fill_fraction"]
+    for source, item in moving_bar.items():
+        condition_axis = item["condition_axis"]
+        semantics = item["field_semantics"]
+        if (
+            condition_axis["fill_fractions"] != expected_sparsity
+            or condition_axis["direction_axis_present"]
+            or condition_axis["direction_order_recoverable_from_file_or_Fig6_script"]
+            or semantics["direction_named_field_names"]
+            or semantics["unconsumed_12_condition_arrays_have_published_column_labels"]
+            or item["arrays"]["whiteKernels"]["shape"][:2] != [141, 12]
+            or item["arrays"]["blackKernels"]["shape"][:2] != [141, 12]
+        ):
+            raise ValueError(f"Gou moving-bar direction boundary changed: {source}")
     contract_path = Path(config["required_contract"])
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
     required_by_family = {
@@ -111,11 +127,17 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
     source_unit_gates = {
         source: bool(item["response_unit_contract_satisfied"]) for source, item in evidence.items()
     }
-    fields = config["stimulus_and_recording"]
+    source_direction_label_gates = {
+        source: bool(item["processed_moving_bar_direction_labels_available"])
+        for source, item in evidence.items()
+    }
     transfer_gates = {
         "every_T4_source_type_measured": not missing_by_family["T4"],
         "every_T5_source_type_measured": not missing_by_family["T5"],
         "every_covered_source_has_allowed_response_unit": all(source_unit_gates.values()),
+        "every_covered_source_has_record_level_direction_labels": all(
+            source_direction_label_gates.values()
+        ),
         "processed_rows_linked_to_stable_subject_ids": bool(
             identity_conclusions[
                 "Dryad_fliesUsed_to_DANDI_subject_crosswalk_verified"
@@ -170,6 +192,7 @@ def evaluate_v7_gou_sparsity_source_dynamics_audit(root: Path) -> dict:
         "required_source_count": required_count,
         "coverage_fraction": covered_count / required_count,
         "source_response_unit_gates": source_unit_gates,
+        "source_moving_bar_direction_label_gates": source_direction_label_gates,
         "transfer_gates": transfer_gates,
         "partial_source_dynamics_evidence_present": covered_count > 0,
         "complete_external_source_dynamics_evidence": transferable,

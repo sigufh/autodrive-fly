@@ -44,6 +44,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     pirogova = evidence["pirogova_source_calcium"]
     pirogova_sources = set(pirogova["source_payloads"])
     gou = evidence["gou_partial"]
+    gou_direction = evidence["gou_moving_bar_direction"]
     gou_sources = set(gou["source_evidence"])
     # Gou's processed fluorescence arrays count as local numerical calcium only
     # after both download and publisher-hash verification. They remain outside
@@ -182,6 +183,16 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and gou["local_payload_inventory"]["measurement_boundary"][
                     "experimental_membrane_voltage"
                 ]
+            ),
+            "Gou_Dryad_record_level_direction_axis_identifiable": (
+                source in {"Mi1", "Tm3"}
+                and gou_direction["source_results"][source][
+                    "record_level_direction_axis_identifiable"
+                ]
+            ),
+            "Gou_Dryad_direction_invariance_evaluated": (
+                source in {"Mi1", "Tm3"}
+                and gou_direction["direction_invariance_evaluated"]
             ),
             "published_lobula_Lo1_dynamic_phenotype_only": (
                 source == "CT1" and ct1_lobula_phenotype

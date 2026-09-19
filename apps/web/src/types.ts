@@ -54,6 +54,8 @@ export type V7Status = {
     Gou_Dryad_local_processed_calcium_sources: string[];
     Gou_Dryad_flash_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
     Gou_Dryad_moving_bar_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
+    Gou_Dryad_Mi1_Tm3_direction_axis_identifiable: boolean;
+    Gou_Dryad_direction_invariance_evaluated: boolean;
     Gou_Dryad_stable_biological_individual_IDs_verified: boolean;
     Gou_DANDI_asset_level_stable_participant_IDs_verified: boolean;
     Gou_DANDI_unique_subject_ID_count: number;

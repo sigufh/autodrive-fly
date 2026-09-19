@@ -3,7 +3,7 @@
     "name": "v7-gou-dandi-identity-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-gou-dandi-identity-audit.yaml": "3aadac25622f90ae3c1cf5e182d2de7504bc3a683f83a68772cf652155f51b31",
+      "configs/driving-v7-gou-dandi-identity-audit.yaml": "717d727388ad169e5076bb82bc90e9a2e044ee28412998a3f348d12a3bd3c15d",
       "src/fly_emotion/driving/v7_gou_dandi_identity_audit.py": "951ab94beab46176627a8ec0c915afe8e1df1ceb4b905ef5be8afee235b99131",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/version.json": "118a80f39da52fd092e1d36427655276556148786920d940ec2a8f2eb42a7639",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets-index.json": "0d21ae141a3da733f89e0c38e102bee7c27638abf4ae87f39ee9d42575117949",
@@ -16,7 +16,7 @@
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-git-annex-commits.json": "73e964599b340ec846d53768b33b8a4bd4da69aa5a2949e5ae20f7cb34ae9e0b",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-git-annex.json": "e9b28a60a9a6a05e6613e98dae85504c82a007ded9c71324cb384a566c790baf",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/clarklabcode-repositories.json": "8f40d65f7bfb0360de2ea90191c04a569c3af5f815ad5c48b4020eea295b3795",
-      "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
+      "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-nwb-range-metadata.json": "3ffce7165754bd5e3b15437e8c009ac90f015795cc27bc17b7dfc47513f79c22"
     },
     "parameter_fit": false,

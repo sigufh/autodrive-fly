@@ -146,6 +146,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     gou_sparsity_source_dynamics_audit = reports[
         "gou_sparsity_source_dynamics_audit"
     ]
+    gou_moving_bar_direction_audit = reports["gou_moving_bar_direction_audit"]
     t5_contrast_opponency_source_data_audit = reports[
         "t5_contrast_opponency_source_data_audit"
     ]
@@ -357,6 +358,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["public_t4_model_source_coverage_audit"],
                 config["evidence"]["dryad_l1l2_source_dynamics_audit"],
                 config["evidence"]["gou_sparsity_source_dynamics_audit"],
+                config["evidence"]["gou_moving_bar_direction_audit"],
                 config["evidence"]["t5_contrast_opponency_source_data_audit"],
                 config["evidence"]["braun_t5_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
@@ -931,6 +933,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     gou_sparsity_source_dynamics_audit["stimulus_and_recording"][
                         "moving_bar_fly_axis_sizes"
                     ]
+                ),
+                "Gou_Dryad_Mi1_Tm3_direction_axis_identifiable": (
+                    gou_moving_bar_direction_audit[
+                        "Gou_Mi1_Tm3_record_level_direction_axis_identifiable"
+                    ]
+                ),
+                "Gou_Dryad_direction_invariance_evaluated": (
+                    gou_moving_bar_direction_audit["direction_invariance_evaluated"]
                 ),
                 "Gou_Dryad_stable_biological_individual_IDs_verified": (
                     gou_sparsity_source_dynamics_audit["stimulus_and_recording"][
@@ -2625,6 +2635,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gou_Dryad_local_processed_calcium_sources",
                     "Gou_Dryad_flash_fly_axis_sizes",
                     "Gou_Dryad_moving_bar_fly_axis_sizes",
+                    "Gou_Dryad_Mi1_Tm3_direction_axis_identifiable",
+                    "Gou_Dryad_direction_invariance_evaluated",
                     "Gou_Dryad_stable_biological_individual_IDs_verified",
                     "Gou_DANDI_asset_level_stable_participant_IDs_verified",
                     "Gou_DANDI_unique_subject_ID_count",

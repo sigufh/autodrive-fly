@@ -119,6 +119,14 @@ def test_gou_processed_calcium_is_local_but_not_allowed_voltage() -> None:
             row["evidence_components"]["Gou_Dryad_experimental_membrane_voltage"]
             is False
         )
+        if source in {"Mi1", "Tm3"}:
+            assert (
+                row["evidence_components"][
+                    "Gou_Dryad_record_level_direction_axis_identifiable"
+                ]
+                is False
+            )
+            assert row["evidence_components"]["Gou_Dryad_direction_invariance_evaluated"] is False
     assert (
         report["family_summary"]["T4"]["publisher_described_unverified_numerical_payload_count"]
         == 0

@@ -144,6 +144,10 @@ v7-audit-t4-recording-fields:
 v7-audit-t4-state-unit-mapping:
 	.venv/bin/autodrive-fly v7-audit-t4-state-unit-mapping
 
+.PHONY: v7-audit-gou-moving-bar-directions
+v7-audit-gou-moving-bar-directions:
+	.venv/bin/autodrive-fly v7-audit-gou-moving-bar-directions
+
 .PHONY: v7-audit-t5-recording-fields
 v7-audit-t5-recording-fields:
 	.venv/bin/autodrive-fly v7-audit-t5-recording-fields

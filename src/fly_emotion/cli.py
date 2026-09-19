@@ -121,6 +121,9 @@ from .driving.v7_goal_audit import evaluate_v7_goal_coverage
 from .driving.v7_gou_dandi_identity_audit import (
     evaluate_v7_gou_dandi_identity_audit,
 )
+from .driving.v7_gou_moving_bar_direction_audit import (
+    evaluate_v7_gou_moving_bar_direction_audit,
+)
 from .driving.v7_gou_sparsity_source_dynamics_audit import (
     evaluate_v7_gou_sparsity_source_dynamics_audit,
 )
@@ -579,6 +582,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-public-t4-model-source-coverage")
     subparsers.add_parser("v7-audit-dryad-l1l2-source-dynamics")
     subparsers.add_parser("v7-audit-gou-sparsity-source-dynamics")
+    subparsers.add_parser("v7-audit-gou-moving-bar-directions")
     subparsers.add_parser("v7-audit-gou-dandi-identity")
     subparsers.add_parser("v7-audit-pirogova-source-calcium")
     subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
@@ -1764,6 +1768,14 @@ def main() -> None:
     if args.command == "v7-audit-gou-sparsity-source-dynamics":
         report = evaluate_v7_gou_sparsity_source_dynamics_audit(root)
         target = root / "artifacts/v7-gou-sparsity-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-gou-moving-bar-directions":
+        report = evaluate_v7_gou_moving_bar_direction_audit(root)
+        target = root / "artifacts/v7-gou-moving-bar-direction-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

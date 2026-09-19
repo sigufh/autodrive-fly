@@ -81,6 +81,8 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         "Tm1": 8,
         "Tm2": 12,
     }
+    assert boundaries["Gou_Dryad_Mi1_Tm3_direction_axis_identifiable"] is False
+    assert boundaries["Gou_Dryad_direction_invariance_evaluated"] is False
     assert boundaries["Gou_Dryad_stable_biological_individual_IDs_verified"] is False
     assert boundaries["Gou_Dryad_experimental_membrane_voltage"] is False
     assert boundaries["Gou_DANDI_asset_level_stable_participant_IDs_verified"] is True

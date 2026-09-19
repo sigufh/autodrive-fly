@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -130,7 +131,19 @@ def _moving_bar(root: Path, relative: str, source: str) -> dict[str, Any]:
     path = root / relative
     loaded = _analysis(path)
     analysis = loaded["analysis"]
-    array_names = ["indFilters", "kernels", "LightImpulseResps", "DarkImpulseResps"]
+    consumed_array_names = [
+        "indFilters",
+        "kernels",
+        "LightImpulseResps",
+        "DarkImpulseResps",
+    ]
+    unconsumed_array_names = [
+        "whiteKernels",
+        "blackKernels",
+        "probeResps",
+        "temporal_shift_L_allFlies_out",
+    ]
+    array_names = consumed_array_names + unconsumed_array_names
     arrays = {name: _array_summary(analysis[name]) for name in array_names}
     fly_axis_size = arrays["kernels"]["shape"][2]
     return {
@@ -147,6 +160,20 @@ def _moving_bar(root: Path, relative: str, source: str) -> dict[str, Any]:
             "fill_fractions": [f"{level}/12" for level in MOVING_BAR_LEVELS],
             "direction_axis_present": False,
             "direction_order_recoverable_from_file_or_Fig6_script": False,
+        },
+        "field_semantics": {
+            "published_Fig6_script_consumed_array_names": consumed_array_names,
+            "additional_unconsumed_array_names": unconsumed_array_names,
+            "direction_named_field_names": [
+                name
+                for name in analysis
+                if re.search(
+                    r"(?:direction|left|right|(?:^|_)pd(?:_|$)|(?:^|_)nd(?:_|$))",
+                    name,
+                    re.I,
+                )
+            ],
+            "unconsumed_12_condition_arrays_have_published_column_labels": False,
         },
         "arrays": arrays,
     }
@@ -252,6 +279,7 @@ def build_inventory(root: Path) -> dict[str, Any]:
                 "impulse_baseline_matlab_indices_inclusive": [1, 20],
                 "condition_order": [f"{level}/12" for level in MOVING_BAR_LEVELS],
                 "direction_order_not_encoded_in_arrays_or_Fig6_script": True,
+                "Fig6_consumes_six_sparsity_not_twelve_unlabelled_conditions": True,
             },
             "analysis_axes_are_not_exact_acquisition_timestamps": True,
         },

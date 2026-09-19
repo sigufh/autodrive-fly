@@ -39,6 +39,8 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gou_Dryad_local_processed_calcium_sources",
         "Gou_Dryad_flash_fly_axis_sizes",
         "Gou_Dryad_moving_bar_fly_axis_sizes",
+        "Gou_Dryad_Mi1_Tm3_direction_axis_identifiable",
+        "Gou_Dryad_direction_invariance_evaluated",
         "Gou_Dryad_stable_biological_individual_IDs_verified",
         "Gou_DANDI_asset_level_stable_participant_IDs_verified",
         "Gou_DANDI_unique_subject_ID_count",
@@ -421,6 +423,8 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "Tm1": 8,
         "Tm2": 12,
     }
+    assert visual["observations"]["Gou_Dryad_Mi1_Tm3_direction_axis_identifiable"] is False
+    assert visual["observations"]["Gou_Dryad_direction_invariance_evaluated"] is False
     assert (
         visual["observations"][
             "Gou_Dryad_stable_biological_individual_IDs_verified"
