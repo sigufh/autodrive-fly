@@ -117,6 +117,7 @@ evidence:
   source_evidence_matrix: artifacts/v7-source-evidence-matrix.json
   source_type_average_mapping_contract: artifacts/v7-source-type-average-mapping-contract.json
   tm9_coordinate_identifiability_audit: artifacts/v7-tm9-coordinate-identifiability-audit.json
+  malecns_synapse_column_audit: artifacts/v7-malecns-synapse-column-audit.json
   three_hop_source_coverage: artifacts/v7-three-hop-source-coverage.json
   four_hop_scalar_precheck: artifacts/v7-four-hop-scalar-precheck.json
   lc4_position_speed_precheck: artifacts/v7-lc4-position-speed-precheck.json

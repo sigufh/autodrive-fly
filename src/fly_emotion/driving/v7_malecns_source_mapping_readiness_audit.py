@@ -37,6 +37,8 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
         raise ValueError("MaleCNS annotation SHA-256 mismatch")
     contract_path = Path(config["external_contract"])
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
+    synapse_column_path = Path(config["official_synapse_column_evidence"])
+    synapse_column = json.loads((root / synapse_column_path).read_text(encoding="utf-8"))
     expected_types = {
         source
         for family in contract["required_families"].values()
@@ -98,7 +100,20 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
             annotated[column].fillna("").ne("").all()
             for column in ("instance", "flywireType", "vfbId")
         )
-        unlocated_body_ids = graph.body_ids[selected[~located[selected]]].tolist()
+        one_hop_unlocated_body_ids = graph.body_ids[selected[~located[selected]]].tolist()
+        officially_recovered_body_ids = (
+            [int(synapse_column["target"]["body_id"])]
+            if source_type == "Tm9"
+            and synapse_column[
+                "Tm9_532266_official_synapse_column_coordinate_identifiable"
+            ]
+            else []
+        )
+        unlocated_body_ids = [
+            body_id
+            for body_id in one_hop_unlocated_body_ids
+            if body_id not in officially_recovered_body_ids
+        ]
         source_reports[source_type] = {
             "family": expected["family"],
             "body_count": actual["count"],
@@ -109,11 +124,19 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
             "external_annotation_ids_complete": bool(external_ids_complete),
             "native_optic_hex_count": actual["native"],
             "one_hop_inferred_coordinate_count": actual["inferred"],
-            "located_count": actual["count"] - actual["unlocated"],
-            "located_fraction": (actual["count"] - actual["unlocated"]) / actual["count"],
+            "official_synapse_column_recovered_count": len(officially_recovered_body_ids),
+            "official_synapse_column_recovered_body_ids": officially_recovered_body_ids,
+            "official_synapse_column_recovered_coordinates": (
+                [synapse_column["Tm9_532266_recovered_coordinate"]]
+                if officially_recovered_body_ids
+                else []
+            ),
+            "one_hop_unlocated_body_ids": one_hop_unlocated_body_ids,
+            "located_count": actual["count"] - len(unlocated_body_ids),
+            "located_fraction": (actual["count"] - len(unlocated_body_ids)) / actual["count"],
             "unlocated_body_ids": unlocated_body_ids,
             "columnar_retinotopy_available": bool(
-                source_type != "CT1" and actual["unlocated"] == 0
+                source_type != "CT1" and len(unlocated_body_ids) == 0
             ),
         }
     ct1_ids = sorted(graph.body_ids[np.flatnonzero(node_types == "CT1")].astype(int).tolist())
@@ -149,6 +172,7 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 str(Path(config["graph_metadata"])): _sha256(root / config["graph_metadata"]),
                 str(ONE_HOP_IMPLEMENTATION): _sha256(root / ONE_HOP_IMPLEMENTATION),
                 str(contract_path): _sha256(root / contract_path),
+                str(synapse_column_path): _sha256(root / synapse_column_path),
             },
             "MaleCNS_release": manifest["datasets"]["malecns"]["release"],
             "parameter_fit": False,

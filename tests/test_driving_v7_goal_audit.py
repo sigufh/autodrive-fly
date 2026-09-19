@@ -449,10 +449,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     ] == []
     assert visual["observations"]["MaleCNS_nine_source_type_body_sets_available"] is True
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False
-    assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 1
+    assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 0
     assert visual["observations"]["MaleCNS_Tm9_532266_existing_rule_identifiable"] is False
     assert visual["observations"]["MaleCNS_Tm9_532266_post_hoc_repair_authorized"] is False
-    assert visual["observations"]["MaleCNS_Tm9_complete_columnar_retinotopy_after_audit"] is False
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm9_532266_official_synapse_coordinate_identifiable"
+        ]
+        is True
+    )
+    assert visual["observations"]["MaleCNS_Tm9_532266_official_synapse_coordinate"] == [15, 2]
+    assert visual["observations"]["MaleCNS_Tm9_complete_columnar_retinotopy_after_audit"] is True
     assert visual["observations"]["MaleCNS_latest_public_release"] == "male-cns:v1.0"
     assert visual["observations"]["MaleCNS_current_annotation_matches_frozen_v1_0"] is True
     assert visual["observations"][

@@ -1,0 +1,97 @@
+version: 1
+name: v7-malecns-synapse-column-audit
+observed_on: "2026-09-19"
+target_body_id: 532266
+annotations: data/raw/malecns-v1.0/body-annotations.feather
+synapse_annotation_info:
+  path: data/raw/malecns-v1.0/optic-column-pins/synapses-info.json
+  bytes: 9221
+  sha256: 78b5607bdf3380e037e3edd84aded38a92d6e6ece644ac9f49613d6cd18bdb7c
+optic_column_pin_info:
+  path: data/raw/malecns-v1.0/optic-column-pins/info.json
+  bytes: 4308
+  sha256: 34ec4b3404c35b02e5068014313590552832e1a9c056b08bb28a3f481a75b5a2
+target_shards:
+  body_pre:
+    path: data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_pre/0a2.shard
+    bytes: 246833491
+    sha256: b9f8972bc60ee1ba12d36b3fd21dac336182f3627a6f0987aa428672d28328ee
+    etag_md5: ea7a78d6ff4dd6e93fa82fd4a57a8235
+  body_post:
+    path: data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_post/1ca.shard
+    bytes: 45667399
+    sha256: 818a9f67ed553a41f3510034288c2383f99b9223474cc190fd9ef78b25a753cc
+    etag_md5: 359055ed6b0c4ae58eb6a694771e8404
+pin_shards:
+  ME_L:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_ME_L_column_segment/0.shard
+    bytes: 6624988
+    sha256: e95e9f76d12715b260b509196fbc66960f813b9d704dd237b26d3e67776742ea
+  LO_L:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_L_column_segment/0.shard
+    bytes: 6667568
+    sha256: 2239834c70541d2fb5b806a5066813d89216a5e9632337b7f29f937adc162faf
+  LOP_L:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_LOP_L_column_segment/0.shard
+    bytes: 6672181
+    sha256: 2a78198d607ed8fb44ab3ecf527f30694d00a898ef59f87df6a7e7105175b168
+  ME_R:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_ME_R_column_segment/0.shard
+    bytes: 6642499
+    sha256: 5e26ce03160ef883550e0fa70820539034ebe77140724b55531bb9f23029a20b
+  LO_R:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_R_column_segment/0.shard
+    bytes: 6678667
+    sha256: 8b0337cc0271732f575c9ee2d44e5cada9c977ac10dacf240ed6944a66340999
+  LOP_R:
+    path: data/raw/malecns-v1.0/optic-column-pins/by_rel_LOP_R_column_segment/0.shard
+    bytes: 6686004
+    sha256: 97ef0602dd65c3684ddcbb203d10c0be9963f5b6d0736e986ca2aa6511371688
+validation_payloads:
+  synapse_counts:
+    path: data/raw/malecns-v1.0/optic-column-audit/native-tm9-synapse-column-counts.json
+    bytes: 2702982
+    sha256: bc76466fc3db2a1ce5e3b3a9678018109918658bf4b7b5c0b4f8db38a7b74d6c
+  pin_map:
+    path: data/raw/malecns-v1.0/optic-column-audit/native-tm9-column-pin-map.json
+    bytes: 854897
+    sha256: 43d213ac76bd2680f6cff7b28b14d315c789b5921a24eb0061a90492b276c515
+official_algorithm:
+  repository: https://github.com/reiserlab/male-drosophila-visual-system-connectome-code
+  tag: v1.0
+  commit: c69c85dfc2bf6755be8ab1cdf43013a1397c58bc
+  implementation:
+    path: data/raw/malecns-v1.0/official-code-v1.0/src/utils/ol_neuron.py
+    bytes: 14287
+    sha256: a7c74dc7eec4554edfb98ff5bac156a234281489c15860f313708ff3ff3ce4be
+  query:
+    path: data/raw/malecns-v1.0/official-code-v1.0/src/queries/ol_neuron.py
+    bytes: 2781
+    sha256: 0eed2f7f59f5726b034d74958e34d0652c2c6717a183baf465b06e5bc5c67c41
+  method: synapse_count
+  rule: count_all_neuron_synapses_by_ROI_and_native_hex_then_take_highest_count_per_ROI
+  target_ROI: ME(L)
+  require_unique_target_mode: true
+  require_pin_relationship_matching_body_side: true
+  require_unique_hex_across_matching_side_pin_relationships: true
+expected:
+  native_validation_Tm9_count: 1743
+  official_rule_evaluable_count: 1742
+  official_rule_exact_count: 1717
+  target_incoming_synapse_count: 49
+  target_outgoing_synapse_count: 140
+  target_input_column_counts: {0: 7, 1502: 31, 1603: 11}
+  target_output_column_counts: {0: 119, 1502: 21}
+  target_ME_column_counts: {1502: 52, 1603: 10}
+  target_consensus_column_id: 1502
+  target_recovered_hex: [15, 2]
+boundary:
+  official_MaleCNS_v1_0_annotation_chain_only: true
+  body_annotation_native_fields_remain_missing: true
+  synapse_column_consensus_is_not_body_annotation_field: true
+  no_nearest_neighbor_or_tissue_xyz_conversion: true
+  rule_predeclared_by_official_v1_0_code: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

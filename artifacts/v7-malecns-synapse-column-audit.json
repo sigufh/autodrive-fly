@@ -1,0 +1,1518 @@
+{
+  "protocol": {
+    "name": "v7-malecns-synapse-column-audit",
+    "observed_on": "2026-09-19",
+    "dependencies_sha256": {
+      "configs/driving-v7-malecns-synapse-column-audit.yaml": "1798fb76b5e6209a2b6921e06ef830e8e95f5b694dee7eb8760f9a3ac5ea71dc",
+      "src/fly_emotion/driving/v7_malecns_synapse_column_audit.py": "ae14e365241313529f22454aa7369e1e3df10c135a221e5e7094886a64681785",
+      "src/fly_emotion/driving/v7_neuroglancer_sharded.py": "53800ca81eeda347e1a148662b7349a02308daf4a1212a0dbb3328f8b97499f9",
+      "scripts/inspect_malecns_optic_columns.py": "3a958a67f9e58d8b1314418805f4001898d4cbbdeab14e9683f435e821fc615a",
+      "data/raw/malecns-v1.0/official-code-v1.0/src/utils/ol_neuron.py": "a7c74dc7eec4554edfb98ff5bac156a234281489c15860f313708ff3ff3ce4be",
+      "data/raw/malecns-v1.0/official-code-v1.0/src/queries/ol_neuron.py": "0eed2f7f59f5726b034d74958e34d0652c2c6717a183baf465b06e5bc5c67c41",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/raw/malecns-v1.0/optic-column-pins/synapses-info.json": "78b5607bdf3380e037e3edd84aded38a92d6e6ece644ac9f49613d6cd18bdb7c",
+      "data/raw/malecns-v1.0/optic-column-pins/info.json": "34ec4b3404c35b02e5068014313590552832e1a9c056b08bb28a3f481a75b5a2",
+      "data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_pre/0a2.shard": "b9f8972bc60ee1ba12d36b3fd21dac336182f3627a6f0987aa428672d28328ee",
+      "data/raw/malecns-v1.0/synapses-precomputed/by_rel_body_post/1ca.shard": "818a9f67ed553a41f3510034288c2383f99b9223474cc190fd9ef78b25a753cc",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_ME_L_column_segment/0.shard": "e95e9f76d12715b260b509196fbc66960f813b9d704dd237b26d3e67776742ea",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_L_column_segment/0.shard": "2239834c70541d2fb5b806a5066813d89216a5e9632337b7f29f937adc162faf",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_LOP_L_column_segment/0.shard": "2a78198d607ed8fb44ab3ecf527f30694d00a898ef59f87df6a7e7105175b168",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_ME_R_column_segment/0.shard": "5e26ce03160ef883550e0fa70820539034ebe77140724b55531bb9f23029a20b",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_LO_R_column_segment/0.shard": "8b0337cc0271732f575c9ee2d44e5cada9c977ac10dacf240ed6944a66340999",
+      "data/raw/malecns-v1.0/optic-column-pins/by_rel_LOP_R_column_segment/0.shard": "97ef0602dd65c3684ddcbb203d10c0be9963f5b6d0736e986ca2aa6511371688",
+      "data/raw/malecns-v1.0/optic-column-audit/native-tm9-synapse-column-counts.json": "bc76466fc3db2a1ce5e3b3a9678018109918658bf4b7b5c0b4f8db38a7b74d6c",
+      "data/raw/malecns-v1.0/optic-column-audit/native-tm9-column-pin-map.json": "43d213ac76bd2680f6cff7b28b14d315c789b5921a24eb0061a90492b276c515"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "official_sources": {
+    "synapse_annotation_schema": {
+      "@type": "neuroglancer_annotations_v1",
+      "dimensions": {
+        "x": [
+          8e-09,
+          "m"
+        ],
+        "y": [
+          8e-09,
+          "m"
+        ],
+        "z": [
+          8e-09,
+          "m"
+        ]
+      },
+      "lower_bound": [
+        2260.0,
+        4211.0,
+        4154.0
+      ],
+      "upper_bound": [
+        93821.0,
+        75001.0,
+        134535.0
+      ],
+      "annotation_type": "line",
+      "properties": [
+        {
+          "id": "conf_pre",
+          "type": "float32"
+        },
+        {
+          "id": "conf_post",
+          "type": "float32"
+        },
+        {
+          "id": "predicted_nt_prob",
+          "type": "float32"
+        },
+        {
+          "id": "nt_tbar_confidence_score",
+          "type": "float32"
+        },
+        {
+          "id": "body_pre_u32",
+          "type": "uint32"
+        },
+        {
+          "id": "body_post_u32",
+          "type": "uint32"
+        },
+        {
+          "id": "primary_roi",
+          "type": "int16",
+          "enum_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237
+          ],
+          "enum_labels": [
+            "<unspecified>",
+            "AL(L)",
+            "AL(R)",
+            "AME(L)",
+            "AME(R)",
+            "5",
+            "6",
+            "AOTU(L)",
+            "AOTU(R)",
+            "ATL(L)",
+            "ATL(R)",
+            "AVLP(L)",
+            "AVLP(R)",
+            "BU(L)",
+            "BU(R)",
+            "CA(L)",
+            "CA(R)",
+            "CAN(L)",
+            "CAN(R)",
+            "CRE(L)",
+            "CRE(R)",
+            "EB",
+            "EPA(L)",
+            "EPA(R)",
+            "FB",
+            "FLA(L)",
+            "FLA(R)",
+            "27",
+            "28",
+            "GNG",
+            "GOR(L)",
+            "GOR(R)",
+            "IB",
+            "ICL(L)",
+            "ICL(R)",
+            "IPS(L)",
+            "IPS(R)",
+            "LA(L)",
+            "LA(R)",
+            "LAL(L)",
+            "LAL(R)",
+            "LH(L)",
+            "LH(R)",
+            "LO(L)",
+            "LO(R)",
+            "LOP(L)",
+            "LOP(R)",
+            "ME(L)",
+            "ME(R)",
+            "NO",
+            "PB",
+            "PED(L)",
+            "PED(R)",
+            "PLP(L)",
+            "PLP(R)",
+            "PRW",
+            "PVLP(L)",
+            "PVLP(R)",
+            "58",
+            "59",
+            "60",
+            "61",
+            "SAD",
+            "SCL(L)",
+            "SCL(R)",
+            "SIP(L)",
+            "SIP(R)",
+            "SLP(L)",
+            "SLP(R)",
+            "SMP(L)",
+            "SMP(R)",
+            "SPS(L)",
+            "SPS(R)",
+            "VES(L)",
+            "VES(R)",
+            "WED(L)",
+            "WED(R)",
+            "a'L(L)",
+            "a'L(R)",
+            "aL(L)",
+            "aL(R)",
+            "b'L(L)",
+            "b'L(R)",
+            "bL(L)",
+            "bL(R)",
+            "gL(L)",
+            "gL(R)",
+            "87",
+            "88",
+            "89",
+            "90",
+            "91",
+            "92",
+            "AB(R)",
+            "AB(L)",
+            "CV-anterior",
+            "CRN",
+            "97",
+            "98",
+            "99",
+            "100",
+            "101",
+            "102",
+            "103",
+            "CV-posterior",
+            "LegNp(T1)(L)",
+            "LegNp(T1)(R)",
+            "LegNp(T2)(L)",
+            "LegNp(T2)(R)",
+            "LegNp(T3)(L)",
+            "LegNp(T3)(R)",
+            "Ov(L)",
+            "Ov(R)",
+            "IntTct",
+            "LTct",
+            "NTct(UTct-T1)(L)",
+            "NTct(UTct-T1)(R)",
+            "WTct(UTct-T2)(L)",
+            "WTct(UTct-T2)(R)",
+            "HTct(UTct-T3)(L)",
+            "HTct(UTct-T3)(R)",
+            "ANm",
+            "mVAC(T1)(L)",
+            "mVAC(T1)(R)",
+            "mVAC(T2)(L)",
+            "mVAC(T2)(R)",
+            "mVAC(T3)(L)",
+            "mVAC(T3)(R)",
+            "128",
+            "129",
+            "130",
+            "131",
+            "132",
+            "133",
+            "134",
+            "135",
+            "136",
+            "137",
+            "138",
+            "139",
+            "140",
+            "141",
+            "142",
+            "143",
+            "144",
+            "145",
+            "146",
+            "147",
+            "148",
+            "149",
+            "150",
+            "151",
+            "152",
+            "153",
+            "154",
+            "155",
+            "156",
+            "157",
+            "158",
+            "159",
+            "160",
+            "161",
+            "162",
+            "163",
+            "164",
+            "165",
+            "166",
+            "167",
+            "168",
+            "169",
+            "170",
+            "171",
+            "172",
+            "173",
+            "174",
+            "175",
+            "176",
+            "177",
+            "178",
+            "179",
+            "180",
+            "181",
+            "182",
+            "183",
+            "184",
+            "185",
+            "186",
+            "187",
+            "188",
+            "189",
+            "190",
+            "191",
+            "192",
+            "193",
+            "194",
+            "195",
+            "196",
+            "197",
+            "198",
+            "199",
+            "200",
+            "201",
+            "CvN(L)",
+            "CvN(R)",
+            "AbN1(L)",
+            "AbN1(R)",
+            "AbN2(L)",
+            "AbN2(R)",
+            "AbN3(L)",
+            "AbN3(R)",
+            "AbN4(L)",
+            "AbN4(R)",
+            "AbNT(L)",
+            "AbNT(R)",
+            "ADMN(L)",
+            "ADMN(R)",
+            "DMetaN(L)",
+            "DMetaN(R)",
+            "DProN(L)",
+            "DProN(R)",
+            "MesoAN(L)",
+            "MesoAN(R)",
+            "MesoLN(L)",
+            "MesoLN(R)",
+            "MetaLN(L)",
+            "MetaLN(R)",
+            "PDMN(L)",
+            "PDMN(R)",
+            "PrN(L)",
+            "PrN(R)",
+            "ProAN(L)",
+            "ProAN(R)",
+            "ProCN(L)",
+            "ProCN(R)",
+            "ProLN(L)",
+            "ProLN(R)",
+            "VProN(L)",
+            "VProN(R)"
+          ]
+        },
+        {
+          "id": "optic_column",
+          "type": "uint16"
+        },
+        {
+          "id": "optic_layer",
+          "type": "uint8"
+        },
+        {
+          "id": "compartment_pre",
+          "type": "uint8",
+          "enum_values": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "enum_labels": [
+            "unknown",
+            "axon",
+            "dendrite",
+            "linker",
+            "cell-body-fiber"
+          ]
+        },
+        {
+          "id": "compartment_post",
+          "type": "uint8",
+          "enum_values": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "enum_labels": [
+            "unknown",
+            "axon",
+            "dendrite",
+            "linker",
+            "cell-body-fiber"
+          ]
+        },
+        {
+          "id": "predicted_nt",
+          "type": "uint8",
+          "enum_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "enum_labels": [
+            "acetylcholine",
+            "dopamine",
+            "gaba",
+            "glutamate",
+            "histamine",
+            "octopamine",
+            "serotonin",
+            "unknown"
+          ]
+        },
+        {
+          "id": "nt_neuron_prediction",
+          "type": "uint8",
+          "enum_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "enum_labels": [
+            "acetylcholine",
+            "dopamine",
+            "gaba",
+            "glutamate",
+            "histamine",
+            "octopamine",
+            "serotonin",
+            "unknown"
+          ]
+        },
+        {
+          "id": "is_traced_pre",
+          "type": "uint8"
+        },
+        {
+          "id": "is_traced_post",
+          "type": "uint8"
+        },
+        {
+          "id": "tbar_fanout",
+          "type": "uint8"
+        },
+        {
+          "id": "traced_fanout",
+          "type": "uint8"
+        }
+      ],
+      "by_id": {
+        "key": "by_id",
+        "sharding": {
+          "@type": "neuroglancer_uint64_sharded_v1",
+          "hash": "murmurhash3_x86_128",
+          "preshift_bits": 10,
+          "shard_bits": 10,
+          "minishard_bits": 9,
+          "data_encoding": "gzip",
+          "minishard_index_encoding": "gzip"
+        }
+      },
+      "relationships": [
+        {
+          "key": "by_rel_body_pre",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 9,
+            "minishard_bits": 2,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "body_pre"
+        },
+        {
+          "key": "by_rel_body_post",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 9,
+            "minishard_bits": 8,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "body_post"
+        }
+      ],
+      "spatial": [
+        {
+          "key": "by_spatial_level_0",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 0,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            91561.0,
+            70790.0,
+            130381.0
+          ],
+          "grid_shape": [
+            1,
+            1,
+            1
+          ],
+          "limit": 10000
+        },
+        {
+          "key": "by_spatial_level_1",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 1,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            91561.0,
+            70790.0,
+            65190.5
+          ],
+          "grid_shape": [
+            1,
+            1,
+            2
+          ],
+          "limit": 15837
+        },
+        {
+          "key": "by_spatial_level_2",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 3,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            45780.5,
+            35395.0,
+            65190.5
+          ],
+          "grid_shape": [
+            2,
+            2,
+            2
+          ],
+          "limit": 28743
+        },
+        {
+          "key": "by_spatial_level_3",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 4,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            45780.5,
+            35395.0,
+            32595.25
+          ],
+          "grid_shape": [
+            2,
+            2,
+            4
+          ],
+          "limit": 52288
+        },
+        {
+          "key": "by_spatial_level_4",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 6,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            22890.25,
+            17697.5,
+            32595.25
+          ],
+          "grid_shape": [
+            4,
+            4,
+            4
+          ],
+          "limit": 80835
+        },
+        {
+          "key": "by_spatial_level_5",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 6,
+            "shard_bits": 1,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            22890.25,
+            17697.5,
+            16297.625
+          ],
+          "grid_shape": [
+            4,
+            4,
+            8
+          ],
+          "limit": 126691
+        },
+        {
+          "key": "by_spatial_level_6",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 6,
+            "shard_bits": 3,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            11445.125,
+            8848.75,
+            16297.625
+          ],
+          "grid_shape": [
+            8,
+            8,
+            8
+          ],
+          "limit": 155770
+        },
+        {
+          "key": "by_spatial_level_7",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 6,
+            "shard_bits": 4,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            11445.125,
+            8848.75,
+            8148.8125
+          ],
+          "grid_shape": [
+            8,
+            8,
+            16
+          ],
+          "limit": 193521
+        },
+        {
+          "key": "by_spatial_level_8",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 6,
+            "shard_bits": 6,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            5722.5625,
+            4424.375,
+            8148.8125
+          ],
+          "grid_shape": [
+            16,
+            16,
+            16
+          ],
+          "limit": 243667
+        },
+        {
+          "key": "by_spatial_level_9",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 6,
+            "shard_bits": 7,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            5722.5625,
+            4424.375,
+            4074.40625
+          ],
+          "grid_shape": [
+            16,
+            16,
+            32
+          ],
+          "limit": 254772
+        },
+        {
+          "key": "by_spatial_level_10",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 7,
+            "shard_bits": 8,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            2861.28125,
+            2212.1875,
+            4074.40625
+          ],
+          "grid_shape": [
+            32,
+            32,
+            32
+          ],
+          "limit": 159413
+        }
+      ]
+    },
+    "optic_column_pin_schema": {
+      "@type": "neuroglancer_annotations_v1",
+      "dimensions": {
+        "x": [
+          8e-09,
+          "m"
+        ],
+        "y": [
+          8e-09,
+          "m"
+        ],
+        "z": [
+          8e-09,
+          "m"
+        ]
+      },
+      "lower_bound": [
+        5618,
+        13361,
+        22097
+      ],
+      "upper_bound": [
+        90421,
+        52250,
+        43340
+      ],
+      "annotation_type": "line",
+      "properties": [
+        {
+          "id": "depth",
+          "type": "int16"
+        },
+        {
+          "id": "roi",
+          "type": "uint8",
+          "enum_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96
+          ],
+          "enum_labels": [
+            "NotPrimary",
+            "AL(L)",
+            "AL(R)",
+            "AME(L)",
+            "AME(R)",
+            "AMMC(L)",
+            "AMMC(R)",
+            "AOTU(L)",
+            "AOTU(R)",
+            "ATL(L)",
+            "ATL(R)",
+            "AVLP(L)",
+            "AVLP(R)",
+            "BU(L)",
+            "BU(R)",
+            "CA(L)",
+            "CA(R)",
+            "CAN(L)",
+            "CAN(R)",
+            "CRE(L)",
+            "CRE(R)",
+            "EB",
+            "EPA(L)",
+            "EPA(R)",
+            "FB",
+            "FLA(L)",
+            "FLA(R)",
+            "GA(L)",
+            "GA(R)",
+            "GNG",
+            "GOR(L)",
+            "GOR(R)",
+            "IB",
+            "ICL(L)",
+            "ICL(R)",
+            "IPS(L)",
+            "IPS(R)",
+            "LA(L)",
+            "LA(R)",
+            "LAL(L)",
+            "LAL(R)",
+            "LH(L)",
+            "LH(R)",
+            "LO(L)",
+            "LO(R)",
+            "LOP(L)",
+            "LOP(R)",
+            "ME(L)",
+            "ME(R)",
+            "NO",
+            "PB",
+            "PED(L)",
+            "PED(R)",
+            "PLP(L)",
+            "PLP(R)",
+            "PRW",
+            "PVLP(L)",
+            "PVLP(R)",
+            "ROB(L)",
+            "ROB(R)",
+            "RUB(L)",
+            "RUB(R)",
+            "SAD",
+            "SCL(L)",
+            "SCL(R)",
+            "SIP(L)",
+            "SIP(R)",
+            "SLP(L)",
+            "SLP(R)",
+            "SMP(L)",
+            "SMP(R)",
+            "SPS(L)",
+            "SPS(R)",
+            "VES(L)",
+            "VES(R)",
+            "WED(L)",
+            "WED(R)",
+            "a'L(L)",
+            "a'L(R)",
+            "aL(L)",
+            "aL(R)",
+            "b'L(L)",
+            "b'L(R)",
+            "bL(L)",
+            "bL(R)",
+            "gL(L)",
+            "gL(R)",
+            "null_87",
+            "null_88",
+            "null_89",
+            "null_90",
+            "null_91",
+            "null_92",
+            "AB(R)",
+            "AB(L)",
+            "CV-anterior",
+            "CRN"
+          ]
+        },
+        {
+          "id": "hex1",
+          "type": "int8"
+        },
+        {
+          "id": "hex2",
+          "type": "int8"
+        },
+        {
+          "id": "layer",
+          "type": "int8"
+        }
+      ],
+      "by_id": {
+        "key": "by_id",
+        "sharding": {
+          "@type": "neuroglancer_uint64_sharded_v1",
+          "hash": "murmurhash3_x86_128",
+          "preshift_bits": 10,
+          "shard_bits": 0,
+          "minishard_bits": 9,
+          "data_encoding": "gzip",
+          "minishard_index_encoding": "gzip"
+        }
+      },
+      "relationships": [
+        {
+          "key": "by_rel_neuropil",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "neuropil"
+        },
+        {
+          "key": "by_rel_ME(L)_column_segment",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "ME(L)_column_segment"
+        },
+        {
+          "key": "by_rel_LO(L)_column_segment",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "LO(L)_column_segment"
+        },
+        {
+          "key": "by_rel_LOP(L)_column_segment",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "LOP(L)_column_segment"
+        },
+        {
+          "key": "by_rel_ME(R)_column_segment",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "ME(R)_column_segment"
+        },
+        {
+          "key": "by_rel_LO(R)_column_segment",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "LO(R)_column_segment"
+        },
+        {
+          "key": "by_rel_LOP(R)_column_segment",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "id": "LOP(R)_column_segment"
+        }
+      ],
+      "spatial": [
+        {
+          "key": "by_spatial_level_0",
+          "sharding": {
+            "@type": "neuroglancer_uint64_sharded_v1",
+            "hash": "murmurhash3_x86_128",
+            "preshift_bits": 10,
+            "shard_bits": 0,
+            "minishard_bits": 0,
+            "data_encoding": "gzip",
+            "minishard_index_encoding": "gzip"
+          },
+          "chunk_size": [
+            84803.0,
+            38889.0,
+            21243.0
+          ],
+          "grid_shape": [
+            1,
+            1,
+            1
+          ],
+          "limit": 1
+        }
+      ],
+      "description": "Optic lobe column center pin lines"
+    }
+  },
+  "official_algorithm": {
+    "repository": "https://github.com/reiserlab/male-drosophila-visual-system-connectome-code",
+    "tag": "v1.0",
+    "commit": "c69c85dfc2bf6755be8ab1cdf43013a1397c58bc",
+    "implementation": {
+      "path": "data/raw/malecns-v1.0/official-code-v1.0/src/utils/ol_neuron.py",
+      "bytes": 14287,
+      "sha256": "a7c74dc7eec4554edfb98ff5bac156a234281489c15860f313708ff3ff3ce4be"
+    },
+    "query": {
+      "path": "data/raw/malecns-v1.0/official-code-v1.0/src/queries/ol_neuron.py",
+      "bytes": 2781,
+      "sha256": "0eed2f7f59f5726b034d74958e34d0652c2c6717a183baf465b06e5bc5c67c41"
+    },
+    "method": "synapse_count",
+    "rule": "count_all_neuron_synapses_by_ROI_and_native_hex_then_take_highest_count_per_ROI",
+    "target_ROI": "ME(L)",
+    "require_unique_target_mode": true,
+    "require_pin_relationship_matching_body_side": true,
+    "require_unique_hex_across_matching_side_pin_relationships": true
+  },
+  "native_Tm9_replay": {
+    "native_Tm9_count": 1743,
+    "evaluable_count": 1742,
+    "exact_count": 1717,
+    "exact_fraction": 0.9856486796785304,
+    "ties_or_missing_ME_column_count": 1,
+    "replay_is_diagnostic_not_acceptance_threshold": true
+  },
+  "target": {
+    "body_id": 532266,
+    "side": "L",
+    "body_annotation_native_hex_missing": true,
+    "incoming_synapse_count": 49,
+    "outgoing_synapse_count": 140,
+    "input_optic_column_counts": {
+      "0": 7,
+      "1502": 31,
+      "1603": 11
+    },
+    "output_optic_column_counts": {
+      "0": 119,
+      "1502": 21
+    },
+    "relationship_index_provenance": {
+      "body_pre": {
+        "key": 532266,
+        "shard": 162,
+        "minishard": 2,
+        "shard_name": "0a2.shard",
+        "minishard_index_relative_range": [
+          246421600,
+          246428292
+        ],
+        "minishard_entry_count": 1358,
+        "compressed_data_range": [
+          241626024,
+          241629757
+        ],
+        "compressed_data_bytes": 3733
+      },
+      "body_post": {
+        "key": 532266,
+        "shard": 458,
+        "minishard": 138,
+        "shard_name": "1ca.shard",
+        "minishard_index_relative_range": [
+          34496064,
+          34500166
+        ],
+        "minishard_entry_count": 1232,
+        "compressed_data_range": [
+          32045265,
+          32047420
+        ],
+        "compressed_data_bytes": 2155
+      }
+    },
+    "column_pin_mappings": {
+      "1502": [
+        {
+          "relationship": "ME(L)_column_segment",
+          "annotation_count": 120,
+          "hexes": [
+            [
+              15,
+              2
+            ]
+          ]
+        },
+        {
+          "relationship": "LO(L)_column_segment",
+          "annotation_count": 75,
+          "hexes": [
+            [
+              15,
+              2
+            ]
+          ]
+        }
+      ],
+      "1603": [
+        {
+          "relationship": "ME(L)_column_segment",
+          "annotation_count": 120,
+          "hexes": [
+            [
+              16,
+              3
+            ]
+          ]
+        },
+        {
+          "relationship": "LO(L)_column_segment",
+          "annotation_count": 75,
+          "hexes": [
+            [
+              16,
+              3
+            ]
+          ]
+        },
+        {
+          "relationship": "LOP(L)_column_segment",
+          "annotation_count": 50,
+          "hexes": [
+            [
+              16,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    "consensus_column_id": 1502,
+    "ROI": "ME(L)",
+    "hex_counts": {
+      "15,2": 52,
+      "16,3": 10
+    },
+    "unique_mode": true,
+    "recovered_hex": [
+      15,
+      2
+    ]
+  },
+  "Tm9_532266_official_synapse_column_coordinate_identifiable": true,
+  "Tm9_532266_recovered_coordinate": [
+    15,
+    2
+  ],
+  "authorize_source_mapping_update": true,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "boundary": {
+    "official_MaleCNS_v1_0_annotation_chain_only": true,
+    "body_annotation_native_fields_remain_missing": true,
+    "synapse_column_consensus_is_not_body_annotation_field": true,
+    "no_nearest_neighbor_or_tissue_xyz_conversion": true,
+    "rule_predeclared_by_official_v1_0_code": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

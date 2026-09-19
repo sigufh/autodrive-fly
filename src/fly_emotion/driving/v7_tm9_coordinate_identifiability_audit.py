@@ -83,7 +83,9 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
     mapping_config_path = Path(config["mapping_config"])
     mapping = json.loads((root / mapping_path).read_text(encoding="utf-8"))
     mapping_config = yaml.safe_load((root / mapping_config_path).read_text(encoding="utf-8"))
-    if mapping["source_mapping"]["Tm9"]["unlocated_body_ids"] != [
+    synapse_column_path = Path(config["official_synapse_column_evidence"])
+    synapse_column = json.loads((root / synapse_column_path).read_text(encoding="utf-8"))
+    if mapping["source_mapping"]["Tm9"]["one_hop_unlocated_body_ids"] != [
         int(config["target_body_id"])
     ]:
         raise ValueError("existing Tm9 mapping evidence unlocated set changed")
@@ -417,7 +419,13 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
             np.array_equal(np.rint(same_side_coordinate), np.rint(native_out_coordinate))
         ),
     }
-    mapping_authorized = all(validation_gates.values())
+    post_hoc_mapping_authorized = all(validation_gates.values())
+    official_synapse_coordinate = synapse_column[
+        "Tm9_532266_official_synapse_column_coordinate_identifiable"
+    ]
+    recovered_coordinate = synapse_column["Tm9_532266_recovered_coordinate"]
+    if synapse_column["target"]["body_id"] != body_id:
+        raise ValueError("official synapse-column target changed")
     return {
         "protocol": {
             "name": config["name"],
@@ -441,6 +449,7 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
                 str(ONE_HOP_IMPLEMENTATION): _sha256(root / ONE_HOP_IMPLEMENTATION),
                 str(release_spec["path"]): _sha256(release_path),
                 str(object_spec["path"]): _sha256(object_path),
+                str(synapse_column_path): _sha256(root / synapse_column_path),
             },
             "parameter_fit": False,
             "runtime_modified": False,
@@ -497,19 +506,33 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
         "candidate_diagnostics": candidate_rows,
         "blind_replay_on_native_Tm9": validation,
         "candidate_validation_gates": validation_gates,
-        "Tm9_532266_coordinate_identifiable_under_existing_rule": bool(located[node]),
-        "Tm9_532266_coordinate_repair_authorized": mapping_authorized,
-        "complete_Tm9_columnar_retinotopy_available": bool(
-            located[node] or mapping_authorized
+        "official_synapse_column_evidence": {
+            "body_annotation_native_fields_remain_missing": (not native_coordinate),
+            "official_rule_native_Tm9_replay": synapse_column["native_Tm9_replay"],
+            "input_optic_column_counts": synapse_column["target"]["input_optic_column_counts"],
+            "output_optic_column_counts": synapse_column["target"]["output_optic_column_counts"],
+            "consensus_column_id": synapse_column["target"]["consensus_column_id"],
+            "recovered_coordinate": recovered_coordinate,
+            "coordinate_source": "official_MaleCNS_v1_0_synapse_and_column_pin_annotations",
+        },
+        "Tm9_532266_coordinate_identifiable_under_existing_rule": bool(
+            located[node]
         ),
-        "authorize_source_mapping_update": mapping_authorized,
+        "Tm9_532266_coordinate_identifiable_under_official_synapse_rule": bool(
+            official_synapse_coordinate
+        ),
+        "Tm9_532266_coordinate_repair_authorized": post_hoc_mapping_authorized,
+        "complete_Tm9_columnar_retinotopy_available": bool(
+            located[node] or official_synapse_coordinate
+        ),
+        "authorize_source_mapping_update": bool(official_synapse_coordinate),
         "authorize_source_dynamics_fit": False,
         "authorize_T4_T5_functional_precheck": False,
         "advance_to_LPLC_mechanism_repair": False,
         "advance_to_vehicle_experiments": False,
         "stop_reason": (
             None
-            if mapping_authorized
+            if official_synapse_coordinate
             else (
                 "existing_rule_has_no_native_input_support_and_post_hoc_candidates_"
                 "conflict_or_are_occupied"

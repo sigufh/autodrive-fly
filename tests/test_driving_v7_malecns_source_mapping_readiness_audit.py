@@ -44,7 +44,10 @@ def test_one_hop_coordinates_close_columnar_gaps_without_fabrication() -> None:
     assert mapping["Tm3"]["native_optic_hex_count"] == 0
     assert mapping["Tm3"]["one_hop_inferred_coordinate_count"] == 2054
     assert mapping["Tm4"]["one_hop_inferred_coordinate_count"] == 837
-    assert mapping["Tm9"]["unlocated_body_ids"] and len(mapping["Tm9"]["unlocated_body_ids"]) == 1
+    assert mapping["Tm9"]["one_hop_unlocated_body_ids"] == [532266]
+    assert mapping["Tm9"]["official_synapse_column_recovered_body_ids"] == [532266]
+    assert mapping["Tm9"]["official_synapse_column_recovered_coordinates"] == [[15, 2]]
+    assert mapping["Tm9"]["unlocated_body_ids"] == []
     assert report["CT1"]["body_ids"] == [10009, 10157]
     assert report["CT1"]["columnar_Lo1_retinotopy_available"] is False
     assert report["boundary"]["incomplete_Tm9_coordinate_is_not_imputed"] is True
@@ -53,8 +56,11 @@ def test_one_hop_coordinates_close_columnar_gaps_without_fabrication() -> None:
 def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:
     report = json.loads(REPORT.read_text())
     gates = report["mapping_gates"]
+    mapping = report["source_mapping"]
     assert gates["every_source_type_has_exact_MaleCNS_body_set"] is True
     assert gates["every_source_body_has_soma_side"] is True
+    assert mapping["Tm9"]["columnar_retinotopy_available"] is True
+    # CT1 remains global/non-columnar, so the all-source gate stays closed.
     assert gates["every_source_body_has_columnar_retinotopic_coordinate"] is False
     assert gates["external_recording_declares_explicit_type_average_or_body_mapping"] is False
     assert gates["external_recording_to_specific_MaleCNS_body_identified"] is False

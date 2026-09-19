@@ -342,6 +342,9 @@ from .driving.v7_timing_models_source_filter_audit import (
 from .driving.v7_tm9_coordinate_identifiability_audit import (
     evaluate_v7_tm9_coordinate_identifiability_audit,
 )
+from .driving.v7_malecns_synapse_column_audit import (
+    evaluate_v7_malecns_synapse_column_audit,
+)
 from .driving.v7_unified_model_package_audit import evaluate_v7_unified_model_package_audit
 from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audit
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
@@ -570,6 +573,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
     subparsers.add_parser("v7-audit-ct1-experimental-voltage-boundary")
     subparsers.add_parser("v7-audit-tm9-coordinate-identifiability")
+    subparsers.add_parser("v7-audit-malecns-synapse-columns")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
@@ -1836,6 +1840,14 @@ def main() -> None:
     if args.command == "v7-audit-tm9-coordinate-identifiability":
         report = evaluate_v7_tm9_coordinate_identifiability_audit(root)
         target = root / "artifacts/v7-tm9-coordinate-identifiability-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-malecns-synapse-columns":
+        report = evaluate_v7_malecns_synapse_column_audit(root)
+        target = root / "artifacts/v7-malecns-synapse-column-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

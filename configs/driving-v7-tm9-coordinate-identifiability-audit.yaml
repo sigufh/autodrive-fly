@@ -39,6 +39,7 @@ target_skeleton:
   node_count: 266
 mapping_evidence: artifacts/v7-malecns-source-mapping-readiness-audit.json
 mapping_config: configs/driving-v7-malecns-source-mapping-readiness-audit.yaml
+official_synapse_column_evidence: artifacts/v7-malecns-synapse-column-audit.json
 expected_annotation:
   type: Tm9
   flywireType: Tm9
@@ -93,6 +94,8 @@ boundary:
   coarse_primary_ROI_is_not_columnar_retinotopy: true
   latest_public_release_is_still_v1_0: true
   current_official_annotation_object_matches_frozen_release: true
+  official_synapse_column_annotation_is_a_separate_native_source: true
+  strict_synapse_column_consensus_may_recover_missing_body_annotation_hex: true
   authenticated_live_Clio_annotation_is_not_claimed: true
   no_parameter_fit: true
   no_target_activity_injection: true

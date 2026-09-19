@@ -175,6 +175,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     tm9_coordinate_identifiability_audit = reports[
         "tm9_coordinate_identifiability_audit"
     ]
+    malecns_synapse_column_audit = reports["malecns_synapse_column_audit"]
     three_hop_source_coverage = reports["three_hop_source_coverage"]
     four_hop_scalar_precheck = reports["four_hop_scalar_precheck"]
     lc4_position_speed_precheck = reports["lc4_position_speed_precheck"]
@@ -365,6 +366,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["source_evidence_matrix"],
                 config["evidence"]["source_type_average_mapping_contract"],
                 config["evidence"]["tm9_coordinate_identifiability_audit"],
+                config["evidence"]["malecns_synapse_column_audit"],
                 config["evidence"]["lplc1_near_collision_precheck"],
                 config["evidence"]["lplc1_input_structure"],
                 config["evidence"]["lc4_input_speed_precheck"],
@@ -1141,6 +1143,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     tm9_coordinate_identifiability_audit[
                         "Tm9_532266_coordinate_repair_authorized"
                     ]
+                ),
+                "MaleCNS_Tm9_532266_official_synapse_coordinate_identifiable": (
+                    tm9_coordinate_identifiability_audit[
+                        "Tm9_532266_coordinate_identifiable_under_official_synapse_rule"
+                    ]
+                ),
+                "MaleCNS_Tm9_532266_official_synapse_coordinate": (
+                    malecns_synapse_column_audit["Tm9_532266_recovered_coordinate"]
                 ),
                 "MaleCNS_Tm9_complete_columnar_retinotopy_after_audit": (
                     tm9_coordinate_identifiability_audit[

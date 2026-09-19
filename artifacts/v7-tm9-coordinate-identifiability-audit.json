@@ -3,8 +3,8 @@
     "name": "v7-tm9-coordinate-identifiability-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "00f80bd4997f9ce080e89605fde4d6d9aec4bd8cf7d7304f58730e91e0c187ae",
-      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "e6b446d4ccf0a7ca7cf19a7c8ef7b3d098ee9a84210582ddbc59f13d5e2b6da2",
+      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "3340f7851810229c9943a0316c1e24f875220b052ff19d6c3fb8874f16c56a1b",
+      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "604488eb3990e16df953de177eea95ecb451ecf11dd532e9b1209a2d3ece374d",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/raw/malecns-v1.0/connectome-weights.feather": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1",
@@ -12,11 +12,12 @@
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b74c91098794594bc1e327c786c3b41b79af5733d6c0f60b35c04a6007527990",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "966a213beab749f57d714842dc124d7d6f0961270fe0500b6327790f25cd99bb",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "ac2e2f344b55b36f0241c1f5f3f542b5247f27bc64155ec5b3cfdfb56dc53cd0",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
       "data/raw/malecns-v1.0/current-release-audit/neuprint-male-cns-datasets.json": "c47435822733836038c86b8d5f74d0138f39b3be687bfc7bf9a367b4b4c7c724",
-      "data/raw/malecns-v1.0/current-release-audit/annotation-object-observation.json": "c7f91f53aff463903efc9135860b4d61d6748ce456d16cfce2e49ca4b6db00dd"
+      "data/raw/malecns-v1.0/current-release-audit/annotation-object-observation.json": "c7f91f53aff463903efc9135860b4d61d6748ce456d16cfce2e49ca4b6db00dd",
+      "artifacts/v7-malecns-synapse-column-audit.json": "3fb54ff47ef6a9c49e7635c18d81e2efe83aa19c811507d893825f786f518bf3"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -277,15 +278,42 @@
     "native_outgoing_candidate_unoccupied": false,
     "candidate_methods_agree": false
   },
+  "official_synapse_column_evidence": {
+    "body_annotation_native_fields_remain_missing": true,
+    "official_rule_native_Tm9_replay": {
+      "native_Tm9_count": 1743,
+      "evaluable_count": 1742,
+      "exact_count": 1717,
+      "exact_fraction": 0.9856486796785304,
+      "ties_or_missing_ME_column_count": 1,
+      "replay_is_diagnostic_not_acceptance_threshold": true
+    },
+    "input_optic_column_counts": {
+      "0": 7,
+      "1502": 31,
+      "1603": 11
+    },
+    "output_optic_column_counts": {
+      "0": 119,
+      "1502": 21
+    },
+    "consensus_column_id": 1502,
+    "recovered_coordinate": [
+      15,
+      2
+    ],
+    "coordinate_source": "official_MaleCNS_v1_0_synapse_and_column_pin_annotations"
+  },
   "Tm9_532266_coordinate_identifiable_under_existing_rule": false,
+  "Tm9_532266_coordinate_identifiable_under_official_synapse_rule": true,
   "Tm9_532266_coordinate_repair_authorized": false,
-  "complete_Tm9_columnar_retinotopy_available": false,
-  "authorize_source_mapping_update": false,
+  "complete_Tm9_columnar_retinotopy_available": true,
+  "authorize_source_mapping_update": true,
   "authorize_source_dynamics_fit": false,
   "authorize_T4_T5_functional_precheck": false,
   "advance_to_LPLC_mechanism_repair": false,
   "advance_to_vehicle_experiments": false,
-  "stop_reason": "existing_rule_has_no_native_input_support_and_post_hoc_candidates_conflict_or_are_occupied",
+  "stop_reason": null,
   "boundary": {
     "existing_one_hop_native_input_rule_is_unchanged": true,
     "recursive_two_hop_candidate_is_post_hoc_diagnostic_only": true,
@@ -297,6 +325,8 @@
     "coarse_primary_ROI_is_not_columnar_retinotopy": true,
     "latest_public_release_is_still_v1_0": true,
     "current_official_annotation_object_matches_frozen_release": true,
+    "official_synapse_column_annotation_is_a_separate_native_source": true,
+    "strict_synapse_column_consensus_may_recover_missing_body_annotation_hex": true,
     "authenticated_live_Clio_annotation_is_not_claimed": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

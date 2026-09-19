@@ -2043,7 +2043,8 @@ MaleCNS v1.0 本地映射也单独核验。九类 source 都有精确 type→bod
 canonical graph：Mi1 1773、Tm3 2054、Mi4 1772、C3 1779、Tm1 1777、Tm2 1766、
 Tm4 1670、Tm9 1771、CT1 2；soma side 全部存在。原生 optic-hex 缺失时，沿用已验证的
 一跳真实上游绝对突触权重质心规则后，Tm3 2054 个与 Tm4 缺失的 837 个均可定位，Tm9
-仍有 1 个 body 不可定位。CT1 是左右各一个覆盖整个 M10/Lo1 的巨型神经元，左右 body
+原本剩 1 个 body 无法由该几何规则定位；后续官方 synapse-column 审计已将该 body 从
+最终未定位集合中恢复。CT1 是左右各一个覆盖整个 M10/Lo1 的巨型神经元，左右 body
 集合可确认，但单个全局质心不是逐柱 Lo1 retinotopy。更重要的是，另一只实验果蝇的 ROI
 不能被指派为某个 MaleCNS body；只有外部 payload 明确声明 type-average 时，才可广播到
 对应类型集合。因此连接组可补齐 exact type/body 与 side 子字段，却不能凭空补齐
@@ -2189,7 +2190,8 @@ MaleCNS 映射、预注册角色或 external-final 承诺。矩阵据此增加�
 明确采用 `exact_type_average`：每类只把自己的群体平均核广播到 MaleCNS 中同名类型的
 完整 body 集合，soma side 与柱坐标只取自 MaleCNS。Mi1/Tm3/Mi4/C3 与
 Tm1/Tm2/Tm4 因 exact type/body、side 和完整坐标可满足该映射子合同；Tm9 虽可声明
-type-average，仍有 body `532266` 无柱坐标；CT1 既缺实验合规膜电位，也缺逐柱 Lo1
+type-average，且 body `532266` 已由下述官方 synapse-column 共识恢复为 `[15,2]`；CT1
+仍既缺实验合规膜电位，也缺逐柱 Lo1
 坐标，因此九源 mapping 总门仍关闭。该声明不向任何神经元注入活动、不运行模型、不拟合
 参数。证据见 `artifacts/v7-source-type-average-mapping-contract.json`。
 
@@ -2202,8 +2204,8 @@ Reviewed/Traced 的 `Tm9_L`，位于 canonical graph，但原生 optic-hex 为�
 但给目标的候选 `[16,3]` 已被左侧 Tm9 `514902` 占用；反向使用唯一原生出边得到
 `[15,2]`，该位置也已被 `141921` 占用，且两种候选不一致。目标入/出权重又都处于 Tm9
 总体约最低 1–2%。因此不改变冻结的一跳规则、不反向用出边、不覆盖已占列，也不按同类型
-邻居或 skeleton xyz 猜测 optic-hex；Tm9 完整 columnar retinotopy 继续失败。证据见
-`artifacts/v7-tm9-coordinate-identifiability-audit.json`。
+邻居或 skeleton xyz 猜测 optic-hex；这一旧几何路线本身继续失败。随后发现的官方
+synapse-column 路线见下文。
 截至 2026-09-19 又对官方公开状态做了重检：neuPrint registry 仍只列出
 `male-cns:v0.9` 与 `male-cns:v1.0`，v1.0 UUID 为 `4b2087c0…`；从官网 GCS URL
 重新下载的 annotation Feather 与冻结文件逐字节一致（14,483,314 bytes，SHA-256
@@ -2213,7 +2215,25 @@ reviewed `Tm9_L` 且原生 `assignedOlHex1/2` 为空。该结论仅覆盖公开 
 本地官方 `syn-partners` 逐突触表也已针对 `532266` 核验：49 个入突触、140 个出突触，
 其 `primary_post` 只有 `ME(L)`、`LOP(L)` 和 `Optic-unspecified(L)` 粗 ROI；表结构只含
 突触前后 tissue xyz、body、置信度与粗 ROI，没有 optic-column ROI 或 assigned optic hex。
-因此逐突触位置同样不能被换算或冒充成原生柱坐标，Tm9 映射门保持关闭。
+旧 `syn-partners` Feather 本身确实不能恢复柱坐标，但 MaleCNS v1.0 同时发布了此前未纳入
+审计的官方 Neuroglancer synapse annotation 与 optic-column pins。现已用无新增依赖的
+只读 `neuroglancer_uint64_sharded_v1` 解码器核验完整关系索引：`532266` 的 140 个输出
+突触中 119 个无柱标记、其余 21 个全部属于 column segment `1502`；49 个输入突触中
+7 个无标记、31 个属于 `1502`、11 个属于 `1603`。官方 pin relationship 将 `1502`
+在左侧 ME/LO 中唯一映射为 `[15,2]`，将 `1603` 映射为 `[16,3]`。
+
+接受规则并非针对目标事后构造，而是 MaleCNS 论文官方代码仓库 v1.0 tag
+（commit `c69c85d…`）中 `OLNeuron.get_hex_id(method='synapse_count')` 已发布的算法：合并
+一个神经元的输入/输出突触，按 ROI 与原生 hex 计数，并在各 ROI 内取最高计数。按同一规则
+重放全部 1,743 个已有 `assignedOlHex1/2` 的 Tm9，1,742 个在 ME 内有唯一众数，其中
+1,717 个精确复现手工 assigned 坐标（98.56%；该重放仅作诊断，不被设置为授权阈值）。
+对 `532266`，ME(L) 内 `[15,2]` 为 52 个突触、`[16,3]` 为 10 个，故官方算法返回
+`[15,2]`。这不改写原始 Feather：其
+`assignedOlHex1/2` 仍为空；也不采用 nearest-neighbor、tissue-xyz 转换、二跳质心或已占柱
+排除法。Tm9 columnar mapping 子门因此关闭缺口，但 CT1 和外部生理证据门仍关闭，不能
+启动 source fit、T4/T5 functional precheck、LPLC 或车辆实验。证据见
+`artifacts/v7-malecns-synapse-column-audit.json` 与
+`artifacts/v7-tm9-coordinate-identifiability-audit.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

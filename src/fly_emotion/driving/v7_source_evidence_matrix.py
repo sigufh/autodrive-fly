@@ -74,6 +74,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     mapping = evidence["malecns_mapping"]["source_mapping"]
     type_average_mapping = evidence["type_average_mapping"]["source_mappings"]
     tm9_coordinate = evidence["tm9_coordinate_identifiability"]
+    malecns_synapse_column = evidence["malecns_synapse_column"]
 
     c3_numerical = bool(evidence["c3_dynamics"]["C3_STRF_numerical_data_verified"])
     c3_ids = bool(evidence["c3_dynamics"]["C3_dataset"]["fly_count"] > 0)
@@ -361,6 +362,15 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Tm9_post_hoc_coordinate_repair_authorized": (
                 source == "Tm9"
                 and tm9_coordinate["Tm9_532266_coordinate_repair_authorized"]
+            ),
+            "Tm9_official_synapse_column_coordinate_identifiable": (
+                source == "Tm9"
+                and tm9_coordinate[
+                    "Tm9_532266_coordinate_identifiable_under_official_synapse_rule"
+                ]
+                and malecns_synapse_column[
+                    "Tm9_532266_official_synapse_column_coordinate_identifiable"
+                ]
             ),
             "Tm9_latest_public_release_is_v1_0": (
                 source == "Tm9"

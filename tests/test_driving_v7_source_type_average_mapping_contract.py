@@ -35,7 +35,7 @@ def test_eight_voltage_sources_have_explicit_exact_type_average_mapping() -> Non
 def test_incomplete_retinotopy_and_CT1_payload_keep_mapping_contract_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert (
-        report["source_mappings"]["Tm9"]["gates"]["complete_columnar_retinotopy_available"] is False
+        report["source_mappings"]["Tm9"]["gates"]["complete_columnar_retinotopy_available"] is True
     )
     ct1 = report["source_mappings"]["CT1"]
     assert ct1["gates"]["local_allowed_unit_payload_available"] is False

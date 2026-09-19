@@ -45,6 +45,16 @@ def test_latest_public_release_retains_the_same_missing_native_coordinate() -> N
     assert latest["target_native_optic_hex_still_missing_in_latest_public_release"] is True
 
 
+def test_official_synapse_column_chain_recovers_coordinate_without_rewriting_native_field() -> None:
+    report = json.loads(REPORT.read_text())
+    evidence = report["official_synapse_column_evidence"]
+    assert evidence["body_annotation_native_fields_remain_missing"] is True
+    assert evidence["official_rule_native_Tm9_replay"]["exact_fraction"] > 0.985
+    assert evidence["consensus_column_id"] == 1502
+    assert evidence["recovered_coordinate"] == [15, 2]
+    assert report["Tm9_532266_coordinate_identifiable_under_official_synapse_rule"] is True
+
+
 def test_post_hoc_candidates_conflict_and_are_occupied() -> None:
     report = json.loads(REPORT.read_text())
     recursive = report["candidate_diagnostics"]["same_side_recursive_incoming"]
@@ -85,8 +95,8 @@ def test_Tm9_coordinate_remains_unidentified_and_all_downstream_gates_stay_close
     assert report["Tm9_population"]["one_hop_unlocated_count"] == 1
     assert report["Tm9_532266_coordinate_identifiable_under_existing_rule"] is False
     assert report["Tm9_532266_coordinate_repair_authorized"] is False
-    assert report["complete_Tm9_columnar_retinotopy_available"] is False
-    assert report["authorize_source_mapping_update"] is False
+    assert report["complete_Tm9_columnar_retinotopy_available"] is True
+    assert report["authorize_source_mapping_update"] is True
     assert report["authorize_source_dynamics_fit"] is False
     assert report["authorize_T4_T5_functional_precheck"] is False
     assert report["advance_to_LPLC_mechanism_repair"] is False
