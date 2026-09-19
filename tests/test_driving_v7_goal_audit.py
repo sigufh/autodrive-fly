@@ -427,6 +427,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["MaleCNS_Tm9_532266_existing_rule_identifiable"] is False
     assert visual["observations"]["MaleCNS_Tm9_532266_post_hoc_repair_authorized"] is False
     assert visual["observations"]["MaleCNS_Tm9_complete_columnar_retinotopy_after_audit"] is False
+    assert visual["observations"]["MaleCNS_latest_public_release"] == "male-cns:v1.0"
+    assert visual["observations"]["MaleCNS_current_annotation_matches_frozen_v1_0"] is True
+    assert visual["observations"][
+        "MaleCNS_Tm9_532266_native_coordinate_still_missing_current_release"
+    ] is True
     assert visual["observations"]["MaleCNS_CT1_columnar_Lo1_retinotopy_available"] is False
     assert visual["observations"]["source_evidence_matrix_all_nine_complete"] is False
     assert visual["observations"]["source_evidence_matrix_authorizes_fit"] is False

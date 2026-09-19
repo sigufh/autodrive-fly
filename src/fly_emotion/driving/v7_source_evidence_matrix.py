@@ -311,6 +311,19 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Tm9"
                 and tm9_coordinate["Tm9_532266_coordinate_repair_authorized"]
             ),
+            "Tm9_latest_public_release_is_v1_0": (
+                source == "Tm9"
+                and tm9_coordinate["latest_public_release_check"][
+                    "latest_public_release"
+                ]
+                == "male-cns:v1.0"
+            ),
+            "Tm9_current_annotation_object_matches_frozen_release": (
+                source == "Tm9"
+                and tm9_coordinate["latest_public_release_check"][
+                    "current_object_matches_frozen_local_annotation"
+                ]
+            ),
             "Kohn_Portes_full_repository_recording_id_upper_bound": (
                 kohn_portes_identity["source_capacity"][source][
                     "full_repository_unique_recording_id_upper_bound"

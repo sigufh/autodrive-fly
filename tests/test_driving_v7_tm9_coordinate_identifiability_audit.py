@@ -31,6 +31,20 @@ def test_existing_one_hop_rule_has_no_coordinate_support() -> None:
     assert report["graph_evidence"]["raw_noncanonical_incoming_bodies_with_annotations"] == []
 
 
+def test_latest_public_release_retains_the_same_missing_native_coordinate() -> None:
+    report = json.loads(REPORT.read_text())
+    latest = report["latest_public_release_check"]
+    assert latest["public_male_cns_releases"] == ["male-cns:v0.9", "male-cns:v1.0"]
+    assert latest["latest_public_release"] == "male-cns:v1.0"
+    assert latest["latest_public_release_uuid"] == (
+        "4b2087c0fbe046bfaf0d60bc970e3e5d"
+    )
+    assert latest["newer_public_release_present"] is False
+    assert latest["current_annotation_object"]["response_status"] == 200
+    assert latest["current_object_matches_frozen_local_annotation"] is True
+    assert latest["target_native_optic_hex_still_missing_in_latest_public_release"] is True
+
+
 def test_post_hoc_candidates_conflict_and_are_occupied() -> None:
     report = json.loads(REPORT.read_text())
     recursive = report["candidate_diagnostics"]["same_side_recursive_incoming"]

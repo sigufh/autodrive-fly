@@ -1080,6 +1080,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "complete_Tm9_columnar_retinotopy_available"
                     ]
                 ),
+                "MaleCNS_latest_public_release": (
+                    tm9_coordinate_identifiability_audit[
+                        "latest_public_release_check"
+                    ]["latest_public_release"]
+                ),
+                "MaleCNS_current_annotation_matches_frozen_v1_0": (
+                    tm9_coordinate_identifiability_audit[
+                        "latest_public_release_check"
+                    ]["current_object_matches_frozen_local_annotation"]
+                ),
+                "MaleCNS_Tm9_532266_native_coordinate_still_missing_current_release": (
+                    tm9_coordinate_identifiability_audit[
+                        "latest_public_release_check"
+                    ]["target_native_optic_hex_still_missing_in_latest_public_release"]
+                ),
                 "MaleCNS_CT1_columnar_Lo1_retinotopy_available": (
                     malecns_source_mapping_readiness_audit["CT1"][
                         "columnar_Lo1_retinotopy_available"

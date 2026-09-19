@@ -8,6 +8,19 @@ raw_connections: data/raw/malecns-v1.0/connectome-weights.feather
 adjacency_raw: data/processed/malecns-v1.0/adjacency_raw.npz
 body_ids: data/processed/malecns-v1.0/body_ids.npy
 graph_metadata: data/processed/malecns-v1.0/graph.json
+current_release_registry:
+  path: data/raw/malecns-v1.0/current-release-audit/neuprint-male-cns-datasets.json
+  bytes: 299285
+  sha256: c47435822733836038c86b8d5f74d0138f39b3be687bfc7bf9a367b4b4c7c724
+  source_url: https://neuprint.janelia.org/api/dbmeta/datasets
+  latest_public_release: male-cns:v1.0
+  latest_public_release_uuid: 4b2087c0fbe046bfaf0d60bc970e3e5d
+current_annotation_object:
+  path: data/raw/malecns-v1.0/current-release-audit/annotation-object-observation.json
+  bytes: 471
+  sha256: c7f91f53aff463903efc9135860b4d61d6748ce456d16cfce2e49ca4b6db00dd
+  response_status: 200
+  etag_md5: 50a7718770c57220f160ba4f431ab89e
 target_skeleton:
   path: data/raw/malecns-v1.0/skeletons/532266.swc
   bytes: 8454
@@ -65,6 +78,9 @@ boundary:
   occupied_candidate_coordinates_are_not_overwritten: true
   no_nearest_neighbor_or_same_type_coordinate_imputation: true
   skeleton_xyz_is_not_optic_hex: true
+  latest_public_release_is_still_v1_0: true
+  current_official_annotation_object_matches_frozen_release: true
+  authenticated_live_Clio_annotation_is_not_claimed: true
   no_parameter_fit: true
   no_target_activity_injection: true
   no_runtime_change: true

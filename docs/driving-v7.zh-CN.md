@@ -2173,6 +2173,12 @@ Reviewed/Traced 的 `Tm9_L`，位于 canonical graph，但原生 optic-hex 为�
 总体约最低 1–2%。因此不改变冻结的一跳规则、不反向用出边、不覆盖已占列，也不按同类型
 邻居或 skeleton xyz 猜测 optic-hex；Tm9 完整 columnar retinotopy 继续失败。证据见
 `artifacts/v7-tm9-coordinate-identifiability-audit.json`。
+截至 2026-09-19 又对官方公开状态做了重检：neuPrint registry 仍只列出
+`male-cns:v0.9` 与 `male-cns:v1.0`，v1.0 UUID 为 `4b2087c0…`；从官网 GCS URL
+重新下载的 annotation Feather 与冻结文件逐字节一致（14,483,314 bytes，SHA-256
+`2177e246…`，HTTP ETag/MD5 `50a77187…`）。因此 `532266` 在最新公开 release 中仍是
+reviewed `Tm9_L` 且原生 `assignedOlHex1/2` 为空。该结论仅覆盖公开 release；需要认证的
+实时 Clio 编辑状态未被声称为已审计。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了无 pickle 执行的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

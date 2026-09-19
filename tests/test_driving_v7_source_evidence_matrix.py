@@ -166,6 +166,8 @@ def test_exact_type_average_mapping_is_explicit_without_body_assignment() -> Non
     tm9 = report["matrix"]["Tm9"]["evidence_components"]
     assert tm9["Tm9_coordinate_identifiable_under_existing_rule"] is False
     assert tm9["Tm9_post_hoc_coordinate_repair_authorized"] is False
+    assert tm9["Tm9_latest_public_release_is_v1_0"] is True
+    assert tm9["Tm9_current_annotation_object_matches_frozen_release"] is True
 
 
 def test_T5_modalities_are_not_combined_into_false_completeness() -> None:

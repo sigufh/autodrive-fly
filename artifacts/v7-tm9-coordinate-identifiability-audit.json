@@ -3,8 +3,8 @@
     "name": "v7-tm9-coordinate-identifiability-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "e60cc9ce3ab4fba5ddb75355f6cced2139eb738798019aba1d080f776c00f46d",
-      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "e0f3c6d249ac39c8f27fc2f19d857874e7875f83f8707d273ab341de5c54269c",
+      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "e9bfcc5f37c76babc6495a82e9ccb2809d5247e88835066b1abb384fa26718a0",
+      "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "c2d07f217a55521102965b2629608575453ca3cf4d39ee44e41d111b726a69be",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/raw/malecns-v1.0/connectome-weights.feather": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1",
@@ -13,7 +13,9 @@
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9570aaf6ea12442835c1d4b8392022e98baedc5573df5d2bf20ae904a11d3b51",
       "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b74c91098794594bc1e327c786c3b41b79af5733d6c0f60b35c04a6007527990",
-      "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7"
+      "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
+      "data/raw/malecns-v1.0/current-release-audit/neuprint-male-cns-datasets.json": "c47435822733836038c86b8d5f74d0138f39b3be687bfc7bf9a367b4b4c7c724",
+      "data/raw/malecns-v1.0/current-release-audit/annotation-object-observation.json": "c7f91f53aff463903efc9135860b4d61d6748ce456d16cfce2e49ca4b6db00dd"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -60,6 +62,29 @@
       ],
       "coordinate_semantics": "MaleCNS_tissue_xyz_not_optic_hex"
     }
+  },
+  "latest_public_release_check": {
+    "observed_on": "2026-09-19",
+    "registry_url": "https://neuprint.janelia.org/api/dbmeta/datasets",
+    "public_male_cns_releases": [
+      "male-cns:v0.9",
+      "male-cns:v1.0"
+    ],
+    "latest_public_release": "male-cns:v1.0",
+    "latest_public_release_uuid": "4b2087c0fbe046bfaf0d60bc970e3e5d",
+    "newer_public_release_present": false,
+    "current_annotation_object": {
+      "observed_on": "2026-09-19",
+      "source_url": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/body-annotations-male-cns-v1.0-minconf-0.5.feather",
+      "response_status": 200,
+      "last_modified": "Wed, 03 Jun 2026 13:54:38 GMT",
+      "etag_md5": "50a7718770c57220f160ba4f431ab89e",
+      "bytes": 14483314,
+      "sha256": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "downloaded_object_matches_frozen_local_file": true
+    },
+    "current_object_matches_frozen_local_annotation": true,
+    "target_native_optic_hex_still_missing_in_latest_public_release": true
   },
   "graph_evidence": {
     "canonical_incoming_edge_count": 19,
@@ -236,6 +261,9 @@
     "occupied_candidate_coordinates_are_not_overwritten": true,
     "no_nearest_neighbor_or_same_type_coordinate_imputation": true,
     "skeleton_xyz_is_not_optic_hex": true,
+    "latest_public_release_is_still_v1_0": true,
+    "current_official_annotation_object_matches_frozen_release": true,
+    "authenticated_live_Clio_annotation_is_not_claimed": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,
     "no_runtime_change": true,

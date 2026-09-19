@@ -88,6 +88,42 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
     ]:
         raise ValueError("existing Tm9 mapping evidence unlocated set changed")
 
+    release_spec = config["current_release_registry"]
+    release_path = root / release_spec["path"]
+    if (
+        release_path.stat().st_size != int(release_spec["bytes"])
+        or _sha256(release_path) != release_spec["sha256"]
+    ):
+        raise ValueError("MaleCNS public release registry snapshot changed")
+    release_registry = json.loads(release_path.read_text(encoding="utf-8"))
+    public_releases = {
+        name: details
+        for name, details in release_registry.items()
+        if name.startswith("male-cns:") and not details["hidden"]
+    }
+    if (
+        sorted(public_releases) != ["male-cns:v0.9", "male-cns:v1.0"]
+        or release_spec["latest_public_release"] not in public_releases
+        or public_releases[release_spec["latest_public_release"]]["uuid"]
+        != release_spec["latest_public_release_uuid"]
+    ):
+        raise ValueError("MaleCNS latest public release boundary changed")
+
+    object_spec = config["current_annotation_object"]
+    object_path = root / object_spec["path"]
+    if (
+        object_path.stat().st_size != int(object_spec["bytes"])
+        or _sha256(object_path) != object_spec["sha256"]
+    ):
+        raise ValueError("MaleCNS annotation object observation changed")
+    object_observation = json.loads(object_path.read_text(encoding="utf-8"))
+    if (
+        object_observation["response_status"] != int(object_spec["response_status"])
+        or object_observation["etag_md5"] != object_spec["etag_md5"]
+        or not object_observation["downloaded_object_matches_frozen_local_file"]
+    ):
+        raise ValueError("MaleCNS current annotation object identity changed")
+
     files = manifest["datasets"]["malecns"]["files"]
     for path, spec in (
         (annotation_path, files["annotations"]),
@@ -355,6 +391,8 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
                 str(mapping_path): _sha256(root / mapping_path),
                 str(mapping_config_path): _sha256(root / mapping_config_path),
                 str(ONE_HOP_IMPLEMENTATION): _sha256(root / ONE_HOP_IMPLEMENTATION),
+                str(release_spec["path"]): _sha256(release_path),
+                str(object_spec["path"]): _sha256(object_path),
             },
             "parameter_fit": False,
             "runtime_modified": False,
@@ -372,6 +410,22 @@ def evaluate_v7_tm9_coordinate_identifiability_audit(root: Path) -> dict:
                 "actual_sha256": _sha256(skeleton_path),
                 **skeleton,
             },
+        },
+        "latest_public_release_check": {
+            "observed_on": config["observed_on"],
+            "registry_url": release_spec["source_url"],
+            "public_male_cns_releases": sorted(public_releases),
+            "latest_public_release": release_spec["latest_public_release"],
+            "latest_public_release_uuid": release_spec["latest_public_release_uuid"],
+            "newer_public_release_present": False,
+            "current_annotation_object": object_observation,
+            "current_object_matches_frozen_local_annotation": (
+                object_observation["sha256"] == _sha256(root / annotation_path)
+                and object_observation["bytes"] == (root / annotation_path).stat().st_size
+            ),
+            "target_native_optic_hex_still_missing_in_latest_public_release": (
+                not native_coordinate
+            ),
         },
         "graph_evidence": {
             **graph_counts,
