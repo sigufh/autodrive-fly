@@ -31,7 +31,7 @@ test('real topology coverage, driving activity and stable scene', async ({ page 
   await expect(v7).toContainText('T4_T5_direction_and_ON_OFF · STOP')
   await expect(v7).toContainText('九源合同：INCOMPLETE')
   await expect(v7).toContainText('Mi4/C3 直接数值电压：Groschner_2022；独立候选 0')
-  await expect(v7).toContainText('CT1 电压候选：审计 10；2025–2026 新候选 3；直接实验电压未命中')
+  await expect(v7).toContainText('CT1 电压候选：审计 11；2025–2026 新候选 3；直接实验电压未命中')
   await expect(v7).toContainText('T5 字段：flash 7/15 · white-noise 8/15 · grating 9/15')
   await expect(page.getByText('Braun 钙载荷：Tm2 9 flies · Tm9 11 · CT1 9；条件网格完整；合规电压源 0')).toBeVisible()
   await expect(v7).toContainText('Motyxia2 历史：22 branches / 447 commits；逐记录日志未命中')

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import tarfile
 from pathlib import Path
 from xml.etree import ElementTree
 
@@ -64,6 +65,9 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
     search_snapshots = {}
     for name, spec in config["incremental_search_snapshots"].items():
         path = _verify_file(root, spec)
+        if name == "Cornean_code_archive":
+            search_snapshots[name] = {"verified_archive_path": str(path)}
+            continue
         search_snapshots[name] = json.loads(path.read_text(encoding="utf-8"))
 
     ramos = document_text["Ramos_Traslosheros_2021"]
@@ -145,6 +149,19 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
     if any(term in okuno.lower() for term in ("whole-cell", "patch clamp", "voltage imaging")):
         raise ValueError("Okuno now appears to contain direct voltage recording")
 
+    cornean = document_text["Cornean_2024"]
+    if any(
+        phrase not in cornean
+        for phrase in (
+            "Tm9 neurons expressing GCaMP6f upon optogenetic activation",
+            "CT1, synapses onto Tm9 axon terminals in each column",
+            "Source data of this study can be found on Zenodo",
+        )
+    ):
+        raise ValueError("Cornean CT1 structural or Tm9 calcium evidence changed")
+    if any(term in cornean.lower() for term in ("whole-cell", "patch clamp", "voltage imaging")):
+        raise ValueError("Cornean now appears to contain direct voltage recording")
+
     title_results = search_snapshots["CT1_title_abstract"]
     if title_results["hitCount"] != 4:
         raise ValueError("incremental CT1 title/abstract result count changed")
@@ -166,6 +183,47 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
     okuno_crossref = search_snapshots["Okuno_Crossref"]["message"]
     if okuno_crossref["DOI"].lower() != "10.7554/elife.107990.2":
         raise ValueError("Okuno Crossref identity changed")
+    all_time = search_snapshots["CT1_neuron_all_time"]
+    if all_time["hitCount"] != 5:
+        raise ValueError("all-time CT1-neuron result count changed")
+    all_time_dois = sorted(
+        item.get("doi") for item in all_time["resultList"]["result"]
+    )
+    expected_all_time_dois = sorted(
+        [
+            "10.1016/j.cub.2023.05.007",
+            "10.1038/s41467-021-24986-w",
+            "10.1038/s41467-024-45971-z",
+            "10.1101/2023.08.29.555204",
+            "10.7554/elife.57443",
+        ]
+    )
+    if all_time_dois != expected_all_time_dois:
+        raise ValueError("all-time CT1-neuron candidates changed")
+    cornean_zenodo = search_snapshots["Cornean_Zenodo"]
+    if (
+        cornean_zenodo["doi"] != "10.5281/zenodo.10361475"
+        or len(cornean_zenodo["files"]) != 1
+        or cornean_zenodo["files"][0]["key"] != "data.zip"
+        or int(cornean_zenodo["files"][0]["size"]) != 31_146_518_166
+    ):
+        raise ValueError("Cornean Zenodo payload manifest changed")
+    code_spec = config["incremental_search_snapshots"]["Cornean_code_archive"]
+    with tarfile.open(root / code_spec["path"], "r:gz") as archive:
+        readme_name = next(
+            name
+            for name in archive.getnames()
+            if name.endswith("2P-analysis/optogenetic_activation/README.md")
+        )
+        cornean_code_text = archive.extractfile(readme_name).read().decode("utf-8")
+    if any(
+        phrase not in cornean_code_text
+        for phrase in (
+            "Tm9GCaMP6f-L3CsChrimson",
+            "170928_lr_L3_C3_Tm1_OptogeneticsWoNaNsWoBGSubstraction.mat",
+        )
+    ):
+        raise ValueError("Cornean code archive target-cell semantics changed")
 
     ramos_report = evidence["ramos_source_data"]
     meier_report = evidence["meier_extreme_compartmentalization"]
@@ -251,6 +309,18 @@ def evaluate_v7_ct1_experimental_voltage_boundary_audit(root: Path) -> dict:
                 lo1_direct_voltage_candidates
             ),
             "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence",
+        },
+        "all_time_index_search": {
+            "query": '"CT1 neuron" AND Drosophila',
+            "Europe_PMC_hit_count": all_time["hitCount"],
+            "new_relevant_candidate": "Cornean_2024",
+            "structural_context_only_DOIs": ["10.7554/elife.57443"],
+            "Cornean_public_dataset_DOI": cornean_zenodo["doi"],
+            "Cornean_public_dataset_archive_bytes": int(
+                cornean_zenodo["files"][0]["size"]
+            ),
+            "Cornean_functional_target_cell": "Tm9",
+            "new_direct_CT1_experimental_voltage_candidates": [],
         },
         "incremental_search_2025_2026": {
             "date_window": config["search_scope"]["incremental_window"],

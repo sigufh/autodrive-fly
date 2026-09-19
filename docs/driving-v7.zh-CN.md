@@ -2117,8 +2117,8 @@ Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；�
 可验证的 CT1 数值载荷、Lo1 时间序列、biological ID 或完整刺激/基线字段，所有门保持关闭。
 证据见 `artifacts/v7-ct1-pure-data-index-audit.json`。
 
-CT1 的实验膜电位缺口又按区室和测量对象做了候选集边界审计。已核验的 7 条相关证据链
-中，直接测量 CT1 的只有 Ramos–Traslosheros 2021、Meier–Borst 2019 与 Groschner 2022：
+CT1 的实验膜电位缺口又按区室和测量对象做了候选集边界审计。当前已核验 11 个候选，
+其中直接测量 CT1 的只有 Ramos–Traslosheros 2021、Meier–Borst 2019 与 Groschner 2022：
 前两者分别提供 Lo1 空间 GCaMP6f、M10/Lo1 GCaMP6f 与被动区室模型；Groschner 同时报告
 M10/Lo1 CT1 动力学，但正文、基因型表和补图都把 CT1 标为 `CT1 > GC6f`。该论文的
 ArcLight 膜电位实验仅列 Mi1/Tm3，没有 `CT1 > ArcLight`，也没有 CT1 whole-cell 或
@@ -2128,6 +2128,10 @@ CT1(Lo1) 电压/时间常数。因此在这组已审计候选内，直接 CT1 �
 公开数值电压载荷均为零。该结论明确限定于已审计候选集，不宣称全局不存在；T5 的 CT1
 合规电压缺口和所有下游冻结门保持不变。证据见
 `artifacts/v7-ct1-experimental-voltage-boundary-audit.json`。
+全时间 Europe PMC 的精确 `"CT1 neuron" AND Drosophila` 查询另定位到 Cornean 等 2024。
+其 31,146,518,166-byte Zenodo 数据包虽含公开 `.mat` 成像数据，但论文与固定代码提交均明确
+功能记录目标是 `Tm9GCaMP6f`；CT1 只作为 Tm9 的结构性突触前伙伴。因此该候选加入边界
+矩阵，但不能算作 CT1 calcium，更不能算作 CT1 experimental voltage。
 
 Yang 2016 的 Tm1/Tm2 ASAP2f 电压表型也补做了外部索引和全部 PMC 附件审计。Crossref
 无数据关系或数据文件链接，DataCite 的 DOI/精确标题查询均为 0，GitHub 与 Zenodo 精确

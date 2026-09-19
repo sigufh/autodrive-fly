@@ -19,7 +19,7 @@ def test_CT1_voltage_boundary_is_hash_bound_and_read_only() -> None:
             assert item["embedded_attachment_names"] == []
     assert report["protocol"]["parameter_fit"] is False
     assert report["protocol"]["runtime_modified"] is False
-    assert report["candidate_summary"]["audited_candidate_count"] == 10
+    assert report["candidate_summary"]["audited_candidate_count"] == 11
     assert report["candidate_summary"]["claim_scope"] == (
         "bounded_audited_candidate_set_not_global_nonexistence"
     )
@@ -83,3 +83,21 @@ def test_2025_2026_incremental_candidates_are_not_CT1_voltage() -> None:
     )
     for name in incremental["relevant_candidates"]:
         assert matrix[name]["direct_CT1_experimental_membrane_voltage"] is False
+
+
+def test_all_time_index_adds_Cornean_as_Tm9_calcium_not_CT1_voltage() -> None:
+    report = json.loads(REPORT.read_text())
+    search = report["all_time_index_search"]
+    assert search["Europe_PMC_hit_count"] == 5
+    assert search["new_relevant_candidate"] == "Cornean_2024"
+    assert search["structural_context_only_DOIs"] == [
+        "10.7554/elife.57443"
+    ]
+    assert search["Cornean_public_dataset_DOI"] == "10.5281/zenodo.10361475"
+    assert search["Cornean_public_dataset_archive_bytes"] == 31_146_518_166
+    assert search["Cornean_functional_target_cell"] == "Tm9"
+    assert search["new_direct_CT1_experimental_voltage_candidates"] == []
+    cornean = report["candidate_matrix"]["Cornean_2024"]
+    assert cornean["CT1_role"] == "structural_presynaptic_partner_of_Tm9"
+    assert cornean["calcium_target_cell"] == "Tm9"
+    assert cornean["direct_CT1_experimental_membrane_voltage"] is False

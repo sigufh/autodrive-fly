@@ -3,8 +3,8 @@
     "name": "v7-ct1-experimental-voltage-boundary-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-ct1-experimental-voltage-boundary-audit.yaml": "2158294ab5fd2c02e417ab0053c9a0a7821f23a5c781706993dd562112b92d54",
-      "src/fly_emotion/driving/v7_ct1_experimental_voltage_boundary_audit.py": "0bb2a1f7403906d2a610de1fc0e3277dd76b9cdc0fd333449400def9230311ff",
+      "configs/driving-v7-ct1-experimental-voltage-boundary-audit.yaml": "5565502454ca81c36188d5acc918c69e5db1be2926a84711e64c7243808ca015",
+      "src/fly_emotion/driving/v7_ct1_experimental_voltage_boundary_audit.py": "634e6fdeeaed83c42885d070ae06fa68d3667da0efc8cd084a1404111e8351ac",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "11bbde0992709ad061d0d02d0f639b2767483eefcce1c865c118bbe6e4fe4097",
       "artifacts/v7-ct1-extreme-compartmentalization-audit.json": "2c2c00b832500eeea7006be32022c9c30265b6c48adc8ae60fb76f9713a9a840",
@@ -14,7 +14,10 @@
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "data/raw/ct1-voltage-candidates/incremental-2025-2026/europepmc-ct1-title-abstract.json": "70a51f45a9d2f2e7305995245bdc3ecf0ad6ccd44c92319624f25461a2d94a3b",
       "data/raw/ct1-voltage-candidates/incremental-2025-2026/europepmc-complex-tangential.json": "86748af34704ded8dda377243daf7e60ea577c0b2131c00b795ba18fbb037f3f",
-      "data/raw/ct1-voltage-candidates/incremental-2025-2026/crossref-elife-107990-v2.json": "282a59c6549ede7c87c28628bb6064e5ebd9e2f42fef1a3579efd03a26c504c5"
+      "data/raw/ct1-voltage-candidates/incremental-2025-2026/crossref-elife-107990-v2.json": "282a59c6549ede7c87c28628bb6064e5ebd9e2f42fef1a3579efd03a26c504c5",
+      "data/raw/ct1-voltage-candidates/europepmc-ct1-neuron-all-time.json": "70b661f3eafa615d38dabd86d5e21e2436df1ed0ae143f70ee14286ff18576ee",
+      "data/raw/ct1-voltage-candidates/zenodo-10361474.json": "771285d03c129311736ee8b8b9e8fe308b78338abe2b7192f3f262cf67c5b10a",
+      "data/raw/ct1-voltage-candidates/cornean-2024-code-93dc4aeb.tar.gz": "045fbc147718ae635db2a494467692bd1f0ee456f16da72bf9f183be0047f8bf"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -81,6 +84,14 @@
       "doi": "10.7554/eLife.107990.2",
       "format": "jats_xml",
       "actual_sha256": "774c3eb2012d991975917e56c53287c5cafcd21cade1881171d4d181708b2d9e"
+    },
+    "Cornean_2024": {
+      "path": "data/raw/ct1-voltage-candidates/PMC10882054.bioc.xml",
+      "bytes": 111046,
+      "sha256": "78858a45ccb02e3eb40db447dd4fc6d7bd580fd86bf9eff5274d954288f98df0",
+      "doi": "10.1038/s41467-024-45971-z",
+      "format": "bioc_xml",
+      "actual_sha256": "78858a45ccb02e3eb40db447dd4fc6d7bd580fd86bf9eff5274d954288f98df0"
     }
   },
   "candidate_matrix": {
@@ -201,10 +212,22 @@
       "public_numeric_payload": true,
       "direct_CT1_experimental_membrane_voltage": false,
       "stable_biological_individual_ids": false
+    },
+    "Cornean_2024": {
+      "compartments": [
+        "Tm9_lobula_terminal"
+      ],
+      "direct_CT1_measurement": false,
+      "modality": "Tm9_GCaMP6f_plus_connectomics_and_expansion_microscopy",
+      "CT1_role": "structural_presynaptic_partner_of_Tm9",
+      "public_numeric_payload": true,
+      "calcium_target_cell": "Tm9",
+      "direct_CT1_experimental_membrane_voltage": false,
+      "stable_biological_individual_ids": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 10,
+    "audited_candidate_count": 11,
     "direct_CT1_measurement_candidates": [
       "Groschner_2022",
       "Meier_Borst_2019",
@@ -213,6 +236,18 @@
     "direct_CT1_experimental_voltage_candidates": [],
     "direct_CT1_Lo1_experimental_voltage_candidates": [],
     "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence"
+  },
+  "all_time_index_search": {
+    "query": "\"CT1 neuron\" AND Drosophila",
+    "Europe_PMC_hit_count": 5,
+    "new_relevant_candidate": "Cornean_2024",
+    "structural_context_only_DOIs": [
+      "10.7554/elife.57443"
+    ],
+    "Cornean_public_dataset_DOI": "10.5281/zenodo.10361475",
+    "Cornean_public_dataset_archive_bytes": 31146518166,
+    "Cornean_functional_target_cell": "Tm9",
+    "new_direct_CT1_experimental_voltage_candidates": []
   },
   "incremental_search_2025_2026": {
     "date_window": [
@@ -264,7 +299,8 @@
     "terms": [
       "Drosophila CT1 whole-cell patch-clamp voltage Lo1",
       "Drosophila CT1 voltage imaging ArcLight ASAP",
-      "Drosophila complex tangential neuron electrophysiology"
+      "Drosophila complex tangential neuron electrophysiology",
+      "\"CT1 neuron\" AND Drosophila"
     ],
     "false_positive_rule": "circadian_time_CT1_is_not_the_CT1_neuron",
     "incremental_window": [

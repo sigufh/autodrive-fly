@@ -54,6 +54,12 @@ candidate_documents:
     sha256: 774c3eb2012d991975917e56c53287c5cafcd21cade1881171d4d181708b2d9e
     doi: 10.7554/eLife.107990.2
     format: jats_xml
+  Cornean_2024:
+    path: data/raw/ct1-voltage-candidates/PMC10882054.bioc.xml
+    bytes: 111046
+    sha256: 78858a45ccb02e3eb40db447dd4fc6d7bd580fd86bf9eff5274d954288f98df0
+    doi: 10.1038/s41467-024-45971-z
+    format: bioc_xml
 incremental_search_snapshots:
   CT1_title_abstract:
     path: data/raw/ct1-voltage-candidates/incremental-2025-2026/europepmc-ct1-title-abstract.json
@@ -67,6 +73,18 @@ incremental_search_snapshots:
     path: data/raw/ct1-voltage-candidates/incremental-2025-2026/crossref-elife-107990-v2.json
     bytes: 27762
     sha256: 282a59c6549ede7c87c28628bb6064e5ebd9e2f42fef1a3579efd03a26c504c5
+  CT1_neuron_all_time:
+    path: data/raw/ct1-voltage-candidates/europepmc-ct1-neuron-all-time.json
+    bytes: 67830
+    sha256: 70b661f3eafa615d38dabd86d5e21e2436df1ed0ae143f70ee14286ff18576ee
+  Cornean_Zenodo:
+    path: data/raw/ct1-voltage-candidates/zenodo-10361474.json
+    bytes: 7100
+    sha256: 771285d03c129311736ee8b8b9e8fe308b78338abe2b7192f3f262cf67c5b10a
+  Cornean_code_archive:
+    path: data/raw/ct1-voltage-candidates/cornean-2024-code-93dc4aeb.tar.gz
+    bytes: 236959
+    sha256: 045fbc147718ae635db2a494467692bd1f0ee456f16da72bf9f183be0047f8bf
 candidates:
   Ramos_Traslosheros_2021:
     compartments: [lobula_Lo1]
@@ -148,6 +166,15 @@ candidates:
     public_numeric_payload: true
     direct_CT1_experimental_membrane_voltage: false
     stable_biological_individual_ids: false
+  Cornean_2024:
+    compartments: [Tm9_lobula_terminal]
+    direct_CT1_measurement: false
+    modality: Tm9_GCaMP6f_plus_connectomics_and_expansion_microscopy
+    CT1_role: structural_presynaptic_partner_of_Tm9
+    public_numeric_payload: true
+    calcium_target_cell: Tm9
+    direct_CT1_experimental_membrane_voltage: false
+    stable_biological_individual_ids: false
 search_scope:
   bounded_not_global_nonexistence_claim: true
   indexed_queries_observed_on: "2026-09-19"
@@ -155,6 +182,7 @@ search_scope:
     - Drosophila CT1 whole-cell patch-clamp voltage Lo1
     - Drosophila CT1 voltage imaging ArcLight ASAP
     - Drosophila complex tangential neuron electrophysiology
+    - '"CT1 neuron" AND Drosophila'
   false_positive_rule: circadian_time_CT1_is_not_the_CT1_neuron
   incremental_window: ["2025-01-01", "2026-09-19"]
 boundary:
