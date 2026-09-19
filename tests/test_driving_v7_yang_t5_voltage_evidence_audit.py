@@ -44,6 +44,10 @@ def test_Tm1_Tm2_optical_voltage_phenotypes_are_physical_but_partial() -> None:
     report = json.loads(REPORT.read_text())
     assert report["measurement_protocol"]["acquisition_rate_hz"] == 38.9
     assert report["measurement_protocol"]["posthoc_resample_rate_hz"] == 120
+    assert report["source_evidence"]["Mi1"]["compartment"] == "medulla_M10"
+    assert report["source_evidence"]["Mi1"]["voltage_response_fly_count"] == 4
+    assert report["source_evidence"]["Tm3"]["compartment"] == "medulla_M10"
+    assert report["source_evidence"]["Tm3"]["voltage_response_fly_count"] == 9
     assert report["source_evidence"]["Tm1"]["compartment"] == "lobula_Lo1"
     assert report["source_evidence"]["Tm1"]["voltage_response_fly_count"] == 3
     assert report["source_evidence"]["Tm2"]["compartment"] == "medulla_M2"
@@ -57,6 +61,12 @@ def test_Tm1_Tm2_optical_voltage_phenotypes_are_physical_but_partial() -> None:
         "Tm9",
         "CT1",
     ]
+    assert report["T4_source_contract"] == {
+        "required_sources": ["Mi1", "Tm3", "Mi4", "C3"],
+        "sources_with_optical_voltage_phenotype": ["Mi1", "Tm3"],
+        "sources_without_optical_voltage_phenotype": ["Mi4", "C3"],
+        "phenotype_coverage_fraction": 0.5,
+    }
 
 
 def test_plotted_voltage_means_do_not_open_T5_or_downstream_gates() -> None:

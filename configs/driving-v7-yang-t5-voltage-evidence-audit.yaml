@@ -43,6 +43,18 @@ evidence:
   stimulus_flash_duration_milliseconds: 25
   stimulus_gray_interleave_milliseconds: 500
   stimulus_contrast: 0.5
+  Mi1:
+    compartment: medulla_M10
+    indicator: ASAP2f
+    voltage_response_cell_count: 67
+    voltage_response_fly_count: 4
+    phenotype_reported: true
+  Tm3:
+    compartment: medulla_M10
+    indicator: ASAP2f
+    voltage_response_cell_count: 100
+    voltage_response_fly_count: 9
+    phenotype_reported: true
   Tm1:
     compartment: lobula_Lo1
     indicator: ASAP2f

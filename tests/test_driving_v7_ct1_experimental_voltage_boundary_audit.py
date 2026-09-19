@@ -46,6 +46,8 @@ def test_direct_CT1_candidates_are_calcium_not_voltage() -> None:
 def test_other_cell_voltage_and_model_voltage_do_not_unlock_CT1() -> None:
     report = json.loads(REPORT.read_text())
     assert report["candidate_matrix"]["Yang_2016"]["voltage_cell_types"] == [
+        "Mi1",
+        "Tm3",
         "Tm1",
         "Tm2",
     ]

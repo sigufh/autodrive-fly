@@ -1,4 +1,4 @@
-"""Audit Yang et al. Tm1/Tm2 optical-voltage evidence against the v7 contract."""
+"""Audit Yang et al. T4/T5 source optical-voltage evidence."""
 
 from __future__ import annotations
 
@@ -47,6 +47,8 @@ def evaluate_v7_yang_t5_voltage_evidence_audit(root: Path) -> dict:
     required_fragments = (
         "constant frame rate of 38.9 Hz",
         "resampled our data from 38.9 Hz to 120 Hz",
+        "Mi1 layer M10 (green; voltage: n = 67 cells, 4 flies",
+        "Tm3 layer M1 0 (red; voltage: n = 100 cells, 9 flies",
         "Tm1 layer Lo1",
         "n = 30 cells, 3 flies",
         "Tm2 (red, n = 89 cells, 4 flies)",
@@ -136,7 +138,11 @@ def evaluate_v7_yang_t5_voltage_evidence_audit(root: Path) -> dict:
     contract_path = Path(config["required_contract"])
     contract = json.loads((root / contract_path).read_text(encoding="utf-8"))
     required = contract["required_families"]["T5"]["source_types"]
-    covered = [source for source in required if source in ("Tm1", "Tm2")]
+    source_evidence = {
+        source: config["evidence"][source]
+        for source in ("Mi1", "Tm3", "Tm1", "Tm2")
+    }
+    covered = [source for source in required if source in source_evidence]
     missing = [source for source in required if source not in covered]
     payload = config["payload"]
     gates = {
@@ -207,8 +213,15 @@ def evaluate_v7_yang_t5_voltage_evidence_audit(root: Path) -> dict:
             "figshare_search_accessible": False,
         },
         "source_evidence": {
-            "Tm1": config["evidence"]["Tm1"],
-            "Tm2": config["evidence"]["Tm2"],
+            **source_evidence,
+        },
+        "T4_source_contract": {
+            "required_sources": contract["required_families"]["T4"][
+                "source_types"
+            ],
+            "sources_with_optical_voltage_phenotype": ["Mi1", "Tm3"],
+            "sources_without_optical_voltage_phenotype": ["Mi4", "C3"],
+            "phenotype_coverage_fraction": 0.5,
         },
         "T5_source_contract": {
             "required_sources": required,

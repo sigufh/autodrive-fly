@@ -3,8 +3,8 @@
     "name": "v7-yang-t5-voltage-evidence-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-yang-t5-voltage-evidence-audit.yaml": "c776ad13f51532a5a598f57c686f1481bcb0fab129d6425c43a4acee1785f7ac",
-      "src/fly_emotion/driving/v7_yang_t5_voltage_evidence_audit.py": "fdda1bbddb4dc73e39dd122c95c5aa77ca3f29841fe7f23bc220cd7ffde1a0ed",
+      "configs/driving-v7-yang-t5-voltage-evidence-audit.yaml": "a4fce8a0dcd503146698a91ec5b61f63f1322db65d6faa6a66458abffd39405c",
+      "src/fly_emotion/driving/v7_yang_t5_voltage_evidence_audit.py": "15b2debba3a1da9ae0044208f7a09e094081dfce220a8e78fce68915c8a4b570",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "data/raw/t5-yang-voltage/external-index/crossref.json": "90a9d8e851abc73f35d05c61a14317a353e6bcf38d006381a36cb07e41dc9dca",
       "data/raw/t5-yang-voltage/external-index/datacite-related.json": "10a227046d8c41d5b14d33aa970482d925e7ea40122987d44ee044789391841c",
@@ -62,7 +62,21 @@
     "posthoc_resample_rate_hz": 120,
     "stimulus_flash_duration_milliseconds": 25,
     "stimulus_gray_interleave_milliseconds": 500,
-    "stimulus_contrast": 0.5
+    "stimulus_contrast": 0.5,
+    "Mi1": {
+      "compartment": "medulla_M10",
+      "indicator": "ASAP2f",
+      "voltage_response_cell_count": 67,
+      "voltage_response_fly_count": 4,
+      "phenotype_reported": true
+    },
+    "Tm3": {
+      "compartment": "medulla_M10",
+      "indicator": "ASAP2f",
+      "voltage_response_cell_count": 100,
+      "voltage_response_fly_count": 9,
+      "phenotype_reported": true
+    }
   },
   "external_index_audit": {
     "crossref_relation_count": 0,
@@ -153,6 +167,20 @@
     "figshare_search_accessible": false
   },
   "source_evidence": {
+    "Mi1": {
+      "compartment": "medulla_M10",
+      "indicator": "ASAP2f",
+      "voltage_response_cell_count": 67,
+      "voltage_response_fly_count": 4,
+      "phenotype_reported": true
+    },
+    "Tm3": {
+      "compartment": "medulla_M10",
+      "indicator": "ASAP2f",
+      "voltage_response_cell_count": 100,
+      "voltage_response_fly_count": 9,
+      "phenotype_reported": true
+    },
     "Tm1": {
       "compartment": "lobula_Lo1",
       "indicator": "ASAP2f",
@@ -169,6 +197,23 @@
       "fly_count_report_consistent": false,
       "phenotype_reported": true
     }
+  },
+  "T4_source_contract": {
+    "required_sources": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3"
+    ],
+    "sources_with_optical_voltage_phenotype": [
+      "Mi1",
+      "Tm3"
+    ],
+    "sources_without_optical_voltage_phenotype": [
+      "Mi4",
+      "C3"
+    ],
+    "phenotype_coverage_fraction": 0.5
   },
   "T5_source_contract": {
     "required_sources": [

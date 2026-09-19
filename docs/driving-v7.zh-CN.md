@@ -2133,7 +2133,9 @@ CT1(Lo1) 电压/时间常数。因此在这组已审计候选内，直接 CT1 �
 功能记录目标是 `Tm9GCaMP6f`；CT1 只作为 Tm9 的结构性突触前伙伴。因此该候选加入边界
 矩阵，但不能算作 CT1 calcium，更不能算作 CT1 experimental voltage。
 
-Yang 2016 的 Tm1/Tm2 ASAP2f 电压表型也补做了外部索引和全部 PMC 附件审计。Crossref
+Yang 2016 的 Mi1/Tm3/Tm1/Tm2 ASAP2f 电压表型也补做了外部索引和全部 PMC 附件审计。
+其中 Mi1 M10 为 67 cells / 4 flies，Tm3 M10 为 100 cells / 9 flies；Tm1 Lo1 为
+30 cells / 3 flies，Tm2 M2 为 89 cells。Crossref
 无数据关系或数据文件链接，DataCite 的 DOI/精确标题查询均为 0，GitHub 与 Zenodo 精确
 标题查询也为 0；Europe PMC 只标记 9 个 supplements 且无数据库交叉引用。通过 PMC 的
 PoW 下载并哈希校验后，9 个附件为 7 张单页补图、1 个仅含补图图注的 DOCX 和 1 份 8 页

@@ -73,6 +73,11 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert components["Edmond_Fig3_edge_baseline_window_declared"] is False
         row = report["matrix"][source]
         assert "T4_Fig3_verified_1khz_millivolt_array" in row["numerical_evidence_sources"]
+    for source in ("Mi1", "Tm3"):
+        assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
+        assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][
+            "phenotype_evidence_sources"
+        ]
 
 
 def test_gou_readme_is_not_counted_as_local_numerical_payload() -> None:

@@ -125,7 +125,7 @@ candidates:
     compartments: []
     direct_CT1_measurement: false
     modality: ASAP2f_voltage_imaging_of_other_cell_types
-    voltage_cell_types: [Tm1, Tm2]
+    voltage_cell_types: [Mi1, Tm3, Tm1, Tm2]
     direct_CT1_experimental_membrane_voltage: false
     stable_biological_individual_ids: false
   Kohn_Portes_2021:
