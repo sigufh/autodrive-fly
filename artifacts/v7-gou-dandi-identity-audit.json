@@ -3,12 +3,19 @@
     "name": "v7-gou-dandi-identity-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-gou-dandi-identity-audit.yaml": "1d2bea0d260f67e5ab1cc496bac0333cb2b52649a7193a0b5f6b3ff23f0239b7",
-      "src/fly_emotion/driving/v7_gou_dandi_identity_audit.py": "55ca7eab7ddfb6c2368fac7feb2ef1bf34ac7dfd2da8d9d931927a09bb23fa25",
+      "configs/driving-v7-gou-dandi-identity-audit.yaml": "3aadac25622f90ae3c1cf5e182d2de7504bc3a683f83a68772cf652155f51b31",
+      "src/fly_emotion/driving/v7_gou_dandi_identity_audit.py": "951ab94beab46176627a8ec0c915afe8e1df1ceb4b905ef5be8afee235b99131",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/version.json": "118a80f39da52fd092e1d36427655276556148786920d940ec2a8f2eb42a7639",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets-index.json": "0d21ae141a3da733f89e0c38e102bee7c27638abf4ae87f39ee9d42575117949",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets.yaml": "dbbe0ebfbc816acc3f728bef9f8d3ff252da9e68ec878ea05613c744f95de697",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-asset.json": "4f74f678fe239497c63b5a633875d98b6da966c9896a7ac217da67781b850f9c",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-repository.json": "0928f86d98d6ee125abd5e91020e00c414a93c76b02613dfed87b8d80e862a74",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-commits.json": "dd18631f8fc8ae9c389dc89fce0f11f655f8f0fae49fe7fe7d232fc5a6d2b4eb",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-draft.json": "e14a1fd1b15b02fc00e818f4166886654276430280e786245b019f0bd5cddd4b",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-release.json": "59dba9d7f46794a9044839d61d2a7e2e2c9a28f82b07b02378c58f1689987a0f",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-git-annex-commits.json": "73e964599b340ec846d53768b33b8a4bd4da69aa5a2949e5ae20f7cb34ae9e0b",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-git-annex.json": "e9b28a60a9a6a05e6613e98dae85504c82a007ded9c71324cb384a566c790baf",
+      "data/raw/gou-sparsity/dandi-001205-0.250602.0251/clarklabcode-repositories.json": "8f40d65f7bfb0360de2ea90191c04a569c3af5f815ad5c48b4020eea295b3795",
       "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "7131f17ef6a0b60c402cd4fd5221d4c83b3b40f9eff4c5ead0e407210f24b097",
       "data/raw/gou-sparsity/dandi-001205-0.250602.0251/representative-nwb-range-metadata.json": "3ffce7165754bd5e3b15437e8c009ac90f015795cc27bc17b7dfc47513f79c22"
     },
@@ -121,6 +128,37 @@
     "exact_token_matches_in_DANDI_paths_or_participant_fields": {},
     "exact_match_count": 0
   },
+  "public_repository_history": {
+    "repository": "dandisets/001205",
+    "default_branch": "draft",
+    "release_tag": "0.250602.0251",
+    "draft_branch_commit_count_in_API_snapshot": 10,
+    "git_annex_branch_commit_count_in_API_snapshot": 10,
+    "combined_distinct_commit_count_in_API_snapshots": 20,
+    "draft_tree_truncated": false,
+    "release_tree_truncated": false,
+    "git_annex_tree_truncated": false,
+    "draft_and_release_path_sets_equal": true,
+    "release_NWB_pointer_count": 282,
+    "release_non_NWB_metadata_files": [
+      ".dandi/assets-state.json",
+      ".dandi/assets.json",
+      ".datalad/.gitattributes",
+      ".datalad/config",
+      ".gitattributes",
+      "dandiset.yaml"
+    ],
+    "release_code_file_count": 0,
+    "git_annex_content_log_count": 286,
+    "git_annex_web_log_count": 282,
+    "git_annex_code_file_count": 0,
+    "conversion_script_or_crosswalk_found": false
+  },
+  "ClarkLabCode_public_repository_index": {
+    "repository_count": 24,
+    "name_or_description_matches_for_bounded_terms": [],
+    "conversion_or_crosswalk_repository_identified": false
+  },
   "representative_NWB_range_inspection": {
     "asset_id": "c64d3f67-dc54-413d-892e-6e4fd167cf3f",
     "asset_path": "sub-10176231931525660316/sub-10176231931525660316_ses-20220211T151703_ophys.nwb",
@@ -199,6 +237,7 @@
     "opaque_Dryad_labels_are_not_assumed_to_be_biological_IDs": true,
     "DANDI_participant_IDs_are_not_assumed_to_equal_Dryad_fliesUsed": true,
     "inaccessible_or_unread_NWB_payloads_are_not_zero_result_evidence": true,
+    "repository_history_conclusions_are_limited_to_public_DANDI_and_ClarkLabCode_snapshots": true,
     "no_bulk_NWB_download": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

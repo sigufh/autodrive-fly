@@ -25,6 +25,34 @@ snapshots:
     asset_id: c64d3f67-dc54-413d-892e-6e4fd167cf3f
     asset_path: sub-10176231931525660316/sub-10176231931525660316_ses-20220211T151703_ophys.nwb
     content_sha256: 6b62a518bfbb194f4e9f5dd1fce43f4f6ca943c3eb5f837c6873d004d005f726
+  github_repository:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-repository.json
+    bytes: 6679
+    sha256: 0928f86d98d6ee125abd5e91020e00c414a93c76b02613dfed87b8d80e862a74
+  github_commits:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-commits.json
+    bytes: 17240
+    sha256: dd18631f8fc8ae9c389dc89fce0f11f655f8f0fae49fe7fe7d232fc5a6d2b4eb
+  github_tree_draft:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-draft.json
+    bytes: 175060
+    sha256: e14a1fd1b15b02fc00e818f4166886654276430280e786245b019f0bd5cddd4b
+  github_tree_release:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-release.json
+    bytes: 175060
+    sha256: 59dba9d7f46794a9044839d61d2a7e2e2c9a28f82b07b02378c58f1689987a0f
+  github_git_annex_commits:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-git-annex-commits.json
+    bytes: 16598
+    sha256: 73e964599b340ec846d53768b33b8a4bd4da69aa5a2949e5ae20f7cb34ae9e0b
+  github_tree_git_annex:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/github-tree-git-annex.json
+    bytes: 347588
+    sha256: e9b28a60a9a6a05e6613e98dae85504c82a007ded9c71324cb384a566c790baf
+  clarklabcode_repositories:
+    path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/clarklabcode-repositories.json
+    bytes: 156935
+    sha256: 8f40d65f7bfb0360de2ea90191c04a569c3af5f815ad5c48b4020eea295b3795
 dryad_inventory:
   path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
   bytes: 49835
@@ -40,6 +68,7 @@ boundary:
   opaque_Dryad_labels_are_not_assumed_to_be_biological_IDs: true
   DANDI_participant_IDs_are_not_assumed_to_equal_Dryad_fliesUsed: true
   inaccessible_or_unread_NWB_payloads_are_not_zero_result_evidence: true
+  repository_history_conclusions_are_limited_to_public_DANDI_and_ClarkLabCode_snapshots: true
   no_bulk_NWB_download: true
   no_parameter_fit: true
   no_target_activity_injection: true

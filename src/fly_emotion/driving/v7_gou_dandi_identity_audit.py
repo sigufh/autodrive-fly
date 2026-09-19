@@ -45,6 +45,17 @@ def evaluate_v7_gou_dandi_identity_audit(root: Path) -> dict:
     index = json.loads(paths["assets_index"].read_text(encoding="utf-8"))
     manifest = yaml.safe_load(paths["assets_manifest"].read_text(encoding="utf-8"))
     representative = json.loads(paths["representative_asset"].read_text(encoding="utf-8"))
+    repository = json.loads(paths["github_repository"].read_text(encoding="utf-8"))
+    commits = json.loads(paths["github_commits"].read_text(encoding="utf-8"))
+    draft_tree = json.loads(paths["github_tree_draft"].read_text(encoding="utf-8"))
+    release_tree = json.loads(paths["github_tree_release"].read_text(encoding="utf-8"))
+    annex_commits = json.loads(
+        paths["github_git_annex_commits"].read_text(encoding="utf-8")
+    )
+    annex_tree = json.loads(paths["github_tree_git_annex"].read_text(encoding="utf-8"))
+    clarklab_repositories = json.loads(
+        paths["clarklabcode_repositories"].read_text(encoding="utf-8")
+    )
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
     if version["id"] != f"{config['dataset']['identifier']}/{config['dataset']['version']}":
         raise ValueError("Gou DANDI version identity changed")
@@ -116,6 +127,28 @@ def evaluate_v7_gou_dandi_identity_audit(root: Path) -> dict:
     stable_dandi_ids = len(subjects) == len(set(subjects)) == index["count"]
     unique_sessions = len(sessions) == len(set(sessions)) == index["count"]
     crosswalk_verified = bool(exact_matches)
+    code_suffixes = {".py", ".m", ".ipynb", ".r", ".jl", ".sh"}
+    draft_blobs = [item["path"] for item in draft_tree["tree"] if item["type"] == "blob"]
+    release_blobs = [
+        item["path"] for item in release_tree["tree"] if item["type"] == "blob"
+    ]
+    annex_blobs = [item["path"] for item in annex_tree["tree"] if item["type"] == "blob"]
+    public_repo_terms = (
+        "sparsity",
+        "dandi",
+        "nwb",
+        "adaptation to visual sparsity",
+        "gou",
+    )
+    matching_clarklab_repositories = [
+        item["name"]
+        for item in clarklab_repositories
+        if any(
+            term
+            in f"{item['name']} {item.get('description') or ''}".lower()
+            for term in public_repo_terms
+        )
+    ]
     return {
         "protocol": {
             "name": config["name"],
@@ -153,6 +186,47 @@ def evaluate_v7_gou_dandi_identity_audit(root: Path) -> dict:
             "values": [int(value) for value in labels],
             "exact_token_matches_in_DANDI_paths_or_participant_fields": exact_matches,
             "exact_match_count": len(exact_matches),
+        },
+        "public_repository_history": {
+            "repository": repository["full_name"],
+            "default_branch": repository["default_branch"],
+            "release_tag": config["dataset"]["version"],
+            "draft_branch_commit_count_in_API_snapshot": len(commits),
+            "git_annex_branch_commit_count_in_API_snapshot": len(annex_commits),
+            "combined_distinct_commit_count_in_API_snapshots": len(
+                {item["sha"] for item in commits + annex_commits}
+            ),
+            "draft_tree_truncated": bool(draft_tree["truncated"]),
+            "release_tree_truncated": bool(release_tree["truncated"]),
+            "git_annex_tree_truncated": bool(annex_tree["truncated"]),
+            "draft_and_release_path_sets_equal": set(draft_blobs)
+            == set(release_blobs),
+            "release_NWB_pointer_count": sum(
+                path.endswith(".nwb") for path in release_blobs
+            ),
+            "release_non_NWB_metadata_files": sorted(
+                path for path in release_blobs if not path.endswith(".nwb")
+            ),
+            "release_code_file_count": sum(
+                Path(path).suffix.lower() in code_suffixes for path in release_blobs
+            ),
+            "git_annex_content_log_count": sum(
+                path.endswith(".log") for path in annex_blobs
+            ),
+            "git_annex_web_log_count": sum(
+                path.endswith(".log.web") for path in annex_blobs
+            ),
+            "git_annex_code_file_count": sum(
+                Path(path).suffix.lower() in code_suffixes for path in annex_blobs
+            ),
+            "conversion_script_or_crosswalk_found": False,
+        },
+        "ClarkLabCode_public_repository_index": {
+            "repository_count": len(clarklab_repositories),
+            "name_or_description_matches_for_bounded_terms": (
+                matching_clarklab_repositories
+            ),
+            "conversion_or_crosswalk_repository_identified": False,
         },
         "representative_NWB_range_inspection": representative_nwb,
         "identity_conclusions": {

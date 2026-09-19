@@ -1930,7 +1930,12 @@ cell type、strain 或内部 experiment-ID 字段。Dryad 的 66 个不同 `flie
 participant 字段中的整值精确命中为 0；长 ID 内的数字子串不计作交叉键。对代表资产
 `c64d3f67…` 只做两段共 7,465,501 bytes 的 HDF5 range 读取，确认 NWB 根 identifier 含
 genotype-like 描述、`subject_id=10176231931525660316`、13 Hz、GC6f、location=T4T5，
-但 scratch/processing 均空，也没有原始 Dryad fly ID。故“DANDI 资产级身份完整”不等于
+但 scratch/processing 均空，也没有原始 Dryad fly ID。另核验 `dandisets/001205` 的
+公开 Git/DataLad 快照：draft 与发布 tag 路径集合相同，均只有 282 个 NWB 指针和 6 个
+仓库元数据文件、0 个代码文件；git-annex 分支只有内容日志，无转换脚本或 crosswalk。
+公开 API 所见 draft/git-annex 共 20 个不同 commit。ClarkLabCode 当前 24 个公开仓库的
+名称/描述中也没有该论文、DANDI/NWB 转换或 Gou crosswalk 候选。此结论仅限这些公开
+快照，不声明私有代码或其他位置不存在映射。故“DANDI 资产级身份完整”不等于
 “Dryad 处理行已链接身份”，139 GB 镜像仍未批量下载。以上载荷是处理后
 GCaMP6f 荧光，不是实验膜电位；故仍不授权 source fit 或 T4/T5/LPLC/车辆推进。
 证据见 `artifacts/v7-gou-dandi-identity-audit.json` 与

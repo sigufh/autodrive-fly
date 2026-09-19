@@ -17,7 +17,7 @@
       "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json": "4654a3c7ccaa1fde727b98c51b69a0802723b4f903b5441e1427146640b6c528",
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "3df57e78456c8bb7b96de4a997139d846b3933414279963ab3e0037ad0227d9a",
       "artifacts/v7-pirogova-source-calcium-audit.json": "30e9d6688fdf4ad197f3a28d78bfe624235e5ef20f24356ba8842dcb0fc52658",
-      "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "04dbc10d8a923e733228bd616a489406db7a2a03566fcbc8877bf547aeacd32b",
+      "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "be1629ce736a60faf4f8b0f03c9f532c47285ddc966c50c0518b775ff6534d40",
       "artifacts/v7-yang-t5-voltage-evidence-audit.json": "dbc1f0ee07b280a9a4f765115867646c97e5d39f13a9a299e03493e64d3f8385",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "61ecb66fb3133fd296966c755466465fb0b0706976a28686b18e3fda89afc904",
       "artifacts/v7-kohn-portes-identity-history-audit.json": "80ffb8a0121c9293e785eb999b6272c102f8d985f755f2023d9c6db28fcf8edb",

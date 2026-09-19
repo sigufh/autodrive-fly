@@ -51,3 +51,27 @@ def test_no_explicit_dryad_to_dandi_identity_crosswalk_is_claimed() -> None:
     assert conclusions["Dryad_processed_rows_have_stable_biological_IDs"] is False
     assert conclusions["fit_held_out_biological_ID_disjointness_authorized"] is False
     assert report["authorize_source_dynamics_transfer"] is False
+
+
+def test_public_repository_history_contains_no_conversion_crosswalk() -> None:
+    report = json.loads(REPORT.read_text())
+    history = report["public_repository_history"]
+    assert history["repository"] == "dandisets/001205"
+    assert history["combined_distinct_commit_count_in_API_snapshots"] == 20
+    assert history["draft_tree_truncated"] is False
+    assert history["release_tree_truncated"] is False
+    assert history["git_annex_tree_truncated"] is False
+    assert history["draft_and_release_path_sets_equal"] is True
+    assert history["release_NWB_pointer_count"] == 282
+    assert history["release_code_file_count"] == 0
+    assert history["git_annex_content_log_count"] == 286
+    assert history["git_annex_web_log_count"] == 282
+    assert history["git_annex_code_file_count"] == 0
+    assert history["conversion_script_or_crosswalk_found"] is False
+    organization = report["ClarkLabCode_public_repository_index"]
+    assert organization["repository_count"] == 24
+    assert organization["name_or_description_matches_for_bounded_terms"] == []
+    assert organization["conversion_or_crosswalk_repository_identified"] is False
+    assert report["boundary"][
+        "repository_history_conclusions_are_limited_to_public_DANDI_and_ClarkLabCode_snapshots"
+    ] is True
