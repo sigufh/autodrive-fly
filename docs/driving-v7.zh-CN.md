@@ -2104,6 +2104,15 @@ Data and Software Availability 唯一指向 Zenodo `10.5281/zenodo.2636606`；�
 钙表型与模拟区室化成立，但合规数值电压、biological ID、MaleCNS 映射和 split 仍缺失。
 证据见 `artifacts/v7-ct1-extreme-compartmentalization-audit.json`。
 
+该论文在 Max Planck 官方出版物页面还有一个此前未纳入审计的数据入口。冻结的页面快照
+（126,912 bytes，SHA-256 `0e515438…`）将同一 DOI 和 PuRe item `item_3185771_4`
+关联到 publisher PDF 以及两个明确标为 ZIP 的组件：`file_3247642` 与
+`file_3247643`。但组件内容端点当前连接超时，两份 ZIP 均未成功取得，页面也没有声明
+它们的内部文件、数值模态或个体字段。因此这里只把它们登记为两个待解析的官方候选包；
+不能把访问失败当作零结果，也不能凭 `ScienceDirect_files` 文件名断定其内容。当前没有新增
+可验证的 CT1 数值载荷、Lo1 时间序列、biological ID 或完整刺激/基线字段，所有门保持关闭。
+证据见 `artifacts/v7-ct1-pure-data-index-audit.json`。
+
 CT1 的实验膜电位缺口又按区室和测量对象做了候选集边界审计。已核验的 7 条相关证据链
 中，直接测量 CT1 的只有 Ramos–Traslosheros 2021、Meier–Borst 2019 与 Groschner 2022：
 前两者分别提供 Lo1 空间 GCaMP6f、M10/Lo1 GCaMP6f 与被动区室模型；Groschner 同时报告

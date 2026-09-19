@@ -88,6 +88,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     ct1_simulated_voltage = bool(
         evidence["ct1_extreme_compartmentalization"]["model_evidence"]["output_is_simulated"]
     )
+    ct1_pure_index = evidence["ct1_pure_data_index"]
     ct1_voltage_boundary = evidence["ct1_experimental_voltage_boundary"]
 
     rows = {}
@@ -175,6 +176,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                         "new_direct_CT1_experimental_voltage_candidates"
                     ]
                 )
+            ),
+            "CT1_PuRe_official_archive_candidate_count": (
+                ct1_pure_index["official_index"]["archive_candidate_count"]
+                if source == "CT1"
+                else 0
+            ),
+            "CT1_PuRe_archive_contents_verified": (
+                source == "CT1" and ct1_pure_index["archive_contents_verified"]
+            ),
+            "CT1_PuRe_new_numerical_payload_verified": (
+                source == "CT1"
+                and ct1_pure_index["new_CT1_numerical_payload_verified"]
             ),
             "stable_biological_individual_ids_in_any_numerical_payload": (
                 individual_ids_any_numerical

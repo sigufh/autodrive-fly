@@ -1,0 +1,54 @@
+version: 1
+name: v7-ct1-pure-data-index-audit
+observed_on: "2026-09-19"
+paper:
+  title: Extreme compartmentalization in a Drosophila amacrine cell.
+  doi: 10.1016/j.cub.2019.03.070
+  pure_item_id: item_3185771_4
+index_snapshot:
+  path: data/raw/ct1-extreme-compartmentalization/pure-index/publications.html
+  bytes: 126912
+  sha256: 0e515438a7311e121912fd02c26837136b8c36f4c63e793a360224943fe2f36c
+components:
+  publisher_version:
+    file_id: file_3247641
+    filename: 1-s2.0-S0960982219303987-main.pdf
+    link_class: pdf
+    link_label: publisher-version
+    locally_retrieved: false
+  archive_1:
+    file_id: file_3247642
+    filename: ScienceDirect_files_11Aug2020_12-22-07.314.zip
+    link_class: zip
+    link_label: ZIP
+    local_path: data/raw/ct1-extreme-compartmentalization/pure-index/file3247642.zip
+    locally_retrieved: false
+  archive_2:
+    file_id: file_3247643
+    filename: ScienceDirect_files_11Aug2020_12-22-54.187.zip
+    link_class: zip
+    link_label: ZIP
+    local_path: data/raw/ct1-extreme-compartmentalization/pure-index/file3247643.zip
+    locally_retrieved: false
+retrieval_observation:
+  path: data/raw/ct1-extreme-compartmentalization/pure-index/retrieval-observation.txt
+  bytes: 411
+  sha256: de9b5b304f22043c087fd0052e6bf29cc7e81379110fffcb8ab16ed7e4271c1d
+  origin_host: pure.mpg.de
+  result: connection_timeout
+  archive_contents_verified: false
+  archive_content_type_inferred: false
+  numerical_payload_present: null
+  Lo1_time_series_present: null
+  stable_biological_individual_ids_present: null
+  complete_stimulus_and_baseline_fields_present: null
+boundary:
+  official_index_links_are_candidates_not_verified_payloads: true
+  ZIP_label_and_ScienceDirect_filename_do_not_establish_archive_contents: true
+  inaccessible_component_endpoints_are_not_zero_result_evidence: true
+  unresolved_archives_do_not_authorize_cross_modality_or_cross_compartment_transfer: true
+  no_curve_digitization: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

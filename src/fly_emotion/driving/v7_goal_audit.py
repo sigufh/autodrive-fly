@@ -156,6 +156,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ct1_extreme_compartmentalization_audit = reports[
         "ct1_extreme_compartmentalization_audit"
     ]
+    ct1_pure_data_index_audit = reports["ct1_pure_data_index_audit"]
     ct1_experimental_voltage_boundary_audit = reports[
         "ct1_experimental_voltage_boundary_audit"
     ]
@@ -354,6 +355,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
+                config["evidence"]["ct1_pure_data_index_audit"],
                 config["evidence"]["ct1_experimental_voltage_boundary_audit"],
                 config["evidence"]["borst_2025_temporal_filtering_audit"],
                 config["evidence"]["pirogova_source_calcium_audit"],
@@ -945,6 +947,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "CT1_extreme_transfer_authorized": (
                     ct1_extreme_compartmentalization_audit[
                         "CT1_experimental_source_dynamics_transfer_authorized"
+                    ]
+                ),
+                "CT1_PuRe_official_archive_candidate_count": (
+                    ct1_pure_data_index_audit["official_index"][
+                        "archive_candidate_count"
+                    ]
+                ),
+                "CT1_PuRe_archive_contents_verified": (
+                    ct1_pure_data_index_audit["archive_contents_verified"]
+                ),
+                "CT1_PuRe_new_numerical_payload_verified": (
+                    ct1_pure_data_index_audit[
+                        "new_CT1_numerical_payload_verified"
                     ]
                 ),
                 "CT1_voltage_audited_candidate_count": (

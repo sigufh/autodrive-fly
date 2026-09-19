@@ -108,6 +108,7 @@ evidence:
   kohn_portes_t5_ephys_audit: artifacts/v7-kohn-portes-t5-ephys-audit.json
   kohn_portes_identity_history_audit: artifacts/v7-kohn-portes-identity-history-audit.json
   ct1_extreme_compartmentalization_audit: artifacts/v7-ct1-extreme-compartmentalization-audit.json
+  ct1_pure_data_index_audit: artifacts/v7-ct1-pure-data-index-audit.json
   ct1_experimental_voltage_boundary_audit: artifacts/v7-ct1-experimental-voltage-boundary-audit.json
   borst_2025_temporal_filtering_audit: artifacts/v7-borst-2025-temporal-filtering-audit.json
   pirogova_source_calcium_audit: artifacts/v7-pirogova-source-calcium-audit.json
