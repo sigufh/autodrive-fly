@@ -3,8 +3,8 @@
     "name": "v7-t4-fig3-recording-field-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-recording-field-audit.yaml": "8c1ba5c053ba026b93e5025eccb77e73701ca6557c55361e1e6071017ac6e9b9",
-      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "0ea320f8a5e06e47123727b4f13e26b553373938b813efdfba9368f28be2e779",
+      "configs/driving-v7-t4-recording-field-audit.yaml": "6e64c9995a19d227bca390a4b6d4bc9007cb45e584a88e5df2913c1ee0b65326",
+      "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "1491d85497038c94d65e525fa548de9f748be7e6dd4d0239d2e63cbee59536e2",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "eecc6490570ad2613157ca0fcc48e1e59bb9c03b01c2810f6ef797335ba84b19",
@@ -12,7 +12,23 @@
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "data/raw/t4-fig3-source-dynamics/SourceDataFig3.xlsx": "dd41cd3d9a0895c68c8e528a21ee9cde8d4898d34ab7dded842f7641b9997cf3",
       "data/raw/t4-fig3-source-dynamics/edmond-1khz/dataset-manifest.json": "31f19810e5bf69c0a883bd82c606ee53c59f2197c83335ce39fa8d9406aca606",
-      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e"
+      "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig1.ipynb": "38e085d18eab258ef170bd395adfa6ea9aeb85e1f8501cd065037f471b9d6873",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig10.ipynb": "272d9cb750599902a8e43a0cbc3585ffc3f3e77f1a91f2c0727eff69cb891e6a",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig2.ipynb": "8601fbd4c81fa8e75394435b8141aac65dd61edf7a3a0167d397656707ddf0d4",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig4.ipynb": "46b06c19159fca5cf5224825062ad0f5c14b384336c0e9f30286da840829dfed",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig5.ipynb": "60831f5aff5f567563f2c46c71c34204f2387c5c3e8dedebc237400936bee7c8",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig6.ipynb": "f1d25acff0ae93646331ed09ffa3717c5aa2f0a007632232e03a2320e4f3ef72",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig7.ipynb": "068db1026ffae581209a02a373c10c3ce7ad10d2b835c809b8efad19d2d6b262",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig8.ipynb": "cece02dcd336dde18f631ec968ffcc7693e0dd4244fb9325706c93275d3a6ca5",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/edfig9.ipynb": "fa1c7be83915e783988b7c9b12f5b476f5475f75d1dcf99f8f5433c2aa477579",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/environment.yml": "cecccc6778c9e4e2f2259cdba7276ab74f328b41c0e2ff38dc1cb337cc11b0a2",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/fig1.ipynb": "4877383bcc83eeba94b33c63b9ce0f15336c03030c516cbe42ca669b4889b2df",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/fig2.ipynb": "2c82bef8c31ff87344b48508ba3c207ca76ef0cbac5d6538c3dbeba43e9eb5eb",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/fig3.ipynb": "ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/fig4.ipynb": "4ff626d0c5976d2dc0e86bc613dacac4ff62d5672cf5637e3faf029ca4499bbc",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/fig5.ipynb": "db32d235e9abfead5ac636f996450ea11cc6f6b32504de24ba7c129dba557b1d",
+      "/Users/bytedance/fly-emotion/data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks/readme.txt": "35e7a6a2481dc17a4a281306e29d1e83fdf7a28b73205bd71c767cd20b3a8d58"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -81,6 +97,185 @@
     "derived_connection_count": 28,
     "package_metadata_members": [],
     "recording_metadata_recovered_from_package": false
+  },
+  "cross_directory_notebook_audit": {
+    "verified_file_count": 16,
+    "verified_total_bytes": 5352395,
+    "files": {
+      "edfig1.ipynb": {
+        "datafile_id": 104824,
+        "bytes": 124361,
+        "md5": "b5fa6f4c92c514bebbab3a5c782e5478",
+        "sha256": "38e085d18eab258ef170bd395adfa6ea9aeb85e1f8501cd065037f471b9d6873"
+      },
+      "edfig10.ipynb": {
+        "datafile_id": 104786,
+        "bytes": 520223,
+        "md5": "a15e83a73ffe320a277756738ef08446",
+        "sha256": "272d9cb750599902a8e43a0cbc3585ffc3f3e77f1a91f2c0727eff69cb891e6a"
+      },
+      "edfig2.ipynb": {
+        "datafile_id": 104773,
+        "bytes": 156096,
+        "md5": "f1d763abc78744ecb1040c929ddcab38",
+        "sha256": "8601fbd4c81fa8e75394435b8141aac65dd61edf7a3a0167d397656707ddf0d4"
+      },
+      "edfig4.ipynb": {
+        "datafile_id": 104784,
+        "bytes": 225360,
+        "md5": "aaebf069ec35cfa4a80cf1b0a11181a0",
+        "sha256": "46b06c19159fca5cf5224825062ad0f5c14b384336c0e9f30286da840829dfed"
+      },
+      "edfig5.ipynb": {
+        "datafile_id": 104770,
+        "bytes": 61637,
+        "md5": "1c059f47e7d36ef1e505ed7ebb6424c3",
+        "sha256": "60831f5aff5f567563f2c46c71c34204f2387c5c3e8dedebc237400936bee7c8"
+      },
+      "edfig6.ipynb": {
+        "datafile_id": 104832,
+        "bytes": 1828478,
+        "md5": "360cf4e462a0735366479704dd83dd86",
+        "sha256": "f1d25acff0ae93646331ed09ffa3717c5aa2f0a007632232e03a2320e4f3ef72"
+      },
+      "edfig7.ipynb": {
+        "datafile_id": 104833,
+        "bytes": 159570,
+        "md5": "b94139d5be849860fee38f83fd9086a6",
+        "sha256": "068db1026ffae581209a02a373c10c3ce7ad10d2b835c809b8efad19d2d6b262"
+      },
+      "edfig8.ipynb": {
+        "datafile_id": 104823,
+        "bytes": 40096,
+        "md5": "4bf796ce4ceb2ac8fcb7697742c95e66",
+        "sha256": "cece02dcd336dde18f631ec968ffcc7693e0dd4244fb9325706c93275d3a6ca5"
+      },
+      "edfig9.ipynb": {
+        "datafile_id": 104836,
+        "bytes": 64163,
+        "md5": "bc3035c68ccd13c6ec8083a5e2ae17dd",
+        "sha256": "fa1c7be83915e783988b7c9b12f5b476f5475f75d1dcf99f8f5433c2aa477579"
+      },
+      "environment.yml": {
+        "datafile_id": 104837,
+        "bytes": 211,
+        "md5": "22117afcb5d4cd996cb8e38353e22636",
+        "sha256": "cecccc6778c9e4e2f2259cdba7276ab74f328b41c0e2ff38dc1cb337cc11b0a2"
+      },
+      "fig1.ipynb": {
+        "datafile_id": 104767,
+        "bytes": 540647,
+        "md5": "f7552c0406f403168f0237b9a3a2abe5",
+        "sha256": "4877383bcc83eeba94b33c63b9ce0f15336c03030c516cbe42ca669b4889b2df"
+      },
+      "fig2.ipynb": {
+        "datafile_id": 104807,
+        "bytes": 350954,
+        "md5": "b9a6bf71fd5a0bf0de5eed7c77533118",
+        "sha256": "2c82bef8c31ff87344b48508ba3c207ca76ef0cbac5d6538c3dbeba43e9eb5eb"
+      },
+      "fig3.ipynb": {
+        "datafile_id": 104817,
+        "bytes": 263853,
+        "md5": "7a84cb74d6a992d7d03f7a0c9a1984df",
+        "sha256": "ec4f02b5f9c759a7b597534d61218d32ff01d9d3533791e912a2640372ab5695"
+      },
+      "fig4.ipynb": {
+        "datafile_id": 104822,
+        "bytes": 150817,
+        "md5": "3a51367d7db0a70c36442bb74ebd5a3f",
+        "sha256": "4ff626d0c5976d2dc0e86bc613dacac4ff62d5672cf5637e3faf029ca4499bbc"
+      },
+      "fig5.ipynb": {
+        "datafile_id": 104794,
+        "bytes": 865105,
+        "md5": "bf14ba467811d9977d79f7087a3a2cda",
+        "sha256": "db32d235e9abfead5ac636f996450ea11cc6f6b32504de24ba7c129dba557b1d"
+      },
+      "readme.txt": {
+        "datafile_id": 104838,
+        "bytes": 824,
+        "md5": "9099a66a97a8fa9321b73010665acded",
+        "sha256": "35e7a6a2481dc17a4a281306e29d1e83fdf7a28b73205bd71c767cd20b3a8d58"
+      }
+    },
+    "Fig3_source_consumer_notebooks": {
+      "edfig7.ipynb": {
+        "fig3_source_array_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "direct_numpy_load_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "identity_or_recording_sidecar_references": [],
+        "averages_source_arrays_over_cell_axis": true
+      },
+      "edfig8.ipynb": {
+        "fig3_source_array_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "direct_numpy_load_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "identity_or_recording_sidecar_references": [],
+        "averages_source_arrays_over_cell_axis": true
+      },
+      "fig3.ipynb": {
+        "fig3_source_array_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "direct_numpy_load_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "identity_or_recording_sidecar_references": [],
+        "averages_source_arrays_over_cell_axis": true
+      },
+      "fig5.ipynb": {
+        "fig3_source_array_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "direct_numpy_load_references": [
+          "fig3_C3.npy",
+          "fig3_Mi1.npy",
+          "fig3_Mi4.npy",
+          "fig3_Mi9.npy",
+          "fig3_Tm3.npy"
+        ],
+        "identity_or_recording_sidecar_references": [],
+        "averages_source_arrays_over_cell_axis": true
+      }
+    },
+    "Fig3_source_consumer_notebook_count": 4,
+    "identity_or_recording_sidecar_reference_found": false,
+    "recording_metadata_recovered_from_other_notebooks": false
   },
   "cross_figure_identity_boundary": {
     "Fig1_individual_spatial_RF_counts": {
@@ -220,6 +415,7 @@
     "grating_PD_baseline_must_not_be_imputed_to_Fig3_edge_recordings": true,
     "workbook_connection_names_are_export_labels_not_recording_metadata": true,
     "differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness": true,
+    "downstream_notebook_reuse_does_not_supply_recording_identity": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

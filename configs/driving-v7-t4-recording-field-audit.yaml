@@ -49,6 +49,12 @@ dataset_manifest:
     - fig3_T4v.npy
     - fig3_Tm3.npy
     - fig3_led.npy
+dataset_notebook_metadata:
+  directory: data/raw/t4-fig3-source-dynamics/edmond-1khz/all-notebooks
+  expected_file_count: 16
+  expected_total_bytes: 5352395
+  expected_consumer_notebooks: [edfig7.ipynb, edfig8.ipynb, fig3.ipynb, fig5.ipynb]
+  fig3_source_array_names: [fig3_C3.npy, fig3_Mi1.npy, fig3_Mi4.npy, fig3_Mi9.npy, fig3_Tm3.npy]
 fig1_identity_evidence: artifacts/v7-fig1-source-temporal-readiness-audit.json
 notebook:
   path: data/raw/t4-fig3-source-dynamics/edmond-1khz/fig3.ipynb
@@ -116,6 +122,7 @@ boundary:
   grating_PD_baseline_must_not_be_imputed_to_Fig3_edge_recordings: true
   workbook_connection_names_are_export_labels_not_recording_metadata: true
   differing_Fig1_and_Fig3_counts_do_not_prove_cohort_disjointness: true
+  downstream_notebook_reuse_does_not_supply_recording_identity: true
   no_threshold_label_split_denominator_or_failure_rule_change: true
   no_parameter_fit: true
   no_target_activity_injection: true

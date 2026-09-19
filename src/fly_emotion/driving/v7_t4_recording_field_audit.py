@@ -173,6 +173,82 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
         name for name in fig3_files if identity_pattern.search(name)
     ]
 
+    metadata_spec = config["dataset_notebook_metadata"]
+    metadata_directory = root / metadata_spec["directory"]
+    metadata_manifest = {
+        item["dataFile"]["filename"]: item["dataFile"]
+        for item in dataset_files
+        if item["dataFile"]["filename"].endswith(
+            (".ipynb", ".txt", ".yml")
+        )
+    }
+    if len(metadata_manifest) != int(metadata_spec["expected_file_count"]):
+        raise ValueError("T4 Edmond notebook/metadata manifest count changed")
+    metadata_files = {}
+    notebook_sources = {}
+    for name, data_file in sorted(metadata_manifest.items()):
+        path = metadata_directory / name
+        if (
+            path.stat().st_size != int(data_file["filesize"])
+            or _md5(path) != data_file["md5"]
+        ):
+            raise ValueError(f"T4 Edmond notebook/metadata file changed: {name}")
+        metadata_files[name] = {
+            "datafile_id": int(data_file["id"]),
+            "bytes": path.stat().st_size,
+            "md5": data_file["md5"],
+            "sha256": _sha256(path),
+        }
+        if name.endswith(".ipynb"):
+            notebook_sources[name] = _notebook_source(path)
+    if sum(item["bytes"] for item in metadata_files.values()) != int(
+        metadata_spec["expected_total_bytes"]
+    ):
+        raise ValueError("T4 Edmond notebook/metadata byte total changed")
+    fig3_source_array_names = set(metadata_spec["fig3_source_array_names"])
+    consumer_notebooks = {}
+    referenced_file_pattern = re.compile(
+        r"['\"]([^'\"]+\.(?:npy|csv|xlsx|txt|pkl|pickle|h5|hdf5|tif))['\"]",
+        re.I,
+    )
+    for name, source in notebook_sources.items():
+        references = sorted(set(referenced_file_pattern.findall(source)))
+        source_references = sorted(
+            array_name for array_name in fig3_source_array_names if array_name in source
+        )
+        if not source_references:
+            continue
+        direct_loads = sorted(
+            set(
+                re.findall(
+                    r"np\.load\(['\"](fig3_(?:C3|Mi1|Mi4|Mi9|Tm3)\.npy)['\"]\)",
+                    source,
+                )
+            )
+        )
+        identity_sidecar_references = sorted(
+            reference for reference in references if identity_pattern.search(reference)
+        )
+        consumer_notebooks[name] = {
+            "fig3_source_array_references": source_references,
+            "direct_numpy_load_references": direct_loads,
+            "identity_or_recording_sidecar_references": identity_sidecar_references,
+            "averages_source_arrays_over_cell_axis": "np.nanmean" in source
+            and "axis=1" in source.replace(" ", ""),
+        }
+    if sorted(consumer_notebooks) != sorted(
+        metadata_spec["expected_consumer_notebooks"]
+    ):
+        raise ValueError("T4 Fig. 3 notebook consumer set changed")
+    if any(
+        item["direct_numpy_load_references"]
+        != item["fig3_source_array_references"]
+        or item["identity_or_recording_sidecar_references"]
+        or not item["averages_source_arrays_over_cell_axis"]
+        for item in consumer_notebooks.values()
+    ):
+        raise ValueError("T4 Fig. 3 notebook metadata semantics changed")
+
     fig1_path = Path(config["fig1_identity_evidence"])
     fig1 = json.loads((root / fig1_path).read_text(encoding="utf-8"))
     fig1_counts = fig1["extended_figure_1"]["individual_source_spatial_RF_counts"]
@@ -245,6 +321,10 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
                 str(workbook_spec["path"]): _sha256(workbook_path),
                 str(manifest_spec["path"]): _sha256(manifest_path),
                 str(fig1_path): _sha256(root / fig1_path),
+                **{
+                    str(metadata_directory / name): item["sha256"]
+                    for name, item in metadata_files.items()
+                },
             },
             "parameter_fit": False,
             "runtime_modified": False,
@@ -278,6 +358,17 @@ def evaluate_v7_t4_recording_field_audit(root: Path) -> dict:
             "derived_connection_count": len(derived_connections),
             "package_metadata_members": package_metadata_members,
             "recording_metadata_recovered_from_package": False,
+        },
+        "cross_directory_notebook_audit": {
+            "verified_file_count": len(metadata_files),
+            "verified_total_bytes": sum(
+                item["bytes"] for item in metadata_files.values()
+            ),
+            "files": metadata_files,
+            "Fig3_source_consumer_notebooks": consumer_notebooks,
+            "Fig3_source_consumer_notebook_count": len(consumer_notebooks),
+            "identity_or_recording_sidecar_reference_found": False,
+            "recording_metadata_recovered_from_other_notebooks": False,
         },
         "cross_figure_identity_boundary": {
             "Fig1_individual_spatial_RF_counts": {

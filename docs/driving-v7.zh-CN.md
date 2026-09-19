@@ -2332,6 +2332,11 @@ property 或 external-link payload。论文给出的 1 秒 prestimulus baseline 
 Mi4/C3 个体计数分别为 22/11/10/16 与 24/12/19/16，且没有跨图共享 ID，故不能由计数推断
 cohort 重叠或互斥。记录级方向、角位置、stimulus ID、baseline 和 cohort role 仍未恢复。
 证据见 `artifacts/v7-t4-recording-field-audit.json`。
+此外已从同一 Edmond manifest 下载并逐 MD5 核验全部 14 个 notebook、根 README 与环境文件
+（共 16 项、5,352,395 bytes）。只有 `fig3.ipynb`、`fig5.ipynb`、`edfig7.ipynb` 和
+`edfig8.ipynb` 读取 Fig.3 source 数组；它们都直接 `np.load` 数组并沿 cell 轴求群体均值，
+没有引用 recording/animal identity sidecar。其他 notebook 也没有提供可回连 Fig.3 ordinal 的
+实验 manifest，因此跨目录复用不能补齐上述五项缺失字段。
 
 前端披露也按这个边界拆开：`/api/v7/status` 只读取并逐依赖哈希验证
 `artifacts/v7-goal-audit.json`，不实例化 v7 或改变 `/api/driving/*`。页面把当前运行的

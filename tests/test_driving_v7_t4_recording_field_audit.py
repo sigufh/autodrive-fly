@@ -68,6 +68,25 @@ def test_complete_dataset_and_workbook_internals_do_not_recover_missing_fields()
     assert workbook["derived_connection_count"] == 28
     assert workbook["package_metadata_members"] == []
     assert workbook["recording_metadata_recovered_from_package"] is False
+    notebooks = report["cross_directory_notebook_audit"]
+    assert notebooks["verified_file_count"] == 16
+    assert notebooks["verified_total_bytes"] == 5352395
+    assert notebooks["Fig3_source_consumer_notebook_count"] == 4
+    assert sorted(notebooks["Fig3_source_consumer_notebooks"]) == [
+        "edfig7.ipynb",
+        "edfig8.ipynb",
+        "fig3.ipynb",
+        "fig5.ipynb",
+    ]
+    assert all(
+        item["direct_numpy_load_references"]
+        == item["fig3_source_array_references"]
+        and item["identity_or_recording_sidecar_references"] == []
+        and item["averages_source_arrays_over_cell_axis"] is True
+        for item in notebooks["Fig3_source_consumer_notebooks"].values()
+    )
+    assert notebooks["identity_or_recording_sidecar_reference_found"] is False
+    assert notebooks["recording_metadata_recovered_from_other_notebooks"] is False
     cross_figure = report["cross_figure_identity_boundary"]
     assert cross_figure["Fig1_individual_spatial_RF_counts"] == {
         "Mi1": 22,
