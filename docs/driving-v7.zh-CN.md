@@ -1998,6 +1998,15 @@ white-noise 帧；但 25 条 white-noise 和 26 条 drifting-grating 电压记�
 drifting-grating speed 仍只由记录内的 temporal/spatial-frequency 数组确定。证据见
 `artifacts/v7-kohn-portes-stimulus-provenance-audit.json`。
 
+随后对 Motyxia2 的全部公开 Git refs 做了有界历史审计：固定 bundle 覆盖 22 个 branch、
+447 个可达 commit、280 个历史路径和 1,015 个唯一 blob。对 35 个 `JRK日期` recording
+token、两个 white-noise stimulus name、`driftinggrating_05hz` 与内部日志前缀同时扫描文本
+和二进制 blob，均为零命中。历史中的 10 个日志路径全部属于 `fischerfritz/test`，另有
+48 个 UUID/通用 `fmp` stimulus-cache 路径（52 个历史 blob 版本），但没有 recording key
+可与 Kohn–Portes 电压记录连接。因此已审计的公开 GitLab 历史不能恢复逐记录刺激日志；
+这仍不是对其他未审计位置或全球不存在的断言。证据见
+`artifacts/v7-motyxia2-public-history-audit.json`。
+
 T5 的允许响应单位另审计 Yang et al. 2016（DOI
 `10.1016/j.cell.2016.05.031`）的正式 Elsevier 补充附件。两个 PDF 共 5,630,529
 bytes，SHA-256 分别为 `b6f878b9…` 和 `7c2ee9e2…`，均无嵌入附件。论文明确

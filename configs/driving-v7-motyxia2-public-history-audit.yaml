@@ -1,0 +1,44 @@
+version: 1
+name: v7-motyxia2-public-history-record-log-audit
+observed_on: "2026-09-19"
+bundle:
+  path: data/raw/kohn-portes-stimulus-provenance/motyxia2-all-refs.bundle
+  bytes: 24807581
+  sha256: cc72316c0608ff6bbb96f3c73330b2b41bd654ef83a23700e3a80d6870381fb8
+repository:
+  url: https://gitlab.com/rbehnialab/motyxia2
+  public_branch_count: 22
+  reachable_commit_count: 447
+  historical_unique_path_count: 280
+  unique_blob_count: 1015
+  stimulus_cache_historical_path_count: 48
+  stimulus_cache_unique_blob_version_count: 52
+evidence:
+  kohn_portes_identity: artifacts/v7-kohn-portes-identity-history-audit.json
+expected_stimulus_tokens:
+  - WhiteNoiseBars_1_horz_20hz_5deg
+  - WhiteNoiseBars_1_vert_20hz_5deg
+  - driftinggrating_05hz
+  - motyxia_log_ephys_rig2
+expected_public_log_paths:
+  - logs/fischerfritz/test/1/logsummary.json
+  - logs/fischerfritz/test/1/logtext.txt
+  - logs/fischerfritz/test/7/logsummary.json
+  - logs/fischerfritz/test/7/logtext.txt
+  - logs/fischerfritz/test/7/params.json
+  - logs/fischerfritz/test/7/timestamps.npy
+  - logs/fischerfritz/test/recording_1/logsummary.json
+  - logs/fischerfritz/test/recording_1/logtext.txt
+  - logs/fischerfritz/test/recording_1/params.json
+  - logs/fischerfritz/test/recording_1/timestamps.npy
+boundary:
+  audited_public_GitLab_refs_and_reachable_history_only: true
+  no_claim_of_global_nonexistence: true
+  generic_test_logs_are_not_Kohn_Portes_record_logs: true
+  UUID_stimulus_caches_without_recording_keys_are_not_joined: true
+  no_pickle_deserialization: true
+  no_generator_default_imputation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

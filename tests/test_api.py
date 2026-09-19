@@ -56,6 +56,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         "raw_drifting_grating": 9,
     }
     assert boundaries["T5_record_specific_stimulus_logs_available"] is False
+    assert boundaries["Motyxia2_public_history_branch_count"] == 22
+    assert boundaries["Motyxia2_public_history_commit_count"] == 447
+    assert boundaries["T5_record_log_found_in_Motyxia2_public_history"] is False
     assert boundaries["T5_generator_defaults_used_as_record_fields"] is False
     assert boundaries["T5_stimulus_provenance_complete"] is False
 

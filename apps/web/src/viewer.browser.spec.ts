@@ -32,6 +32,7 @@ test('real topology coverage, driving activity and stable scene', async ({ page 
   await expect(v7).toContainText('九源合同：INCOMPLETE')
   await expect(v7).toContainText('Mi4/C3 直接数值电压：Groschner_2022；独立候选 0')
   await expect(v7).toContainText('T5 字段：flash 7/15 · white-noise 8/15 · grating 9/15')
+  await expect(v7).toContainText('Motyxia2 历史：22 branches / 447 commits；逐记录日志未命中')
   await expect(v7).toContainText('生成器默认值未代填')
   await expect(v7).toContainText('EPG_PEN_PEG_heading · PASS')
   await expect(v7).toContainText('果蝇局部核：组件证据，未获发布授权')

@@ -48,6 +48,9 @@ export type V7Status = {
     Mi4_C3_independent_numeric_voltage_candidate_count: number;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
     T5_record_specific_stimulus_logs_available: boolean;
+    Motyxia2_public_history_branch_count: number;
+    Motyxia2_public_history_commit_count: number;
+    T5_record_log_found_in_Motyxia2_public_history: boolean;
     T5_generator_defaults_used_as_record_fields: boolean;
     T5_stimulus_provenance_complete: boolean;
   };

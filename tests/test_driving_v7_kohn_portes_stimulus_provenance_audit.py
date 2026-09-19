@@ -30,6 +30,9 @@ def test_fixed_generator_does_not_replace_record_specific_logs() -> None:
     assert raw["white_noise_record_count"] == 25
     assert raw["drifting_grating_record_count"] == 26
     assert raw["record_specific_stimulus_logs_locally_available"] is False
+    assert raw["record_specific_stimulus_log_found_in_audited_public_history"] is False
+    assert raw["audited_public_history_branch_count"] == 22
+    assert raw["audited_public_history_commit_count"] == 447
 
 
 def test_missing_fields_are_not_filled_from_generator_defaults() -> None:

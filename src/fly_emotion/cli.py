@@ -153,6 +153,9 @@ from .driving.v7_mi4_c3_whole_cell_candidate_audit import (
     evaluate_v7_mi4_c3_whole_cell_candidate_audit,
 )
 from .driving.v7_mirror_audit import evaluate_v7_layerwise_mirror_audit
+from .driving.v7_motyxia2_public_history_audit import (
+    evaluate_v7_motyxia2_public_history_audit,
+)
 from .driving.v7_navigation_nested import evaluate_v7_navigation_nested
 from .driving.v7_navigation_nested_eval import evaluate_v7_navigation_nested_candidate
 from .driving.v7_nested_neural_screen import evaluate_v7_nested_neural_screen
@@ -555,6 +558,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
     subparsers.add_parser("v7-audit-kohn-portes-identity-history")
     subparsers.add_parser("v7-audit-kohn-portes-stimulus-provenance")
+    subparsers.add_parser("v7-audit-motyxia2-public-history")
     subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
     subparsers.add_parser("v7-audit-ct1-experimental-voltage-boundary")
     subparsers.add_parser("v7-audit-tm9-coordinate-identifiability")
@@ -1776,6 +1780,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-stimulus-provenance":
         report = evaluate_v7_kohn_portes_stimulus_provenance_audit(root)
         target = root / "artifacts/v7-kohn-portes-stimulus-provenance-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-motyxia2-public-history":
+        report = evaluate_v7_motyxia2_public_history_audit(root)
+        target = root / "artifacts/v7-motyxia2-public-history-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

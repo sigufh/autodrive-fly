@@ -127,6 +127,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_record_specific_stimulus_logs_available": visual[
                     "Kohn_Portes_record_specific_stimulus_logs_available"
                 ],
+                "Motyxia2_public_history_branch_count": visual[
+                    "Motyxia2_public_history_branch_count"
+                ],
+                "Motyxia2_public_history_commit_count": visual[
+                    "Motyxia2_public_history_commit_count"
+                ],
+                "T5_record_log_found_in_Motyxia2_public_history": visual[
+                    "Kohn_Portes_record_log_found_in_Motyxia2_public_history"
+                ],
                 "T5_generator_defaults_used_as_record_fields": visual[
                     "Kohn_Portes_generator_defaults_used_as_record_fields"
                 ],

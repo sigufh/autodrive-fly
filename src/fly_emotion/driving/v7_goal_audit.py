@@ -99,6 +99,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     kohn_portes_stimulus_provenance_audit = reports[
         "kohn_portes_stimulus_provenance_audit"
     ]
+    motyxia2_public_history_audit = reports["motyxia2_public_history_audit"]
     behnia_t4_fast_source_audit = reports["behnia_t4_fast_source_audit"]
     behnia_t4_fast_source_availability_audit = reports[
         "behnia_t4_fast_source_availability_audit"
@@ -321,6 +322,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_recording_field_audit"],
                 config["evidence"]["t5_recording_field_audit"],
                 config["evidence"]["kohn_portes_stimulus_provenance_audit"],
+                config["evidence"]["motyxia2_public_history_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
                 config["evidence"]["behnia_t4_fast_source_availability_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
@@ -679,6 +681,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_stimulus_provenance_complete": (
                     kohn_portes_stimulus_provenance_audit[
                         "stimulus_provenance_contract_complete"
+                    ]
+                ),
+                "Motyxia2_public_history_branch_count": (
+                    motyxia2_public_history_audit["repository"][
+                        "public_branch_count"
+                    ]
+                ),
+                "Motyxia2_public_history_commit_count": (
+                    motyxia2_public_history_audit["repository"][
+                        "reachable_commit_count"
+                    ]
+                ),
+                "Kohn_Portes_record_log_found_in_Motyxia2_public_history": (
+                    motyxia2_public_history_audit[
+                        "Kohn_Portes_record_specific_stimulus_log_found_in_audited_public_history"
                     ]
                 ),
                 "Behnia_T4_independent_fast_source_phenotypes": sorted(
@@ -2297,6 +2314,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Mi4_C3_independent_numeric_voltage_candidate_count",
                     "T5_voltage_field_counts",
                     "T5_record_specific_stimulus_logs_available",
+                    "Motyxia2_public_history_branch_count",
+                    "Motyxia2_public_history_commit_count",
+                    "T5_record_log_found_in_Motyxia2_public_history",
                     "T5_generator_defaults_used_as_record_fields",
                 ],
             },

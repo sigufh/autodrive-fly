@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import tarfile
 from collections import Counter
 from pathlib import Path
@@ -242,6 +243,13 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
     }
     complete = all(gates.values())
     evidence_paths = {name: Path(path) for name, path in config["evidence"].items()}
+    history = json.loads(
+        (root / evidence_paths["motyxia2_public_history"]).read_text(encoding="utf-8")
+    )
+    if history[
+        "Kohn_Portes_record_specific_stimulus_log_found_in_audited_public_history"
+    ]:
+        raise ValueError("Motyxia2 public history now contains a candidate recording log")
     return {
         "protocol": {
             "name": config["name"],
@@ -274,6 +282,13 @@ def evaluate_v7_kohn_portes_stimulus_provenance_audit(root: Path) -> dict:
             **checks,
             "private_stimulus_path_prefix": expected["private_stimulus_path_prefix"],
             "record_specific_stimulus_logs_locally_available": record_logs_local,
+            "record_specific_stimulus_log_found_in_audited_public_history": False,
+            "audited_public_history_branch_count": history["repository"][
+                "public_branch_count"
+            ],
+            "audited_public_history_commit_count": history["repository"][
+                "reachable_commit_count"
+            ],
             "white_noise_field_inventory": wn_inventory,
             "drifting_grating_field_inventory": dg_inventory,
             "drifting_grating_spatial_frequencies_cycles_per_degree": list(next(iter(sf_arrays))),

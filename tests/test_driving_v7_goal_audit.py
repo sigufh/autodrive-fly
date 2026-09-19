@@ -33,6 +33,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Mi4_C3_independent_numeric_voltage_candidate_count",
         "T5_voltage_field_counts",
         "T5_record_specific_stimulus_logs_available",
+        "Motyxia2_public_history_branch_count",
+        "Motyxia2_public_history_commit_count",
+        "T5_record_log_found_in_Motyxia2_public_history",
         "T5_generator_defaults_used_as_record_fields",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
@@ -284,6 +287,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Kohn_Portes_record_specific_stimulus_logs_available"] is False
     assert visual["observations"]["Kohn_Portes_generator_defaults_used_as_record_fields"] is False
     assert visual["observations"]["Kohn_Portes_stimulus_provenance_complete"] is False
+    assert visual["observations"]["Motyxia2_public_history_branch_count"] == 22
+    assert visual["observations"]["Motyxia2_public_history_commit_count"] == 447
+    assert (
+        visual["observations"][
+            "Kohn_Portes_record_log_found_in_Motyxia2_public_history"
+        ]
+        is False
+    )
     assert visual["observations"]["Behnia_T4_independent_fast_source_phenotypes"] == [
         "Mi1",
         "Tm3",
