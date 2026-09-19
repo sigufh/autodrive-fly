@@ -20,11 +20,11 @@ def test_t4t5_source_dynamics_gate_stops_new_candidates_and_downstream_work() ->
     assert report["passing_gates"] == [
         "T4_crossfit_structure_axis",
         "T5_crossfit_structure_axis",
+        "shared_physical_v7_timebase",
     ]
     assert set(report["failing_gates"]) == {
         "T4_source_dynamics_transfer",
         "T5_source_dynamics_transfer",
-        "shared_physical_v7_timebase",
         "independent_dynamic_validation",
     }
     assert report["FlyVis_time_constants_transferable"] is False

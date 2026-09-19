@@ -3,11 +3,13 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "404c0749a4c1bc44b18627c0ff024660bb8f31fc8ccc114b0920d0897cdd4d6e",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "991cfe0edecc340bc59b7ccdfbdf334886355b60a4b4e9daf190b543037a5004",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "227621c4d07c36ed5a4d32b2b6f0bdd0ebca9f661ab7857ea7b3b47f3ade5bf4",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "e0b9282c7448aa116961808c5f7fe67adaadede1f4720a95b8eeef8769acb4fc",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
+      "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
       "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
@@ -69,6 +71,15 @@
       }
     },
     "role": "training_reproduction"
+  },
+  "offline_v7_stimulus_coordinates": {
+    "frame_interval_milliseconds": 10.0,
+    "substep_interval_milliseconds": 2.5,
+    "horizontal_fov_degrees": 143.2394487827058,
+    "horizontal_coordinates_complete": true,
+    "two_dimensional_angular_calibration_complete": false,
+    "biologically_calibrated": false,
+    "external_recording_alignment_verified": false
   },
   "paper_direction_synthesis": {
     "shift_samples": 160,
@@ -263,14 +274,14 @@
   "required_transfer_fields_available": {
     "direction_independent_source_kernel": false,
     "source_to_MaleCNS_identity_mapping": false,
-    "physical_v7_sample_interval": false,
+    "physical_v7_sample_interval": true,
     "millivolts_to_v7_normalized_state_mapping": false,
     "ordered_source_sequence_identifiability": false
   },
   "transfer_gates": {
     "source_direction_axis_available": false,
     "source_shift_is_not_target_PD_ND_conditioned": false,
-    "physical_timebase_available": false,
+    "physical_timebase_available": true,
     "state_unit_mapping_available": false,
     "independent_dynamic_validation_available": false,
     "existing_microstep_temporal_control_passed": false,
@@ -283,7 +294,6 @@
   "blocking_data_requirements": [
     "direction_independent_source_kernel",
     "source_to_MaleCNS_identity_mapping",
-    "physical_v7_sample_interval",
     "millivolts_to_v7_normalized_state_mapping",
     "ordered_source_sequence_identifiability"
   ],

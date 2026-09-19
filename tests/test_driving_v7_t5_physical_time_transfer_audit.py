@@ -22,14 +22,21 @@ def test_t5_physical_time_transfer_audit_is_hash_bound_and_read_only() -> None:
 def test_t5_physical_time_transfer_stays_closed_on_all_missing_fields() -> None:
     report = json.loads(REPORT.read_text())
     assert set(report["missing_fields"]) == {
-        "v7_physical_frame_interval",
-        "v7_physical_solver_interval",
         "v7_camera_angular_calibration",
         "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels",
         "CT1_membrane_like_kernel",
         "stable_source_or_target_cell_to_MaleCNS_mapping",
         "independent_dynamic_validation_cohort",
     }
+    assert report["required_fields"]["v7_physical_frame_interval"] is True
+    assert report["required_fields"]["v7_physical_solver_interval"] is True
+    assert report["required_fields"]["v7_camera_angular_calibration"] is False
+    coordinates = report["time_layers"]["offline_stimulus_coordinate_contract"]
+    assert coordinates["time_coordinates_complete"] is True
+    assert coordinates["horizontal_coordinates_complete"] is True
+    assert coordinates["two_dimensional_angular_calibration_complete"] is False
+    assert coordinates["biologically_calibrated"] is False
+    assert coordinates["external_recording_alignment_verified"] is False
     assert report["time_layers"]["T5_target_voltage"]["native_time_vectors_verified"]
     assert report["time_layers"]["T5_target_voltage"]["measures_source_types"] is False
     assert report["time_layers"]["T5_source_filters"]["raw_calcium_contract_complete"]

@@ -4,6 +4,10 @@ observed_on: "2026-09-18"
 electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
 electrophysiology_interface: artifacts/v7-ephys-interface.json
 timebase_evidence: artifacts/v7-timebase-audit.json
+stimulus_coordinate_evidence: artifacts/v7-stimulus-coordinate-contract.json
+stimulus_coordinate_protocol: configs/driving-v7-stimulus-coordinate-contract.yaml
+stimulus_coordinate_evidence: artifacts/v7-stimulus-coordinate-contract.json
+stimulus_coordinate_protocol: configs/driving-v7-stimulus-coordinate-contract.yaml
 microstep_evidence: artifacts/v7-t4-synapse-microstep-precheck.json
 official_unified_model_evidence: artifacts/v7-t5-data-audit.json
 verified_unified_model_evidence: artifacts/v7-unified-model-package-audit.json

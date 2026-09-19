@@ -946,6 +946,16 @@ moving edge、looming/receding、背景后出现的 static disc、左右 transla
 无量纲 leak/delay，也不能解决论文 160 ms 时移与当前支路延迟的矛盾。刺激级互斥
 也不等于独立动物或独立细胞。证据见 `artifacts/v7-stage1-split.json`。
 
+为避免上述工程时钟继续只停留在旁注，另冻结
+`artifacts/v7-stimulus-coordinate-contract.json`。它逐项核对 stage-1 配置与已保存 split，
+确认离线受控视觉的 10 ms/frame、4 个子步和 2.5 ms/substep 完全一致；同时直接调用
+`DrivingEnvironment.observe` 捕获实现中的 48 条前视射线，验证横向范围为
+`[-1.25, 1.25] rad`（143.239°）、相邻射线 3.04765°。因此各 split 的水平移动边缘速度
+现可确定性转换为 °/s。该增量只定义离线刺激的工程坐标：代码没有纵向相机角度，故二维
+角标定仍不完整；它也未经生物校准、未与外部记录对齐、不等于车辆 120 ms 步长，且没有
+修改默认运行时。相应地 T4/T5 readiness 中共享离线时间轴转为通过，但 source dynamics、
+独立验证和完整相机角标定仍失败，不能据此拟合或推进 LPLC/车辆实验。
+
 `make v7-audit-t5-supplement` 在 10 MB 上限内取得 Europe PMC 官方补充包，安全读取
 其中 `elife-50706-supp1.docx` 的 `word/document.xml`，未执行 Office 内容。DOCX
 成员为 121,076 字节，SHA-256 为 `b0933c4d…`；外层 ZIP 会动态重打包，故其哈希只
@@ -1020,12 +1030,13 @@ development 神经评估；validation、OOD、预留 final 与中央复合体仍
 蘑菇体学习和最终 OOD 发布均未获授权。这份清单不以“测试通过”替代科学门槛，也不
 把未执行的下游工作写成失败实验。
 
-### 当前 v7 时间尺度不可识别
+### 当前 v7 生物时间尺度不可识别，离线工程坐标已冻结
 
-`make v7-audit-timebase` 保存 `artifacts/v7-timebase-audit.json`，只审计现有代码与
-配置，不修改运行时。当前受控视觉定义每个刺激 16 帧、每帧 4 个脑微步，但没有
-帧持续时间、求解器 `dt` 或每微步毫秒数；因此 leak=0.1–1.0 只能换算成抽象微步
-时间常数，不能标成生理毫秒。
+`make v7-audit-timebase` 保存 `artifacts/v7-timebase-audit.json`，只审计遗留动力学代码与
+主配置，不修改运行时。该层定义每个刺激 16 帧、每帧 4 个脑微步，却没有在动力学
+方程中声明帧持续时间或求解器 `dt`；因此 leak=0.1–1.0 仍只能解释为抽象微步常数，
+不能标成生理毫秒。新增的离线刺激坐标合同只给评估样本加时间/横向角坐标，不回写或
+重新解释这些已有 leak/delay。
 
 branch 候选把中心、近端 Mi4/C3、远端 Mi9 分别设为 0、2、3 微步延迟。若强制
 近端 2 微步等于论文的 160 ms，每微步需 80 ms，远端会变成 240 ms；若强制远端
@@ -1825,12 +1836,12 @@ ordered 最好仍只有 T5d 左右（2/8），其余亚型未恢复；shuffle/st
 继续扫描 target 端 gain 或归约。证据见
 `artifacts/v7-t5-ct1-axis-sequence-identifiability.json`。
 
-进一步把可用时间证据按语义分层后，`10 ms/frame` 只属于 stage-1 确定性刺激调度，
-配置明确写着未应用到当前神经运行时且未经生物校准；T5 仓库中的 2.5/5 ms 是目标 T5
+进一步把可用时间证据按语义分层后，`10 ms/frame` 与名义 `2.5 ms/substep` 已被明确
+冻结为离线 v7 刺激/求解坐标，仍未应用到默认运行时且未经生物校准；T5 仓库中的 2.5/5 ms 是目标 T5
 膜电位轨迹的原生采样间隔，并不测量 Tm1/Tm2/Tm4/Tm9/CT1 源动态；Arenz Table S2
 虽覆盖前四类源且 raw calcium 拟合完整，但去卷积的 Tm9 R² 仅 0.273，CT1 又完全缺席。
-因此不能拼接这些局部时间量来宣称 v7 已有物理时间基准。当前七项 transfer 字段均未齐：
-物理帧间隔、物理解算步长、相机角标定、四类 Tm 膜电位型核、CT1 膜电位型核、稳定
+因此不能拼接这些局部时间量来宣称 v7 已有生物校准。七项 transfer 字段中，离线物理
+帧间隔和解算步长现已明确；仍缺二维相机角标定、四类 Tm 膜电位型核、CT1 膜电位型核、稳定
 记录细胞到 MaleCNS 映射、独立动态验证 cohort。证据见
 `artifacts/v7-t5-physical-time-transfer-audit.json`；该审计不猜测 `dt`、不拟合参数，也不
 授权新的 T5、LPLC 或车辆实验。
@@ -1874,8 +1885,8 @@ IQR/median 超过冻结的 0.50 门。参数来自 Sintel 光流任务和 FIB25/
 迁移到 v7。证据见 `artifacts/v7-flyvis-visual-source-time-constants.json`。
 
 `artifacts/v7-t4t5-source-dynamics-readiness.json` 把这些结论汇总为统一停止门：T4/T5
-两项结构轴 cross-fit 通过，但 T4/T5 source-dynamics transfer、共享物理时间基准和独立
-动态验证均失败。在获得新的外部源级动力学证据前，不再创建 target 端公式候选；这是为
+两项结构轴 cross-fit 与共享离线物理时间轴通过，但 T4/T5 source-dynamics transfer 和独立
+动态验证仍失败。在获得新的外部源级动力学证据前，不再创建 target 端公式候选；这是为
 防止在同一 tuning 条件上反复试参造成选择偏差，并不表示机制原则上无解。
 
 为使后续解锁条件可执行而非笼统写成“需要更多数据”，另冻结

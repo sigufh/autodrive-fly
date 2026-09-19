@@ -1,0 +1,31 @@
+version: 1
+name: v7-offline-stimulus-coordinate-contract
+observed_on: "2026-09-19"
+v7_contract: configs/driving-v7.yaml
+stage1_split_protocol: configs/driving-v7-stage1-split.yaml
+stage1_split_evidence: artifacts/v7-stage1-split.json
+environment_implementation: src/fly_emotion/driving/environment.py
+scope: offline_v7_controlled_visual_evaluation
+time_coordinates:
+  frame_interval_milliseconds: 10.0
+  neural_substeps_per_frame: 4
+  substep_interval_milliseconds: 2.5
+  frame_timestamp_convention: frame_start
+camera_coordinates:
+  projection: linear_ray_angle
+  horizontal_ray_min_radians: -1.25
+  horizontal_ray_max_radians: 1.25
+  horizontal_ray_count: 48
+  ray_endpoint_convention: inclusive
+boundary:
+  coordinate_contract_is_explicit_engineering_metadata: true
+  coordinate_contract_is_not_biologically_calibrated: true
+  horizontal_coordinates_do_not_substitute_for_2D_angular_calibration: true
+  offline_frame_interval_is_not_vehicle_step_interval: true
+  does_not_reinterpret_legacy_discrete_delays_as_biological_time: true
+  does_not_establish_external_recording_alignment: true
+  does_not_establish_source_membrane_dynamics: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_and_vehicle_experiments_remain_frozen: true

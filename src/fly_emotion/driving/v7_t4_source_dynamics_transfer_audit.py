@@ -20,6 +20,8 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     ephys_path = Path(config["electrophysiology_evidence"])
     interface_path = Path(config["electrophysiology_interface"])
     timebase_path = Path(config["timebase_evidence"])
+    coordinate_path = Path(config["stimulus_coordinate_evidence"])
+    coordinate_protocol_path = Path(config["stimulus_coordinate_protocol"])
     microstep_path = Path(config["microstep_evidence"])
     unified_path = Path(config["official_unified_model_evidence"])
     verified_unified_path = Path(config["verified_unified_model_evidence"])
@@ -42,7 +44,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     retinal_symmetry_path = Path(config["retinal_symmetry_evidence"])
     ephys = json.loads((root / ephys_path).read_text(encoding="utf-8"))
     interface = json.loads((root / interface_path).read_text(encoding="utf-8"))
-    timebase = json.loads((root / timebase_path).read_text(encoding="utf-8"))
+    coordinates = json.loads((root / coordinate_path).read_text(encoding="utf-8"))
     microstep = json.loads((root / microstep_path).read_text(encoding="utf-8"))
     unified = json.loads((root / unified_path).read_text(encoding="utf-8"))
     verified_unified = json.loads(
@@ -116,8 +118,8 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         "source_to_MaleCNS_identity_mapping": all(
             item["stable_MaleCNS_body_ids_available"] for item in verified_sources.values()
         ),
-        "physical_v7_sample_interval": timebase["identifiability"][
-            "physical_timebase_identified"
+        "physical_v7_sample_interval": coordinates[
+            "offline_time_coordinate_contract_complete"
         ],
         "millivolts_to_v7_normalized_state_mapping": interface["interface_boundary"][
             "convert_millivolts_to_normalized_drive"
@@ -167,6 +169,10 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(ephys_path): _sha256(root / ephys_path),
                 str(interface_path): _sha256(root / interface_path),
                 str(timebase_path): _sha256(root / timebase_path),
+                str(coordinate_path): _sha256(root / coordinate_path),
+                str(coordinate_protocol_path): _sha256(
+                    root / coordinate_protocol_path
+                ),
                 str(microstep_path): _sha256(root / microstep_path),
                 str(unified_path): _sha256(root / unified_path),
                 str(verified_unified_path): _sha256(root / verified_unified_path),
@@ -198,6 +204,27 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "sample_interval_milliseconds": 1.0,
             "sources": verified_sources,
             "role": "training_reproduction",
+        },
+        "offline_v7_stimulus_coordinates": {
+            "frame_interval_milliseconds": coordinates["time_coordinates"][
+                "frame_interval_milliseconds"
+            ],
+            "substep_interval_milliseconds": coordinates["time_coordinates"][
+                "substep_interval_milliseconds"
+            ],
+            "horizontal_fov_degrees": coordinates["camera_coordinates"][
+                "horizontal_fov_degrees"
+            ],
+            "horizontal_coordinates_complete": coordinates[
+                "offline_horizontal_stimulus_coordinate_contract_complete"
+            ],
+            "two_dimensional_angular_calibration_complete": coordinates[
+                "offline_two_dimensional_stimulus_coordinate_contract_complete"
+            ],
+            "biologically_calibrated": coordinates["biological_timebase_calibrated"],
+            "external_recording_alignment_verified": coordinates[
+                "external_recording_alignment_verified"
+            ],
         },
         "paper_direction_synthesis": {
             "shift_samples": synthesis["shift_samples"],

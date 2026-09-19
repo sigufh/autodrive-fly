@@ -83,6 +83,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     }
     assert boundaries["Gou_Dryad_stable_biological_individual_IDs_verified"] is False
     assert boundaries["Gou_Dryad_experimental_membrane_voltage"] is False
+    assert boundaries["v7_offline_time_coordinate_contract_complete"] is True
+    assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True
+    assert boundaries["v7_offline_two_dimensional_angular_calibration_complete"] is False
+    assert boundaries["v7_offline_frame_interval_milliseconds"] == 10.0
+    assert boundaries["v7_offline_substep_interval_milliseconds"] == 2.5
     assert boundaries["T5_record_specific_stimulus_logs_available"] is False
     assert boundaries["Motyxia2_public_history_branch_count"] == 22
     assert boundaries["Motyxia2_public_history_commit_count"] == 447

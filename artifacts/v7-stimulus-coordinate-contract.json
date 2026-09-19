@@ -1,0 +1,164 @@
+{
+  "protocol": {
+    "name": "v7-offline-stimulus-coordinate-contract",
+    "observed_on": "2026-09-19",
+    "scope": "offline_v7_controlled_visual_evaluation",
+    "dependencies_sha256": {
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
+      "src/fly_emotion/driving/v7_stimulus_coordinate_contract.py": "feed3e63dbd29bd7088f1f58792c77595d623148b54a8502536c4b36dbe431d3",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
+      "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
+      "src/fly_emotion/driving/environment.py": "20dcfcbe64fec69242d558794ee522ab6ef75162346e5d63026feb54d851c36f"
+    },
+    "parameter_fit": false,
+    "functional_stimulus_evaluated": false,
+    "runtime_modified": false
+  },
+  "time_coordinates": {
+    "frame_interval_milliseconds": 10.0,
+    "frame_interval_seconds": 0.01,
+    "neural_substeps_per_frame": 4,
+    "substep_interval_milliseconds": 2.5,
+    "substep_interval_seconds": 0.0025,
+    "frame_timestamp_convention": "frame_start",
+    "applied_to_offline_v7_controlled_visual_evaluation": true,
+    "applied_to_default_runtime": false,
+    "biologically_calibrated": false
+  },
+  "camera_coordinates": {
+    "projection": "linear_ray_angle",
+    "horizontal_ray_count": 48,
+    "horizontal_ray_min_radians": -1.25,
+    "horizontal_ray_max_radians": 1.25,
+    "horizontal_fov_radians": 2.5,
+    "horizontal_fov_degrees": 143.2394487827058,
+    "angular_sample_spacing_radians": 0.05319148936170204,
+    "angular_sample_spacing_degrees": 3.047647846440544,
+    "ray_endpoint_convention": "inclusive",
+    "ray_angles_radians": [
+      -1.25,
+      -1.196808510638298,
+      -1.1436170212765957,
+      -1.0904255319148937,
+      -1.0372340425531914,
+      -0.9840425531914894,
+      -0.9308510638297872,
+      -0.8776595744680851,
+      -0.824468085106383,
+      -0.7712765957446808,
+      -0.7180851063829787,
+      -0.6648936170212766,
+      -0.6117021276595744,
+      -0.5585106382978723,
+      -0.5053191489361702,
+      -0.4521276595744681,
+      -0.39893617021276595,
+      -0.3457446808510638,
+      -0.29255319148936165,
+      -0.2393617021276595,
+      -0.18617021276595747,
+      -0.1329787234042552,
+      -0.07978723404255317,
+      -0.02659574468085113,
+      0.02659574468085113,
+      0.07978723404255317,
+      0.13297872340425543,
+      0.18617021276595747,
+      0.2393617021276595,
+      0.29255319148936176,
+      0.3457446808510638,
+      0.39893617021276606,
+      0.4521276595744681,
+      0.5053191489361701,
+      0.5585106382978724,
+      0.6117021276595744,
+      0.6648936170212767,
+      0.7180851063829787,
+      0.771276595744681,
+      0.8244680851063828,
+      0.8776595744680851,
+      0.9308510638297873,
+      0.9840425531914896,
+      1.0372340425531914,
+      1.0904255319148937,
+      1.143617021276596,
+      1.1968085106382977,
+      1.25
+    ],
+    "horizontal_angular_coordinates_complete": true,
+    "vertical_angular_coordinates_complete": false,
+    "two_dimensional_angular_calibration_complete": false
+  },
+  "stage1_moving_edge_coordinates": {
+    "pixels_per_frame_by_split": {
+      "development": [
+        1.0,
+        2.0
+      ],
+      "validation": [
+        0.5,
+        1.5
+      ],
+      "ood": [
+        0.25,
+        3.0
+      ],
+      "final": [
+        0.75,
+        2.5
+      ]
+    },
+    "degrees_per_second_by_split": {
+      "development": [
+        304.7647846440544,
+        609.5295692881087
+      ],
+      "validation": [
+        152.3823923220272,
+        457.1471769660816
+      ],
+      "ood": [
+        76.1911961610136,
+        914.2943539321632
+      ],
+      "final": [
+        228.5735884830408,
+        761.9119616101359
+      ]
+    },
+    "conversion": "pixels_per_frame * angular_sample_spacing_degrees / frame_interval_seconds"
+  },
+  "contract_gates": {
+    "frame_interval_explicit_and_positive": true,
+    "substep_interval_explicit_and_positive": true,
+    "frame_and_substep_intervals_consistent": true,
+    "stage1_scheduler_matches_contract": true,
+    "camera_width_matches_controlled_vision": true,
+    "horizontal_camera_rays_match_implementation": true,
+    "horizontal_camera_rays_are_uniform_and_inclusive": true
+  },
+  "offline_time_coordinate_contract_complete": true,
+  "offline_horizontal_stimulus_coordinate_contract_complete": true,
+  "offline_two_dimensional_stimulus_coordinate_contract_complete": false,
+  "biological_timebase_calibrated": false,
+  "external_recording_alignment_verified": false,
+  "authorize_source_dynamics_transfer": false,
+  "authorize_T4_T5_functional_candidate": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "engineering_coordinates_defined_but_vertical_angle_and_biological_source_transfer_unresolved",
+  "boundary": {
+    "coordinate_contract_is_explicit_engineering_metadata": true,
+    "coordinate_contract_is_not_biologically_calibrated": true,
+    "horizontal_coordinates_do_not_substitute_for_2D_angular_calibration": true,
+    "offline_frame_interval_is_not_vehicle_step_interval": true,
+    "does_not_reinterpret_legacy_discrete_delays_as_biological_time": true,
+    "does_not_establish_external_recording_alignment": true,
+    "does_not_establish_source_membrane_dynamics": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_and_vehicle_experiments_remain_frozen": true
+  }
+}

@@ -31,12 +31,19 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert synthesis["shift_samples"] == 160
     assert synthesis["target_PD_ND_conditioned"] is True
     assert synthesis["may_be_used_as_label_blind_v7_source_kernel"] is False
-    assert set(report["required_transfer_fields_available"].values()) == {False}
+    assert report["required_transfer_fields_available"] == {
+        "direction_independent_source_kernel": False,
+        "source_to_MaleCNS_identity_mapping": False,
+        "physical_v7_sample_interval": True,
+        "millivolts_to_v7_normalized_state_mapping": False,
+        "ordered_source_sequence_identifiability": False,
+    }
     assert report["transfer_gates"]["crossfit_structure_axis_passed"] is True
+    assert report["transfer_gates"]["physical_timebase_available"] is True
     assert not any(
         value
         for name, value in report["transfer_gates"].items()
-        if name != "crossfit_structure_axis_passed"
+        if name not in {"crossfit_structure_axis_passed", "physical_timebase_available"}
     )
     package = report["official_unified_model_package"]
     assert package["doi"] == "10.25378/janelia.16663486"

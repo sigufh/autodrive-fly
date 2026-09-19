@@ -56,6 +56,12 @@ export type V7Status = {
     Gou_Dryad_moving_bar_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
     Gou_Dryad_stable_biological_individual_IDs_verified: boolean;
     Gou_Dryad_experimental_membrane_voltage: boolean;
+    v7_offline_time_coordinate_contract_complete: boolean;
+    v7_offline_horizontal_coordinate_contract_complete: boolean;
+    v7_offline_two_dimensional_angular_calibration_complete: boolean;
+    v7_offline_frame_interval_milliseconds: number;
+    v7_offline_substep_interval_milliseconds: number;
+    v7_horizontal_fov_degrees: number;
     T5_record_specific_stimulus_logs_available: boolean;
     Motyxia2_public_history_branch_count: number;
     Motyxia2_public_history_commit_count: number;

@@ -41,6 +41,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gou_Dryad_moving_bar_fly_axis_sizes",
         "Gou_Dryad_stable_biological_individual_IDs_verified",
         "Gou_Dryad_experimental_membrane_voltage",
+        "v7_offline_time_coordinate_contract_complete",
+        "v7_offline_horizontal_coordinate_contract_complete",
+        "v7_offline_two_dimensional_angular_calibration_complete",
+        "v7_offline_frame_interval_milliseconds",
+        "v7_offline_substep_interval_milliseconds",
+        "v7_horizontal_fov_degrees",
         "T5_record_specific_stimulus_logs_available",
         "Motyxia2_public_history_branch_count",
         "Motyxia2_public_history_commit_count",
@@ -236,27 +242,44 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert set(visual["observations"]["T5_physical_source_transfer_missing_fields"]) == {
-        "v7_physical_frame_interval",
-        "v7_physical_solver_interval",
         "v7_camera_angular_calibration",
         "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels",
         "CT1_membrane_like_kernel",
         "stable_source_or_target_cell_to_MaleCNS_mapping",
         "independent_dynamic_validation_cohort",
     }
-    assert not any(
-        visual["observations"]["T5_physical_source_transfer_required_fields"].values()
+    assert visual["observations"]["T5_physical_source_transfer_required_fields"] == {
+        "v7_physical_frame_interval": True,
+        "v7_physical_solver_interval": True,
+        "v7_camera_angular_calibration": False,
+        "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels": False,
+        "CT1_membrane_like_kernel": False,
+        "stable_source_or_target_cell_to_MaleCNS_mapping": False,
+        "independent_dynamic_validation_cohort": False,
+    }
+    assert visual["observations"]["v7_offline_time_coordinate_contract_complete"] is True
+    assert (
+        visual["observations"]["v7_offline_horizontal_coordinate_contract_complete"]
+        is True
     )
+    assert (
+        visual["observations"][
+            "v7_offline_two_dimensional_angular_calibration_complete"
+        ]
+        is False
+    )
+    assert visual["observations"]["v7_offline_frame_interval_milliseconds"] == 10.0
+    assert visual["observations"]["v7_offline_substep_interval_milliseconds"] == 2.5
     assert visual["observations"]["T5_physical_source_transfer_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_passing_gates"] == [
         "T4_crossfit_structure_axis",
         "T5_crossfit_structure_axis",
+        "shared_physical_v7_timebase",
     ]
     assert set(visual["observations"]["T4_T5_source_dynamics_failing_gates"]) == {
         "T4_source_dynamics_transfer",
         "T5_source_dynamics_transfer",
-        "shared_physical_v7_timebase",
         "independent_dynamic_validation",
     }
     assert visual["observations"]["T4_T5_source_dynamics_authorizes_new_candidate"] is False
@@ -763,9 +786,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_synapse_microstep_static_energy_ratio"] > 0.53
     assert visual["observations"]["T4_synapse_microstep_temporal_identifiability_passed"] is False
     assert visual["observations"]["T4_synapse_microstep_direction_scoring_performed"] is False
-    assert set(
-        visual["observations"]["T4_source_dynamics_transfer_fields_available"].values()
-    ) == {False}
+    assert visual["observations"]["T4_source_dynamics_transfer_fields_available"] == {
+        "direction_independent_source_kernel": False,
+        "source_to_MaleCNS_identity_mapping": False,
+        "physical_v7_sample_interval": True,
+        "millivolts_to_v7_normalized_state_mapping": False,
+        "ordered_source_sequence_identifiability": False,
+    }
     assert visual["observations"]["T4_source_dynamics_transfer_authorized"] is False
     assert visual["observations"]["T4_source_dynamics_next_candidate_authorized"] is False
     assert visual["observations"]["unified_model_package_files_verified"] is True

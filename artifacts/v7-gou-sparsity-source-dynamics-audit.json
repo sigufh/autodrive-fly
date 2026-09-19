@@ -6,7 +6,7 @@
       "configs/driving-v7-gou-sparsity-source-dynamics-audit.yaml": "4a27436d9fe56bc7680f77ab93d0b4fd0c838bf599161ce5129d390b71f073b7",
       "src/fly_emotion/driving/v7_gou_sparsity_source_dynamics_audit.py": "53806a5270c5bd8cb9291036beb25bc2d80de535f08f3521f4d7443013e62aa1",
       "scripts/inspect_gou_sparsity_payload.py": "4a4b780406bee7ef7f279c0654147ae6706bae5a1187217ae65e1dc76992c913",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
       "data/raw/gou-sparsity/dryad-version-402168.zip": "59227c37e5ad441ececa9f0dc1fcf4c133ae793edfaa30b78c1e0916359fa54f",
       "data/raw/gou-sparsity/version-402168/sparsity_Dryad_upload.zip": "83a2bc0c5e1ce64787a30183f486d219c377014014b5bac5448f6b17502bc35f",
       "data/raw/gou-sparsity/version-402168/README.md": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261",

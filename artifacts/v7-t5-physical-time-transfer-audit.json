@@ -3,12 +3,14 @@
     "name": "v7-t5-physical-time-and-source-transfer-readiness-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-physical-time-transfer-audit.yaml": "dce09ec8a4ac6fcbc8aca1ddaf62ffc7d55034d6230964f34fec7ad3c53a157d",
-      "src/fly_emotion/driving/v7_t5_physical_time_transfer_audit.py": "f2351b5f7b9d76a847a18f6cf4cbcda83a83d67805f6e0b8e9842de515f38b44",
+      "configs/driving-v7-t5-physical-time-transfer-audit.yaml": "c1020651628ccbe1d44be8a18d41db70b800564210ed2298db8350ffe9504451",
+      "src/fly_emotion/driving/v7_t5_physical_time_transfer_audit.py": "b1cf15897aad96ccc54c00b328fd694ef5f09eb1c1831c9993ac1044947384bd",
       "artifacts/v7-stage1-split.json": "9301db31b64953867153c5aee425f0a67cf39ccf0a8da77712adcb9f555c50bf",
       "configs/driving-v7-stage1-split.yaml": "4cb01611389f9d2b826b82b4d1540da7cc74ce77dd5a9f3930ee7cea8583a129",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
       "configs/driving-v7-timebase-audit.yaml": "462f2a84f2578c752fbc8d3692798ecebdb6d3b1212c466ea730937f88863f64",
+      "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
       "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae",
       "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
       "artifacts/v7-arenz-t5-source-dynamics-audit.json": "a1442bf2ea0f8bf82929594bc25aa9f6915be3c4bf4e7099a225a4b635d88a14",
@@ -23,6 +25,17 @@
     "runtime_modified": false
   },
   "time_layers": {
+    "offline_stimulus_coordinate_contract": {
+      "time_coordinates_complete": true,
+      "horizontal_coordinates_complete": true,
+      "two_dimensional_angular_calibration_complete": false,
+      "frame_interval_milliseconds": 10.0,
+      "substep_interval_milliseconds": 2.5,
+      "horizontal_fov_degrees": 143.2394487827058,
+      "angular_sample_spacing_degrees": 3.047647846440544,
+      "biologically_calibrated": false,
+      "external_recording_alignment_verified": false
+    },
     "stage1_scheduler": {
       "frame_interval_milliseconds": 10.0,
       "nominal_substep_interval_milliseconds": 2.5,
@@ -62,8 +75,8 @@
     "passed": false
   },
   "required_fields": {
-    "v7_physical_frame_interval": false,
-    "v7_physical_solver_interval": false,
+    "v7_physical_frame_interval": true,
+    "v7_physical_solver_interval": true,
     "v7_camera_angular_calibration": false,
     "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels": false,
     "CT1_membrane_like_kernel": false,
@@ -71,8 +84,6 @@
     "independent_dynamic_validation_cohort": false
   },
   "missing_fields": [
-    "v7_physical_frame_interval",
-    "v7_physical_solver_interval",
     "v7_camera_angular_calibration",
     "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels",
     "CT1_membrane_like_kernel",
@@ -87,6 +98,7 @@
   "boundary": {
     "read_only_audit": true,
     "engineering_scheduler_interval_is_not_biological_timebase": true,
+    "explicit_offline_coordinates_do_not_establish_biological_calibration": true,
     "T5_target_voltage_is_not_source_type_dynamics": true,
     "raw_calcium_filters_are_not_membrane_like_kernels": true,
     "no_inferred_dt": true,

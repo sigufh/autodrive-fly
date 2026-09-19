@@ -24,6 +24,8 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
             "stage1_split_protocol",
             "timebase_evidence",
             "timebase_protocol",
+            "stimulus_coordinate_evidence",
+            "stimulus_coordinate_protocol",
             "t5_target_data_evidence",
             "t5_target_data_protocol",
             "t5_source_filter_evidence",
@@ -40,7 +42,7 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
         if name.endswith("_evidence")
     }
     split = reports["stage1_split_evidence"]
-    timebase = reports["timebase_evidence"]
+    coordinates = reports["stimulus_coordinate_evidence"]
     target = reports["t5_target_data_evidence"]
     source = reports["t5_source_filter_evidence"]
     identifiability = reports["source_identifiability_evidence"]
@@ -50,13 +52,15 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
     source_gates = source["transfer_gates"]
     fields = {
         "v7_physical_frame_interval": bool(
-            timebase["current_v7_time_contract"]["physical_frame_duration_defined"]
+            coordinates["offline_time_coordinate_contract_complete"]
         ),
         "v7_physical_solver_interval": bool(
-            timebase["current_v7_time_contract"]["physical_substep_duration_defined"]
+            coordinates["offline_time_coordinate_contract_complete"]
         ),
         "v7_camera_angular_calibration": bool(
-            timebase["stimulus_time_candidates"]["borrowed_scale_is_valid_for_v7"]
+            coordinates[
+                "offline_two_dimensional_stimulus_coordinate_contract_complete"
+            ]
         ),
         "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels": bool(
             source_gates["every_deconvolved_temporal_fit_passed"]
@@ -87,6 +91,35 @@ def evaluate_v7_t5_physical_time_transfer_audit(root: Path) -> dict:
             "runtime_modified": False,
         },
         "time_layers": {
+            "offline_stimulus_coordinate_contract": {
+                "time_coordinates_complete": coordinates[
+                    "offline_time_coordinate_contract_complete"
+                ],
+                "horizontal_coordinates_complete": coordinates[
+                    "offline_horizontal_stimulus_coordinate_contract_complete"
+                ],
+                "two_dimensional_angular_calibration_complete": coordinates[
+                    "offline_two_dimensional_stimulus_coordinate_contract_complete"
+                ],
+                "frame_interval_milliseconds": coordinates["time_coordinates"][
+                    "frame_interval_milliseconds"
+                ],
+                "substep_interval_milliseconds": coordinates["time_coordinates"][
+                    "substep_interval_milliseconds"
+                ],
+                "horizontal_fov_degrees": coordinates["camera_coordinates"][
+                    "horizontal_fov_degrees"
+                ],
+                "angular_sample_spacing_degrees": coordinates[
+                    "camera_coordinates"
+                ]["angular_sample_spacing_degrees"],
+                "biologically_calibrated": coordinates[
+                    "biological_timebase_calibrated"
+                ],
+                "external_recording_alignment_verified": coordinates[
+                    "external_recording_alignment_verified"
+                ],
+            },
             "stage1_scheduler": {
                 "frame_interval_milliseconds": scheduler[
                     "frame_interval_milliseconds"

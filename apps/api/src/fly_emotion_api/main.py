@@ -149,6 +149,22 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gou_Dryad_experimental_membrane_voltage": visual[
                     "Gou_Dryad_experimental_membrane_voltage"
                 ],
+                "v7_offline_time_coordinate_contract_complete": visual[
+                    "v7_offline_time_coordinate_contract_complete"
+                ],
+                "v7_offline_horizontal_coordinate_contract_complete": visual[
+                    "v7_offline_horizontal_coordinate_contract_complete"
+                ],
+                "v7_offline_two_dimensional_angular_calibration_complete": visual[
+                    "v7_offline_two_dimensional_angular_calibration_complete"
+                ],
+                "v7_offline_frame_interval_milliseconds": visual[
+                    "v7_offline_frame_interval_milliseconds"
+                ],
+                "v7_offline_substep_interval_milliseconds": visual[
+                    "v7_offline_substep_interval_milliseconds"
+                ],
+                "v7_horizontal_fov_degrees": visual["v7_horizontal_fov_degrees"],
                 "T5_record_specific_stimulus_logs_available": visual[
                     "Kohn_Portes_record_specific_stimulus_logs_available"
                 ],

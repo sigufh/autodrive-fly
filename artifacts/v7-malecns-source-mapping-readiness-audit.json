@@ -11,7 +11,7 @@
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
       "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6",
       "artifacts/v7-malecns-ct1-columnar-audit.json": "27682ba74d97a56cc76e5b1668c4f12007288f394b45216420b70e33f617a9f0"
     },

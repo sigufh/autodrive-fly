@@ -230,6 +230,9 @@ from .driving.v7_stage1_input_audit import evaluate_v7_stage1_input_audit
 from .driving.v7_stage1_nested import evaluate_v7_stage1_nested
 from .driving.v7_stage1_scoring import evaluate_v7_stage1_scoring
 from .driving.v7_stage1_split import evaluate_v7_stage1_split
+from .driving.v7_stimulus_coordinate_contract import (
+    evaluate_v7_stimulus_coordinate_contract,
+)
 from .driving.v7_synapse_axis_calibration import evaluate_v7_synapse_axis_calibration
 from .driving.v7_synapse_spatial_audit import evaluate_v7_synapse_spatial_audit
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
@@ -459,6 +462,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-electrophysiology")
     subparsers.add_parser("v7-audit-malecns-source-mapping-readiness")
     subparsers.add_parser("v7-audit-timebase")
+    subparsers.add_parser("v7-audit-stimulus-coordinates")
     subparsers.add_parser("v7-validate-published-fig5")
     subparsers.add_parser("v7-build-ephys-interface")
     subparsers.add_parser("v7-audit-t5-data")
@@ -1931,6 +1935,14 @@ def main() -> None:
         report = evaluate_v7_timebase_audit(root)
         target = root / "artifacts/v7-timebase-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-stimulus-coordinates":
+        report = evaluate_v7_stimulus_coordinate_contract(root)
+        target = root / "artifacts/v7-stimulus-coordinate-contract.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-electrophysiology":

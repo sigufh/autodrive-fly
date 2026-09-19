@@ -12,7 +12,7 @@
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "93930b2292413e6c6a2a2abc6e97efc25b64480cb9ab0d454ac2a5d889dc1569",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "21b8adb1609dadafbed8c54d25a998df09eb43f814df8b749073050cfcd4790e",
       "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "1a2649672ae7e78ab7607c15392225065d9a547a2736d15fb5f2e6b679f2d741",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
       "data/raw/malecns-v1.0/current-release-audit/neuprint-male-cns-datasets.json": "c47435822733836038c86b8d5f74d0138f39b3be687bfc7bf9a367b4b4c7c724",

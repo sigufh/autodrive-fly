@@ -206,6 +206,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t5_ct1_axis_sequence_identifiability"
     ]
     t5_physical_time_transfer_audit = reports["t5_physical_time_transfer_audit"]
+    stimulus_coordinate_contract = reports["stimulus_coordinate_contract"]
     t4t5_source_dynamics_readiness = reports["t4t5_source_dynamics_readiness"]
     source_dynamics_external_evidence_contract = reports[
         "source_dynamics_external_evidence_contract"
@@ -310,6 +311,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_axis_aware_antisymmetric_precheck"],
                 config["evidence"]["t5_ct1_axis_sequence_identifiability"],
                 config["evidence"]["t5_physical_time_transfer_audit"],
+                config["evidence"]["stimulus_coordinate_contract"],
                 config["evidence"]["t4t5_source_dynamics_readiness"],
                 config["evidence"]["source_dynamics_external_evidence_contract"],
                 config["evidence"]["t5_continuous_moment_precheck"],
@@ -585,6 +587,34 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "T5_physical_source_transfer_ready"
                     ]
                 ),
+                "v7_offline_time_coordinate_contract_complete": (
+                    stimulus_coordinate_contract[
+                        "offline_time_coordinate_contract_complete"
+                    ]
+                ),
+                "v7_offline_horizontal_coordinate_contract_complete": (
+                    stimulus_coordinate_contract[
+                        "offline_horizontal_stimulus_coordinate_contract_complete"
+                    ]
+                ),
+                "v7_offline_two_dimensional_angular_calibration_complete": (
+                    stimulus_coordinate_contract[
+                        "offline_two_dimensional_stimulus_coordinate_contract_complete"
+                    ]
+                ),
+                "v7_offline_frame_interval_milliseconds": (
+                    stimulus_coordinate_contract["time_coordinates"][
+                        "frame_interval_milliseconds"
+                    ]
+                ),
+                "v7_offline_substep_interval_milliseconds": (
+                    stimulus_coordinate_contract["time_coordinates"][
+                        "substep_interval_milliseconds"
+                    ]
+                ),
+                "v7_horizontal_fov_degrees": stimulus_coordinate_contract[
+                    "camera_coordinates"
+                ]["horizontal_fov_degrees"],
                 "T4_T5_source_dynamics_ready": t4t5_source_dynamics_readiness[
                     "T4_T5_source_dynamics_ready"
                 ],
@@ -2540,6 +2570,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gou_Dryad_moving_bar_fly_axis_sizes",
                     "Gou_Dryad_stable_biological_individual_IDs_verified",
                     "Gou_Dryad_experimental_membrane_voltage",
+                    "v7_offline_time_coordinate_contract_complete",
+                    "v7_offline_horizontal_coordinate_contract_complete",
+                    "v7_offline_two_dimensional_angular_calibration_complete",
+                    "v7_offline_frame_interval_milliseconds",
+                    "v7_offline_substep_interval_milliseconds",
+                    "v7_horizontal_fov_degrees",
                     "T5_record_specific_stimulus_logs_available",
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",
@@ -2559,7 +2595,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         {
             "requirement": "0.version_config_evidence_claim_boundaries",
             "status": "passed",
-            "evidence": [str(V7_CONFIG), config["evidence"]["manifest"]],
+            "evidence": [
+                str(V7_CONFIG),
+                config["evidence"]["manifest"],
+                config["evidence"]["stimulus_coordinate_contract"],
+            ],
         },
         {
             "requirement": "0.preserve_assisted_v5_checkpoint",

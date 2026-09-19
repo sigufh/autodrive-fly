@@ -9,7 +9,7 @@
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "b7eefeb4d365e4fdb6a47096a821880fbca70d8b9001d0189c148a194b2346e5",
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "6c0b4ddc899b73855387714f0d0b06da3c1d701508e8d77c225ca7b16481c985",
       "artifacts/v7-edmond-fig3-retrieval-audit.json": "27bb35ecc70a3c628eee716be328e1a84683e7c39e9ae9ec2859d47cb55d7441"
     },
     "parameter_fit": false,
