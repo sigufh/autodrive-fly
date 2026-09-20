@@ -124,6 +124,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],
+                "T5_voltage_derived_kernel_sources": visual[
+                    "Kohn_Portes_T5_voltage_derived_kernel_sources"
+                ],
+                "T5_voltage_derived_kernel_record_count": visual[
+                    "Kohn_Portes_T5_voltage_derived_kernel_record_count"
+                ],
+                "T5_kernel_sample_interval_seconds": visual[
+                    "Kohn_Portes_T5_kernel_sample_interval_seconds"
+                ],
+                "T5_raw_kernel_gain_transferable": visual[
+                    "Kohn_Portes_T5_raw_kernel_gain_transferable"
+                ],
+                "T5_kernel_stimulus_invariant": visual[
+                    "Kohn_Portes_T5_kernel_stimulus_invariant"
+                ],
+                "T5_source_kernel_transfer_authorized": visual[
+                    "Kohn_Portes_T5_source_kernel_transfer_authorized"
+                ],
                 "Braun_calcium_fly_counts": visual["Braun_T5_payload_fly_counts"],
                 "Braun_calcium_condition_grids_complete": visual[
                     "Braun_T5_all_condition_grids_complete"

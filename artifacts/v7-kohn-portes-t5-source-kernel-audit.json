@@ -1,0 +1,645 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-t5-voltage-derived-source-kernel-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-t5-source-kernel-audit.yaml": "608e6546344b9c2027ebd3dfc63842d8d8bbce678a7543f80d4f77e0490addcf",
+      "src/fly_emotion/driving/v7_kohn_portes_t5_source_kernel_audit.py": "a240f6bf99495c5ec628e2de07155150a9735cef54167a98c3d0886f9037757d",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "data/raw/kohn-portes-flexible-filtering/history/PMC8725177.bioc.xml": "639c2c929366130cd17342a8701eccf97aefd97946924f9a3bdb76a6895c680f",
+      "data/raw/kohn-portes-flexible-filtering/history/text/analysis_convolve.py": "9cdfefe1236cba70fb155c2eec9f258b9965e49abca1eec57a8210201a9087c2",
+      "data/raw/kohn-portes-flexible-filtering/history/text/analysis_returnmeans.py": "bc7dae22a5f53504f9a1111a645b34a79505f72cc0dbfa98cd4ba6a0c7e20474",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb": "1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "author_method": {
+    "measurement": "whole_cell_current_clamp_membrane_potential",
+    "filter_estimator": "regularized_reverse_correlation_plus_spatial_regression",
+    "temporal_filter_formula": "real(linear_filter @ x_weights)",
+    "author_population_rescaling": "max_abs_complete_filter * temporal_filter[:499] / max_abs_temporal_filter",
+    "raw_temporal_filter_declared_correct_scale": false,
+    "kernel_sample_interval_seconds": 0.01,
+    "filter_duration_seconds": 5.0,
+    "author_reported_LN_score_independent_validation_verified": false,
+    "paper_reports_cross_stimulus_flash_mismatch": true
+  },
+  "source_results": {
+    "Tm1": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle",
+        "bytes": 220242954,
+        "sha256": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+        "git_blob": "5c6f07539e34eb280f1dcb7c6494ba96630178d0",
+        "expected_record_count": 8,
+        "expected_unique_recording_id_count": 7
+      },
+      "record_count": 8,
+      "unique_recording_id_count": 7,
+      "records": [
+        {
+          "recording_id": "190701",
+          "subrecording_number": "7",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 4.336808689942018e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.600753,
+          "author_rescaled_kernel_minimum": -0.0007208946637505683,
+          "author_rescaled_kernel_maximum": 0.00013295728034923984
+        },
+        {
+          "recording_id": "190708",
+          "subrecording_number": "4",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.619296,
+          "author_rescaled_kernel_minimum": -0.000717622235219241,
+          "author_rescaled_kernel_maximum": 0.00015843665317344488
+        },
+        {
+          "recording_id": "190715",
+          "subrecording_number": "3",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.553769,
+          "author_rescaled_kernel_minimum": -0.00038012141390812677,
+          "author_rescaled_kernel_maximum": 7.195625920702734e-05
+        },
+        {
+          "recording_id": "190722",
+          "subrecording_number": "4",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 6.505213034913027e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.529704,
+          "author_rescaled_kernel_minimum": -0.00046370578560673274,
+          "author_rescaled_kernel_maximum": 6.057179228230422e-05
+        },
+        {
+          "recording_id": "190722",
+          "subrecording_number": "5",
+          "orientation": "vertical",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 5.421010862427522e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.661293,
+          "author_rescaled_kernel_minimum": -0.00041305611973857016,
+          "author_rescaled_kernel_maximum": 0.00010165774311915301
+        },
+        {
+          "recording_id": "190729",
+          "subrecording_number": "8",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 8.673617379884035e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.614519,
+          "author_rescaled_kernel_minimum": -0.0006148369002313373,
+          "author_rescaled_kernel_maximum": 0.00012684564049622146
+        },
+        {
+          "recording_id": "201201",
+          "subrecording_number": "10",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.647391,
+          "author_rescaled_kernel_minimum": -0.000997299330120219,
+          "author_rescaled_kernel_maximum": 0.0002402181181324597
+        },
+        {
+          "recording_id": "210126",
+          "subrecording_number": "14",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.393748,
+          "author_rescaled_kernel_minimum": -0.0003298051334604456,
+          "author_rescaled_kernel_maximum": 8.091802877762267e-05
+        }
+      ],
+      "author_reported_LN_R2": {
+        "count": 8,
+        "minimum": 0.393748,
+        "q25": 0.5477527499999999,
+        "median": 0.6076360000000001,
+        "q75": 0.62631975,
+        "maximum": 0.661293
+      },
+      "descriptive_leave_one_recording_id_out_shape_correlation": {
+        "folds": [
+          {
+            "held_out_recording_id": "190701",
+            "correlation": 0.928380852155633
+          },
+          {
+            "held_out_recording_id": "190708",
+            "correlation": 0.870974175447607
+          },
+          {
+            "held_out_recording_id": "190715",
+            "correlation": 0.9623867802334253
+          },
+          {
+            "held_out_recording_id": "190722",
+            "correlation": 0.9433005043103034
+          },
+          {
+            "held_out_recording_id": "190729",
+            "correlation": 0.8687298508933518
+          },
+          {
+            "held_out_recording_id": "201201",
+            "correlation": 0.8071397855736252
+          },
+          {
+            "held_out_recording_id": "210126",
+            "correlation": 0.7498781432736034
+          }
+        ],
+        "summary": {
+          "count": 7,
+          "minimum": 0.7498781432736034,
+          "q25": 0.8379348182334885,
+          "median": 0.870974175447607,
+          "q75": 0.9358406782329682,
+          "maximum": 0.9623867802334253
+        },
+        "used_as_transfer_gate": false
+      },
+      "voltage_derived_temporal_kernels_verified": true
+    },
+    "Tm2": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle",
+        "bytes": 129578743,
+        "sha256": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+        "git_blob": "98c7c7a7952202bf25074566a8f006aae6cafe6b",
+        "expected_record_count": 5,
+        "expected_unique_recording_id_count": 5
+      },
+      "record_count": 5,
+      "unique_recording_id_count": 5,
+      "records": [
+        {
+          "recording_id": "200927",
+          "subrecording_number": "13",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.59345,
+          "author_rescaled_kernel_minimum": -0.0011193121030536577,
+          "author_rescaled_kernel_maximum": 0.00031757743017868774
+        },
+        {
+          "recording_id": "201013",
+          "subrecording_number": "13",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 4.336808689942018e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.54471,
+          "author_rescaled_kernel_minimum": -0.0007559320251794951,
+          "author_rescaled_kernel_maximum": 0.0003287909682121389
+        },
+        {
+          "recording_id": "201119",
+          "subrecording_number": "14",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 4.336808689942018e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.631936,
+          "author_rescaled_kernel_minimum": -0.001516478135212056,
+          "author_rescaled_kernel_maximum": 0.00022041778638958248
+        },
+        {
+          "recording_id": "201125",
+          "subrecording_number": "13",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.481849,
+          "author_rescaled_kernel_minimum": -0.0003972186663090765,
+          "author_rescaled_kernel_maximum": 8.643316819390701e-05
+        },
+        {
+          "recording_id": "210721",
+          "subrecording_number": "4",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.491665,
+          "author_rescaled_kernel_minimum": -0.0005283487697035357,
+          "author_rescaled_kernel_maximum": 0.00014239083585807017
+        }
+      ],
+      "author_reported_LN_R2": {
+        "count": 5,
+        "minimum": 0.481849,
+        "q25": 0.491665,
+        "median": 0.54471,
+        "q75": 0.59345,
+        "maximum": 0.631936
+      },
+      "descriptive_leave_one_recording_id_out_shape_correlation": {
+        "folds": [
+          {
+            "held_out_recording_id": "200927",
+            "correlation": 0.7662639157468818
+          },
+          {
+            "held_out_recording_id": "201013",
+            "correlation": 0.6463991254279933
+          },
+          {
+            "held_out_recording_id": "201119",
+            "correlation": 0.8730192790524275
+          },
+          {
+            "held_out_recording_id": "201125",
+            "correlation": 0.795254815536567
+          },
+          {
+            "held_out_recording_id": "210721",
+            "correlation": 0.785694273562359
+          }
+        ],
+        "summary": {
+          "count": 5,
+          "minimum": 0.6463991254279933,
+          "q25": 0.7662639157468818,
+          "median": 0.785694273562359,
+          "q75": 0.795254815536567,
+          "maximum": 0.8730192790524275
+        },
+        "used_as_transfer_gate": false
+      },
+      "voltage_derived_temporal_kernels_verified": true
+    },
+    "Tm4": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle",
+        "bytes": 189865684,
+        "sha256": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+        "git_blob": "06da3386d8ac17c03c7ddb718d3d56434ae847ed",
+        "expected_record_count": 6,
+        "expected_unique_recording_id_count": 6
+      },
+      "record_count": 6,
+      "unique_recording_id_count": 6,
+      "records": [
+        {
+          "recording_id": "200209",
+          "subrecording_number": "7",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.650649,
+          "author_rescaled_kernel_minimum": -0.0007276458177532157,
+          "author_rescaled_kernel_maximum": 0.00016814405080629183
+        },
+        {
+          "recording_id": "200621",
+          "subrecording_number": "11",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.564058,
+          "author_rescaled_kernel_minimum": -0.0006560501853216617,
+          "author_rescaled_kernel_maximum": 9.947921654092458e-05
+        },
+        {
+          "recording_id": "200703",
+          "subrecording_number": "7",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.616504,
+          "author_rescaled_kernel_minimum": -0.0007769937483695762,
+          "author_rescaled_kernel_maximum": 0.00013464438499991984
+        },
+        {
+          "recording_id": "200706",
+          "subrecording_number": "12",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.560869,
+          "author_rescaled_kernel_minimum": -0.0006159924976415537,
+          "author_rescaled_kernel_maximum": 7.903601733482075e-05
+        },
+        {
+          "recording_id": "200823",
+          "subrecording_number": "12",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 2.168404344971009e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.652147,
+          "author_rescaled_kernel_minimum": -0.000660475978551267,
+          "author_rescaled_kernel_maximum": 0.00012275762191026428
+        },
+        {
+          "recording_id": "200826",
+          "subrecording_number": "20",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 4.336808689942018e-19,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.531529,
+          "author_rescaled_kernel_minimum": -0.00020812003041736771,
+          "author_rescaled_kernel_maximum": 4.590629521543075e-05
+        }
+      ],
+      "author_reported_LN_R2": {
+        "count": 6,
+        "minimum": 0.531529,
+        "q25": 0.5616662499999999,
+        "median": 0.5902810000000001,
+        "q75": 0.64211275,
+        "maximum": 0.652147
+      },
+      "descriptive_leave_one_recording_id_out_shape_correlation": {
+        "folds": [
+          {
+            "held_out_recording_id": "200209",
+            "correlation": 0.9344767704925224
+          },
+          {
+            "held_out_recording_id": "200621",
+            "correlation": 0.9288476992260797
+          },
+          {
+            "held_out_recording_id": "200703",
+            "correlation": 0.943685374498285
+          },
+          {
+            "held_out_recording_id": "200706",
+            "correlation": 0.9431670419086869
+          },
+          {
+            "held_out_recording_id": "200823",
+            "correlation": 0.9479294932314132
+          },
+          {
+            "held_out_recording_id": "200826",
+            "correlation": 0.876058815401695
+          }
+        ],
+        "summary": {
+          "count": 6,
+          "minimum": 0.876058815401695,
+          "q25": 0.9302549670426904,
+          "median": 0.9388219062006047,
+          "q75": 0.9435557913508855,
+          "maximum": 0.9479294932314132
+        },
+        "used_as_transfer_gate": false
+      },
+      "voltage_derived_temporal_kernels_verified": true
+    },
+    "Tm9": {
+      "file": {
+        "path": "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle",
+        "bytes": 214848976,
+        "sha256": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3",
+        "git_blob": "61cf990715404a7146c981d4602b725b05920181",
+        "expected_record_count": 6,
+        "expected_unique_recording_id_count": 6
+      },
+      "record_count": 6,
+      "unique_recording_id_count": 6,
+      "records": [
+        {
+          "recording_id": "190812",
+          "subrecording_number": "3",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 8.131516293641283e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.321734,
+          "author_rescaled_kernel_minimum": -5.8351137501140564e-05,
+          "author_rescaled_kernel_maximum": 1.718028832476393e-05
+        },
+        {
+          "recording_id": "191112",
+          "subrecording_number": "5",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 5.421010862427522e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.308033,
+          "author_rescaled_kernel_minimum": -4.804176740746776e-05,
+          "author_rescaled_kernel_maximum": 1.942822679579613e-05
+        },
+        {
+          "recording_id": "191203",
+          "subrecording_number": "4",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 5.421010862427522e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.418148,
+          "author_rescaled_kernel_minimum": -7.360233198527574e-05,
+          "author_rescaled_kernel_maximum": 1.7841168476739908e-05
+        },
+        {
+          "recording_id": "191209",
+          "subrecording_number": "3",
+          "orientation": "null",
+          "kernel_length": 500,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 5.0,
+          "temporal_formula_max_abs_error": 2.710505431213761e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.38389,
+          "author_rescaled_kernel_minimum": -6.39266883394109e-05,
+          "author_rescaled_kernel_maximum": 1.6848941969351718e-05
+        },
+        {
+          "recording_id": "200115",
+          "subrecording_number": "11",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 5.421010862427522e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.331432,
+          "author_rescaled_kernel_minimum": -9.911150744515668e-05,
+          "author_rescaled_kernel_maximum": 1.6074473084519973e-05
+        },
+        {
+          "recording_id": "200720",
+          "subrecording_number": "7",
+          "orientation": "null",
+          "kernel_length": 499,
+          "kernel_sample_interval_seconds": 0.01,
+          "kernel_support_seconds": 4.99,
+          "temporal_formula_max_abs_error": 8.131516293641283e-20,
+          "complete_formula_max_abs_error": 0.0,
+          "author_reported_LN_R2": 0.331297,
+          "author_rescaled_kernel_minimum": -0.0001312285969046702,
+          "author_rescaled_kernel_maximum": 2.8742397749294323e-05
+        }
+      ],
+      "author_reported_LN_R2": {
+        "count": 6,
+        "minimum": 0.308033,
+        "q25": 0.32412475,
+        "median": 0.3313645,
+        "q75": 0.37077550000000004,
+        "maximum": 0.418148
+      },
+      "descriptive_leave_one_recording_id_out_shape_correlation": {
+        "folds": [
+          {
+            "held_out_recording_id": "190812",
+            "correlation": 0.8796735902345538
+          },
+          {
+            "held_out_recording_id": "191112",
+            "correlation": 0.865629499462066
+          },
+          {
+            "held_out_recording_id": "191203",
+            "correlation": 0.949355116330283
+          },
+          {
+            "held_out_recording_id": "191209",
+            "correlation": 0.8478525671341767
+          },
+          {
+            "held_out_recording_id": "200115",
+            "correlation": 0.9534416876445798
+          },
+          {
+            "held_out_recording_id": "200720",
+            "correlation": 0.8924004292616471
+          }
+        ],
+        "summary": {
+          "count": 6,
+          "minimum": 0.8478525671341767,
+          "q25": 0.869140522155188,
+          "median": 0.8860370097481005,
+          "q75": 0.935116444563124,
+          "maximum": 0.9534416876445798
+        },
+        "used_as_transfer_gate": false
+      },
+      "voltage_derived_temporal_kernels_verified": true
+    }
+  },
+  "aggregate": {
+    "source_count": 4,
+    "saline_record_count": 25,
+    "saline_unique_recording_id_count_sum": 24,
+    "orientation_counts": {
+      "null": 24,
+      "vertical": 1
+    },
+    "kernel_lengths": [
+      499,
+      500
+    ],
+    "maximum_temporal_formula_error": 8.673617379884035e-19,
+    "maximum_complete_formula_error": 0.0
+  },
+  "gates": {
+    "all_four_voltage_derived_temporal_kernel_sets_verified": true,
+    "physical_kernel_time_axis_verified": true,
+    "author_population_rescaling_reproduced": true,
+    "raw_temporal_filter_absolute_gain_transferable": false,
+    "stimulus_invariant_source_kernel_verified": false,
+    "biological_individual_identity_verified": false,
+    "independent_dynamic_validation_available": false,
+    "CT1_voltage_derived_temporal_kernel_available": false,
+    "v7_normalized_state_mapping_available": false
+  },
+  "Tm1_Tm2_Tm4_Tm9_voltage_derived_temporal_kernels_verified": true,
+  "source_kernel_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "voltage_derived_source_kernels_exist_but_gain_stimulus_identity_CT1_and_independent_validation_gates_remain_incomplete",
+  "boundary": {
+    "voltage_derived_filter_is_not_direct_voltage_trace": true,
+    "raw_temporal_filter_amplitude_is_not_author_declared_correct_scale": true,
+    "author_rescaling_is_preserved_without_new_fit": true,
+    "author_reported_LN_score_is_not_verified_as_independent_validation": true,
+    "recording_id_is_not_asserted_to_be_biological_individual_id": true,
+    "white_noise_kernel_is_not_stimulus_invariant": true,
+    "source_kernel_does_not_supply_CT1": true,
+    "source_kernel_does_not_define_v7_state_scaling": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

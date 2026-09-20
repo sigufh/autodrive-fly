@@ -157,6 +157,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     braun_t5_source_data_audit = reports["braun_t5_source_data_audit"]
     yang_t5_voltage_evidence_audit = reports["yang_t5_voltage_evidence_audit"]
     kohn_portes_t5_ephys_audit = reports["kohn_portes_t5_ephys_audit"]
+    kohn_portes_t5_source_kernel_audit = reports[
+        "kohn_portes_t5_source_kernel_audit"
+    ]
     kohn_portes_identity_history_audit = reports[
         "kohn_portes_identity_history_audit"
     ]
@@ -369,6 +372,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["braun_t5_source_data_audit"],
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
+                config["evidence"]["kohn_portes_t5_source_kernel_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_pure_data_index_audit"],
@@ -1128,6 +1132,34 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_numeric_voltage_sources": (
                     kohn_portes_t5_ephys_audit["T5_source_contract"][
                         "sources_with_local_numeric_membrane_voltage"
+                    ]
+                ),
+                "Kohn_Portes_T5_voltage_derived_kernel_sources": list(
+                    kohn_portes_t5_source_kernel_audit["source_results"]
+                ),
+                "Kohn_Portes_T5_voltage_derived_kernel_record_count": (
+                    kohn_portes_t5_source_kernel_audit["aggregate"][
+                        "saline_record_count"
+                    ]
+                ),
+                "Kohn_Portes_T5_kernel_sample_interval_seconds": (
+                    kohn_portes_t5_source_kernel_audit["author_method"][
+                        "kernel_sample_interval_seconds"
+                    ]
+                ),
+                "Kohn_Portes_T5_raw_kernel_gain_transferable": (
+                    kohn_portes_t5_source_kernel_audit["gates"][
+                        "raw_temporal_filter_absolute_gain_transferable"
+                    ]
+                ),
+                "Kohn_Portes_T5_kernel_stimulus_invariant": (
+                    kohn_portes_t5_source_kernel_audit["gates"][
+                        "stimulus_invariant_source_kernel_verified"
+                    ]
+                ),
+                "Kohn_Portes_T5_source_kernel_transfer_authorized": (
+                    kohn_portes_t5_source_kernel_audit[
+                        "source_kernel_transfer_authorized"
                     ]
                 ),
                 "Kohn_Portes_T5_missing_voltage_sources": (
@@ -2681,6 +2713,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "nine_source_contract_complete",
                     "Mi4_C3_independent_numeric_voltage_candidate_count",
                     "T5_voltage_field_counts",
+                    "T5_voltage_derived_kernel_sources",
+                    "T5_voltage_derived_kernel_record_count",
+                    "T5_kernel_sample_interval_seconds",
+                    "T5_raw_kernel_gain_transferable",
+                    "T5_kernel_stimulus_invariant",
+                    "T5_source_kernel_transfer_authorized",
                     "Braun_calcium_fly_counts",
                     "Braun_calcium_condition_grids_complete",
                     "Braun_calcium_allowed_voltage_sources",
@@ -2724,12 +2762,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Figshare_search_accessible",
                     "T5_stimulus_log_global_absence_claimed",
                     "T5_generator_defaults_used_as_record_fields",
-                        "T5_Figure4_relative_PD_ND_mapping_verified",
-                        "T5_Figure4_native_coordinate_motion_mapping_verified",
-                        "T5_Figure4_absolute_physical_direction_mapping_verified",
-                        "T5_Kohn_Portes_record_level_direction_code_available",
-                        "T5_Kohn_Portes_record_level_physical_direction_available",
-                        "T5_cross_dataset_direction_mapping_authorized",
+                    "T5_Figure4_relative_PD_ND_mapping_verified",
+                    "T5_Figure4_native_coordinate_motion_mapping_verified",
+                    "T5_Figure4_absolute_physical_direction_mapping_verified",
+                    "T5_Kohn_Portes_record_level_direction_code_available",
+                    "T5_Kohn_Portes_record_level_physical_direction_available",
+                    "T5_cross_dataset_direction_mapping_authorized",
                 ],
             },
         },

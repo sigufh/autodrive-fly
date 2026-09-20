@@ -47,6 +47,12 @@ export type V7Status = {
     Mi4_C3_direct_numeric_voltage_candidates: string[];
     Mi4_C3_independent_numeric_voltage_candidate_count: number;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
+    T5_voltage_derived_kernel_sources: string[];
+    T5_voltage_derived_kernel_record_count: number;
+    T5_kernel_sample_interval_seconds: number;
+    T5_raw_kernel_gain_transferable: boolean;
+    T5_kernel_stimulus_invariant: boolean;
+    T5_source_kernel_transfer_authorized: boolean;
     Braun_calcium_fly_counts?: { Tm2: number; Tm9: number; CT1: number };
     Braun_calcium_condition_grids_complete?: boolean;
     Braun_calcium_allowed_voltage_sources?: string[];

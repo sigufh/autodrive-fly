@@ -55,6 +55,17 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         "raw_white_noise": 8,
         "raw_drifting_grating": 9,
     }
+    assert boundaries["T5_voltage_derived_kernel_sources"] == [
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+    ]
+    assert boundaries["T5_voltage_derived_kernel_record_count"] == 25
+    assert boundaries["T5_kernel_sample_interval_seconds"] == 0.01
+    assert boundaries["T5_raw_kernel_gain_transferable"] is False
+    assert boundaries["T5_kernel_stimulus_invariant"] is False
+    assert boundaries["T5_source_kernel_transfer_authorized"] is False
     assert boundaries["Braun_calcium_fly_counts"] == {
         "Tm2": 9,
         "Tm9": 11,

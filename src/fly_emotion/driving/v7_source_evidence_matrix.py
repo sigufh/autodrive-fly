@@ -60,6 +60,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "sources_with_local_numeric_membrane_voltage"
         ]
     )
+    kohn_portes_kernels = evidence["kohn_portes_t5_source_kernels"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
     t5_direction_provenance = evidence["t5_direction_code_provenance"]
@@ -467,6 +468,24 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 family == "T5"
                 and t5_fields["stimulus_provenance"][
                     "stimulus_provenance_contract_complete"
+                ]
+            ),
+            "Kohn_Portes_voltage_derived_temporal_kernel_verified": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_kernels["source_results"][source][
+                    "voltage_derived_temporal_kernels_verified"
+                ]
+            ),
+            "Kohn_Portes_source_kernel_absolute_gain_transferable": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_kernels["gates"][
+                    "raw_temporal_filter_absolute_gain_transferable"
+                ]
+            ),
+            "Kohn_Portes_source_kernel_stimulus_invariant": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_kernels["gates"][
+                    "stimulus_invariant_source_kernel_verified"
                 ]
             ),
             "Figure4_relative_direction_code_to_PD_ND_verified": (

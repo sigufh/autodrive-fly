@@ -1840,9 +1840,20 @@ ordered 最好仍只有 T5d 左右（2/8），其余亚型未恢复；shuffle/st
 冻结为离线 v7 刺激/求解坐标，仍未应用到默认运行时且未经生物校准；T5 仓库中的 2.5/5 ms 是目标 T5
 膜电位轨迹的原生采样间隔，并不测量 Tm1/Tm2/Tm4/Tm9/CT1 源动态；Arenz Table S2
 虽覆盖前四类源且 raw calcium 拟合完整，但去卷积的 Tm9 R² 仅 0.273，CT1 又完全缺席。
+Kohn–Portes 的 25 条 saline white-noise whole-cell 记录现已进一步核验：Tm1/Tm2/Tm4/Tm9
+均保留 499/500 点的电压反相关 `temporal_filter`，由作者公式
+`real(linear_filter @ x_weights)` 重构的最大误差约 `8.7e-19`，并由
+`0.0002 s × 50` 明确得到 10 ms 核步长。按作者的 `max(abs(complete_filter))` 幅值处理后，
+按 recording ID 留一的描述性形状相关中位数分别为 0.871/0.786/0.939/0.886。该诊断不设新
+阈值，也不当作独立验证。作者同时明确原始 temporal vector 幅值不是正确尺度，并报告
+white-noise LN 核不能预测高对比 flash 的形状和增益。因此四类 Tm 的“电压派生 temporal
+kernel 存在性”已通过，但现有 transfer contract 中要求的可迁移 `membrane-like kernel`
+仍不通过；绝对增益、跨刺激不变性和 v7 状态映射也仍不通过。
+证据见 `artifacts/v7-kohn-portes-t5-source-kernel-audit.json`。
+
 因此不能拼接这些局部时间量来宣称 v7 已有生物校准。七项 transfer 字段中，离线物理
-帧间隔和解算步长现已明确；仍缺二维相机角标定、四类 Tm 膜电位型核、CT1 膜电位型核、稳定
-记录细胞到 MaleCNS 映射、独立动态验证 cohort。证据见
+帧间隔和解算步长现已明确；四类 Tm 有电压派生核，但缺可迁移增益与跨刺激验证，此外仍缺
+二维相机角标定、CT1 膜电位型核、稳定记录细胞到 MaleCNS 映射、独立动态验证 cohort。证据见
 `artifacts/v7-t5-physical-time-transfer-audit.json`；该审计不猜测 `dt`、不拟合参数，也不
 授权新的 T5、LPLC 或车辆实验。
 
