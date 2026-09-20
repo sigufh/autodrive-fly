@@ -1867,6 +1867,15 @@ source kernel gain/dynamics transfer 继续不授权。证据见
 且 Tm9 与 Tm2 中位峰时同为 50 ms。因而 saline 的相对慢序可作候选约束，但并非跨状态
 不变量，也没有 CT1 峰时、独立验证或从毫秒到 v7 substep 的生物标定；现有固定 delay 不获
 transfer 授权。证据见 `artifacts/v7-kohn-portes-t5-peak-latency-audit.json`。
+按作者 Figure 2 notebook 的另一条路径复现频率响应：用 `0.1–9.95 Hz`、`0.05 Hz` 步长
+的单位振幅正弦波与每条 temporal filter 卷积，截去开头瞬态，再先把每条响应曲线按自身峰值
+归一化后求总体均值。逐记录 preferred-frequency 中位数在 saline 下为
+Tm1/Tm2/Tm4/Tm9=`0.95/0.95/0.675/0.475 Hz`，OA 下为
+`2.325/2.8/1.45/0.25 Hz`，该摘要下 Tm9 均最低；但作者实际总体均值曲线的 saline 峰值为
+`0.7/0.8/0.5/0.8 Hz`，Tm9 并不低于 Tm1/Tm4。这个差异说明 preferred-frequency
+结论依赖摘要口径；单位振幅和逐曲线归一化也移除了绝对增益。故只能保留低频 shape evidence，
+不能据此冻结 v7 delay、补 CT1、或授权 source-frequency transfer。证据见
+`artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

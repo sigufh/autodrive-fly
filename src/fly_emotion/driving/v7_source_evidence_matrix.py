@@ -63,6 +63,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     kohn_portes_kernels = evidence["kohn_portes_t5_source_kernels"]
     kohn_portes_state_units = evidence["kohn_portes_t5_state_unit_mapping"]
     kohn_portes_peak_latency = evidence["kohn_portes_t5_peak_latency"]
+    kohn_portes_frequency = evidence["kohn_portes_t5_frequency_tuning"]
     t5_mapping_scope = evidence["t5_source_mapping_scope"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
@@ -518,6 +519,24 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Kohn_Portes_source_delay_transfer_to_v7_authorized": (
                 source in kohn_portes_kernels["source_results"]
                 and kohn_portes_peak_latency["authorize_source_delay_transfer_to_v7"]
+            ),
+            "Kohn_Portes_relative_low_frequency_Tm9_shape_evidence": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_frequency[
+                    "relative_low_frequency_Tm9_shape_evidence_available"
+                ]
+            ),
+            "Kohn_Portes_preferred_frequency_summary_invariant": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_frequency["gates"][
+                    "preferred_frequency_summary_invariant"
+                ]
+            ),
+            "Kohn_Portes_source_frequency_transfer_to_v7_authorized": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_frequency[
+                    "authorize_source_frequency_transfer_to_v7"
+                ]
             ),
             "T5_source_exact_type_average_mapping_scope_complete": (
                 source in t5_mapping_scope["source_mappings"]

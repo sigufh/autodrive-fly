@@ -260,6 +260,9 @@ def test_T5_voltage_derived_kernels_do_not_claim_absolute_gain_or_invariance() -
         assert components["Kohn_Portes_saline_Tm9_relative_delay_supported"] is True
         assert components["Kohn_Portes_Tm9_delay_ordering_state_invariant"] is False
         assert components["Kohn_Portes_source_delay_transfer_to_v7_authorized"] is False
+        assert components["Kohn_Portes_relative_low_frequency_Tm9_shape_evidence"] is True
+        assert components["Kohn_Portes_preferred_frequency_summary_invariant"] is False
+        assert components["Kohn_Portes_source_frequency_transfer_to_v7_authorized"] is False
     assert (
         report["matrix"]["CT1"]["evidence_components"][
             "Kohn_Portes_voltage_derived_temporal_kernel_verified"

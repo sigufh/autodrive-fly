@@ -81,6 +81,20 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_saline_Tm9_relative_delay_supported"] is True
     assert boundaries["T5_Tm9_delay_ordering_state_invariant"] is False
     assert boundaries["T5_source_delay_transfer_authorized"] is False
+    assert boundaries["T5_saline_record_median_preferred_frequency_hz"] == {
+        "Tm1": 0.95,
+        "Tm2": 0.95,
+        "Tm4": 0.675,
+        "Tm9": 0.475,
+    }
+    assert boundaries["T5_OA_record_median_preferred_frequency_hz"] == {
+        "Tm1": 2.325,
+        "Tm2": 2.8,
+        "Tm4": 1.45,
+        "Tm9": 0.25,
+    }
+    assert boundaries["T5_preferred_frequency_summary_invariant"] is False
+    assert boundaries["T5_source_frequency_transfer_authorized"] is False
     assert boundaries["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert boundaries["T5_all_five_source_mapping_complete"] is False
     assert boundaries["T5_CT1_mapping_Lo1_column_count_by_body"] == {

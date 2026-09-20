@@ -1,0 +1,387 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-t5-filter-frequency-tuning-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-t5-frequency-tuning-audit.yaml": "26d5391c1fef2bb08c3cef83775caa3f2fc3a1bfacfded8bf9f28800dd52bf63",
+      "src/fly_emotion/driving/v7_kohn_portes_t5_frequency_tuning_audit.py": "564ef4f7b189ded48bad99dc6ff021815dbe8b9107194825c429e52441d3e036",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "artifacts/v7-kohn-portes-t5-peak-latency-audit.json": "b5c77680612a1c08ed5b0d734147186a98ed292c80bedb9f1cb560dcf37dff71",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb": "1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_OA.pickle": "60697091eb983d51e81bd7917277e077daa6463cc741ecb5b5ecbf85ee139268",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_OA.pickle": "a6fe13c364394003c14d265a4f8b3b6523b115653671a2e645f376f499bbe490",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_OA.pickle": "0c2c41038618db6fdb6d9668be1895d3131fa0e103eee1d4cf3a752008bb92c2",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_OA.pickle": "52cd60bc002a43525f8ff60c49950c50a5d3da916542eac52fdadd0508b8c9c9"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "author_frequency_grid": {
+    "start_hz": 0.1,
+    "stop_exclusive_hz": 10.0,
+    "step_hz": 0.05,
+    "convolution_dt_seconds": 0.01,
+    "sine_cycle_count_at_minimum_frequency": 4,
+    "analysis_start_seconds": 5.0,
+    "analysis_end_fraction": 0.9
+  },
+  "state_results": {
+    "saline": {
+      "sources": {
+        "Tm1": {
+          "records": [
+            {
+              "recording_id": "190701",
+              "subrecording_number": "7",
+              "preferred_frequency_hz": 0.8
+            },
+            {
+              "recording_id": "190708",
+              "subrecording_number": "4",
+              "preferred_frequency_hz": 0.95
+            },
+            {
+              "recording_id": "190715",
+              "subrecording_number": "3",
+              "preferred_frequency_hz": 1.25
+            },
+            {
+              "recording_id": "190722",
+              "subrecording_number": "4",
+              "preferred_frequency_hz": 1.4
+            },
+            {
+              "recording_id": "190722",
+              "subrecording_number": "5",
+              "preferred_frequency_hz": 0.5
+            },
+            {
+              "recording_id": "190729",
+              "subrecording_number": "8",
+              "preferred_frequency_hz": 0.95
+            },
+            {
+              "recording_id": "201201",
+              "subrecording_number": "10",
+              "preferred_frequency_hz": 1.1
+            },
+            {
+              "recording_id": "210126",
+              "subrecording_number": "14",
+              "preferred_frequency_hz": 0.7
+            }
+          ],
+          "record_median_preferred_frequency_hz": 0.95,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            0.8,
+            0.95,
+            1.25,
+            0.5,
+            0.95,
+            1.1,
+            0.7
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 0.7
+        },
+        "Tm2": {
+          "records": [
+            {
+              "recording_id": "200927",
+              "subrecording_number": "13",
+              "preferred_frequency_hz": 0.95
+            },
+            {
+              "recording_id": "201013",
+              "subrecording_number": "13",
+              "preferred_frequency_hz": 0.6
+            },
+            {
+              "recording_id": "201119",
+              "subrecording_number": "14",
+              "preferred_frequency_hz": 0.8
+            },
+            {
+              "recording_id": "201125",
+              "subrecording_number": "13",
+              "preferred_frequency_hz": 2.55
+            },
+            {
+              "recording_id": "210721",
+              "subrecording_number": "4",
+              "preferred_frequency_hz": 1.9
+            }
+          ],
+          "record_median_preferred_frequency_hz": 0.95,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            0.95,
+            0.6,
+            0.8,
+            2.55,
+            1.9
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 0.8
+        },
+        "Tm4": {
+          "records": [
+            {
+              "recording_id": "200209",
+              "subrecording_number": "7",
+              "preferred_frequency_hz": 0.75
+            },
+            {
+              "recording_id": "200621",
+              "subrecording_number": "11",
+              "preferred_frequency_hz": 0.5
+            },
+            {
+              "recording_id": "200703",
+              "subrecording_number": "7",
+              "preferred_frequency_hz": 0.6
+            },
+            {
+              "recording_id": "200706",
+              "subrecording_number": "12",
+              "preferred_frequency_hz": 1.0
+            },
+            {
+              "recording_id": "200823",
+              "subrecording_number": "12",
+              "preferred_frequency_hz": 0.4
+            },
+            {
+              "recording_id": "200826",
+              "subrecording_number": "20",
+              "preferred_frequency_hz": 0.75
+            }
+          ],
+          "record_median_preferred_frequency_hz": 0.675,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            0.75,
+            0.5,
+            0.6,
+            1.0,
+            0.4,
+            0.75
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 0.5
+        },
+        "Tm9": {
+          "records": [
+            {
+              "recording_id": "190812",
+              "subrecording_number": "3",
+              "preferred_frequency_hz": 0.8
+            },
+            {
+              "recording_id": "191112",
+              "subrecording_number": "5",
+              "preferred_frequency_hz": 0.35
+            },
+            {
+              "recording_id": "191203",
+              "subrecording_number": "4",
+              "preferred_frequency_hz": 1.05
+            },
+            {
+              "recording_id": "191209",
+              "subrecording_number": "3",
+              "preferred_frequency_hz": 0.3
+            },
+            {
+              "recording_id": "200115",
+              "subrecording_number": "11",
+              "preferred_frequency_hz": 0.5
+            },
+            {
+              "recording_id": "200720",
+              "subrecording_number": "7",
+              "preferred_frequency_hz": 0.45
+            }
+          ],
+          "record_median_preferred_frequency_hz": 0.475,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            0.8,
+            0.35,
+            1.05,
+            0.3,
+            0.5,
+            0.45
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 0.8
+        }
+      },
+      "Tm9_record_median_lower_than_each_fast_source": true,
+      "Tm9_author_population_curve_peak_lower_than_each_fast_source": false
+    },
+    "OA": {
+      "sources": {
+        "Tm1": {
+          "records": [
+            {
+              "recording_id": "190701",
+              "subrecording_number": "13",
+              "preferred_frequency_hz": 1.6
+            },
+            {
+              "recording_id": "190708",
+              "subrecording_number": "7",
+              "preferred_frequency_hz": 2.3
+            },
+            {
+              "recording_id": "190715",
+              "subrecording_number": "7",
+              "preferred_frequency_hz": 3.35
+            },
+            {
+              "recording_id": "190722",
+              "subrecording_number": "9",
+              "preferred_frequency_hz": 2.35
+            }
+          ],
+          "record_median_preferred_frequency_hz": 2.325,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            1.6,
+            2.3,
+            3.35,
+            2.35
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 2.3
+        },
+        "Tm2": {
+          "records": [
+            {
+              "recording_id": "201013",
+              "subrecording_number": "22",
+              "preferred_frequency_hz": 4.35
+            },
+            {
+              "recording_id": "201119",
+              "subrecording_number": "23",
+              "preferred_frequency_hz": 3.15
+            },
+            {
+              "recording_id": "210718",
+              "subrecording_number": "3",
+              "preferred_frequency_hz": 1.2
+            },
+            {
+              "recording_id": "210719",
+              "subrecording_number": "3",
+              "preferred_frequency_hz": 2.8
+            },
+            {
+              "recording_id": "210721",
+              "subrecording_number": "6",
+              "preferred_frequency_hz": 2.2
+            }
+          ],
+          "record_median_preferred_frequency_hz": 2.8,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            4.35,
+            3.15,
+            1.2,
+            2.8,
+            2.2
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 2.2
+        },
+        "Tm4": {
+          "records": [
+            {
+              "recording_id": "200209",
+              "subrecording_number": "10",
+              "preferred_frequency_hz": 1.15
+            },
+            {
+              "recording_id": "200703",
+              "subrecording_number": "13",
+              "preferred_frequency_hz": 0.8
+            },
+            {
+              "recording_id": "200706",
+              "subrecording_number": "19",
+              "preferred_frequency_hz": 1.75
+            },
+            {
+              "recording_id": "210803",
+              "subrecording_number": "12",
+              "preferred_frequency_hz": 2.2
+            }
+          ],
+          "record_median_preferred_frequency_hz": 1.45,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            1.15,
+            0.8,
+            1.75,
+            2.2
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 1.95
+        },
+        "Tm9": {
+          "records": [
+            {
+              "recording_id": "190812",
+              "subrecording_number": "9",
+              "preferred_frequency_hz": 0.6
+            },
+            {
+              "recording_id": "191203",
+              "subrecording_number": "6",
+              "preferred_frequency_hz": 0.25
+            },
+            {
+              "recording_id": "200115",
+              "subrecording_number": "13",
+              "preferred_frequency_hz": 0.1
+            }
+          ],
+          "record_median_preferred_frequency_hz": 0.25,
+          "recording_id_collapsed_preferred_frequencies_hz": [
+            0.6,
+            0.25,
+            0.1
+          ],
+          "author_normalized_population_curve_peak_frequency_hz": 0.85
+        }
+      },
+      "Tm9_record_median_lower_than_each_fast_source": true,
+      "Tm9_author_population_curve_peak_lower_than_each_fast_source": true
+    }
+  },
+  "gates": {
+    "author_frequency_response_method_reproduced": true,
+    "Tm9_record_median_lower_than_each_fast_source_in_both_states": true,
+    "Tm9_author_population_curve_peak_lower_than_each_fast_source_in_both_states": false,
+    "preferred_frequency_summary_invariant": false,
+    "absolute_gain_available": false,
+    "CT1_frequency_tuning_available": false,
+    "independent_frequency_tuning_validation_available": false
+  },
+  "relative_low_frequency_Tm9_shape_evidence_available": true,
+  "authorize_source_frequency_transfer_to_v7": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "relative_frequency_shape_depends_on_summary_and_lacks_gain_CT1_and_independent_validation",
+  "cross_check": {
+    "peak_latency_transfer_authorized": false
+  },
+  "boundary": {
+    "sine_amplitude_is_arbitrary_one": true,
+    "each_record_frequency_curve_is_peak_normalized_before_population_mean": true,
+    "normalized_frequency_shape_does_not_supply_absolute_gain": true,
+    "preferred_frequency_summary_choice_is_not_a_delay_mapping": true,
+    "recording_id_is_not_asserted_to_be_biological_individual_id": true,
+    "CT1_frequency_tuning_is_not_imputed": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

@@ -52,6 +52,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_saline_Tm9_relative_delay_supported",
         "T5_Tm9_delay_ordering_state_invariant",
         "T5_source_delay_transfer_authorized",
+        "T5_saline_record_median_preferred_frequency_hz",
+        "T5_OA_record_median_preferred_frequency_hz",
+        "T5_preferred_frequency_summary_invariant",
+        "T5_source_frequency_transfer_authorized",
         "T5_four_Tm_exact_type_average_mapping_complete",
         "T5_all_five_source_mapping_complete",
         "T5_CT1_mapping_Lo1_column_count_by_body",
@@ -632,6 +636,20 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["Kohn_Portes_T5_source_delay_transfer_authorized"] is False
+    assert visual["observations"][
+        "Kohn_Portes_T5_saline_record_median_preferred_frequency_hz"
+    ] == {"Tm1": 0.95, "Tm2": 0.95, "Tm4": 0.675, "Tm9": 0.475}
+    assert visual["observations"][
+        "Kohn_Portes_T5_OA_record_median_preferred_frequency_hz"
+    ] == {"Tm1": 2.325, "Tm2": 2.8, "Tm4": 1.45, "Tm9": 0.25}
+    assert (
+        visual["observations"]["Kohn_Portes_T5_preferred_frequency_summary_invariant"]
+        is False
+    )
+    assert (
+        visual["observations"]["Kohn_Portes_T5_source_frequency_transfer_authorized"]
+        is False
+    )
     assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
     assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {

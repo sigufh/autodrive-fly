@@ -1,0 +1,49 @@
+version: 1
+name: v7-kohn-portes-t5-filter-frequency-tuning-audit
+observed_on: "2026-09-20"
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+peak_latency_evidence: artifacts/v7-kohn-portes-t5-peak-latency-audit.json
+v7_config: configs/driving-v7.yaml
+author_notebook:
+  path: data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb
+  bytes: 960396
+  sha256: 1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f
+author_frequency_grid:
+  start_hz: 0.1
+  stop_exclusive_hz: 10.0
+  step_hz: 0.05
+  convolution_dt_seconds: 0.01
+  sine_cycle_count_at_minimum_frequency: 4
+  analysis_start_seconds: 5.0
+  analysis_end_fraction: 0.9
+expected:
+  source_order: [Tm1, Tm2, Tm4, Tm9]
+  record_preferred_frequencies_hz:
+    saline:
+      Tm1: [0.8, 0.95, 1.25, 1.4, 0.5, 0.95, 1.1, 0.7]
+      Tm2: [0.95, 0.6, 0.8, 2.55, 1.9]
+      Tm4: [0.75, 0.5, 0.6, 1.0, 0.4, 0.75]
+      Tm9: [0.8, 0.35, 1.05, 0.3, 0.5, 0.45]
+    OA:
+      Tm1: [1.6, 2.3, 3.35, 2.35]
+      Tm2: [4.35, 3.15, 1.2, 2.8, 2.2]
+      Tm4: [1.15, 0.8, 1.75, 2.2]
+      Tm9: [0.6, 0.25, 0.1]
+  record_median_preferred_frequency_hz:
+    saline: {Tm1: 0.95, Tm2: 0.95, Tm4: 0.675, Tm9: 0.475}
+    OA: {Tm1: 2.325, Tm2: 2.8, Tm4: 1.45, Tm9: 0.25}
+  author_population_curve_peak_frequency_hz:
+    saline: {Tm1: 0.7, Tm2: 0.8, Tm4: 0.5, Tm9: 0.8}
+    OA: {Tm1: 2.3, Tm2: 2.2, Tm4: 1.95, Tm9: 0.85}
+boundary:
+  sine_amplitude_is_arbitrary_one: true
+  each_record_frequency_curve_is_peak_normalized_before_population_mean: true
+  normalized_frequency_shape_does_not_supply_absolute_gain: true
+  preferred_frequency_summary_choice_is_not_a_delay_mapping: true
+  recording_id_is_not_asserted_to_be_biological_individual_id: true
+  CT1_frequency_tuning_is_not_imputed: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

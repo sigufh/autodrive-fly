@@ -178,6 +178,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_source_delay_transfer_authorized": visual[
                     "Kohn_Portes_T5_source_delay_transfer_authorized"
                 ],
+                "T5_saline_record_median_preferred_frequency_hz": visual[
+                    "Kohn_Portes_T5_saline_record_median_preferred_frequency_hz"
+                ],
+                "T5_OA_record_median_preferred_frequency_hz": visual[
+                    "Kohn_Portes_T5_OA_record_median_preferred_frequency_hz"
+                ],
+                "T5_preferred_frequency_summary_invariant": visual[
+                    "Kohn_Portes_T5_preferred_frequency_summary_invariant"
+                ],
+                "T5_source_frequency_transfer_authorized": visual[
+                    "Kohn_Portes_T5_source_frequency_transfer_authorized"
+                ],
                 "T5_four_Tm_exact_type_average_mapping_complete": visual[
                     "T5_four_Tm_exact_type_average_mapping_complete"
                 ],
