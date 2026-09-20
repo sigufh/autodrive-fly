@@ -41,6 +41,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gou_Dryad_moving_bar_fly_axis_sizes",
         "Gou_Dryad_Mi1_Tm3_direction_axis_identifiable",
         "Gou_Dryad_direction_invariance_evaluated",
+        "Gou_DANDI_all_assets_stimulus_metadata_indexed",
+        "Gou_DANDI_Mi1_Tm3_asset_counts",
+        "Gou_DANDI_Mi1_Tm3_stimulus_metadata_available",
         "Gou_Dryad_stable_biological_individual_IDs_verified",
         "Gou_DANDI_asset_level_stable_participant_IDs_verified",
         "Gou_DANDI_unique_subject_ID_count",
@@ -425,6 +428,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["Gou_Dryad_Mi1_Tm3_direction_axis_identifiable"] is False
     assert visual["observations"]["Gou_Dryad_direction_invariance_evaluated"] is False
+    assert visual["observations"]["Gou_DANDI_all_assets_stimulus_metadata_indexed"] is True
+    assert visual["observations"]["Gou_DANDI_Mi1_Tm3_asset_counts"] == {
+        "Mi1": 144,
+        "Tm3": 20,
+    }
+    assert visual["observations"]["Gou_DANDI_Mi1_Tm3_stimulus_metadata_available"] is False
     assert (
         visual["observations"][
             "Gou_Dryad_stable_biological_individual_IDs_verified"

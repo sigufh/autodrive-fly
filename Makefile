@@ -148,6 +148,10 @@ v7-audit-t4-state-unit-mapping:
 v7-audit-gou-moving-bar-directions:
 	.venv/bin/autodrive-fly v7-audit-gou-moving-bar-directions
 
+.PHONY: v7-audit-gou-dandi-stimulus-metadata
+v7-audit-gou-dandi-stimulus-metadata:
+	.venv/bin/autodrive-fly v7-audit-gou-dandi-stimulus-metadata
+
 .PHONY: v7-audit-t5-recording-fields
 v7-audit-t5-recording-fields:
 	.venv/bin/autodrive-fly v7-audit-t5-recording-fields

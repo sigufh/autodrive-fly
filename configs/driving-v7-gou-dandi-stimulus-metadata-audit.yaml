@@ -1,0 +1,64 @@
+version: 1
+name: v7-gou-dandi-stimulus-metadata-audit
+observed_on: "2026-09-20"
+dandiset: DANDI:001205
+dandiset_version: 0.250602.0251
+indexer: scripts/index_v7_gou_dandi_lindi.py
+asset_index:
+  path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/assets-index.json
+  bytes: 83477
+  sha256: 0d21ae141a3da733f89e0c38e102bee7c27638abf4ae87f39ee9d42575117949
+lindi_metadata_index:
+  path: data/raw/gou-sparsity/dandi-001205-0.250602.0251/lindi-metadata-index.json
+  bytes: 190249
+  sha256: 16afafe655d107f4adcc9a7a665e713aeb7316d356eb8fe841206329fde6f32a
+  index_url_template: https://lindi.neurosift.org/dandi/dandisets/001205/assets/{asset_id}/nwb.lindi.json
+expected_asset_count: 282
+required_sources:
+  Mi1: 144
+  Tm3: 20
+expected_location_counts:
+  L1: 11
+  L3: 16
+  L5: 14
+  Mi1: 144
+  T4T5: 32
+  Tm1: 26
+  Tm2: 19
+  Tm3: 20
+expected_empty_group_keys:
+  stimulus: [stimulus/.zgroup, stimulus/presentation/.zgroup, stimulus/templates/.zgroup]
+  intervals: [intervals/.zgroup]
+  processing: [processing/.zgroup]
+  scratch: [scratch/.zgroup]
+range_cross_checks:
+  Mi1:
+    asset_id: 280ba8cc-6467-4336-92f6-e2adb11104f6
+    path: sub-5113778639459936613/sub-5113778639459936613_ses-20230728T224504_ophys.nwb
+    bytes: 201152041
+    sha256: bdb6b179a9153d08335af1452d8a9fec32640e5b24fc2272b10c1a3e6f82da40
+    subject_id: "5113778639459936613"
+    subject_description: +;UASGC6f;R19F01
+    location: Mi1
+    bytes_read: 8214057
+    ranges: [[0, 4194303], [197132288, 201152040]]
+  Tm3:
+    asset_id: ef3efb39-ff11-4995-bbc6-c574352af537
+    path: sub-14136598055141276827/sub-14136598055141276827_ses-20200316T165324_ophys.nwb
+    bytes: 341213862
+    sha256: ecf575a427a433913887a7d3aaffb327a1df97d246520e3f43537c66b9ecebc3
+    subject_id: "14136598055141276827"
+    subject_description: +;UASGC6f_+;Tm3_+
+    location: Tm3
+    bytes_read: 5669542
+    ranges: [[0, 4194303], [339738624, 341213861]]
+boundary:
+  LINDI_index_is_remote_NWB_structure_metadata_not_imaging_values: true
+  every_index_request_succeeded: true
+  empty_stimulus_groups_are_asset_bounded_not_global_absence: true
+  DANDI_subjects_are_not_Dryad_processed_rows_without_crosswalk: true
+  source_location_does_not_identify_Dryad_experiment_or_condition: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

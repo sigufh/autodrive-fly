@@ -149,6 +149,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gou_Dryad_direction_invariance_evaluated": visual[
                     "Gou_Dryad_direction_invariance_evaluated"
                 ],
+                "Gou_DANDI_all_assets_stimulus_metadata_indexed": visual[
+                    "Gou_DANDI_all_assets_stimulus_metadata_indexed"
+                ],
+                "Gou_DANDI_Mi1_Tm3_asset_counts": visual[
+                    "Gou_DANDI_Mi1_Tm3_asset_counts"
+                ],
+                "Gou_DANDI_Mi1_Tm3_stimulus_metadata_available": visual[
+                    "Gou_DANDI_Mi1_Tm3_stimulus_metadata_available"
+                ],
                 "Gou_Dryad_stable_biological_individual_IDs_verified": visual[
                     "Gou_Dryad_stable_biological_individual_IDs_verified"
                 ],

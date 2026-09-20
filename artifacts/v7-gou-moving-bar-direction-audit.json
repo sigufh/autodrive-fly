@@ -3,9 +3,10 @@
     "name": "v7-gou-moving-bar-direction-audit",
     "observed_on": "2026-09-20",
     "dependencies_sha256": {
-      "configs/driving-v7-gou-moving-bar-direction-audit.yaml": "de6109d8b7aac359b7957b8062cfceb1252a45f590de0d30fb73d8765f52c9e3",
-      "src/fly_emotion/driving/v7_gou_moving_bar_direction_audit.py": "6f06267db1f089cadb478a561aeee0d1d3bfeff2896186bfb55541b078f6ba89",
+      "configs/driving-v7-gou-moving-bar-direction-audit.yaml": "f36b1551f13f40aefabbba15bb90ecaf526e2cde987091eb71272ea56f4a25f7",
+      "src/fly_emotion/driving/v7_gou_moving_bar_direction_audit.py": "11eb3cf3a7b5ff049f0e3d5663823376fec6076733f98aacca2f2a8f745ea753",
       "artifacts/v7-gou-sparsity-source-dynamics-audit.json": "55d69f40ddafd63354646f1b7ae38299354ee4df76e443a0049b567e32d04560",
+      "artifacts/v7-gou-dandi-stimulus-metadata-audit.json": "66ec42e608c675a75def59107d7f0c79d404e84be7cd0fc3ff746fbb959afb49",
       "data/raw/gou-sparsity/gou-v4-numerical-inventory.json": "270c4cc9674fbec04411d7d04e1a6dc7fb19d0a15bf58a082da365c582666903",
       "data/raw/gou-sparsity/version-402168/README.md": "1135147d3c09ee57befb18adeae2f353a5182527d7407bfb53dadae24e0bd261",
       "data/raw/gou-sparsity/extracted/sparsity_Dryad_upload/scripts/Fig6_otherNeurons_movingbar.m": "556f1ee587a9d206b51872cb799427c3168b46f60973003eec4869d7d0d494ab",
@@ -143,6 +144,14 @@
   "inventory_consistency": {
     "direction_order_not_encoded_in_arrays_or_Fig6_script": true,
     "processed_source_direction_labels_available": false
+  },
+  "DANDI_stimulus_metadata": {
+    "Mi1_asset_count": 144,
+    "Tm3_asset_count": 20,
+    "all_282_assets_indexed": true,
+    "Mi1_Tm3_stimulus_metadata_available": false,
+    "Mi1_Tm3_direction_or_position_fields_available": false,
+    "Dryad_row_crosswalk_available": false
   },
   "Gou_Mi1_Tm3_record_level_direction_axis_identifiable": false,
   "authorize_direction_invariance_audit": false,

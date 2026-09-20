@@ -44,6 +44,8 @@ def evaluate_v7_gou_moving_bar_direction_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
     source_audit_path = Path(config["source_audit"])
     source_audit = json.loads((root / source_audit_path).read_text(encoding="utf-8"))
+    dandi_path = Path(config["dandi_stimulus_metadata_audit"])
+    dandi = json.loads((root / dandi_path).read_text(encoding="utf-8"))
     inventory_path = _verified_path(root, config["inventory"], "inventory")
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
     readme_path = _verified_path(root, config["readme"], "README")
@@ -128,6 +130,7 @@ def evaluate_v7_gou_moving_bar_direction_audit(root: Path) -> dict:
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(source_audit_path): _sha256(root / source_audit_path),
+                str(dandi_path): _sha256(root / dandi_path),
                 str(inventory_path.relative_to(root)): _sha256(inventory_path),
                 str(readme_path.relative_to(root)): _sha256(readme_path),
                 str(fig6_path.relative_to(root)): _sha256(fig6_path),
@@ -150,6 +153,20 @@ def evaluate_v7_gou_moving_bar_direction_audit(root: Path) -> dict:
                 "moving_bar"
             ]["direction_order_not_encoded_in_arrays_or_Fig6_script"],
             "processed_source_direction_labels_available": False,
+        },
+        "DANDI_stimulus_metadata": {
+            "Mi1_asset_count": dandi["source_results"]["Mi1"]["asset_count"],
+            "Tm3_asset_count": dandi["source_results"]["Tm3"]["asset_count"],
+            "all_282_assets_indexed": dandi["complete_index"]["successful_index_count"] == 282,
+            "Mi1_Tm3_stimulus_metadata_available": dandi[
+                "Mi1_Tm3_NWB_stimulus_metadata_available"
+            ],
+            "Mi1_Tm3_direction_or_position_fields_available": dandi[
+                "Mi1_Tm3_NWB_direction_or_position_fields_available"
+            ],
+            "Dryad_row_crosswalk_available": dandi[
+                "Dryad_processed_rows_to_DANDI_subject_crosswalk_available"
+            ],
         },
         "Gou_Mi1_Tm3_record_level_direction_axis_identifiable": direction_identifiable,
         "authorize_direction_invariance_audit": direction_identifiable,

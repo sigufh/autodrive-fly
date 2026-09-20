@@ -2424,6 +2424,14 @@ Fig.7 对 T4/T5 target 数组有明确奇偶列→PD/ND 规则，但它属于另
 移植给 Fig.6 source 数组。因此先前“moving-bar both directions”过度声明已修正为“刺激存在、
 处理后方向标签不可用”；未猜测列配对，也未执行方向不变性统计。证据见
 `artifacts/v7-gou-moving-bar-direction-audit.json`。
+随后通过 DANDI 的 LINDI 元数据索引对 `001205` 的 282/282 个 NWB 资产做了完整层级检查，
+全部请求成功且资产 ID 与冻结 DANDI 索引一致。imaging-plane location 可识别 Mi1 144 份、
+Tm3 20 份，且每份对应唯一 participant；但所有 282 份的 `stimulus/presentation`、
+`stimulus/templates`、`intervals`、`processing` 和 `scratch` 都只有空组，没有方向、角位置、
+刺激时间戳或 trial table。对最小 Mi1/Tm3 资产分别用 HDF5 HTTP range-read 读取约 8.2/5.7 MB
+元数据也得到相同结果。因此 DANDI 可补充 asset 级细胞类型和 subject 身份，却不能补回
+Dryad 处理数组的方向标签，也仍无 Dryad row→DANDI subject crosswalk。证据见
+`artifacts/v7-gou-dandi-stimulus-metadata-audit.json`。
 完整官方 Dataverse manifest 保留了 74 个文件名，以及四个所需文件各自的
 `54://edmond-objstor-prod:...` storage identifier。`scripts/recover_v7_edmond_fig3.py`
 及手动触发的 `recover-v7-edmond-fig3` GitHub Actions workflow 可从独立 runner 尝试三个

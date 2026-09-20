@@ -56,6 +56,9 @@ export type V7Status = {
     Gou_Dryad_moving_bar_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
     Gou_Dryad_Mi1_Tm3_direction_axis_identifiable: boolean;
     Gou_Dryad_direction_invariance_evaluated: boolean;
+    Gou_DANDI_all_assets_stimulus_metadata_indexed: boolean;
+    Gou_DANDI_Mi1_Tm3_asset_counts: { Mi1: number; Tm3: number };
+    Gou_DANDI_Mi1_Tm3_stimulus_metadata_available: boolean;
     Gou_Dryad_stable_biological_individual_IDs_verified: boolean;
     Gou_DANDI_asset_level_stable_participant_IDs_verified: boolean;
     Gou_DANDI_unique_subject_ID_count: number;

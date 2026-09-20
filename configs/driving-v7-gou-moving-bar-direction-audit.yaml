@@ -2,6 +2,7 @@ version: 1
 name: v7-gou-moving-bar-direction-audit
 observed_on: "2026-09-20"
 source_audit: artifacts/v7-gou-sparsity-source-dynamics-audit.json
+dandi_stimulus_metadata_audit: artifacts/v7-gou-dandi-stimulus-metadata-audit.json
 inventory:
   path: data/raw/gou-sparsity/gou-v4-numerical-inventory.json
   bytes: 57800

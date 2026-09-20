@@ -49,3 +49,10 @@ def test_unlabelled_arrays_and_target_rules_do_not_create_source_directions() ->
     assert report["authorize_direction_invariance_audit"] is False
     assert report["direction_invariance_evaluated"] is False
     assert report["authorize_T4_source_kernel_transfer"] is False
+    dandi = report["DANDI_stimulus_metadata"]
+    assert dandi["Mi1_asset_count"] == 144
+    assert dandi["Tm3_asset_count"] == 20
+    assert dandi["all_282_assets_indexed"] is True
+    assert dandi["Mi1_Tm3_stimulus_metadata_available"] is False
+    assert dandi["Mi1_Tm3_direction_or_position_fields_available"] is False
+    assert dandi["Dryad_row_crosswalk_available"] is False
