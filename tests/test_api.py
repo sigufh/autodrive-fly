@@ -195,6 +195,8 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_transfer_synthesis_Figure6_axolotl_source_available"] is False
     assert boundaries["T5_transfer_synthesis_related_axolotl_project_identified"] is True
     assert boundaries["T5_transfer_synthesis_axolotl_repository_readable"] is False
+    assert boundaries["T5_measured_kernel_temporal_identifiability_passed"] is False
+    assert boundaries["T5_measured_kernel_direction_scoring_performed"] is False
     assert boundaries["T5_transfer_synthesis_CT1_complete"] is False
     assert boundaries["T5_transfer_synthesis_ready"] is False
     assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True

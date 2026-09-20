@@ -329,6 +329,12 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_transfer_synthesis_axolotl_repository_readable": visual[
                     "T5_transfer_synthesis_axolotl_repository_readable"
                 ],
+                "T5_measured_kernel_temporal_identifiability_passed": visual[
+                    "T5_measured_kernel_temporal_identifiability_passed"
+                ],
+                "T5_measured_kernel_direction_scoring_performed": visual[
+                    "T5_measured_kernel_direction_scoring_performed"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

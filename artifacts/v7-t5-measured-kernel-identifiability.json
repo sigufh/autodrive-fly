@@ -1,0 +1,95 @@
+{
+  "protocol": {
+    "name": "v7-t5-measured-kernel-source-identifiability-precheck",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "2c7f20b823eb394e815a0dc35050e0f8a24a0335dc56039d4d211adf9a3bad75",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "ec6fa78ee29e97a5c869c9aea218340154af3142f9421c0e78b3d2b0abb00ca8",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "src/fly_emotion/driving/v7_t5_typed_spatial_pair_precheck.py": "22a5fd7edea824dc2e65524e4732fd1bf923f373eb04bb751af8778011f9c8d3",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count_per_mode": 120,
+    "position_count": 15,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "kernel_summary": {
+    "source_order": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "recording_id_counts": {
+      "Tm1": 7,
+      "Tm2": 5,
+      "Tm4": 6,
+      "Tm9": 6
+    },
+    "kernel_length": 499,
+    "sample_interval_milliseconds": 10.0,
+    "normalization": "unit_L1_per_source"
+  },
+  "fixed_target_denominator": 6719,
+  "valid_target_count": 6715,
+  "invalid_source_or_axis_target_count": 4,
+  "candidate_results": {
+    "summed_filtered_source_centroid_projection": {
+      "formula": "axis_dot(sum_source_filtered_x,sum_source_filtered_y)/(sum_absolute_xy+1e-9)",
+      "ordered_mean_absolute_energy": 0.3469810390784979,
+      "static_mean_absolute_energy": 0.34684518496399397,
+      "ordered_minus_static_mean_absolute_energy": 0.0007784280894925625,
+      "shuffle_minus_static_mean_absolute_energy": 0.02452627580254505,
+      "shuffle_to_ordered_residual_energy_ratio": 31.50743933011604,
+      "static_to_ordered_energy_ratio": 0.9996084681893145,
+      "gates": {
+        "shuffle_residual_attenuated": false,
+        "static_energy_attenuated": false
+      },
+      "passed": false
+    },
+    "fast_pool_vs_Tm9_centroid_difference": {
+      "formula": "axis_dot(fast_x*Tm9_mass-fast_mass*Tm9_x,fast_y*Tm9_mass-fast_mass*Tm9_y)/(sum_absolute_terms+1e-9)",
+      "ordered_mean_absolute_energy": 0.0009869651008185538,
+      "static_mean_absolute_energy": 0.001084934543917499,
+      "ordered_minus_static_mean_absolute_energy": 0.00037665788937711115,
+      "shuffle_minus_static_mean_absolute_energy": 0.0009632947541991355,
+      "shuffle_to_ordered_residual_energy_ratio": 2.557479297173785,
+      "static_to_ordered_energy_ratio": 1.0992633306058064,
+      "gates": {
+        "shuffle_residual_attenuated": false,
+        "static_energy_attenuated": false
+      },
+      "passed": false
+    }
+  },
+  "temporal_identifiability_passed": false,
+  "direction_scoring_performed": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "measured_kernel_source_readouts_failed_temporal_controls",
+  "boundary": {
+    "tuning_only": true,
+    "single_condition_precheck": true,
+    "measured_kernel_shape_only_not_absolute_gain": true,
+    "source_activity_driven_only_from_R1_R6_propagation": true,
+    "subtype_and_direction_labels_not_read_by_dynamics": true,
+    "target_activity_injection": false,
+    "parameter_fit": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

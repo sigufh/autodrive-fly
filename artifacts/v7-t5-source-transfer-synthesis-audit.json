@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-20",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "387ce31ab333dc7fd7cac2ef243c53e79874bacfc89dcd94ad3dfe94578cfe7e",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "a0c04bc7dc8fc860b8e2d4a4dba679b3cf7325947f95b0d433e9a445c8514bd5",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "e70ed51f3c164566aa0310ac11c1ec90953a9f89295f0b7c31f902e0e833e70e",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "875f16e976473bf8df745ff755ac7e896377d6133421ac7bf19d5938a70b065c",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -13,6 +13,7 @@
       "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
       "artifacts/v7-kohn-portes-figure6-model-identity-audit.json": "19f9e08717685ebec988242767e050ed86c34b9e7dfa7e9ff76b109a1859a510",
       "artifacts/v7-kohn-portes-axolotl-availability-audit.json": "9dec0d31a4f9d8041d9e66b4f229a6de6d7b2be44a368aff9442e80c50a5740d",
+      "artifacts/v7-t5-measured-kernel-identifiability.json": "b1ea24856b569f016cec6f83a96497402e872838eec3b480c3495239c00cdce4",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
@@ -109,6 +110,8 @@
     "external_Figure6_axolotl_tmodel_source_available": false,
     "related_axolotl_project_identified": true,
     "related_axolotl_repository_anonymously_readable": false,
+    "measured_kernel_temporal_identifiability_passed": false,
+    "measured_kernel_direction_scoring_performed": false,
     "absolute_source_gain_available": false,
     "source_to_v7_state_mapping_available": false,
     "state_invariant_source_timing_available": false,

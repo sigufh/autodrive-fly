@@ -103,6 +103,8 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_transfer_synthesis_Figure6_axolotl_source_available",
         "T5_transfer_synthesis_related_axolotl_project_identified",
         "T5_transfer_synthesis_axolotl_repository_readable",
+        "T5_measured_kernel_temporal_identifiability_passed",
+        "T5_measured_kernel_direction_scoring_performed",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -433,6 +435,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"][
             "T5_transfer_synthesis_axolotl_repository_readable"
         ]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_temporal_identifiability_passed"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_direction_scoring_performed"]
         is False
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False

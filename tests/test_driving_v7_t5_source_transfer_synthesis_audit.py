@@ -34,6 +34,8 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["external_Figure6_axolotl_tmodel_source_available"] is False
     assert gates["related_axolotl_project_identified"] is True
     assert gates["related_axolotl_repository_anonymously_readable"] is False
+    assert gates["measured_kernel_temporal_identifiability_passed"] is False
+    assert gates["measured_kernel_direction_scoring_performed"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

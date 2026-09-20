@@ -1929,6 +1929,14 @@ Tm source 已有电压派生 kernel shape 与 exact-type-average mapping，并�
 跨状态固定时序、独立 moving-bar validation、FIB19→MaleCNS 权重迁移及 CT1 动态/映射仍未完成。
 原 `v7-t5-physical-time-transfer-audit.json` 的 7 个 required fields、5 个缺失项和 false gate
 保持不变。汇总证据见 `artifacts/v7-t5-source-transfer-synthesis-audit.json`。
+随后只在 S1-T01 tuning 条件上测试 measured-kernel source-only 时序可辨识性：四类
+Tm source 的群体平均核先按 recording ID 等权汇总并各自做 L1 归一化，再对由 R1–R6
+传播得到的 source mass/x/y 序列作因果卷积。直接求和质心投影的
+shuffle/ordered residual 比为 31.507、static/ordered 为 0.9996；显式 fast
+`Tm1/Tm2/Tm4` 对 Tm9 质心差分别为 2.557 和 1.099，均未达到冻结的 ≤0.50 门。
+因此两个预注册 readout 都在时间控制阶段停止，未读取 subtype 方向标签、未执行方向/极性
+评分，也未授权 T5 功能候选。该结果只排除这两个具体 readout，不否定所有可能的 T5 模型。
+证据见 `artifacts/v7-t5-measured-kernel-identifiability.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

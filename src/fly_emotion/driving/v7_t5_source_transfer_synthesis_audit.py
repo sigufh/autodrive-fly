@@ -34,6 +34,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     mapping = evidence["source_mapping"]
     model_identity = evidence["figure6_model_identity"]
     axolotl_availability = evidence["axolotl_availability"]
+    measured_kernel = evidence["measured_kernel_identifiability"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -108,6 +109,12 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "related_axolotl_repository_anonymously_readable": axolotl_availability[
             "gates"
         ]["related_GitLab_repository_anonymously_readable"],
+        "measured_kernel_temporal_identifiability_passed": measured_kernel[
+            "temporal_identifiability_passed"
+        ],
+        "measured_kernel_direction_scoring_performed": measured_kernel[
+            "direction_scoring_performed"
+        ],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],

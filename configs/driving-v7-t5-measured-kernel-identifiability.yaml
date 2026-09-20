@@ -1,0 +1,43 @@
+version: 1
+name: v7-t5-measured-kernel-source-identifiability-precheck
+observed_on: "2026-09-20"
+source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
+typed_spatial_implementation: src/fly_emotion/driving/v7_t5_typed_spatial_pair_precheck.py
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+condition_id: S1-T01
+source_types: [Tm1, Tm2, Tm4, Tm9]
+fast_sources: [Tm1, Tm2, Tm4]
+delayed_source: Tm9
+kernel:
+  source_state: positive_baseline_subtracted_state
+  source_summary: equal_weight_mean_within_recording_id_then_across_recording_ids
+  normalization: unit_L1_per_source
+  convolution: causal_full_convolution_truncated_to_input_length
+  sample_interval_milliseconds: 10.0
+candidates:
+  - name: summed_filtered_source_centroid_projection
+    formula: axis_dot(sum_source_filtered_x,sum_source_filtered_y)/(sum_absolute_xy+1e-9)
+  - name: fast_pool_vs_Tm9_centroid_difference
+    formula: axis_dot(fast_x*Tm9_mass-fast_mass*Tm9_x,fast_y*Tm9_mass-fast_mass*Tm9_y)/(sum_absolute_terms+1e-9)
+controls:
+  modes: [ordered, temporal_shuffle, static_sham]
+  temporal_shuffle_seed: 20260920
+  maximum_shuffle_to_ordered_residual_energy_ratio: 0.50
+  maximum_static_to_ordered_energy_ratio: 0.50
+stop_gate:
+  evaluate_direction_only_after_any_temporal_candidate_passes: true
+boundary:
+  tuning_only: true
+  single_condition_precheck: true
+  measured_kernel_shape_only_not_absolute_gain: true
+  source_activity_driven_only_from_R1_R6_propagation: true
+  subtype_and_direction_labels_not_read_by_dynamics: true
+  target_activity_injection: false
+  parameter_fit: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true
