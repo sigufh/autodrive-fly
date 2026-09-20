@@ -61,6 +61,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         ]
     )
     kohn_portes_kernels = evidence["kohn_portes_t5_source_kernels"]
+    kohn_portes_state_units = evidence["kohn_portes_t5_state_unit_mapping"]
     t5_mapping_scope = evidence["t5_source_mapping_scope"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
@@ -487,6 +488,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in kohn_portes_kernels["source_results"]
                 and kohn_portes_kernels["gates"][
                     "stimulus_invariant_source_kernel_verified"
+                ]
+            ),
+            "Kohn_Portes_exact_volts_to_millivolts_scale_verified": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_state_units["gates"][
+                    "exact_volts_to_millivolts_scale_verified"
+                ]
+            ),
+            "Kohn_Portes_voltage_or_filter_output_to_v7_state_mapping_available": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_state_units[
+                    "millivolts_or_filter_output_to_v7_state_mapping_available"
                 ]
             ),
             "T5_source_exact_type_average_mapping_scope_complete": (

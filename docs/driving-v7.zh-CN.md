@@ -1850,6 +1850,16 @@ white-noise LN 核不能预测高对比 flash 的形状和增益。因此四类 
 kernel 存在性”已通过，但现有 transfer contract 中要求的可迁移 `membrane-like kernel`
 仍不通过；绝对增益、跨刺激不变性和 v7 状态映射也仍不通过。
 证据见 `artifacts/v7-kohn-portes-t5-source-kernel-audit.json`。
+进一步对 saline/OA 两组共 41 条 white-noise 记录审计状态单位：原始
+`ephys_trace` 是 volts，`cut_trace_mean` 是 volts 下的绝对基线，
+`linear_prediction` 与 `full_prediction` 则是相对该基线的中心化 volts 响应。作者绘图中的
+`sc = 1e3` 只给出精确的 volts→mV 显示换算；逐记录 softplus 参数可在最大
+`1.43e-7 V` 误差内重构 `full_prediction`，但它们不是跨记录、跨 source 的统一映射。作者的
+population trace 重缩放也不定义绝对增益。v7 状态仍是 `signed_tanh` 模拟激活，运行时明确
+标注 `simulated_activation_not_millivolts`。因此没有经 held-out 验证的 mV/filter-output→v7
+状态公式，也没有可据此采用的 min–max、单位范数或 clipping 规则；这些规则未被人为补造，
+source kernel gain/dynamics transfer 继续不授权。证据见
+`artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json`。
 四类电压派生核的映射范围也单独核验：Tm1/Tm2/Tm4/Tm9 都已有显式
 `exact_type_average` 声明、精确 MaleCNS 同名 body set、soma side 和完整柱坐标，允许把各自
 群体平均核仅广播到同型 body；这不等于逐记录 body identity。CT1 有左右两个 body

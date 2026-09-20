@@ -142,6 +142,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_source_kernel_transfer_authorized": visual[
                     "Kohn_Portes_T5_source_kernel_transfer_authorized"
                 ],
+                "T5_state_unit_record_count": visual[
+                    "Kohn_Portes_T5_state_unit_record_count"
+                ],
+                "T5_exact_volts_to_millivolts_scale_verified": visual[
+                    "Kohn_Portes_T5_exact_volts_to_millivolts_scale_verified"
+                ],
+                "T5_millivolts_or_filter_output_to_state_mapping_available": visual[
+                    "Kohn_Portes_T5_state_mapping_available"
+                ],
+                "T5_candidate_normalization_formula": visual[
+                    "Kohn_Portes_T5_candidate_normalization_formula"
+                ],
+                "T5_candidate_clipping_rule": visual[
+                    "Kohn_Portes_T5_candidate_clipping_rule"
+                ],
                 "T5_four_Tm_exact_type_average_mapping_complete": visual[
                     "T5_four_Tm_exact_type_average_mapping_complete"
                 ],

@@ -160,6 +160,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     kohn_portes_t5_source_kernel_audit = reports[
         "kohn_portes_t5_source_kernel_audit"
     ]
+    kohn_portes_t5_state_unit_mapping_audit = reports[
+        "kohn_portes_t5_state_unit_mapping_audit"
+    ]
     kohn_portes_identity_history_audit = reports[
         "kohn_portes_identity_history_audit"
     ]
@@ -379,6 +382,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["yang_t5_voltage_evidence_audit"],
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["kohn_portes_t5_source_kernel_audit"],
+                config["evidence"]["kohn_portes_t5_state_unit_mapping_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_pure_data_index_audit"],
@@ -1214,6 +1218,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_source_kernel_transfer_authorized": (
                     kohn_portes_t5_source_kernel_audit[
                         "source_kernel_transfer_authorized"
+                    ]
+                ),
+                "Kohn_Portes_T5_state_unit_record_count": (
+                    kohn_portes_t5_state_unit_mapping_audit["record_inventory"][
+                        "record_count"
+                    ]
+                ),
+                "Kohn_Portes_T5_exact_volts_to_millivolts_scale_verified": (
+                    kohn_portes_t5_state_unit_mapping_audit["gates"][
+                        "exact_volts_to_millivolts_scale_verified"
+                    ]
+                ),
+                "Kohn_Portes_T5_state_mapping_available": (
+                    kohn_portes_t5_state_unit_mapping_audit[
+                        "millivolts_or_filter_output_to_v7_state_mapping_available"
+                    ]
+                ),
+                "Kohn_Portes_T5_candidate_normalization_formula": (
+                    kohn_portes_t5_state_unit_mapping_audit["mapping_boundary"][
+                        "candidate_normalization_formula"
+                    ]
+                ),
+                "Kohn_Portes_T5_candidate_clipping_rule": (
+                    kohn_portes_t5_state_unit_mapping_audit["mapping_boundary"][
+                        "candidate_clipping_rule"
                     ]
                 ),
                 "T5_four_Tm_exact_type_average_mapping_complete": (
@@ -2788,6 +2817,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_raw_kernel_gain_transferable",
                     "T5_kernel_stimulus_invariant",
                     "T5_source_kernel_transfer_authorized",
+                    "T5_state_unit_record_count",
+                    "T5_exact_volts_to_millivolts_scale_verified",
+                    "T5_millivolts_or_filter_output_to_state_mapping_available",
+                    "T5_candidate_normalization_formula",
+                    "T5_candidate_clipping_rule",
                     "T5_four_Tm_exact_type_average_mapping_complete",
                     "T5_all_five_source_mapping_complete",
                     "T5_CT1_mapping_Lo1_column_count_by_body",

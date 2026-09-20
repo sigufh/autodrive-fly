@@ -250,6 +250,13 @@ def test_T5_voltage_derived_kernels_do_not_claim_absolute_gain_or_invariance() -
         assert components["Kohn_Portes_voltage_derived_temporal_kernel_verified"]
         assert components["Kohn_Portes_source_kernel_absolute_gain_transferable"] is False
         assert components["Kohn_Portes_source_kernel_stimulus_invariant"] is False
+        assert components["Kohn_Portes_exact_volts_to_millivolts_scale_verified"] is True
+        assert (
+            components[
+                "Kohn_Portes_voltage_or_filter_output_to_v7_state_mapping_available"
+            ]
+            is False
+        )
     assert (
         report["matrix"]["CT1"]["evidence_components"][
             "Kohn_Portes_voltage_derived_temporal_kernel_verified"

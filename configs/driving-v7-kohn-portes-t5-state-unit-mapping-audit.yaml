@@ -1,0 +1,46 @@
+version: 1
+name: v7-kohn-portes-t5-state-unit-mapping-audit
+observed_on: "2026-09-20"
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+v7_contract: configs/driving-v7.yaml
+v7_implementation: src/fly_emotion/driving/v7.py
+runtime_engine: src/fly_emotion/driving/engine.py
+author_code:
+  convolve:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/analysis_convolve.py
+    bytes: 15240
+    sha256: 9cdfefe1236cba70fb155c2eec9f258b9965e49abca1eec57a8210201a9087c2
+  returnmeans:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/analysis_returnmeans.py
+    bytes: 21225
+    sha256: bc7dae22a5f53504f9a1111a645b34a79505f72cc0dbfa98cd4ba6a0c7e20474
+  plotting:
+    path: data/raw/kohn-portes-flexible-filtering/ephysplot.py
+    bytes: 39144
+    sha256: 0063a93ea494265cfa9151e3c760d999111959fa04c2ecf7ff2c3c8715e23cdc
+expected:
+  source_order: [Tm1, Tm2, Tm4, Tm9]
+  states: [saline, OA]
+  total_record_count: 41
+  record_counts:
+    saline: {Tm1: 8, Tm2: 5, Tm4: 6, Tm9: 6}
+    OA: {Tm1: 4, Tm2: 5, Tm4: 4, Tm9: 3}
+  unique_recording_id_counts: {Tm1: 7, Tm2: 7, Tm4: 7, Tm9: 6}
+  raw_voltage_range_volts: [-0.19653125, 0.048]
+  cut_trace_mean_range_volts: [-0.069806, -0.0409162]
+  linear_prediction_range_volts: [-0.02218433859183316, 0.02677650250408451]
+  full_prediction_range_volts: [-0.014789404013922671, 0.029429184275022606]
+  maximum_stored_softplus_reconstruction_error_volts: 1.429781442182504e-07
+  author_reported_LN_R2_range: [0.26035, 0.661293]
+boundary:
+  exact_volts_to_millivolts_scale_is_not_state_normalization: true
+  centered_response_is_not_absolute_membrane_voltage: true
+  per_record_softplus_is_not_a_shared_deployment_mapping: true
+  author_kernel_rescaling_is_not_v7_state_calibration: true
+  stimulus_dependent_gain_and_shape_are_preserved_as_limitations: true
+  no_minmax_or_clipping_rule_invented: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

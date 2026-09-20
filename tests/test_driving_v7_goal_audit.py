@@ -40,6 +40,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_raw_kernel_gain_transferable",
         "T5_kernel_stimulus_invariant",
         "T5_source_kernel_transfer_authorized",
+        "T5_state_unit_record_count",
+        "T5_exact_volts_to_millivolts_scale_verified",
+        "T5_millivolts_or_filter_output_to_state_mapping_available",
+        "T5_candidate_normalization_formula",
+        "T5_candidate_clipping_rule",
         "T5_four_Tm_exact_type_average_mapping_complete",
         "T5_all_five_source_mapping_complete",
         "T5_CT1_mapping_Lo1_column_count_by_body",
@@ -578,6 +583,16 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Kohn_Portes_T5_raw_kernel_gain_transferable"] is False
     assert visual["observations"]["Kohn_Portes_T5_kernel_stimulus_invariant"] is False
     assert visual["observations"]["Kohn_Portes_T5_source_kernel_transfer_authorized"] is False
+    assert visual["observations"]["Kohn_Portes_T5_state_unit_record_count"] == 41
+    assert (
+        visual["observations"][
+            "Kohn_Portes_T5_exact_volts_to_millivolts_scale_verified"
+        ]
+        is True
+    )
+    assert visual["observations"]["Kohn_Portes_T5_state_mapping_available"] is False
+    assert visual["observations"]["Kohn_Portes_T5_candidate_normalization_formula"] is None
+    assert visual["observations"]["Kohn_Portes_T5_candidate_clipping_rule"] is None
     assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
     assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {

@@ -53,6 +53,11 @@ export type V7Status = {
     T5_raw_kernel_gain_transferable: boolean;
     T5_kernel_stimulus_invariant: boolean;
     T5_source_kernel_transfer_authorized: boolean;
+    T5_state_unit_record_count?: number;
+    T5_exact_volts_to_millivolts_scale_verified?: boolean;
+    T5_millivolts_or_filter_output_to_state_mapping_available?: boolean;
+    T5_candidate_normalization_formula?: string | null;
+    T5_candidate_clipping_rule?: string | null;
     T5_four_Tm_exact_type_average_mapping_complete: boolean;
     T5_all_five_source_mapping_complete: boolean;
     T5_CT1_mapping_Lo1_column_count_by_body: { "10009": number; "10157": number };
