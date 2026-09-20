@@ -108,6 +108,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_cross_dataset_direction_mapping_authorized"] is False
     assert boundaries["Gou_Dryad_stable_biological_individual_IDs_verified"] is False
     assert boundaries["Gou_Dryad_experimental_membrane_voltage"] is False
+    assert boundaries["v7_vertical_camera_ray_angles_declared"] is False
+    assert boundaries["v7_vertical_FOV_declared"] is False
+    assert boundaries["v7_vertical_pixel_to_angle_formula_declared"] is False
+    assert boundaries["v7_vertical_motion_has_physical_angular_units"] is False
+    assert boundaries["v7_looming_radius_has_physical_angular_units"] is False
+    assert boundaries["v7_retinal_v_has_physical_angular_units"] is False
     assert boundaries["Gou_DANDI_asset_level_stable_participant_IDs_verified"] is True
     assert boundaries["Gou_DANDI_unique_subject_ID_count"] == 282
     assert boundaries["Gou_Dryad_distinct_fliesUsed_label_count"] == 66

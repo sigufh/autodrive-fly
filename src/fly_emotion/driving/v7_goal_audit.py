@@ -216,6 +216,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t5_physical_time_transfer_audit = reports["t5_physical_time_transfer_audit"]
     stimulus_coordinate_contract = reports["stimulus_coordinate_contract"]
+    vertical_angular_coordinate_audit = reports["vertical_angular_coordinate_audit"]
     t4t5_source_dynamics_readiness = reports["t4t5_source_dynamics_readiness"]
     source_dynamics_external_evidence_contract = reports[
         "source_dynamics_external_evidence_contract"
@@ -321,6 +322,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_axis_sequence_identifiability"],
                 config["evidence"]["t5_physical_time_transfer_audit"],
                 config["evidence"]["stimulus_coordinate_contract"],
+                config["evidence"]["vertical_angular_coordinate_audit"],
                 config["evidence"]["t4t5_source_dynamics_readiness"],
                 config["evidence"]["source_dynamics_external_evidence_contract"],
                 config["evidence"]["t5_continuous_moment_precheck"],
@@ -614,6 +616,34 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "v7_offline_two_dimensional_angular_calibration_complete": (
                     stimulus_coordinate_contract[
                         "offline_two_dimensional_stimulus_coordinate_contract_complete"
+                    ]
+                ),
+                "v7_vertical_camera_ray_angles_declared": (
+                    vertical_angular_coordinate_audit["gates"][
+                        "vertical_camera_ray_angles_declared"
+                    ]
+                ),
+                "v7_vertical_FOV_declared": vertical_angular_coordinate_audit[
+                    "gates"
+                ]["vertical_FOV_declared"],
+                "v7_vertical_pixel_to_angle_formula_declared": (
+                    vertical_angular_coordinate_audit["gates"][
+                        "vertical_pixel_to_angle_formula_declared"
+                    ]
+                ),
+                "v7_vertical_motion_has_physical_angular_units": (
+                    vertical_angular_coordinate_audit["gates"][
+                        "controlled_vertical_motion_has_physical_angular_units"
+                    ]
+                ),
+                "v7_looming_radius_has_physical_angular_units": (
+                    vertical_angular_coordinate_audit["gates"][
+                        "looming_radius_has_physical_angular_units"
+                    ]
+                ),
+                "v7_retinal_v_has_physical_angular_units": (
+                    vertical_angular_coordinate_audit["gates"][
+                        "MaleCNS_retinal_v_has_physical_angular_units"
                     ]
                 ),
                 "v7_offline_frame_interval_milliseconds": (
@@ -2741,6 +2771,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "v7_offline_time_coordinate_contract_complete",
                     "v7_offline_horizontal_coordinate_contract_complete",
                     "v7_offline_two_dimensional_angular_calibration_complete",
+                    "v7_vertical_camera_ray_angles_declared",
+                    "v7_vertical_FOV_declared",
+                    "v7_vertical_pixel_to_angle_formula_declared",
+                    "v7_vertical_motion_has_physical_angular_units",
+                    "v7_looming_radius_has_physical_angular_units",
+                    "v7_retinal_v_has_physical_angular_units",
                     "v7_offline_frame_interval_milliseconds",
                     "v7_offline_substep_interval_milliseconds",
                     "v7_horizontal_fov_degrees",

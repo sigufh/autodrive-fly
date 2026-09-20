@@ -1,0 +1,48 @@
+version: 1
+name: v7-vertical-angular-coordinate-audit
+observed_on: "2026-09-20"
+v7_contract: configs/driving-v7.yaml
+stimulus_coordinate_config: configs/driving-v7-stimulus-coordinate-contract.yaml
+stimulus_coordinate_evidence: artifacts/v7-stimulus-coordinate-contract.json
+environment_implementation: src/fly_emotion/driving/environment.py
+v7_implementation: src/fly_emotion/driving/v7.py
+expected:
+  width_pixels: 48
+  height_pixels: 24
+  frame_count: 16
+  horizontal_ray_min_radians: -1.25
+  horizontal_ray_max_radians: 1.25
+  horizontal_fov_degrees: 143.2394487827058
+  horizontal_sample_spacing_degrees: 3.047647846440544
+  road_horizon_row: 8
+  controlled_stimulus_names:
+    - uniform_dark
+    - uniform_bright
+    - on_edge_right
+    - on_edge_left
+    - on_edge_down
+    - on_edge_up
+    - on_looming
+    - on_receding
+    - on_static_disc
+    - off_edge_right
+    - off_edge_left
+    - off_edge_down
+    - off_edge_up
+    - off_looming
+    - off_receding
+    - off_static_disc
+    - grating_right
+    - grating_left
+    - rotation_cw
+    - rotation_ccw
+boundary:
+  image_rows_are_not_vertical_camera_rays: true
+  array_aspect_ratio_does_not_define_vertical_FOV: true
+  normalized_retinal_v_is_not_visual_degrees: true
+  synthetic_rotation_phase_is_not_camera_angular_calibration: true
+  horizontal_calibration_does_not_authorize_vertical_conversion: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

@@ -60,6 +60,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "v7_offline_time_coordinate_contract_complete",
         "v7_offline_horizontal_coordinate_contract_complete",
         "v7_offline_two_dimensional_angular_calibration_complete",
+        "v7_vertical_camera_ray_angles_declared",
+        "v7_vertical_FOV_declared",
+        "v7_vertical_pixel_to_angle_formula_declared",
+        "v7_vertical_motion_has_physical_angular_units",
+        "v7_looming_radius_has_physical_angular_units",
+        "v7_retinal_v_has_physical_angular_units",
         "v7_offline_frame_interval_milliseconds",
         "v7_offline_substep_interval_milliseconds",
         "v7_horizontal_fov_degrees",
@@ -297,6 +303,21 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         ]
         is False
     )
+    assert visual["observations"]["v7_vertical_camera_ray_angles_declared"] is False
+    assert visual["observations"]["v7_vertical_FOV_declared"] is False
+    assert (
+        visual["observations"]["v7_vertical_pixel_to_angle_formula_declared"]
+        is False
+    )
+    assert (
+        visual["observations"]["v7_vertical_motion_has_physical_angular_units"]
+        is False
+    )
+    assert (
+        visual["observations"]["v7_looming_radius_has_physical_angular_units"]
+        is False
+    )
+    assert visual["observations"]["v7_retinal_v_has_physical_angular_units"] is False
     assert visual["observations"]["v7_offline_frame_interval_milliseconds"] == 10.0
     assert visual["observations"]["v7_offline_substep_interval_milliseconds"] == 2.5
     assert visual["observations"]["T5_physical_source_transfer_ready"] is False

@@ -1,0 +1,89 @@
+{
+  "protocol": {
+    "name": "v7-vertical-angular-coordinate-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-vertical-angular-coordinate-audit.yaml": "9a16bda2b13dd66c1c1a9f1b84dca11fe621124a493d30a75754497d9be27455",
+      "src/fly_emotion/driving/v7_vertical_angular_coordinate_audit.py": "6f0651962c5720595066de91a6bc597cd28ae6fe25e5e3dfe6657387b4035620",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
+      "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
+      "src/fly_emotion/driving/environment.py": "20dcfcbe64fec69242d558794ee522ab6ef75162346e5d63026feb54d851c36f",
+      "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e"
+    },
+    "parameter_fit": false,
+    "functional_stimulus_evaluated": false,
+    "runtime_modified": false
+  },
+  "image_geometry": {
+    "width_pixels": 48,
+    "height_pixels": 24,
+    "frame_count": 16,
+    "road_horizon_row": 8,
+    "controlled_stimulus_names": [
+      "uniform_dark",
+      "uniform_bright",
+      "on_edge_right",
+      "on_edge_left",
+      "on_edge_down",
+      "on_edge_up",
+      "on_looming",
+      "on_receding",
+      "on_static_disc",
+      "off_edge_right",
+      "off_edge_left",
+      "off_edge_down",
+      "off_edge_up",
+      "off_looming",
+      "off_receding",
+      "off_static_disc",
+      "grating_right",
+      "grating_left",
+      "rotation_cw",
+      "rotation_ccw"
+    ]
+  },
+  "coordinate_semantics": {
+    "road_camera_columns": "explicit_horizontal_ray_angles_radians",
+    "road_camera_rows": "synthetic_horizon_and_distance_dependent_object_height",
+    "controlled_stimulus_columns": "array_indices_with_declared_horizontal_ray_angle_mapping",
+    "controlled_stimulus_rows": "dimensionless_array_indices",
+    "MaleCNS_retinal_u_v": "normalized_optic_hex_topology_coordinates",
+    "horizontal_fov_degrees": 143.2394487827058,
+    "horizontal_sample_spacing_degrees": 3.047647846440544,
+    "vertical_fov_degrees": null,
+    "vertical_sample_spacing_degrees": null
+  },
+  "gates": {
+    "horizontal_camera_ray_angles_verified": true,
+    "vertical_camera_ray_angles_declared": false,
+    "vertical_FOV_declared": false,
+    "vertical_pixel_to_angle_formula_declared": false,
+    "controlled_vertical_motion_has_physical_angular_units": false,
+    "looming_radius_has_physical_angular_units": false,
+    "rotation_has_physical_camera_angular_units": false,
+    "MaleCNS_retinal_v_has_physical_angular_units": false,
+    "external_recording_vertical_alignment_verified": false
+  },
+  "offline_horizontal_angular_coordinate_complete": true,
+  "offline_two_dimensional_angular_calibration_complete": false,
+  "biological_angular_calibration_complete": false,
+  "authorize_vertical_angular_speed_conversion": false,
+  "authorize_looming_angular_size_conversion": false,
+  "authorize_source_dynamics_transfer": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "horizontal_rays_exist_but_image_rows_and_retinal_v_have_no_physical_vertical_angle_calibration",
+  "boundary": {
+    "image_rows_are_not_vertical_camera_rays": true,
+    "array_aspect_ratio_does_not_define_vertical_FOV": true,
+    "normalized_retinal_v_is_not_visual_degrees": true,
+    "synthetic_rotation_phase_is_not_camera_angular_calibration": true,
+    "horizontal_calibration_does_not_authorize_vertical_conversion": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

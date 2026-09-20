@@ -374,6 +374,9 @@ from .driving.v7_tm9_coordinate_identifiability_audit import (
 )
 from .driving.v7_unified_model_package_audit import evaluate_v7_unified_model_package_audit
 from .driving.v7_upstream_latency_audit import evaluate_v7_upstream_latency_audit
+from .driving.v7_vertical_angular_coordinate_audit import (
+    evaluate_v7_vertical_angular_coordinate_audit,
+)
 from .driving.v7_visual_corridor_goal import evaluate_v7_visual_corridor_goal
 from .driving.v7_visual_layer_locality import evaluate_v7_visual_layer_locality
 from .driving.v7_visual_target_input_audit import evaluate_v7_visual_target_input_audit
@@ -481,6 +484,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-malecns-source-mapping-readiness")
     subparsers.add_parser("v7-audit-timebase")
     subparsers.add_parser("v7-audit-stimulus-coordinates")
+    subparsers.add_parser("v7-audit-vertical-angular-coordinates")
     subparsers.add_parser("v7-validate-published-fig5")
     subparsers.add_parser("v7-build-ephys-interface")
     subparsers.add_parser("v7-audit-t5-data")
@@ -2012,6 +2016,14 @@ def main() -> None:
     if args.command == "v7-audit-stimulus-coordinates":
         report = evaluate_v7_stimulus_coordinate_contract(root)
         target = root / "artifacts/v7-stimulus-coordinate-contract.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-vertical-angular-coordinates":
+        report = evaluate_v7_vertical_angular_coordinate_audit(root)
+        target = root / "artifacts/v7-vertical-angular-coordinate-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -75,6 +75,12 @@ export type V7Status = {
     v7_offline_time_coordinate_contract_complete: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;
     v7_offline_two_dimensional_angular_calibration_complete: boolean;
+    v7_vertical_camera_ray_angles_declared: boolean;
+    v7_vertical_FOV_declared: boolean;
+    v7_vertical_pixel_to_angle_formula_declared: boolean;
+    v7_vertical_motion_has_physical_angular_units: boolean;
+    v7_looming_radius_has_physical_angular_units: boolean;
+    v7_retinal_v_has_physical_angular_units: boolean;
     v7_offline_frame_interval_milliseconds: number;
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;

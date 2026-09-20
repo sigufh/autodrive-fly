@@ -1857,6 +1857,13 @@ kernel 存在性”已通过，但现有 transfer contract 中要求的可迁移
 `artifacts/v7-t5-physical-time-transfer-audit.json`；该审计不猜测 `dt`、不拟合参数，也不
 授权新的 T5、LPLC 或车辆实验。
 
+二维角坐标缺口另经实现级核验：道路相机的 48 列确有 `[-1.25, 1.25] rad` 水平射线，
+但 `_render_view` 没有纵向 ray 或 vertical FOV；24 行由固定 horizon 与距离相关物体高度
+生成。受控 `up/down` edge 只在数组行轴镜像，looming 半径和 rotation phase 也以像素/无量纲
+坐标生成；MaleCNS `retinal_v` 则是六角柱拓扑归一化坐标，不是 visual degrees。因此不能由
+48×24 宽高比推算纵向 FOV，也不能给上下运动或 looming 半径赋物理角速度/角尺寸。证据见
+`artifacts/v7-vertical-angular-coordinate-audit.json`。
+
 T4 结构轴也按相同原则补做二折 cross-fit，以排除旧功能 precheck 对约一半结构拟合集
 复用 transform 的问题。6,860/6,861 个结构有效 target 均由不含自身 body ID 的另一折
 变换预测；整体准确率约 95.83%，八群体最低约 93.01%，中位角误差约 13.03°，最大

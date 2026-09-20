@@ -206,6 +206,22 @@ def _verified_v7_status(root: Path) -> dict:
                 "v7_offline_two_dimensional_angular_calibration_complete": visual[
                     "v7_offline_two_dimensional_angular_calibration_complete"
                 ],
+                "v7_vertical_camera_ray_angles_declared": visual[
+                    "v7_vertical_camera_ray_angles_declared"
+                ],
+                "v7_vertical_FOV_declared": visual["v7_vertical_FOV_declared"],
+                "v7_vertical_pixel_to_angle_formula_declared": visual[
+                    "v7_vertical_pixel_to_angle_formula_declared"
+                ],
+                "v7_vertical_motion_has_physical_angular_units": visual[
+                    "v7_vertical_motion_has_physical_angular_units"
+                ],
+                "v7_looming_radius_has_physical_angular_units": visual[
+                    "v7_looming_radius_has_physical_angular_units"
+                ],
+                "v7_retinal_v_has_physical_angular_units": visual[
+                    "v7_retinal_v_has_physical_angular_units"
+                ],
                 "v7_offline_frame_interval_milliseconds": visual[
                     "v7_offline_frame_interval_milliseconds"
                 ],
