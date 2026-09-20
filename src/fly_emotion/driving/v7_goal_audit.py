@@ -167,6 +167,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     kohn_portes_t5_frequency_tuning_audit = reports[
         "kohn_portes_t5_frequency_tuning_audit"
     ]
+    kohn_portes_tm_to_t5_model_audit = reports["kohn_portes_tm_to_t5_model_audit"]
     kohn_portes_identity_history_audit = reports[
         "kohn_portes_identity_history_audit"
     ]
@@ -393,6 +394,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["kohn_portes_t5_state_unit_mapping_audit"],
                 config["evidence"]["kohn_portes_t5_peak_latency_audit"],
                 config["evidence"]["kohn_portes_t5_frequency_tuning_audit"],
+                config["evidence"]["kohn_portes_tm_to_t5_model_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_pure_data_index_audit"],
@@ -1340,6 +1342,37 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_source_frequency_transfer_authorized": (
                     kohn_portes_t5_frequency_tuning_audit[
                         "authorize_source_frequency_transfer_to_v7"
+                    ]
+                ),
+                "Kohn_Portes_Tm_to_T5_model_inputs_git_blob_verified": (  # noqa: E501
+                    kohn_portes_tm_to_t5_model_audit["gates"][
+                        "fixed_commit_model_inputs_hash_and_git_blob_verified"
+                    ]
+                ),
+                "Kohn_Portes_Tm_to_T5_Figure5_training_fit_count": sum(
+                    values["count"]
+                    for values in kohn_portes_tm_to_t5_model_audit[
+                        "Figure5_Tm1_Tm9_static_flash_regression"
+                    ]["aggregate_training_R2"].values()
+                ),
+                "Kohn_Portes_Tm_to_T5_fit_score_samples_disjoint": (  # noqa: E501
+                    kohn_portes_tm_to_t5_model_audit["gates"][
+                        "Figure5_fit_and_score_samples_disjoint"
+                    ]
+                ),
+                "Kohn_Portes_Tm_to_T5_independent_validation_available": (  # noqa: E501
+                    kohn_portes_tm_to_t5_model_audit["gates"][
+                        "Figure5_independent_cell_validation_available"
+                    ]
+                ),
+                "Kohn_Portes_Figure6_Tm2_ND_source_reference_correct": (  # noqa: E501
+                    kohn_portes_tm_to_t5_model_audit["gates"][
+                        "Figure6_Tm2_ND_source_reference_correct"
+                    ]
+                ),
+                "Kohn_Portes_Tm_to_T5_model_transfer_authorized": (  # noqa: E501
+                    kohn_portes_tm_to_t5_model_audit[
+                        "authorize_Tm_to_T5_model_transfer_to_v7"
                     ]
                 ),
                 "T5_four_Tm_exact_type_average_mapping_complete": (
@@ -2930,6 +2963,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_OA_record_median_preferred_frequency_hz",
                     "T5_preferred_frequency_summary_invariant",
                     "T5_source_frequency_transfer_authorized",
+                    "T5_Tm_to_T5_model_inputs_git_blob_verified",
+                    "T5_Tm_to_T5_Figure5_training_fit_count",
+                    "T5_Tm_to_T5_fit_score_samples_disjoint",
+                    "T5_Tm_to_T5_independent_validation_available",
+                    "T5_Figure6_Tm2_ND_source_reference_correct",
+                    "T5_Tm_to_T5_model_transfer_authorized",
                     "T5_four_Tm_exact_type_average_mapping_complete",
                     "T5_all_five_source_mapping_complete",
                     "T5_CT1_mapping_Lo1_column_count_by_body",

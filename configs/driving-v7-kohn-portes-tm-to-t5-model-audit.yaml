@@ -1,0 +1,84 @@
+version: 1
+name: v7-kohn-portes-tm-to-t5-model-transfer-audit
+observed_on: "2026-09-20"
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+t5_target_evidence: artifacts/v7-t5-conductance-audit.json
+source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+state_unit_evidence: artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json
+repository:
+  url: https://gitlab.com/rbehnialab/flexible-filtering
+  commit: ecc7703e506d7491d01532e9e339f2246648447f
+  tree_manifest:
+    path: data/raw/kohn-portes-flexible-filtering/history/tree.jsonl
+    bytes: 15167
+    sha256: 66a18fa4b181cf57984ca3b679fee75e8e6724a285c96f925ac95a35220ec9d0
+author_code:
+  figure5_notebook:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig5-LinearRegression.ipynb
+    bytes: 11856801
+    sha256: 7017faae8d8b2ce24bf74713d56b91a9a503e544fac48d10c30b9872c01881d9
+  linear_regression:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/plotting_linear_regression.py
+    bytes: 38618
+    sha256: cfee74f8ada9927664eb9247722c83b360caa55e901ed151bad2f42791d433b8
+  figure6_model1_notebook:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6a-Model1LN-checkpoint.ipynb
+    bytes: 1293587
+    sha256: 652bc33a678b9e4592afc6506fec53c18c5b1642f39274f60bbc717b065e7841
+  figure6_model2_notebook:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6b-Model2Flashes-checkpoint.ipynb
+    bytes: 3225230
+    sha256: bea260dfe7cde9cf5e9ce07581e3237112c01225284349e5b7dc3136b50ac707
+model_inputs:
+  T5_stationary_flash:
+    path: data/raw/kohn-portes-flexible-filtering/history/model-inputs/trace_data_2020-6-18.pickle
+    repository_path: data/Gruntman2019/trace_data_2020-6-18.pickle
+    bytes: 60491335
+    sha256: 29f8fa3443a1919539a9f1c8ecabfd78e639af671c4ab2801e5c3e02f1d7f9b7
+    git_blob: 5f8e6349afd1c66651eb5fc51b293a25eb69caee
+  T5_moving_bar:
+    path: data/raw/kohn-portes-flexible-filtering/history/model-inputs/fig4_moving_bar.pickle
+    repository_path: data/Gruntman2019/fig4_moving_bar.pickle
+    bytes: 14596168
+    sha256: ceb2e358b9bf733230b12fde438b297a651829997b05c2a071b5a440d050929b
+    git_blob: b4e6597749b3266c6f0bf7a34e24c24d084097fd
+  Shinomiya_T5_input_Lo1:
+    path: data/raw/kohn-portes-flexible-filtering/history/model-inputs/T5_input_Lo1.csv
+    repository_path: data/Shinomiya2019/spreadsheets/T5_input_Lo1.csv
+    bytes: 21298
+    sha256: 49b23a4eae5420053d639d540ec4a378686d3dfe03bc7f704b53be5d4d60b152
+    git_blob: 4eb6823a03b85abffb6ba5787c3186c2dd502de6
+expected:
+  source_pair: [Tm1, Tm9]
+  source_states: [saline, OA]
+  durations_seconds: ["0.04", "0.16"]
+  widths_degrees: ["2.25", "4.5", "9"]
+  target_location_count_per_condition: 14
+  fit_window_samples: 120
+  source_downsample_factor: 50
+  target_start_index: 18000
+  target_downsample_factor: 200
+  lasso_alpha: 0.0001
+  fit_intercept: false
+  positive_weights: true
+  representative_saline_160ms_9deg_r2:
+    [0.901175310704, 0.849611933889, 0.916504202577, 0.929037026596, 0.93434115968, 0.941954542444, 0.946187467209, 0.915388593982, 0.869908215311, 0.763054388541, 0.256160269258, 0.033388264256, -0.705552595709, 0.09939707145]
+  aggregate_training_r2:
+    saline: {count: 84, mean: 0.52686427024, median: 0.666601021543, minimum: -0.705552595709, maximum: 0.946187467209, zero_coefficient_count: 23}
+    OA: {count: 84, mean: 0.514702104409, median: 0.695320809092, minimum: -1.472122934462, maximum: 0.932323943083, zero_coefficient_count: 25}
+  Shinomiya_T5_count: 20
+  Shinomiya_source_count_sums: {Tm1: 485, Tm2: 648, Tm4: 341, Tm9: 1181, CT1: 557}
+  Shinomiya_four_source_mean_ratios: {Tm1: 0.184513809263, Tm2: 0.243804325733, Tm4: 0.129857466128, Tm9: 0.441824398876}
+boundary:
+  target_traces_are_baseline_subtracted_voltage_not_v7_state: true
+  input_traces_are_normalized_by_own_positive_maximum: true
+  regression_score_is_computed_on_fit_samples: true
+  per_location_fits_are_not_independent_cell_validation: true
+  OA_source_to_saline_target_condition_mismatch_is_preserved: true
+  Figure6_uses_fib19_not_MaleCNS_weights: true
+  Figure6_excludes_CT1_before_weight_normalization: true
+  Figure6_Tm2_ND_copy_bug_is_not_silently_fixed: true
+  no_parameter_fit_for_v7: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

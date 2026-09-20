@@ -95,6 +95,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     }
     assert boundaries["T5_preferred_frequency_summary_invariant"] is False
     assert boundaries["T5_source_frequency_transfer_authorized"] is False
+    assert boundaries["T5_Tm_to_T5_model_inputs_git_blob_verified"] is True
+    assert boundaries["T5_Tm_to_T5_Figure5_training_fit_count"] == 168
+    assert boundaries["T5_Tm_to_T5_fit_score_samples_disjoint"] is False
+    assert boundaries["T5_Tm_to_T5_independent_validation_available"] is False
+    assert boundaries["T5_Figure6_Tm2_ND_source_reference_correct"] is False
+    assert boundaries["T5_Tm_to_T5_model_transfer_authorized"] is False
     assert boundaries["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert boundaries["T5_all_five_source_mapping_complete"] is False
     assert boundaries["T5_CT1_mapping_Lo1_column_count_by_body"] == {

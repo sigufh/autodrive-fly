@@ -190,6 +190,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_source_frequency_transfer_authorized": visual[
                     "Kohn_Portes_T5_source_frequency_transfer_authorized"
                 ],
+                "T5_Tm_to_T5_model_inputs_git_blob_verified": visual[
+                    "Kohn_Portes_Tm_to_T5_model_inputs_git_blob_verified"
+                ],
+                "T5_Tm_to_T5_Figure5_training_fit_count": visual[
+                    "Kohn_Portes_Tm_to_T5_Figure5_training_fit_count"
+                ],
+                "T5_Tm_to_T5_fit_score_samples_disjoint": visual[
+                    "Kohn_Portes_Tm_to_T5_fit_score_samples_disjoint"
+                ],
+                "T5_Tm_to_T5_independent_validation_available": visual[
+                    "Kohn_Portes_Tm_to_T5_independent_validation_available"
+                ],
+                "T5_Figure6_Tm2_ND_source_reference_correct": visual[
+                    "Kohn_Portes_Figure6_Tm2_ND_source_reference_correct"
+                ],
+                "T5_Tm_to_T5_model_transfer_authorized": visual[
+                    "Kohn_Portes_Tm_to_T5_model_transfer_authorized"
+                ],
                 "T5_four_Tm_exact_type_average_mapping_complete": visual[
                     "T5_four_Tm_exact_type_average_mapping_complete"
                 ],

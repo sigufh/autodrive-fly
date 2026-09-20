@@ -56,6 +56,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_OA_record_median_preferred_frequency_hz",
         "T5_preferred_frequency_summary_invariant",
         "T5_source_frequency_transfer_authorized",
+        "T5_Tm_to_T5_model_inputs_git_blob_verified",
+        "T5_Tm_to_T5_Figure5_training_fit_count",
+        "T5_Tm_to_T5_fit_score_samples_disjoint",
+        "T5_Tm_to_T5_independent_validation_available",
+        "T5_Figure6_Tm2_ND_source_reference_correct",
+        "T5_Tm_to_T5_model_transfer_authorized",
         "T5_four_Tm_exact_type_average_mapping_complete",
         "T5_all_five_source_mapping_complete",
         "T5_CT1_mapping_Lo1_column_count_by_body",
@@ -650,6 +656,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["Kohn_Portes_T5_source_frequency_transfer_authorized"]
         is False
     )
+    assert visual["observations"]["Kohn_Portes_Tm_to_T5_model_inputs_git_blob_verified"]
+    assert visual["observations"]["Kohn_Portes_Tm_to_T5_Figure5_training_fit_count"] == 168
+    assert visual["observations"]["Kohn_Portes_Tm_to_T5_fit_score_samples_disjoint"] is False
+    assert (
+        visual["observations"]["Kohn_Portes_Tm_to_T5_independent_validation_available"]
+        is False
+    )
+    assert visual["observations"]["Kohn_Portes_Figure6_Tm2_ND_source_reference_correct"] is False
+    assert visual["observations"]["Kohn_Portes_Tm_to_T5_model_transfer_authorized"] is False
     assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
     assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {

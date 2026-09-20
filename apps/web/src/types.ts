@@ -69,6 +69,12 @@ export type V7Status = {
     T5_OA_record_median_preferred_frequency_hz?: { Tm1: number; Tm2: number; Tm4: number; Tm9: number };
     T5_preferred_frequency_summary_invariant?: boolean;
     T5_source_frequency_transfer_authorized?: boolean;
+    T5_Tm_to_T5_model_inputs_git_blob_verified?: boolean;
+    T5_Tm_to_T5_Figure5_training_fit_count?: number;
+    T5_Tm_to_T5_fit_score_samples_disjoint?: boolean;
+    T5_Tm_to_T5_independent_validation_available?: boolean;
+    T5_Figure6_Tm2_ND_source_reference_correct?: boolean;
+    T5_Tm_to_T5_model_transfer_authorized?: boolean;
     T5_four_Tm_exact_type_average_mapping_complete: boolean;
     T5_all_five_source_mapping_complete: boolean;
     T5_CT1_mapping_Lo1_column_count_by_body: { "10009": number; "10157": number };

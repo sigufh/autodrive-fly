@@ -1876,6 +1876,16 @@ Tm1/Tm2/Tm4/Tm9=`0.95/0.95/0.675/0.475 Hz`，OA 下为
 结论依赖摘要口径；单位振幅和逐曲线归一化也移除了绝对增益。故只能保留低频 shape evidence，
 不能据此冻结 v7 delay、补 CT1、或授权 source-frequency transfer。证据见
 `artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json`。
+进一步恢复并核验了作者固定提交中的 Gruntman T5 stationary-flash（60.5 MB）、moving-bar
+（14.6 MB）和 Shinomiya FIB19 T5 输入表；三个文件的 Git blob SHA 均与仓库 tree 一致，
+原始文件仍留在 `data/raw` 且不纳入 Git。Figure 5 的 Tm1+Tm9 正权重、无截距 Lasso 可对
+saline/OA × 40/160 ms × 2.25/4.5/9° 共 168 个位置级拟合复算；例如 saline 160 ms、
+9° 的 14 个 R² 与 notebook 显示一致。但每个位置都在同一 120 个时间样本上 fit 后立刻 score，
+输入先除以各自正峰值，目标中的 NaN 由作者代码置零，因此这些是训练内拟合而非独立验证，
+也不保留 source 绝对增益。Figure 6 的 connectome 权重来自 20 个 FIB19 T5，不是 MaleCNS；
+CT1 在四源权重归一化前被删除，外部 `axolotl.tmodel` 源码不在固定仓库 tree，且已保存代码把
+`Tm2_nd_norm` 错写成 `Tm1_nd / max(Tm2_pd)`。这些事实均原样保留，不静默修复，也不授权
+Tm→T5 模型迁移。证据见 `artifacts/v7-kohn-portes-tm-to-t5-model-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

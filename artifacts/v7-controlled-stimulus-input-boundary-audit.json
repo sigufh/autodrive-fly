@@ -60,7 +60,7 @@
       "src/fly_emotion/driving/v7_fusion_nested_eval.py": "6f74cbc7a9a35265470b9c6b2c57db49487d678fcf642546096b78af3aed970a",
       "src/fly_emotion/driving/v7_gain_audit.py": "70c737c2a7786e5c09eb7a1123b90c2f53305e421e9d3483de74ca45e1554dff",
       "src/fly_emotion/driving/v7_geometry_sign.py": "f63d3ec38a3430f0e3fa2044b00c6d04fd556c185a730b52c5b47525fce32f5e",
-      "src/fly_emotion/driving/v7_goal_audit.py": "2586a1c9756aed18412c3505f989c176b2c6c43c32ea5caf5dc9ed966505541c",
+      "src/fly_emotion/driving/v7_goal_audit.py": "0d8a69295f914fe61f341755a83442d3aa7cee326563d1e010e73a13f6459469",
       "src/fly_emotion/driving/v7_gou_dandi_identity_audit.py": "951ab94beab46176627a8ec0c915afe8e1df1ceb4b905ef5be8afee235b99131",
       "src/fly_emotion/driving/v7_gou_dandi_stimulus_metadata_audit.py": "f7906f6dd18c54c0f8829413be50339a18994b3dd177d499383a84e1afa990ad",
       "src/fly_emotion/driving/v7_gou_moving_bar_direction_audit.py": "11eb3cf3a7b5ff049f0e3d5663823376fec6076733f98aacca2f2a8f745ea753",
@@ -74,6 +74,7 @@
       "src/fly_emotion/driving/v7_kohn_portes_t5_peak_latency_audit.py": "e60c137f0edcc96eb510242bc23b923506f418dab0720af0390edfa20baaf2c4",
       "src/fly_emotion/driving/v7_kohn_portes_t5_source_kernel_audit.py": "a240f6bf99495c5ec628e2de07155150a9735cef54167a98c3d0886f9037757d",
       "src/fly_emotion/driving/v7_kohn_portes_t5_state_unit_mapping_audit.py": "1b64db8bc53cab2351fc4ab33ac4cabb60c8e7444ff2ca74c1f9f66484e85a02",
+      "src/fly_emotion/driving/v7_kohn_portes_tm_to_t5_model_audit.py": "c12a4a686309cc9b593140da2e6c6ee7415c9a205e7f458ec9cecc5a9e404f58",
       "src/fly_emotion/driving/v7_lamina_goal.py": "a2c3a41b74325ee1039337dc92f243998650d499bb63ed38eddd466092cf29c9",
       "src/fly_emotion/driving/v7_lamina_goal_symmetry.py": "bc49ec60fa0aa9b882feb62428d18aba6311153ed27c18bfa8a6aa78a90a758c",
       "src/fly_emotion/driving/v7_lc4_input_speed_precheck.py": "899d7cbc3b98dfc0fb1792d4f1035a50e54083fcd9baab491a9993d344f894cb",
@@ -119,7 +120,7 @@
       "src/fly_emotion/driving/v7_retina_audit.py": "1d2b5685124fe632730fd0187f804ef2d73e64cf7c294ef482f73a9fffa65f33",
       "src/fly_emotion/driving/v7_source_audit.py": "e400a4fd630adf7ecab2916d2cdda06cf0a4a8ccae38f803d947c5a0dec9b9dd",
       "src/fly_emotion/driving/v7_source_dynamics_external_evidence_contract.py": "15a713080d907d2b5aac53057da7fb2a4e1b24954f2842404b8b4d4d4c4e86f0",
-      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "78b1f95c7ad182b2e31c1d3c354556c43c47eead0c43b868168dc0744fa4afa6",
+      "src/fly_emotion/driving/v7_source_evidence_matrix.py": "1343c75624935bc24bf6bbdd75055b575a17f9fa1d7450aeb6bb05afdf57520f",
       "src/fly_emotion/driving/v7_source_type_average_mapping_contract.py": "61a50955dd01dac1d04e9b3dd9c61914f8f6a736444d2d600a20b90beabd5bf3",
       "src/fly_emotion/driving/v7_source_type_temporal_identifiability.py": "29c6612617abf23b0815cb70d7491cd49b1eaace0c5ab97d3b6f93dc4da226c0",
       "src/fly_emotion/driving/v7_spectral_controls.py": "1fdbd7be7738e001ff68d858e870cb349c07fdaf0a4733d38749699aebb46fd5",
@@ -415,7 +416,7 @@
     "dynamic_probe_advance_call_count": 340,
     "dynamic_nonretinal_drive_node_count": 0,
     "static_assignment_audit": {
-      "scanned_module_count": 188,
+      "scanned_module_count": 189,
       "drive_assignment_count": 54,
       "files_with_drive_assignments": 29,
       "index_expression_counts": {
@@ -425,7 +426,7 @@
       },
       "violations": [],
       "all_drive_subscript_assignments_target_retina_indices": true,
-      "module_inventory_sha256": "c3f6c4be54e4f605d5604ee1f8dfa2ec947164e9dbed0d5b00632eaa771a4b5a"
+      "module_inventory_sha256": "6466382f21bc75d25b5363ef30c1790d0b9304f9ca71f054e182484384c54db5"
     }
   },
   "gates": {

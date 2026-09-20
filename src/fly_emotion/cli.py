@@ -161,6 +161,9 @@ from .driving.v7_kohn_portes_t5_source_kernel_audit import (
 from .driving.v7_kohn_portes_t5_state_unit_mapping_audit import (
     evaluate_v7_kohn_portes_t5_state_unit_mapping_audit,
 )
+from .driving.v7_kohn_portes_tm_to_t5_model_audit import (
+    evaluate_v7_kohn_portes_tm_to_t5_model_audit,
+)
 from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
 from .driving.v7_lamina_goal_symmetry import evaluate_v7_lamina_goal_symmetry
 from .driving.v7_lc4_input_speed_precheck import evaluate_v7_lc4_input_speed_precheck
@@ -626,6 +629,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-kohn-portes-t5-peak-latency")
     subparsers.add_parser("v7-audit-kohn-portes-t5-source-kernels")
     subparsers.add_parser("v7-audit-kohn-portes-t5-state-unit-mapping")
+    subparsers.add_parser("v7-audit-kohn-portes-tm-to-t5-model")
     subparsers.add_parser("v7-audit-kohn-portes-identity-history")
     subparsers.add_parser("v7-audit-kohn-portes-external-indexes")
     subparsers.add_parser("v7-audit-kohn-portes-stimulus-provenance")
@@ -1920,6 +1924,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-t5-state-unit-mapping":
         report = evaluate_v7_kohn_portes_t5_state_unit_mapping_audit(root)
         target = root / "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-kohn-portes-tm-to-t5-model":
+        report = evaluate_v7_kohn_portes_tm_to_t5_model_audit(root)
+        target = root / "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -1,0 +1,621 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-tm-to-t5-model-transfer-audit",
+    "observed_on": "2026-09-20",
+    "repository_commit": "ecc7703e506d7491d01532e9e339f2246648447f",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-tm-to-t5-model-audit.yaml": "505bfdd62c7e3445d434a62d36414606f30eff7d53e63320d07ea6c3bdaa368e",
+      "src/fly_emotion/driving/v7_kohn_portes_tm_to_t5_model_audit.py": "c12a4a686309cc9b593140da2e6c6ee7415c9a205e7f458ec9cecc5a9e404f58",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
+      "data/raw/kohn-portes-flexible-filtering/history/tree.jsonl": "66a18fa4b181cf57984ca3b679fee75e8e6724a285c96f925ac95a35220ec9d0",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig5-LinearRegression.ipynb": "7017faae8d8b2ce24bf74713d56b91a9a503e544fac48d10c30b9872c01881d9",
+      "data/raw/kohn-portes-flexible-filtering/history/text/plotting_linear_regression.py": "cfee74f8ada9927664eb9247722c83b360caa55e901ed151bad2f42791d433b8",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6a-Model1LN-checkpoint.ipynb": "652bc33a678b9e4592afc6506fec53c18c5b1642f39274f60bbc717b065e7841",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6b-Model2Flashes-checkpoint.ipynb": "bea260dfe7cde9cf5e9ce07581e3237112c01225284349e5b7dc3136b50ac707",
+      "data/raw/kohn-portes-flexible-filtering/history/model-inputs/trace_data_2020-6-18.pickle": "29f8fa3443a1919539a9f1c8ecabfd78e639af671c4ab2801e5c3e02f1d7f9b7",
+      "data/raw/kohn-portes-flexible-filtering/history/model-inputs/fig4_moving_bar.pickle": "ceb2e358b9bf733230b12fde438b297a651829997b05c2a071b5a440d050929b",
+      "data/raw/kohn-portes-flexible-filtering/history/model-inputs/T5_input_Lo1.csv": "49b23a4eae5420053d639d540ec4a378686d3dfe03bc7f704b53be5d4d60b152",
+      "data/raw/kohn-portes-flexible-filtering/Tm1_flash_dict.pickle": "991d9ad61ad78c4a73290457b087d4c471de8a2177b52efa68e931bb0427670e",
+      "data/raw/kohn-portes-flexible-filtering/Tm9_flash_dict.pickle": "88b099d0b69dcc6952d6021f9b668307f537507c883ebaa8167a77d5314d4762"
+    },
+    "parameter_fit_for_v7": false,
+    "runtime_modified": false
+  },
+  "recovered_model_inputs": {
+    "stationary_flash": {
+      "condition_count": 6,
+      "location_trace_count": 84,
+      "samples_per_trace": 45000,
+      "full_trace_nan_count": 898883,
+      "response_quantity": "baseline_subtracted_membrane_voltage",
+      "response_unit": "millivolts"
+    },
+    "moving_bar": {
+      "condition_count": 12,
+      "recorded_cell_count": 17,
+      "array_shapes": {
+        "pd_data": [
+          [
+            4000,
+            17
+          ]
+        ],
+        "nd_data": [
+          [
+            4000,
+            17
+          ]
+        ],
+        "pd_mean": [
+          [
+            4000
+          ]
+        ],
+        "nd_mean": [
+          [
+            4000
+          ]
+        ],
+        "pd_std": [
+          [
+            4000
+          ]
+        ],
+        "nd_std": [
+          [
+            4000
+          ]
+        ]
+      },
+      "used_as_independent_final_test": false
+    },
+    "Shinomiya_fib19_T5_input": {
+      "T5_count": 20,
+      "source_count_sums": {
+        "Tm1": 485,
+        "Tm2": 648,
+        "Tm4": 341,
+        "Tm9": 1181,
+        "CT1": 557
+      },
+      "four_source_mean_ratios": {
+        "Tm1": 0.1845138092634185,
+        "Tm2": 0.24380432573259442,
+        "Tm4": 0.12985746612847737,
+        "Tm9": 0.4418243988755098
+      },
+      "CT1_removed_before_four_source_ratio": true,
+      "MaleCNS_mapping": false
+    }
+  },
+  "Figure5_Tm1_Tm9_static_flash_regression": {
+    "source_pair": [
+      "Tm1",
+      "Tm9"
+    ],
+    "source_input_normalization": "each_source_trace_divided_by_own_positive_maximum",
+    "target_nonfinite_policy": "replace_with_zero_before_fit_and_score",
+    "fit": {
+      "estimator": "sklearn_Lasso",
+      "alpha": 0.0001,
+      "fit_intercept": false,
+      "positive_weights": true
+    },
+    "condition_results": {
+      "saline": {
+        "0.04:2.25": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 166,
+          "R2": {
+            "minimum": -0.6207719387024007,
+            "median": 0.07647515387860854,
+            "mean": 0.12012074983833378,
+            "maximum": 0.6633426607077192,
+            "values": [
+              0.07817320518394077,
+              0.0747771025732763,
+              -0.06671843769195229,
+              0.00971891761824728,
+              -0.1614546142782165,
+              0.3291372255751477,
+              0.2308195123910607,
+              0.5731446493353776,
+              0.6633426607077192,
+              0.4505280895673943,
+              -0.098012057735543,
+              -0.16711067838222826,
+              0.3861168615748497,
+              -0.6207719387024007
+            ]
+          },
+          "Pearson_r_mean": 0.37566962112603697,
+          "coefficient_mean_by_source": {
+            "Tm1": 0.5496184477059417,
+            "Tm9": 0.9859602052554605
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 2,
+            "Tm9": 0
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.04:4.5": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 120,
+          "R2": {
+            "minimum": -0.4864032031709362,
+            "median": 0.5881842444110958,
+            "mean": 0.4129415380443374,
+            "maximum": 0.7217679395081572,
+            "values": [
+              -0.4864032031709362,
+              -0.32742651057613004,
+              0.6031357747157315,
+              0.5485896218597704,
+              0.7217679395081572,
+              0.71410467480674,
+              0.7035762673656779,
+              0.688263211430151,
+              0.5732327141064602,
+              0.669859382378843,
+              0.6086734455220395,
+              0.430243947938994,
+              0.26415293646285964,
+              0.06941133027236557
+            ]
+          },
+          "Pearson_r_mean": 0.6454094474026607,
+          "coefficient_mean_by_source": {
+            "Tm1": 1.9905953310312179,
+            "Tm9": 1.6914851598269678
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 2,
+            "Tm9": 2
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.04:9": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 122,
+          "R2": {
+            "minimum": 0.21830650241717087,
+            "median": 0.7100835713725759,
+            "mean": 0.6342417009654542,
+            "maximum": 0.7955631463245808,
+            "values": [
+              0.5216076198593309,
+              0.6469873861008417,
+              0.7531012773244451,
+              0.777908388401571,
+              0.746449372883984,
+              0.7739528059027185,
+              0.7926809722392552,
+              0.7955631463245808,
+              0.7109240111305308,
+              0.709243131614621,
+              0.6254134062807529,
+              0.4385020990397488,
+              0.21830650241717087,
+              0.3687436939968062
+            ]
+          },
+          "Pearson_r_mean": 0.7977473903233461,
+          "coefficient_mean_by_source": {
+            "Tm1": 4.161336935540434,
+            "Tm9": 2.865731864896166
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 0,
+            "Tm9": 3
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.16:2.25": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 37,
+          "R2": {
+            "minimum": -0.015332202571556097,
+            "median": 0.8180637280668257,
+            "mean": 0.6716262666371852,
+            "maximum": 0.8956613518470802,
+            "values": [
+              0.3746829176944315,
+              0.3782356417834011,
+              0.719459899197006,
+              0.8467279004943742,
+              0.8388972517117553,
+              0.8477642371392862,
+              0.8442198013773401,
+              0.8956613518470802,
+              0.8661984211530861,
+              0.8443400692310713,
+              0.7234044376173605,
+              0.7972302044218961,
+              0.4412778018240614,
+              -0.015332202571556097
+            ]
+          },
+          "Pearson_r_mean": 0.8100686066854951,
+          "coefficient_mean_by_source": {
+            "Tm1": 2.8949227397984827,
+            "Tm9": 2.164131408153981
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 1,
+            "Tm9": 4
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.16:4.5": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 0,
+          "R2": {
+            "minimum": 0.20946448603694434,
+            "median": 0.8514904481515346,
+            "mean": 0.704358519513364,
+            "maximum": 0.919266021053519,
+            "values": [
+              0.6620676126681244,
+              0.8087698235378294,
+              0.8747574770387724,
+              0.8656980677457691,
+              0.8804519285451335,
+              0.9039676077966838,
+              0.9082307496446967,
+              0.919266021053519,
+              0.8983505522542385,
+              0.8372828285573001,
+              0.49619282992221714,
+              0.2768359409891016,
+              0.20946448603694434,
+              0.3196833473967663
+            ]
+          },
+          "Pearson_r_mean": 0.8755699964514412,
+          "coefficient_mean_by_source": {
+            "Tm1": 5.033610186372529,
+            "Tm9": 4.2008958037793676
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 0,
+            "Tm9": 4
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.16:9": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 0,
+          "R2": {
+            "minimum": -0.7055525957085016,
+            "median": 0.8855417630076059,
+            "mean": 0.6178968464420596,
+            "maximum": 0.9461874672090269,
+            "values": [
+              0.9011753107041678,
+              0.8496119338888428,
+              0.9165042025774859,
+              0.9290370265964982,
+              0.9343411596795875,
+              0.9419545424437353,
+              0.9461874672090269,
+              0.9153885939821044,
+              0.8699082153110439,
+              0.7630543885408478,
+              0.25616026925785607,
+              0.03338826425639285,
+              -0.7055525957085016,
+              0.09939707144974586
+            ]
+          },
+          "Pearson_r_mean": 0.8552781920155382,
+          "coefficient_mean_by_source": {
+            "Tm1": 6.5378907681302545,
+            "Tm9": 4.947616333297331
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 0,
+            "Tm9": 5
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        }
+      },
+      "OA": {
+        "0.04:2.25": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 166,
+          "R2": {
+            "minimum": -1.472122934461927,
+            "median": -0.009678853054351844,
+            "mean": -0.02177674438676986,
+            "maximum": 0.6983567811366603,
+            "values": [
+              -0.13322649373377238,
+              0.07412301970476554,
+              -0.04991104227349652,
+              -0.30519030373554124,
+              -0.3313352039258213,
+              0.048175146626153076,
+              -0.18325777991391057,
+              0.4231562344033425,
+              0.6983567811366603,
+              0.5128643281722371,
+              0.004697088352832224,
+              -0.02405479446153591,
+              0.432851532695236,
+              -1.472122934461927
+            ]
+          },
+          "Pearson_r_mean": 0.49668589786828027,
+          "coefficient_mean_by_source": {
+            "Tm1": 0.6826077401017742,
+            "Tm9": 0.9129917612304616
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 2,
+            "Tm9": 1
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.04:4.5": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 120,
+          "R2": {
+            "minimum": -1.4201914033931895,
+            "median": 0.6337843436395931,
+            "mean": 0.37641133756451384,
+            "maximum": 0.791706845585927,
+            "values": [
+              -0.9062061407356068,
+              -1.4201914033931895,
+              0.6536743747412102,
+              0.3954399224768549,
+              0.6823965455330854,
+              0.7607574574651299,
+              0.7570081987377043,
+              0.7359473285649925,
+              0.6087942486389767,
+              0.7575678246485522,
+              0.791706845585927,
+              0.6138943125379761,
+              0.5274490525843443,
+              0.3115201585172376
+            ]
+          },
+          "Pearson_r_mean": 0.7258150200639107,
+          "coefficient_mean_by_source": {
+            "Tm1": 2.2379462301525184,
+            "Tm9": 1.7720870059605285
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 1,
+            "Tm9": 4
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.04:9": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 122,
+          "R2": {
+            "minimum": 0.06173823644922949,
+            "median": 0.7873024137524208,
+            "mean": 0.6910568193015173,
+            "maximum": 0.8578351370279509,
+            "values": [
+              0.06173823644922949,
+              0.5124595549538171,
+              0.7505017291942482,
+              0.8046141972885386,
+              0.757175349632929,
+              0.8047239157800096,
+              0.8391112120533085,
+              0.8578351370279509,
+              0.8292244114277587,
+              0.8439817502458851,
+              0.8153805284620471,
+              0.7699906302163031,
+              0.5642986359675397,
+              0.46376018152167986
+            ]
+          },
+          "Pearson_r_mean": 0.8641841910924307,
+          "coefficient_mean_by_source": {
+            "Tm1": 4.554536993524453,
+            "Tm9": 3.1444100453719486
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 1,
+            "Tm9": 3
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.16:2.25": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 37,
+          "R2": {
+            "minimum": 0.07354536391635857,
+            "median": 0.7812131979273575,
+            "mean": 0.6279305394760298,
+            "maximum": 0.8501471127583413,
+            "values": [
+              0.2989903915854113,
+              0.30100264475035976,
+              0.5859484226639293,
+              0.800338518636657,
+              0.7857528216150399,
+              0.7783752721838374,
+              0.7686203385458047,
+              0.832518674623826,
+              0.8072189370112612,
+              0.8501471127583413,
+              0.830642189455088,
+              0.7840511236708778,
+              0.2938757412476243,
+              0.07354536391635857
+            ]
+          },
+          "Pearson_r_mean": 0.7978611639246704,
+          "coefficient_mean_by_source": {
+            "Tm1": 2.2141852287850665,
+            "Tm9": 2.7271071189541227
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 1,
+            "Tm9": 2
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.16:4.5": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 0,
+          "R2": {
+            "minimum": 0.20346510928275574,
+            "median": 0.7968824020729337,
+            "mean": 0.71768026361051,
+            "maximum": 0.9016035119064885,
+            "values": [
+              0.20346510928275574,
+              0.6445923455530387,
+              0.8389338391482839,
+              0.7641409560873587,
+              0.8174151887119924,
+              0.8423404138482209,
+              0.8604858904064683,
+              0.8820228764535747,
+              0.9016035119064885,
+              0.8958196111703259,
+              0.776349615433875,
+              0.6922848370475922,
+              0.30789974833818745,
+              0.6201697471589775
+            ]
+          },
+          "Pearson_r_mean": 0.8981752927570554,
+          "coefficient_mean_by_source": {
+            "Tm1": 3.9721993824575916,
+            "Tm9": 5.09571364675218
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 1,
+            "Tm9": 4
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        },
+        "0.16:9": {
+          "location_count": 14,
+          "fit_sample_count_per_location": 120,
+          "fit_window_nan_count_before_author_zero_fill": 0,
+          "R2": {
+            "minimum": -0.18065710712813954,
+            "median": 0.8484720058647331,
+            "mean": 0.6969104108884243,
+            "maximum": 0.9323239430825452,
+            "values": [
+              0.6572993958717015,
+              0.5982034573201873,
+              0.8228745757337945,
+              0.8740694359956718,
+              0.904347090215214,
+              0.9157261749082314,
+              0.9320173273173039,
+              0.9323239430825452,
+              0.9164779835734178,
+              0.8945824569143327,
+              0.5645440028034886,
+              0.4403023531676207,
+              -0.18065710712813954,
+              0.4846346626625707
+            ]
+          },
+          "Pearson_r_mean": 0.9132496053705454,
+          "coefficient_mean_by_source": {
+            "Tm1": 5.508882843831601,
+            "Tm9": 6.103201023589831
+          },
+          "zero_coefficient_count_by_source": {
+            "Tm1": 1,
+            "Tm9": 4
+          },
+          "fit_and_score_sample_identity": "same_120_time_samples_per_location"
+        }
+      }
+    },
+    "aggregate_training_R2": {
+      "saline": {
+        "count": 84,
+        "mean": 0.5268642702401224,
+        "median": 0.6666010215432812,
+        "minimum": -0.7055525957085016,
+        "maximum": 0.9461874672090269,
+        "zero_coefficient_count": 23
+      },
+      "OA": {
+        "count": 84,
+        "mean": 0.5147021044090376,
+        "median": 0.6953208090921263,
+        "minimum": -1.472122934461927,
+        "maximum": 0.9323239430825452,
+        "zero_coefficient_count": 25
+      }
+    },
+    "same_samples_used_for_fit_and_score": true
+  },
+  "Figure6_model_boundary": {
+    "external_axolotl_tmodel_source_in_fixed_repository_tree": false,
+    "preset_weights_declared_irrelevant_after_numeric_scaling": true,
+    "per_source_simulation_output_peak_normalized": true,
+    "connectome_weight_source": "Shinomiya_2019_fib19_twenty_T5_cells",
+    "CT1_removed_before_four_source_weight_ratios": true,
+    "Tm2_ND_assignment_observed": "Tm1_nd / max(Tm2_pd[:, window])",
+    "Tm2_ND_assignment_matches_Tm2_source": false
+  },
+  "gates": {
+    "fixed_commit_model_inputs_hash_and_git_blob_verified": true,
+    "Figure5_representative_regression_reproduced": true,
+    "Figure5_all_six_conditions_recomputed": true,
+    "Figure5_fit_and_score_samples_disjoint": false,
+    "Figure5_independent_cell_validation_available": false,
+    "Figure5_absolute_input_gain_preserved": false,
+    "Figure5_target_to_MaleCNS_identity_available": false,
+    "Figure6_model_package_source_available": false,
+    "Figure6_CT1_included_in_weight_normalization": false,
+    "Figure6_Tm2_ND_source_reference_correct": false,
+    "source_to_v7_state_mapping_available": false,
+    "source_kernel_gain_transferable": false
+  },
+  "author_Tm_to_T5_model_reproducibility_evidence_available": true,
+  "author_Tm_to_T5_model_independently_validated": false,
+  "authorize_Tm_to_T5_model_transfer_to_v7": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "author_model_is_training_fit_with_normalized_inputs_and_unavailable_model_package",
+  "boundary": {
+    "target_traces_are_baseline_subtracted_voltage_not_v7_state": true,
+    "input_traces_are_normalized_by_own_positive_maximum": true,
+    "regression_score_is_computed_on_fit_samples": true,
+    "per_location_fits_are_not_independent_cell_validation": true,
+    "OA_source_to_saline_target_condition_mismatch_is_preserved": true,
+    "Figure6_uses_fib19_not_MaleCNS_weights": true,
+    "Figure6_excludes_CT1_before_weight_normalization": true,
+    "Figure6_Tm2_ND_copy_bug_is_not_silently_fixed": true,
+    "no_parameter_fit_for_v7": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}
