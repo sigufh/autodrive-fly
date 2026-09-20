@@ -111,6 +111,11 @@ export type V7Status = {
     T5_transfer_synthesis_mapping_source_count?: number;
     T5_transfer_synthesis_positive_shape_evidence_count?: number;
     T5_transfer_synthesis_absolute_gain_available?: boolean;
+    T5_transfer_synthesis_official_target_model_available?: boolean;
+    T5_transfer_synthesis_target_to_source_mapping_available?: boolean;
+    T5_transfer_synthesis_Figure6_axolotl_source_available?: boolean;
+    T5_transfer_synthesis_related_axolotl_project_identified?: boolean;
+    T5_transfer_synthesis_axolotl_repository_readable?: boolean;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

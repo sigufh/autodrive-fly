@@ -33,6 +33,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     source_order = config["expected"]["source_order"]
     mapping = evidence["source_mapping"]
     model_identity = evidence["figure6_model_identity"]
+    axolotl_availability = evidence["axolotl_availability"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -98,9 +99,15 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "official_target_model_to_T5_source_mapping_available": model_identity[
             "T5_source_mapping_available"
         ],
-        "external_Figure6_axolotl_tmodel_source_available": model_identity[
+        "external_Figure6_axolotl_tmodel_source_available": axolotl_availability[
             "gates"
         ]["Figure6_axolotl_source_recovered"],
+        "related_axolotl_project_identified": axolotl_availability["gates"][
+            "related_GitLab_project_metadata_found"
+        ],
+        "related_axolotl_repository_anonymously_readable": axolotl_availability[
+            "gates"
+        ]["related_GitLab_repository_anonymously_readable"],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],

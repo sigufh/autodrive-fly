@@ -1,0 +1,112 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-axolotl-public-source-availability-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-axolotl-availability-audit.yaml": "648523e1793bbd12ecf58d5f05aac08a293cf2c379f6f56f8c56d59a1b6c93bb",
+      "src/fly_emotion/driving/v7_kohn_portes_axolotl_availability_audit.py": "dc6c05aa04e81637d766022f21a92edd13bd8b26b7e2b60f79ab20c04e7adcfb",
+      "artifacts/v7-kohn-portes-figure6-model-identity-audit.json": "19f9e08717685ebec988242767e050ed86c34b9e7dfa7e9ff76b109a1859a510",
+      "data/raw/kohn-portes-axolotl-search/indexes/gitlab-groups-rbehnialab-projects-include_subgroups-true-simple-true-per_page-100.json": "365e03448b16bd66511612960b8f6851410a8711d9a1203109b14b0a459696cd",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-project.json": "61418fa89bb6c56d388ae7989544265fda3a442ce9e75496d0a139801ebb9636",
+      "data/raw/kohn-portes-axolotl-search/indexes/page-rbehnialab-axolotl.html": "d40b90cc60bfcaa92237eeeb597fefc853dac13b789754ca8ff4cf3687f286aa",
+      "data/raw/kohn-portes-axolotl-search/axolotl-graphql-project.json": "bf6bb4eca9317d8f4ca7b07d573a89132a2885dd7f965ac80ee2921971d16095",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-branches-per_page-100.json": "b5d85274f4ee440701ea4d85e364797a0cb609eaa4843c215c84787579d55fe3",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-commits-per_page-100.json": "b5d85274f4ee440701ea4d85e364797a0cb609eaa4843c215c84787579d55fe3",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-tree-recursive-true-per_page-100.json": "049f7d7b2d353566dca3e37d91ae2d886e11e6d9a6db69f0526650bdad244f78",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-tags-per_page-100.json": "049f7d7b2d353566dca3e37d91ae2d886e11e6d9a6db69f0526650bdad244f78",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-forks-per_page-100.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-releases-per_page-100.json": "049f7d7b2d353566dca3e37d91ae2d886e11e6d9a6db69f0526650bdad244f78",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-packages-per_page-100.json": "049f7d7b2d353566dca3e37d91ae2d886e11e6d9a6db69f0526650bdad244f78",
+      "data/raw/kohn-portes-axolotl-search/indexes/wayback-project.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "data/raw/kohn-portes-axolotl-search/indexes/wayback-archive.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "data/raw/kohn-portes-axolotl-search/indexes/pypi-axolotl.json": "45c72a0bcadae168c5d30111dcc6544ec5e4cd97725e725abe7e97830058c8e4",
+      "data/raw/kohn-portes-axolotl-search/indexes/anaconda-axolotl.json": "a98cebeb6c7c260183597383b3ee07f15a983a9f90d07817cfeb80ca4ffcadf9",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-branches-per_page-100.headers": "b9e09e1cfdc228c67f551f36f6af8c9c4cdbe7c69597417b4bd4d97e5377f976",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-commits-per_page-100.headers": "8cbe330c63987e901a6337a5e1ebc34559595889b915c63c82e41162ed030660",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-tree-recursive-true-per_page-100.headers": "aa156ec886e8c5a5a24f13c4dc22b36d6e9687c8df81e84c115f70bc1d270820",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-repository-tags-per_page-100.headers": "e31603788b7ee06ce8be5c7fc405eaa78fa6f99c987ab0888b51b186cdf4cce1",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-forks-per_page-100.headers": "807b0d6f6a06841f83be5cf1c013d542936a358ab3acb93b48c9b208015e45bf",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-releases-per_page-100.headers": "2997b98ac7e82d54b11d785a62985e826887e65ad5b9b6ecc1874b8f06899b3f",
+      "data/raw/kohn-portes-axolotl-search/indexes/axolotl-packages-per_page-100.headers": "78ee3acbd92cfb6638d40fa3654fe67f85f9bbf78ce1866e6775397fd82ea61d",
+      "data/raw/kohn-portes-axolotl-search/gitlab-master-tree.json": "735aaae46b789b49b86f1375750623adcb432e43476384fb99d78be134760075",
+      "data/raw/kohn-portes-axolotl-search/gitlab-dev-tree.json": "cac388a177b75f12037615f9986b2e49b44cdd80476488305e79439d0c11150d",
+      "data/raw/kohn-portes-axolotl-search/gitlab-commits-page1.json": "b2a28d46bd177a54f31d97cc980dc21126f73c3d2c57567da91ef2bc66af2e16"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "related_project": {
+    "id": 4848981,
+    "path": "rbehnialab/axolotl",
+    "description": "Database schema and Analysis tools for the Behnia Lab",
+    "visibility": "public",
+    "created_at": "2017-12-08T13:25:26.261Z",
+    "last_activity_at": "2023-08-30T13:23:20.267Z",
+    "graphql_repository": null,
+    "page_marks_project_nonempty": true,
+    "endpoint_statuses": {
+      "branches": 404,
+      "commits": 404,
+      "tree": 403,
+      "tags": 403,
+      "forks": 200,
+      "releases": 403,
+      "packages": 403
+    },
+    "public_fork_count": 0
+  },
+  "flexible_filtering_history": {
+    "branch_tree_entry_counts": {
+      "master_tree": 95,
+      "dev_tree": 95
+    },
+    "commit_count": 28,
+    "commit_tree_count": 28,
+    "unique_blob_count": 83,
+    "unique_text_blob_count": 33,
+    "Figure6_import_occurrence_count": 5,
+    "source_definition_hits": {
+      "class TModel": false,
+      "def create_sine_wave": false,
+      "def apply_stim": false
+    }
+  },
+  "package_indexes": {
+    "PyPI_name": "axolotl",
+    "PyPI_summary": "LLM Trainer",
+    "PyPI_first_upload_year": 2024,
+    "Conda_exact_name_packages": [
+      "anaconda/axolotl",
+      "main/axolotl"
+    ],
+    "same_name_packages_are_unrelated_LLM_software": true
+  },
+  "wayback_snapshot_count": 0,
+  "gates": {
+    "related_GitLab_project_metadata_found": true,
+    "related_GitLab_repository_anonymously_readable": false,
+    "related_GitLab_public_fork_found": false,
+    "related_GitLab_release_or_package_endpoint_accessible": false,
+    "Wayback_repository_snapshot_found": false,
+    "public_package_index_candidate_matches_research_code": false,
+    "flexible_filtering_all_commit_trees_scanned": true,
+    "flexible_filtering_contains_axolotl_definitions": false,
+    "Figure6_axolotl_source_recovered": false
+  },
+  "source_global_absence_claimed": false,
+  "authorize_Tm_to_T5_model_transfer_to_v7": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "related_project_found_but_repository_content_not_anonymously_accessible",
+  "boundary": {
+    "project_metadata_visibility_is_not_repository_content_access": true,
+    "HTTP_403_or_404_is_not_source_absence_evidence": true,
+    "public_index_zero_hits_are_bounded_not_global": true,
+    "same_package_name_is_not_same_software": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "all_existing_transfer_and_downstream_gates_unchanged": true
+  }
+}

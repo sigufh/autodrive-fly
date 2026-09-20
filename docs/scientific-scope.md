@@ -302,6 +302,14 @@ endpoint verified the 3.63-MB model archive and its 17-KB support archive. They
 contain a MATLAB target-level `t5_simple_wrap` model and fitted T4/T5 tables, but
 not the separate Python `axolotl.tmodel` imported by the Kohn--Portes Figure 6
 notebooks and not a Tm1/Tm2/Tm4/Tm9/CT1-to-MaleCNS source mapping.
+The related public GitLab project metadata for `rbehnialab/axolotl` is visible,
+but its repository content is not anonymously readable: GraphQL returns a null
+repository, repository REST endpoints return 403/404, no public forks are listed,
+and no Wayback repository snapshot was found. All 28 accessible commits of
+`flexible-filtering` contain Figure 6 imports but no `TModel`, `create_sine_wave`
+or `apply_stim` definitions. PyPI and Conda packages with the same name are the
+unrelated LLM trainer first published in 2024. These are bounded availability
+observations, not a global source-absence claim.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

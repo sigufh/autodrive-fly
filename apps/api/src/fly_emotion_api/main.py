@@ -314,6 +314,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_transfer_synthesis_absolute_gain_available": visual[
                     "T5_transfer_synthesis_absolute_gain_available"
                 ],
+                "T5_transfer_synthesis_official_target_model_available": visual[
+                    "T5_transfer_synthesis_official_target_model_available"
+                ],
+                "T5_transfer_synthesis_target_to_source_mapping_available": visual[
+                    "T5_transfer_synthesis_target_to_source_mapping_available"
+                ],
+                "T5_transfer_synthesis_Figure6_axolotl_source_available": visual[
+                    "T5_transfer_synthesis_Figure6_axolotl_source_available"
+                ],
+                "T5_transfer_synthesis_related_axolotl_project_identified": visual[
+                    "T5_transfer_synthesis_related_axolotl_project_identified"
+                ],
+                "T5_transfer_synthesis_axolotl_repository_readable": visual[
+                    "T5_transfer_synthesis_axolotl_repository_readable"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

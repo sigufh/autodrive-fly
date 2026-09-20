@@ -1913,6 +1913,16 @@ moving-bar generalization transfer。证据见
 E/I/E2/I2 目标受体场分量；全包没有 Tm1/Tm2/Tm4/Tm9/CT1 source-type 映射，也没有
 Kohn–Portes Figure 6 导入的 Python `axolotl.tmodel`。因此这次取证把“包未取得”收窄为
 “包已验证但模型身份不匹配”，不能将目标级拟合参数冒充 source-specific kernel。
+继续检查同一实验室的公开命名空间后，已定位 GitLab 项目 `rbehnialab/axolotl`（project
+ID `4848981`，描述为 Behnia Lab 的数据库与分析工具），与 Figure 6 notebook 的 import
+和作者本地路径一致；但项目页虽标为 public/non-empty，GraphQL 的 repository 为 null，
+匿名 branches/commits 返回 404，tree/tags/releases/packages 返回 403，公开 fork 为 0，
+Wayback 对项目与 archive 均为 0 条快照。因此这里记录的是“相关项目已定位但源码当前不可
+匿名获取”，不是源码不存在。另对 `flexible-filtering` 的 master/dev 及全部 28 个 commit
+tree、83 个唯一 blob、33 个唯一文本 blob 做了扫描：发现 5 个 Figure 6 import，但没有
+`TModel`、`Stimulus.create_sine_wave` 或 `apply_stim` 定义。PyPI/Conda 同名包始于 2024 年，
+是 LLM 训练框架，不能替代 2021 年研究代码。证据见
+`artifacts/v7-kohn-portes-axolotl-availability-audit.json`。
 为避免改写既有 physical-transfer 合同，新增只读 synthesis audit 汇总后续 T5 证据：四个
 Tm source 已有电压派生 kernel shape 与 exact-type-average mapping，并各自有 saline 相对峰时、
 频率 shape 和 static→moving-bar 候选；但绝对 source gain、mV/filter-output→v7 state 映射、

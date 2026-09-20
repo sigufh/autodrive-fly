@@ -190,6 +190,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_transfer_synthesis_mapping_source_count"] == 4
     assert boundaries["T5_transfer_synthesis_positive_shape_evidence_count"] == 4
     assert boundaries["T5_transfer_synthesis_absolute_gain_available"] is False
+    assert boundaries["T5_transfer_synthesis_official_target_model_available"] is True
+    assert boundaries["T5_transfer_synthesis_target_to_source_mapping_available"] is False
+    assert boundaries["T5_transfer_synthesis_Figure6_axolotl_source_available"] is False
+    assert boundaries["T5_transfer_synthesis_related_axolotl_project_identified"] is True
+    assert boundaries["T5_transfer_synthesis_axolotl_repository_readable"] is False
     assert boundaries["T5_transfer_synthesis_CT1_complete"] is False
     assert boundaries["T5_transfer_synthesis_ready"] is False
     assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True

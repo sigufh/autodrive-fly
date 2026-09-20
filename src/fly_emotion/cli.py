@@ -140,6 +140,9 @@ from .driving.v7_gou_sparsity_source_dynamics_audit import (
     evaluate_v7_gou_sparsity_source_dynamics_audit,
 )
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
+from .driving.v7_kohn_portes_axolotl_availability_audit import (
+    evaluate_v7_kohn_portes_axolotl_availability_audit,
+)
 from .driving.v7_kohn_portes_external_index_audit import (
     evaluate_v7_kohn_portes_external_index_audit,
 )
@@ -637,6 +640,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-contrast-opponency-source-data")
     subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
+    subparsers.add_parser("v7-audit-kohn-portes-axolotl-availability")
     subparsers.add_parser("v7-audit-kohn-portes-figure6-model-identity")
     subparsers.add_parser("v7-audit-kohn-portes-t5-frequency-tuning")
     subparsers.add_parser("v7-audit-kohn-portes-t5-moving-bar-generalization")
@@ -1972,6 +1976,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-figure6-model-identity":
         report = evaluate_v7_kohn_portes_figure6_model_identity_audit(root)
         target = root / "artifacts/v7-kohn-portes-figure6-model-identity-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-kohn-portes-axolotl-availability":
+        report = evaluate_v7_kohn_portes_axolotl_availability_audit(root)
+        target = root / "artifacts/v7-kohn-portes-axolotl-availability-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
