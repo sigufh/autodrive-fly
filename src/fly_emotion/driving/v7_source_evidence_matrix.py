@@ -62,6 +62,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     )
     kohn_portes_kernels = evidence["kohn_portes_t5_source_kernels"]
     kohn_portes_state_units = evidence["kohn_portes_t5_state_unit_mapping"]
+    kohn_portes_peak_latency = evidence["kohn_portes_t5_peak_latency"]
     t5_mapping_scope = evidence["t5_source_mapping_scope"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
@@ -501,6 +502,22 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and kohn_portes_state_units[
                     "millivolts_or_filter_output_to_v7_state_mapping_available"
                 ]
+            ),
+            "Kohn_Portes_saline_Tm9_relative_delay_supported": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_peak_latency[
+                    "relative_Tm9_delay_candidate_supported_in_saline"
+                ]
+            ),
+            "Kohn_Portes_Tm9_delay_ordering_state_invariant": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_peak_latency[
+                    "relative_Tm9_delay_candidate_supported_across_states"
+                ]
+            ),
+            "Kohn_Portes_source_delay_transfer_to_v7_authorized": (
+                source in kohn_portes_kernels["source_results"]
+                and kohn_portes_peak_latency["authorize_source_delay_transfer_to_v7"]
             ),
             "T5_source_exact_type_average_mapping_scope_complete": (
                 source in t5_mapping_scope["source_mappings"]

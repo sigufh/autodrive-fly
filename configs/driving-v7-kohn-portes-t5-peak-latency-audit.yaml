@@ -1,0 +1,58 @@
+version: 1
+name: v7-kohn-portes-t5-filter-peak-latency-audit
+observed_on: "2026-09-20"
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+v7_config: configs/driving-v7.yaml
+author_notebook:
+  path: data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb
+  bytes: 960396
+  sha256: 1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f
+expected:
+  source_order: [Tm1, Tm2, Tm4, Tm9]
+  states: [saline, OA]
+  sample_interval_seconds: 0.01
+  common_kernel_length: 499
+  record_peak_indices:
+    saline:
+      Tm1: [5, 5, 5, 4, 3, 3, 7, 9]
+      Tm2: [8, 4, 5, 6, 4]
+      Tm4: [7, 6, 4, 4, 7, 7]
+      Tm9: [8, 7, 13, 11, 8, 4]
+    OA:
+      Tm1: [4, 2, 3, 4]
+      Tm2: [5, 5, 4, 5, 2]
+      Tm4: [4, 5, 3, 3]
+      Tm9: [5, 5, 5]
+  recording_id_collapsed_peak_indices:
+    saline:
+      Tm1: [5, 5, 5, 4, 3, 7, 9]
+      Tm2: [8, 4, 5, 6, 4]
+      Tm4: [7, 6, 4, 4, 7, 7]
+      Tm9: [8, 7, 13, 11, 8, 4]
+    OA:
+      Tm1: [4, 2, 3, 4]
+      Tm2: [5, 5, 4, 5, 2]
+      Tm4: [4, 5, 3, 3]
+      Tm9: [5, 5, 5]
+  source_record_median_peak_milliseconds:
+    saline: {Tm1: 50.0, Tm2: 50.0, Tm4: 65.0, Tm9: 80.0}
+    OA: {Tm1: 35.0, Tm2: 50.0, Tm4: 35.0, Tm9: 50.0}
+  common_recording_id_OA_minus_saline_milliseconds:
+    Tm1: [-10.0, -30.0, -20.0, 0.0]
+    Tm2: [10.0, 0.0, -20.0]
+    Tm4: [-30.0, 10.0, -10.0]
+    Tm9: [-30.0, -80.0, -30.0]
+boundary:
+  author_peak_definition_is_argmin_times_sampling_interval: true
+  peak_coordinate_is_not_absolute_state_gain: true
+  recording_id_is_not_asserted_to_be_biological_individual_id: true
+  recording_id_collapsed_result_is_sensitivity_only: true
+  saline_order_is_not_assumed_state_invariant: true
+  OA_is_not_an_independent_validation_cohort: true
+  CT1_latency_is_not_imputed: true
+  kernel_peak_is_not_directly_converted_to_v7_substeps: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

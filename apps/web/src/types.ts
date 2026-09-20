@@ -58,6 +58,13 @@ export type V7Status = {
     T5_millivolts_or_filter_output_to_state_mapping_available?: boolean;
     T5_candidate_normalization_formula?: string | null;
     T5_candidate_clipping_rule?: string | null;
+    T5_saline_fast_pooled_median_latency_ms?: number;
+    T5_saline_Tm9_median_latency_ms?: number;
+    T5_OA_fast_pooled_median_latency_ms?: number;
+    T5_OA_Tm9_median_latency_ms?: number;
+    T5_saline_Tm9_relative_delay_supported?: boolean;
+    T5_Tm9_delay_ordering_state_invariant?: boolean;
+    T5_source_delay_transfer_authorized?: boolean;
     T5_four_Tm_exact_type_average_mapping_complete: boolean;
     T5_all_five_source_mapping_complete: boolean;
     T5_CT1_mapping_Lo1_column_count_by_body: { "10009": number; "10157": number };

@@ -1,0 +1,771 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-t5-filter-peak-latency-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-t5-peak-latency-audit.yaml": "78daa6060f3ba1b54e8301934dca0637c36966ccda4307cd1c39d3c3cd32b30d",
+      "src/fly_emotion/driving/v7_kohn_portes_t5_peak_latency_audit.py": "e60c137f0edcc96eb510242bc23b923506f418dab0720af0390edfa20baaf2c4",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb": "1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_OA.pickle": "60697091eb983d51e81bd7917277e077daa6463cc741ecb5b5ecbf85ee139268",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_OA.pickle": "a6fe13c364394003c14d265a4f8b3b6523b115653671a2e645f376f499bbe490",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_OA.pickle": "0c2c41038618db6fdb6d9668be1895d3131fa0e103eee1d4cf3a752008bb92c2",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_OA.pickle": "52cd60bc002a43525f8ff60c49950c50a5d3da916542eac52fdadd0508b8c9c9"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "author_method": {
+    "peak_definition": "argmin(temporal_filter) * sampling_rate * downsampling_factor",
+    "sample_interval_seconds": 0.01,
+    "notebook_claim": "Tm9 is slower than Tm1, Tm2, and Tm4",
+    "v7_declared_fast_sources": [
+      "Tm1",
+      "Tm2",
+      "Tm4"
+    ],
+    "v7_declared_delayed_sources": [
+      "Tm9",
+      "CT1"
+    ],
+    "v7_correlator_history_substeps": 3
+  },
+  "state_results": {
+    "saline": {
+      "sources": {
+        "Tm1": {
+          "records": [
+            {
+              "recording_id": "190701",
+              "subrecording_number": "7",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "190708",
+              "subrecording_number": "4",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "190715",
+              "subrecording_number": "3",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "190722",
+              "subrecording_number": "4",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "190722",
+              "subrecording_number": "5",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "190729",
+              "subrecording_number": "8",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "201201",
+              "subrecording_number": "10",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "210126",
+              "subrecording_number": "14",
+              "peak_index": 9,
+              "peak_latency_milliseconds": 90.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 8,
+            "minimum": 30.0,
+            "median": 50.0,
+            "mean": 51.25,
+            "maximum": 90.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 7,
+            "minimum": 30.0,
+            "median": 50.0,
+            "mean": 54.285714285714285,
+            "maximum": 90.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "190701",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "190708",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "190715",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "190722",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "190729",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "201201",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "210126",
+              "peak_index": 9,
+              "peak_latency_milliseconds": 90.0
+            }
+          ],
+          "recording_id_count": 7
+        },
+        "Tm2": {
+          "records": [
+            {
+              "recording_id": "200927",
+              "subrecording_number": "13",
+              "peak_index": 8,
+              "peak_latency_milliseconds": 80.0
+            },
+            {
+              "recording_id": "201013",
+              "subrecording_number": "13",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "201119",
+              "subrecording_number": "14",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "201125",
+              "subrecording_number": "13",
+              "peak_index": 6,
+              "peak_latency_milliseconds": 60.0
+            },
+            {
+              "recording_id": "210721",
+              "subrecording_number": "4",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 5,
+            "minimum": 40.0,
+            "median": 50.0,
+            "mean": 54.0,
+            "maximum": 80.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 5,
+            "minimum": 40.0,
+            "median": 50.0,
+            "mean": 54.0,
+            "maximum": 80.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "200927",
+              "peak_index": 8,
+              "peak_latency_milliseconds": 80.0
+            },
+            {
+              "recording_id": "201013",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "201119",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "201125",
+              "peak_index": 6,
+              "peak_latency_milliseconds": 60.0
+            },
+            {
+              "recording_id": "210721",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            }
+          ],
+          "recording_id_count": 5
+        },
+        "Tm4": {
+          "records": [
+            {
+              "recording_id": "200209",
+              "subrecording_number": "7",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "200621",
+              "subrecording_number": "11",
+              "peak_index": 6,
+              "peak_latency_milliseconds": 60.0
+            },
+            {
+              "recording_id": "200703",
+              "subrecording_number": "7",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "200706",
+              "subrecording_number": "12",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "200823",
+              "subrecording_number": "12",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "200826",
+              "subrecording_number": "20",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 6,
+            "minimum": 40.0,
+            "median": 65.0,
+            "mean": 58.333333333333336,
+            "maximum": 70.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 6,
+            "minimum": 40.0,
+            "median": 65.0,
+            "mean": 58.333333333333336,
+            "maximum": 70.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "200209",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "200621",
+              "peak_index": 6,
+              "peak_latency_milliseconds": 60.0
+            },
+            {
+              "recording_id": "200703",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "200706",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "200823",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "200826",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            }
+          ],
+          "recording_id_count": 6
+        },
+        "Tm9": {
+          "records": [
+            {
+              "recording_id": "190812",
+              "subrecording_number": "3",
+              "peak_index": 8,
+              "peak_latency_milliseconds": 80.0
+            },
+            {
+              "recording_id": "191112",
+              "subrecording_number": "5",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "191203",
+              "subrecording_number": "4",
+              "peak_index": 13,
+              "peak_latency_milliseconds": 130.0
+            },
+            {
+              "recording_id": "191209",
+              "subrecording_number": "3",
+              "peak_index": 11,
+              "peak_latency_milliseconds": 110.0
+            },
+            {
+              "recording_id": "200115",
+              "subrecording_number": "11",
+              "peak_index": 8,
+              "peak_latency_milliseconds": 80.0
+            },
+            {
+              "recording_id": "200720",
+              "subrecording_number": "7",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 6,
+            "minimum": 40.0,
+            "median": 80.0,
+            "mean": 85.0,
+            "maximum": 130.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 6,
+            "minimum": 40.0,
+            "median": 80.0,
+            "mean": 85.0,
+            "maximum": 130.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "190812",
+              "peak_index": 8,
+              "peak_latency_milliseconds": 80.0
+            },
+            {
+              "recording_id": "191112",
+              "peak_index": 7,
+              "peak_latency_milliseconds": 70.0
+            },
+            {
+              "recording_id": "191203",
+              "peak_index": 13,
+              "peak_latency_milliseconds": 130.0
+            },
+            {
+              "recording_id": "191209",
+              "peak_index": 11,
+              "peak_latency_milliseconds": 110.0
+            },
+            {
+              "recording_id": "200115",
+              "peak_index": 8,
+              "peak_latency_milliseconds": 80.0
+            },
+            {
+              "recording_id": "200720",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            }
+          ],
+          "recording_id_count": 6
+        }
+      },
+      "Tm9_median_minus_each_fast_source_milliseconds": {
+        "Tm1": 30.0,
+        "Tm2": 30.0,
+        "Tm4": 15.0
+      },
+      "pooled_fast_median_milliseconds": 50.0,
+      "Tm9_median_milliseconds": 80.0,
+      "Tm9_strictly_slower_pair_fraction": 0.7631578947368421,
+      "all_three_fast_source_medians_precede_Tm9": true
+    },
+    "OA": {
+      "sources": {
+        "Tm1": {
+          "records": [
+            {
+              "recording_id": "190701",
+              "subrecording_number": "13",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "190708",
+              "subrecording_number": "7",
+              "peak_index": 2,
+              "peak_latency_milliseconds": 20.0
+            },
+            {
+              "recording_id": "190715",
+              "subrecording_number": "7",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "190722",
+              "subrecording_number": "9",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 4,
+            "minimum": 20.0,
+            "median": 35.0,
+            "mean": 32.5,
+            "maximum": 40.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 4,
+            "minimum": 20.0,
+            "median": 35.0,
+            "mean": 32.5,
+            "maximum": 40.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "190701",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "190708",
+              "peak_index": 2,
+              "peak_latency_milliseconds": 20.0
+            },
+            {
+              "recording_id": "190715",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "190722",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            }
+          ],
+          "recording_id_count": 4
+        },
+        "Tm2": {
+          "records": [
+            {
+              "recording_id": "201013",
+              "subrecording_number": "22",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "201119",
+              "subrecording_number": "23",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "210718",
+              "subrecording_number": "3",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "210719",
+              "subrecording_number": "3",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "210721",
+              "subrecording_number": "6",
+              "peak_index": 2,
+              "peak_latency_milliseconds": 20.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 5,
+            "minimum": 20.0,
+            "median": 50.0,
+            "mean": 42.0,
+            "maximum": 50.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 5,
+            "minimum": 20.0,
+            "median": 50.0,
+            "mean": 42.0,
+            "maximum": 50.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "201013",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "201119",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "210718",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "210719",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "210721",
+              "peak_index": 2,
+              "peak_latency_milliseconds": 20.0
+            }
+          ],
+          "recording_id_count": 5
+        },
+        "Tm4": {
+          "records": [
+            {
+              "recording_id": "200209",
+              "subrecording_number": "10",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "200703",
+              "subrecording_number": "13",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "200706",
+              "subrecording_number": "19",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "210803",
+              "subrecording_number": "12",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 4,
+            "minimum": 30.0,
+            "median": 35.0,
+            "mean": 37.5,
+            "maximum": 50.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 4,
+            "minimum": 30.0,
+            "median": 35.0,
+            "mean": 37.5,
+            "maximum": 50.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "200209",
+              "peak_index": 4,
+              "peak_latency_milliseconds": 40.0
+            },
+            {
+              "recording_id": "200703",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "200706",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            },
+            {
+              "recording_id": "210803",
+              "peak_index": 3,
+              "peak_latency_milliseconds": 30.0
+            }
+          ],
+          "recording_id_count": 4
+        },
+        "Tm9": {
+          "records": [
+            {
+              "recording_id": "190812",
+              "subrecording_number": "9",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "191203",
+              "subrecording_number": "6",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "200115",
+              "subrecording_number": "13",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            }
+          ],
+          "record_peak_latency_milliseconds": {
+            "count": 3,
+            "minimum": 50.0,
+            "median": 50.0,
+            "mean": 50.0,
+            "maximum": 50.0
+          },
+          "recording_id_collapsed_peak_latency_milliseconds": {
+            "count": 3,
+            "minimum": 50.0,
+            "median": 50.0,
+            "mean": 50.0,
+            "maximum": 50.0
+          },
+          "recording_id_collapsed_records": [
+            {
+              "recording_id": "190812",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "191203",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            },
+            {
+              "recording_id": "200115",
+              "peak_index": 5,
+              "peak_latency_milliseconds": 50.0
+            }
+          ],
+          "recording_id_count": 3
+        }
+      },
+      "Tm9_median_minus_each_fast_source_milliseconds": {
+        "Tm1": 15.0,
+        "Tm2": 0.0,
+        "Tm4": 15.0
+      },
+      "pooled_fast_median_milliseconds": 40.0,
+      "Tm9_median_milliseconds": 50.0,
+      "Tm9_strictly_slower_pair_fraction": 0.6923076923076923,
+      "all_three_fast_source_medians_precede_Tm9": false
+    }
+  },
+  "common_recording_id_state_deltas": {
+    "Tm1": {
+      "common_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722"
+      ],
+      "OA_minus_saline_peak_latency_milliseconds": [
+        -10.0,
+        -30.0,
+        -20.0,
+        0.0
+      ],
+      "median_delta_milliseconds": -15.0,
+      "biological_individual_interpretation_authorized": false
+    },
+    "Tm2": {
+      "common_recording_ids": [
+        "201013",
+        "201119",
+        "210721"
+      ],
+      "OA_minus_saline_peak_latency_milliseconds": [
+        10.0,
+        0.0,
+        -20.0
+      ],
+      "median_delta_milliseconds": 0.0,
+      "biological_individual_interpretation_authorized": false
+    },
+    "Tm4": {
+      "common_recording_ids": [
+        "200209",
+        "200703",
+        "200706"
+      ],
+      "OA_minus_saline_peak_latency_milliseconds": [
+        -30.0,
+        10.0,
+        -10.0
+      ],
+      "median_delta_milliseconds": -10.0,
+      "biological_individual_interpretation_authorized": false
+    },
+    "Tm9": {
+      "common_recording_ids": [
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "OA_minus_saline_peak_latency_milliseconds": [
+        -30.0,
+        -80.0,
+        -30.0
+      ],
+      "median_delta_milliseconds": -30.0,
+      "biological_individual_interpretation_authorized": false
+    }
+  },
+  "gates": {
+    "author_peak_latency_formula_verified": true,
+    "saline_Tm9_median_slower_than_each_Tm1_Tm2_Tm4_median": true,
+    "OA_Tm9_median_slower_than_each_Tm1_Tm2_Tm4_median": false,
+    "Tm9_delay_ordering_state_invariant": false,
+    "CT1_peak_latency_available": false,
+    "v7_source_delay_substeps_biologically_calibrated": false,
+    "independent_peak_latency_validation_available": false
+  },
+  "relative_Tm9_delay_candidate_supported_in_saline": true,
+  "relative_Tm9_delay_candidate_supported_across_states": false,
+  "authorize_source_delay_transfer_to_v7": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "saline_relative_Tm9_delay_is_descriptive_but_not_state_invariant_or_transfer_ready",
+  "boundary": {
+    "author_peak_definition_is_argmin_times_sampling_interval": true,
+    "peak_coordinate_is_not_absolute_state_gain": true,
+    "recording_id_is_not_asserted_to_be_biological_individual_id": true,
+    "recording_id_collapsed_result_is_sensitivity_only": true,
+    "saline_order_is_not_assumed_state_invariant": true,
+    "OA_is_not_an_independent_validation_cohort": true,
+    "CT1_latency_is_not_imputed": true,
+    "kernel_peak_is_not_directly_converted_to_v7_substeps": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

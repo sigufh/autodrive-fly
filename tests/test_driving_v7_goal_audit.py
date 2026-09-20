@@ -45,6 +45,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_millivolts_or_filter_output_to_state_mapping_available",
         "T5_candidate_normalization_formula",
         "T5_candidate_clipping_rule",
+        "T5_saline_fast_pooled_median_latency_ms",
+        "T5_saline_Tm9_median_latency_ms",
+        "T5_OA_fast_pooled_median_latency_ms",
+        "T5_OA_Tm9_median_latency_ms",
+        "T5_saline_Tm9_relative_delay_supported",
+        "T5_Tm9_delay_ordering_state_invariant",
+        "T5_source_delay_transfer_authorized",
         "T5_four_Tm_exact_type_average_mapping_complete",
         "T5_all_five_source_mapping_complete",
         "T5_CT1_mapping_Lo1_column_count_by_body",
@@ -610,6 +617,21 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Kohn_Portes_T5_state_mapping_available"] is False
     assert visual["observations"]["Kohn_Portes_T5_candidate_normalization_formula"] is None
     assert visual["observations"]["Kohn_Portes_T5_candidate_clipping_rule"] is None
+    assert (
+        visual["observations"][
+            "Kohn_Portes_T5_saline_fast_pooled_median_latency_ms"
+        ]
+        == 50.0
+    )
+    assert visual["observations"]["Kohn_Portes_T5_saline_Tm9_median_latency_ms"] == 80.0
+    assert visual["observations"]["Kohn_Portes_T5_OA_fast_pooled_median_latency_ms"] == 40.0
+    assert visual["observations"]["Kohn_Portes_T5_OA_Tm9_median_latency_ms"] == 50.0
+    assert visual["observations"]["Kohn_Portes_T5_saline_Tm9_relative_delay_supported"]
+    assert (
+        visual["observations"]["Kohn_Portes_T5_Tm9_delay_ordering_state_invariant"]
+        is False
+    )
+    assert visual["observations"]["Kohn_Portes_T5_source_delay_transfer_authorized"] is False
     assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
     assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {

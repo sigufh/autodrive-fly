@@ -1860,6 +1860,13 @@ population trace 重缩放也不定义绝对增益。v7 状态仍是 `signed_tan
 状态公式，也没有可据此采用的 min–max、单位范数或 clipping 规则；这些规则未被人为补造，
 source kernel gain/dynamics transfer 继续不授权。证据见
 `artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json`。
+同一作者 notebook 还明确以
+`argmin(temporal_filter) × sampling_rate × downsampling_factor` 定义负峰时，并描述 saline
+下 Tm9 慢于 Tm1/Tm2/Tm4。原始记录复算得到 saline 的 fast pooled/Tm9 中位峰时为
+50/80 ms，Tm9 相对三类 fast source 的中位差为 30/30/15 ms；但 OA 下为 40/50 ms，
+且 Tm9 与 Tm2 中位峰时同为 50 ms。因而 saline 的相对慢序可作候选约束，但并非跨状态
+不变量，也没有 CT1 峰时、独立验证或从毫秒到 v7 substep 的生物标定；现有固定 delay 不获
+transfer 授权。证据见 `artifacts/v7-kohn-portes-t5-peak-latency-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

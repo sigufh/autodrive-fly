@@ -74,6 +74,13 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     )
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
+    assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0
+    assert boundaries["T5_saline_Tm9_median_latency_ms"] == 80.0
+    assert boundaries["T5_OA_fast_pooled_median_latency_ms"] == 40.0
+    assert boundaries["T5_OA_Tm9_median_latency_ms"] == 50.0
+    assert boundaries["T5_saline_Tm9_relative_delay_supported"] is True
+    assert boundaries["T5_Tm9_delay_ordering_state_invariant"] is False
+    assert boundaries["T5_source_delay_transfer_authorized"] is False
     assert boundaries["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert boundaries["T5_all_five_source_mapping_complete"] is False
     assert boundaries["T5_CT1_mapping_Lo1_column_count_by_body"] == {

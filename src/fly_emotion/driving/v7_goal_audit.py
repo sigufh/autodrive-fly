@@ -163,6 +163,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     kohn_portes_t5_state_unit_mapping_audit = reports[
         "kohn_portes_t5_state_unit_mapping_audit"
     ]
+    kohn_portes_t5_peak_latency_audit = reports["kohn_portes_t5_peak_latency_audit"]
     kohn_portes_identity_history_audit = reports[
         "kohn_portes_identity_history_audit"
     ]
@@ -387,6 +388,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["kohn_portes_t5_ephys_audit"],
                 config["evidence"]["kohn_portes_t5_source_kernel_audit"],
                 config["evidence"]["kohn_portes_t5_state_unit_mapping_audit"],
+                config["evidence"]["kohn_portes_t5_peak_latency_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_pure_data_index_audit"],
@@ -1277,6 +1279,41 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_candidate_clipping_rule": (
                     kohn_portes_t5_state_unit_mapping_audit["mapping_boundary"][
                         "candidate_clipping_rule"
+                    ]
+                ),
+                "Kohn_Portes_T5_saline_fast_pooled_median_latency_ms": (
+                    kohn_portes_t5_peak_latency_audit["state_results"]["saline"][
+                        "pooled_fast_median_milliseconds"
+                    ]
+                ),
+                "Kohn_Portes_T5_saline_Tm9_median_latency_ms": (
+                    kohn_portes_t5_peak_latency_audit["state_results"]["saline"][
+                        "Tm9_median_milliseconds"
+                    ]
+                ),
+                "Kohn_Portes_T5_OA_fast_pooled_median_latency_ms": (
+                    kohn_portes_t5_peak_latency_audit["state_results"]["OA"][
+                        "pooled_fast_median_milliseconds"
+                    ]
+                ),
+                "Kohn_Portes_T5_OA_Tm9_median_latency_ms": (
+                    kohn_portes_t5_peak_latency_audit["state_results"]["OA"][
+                        "Tm9_median_milliseconds"
+                    ]
+                ),
+                "Kohn_Portes_T5_saline_Tm9_relative_delay_supported": (
+                    kohn_portes_t5_peak_latency_audit[
+                        "relative_Tm9_delay_candidate_supported_in_saline"
+                    ]
+                ),
+                "Kohn_Portes_T5_Tm9_delay_ordering_state_invariant": (
+                    kohn_portes_t5_peak_latency_audit[
+                        "relative_Tm9_delay_candidate_supported_across_states"
+                    ]
+                ),
+                "Kohn_Portes_T5_source_delay_transfer_authorized": (
+                    kohn_portes_t5_peak_latency_audit[
+                        "authorize_source_delay_transfer_to_v7"
                     ]
                 ),
                 "T5_four_Tm_exact_type_average_mapping_complete": (
@@ -2856,6 +2893,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_millivolts_or_filter_output_to_state_mapping_available",
                     "T5_candidate_normalization_formula",
                     "T5_candidate_clipping_rule",
+                    "T5_saline_fast_pooled_median_latency_ms",
+                    "T5_saline_Tm9_median_latency_ms",
+                    "T5_OA_fast_pooled_median_latency_ms",
+                    "T5_OA_Tm9_median_latency_ms",
+                    "T5_saline_Tm9_relative_delay_supported",
+                    "T5_Tm9_delay_ordering_state_invariant",
+                    "T5_source_delay_transfer_authorized",
                     "T5_four_Tm_exact_type_average_mapping_complete",
                     "T5_all_five_source_mapping_complete",
                     "T5_CT1_mapping_Lo1_column_count_by_body",

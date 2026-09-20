@@ -157,6 +157,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_candidate_clipping_rule": visual[
                     "Kohn_Portes_T5_candidate_clipping_rule"
                 ],
+                "T5_saline_fast_pooled_median_latency_ms": visual[
+                    "Kohn_Portes_T5_saline_fast_pooled_median_latency_ms"
+                ],
+                "T5_saline_Tm9_median_latency_ms": visual[
+                    "Kohn_Portes_T5_saline_Tm9_median_latency_ms"
+                ],
+                "T5_OA_fast_pooled_median_latency_ms": visual[
+                    "Kohn_Portes_T5_OA_fast_pooled_median_latency_ms"
+                ],
+                "T5_OA_Tm9_median_latency_ms": visual[
+                    "Kohn_Portes_T5_OA_Tm9_median_latency_ms"
+                ],
+                "T5_saline_Tm9_relative_delay_supported": visual[
+                    "Kohn_Portes_T5_saline_Tm9_relative_delay_supported"
+                ],
+                "T5_Tm9_delay_ordering_state_invariant": visual[
+                    "Kohn_Portes_T5_Tm9_delay_ordering_state_invariant"
+                ],
+                "T5_source_delay_transfer_authorized": visual[
+                    "Kohn_Portes_T5_source_delay_transfer_authorized"
+                ],
                 "T5_four_Tm_exact_type_average_mapping_complete": visual[
                     "T5_four_Tm_exact_type_average_mapping_complete"
                 ],
