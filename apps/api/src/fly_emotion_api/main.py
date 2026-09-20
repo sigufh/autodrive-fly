@@ -220,6 +220,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_FIB19_to_MaleCNS_weight_transfer_authorized": visual[
                     "FIB19_to_MaleCNS_T5_weight_transfer_authorized"
                 ],
+                "T5_moving_bar_condition_count": visual[
+                    "Kohn_Portes_T5_moving_bar_condition_count"
+                ],
+                "T5_moving_bar_gain_free_DSI_available": visual[
+                    "Kohn_Portes_T5_moving_bar_gain_free_DSI_available"
+                ],
+                "T5_moving_bar_gain_fit_score_samples_disjoint": visual[
+                    "Kohn_Portes_T5_moving_bar_gain_fit_score_samples_disjoint"
+                ],
+                "T5_moving_bar_validation_available": visual[
+                    "Kohn_Portes_T5_moving_bar_validation_available"
+                ],
+                "T5_moving_bar_transfer_authorized": visual[
+                    "Kohn_Portes_T5_moving_bar_transfer_authorized"
+                ],
                 "T5_four_Tm_exact_type_average_mapping_complete": visual[
                     "T5_four_Tm_exact_type_average_mapping_complete"
                 ],

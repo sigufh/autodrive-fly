@@ -1893,6 +1893,14 @@ MaleCNS 约 31.50%，最大总体比例差为 12.68 个百分点；73.1% 的 Mal
 比例落在该 20-cell FIB19 样本范围之外，且 subtype/side 分布继续保留。没有 FIB19 cell 到
 MaleCNS body 的身份 crosswalk，CT1 也未进入作者四源归一化，所以总体 rank 一致不授权旧权重
 直接迁移。证据见 `artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json`。
+Figure 5 的跨刺激部分也按原代码复算：静态 bar 条件得到的 Tm1/Tm9 位置系数被用于构造
+moving-bar PD/ND 轨迹，20/80 ms 分别复用 40/160 ms 系数。saline/OA 各 12 个条件的
+gain-free 预测 DSI 均为正；与目标 DSI 的平均绝对差分别为 0.159/0.172，相关为
+0.510/0.676。这提供了跨刺激相对 shape 候选，但作者随后把预测 PD 与 ND 拼接，并在同一
+moving-bar 目标数据上再拟合公共 gain，再在同一窗口报告 PD/ND R²；因此该 R² 不是未调参的
+独立测试。目标 stable cell identity、绝对物理方向和 source absolute gain 也仍缺失，故不授权
+moving-bar generalization transfer。证据见
+`artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

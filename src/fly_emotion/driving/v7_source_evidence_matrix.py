@@ -66,6 +66,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     kohn_portes_frequency = evidence["kohn_portes_t5_frequency_tuning"]
     kohn_portes_model = evidence["kohn_portes_tm_to_t5_model"]
     cross_connectome_weights = evidence["fib19_malecns_t5_weight_transfer"]
+    moving_bar_generalization = evidence["kohn_portes_t5_moving_bar_generalization"]
     t5_mapping_scope = evidence["t5_source_mapping_scope"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
@@ -564,6 +565,24 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in kohn_portes_kernels["source_results"]
                 and cross_connectome_weights[
                     "authorize_FIB19_weight_transfer_to_MaleCNS"
+                ]
+            ),
+            "Kohn_Portes_cross_stimulus_moving_bar_shape_candidate_available": (
+                source in kohn_portes_kernels["source_results"]
+                and moving_bar_generalization[
+                    "cross_stimulus_relative_shape_candidate_available"
+                ]
+            ),
+            "Kohn_Portes_independent_moving_bar_validation_available": (
+                source in kohn_portes_kernels["source_results"]
+                and moving_bar_generalization[
+                    "independent_moving_bar_validation_available"
+                ]
+            ),
+            "Kohn_Portes_moving_bar_transfer_to_v7_authorized": (
+                source in kohn_portes_kernels["source_results"]
+                and moving_bar_generalization[
+                    "authorize_moving_bar_generalization_transfer_to_v7"
                 ]
             ),
             "T5_source_exact_type_average_mapping_scope_complete": (

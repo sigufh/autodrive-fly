@@ -66,6 +66,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_FIB19_MaleCNS_maximum_population_ratio_difference",
         "T5_MaleCNS_Tm9_fraction_outside_FIB19_range",
         "T5_FIB19_to_MaleCNS_weight_transfer_authorized",
+        "T5_moving_bar_condition_count",
+        "T5_moving_bar_gain_free_DSI_available",
+        "T5_moving_bar_gain_fit_score_samples_disjoint",
+        "T5_moving_bar_validation_available",
+        "T5_moving_bar_transfer_authorized",
         "T5_four_Tm_exact_type_average_mapping_complete",
         "T5_all_five_source_mapping_complete",
         "T5_CT1_mapping_Lo1_column_count_by_body",
@@ -679,6 +684,16 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         0.7307234295921405,
     )
     assert visual["observations"]["FIB19_to_MaleCNS_T5_weight_transfer_authorized"] is False
+    assert visual["observations"]["Kohn_Portes_T5_moving_bar_condition_count"] == 24
+    assert visual["observations"]["Kohn_Portes_T5_moving_bar_gain_free_DSI_available"]
+    assert (
+        visual["observations"][
+            "Kohn_Portes_T5_moving_bar_gain_fit_score_samples_disjoint"
+        ]
+        is False
+    )
+    assert visual["observations"]["Kohn_Portes_T5_moving_bar_validation_available"] is False
+    assert visual["observations"]["Kohn_Portes_T5_moving_bar_transfer_authorized"] is False
     assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
     assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {

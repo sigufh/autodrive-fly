@@ -155,6 +155,9 @@ from .driving.v7_kohn_portes_t5_ephys_audit import (
 from .driving.v7_kohn_portes_t5_frequency_tuning_audit import (
     evaluate_v7_kohn_portes_t5_frequency_tuning_audit,
 )
+from .driving.v7_kohn_portes_t5_moving_bar_generalization_audit import (
+    evaluate_v7_kohn_portes_t5_moving_bar_generalization_audit,
+)
 from .driving.v7_kohn_portes_t5_peak_latency_audit import (
     evaluate_v7_kohn_portes_t5_peak_latency_audit,
 )
@@ -629,6 +632,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-yang-t5-voltage-evidence")
     subparsers.add_parser("v7-audit-kohn-portes-t5-ephys")
     subparsers.add_parser("v7-audit-kohn-portes-t5-frequency-tuning")
+    subparsers.add_parser("v7-audit-kohn-portes-t5-moving-bar-generalization")
     subparsers.add_parser("v7-audit-kohn-portes-t5-peak-latency")
     subparsers.add_parser("v7-audit-kohn-portes-t5-source-kernels")
     subparsers.add_parser("v7-audit-kohn-portes-t5-state-unit-mapping")
@@ -1904,6 +1908,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-t5-frequency-tuning":
         report = evaluate_v7_kohn_portes_t5_frequency_tuning_audit(root)
         target = root / "artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-kohn-portes-t5-moving-bar-generalization":
+        report = evaluate_v7_kohn_portes_t5_moving_bar_generalization_audit(root)
+        target = root / "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

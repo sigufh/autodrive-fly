@@ -1,0 +1,56 @@
+version: 1
+name: v7-kohn-portes-t5-moving-bar-generalization-audit
+observed_on: "2026-09-20"
+author_model_evidence: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+direction_evidence: artifacts/v7-t5-direction-code-provenance-audit.json
+author_code:
+  figure5_notebook:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig5-LinearRegression.ipynb
+    bytes: 11856801
+    sha256: 7017faae8d8b2ce24bf74713d56b91a9a503e544fac48d10c30b9872c01881d9
+  linear_regression:
+    path: data/raw/kohn-portes-flexible-filtering/history/text/plotting_linear_regression.py
+    bytes: 38618
+    sha256: cfee74f8ada9927664eb9247722c83b360caa55e901ed151bad2f42791d433b8
+model_inputs:
+  T5_stationary_flash:
+    path: data/raw/kohn-portes-flexible-filtering/history/model-inputs/trace_data_2020-6-18.pickle
+    repository_path: data/Gruntman2019/trace_data_2020-6-18.pickle
+    bytes: 60491335
+    sha256: 29f8fa3443a1919539a9f1c8ecabfd78e639af671c4ab2801e5c3e02f1d7f9b7
+    git_blob: 5f8e6349afd1c66651eb5fc51b293a25eb69caee
+  T5_moving_bar:
+    path: data/raw/kohn-portes-flexible-filtering/history/model-inputs/fig4_moving_bar.pickle
+    repository_path: data/Gruntman2019/fig4_moving_bar.pickle
+    bytes: 14596168
+    sha256: ceb2e358b9bf733230b12fde438b297a651829997b05c2a071b5a440d050929b
+    git_blob: b4e6597749b3266c6f0bf7a34e24c24d084097fd
+expected:
+  source_pair: [Tm1, Tm9]
+  source_states: [saline, OA]
+  durations_seconds: ["0.02", "0.04", "0.08", "0.16"]
+  widths_degrees: ["2.25", "4.5", "9"]
+  static_fit_duration_by_moving_duration: {"0.02": "0.04", "0.04": "0.04", "0.08": "0.16", "0.16": "0.16"}
+  R2_window_by_duration: {"0.02": 100, "0.04": 120, "0.08": 180, "0.16": 300}
+  source_trace_samples: 300
+  target_downsample_factor: 2
+  target_cell_count: 17
+  lasso_alpha: 0.0001
+  predicted_DSI:
+    saline: [0.008488074137, 0.076375205703, 0.077084758543, 0.084677384401, 0.143253680484, 0.16796775713, 0.322274613188, 0.28322456841, 0.364888546952, 0.3288677196, 0.292302946875, 0.37445355518]
+    OA: [0.022918182607, 0.110918707081, 0.121548103372, 0.096936524301, 0.180807043631, 0.234774251327, 0.26170021049, 0.265783002971, 0.313464531728, 0.230237131514, 0.238989380644, 0.280690629873]
+  target_DSI: [0.193700537807, 0.152896826052, 0.464253684352, 0.287486092138, 0.387543490156, 0.520591370687, 0.396013065347, 0.403910909402, 0.415325058851, 0.374286329428, 0.426389441101, 0.40585181273]
+  mean_absolute_DSI_error: {saline: 0.15869915062, OA: 0.172456743209}
+  predicted_target_DSI_correlation: {saline: 0.510476615258, OA: 0.675781370033}
+boundary:
+  static_bar_coefficients_are_applied_to_moving_bar_stimulus: true
+  common_gain_is_refit_on_moving_bar_PD_and_ND_data: true
+  gain_free_DSI_is_scale_invariant: true
+  descriptive_DSI_has_no_post_hoc_pass_threshold: true
+  processed_PD_ND_labels_are_not_absolute_screen_or_body_directions: true
+  target_cell_identity_is_not_available: true
+  no_parameter_fit_for_v7: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

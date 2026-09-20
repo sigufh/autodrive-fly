@@ -108,6 +108,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         - 0.7307234295921405
     ) < 1e-15
     assert boundaries["T5_FIB19_to_MaleCNS_weight_transfer_authorized"] is False
+    assert boundaries["T5_moving_bar_condition_count"] == 24
+    assert boundaries["T5_moving_bar_gain_free_DSI_available"] is True
+    assert boundaries["T5_moving_bar_gain_fit_score_samples_disjoint"] is False
+    assert boundaries["T5_moving_bar_validation_available"] is False
+    assert boundaries["T5_moving_bar_transfer_authorized"] is False
     assert boundaries["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert boundaries["T5_all_five_source_mapping_complete"] is False
     assert boundaries["T5_CT1_mapping_Lo1_column_count_by_body"] == {

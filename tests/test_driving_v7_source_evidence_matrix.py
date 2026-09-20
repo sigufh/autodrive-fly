@@ -268,6 +268,11 @@ def test_T5_voltage_derived_kernels_do_not_claim_absolute_gain_or_invariance() -
         assert components["Kohn_Portes_Tm_to_T5_model_transfer_to_v7_authorized"] is False
         assert components["FIB19_and_MaleCNS_population_source_rank_matches"] is True
         assert components["FIB19_to_MaleCNS_weight_transfer_authorized"] is False
+        assert components[
+            "Kohn_Portes_cross_stimulus_moving_bar_shape_candidate_available"
+        ] is True
+        assert components["Kohn_Portes_independent_moving_bar_validation_available"] is False
+        assert components["Kohn_Portes_moving_bar_transfer_to_v7_authorized"] is False
     assert (
         report["matrix"]["CT1"]["evidence_components"][
             "Kohn_Portes_voltage_derived_temporal_kernel_verified"

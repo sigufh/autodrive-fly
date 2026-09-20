@@ -171,6 +171,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     fib19_malecns_t5_weight_transfer_audit = reports[
         "fib19_malecns_t5_weight_transfer_audit"
     ]
+    kohn_portes_t5_moving_bar_generalization_audit = reports[
+        "kohn_portes_t5_moving_bar_generalization_audit"
+    ]
     kohn_portes_identity_history_audit = reports[
         "kohn_portes_identity_history_audit"
     ]
@@ -399,6 +402,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["kohn_portes_t5_frequency_tuning_audit"],
                 config["evidence"]["kohn_portes_tm_to_t5_model_audit"],
                 config["evidence"]["fib19_malecns_t5_weight_transfer_audit"],
+                config["evidence"]["kohn_portes_t5_moving_bar_generalization_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_pure_data_index_audit"],
@@ -1397,6 +1401,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "FIB19_to_MaleCNS_T5_weight_transfer_authorized": (  # noqa: E501
                     fib19_malecns_t5_weight_transfer_audit[
                         "authorize_FIB19_weight_transfer_to_MaleCNS"
+                    ]
+                ),
+                "Kohn_Portes_T5_moving_bar_condition_count": len(
+                    kohn_portes_t5_moving_bar_generalization_audit[
+                        "condition_results"
+                    ]
+                ),
+                "Kohn_Portes_T5_moving_bar_gain_free_DSI_available": (  # noqa: E501
+                    kohn_portes_t5_moving_bar_generalization_audit["gates"][
+                        "gain_free_predicted_DSI_available"
+                    ]
+                ),
+                "Kohn_Portes_T5_moving_bar_gain_fit_score_samples_disjoint": (  # noqa: E501
+                    kohn_portes_t5_moving_bar_generalization_audit["gates"][
+                        "moving_bar_gain_fit_and_score_samples_disjoint"
+                    ]
+                ),
+                "Kohn_Portes_T5_moving_bar_validation_available": (  # noqa: E501
+                    kohn_portes_t5_moving_bar_generalization_audit[
+                        "independent_moving_bar_validation_available"
+                    ]
+                ),
+                "Kohn_Portes_T5_moving_bar_transfer_authorized": (  # noqa: E501
+                    kohn_portes_t5_moving_bar_generalization_audit[
+                        "authorize_moving_bar_generalization_transfer_to_v7"
                     ]
                 ),
                 "T5_four_Tm_exact_type_average_mapping_complete": (
@@ -2997,6 +3026,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_FIB19_MaleCNS_maximum_population_ratio_difference",
                     "T5_MaleCNS_Tm9_fraction_outside_FIB19_range",
                     "T5_FIB19_to_MaleCNS_weight_transfer_authorized",
+                    "T5_moving_bar_condition_count",
+                    "T5_moving_bar_gain_free_DSI_available",
+                    "T5_moving_bar_gain_fit_score_samples_disjoint",
+                    "T5_moving_bar_validation_available",
+                    "T5_moving_bar_transfer_authorized",
                     "T5_four_Tm_exact_type_average_mapping_complete",
                     "T5_all_five_source_mapping_complete",
                     "T5_CT1_mapping_Lo1_column_count_by_body",
