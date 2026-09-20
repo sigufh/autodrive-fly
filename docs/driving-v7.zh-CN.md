@@ -1886,6 +1886,13 @@ saline/OA × 40/160 ms × 2.25/4.5/9° 共 168 个位置级拟合复算；例如
 CT1 在四源权重归一化前被删除，外部 `axolotl.tmodel` 源码不在固定仓库 tree，且已保存代码把
 `Tm2_nd_norm` 错写成 `Tm1_nd / max(Tm2_pd)`。这些事实均原样保留，不静默修复，也不授权
 Tm→T5 模型迁移。证据见 `artifacts/v7-kohn-portes-tm-to-t5-model-audit.json`。
+作者 Figure 6 的 FIB19 权重也与当前 MaleCNS 逐 T5 target 入边单独比较。FIB19 表含均衡的
+20 个 T5a–d（每亚型 5 个）；MaleCNS 有 6,719 个 T5a–d，其中 6,718 个有至少一条四源入边。
+两者的四源总体排序同为 Tm9>Tm2>Tm1>Tm4，但比例不等：FIB19 的 Tm9 平均占比约 44.18%，
+MaleCNS 约 31.50%，最大总体比例差为 12.68 个百分点；73.1% 的 MaleCNS T5 target 的 Tm9
+比例落在该 20-cell FIB19 样本范围之外，且 subtype/side 分布继续保留。没有 FIB19 cell 到
+MaleCNS body 的身份 crosswalk，CT1 也未进入作者四源归一化，所以总体 rank 一致不授权旧权重
+直接迁移。证据见 `artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

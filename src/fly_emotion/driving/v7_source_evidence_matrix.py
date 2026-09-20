@@ -65,6 +65,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     kohn_portes_peak_latency = evidence["kohn_portes_t5_peak_latency"]
     kohn_portes_frequency = evidence["kohn_portes_t5_frequency_tuning"]
     kohn_portes_model = evidence["kohn_portes_tm_to_t5_model"]
+    cross_connectome_weights = evidence["fib19_malecns_t5_weight_transfer"]
     t5_mapping_scope = evidence["t5_source_mapping_scope"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
@@ -552,6 +553,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Kohn_Portes_Tm_to_T5_model_transfer_to_v7_authorized": (
                 source in kohn_portes_kernels["source_results"]
                 and kohn_portes_model["authorize_Tm_to_T5_model_transfer_to_v7"]
+            ),
+            "FIB19_and_MaleCNS_population_source_rank_matches": (
+                source in kohn_portes_kernels["source_results"]
+                and cross_connectome_weights["gates"][
+                    "population_source_rank_order_matches"
+                ]
+            ),
+            "FIB19_to_MaleCNS_weight_transfer_authorized": (
+                source in kohn_portes_kernels["source_results"]
+                and cross_connectome_weights[
+                    "authorize_FIB19_weight_transfer_to_MaleCNS"
+                ]
             ),
             "T5_source_exact_type_average_mapping_scope_complete": (
                 source in t5_mapping_scope["source_mappings"]

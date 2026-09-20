@@ -116,6 +116,7 @@ evidence:
   kohn_portes_t5_peak_latency_audit: artifacts/v7-kohn-portes-t5-peak-latency-audit.json
   kohn_portes_t5_frequency_tuning_audit: artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json
   kohn_portes_tm_to_t5_model_audit: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json
+  fib19_malecns_t5_weight_transfer_audit: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
   kohn_portes_identity_history_audit: artifacts/v7-kohn-portes-identity-history-audit.json
   ct1_extreme_compartmentalization_audit: artifacts/v7-ct1-extreme-compartmentalization-audit.json
   ct1_pure_data_index_audit: artifacts/v7-ct1-pure-data-index-audit.json

@@ -75,6 +75,10 @@ export type V7Status = {
     T5_Tm_to_T5_independent_validation_available?: boolean;
     T5_Figure6_Tm2_ND_source_reference_correct?: boolean;
     T5_Tm_to_T5_model_transfer_authorized?: boolean;
+    T5_FIB19_MaleCNS_population_source_rank_matches?: boolean;
+    T5_FIB19_MaleCNS_maximum_population_ratio_difference?: number;
+    T5_MaleCNS_Tm9_fraction_outside_FIB19_range?: number;
+    T5_FIB19_to_MaleCNS_weight_transfer_authorized?: boolean;
     T5_four_Tm_exact_type_average_mapping_complete: boolean;
     T5_all_five_source_mapping_complete: boolean;
     T5_CT1_mapping_Lo1_column_count_by_body: { "10009": number; "10157": number };

@@ -100,6 +100,9 @@ from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
 from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
+from .driving.v7_fib19_malecns_t5_weight_transfer_audit import (
+    evaluate_v7_fib19_malecns_t5_weight_transfer_audit,
+)
 from .driving.v7_fig1_source_temporal_readiness_audit import (
     evaluate_v7_fig1_source_temporal_readiness_audit,
 )
@@ -630,6 +633,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-kohn-portes-t5-source-kernels")
     subparsers.add_parser("v7-audit-kohn-portes-t5-state-unit-mapping")
     subparsers.add_parser("v7-audit-kohn-portes-tm-to-t5-model")
+    subparsers.add_parser("v7-audit-fib19-malecns-t5-weight-transfer")
     subparsers.add_parser("v7-audit-kohn-portes-identity-history")
     subparsers.add_parser("v7-audit-kohn-portes-external-indexes")
     subparsers.add_parser("v7-audit-kohn-portes-stimulus-provenance")
@@ -1932,6 +1936,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-tm-to-t5-model":
         report = evaluate_v7_kohn_portes_tm_to_t5_model_audit(root)
         target = root / "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-fib19-malecns-t5-weight-transfer":
+        report = evaluate_v7_fib19_malecns_t5_weight_transfer_audit(root)
+        target = root / "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

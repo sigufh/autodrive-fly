@@ -1,0 +1,34 @@
+version: 1
+name: v7-fib19-to-malecns-t5-input-weight-transfer-audit
+observed_on: "2026-09-20"
+author_model_evidence: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json
+malecns_target_input_evidence: artifacts/v7-visual-target-input-audit.json
+source_mapping_evidence: artifacts/v7-t5-source-mapping-scope-audit.json
+fib19_source_table:
+  path: data/raw/kohn-portes-flexible-filtering/history/model-inputs/T5_input_Lo1.csv
+  bytes: 21298
+  sha256: 49b23a4eae5420053d639d540ec4a378686d3dfe03bc7f704b53be5d4d60b152
+  git_blob: 4eb6823a03b85abffb6ba5787c3186c2dd502de6
+expected:
+  sources: [Tm1, Tm2, Tm4, Tm9]
+  target_subtypes: [T5a, T5b, T5c, T5d]
+  fib19_T5_count: 20
+  fib19_subtype_counts: {T5a: 5, T5b: 5, T5c: 5, T5d: 5}
+  malecns_T5_count: 6719
+  malecns_four_source_nonzero_count: 6718
+  malecns_zero_four_source_body_ids: [152777]
+  fib19_population_mean_four_source_ratios: {Tm1: 0.18451380926341848, Tm2: 0.24380432573259442, Tm4: 0.12985746612847737, Tm9: 0.44182439887550967}
+  malecns_population_mean_four_source_ratios: {Tm1: 0.21616754576185498, Tm2: 0.29815275012662096, Tm4: 0.17065412768783442, Tm9: 0.31502557642368867}
+  mean_absolute_population_ratio_difference: 0.06339941122591028
+  maximum_population_ratio_difference: 0.126798822451821
+  malecns_fraction_outside_fib19_range: {Tm1: 0.10866329264662102, Tm2: 0.23459362905626674, Tm4: 0.138285203929741, Tm9: 0.7307234295921405}
+boundary:
+  compare_four_source_ratios_only: true
+  CT1_exclusion_does_not_authorize_five_source_mapping: true
+  FIB19_named_cells_are_not_MaleCNS_body_ids: true
+  population_rank_agreement_is_not_weight_equality: true
+  no_post_hoc_transfer_tolerance: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

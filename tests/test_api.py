@@ -101,6 +101,13 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_Tm_to_T5_independent_validation_available"] is False
     assert boundaries["T5_Figure6_Tm2_ND_source_reference_correct"] is False
     assert boundaries["T5_Tm_to_T5_model_transfer_authorized"] is False
+    assert boundaries["T5_FIB19_MaleCNS_population_source_rank_matches"] is True
+    assert boundaries["T5_FIB19_MaleCNS_maximum_population_ratio_difference"] > 0.12
+    assert abs(
+        boundaries["T5_MaleCNS_Tm9_fraction_outside_FIB19_range"]
+        - 0.7307234295921405
+    ) < 1e-15
+    assert boundaries["T5_FIB19_to_MaleCNS_weight_transfer_authorized"] is False
     assert boundaries["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert boundaries["T5_all_five_source_mapping_complete"] is False
     assert boundaries["T5_CT1_mapping_Lo1_column_count_by_body"] == {

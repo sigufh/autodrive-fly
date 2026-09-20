@@ -208,6 +208,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_Tm_to_T5_model_transfer_authorized": visual[
                     "Kohn_Portes_Tm_to_T5_model_transfer_authorized"
                 ],
+                "T5_FIB19_MaleCNS_population_source_rank_matches": visual[
+                    "FIB19_MaleCNS_T5_population_source_rank_matches"
+                ],
+                "T5_FIB19_MaleCNS_maximum_population_ratio_difference": visual[
+                    "FIB19_MaleCNS_T5_maximum_population_ratio_difference"
+                ],
+                "T5_MaleCNS_Tm9_fraction_outside_FIB19_range": visual[
+                    "MaleCNS_T5_Tm9_fraction_outside_FIB19_range"
+                ],
+                "T5_FIB19_to_MaleCNS_weight_transfer_authorized": visual[
+                    "FIB19_to_MaleCNS_T5_weight_transfer_authorized"
+                ],
                 "T5_four_Tm_exact_type_average_mapping_complete": visual[
                     "T5_four_Tm_exact_type_average_mapping_complete"
                 ],

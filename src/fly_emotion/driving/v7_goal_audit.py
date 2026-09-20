@@ -168,6 +168,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "kohn_portes_t5_frequency_tuning_audit"
     ]
     kohn_portes_tm_to_t5_model_audit = reports["kohn_portes_tm_to_t5_model_audit"]
+    fib19_malecns_t5_weight_transfer_audit = reports[
+        "fib19_malecns_t5_weight_transfer_audit"
+    ]
     kohn_portes_identity_history_audit = reports[
         "kohn_portes_identity_history_audit"
     ]
@@ -395,6 +398,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["kohn_portes_t5_peak_latency_audit"],
                 config["evidence"]["kohn_portes_t5_frequency_tuning_audit"],
                 config["evidence"]["kohn_portes_tm_to_t5_model_audit"],
+                config["evidence"]["fib19_malecns_t5_weight_transfer_audit"],
                 config["evidence"]["kohn_portes_identity_history_audit"],
                 config["evidence"]["ct1_extreme_compartmentalization_audit"],
                 config["evidence"]["ct1_pure_data_index_audit"],
@@ -1373,6 +1377,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_Tm_to_T5_model_transfer_authorized": (  # noqa: E501
                     kohn_portes_tm_to_t5_model_audit[
                         "authorize_Tm_to_T5_model_transfer_to_v7"
+                    ]
+                ),
+                "FIB19_MaleCNS_T5_population_source_rank_matches": (  # noqa: E501
+                    fib19_malecns_t5_weight_transfer_audit["gates"][
+                        "population_source_rank_order_matches"
+                    ]
+                ),
+                "FIB19_MaleCNS_T5_maximum_population_ratio_difference": (  # noqa: E501
+                    fib19_malecns_t5_weight_transfer_audit["comparison"][
+                        "maximum_population_ratio_difference"
+                    ]
+                ),
+                "MaleCNS_T5_Tm9_fraction_outside_FIB19_range": (  # noqa: E501
+                    fib19_malecns_t5_weight_transfer_audit["MaleCNS"][
+                        "fraction_outside_FIB19_per_source_range"
+                    ]["Tm9"]
+                ),
+                "FIB19_to_MaleCNS_T5_weight_transfer_authorized": (  # noqa: E501
+                    fib19_malecns_t5_weight_transfer_audit[
+                        "authorize_FIB19_weight_transfer_to_MaleCNS"
                     ]
                 ),
                 "T5_four_Tm_exact_type_average_mapping_complete": (
@@ -2969,6 +2993,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Tm_to_T5_independent_validation_available",
                     "T5_Figure6_Tm2_ND_source_reference_correct",
                     "T5_Tm_to_T5_model_transfer_authorized",
+                    "T5_FIB19_MaleCNS_population_source_rank_matches",
+                    "T5_FIB19_MaleCNS_maximum_population_ratio_difference",
+                    "T5_MaleCNS_Tm9_fraction_outside_FIB19_range",
+                    "T5_FIB19_to_MaleCNS_weight_transfer_authorized",
                     "T5_four_Tm_exact_type_average_mapping_complete",
                     "T5_all_five_source_mapping_complete",
                     "T5_CT1_mapping_Lo1_column_count_by_body",

@@ -1,0 +1,227 @@
+{
+  "protocol": {
+    "name": "v7-fib19-to-malecns-t5-input-weight-transfer-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-fib19-malecns-t5-weight-transfer-audit.yaml": "2d5e39d61933063e3e9e8ac433ebbd0a04fa41c98df4ca9acd46133b1423cab0",
+      "src/fly_emotion/driving/v7_fib19_malecns_t5_weight_transfer_audit.py": "3196f480c7aefc818bc07974b79c90f3f50b0f1fa323fa6d3fed9962d6231512",
+      "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
+      "artifacts/v7-visual-target-input-audit.json": "6b37ff019b74d1fa7c6a5a7317959f89541a34196e9d4334f1e256192f5d749e",
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854",
+      "data/raw/kohn-portes-flexible-filtering/history/model-inputs/T5_input_Lo1.csv": "49b23a4eae5420053d639d540ec4a378686d3dfe03bc7f704b53be5d4d60b152"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "FIB19": {
+    "T5_count": 20,
+    "subtype_counts": {
+      "T5a": 5,
+      "T5b": 5,
+      "T5c": 5,
+      "T5d": 5
+    },
+    "population_mean_four_source_ratios": {
+      "Tm1": 0.1845138092634185,
+      "Tm2": 0.24380432573259442,
+      "Tm4": 0.12985746612847737,
+      "Tm9": 0.4418243988755098
+    },
+    "four_source_ratio_quantiles_min_q25_median_q75_max": {
+      "Tm1": [
+        0.12352941176470589,
+        0.16404341926729987,
+        0.17484946734599352,
+        0.19863886113886114,
+        0.29545454545454547
+      ],
+      "Tm2": [
+        0.15966386554621848,
+        0.22549593607934976,
+        0.24201544723932783,
+        0.2541591320072333,
+        0.3333333333333333
+      ],
+      "Tm4": [
+        0.030534351145038167,
+        0.08926715176715178,
+        0.12031012465795074,
+        0.16016242317822652,
+        0.22340425531914893
+      ],
+      "Tm9": [
+        0.3617021276595745,
+        0.4252798507462687,
+        0.4413274033527198,
+        0.4632142857142857,
+        0.5294117647058824
+      ]
+    },
+    "mean_ratios_by_subtype": {
+      "T5a": {
+        "Tm1": 0.17478244428105474,
+        "Tm2": 0.2621398590409128,
+        "Tm4": 0.1242433683249744,
+        "Tm9": 0.43883432835305813
+      },
+      "T5b": {
+        "Tm1": 0.19012394556608228,
+        "Tm2": 0.26067869163926594,
+        "Tm4": 0.10148906545559647,
+        "Tm9": 0.4477082973390553
+      },
+      "T5c": {
+        "Tm1": 0.17128313756861205,
+        "Tm2": 0.24510131877003677,
+        "Tm4": 0.1431780673604084,
+        "Tm9": 0.4404374763009427
+      },
+      "T5d": {
+        "Tm1": 0.2018657096379249,
+        "Tm2": 0.20729743348016189,
+        "Tm4": 0.15051936337293031,
+        "Tm9": 0.44031749350898286
+      }
+    }
+  },
+  "MaleCNS": {
+    "T5_count": 6719,
+    "four_source_nonzero_count": 6718,
+    "zero_four_source_body_ids": [
+      152777
+    ],
+    "population_mean_four_source_ratios": {
+      "Tm1": 0.21616754576185293,
+      "Tm2": 0.2981527501266231,
+      "Tm4": 0.17065412768783386,
+      "Tm9": 0.3150255764236901
+    },
+    "four_source_ratio_quantiles_min_q25_median_q75_max": {
+      "Tm1": [
+        0.05,
+        0.1774193548387097,
+        0.21,
+        0.248,
+        0.5471698113207547
+      ],
+      "Tm2": [
+        0.07547169811320754,
+        0.2611464968152866,
+        0.29591836734693877,
+        0.3305084745762712,
+        0.5492957746478874
+      ],
+      "Tm4": [
+        0.0,
+        0.13725490196078433,
+        0.16831683168316833,
+        0.20192307692307693,
+        0.4027777777777778
+      ],
+      "Tm9": [
+        0.058823529411764705,
+        0.2692307692307692,
+        0.318326577880718,
+        0.36585365853658536,
+        0.5510204081632653
+      ]
+    },
+    "mean_ratios_by_subtype": {
+      "T5a": {
+        "Tm1": 0.22664196569864292,
+        "Tm2": 0.31096807447374997,
+        "Tm4": 0.1763354969252132,
+        "Tm9": 0.28605446290239395
+      },
+      "T5b": {
+        "Tm1": 0.20465924458034362,
+        "Tm2": 0.3163755154748463,
+        "Tm4": 0.16059193108742512,
+        "Tm9": 0.31837330885738485
+      },
+      "T5c": {
+        "Tm1": 0.21101666120077203,
+        "Tm2": 0.28586921215053146,
+        "Tm4": 0.1732537217638587,
+        "Tm9": 0.3298604048848378
+      },
+      "T5d": {
+        "Tm1": 0.2230671121917701,
+        "Tm2": 0.27874766269292106,
+        "Tm4": 0.17271415751325137,
+        "Tm9": 0.32547106760205746
+      }
+    },
+    "mean_ratios_by_side": {
+      "L": {
+        "Tm1": 0.2277982518579406,
+        "Tm2": 0.3067565622136914,
+        "Tm4": 0.17957424518676499,
+        "Tm9": 0.28587094074160296
+      },
+      "R": {
+        "Tm1": 0.20451604579312624,
+        "Tm2": 0.28953355577718215,
+        "Tm4": 0.1617180624222181,
+        "Tm9": 0.3442323360074735
+      }
+    },
+    "fraction_outside_FIB19_per_source_range": {
+      "Tm1": 0.10866329264662102,
+      "Tm2": 0.23459362905626674,
+      "Tm4": 0.138285203929741,
+      "Tm9": 0.7307234295921405
+    }
+  },
+  "comparison": {
+    "population_ratio_difference_MaleCNS_minus_FIB19": {
+      "Tm1": 0.03165373649843442,
+      "Tm2": 0.054348424394028705,
+      "Tm4": 0.04079666155935649,
+      "Tm9": -0.12679882245181967
+    },
+    "mean_absolute_population_ratio_difference": 0.06339941122590982,
+    "maximum_population_ratio_difference": 0.12679882245181967,
+    "FIB19_mean_rank_descending": [
+      "Tm9",
+      "Tm2",
+      "Tm1",
+      "Tm4"
+    ],
+    "MaleCNS_mean_rank_descending": [
+      "Tm9",
+      "Tm2",
+      "Tm1",
+      "Tm4"
+    ]
+  },
+  "gates": {
+    "FIB19_twenty_T5_four_source_ratios_verified": true,
+    "MaleCNS_T5_four_source_ratios_verified": true,
+    "population_source_rank_order_matches": true,
+    "population_four_source_ratios_exactly_match": false,
+    "every_MaleCNS_target_within_FIB19_per_source_ranges": false,
+    "FIB19_to_MaleCNS_target_identity_crosswalk_available": false,
+    "five_source_weight_mapping_complete": false
+  },
+  "authorize_FIB19_weight_transfer_to_MaleCNS": false,
+  "authorize_Tm_to_T5_model_transfer_to_v7": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "source_rank_matches_but_ratios_and_target_distributions_do_not_and_no_identity_crosswalk_exists",
+  "cross_check": {
+    "author_model_transfer_authorized": false
+  },
+  "boundary": {
+    "compare_four_source_ratios_only": true,
+    "CT1_exclusion_does_not_authorize_five_source_mapping": true,
+    "FIB19_named_cells_are_not_MaleCNS_body_ids": true,
+    "population_rank_agreement_is_not_weight_equality": true,
+    "no_post_hoc_transfer_tolerance": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

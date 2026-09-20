@@ -62,6 +62,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_Tm_to_T5_independent_validation_available",
         "T5_Figure6_Tm2_ND_source_reference_correct",
         "T5_Tm_to_T5_model_transfer_authorized",
+        "T5_FIB19_MaleCNS_population_source_rank_matches",
+        "T5_FIB19_MaleCNS_maximum_population_ratio_difference",
+        "T5_MaleCNS_Tm9_fraction_outside_FIB19_range",
+        "T5_FIB19_to_MaleCNS_weight_transfer_authorized",
         "T5_four_Tm_exact_type_average_mapping_complete",
         "T5_all_five_source_mapping_complete",
         "T5_CT1_mapping_Lo1_column_count_by_body",
@@ -665,6 +669,16 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     )
     assert visual["observations"]["Kohn_Portes_Figure6_Tm2_ND_source_reference_correct"] is False
     assert visual["observations"]["Kohn_Portes_Tm_to_T5_model_transfer_authorized"] is False
+    assert visual["observations"]["FIB19_MaleCNS_T5_population_source_rank_matches"] is True
+    assert np.isclose(
+        visual["observations"]["FIB19_MaleCNS_T5_maximum_population_ratio_difference"],
+        0.126798822451821,
+    )
+    assert np.isclose(
+        visual["observations"]["MaleCNS_T5_Tm9_fraction_outside_FIB19_range"],
+        0.7307234295921405,
+    )
+    assert visual["observations"]["FIB19_to_MaleCNS_T5_weight_transfer_authorized"] is False
     assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
     assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
     assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {

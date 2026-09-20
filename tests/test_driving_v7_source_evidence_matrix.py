@@ -266,6 +266,8 @@ def test_T5_voltage_derived_kernels_do_not_claim_absolute_gain_or_invariance() -
         assert components["Kohn_Portes_Tm_to_T5_author_model_reproduced"] is True
         assert components["Kohn_Portes_Tm_to_T5_independently_validated"] is False
         assert components["Kohn_Portes_Tm_to_T5_model_transfer_to_v7_authorized"] is False
+        assert components["FIB19_and_MaleCNS_population_source_rank_matches"] is True
+        assert components["FIB19_to_MaleCNS_weight_transfer_authorized"] is False
     assert (
         report["matrix"]["CT1"]["evidence_components"][
             "Kohn_Portes_voltage_derived_temporal_kernel_verified"

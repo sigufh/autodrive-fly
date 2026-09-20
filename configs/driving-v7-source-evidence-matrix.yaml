@@ -1,4 +1,4 @@
-version: 15
+version: 16
 name: v7-source-evidence-matrix
 observed_on: "2026-09-20"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -23,6 +23,7 @@ evidence:
   kohn_portes_t5_peak_latency: artifacts/v7-kohn-portes-t5-peak-latency-audit.json
   kohn_portes_t5_frequency_tuning: artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json
   kohn_portes_tm_to_t5_model: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json
+  fib19_malecns_t5_weight_transfer: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
   t5_source_mapping_scope: artifacts/v7-t5-source-mapping-scope-audit.json
   kohn_portes_identity_history: artifacts/v7-kohn-portes-identity-history-audit.json
   t5_recording_fields: artifacts/v7-t5-recording-field-audit.json
