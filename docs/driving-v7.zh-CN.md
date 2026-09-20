@@ -1850,6 +1850,12 @@ white-noise LN 核不能预测高对比 flash 的形状和增益。因此四类 
 kernel 存在性”已通过，但现有 transfer contract 中要求的可迁移 `membrane-like kernel`
 仍不通过；绝对增益、跨刺激不变性和 v7 状态映射也仍不通过。
 证据见 `artifacts/v7-kohn-portes-t5-source-kernel-audit.json`。
+四类电压派生核的映射范围也单独核验：Tm1/Tm2/Tm4/Tm9 都已有显式
+`exact_type_average` 声明、精确 MaleCNS 同名 body set、soma side 和完整柱坐标，允许把各自
+群体平均核仅广播到同型 body；这不等于逐记录 body identity。CT1 有左右两个 body
+`10009/10157`，其逐突触 Lo1 union 分别覆盖 868/802 列，但缺允许单位 source kernel，且仍缺
+7/65 个对应 optic-lobe 官方列，因此不能折叠成单一 body 坐标或补齐五源 mapping gate。证据见
+`artifacts/v7-t5-source-mapping-scope-audit.json`。
 
 因此不能拼接这些局部时间量来宣称 v7 已有生物校准。七项 transfer 字段中，离线物理
 帧间隔和解算步长现已明确；四类 Tm 有电压派生核，但缺可迁移增益与跨刺激验证，此外仍缺

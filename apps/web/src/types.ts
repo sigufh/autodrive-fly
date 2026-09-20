@@ -53,6 +53,9 @@ export type V7Status = {
     T5_raw_kernel_gain_transferable: boolean;
     T5_kernel_stimulus_invariant: boolean;
     T5_source_kernel_transfer_authorized: boolean;
+    T5_four_Tm_exact_type_average_mapping_complete: boolean;
+    T5_all_five_source_mapping_complete: boolean;
+    T5_CT1_mapping_Lo1_column_count_by_body: { "10009": number; "10157": number };
     Braun_calcium_fly_counts?: { Tm2: number; Tm9: number; CT1: number };
     Braun_calcium_condition_grids_complete?: boolean;
     Braun_calcium_allowed_voltage_sources?: string[];

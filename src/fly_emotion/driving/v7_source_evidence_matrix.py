@@ -61,6 +61,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
         ]
     )
     kohn_portes_kernels = evidence["kohn_portes_t5_source_kernels"]
+    t5_mapping_scope = evidence["t5_source_mapping_scope"]
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
     t5_direction_provenance = evidence["t5_direction_code_provenance"]
@@ -486,6 +487,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in kohn_portes_kernels["source_results"]
                 and kohn_portes_kernels["gates"][
                     "stimulus_invariant_source_kernel_verified"
+                ]
+            ),
+            "T5_source_exact_type_average_mapping_scope_complete": (
+                source in t5_mapping_scope["source_mappings"]
+                and t5_mapping_scope["source_mappings"][source][
+                    "mapping_scope_complete"
                 ]
             ),
             "Figure4_relative_direction_code_to_PD_ND_verified": (

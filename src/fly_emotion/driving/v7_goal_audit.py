@@ -193,6 +193,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_lamina_split = reports["t5_lamina_split"]
     t5_lamina_scalar_precheck = reports["t5_lamina_scalar_precheck"]
     t5_source_axis_audit = reports["t5_source_axis_audit"]
+    t5_source_mapping_scope_audit = reports["t5_source_mapping_scope_audit"]
     t5_source_pair_precheck = reports["t5_source_pair_precheck"]
     t5_typed_spatial_pair_precheck = reports["t5_typed_spatial_pair_precheck"]
     t5_native_direction_waveform_audit = reports[
@@ -309,6 +310,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_lamina_split"],
                 config["evidence"]["t5_lamina_scalar_precheck"],
                 config["evidence"]["t5_source_axis_audit"],
+                config["evidence"]["t5_source_mapping_scope_audit"],
                 config["evidence"]["t5_source_pair_precheck"],
                 config["evidence"]["t5_typed_spatial_pair_precheck"],
                 config["evidence"]["t5_native_direction_waveform_audit"],
@@ -1190,6 +1192,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_T5_source_kernel_transfer_authorized": (
                     kohn_portes_t5_source_kernel_audit[
                         "source_kernel_transfer_authorized"
+                    ]
+                ),
+                "T5_four_Tm_exact_type_average_mapping_complete": (
+                    t5_source_mapping_scope_audit[
+                        "Tm1_Tm2_Tm4_Tm9_exact_type_average_mapping_complete"
+                    ]
+                ),
+                "T5_all_five_source_mapping_complete": (
+                    t5_source_mapping_scope_audit[
+                        "T5_all_five_source_mapping_complete"
+                    ]
+                ),
+                "T5_CT1_mapping_Lo1_column_count_by_body": (
+                    t5_source_mapping_scope_audit["CT1_mapping_boundary"][
+                        "Lo1_column_count_by_body"
                     ]
                 ),
                 "Kohn_Portes_T5_missing_voltage_sources": (
@@ -2749,6 +2766,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_raw_kernel_gain_transferable",
                     "T5_kernel_stimulus_invariant",
                     "T5_source_kernel_transfer_authorized",
+                    "T5_four_Tm_exact_type_average_mapping_complete",
+                    "T5_all_five_source_mapping_complete",
+                    "T5_CT1_mapping_Lo1_column_count_by_body",
                     "Braun_calcium_fly_counts",
                     "Braun_calcium_condition_grids_complete",
                     "Braun_calcium_allowed_voltage_sources",

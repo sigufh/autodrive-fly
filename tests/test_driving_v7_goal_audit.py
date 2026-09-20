@@ -38,6 +38,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_raw_kernel_gain_transferable",
         "T5_kernel_stimulus_invariant",
         "T5_source_kernel_transfer_authorized",
+        "T5_four_Tm_exact_type_average_mapping_complete",
+        "T5_all_five_source_mapping_complete",
+        "T5_CT1_mapping_Lo1_column_count_by_body",
         "Braun_calcium_fly_counts",
         "Braun_calcium_condition_grids_complete",
         "Braun_calcium_allowed_voltage_sources",
@@ -557,6 +560,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Kohn_Portes_T5_raw_kernel_gain_transferable"] is False
     assert visual["observations"]["Kohn_Portes_T5_kernel_stimulus_invariant"] is False
     assert visual["observations"]["Kohn_Portes_T5_source_kernel_transfer_authorized"] is False
+    assert visual["observations"]["T5_four_Tm_exact_type_average_mapping_complete"] is True
+    assert visual["observations"]["T5_all_five_source_mapping_complete"] is False
+    assert visual["observations"]["T5_CT1_mapping_Lo1_column_count_by_body"] == {
+        "10009": 868,
+        "10157": 802,
+    }
     assert visual["observations"]["Kohn_Portes_T5_missing_voltage_sources"] == ["CT1"]
     assert visual["observations"]["Kohn_Portes_T5_identity_retained"] is False
     assert visual["observations"]["Kohn_Portes_T5_recording_ID_field_retained"] is True

@@ -349,6 +349,9 @@ from .driving.v7_t5_physical_time_transfer_audit import (
 )
 from .driving.v7_t5_recording_field_audit import evaluate_v7_t5_recording_field_audit
 from .driving.v7_t5_source_axis_audit import evaluate_v7_t5_source_axis_audit
+from .driving.v7_t5_source_mapping_scope_audit import (
+    evaluate_v7_t5_source_mapping_scope_audit,
+)
 from .driving.v7_t5_source_pair_precheck import evaluate_v7_t5_source_pair_precheck
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
@@ -627,6 +630,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-lamina-split")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
+    subparsers.add_parser("v7-audit-t5-source-mapping-scope")
     subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
     subparsers.add_parser("v7-evaluate-t5-typed-spatial-pair-precheck")
     subparsers.add_parser("v7-audit-t5-native-direction-waveforms")
@@ -1333,6 +1337,14 @@ def main() -> None:
         report = evaluate_v7_t5_source_axis_audit(root)
         target = root / "artifacts/v7-t5-source-axis-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t5-source-mapping-scope":
+        report = evaluate_v7_t5_source_mapping_scope_audit(root)
+        target = root / "artifacts/v7-t5-source-mapping-scope-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-evaluate-t5-source-pair-precheck":

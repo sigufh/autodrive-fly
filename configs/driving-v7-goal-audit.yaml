@@ -131,6 +131,7 @@ evidence:
   t5_lamina_split: artifacts/v7-t5-lamina-split.json
   t5_lamina_scalar_precheck: artifacts/v7-t5-lamina-scalar-precheck.json
   t5_source_axis_audit: artifacts/v7-t5-source-axis-audit.json
+  t5_source_mapping_scope_audit: artifacts/v7-t5-source-mapping-scope-audit.json
   t5_source_pair_precheck: artifacts/v7-t5-source-pair-precheck.json
   t5_typed_spatial_pair_precheck: artifacts/v7-t5-typed-spatial-pair-precheck.json
   t5_native_direction_waveform_audit: artifacts/v7-t5-native-direction-waveform-audit.json

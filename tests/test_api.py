@@ -66,6 +66,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_raw_kernel_gain_transferable"] is False
     assert boundaries["T5_kernel_stimulus_invariant"] is False
     assert boundaries["T5_source_kernel_transfer_authorized"] is False
+    assert boundaries["T5_four_Tm_exact_type_average_mapping_complete"] is True
+    assert boundaries["T5_all_five_source_mapping_complete"] is False
+    assert boundaries["T5_CT1_mapping_Lo1_column_count_by_body"] == {
+        "10009": 868,
+        "10157": 802,
+    }
     assert boundaries["Braun_calcium_fly_counts"] == {
         "Tm2": 9,
         "Tm9": 11,

@@ -142,6 +142,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_source_kernel_transfer_authorized": visual[
                     "Kohn_Portes_T5_source_kernel_transfer_authorized"
                 ],
+                "T5_four_Tm_exact_type_average_mapping_complete": visual[
+                    "T5_four_Tm_exact_type_average_mapping_complete"
+                ],
+                "T5_all_five_source_mapping_complete": visual[
+                    "T5_all_five_source_mapping_complete"
+                ],
+                "T5_CT1_mapping_Lo1_column_count_by_body": visual[
+                    "T5_CT1_mapping_Lo1_column_count_by_body"
+                ],
                 "Braun_calcium_fly_counts": visual["Braun_T5_payload_fly_counts"],
                 "Braun_calcium_condition_grids_complete": visual[
                     "Braun_T5_all_condition_grids_complete"

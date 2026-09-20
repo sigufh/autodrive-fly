@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "e3868b0802e1235a6c6e0181db353af766888411a51c4af3067b185e65123362",
-      "src/fly_emotion/driving/v7_goal_audit.py": "c6e77bc19b280d2650c31a44a13915602563e5945b6b69fc9583f40fb5686417",
+      "configs/driving-v7-goal-audit.yaml": "8737d675b18fa74349af20b56eeb7c906648e7de62e2c703deb31642ce6c9355",
+      "src/fly_emotion/driving/v7_goal_audit.py": "57aecdcebee7a190ad02b6b5ef8a8e3ccd5987ee6cb8a9d552bdc8a6a68ba33e",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -114,7 +114,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "e3239dc1dc0dbb9e2c99cb60e9621f1104c730abe2c4c8e9e76d75188c6ff4e2",
       "artifacts/v7-pirogova-source-calcium-audit.json": "989afb728ad4309684e5a7c4b79614a2eafc8581d8cb912a4ce403db70e6efae",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9b3a67d651346596282568f276801505a8d4ae45d67481cb6771ad0ea7184389",
-      "artifacts/v7-source-evidence-matrix.json": "0e87d4831b3d233204d9ebfe58e5b2520a8b82b2d275a5cc4fd0926fb2d07438",
+      "artifacts/v7-source-evidence-matrix.json": "2582cce76e784b6a7f06ddb0ddaa54a3dab9ce2a52afdd262536a5eeb2cdc0c4",
       "artifacts/v7-source-type-average-mapping-contract.json": "70181fab62da662c0505e3c3c80236e6e423ad2f6743418fd2fc0b8a74b9ec05",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "9690c7ae8e67735b3863ae20f2c639b44429427285c0677c8d242adc657b6e04",
       "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6",
@@ -126,6 +126,7 @@
       "artifacts/v7-t5-lamina-split.json": "a8b9d97e56965ad8c5c236b6789d822b305c2a58f732284cfd029d78e162bfa5",
       "artifacts/v7-t5-lamina-scalar-precheck.json": "7335166942c334e5c99a153374de007fb08f9ebc38e12f9fb0619f6d75bc4fd6",
       "artifacts/v7-t5-source-axis-audit.json": "5d005802745abb94614a211fb70dd654c00fd7a91701f9bc29e4ea5b5dde77ed",
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854",
       "artifacts/v7-t5-source-pair-precheck.json": "6acf0f677104433974f0270325805f5c1217937038f8a7db016a048044c0fadf",
       "artifacts/v7-t5-typed-spatial-pair-precheck.json": "74138354afc9bb69b7b0eaf83e2c0c39b3492677ecd611305b741807cd73f81c",
       "artifacts/v7-t5-native-direction-waveform-audit.json": "73f8b8d14830e9a416d36c7c43011d588680e809752b3657f89c10c1e0e6e0a2",
@@ -172,9 +173,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "6a0737cf0a542cc4332c4d48d101e9ebc9937dc5cda306f344f03677d60dd838",
-      "apps/web/src/components/DrivingPanel.tsx": "414f4bc045899c6d10c648840ffdf4b68dbdd8e0116c60062b9dd6b6083e0a1f",
-      "apps/web/src/types.ts": "d8a5147108a8ed69ac5d2b342f69d5b21aaa00ab7430605deb3986cd879efaf3",
+      "apps/api/src/fly_emotion_api/main.py": "6f8975f1a69f72d84b810f23561014a7d983777e52cd79924ea877c505efc001",
+      "apps/web/src/components/DrivingPanel.tsx": "ef400d92e195f07ff2ef30280e5c0f4bea3435d1a3bcf60864e6370893d4d2e3",
+      "apps/web/src/types.ts": "acea5ba1bbe9854f5b62a8ad778f208934b2bb4919601159eadcb01260e8f5a0",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -220,6 +221,7 @@
         "artifacts/v7-t5-lamina-split.json",
         "artifacts/v7-t5-lamina-scalar-precheck.json",
         "artifacts/v7-t5-source-axis-audit.json",
+        "artifacts/v7-t5-source-mapping-scope-audit.json",
         "artifacts/v7-t5-source-pair-precheck.json",
         "artifacts/v7-t5-typed-spatial-pair-precheck.json",
         "artifacts/v7-t5-native-direction-waveform-audit.json",
@@ -669,6 +671,12 @@
         "Kohn_Portes_T5_raw_kernel_gain_transferable": false,
         "Kohn_Portes_T5_kernel_stimulus_invariant": false,
         "Kohn_Portes_T5_source_kernel_transfer_authorized": false,
+        "T5_four_Tm_exact_type_average_mapping_complete": true,
+        "T5_all_five_source_mapping_complete": false,
+        "T5_CT1_mapping_Lo1_column_count_by_body": {
+          "10009": 868,
+          "10157": 802
+        },
         "Kohn_Portes_T5_missing_voltage_sources": [
           "CT1"
         ],
@@ -1697,6 +1705,9 @@
           "T5_raw_kernel_gain_transferable",
           "T5_kernel_stimulus_invariant",
           "T5_source_kernel_transfer_authorized",
+          "T5_four_Tm_exact_type_average_mapping_complete",
+          "T5_all_five_source_mapping_complete",
+          "T5_CT1_mapping_Lo1_column_count_by_body",
           "Braun_calcium_fly_counts",
           "Braun_calcium_condition_grids_complete",
           "Braun_calcium_allowed_voltage_sources",

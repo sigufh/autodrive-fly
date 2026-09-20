@@ -258,6 +258,20 @@ def test_T5_voltage_derived_kernels_do_not_claim_absolute_gain_or_invariance() -
     )
 
 
+def test_T5_mapping_scope_is_complete_for_four_Tm_sources_but_not_CT1() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in ("Tm1", "Tm2", "Tm4", "Tm9"):
+        assert report["matrix"][source]["evidence_components"][
+            "T5_source_exact_type_average_mapping_scope_complete"
+        ]
+    assert (
+        report["matrix"]["CT1"]["evidence_components"][
+            "T5_source_exact_type_average_mapping_scope_complete"
+        ]
+        is False
+    )
+
+
 def test_exact_type_average_mapping_is_explicit_without_body_assignment() -> None:
     report = json.loads(REPORT.read_text())
     for source in ("Mi1", "Tm3", "Mi4", "C3", "Tm1", "Tm2", "Tm4", "Tm9"):
