@@ -1860,6 +1860,17 @@ population trace 重缩放也不定义绝对增益。v7 状态仍是 `signed_tan
 状态公式，也没有可据此采用的 min–max、单位范数或 clipping 规则；这些规则未被人为补造，
 source kernel gain/dynamics transfer 继续不授权。证据见
 `artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json`。
+受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
+水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
+各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；
+typed LPLC1/LPLC2/LC4 tuning battery 另有 3 个条件、共 33 条 matched-control 刺激，包含
+模型图像中的 back-to-front/front-to-back、near/miss、径向 outward/inward、平移背景和三档
+looming 速度。这里的方向标签只描述生成数组，尤其 front/back 不是已校准的身体绝对方向。
+动态探针覆盖全部 20 条基础刺激时，外部 drive 落到非 R1–R6 节点为 0，与
+T4/T5/LPLC/LC 目标集合重叠为 0；对当前所有 `v7*.py` 的 AST 赋值审计也只发现
+`drive[...retina.node_indices]`。该静态审计不是形式化信息流证明，刺激覆盖完整也不等于
+神经响应门通过；T4/T5、LPLC/LC、vehicle 与下游门仍保持关闭。证据见
+`artifacts/v7-controlled-stimulus-input-boundary-audit.json`。
 四类电压派生核的映射范围也单独核验：Tm1/Tm2/Tm4/Tm9 都已有显式
 `exact_type_average` 声明、精确 MaleCNS 同名 body set、soma side 和完整柱坐标，允许把各自
 群体平均核仅广播到同型 body；这不等于逐记录 body identity。CT1 有左右两个 body

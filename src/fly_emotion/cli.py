@@ -70,6 +70,9 @@ from .driving.v7_conductance import evaluate_v7_published_conductance
 from .driving.v7_controlled_stimulus_angular_grid import (
     evaluate_v7_controlled_stimulus_angular_grid,
 )
+from .driving.v7_controlled_stimulus_input_boundary_audit import (
+    evaluate_v7_controlled_stimulus_input_boundary_audit,
+)
 from .driving.v7_coverage_response import evaluate_v7_coverage_response
 from .driving.v7_ct1_experimental_voltage_boundary_audit import (
     evaluate_v7_ct1_experimental_voltage_boundary_audit,
@@ -494,6 +497,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-timebase")
     subparsers.add_parser("v7-audit-stimulus-coordinates")
     subparsers.add_parser("v7-audit-controlled-stimulus-angular-grid")
+    subparsers.add_parser("v7-audit-controlled-stimulus-input-boundary")
     subparsers.add_parser("v7-audit-vertical-angular-coordinates")
     subparsers.add_parser("v7-validate-published-fig5")
     subparsers.add_parser("v7-build-ephys-interface")
@@ -2052,6 +2056,14 @@ def main() -> None:
     if args.command == "v7-audit-controlled-stimulus-angular-grid":
         report = evaluate_v7_controlled_stimulus_angular_grid(root)
         target = root / "artifacts/v7-controlled-stimulus-angular-grid.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-controlled-stimulus-input-boundary":
+        report = evaluate_v7_controlled_stimulus_input_boundary_audit(root)
+        target = root / "artifacts/v7-controlled-stimulus-input-boundary-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -80,6 +80,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "v7_offline_engineering_vertical_FOV_degrees",
         "v7_offline_engineering_angular_pixel_pitch_degrees",
         "v7_offline_engineering_grid_biologically_calibrated",
+        "v7_controlled_stimulus_and_R1_R6_input_boundary_complete",
+        "v7_controlled_base_stimulus_count",
+        "v7_controlled_stimuli_per_independent_split",
+        "v7_typed_LPLC_LC4_stimulus_count",
+        "v7_external_drive_non_R1_R6_node_count",
+        "v7_target_direct_external_drive_overlap",
         "v7_offline_frame_interval_milliseconds",
         "v7_offline_substep_interval_milliseconds",
         "v7_horizontal_fov_degrees",
@@ -344,6 +350,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         3.047647846440544,
     )
     assert visual["observations"]["v7_offline_engineering_grid_biologically_calibrated"] is False
+    assert (
+        visual["observations"][
+            "v7_controlled_stimulus_and_R1_R6_input_boundary_complete"
+        ]
+        is True
+    )
+    assert visual["observations"]["v7_controlled_base_stimulus_count"] == 20
+    assert visual["observations"]["v7_controlled_stimuli_per_independent_split"] == 172
+    assert visual["observations"]["v7_typed_LPLC_LC4_stimulus_count"] == 33
+    assert visual["observations"]["v7_external_drive_non_R1_R6_node_count"] == 0
+    assert visual["observations"]["v7_target_direct_external_drive_overlap"] == 0
     assert visual["observations"]["v7_offline_frame_interval_milliseconds"] == 10.0
     assert visual["observations"]["v7_offline_substep_interval_milliseconds"] == 2.5
     assert visual["observations"]["T5_physical_source_transfer_ready"] is False

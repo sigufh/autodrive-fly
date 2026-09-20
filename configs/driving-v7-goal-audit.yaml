@@ -147,6 +147,7 @@ evidence:
   t5_physical_time_transfer_audit: artifacts/v7-t5-physical-time-transfer-audit.json
   stimulus_coordinate_contract: artifacts/v7-stimulus-coordinate-contract.json
   controlled_stimulus_angular_grid: artifacts/v7-controlled-stimulus-angular-grid.json
+  controlled_stimulus_input_boundary: artifacts/v7-controlled-stimulus-input-boundary-audit.json
   vertical_angular_coordinate_audit: artifacts/v7-vertical-angular-coordinate-audit.json
   t4t5_source_dynamics_readiness: artifacts/v7-t4t5-source-dynamics-readiness.json
   source_dynamics_external_evidence_contract: artifacts/v7-source-dynamics-external-evidence-contract.json

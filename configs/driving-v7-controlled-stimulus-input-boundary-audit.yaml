@@ -1,0 +1,64 @@
+version: 1
+name: v7-controlled-stimulus-and-r1-r6-input-boundary-audit
+observed_on: "2026-09-20"
+v7_config: configs/driving-v7.yaml
+v7_implementation: src/fly_emotion/driving/v7.py
+controlled_vision_evidence: artifacts/v7-controlled-vision.json
+stage1_split_config: configs/driving-v7-stage1-split.yaml
+stage1_split_evidence: artifacts/v7-stage1-split.json
+stage1_split_implementation: src/fly_emotion/driving/v7_stage1_split.py
+stage1_input_evidence: artifacts/v7-stage1-input-audit.json
+typed_lplc_config: configs/driving-v7-lplc-typed-screen.yaml
+typed_lplc_evidence: artifacts/v7-lplc-typed-screen.json
+typed_lplc_implementation: src/fly_emotion/driving/v7_lplc_typed_screen.py
+expected:
+  base_stimulus_count: 20
+  split_names: [development, validation, ood, final]
+  stimuli_per_split: 172
+  split_family_counts: {uniform: 12, moving_edge: 64, looming: 32, static: 16, translation: 32, rotation: 16}
+  typed_lplc_condition_count: 3
+  typed_lplc_stimuli_per_condition: 11
+  required_base_conditions:
+    - [uniform, dark, none]
+    - [uniform, bright, none]
+    - [moving_edge, "on", left]
+    - [moving_edge, "on", right]
+    - [moving_edge, "on", up]
+    - [moving_edge, "on", down]
+    - [moving_edge, "off", left]
+    - [moving_edge, "off", right]
+    - [moving_edge, "off", up]
+    - [moving_edge, "off", down]
+    - [looming, "on", expansion]
+    - [looming, "off", expansion]
+    - [receding, "on", contraction]
+    - [receding, "off", contraction]
+    - [translation, mixed, left]
+    - [translation, mixed, right]
+    - [rotation, mixed, clockwise]
+    - [rotation, mixed, counterclockwise]
+  required_typed_lplc_stimuli:
+    - lplc1_near_back_to_front
+    - lplc1_near_front_to_back
+    - lplc1_matched_miss
+    - lplc1_rotating_background
+    - lplc2_outward
+    - lplc2_inward
+    - lplc2_motion_free
+    - lplc2_translation
+    - lc4_slow
+    - lc4_medium
+    - lc4_fast
+boundary:
+  stimulus_coverage_is_not_neural_response_validation: true
+  left_right_up_down_are_image_array_directions: true
+  front_to_back_and_back_to_front_are_model_image_trajectory_labels: true
+  rotation_labels_are_model_image_rotation_labels: true
+  no_absolute_screen_or_body_direction_claim: true
+  no_biological_angular_calibration_claim: true
+  static_AST_assignment_audit_is_not_a_formal_information_flow_proof: true
+  final_split_contents_are_not_disclosed: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_gates_unchanged: true

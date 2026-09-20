@@ -93,6 +93,12 @@ export type V7Status = {
     v7_offline_engineering_vertical_FOV_degrees: number;
     v7_offline_engineering_angular_pixel_pitch_degrees: number;
     v7_offline_engineering_grid_biologically_calibrated: boolean;
+    v7_controlled_stimulus_and_R1_R6_input_boundary_complete?: boolean;
+    v7_controlled_base_stimulus_count?: number;
+    v7_controlled_stimuli_per_independent_split?: number;
+    v7_typed_LPLC_LC4_stimulus_count?: number;
+    v7_external_drive_non_R1_R6_node_count?: number;
+    v7_target_direct_external_drive_overlap?: number;
     v7_offline_frame_interval_milliseconds: number;
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;

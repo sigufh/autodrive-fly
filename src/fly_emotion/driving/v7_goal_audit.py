@@ -221,6 +221,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t5_physical_time_transfer_audit = reports["t5_physical_time_transfer_audit"]
     stimulus_coordinate_contract = reports["stimulus_coordinate_contract"]
     controlled_stimulus_angular_grid = reports["controlled_stimulus_angular_grid"]
+    controlled_stimulus_input_boundary = reports[
+        "controlled_stimulus_input_boundary"
+    ]
     vertical_angular_coordinate_audit = reports["vertical_angular_coordinate_audit"]
     t4t5_source_dynamics_readiness = reports["t4t5_source_dynamics_readiness"]
     source_dynamics_external_evidence_contract = reports[
@@ -329,6 +332,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_physical_time_transfer_audit"],
                 config["evidence"]["stimulus_coordinate_contract"],
                 config["evidence"]["controlled_stimulus_angular_grid"],
+                config["evidence"]["controlled_stimulus_input_boundary"],
                 config["evidence"]["vertical_angular_coordinate_audit"],
                 config["evidence"]["t4t5_source_dynamics_readiness"],
                 config["evidence"]["source_dynamics_external_evidence_contract"],
@@ -672,6 +676,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "v7_offline_engineering_grid_biologically_calibrated": (
                     controlled_stimulus_angular_grid["gates"][
                         "biological_angular_calibration_complete"
+                    ]
+                ),
+                "v7_controlled_stimulus_and_R1_R6_input_boundary_complete": (
+                    controlled_stimulus_input_boundary[
+                        "stimulus_and_input_boundary_complete"
+                    ]
+                ),
+                "v7_controlled_base_stimulus_count": (
+                    controlled_stimulus_input_boundary["base_stimuli"][
+                        "stimulus_count"
+                    ]
+                ),
+                "v7_controlled_stimuli_per_independent_split": (
+                    controlled_stimulus_input_boundary["independent_splits"][
+                        "development"
+                    ]["stimulus_count"]
+                ),
+                "v7_typed_LPLC_LC4_stimulus_count": (
+                    controlled_stimulus_input_boundary["typed_mechanism_stimuli"][
+                        "stimulus_count"
+                    ]
+                ),
+                "v7_external_drive_non_R1_R6_node_count": (
+                    controlled_stimulus_input_boundary["input_boundary"][
+                        "dynamic_nonretinal_drive_node_count"
+                    ]
+                ),
+                "v7_target_direct_external_drive_overlap": (
+                    controlled_stimulus_input_boundary["input_boundary"][
+                        "target_direct_input_overlap"
                     ]
                 ),
                 "v7_offline_frame_interval_milliseconds": (
@@ -2857,6 +2891,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "v7_offline_engineering_vertical_FOV_degrees",
                     "v7_offline_engineering_angular_pixel_pitch_degrees",
                     "v7_offline_engineering_grid_biologically_calibrated",
+                    "v7_controlled_stimulus_and_R1_R6_input_boundary_complete",
+                    "v7_controlled_base_stimulus_count",
+                    "v7_controlled_stimuli_per_independent_split",
+                    "v7_typed_LPLC_LC4_stimulus_count",
+                    "v7_external_drive_non_R1_R6_node_count",
+                    "v7_target_direct_external_drive_overlap",
                     "v7_offline_frame_interval_milliseconds",
                     "v7_offline_substep_interval_milliseconds",
                     "v7_horizontal_fov_degrees",

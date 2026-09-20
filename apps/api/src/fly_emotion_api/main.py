@@ -258,6 +258,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "v7_offline_engineering_grid_biologically_calibrated": visual[
                     "v7_offline_engineering_grid_biologically_calibrated"
                 ],
+                "v7_controlled_stimulus_and_R1_R6_input_boundary_complete": visual[
+                    "v7_controlled_stimulus_and_R1_R6_input_boundary_complete"
+                ],
+                "v7_controlled_base_stimulus_count": visual[
+                    "v7_controlled_base_stimulus_count"
+                ],
+                "v7_controlled_stimuli_per_independent_split": visual[
+                    "v7_controlled_stimuli_per_independent_split"
+                ],
+                "v7_typed_LPLC_LC4_stimulus_count": visual[
+                    "v7_typed_LPLC_LC4_stimulus_count"
+                ],
+                "v7_external_drive_non_R1_R6_node_count": visual[
+                    "v7_external_drive_non_R1_R6_node_count"
+                ],
+                "v7_target_direct_external_drive_overlap": visual[
+                    "v7_target_direct_external_drive_overlap"
+                ],
                 "v7_offline_frame_interval_milliseconds": visual[
                     "v7_offline_frame_interval_milliseconds"
                 ],

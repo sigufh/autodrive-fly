@@ -132,6 +132,15 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["v7_offline_engineering_vertical_FOV_degrees"] == 70.09590046813251
     assert boundaries["v7_offline_engineering_angular_pixel_pitch_degrees"] == 3.047647846440544
     assert boundaries["v7_offline_engineering_grid_biologically_calibrated"] is False
+    assert (
+        boundaries["v7_controlled_stimulus_and_R1_R6_input_boundary_complete"]
+        is True
+    )
+    assert boundaries["v7_controlled_base_stimulus_count"] == 20
+    assert boundaries["v7_controlled_stimuli_per_independent_split"] == 172
+    assert boundaries["v7_typed_LPLC_LC4_stimulus_count"] == 33
+    assert boundaries["v7_external_drive_non_R1_R6_node_count"] == 0
+    assert boundaries["v7_target_direct_external_drive_overlap"] == 0
     assert boundaries["Gou_DANDI_asset_level_stable_participant_IDs_verified"] is True
     assert boundaries["Gou_DANDI_unique_subject_ID_count"] == 282
     assert boundaries["Gou_Dryad_distinct_fliesUsed_label_count"] == 66
