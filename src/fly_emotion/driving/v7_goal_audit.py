@@ -659,6 +659,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "absolute_source_gain_available"
                     ]
                 ),
+                "T5_transfer_synthesis_official_target_model_available": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "official_T5_target_model_parameters_available"
+                    ]
+                ),
+                "T5_transfer_synthesis_target_to_source_mapping_available": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "official_target_model_to_T5_source_mapping_available"
+                    ]
+                ),
+                "T5_transfer_synthesis_Figure6_axolotl_source_available": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "external_Figure6_axolotl_tmodel_source_available"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3094,6 +3109,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_transfer_synthesis_mapping_source_count",
                     "T5_transfer_synthesis_positive_shape_evidence_count",
                     "T5_transfer_synthesis_absolute_gain_available",
+                    "T5_transfer_synthesis_official_target_model_available",
+                    "T5_transfer_synthesis_target_to_source_mapping_available",
+                    "T5_transfer_synthesis_Figure6_axolotl_source_available",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

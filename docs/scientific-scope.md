@@ -295,9 +295,13 @@ collapsing all optical signals into electrophysiology. Gruntman et al. (2021,
 doi:10.1016/j.cub.2021.09.072) publicly describe CC-BY Figshare datasets with
 T4/T5 single-bar responses (6.32 GB), minimal-motion responses (4.31 GB), a
 3.63-MB unified-model package and 17-KB support functions. In this environment,
-the article APIs returned HTTP 403 on 2026-09-15, so file manifests, hashes and
-array axes were not verified and no large dataset was downloaded. This is a
-dated access observation, not a claim that the public data are unavailable.
+the article APIs returned HTTP 403 on 2026-09-15, so the large raw datasets were
+not downloaded. This is a dated access observation, not a claim that the public
+data are unavailable. A later bounded retrieval through Figshare's widget public
+endpoint verified the 3.63-MB model archive and its 17-KB support archive. They
+contain a MATLAB target-level `t5_simple_wrap` model and fitted T4/T5 tables, but
+not the separate Python `axolotl.tmodel` imported by the Kohn--Portes Figure 6
+notebooks and not a Tm1/Tm2/Tm4/Tm9/CT1-to-MaleCNS source mapping.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

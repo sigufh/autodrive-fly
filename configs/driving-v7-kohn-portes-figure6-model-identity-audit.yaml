@@ -1,0 +1,55 @@
+version: 1
+name: v7-kohn-portes-figure6-model-identity-audit
+observed_on: "2026-09-20"
+unified_model_evidence: artifacts/v7-unified-model-package-audit.json
+official_metadata:
+  model_article:
+    path: data/raw/kohn-portes-unified-model/widget-16663486.json
+    bytes: 3688
+    sha256: 4ded479ecae6bc83d15775873d950da84c85c06b67570dd77ee928d1f4282410
+  model_files:
+    path: data/raw/kohn-portes-unified-model/widget-16663486-files.json
+    bytes: 689
+    sha256: 4ee04681f3905d53d72474dc4d48bfbd5db6a8c781408f6cb167667a310414e6
+  supporting_article:
+    path: data/raw/kohn-portes-unified-model/widget-16669378.json
+    bytes: 2375
+    sha256: 6a62a301dd8e68bfd02727a7652a26b04d1d07735b4e5e15cf548bd18ff42686
+  supporting_files:
+    path: data/raw/kohn-portes-unified-model/widget-16669378-files.json
+    bytes: 695
+    sha256: e5fa568bd6ea6420bffde01bcbefa50621efe8717741aede1287623e2536aeb2
+packages:
+  model:
+    path: data/raw/t4-unified-model/modelFigure.zip
+    file_id: 31067761
+    bytes: 3630019
+    md5: 14ba0fa761a513d55cacc41610881e80
+    sha256: 684d2fde778ddef5256f280775064f7c68c1224014a30ba2a01fe7485d72dd10
+  supporting:
+    path: data/raw/t4-unified-model/supportingFunctions.zip
+    file_id: 30862813
+    bytes: 17374
+    md5: 3d899bec066f152062015d159f46bc6e
+    sha256: e945434ea5e9fe527d380385ab9a3f83d3f73b39dec22647040491a904537aa8
+figure6_notebooks:
+  - path: data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6a-Model1LN-checkpoint.ipynb
+    sha256: 652bc33a678b9e4592afc6506fec53c18c5b1642f39274f60bbc717b065e7841
+  - path: data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6b-Model2Flashes-checkpoint.ipynb
+    sha256: bea260dfe7cde9cf5e9ce07581e3237112c01225284349e5b7dc3136b50ac707
+expected:
+  model_article_id: 16663486
+  supporting_article_id: 16669378
+  model_member_paths: [modelFigure/optTables.mat, modelFigure/README.txt, modelFigure/modelFigureCode.m]
+  supporting_member_paths: [supportingFunctions/t4_simple_wrap.m, supportingFunctions/t5_simple_wrap.m, supportingFunctions/extract_params2.m]
+  T5_source_types: [Tm1, Tm2, Tm4, Tm9, CT1]
+  axolotl_import: from axolotl.tmodel import models, stimuli
+  axolotl_local_path: /mnt/engram/notebooks/jportes/LabCode/axolotl/axolotl/tmodel
+boundary:
+  widget_metadata_is_not_payload_content: true
+  MATLAB_target_model_is_not_Python_axolotl_source_model: true
+  target_components_are_not_MaleCNS_source_types: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  all_existing_transfer_and_downstream_gates_unchanged: true

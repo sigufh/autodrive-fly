@@ -1735,8 +1735,9 @@ Mi4 与 C3，Mi4 也不能替代 C3；因此两套模型都不能补齐当前 so
 `artifacts/v7-public-t4-model-source-coverage-audit.json`。
 
 对已校验的官方 unified-model 两个 ZIP 又做了全成员文本扫描，而不再只检查
-`t4_simple_wrap.m`：共 9 个非 macOS 元数据的 `.m/.txt/.md` 成员，`Mi1`、`Tm3`、
-`Mi4`、`C3` 四个精确 source-type token 均为零命中；`E2/I2` 只出现在 T4/T5 wrapper
+`t4_simple_wrap.m`：共 9 个非 macOS 元数据的 `.m/.py/.txt/.md` 成员，T4 的
+`Mi1/Tm3/Mi4/C3`、T5 的 `Tm1/Tm2/Tm4/Tm9/CT1` 以及 `axolotl.tmodel` 均为零命中；
+`E2/I2` 只出现在 T4/T5 wrapper
 的抽象四分量说明和方程变量中。因此“缺少 E/I/E2/I2→MaleCNS source 映射”现在是
 包级结论，不是单文件搜索遗漏；target-level 参数仍不得冒充 source-specific kernel。
 更新证据见 `artifacts/v7-unified-model-package-audit.json`。
@@ -1745,10 +1746,11 @@ Mi4 与 C3，Mi4 也不能替代 C3；因此两套模型都不能补齐当前 so
 成对 moving-bar direction code，且原生时间向量以 2.5 或 5 ms 采样并严格递增；因此
 它们可用于同细胞条件重放。但文件没有可验证的 `direction code→PD/ND` 映射字段，也没有
 能连接到 MaleCNS body ID 的稳定生物身份；拟合与预测还复用同一批 17 个细胞，没有独立
-细胞 holdout 或 untouched final。另一个 3.63 MB published unified-model 包虽低于 10 MB
-审计上限，但本环境下官方 article API、landing page 和 ndownloader 均返回 HTTP 403，
-DataCite 只给出包级描述、没有 file ID，因此其 `optTables.mat` 仍未做文件级验证。现阶段
-只能保留 native-time read-only 重放接口，不能据此拟合 T5、校准方向标签或推进视觉门。
+细胞 holdout 或 untouched final。3.63 MB published unified-model 包后来已通过官方 widget
+的 `/public/articles/...` 路径取得 file manifest，且归档、成员哈希和 `optTables.mat` 均完成
+文件级验证；但它是另一篇 Gruntman 论文的 MATLAB target-level receptive-field 模型，并不
+补齐这些记录的 stable identity、independent holdout 或 source-to-v7 映射。现阶段只能保留
+native-time read-only 重放接口，不能据此拟合 T5、校准方向标签或推进视觉门。
 进一步比对固定仓库代码和论文结构化全文：`direction_mb` 的 0/1 只控制内部位置数组按
 正序或反序播放；论文则说明测量结果已按每个细胞先验确定的 PD–ND 轴对齐。现已通过
 官方 Figure 4 article `11328086` 的文件清单，对 1.39 GB ZIP 只做 567,316-byte 中央目录
@@ -1901,6 +1903,16 @@ moving-bar 目标数据上再拟合公共 gain，再在同一窗口报告 PD/ND 
 独立测试。目标 stable cell identity、绝对物理方向和 source absolute gain 也仍缺失，故不授权
 moving-bar generalization transfer。证据见
 `artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json`。
+另外，官方 Figshare widget 的实际只读数据路径已从前端 bundle 还原为
+`widgets.figshare.com/public/articles/...`；article `16663486` 的唯一文件 manifest 与恢复的
+`modelFigure.zip` 完全匹配（3,630,019 bytes，MD5
+`14ba0fa761a513d55cacc41610881e80`）。关联 collection 又确认并恢复了
+`supportingFunctions.zip`（article `16669378`，file `30862813`，17,374 bytes，MD5
+`3d899bec066f152062015d159f46bc6e`）。两个 ZIP 的全部成员与 `optTables.mat` 四张
+1000×131 表均已校验。包中的 T5 实现是 MATLAB `t5_simple_wrap`，使用抽象
+E/I/E2/I2 目标受体场分量；全包没有 Tm1/Tm2/Tm4/Tm9/CT1 source-type 映射，也没有
+Kohn–Portes Figure 6 导入的 Python `axolotl.tmodel`。因此这次取证把“包未取得”收窄为
+“包已验证但模型身份不匹配”，不能将目标级拟合参数冒充 source-specific kernel。
 为避免改写既有 physical-transfer 合同，新增只读 synthesis audit 汇总后续 T5 证据：四个
 Tm source 已有电压派生 kernel shape 与 exact-type-average mapping，并各自有 saline 相对峰时、
 频率 shape 和 static→moving-bar 候选；但绝对 source gain、mV/filter-output→v7 state 映射、

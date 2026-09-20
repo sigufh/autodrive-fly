@@ -1,0 +1,150 @@
+{
+  "protocol": {
+    "name": "v7-kohn-portes-figure6-model-identity-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-kohn-portes-figure6-model-identity-audit.yaml": "bd9b32455f9e220ebd05de1c714bfa8169cc4a1cfd1904410fbfde684354ccff",
+      "src/fly_emotion/driving/v7_kohn_portes_figure6_model_identity_audit.py": "09b8f1718fdc64ea6a8442445f87d213b3e7da613f4b6895714eff1d5be81f13",
+      "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
+      "data/raw/kohn-portes-unified-model/widget-16663486.json": "4ded479ecae6bc83d15775873d950da84c85c06b67570dd77ee928d1f4282410",
+      "data/raw/kohn-portes-unified-model/widget-16663486-files.json": "4ee04681f3905d53d72474dc4d48bfbd5db6a8c781408f6cb167667a310414e6",
+      "data/raw/kohn-portes-unified-model/widget-16669378.json": "6a62a301dd8e68bfd02727a7652a26b04d1d07735b4e5e15cf548bd18ff42686",
+      "data/raw/kohn-portes-unified-model/widget-16669378-files.json": "e5fa568bd6ea6420bffde01bcbefa50621efe8717741aede1287623e2536aeb2",
+      "data/raw/t4-unified-model/modelFigure.zip": "684d2fde778ddef5256f280775064f7c68c1224014a30ba2a01fe7485d72dd10",
+      "data/raw/t4-unified-model/supportingFunctions.zip": "e945434ea5e9fe527d380385ab9a3f83d3f73b39dec22647040491a904537aa8",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6a-Model1LN-checkpoint.ipynb": "652bc33a678b9e4592afc6506fec53c18c5b1642f39274f60bbc717b065e7841",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6b-Model2Flashes-checkpoint.ipynb": "bea260dfe7cde9cf5e9ce07581e3237112c01225284349e5b7dc3136b50ac707"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "official_manifests": {
+    "model": {
+      "id": 31067761,
+      "name": "modelFigure.zip",
+      "extension": "zip",
+      "thumb": null,
+      "size": 3630019,
+      "fileMeta": {
+        "MIMEType": "application/zip"
+      },
+      "status": "available",
+      "downloadUrl": "https://ndownloader.figstatic.com/files/31067761",
+      "uploadUrl": "",
+      "description": "",
+      "title": "",
+      "isPrivate": false,
+      "md5": "14ba0fa761a513d55cacc41610881e80",
+      "previewState": "preview_available",
+      "previewMeta": {
+        "version": "1.0.0",
+        "key": "31067761/structure.json",
+        "baseUrl": "https://ndownloader.figstatic.com/files/31067761/preview"
+      },
+      "viewerType": "archive",
+      "createdAt": "2021-10-12T18:55:07",
+      "virusScanInfo": {
+        "message": "No virus found",
+        "virus_found": false,
+        "scan_done": true,
+        "error": false
+      }
+    },
+    "supporting": {
+      "id": 30862813,
+      "name": "supportingFunctions.zip",
+      "extension": "zip",
+      "thumb": null,
+      "size": 17374,
+      "fileMeta": {
+        "MIMEType": "application/zip"
+      },
+      "status": "available",
+      "downloadUrl": "https://ndownloader.figstatic.com/files/30862813",
+      "uploadUrl": "",
+      "description": "",
+      "title": "",
+      "isPrivate": false,
+      "md5": "3d899bec066f152062015d159f46bc6e",
+      "previewState": "preview_available",
+      "previewMeta": {
+        "version": "1.0.0",
+        "baseUrl": "https://ndownloader.figstatic.com/files/30862813/preview",
+        "key": "30862813/structure.json"
+      },
+      "viewerType": "archive",
+      "createdAt": "2021-09-23T11:21:08",
+      "virusScanInfo": {
+        "message": "No virus found",
+        "virus_found": false,
+        "scan_done": true,
+        "error": false
+      }
+    }
+  },
+  "package_inventory": {
+    "model_members": [
+      "modelFigure/",
+      "modelFigure/optTables.mat",
+      "modelFigure/README.txt",
+      "modelFigure/modelFigureCode.m"
+    ],
+    "supporting_members": [
+      "supportingFunctions/",
+      "supportingFunctions/plotBoxandJitterDots.m",
+      "supportingFunctions/padRespVecGen.m",
+      "supportingFunctions/extract_params2.m",
+      "supportingFunctions/t5_simple_wrap.m",
+      "supportingFunctions/t4_simple_wrap.m",
+      "supportingFunctions/generatePositionCell.m",
+      "supportingFunctions/extrapolateShiftedVec.m"
+    ]
+  },
+  "model_identity": {
+    "official_model_language": "MATLAB",
+    "official_model_entrypoint": "t5_simple_wrap",
+    "official_model_components": [
+      "E",
+      "I",
+      "E2",
+      "I2"
+    ],
+    "official_model_source_type_mentions": {
+      "Tm1": false,
+      "Tm2": false,
+      "Tm4": false,
+      "Tm9": false,
+      "CT1": false
+    },
+    "Figure6_model_language": "Python",
+    "Figure6_import": "from axolotl.tmodel import models, stimuli",
+    "Figure6_notebook_local_package_path": "/mnt/engram/notebooks/jportes/LabCode/axolotl/axolotl/tmodel",
+    "same_model_implementation": false
+  },
+  "gates": {
+    "official_widget_manifests_match_recovered_packages": true,
+    "official_package_files_verified": true,
+    "official_MATLAB_T5_target_model_verified": true,
+    "official_MATLAB_model_has_T5_source_type_mapping": false,
+    "Figure6_axolotl_import_verified": true,
+    "Figure6_axolotl_local_path_verified": true,
+    "Figure6_axolotl_source_recovered": false
+  },
+  "official_T5_target_model_parameters_available": true,
+  "T5_source_mapping_available": false,
+  "Figure6_model_reproducible_from_recovered_packages": false,
+  "authorize_Tm_to_T5_model_transfer_to_v7": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "verified_MATLAB_target_model_is_not_external_Python_axolotl_source_model",
+  "boundary": {
+    "widget_metadata_is_not_payload_content": true,
+    "MATLAB_target_model_is_not_Python_axolotl_source_model": true,
+    "target_components_are_not_MaleCNS_source_types": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "all_existing_transfer_and_downstream_gates_unchanged": true
+  }
+}

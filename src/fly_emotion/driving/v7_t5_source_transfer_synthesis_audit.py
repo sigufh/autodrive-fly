@@ -32,6 +32,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
 
     source_order = config["expected"]["source_order"]
     mapping = evidence["source_mapping"]
+    model_identity = evidence["figure6_model_identity"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -91,6 +92,15 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "cross_stimulus_moving_bar_shape_candidate_available": evidence[
             "moving_bar_generalization"
         ]["cross_stimulus_relative_shape_candidate_available"],
+        "official_T5_target_model_parameters_available": model_identity[
+            "official_T5_target_model_parameters_available"
+        ],
+        "official_target_model_to_T5_source_mapping_available": model_identity[
+            "T5_source_mapping_available"
+        ],
+        "external_Figure6_axolotl_tmodel_source_available": model_identity[
+            "gates"
+        ]["Figure6_axolotl_source_recovered"],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],

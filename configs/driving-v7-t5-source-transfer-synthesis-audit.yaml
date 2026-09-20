@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-t5-source-transfer-evidence-synthesis-audit
 observed_on: "2026-09-20"
 evidence:
@@ -8,6 +8,7 @@ evidence:
   peak_latency: artifacts/v7-kohn-portes-t5-peak-latency-audit.json
   frequency_tuning: artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json
   author_model: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json
+  figure6_model_identity: artifacts/v7-kohn-portes-figure6-model-identity-audit.json
   connectome_weights: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
   moving_bar_generalization: artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json
   source_mapping: artifacts/v7-t5-source-mapping-scope-audit.json
@@ -34,6 +35,7 @@ boundary:
   moving_bar_gain_fit_is_not_independent_validation: true
   FIB19_weights_are_not_MaleCNS_weights: true
   CT1_is_not_imputed: true
+  target_level_model_is_not_source_level_model: true
   no_parameter_fit: true
   no_target_activity_injection: true
   no_runtime_change: true

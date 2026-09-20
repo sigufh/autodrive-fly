@@ -29,6 +29,9 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["saline_relative_Tm9_delay_candidate_available"] is True
     assert gates["relative_low_frequency_Tm9_shape_evidence_available"] is True
     assert gates["cross_stimulus_moving_bar_shape_candidate_available"] is True
+    assert gates["official_T5_target_model_parameters_available"] is True
+    assert gates["official_target_model_to_T5_source_mapping_available"] is False
+    assert gates["external_Figure6_axolotl_tmodel_source_available"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False
