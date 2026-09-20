@@ -94,6 +94,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified",
         "Gou_Dryad_experimental_membrane_voltage",
         "v7_offline_time_coordinate_contract_complete",
+        "T5_transfer_synthesis_kernel_shape_source_count",
+        "T5_transfer_synthesis_mapping_source_count",
+        "T5_transfer_synthesis_positive_shape_evidence_count",
+        "T5_transfer_synthesis_absolute_gain_available",
+        "T5_transfer_synthesis_CT1_complete",
+        "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
         "v7_offline_two_dimensional_angular_calibration_complete",
         "v7_vertical_camera_ray_angles_declared",
@@ -390,6 +396,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["v7_offline_frame_interval_milliseconds"] == 10.0
     assert visual["observations"]["v7_offline_substep_interval_milliseconds"] == 2.5
     assert visual["observations"]["T5_physical_source_transfer_ready"] is False
+    assert visual["observations"]["T5_transfer_synthesis_kernel_shape_source_count"] == 4
+    assert visual["observations"]["T5_transfer_synthesis_mapping_source_count"] == 4
+    assert visual["observations"]["T5_transfer_synthesis_positive_shape_evidence_count"] == 4
+    assert visual["observations"]["T5_transfer_synthesis_absolute_gain_available"] is False
+    assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
+    assert visual["observations"]["T5_transfer_synthesis_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_passing_gates"] == [
         "T4_crossfit_structure_axis",

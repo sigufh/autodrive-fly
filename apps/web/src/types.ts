@@ -107,6 +107,12 @@ export type V7Status = {
     Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified: boolean;
     Gou_Dryad_experimental_membrane_voltage: boolean;
     v7_offline_time_coordinate_contract_complete: boolean;
+    T5_transfer_synthesis_kernel_shape_source_count?: number;
+    T5_transfer_synthesis_mapping_source_count?: number;
+    T5_transfer_synthesis_positive_shape_evidence_count?: number;
+    T5_transfer_synthesis_absolute_gain_available?: boolean;
+    T5_transfer_synthesis_CT1_complete?: boolean;
+    T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;
     v7_offline_two_dimensional_angular_calibration_complete: boolean;
     v7_vertical_camera_ray_angles_declared: boolean;

@@ -1,0 +1,130 @@
+{
+  "protocol": {
+    "name": "v7-t5-source-transfer-evidence-synthesis-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "40db42d9c3e76b6dee8ceb9a919119ddc8e96a6c16b9264b450498a37558e625",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "5a3c9c67ff9f25c3c0e72e55ea79923bfa7c5c3d736fb0efe49a626fd3a6e69d",
+      "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
+      "artifacts/v7-kohn-portes-t5-peak-latency-audit.json": "b5c77680612a1c08ed5b0d734147186a98ed292c80bedb9f1cb560dcf37dff71",
+      "artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json": "42e5397d76942e292c163cb1c48284538f26491efcf231914e64038057e79e21",
+      "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
+      "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
+      "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
+    },
+    "parameter_fit": false,
+    "functional_stimulus_evaluated": false,
+    "runtime_modified": false
+  },
+  "original_physical_transfer_contract": {
+    "required_fields": {
+      "v7_physical_frame_interval": true,
+      "v7_physical_solver_interval": true,
+      "v7_camera_angular_calibration": false,
+      "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels": false,
+      "CT1_membrane_like_kernel": false,
+      "stable_source_or_target_cell_to_MaleCNS_mapping": false,
+      "independent_dynamic_validation_cohort": false
+    },
+    "missing_fields": [
+      "v7_camera_angular_calibration",
+      "Tm1_Tm2_Tm4_Tm9_membrane_like_kernels",
+      "CT1_membrane_like_kernel",
+      "stable_source_or_target_cell_to_MaleCNS_mapping",
+      "independent_dynamic_validation_cohort"
+    ],
+    "ready": false
+  },
+  "source_rows": {
+    "Tm1": {
+      "voltage_derived_temporal_kernel": true,
+      "exact_type_average_mapping": true,
+      "state_mapping_available": false,
+      "delay_transfer_authorized": false,
+      "frequency_transfer_authorized": false,
+      "Tm_to_T5_model_transfer_authorized": false,
+      "connectome_weight_transfer_authorized": false,
+      "moving_bar_generalization_transfer_authorized": false
+    },
+    "Tm2": {
+      "voltage_derived_temporal_kernel": true,
+      "exact_type_average_mapping": true,
+      "state_mapping_available": false,
+      "delay_transfer_authorized": false,
+      "frequency_transfer_authorized": false,
+      "Tm_to_T5_model_transfer_authorized": false,
+      "connectome_weight_transfer_authorized": false,
+      "moving_bar_generalization_transfer_authorized": false
+    },
+    "Tm4": {
+      "voltage_derived_temporal_kernel": true,
+      "exact_type_average_mapping": true,
+      "state_mapping_available": false,
+      "delay_transfer_authorized": false,
+      "frequency_transfer_authorized": false,
+      "Tm_to_T5_model_transfer_authorized": false,
+      "connectome_weight_transfer_authorized": false,
+      "moving_bar_generalization_transfer_authorized": false
+    },
+    "Tm9": {
+      "voltage_derived_temporal_kernel": true,
+      "exact_type_average_mapping": true,
+      "state_mapping_available": false,
+      "delay_transfer_authorized": false,
+      "frequency_transfer_authorized": false,
+      "Tm_to_T5_model_transfer_authorized": false,
+      "connectome_weight_transfer_authorized": false,
+      "moving_bar_generalization_transfer_authorized": false
+    },
+    "CT1": {
+      "voltage_derived_temporal_kernel": false,
+      "exact_type_average_mapping": false,
+      "state_mapping_available": false,
+      "delay_transfer_authorized": false,
+      "frequency_transfer_authorized": false,
+      "Tm_to_T5_model_transfer_authorized": false,
+      "connectome_weight_transfer_authorized": false,
+      "moving_bar_generalization_transfer_authorized": false
+    }
+  },
+  "incremental_evidence": {
+    "voltage_derived_kernel_source_count": 4,
+    "exact_type_average_mapping_source_count": 4,
+    "Figure5_training_fit_count": 168,
+    "moving_bar_condition_count": 24
+  },
+  "gates": {
+    "four_Tm_voltage_derived_kernel_shapes_available": true,
+    "four_Tm_exact_type_average_mapping_complete": true,
+    "saline_relative_Tm9_delay_candidate_available": true,
+    "relative_low_frequency_Tm9_shape_evidence_available": true,
+    "cross_stimulus_moving_bar_shape_candidate_available": true,
+    "absolute_source_gain_available": false,
+    "source_to_v7_state_mapping_available": false,
+    "state_invariant_source_timing_available": false,
+    "independent_moving_bar_validation_available": false,
+    "MaleCNS_connectome_weight_transfer_available": false,
+    "CT1_allowed_dynamics_and_mapping_complete": false,
+    "original_physical_transfer_gate_passed": false
+  },
+  "T5_source_transfer_ready": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "incremental_shape_evidence_does_not_supply_gain_state_CT1_mapping_or_independent_validation",
+  "boundary": {
+    "synthesis_does_not_modify_original_gate": true,
+    "source_shape_evidence_is_not_absolute_gain": true,
+    "type_average_mapping_is_not_recording_identity": true,
+    "moving_bar_gain_fit_is_not_independent_validation": true,
+    "FIB19_weights_are_not_MaleCNS_weights": true,
+    "CT1_is_not_imputed": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

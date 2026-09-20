@@ -1901,6 +1901,12 @@ moving-bar 目标数据上再拟合公共 gain，再在同一窗口报告 PD/ND 
 独立测试。目标 stable cell identity、绝对物理方向和 source absolute gain 也仍缺失，故不授权
 moving-bar generalization transfer。证据见
 `artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json`。
+为避免改写既有 physical-transfer 合同，新增只读 synthesis audit 汇总后续 T5 证据：四个
+Tm source 已有电压派生 kernel shape 与 exact-type-average mapping，并各自有 saline 相对峰时、
+频率 shape 和 static→moving-bar 候选；但绝对 source gain、mV/filter-output→v7 state 映射、
+跨状态固定时序、独立 moving-bar validation、FIB19→MaleCNS 权重迁移及 CT1 动态/映射仍未完成。
+原 `v7-t5-physical-time-transfer-audit.json` 的 7 个 required fields、5 个缺失项和 false gate
+保持不变。汇总证据见 `artifacts/v7-t5-source-transfer-synthesis-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

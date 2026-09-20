@@ -150,6 +150,7 @@ evidence:
   t5_ct1_axis_aware_antisymmetric_precheck: artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json
   t5_ct1_axis_sequence_identifiability: artifacts/v7-t5-ct1-axis-sequence-identifiability.json
   t5_physical_time_transfer_audit: artifacts/v7-t5-physical-time-transfer-audit.json
+  t5_source_transfer_synthesis_audit: artifacts/v7-t5-source-transfer-synthesis-audit.json
   stimulus_coordinate_contract: artifacts/v7-stimulus-coordinate-contract.json
   controlled_stimulus_angular_grid: artifacts/v7-controlled-stimulus-angular-grid.json
   controlled_stimulus_input_boundary: artifacts/v7-controlled-stimulus-input-boundary-audit.json

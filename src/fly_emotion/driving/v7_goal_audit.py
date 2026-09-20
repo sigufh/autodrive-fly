@@ -230,6 +230,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t5_ct1_axis_sequence_identifiability"
     ]
     t5_physical_time_transfer_audit = reports["t5_physical_time_transfer_audit"]
+    t5_source_transfer_synthesis_audit = reports[
+        "t5_source_transfer_synthesis_audit"
+    ]
     stimulus_coordinate_contract = reports["stimulus_coordinate_contract"]
     controlled_stimulus_angular_grid = reports["controlled_stimulus_angular_grid"]
     controlled_stimulus_input_boundary = reports[
@@ -341,6 +344,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_axis_aware_antisymmetric_precheck"],
                 config["evidence"]["t5_ct1_axis_sequence_identifiability"],
                 config["evidence"]["t5_physical_time_transfer_audit"],
+                config["evidence"]["t5_source_transfer_synthesis_audit"],
                 config["evidence"]["stimulus_coordinate_contract"],
                 config["evidence"]["controlled_stimulus_angular_grid"],
                 config["evidence"]["controlled_stimulus_input_boundary"],
@@ -631,6 +635,38 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "T5_physical_source_transfer_ready"
                     ]
                 ),
+                "T5_transfer_synthesis_kernel_shape_source_count": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "voltage_derived_kernel_source_count"
+                    ]
+                ),
+                "T5_transfer_synthesis_mapping_source_count": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "exact_type_average_mapping_source_count"
+                    ]
+                ),
+                "T5_transfer_synthesis_positive_shape_evidence_count": sum(
+                    bool(t5_source_transfer_synthesis_audit["gates"][name])
+                    for name in (
+                        "four_Tm_voltage_derived_kernel_shapes_available",
+                        "saline_relative_Tm9_delay_candidate_available",
+                        "relative_low_frequency_Tm9_shape_evidence_available",
+                        "cross_stimulus_moving_bar_shape_candidate_available",
+                    )
+                ),
+                "T5_transfer_synthesis_absolute_gain_available": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "absolute_source_gain_available"
+                    ]
+                ),
+                "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "CT1_allowed_dynamics_and_mapping_complete"
+                    ]
+                ),
+                "T5_transfer_synthesis_ready": t5_source_transfer_synthesis_audit[
+                    "T5_source_transfer_ready"
+                ],
                 "v7_offline_time_coordinate_contract_complete": (
                     stimulus_coordinate_contract[
                         "offline_time_coordinate_contract_complete"
@@ -3054,6 +3090,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified",
                     "Gou_Dryad_experimental_membrane_voltage",
                     "v7_offline_time_coordinate_contract_complete",
+                    "T5_transfer_synthesis_kernel_shape_source_count",
+                    "T5_transfer_synthesis_mapping_source_count",
+                    "T5_transfer_synthesis_positive_shape_evidence_count",
+                    "T5_transfer_synthesis_absolute_gain_available",
+                    "T5_transfer_synthesis_CT1_complete",
+                    "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",
                     "v7_offline_two_dimensional_angular_calibration_complete",
                     "v7_vertical_camera_ray_angles_declared",

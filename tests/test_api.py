@@ -186,6 +186,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Gou_Dryad_DANDI_identity_crosswalk_match_count"] == 0
     assert boundaries["Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified"] is False
     assert boundaries["v7_offline_time_coordinate_contract_complete"] is True
+    assert boundaries["T5_transfer_synthesis_kernel_shape_source_count"] == 4
+    assert boundaries["T5_transfer_synthesis_mapping_source_count"] == 4
+    assert boundaries["T5_transfer_synthesis_positive_shape_evidence_count"] == 4
+    assert boundaries["T5_transfer_synthesis_absolute_gain_available"] is False
+    assert boundaries["T5_transfer_synthesis_CT1_complete"] is False
+    assert boundaries["T5_transfer_synthesis_ready"] is False
     assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True
     assert boundaries["v7_offline_two_dimensional_angular_calibration_complete"] is False
     assert boundaries["v7_offline_frame_interval_milliseconds"] == 10.0

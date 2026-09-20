@@ -1,0 +1,40 @@
+version: 1
+name: v7-t5-source-transfer-evidence-synthesis-audit
+observed_on: "2026-09-20"
+evidence:
+  physical_transfer: artifacts/v7-t5-physical-time-transfer-audit.json
+  source_kernels: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+  state_units: artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json
+  peak_latency: artifacts/v7-kohn-portes-t5-peak-latency-audit.json
+  frequency_tuning: artifacts/v7-kohn-portes-t5-frequency-tuning-audit.json
+  author_model: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json
+  connectome_weights: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
+  moving_bar_generalization: artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json
+  source_mapping: artifacts/v7-t5-source-mapping-scope-audit.json
+expected:
+  source_order: [Tm1, Tm2, Tm4, Tm9, CT1]
+  original_required_fields:
+    - v7_physical_frame_interval
+    - v7_physical_solver_interval
+    - v7_camera_angular_calibration
+    - Tm1_Tm2_Tm4_Tm9_membrane_like_kernels
+    - CT1_membrane_like_kernel
+    - stable_source_or_target_cell_to_MaleCNS_mapping
+    - independent_dynamic_validation_cohort
+  original_missing_fields:
+    - v7_camera_angular_calibration
+    - Tm1_Tm2_Tm4_Tm9_membrane_like_kernels
+    - CT1_membrane_like_kernel
+    - stable_source_or_target_cell_to_MaleCNS_mapping
+    - independent_dynamic_validation_cohort
+boundary:
+  synthesis_does_not_modify_original_gate: true
+  source_shape_evidence_is_not_absolute_gain: true
+  type_average_mapping_is_not_recording_identity: true
+  moving_bar_gain_fit_is_not_independent_validation: true
+  FIB19_weights_are_not_MaleCNS_weights: true
+  CT1_is_not_imputed: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

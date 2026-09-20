@@ -302,6 +302,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "v7_offline_time_coordinate_contract_complete": visual[
                     "v7_offline_time_coordinate_contract_complete"
                 ],
+                "T5_transfer_synthesis_kernel_shape_source_count": visual[
+                    "T5_transfer_synthesis_kernel_shape_source_count"
+                ],
+                "T5_transfer_synthesis_mapping_source_count": visual[
+                    "T5_transfer_synthesis_mapping_source_count"
+                ],
+                "T5_transfer_synthesis_positive_shape_evidence_count": visual[
+                    "T5_transfer_synthesis_positive_shape_evidence_count"
+                ],
+                "T5_transfer_synthesis_absolute_gain_available": visual[
+                    "T5_transfer_synthesis_absolute_gain_available"
+                ],
+                "T5_transfer_synthesis_CT1_complete": visual[
+                    "T5_transfer_synthesis_CT1_complete"
+                ],
+                "T5_transfer_synthesis_ready": visual[
+                    "T5_transfer_synthesis_ready"
+                ],
                 "v7_offline_horizontal_coordinate_contract_complete": visual[
                     "v7_offline_horizontal_coordinate_contract_complete"
                 ],
