@@ -2046,6 +2046,18 @@ white-noise 帧；但 25 条 white-noise 和 26 条 drifting-grating 电压记�
 drifting-grating speed 仍只由记录内的 temporal/spatial-frequency 数组确定。证据见
 `artifacts/v7-kohn-portes-stimulus-provenance-audit.json`。
 
+T5 的方向码另做了跨来源边界核验。Gruntman Figure 4 的作者脚本确实逐细胞读取
+`direction_mb`，并明确把 `0` 作为 ND、`1` 作为 PD；这只证明相对每个细胞
+preferred/null axis 的标签。固定模型代码还把 `0` 追踪为原生感受野位置坐标递减、`1`
+追踪为递增；但该原生坐标没有绑定到统一的屏幕或身体绝对运动方向。Kohn–Portes 的 8 个
+drifting-grating pickle 共 26 条记录，`direction_mb` 为 0/26，所有字段中没有 direction-like
+字段，也没有嵌套协议元数据；8 个历史路径在各自出现的 10 个 commit 中都只有当前这一版
+blob。Motyxia2 的固定源码虽支持 degree-valued `dire_list` 且类默认值为 0°，但完整公开历史
+对 `direction_mb`、`driftinggrating_05hz`、`jko14` 和内部日志前缀均无命中，无法把默认值或
+Figure 4 的相对标签回填到 Kohn–Portes 记录。因此 0→ND / 1→PD 保留，记录级物理方向与
+跨数据集方向映射仍未授权。证据见
+`artifacts/v7-t5-direction-code-provenance-audit.json`。
+
 随后对 Motyxia2 的全部公开 Git refs 做了有界历史审计：固定 bundle 覆盖 22 个 branch、
 447 个可达 commit、280 个历史路径和 1,015 个唯一 blob。对 35 个 `JRK日期` recording
 token、两个 white-noise stimulus name、`driftinggrating_05hz` 与内部日志前缀同时扫描文本

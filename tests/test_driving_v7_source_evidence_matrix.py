@@ -222,6 +222,27 @@ def test_braun_calcium_keeps_fly_identity_without_crossing_the_voltage_boundary(
         )
 
 
+def test_T5_relative_direction_labels_do_not_supply_physical_record_direction() -> None:
+    report = json.loads(REPORT.read_text())
+    for source in report["family_summary"]["T5"]["sources"]:
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Figure4_relative_direction_code_to_PD_ND_verified"] is True
+        assert (
+            components["Figure4_direction_code_to_native_coordinate_motion_verified"]
+            is True
+        )
+        assert (
+            components["Figure4_direction_code_to_absolute_physical_motion_verified"]
+            is False
+        )
+        assert components["Kohn_Portes_record_level_direction_code_available"] is False
+        assert (
+            components["Kohn_Portes_record_level_physical_direction_available"]
+            is False
+        )
+        assert components["cross_dataset_direction_mapping_authorized"] is False
+
+
 def test_exact_type_average_mapping_is_explicit_without_body_assignment() -> None:
     report = json.loads(REPORT.read_text())
     for source in ("Mi1", "Tm3", "Mi4", "C3", "Tm1", "Tm2", "Tm4", "Tm9"):

@@ -331,6 +331,9 @@ from .driving.v7_t5_ct1_terminal_axis_audit import (
     evaluate_v7_t5_ct1_terminal_axis_audit,
 )
 from .driving.v7_t5_data_audit import evaluate_v7_t5_data_audit
+from .driving.v7_t5_direction_code_provenance_audit import (
+    evaluate_v7_t5_direction_code_provenance_audit,
+)
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_lamina_scalar_precheck import evaluate_v7_t5_lamina_scalar_precheck
 from .driving.v7_t5_lamina_split import evaluate_v7_t5_lamina_split
@@ -595,6 +598,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-kohn-portes-identity-history")
     subparsers.add_parser("v7-audit-kohn-portes-external-indexes")
     subparsers.add_parser("v7-audit-kohn-portes-stimulus-provenance")
+    subparsers.add_parser("v7-audit-t5-direction-code-provenance")
     subparsers.add_parser("v7-audit-motyxia2-public-history")
     subparsers.add_parser("v7-audit-ct1-extreme-compartmentalization")
     subparsers.add_parser("v7-audit-ct1-pure-data-index")
@@ -1868,6 +1872,14 @@ def main() -> None:
     if args.command == "v7-audit-kohn-portes-stimulus-provenance":
         report = evaluate_v7_kohn_portes_stimulus_provenance_audit(root)
         target = root / "artifacts/v7-kohn-portes-stimulus-provenance-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-direction-code-provenance":
+        report = evaluate_v7_t5_direction_code_provenance_audit(root)
+        target = root / "artifacts/v7-t5-direction-code-provenance-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

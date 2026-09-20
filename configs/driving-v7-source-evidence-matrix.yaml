@@ -1,4 +1,4 @@
-version: 8
+version: 9
 name: v7-source-evidence-matrix
 observed_on: "2026-09-20"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -20,6 +20,7 @@ evidence:
   kohn_portes_t5_ephys: artifacts/v7-kohn-portes-t5-ephys-audit.json
   kohn_portes_identity_history: artifacts/v7-kohn-portes-identity-history-audit.json
   t5_recording_fields: artifacts/v7-t5-recording-field-audit.json
+  t5_direction_code_provenance: artifacts/v7-t5-direction-code-provenance-audit.json
   ct1_extreme_compartmentalization: artifacts/v7-ct1-extreme-compartmentalization-audit.json
   ct1_pure_data_index: artifacts/v7-ct1-pure-data-index-audit.json
   ct1_experimental_voltage_boundary: artifacts/v7-ct1-experimental-voltage-boundary-audit.json

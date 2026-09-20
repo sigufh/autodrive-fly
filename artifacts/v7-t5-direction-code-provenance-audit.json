@@ -1,0 +1,329 @@
+{
+  "protocol": {
+    "name": "v7-t5-direction-code-provenance-audit",
+    "observed_on": "2026-09-20",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-direction-code-provenance-audit.yaml": "ee3276ca0afd8f348529d3761a7e8f151a40655223dc0fe9eb592205b43f5fc9",
+      "src/fly_emotion/driving/v7_t5_direction_code_provenance_audit.py": "2353747b466d520b6a40c9611a6dd53958b68819a71d9ea55d37db8537ae32c6",
+      "configs/driving-v7-t5-label-audit.yaml": "184f39ed93ca946a3d9827d79b8dfb918d89e96c2a3b450f14f39438c0686c7c",
+      "artifacts/v7-t5-label-audit.json": "6225d7374c67e6a34f778e55ae266641eda35ad0e30d3c6dcf0f8ef20cd85a7e",
+      "configs/driving-v7-t5-conductance-audit.yaml": "eb20efe0a233cef17031a9f62fe8d4f83dee83d59dcb2197120c789162ccafcf",
+      "artifacts/v7-t5-conductance-audit.json": "fdbb8c5dc3e40d93b34d3ee91e24cbf3841e06d7559f9cd6dcfacc479ad3e3ae",
+      "src/fly_emotion/driving/v7_t5_conductance_audit.py": "a97e58a612aab2e7eac9d13bef9a1bd8a3e35c1378cbe89167862f3bd37f956f",
+      "configs/driving-v7-kohn-portes-identity-history-audit.yaml": "33599926b06a51b5e455c1d4dccf03fb2575312c6f758ca1795a63d1160a1d07",
+      "configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml": "302e8cd1d2a3ed7fa63f82282198d270276f3fceef99800e40d8a56a717c0b02",
+      "artifacts/v7-motyxia2-public-history-audit.json": "c2376219010714d03b989c727d06062f19a77b6953ffabca9974a868f111e024",
+      "configs/driving-v7-motyxia2-public-history-audit.yaml": "9fe55ee3ce590278e9a2c62d80979d4a2c12e8870e4ad98fc600cf83faac81fe",
+      "data/raw/kohn-portes-flexible-filtering/history/historical-paths.tsv": "a2d5cc14869f3d5f825a3daae238b728db5254ef24bf50d32cbacf8fd036bf76",
+      "data/raw/kohn-portes-stimulus-provenance/motyxia2-b589a224.tar.gz": "567822dfaf832e68459f2662fff168145fa5382d1cb5275db7b3c2a235a3cda1",
+      "data/raw/kohn-portes-stimulus-provenance/motyxia2-all-refs.bundle": "cc72316c0608ff6bbb96f3c73330b2b41bd654ef83a23700e3a80d6870381fb8",
+      "data/raw/t5-figure4-source/organizingClusterData.m": "bdc6919b53b431fbffb41d49f14d64ebff3b0cb6ff05fa3fa496a80f16d3f05c",
+      "data/raw/t5-figure4-source/sourceDataPlottingFig4Script.m": "b922052214603dfa24f2435b2d595e592627f239a2873af736937cd5a26e7e93",
+      "data/raw/t5-conductance-model/optimize_model.m": "35744fb4c18499388576f1c5b99acb2e2577885aec334a6cf03d37b060b5c4a2",
+      "data/raw/t5-conductance-model/data_cell_1_all.mat": "0ff3d06d7c4186db0a053b294d5652b973f615368f1eeccb8b8ad9aa4cb387fb",
+      "data/raw/t5-conductance-model/data_cell_2_all.mat": "f9bbf7ca292d970d0d4b854832750855820093c68d5d5694fbcfa4a6aaa47767",
+      "data/raw/t5-conductance-model/data_cell_3_all.mat": "7cc7caece72ca9de8ba534fc81e2bf2545b3bfc751a355baee552c993f4f2a47",
+      "data/raw/t5-conductance-model/data_cell_4_all.mat": "10e372b2371d96d29243380e98256ce6a9d34b39d68e2aa1465a902843f86095",
+      "data/raw/t5-conductance-model/data_cell_5_all.mat": "e89474ac9b519068f575d80b8f59f1df42a5f788a3f3c9b7fd4e0ed7a4435aac",
+      "data/raw/t5-conductance-model/data_cell_6_all.mat": "6387a2ddcec94fc0b0dc6419722a9eaa89991704da4845ef623288dc8fa3beaf",
+      "data/raw/t5-conductance-model/data_cell_7_all.mat": "c27e3d99fc0b715b005b2ddce4a405e38f36b81f21222afbfcf2eda8235de8f1",
+      "data/raw/t5-conductance-model/data_cell_8_all.mat": "ad33f097c46b821eb46d2f59f5ad6e2fd7ff61b7d8f55d1da574a8252d0ffa3e",
+      "data/raw/t5-conductance-model/data_cell_9_all.mat": "c8f526270e0c941027255b0064898f108337487591a3d14930352eee1080ccb2",
+      "data/raw/t5-conductance-model/data_cell_10_all.mat": "f4f0386b782de0c0510229fe775a391bfbc0961b38958b6a68da2edbf0ffbb59",
+      "data/raw/t5-conductance-model/data_cell_11_all.mat": "07bcc7a3370f817d8be1fb3f9127c118608ba9d688bd8d6943b54390ccab35dc",
+      "data/raw/t5-conductance-model/data_cell_12_all.mat": "ec24f2841207eef04d80614e91791da52b8fe6699b990dd9f5bb8b28f1577314",
+      "data/raw/t5-conductance-model/data_cell_13_all.mat": "aefbab728ab065ce5d27f960dbedf5d6827109520e69c74bc4339f5b4f726fca",
+      "data/raw/t5-conductance-model/data_cell_14_all.mat": "327cd9cd51706781f8a5dbe507f3b17afbfe56896b4f54a2f129c88f94eb2e53",
+      "data/raw/t5-conductance-model/data_cell_15_all.mat": "69ef28202eef328b40686f02cdb7136e5d8ada0bceeb6c42ac9bfe199caac28a",
+      "data/raw/t5-conductance-model/data_cell_16_all.mat": "3243c7d43b8f0354a911c8359bfab514d3303cce4a18a8edf1d003fecdc51f42",
+      "data/raw/t5-conductance-model/data_cell_17_all.mat": "71032bc5ddc6f93d4bc80b6556d89e930de508635422be2b64880561334062c4",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm1_SA.pickle": "ed3b527a8ac83f48e5288754a52c5e0e7c21745448f2ba3460024ef50e7027a4",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm1_OA.pickle": "d0b08c64b52438633ae4c423881c7f052baf5dc6f0479b867a80c8aa5c74bfaa",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm2_SA.pickle": "10ebd074c60db0681a2814bd4a5d0d68e4000e30d4c1388e3a2a4a56e3d3e49d",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm2_OA.pickle": "77a7ca5d967823d4e33dc6a3b72a485d140f42af312788af9f6461a6630d8880",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm4_SA.pickle": "92bb9af12580b0eb05b777b9b52f6e5570043e58bc3a7d2cc75bc338a0bbb133",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm4_OA.pickle": "84561101d7d34c334db2f4595d14fe5a1858ecb0f5dde349851b78858ec1f665",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm9_SA.pickle": "6ec5db16490167f59a756d28bcd8ce17edbf4bd479a9f7d39adbb1eb3da671ec",
+      "data/raw/kohn-portes-flexible-filtering/history/dg_Tm9_OA.pickle": "2767d3d60a036ac120db7cd49a28000ab0cd06086d0a5690175b363ea3fff515"
+    },
+    "parameter_fit": false,
+    "runtime_modified": false
+  },
+  "figure4_moving_bar_direction_code": {
+    "dataset_scope": "Gruntman_et_al_Figure_4_T5_moving_bar",
+    "direction_field": "direction_mb",
+    "direction_codes_present": [
+      0,
+      1
+    ],
+    "cells_with_both_codes": 17,
+    "relative_PD_ND_mapping_verified": true,
+    "relative_mapping": {
+      "0": "ND",
+      "1": "PD"
+    },
+    "record_level_native_coordinate_motion_mapping_verified": true,
+    "native_coordinate_mapping": {
+      "0": "decreasing_receptive_field_position_coordinate",
+      "1": "increasing_receptive_field_position_coordinate"
+    },
+    "moving_bar_pair_count": 134,
+    "per_record_direction_code_counts": {
+      "1": {
+        "0": 9,
+        "1": 9
+      },
+      "2": {
+        "0": 12,
+        "1": 12
+      },
+      "3": {
+        "0": 12,
+        "1": 12
+      },
+      "4": {
+        "0": 3,
+        "1": 3
+      },
+      "5": {
+        "0": 9,
+        "1": 9
+      },
+      "6": {
+        "0": 9,
+        "1": 9
+      },
+      "7": {
+        "0": 9,
+        "1": 9
+      },
+      "8": {
+        "0": 9,
+        "1": 9
+      },
+      "9": {
+        "0": 7,
+        "1": 7
+      },
+      "10": {
+        "0": 8,
+        "1": 8
+      },
+      "11": {
+        "0": 3,
+        "1": 3
+      },
+      "12": {
+        "0": 8,
+        "1": 8
+      },
+      "13": {
+        "0": 8,
+        "1": 8
+      },
+      "14": {
+        "0": 8,
+        "1": 8
+      },
+      "15": {
+        "0": 6,
+        "1": 6
+      },
+      "16": {
+        "0": 8,
+        "1": 8
+      },
+      "17": {
+        "0": 6,
+        "1": 6
+      }
+    },
+    "absolute_screen_or_body_motion_mapping_verified": false,
+    "absolute_direction_phrase_hits_in_extracted_analysis_code": [],
+    "interpretation": "codes identify each cell's relative null/preferred response, not a shared physical screen direction"
+  },
+  "kohn_portes_drifting_grating_records": {
+    "dataset_scope": "Kohn_Portes_Tm1_Tm2_Tm4_Tm9_whole_cell_drifting_grating",
+    "record_count": 26,
+    "file_count": 8,
+    "all_fields": [
+      "bath_solution",
+      "cell_number",
+      "cell_type",
+      "dg_temporal_freq",
+      "ephys_path",
+      "ephys_trace",
+      "experimenter",
+      "fff_number",
+      "fff_on_duration",
+      "fly_sex",
+      "genotype_id",
+      "led_color",
+      "notes",
+      "photodiode_trace",
+      "psths",
+      "psths_std",
+      "quality",
+      "recording_date",
+      "recording_id",
+      "repeat_duration",
+      "sampling_rate",
+      "sbn_duration",
+      "spatialfrequency_array",
+      "stimulus_name",
+      "stimulus_path",
+      "stimulus_type",
+      "subrecording_number",
+      "temporalfrequency_array",
+      "timestamps",
+      "wn_bar_width",
+      "wn_end_time",
+      "wn_orientation",
+      "wn_start_time",
+      "wn_temporal_freq"
+    ],
+    "direction_like_fields": [],
+    "nested_protocol_metadata_fields": [],
+    "selected_field_values": {
+      "direction_mb": {
+        "present_count": 0,
+        "missing_count": 26
+      },
+      "stimulus_path": {
+        "present_count": 26,
+        "unique_count": 26
+      },
+      "stimulus_name": {
+        "driftinggrating_05hz": 26
+      },
+      "wn_orientation": {
+        "null": 26
+      },
+      "spatialfrequency_array": [
+        0.4,
+        0.2,
+        0.1,
+        0.08,
+        0.04,
+        0.025,
+        0.02,
+        0.0125,
+        0.01,
+        0.008,
+        0.005
+      ],
+      "temporalfrequency_array": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "pickle_history": {
+      "Tm1_SA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm1_SA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "bcb7890a355fe80607610a81383ae07bd20b0d66"
+      },
+      "Tm1_OA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm1_OA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "b981d4f1d8d35feb5a78136d05234b0e3eb6e3cb"
+      },
+      "Tm2_SA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm2_SA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "399450c19ddead85c8a0f96b1fe1830452d25cc8"
+      },
+      "Tm2_OA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm2_OA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "9e697f464efc938c5d8f1cd31396695cf5f6ea8f"
+      },
+      "Tm4_SA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm4_SA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "a39ddbcfa6bb58338f7044c9353c33f5beebea6a"
+      },
+      "Tm4_OA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm4_OA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "16e1a56a4f5cea9472947cc963d956136fc2e74f"
+      },
+      "Tm9_SA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm9_SA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "1da9af175f12567a4a79d6ddcdd1369f624c13de"
+      },
+      "Tm9_OA": {
+        "repository_path": "data/KohnPortes2021/dg_Tm9_OA.pickle",
+        "commit_presence_count": 10,
+        "unique_blob_count": 1,
+        "only_git_blob": "93f17457d15567afdf20b3fd1a391d216712e667"
+      }
+    },
+    "all_historical_pickle_paths_have_one_blob_version": true,
+    "record_level_direction_code_present": false,
+    "record_level_physical_direction_present": false
+  },
+  "motyxia2_generator_and_history": {
+    "commit": "b589a224493cb66bda4c55f632b213cacb082b24",
+    "generator_direction_parameter_unit": "degrees",
+    "generator_default_direction_degrees": 0.0,
+    "direction_is_passed_to_grating_generator": true,
+    "phase_increases_with_time": true,
+    "audited_unique_blob_count": 1015,
+    "exact_token_path_hits": {
+      "direction_mb": [],
+      "driftinggrating_05hz": [],
+      "jko14": [],
+      "motyxia_log_ephys_rig2": []
+    },
+    "record_linked_direction_protocol_found": false,
+    "generator_default_assigned_to_records": false
+  },
+  "provenance_gates": {
+    "figure4_relative_direction_code_to_PD_ND_verified": true,
+    "figure4_direction_code_to_native_coordinate_motion_verified": true,
+    "figure4_direction_code_to_absolute_physical_motion_verified": false,
+    "kohn_portes_record_level_direction_code_available": false,
+    "kohn_portes_record_level_physical_direction_available": false,
+    "cross_dataset_direction_mapping_authorized": false,
+    "generator_default_imputation_authorized": false
+  },
+  "direction_code_provenance_complete_for_kohn_portes": false,
+  "authorize_kohn_portes_direction_conditioning": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "relative_Figure4_PD_ND_codes_do_not_recover_Kohn_Portes_record_level_physical_direction",
+  "boundary": {
+    "PD_ND_is_cell_relative_not_absolute_screen_direction": true,
+    "native_receptive_field_coordinate_is_not_screen_or_body_direction": true,
+    "figure4_and_kohn_portes_are_distinct_datasets": true,
+    "direction_mb_must_not_be_imputed_into_kohn_portes_records": true,
+    "generator_default_is_not_record_metadata": true,
+    "filename_is_not_direction_metadata": true,
+    "no_response_magnitude_direction_inference": true,
+    "no_cross_modality_field_imputation": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

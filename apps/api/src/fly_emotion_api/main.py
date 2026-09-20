@@ -250,6 +250,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_stimulus_provenance_complete": visual[
                     "Kohn_Portes_stimulus_provenance_complete"
                 ],
+                "T5_Figure4_relative_PD_ND_mapping_verified": visual[
+                    "T5_Figure4_relative_PD_ND_mapping_verified"
+                ],
+                "T5_Figure4_native_coordinate_motion_mapping_verified": visual[
+                    "T5_Figure4_native_coordinate_motion_mapping_verified"
+                ],
+                "T5_Figure4_absolute_physical_direction_mapping_verified": visual[
+                    "T5_Figure4_absolute_physical_direction_mapping_verified"
+                ],
+                "T5_Kohn_Portes_record_level_direction_code_available": visual[
+                    "Kohn_Portes_record_level_direction_code_available"
+                ],
+                "T5_Kohn_Portes_record_level_physical_direction_available": visual[
+                    "Kohn_Portes_record_level_physical_direction_available"
+                ],
+                "T5_cross_dataset_direction_mapping_authorized": visual[
+                    "T5_cross_dataset_direction_mapping_authorized"
+                ],
                 "CT1_audited_candidate_count": visual[
                     "CT1_voltage_audited_candidate_count"
                 ],

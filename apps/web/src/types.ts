@@ -91,6 +91,12 @@ export type V7Status = {
     T5_stimulus_log_global_absence_claimed: boolean;
     T5_generator_defaults_used_as_record_fields: boolean;
     T5_stimulus_provenance_complete: boolean;
+    T5_Figure4_relative_PD_ND_mapping_verified: boolean;
+    T5_Figure4_native_coordinate_motion_mapping_verified: boolean;
+    T5_Figure4_absolute_physical_direction_mapping_verified: boolean;
+    T5_Kohn_Portes_record_level_direction_code_available: boolean;
+    T5_Kohn_Portes_record_level_physical_direction_available: boolean;
+    T5_cross_dataset_direction_mapping_authorized: boolean;
     CT1_audited_candidate_count: number;
     CT1_incremental_2025_2026_candidate_count: number;
     CT1_direct_experimental_voltage_candidate_found: boolean;

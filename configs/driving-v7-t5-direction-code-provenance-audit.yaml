@@ -1,0 +1,33 @@
+version: 1
+name: v7-t5-direction-code-provenance-audit
+observed_on: "2026-09-20"
+figure4_label_config: configs/driving-v7-t5-label-audit.yaml
+figure4_label_evidence: artifacts/v7-t5-label-audit.json
+figure4_repository_config: configs/driving-v7-t5-conductance-audit.yaml
+figure4_repository_evidence: artifacts/v7-t5-conductance-audit.json
+kohn_portes_identity_config: configs/driving-v7-kohn-portes-identity-history-audit.yaml
+kohn_portes_stimulus_config: configs/driving-v7-kohn-portes-stimulus-provenance-audit.yaml
+motyxia2_history_evidence: artifacts/v7-motyxia2-public-history-audit.json
+motyxia2_history_config: configs/driving-v7-motyxia2-public-history-audit.yaml
+expected:
+  figure4_direction_codes: [0, 1]
+  figure4_relative_mapping: {0: ND, 1: PD}
+  figure4_cells_with_both_codes: 17
+  figure4_moving_bar_pair_count: 134
+  kohn_portes_drifting_grating_record_count: 26
+  kohn_portes_drifting_grating_file_count: 8
+  historical_commit_presence_per_pickle: 10
+  motyxia2_history_tokens: [direction_mb, driftinggrating_05hz, jko14, motyxia_log_ephys_rig2]
+boundary:
+  PD_ND_is_cell_relative_not_absolute_screen_direction: true
+  native_receptive_field_coordinate_is_not_screen_or_body_direction: true
+  figure4_and_kohn_portes_are_distinct_datasets: true
+  direction_mb_must_not_be_imputed_into_kohn_portes_records: true
+  generator_default_is_not_record_metadata: true
+  filename_is_not_direction_metadata: true
+  no_response_magnitude_direction_inference: true
+  no_cross_modality_field_imputation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

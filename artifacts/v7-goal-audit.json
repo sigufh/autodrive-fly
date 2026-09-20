@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "862ec9673fef7d24b9b08d63f23c8af36ed8ae5480fcea917b2e53906d1eedc4",
-      "src/fly_emotion/driving/v7_goal_audit.py": "8a44086c636f1e8f91d313ac09417257499f6a4c8beba38092401a2847da434a",
+      "configs/driving-v7-goal-audit.yaml": "b81e9f8d5e3c72b942e0e01b7e161f6bb0ac852387b433865abb90c520e3495b",
+      "src/fly_emotion/driving/v7_goal_audit.py": "6cf3762bd061de2d18b3d73a56682b159e4980d2230513b2d8205ff50332b48b",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -75,6 +75,7 @@
       "artifacts/v7-t4-recording-field-audit.json": "cee90b0116dd941bd05596bedc68e306246206dc7d4cfbb754e3552dc6b3bbe4",
       "artifacts/v7-t5-recording-field-audit.json": "3c604028ac36dad40be26c9905c90ca4ecce00851edabd23f53e87c1ef91ff75",
       "artifacts/v7-kohn-portes-stimulus-provenance-audit.json": "911393770b5b2d25782a259009e65b15a6acd341b53fac0d5a516319ed34051b",
+      "artifacts/v7-t5-direction-code-provenance-audit.json": "fd4ac09b1e04a6defe18525fe9d911a09734eda02626685c3983e13b810c3405",
       "artifacts/v7-motyxia2-public-history-audit.json": "c2376219010714d03b989c727d06062f19a77b6953ffabca9974a868f111e024",
       "artifacts/v7-kohn-portes-external-index-audit.json": "aed72103cfd6fc13044721640f2ae34cb5931eb0f47ba4c432cb74c1d745d4f8",
       "artifacts/v7-behnia-t4-fast-source-audit.json": "e2beaa69a0d783f7952aaec27119751d4de64f0716c544b631a4ececba00b5e1",
@@ -112,7 +113,7 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "e3239dc1dc0dbb9e2c99cb60e9621f1104c730abe2c4c8e9e76d75188c6ff4e2",
       "artifacts/v7-pirogova-source-calcium-audit.json": "989afb728ad4309684e5a7c4b79614a2eafc8581d8cb912a4ce403db70e6efae",
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9b3a67d651346596282568f276801505a8d4ae45d67481cb6771ad0ea7184389",
-      "artifacts/v7-source-evidence-matrix.json": "48d3b40decab44203bc5729d6714146308b3610205fe21441bd332670354105c",
+      "artifacts/v7-source-evidence-matrix.json": "fdd6eadd2565a4081bc9b48f0bbc4515f8cb1979dd02152f53f5c2a4d5a26135",
       "artifacts/v7-source-type-average-mapping-contract.json": "70181fab62da662c0505e3c3c80236e6e423ad2f6743418fd2fc0b8a74b9ec05",
       "artifacts/v7-tm9-coordinate-identifiability-audit.json": "9690c7ae8e67735b3863ae20f2c639b44429427285c0677c8d242adc657b6e04",
       "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6",
@@ -169,9 +170,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "8c491abcbb4beda599e79b36951fe6a4b87d3ea8c62eb2c2d2c0688abd0a6955",
-      "apps/web/src/components/DrivingPanel.tsx": "3acd9c602b376a5d794b31434113438be6caa6c936b1c61fd669838ce6ff550e",
-      "apps/web/src/types.ts": "fb157e3ea68bfd7a682bf054fa4e82df9a4dd9d9436fbc1149d702cb747e6e00",
+      "apps/api/src/fly_emotion_api/main.py": "3996c86922f05ec7a0ecad585823b489eea93ab192e7507715818abf2b87a4ae",
+      "apps/web/src/components/DrivingPanel.tsx": "1ea325051fe1c8574d6d70f7ba9520c7095391960cd4beec42583df24b673279",
+      "apps/web/src/types.ts": "e8d34e22eb4e107b019a02fe43d6e23ecf0a44a1579cd6056906f9a3f93707fc",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -250,6 +251,7 @@
         "artifacts/v7-t4-recording-field-audit.json",
         "artifacts/v7-t5-recording-field-audit.json",
         "artifacts/v7-kohn-portes-stimulus-provenance-audit.json",
+        "artifacts/v7-t5-direction-code-provenance-audit.json",
         "artifacts/v7-motyxia2-public-history-audit.json",
         "artifacts/v7-kohn-portes-external-index-audit.json",
         "artifacts/v7-behnia-t4-fast-source-audit.json",
@@ -523,6 +525,12 @@
         "Kohn_Portes_record_specific_stimulus_logs_available": false,
         "Kohn_Portes_generator_defaults_used_as_record_fields": false,
         "Kohn_Portes_stimulus_provenance_complete": false,
+        "T5_Figure4_relative_PD_ND_mapping_verified": true,
+        "T5_Figure4_native_coordinate_motion_mapping_verified": true,
+        "T5_Figure4_absolute_physical_direction_mapping_verified": false,
+        "Kohn_Portes_record_level_direction_code_available": false,
+        "Kohn_Portes_record_level_physical_direction_available": false,
+        "T5_cross_dataset_direction_mapping_authorized": false,
         "Motyxia2_public_history_branch_count": 22,
         "Motyxia2_public_history_commit_count": 447,
         "Kohn_Portes_record_log_found_in_Motyxia2_public_history": false,
@@ -1704,7 +1712,13 @@
           "T5_publisher_supplements_contain_record_log",
           "T5_Figshare_search_accessible",
           "T5_stimulus_log_global_absence_claimed",
-          "T5_generator_defaults_used_as_record_fields"
+          "T5_generator_defaults_used_as_record_fields",
+          "T5_Figure4_relative_PD_ND_mapping_verified",
+          "T5_Figure4_native_coordinate_motion_mapping_verified",
+          "T5_Figure4_absolute_physical_direction_mapping_verified",
+          "T5_Kohn_Portes_record_level_direction_code_available",
+          "T5_Kohn_Portes_record_level_physical_direction_available",
+          "T5_cross_dataset_direction_mapping_authorized"
         ]
       }
     }

@@ -62,6 +62,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     )
     kohn_portes_identity = evidence["kohn_portes_identity_history"]
     t5_fields = evidence["t5_recording_fields"]
+    t5_direction_provenance = evidence["t5_direction_code_provenance"]
     t5_dynamic = {
         item["source_type"] for item in evidence["t5_calcium"]["verified_dynamic_blocks"].values()
     }
@@ -466,6 +467,42 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 family == "T5"
                 and t5_fields["stimulus_provenance"][
                     "stimulus_provenance_contract_complete"
+                ]
+            ),
+            "Figure4_relative_direction_code_to_PD_ND_verified": (
+                family == "T5"
+                and t5_direction_provenance["provenance_gates"][
+                    "figure4_relative_direction_code_to_PD_ND_verified"
+                ]
+            ),
+            "Figure4_direction_code_to_native_coordinate_motion_verified": (
+                family == "T5"
+                and t5_direction_provenance["provenance_gates"][
+                    "figure4_direction_code_to_native_coordinate_motion_verified"
+                ]
+            ),
+            "Figure4_direction_code_to_absolute_physical_motion_verified": (
+                family == "T5"
+                and t5_direction_provenance["provenance_gates"][
+                    "figure4_direction_code_to_absolute_physical_motion_verified"
+                ]
+            ),
+            "Kohn_Portes_record_level_direction_code_available": (
+                family == "T5"
+                and t5_direction_provenance["provenance_gates"][
+                    "kohn_portes_record_level_direction_code_available"
+                ]
+            ),
+            "Kohn_Portes_record_level_physical_direction_available": (
+                family == "T5"
+                and t5_direction_provenance["provenance_gates"][
+                    "kohn_portes_record_level_physical_direction_available"
+                ]
+            ),
+            "cross_dataset_direction_mapping_authorized": (
+                family == "T5"
+                and t5_direction_provenance["provenance_gates"][
+                    "cross_dataset_direction_mapping_authorized"
                 ]
             ),
         }

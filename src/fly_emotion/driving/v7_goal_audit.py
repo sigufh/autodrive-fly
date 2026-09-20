@@ -100,6 +100,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     kohn_portes_stimulus_provenance_audit = reports[
         "kohn_portes_stimulus_provenance_audit"
     ]
+    t5_direction_code_provenance_audit = reports[
+        "t5_direction_code_provenance_audit"
+    ]
     motyxia2_public_history_audit = reports["motyxia2_public_history_audit"]
     kohn_portes_external_index_audit = reports[
         "kohn_portes_external_index_audit"
@@ -335,6 +338,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_recording_field_audit"],
                 config["evidence"]["t5_recording_field_audit"],
                 config["evidence"]["kohn_portes_stimulus_provenance_audit"],
+                config["evidence"]["t5_direction_code_provenance_audit"],
                 config["evidence"]["motyxia2_public_history_audit"],
                 config["evidence"]["kohn_portes_external_index_audit"],
                 config["evidence"]["behnia_t4_fast_source_audit"],
@@ -759,6 +763,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Kohn_Portes_stimulus_provenance_complete": (
                     kohn_portes_stimulus_provenance_audit[
                         "stimulus_provenance_contract_complete"
+                    ]
+                ),
+                "T5_Figure4_relative_PD_ND_mapping_verified": (
+                    t5_direction_code_provenance_audit["provenance_gates"][
+                        "figure4_relative_direction_code_to_PD_ND_verified"
+                    ]
+                ),
+                "T5_Figure4_native_coordinate_motion_mapping_verified": (
+                    t5_direction_code_provenance_audit["provenance_gates"][
+                        "figure4_direction_code_to_native_coordinate_motion_verified"
+                    ]
+                ),
+                "T5_Figure4_absolute_physical_direction_mapping_verified": (
+                    t5_direction_code_provenance_audit["provenance_gates"][
+                        "figure4_direction_code_to_absolute_physical_motion_verified"
+                    ]
+                ),
+                "Kohn_Portes_record_level_direction_code_available": (
+                    t5_direction_code_provenance_audit["provenance_gates"][
+                        "kohn_portes_record_level_direction_code_available"
+                    ]
+                ),
+                "Kohn_Portes_record_level_physical_direction_available": (
+                    t5_direction_code_provenance_audit["provenance_gates"][
+                        "kohn_portes_record_level_physical_direction_available"
+                    ]
+                ),
+                "T5_cross_dataset_direction_mapping_authorized": (
+                    t5_direction_code_provenance_audit["provenance_gates"][
+                        "cross_dataset_direction_mapping_authorized"
                     ]
                 ),
                 "Motyxia2_public_history_branch_count": (
@@ -2690,6 +2724,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Figshare_search_accessible",
                     "T5_stimulus_log_global_absence_claimed",
                     "T5_generator_defaults_used_as_record_fields",
+                        "T5_Figure4_relative_PD_ND_mapping_verified",
+                        "T5_Figure4_native_coordinate_motion_mapping_verified",
+                        "T5_Figure4_absolute_physical_direction_mapping_verified",
+                        "T5_Kohn_Portes_record_level_direction_code_available",
+                        "T5_Kohn_Portes_record_level_physical_direction_available",
+                        "T5_cross_dataset_direction_mapping_authorized",
                 ],
             },
         },
