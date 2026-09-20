@@ -1933,9 +1933,11 @@ Tm source 已有电压派生 kernel shape 与 exact-type-average mapping，并�
 Tm source 的群体平均核先按 recording ID 等权汇总并各自做 L1 归一化，再对由 R1–R6
 传播得到的 source mass/x/y 序列作因果卷积。直接求和质心投影的
 shuffle/ordered residual 比为 31.507、static/ordered 为 0.9996；显式 fast
-`Tm1/Tm2/Tm4` 对 Tm9 质心差分别为 2.557 和 1.099，均未达到冻结的 ≤0.50 门。
-因此两个预注册 readout 都在时间控制阶段停止，未读取 subtype 方向标签、未执行方向/极性
-评分，也未授权 T5 功能候选。该结果只排除这两个具体 readout，不否定所有可能的 T5 模型。
+`Tm1/Tm2/Tm4` 对 Tm9 质心差分别为 2.557 和 1.099；在四类核卷积后再计算固定一帧
+`Tm2↔Tm9`/`Tm9↔Tm1` Reichardt 项并取时间差分的结果分别为 1.921 和 0.996。三个
+预注册 readout 均未达到冻结的 ≤0.50 门，故都在时间控制阶段停止，未读取 subtype 方向标签、
+未执行方向/极性评分，也未授权 T5 功能候选。该结果只排除这三个具体 readout，不否定所有
+可能的 T5 模型。
 证据见 `artifacts/v7-t5-measured-kernel-identifiability.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split

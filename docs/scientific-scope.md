@@ -315,9 +315,10 @@ A source-only temporal-identifiability precheck then applied the four measured
 saline Tm kernel shapes to R1--R6-driven Tm activity over the fixed 5-by-3 local
 edge grid. Both preregistered readouts failed before direction scoring: the
 summed-centroid readout had shuffle/ordered-residual and static/ordered energy
-ratios of 31.507 and 0.9996, while the fast-pool-versus-Tm9 centroid difference
-had ratios of 2.557 and 1.099 (both limits 0.50). No source gain was fitted and
-no target activity was injected. This rejects only those readouts and does not
+ratios of 31.507 and 0.9996, the fast-pool-versus-Tm9 centroid difference had
+ratios of 2.557 and 1.099, and the fixed one-frame Reichardt temporal difference
+had ratios of 1.921 and 0.996 (both limits 0.50). No source gain was fitted and
+no target activity was injected. This rejects only those three readouts and does not
 establish that every possible T5 model fails.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at

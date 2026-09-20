@@ -22,6 +22,8 @@ candidates:
     formula: axis_dot(sum_source_filtered_x,sum_source_filtered_y)/(sum_absolute_xy+1e-9)
   - name: fast_pool_vs_Tm9_centroid_difference
     formula: axis_dot(fast_x*Tm9_mass-fast_mass*Tm9_x,fast_y*Tm9_mass-fast_mass*Tm9_y)/(sum_absolute_terms+1e-9)
+  - name: temporal_difference_filtered_Tm_pair_reichardt
+    formula: first_difference(axis_dot(reichardt(Tm2,Tm9,x),reichardt(Tm9,Tm1,y)))
 controls:
   modes: [ordered, temporal_shuffle, static_sham]
   temporal_shuffle_seed: 20260920
@@ -33,6 +35,8 @@ boundary:
   tuning_only: true
   single_condition_precheck: true
   measured_kernel_shape_only_not_absolute_gain: true
+  fixed_one_frame_lag_not_searched: true
+  temporal_difference_has_no_fitted_scale_or_lag: true
   source_activity_driven_only_from_R1_R6_propagation: true
   subtype_and_direction_labels_not_read_by_dynamics: true
   target_activity_injection: false

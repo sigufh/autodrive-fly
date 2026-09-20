@@ -39,7 +39,7 @@ def test_measured_kernel_inventory_and_target_denominator_are_fixed() -> None:
     assert report["invalid_source_or_axis_target_count"] == 4
 
 
-def test_both_readouts_fail_temporal_controls_before_direction_scoring() -> None:
+def test_all_readouts_fail_temporal_controls_before_direction_scoring() -> None:
     report = json.loads(REPORT.read_text())
     expected = {
         "summed_filtered_source_centroid_projection": (
@@ -50,7 +50,12 @@ def test_both_readouts_fail_temporal_controls_before_direction_scoring() -> None
             2.557479297173785,
             1.0992633306058064,
         ),
+        "temporal_difference_filtered_Tm_pair_reichardt": (
+            1.9212814396370625,
+            0.9962811391546738,
+        ),
     }
+    assert set(report["candidate_results"]) == set(expected)
     for name, ratios in expected.items():
         result = report["candidate_results"][name]
         assert np.isclose(result["shuffle_to_ordered_residual_energy_ratio"], ratios[0])

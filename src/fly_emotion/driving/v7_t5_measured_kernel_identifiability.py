@@ -103,9 +103,33 @@ def _candidate_traces(
     centroid_projection = (
         (x_terms[0] - x_terms[1]) * axes[:, 0] + (y_terms[0] - y_terms[1]) * axes[:, 1]
     ) / (sum(np.abs(term) for term in (*x_terms, *y_terms)) + 1e-9)
+
+    previous = {
+        name: np.concatenate((np.zeros_like(values[:1]), values[:-1]))
+        for name, values in filtered.items()
+    }
+
+    def reichardt(first: str, second: str, component: str) -> np.ndarray:
+        terms = (
+            filtered[f"{first}_{component}"] * previous[f"{second}_mass"],
+            filtered[f"{first}_mass"] * previous[f"{second}_{component}"],
+            filtered[f"{second}_{component}"] * previous[f"{first}_mass"],
+            filtered[f"{second}_mass"] * previous[f"{first}_{component}"],
+        )
+        return (terms[0] - terms[1] - terms[2] + terms[3]) / (
+            sum(np.abs(term) for term in terms) + 1e-9
+        )
+
+    horizontal = reichardt("Tm2", "Tm9", "x")
+    vertical = reichardt("Tm9", "Tm1", "y")
+    lagged_reichardt = horizontal * axes[:, 0] + vertical * axes[:, 1]
+    temporal_difference = np.diff(
+        lagged_reichardt, axis=0, prepend=np.zeros_like(lagged_reichardt[:1])
+    )
     return {
         "summed_filtered_source_centroid_projection": summed_projection,
         "fast_pool_vs_Tm9_centroid_difference": centroid_projection,
+        "temporal_difference_filtered_Tm_pair_reichardt": temporal_difference,
     }
 
 

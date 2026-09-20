@@ -13,7 +13,7 @@
       "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
       "artifacts/v7-kohn-portes-figure6-model-identity-audit.json": "19f9e08717685ebec988242767e050ed86c34b9e7dfa7e9ff76b109a1859a510",
       "artifacts/v7-kohn-portes-axolotl-availability-audit.json": "9dec0d31a4f9d8041d9e66b4f229a6de6d7b2be44a368aff9442e80c50a5740d",
-      "artifacts/v7-t5-measured-kernel-identifiability.json": "b1ea24856b569f016cec6f83a96497402e872838eec3b480c3495239c00cdce4",
+      "artifacts/v7-t5-measured-kernel-identifiability.json": "b4d7c70665186057c7f2379285fd964f8047da848865363e1a4aa7e03eec542c",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"

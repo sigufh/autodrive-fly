@@ -3,8 +3,8 @@
     "name": "v7-t5-measured-kernel-source-identifiability-precheck",
     "observed_on": "2026-09-20",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "2c7f20b823eb394e815a0dc35050e0f8a24a0335dc56039d4d211adf9a3bad75",
-      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "ec6fa78ee29e97a5c869c9aea218340154af3142f9421c0e78b3d2b0abb00ca8",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "7f0aeb098e9d6acb92c6b46c2d9ad1851704612cccf0cecab86ce1d1e17b9643",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "72c2e49d0d186ed9fa9c5ef61aa7ab9641552292712bc2a4306f640dba0cfa09",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
       "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
@@ -71,6 +71,20 @@
         "static_energy_attenuated": false
       },
       "passed": false
+    },
+    "temporal_difference_filtered_Tm_pair_reichardt": {
+      "formula": "first_difference(axis_dot(reichardt(Tm2,Tm9,x),reichardt(Tm9,Tm1,y)))",
+      "ordered_mean_absolute_energy": 0.00031495735663233807,
+      "static_mean_absolute_energy": 0.0003137860740508106,
+      "ordered_minus_static_mean_absolute_energy": 0.00019770821738288475,
+      "shuffle_minus_static_mean_absolute_energy": 0.00037985312852146613,
+      "shuffle_to_ordered_residual_energy_ratio": 1.9212814396370625,
+      "static_to_ordered_energy_ratio": 0.9962811391546738,
+      "gates": {
+        "shuffle_residual_attenuated": false,
+        "static_energy_attenuated": false
+      },
+      "passed": false
     }
   },
   "temporal_identifiability_passed": false,
@@ -83,6 +97,8 @@
     "tuning_only": true,
     "single_condition_precheck": true,
     "measured_kernel_shape_only_not_absolute_gain": true,
+    "fixed_one_frame_lag_not_searched": true,
+    "temporal_difference_has_no_fitted_scale_or_lag": true,
     "source_activity_driven_only_from_R1_R6_propagation": true,
     "subtype_and_direction_labels_not_read_by_dynamics": true,
     "target_activity_injection": false,
