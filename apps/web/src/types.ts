@@ -84,6 +84,10 @@ export type V7Status = {
     v7_vertical_motion_has_physical_angular_units: boolean;
     v7_looming_radius_has_physical_angular_units: boolean;
     v7_retinal_v_has_physical_angular_units: boolean;
+    v7_offline_2D_engineering_angular_grid_complete: boolean;
+    v7_offline_engineering_vertical_FOV_degrees: number;
+    v7_offline_engineering_angular_pixel_pitch_degrees: number;
+    v7_offline_engineering_grid_biologically_calibrated: boolean;
     v7_offline_frame_interval_milliseconds: number;
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;

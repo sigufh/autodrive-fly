@@ -120,6 +120,10 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["v7_vertical_motion_has_physical_angular_units"] is False
     assert boundaries["v7_looming_radius_has_physical_angular_units"] is False
     assert boundaries["v7_retinal_v_has_physical_angular_units"] is False
+    assert boundaries["v7_offline_2D_engineering_angular_grid_complete"] is True
+    assert boundaries["v7_offline_engineering_vertical_FOV_degrees"] == 70.09590046813251
+    assert boundaries["v7_offline_engineering_angular_pixel_pitch_degrees"] == 3.047647846440544
+    assert boundaries["v7_offline_engineering_grid_biologically_calibrated"] is False
     assert boundaries["Gou_DANDI_asset_level_stable_participant_IDs_verified"] is True
     assert boundaries["Gou_DANDI_unique_subject_ID_count"] == 282
     assert boundaries["Gou_Dryad_distinct_fliesUsed_label_count"] == 66

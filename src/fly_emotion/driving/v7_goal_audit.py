@@ -217,6 +217,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t5_physical_time_transfer_audit = reports["t5_physical_time_transfer_audit"]
     stimulus_coordinate_contract = reports["stimulus_coordinate_contract"]
+    controlled_stimulus_angular_grid = reports["controlled_stimulus_angular_grid"]
     vertical_angular_coordinate_audit = reports["vertical_angular_coordinate_audit"]
     t4t5_source_dynamics_readiness = reports["t4t5_source_dynamics_readiness"]
     source_dynamics_external_evidence_contract = reports[
@@ -324,6 +325,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t5_ct1_axis_sequence_identifiability"],
                 config["evidence"]["t5_physical_time_transfer_audit"],
                 config["evidence"]["stimulus_coordinate_contract"],
+                config["evidence"]["controlled_stimulus_angular_grid"],
                 config["evidence"]["vertical_angular_coordinate_audit"],
                 config["evidence"]["t4t5_source_dynamics_readiness"],
                 config["evidence"]["source_dynamics_external_evidence_contract"],
@@ -646,6 +648,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "v7_retinal_v_has_physical_angular_units": (
                     vertical_angular_coordinate_audit["gates"][
                         "MaleCNS_retinal_v_has_physical_angular_units"
+                    ]
+                ),
+                "v7_offline_2D_engineering_angular_grid_complete": (
+                    controlled_stimulus_angular_grid["gates"][
+                        "offline_two_dimensional_engineering_angular_grid_complete"
+                    ]
+                ),
+                "v7_offline_engineering_vertical_FOV_degrees": (
+                    controlled_stimulus_angular_grid["engineering_angular_grid"][
+                        "vertical_fov_degrees"
+                    ]
+                ),
+                "v7_offline_engineering_angular_pixel_pitch_degrees": (
+                    controlled_stimulus_angular_grid["engineering_angular_grid"][
+                        "angular_pixel_pitch_degrees"
+                    ]
+                ),
+                "v7_offline_engineering_grid_biologically_calibrated": (
+                    controlled_stimulus_angular_grid["gates"][
+                        "biological_angular_calibration_complete"
                     ]
                 ),
                 "v7_offline_frame_interval_milliseconds": (
@@ -2797,6 +2819,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "v7_vertical_motion_has_physical_angular_units",
                     "v7_looming_radius_has_physical_angular_units",
                     "v7_retinal_v_has_physical_angular_units",
+                    "v7_offline_2D_engineering_angular_grid_complete",
+                    "v7_offline_engineering_vertical_FOV_degrees",
+                    "v7_offline_engineering_angular_pixel_pitch_degrees",
+                    "v7_offline_engineering_grid_biologically_calibrated",
                     "v7_offline_frame_interval_milliseconds",
                     "v7_offline_substep_interval_milliseconds",
                     "v7_horizontal_fov_degrees",

@@ -231,6 +231,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "v7_retinal_v_has_physical_angular_units": visual[
                     "v7_retinal_v_has_physical_angular_units"
                 ],
+                "v7_offline_2D_engineering_angular_grid_complete": visual[
+                    "v7_offline_2D_engineering_angular_grid_complete"
+                ],
+                "v7_offline_engineering_vertical_FOV_degrees": visual[
+                    "v7_offline_engineering_vertical_FOV_degrees"
+                ],
+                "v7_offline_engineering_angular_pixel_pitch_degrees": visual[
+                    "v7_offline_engineering_angular_pixel_pitch_degrees"
+                ],
+                "v7_offline_engineering_grid_biologically_calibrated": visual[
+                    "v7_offline_engineering_grid_biologically_calibrated"
+                ],
                 "v7_offline_frame_interval_milliseconds": visual[
                     "v7_offline_frame_interval_milliseconds"
                 ],

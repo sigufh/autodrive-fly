@@ -1869,6 +1869,13 @@ kernel 存在性”已通过，但现有 transfer contract 中要求的可迁移
 坐标生成；MaleCNS `retinal_v` 则是六角柱拓扑归一化坐标，不是 visual degrees。因此不能由
 48×24 宽高比推算纵向 FOV，也不能给上下运动或 looming 半径赋物理角速度/角尺寸。证据见
 `artifacts/v7-vertical-angular-coordinate-audit.json`。
+在不修改任何刺激数组或默认道路相机的前提下，另声明了一个仅用于离线受控刺激报告的二维
+工程角栅格：沿用已核验的水平相邻射线间距 `3.04765°/pixel` 作为 x/y 等角 pitch，24 行
+以半像素中心对称映射到约 `[-35.048°, +35.048°]`，即 vertical FOV `70.0959°`。在该声明下，
+当前水平/纵向 edge 的平均速度分别约为 `873.659°/s` 与 `386.035°/s`，looming 离散半径
+约从 `2.155°` 增至 `33.455°`。这是显式工程假设，不是相机实测 FOV、果蝇视觉标定或外部
+电生理对齐，因此只授权离线角度报告，不改变 T4/T5 source-transfer gate。证据见
+`artifacts/v7-controlled-stimulus-angular-grid.json`。
 
 T4 结构轴也按相同原则补做二折 cross-fit，以排除旧功能 precheck 对约一半结构拟合集
 复用 transform 的问题。6,860/6,861 个结构有效 target 均由不含自身 body ID 的另一折

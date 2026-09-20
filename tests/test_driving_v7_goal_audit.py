@@ -2,6 +2,8 @@ import hashlib
 import json
 from pathlib import Path
 
+import numpy as np
+
 from fly_emotion.driving.v7_goal_audit import evaluate_v7_goal_coverage
 
 ROOT = Path(__file__).parents[1]
@@ -69,6 +71,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "v7_vertical_motion_has_physical_angular_units",
         "v7_looming_radius_has_physical_angular_units",
         "v7_retinal_v_has_physical_angular_units",
+        "v7_offline_2D_engineering_angular_grid_complete",
+        "v7_offline_engineering_vertical_FOV_degrees",
+        "v7_offline_engineering_angular_pixel_pitch_degrees",
+        "v7_offline_engineering_grid_biologically_calibrated",
         "v7_offline_frame_interval_milliseconds",
         "v7_offline_substep_interval_milliseconds",
         "v7_horizontal_fov_degrees",
@@ -321,6 +327,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["v7_retinal_v_has_physical_angular_units"] is False
+    assert visual["observations"]["v7_offline_2D_engineering_angular_grid_complete"] is True
+    assert np.isclose(
+        visual["observations"]["v7_offline_engineering_vertical_FOV_degrees"],
+        70.09590046813252,
+    )
+    assert np.isclose(
+        visual["observations"][
+            "v7_offline_engineering_angular_pixel_pitch_degrees"
+        ],
+        3.047647846440544,
+    )
+    assert visual["observations"]["v7_offline_engineering_grid_biologically_calibrated"] is False
     assert visual["observations"]["v7_offline_frame_interval_milliseconds"] == 10.0
     assert visual["observations"]["v7_offline_substep_interval_milliseconds"] == 2.5
     assert visual["observations"]["T5_physical_source_transfer_ready"] is False

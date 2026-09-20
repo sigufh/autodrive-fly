@@ -1,0 +1,39 @@
+version: 1
+name: v7-controlled-stimulus-engineering-angular-grid
+observed_on: "2026-09-20"
+v7_contract: configs/driving-v7.yaml
+stimulus_coordinate_evidence: artifacts/v7-stimulus-coordinate-contract.json
+vertical_coordinate_evidence: artifacts/v7-vertical-angular-coordinate-audit.json
+v7_implementation: src/fly_emotion/driving/v7.py
+grid:
+  width_pixels: 48
+  height_pixels: 24
+  frame_interval_seconds: 0.01
+  horizontal_projection: implemented_linear_ray_angle
+  vertical_projection: declared_equiangular_pixel_pitch
+  vertical_pitch_source: equal_to_verified_horizontal_adjacent_ray_pitch
+  elevation_sign: top_positive_bottom_negative
+  center_convention: half_pixel_centered_zero
+expected:
+  horizontal_fov_degrees: 143.2394487827058
+  angular_pixel_pitch_degrees: 3.047647846440544
+  vertical_fov_degrees: 70.09590046813252
+  vertical_minimum_degrees: -35.04795023406626
+  vertical_maximum_degrees: 35.04795023406626
+  horizontal_edge_mean_speed_degrees_per_second: 873.659049312956
+  vertical_edge_mean_speed_degrees_per_second: 386.0353938824689
+  looming_radius_start_degrees: 2.1550124588866906
+  looming_radius_end_degrees: 33.45478988437385
+boundary:
+  offline_engineering_coordinate_declaration_only: true
+  no_default_camera_render_change: true
+  no_stimulus_array_change: true
+  equal_angular_pitch_is_a_declared_model_assumption: true
+  engineering_grid_is_not_measured_vertical_FOV: true
+  engineering_grid_is_not_biological_calibration: true
+  engineering_grid_is_not_external_recording_alignment: true
+  retinal_v_mapping_is_model_defined_not_anatomical_degrees: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true
