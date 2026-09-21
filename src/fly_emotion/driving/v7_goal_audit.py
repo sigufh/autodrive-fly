@@ -68,6 +68,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_normalized_correlator = reports["t4_normalized_correlator"]
     t4_local_correlator_precheck = reports["t4_local_correlator_precheck"]
     t4_source_pool_local = reports["t4_source_pool_local"]
+    t4_source_pool_camera_frame_discovery = reports[
+        "t4_source_pool_camera_frame_discovery"
+    ]
     three_hop_moment = reports["three_hop_moment"]
     three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
     upstream_latency_audit = reports["upstream_latency_audit"]
@@ -2430,6 +2433,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_source_pool_authorizes_target_formula": t4_source_pool_local[
                     "authorize_new_target_formula"
                 ],
+                "T4_source_pool_camera_frame_bilateral_readouts": (
+                    t4_source_pool_camera_frame_discovery[
+                        "discovered_bilateral_readouts"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_bilateral_subtypes": (
+                    t4_source_pool_camera_frame_discovery[
+                        "discovered_bilateral_subtypes"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_post_hoc_candidate_discovered": (
+                    t4_source_pool_camera_frame_discovery[
+                        "post_hoc_candidate_discovered"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_replication_preregistered": (
+                    t4_source_pool_camera_frame_discovery[
+                        "independent_replication_preregistered"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_replication_evaluated": (
+                    t4_source_pool_camera_frame_discovery[
+                        "independent_replication_evaluated"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_target_formula_authorized": (
+                    t4_source_pool_camera_frame_discovery[
+                        "authorize_new_target_formula"
+                    ]
+                ),
                 "three_hop_main_direction_bilateral_populations": three_hop_moment[
                     "bilateral_direction_populations"
                 ],
@@ -3775,6 +3808,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Kohn_Portes_record_level_direction_code_available",
                     "T5_Kohn_Portes_record_level_physical_direction_available",
                     "T5_cross_dataset_direction_mapping_authorized",
+                    "T4_source_pool_camera_frame_bilateral_readouts",
+                    "T4_source_pool_camera_frame_bilateral_subtypes",
+                    "T4_source_pool_camera_frame_post_hoc_candidate_discovered",
+                    "T4_source_pool_camera_frame_replication_preregistered",
+                    "T4_source_pool_camera_frame_replication_evaluated",
+                    "T4_source_pool_camera_frame_target_formula_authorized",
                     "T4_synapse_RF_axis_joint_valid_target_count",
                     "T4_synapse_RF_axis_identity_median_angle_degrees",
                     "T4_synapse_RF_axis_identity_cardinal_match_fraction",

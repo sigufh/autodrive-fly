@@ -236,6 +236,12 @@ export type V7Status = {
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;
     T4_source_mapping_mode: string;
+    T4_source_pool_camera_frame_bilateral_readouts?: string[];
+    T4_source_pool_camera_frame_bilateral_subtypes?: Record<string, string[]>;
+    T4_source_pool_camera_frame_post_hoc_candidate_discovered?: boolean;
+    T4_source_pool_camera_frame_replication_preregistered?: boolean;
+    T4_source_pool_camera_frame_replication_evaluated?: boolean;
+    T4_source_pool_camera_frame_target_formula_authorized?: boolean;
     T4_synapse_RF_axis_joint_valid_target_count?: number;
     T4_synapse_RF_axis_identity_median_angle_degrees?: number;
     T4_synapse_RF_axis_identity_cardinal_match_fraction?: number;

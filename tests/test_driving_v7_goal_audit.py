@@ -246,6 +246,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_Kohn_Portes_record_level_direction_code_available",
         "T5_Kohn_Portes_record_level_physical_direction_available",
         "T5_cross_dataset_direction_mapping_authorized",
+            "T4_source_pool_camera_frame_bilateral_readouts",
+            "T4_source_pool_camera_frame_bilateral_subtypes",
+            "T4_source_pool_camera_frame_post_hoc_candidate_discovered",
+            "T4_source_pool_camera_frame_replication_preregistered",
+            "T4_source_pool_camera_frame_replication_evaluated",
+            "T4_source_pool_camera_frame_target_formula_authorized",
             "T4_synapse_RF_axis_joint_valid_target_count",
             "T4_synapse_RF_axis_identity_median_angle_degrees",
             "T4_synapse_RF_axis_identity_cardinal_match_fraction",
@@ -1350,6 +1356,25 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     }
     assert visual["observations"]["T4_source_pool_maximum_bilateral_pair_count"] == 0
     assert visual["observations"]["T4_source_pool_authorizes_target_formula"] is False
+    assert visual["observations"]["T4_source_pool_camera_frame_bilateral_readouts"] == [
+        "pairwise_distal_vector"
+    ]
+    assert visual["observations"]["T4_source_pool_camera_frame_bilateral_subtypes"] == {
+        "pairwise_distal_vector": ["d"]
+    }
+    assert (
+        visual["observations"]["T4_source_pool_camera_frame_post_hoc_candidate_discovered"]
+        is True
+    )
+    assert (
+        visual["observations"]["T4_source_pool_camera_frame_replication_preregistered"]
+        is False
+    )
+    assert visual["observations"]["T4_source_pool_camera_frame_replication_evaluated"] is False
+    assert (
+        visual["observations"]["T4_source_pool_camera_frame_target_formula_authorized"]
+        is False
+    )
     assert visual["observations"]["T4_continuous_pair_structural_axis_passed"] is True
     assert visual["observations"]["T4_continuous_pair_direction_pass_counts"] == {
         "signed_mean": 0,

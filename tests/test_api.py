@@ -368,6 +368,16 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["v7_offline_frame_interval_milliseconds"] == 10.0
     assert boundaries["v7_offline_substep_interval_milliseconds"] == 2.5
     assert boundaries["T4_source_mapping_mode"] == "exact_type_average"
+    assert boundaries["T4_source_pool_camera_frame_bilateral_readouts"] == [
+        "pairwise_distal_vector"
+    ]
+    assert boundaries["T4_source_pool_camera_frame_bilateral_subtypes"] == {
+        "pairwise_distal_vector": ["d"]
+    }
+    assert boundaries["T4_source_pool_camera_frame_post_hoc_candidate_discovered"] is True
+    assert boundaries["T4_source_pool_camera_frame_replication_preregistered"] is False
+    assert boundaries["T4_source_pool_camera_frame_replication_evaluated"] is False
+    assert boundaries["T4_source_pool_camera_frame_target_formula_authorized"] is False
     assert boundaries["T4_synapse_RF_axis_joint_valid_target_count"] == 6749
     assert boundaries["T4_synapse_RF_axis_identity_median_angle_degrees"] == (
         68.18171979285492

@@ -2132,6 +2132,11 @@ raw-edge-weighted optic-hex/RF centroid 差直接比较。6,749 个 conductance 
 不能当作无标签选择规则。因此靶处 terminal geometry 与 source RF geometry 不得直接互换，
 当前不授权 RF-axis replacement 或新功能候选。证据见
 `artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json`。
+只把已声明的相机坐标约定应用于既有 source-pool 诊断——左眼横轴反射，并按
+`v = 1 - local_y` 对双眼纵轴反转——不会改写旧结果，但在同一 LPLC-T01 上发现一个
+post-hoc 双侧信号：`pairwise_distal_vector` 的 T4d_L/R 都通过，另外六个方向群体仍失败。
+由于候选是在该条件结果上发现的，尚不是独立复制，不授权新 target formula 或 calibration。
+证据见 `artifacts/v7-t4-source-pool-camera-frame-discovery.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了不执行 pickle 的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

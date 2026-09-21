@@ -683,6 +683,24 @@ def _verified_v7_status(root: Path) -> dict:
                 ],
                 "v7_horizontal_fov_degrees": visual["v7_horizontal_fov_degrees"],
                 "T4_source_mapping_mode": visual["T4_source_mapping_mode"],
+                "T4_source_pool_camera_frame_bilateral_readouts": visual[
+                    "T4_source_pool_camera_frame_bilateral_readouts"
+                ],
+                "T4_source_pool_camera_frame_bilateral_subtypes": visual[
+                    "T4_source_pool_camera_frame_bilateral_subtypes"
+                ],
+                "T4_source_pool_camera_frame_post_hoc_candidate_discovered": visual[
+                    "T4_source_pool_camera_frame_post_hoc_candidate_discovered"
+                ],
+                "T4_source_pool_camera_frame_replication_preregistered": visual[
+                    "T4_source_pool_camera_frame_replication_preregistered"
+                ],
+                "T4_source_pool_camera_frame_replication_evaluated": visual[
+                    "T4_source_pool_camera_frame_replication_evaluated"
+                ],
+                "T4_source_pool_camera_frame_target_formula_authorized": visual[
+                    "T4_source_pool_camera_frame_target_formula_authorized"
+                ],
                 "T4_synapse_RF_axis_joint_valid_target_count": visual[
                     "T4_synapse_RF_axis_joint_valid_target_count"
                 ],

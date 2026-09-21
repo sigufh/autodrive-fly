@@ -547,6 +547,14 @@ the previously label-calibrated target-synapse axis and is not a label-free
 selection rule. Therefore target-terminal geometry and source RF geometry are not
 treated as interchangeable, and no RF-axis replacement or functional candidate is
 authorized (`artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json`).
+Applying only the already-declared camera-frame coordinate convention to the
+existing source-pool diagnostic (left-eye horizontal reflection plus vertical
+reflection for top-positive image rows) leaves the legacy result intact and
+produces one post-hoc bilateral signal: `pairwise_distal_vector` passes for T4d_L
+and T4d_R. The other six directional populations still fail. Because this result
+was discovered on the same LPLC-T01 condition, it is not an independent
+replication and does not authorize a new target formula or calibration
+(`artifacts/v7-t4-source-pool-camera-frame-discovery.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

@@ -171,7 +171,9 @@ def _centroid_velocity(
     return velocity_x, velocity_y
 
 
-def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
+def evaluate_v7_t4_source_pool_local(
+    root: Path, *, source_coordinate_frame: str = "legacy_common_optic_hex"
+) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text())
     local = yaml.safe_load((root / LOCAL_EDGE_CONFIG).read_text())
     source_path = Path(config["source_protocol"])
@@ -197,6 +199,10 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
     }
     source_sides, source_coordinates = _node_annotations(root, probe)
     source_coordinates[source_sides == "L", 0] *= -1.0
+    if source_coordinate_frame == "camera_image_xy":
+        source_coordinates[:, 1] *= -1.0
+    elif source_coordinate_frame != "legacy_common_optic_hex":
+        raise ValueError(f"unknown source coordinate frame: {source_coordinate_frame}")
     for name, types in config["source_groups"].items():
         matrices[f"pair_{name}"] = _projection_rows(
             probe, targets, tuple(types), coordinates=source_coordinates
@@ -410,6 +416,7 @@ def evaluate_v7_t4_source_pool_local(root: Path) -> dict:
                 str(scoring_path): _sha256(root / scoring_path),
             },
             "condition_id": config["condition_id"],
+            "source_coordinate_frame": source_coordinate_frame,
             "target_count": len(targets),
             "parameter_fit": False,
             "target_activity_injection": False,

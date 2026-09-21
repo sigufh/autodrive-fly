@@ -12,6 +12,7 @@ def test_source_pool_local_is_read_only_tuning_diagnostic() -> None:
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
     protocol = report["protocol"]
     assert protocol["condition_id"] == "LPLC-T01"
+    assert protocol["source_coordinate_frame"] == "legacy_common_optic_hex"
     assert protocol["target_count"] == 6861
     assert protocol["parameter_fit"] is False
     assert protocol["target_activity_injection"] is False

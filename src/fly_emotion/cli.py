@@ -304,6 +304,9 @@ from .driving.v7_t4_source_dynamics_transfer_audit import (
 from .driving.v7_t4_source_identity_readiness_audit import (
     evaluate_v7_t4_source_identity_readiness_audit,
 )
+from .driving.v7_t4_source_pool_camera_frame_discovery import (
+    evaluate_v7_t4_source_pool_camera_frame_discovery,
+)
 from .driving.v7_t4_source_pool_local import evaluate_v7_t4_source_pool_local
 from .driving.v7_t4_source_resolved import evaluate_v7_t4_source_resolved
 from .driving.v7_t4_state_unit_mapping_audit import (
@@ -711,6 +714,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-malecns-ct1-columns")
     subparsers.add_parser("v7-audit-fig1-source-temporal-readiness")
     subparsers.add_parser("v7-evaluate-t4-source-pool-local")
+    subparsers.add_parser("v7-audit-t4-source-pool-camera-frame-discovery")
     subparsers.add_parser("v7-evaluate-three-hop-moment")
     subparsers.add_parser("v7-audit-three-hop-source-coverage")
     subparsers.add_parser("v7-audit-three-hop-temporal-consistency")
@@ -1385,6 +1389,14 @@ def main() -> None:
         report = evaluate_v7_t4_source_pool_local(root)
         target = root / "artifacts/v7-t4-source-pool-local.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-source-pool-camera-frame-discovery":
+        report = evaluate_v7_t4_source_pool_camera_frame_discovery(root)
+        target = root / "artifacts/v7-t4-source-pool-camera-frame-discovery.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-evaluate-three-hop-moment":

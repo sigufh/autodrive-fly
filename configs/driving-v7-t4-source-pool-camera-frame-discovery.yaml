@@ -1,0 +1,39 @@
+version: 1
+name: v7-t4-source-pool-camera-frame-discovery
+observed_on: "2026-09-21"
+legacy_evidence: artifacts/v7-t4-source-pool-local.json
+source_pool_config: configs/driving-v7-t4-source-pool-local.yaml
+source_pool_implementation: src/fly_emotion/driving/v7_t4_source_pool_local.py
+coordinate_contract: artifacts/v7-controlled-stimulus-angular-grid.json
+coordinate_implementation: src/fly_emotion/driving/v7.py
+source_coordinate_frame: camera_image_xy
+coordinate_transform:
+  horizontal: left_eye_reflected_right_eye_unchanged
+  vertical: both_eyes_reflected_to_match_v_equals_one_minus_local_y
+  scaling: omitted_positive_axis_scale_does_not_change_cardinal_projection_sign
+expected_readout_order:
+  - center
+  - proximal
+  - distal
+  - center_proximal_correlation
+  - pairwise_proximal_vector
+  - pairwise_distal_vector
+  - rectified_pairwise_proximal_vector
+  - rectified_pairwise_distal_vector
+  - center_centroid_velocity
+  - proximal_centroid_velocity
+  - distal_centroid_velocity
+  - anatomy_axis_motion_drive
+boundary:
+  post_hoc_discovery_only: true
+  tuning_only: true
+  single_condition_only: true
+  coordinate_transform_derived_without_target_subtype_or_direction_labels: true
+  candidate_selected_after_observing_discovery_output: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  legacy_result_preserved: true
+  authorize_new_target_formula: false
+  calibration_evaluated: false
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true
