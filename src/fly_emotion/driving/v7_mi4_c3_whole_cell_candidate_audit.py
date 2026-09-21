@@ -111,6 +111,12 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if gonzalez_suarez["independent_Mi4_experimental_membrane_voltage_available"]:
         raise ValueError("Gonzalez-Suarez Mi4 voltage boundary changed")
 
+    yuan = evidence["yuan_C3"]
+    if not yuan["C3_intervention_candidate_verified"]:
+        raise ValueError("Yuan C3 intervention evidence changed")
+    if yuan["C3_direct_recording_candidate_verified"]:
+        raise ValueError("Yuan C3 direct-recording boundary changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -180,6 +186,7 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "independent_Mi4_type_average_calcium_candidates": [
                 "Gonzalez_Suarez_2022"
             ],
+            "independent_C3_intervention_only_candidates": ["Yuan_2020"],
         },
         "transfer_gates": gates,
         "independent_Mi4_C3_voltage_transfer_authorized": authorized,

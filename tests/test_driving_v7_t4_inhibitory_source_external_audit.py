@@ -59,6 +59,17 @@ def test_gonzalez_suarez_Mi4_filter_is_independent_calcium_type_average() -> Non
     assert evidence["C3_source_dynamics_available"] is False
 
 
+def test_yuan_C3_is_intervention_evidence_not_direct_source_recording() -> None:
+    evidence = json.loads(REPORT.read_text())["additional_C3_evidence"]["Yuan_2020"]
+    assert evidence["paper"]["doi"] == "10.1111/jnc.15036"
+    assert evidence["C3_intervention_candidate_verified"] is True
+    assert evidence["directly_recorded_neural_activity_sources"] == ["L1", "L2"]
+    assert evidence["C3_direct_recording_candidate_verified"] is False
+    assert evidence["C3_public_numeric_source_dynamics_payload_verified"] is False
+    assert evidence["C3_experimental_membrane_voltage_verified"] is False
+    assert evidence["publisher_supplement_retrieved"] is False
+
+
 def test_inhibitory_source_transfer_and_downstream_remain_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert report["both_inhibitory_sources_have_transferable_external_validation"] is False

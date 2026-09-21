@@ -120,6 +120,10 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert report["matrix"]["C3"]["evidence_components"][
         "Gonzalez_Suarez_2022_C3_source_dynamics_available"
     ] is False
+    c3_components = report["matrix"]["C3"]["evidence_components"]
+    assert c3_components["Yuan_2020_C3_intervention_candidate_verified"] is True
+    assert c3_components["Yuan_2020_C3_direct_recording_candidate_verified"] is False
+    assert c3_components["Yuan_2020_C3_public_numeric_source_dynamics_verified"] is False
     for source in ("Mi1", "Tm3"):
         assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
         assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][

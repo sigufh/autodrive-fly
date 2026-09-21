@@ -593,6 +593,13 @@ currently returns proof-of-work HTML, which is recorded as inaccessible rather
 than classified as absent. This strengthens independent Mi4 calcium timing
 evidence but does not satisfy the independent Mi4/C3 voltage-transfer contract
 (`artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json`).
+Yuan et al. 2020 was separately classified as a C3 intervention candidate. Its
+indexed abstract reports C3-specific silencing, while the recorded neural
+activities named there are L1 and L2. Europe PMC and OpenAlex expose no open
+full text or linked repository, and the publisher full-text and Fig. S1-S8 URLs
+currently return access-challenge pages. The inaccessible material is not treated
+as absent, but the available evidence cannot establish a direct C3 recording or
+numeric C3 source-dynamics payload (`artifacts/v7-yuan-c3-candidate-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

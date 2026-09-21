@@ -2311,6 +2311,13 @@ DOCX source-data 附件：全部是有效 OOXML，均自述为 mean±SEM 汇总�
 `artifacts/v7-mi4-c3-whole-cell-candidate-audit.json` 与
 `artifacts/v7-ketkar-2019-source-data-attachment-audit.json`。
 
+对 C3 的机器索引增量检索还找到 Yuan 等 2020（DOI `10.1111/jnc.15036`）。可公开
+核验的摘要说明 C3 是遗传 silencing 的干预对象，而神经活动记录对象是 L1/L2；它没有
+证明直接记录了 C3 source dynamics。Europe PMC 标记为非 PMC、无补充和无数据库交叉
+引用，OpenAlex 标记 closed；Wiley 正文与 Fig S1–S8 请求当前均返回访问挑战页。因此只把
+它列为独立 C3 intervention-only 候选，不把不可访问内容解释为不存在，也不解锁任何门。
+证据见 `artifacts/v7-yuan-c3-candidate-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

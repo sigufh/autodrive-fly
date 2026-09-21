@@ -132,6 +132,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     gonzalez_suarez_mi4_evidence_audit = reports[
         "gonzalez_suarez_mi4_evidence_audit"
     ]
+    yuan_c3_candidate_audit = reports["yuan_c3_candidate_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -393,6 +394,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["mi4_c3_whole_cell_candidate_audit"],
                 config["evidence"]["ketkar_2019_source_data_attachment_audit"],
                 config["evidence"]["gonzalez_suarez_mi4_evidence_audit"],
+                config["evidence"]["yuan_c3_candidate_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1607,6 +1609,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Gonzalez_Suarez_2022_C3_dynamics_available": (
                     gonzalez_suarez_mi4_evidence_audit[
                         "independent_C3_source_dynamics_available"
+                    ]
+                ),
+                "Yuan_2020_C3_intervention_candidate_verified": (
+                    yuan_c3_candidate_audit["C3_intervention_candidate_verified"]
+                ),
+                "Yuan_2020_C3_direct_recording_verified": (
+                    yuan_c3_candidate_audit["C3_direct_recording_candidate_verified"]
+                ),
+                "Yuan_2020_C3_numeric_source_dynamics_verified": (
+                    yuan_c3_candidate_audit[
+                        "C3_public_numeric_source_dynamics_payload_verified"
+                    ]
+                ),
+                "Yuan_2020_supplement_retrieved": (
+                    yuan_c3_candidate_audit["open_access_status"][
+                        "publisher_fulltext_and_supplement_retrieved"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (
@@ -3925,6 +3943,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gonzalez_Suarez_2022_individual_cell_axis_available",
                     "Gonzalez_Suarez_2022_Mi4_voltage_available",
                     "Gonzalez_Suarez_2022_C3_dynamics_available",
+                    "Yuan_2020_C3_intervention_candidate_verified",
+                    "Yuan_2020_C3_direct_recording_verified",
+                    "Yuan_2020_C3_numeric_source_dynamics_verified",
+                    "Yuan_2020_supplement_retrieved",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

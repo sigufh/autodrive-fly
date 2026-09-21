@@ -1,0 +1,74 @@
+{
+  "protocol": {
+    "name": "v7-yuan-c3-candidate-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-yuan-c3-candidate-audit.yaml": "8fed90bdf4bcd1b1b2096aff736a0ad96ea4a972deb41a3fa2c1bdf7bf651592",
+      "src/fly_emotion/driving/v7_yuan_c3_candidate_audit.py": "becfaa538593197854ad4f9b8656793347c9d2fced25f85b48478df6a484910e"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/yuan-2020/crossref-work.json": "bbfa3848a283e52a7086224f93263bdc51b87e2d70352e3306d35a95e7ada9ea",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/europepmc-search.json": "a940b399710727281c7e5f585a0388350617b00111085d29cc9a43d177e2314e",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/openalex-work.json": "f13081fc1891c040eca1eaf6017b2469caa2fc57d063b8eb080d249cd673a710",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/semanticscholar-work.json": "a78f6499e74c2f7cca5db2e214731e866bb3a2a8d3c25f3c7e3793b1f9c0bb36",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/datacite-related.json": "80d91fca9a9b79e71c8c0cd8dbe869bbb83e67718268702f861c1db2fd215901",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/zenodo-doi-search.json": "b3d64c285ed6f9bdfcc8c12d2b1983ef4bc4ae2e3c5c69adc63cdf0b4587d12f",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/publisher-full.xml": "c0b3222d00fce791edf5661428802c1b0f929bf9b1eadaf4937b03b15b544584",
+      "data/raw/t4-inhibitory-source-external/yuan-2020/jnc15036-sup-0001-FigS1-S8.pdf": "d9e3a9d13d6f8b69b3c190c3e5a9d9602cbf3ae1b6da38cfa875889e550ee545"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Lamina feedback neurons regulate the bandpass property of the flicker-induced orientation response in Drosophila",
+    "doi": "10.1111/jnc.15036",
+    "pmid": 32383496,
+    "first_published_on": "2020-05-08"
+  },
+  "open_access_status": {
+    "Europe_PMC_in_PMC": false,
+    "Europe_PMC_has_supplement": false,
+    "Europe_PMC_has_database_cross_references": false,
+    "OpenAlex_status": "closed",
+    "OpenAlex_repository_fulltext_available": false,
+    "Semantic_Scholar_open_access_PDF_available": false,
+    "publisher_fulltext_and_supplement_retrieved": false,
+    "publisher_responses_are_access_challenges": true
+  },
+  "abstract_evidence": {
+    "C3_manipulated_by_specific_blocking": true,
+    "directly_recorded_neural_activity_sources": [
+      "L1",
+      "L2"
+    ],
+    "direct_C3_source_dynamics_reported": false,
+    "experimental_C3_membrane_voltage_reported": false
+  },
+  "public_index_evidence": {
+    "Crossref_numeric_data_links": [],
+    "DataCite_related_result_count": 0,
+    "Zenodo_exact_DOI_result_count": 0
+  },
+  "C3_intervention_candidate_verified": true,
+  "C3_direct_recording_candidate_verified": false,
+  "C3_public_numeric_source_dynamics_payload_verified": false,
+  "C3_experimental_membrane_voltage_verified": false,
+  "authorize_C3_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "C3_is_an_intervention_target_not_a_verified_direct_source_recording",
+  "boundary": {
+    "abstract_supports_C3_silencing_not_direct_C3_recording": true,
+    "L1_L2_neural_activity_does_not_substitute_for_C3_source_dynamics": true,
+    "inaccessible_fulltext_and_supplement_are_not_classified_as_absent": true,
+    "successful_index_zero_results_are_not_global_nonexistence": true,
+    "no_curve_digitization": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

@@ -57,6 +57,10 @@ export type V7Status = {
     Gonzalez_Suarez_2022_individual_cell_axis_available?: boolean;
     Gonzalez_Suarez_2022_Mi4_voltage_available?: boolean;
     Gonzalez_Suarez_2022_C3_dynamics_available?: boolean;
+    Yuan_2020_C3_intervention_candidate_verified?: boolean;
+    Yuan_2020_C3_direct_recording_verified?: boolean;
+    Yuan_2020_C3_numeric_source_dynamics_verified?: boolean;
+    Yuan_2020_supplement_retrieved?: boolean;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
     T5_voltage_derived_kernel_sources: string[];
     T5_voltage_derived_kernel_record_count: number;

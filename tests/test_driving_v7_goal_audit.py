@@ -240,6 +240,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gonzalez_Suarez_2022_individual_cell_axis_available",
         "Gonzalez_Suarez_2022_Mi4_voltage_available",
         "Gonzalez_Suarez_2022_C3_dynamics_available",
+        "Yuan_2020_C3_intervention_candidate_verified",
+        "Yuan_2020_C3_direct_recording_verified",
+        "Yuan_2020_C3_numeric_source_dynamics_verified",
+        "Yuan_2020_supplement_retrieved",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1027,7 +1031,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 8
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 9
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1039,6 +1043,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Gonzalez_Suarez_2022_individual_cell_axis_available"] is False
     assert visual["observations"]["Gonzalez_Suarez_2022_Mi4_voltage_available"] is False
     assert visual["observations"]["Gonzalez_Suarez_2022_C3_dynamics_available"] is False
+    assert visual["observations"]["Yuan_2020_C3_intervention_candidate_verified"] is True
+    assert visual["observations"]["Yuan_2020_C3_direct_recording_verified"] is False
+    assert visual["observations"]["Yuan_2020_C3_numeric_source_dynamics_verified"] is False
+    assert visual["observations"]["Yuan_2020_supplement_retrieved"] is False
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

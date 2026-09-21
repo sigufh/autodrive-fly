@@ -1,0 +1,27 @@
+version: 1
+name: v7-yuan-c3-candidate-audit
+observed_on: "2026-09-21"
+paper:
+  title: Lamina feedback neurons regulate the bandpass property of the flicker-induced orientation response in Drosophila
+  doi: 10.1111/jnc.15036
+  pmid: 32383496
+  first_published_on: "2020-05-08"
+snapshots:
+  crossref_work: {path: data/raw/t4-inhibitory-source-external/yuan-2020/crossref-work.json, bytes: 18868, sha256: bbfa3848a283e52a7086224f93263bdc51b87e2d70352e3306d35a95e7ada9ea}
+  europe_pmc: {path: data/raw/t4-inhibitory-source-external/yuan-2020/europepmc-search.json, bytes: 975, sha256: a940b399710727281c7e5f585a0388350617b00111085d29cc9a43d177e2314e}
+  openalex_work: {path: data/raw/t4-inhibitory-source-external/yuan-2020/openalex-work.json, bytes: 51599, sha256: f13081fc1891c040eca1eaf6017b2469caa2fc57d063b8eb080d249cd673a710}
+  semanticscholar_work: {path: data/raw/t4-inhibitory-source-external/yuan-2020/semanticscholar-work.json, bytes: 3104, sha256: a78f6499e74c2f7cca5db2e214731e866bb3a2a8d3c25f3c7e3793b1f9c0bb36}
+  datacite_related: {path: data/raw/t4-inhibitory-source-external/yuan-2020/datacite-related.json, bytes: 195, sha256: 80d91fca9a9b79e71c8c0cd8dbe869bbb83e67718268702f861c1db2fd215901}
+  zenodo_doi_search: {path: data/raw/t4-inhibitory-source-external/yuan-2020/zenodo-doi-search.json, bytes: 449, sha256: b3d64c285ed6f9bdfcc8c12d2b1983ef4bc4ae2e3c5c69adc63cdf0b4587d12f}
+  publisher_fulltext_response: {path: data/raw/t4-inhibitory-source-external/yuan-2020/publisher-full.xml, bytes: 5568, sha256: c0b3222d00fce791edf5661428802c1b0f929bf9b1eadaf4937b03b15b544584}
+  publisher_supplement_response: {path: data/raw/t4-inhibitory-source-external/yuan-2020/jnc15036-sup-0001-FigS1-S8.pdf, bytes: 5827, sha256: d9e3a9d13d6f8b69b3c190c3e5a9d9602cbf3ae1b6da38cfa875889e550ee545}
+boundary:
+  abstract_supports_C3_silencing_not_direct_C3_recording: true
+  L1_L2_neural_activity_does_not_substitute_for_C3_source_dynamics: true
+  inaccessible_fulltext_and_supplement_are_not_classified_as_absent: true
+  successful_index_zero_results_are_not_global_nonexistence: true
+  no_curve_digitization: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

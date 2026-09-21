@@ -41,6 +41,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     mi4_c3_candidates = evidence["mi4_c3_whole_cell_candidates"]
     ketkar_attachments = evidence["ketkar_2019_source_data_attachments"]
     gonzalez_suarez = evidence["gonzalez_suarez_Mi4"]
+    yuan = evidence["yuan_C3"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -420,6 +421,16 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Gonzalez_Suarez_2022_C3_source_dynamics_available": (
                 source == "C3"
                 and gonzalez_suarez["independent_C3_source_dynamics_available"]
+            ),
+            "Yuan_2020_C3_intervention_candidate_verified": (
+                source == "C3" and yuan["C3_intervention_candidate_verified"]
+            ),
+            "Yuan_2020_C3_direct_recording_candidate_verified": (
+                source == "C3" and yuan["C3_direct_recording_candidate_verified"]
+            ),
+            "Yuan_2020_C3_public_numeric_source_dynamics_verified": (
+                source == "C3"
+                and yuan["C3_public_numeric_source_dynamics_payload_verified"]
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources

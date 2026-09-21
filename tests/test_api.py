@@ -61,6 +61,10 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Gonzalez_Suarez_2022_individual_cell_axis_available"] is False
     assert boundaries["Gonzalez_Suarez_2022_Mi4_voltage_available"] is False
     assert boundaries["Gonzalez_Suarez_2022_C3_dynamics_available"] is False
+    assert boundaries["Yuan_2020_C3_intervention_candidate_verified"] is True
+    assert boundaries["Yuan_2020_C3_direct_recording_verified"] is False
+    assert boundaries["Yuan_2020_C3_numeric_source_dynamics_verified"] is False
+    assert boundaries["Yuan_2020_supplement_retrieved"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

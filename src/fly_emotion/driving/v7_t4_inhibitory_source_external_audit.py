@@ -68,6 +68,18 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
         raise ValueError("Gonzalez-Suarez Mi4 calcium evidence changed")
     if gonzalez_suarez["independent_Mi4_experimental_membrane_voltage_available"]:
         raise ValueError("Gonzalez-Suarez Mi4 voltage boundary changed")
+    additional_c3_paths = {
+        name: Path(path) for name, path in config["additional_C3_evidence"].items()
+    }
+    additional_c3 = {
+        name: json.loads((root / path).read_text(encoding="utf-8"))
+        for name, path in additional_c3_paths.items()
+    }
+    yuan = additional_c3["Yuan_2020"]
+    if not yuan["C3_intervention_candidate_verified"]:
+        raise ValueError("Yuan C3 intervention evidence changed")
+    if yuan["C3_direct_recording_candidate_verified"]:
+        raise ValueError("Yuan C3 direct-recording boundary changed")
     c3_strf = c3["STRF"]
     c3_flash = c3["independent_flash"]
     allowed_units = contract["allowed_response_units"]
@@ -127,6 +139,10 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
                     str(path): _sha256(root / path)
                     for path in additional_mi4_paths.values()
                 },
+                **{
+                    str(path): _sha256(root / path)
+                    for path in additional_c3_paths.values()
+                },
             },
             "Mi4_paper": {**mi4, "source_actual_sha256": _sha256(source_path)},
             "parameter_fit": False,
@@ -172,6 +188,29 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
                 ],
                 "C3_source_dynamics_available": gonzalez_suarez[
                     "independent_C3_source_dynamics_available"
+                ],
+            }
+        },
+        "additional_C3_evidence": {
+            "Yuan_2020": {
+                "paper": yuan["paper"],
+                "C3_intervention_candidate_verified": yuan[
+                    "C3_intervention_candidate_verified"
+                ],
+                "directly_recorded_neural_activity_sources": yuan[
+                    "abstract_evidence"
+                ]["directly_recorded_neural_activity_sources"],
+                "C3_direct_recording_candidate_verified": yuan[
+                    "C3_direct_recording_candidate_verified"
+                ],
+                "C3_public_numeric_source_dynamics_payload_verified": yuan[
+                    "C3_public_numeric_source_dynamics_payload_verified"
+                ],
+                "C3_experimental_membrane_voltage_verified": yuan[
+                    "C3_experimental_membrane_voltage_verified"
+                ],
+                "publisher_supplement_retrieved": yuan["open_access_status"][
+                    "publisher_fulltext_and_supplement_retrieved"
                 ],
             }
         },

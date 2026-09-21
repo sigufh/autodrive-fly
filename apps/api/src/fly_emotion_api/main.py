@@ -154,6 +154,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gonzalez_Suarez_2022_C3_dynamics_available": visual[
                     "Gonzalez_Suarez_2022_C3_dynamics_available"
                 ],
+                "Yuan_2020_C3_intervention_candidate_verified": visual[
+                    "Yuan_2020_C3_intervention_candidate_verified"
+                ],
+                "Yuan_2020_C3_direct_recording_verified": visual[
+                    "Yuan_2020_C3_direct_recording_verified"
+                ],
+                "Yuan_2020_C3_numeric_source_dynamics_verified": visual[
+                    "Yuan_2020_C3_numeric_source_dynamics_verified"
+                ],
+                "Yuan_2020_supplement_retrieved": visual[
+                    "Yuan_2020_supplement_retrieved"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

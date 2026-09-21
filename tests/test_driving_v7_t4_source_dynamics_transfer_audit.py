@@ -153,6 +153,13 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert independent_mi4["Mi4_experimental_membrane_voltage_available"] is False
     assert independent_mi4["C3_source_dynamics_available"] is False
     assert independent_mi4["Mi4_C3_voltage_transfer_authorized"] is False
+    yuan = report["verified_Yuan_C3_intervention_boundary"]
+    assert yuan["doi"] == "10.1111/jnc.15036"
+    assert yuan["C3_intervention_candidate_verified"] is True
+    assert yuan["directly_recorded_neural_activity_sources"] == ["L1", "L2"]
+    assert yuan["C3_direct_recording_candidate_verified"] is False
+    assert yuan["C3_public_numeric_source_dynamics_payload_verified"] is False
+    assert yuan["C3_source_dynamics_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

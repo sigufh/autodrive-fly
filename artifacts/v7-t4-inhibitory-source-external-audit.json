@@ -3,13 +3,14 @@
     "name": "v7-t4-inhibitory-source-external-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "7e012fb27e7c55ea54408c1ebb4621b4955c995e3e1bb8d906cecb22d7de424e",
-      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "8858210976dfbd95d39953cf7e3909d1a452b776224c9eb5d19f11604ff9eb6d",
+      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "1cba6889a62334090a4881f869c58bec289b5871fda3d28d02752e3ffdeacebd",
+      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "9a17658660219d03f59218ccab84ec9cdf058554140cd8c3ba444a33493ac3ae",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
       "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
-      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b"
+      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b",
+      "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0"
     },
     "Mi4_paper": {
       "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
@@ -102,6 +103,25 @@
       "C3_source_dynamics_available": false
     }
   },
+  "additional_C3_evidence": {
+    "Yuan_2020": {
+      "paper": {
+        "title": "Lamina feedback neurons regulate the bandpass property of the flicker-induced orientation response in Drosophila",
+        "doi": "10.1111/jnc.15036",
+        "pmid": 32383496,
+        "first_published_on": "2020-05-08"
+      },
+      "C3_intervention_candidate_verified": true,
+      "directly_recorded_neural_activity_sources": [
+        "L1",
+        "L2"
+      ],
+      "C3_direct_recording_candidate_verified": false,
+      "C3_public_numeric_source_dynamics_payload_verified": false,
+      "C3_experimental_membrane_voltage_verified": false,
+      "publisher_supplement_retrieved": false
+    }
+  },
   "both_inhibitory_sources_have_transferable_external_validation": false,
   "authorize_T4_source_dynamics_fit": false,
   "authorize_T4_functional_precheck": false,
@@ -115,6 +135,7 @@
     "C3_mean_correlation_does_not_override_fixed_bootstrap_p05": true,
     "mean_SEM_Mi1_Tm3_GCaMP_tables_do_not_supply_Mi4_or_C3_dynamics": true,
     "type_average_Mi4_GCaMP_filter_is_not_individual_membrane_voltage": true,
+    "C3_intervention_is_not_direct_C3_source_recording": true,
     "no_curve_digitization": true,
     "no_threshold_or_label_change": true,
     "no_parameter_fit": true,

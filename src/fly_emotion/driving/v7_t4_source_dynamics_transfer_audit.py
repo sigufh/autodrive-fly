@@ -37,6 +37,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
     gonzalez_suarez_path = Path(config["gonzalez_suarez_mi4_evidence"])
+    yuan_c3_path = Path(config["yuan_c3_candidate_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -77,6 +78,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     gonzalez_suarez = json.loads(
         (root / gonzalez_suarez_path).read_text(encoding="utf-8")
     )
+    yuan_c3 = json.loads((root / yuan_c3_path).read_text(encoding="utf-8"))
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
@@ -212,6 +214,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
                 str(gonzalez_suarez_path): _sha256(root / gonzalez_suarez_path),
+                str(yuan_c3_path): _sha256(root / yuan_c3_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -505,6 +508,24 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "Mi4_C3_voltage_transfer_authorized": gonzalez_suarez[
                 "authorize_Mi4_C3_voltage_transfer"
+            ],
+        },
+        "verified_Yuan_C3_intervention_boundary": {
+            "doi": yuan_c3["paper"]["doi"],
+            "C3_intervention_candidate_verified": yuan_c3[
+                "C3_intervention_candidate_verified"
+            ],
+            "directly_recorded_neural_activity_sources": yuan_c3[
+                "abstract_evidence"
+            ]["directly_recorded_neural_activity_sources"],
+            "C3_direct_recording_candidate_verified": yuan_c3[
+                "C3_direct_recording_candidate_verified"
+            ],
+            "C3_public_numeric_source_dynamics_payload_verified": yuan_c3[
+                "C3_public_numeric_source_dynamics_payload_verified"
+            ],
+            "C3_source_dynamics_transfer_authorized": yuan_c3[
+                "authorize_C3_source_dynamics_transfer"
             ],
         },
         "verified_FlyVis_C3_time_constant_readiness": {
