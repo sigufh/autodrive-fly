@@ -39,6 +39,9 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     measured_kernel_support = evidence["measured_kernel_support_coverage"]
     measured_kernel_full_support = evidence["measured_kernel_full_support"]
     population_kernel_robustness = evidence["population_kernel_robustness"]
+    population_kernel_aggregation = evidence[
+        "population_kernel_aggregation_semantics"
+    ]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -189,6 +192,26 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "population_kernel_transfer_authorized": population_kernel_robustness[
             "authorize_population_kernel_transfer"
         ],
+        "population_kernel_author_default_baseline_verified": (
+            population_kernel_aggregation[
+                "author_default_baseline_semantics_verified"
+            ]
+        ),
+        "population_kernel_current_no_baseline_matches_author_default": (
+            population_kernel_aggregation[
+                "current_no_baseline_matches_author_default"
+            ]
+        ),
+        "population_kernel_author_row_weighting_exactly_reproduced": (
+            population_kernel_aggregation[
+                "author_row_weighted_aggregation_exactly_reproduced"
+            ]
+        ),
+        "population_kernel_alternative_tail_baseline_authorized": (
+            population_kernel_aggregation[
+                "alternative_tail_baseline_variant_authorized"
+            ]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -280,6 +303,19 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             ]["Tm2"]["exhaustive_near_equal_recording_id_partitions"][
                 "summary"
             ]["p05"],
+            "population_kernel_author_call_count": population_kernel_aggregation[
+                "call_summary"
+            ]["call_count"],
+            "population_kernel_explicit_baseline_call_count": (
+                population_kernel_aggregation["call_summary"][
+                    "calls_with_explicit_baseline"
+                ]
+            ),
+            "Tm1_row_vs_recording_id_weighted_correlation": (
+                population_kernel_aggregation["source_results"]["Tm1"][
+                    "row_weighted_vs_equal_recording_id_correlation"
+                ]
+            ),
         },
         "gates": gates,
         "T5_source_transfer_ready": False,

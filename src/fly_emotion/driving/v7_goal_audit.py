@@ -835,6 +835,41 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Tm2_partition_correlation_p05"
                     ]
                 ),
+                "T5_population_kernel_author_default_baseline_verified": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "population_kernel_author_default_baseline_verified"
+                    ]
+                ),
+                "T5_population_kernel_no_baseline_matches_author_default": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "population_kernel_current_no_baseline_matches_author_default"
+                    ]
+                ),
+                "T5_population_kernel_author_row_weighting_exactly_reproduced": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "population_kernel_author_row_weighting_exactly_reproduced"
+                    ]
+                ),
+                "T5_population_kernel_tail_baseline_variant_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "population_kernel_alternative_tail_baseline_authorized"
+                    ]
+                ),
+                "T5_population_kernel_author_call_count": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "population_kernel_author_call_count"
+                    ]
+                ),
+                "T5_population_kernel_explicit_baseline_call_count": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "population_kernel_explicit_baseline_call_count"
+                    ]
+                ),
+                "T5_Tm1_row_vs_recording_id_weighted_correlation": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm1_row_vs_recording_id_weighted_correlation"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3306,6 +3341,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_population_kernel_robustness_failing_sources",
                     "T5_Tm2_recording_id_vs_rest_median_correlation",
                     "T5_Tm2_partition_correlation_p05",
+                    "T5_population_kernel_author_default_baseline_verified",
+                    "T5_population_kernel_no_baseline_matches_author_default",
+                    "T5_population_kernel_author_row_weighting_exactly_reproduced",
+                    "T5_population_kernel_tail_baseline_variant_authorized",
+                    "T5_population_kernel_author_call_count",
+                    "T5_population_kernel_explicit_baseline_call_count",
+                    "T5_Tm1_row_vs_recording_id_weighted_correlation",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

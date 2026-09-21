@@ -110,6 +110,18 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         0.785694273562359
     )
     assert boundaries["T5_Tm2_partition_correlation_p05"] == 0.76950266256901
+    assert boundaries["T5_population_kernel_author_default_baseline_verified"] is True
+    assert boundaries["T5_population_kernel_no_baseline_matches_author_default"] is True
+    assert (
+        boundaries["T5_population_kernel_author_row_weighting_exactly_reproduced"]
+        is False
+    )
+    assert boundaries["T5_population_kernel_tail_baseline_variant_authorized"] is False
+    assert boundaries["T5_population_kernel_author_call_count"] == 9
+    assert boundaries["T5_population_kernel_explicit_baseline_call_count"] == 0
+    assert boundaries["T5_Tm1_row_vs_recording_id_weighted_correlation"] == (
+        0.9995598341098436
+    )
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

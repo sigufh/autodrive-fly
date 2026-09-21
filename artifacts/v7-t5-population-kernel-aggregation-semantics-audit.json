@@ -1,0 +1,178 @@
+{
+  "protocol": {
+    "name": "v7-t5-population-kernel-aggregation-semantics-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-population-kernel-aggregation-semantics-audit.yaml": "7f8d6420251e5aa736a3f162cfe046e0dedaf97b227ae043826d212dec9c2827",
+      "src/fly_emotion/driving/v7_t5_population_kernel_aggregation_semantics_audit.py": "78d6990bf1739465ef297acb6d8f8d037a26bd5acb9bac196d5f37b81d755ad7",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "data/raw/kohn-portes-flexible-filtering/history/text/analysis_returnmeans.py": "bc7dae22a5f53504f9a1111a645b34a79505f72cc0dbfa98cd4ba6a0c7e20474",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb": "1d9730f4651a3c9274938791271140ed19e2a79fa27a9c2f154bd736cb3fcf5f",
+      "data/raw/kohn-portes-flexible-filtering/history/text/analysis_flash_analysis.py": "7d6e049dee702dcda285443f66a5b8687426233ecd7f7687a6e768900769c27a",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig5-LinearRegression.ipynb": "7017faae8d8b2ce24bf74713d56b91a9a503e544fac48d10c30b9872c01881d9",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6a-Model1LN-checkpoint.ipynb": "652bc33a678b9e4592afc6506fec53c18c5b1642f39274f60bbc717b065e7841",
+      "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6b-Model2Flashes-checkpoint.ipynb": "bea260dfe7cde9cf5e9ce07581e3237112c01225284349e5b7dc3136b50ac707",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "author_function_semantics": {
+    "baseline_default_is_none": true,
+    "start_baseline_uses_first_sample": true,
+    "end_baseline_uses_last_100_sample_mean": true,
+    "default_branch_uses_zero_offset": true,
+    "population_mean_is_row_weighted": true
+  },
+  "bounded_call_sites": {
+    "figure2": {
+      "path": "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig2-WhiteNoiseFilters.ipynb",
+      "call_count": 8,
+      "calls_with_explicit_baseline": 0,
+      "calls": [
+        {
+          "line": 273,
+          "source": "return_mean_temporal(wn_Tm1_SA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 274,
+          "source": "return_mean_temporal(wn_Tm1_OA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 278,
+          "source": "return_mean_temporal(wn_Tm2_SA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 279,
+          "source": "return_mean_temporal(wn_Tm2_OA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 283,
+          "source": "return_mean_temporal(wn_Tm4_SA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 284,
+          "source": "return_mean_temporal(wn_Tm4_OA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 288,
+          "source": "return_mean_temporal(wn_Tm9_SA)",
+          "baseline_argument": null
+        },
+        {
+          "line": 289,
+          "source": "return_mean_temporal(wn_Tm9_OA)",
+          "baseline_argument": null
+        }
+      ]
+    },
+    "flash_analysis": {
+      "path": "data/raw/kohn-portes-flexible-filtering/history/text/analysis_flash_analysis.py",
+      "call_count": 1,
+      "calls_with_explicit_baseline": 0,
+      "calls": [
+        {
+          "line": 551,
+          "source": "return_mean_temporal(trace_dict)",
+          "baseline_argument": null
+        }
+      ]
+    },
+    "figure5": {
+      "path": "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig5-LinearRegression.ipynb",
+      "call_count": 0,
+      "calls_with_explicit_baseline": 0,
+      "calls": []
+    },
+    "figure6a_checkpoint": {
+      "path": "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6a-Model1LN-checkpoint.ipynb",
+      "call_count": 0,
+      "calls_with_explicit_baseline": 0,
+      "calls": []
+    },
+    "figure6b_checkpoint": {
+      "path": "data/raw/kohn-portes-flexible-filtering/history/text/figures_.ipynb_checkpoints_Fig6b-Model2Flashes-checkpoint.ipynb",
+      "call_count": 0,
+      "calls_with_explicit_baseline": 0,
+      "calls": []
+    }
+  },
+  "call_summary": {
+    "call_count": 9,
+    "calls_with_explicit_baseline": 0,
+    "all_observed_calls_use_default_baseline_none": true
+  },
+  "current_v7_semantics": {
+    "baseline_subtraction": null,
+    "matches_author_default_baseline_semantics": true,
+    "aggregation": "equal_weight_mean_within_recording_id_then_across_recording_ids",
+    "matches_author_row_weighted_population_mean_exactly": false,
+    "deliberate_recording_id_balancing": true
+  },
+  "source_results": {
+    "Tm1": {
+      "payload_row_count": 8,
+      "unique_recording_id_count": 7,
+      "duplicate_recording_id_row_count": 1,
+      "author_row_weighted_equals_v7_equal_recording_id_weighted": false,
+      "row_weighted_vs_equal_recording_id_correlation": 0.9995598341098436,
+      "row_weighted_vs_equal_recording_id_maximum_absolute_difference": 0.001330646526801052
+    },
+    "Tm2": {
+      "payload_row_count": 5,
+      "unique_recording_id_count": 5,
+      "duplicate_recording_id_row_count": 0,
+      "author_row_weighted_equals_v7_equal_recording_id_weighted": true,
+      "row_weighted_vs_equal_recording_id_correlation": 1.0,
+      "row_weighted_vs_equal_recording_id_maximum_absolute_difference": 0.0
+    },
+    "Tm4": {
+      "payload_row_count": 6,
+      "unique_recording_id_count": 6,
+      "duplicate_recording_id_row_count": 0,
+      "author_row_weighted_equals_v7_equal_recording_id_weighted": true,
+      "row_weighted_vs_equal_recording_id_correlation": 1.0,
+      "row_weighted_vs_equal_recording_id_maximum_absolute_difference": 0.0
+    },
+    "Tm9": {
+      "payload_row_count": 6,
+      "unique_recording_id_count": 6,
+      "duplicate_recording_id_row_count": 0,
+      "author_row_weighted_equals_v7_equal_recording_id_weighted": true,
+      "row_weighted_vs_equal_recording_id_correlation": 0.9999999999999998,
+      "row_weighted_vs_equal_recording_id_maximum_absolute_difference": 0.0
+    }
+  },
+  "author_default_baseline_semantics_verified": true,
+  "current_no_baseline_matches_author_default": true,
+  "author_row_weighted_aggregation_exactly_reproduced": false,
+  "alternative_tail_baseline_variant_authorized": false,
+  "population_kernel_transfer_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "author_default_baseline_reproduced_but_recording_balancing_differs_and_transfer_gates_remain_closed",
+  "boundary": {
+    "source_call_inventory_is_bounded_to_named_files": true,
+    "author_default_baseline_none_is_not_tail_baseline_subtraction": true,
+    "v7_recording_id_balancing_is_deliberate_and_not_author_row_weighting": true,
+    "recording_id_is_not_biological_individual_id": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

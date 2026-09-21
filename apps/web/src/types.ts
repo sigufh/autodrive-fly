@@ -147,6 +147,13 @@ export type V7Status = {
     T5_population_kernel_robustness_failing_sources?: string[];
     T5_Tm2_recording_id_vs_rest_median_correlation?: number;
     T5_Tm2_partition_correlation_p05?: number;
+    T5_population_kernel_author_default_baseline_verified?: boolean;
+    T5_population_kernel_no_baseline_matches_author_default?: boolean;
+    T5_population_kernel_author_row_weighting_exactly_reproduced?: boolean;
+    T5_population_kernel_tail_baseline_variant_authorized?: boolean;
+    T5_population_kernel_author_call_count?: number;
+    T5_population_kernel_explicit_baseline_call_count?: number;
+    T5_Tm1_row_vs_recording_id_weighted_correlation?: number;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

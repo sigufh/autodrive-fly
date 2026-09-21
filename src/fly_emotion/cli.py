@@ -389,6 +389,9 @@ from .driving.v7_t5_phenotype import evaluate_v7_t5_phenotype
 from .driving.v7_t5_physical_time_transfer_audit import (
     evaluate_v7_t5_physical_time_transfer_audit,
 )
+from .driving.v7_t5_population_kernel_aggregation_semantics_audit import (
+    evaluate_v7_t5_population_kernel_aggregation_semantics_audit,
+)
 from .driving.v7_t5_population_kernel_robustness_audit import (
     evaluate_v7_t5_population_kernel_robustness_audit,
 )
@@ -699,6 +702,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-native-direction-waveforms")
     subparsers.add_parser("v7-audit-t5-physical-time-transfer")
     subparsers.add_parser("v7-audit-t5-population-kernel-robustness")
+    subparsers.add_parser("v7-audit-t5-population-kernel-aggregation-semantics")
     subparsers.add_parser("v7-audit-t5-ct1-terminal-axis")
     subparsers.add_parser("v7-calibrate-t5-ct1-axis")
     subparsers.add_parser("v7-audit-t5-ct1-crossfit-axis")
@@ -1438,6 +1442,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-population-kernel-robustness":
         report = evaluate_v7_t5_population_kernel_robustness_audit(root)
         target = root / "artifacts/v7-t5-population-kernel-robustness-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-population-kernel-aggregation-semantics":
+        report = evaluate_v7_t5_population_kernel_aggregation_semantics_audit(root)
+        target = root / "artifacts/v7-t5-population-kernel-aggregation-semantics-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

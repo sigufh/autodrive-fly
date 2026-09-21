@@ -1972,6 +1972,14 @@ partition 相关的 p05 为 `0.7695`，均低于 0.80，故总体门失败。删
 各 source 群体均值与全均值的最小相关仍高于 0.97，但该 jackknife 稳定不替代记录间一致性。
 此外 recording ID 不是已验证的 fly ID，不能视为独立生物验证，population-kernel transfer
 继续不授权。证据见 `artifacts/v7-t5-population-kernel-robustness-audit.json`。
+作者 `return_mean_temporal` 的 aggregation/baseline 语义也已单独核验：函数默认
+`baseline=None`，此时 offset 为 0；已检查的 Figure 2 八次调用和 flash-analysis 一次调用
+均未显式传 baseline，Figure 5 与当前可访问的 Figure 6 notebook 没有调用该函数。因此当前
+不做 tail-baseline subtraction 符合作者默认，不能无依据追加 `baseline='end'` 变体。作者随后
+按 payload row 求均值；v7 则为避免重复 recording ID 加倍权重，先在 ID 内、再跨 ID 等权。
+Tm2/Tm4/Tm9 因无重复 ID 而精确一致；Tm1 为 8 rows/7 IDs，两种单位 L1 均值相关
+`0.99956`、最大绝对差 `0.001331`，但仍不声明 exact reproduction。证据见
+`artifacts/v7-t5-population-kernel-aggregation-semantics-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

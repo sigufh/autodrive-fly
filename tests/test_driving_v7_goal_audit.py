@@ -134,6 +134,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_population_kernel_robustness_failing_sources",
         "T5_Tm2_recording_id_vs_rest_median_correlation",
         "T5_Tm2_partition_correlation_p05",
+        "T5_population_kernel_author_default_baseline_verified",
+        "T5_population_kernel_no_baseline_matches_author_default",
+        "T5_population_kernel_author_row_weighting_exactly_reproduced",
+        "T5_population_kernel_tail_baseline_variant_authorized",
+        "T5_population_kernel_author_call_count",
+        "T5_population_kernel_explicit_baseline_call_count",
+        "T5_Tm1_row_vs_recording_id_weighted_correlation",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -572,6 +579,30 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert np.isclose(
         visual["observations"]["T5_Tm2_partition_correlation_p05"],
         0.76950266256901,
+    )
+    assert (
+        visual["observations"]["T5_population_kernel_author_default_baseline_verified"]
+        is True
+    )
+    assert (
+        visual["observations"]["T5_population_kernel_no_baseline_matches_author_default"]
+        is True
+    )
+    assert (
+        visual["observations"][
+            "T5_population_kernel_author_row_weighting_exactly_reproduced"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_population_kernel_tail_baseline_variant_authorized"]
+        is False
+    )
+    assert visual["observations"]["T5_population_kernel_author_call_count"] == 9
+    assert visual["observations"]["T5_population_kernel_explicit_baseline_call_count"] == 0
+    assert np.isclose(
+        visual["observations"]["T5_Tm1_row_vs_recording_id_weighted_correlation"],
+        0.9995598341098436,
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

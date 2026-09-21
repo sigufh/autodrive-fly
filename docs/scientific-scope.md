@@ -357,6 +357,15 @@ leave-one-recording-ID-out population mean remained correlated above 0.97 with t
 full mean, that jackknife stability does not replace agreement among held-out
 records. Recording IDs are not verified fly IDs, so neither this audit nor the
 population mean supplies independent biological validation or kernel transfer.
+The author aggregation path was audited separately. `return_mean_temporal` defaults
+to `baseline=None`, which uses zero offset; all nine bounded calls in Figure 2 and
+flash analysis omit the baseline argument, while the inspected Figure 5 and
+available Figure 6 notebooks do not call that function. The current no-baseline
+kernel therefore matches the author default, and an end-tail-baselined alternative
+is not authorized. The author averages payload rows, whereas v7 deliberately
+averages within recording ID and then weights IDs equally. This differs only for
+Tm1 (8 rows, 7 IDs): the unit-L1 means correlate at 0.99956 with maximum absolute
+difference 0.001331, which is close but not exact reproduction.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

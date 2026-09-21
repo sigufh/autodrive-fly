@@ -422,6 +422,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_Tm2_partition_correlation_p05": visual[
                     "T5_Tm2_partition_correlation_p05"
                 ],
+                "T5_population_kernel_author_default_baseline_verified": visual[
+                    "T5_population_kernel_author_default_baseline_verified"
+                ],
+                "T5_population_kernel_no_baseline_matches_author_default": visual[
+                    "T5_population_kernel_no_baseline_matches_author_default"
+                ],
+                "T5_population_kernel_author_row_weighting_exactly_reproduced": visual[
+                    "T5_population_kernel_author_row_weighting_exactly_reproduced"
+                ],
+                "T5_population_kernel_tail_baseline_variant_authorized": visual[
+                    "T5_population_kernel_tail_baseline_variant_authorized"
+                ],
+                "T5_population_kernel_author_call_count": visual[
+                    "T5_population_kernel_author_call_count"
+                ],
+                "T5_population_kernel_explicit_baseline_call_count": visual[
+                    "T5_population_kernel_explicit_baseline_call_count"
+                ],
+                "T5_Tm1_row_vs_recording_id_weighted_correlation": visual[
+                    "T5_Tm1_row_vs_recording_id_weighted_correlation"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],
