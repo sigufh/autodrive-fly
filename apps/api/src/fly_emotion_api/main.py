@@ -701,6 +701,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_source_pool_camera_frame_target_formula_authorized": visual[
                     "T4_source_pool_camera_frame_target_formula_authorized"
                 ],
+                "T4_source_pool_camera_frame_ordered_replication_passed": visual[
+                    "T4_source_pool_camera_frame_ordered_replication_passed"
+                ],
+                "T4_source_pool_camera_frame_controls_evaluated": visual[
+                    "T4_source_pool_camera_frame_controls_evaluated"
+                ],
+                "T4_source_pool_camera_frame_replication_gate_passed": visual[
+                    "T4_source_pool_camera_frame_replication_gate_passed"
+                ],
+                "T4_source_pool_camera_frame_replication_results": visual[
+                    "T4_source_pool_camera_frame_replication_results"
+                ],
                 "T4_synapse_RF_axis_joint_valid_target_count": visual[
                     "T4_synapse_RF_axis_joint_valid_target_count"
                 ],

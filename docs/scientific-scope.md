@@ -555,6 +555,14 @@ and T4d_R. The other six directional populations still fail. Because this result
 was discovered on the same LPLC-T01 condition, it is not an independent
 replication and does not authorize a new target formula or calibration
 (`artifacts/v7-t4-source-pool-camera-frame-discovery.json`).
+The camera-frame candidate was frozen in commit `7e4ef1a` before the duration-only
+LPLC-T02/T03 replication. Both T4d populations then reversed relative to the
+discovery condition: median signed contrasts were -0.870/-0.772 in LPLC-T02 and
+-0.874/-0.784 in LPLC-T03, with positive-cell fractions of only 0.174–0.264. The
+ordered replication gate therefore failed, and temporal-shuffle/static controls
+were not run under the preregistered stop rule. The candidate is not robust and no
+target formula or downstream stage is authorized
+(`artifacts/v7-t4-source-pool-camera-frame-replication.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

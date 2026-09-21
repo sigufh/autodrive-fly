@@ -252,6 +252,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "T4_source_pool_camera_frame_replication_preregistered",
             "T4_source_pool_camera_frame_replication_evaluated",
             "T4_source_pool_camera_frame_target_formula_authorized",
+            "T4_source_pool_camera_frame_ordered_replication_passed",
+            "T4_source_pool_camera_frame_controls_evaluated",
+            "T4_source_pool_camera_frame_replication_gate_passed",
+            "T4_source_pool_camera_frame_replication_results",
             "T4_synapse_RF_axis_joint_valid_target_count",
             "T4_synapse_RF_axis_identity_median_angle_degrees",
             "T4_synapse_RF_axis_identity_cardinal_match_fraction",
@@ -1370,10 +1374,24 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["T4_source_pool_camera_frame_replication_preregistered"]
         is False
     )
-    assert visual["observations"]["T4_source_pool_camera_frame_replication_evaluated"] is False
+    assert visual["observations"]["T4_source_pool_camera_frame_replication_evaluated"] is True
     assert (
         visual["observations"]["T4_source_pool_camera_frame_target_formula_authorized"]
         is False
+    )
+    assert (
+        visual["observations"]["T4_source_pool_camera_frame_ordered_replication_passed"]
+        is False
+    )
+    assert visual["observations"]["T4_source_pool_camera_frame_controls_evaluated"] is False
+    assert (
+        visual["observations"]["T4_source_pool_camera_frame_replication_gate_passed"]
+        is False
+    )
+    assert visual["observations"]["T4_source_pool_camera_frame_replication_results"][
+        "LPLC-T03"
+    ]["population_scores"]["T4d_R"]["median_signed_contrast"] == (
+        -0.7844614740115432
     )
     assert visual["observations"]["T4_continuous_pair_structural_axis_passed"] is True
     assert visual["observations"]["T4_continuous_pair_direction_pass_counts"] == {

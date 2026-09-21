@@ -1,0 +1,142 @@
+{
+  "protocol": {
+    "name": "v7-t4-source-pool-camera-frame-replication",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-source-pool-camera-frame-replication.yaml": "564eb409ded27dbc9218ee409111bf33826ed3458ea8e798e1ecbc97c84f95c3",
+      "src/fly_emotion/driving/v7_t4_source_pool_camera_frame_replication.py": "6b57f7c5e264d3923f31adfb2dd633eedfa0481d6d8a97991134a90335c0ae75",
+      "artifacts/v7-t4-source-pool-camera-frame-replication-preregistration.json": "cf7f311138fb029b19c4bf155b73eb551ec665994ebc0d18de53be72de2a0c4a",
+      "configs/driving-v7-t4-source-pool-local.yaml": "8a9263c097163506623dbc784d53a10327820e886744697c71647e7d2bedf913",
+      "src/fly_emotion/driving/v7_t4_source_pool_local.py": "58234449023bc1fc9d2ef5aab29f9d117cfb256b1fab95b215e9c61d03e7afbf",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py": "2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049",
+      "configs/driving-v7-lplc-typed-screen.yaml": "b53c1438f5b02325f1db7f97eac362975b9790fe95d4fa322f0937ed559100ba",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275"
+    },
+    "preregistration_commit": "7e4ef1a88579137bac722527f88ffc0d3af5620b",
+    "preregistration_sha256": "cf7f311138fb029b19c4bf155b73eb551ec665994ebc0d18de53be72de2a0c4a",
+    "discovery_condition_excluded": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "candidate": {
+    "readout": "pairwise_distal_vector",
+    "target_populations": [
+      "T4d_L",
+      "T4d_R"
+    ],
+    "source_groups": {
+      "center": [
+        "Mi1",
+        "Tm3"
+      ],
+      "delayed": [
+        "Mi9"
+      ]
+    },
+    "source_coordinate_frame": "camera_image_xy",
+    "temporal_reduction": "maximum_projected_value"
+  },
+  "replication_evaluated": true,
+  "fixed_whole_T4_population_denominator": 6861,
+  "candidate_target_population_denominator": 1709,
+  "ordered_results": {
+    "LPLC-T02": {
+      "mode": "ordered",
+      "population_scores": {
+        "T4d_L": {
+          "cell_count": 850,
+          "valid_cell_count": 847,
+          "valid_cell_fraction": 0.9964705882352941,
+          "median_signed_contrast": -0.8703534267888534,
+          "positive_cell_fraction": 0.17355371900826447,
+          "invalid_cell_ids": [
+            73952,
+            103297,
+            115139
+          ],
+          "gates": {
+            "valid_cell_fraction": true,
+            "median_signed_contrast": false,
+            "positive_cell_fraction": false
+          },
+          "passed": false
+        },
+        "T4d_R": {
+          "cell_count": 859,
+          "valid_cell_count": 859,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.7715781038598406,
+          "positive_cell_fraction": 0.25844004656577413,
+          "invalid_cell_ids": [],
+          "gates": {
+            "valid_cell_fraction": true,
+            "median_signed_contrast": false,
+            "positive_cell_fraction": false
+          },
+          "passed": false
+        }
+      },
+      "bilateral_T4d_passed": false
+    },
+    "LPLC-T03": {
+      "mode": "ordered",
+      "population_scores": {
+        "T4d_L": {
+          "cell_count": 850,
+          "valid_cell_count": 847,
+          "valid_cell_fraction": 0.9964705882352941,
+          "median_signed_contrast": -0.8737953557321949,
+          "positive_cell_fraction": 0.17473435655253838,
+          "invalid_cell_ids": [
+            73952,
+            103297,
+            115139
+          ],
+          "gates": {
+            "valid_cell_fraction": true,
+            "median_signed_contrast": false,
+            "positive_cell_fraction": false
+          },
+          "passed": false
+        },
+        "T4d_R": {
+          "cell_count": 859,
+          "valid_cell_count": 859,
+          "valid_cell_fraction": 1.0,
+          "median_signed_contrast": -0.7844614740115432,
+          "positive_cell_fraction": 0.26426076833527357,
+          "invalid_cell_ids": [],
+          "gates": {
+            "valid_cell_fraction": true,
+            "median_signed_contrast": false,
+            "positive_cell_fraction": false
+          },
+          "passed": false
+        }
+      },
+      "bilateral_T4d_passed": false
+    }
+  },
+  "ordered_replication_passed": false,
+  "controls_evaluated": false,
+  "control_results": {},
+  "controls_passed": false,
+  "replication_gate_passed": false,
+  "authorize_new_target_formula": false,
+  "advance_to_T4_calibration": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "preregistered_ordered_replication_failed_controls_not_run",
+  "boundary": {
+    "preregistered_replication_only": true,
+    "discovery_condition_excluded_from_replication_gate": true,
+    "duration_only_replication": true,
+    "no_parameter_fit": true,
+    "labels_used_only_for_scoring": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen_until_gate": true
+  }
+}

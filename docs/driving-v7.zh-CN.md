@@ -2137,6 +2137,12 @@ raw-edge-weighted optic-hex/RF centroid 差直接比较。6,749 个 conductance 
 post-hoc 双侧信号：`pairwise_distal_vector` 的 T4d_L/R 都通过，另外六个方向群体仍失败。
 由于候选是在该条件结果上发现的，尚不是独立复制，不授权新 target formula 或 calibration。
 证据见 `artifacts/v7-t4-source-pool-camera-frame-discovery.json`。
+该候选随后在 commit `7e4ef1a` 先冻结复制协议，再只改变 local-edge duration 评估
+LPLC-T02/T03。T4d_L/R 的 ordered median signed contrast 在 T02 为
+`-0.870/-0.772`，在 T03 为 `-0.874/-0.784`，positive-cell fraction 仅
+`0.174–0.264`；因此 ordered replication gate 失败，temporal-shuffle/static controls
+按预注册 stop gate 未运行。该候选不稳健，不授权 target formula 或任何下游阶段。证据见
+`artifacts/v7-t4-source-pool-camera-frame-replication.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了不执行 pickle 的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

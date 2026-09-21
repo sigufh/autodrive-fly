@@ -71,6 +71,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_source_pool_camera_frame_discovery = reports[
         "t4_source_pool_camera_frame_discovery"
     ]
+    t4_source_pool_camera_frame_replication = reports[
+        "t4_source_pool_camera_frame_replication"
+    ]
     three_hop_moment = reports["three_hop_moment"]
     three_hop_temporal_consistency = reports["three_hop_temporal_consistency"]
     upstream_latency_audit = reports["upstream_latency_audit"]
@@ -2454,14 +2457,30 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     ]
                 ),
                 "T4_source_pool_camera_frame_replication_evaluated": (
-                    t4_source_pool_camera_frame_discovery[
-                        "independent_replication_evaluated"
+                    t4_source_pool_camera_frame_replication[
+                        "replication_evaluated"
                     ]
                 ),
                 "T4_source_pool_camera_frame_target_formula_authorized": (
                     t4_source_pool_camera_frame_discovery[
                         "authorize_new_target_formula"
                     ]
+                ),
+                "T4_source_pool_camera_frame_ordered_replication_passed": (
+                    t4_source_pool_camera_frame_replication[
+                        "ordered_replication_passed"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_controls_evaluated": (
+                    t4_source_pool_camera_frame_replication["controls_evaluated"]
+                ),
+                "T4_source_pool_camera_frame_replication_gate_passed": (
+                    t4_source_pool_camera_frame_replication[
+                        "replication_gate_passed"
+                    ]
+                ),
+                "T4_source_pool_camera_frame_replication_results": (
+                    t4_source_pool_camera_frame_replication["ordered_results"]
                 ),
                 "three_hop_main_direction_bilateral_populations": three_hop_moment[
                     "bilateral_direction_populations"
@@ -3814,6 +3833,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_source_pool_camera_frame_replication_preregistered",
                     "T4_source_pool_camera_frame_replication_evaluated",
                     "T4_source_pool_camera_frame_target_formula_authorized",
+                    "T4_source_pool_camera_frame_ordered_replication_passed",
+                    "T4_source_pool_camera_frame_controls_evaluated",
+                    "T4_source_pool_camera_frame_replication_gate_passed",
+                    "T4_source_pool_camera_frame_replication_results",
                     "T4_synapse_RF_axis_joint_valid_target_count",
                     "T4_synapse_RF_axis_identity_median_angle_degrees",
                     "T4_synapse_RF_axis_identity_cardinal_match_fraction",

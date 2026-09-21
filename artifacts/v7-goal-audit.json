@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "59c838b4eefd360435260231a6083c3174539666c524992252f39c44fc65ef6b",
-      "src/fly_emotion/driving/v7_goal_audit.py": "71d607db65e503877cd380b7acd6851afbda784f125bc1df37f6b1bfde202657",
+      "configs/driving-v7-goal-audit.yaml": "af4ada3beee023f6d1d56260a5cfb68b12843676799467b2b61b783c08d68f2b",
+      "src/fly_emotion/driving/v7_goal_audit.py": "dab5958c9c42c291f5af0c731d9d3a8158e9aa130a4db1684a699b78f4d9eb58",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -54,6 +54,7 @@
       "artifacts/v7-t4-local-correlator-precheck.json": "25594ffa544731ef3acb3a0c4dc55390a9b800fa8e06c8c315574553e66f1718",
       "artifacts/v7-t4-source-pool-local.json": "55ceeeef7c3462bc2254d2a702320e78661a1d7a37f6787f1b25981d37d8ae49",
       "artifacts/v7-t4-source-pool-camera-frame-discovery.json": "14f97659824dafc1d9a2bddcf08643906a1de04cfaf6f324d9ec3af9f1f2ede3",
+      "artifacts/v7-t4-source-pool-camera-frame-replication.json": "3ce4fdfd5f98e9217d858c5363e7f129afad707508e2c783299e6f40525778e1",
       "artifacts/v7-three-hop-moment.json": "cb2fe8928a9115790020d75b8b424182878d697d85b38b51e6d7169bd561c1f9",
       "artifacts/v7-three-hop-temporal-consistency.json": "2f9f75d4eee6b77dc2cab0168d63b7ea93245e5a12c18d844d97fa16406e8050",
       "artifacts/v7-upstream-latency-audit.json": "5c0af06b433a39033e51b75ad34a1875854f5712c0509dfd97dcc1c12eb9c414",
@@ -150,7 +151,7 @@
       "artifacts/v7-t5-source-transfer-synthesis-audit.json": "fdc939470020f7c0d07cb597d2e9af23fe48e20bd120a48240c36ee355fd49f8",
       "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
       "artifacts/v7-controlled-stimulus-angular-grid.json": "c4fbbee972f67d22eef01ce2b72c26b1b86f53b42313afcfa9430ae41e80f5b7",
-      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "f6067f2ebf4f09c3351479935578385485270b68b25a8ce45a06a2f01729b76d",
+      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "0c669f5c735cd9608c9debc403898d171b649c1cfcbb809fdd32ec675d00198d",
       "artifacts/v7-vertical-angular-coordinate-audit.json": "f130521f435002b08f30988c557cb1edba8f36805a08da1d3465ab1343a169fc",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "fe54fb0d405166293e1cd9bc7abb2c654f1a9cbeb9bae948acd6e38c74fae770",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
@@ -184,9 +185,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "09ed5c375f5687f0124acc07254e1065deaf6cb3082ad0171a3425002d61fd88",
-      "apps/web/src/components/DrivingPanel.tsx": "dc2e88779507ad28348c6d9e8517fefa72b7977e4a2a52967086572a4c55e1e6",
-      "apps/web/src/types.ts": "e3f4df040e00d810ae6ec78545896e67c5762c1b2eec75434ec410d49de02086",
+      "apps/api/src/fly_emotion_api/main.py": "6ab93b0089a98c336fef16d4952179f5bfff6d57b565e167f9fd6464266f5a57",
+      "apps/web/src/components/DrivingPanel.tsx": "a16892305d922ccf2e28cbf2e93d7db808ad336d478c4fcfd66f3856bfad7e33",
+      "apps/web/src/types.ts": "cc2740ecff2f0bee96fc37222a36493bc6256d147b01bd9c4297176f3a24b108",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -1340,8 +1341,89 @@
         },
         "T4_source_pool_camera_frame_post_hoc_candidate_discovered": true,
         "T4_source_pool_camera_frame_replication_preregistered": false,
-        "T4_source_pool_camera_frame_replication_evaluated": false,
+        "T4_source_pool_camera_frame_replication_evaluated": true,
         "T4_source_pool_camera_frame_target_formula_authorized": false,
+        "T4_source_pool_camera_frame_ordered_replication_passed": false,
+        "T4_source_pool_camera_frame_controls_evaluated": false,
+        "T4_source_pool_camera_frame_replication_gate_passed": false,
+        "T4_source_pool_camera_frame_replication_results": {
+          "LPLC-T02": {
+            "mode": "ordered",
+            "population_scores": {
+              "T4d_L": {
+                "cell_count": 850,
+                "valid_cell_count": 847,
+                "valid_cell_fraction": 0.9964705882352941,
+                "median_signed_contrast": -0.8703534267888534,
+                "positive_cell_fraction": 0.17355371900826447,
+                "invalid_cell_ids": [
+                  73952,
+                  103297,
+                  115139
+                ],
+                "gates": {
+                  "valid_cell_fraction": true,
+                  "median_signed_contrast": false,
+                  "positive_cell_fraction": false
+                },
+                "passed": false
+              },
+              "T4d_R": {
+                "cell_count": 859,
+                "valid_cell_count": 859,
+                "valid_cell_fraction": 1.0,
+                "median_signed_contrast": -0.7715781038598406,
+                "positive_cell_fraction": 0.25844004656577413,
+                "invalid_cell_ids": [],
+                "gates": {
+                  "valid_cell_fraction": true,
+                  "median_signed_contrast": false,
+                  "positive_cell_fraction": false
+                },
+                "passed": false
+              }
+            },
+            "bilateral_T4d_passed": false
+          },
+          "LPLC-T03": {
+            "mode": "ordered",
+            "population_scores": {
+              "T4d_L": {
+                "cell_count": 850,
+                "valid_cell_count": 847,
+                "valid_cell_fraction": 0.9964705882352941,
+                "median_signed_contrast": -0.8737953557321949,
+                "positive_cell_fraction": 0.17473435655253838,
+                "invalid_cell_ids": [
+                  73952,
+                  103297,
+                  115139
+                ],
+                "gates": {
+                  "valid_cell_fraction": true,
+                  "median_signed_contrast": false,
+                  "positive_cell_fraction": false
+                },
+                "passed": false
+              },
+              "T4d_R": {
+                "cell_count": 859,
+                "valid_cell_count": 859,
+                "valid_cell_fraction": 1.0,
+                "median_signed_contrast": -0.7844614740115432,
+                "positive_cell_fraction": 0.26426076833527357,
+                "invalid_cell_ids": [],
+                "gates": {
+                  "valid_cell_fraction": true,
+                  "median_signed_contrast": false,
+                  "positive_cell_fraction": false
+                },
+                "passed": false
+              }
+            },
+            "bilateral_T4d_passed": false
+          }
+        },
         "three_hop_main_direction_bilateral_populations": [
           "T4a",
           "T4b",
@@ -2319,6 +2401,10 @@
           "T4_source_pool_camera_frame_replication_preregistered",
           "T4_source_pool_camera_frame_replication_evaluated",
           "T4_source_pool_camera_frame_target_formula_authorized",
+          "T4_source_pool_camera_frame_ordered_replication_passed",
+          "T4_source_pool_camera_frame_controls_evaluated",
+          "T4_source_pool_camera_frame_replication_gate_passed",
+          "T4_source_pool_camera_frame_replication_results",
           "T4_synapse_RF_axis_joint_valid_target_count",
           "T4_synapse_RF_axis_identity_median_angle_degrees",
           "T4_synapse_RF_axis_identity_cardinal_match_fraction",

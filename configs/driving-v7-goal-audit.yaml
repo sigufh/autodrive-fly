@@ -59,6 +59,7 @@ evidence:
   t4_local_correlator_precheck: artifacts/v7-t4-local-correlator-precheck.json
   t4_source_pool_local: artifacts/v7-t4-source-pool-local.json
   t4_source_pool_camera_frame_discovery: artifacts/v7-t4-source-pool-camera-frame-discovery.json
+  t4_source_pool_camera_frame_replication: artifacts/v7-t4-source-pool-camera-frame-replication.json
   three_hop_moment: artifacts/v7-three-hop-moment.json
   three_hop_temporal_consistency: artifacts/v7-three-hop-temporal-consistency.json
   upstream_latency_audit: artifacts/v7-upstream-latency-audit.json

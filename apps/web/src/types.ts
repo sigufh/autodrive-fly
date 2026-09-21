@@ -242,6 +242,10 @@ export type V7Status = {
     T4_source_pool_camera_frame_replication_preregistered?: boolean;
     T4_source_pool_camera_frame_replication_evaluated?: boolean;
     T4_source_pool_camera_frame_target_formula_authorized?: boolean;
+    T4_source_pool_camera_frame_ordered_replication_passed?: boolean;
+    T4_source_pool_camera_frame_controls_evaluated?: boolean;
+    T4_source_pool_camera_frame_replication_gate_passed?: boolean;
+    T4_source_pool_camera_frame_replication_results?: Record<string, unknown>;
     T4_synapse_RF_axis_joint_valid_target_count?: number;
     T4_synapse_RF_axis_identity_median_angle_degrees?: number;
     T4_synapse_RF_axis_identity_cardinal_match_fraction?: number;

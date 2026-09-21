@@ -376,8 +376,16 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     }
     assert boundaries["T4_source_pool_camera_frame_post_hoc_candidate_discovered"] is True
     assert boundaries["T4_source_pool_camera_frame_replication_preregistered"] is False
-    assert boundaries["T4_source_pool_camera_frame_replication_evaluated"] is False
+    assert boundaries["T4_source_pool_camera_frame_replication_evaluated"] is True
     assert boundaries["T4_source_pool_camera_frame_target_formula_authorized"] is False
+    assert boundaries["T4_source_pool_camera_frame_ordered_replication_passed"] is False
+    assert boundaries["T4_source_pool_camera_frame_controls_evaluated"] is False
+    assert boundaries["T4_source_pool_camera_frame_replication_gate_passed"] is False
+    assert boundaries["T4_source_pool_camera_frame_replication_results"][
+        "LPLC-T02"
+    ]["population_scores"]["T4d_L"]["median_signed_contrast"] == (
+        -0.8703534267888534
+    )
     assert boundaries["T4_synapse_RF_axis_joint_valid_target_count"] == 6749
     assert boundaries["T4_synapse_RF_axis_identity_median_angle_degrees"] == (
         68.18171979285492

@@ -1,0 +1,19 @@
+version: 1
+name: v7-t4-source-pool-camera-frame-replication
+observed_on: "2026-09-21"
+preregistration_evidence: artifacts/v7-t4-source-pool-camera-frame-replication-preregistration.json
+preregistration_sha256: cf7f311138fb029b19c4bf155b73eb551ec665994ebc0d18de53be72de2a0c4a
+preregistration_commit: 7e4ef1a88579137bac722527f88ffc0d3af5620b
+source_pool_config: configs/driving-v7-t4-source-pool-local.yaml
+source_pool_implementation: src/fly_emotion/driving/v7_t4_source_pool_local.py
+local_edge_config: configs/driving-v7-t4t5-local-edge-precheck.yaml
+local_edge_implementation: src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py
+boundary:
+  preregistered_replication_only: true
+  discovery_condition_excluded_from_replication_gate: true
+  duration_only_replication: true
+  no_parameter_fit: true
+  labels_used_only_for_scoring: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen_until_gate: true
