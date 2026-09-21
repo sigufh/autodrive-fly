@@ -71,6 +71,46 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
             "Tm9": 0.23058754793814995,
         },
         "measured_kernel_Tm9_CT1_input_fraction": 0.09073247310668342,
+        "lamina_only_source_coverage": {
+            "Tm1": {
+                "source_node_count": 1777,
+                "source_node_with_lamina_input_count": 1774,
+                "source_node_without_lamina_input_count": 3,
+                "source_node_with_lamina_input_fraction": 0.9983117613956106,
+            },
+            "Tm2": {
+                "source_node_count": 1766,
+                "source_node_with_lamina_input_count": 1765,
+                "source_node_without_lamina_input_count": 1,
+                "source_node_with_lamina_input_fraction": 0.9994337485843715,
+            },
+            "Tm4": {
+                "source_node_count": 1670,
+                "source_node_with_lamina_input_count": 1670,
+                "source_node_without_lamina_input_count": 0,
+                "source_node_with_lamina_input_fraction": 1.0,
+            },
+            "Tm9": {
+                "source_node_count": 1771,
+                "source_node_with_lamina_input_count": 1770,
+                "source_node_without_lamina_input_count": 1,
+                "source_node_with_lamina_input_fraction": 0.9994353472614342,
+            },
+        },
+        "lamina_only_candidate_ratios_by_update": {
+            "summed_filtered_source_centroid_projection": {
+                "1": {"shuffle": 1.5698382891422213, "static": 0.5056834500354587},
+                "4": {"shuffle": 1.6164007523973414, "static": 0.4988382782934325},
+            },
+            "fast_pool_vs_Tm9_centroid_difference": {
+                "1": {"shuffle": 2.3605189049473343, "static": 0.44503033278039983},
+                "4": {"shuffle": 2.2398989473633173, "static": 0.42111038663450145},
+            },
+            "temporal_difference_filtered_Tm_pair_reichardt": {
+                "1": {"shuffle": 1.6853864631000266, "static": 0.3191557479999038},
+                "4": {"shuffle": 1.6277322953083266, "static": 0.3327291401605626},
+            },
+        },
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -127,6 +167,12 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["measured_kernel_feedforward_only_source_drive_available"] is False
     assert gates["measured_kernel_source_dynamics_replacement_evaluated"] is False
     assert gates["measured_kernel_source_dynamics_replacement_authorized"] is False
+    assert gates["lamina_only_measured_kernel_replacement_evaluated"] is True
+    assert gates["lamina_only_measured_kernel_all_candidates_failed"] is True
+    assert gates["lamina_only_measured_kernel_temporal_identifiability_passed"] is False
+    assert gates["lamina_only_measured_kernel_direction_scoring_authorized"] is False
+    assert gates["lamina_only_measured_kernel_direction_scoring_performed"] is False
+    assert gates["lamina_only_measured_kernel_physical_transfer_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

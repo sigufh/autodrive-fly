@@ -20,6 +20,7 @@ evidence:
   tm2_loo_full_support: artifacts/v7-t5-tm2-loo-full-support-sensitivity.json
   measured_kernel_cascade_semantics: artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json
   measured_kernel_source_input_decomposition: artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json
+  lamina_only_measured_kernel_replacement: artifacts/v7-t5-lamina-only-measured-kernel-replacement.json
   connectome_weights: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
   moving_bar_generalization: artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json
   source_mapping: artifacts/v7-t5-source-mapping-scope-audit.json

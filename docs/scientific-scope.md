@@ -401,6 +401,16 @@ instantaneous synaptic drive nor a pure same-step feed-forward signal. A true
 measured-kernel replacement therefore requires a separately specified intervention
 that removes or bypasses these recurrent dynamics; it has not been evaluated or
 authorized here.
+A corresponding lamina-only intervention was then evaluated. External input still
+entered only R1–R6; only L1/L2/L3 half-wave states were advanced, and Tm source
+values were replaced by signed target-normalized lamina preactivation before the
+measured FIR. Tm leak/tanh, non-lamina inputs, Tm/T4/T5 recurrence or feedback, and
+CT1 were removed. Only 3/1/0/1 Tm1/Tm2/Tm4/Tm9 source cells lacked such input and
+remained zero. Static controls improved, but every candidate still failed temporal
+shuffle at both one and four updates per frame (shuffle ratios 1.570–2.361). Thus
+the original recurrent/leak cascade is not sufficient to explain the failure; the
+isolated lamina-only replacement also fails to distinguish ordered motion from
+shuffled frame transitions. No direction scoring or physical transfer is authorized.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

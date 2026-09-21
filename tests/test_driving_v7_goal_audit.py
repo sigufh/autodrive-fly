@@ -168,6 +168,14 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_measured_kernel_source_dynamics_replacement_authorized",
         "T5_measured_kernel_recurrent_or_feedback_fraction_by_source",
         "T5_measured_kernel_Tm9_CT1_input_fraction",
+        "T5_lamina_only_replacement_evaluated",
+        "T5_lamina_only_replacement_all_candidates_failed",
+        "T5_lamina_only_replacement_temporal_identifiability_passed",
+        "T5_lamina_only_replacement_direction_scoring_authorized",
+        "T5_lamina_only_replacement_direction_scoring_performed",
+        "T5_lamina_only_replacement_physical_transfer_authorized",
+        "T5_lamina_only_source_coverage",
+        "T5_lamina_only_candidate_ratios_by_update",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -729,6 +737,44 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert np.isclose(
         visual["observations"]["T5_measured_kernel_Tm9_CT1_input_fraction"],
         0.09073247310668342,
+    )
+    assert visual["observations"]["T5_lamina_only_replacement_evaluated"] is True
+    assert (
+        visual["observations"]["T5_lamina_only_replacement_all_candidates_failed"]
+        is True
+    )
+    assert (
+        visual["observations"]["T5_lamina_only_replacement_temporal_identifiability_passed"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_lamina_only_replacement_direction_scoring_authorized"]
+        is False
+    )
+    assert visual["observations"]["T5_lamina_only_replacement_direction_scoring_performed"] is False
+    assert (
+        visual["observations"]["T5_lamina_only_replacement_physical_transfer_authorized"]
+        is False
+    )
+    coverage = visual["observations"]["T5_lamina_only_source_coverage"]
+    missing = {
+        source: item["source_node_without_lamina_input_count"]
+        for source, item in coverage.items()
+    }
+    assert missing == {
+        "Tm1": 3,
+        "Tm2": 1,
+        "Tm4": 0,
+        "Tm9": 1,
+    }
+    replacement_ratios = visual["observations"][
+        "T5_lamina_only_candidate_ratios_by_update"
+    ]
+    assert np.isclose(
+        replacement_ratios["temporal_difference_filtered_Tm_pair_reichardt"]["4"][
+            "shuffle"
+        ],
+        1.6277322953083266,
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

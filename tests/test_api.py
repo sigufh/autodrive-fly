@@ -171,6 +171,18 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_measured_kernel_Tm9_CT1_input_fraction"] == (
         0.09073247310668342
     )
+    assert boundaries["T5_lamina_only_replacement_evaluated"] is True
+    assert boundaries["T5_lamina_only_replacement_all_candidates_failed"] is True
+    assert boundaries["T5_lamina_only_replacement_temporal_identifiability_passed"] is False
+    assert boundaries["T5_lamina_only_replacement_direction_scoring_authorized"] is False
+    assert boundaries["T5_lamina_only_replacement_direction_scoring_performed"] is False
+    assert boundaries["T5_lamina_only_replacement_physical_transfer_authorized"] is False
+    assert boundaries["T5_lamina_only_source_coverage"]["Tm1"][
+        "source_node_without_lamina_input_count"
+    ] == 3
+    assert boundaries["T5_lamina_only_candidate_ratios_by_update"][
+        "temporal_difference_filtered_Tm_pair_reichardt"
+    ]["4"]["shuffle"] == 1.6277322953083266
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

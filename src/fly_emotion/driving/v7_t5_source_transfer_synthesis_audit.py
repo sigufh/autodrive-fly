@@ -48,6 +48,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     measured_kernel_inputs = evidence[
         "measured_kernel_source_input_decomposition"
     ]
+    lamina_only_replacement = evidence["lamina_only_measured_kernel_replacement"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -284,6 +285,22 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_source_dynamics_replacement_authorized": (
             measured_kernel_inputs["authorize_source_dynamics_replacement"]
         ),
+        "lamina_only_measured_kernel_replacement_evaluated": True,
+        "lamina_only_measured_kernel_all_candidates_failed": (
+            lamina_only_replacement["all_candidates_failed_every_update_count"]
+        ),
+        "lamina_only_measured_kernel_temporal_identifiability_passed": (
+            lamina_only_replacement["temporal_identifiability_passed"]
+        ),
+        "lamina_only_measured_kernel_direction_scoring_authorized": (
+            lamina_only_replacement["direction_scoring_authorized"]
+        ),
+        "lamina_only_measured_kernel_direction_scoring_performed": (
+            lamina_only_replacement["direction_scoring_performed"]
+        ),
+        "lamina_only_measured_kernel_physical_transfer_authorized": (
+            lamina_only_replacement["authorize_physical_source_dynamics_transfer"]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -420,6 +437,21 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             ]["Tm9"]["category_results"]["CT1"][
                 "normalized_absolute_input_fraction"
             ],
+            "lamina_only_source_coverage": lamina_only_replacement[
+                "replacement_contract"
+            ]["source_input_coverage"],
+            "lamina_only_candidate_ratios_by_update": {
+                name: {
+                    update: {
+                        "shuffle": result[
+                            "shuffle_to_ordered_residual_energy_ratio"
+                        ],
+                        "static": result["static_to_ordered_energy_ratio"],
+                    }
+                    for update, result in item["by_brain_updates_per_frame"].items()
+                }
+                for name, item in lamina_only_replacement["candidate_results"].items()
+            },
         },
         "gates": gates,
         "T5_source_transfer_ready": False,

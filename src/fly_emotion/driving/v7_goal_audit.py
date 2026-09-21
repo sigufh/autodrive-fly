@@ -999,6 +999,44 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "measured_kernel_Tm9_CT1_input_fraction"
                     ]
                 ),
+                "T5_lamina_only_replacement_evaluated": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "lamina_only_measured_kernel_replacement_evaluated"
+                    ]
+                ),
+                "T5_lamina_only_replacement_all_candidates_failed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "lamina_only_measured_kernel_all_candidates_failed"
+                    ]
+                ),
+                "T5_lamina_only_replacement_temporal_identifiability_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "lamina_only_measured_kernel_temporal_identifiability_passed"
+                    ]
+                ),
+                "T5_lamina_only_replacement_direction_scoring_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "lamina_only_measured_kernel_direction_scoring_authorized"
+                    ]
+                ),
+                "T5_lamina_only_replacement_direction_scoring_performed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "lamina_only_measured_kernel_direction_scoring_performed"
+                    ]
+                ),
+                "T5_lamina_only_replacement_physical_transfer_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "lamina_only_measured_kernel_physical_transfer_authorized"
+                    ]
+                ),
+                "T5_lamina_only_source_coverage": t5_source_transfer_synthesis_audit[
+                    "incremental_evidence"
+                ]["lamina_only_source_coverage"],
+                "T5_lamina_only_candidate_ratios_by_update": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "lamina_only_candidate_ratios_by_update"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3504,6 +3542,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_measured_kernel_source_dynamics_replacement_authorized",
                     "T5_measured_kernel_recurrent_or_feedback_fraction_by_source",
                     "T5_measured_kernel_Tm9_CT1_input_fraction",
+                    "T5_lamina_only_replacement_evaluated",
+                    "T5_lamina_only_replacement_all_candidates_failed",
+                    "T5_lamina_only_replacement_temporal_identifiability_passed",
+                    "T5_lamina_only_replacement_direction_scoring_authorized",
+                    "T5_lamina_only_replacement_direction_scoring_performed",
+                    "T5_lamina_only_replacement_physical_transfer_authorized",
+                    "T5_lamina_only_source_coverage",
+                    "T5_lamina_only_candidate_ratios_by_update",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

@@ -2011,6 +2011,16 @@ feedback 质量占比分别为 `6.24%/4.12%/19.61%/23.06%`，Tm9 另有 `9.07%` 
 measured kernel 真正替换 source dynamics，必须另行定义并验证切断这些项的显式干预；现有
 trace 不能直接复用为 replacement 输入。证据见
 `artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json`。
+在此边界上进一步执行了显式 lamina-only source-dynamics replacement：外部输入仍只进入
+R1–R6，只更新 L1/L2/L3 半波状态；Tm source 改为其 signed、target-normalized lamina
+preactivation，移除 Tm leak/tanh、其他视觉输入、Tm/T4/T5 recurrent/feedback 与 CT1。
+未覆盖的 Tm1/Tm2/Tm4/Tm9 source 节点分别为 `3/1/0/1`，保持零值；固定 T5 分母不变。
+完整 FIR 下，sum centroid 的 1/4-update shuffle/static 比为 `1.570/0.5057` 与
+`1.616/0.4988`；fast-vs-Tm9 为 `2.361/0.4450` 与 `2.240/0.4211`；Reichardt 时间
+差分为 `1.685/0.3192` 与 `1.628/0.3327`。静态门大多通过，但 shuffle 门全部失败，
+说明去除原 source recurrent/leak dynamics 后仍不能区分有序运动与乱序帧跳变。方向评分继续
+未授权、未执行；该结构干预没有外部 state/gain 标定，不授权物理 transfer。证据见
+`artifacts/v7-t5-lamina-only-measured-kernel-replacement.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

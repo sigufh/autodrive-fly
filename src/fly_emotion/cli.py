@@ -371,6 +371,9 @@ from .driving.v7_t5_direction_code_provenance_audit import (
     evaluate_v7_t5_direction_code_provenance_audit,
 )
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
+from .driving.v7_t5_lamina_only_measured_kernel_replacement import (
+    evaluate_v7_t5_lamina_only_measured_kernel_replacement,
+)
 from .driving.v7_t5_lamina_scalar_precheck import evaluate_v7_t5_lamina_scalar_precheck
 from .driving.v7_t5_lamina_split import evaluate_v7_t5_lamina_split
 from .driving.v7_t5_measured_kernel_cascade_semantics_audit import (
@@ -701,6 +704,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-degree-preserving-control")
     subparsers.add_parser("v7-freeze-parameter-matched-baselines")
     subparsers.add_parser("v7-evaluate-t5-lamina-split")
+    subparsers.add_parser("v7-audit-t5-lamina-only-measured-kernel-replacement")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
     subparsers.add_parser("v7-audit-t5-source-mapping-scope")
@@ -1409,6 +1413,14 @@ def main() -> None:
         report = evaluate_v7_t5_lamina_split(root)
         target = root / "artifacts/v7-t5-lamina-split.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t5-lamina-only-measured-kernel-replacement":
+        report = evaluate_v7_t5_lamina_only_measured_kernel_replacement(root)
+        target = root / "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-evaluate-t5-lamina-scalar-precheck":

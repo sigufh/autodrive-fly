@@ -1,0 +1,47 @@
+version: 1
+name: v7-t5-lamina-only-measured-kernel-source-dynamics-replacement
+observed_on: "2026-09-21"
+cascade_evidence: artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json
+source_input_evidence: artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json
+reference_full_support_evidence: artifacts/v7-t5-measured-kernel-full-support-identifiability.json
+reference_full_support_config: configs/driving-v7-t5-measured-kernel-full-support-identifiability.yaml
+measured_kernel_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+measured_kernel_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py
+full_support_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_full_support_identifiability.py
+lamina_split_implementation: src/fly_emotion/driving/v7_t5_lamina_split.py
+v7_contract: configs/driving-v7.yaml
+replacement:
+  retained_source_types: [L1, L2, L3]
+  replaced_source_types: [Tm1, Tm2, Tm4, Tm9]
+  source_value: positive_signed_target_normalized_lamina_preactivation
+  preserve_synchronous_prior_lamina_state_order: true
+  remove_Tm_leak: true
+  remove_Tm_tanh: true
+  remove_non_lamina_visual_inputs: true
+  remove_Tm_T4_T5_recurrent_or_feedback_inputs: true
+  remove_CT1_input: true
+  uncovered_Tm_source_nodes_remain_zero: true
+tested_brain_updates_per_frame: [1, 4]
+required_candidate_order:
+  - summed_filtered_source_centroid_projection
+  - fast_pool_vs_Tm9_centroid_difference
+  - temporal_difference_filtered_Tm_pair_reichardt
+controls:
+  maximum_shuffle_to_ordered_residual_energy_ratio: 0.50
+  maximum_static_to_ordered_energy_ratio: 0.50
+stop_gate:
+  require_same_candidate_to_pass_every_update_count: true
+  evaluate_direction_only_after_cross_substep_temporal_identifiability: true
+boundary:
+  tuning_only: true
+  structural_source_replacement_diagnostic_only: true
+  no_external_state_or_gain_mapping_claimed: true
+  measured_kernel_shape_only_not_absolute_gain: true
+  source_activity_driven_only_from_R1_R6_through_L1_L2_L3: true
+  subtype_and_direction_labels_not_read_by_dynamics: true
+  target_activity_injection: false
+  parameter_fit: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

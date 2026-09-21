@@ -181,6 +181,14 @@ export type V7Status = {
     T5_measured_kernel_source_dynamics_replacement_authorized?: boolean;
     T5_measured_kernel_recurrent_or_feedback_fraction_by_source?: Record<string, number>;
     T5_measured_kernel_Tm9_CT1_input_fraction?: number;
+    T5_lamina_only_replacement_evaluated?: boolean;
+    T5_lamina_only_replacement_all_candidates_failed?: boolean;
+    T5_lamina_only_replacement_temporal_identifiability_passed?: boolean;
+    T5_lamina_only_replacement_direction_scoring_authorized?: boolean;
+    T5_lamina_only_replacement_direction_scoring_performed?: boolean;
+    T5_lamina_only_replacement_physical_transfer_authorized?: boolean;
+    T5_lamina_only_source_coverage?: Record<string, { source_node_count: number; source_node_with_lamina_input_count: number; source_node_without_lamina_input_count: number; source_node_with_lamina_input_fraction: number }>;
+    T5_lamina_only_candidate_ratios_by_update?: Record<string, Record<string, { shuffle: number; static: number }>>;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

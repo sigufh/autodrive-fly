@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "061278d45c662bc4447799001300b1fea11c72613685dfb76c6e92589e04619f",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "be3ec2fdc0428edd36c22ee3e4b130e3d01a3d59f65bfda1da9be5e042f31d92",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "0bdb93a0237f06c6caecb775c2dc7f51311e66c31e2ce7958d642ef095c2b1c2",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "4d9067b7e4614c83f1f610adc22d85ea134adf81f155fdf0f8b29429f0473e31",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -23,6 +23,7 @@
       "artifacts/v7-t5-tm2-loo-full-support-sensitivity.json": "9d2f064abbfefe027b4d210b59d63c1f160a75da79bf9ccff41e9e1fb0119bb7",
       "artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json": "5f21b06c9bb119f1b3f72be0c5fc1497d00c162d034fac4e70777173bd66f837",
       "artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json": "5ede208fc3c92dd9a0c3d75e7b4f30d629587a74f7230d907a59a3a0b6467644",
+      "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json": "112016edbeab5f14331e13d06734f70f37c8ec063f3bfab29ed3ce63ee0aaa76",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
@@ -177,7 +178,65 @@
       "Tm4": 0.19606226563946827,
       "Tm9": 0.23058754793814995
     },
-    "measured_kernel_Tm9_CT1_input_fraction": 0.09073247310668342
+    "measured_kernel_Tm9_CT1_input_fraction": 0.09073247310668342,
+    "lamina_only_source_coverage": {
+      "Tm1": {
+        "source_node_count": 1777,
+        "source_node_with_lamina_input_count": 1774,
+        "source_node_without_lamina_input_count": 3,
+        "source_node_with_lamina_input_fraction": 0.9983117613956106
+      },
+      "Tm2": {
+        "source_node_count": 1766,
+        "source_node_with_lamina_input_count": 1765,
+        "source_node_without_lamina_input_count": 1,
+        "source_node_with_lamina_input_fraction": 0.9994337485843715
+      },
+      "Tm4": {
+        "source_node_count": 1670,
+        "source_node_with_lamina_input_count": 1670,
+        "source_node_without_lamina_input_count": 0,
+        "source_node_with_lamina_input_fraction": 1.0
+      },
+      "Tm9": {
+        "source_node_count": 1771,
+        "source_node_with_lamina_input_count": 1770,
+        "source_node_without_lamina_input_count": 1,
+        "source_node_with_lamina_input_fraction": 0.9994353472614342
+      }
+    },
+    "lamina_only_candidate_ratios_by_update": {
+      "summed_filtered_source_centroid_projection": {
+        "1": {
+          "shuffle": 1.5698382891422213,
+          "static": 0.5056834500354587
+        },
+        "4": {
+          "shuffle": 1.6164007523973414,
+          "static": 0.4988382782934325
+        }
+      },
+      "fast_pool_vs_Tm9_centroid_difference": {
+        "1": {
+          "shuffle": 2.3605189049473343,
+          "static": 0.44503033278039983
+        },
+        "4": {
+          "shuffle": 2.2398989473633173,
+          "static": 0.42111038663450145
+        }
+      },
+      "temporal_difference_filtered_Tm_pair_reichardt": {
+        "1": {
+          "shuffle": 1.6853864631000266,
+          "static": 0.3191557479999038
+        },
+        "4": {
+          "shuffle": 1.6277322953083266,
+          "static": 0.3327291401605626
+        }
+      }
+    }
   },
   "gates": {
     "four_Tm_voltage_derived_kernel_shapes_available": true,
@@ -234,6 +293,12 @@
     "measured_kernel_feedforward_only_source_drive_available": false,
     "measured_kernel_source_dynamics_replacement_evaluated": false,
     "measured_kernel_source_dynamics_replacement_authorized": false,
+    "lamina_only_measured_kernel_replacement_evaluated": true,
+    "lamina_only_measured_kernel_all_candidates_failed": true,
+    "lamina_only_measured_kernel_temporal_identifiability_passed": false,
+    "lamina_only_measured_kernel_direction_scoring_authorized": false,
+    "lamina_only_measured_kernel_direction_scoring_performed": false,
+    "lamina_only_measured_kernel_physical_transfer_authorized": false,
     "absolute_source_gain_available": false,
     "source_to_v7_state_mapping_available": false,
     "state_invariant_source_timing_available": false,
