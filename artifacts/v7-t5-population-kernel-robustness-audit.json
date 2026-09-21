@@ -1,0 +1,1323 @@
+{
+  "protocol": {
+    "name": "v7-t5-population-kernel-recording-id-robustness-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-population-kernel-robustness-audit.yaml": "e369746d6b70b2dcc105cf392a2a964beb9b6ee963bf1ff071838e4844be3479",
+      "src/fly_emotion/driving/v7_t5_population_kernel_robustness_audit.py": "49f7db761225b7f5e893b4db698bf89f663a00f937befcc0e6ce5e7f8d024dc1",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "configs/driving-v7-kohn-portes-t5-source-kernel-audit.yaml": "608e6546344b9c2027ebd3dfc63842d8d8bbce678a7543f80d4f77e0490addcf",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-fig3-source-kernel-robustness.yaml": "29d69e7a50f4ff460edbc2e865f4443f7399f8cc7261744de76b2f9b47d6eaa4",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "threshold_source": "configs/driving-v7-fig3-source-kernel-robustness.yaml",
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "thresholds": {
+    "minimum_mean_median_kernel_correlation": 0.8,
+    "minimum_median_leave_one_recording_id_out_correlation": 0.8,
+    "minimum_leave_one_recording_id_out_correlation": 0.0,
+    "minimum_partition_correlation_p05": 0.8,
+    "require_every_source": true
+  },
+  "source_results": {
+    "Tm1": {
+      "recording_id_count": 7,
+      "recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+        "190729",
+        "201201",
+        "210126"
+      ],
+      "mean_median_kernel_correlation": 0.9839966520222216,
+      "held_out_recording_id_vs_rest": {
+        "folds": [
+          {
+            "held_out_recording_id": "190701",
+            "correlation": 0.928380852155633
+          },
+          {
+            "held_out_recording_id": "190708",
+            "correlation": 0.870974175447607
+          },
+          {
+            "held_out_recording_id": "190715",
+            "correlation": 0.9623867802334253
+          },
+          {
+            "held_out_recording_id": "190722",
+            "correlation": 0.9433005043103034
+          },
+          {
+            "held_out_recording_id": "190729",
+            "correlation": 0.8687298508933518
+          },
+          {
+            "held_out_recording_id": "201201",
+            "correlation": 0.8071397855736252
+          },
+          {
+            "held_out_recording_id": "210126",
+            "correlation": 0.7498781432736034
+          }
+        ],
+        "summary": {
+          "count": 7,
+          "minimum": 0.7498781432736034,
+          "p05": 0.76705663596361,
+          "median": 0.870974175447607,
+          "maximum": 0.9623867802334253
+        }
+      },
+      "exhaustive_near_equal_recording_id_partitions": {
+        "partition_count": 35,
+        "partitions": [
+          {
+            "first_recording_ids": [
+              "190701",
+              "190708",
+              "190715"
+            ],
+            "second_recording_ids": [
+              "190722",
+              "190729",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.9149013973619173
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190708",
+              "190722"
+            ],
+            "second_recording_ids": [
+              "190715",
+              "190729",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.9024784646540389
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190708",
+              "190729"
+            ],
+            "second_recording_ids": [
+              "190715",
+              "190722",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.8489457227905856
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190708",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190715",
+              "190722",
+              "190729",
+              "210126"
+            ],
+            "correlation": 0.9508695528154192
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190708",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190715",
+              "190722",
+              "190729",
+              "201201"
+            ],
+            "correlation": 0.9589763971130094
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190715",
+              "190722"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190729",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.9460047573134657
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190715",
+              "190729"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190722",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.902712664879749
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190715",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190722",
+              "190729",
+              "210126"
+            ],
+            "correlation": 0.9188336250519654
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190715",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190722",
+              "190729",
+              "201201"
+            ],
+            "correlation": 0.9642269494976599
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190722",
+              "190729"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190715",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.8982950487519908
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190722",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190715",
+              "190729",
+              "210126"
+            ],
+            "correlation": 0.9260202591581479
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190722",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190715",
+              "190729",
+              "201201"
+            ],
+            "correlation": 0.9654945894508927
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190729",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190715",
+              "190722",
+              "210126"
+            ],
+            "correlation": 0.9544300997408092
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "190729",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190715",
+              "190722",
+              "201201"
+            ],
+            "correlation": 0.9569616564421163
+          },
+          {
+            "first_recording_ids": [
+              "190701",
+              "201201",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190708",
+              "190715",
+              "190722",
+              "190729"
+            ],
+            "correlation": 0.8471758281674385
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190715",
+              "190722"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190729",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.9192018876336505
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190715",
+              "190729"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190722",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.8667688822898695
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190715",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190722",
+              "190729",
+              "210126"
+            ],
+            "correlation": 0.9473942256219091
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190715",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190722",
+              "190729",
+              "201201"
+            ],
+            "correlation": 0.9580098208705253
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190722",
+              "190729"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190715",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.8562188798265992
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190722",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190715",
+              "190729",
+              "210126"
+            ],
+            "correlation": 0.9477723108025314
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190722",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190715",
+              "190729",
+              "201201"
+            ],
+            "correlation": 0.9509008349756319
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190729",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190715",
+              "190722",
+              "210126"
+            ],
+            "correlation": 0.9649869501299037
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "190729",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190715",
+              "190722",
+              "201201"
+            ],
+            "correlation": 0.9303607667492315
+          },
+          {
+            "first_recording_ids": [
+              "190708",
+              "201201",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190715",
+              "190722",
+              "190729"
+            ],
+            "correlation": 0.8844554959063804
+          },
+          {
+            "first_recording_ids": [
+              "190715",
+              "190722",
+              "190729"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "201201",
+              "210126"
+            ],
+            "correlation": 0.9124047909764335
+          },
+          {
+            "first_recording_ids": [
+              "190715",
+              "190722",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190729",
+              "210126"
+            ],
+            "correlation": 0.9153334344708391
+          },
+          {
+            "first_recording_ids": [
+              "190715",
+              "190722",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190729",
+              "201201"
+            ],
+            "correlation": 0.9567635543219137
+          },
+          {
+            "first_recording_ids": [
+              "190715",
+              "190729",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190722",
+              "210126"
+            ],
+            "correlation": 0.949398117678318
+          },
+          {
+            "first_recording_ids": [
+              "190715",
+              "190729",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190722",
+              "201201"
+            ],
+            "correlation": 0.9542781750344198
+          },
+          {
+            "first_recording_ids": [
+              "190715",
+              "201201",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190722",
+              "190729"
+            ],
+            "correlation": 0.8138958780244046
+          },
+          {
+            "first_recording_ids": [
+              "190722",
+              "190729",
+              "201201"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190715",
+              "210126"
+            ],
+            "correlation": 0.9577116176828085
+          },
+          {
+            "first_recording_ids": [
+              "190722",
+              "190729",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190715",
+              "201201"
+            ],
+            "correlation": 0.9569089773081125
+          },
+          {
+            "first_recording_ids": [
+              "190722",
+              "201201",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190715",
+              "190729"
+            ],
+            "correlation": 0.828386459162143
+          },
+          {
+            "first_recording_ids": [
+              "190729",
+              "201201",
+              "210126"
+            ],
+            "second_recording_ids": [
+              "190701",
+              "190708",
+              "190715",
+              "190722"
+            ],
+            "correlation": 0.8932153744581403
+          }
+        ],
+        "summary": {
+          "count": 35,
+          "minimum": 0.8138958780244046,
+          "p05": 0.8415390174658499,
+          "median": 0.9303607667492315,
+          "maximum": 0.9654945894508927
+        }
+      },
+      "population_mean_jackknife": {
+        "folds": [
+          {
+            "excluded_recording_id": "190701",
+            "correlation_to_full_population_mean": 0.9979134312122112
+          },
+          {
+            "excluded_recording_id": "190708",
+            "correlation_to_full_population_mean": 0.9959821131967356
+          },
+          {
+            "excluded_recording_id": "190715",
+            "correlation_to_full_population_mean": 0.9996482657266139
+          },
+          {
+            "excluded_recording_id": "190722",
+            "correlation_to_full_population_mean": 0.9993281125357262
+          },
+          {
+            "excluded_recording_id": "190729",
+            "correlation_to_full_population_mean": 0.997366190869491
+          },
+          {
+            "excluded_recording_id": "201201",
+            "correlation_to_full_population_mean": 0.9853506850466452
+          },
+          {
+            "excluded_recording_id": "210126",
+            "correlation_to_full_population_mean": 0.9978863194320311
+          }
+        ],
+        "minimum_correlation_to_full_mean": 0.9853506850466452,
+        "maximum_absolute_peak_shift_samples": 2,
+        "peak_sign_stable_in_every_fold": true,
+        "used_as_transfer_gate": false
+      },
+      "gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "passed": true
+    },
+    "Tm2": {
+      "recording_id_count": 5,
+      "recording_ids": [
+        "200927",
+        "201013",
+        "201119",
+        "201125",
+        "210721"
+      ],
+      "mean_median_kernel_correlation": 0.9749612228281109,
+      "held_out_recording_id_vs_rest": {
+        "folds": [
+          {
+            "held_out_recording_id": "200927",
+            "correlation": 0.7662639157468818
+          },
+          {
+            "held_out_recording_id": "201013",
+            "correlation": 0.6463991254279933
+          },
+          {
+            "held_out_recording_id": "201119",
+            "correlation": 0.8730192790524275
+          },
+          {
+            "held_out_recording_id": "201125",
+            "correlation": 0.795254815536567
+          },
+          {
+            "held_out_recording_id": "210721",
+            "correlation": 0.785694273562359
+          }
+        ],
+        "summary": {
+          "count": 5,
+          "minimum": 0.6463991254279933,
+          "p05": 0.670372083491771,
+          "median": 0.785694273562359,
+          "maximum": 0.8730192790524275
+        }
+      },
+      "exhaustive_near_equal_recording_id_partitions": {
+        "partition_count": 10,
+        "partitions": [
+          {
+            "first_recording_ids": [
+              "200927",
+              "201013"
+            ],
+            "second_recording_ids": [
+              "201119",
+              "201125",
+              "210721"
+            ],
+            "correlation": 0.7981328392327818
+          },
+          {
+            "first_recording_ids": [
+              "200927",
+              "201119"
+            ],
+            "second_recording_ids": [
+              "201013",
+              "201125",
+              "210721"
+            ],
+            "correlation": 0.8226834722702595
+          },
+          {
+            "first_recording_ids": [
+              "200927",
+              "201125"
+            ],
+            "second_recording_ids": [
+              "201013",
+              "201119",
+              "210721"
+            ],
+            "correlation": 0.8153180666945813
+          },
+          {
+            "first_recording_ids": [
+              "200927",
+              "210721"
+            ],
+            "second_recording_ids": [
+              "201013",
+              "201119",
+              "201125"
+            ],
+            "correlation": 0.813083100982314
+          },
+          {
+            "first_recording_ids": [
+              "201013",
+              "201119"
+            ],
+            "second_recording_ids": [
+              "200927",
+              "201125",
+              "210721"
+            ],
+            "correlation": 0.8135309515469097
+          },
+          {
+            "first_recording_ids": [
+              "201013",
+              "201125"
+            ],
+            "second_recording_ids": [
+              "200927",
+              "201119",
+              "210721"
+            ],
+            "correlation": 0.7510123657134844
+          },
+          {
+            "first_recording_ids": [
+              "201013",
+              "210721"
+            ],
+            "second_recording_ids": [
+              "200927",
+              "201119",
+              "201125"
+            ],
+            "correlation": 0.7921019142813192
+          },
+          {
+            "first_recording_ids": [
+              "201119",
+              "201125"
+            ],
+            "second_recording_ids": [
+              "200927",
+              "201013",
+              "210721"
+            ],
+            "correlation": 0.8622501558720058
+          },
+          {
+            "first_recording_ids": [
+              "201119",
+              "210721"
+            ],
+            "second_recording_ids": [
+              "200927",
+              "201013",
+              "201125"
+            ],
+            "correlation": 0.8380263952947566
+          },
+          {
+            "first_recording_ids": [
+              "201125",
+              "210721"
+            ],
+            "second_recording_ids": [
+              "200927",
+              "201013",
+              "201119"
+            ],
+            "correlation": 0.7940207042704231
+          }
+        ],
+        "summary": {
+          "count": 10,
+          "minimum": 0.7510123657134844,
+          "p05": 0.76950266256901,
+          "median": 0.8133070262646118,
+          "maximum": 0.8622501558720058
+        }
+      },
+      "population_mean_jackknife": {
+        "folds": [
+          {
+            "excluded_recording_id": "200927",
+            "correlation_to_full_population_mean": 0.9785968441730306
+          },
+          {
+            "excluded_recording_id": "201013",
+            "correlation_to_full_population_mean": 0.9755454709465071
+          },
+          {
+            "excluded_recording_id": "201119",
+            "correlation_to_full_population_mean": 0.9862210186523864
+          },
+          {
+            "excluded_recording_id": "201125",
+            "correlation_to_full_population_mean": 0.9985404169263941
+          },
+          {
+            "excluded_recording_id": "210721",
+            "correlation_to_full_population_mean": 0.9975046838004934
+          }
+        ],
+        "minimum_correlation_to_full_mean": 0.9755454709465071,
+        "maximum_absolute_peak_shift_samples": 2,
+        "peak_sign_stable_in_every_fold": true,
+        "used_as_transfer_gate": false
+      },
+      "gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": false,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": false
+      },
+      "passed": false
+    },
+    "Tm4": {
+      "recording_id_count": 6,
+      "recording_ids": [
+        "200209",
+        "200621",
+        "200703",
+        "200706",
+        "200823",
+        "200826"
+      ],
+      "mean_median_kernel_correlation": 0.9955158014292839,
+      "held_out_recording_id_vs_rest": {
+        "folds": [
+          {
+            "held_out_recording_id": "200209",
+            "correlation": 0.9344767704925224
+          },
+          {
+            "held_out_recording_id": "200621",
+            "correlation": 0.9288476992260797
+          },
+          {
+            "held_out_recording_id": "200703",
+            "correlation": 0.943685374498285
+          },
+          {
+            "held_out_recording_id": "200706",
+            "correlation": 0.9431670419086869
+          },
+          {
+            "held_out_recording_id": "200823",
+            "correlation": 0.9479294932314132
+          },
+          {
+            "held_out_recording_id": "200826",
+            "correlation": 0.876058815401695
+          }
+        ],
+        "summary": {
+          "count": 6,
+          "minimum": 0.876058815401695,
+          "p05": 0.8892560363577912,
+          "median": 0.9388219062006047,
+          "maximum": 0.9479294932314132
+        }
+      },
+      "exhaustive_near_equal_recording_id_partitions": {
+        "partition_count": 10,
+        "partitions": [
+          {
+            "first_recording_ids": [
+              "200209",
+              "200621",
+              "200703"
+            ],
+            "second_recording_ids": [
+              "200706",
+              "200823",
+              "200826"
+            ],
+            "correlation": 0.9748969366934284
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200621",
+              "200706"
+            ],
+            "second_recording_ids": [
+              "200703",
+              "200823",
+              "200826"
+            ],
+            "correlation": 0.9711205699964028
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200621",
+              "200823"
+            ],
+            "second_recording_ids": [
+              "200703",
+              "200706",
+              "200826"
+            ],
+            "correlation": 0.9647022428154395
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200621",
+              "200826"
+            ],
+            "second_recording_ids": [
+              "200703",
+              "200706",
+              "200823"
+            ],
+            "correlation": 0.964718328254385
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200703",
+              "200706"
+            ],
+            "second_recording_ids": [
+              "200621",
+              "200823",
+              "200826"
+            ],
+            "correlation": 0.9180813637535853
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200703",
+              "200823"
+            ],
+            "second_recording_ids": [
+              "200621",
+              "200706",
+              "200826"
+            ],
+            "correlation": 0.9666784640118344
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200703",
+              "200826"
+            ],
+            "second_recording_ids": [
+              "200621",
+              "200706",
+              "200823"
+            ],
+            "correlation": 0.9670463414342908
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200706",
+              "200823"
+            ],
+            "second_recording_ids": [
+              "200621",
+              "200703",
+              "200826"
+            ],
+            "correlation": 0.9630224673897354
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200706",
+              "200826"
+            ],
+            "second_recording_ids": [
+              "200621",
+              "200703",
+              "200823"
+            ],
+            "correlation": 0.9604944113348705
+          },
+          {
+            "first_recording_ids": [
+              "200209",
+              "200823",
+              "200826"
+            ],
+            "second_recording_ids": [
+              "200621",
+              "200703",
+              "200706"
+            ],
+            "correlation": 0.9660684743925418
+          }
+        ],
+        "summary": {
+          "count": 10,
+          "minimum": 0.9180813637535853,
+          "p05": 0.9371672351651636,
+          "median": 0.9653934013234634,
+          "maximum": 0.9748969366934284
+        }
+      },
+      "population_mean_jackknife": {
+        "folds": [
+          {
+            "excluded_recording_id": "200209",
+            "correlation_to_full_population_mean": 0.9972025097933338
+          },
+          {
+            "excluded_recording_id": "200621",
+            "correlation_to_full_population_mean": 0.9977520787104254
+          },
+          {
+            "excluded_recording_id": "200703",
+            "correlation_to_full_population_mean": 0.9974863868513597
+          },
+          {
+            "excluded_recording_id": "200706",
+            "correlation_to_full_population_mean": 0.9984931551009059
+          },
+          {
+            "excluded_recording_id": "200823",
+            "correlation_to_full_population_mean": 0.9978163750021085
+          },
+          {
+            "excluded_recording_id": "200826",
+            "correlation_to_full_population_mean": 0.9994561903562353
+          }
+        ],
+        "minimum_correlation_to_full_mean": 0.9972025097933338,
+        "maximum_absolute_peak_shift_samples": 0,
+        "peak_sign_stable_in_every_fold": true,
+        "used_as_transfer_gate": false
+      },
+      "gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "passed": true
+    },
+    "Tm9": {
+      "recording_id_count": 6,
+      "recording_ids": [
+        "190812",
+        "191112",
+        "191203",
+        "191209",
+        "200115",
+        "200720"
+      ],
+      "mean_median_kernel_correlation": 0.9927554808138923,
+      "held_out_recording_id_vs_rest": {
+        "folds": [
+          {
+            "held_out_recording_id": "190812",
+            "correlation": 0.8796735902345538
+          },
+          {
+            "held_out_recording_id": "191112",
+            "correlation": 0.865629499462066
+          },
+          {
+            "held_out_recording_id": "191203",
+            "correlation": 0.949355116330283
+          },
+          {
+            "held_out_recording_id": "191209",
+            "correlation": 0.8478525671341767
+          },
+          {
+            "held_out_recording_id": "200115",
+            "correlation": 0.9534416876445798
+          },
+          {
+            "held_out_recording_id": "200720",
+            "correlation": 0.8924004292616471
+          }
+        ],
+        "summary": {
+          "count": 6,
+          "minimum": 0.8478525671341767,
+          "p05": 0.8522968002161491,
+          "median": 0.8860370097481005,
+          "maximum": 0.9534416876445798
+        }
+      },
+      "exhaustive_near_equal_recording_id_partitions": {
+        "partition_count": 10,
+        "partitions": [
+          {
+            "first_recording_ids": [
+              "190812",
+              "191112",
+              "191203"
+            ],
+            "second_recording_ids": [
+              "191209",
+              "200115",
+              "200720"
+            ],
+            "correlation": 0.9370746178949582
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191112",
+              "191209"
+            ],
+            "second_recording_ids": [
+              "191203",
+              "200115",
+              "200720"
+            ],
+            "correlation": 0.9341413658430908
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191112",
+              "200115"
+            ],
+            "second_recording_ids": [
+              "191203",
+              "191209",
+              "200720"
+            ],
+            "correlation": 0.9615452660254727
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191112",
+              "200720"
+            ],
+            "second_recording_ids": [
+              "191203",
+              "191209",
+              "200115"
+            ],
+            "correlation": 0.9288254509254601
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191203",
+              "191209"
+            ],
+            "second_recording_ids": [
+              "191112",
+              "200115",
+              "200720"
+            ],
+            "correlation": 0.941731274709865
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191203",
+              "200115"
+            ],
+            "second_recording_ids": [
+              "191112",
+              "191209",
+              "200720"
+            ],
+            "correlation": 0.9334974059506889
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191203",
+              "200720"
+            ],
+            "second_recording_ids": [
+              "191112",
+              "191209",
+              "200115"
+            ],
+            "correlation": 0.9493115036015074
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191209",
+              "200115"
+            ],
+            "second_recording_ids": [
+              "191112",
+              "191203",
+              "200720"
+            ],
+            "correlation": 0.9514923069976098
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "191209",
+              "200720"
+            ],
+            "second_recording_ids": [
+              "191112",
+              "191203",
+              "200115"
+            ],
+            "correlation": 0.968542940701161
+          },
+          {
+            "first_recording_ids": [
+              "190812",
+              "200115",
+              "200720"
+            ],
+            "second_recording_ids": [
+              "191112",
+              "191203",
+              "191209"
+            ],
+            "correlation": 0.913217640725426
+          }
+        ],
+        "summary": {
+          "count": 10,
+          "minimum": 0.913217640725426,
+          "p05": 0.9202411553154414,
+          "median": 0.9394029463024116,
+          "maximum": 0.968542940701161
+        }
+      },
+      "population_mean_jackknife": {
+        "folds": [
+          {
+            "excluded_recording_id": "190812",
+            "correlation_to_full_population_mean": 0.9977003021259025
+          },
+          {
+            "excluded_recording_id": "191112",
+            "correlation_to_full_population_mean": 0.9978789527916863
+          },
+          {
+            "excluded_recording_id": "191203",
+            "correlation_to_full_population_mean": 0.9984225636547377
+          },
+          {
+            "excluded_recording_id": "191209",
+            "correlation_to_full_population_mean": 0.9962426589172577
+          },
+          {
+            "excluded_recording_id": "200115",
+            "correlation_to_full_population_mean": 0.997864179515032
+          },
+          {
+            "excluded_recording_id": "200720",
+            "correlation_to_full_population_mean": 0.9940781997359046
+          }
+        ],
+        "minimum_correlation_to_full_mean": 0.9940781997359046,
+        "maximum_absolute_peak_shift_samples": 1,
+        "peak_sign_stable_in_every_fold": true,
+        "used_as_transfer_gate": false
+      },
+      "gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "passed": true
+    }
+  },
+  "passing_sources": [
+    "Tm1",
+    "Tm4",
+    "Tm9"
+  ],
+  "failing_sources": [
+    "Tm2"
+  ],
+  "all_population_kernel_robustness_gates_passed": false,
+  "recording_id_is_biological_individual_id": false,
+  "independent_biological_validation_available": false,
+  "authorize_population_kernel_transfer": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "Tm2_population_kernel_failed_recording_id_robustness_gates",
+  "boundary": {
+    "read_only_robustness_audit": true,
+    "every_recording_id_retained": true,
+    "subrecordings_averaged_within_recording_id_first": true,
+    "recording_ids_weighted_equally": true,
+    "no_outlier_removal": true,
+    "recording_id_is_not_biological_individual_id": true,
+    "exhaustive_partitions_are_not_independent_validation": true,
+    "no_direction_or_subtype_label_used": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

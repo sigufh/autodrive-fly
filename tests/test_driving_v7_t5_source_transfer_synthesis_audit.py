@@ -27,6 +27,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
         "measured_kernel_maximum_prefix_L1_mass_fraction": 0.47168529082482163,
         "measured_kernel_zero_tail_samples": 498,
         "measured_kernel_full_support_output_samples": 525,
+        "population_kernel_robustness_passing_source_count": 3,
+        "population_kernel_robustness_failing_sources": ["Tm2"],
+        "Tm2_recording_id_vs_rest_median_correlation": 0.785694273562359,
+        "Tm2_partition_correlation_p05": 0.76950266256901,
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -57,6 +61,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["measured_kernel_zero_tail_all_candidates_failed_every_update_count"] is True
     assert gates["measured_kernel_zero_tail_direction_scoring_authorized"] is False
     assert gates["measured_kernel_zero_tail_direction_scoring_performed"] is False
+    assert gates["population_kernel_recording_id_robustness_passed"] is False
+    assert gates["Tm2_population_kernel_recording_id_robustness_passed"] is False
+    assert gates["population_kernel_independent_biological_validation_available"] is False
+    assert gates["population_kernel_transfer_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

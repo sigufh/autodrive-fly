@@ -1965,6 +1965,13 @@ early-support 负证据，不能外推为完整 4.99 s kernel-support 模型的�
 分辨率下仍未同时满足两个 ≤0.50 门，方向评分保持未授权、未执行。该结果排除的是
 “观测 source drive 后归零”的完整 FIR 响应，不等于持续推进网络或新的生物验证。证据见
 `artifacts/v7-t5-measured-kernel-full-support-identifiability.json`。
+四类 population kernel 还按 recording ID 做了不删离群点的稳健性审计，门限直接复用既有
+Fig3 source-kernel 合同（mean-vs-median、held-out-vs-rest median、最小值和 split p05）。
+Tm1/Tm4/Tm9 通过四项门，Tm2 的 held-out-vs-rest 中位相关为 `0.7857`、全部不重复近等分
+partition 相关的 p05 为 `0.7695`，均低于 0.80，故总体门失败。删除任一 recording ID 后
+各 source 群体均值与全均值的最小相关仍高于 0.97，但该 jackknife 稳定不替代记录间一致性。
+此外 recording ID 不是已验证的 fly ID，不能视为独立生物验证，population-kernel transfer
+继续不授权。证据见 `artifacts/v7-t5-population-kernel-robustness-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

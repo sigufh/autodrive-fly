@@ -1,0 +1,29 @@
+version: 1
+name: v7-t5-population-kernel-recording-id-robustness-audit
+observed_on: "2026-09-21"
+source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
+source_kernel_protocol: configs/driving-v7-kohn-portes-t5-source-kernel-audit.yaml
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+threshold_source: configs/driving-v7-fig3-source-kernel-robustness.yaml
+source_order: [Tm1, Tm2, Tm4, Tm9]
+kernel_length: 499
+partition_method: exhaustive_unique_near_equal_recording_id_partitions
+gates:
+  minimum_mean_median_kernel_correlation: 0.80
+  minimum_median_leave_one_recording_id_out_correlation: 0.80
+  minimum_leave_one_recording_id_out_correlation: 0.0
+  minimum_partition_correlation_p05: 0.80
+  require_every_source: true
+boundary:
+  read_only_robustness_audit: true
+  every_recording_id_retained: true
+  subrecordings_averaged_within_recording_id_first: true
+  recording_ids_weighted_equally: true
+  no_outlier_removal: true
+  recording_id_is_not_biological_individual_id: true
+  exhaustive_partitions_are_not_independent_validation: true
+  no_direction_or_subtype_label_used: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

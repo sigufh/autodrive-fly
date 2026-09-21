@@ -38,6 +38,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     measured_kernel_substeps = evidence["measured_kernel_substep_sensitivity"]
     measured_kernel_support = evidence["measured_kernel_support_coverage"]
     measured_kernel_full_support = evidence["measured_kernel_full_support"]
+    population_kernel_robustness = evidence["population_kernel_robustness"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -172,6 +173,22 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_zero_tail_direction_scoring_performed": (
             measured_kernel_full_support["direction_scoring_performed"]
         ),
+        "population_kernel_recording_id_robustness_passed": (
+            population_kernel_robustness[
+                "all_population_kernel_robustness_gates_passed"
+            ]
+        ),
+        "Tm2_population_kernel_recording_id_robustness_passed": (
+            population_kernel_robustness["source_results"]["Tm2"]["passed"]
+        ),
+        "population_kernel_independent_biological_validation_available": (
+            population_kernel_robustness[
+                "independent_biological_validation_available"
+            ]
+        ),
+        "population_kernel_transfer_authorized": population_kernel_robustness[
+            "authorize_population_kernel_transfer"
+        ],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -247,6 +264,22 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             "measured_kernel_full_support_output_samples": measured_kernel_full_support[
                 "full_support_contract"
             ]["output_samples"],
+            "population_kernel_robustness_passing_source_count": len(
+                population_kernel_robustness["passing_sources"]
+            ),
+            "population_kernel_robustness_failing_sources": (
+                population_kernel_robustness["failing_sources"]
+            ),
+            "Tm2_recording_id_vs_rest_median_correlation": (
+                population_kernel_robustness["source_results"]["Tm2"][
+                    "held_out_recording_id_vs_rest"
+                ]["summary"]["median"]
+            ),
+            "Tm2_partition_correlation_p05": population_kernel_robustness[
+                "source_results"
+            ]["Tm2"]["exhaustive_near_equal_recording_id_partitions"][
+                "summary"
+            ]["p05"],
         },
         "gates": gates,
         "T5_source_transfer_ready": False,

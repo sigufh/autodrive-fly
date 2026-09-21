@@ -126,6 +126,14 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_measured_kernel_zero_tail_direction_scoring_performed",
         "T5_measured_kernel_zero_tail_samples",
         "T5_measured_kernel_full_support_output_samples",
+        "T5_population_kernel_recording_id_robustness_passed",
+        "T5_Tm2_population_kernel_recording_id_robustness_passed",
+        "T5_population_kernel_independent_validation_available",
+        "T5_population_kernel_transfer_authorized",
+        "T5_population_kernel_robustness_passing_source_count",
+        "T5_population_kernel_robustness_failing_sources",
+        "T5_Tm2_recording_id_vs_rest_median_correlation",
+        "T5_Tm2_partition_correlation_p05",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -538,6 +546,33 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     )
     assert visual["observations"]["T5_measured_kernel_zero_tail_samples"] == 498
     assert visual["observations"]["T5_measured_kernel_full_support_output_samples"] == 525
+    assert (
+        visual["observations"]["T5_population_kernel_recording_id_robustness_passed"]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "T5_Tm2_population_kernel_recording_id_robustness_passed"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_population_kernel_independent_validation_available"]
+        is False
+    )
+    assert visual["observations"]["T5_population_kernel_transfer_authorized"] is False
+    assert visual["observations"]["T5_population_kernel_robustness_passing_source_count"] == 3
+    assert visual["observations"]["T5_population_kernel_robustness_failing_sources"] == [
+        "Tm2"
+    ]
+    assert np.isclose(
+        visual["observations"]["T5_Tm2_recording_id_vs_rest_median_correlation"],
+        0.785694273562359,
+    )
+    assert np.isclose(
+        visual["observations"]["T5_Tm2_partition_correlation_p05"],
+        0.76950266256901,
+    )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_ready"] is False

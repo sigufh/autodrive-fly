@@ -398,6 +398,30 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_measured_kernel_full_support_output_samples": visual[
                     "T5_measured_kernel_full_support_output_samples"
                 ],
+                "T5_population_kernel_recording_id_robustness_passed": visual[
+                    "T5_population_kernel_recording_id_robustness_passed"
+                ],
+                "T5_Tm2_population_kernel_recording_id_robustness_passed": visual[
+                    "T5_Tm2_population_kernel_recording_id_robustness_passed"
+                ],
+                "T5_population_kernel_independent_validation_available": visual[
+                    "T5_population_kernel_independent_validation_available"
+                ],
+                "T5_population_kernel_transfer_authorized": visual[
+                    "T5_population_kernel_transfer_authorized"
+                ],
+                "T5_population_kernel_robustness_passing_source_count": visual[
+                    "T5_population_kernel_robustness_passing_source_count"
+                ],
+                "T5_population_kernel_robustness_failing_sources": visual[
+                    "T5_population_kernel_robustness_failing_sources"
+                ],
+                "T5_Tm2_recording_id_vs_rest_median_correlation": visual[
+                    "T5_Tm2_recording_id_vs_rest_median_correlation"
+                ],
+                "T5_Tm2_partition_correlation_p05": visual[
+                    "T5_Tm2_partition_correlation_p05"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

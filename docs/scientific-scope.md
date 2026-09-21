@@ -349,6 +349,14 @@ shuffle/static ratios at one update per frame were 2.235/0.9999, 1.443/0.7917, a
 1.197/0.6615. No candidate passed both frozen 0.50 limits at either resolution.
 This excludes the zero-source-tail full-FIR variant only; it is not evidence for a
 continued network response or an independently validated biological source model.
+Population-kernel robustness was then tested without outlier removal using the
+existing Fig. 3 source-kernel thresholds. Tm1, Tm4, and Tm9 passed all four shape
+gates. Tm2 failed both the 0.80 held-out-recording-versus-rest median gate
+(0.7857) and the exhaustive near-equal-partition p05 gate (0.7695). Although each
+leave-one-recording-ID-out population mean remained correlated above 0.97 with the
+full mean, that jackknife stability does not replace agreement among held-out
+records. Recording IDs are not verified fly IDs, so neither this audit nor the
+population mean supplies independent biological validation or kernel transfer.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

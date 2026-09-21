@@ -14,6 +14,7 @@ evidence:
   measured_kernel_substep_sensitivity: artifacts/v7-t5-measured-kernel-substep-sensitivity.json
   measured_kernel_support_coverage: artifacts/v7-t5-measured-kernel-support-coverage-audit.json
   measured_kernel_full_support: artifacts/v7-t5-measured-kernel-full-support-identifiability.json
+  population_kernel_robustness: artifacts/v7-t5-population-kernel-robustness-audit.json
   connectome_weights: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
   moving_bar_generalization: artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json
   source_mapping: artifacts/v7-t5-source-mapping-scope-audit.json

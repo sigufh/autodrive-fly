@@ -100,6 +100,16 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_measured_kernel_zero_tail_direction_scoring_performed"] is False
     assert boundaries["T5_measured_kernel_zero_tail_samples"] == 498
     assert boundaries["T5_measured_kernel_full_support_output_samples"] == 525
+    assert boundaries["T5_population_kernel_recording_id_robustness_passed"] is False
+    assert boundaries["T5_Tm2_population_kernel_recording_id_robustness_passed"] is False
+    assert boundaries["T5_population_kernel_independent_validation_available"] is False
+    assert boundaries["T5_population_kernel_transfer_authorized"] is False
+    assert boundaries["T5_population_kernel_robustness_passing_source_count"] == 3
+    assert boundaries["T5_population_kernel_robustness_failing_sources"] == ["Tm2"]
+    assert boundaries["T5_Tm2_recording_id_vs_rest_median_correlation"] == (
+        0.785694273562359
+    )
+    assert boundaries["T5_Tm2_partition_correlation_p05"] == 0.76950266256901
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0
