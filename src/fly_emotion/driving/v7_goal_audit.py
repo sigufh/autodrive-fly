@@ -964,6 +964,41 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "measured_kernel_source_node_counts"
                     ]
                 ),
+                "T5_measured_kernel_source_inputs_partitioned_exactly_once": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_source_inputs_partitioned_exactly_once"
+                    ]
+                ),
+                "T5_measured_kernel_every_source_has_recurrent_or_feedback_input": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_every_source_has_recurrent_or_feedback_input"
+                    ]
+                ),
+                "T5_measured_kernel_feedforward_only_source_drive_available": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_feedforward_only_source_drive_available"
+                    ]
+                ),
+                "T5_measured_kernel_source_dynamics_replacement_evaluated": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_source_dynamics_replacement_evaluated"
+                    ]
+                ),
+                "T5_measured_kernel_source_dynamics_replacement_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_source_dynamics_replacement_authorized"
+                    ]
+                ),
+                "T5_measured_kernel_recurrent_or_feedback_fraction_by_source": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "measured_kernel_recurrent_or_feedback_fraction_by_source"
+                    ]
+                ),
+                "T5_measured_kernel_Tm9_CT1_input_fraction": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "measured_kernel_Tm9_CT1_input_fraction"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3462,6 +3497,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_measured_kernel_external_state_mapping_available",
                     "T5_measured_kernel_source_leaks",
                     "T5_measured_kernel_source_node_counts",
+                    "T5_measured_kernel_source_inputs_partitioned_exactly_once",
+                    "T5_measured_kernel_every_source_has_recurrent_or_feedback_input",
+                    "T5_measured_kernel_feedforward_only_source_drive_available",
+                    "T5_measured_kernel_source_dynamics_replacement_evaluated",
+                    "T5_measured_kernel_source_dynamics_replacement_authorized",
+                    "T5_measured_kernel_recurrent_or_feedback_fraction_by_source",
+                    "T5_measured_kernel_Tm9_CT1_input_fraction",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

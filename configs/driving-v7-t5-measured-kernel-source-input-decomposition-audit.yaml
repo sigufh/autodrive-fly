@@ -1,0 +1,30 @@
+version: 1
+name: v7-t5-measured-kernel-source-input-decomposition-audit
+observed_on: "2026-09-21"
+cascade_evidence: artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json
+measured_kernel_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+lamina_split_config: configs/driving-v7-t5-lamina-split.yaml
+lamina_split_implementation: src/fly_emotion/driving/v7_t5_lamina_split.py
+nested_probe_implementation: src/fly_emotion/driving/v7_nested_neural_screen.py
+v7_implementation: src/fly_emotion/driving/v7.py
+source_types: [Tm1, Tm2, Tm4, Tm9]
+mutually_exclusive_input_categories:
+  - R1-R6
+  - overwritten_lamina_L1_L2_L3
+  - other_lamina_L4_L5
+  - same_Tm_type
+  - other_Tm_type
+  - CT1
+  - T4
+  - T5_feedback
+  - other_visual_subgraph
+boundary:
+  read_only_structure_audit: true
+  normalized_absolute_input_mass_is_not_synaptic_current: true
+  direct_input_fraction_is_not_dynamic_causal_effect: true
+  recurrent_or_feedback_input_requires_explicit_intervention_for_replacement: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  direction_scoring_remains_frozen: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

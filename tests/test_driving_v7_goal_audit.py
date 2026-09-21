@@ -161,6 +161,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_measured_kernel_external_state_mapping_available",
         "T5_measured_kernel_source_leaks",
         "T5_measured_kernel_source_node_counts",
+        "T5_measured_kernel_source_inputs_partitioned_exactly_once",
+        "T5_measured_kernel_every_source_has_recurrent_or_feedback_input",
+        "T5_measured_kernel_feedforward_only_source_drive_available",
+        "T5_measured_kernel_source_dynamics_replacement_evaluated",
+        "T5_measured_kernel_source_dynamics_replacement_authorized",
+        "T5_measured_kernel_recurrent_or_feedback_fraction_by_source",
+        "T5_measured_kernel_Tm9_CT1_input_fraction",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -689,6 +696,40 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         "Tm4": 1670,
         "Tm9": 1771,
     }
+    assert (
+        visual["observations"]["T5_measured_kernel_source_inputs_partitioned_exactly_once"]
+        is True
+    )
+    assert (
+        visual["observations"][
+            "T5_measured_kernel_every_source_has_recurrent_or_feedback_input"
+        ]
+        is True
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_feedforward_only_source_drive_available"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_source_dynamics_replacement_evaluated"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_source_dynamics_replacement_authorized"]
+        is False
+    )
+    assert visual["observations"][
+        "T5_measured_kernel_recurrent_or_feedback_fraction_by_source"
+    ] == {
+        "Tm1": 0.06242381162002561,
+        "Tm2": 0.04116725419043349,
+        "Tm4": 0.19606226563946827,
+        "Tm9": 0.23058754793814995,
+    }
+    assert np.isclose(
+        visual["observations"]["T5_measured_kernel_Tm9_CT1_input_fraction"],
+        0.09073247310668342,
+    )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_ready"] is False

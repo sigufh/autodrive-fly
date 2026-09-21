@@ -157,6 +157,20 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         "Tm4": 1670,
         "Tm9": 1771,
     }
+    assert boundaries["T5_measured_kernel_source_inputs_partitioned_exactly_once"] is True
+    assert boundaries["T5_measured_kernel_every_source_has_recurrent_or_feedback_input"] is True
+    assert boundaries["T5_measured_kernel_feedforward_only_source_drive_available"] is False
+    assert boundaries["T5_measured_kernel_source_dynamics_replacement_evaluated"] is False
+    assert boundaries["T5_measured_kernel_source_dynamics_replacement_authorized"] is False
+    assert boundaries["T5_measured_kernel_recurrent_or_feedback_fraction_by_source"] == {
+        "Tm1": 0.06242381162002561,
+        "Tm2": 0.04116725419043349,
+        "Tm4": 0.19606226563946827,
+        "Tm9": 0.23058754793814995,
+    }
+    assert boundaries["T5_measured_kernel_Tm9_CT1_input_fraction"] == (
+        0.09073247310668342
+    )
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

@@ -45,6 +45,9 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     author_row_weighted = evidence["author_row_weighted_full_support"]
     tm2_loo_full_support = evidence["tm2_loo_full_support"]
     measured_kernel_cascade = evidence["measured_kernel_cascade_semantics"]
+    measured_kernel_inputs = evidence[
+        "measured_kernel_source_input_decomposition"
+    ]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -260,6 +263,27 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_external_state_mapping_available": measured_kernel_cascade[
             "external_recording_to_v7_source_state_mapping_available"
         ],
+        "measured_kernel_source_inputs_partitioned_exactly_once": (
+            measured_kernel_inputs["all_direct_input_edges_partitioned_exactly_once"]
+        ),
+        "measured_kernel_every_source_has_recurrent_or_feedback_input": (
+            measured_kernel_inputs[
+                "every_source_has_recurrent_or_target_feedback_input"
+            ]
+        ),
+        "measured_kernel_feedforward_only_source_drive_available": (
+            measured_kernel_inputs[
+                "feedforward_only_source_drive_available_from_current_trace"
+            ]
+        ),
+        "measured_kernel_source_dynamics_replacement_evaluated": (
+            measured_kernel_inputs[
+                "measured_kernel_replacement_of_source_dynamics_evaluated"
+            ]
+        ),
+        "measured_kernel_source_dynamics_replacement_authorized": (
+            measured_kernel_inputs["authorize_source_dynamics_replacement"]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -386,6 +410,15 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             ]["source_leaks"],
             "measured_kernel_source_node_counts": measured_kernel_cascade[
                 "runtime_source_node_counts"
+            ],
+            "measured_kernel_recurrent_or_feedback_fraction_by_source": {
+                source: item["recurrent_or_target_feedback_input_fraction"]
+                for source, item in measured_kernel_inputs["source_results"].items()
+            },
+            "measured_kernel_Tm9_CT1_input_fraction": measured_kernel_inputs[
+                "source_results"
+            ]["Tm9"]["category_results"]["CT1"][
+                "normalized_absolute_input_fraction"
             ],
         },
         "gates": gates,

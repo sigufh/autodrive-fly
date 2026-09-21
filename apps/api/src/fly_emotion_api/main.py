@@ -501,6 +501,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_measured_kernel_source_node_counts": visual[
                     "T5_measured_kernel_source_node_counts"
                 ],
+                "T5_measured_kernel_source_inputs_partitioned_exactly_once": visual[
+                    "T5_measured_kernel_source_inputs_partitioned_exactly_once"
+                ],
+                "T5_measured_kernel_every_source_has_recurrent_or_feedback_input": visual[
+                    "T5_measured_kernel_every_source_has_recurrent_or_feedback_input"
+                ],
+                "T5_measured_kernel_feedforward_only_source_drive_available": visual[
+                    "T5_measured_kernel_feedforward_only_source_drive_available"
+                ],
+                "T5_measured_kernel_source_dynamics_replacement_evaluated": visual[
+                    "T5_measured_kernel_source_dynamics_replacement_evaluated"
+                ],
+                "T5_measured_kernel_source_dynamics_replacement_authorized": visual[
+                    "T5_measured_kernel_source_dynamics_replacement_authorized"
+                ],
+                "T5_measured_kernel_recurrent_or_feedback_fraction_by_source": visual[
+                    "T5_measured_kernel_recurrent_or_feedback_fraction_by_source"
+                ],
+                "T5_measured_kernel_Tm9_CT1_input_fraction": visual[
+                    "T5_measured_kernel_Tm9_CT1_input_fraction"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

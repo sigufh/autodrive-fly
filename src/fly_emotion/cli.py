@@ -382,6 +382,9 @@ from .driving.v7_t5_measured_kernel_full_support_identifiability import (
 from .driving.v7_t5_measured_kernel_identifiability import (
     evaluate_v7_t5_measured_kernel_identifiability,
 )
+from .driving.v7_t5_measured_kernel_source_input_decomposition_audit import (
+    evaluate_v7_t5_measured_kernel_source_input_decomposition_audit,
+)
 from .driving.v7_t5_measured_kernel_substep_sensitivity import (
     evaluate_v7_t5_measured_kernel_substep_sensitivity,
 )
@@ -707,6 +710,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-measured-kernel-cascade-semantics")
     subparsers.add_parser("v7-audit-t5-measured-kernel-substep-sensitivity")
     subparsers.add_parser("v7-audit-t5-measured-kernel-support-coverage")
+    subparsers.add_parser("v7-audit-t5-measured-kernel-source-input-decomposition")
     subparsers.add_parser("v7-audit-t5-source-transfer-synthesis")
     subparsers.add_parser("v7-evaluate-t5-source-pair-precheck")
     subparsers.add_parser("v7-evaluate-t5-typed-spatial-pair-precheck")
@@ -1502,6 +1506,16 @@ def main() -> None:
     if args.command == "v7-audit-t5-measured-kernel-support-coverage":
         report = evaluate_v7_t5_measured_kernel_support_coverage_audit(root)
         target = root / "artifacts/v7-t5-measured-kernel-support-coverage-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-measured-kernel-source-input-decomposition":
+        report = evaluate_v7_t5_measured_kernel_source_input_decomposition_audit(root)
+        target = (
+            root / "artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json"
+        )
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

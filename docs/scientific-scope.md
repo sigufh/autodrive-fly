@@ -392,6 +392,15 @@ this diagnostic, but the typed recurrent/leak dynamics are not. Because no exter
 mV or filter-output mapping to the v7 signed state exists, these negative results
 apply to that composite cascade and cannot be attributed to the measured kernel
 alone or interpreted as a single-stage biological source model.
+Direct inputs to those Tm states were partitioned exhaustively on the actual
+target-normalized visual-subgraph adjacency. Tm/T4/T5 recurrent-or-feedback mass
+fractions were 6.24%, 4.12%, 19.61%, and 23.06% for Tm1/Tm2/Tm4/Tm9; Tm9 also
+received 9.07% from CT1. The base recurrent update reads the prior state before the
+same-step L1/L2/L3 retinal half-wave overwrite, so the observed Tm trace is neither
+instantaneous synaptic drive nor a pure same-step feed-forward signal. A true
+measured-kernel replacement therefore requires a separately specified intervention
+that removes or bypasses these recurrent dynamics; it has not been evaluated or
+authorized here.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

@@ -2002,6 +2002,15 @@ columnar delay/correlator，但确实叠加了人工 recurrent/leak 动态；而
 到 v7 signed state 的映射仍不存在。因此现有负结果只针对这一复合级联，不能单独归因于
 实测 kernel，也不能解释为单阶段生物 source 模型。证据见
 `artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json`。
+进一步按实际 target-normalized visual-subgraph adjacency 将四类 Tm 的直接输入互斥拆为
+R1–R6、被覆盖的 L1/L2/L3、其他 lamina、同类 Tm、其他 Tm、CT1、T4、T5 feedback
+和其他视觉节点，四类的质量和均为 1。Tm1/Tm2/Tm4/Tm9 的 Tm/T4/T5 recurrent-or-
+feedback 质量占比分别为 `6.24%/4.12%/19.61%/23.06%`，Tm9 另有 `9.07%` CT1 输入。
+执行顺序是 base recurrent update 先读取旧 state，再由 lamina override 写入当前 L1/L2/L3，
+所以当前 Tm trace 既含递归/反馈，也不是同一步当前 lamina 的纯 feed-forward drive。要测试
+measured kernel 真正替换 source dynamics，必须另行定义并验证切断这些项的显式干预；现有
+trace 不能直接复用为 replacement 输入。证据见
+`artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；
