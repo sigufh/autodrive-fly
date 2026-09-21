@@ -42,6 +42,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     population_kernel_aggregation = evidence[
         "population_kernel_aggregation_semantics"
     ]
+    author_row_weighted = evidence["author_row_weighted_full_support"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -212,6 +213,18 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                 "alternative_tail_baseline_variant_authorized"
             ]
         ),
+        "author_row_weighted_full_support_all_candidates_failed": (
+            author_row_weighted["all_candidates_failed_every_update_count"]
+        ),
+        "author_row_weighted_cross_substep_identifiability_passed": (
+            author_row_weighted["cross_substep_temporal_identifiability_passed"]
+        ),
+        "author_row_weighted_direction_scoring_authorized": author_row_weighted[
+            "direction_scoring_authorized"
+        ],
+        "author_row_weighted_direction_scoring_performed": author_row_weighted[
+            "direction_scoring_performed"
+        ],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -316,6 +329,9 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                     "row_weighted_vs_equal_recording_id_correlation"
                 ]
             ),
+            "author_row_weighted_changed_sources": author_row_weighted[
+                "aggregation_contract"
+            ]["changed_sources"],
         },
         "gates": gates,
         "T5_source_transfer_ready": False,

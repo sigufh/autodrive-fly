@@ -154,6 +154,11 @@ export type V7Status = {
     T5_population_kernel_author_call_count?: number;
     T5_population_kernel_explicit_baseline_call_count?: number;
     T5_Tm1_row_vs_recording_id_weighted_correlation?: number;
+    T5_author_row_weighted_changed_sources?: string[];
+    T5_author_row_weighted_full_support_all_candidates_failed?: boolean;
+    T5_author_row_weighted_cross_substep_identifiability_passed?: boolean;
+    T5_author_row_weighted_direction_scoring_authorized?: boolean;
+    T5_author_row_weighted_direction_scoring_performed?: boolean;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

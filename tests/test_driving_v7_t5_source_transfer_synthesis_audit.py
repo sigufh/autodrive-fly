@@ -34,6 +34,7 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
         "population_kernel_author_call_count": 9,
         "population_kernel_explicit_baseline_call_count": 0,
         "Tm1_row_vs_recording_id_weighted_correlation": 0.9995598341098436,
+        "author_row_weighted_changed_sources": ["Tm1"],
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -72,6 +73,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["population_kernel_current_no_baseline_matches_author_default"] is True
     assert gates["population_kernel_author_row_weighting_exactly_reproduced"] is False
     assert gates["population_kernel_alternative_tail_baseline_authorized"] is False
+    assert gates["author_row_weighted_full_support_all_candidates_failed"] is True
+    assert gates["author_row_weighted_cross_substep_identifiability_passed"] is False
+    assert gates["author_row_weighted_direction_scoring_authorized"] is False
+    assert gates["author_row_weighted_direction_scoring_performed"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

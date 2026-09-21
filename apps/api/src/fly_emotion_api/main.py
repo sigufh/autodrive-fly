@@ -443,6 +443,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_Tm1_row_vs_recording_id_weighted_correlation": visual[
                     "T5_Tm1_row_vs_recording_id_weighted_correlation"
                 ],
+                "T5_author_row_weighted_changed_sources": visual[
+                    "T5_author_row_weighted_changed_sources"
+                ],
+                "T5_author_row_weighted_full_support_all_candidates_failed": visual[
+                    "T5_author_row_weighted_full_support_all_candidates_failed"
+                ],
+                "T5_author_row_weighted_cross_substep_identifiability_passed": visual[
+                    "T5_author_row_weighted_cross_substep_identifiability_passed"
+                ],
+                "T5_author_row_weighted_direction_scoring_authorized": visual[
+                    "T5_author_row_weighted_direction_scoring_authorized"
+                ],
+                "T5_author_row_weighted_direction_scoring_performed": visual[
+                    "T5_author_row_weighted_direction_scoring_performed"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

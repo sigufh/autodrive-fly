@@ -1980,6 +1980,13 @@ partition 相关的 p05 为 `0.7695`，均低于 0.80，故总体门失败。删
 Tm2/Tm4/Tm9 因无重复 ID 而精确一致；Tm1 为 8 rows/7 IDs，两种单位 L1 均值相关
 `0.99956`、最大绝对差 `0.001331`，但仍不声明 exact reproduction。证据见
 `artifacts/v7-t5-population-kernel-aggregation-semantics-audit.json`。
+为排除等 recording-ID 聚合导致负结果，又按作者实际的 payload-row 等权方式重算完整
+zero-tail FIR；只允许 Tm1 kernel 改变，Tm2/Tm4/Tm9 必须逐值不变。1-update 下三个
+候选的 shuffle/static 比为 `2.252/0.9999`、`1.427/0.7920`、`0.986/0.5872`，
+4-update 下为 `2.215/0.9995`、`1.499/0.7573`、`1.204/0.6581`。仍无候选在
+任一更新数下同时满足两个 ≤0.50 门，故作者等行加权不能挽救时序可辨识性，方向评分
+继续未授权、未执行。证据见
+`artifacts/v7-t5-author-row-weighted-full-support-sensitivity.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

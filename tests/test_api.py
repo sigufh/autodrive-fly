@@ -122,6 +122,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_Tm1_row_vs_recording_id_weighted_correlation"] == (
         0.9995598341098436
     )
+    assert boundaries["T5_author_row_weighted_changed_sources"] == ["Tm1"]
+    assert boundaries["T5_author_row_weighted_full_support_all_candidates_failed"] is True
+    assert boundaries["T5_author_row_weighted_cross_substep_identifiability_passed"] is False
+    assert boundaries["T5_author_row_weighted_direction_scoring_authorized"] is False
+    assert boundaries["T5_author_row_weighted_direction_scoring_performed"] is False
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

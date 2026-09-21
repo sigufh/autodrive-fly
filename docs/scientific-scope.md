@@ -366,6 +366,13 @@ is not authorized. The author averages payload rows, whereas v7 deliberately
 averages within recording ID and then weights IDs equally. This differs only for
 Tm1 (8 rows, 7 IDs): the unit-L1 means correlate at 0.99956 with maximum absolute
 difference 0.001331, which is close but not exact reproduction.
+To test whether that deliberate de-duplication caused the negative result, the full
+zero-tail FIR audit was repeated with the author's payload-row weighting. Only Tm1
+was allowed to change; Tm2/Tm4/Tm9 remained bit-identical. The three candidates'
+shuffle/static ratios were 2.252/0.9999, 1.427/0.7920, and 0.986/0.5872 at one
+update per frame, and 2.215/0.9995, 1.499/0.7573, and 1.204/0.6581 at four updates.
+None passed both 0.50 limits, so row weighting did not rescue temporal
+identifiability and direction scoring remained unauthorized.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

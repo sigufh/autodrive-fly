@@ -332,6 +332,9 @@ from .driving.v7_t4t5_local_edge_precheck import evaluate_v7_t4t5_local_edge_pre
 from .driving.v7_t4t5_source_dynamics_readiness import (
     evaluate_v7_t4t5_source_dynamics_readiness,
 )
+from .driving.v7_t5_author_row_weighted_full_support_sensitivity import (
+    evaluate_v7_t5_author_row_weighted_full_support_sensitivity,
+)
 from .driving.v7_t5_conductance_audit import evaluate_v7_t5_conductance_audit
 from .driving.v7_t5_continuous_moment_precheck import (
     evaluate_v7_t5_continuous_moment_precheck,
@@ -692,6 +695,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
     subparsers.add_parser("v7-audit-t5-source-mapping-scope")
+    subparsers.add_parser("v7-audit-t5-author-row-weighted-full-support")
     subparsers.add_parser("v7-audit-t5-measured-kernel-identifiability")
     subparsers.add_parser("v7-audit-t5-measured-kernel-full-support")
     subparsers.add_parser("v7-audit-t5-measured-kernel-substep-sensitivity")
@@ -1418,6 +1422,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-source-transfer-synthesis":
         report = evaluate_v7_t5_source_transfer_synthesis_audit(root)
         target = root / "artifacts/v7-t5-source-transfer-synthesis-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-author-row-weighted-full-support":
+        report = evaluate_v7_t5_author_row_weighted_full_support_sensitivity(root)
+        target = root / "artifacts/v7-t5-author-row-weighted-full-support-sensitivity.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -141,6 +141,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_population_kernel_author_call_count",
         "T5_population_kernel_explicit_baseline_call_count",
         "T5_Tm1_row_vs_recording_id_weighted_correlation",
+        "T5_author_row_weighted_changed_sources",
+        "T5_author_row_weighted_full_support_all_candidates_failed",
+        "T5_author_row_weighted_cross_substep_identifiability_passed",
+        "T5_author_row_weighted_direction_scoring_authorized",
+        "T5_author_row_weighted_direction_scoring_performed",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -603,6 +608,27 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert np.isclose(
         visual["observations"]["T5_Tm1_row_vs_recording_id_weighted_correlation"],
         0.9995598341098436,
+    )
+    assert visual["observations"]["T5_author_row_weighted_changed_sources"] == ["Tm1"]
+    assert (
+        visual["observations"][
+            "T5_author_row_weighted_full_support_all_candidates_failed"
+        ]
+        is True
+    )
+    assert (
+        visual["observations"][
+            "T5_author_row_weighted_cross_substep_identifiability_passed"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_author_row_weighted_direction_scoring_authorized"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_author_row_weighted_direction_scoring_performed"]
+        is False
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

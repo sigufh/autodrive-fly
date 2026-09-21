@@ -870,6 +870,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Tm1_row_vs_recording_id_weighted_correlation"
                     ]
                 ),
+                "T5_author_row_weighted_changed_sources": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "author_row_weighted_changed_sources"
+                    ]
+                ),
+                "T5_author_row_weighted_full_support_all_candidates_failed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "author_row_weighted_full_support_all_candidates_failed"
+                    ]
+                ),
+                "T5_author_row_weighted_cross_substep_identifiability_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "author_row_weighted_cross_substep_identifiability_passed"
+                    ]
+                ),
+                "T5_author_row_weighted_direction_scoring_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "author_row_weighted_direction_scoring_authorized"
+                    ]
+                ),
+                "T5_author_row_weighted_direction_scoring_performed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "author_row_weighted_direction_scoring_performed"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3348,6 +3373,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_population_kernel_author_call_count",
                     "T5_population_kernel_explicit_baseline_call_count",
                     "T5_Tm1_row_vs_recording_id_weighted_correlation",
+                    "T5_author_row_weighted_changed_sources",
+                    "T5_author_row_weighted_full_support_all_candidates_failed",
+                    "T5_author_row_weighted_cross_substep_identifiability_passed",
+                    "T5_author_row_weighted_direction_scoring_authorized",
+                    "T5_author_row_weighted_direction_scoring_performed",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",
