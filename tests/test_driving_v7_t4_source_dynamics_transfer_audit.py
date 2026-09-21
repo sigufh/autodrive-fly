@@ -160,6 +160,13 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert yuan["C3_direct_recording_candidate_verified"] is False
     assert yuan["C3_public_numeric_source_dynamics_payload_verified"] is False
     assert yuan["C3_source_dynamics_transfer_authorized"] is False
+    strother = report["verified_Strother_Mi4_public_index_boundary"]
+    assert strother["doi"] == "10.1073/pnas.1703090115"
+    assert strother["successful_index_numeric_Mi4_trace_found"] is False
+    assert strother["PMC_numeric_data_attachment_count"] == 0
+    assert strother["Figshare_search_interpretable"] is False
+    assert strother["global_absence_claimed"] is False
+    assert strother["Mi4_source_dynamics_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

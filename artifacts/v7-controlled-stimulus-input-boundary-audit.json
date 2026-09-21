@@ -152,7 +152,7 @@
       "src/fly_emotion/driving/v7_t4_normalized_correlator.py": "ded0445591fdf39005e593f8dde7a0e470a0d81bcf8f7e6d88a28110d25ecc97",
       "src/fly_emotion/driving/v7_t4_pair_lag_audit.py": "6113b5126d8dfbb4d5db5c590adba2c8ecf7027db9eca37f5da8b9e19472abf6",
       "src/fly_emotion/driving/v7_t4_recording_field_audit.py": "cced03c954b18103954715ea9ad8ef99d33eed8a9f16791ccb12e96b24db24d8",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "2ec44b10aef4e7c13605aab8e6f1e8be5e029d5158861f0da2e6edd4d529b368",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0172df6fee996f47859a2552b861b8a31851c8d89ccb6dc0b05f5b2d670565ff",
       "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "f6eb35eca4e1e6417455fd7c9188347053c6e61665fc42455a99f0e654e9e8a4",
       "src/fly_emotion/driving/v7_t4_source_pool_camera_frame_discovery.py": "53784df897c1eab37b9ede432e1b233ac9c9f00d1cf2f03ed98f4b174b702c80",
       "src/fly_emotion/driving/v7_t4_source_pool_camera_frame_replication.py": "6b57f7c5e264d3923f31adfb2dd633eedfa0481d6d8a97991134a90335c0ae75",

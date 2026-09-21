@@ -1,4 +1,4 @@
-version: 4
+version: 5
 name: v7-t4-source-dynamics-transfer-audit
 observed_on: "2026-09-21"
 electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
@@ -24,6 +24,7 @@ c3_analytic_filter_evidence: artifacts/v7-c3-analytic-filter-precheck.json
 timing_models_source_filter_evidence: artifacts/v7-timing-models-source-filter-audit.json
 gonzalez_suarez_mi4_evidence: artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json
 yuan_c3_candidate_evidence: artifacts/v7-yuan-c3-candidate-audit.json
+strother_mi4_public_index_evidence: artifacts/v7-strother-mi4-public-index-audit.json
 flyvis_c3_time_constant_evidence: artifacts/v7-flyvis-c3-time-constant-audit.json
 flyvis_visual_source_time_constants_evidence: artifacts/v7-flyvis-visual-source-time-constants.json
 flyvis_c3_effective_dynamics_evidence: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
@@ -77,3 +78,4 @@ boundary:
   prohibit_further_target_formula_scan_without_new_source_dynamics_evidence: true
   independent_type_average_Mi4_calcium_is_not_individual_voltage: true
   C3_intervention_is_not_direct_C3_source_dynamics: true
+  public_index_zero_results_do_not_prove_Mi4_payload_absence: true

@@ -38,6 +38,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
     gonzalez_suarez_path = Path(config["gonzalez_suarez_mi4_evidence"])
     yuan_c3_path = Path(config["yuan_c3_candidate_evidence"])
+    strother_index_path = Path(config["strother_mi4_public_index_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -79,6 +80,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / gonzalez_suarez_path).read_text(encoding="utf-8")
     )
     yuan_c3 = json.loads((root / yuan_c3_path).read_text(encoding="utf-8"))
+    strother_index = json.loads(
+        (root / strother_index_path).read_text(encoding="utf-8")
+    )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
@@ -215,6 +219,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(timing_models_path): _sha256(root / timing_models_path),
                 str(gonzalez_suarez_path): _sha256(root / gonzalez_suarez_path),
                 str(yuan_c3_path): _sha256(root / yuan_c3_path),
+                str(strother_index_path): _sha256(root / strother_index_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -526,6 +531,22 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "C3_source_dynamics_transfer_authorized": yuan_c3[
                 "authorize_C3_source_dynamics_transfer"
+            ],
+        },
+        "verified_Strother_Mi4_public_index_boundary": {
+            "doi": strother_index["paper"]["doi"],
+            "successful_index_numeric_Mi4_trace_found": strother_index[
+                "local_numeric_Mi4_trace_payload_found_in_successful_indexes"
+            ],
+            "PMC_numeric_data_attachment_count": strother_index[
+                "PMC_attachment_inventory"
+            ]["numeric_data_attachment_count"],
+            "Figshare_search_interpretable": strother_index["audited_indexes"][
+                "Figshare_search_interpretable"
+            ],
+            "global_absence_claimed": strother_index["global_absence_claimed"],
+            "Mi4_source_dynamics_transfer_authorized": strother_index[
+                "authorize_Mi4_source_dynamics_transfer"
             ],
         },
         "verified_FlyVis_C3_time_constant_readiness": {

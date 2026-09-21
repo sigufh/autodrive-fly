@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "32e6b406ea3fac05775f9b12d60f698d1e4a31fdb3a2af7009d94d88e02dfe6a",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "2ec44b10aef4e7c13605aab8e6f1e8be5e029d5158861f0da2e6edd4d529b368",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "a5b2e520c12420ff6183ad6004f7114e53377b9e578bde0a1095eb3dcd9402a5",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0172df6fee996f47859a2552b861b8a31851c8d89ccb6dc0b05f5b2d670565ff",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -26,6 +26,7 @@
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
+      "artifacts/v7-strother-mi4-public-index-audit.json": "f247cfc31fa5fa40d2a5a5314f31b4865a0e3570cd8daf7d88f33f8b0e3ca3ff",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
@@ -258,6 +259,14 @@
     "C3_public_numeric_source_dynamics_payload_verified": false,
     "C3_source_dynamics_transfer_authorized": false
   },
+  "verified_Strother_Mi4_public_index_boundary": {
+    "doi": "10.1073/pnas.1703090115",
+    "successful_index_numeric_Mi4_trace_found": false,
+    "PMC_numeric_data_attachment_count": 0,
+    "Figshare_search_interpretable": false,
+    "global_absence_claimed": false,
+    "Mi4_source_dynamics_transfer_authorized": false
+  },
   "verified_FlyVis_C3_time_constant_readiness": {
     "repository_commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
     "pretrained_model_count": 50,
@@ -375,6 +384,7 @@
     "T5_and_LPLC_remain_frozen": true,
     "prohibit_further_target_formula_scan_without_new_source_dynamics_evidence": true,
     "independent_type_average_Mi4_calcium_is_not_individual_voltage": true,
-    "C3_intervention_is_not_direct_C3_source_dynamics": true
+    "C3_intervention_is_not_direct_C3_source_dynamics": true,
+    "public_index_zero_results_do_not_prove_Mi4_payload_absence": true
   }
 }
