@@ -105,6 +105,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_transfer_synthesis_axolotl_repository_readable",
         "T5_measured_kernel_temporal_identifiability_passed",
         "T5_measured_kernel_direction_scoring_performed",
+        "T5_measured_kernel_frame_alignment_verified",
+        "T5_measured_kernel_probe_solver_alignment_verified",
+        "T5_measured_kernel_physical_transfer_authorized",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -443,6 +446,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     )
     assert (
         visual["observations"]["T5_measured_kernel_direction_scoring_performed"]
+        is False
+    )
+    assert visual["observations"]["T5_measured_kernel_frame_alignment_verified"] is True
+    assert (
+        visual["observations"]["T5_measured_kernel_probe_solver_alignment_verified"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_physical_transfer_authorized"]
         is False
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False

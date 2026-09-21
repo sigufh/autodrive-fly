@@ -47,6 +47,42 @@ def _convolve(values: np.ndarray, kernel: np.ndarray) -> np.ndarray:
     )
 
 
+def _validate_timebase(config: dict, coordinates: dict, lamina: dict) -> dict:
+    kernel_ms = float(config["kernel"]["sample_interval_milliseconds"])
+    frame_ms = float(coordinates["time_coordinates"]["frame_interval_milliseconds"])
+    samples_per_frame = int(config["kernel"]["convolution_samples_per_stimulus_frame"])
+    brain_updates = int(lamina["brain_substeps_per_frame"])
+    gates = {
+        "offline_time_coordinate_contract_complete": bool(
+            coordinates["offline_time_coordinate_contract_complete"]
+        ),
+        "coordinate_contract_applies_to_offline_v7_evaluation": bool(
+            coordinates["time_coordinates"][
+                "applied_to_offline_v7_controlled_visual_evaluation"
+            ]
+        ),
+        "kernel_sample_interval_matches_stimulus_frame_interval": bool(
+            np.isclose(kernel_ms, frame_ms)
+        ),
+        "one_kernel_sample_per_stimulus_frame": samples_per_frame == 1,
+        "probe_uses_declared_single_brain_update_per_frame": brain_updates == 1,
+    }
+    if not all(gates.values()):
+        failed = [name for name, passed in gates.items() if not passed]
+        raise ValueError(f"measured-kernel timebase contract failed: {failed}")
+    return {
+        "kernel_sample_interval_milliseconds": kernel_ms,
+        "stimulus_frame_interval_milliseconds": frame_ms,
+        "convolution_samples_per_stimulus_frame": samples_per_frame,
+        "probe_brain_updates_per_frame": brain_updates,
+        "kernel_to_stimulus_frame_alignment_verified": True,
+        "probe_brain_update_interval_milliseconds": None,
+        "probe_brain_update_interval_biologically_calibrated": False,
+        "external_recording_to_probe_solver_alignment_verified": False,
+        "gates": gates,
+    }
+
+
 def _source_sequences(probe, stimulus, moments: dict, mode: str, seed: int) -> dict:
     frames = _controlled_frames(stimulus, mode, seed)
     state = np.zeros(probe.graph.node_count, dtype=np.float32)
@@ -147,6 +183,8 @@ def evaluate_v7_t5_measured_kernel_identifiability(root: Path) -> dict:
         for name in (
             "source_kernel_evidence",
             "source_config",
+            "stimulus_coordinate_evidence",
+            "stimulus_coordinate_protocol",
             "lamina_split_protocol",
             "typed_spatial_implementation",
             "stage1_protocol",
@@ -157,7 +195,11 @@ def evaluate_v7_t5_measured_kernel_identifiability(root: Path) -> dict:
     if not kernel_evidence["Tm1_Tm2_Tm4_Tm9_voltage_derived_temporal_kernels_verified"]:
         raise ValueError("four verified Tm kernel sets are required")
     source_config = yaml.safe_load((root / paths["source_config"]).read_text())
+    coordinates = json.loads(
+        (root / paths["stimulus_coordinate_evidence"]).read_text()
+    )
     lamina = yaml.safe_load((root / paths["lamina_split_protocol"]).read_text())
+    timebase = _validate_timebase(config, coordinates, lamina)
     stage1 = yaml.safe_load((root / paths["stage1_protocol"]).read_text())
     local = yaml.safe_load((root / paths["local_edge_config"]).read_text())
     condition = next(
@@ -279,6 +321,7 @@ def evaluate_v7_t5_measured_kernel_identifiability(root: Path) -> dict:
             "sample_interval_milliseconds": config["kernel"]["sample_interval_milliseconds"],
             "normalization": config["kernel"]["normalization"],
         },
+        "timebase_contract": timebase,
         "fixed_target_denominator": len(targets),
         "valid_target_count": int(np.count_nonzero(valid)),
         "invalid_source_or_axis_target_count": int(len(targets) - np.count_nonzero(valid)),
@@ -286,6 +329,7 @@ def evaluate_v7_t5_measured_kernel_identifiability(root: Path) -> dict:
         "temporal_identifiability_passed": temporal_passed,
         "direction_scoring_performed": temporal_passed,
         "authorize_T5_functional_precheck": False,
+        "authorize_physical_source_dynamics_transfer": False,
         "advance_to_LPLC_mechanism_repair": False,
         "advance_to_vehicle_experiments": False,
         "stop_reason": "measured_kernel_source_readouts_failed_temporal_controls",

@@ -1938,6 +1938,11 @@ shuffle/ordered residual 比为 31.507、static/ordered 为 0.9996；显式 fast
 预注册 readout 均未达到冻结的 ≤0.50 门，故都在时间控制阶段停止，未读取 subtype 方向标签、
 未执行方向/极性评分，也未授权 T5 功能候选。该结果只排除这三个具体 readout，不否定所有
 可能的 T5 模型。
+该卷积现显式绑定离线刺激合同的 `10 ms/frame`，并验证为每个刺激帧恰好消费一个
+`10 ms` kernel sample；相关 coordinate evidence 与 protocol 均纳入 artifact 哈希。此绑定只
+建立 kernel 与刺激帧的离散采样对齐。诊断 probe 每帧执行一次 brain update，但该 update
+没有独立、经生物校准的 solver interval，因此不宣称 external recording 已与 probe solver
+对齐，也不授权物理 source dynamics transfer。
 证据见 `artifacts/v7-t5-measured-kernel-identifiability.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split

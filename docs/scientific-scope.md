@@ -320,6 +320,12 @@ ratios of 2.557 and 1.099, and the fixed one-frame Reichardt temporal difference
 had ratios of 1.921 and 0.996 (both limits 0.50). No source gain was fitted and
 no target activity was injected. This rejects only those three readouts and does not
 establish that every possible T5 model fails.
+The convolution is now hash-bound to the audited 10 ms offline stimulus-frame
+contract, with exactly one kernel sample consumed per stimulus frame. This is a
+discrete sampling alignment only: the diagnostic probe performs one brain update
+per frame, but that update has no independently calibrated biological solver
+interval. External-recording-to-probe-solver alignment and physical source-dynamics
+transfer therefore remain unauthorized.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

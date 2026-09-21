@@ -335,6 +335,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_measured_kernel_direction_scoring_performed": visual[
                     "T5_measured_kernel_direction_scoring_performed"
                 ],
+                "T5_measured_kernel_frame_alignment_verified": visual[
+                    "T5_measured_kernel_frame_alignment_verified"
+                ],
+                "T5_measured_kernel_probe_solver_alignment_verified": visual[
+                    "T5_measured_kernel_probe_solver_alignment_verified"
+                ],
+                "T5_measured_kernel_physical_transfer_authorized": visual[
+                    "T5_measured_kernel_physical_transfer_authorized"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

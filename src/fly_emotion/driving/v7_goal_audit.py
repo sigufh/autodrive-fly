@@ -694,6 +694,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "measured_kernel_direction_scoring_performed"
                     ]
                 ),
+                "T5_measured_kernel_frame_alignment_verified": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_to_stimulus_frame_alignment_verified"
+                    ]
+                ),
+                "T5_measured_kernel_probe_solver_alignment_verified": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_to_probe_solver_alignment_verified"
+                    ]
+                ),
+                "T5_measured_kernel_physical_transfer_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_physical_source_dynamics_transfer_authorized"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3136,6 +3151,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_transfer_synthesis_axolotl_repository_readable",
                     "T5_measured_kernel_temporal_identifiability_passed",
                     "T5_measured_kernel_direction_scoring_performed",
+                    "T5_measured_kernel_frame_alignment_verified",
+                    "T5_measured_kernel_probe_solver_alignment_verified",
+                    "T5_measured_kernel_physical_transfer_authorized",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

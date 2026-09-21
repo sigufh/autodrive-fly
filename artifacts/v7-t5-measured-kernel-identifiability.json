@@ -1,12 +1,14 @@
 {
   "protocol": {
     "name": "v7-t5-measured-kernel-source-identifiability-precheck",
-    "observed_on": "2026-09-20",
+    "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "7f0aeb098e9d6acb92c6b46c2d9ad1851704612cccf0cecab86ce1d1e17b9643",
-      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "72c2e49d0d186ed9fa9c5ef61aa7ab9641552292712bc2a4306f640dba0cfa09",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
       "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
       "src/fly_emotion/driving/v7_t5_typed_spatial_pair_precheck.py": "22a5fd7edea824dc2e65524e4732fd1bf923f373eb04bb751af8778011f9c8d3",
       "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
@@ -39,6 +41,23 @@
     "kernel_length": 499,
     "sample_interval_milliseconds": 10.0,
     "normalization": "unit_L1_per_source"
+  },
+  "timebase_contract": {
+    "kernel_sample_interval_milliseconds": 10.0,
+    "stimulus_frame_interval_milliseconds": 10.0,
+    "convolution_samples_per_stimulus_frame": 1,
+    "probe_brain_updates_per_frame": 1,
+    "kernel_to_stimulus_frame_alignment_verified": true,
+    "probe_brain_update_interval_milliseconds": null,
+    "probe_brain_update_interval_biologically_calibrated": false,
+    "external_recording_to_probe_solver_alignment_verified": false,
+    "gates": {
+      "offline_time_coordinate_contract_complete": true,
+      "coordinate_contract_applies_to_offline_v7_evaluation": true,
+      "kernel_sample_interval_matches_stimulus_frame_interval": true,
+      "one_kernel_sample_per_stimulus_frame": true,
+      "probe_uses_declared_single_brain_update_per_frame": true
+    }
   },
   "fixed_target_denominator": 6719,
   "valid_target_count": 6715,
@@ -90,6 +109,7 @@
   "temporal_identifiability_passed": false,
   "direction_scoring_performed": false,
   "authorize_T5_functional_precheck": false,
+  "authorize_physical_source_dynamics_transfer": false,
   "advance_to_LPLC_mechanism_repair": false,
   "advance_to_vehicle_experiments": false,
   "stop_reason": "measured_kernel_source_readouts_failed_temporal_controls",
@@ -97,6 +117,8 @@
     "tuning_only": true,
     "single_condition_precheck": true,
     "measured_kernel_shape_only_not_absolute_gain": true,
+    "kernel_timebase_bound_to_offline_stimulus_frames": true,
+    "probe_brain_update_interval_not_biologically_calibrated": true,
     "fixed_one_frame_lag_not_searched": true,
     "temporal_difference_has_no_fitted_scale_or_lag": true,
     "source_activity_driven_only_from_R1_R6_propagation": true,

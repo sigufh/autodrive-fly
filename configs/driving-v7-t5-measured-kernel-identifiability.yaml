@@ -1,8 +1,10 @@
 version: 1
 name: v7-t5-measured-kernel-source-identifiability-precheck
-observed_on: "2026-09-20"
+observed_on: "2026-09-21"
 source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json
 source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+stimulus_coordinate_evidence: artifacts/v7-stimulus-coordinate-contract.json
+stimulus_coordinate_protocol: configs/driving-v7-stimulus-coordinate-contract.yaml
 lamina_split_protocol: configs/driving-v7-t5-lamina-split.yaml
 typed_spatial_implementation: src/fly_emotion/driving/v7_t5_typed_spatial_pair_precheck.py
 stage1_protocol: configs/driving-v7-stage1-nested.yaml
@@ -17,6 +19,7 @@ kernel:
   normalization: unit_L1_per_source
   convolution: causal_full_convolution_truncated_to_input_length
   sample_interval_milliseconds: 10.0
+  convolution_samples_per_stimulus_frame: 1
 candidates:
   - name: summed_filtered_source_centroid_projection
     formula: axis_dot(sum_source_filtered_x,sum_source_filtered_y)/(sum_absolute_xy+1e-9)
@@ -35,6 +38,8 @@ boundary:
   tuning_only: true
   single_condition_precheck: true
   measured_kernel_shape_only_not_absolute_gain: true
+  kernel_timebase_bound_to_offline_stimulus_frames: true
+  probe_brain_update_interval_not_biologically_calibrated: true
   fixed_one_frame_lag_not_searched: true
   temporal_difference_has_no_fitted_scale_or_lag: true
   source_activity_driven_only_from_R1_R6_propagation: true

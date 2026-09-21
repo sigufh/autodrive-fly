@@ -197,6 +197,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_transfer_synthesis_axolotl_repository_readable"] is False
     assert boundaries["T5_measured_kernel_temporal_identifiability_passed"] is False
     assert boundaries["T5_measured_kernel_direction_scoring_performed"] is False
+    assert boundaries["T5_measured_kernel_frame_alignment_verified"] is True
+    assert boundaries["T5_measured_kernel_probe_solver_alignment_verified"] is False
+    assert boundaries["T5_measured_kernel_physical_transfer_authorized"] is False
     assert boundaries["T5_transfer_synthesis_CT1_complete"] is False
     assert boundaries["T5_transfer_synthesis_ready"] is False
     assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True

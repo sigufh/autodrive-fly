@@ -115,6 +115,15 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_direction_scoring_performed": measured_kernel[
             "direction_scoring_performed"
         ],
+        "measured_kernel_to_stimulus_frame_alignment_verified": measured_kernel[
+            "timebase_contract"
+        ]["kernel_to_stimulus_frame_alignment_verified"],
+        "measured_kernel_to_probe_solver_alignment_verified": measured_kernel[
+            "timebase_contract"
+        ]["external_recording_to_probe_solver_alignment_verified"],
+        "measured_kernel_physical_source_dynamics_transfer_authorized": measured_kernel[
+            "authorize_physical_source_dynamics_transfer"
+        ],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
