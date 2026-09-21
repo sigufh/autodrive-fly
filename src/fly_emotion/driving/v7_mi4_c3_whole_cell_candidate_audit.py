@@ -95,6 +95,14 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if "C3" not in borst["v7_source_coverage"]["missing_sources"]:
         raise ValueError("Borst C3 exclusion changed")
 
+    molina_obando = evidence["molina_obando_source_data"]
+    if not molina_obando["all_attachments_describe_mean_plus_minus_sem_tables"]:
+        raise ValueError("Molina-Obando attachment summary-table boundary changed")
+    if molina_obando["Mi4_or_C3_attachment_payload_found"]:
+        raise ValueError("Molina-Obando attachments now appear to cover Mi4 or C3")
+    if molina_obando["experimental_membrane_voltage_payload_found"]:
+        raise ValueError("Molina-Obando attachments now appear to contain voltage")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])

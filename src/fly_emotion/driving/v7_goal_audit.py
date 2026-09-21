@@ -126,6 +126,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     mi4_c3_whole_cell_candidate_audit = reports[
         "mi4_c3_whole_cell_candidate_audit"
     ]
+    ketkar_2019_source_data_attachment_audit = reports[
+        "ketkar_2019_source_data_attachment_audit"
+    ]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -385,6 +388,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["behnia_t4_fast_source_availability_audit"],
                 config["evidence"]["t4_inhibitory_source_external_audit"],
                 config["evidence"]["mi4_c3_whole_cell_candidate_audit"],
+                config["evidence"]["ketkar_2019_source_data_attachment_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1546,6 +1550,34 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Mi4_C3_independent_voltage_transfer_authorized": (
                     mi4_c3_whole_cell_candidate_audit[
                         "independent_Mi4_C3_voltage_transfer_authorized"
+                    ]
+                ),
+                "Ketkar_2019_official_source_data_attachment_count": (
+                    ketkar_2019_source_data_attachment_audit["attachment_count"]
+                ),
+                "Ketkar_2019_attachments_are_mean_SEM_tables": (
+                    ketkar_2019_source_data_attachment_audit[
+                        "all_attachments_describe_mean_plus_minus_sem_tables"
+                    ]
+                ),
+                "Ketkar_2019_Mi1_Tm3_GCaMP_summary_found": (
+                    ketkar_2019_source_data_attachment_audit[
+                        "Mi1_Tm3_GCaMP_summary_evidence_found"
+                    ]
+                ),
+                "Ketkar_2019_Mi4_C3_payload_found": (
+                    ketkar_2019_source_data_attachment_audit[
+                        "Mi4_or_C3_attachment_payload_found"
+                    ]
+                ),
+                "Ketkar_2019_individual_source_dynamics_found": (
+                    ketkar_2019_source_data_attachment_audit[
+                        "individual_source_dynamics_payload_found"
+                    ]
+                ),
+                "Ketkar_2019_membrane_voltage_found": (
+                    ketkar_2019_source_data_attachment_audit[
+                        "experimental_membrane_voltage_payload_found"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (
@@ -3853,6 +3885,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_state_mapping_held_out_outside_fraction_by_source",
                     "T4_author_minmax_semantics_match_v7_state",
                     "T4_millivolts_to_v7_state_mapping_available",
+                    "Ketkar_2019_official_source_data_attachment_count",
+                    "Ketkar_2019_attachments_are_mean_SEM_tables",
+                    "Ketkar_2019_Mi1_Tm3_GCaMP_summary_found",
+                    "Ketkar_2019_Mi4_C3_payload_found",
+                    "Ketkar_2019_individual_source_dynamics_found",
+                    "Ketkar_2019_membrane_voltage_found",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

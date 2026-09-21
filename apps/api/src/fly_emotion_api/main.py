@@ -121,6 +121,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "Mi4_C3_independent_numeric_voltage_candidate_count": len(
                     visual["Mi4_C3_independent_numeric_voltage_candidates"]
                 ),
+                "Ketkar_2019_official_source_data_attachment_count": visual[
+                    "Ketkar_2019_official_source_data_attachment_count"
+                ],
+                "Ketkar_2019_attachments_are_mean_SEM_tables": visual[
+                    "Ketkar_2019_attachments_are_mean_SEM_tables"
+                ],
+                "Ketkar_2019_Mi1_Tm3_GCaMP_summary_found": visual[
+                    "Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"
+                ],
+                "Ketkar_2019_Mi4_C3_payload_found": visual[
+                    "Ketkar_2019_Mi4_C3_payload_found"
+                ],
+                "Ketkar_2019_individual_source_dynamics_found": visual[
+                    "Ketkar_2019_individual_source_dynamics_found"
+                ],
+                "Ketkar_2019_membrane_voltage_found": visual[
+                    "Ketkar_2019_membrane_voltage_found"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

@@ -2293,13 +2293,18 @@ C3 则已有本地 STRF 数值和 8-fly source / 22-fly 独立 flash cohort，�
 功能拟合。证据见 `artifacts/v7-t4-inhibitory-source-external-audit.json`。
 
 进一步把最相关的 whole-cell 候选按 target neuron、测量模态、响应单位、数值载荷与
-cohort 独立性做成固定矩阵。六组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4
+cohort 独立性做成固定矩阵。七组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4
 和 C3、使用实验膜电位且有本地核验数值载荷的研究；但它正是当前 Fig.3 参考 cohort，
 不是独立验证。Strother 2018 的 Mi4 与 Henning 2025 的 C3 是钙/STRF；Kohn–Portes
 2021 记录的是 Tm1/Tm2/Tm4/Tm9；Gruntman 2021 记录的是 T4/T5；Borst 2025 的
-Mi4 目标则是钙派生的参数化模型尺度。因此，在这组有界候选内，独立 Mi4+C3 数值膜电位
+Mi4 目标则是钙派生的参数化模型尺度。另核验了 eLife 49373 页面公开的 11 份官方
+DOCX source-data 附件：全部是有效 OOXML，均自述为 mean±SEM 汇总表，且无嵌入对象；
+全文能检出 Mi1/Tm3/GCaMP，却没有 Mi4、C3、voltage、individual 或逐 fly 标识。
+所以这些附件是可复现的 Mi1/Tm3 钙成像汇总证据，不是 Mi4/C3 个体时序或膜电位载荷。
+因此，在这组有界候选内，独立 Mi4+C3 数值膜电位
 候选仍为零；这不是对全球数据不存在的断言。证据见
-`artifacts/v7-mi4-c3-whole-cell-candidate-audit.json`。
+`artifacts/v7-mi4-c3-whole-cell-candidate-audit.json` 与
+`artifacts/v7-ketkar-2019-source-data-attachment-audit.json`。
 
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持

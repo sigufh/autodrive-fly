@@ -1,17 +1,18 @@
 {
   "protocol": {
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
-    "observed_on": "2026-09-19",
+    "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "acf84d15774b2b5e2b210d9c471aa779fa774ced1364f00722f0ef3b73fd9124",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "d65cd4d178046b6bd547102ebe678515963aa5a5cd0f15ac27cd0b52b61fbab9",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "5f55679d8accb6771c049037854f7efc54e51cc10e33ef69b8ed4486e39b4f74",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "44c108c623db38e4cf4a6347749cc4dd934c2f88a34c8b30d1915c107ba410f1",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
-      "artifacts/v7-t4-inhibitory-source-external-audit.json": "9f3a8906591cd9c51df9bbc12ca3dcc3755528a3f290cf2b75be5e8a9f45b864",
+      "artifacts/v7-t4-inhibitory-source-external-audit.json": "86f012294aef24463f5982bca15def7803f902dff8501be657ce87763d4d53e4",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "7909260ddcfddf6c6332fd3befbabe640ce2b4a4b1988d72c670fd79aebdc5e7",
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
-      "artifacts/v7-borst-2025-temporal-filtering-audit.json": "3c831e511ebc9fbeba031ea8eebe272d4607c25c3e403853dacfb09ab6906ef6"
+      "artifacts/v7-borst-2025-temporal-filtering-audit.json": "3c831e511ebc9fbeba031ea8eebe272d4607c25c3e403853dacfb09ab6906ef6",
+      "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -153,10 +154,27 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "Mi4_target_is_calcium_derived_model_scale_not_measured_voltage",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Molina_Obando_2019": {
+      "title": "ON selectivity in the Drosophila visual system is a multisynaptic process involving both glutamatergic and GABAergic inhibition",
+      "doi": "10.7554/eLife.49373",
+      "target_neurons": [
+        "Mi1",
+        "Tm3"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "two_photon_GCaMP6f_summary_tables",
+      "response_unit": "mean_and_SEM_summary_statistics",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "official_attachments_have_Mi1_Tm3_GCaMP_summaries_but_no_Mi4_C3_individual_voltage",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 6,
+    "audited_candidate_count": 7,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -192,6 +210,7 @@
     "calcium_STRF_and_model_voltage_are_not_experimental_membrane_voltage": true,
     "T4_T5_target_voltage_does_not_substitute_for_source_voltage": true,
     "T5_source_voltage_does_not_substitute_for_Mi4_or_C3": true,
+    "Mi1_Tm3_summary_tables_do_not_substitute_for_Mi4_or_C3": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

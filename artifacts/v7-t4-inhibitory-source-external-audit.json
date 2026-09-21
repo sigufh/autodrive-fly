@@ -1,13 +1,14 @@
 {
   "protocol": {
     "name": "v7-t4-inhibitory-source-external-audit",
-    "observed_on": "2026-09-19",
+    "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "471df3419b0269a2fcd39c5cd0095ce1f27074b1ef6efcbc5b80fc6fb2b0c32d",
-      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "cd9fc04de3c32f7f401eef3b095de9360079c4c540a1accf72c9f3eda2e250ae",
+      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "3247a8881bcbb598559fb2e3f40903ea35ddd711672b4bd14a0917dd3cf5e464",
+      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "2b24d6fd7f07e9ff8bd016eb5f352996b949c5da00c6684196c17c0d498a806a",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
-      "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea"
+      "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
+      "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f"
     },
     "Mi4_paper": {
       "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
@@ -69,6 +70,20 @@
       "independent_fixed_robustness_passed": false
     }
   },
+  "official_source_data_attachments": {
+    "paper": {
+      "title": "ON selectivity in the Drosophila visual system is a multisynaptic process involving both glutamatergic and GABAergic inhibition",
+      "doi": "10.7554/eLife.49373",
+      "published_on": "2019-09-19",
+      "official_figures_page": "https://elifesciences.org/articles/49373/figures"
+    },
+    "attachment_count": 11,
+    "all_mean_plus_minus_sem_tables": true,
+    "Mi1_Tm3_GCaMP_summary_evidence_found": true,
+    "Mi4_or_C3_attachment_payload_found": false,
+    "individual_source_dynamics_payload_found": false,
+    "experimental_membrane_voltage_payload_found": false
+  },
   "both_inhibitory_sources_have_transferable_external_validation": false,
   "authorize_T4_source_dynamics_fit": false,
   "authorize_T4_functional_precheck": false,
@@ -80,6 +95,7 @@
     "data_available_upon_request_is_not_a_local_numeric_payload": true,
     "published_Mi4_kinetics_are_indicator_and_stimulus_limited": true,
     "C3_mean_correlation_does_not_override_fixed_bootstrap_p05": true,
+    "mean_SEM_Mi1_Tm3_GCaMP_tables_do_not_supply_Mi4_or_C3_dynamics": true,
     "no_curve_digitization": true,
     "no_threshold_or_label_change": true,
     "no_parameter_fit": true,

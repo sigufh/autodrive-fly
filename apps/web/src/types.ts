@@ -46,6 +46,12 @@ export type V7Status = {
     nine_source_contract_complete: boolean;
     Mi4_C3_direct_numeric_voltage_candidates: string[];
     Mi4_C3_independent_numeric_voltage_candidate_count: number;
+    Ketkar_2019_official_source_data_attachment_count?: number;
+    Ketkar_2019_attachments_are_mean_SEM_tables?: boolean;
+    Ketkar_2019_Mi1_Tm3_GCaMP_summary_found?: boolean;
+    Ketkar_2019_Mi4_C3_payload_found?: boolean;
+    Ketkar_2019_individual_source_dynamics_found?: boolean;
+    Ketkar_2019_membrane_voltage_found?: boolean;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
     T5_voltage_derived_kernel_sources: string[];
     T5_voltage_derived_kernel_record_count: number;

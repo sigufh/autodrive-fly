@@ -50,6 +50,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         "Groschner_2022"
     ]
     assert boundaries["Mi4_C3_independent_numeric_voltage_candidate_count"] == 0
+    assert boundaries["Ketkar_2019_official_source_data_attachment_count"] == 11
+    assert boundaries["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
+    assert boundaries["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
+    assert boundaries["Ketkar_2019_Mi4_C3_payload_found"] is False
+    assert boundaries["Ketkar_2019_individual_source_dynamics_found"] is False
+    assert boundaries["Ketkar_2019_membrane_voltage_found"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

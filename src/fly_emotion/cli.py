@@ -143,6 +143,9 @@ from .driving.v7_gou_sparsity_source_dynamics_audit import (
     evaluate_v7_gou_sparsity_source_dynamics_audit,
 )
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
+from .driving.v7_ketkar_2019_source_data_attachment_audit import (
+    evaluate_v7_ketkar_2019_source_data_attachment_audit,
+)
 from .driving.v7_kohn_portes_axolotl_availability_audit import (
     evaluate_v7_kohn_portes_axolotl_availability_audit,
 )
@@ -676,6 +679,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-borst-2025-temporal-filtering")
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
     subparsers.add_parser("v7-audit-mi4-c3-whole-cell-candidates")
+    subparsers.add_parser("v7-audit-ketkar-2019-source-data-attachments")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
@@ -1954,6 +1958,14 @@ def main() -> None:
     if args.command == "v7-audit-mi4-c3-whole-cell-candidates":
         report = evaluate_v7_mi4_c3_whole_cell_candidate_audit(root)
         target = root / "artifacts/v7-mi4-c3-whole-cell-candidate-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-ketkar-2019-source-data-attachments":
+        report = evaluate_v7_ketkar_2019_source_data_attachment_audit(root)
+        target = root / "artifacts/v7-ketkar-2019-source-data-attachment-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

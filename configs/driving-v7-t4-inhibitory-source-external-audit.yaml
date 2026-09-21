@@ -1,6 +1,6 @@
-version: 1
+version: 2
 name: v7-t4-inhibitory-source-external-audit
-observed_on: "2026-09-19"
+observed_on: "2026-09-21"
 required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 Mi4_paper:
   title: Behavioral state modulates the ON visual motion pathway of Drosophila
@@ -21,11 +21,14 @@ Mi4_paper:
 C3_evidence:
   STRF: artifacts/v7-c3-strf-source-dynamics-audit.json
   independent_flash: artifacts/v7-c3-strf-flash-transfer.json
+attachment_evidence:
+  Molina_Obando_2019: artifacts/v7-ketkar-2019-source-data-attachment-audit.json
 boundary:
   calcium_and_STRF_units_are_not_allowed_membrane_voltage: true
   data_available_upon_request_is_not_a_local_numeric_payload: true
   published_Mi4_kinetics_are_indicator_and_stimulus_limited: true
   C3_mean_correlation_does_not_override_fixed_bootstrap_p05: true
+  mean_SEM_Mi1_Tm3_GCaMP_tables_do_not_supply_Mi4_or_C3_dynamics: true
   no_curve_digitization: true
   no_threshold_or_label_change: true
   no_parameter_fit: true

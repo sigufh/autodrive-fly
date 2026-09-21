@@ -1,0 +1,313 @@
+{
+  "protocol": {
+    "name": "v7-ketkar-2019-source-data-attachment-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-ketkar-2019-source-data-attachment-audit.yaml": "f48f112dfe4862aec7bb7145c857262b49765ff2045eff76eadbb61d3933b2af",
+      "src/fly_emotion/driving/v7_ketkar_2019_source_data_attachment_audit.py": "7ab6492fda0308c508702812fc8f63610c897b9e75e130bda2ad886fa5d2ed84"
+    },
+    "raw_attachment_identity": {
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig2-data1-v2.docx": "a8dc62d417f21b1275f206a0c2b691bcb12e2419f9bfed8c070294862d24a8c8",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig2-figsupp1-data1-v2.docx": "524d29f81a263f16cb495d93efb3bea768fbc6d9ed7059bf12c219fd1a0e9ce4",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig2-figsupp2-data1-v2.docx": "4a013f26c21ca0f5ad70cc7a4ca3f6ed16eaaf5683efa4e1166d0cace225ed38",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig2-figsupp3-data1-v2.docx": "1e294d6dbc98db87f1b0df6e91b62973907e403fb9e1536d92202c4381474e19",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig4-data1-v2.docx": "658a1d0465964bf98fd1cf9943a1f72542d5119c3f4237a78d265d15af9255d4",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig4-figsupp1-data1-v2.docx": "6ec56453f917a91d27db11eff1bfaadbacd57fba9cc03be5941ddeb93771e89f",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig5-data1-v2.docx": "a626948eccbc22d8b66414facdb68a37847cdf1e9fa7cafdaa2270a0c5076087",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig6-data1-v2.docx": "f37490b631c8e49e61d8cdec3e3262ac6efd53e88e987583b0f2e755a21c8066",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig6-figsupp1-data1-v2.docx": "6f31a65b8b1504737e39c05fdd799715dee4936c033fea695bdcb0711cfbc683",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig7-data1-v2.docx": "d85b8cd899f3182b26e80f4c8425c6b7637aa25794bc0d69cbcd16f436572f6c",
+      "data/raw/t4-inhibitory-source-external/ketkar-2019-source-data/elife-49373-fig8-data1-v2.docx": "2a1875fb623884666420c79118ae5392d9d7f56d38bb5da77588ac4401ffbc9b"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "ON selectivity in the Drosophila visual system is a multisynaptic process involving both glutamatergic and GABAergic inhibition",
+    "doi": "10.7554/eLife.49373",
+    "published_on": "2019-09-19",
+    "official_figures_page": "https://elifesciences.org/articles/49373/figures"
+  },
+  "attachment_count": 11,
+  "attachments": {
+    "elife-49373-fig2-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig2-data1-v2.docx",
+      "bytes": 14706,
+      "sha256": "a8dc62d417f21b1275f206a0c2b691bcb12e2419f9bfed8c070294862d24a8c8",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 2,
+        "Tm3": 2,
+        "GCaMP": 6,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig2-figsupp1-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig2-figsupp1-data1-v2.docx",
+      "bytes": 12972,
+      "sha256": "524d29f81a263f16cb495d93efb3bea768fbc6d9ed7059bf12c219fd1a0e9ce4",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 1,
+        "Tm3": 1,
+        "GCaMP": 1,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig2-figsupp2-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig2-figsupp2-data1-v2.docx",
+      "bytes": 13523,
+      "sha256": "4a013f26c21ca0f5ad70cc7a4ca3f6ed16eaaf5683efa4e1166d0cace225ed38",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 2,
+        "Tm3": 2,
+        "GCaMP": 2,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig2-figsupp3-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig2-figsupp3-data1-v2.docx",
+      "bytes": 14828,
+      "sha256": "1e294d6dbc98db87f1b0df6e91b62973907e403fb9e1536d92202c4381474e19",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 4,
+        "Tm3": 4,
+        "GCaMP": 0,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig4-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig4-data1-v2.docx",
+      "bytes": 13736,
+      "sha256": "658a1d0465964bf98fd1cf9943a1f72542d5119c3f4237a78d265d15af9255d4",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 3,
+        "Tm3": 3,
+        "GCaMP": 3,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig4-figsupp1-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig4-figsupp1-data1-v2.docx",
+      "bytes": 14757,
+      "sha256": "6ec56453f917a91d27db11eff1bfaadbacd57fba9cc03be5941ddeb93771e89f",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 6,
+        "Tm3": 6,
+        "GCaMP": 6,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig5-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig5-data1-v2.docx",
+      "bytes": 12871,
+      "sha256": "a626948eccbc22d8b66414facdb68a37847cdf1e9fa7cafdaa2270a0c5076087",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 0,
+        "Tm3": 0,
+        "GCaMP": 0,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig6-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig6-data1-v2.docx",
+      "bytes": 14626,
+      "sha256": "f37490b631c8e49e61d8cdec3e3262ac6efd53e88e987583b0f2e755a21c8066",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 3,
+        "Tm3": 3,
+        "GCaMP": 5,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig6-figsupp1-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig6-figsupp1-data1-v2.docx",
+      "bytes": 16119,
+      "sha256": "6f31a65b8b1504737e39c05fdd799715dee4936c033fea695bdcb0711cfbc683",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 9,
+        "Tm3": 9,
+        "GCaMP": 9,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig7-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig7-data1-v2.docx",
+      "bytes": 14523,
+      "sha256": "d85b8cd899f3182b26e80f4c8425c6b7637aa25794bc0d69cbcd16f436572f6c",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 3,
+        "Tm3": 2,
+        "GCaMP": 3,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    },
+    "elife-49373-fig8-data1-v2.docx": {
+      "official_url": "https://cdn.elifesciences.org/articles/49373/elife-49373-fig8-data1-v2.docx",
+      "bytes": 15681,
+      "sha256": "2a1875fb623884666420c79118ae5392d9d7f56d38bb5da77588ac4401ffbc9b",
+      "valid_docx_zip": true,
+      "member_count": 11,
+      "embedded_object_count": 0,
+      "contains_mean_plus_minus_sem_description": true,
+      "term_hits": {
+        "Mi1": 0,
+        "Tm3": 0,
+        "GCaMP": 3,
+        "Mi4": 0,
+        "C3": 0,
+        "voltage": 0,
+        "individual": 0,
+        "Flyname": 0,
+        "fly id": 0,
+        "per-fly": 0
+      }
+    }
+  },
+  "all_attachments_valid_docx_zip": true,
+  "all_attachments_describe_mean_plus_minus_sem_tables": true,
+  "embedded_object_count": 0,
+  "aggregate_term_hits": {
+    "Mi1": 33,
+    "Tm3": 32,
+    "GCaMP": 38,
+    "Mi4": 0,
+    "C3": 0,
+    "voltage": 0,
+    "individual": 0,
+    "Flyname": 0,
+    "fly id": 0,
+    "per-fly": 0
+  },
+  "required_source_term_hits": {
+    "Mi4": 0,
+    "C3": 0
+  },
+  "individual_identifier_term_hits": {
+    "individual": 0,
+    "Flyname": 0,
+    "fly id": 0,
+    "per-fly": 0
+  },
+  "Mi1_Tm3_GCaMP_summary_evidence_found": true,
+  "Mi4_or_C3_attachment_payload_found": false,
+  "individual_source_dynamics_payload_found": false,
+  "experimental_membrane_voltage_payload_found": false,
+  "source_dynamics_transfer_gate_changed": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "attachments_are_mean_SEM_tables_without_Mi4_C3_individual_voltage",
+  "boundary": {
+    "official_attachment_links_observed_on_figures_page": true,
+    "local_attachments_are_ignored_and_not_committed": true,
+    "summary_statistics_do_not_substitute_for_individual_time_series": true,
+    "Mi1_or_Tm3_GCaMP_tables_do_not_substitute_for_Mi4_or_C3": true,
+    "no_Mi4_or_C3_source_dynamics_payload_found_in_these_attachments": true,
+    "bounded_attachment_audit_not_global_nonexistence": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

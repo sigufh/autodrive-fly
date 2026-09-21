@@ -576,6 +576,14 @@ article XML endpoint timed out and is not treated as absence; the repository and
 Crossref evidence are sufficient only to show that the known calcium evidence was
 the Version-of-Record supplement. T4 source transfer remains blocked
 (`artifacts/v7-c2c3-version-of-record-data-audit.json`).
+The 11 official eLife 49373 source-data DOCX attachments were also frozen by exact
+size and SHA-256 and parsed as OOXML. All 11 are valid archives describing
+mean-plus/minus-SEM tables, with no embedded objects. Their text contains Mi1, Tm3
+and GCaMP summaries but no Mi4, C3, voltage, individual, `Flyname`, fly-ID or
+per-fly terms. They therefore do not provide Mi4/C3 individual source dynamics or
+experimental membrane voltage, and they do not change the T4 transfer gate. This
+is a bounded attachment result, not a claim of global nonexistence
+(`artifacts/v7-ketkar-2019-source-data-attachment-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

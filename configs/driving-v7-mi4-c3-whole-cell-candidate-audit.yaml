@@ -1,6 +1,6 @@
-version: 1
+version: 2
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
-observed_on: "2026-09-19"
+observed_on: "2026-09-21"
 required_sources: [Mi4, C3]
 reference_cohort: Groschner_2022
 reference_document:
@@ -14,6 +14,7 @@ evidence:
   kohn_portes_T5: artifacts/v7-kohn-portes-t5-ephys-audit.json
   gruntman_T4_T5: artifacts/v7-t5-data-audit.json
   borst_parameterized: artifacts/v7-borst-2025-temporal-filtering-audit.json
+  molina_obando_source_data: artifacts/v7-ketkar-2019-source-data-attachment-audit.json
 candidates:
   Groschner_2022:
     title: A biophysical account of multiplication by a single neuron
@@ -87,6 +88,18 @@ candidates:
     local_numeric_payload_verified: true
     independent_biological_study_from_reference_cohort: true
     exclusion_reason: Mi4_target_is_calcium_derived_model_scale_not_measured_voltage
+  Molina_Obando_2019:
+    title: ON selectivity in the Drosophila visual system is a multisynaptic process involving both glutamatergic and GABAergic inhibition
+    doi: 10.7554/eLife.49373
+    target_neurons: [Mi1, Tm3]
+    directly_measured_required_sources: []
+    measurement_modality: two_photon_GCaMP6f_summary_tables
+    response_unit: mean_and_SEM_summary_statistics
+    experimental_membrane_voltage: false
+    public_numeric_payload: true
+    local_numeric_payload_verified: true
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: official_attachments_have_Mi1_Tm3_GCaMP_summaries_but_no_Mi4_C3_individual_voltage
 boundary:
   bounded_audited_candidate_set_not_global_nonexistence: true
   both_required_source_types_must_be_directly_measured: true
@@ -94,6 +107,7 @@ boundary:
   calcium_STRF_and_model_voltage_are_not_experimental_membrane_voltage: true
   T4_T5_target_voltage_does_not_substitute_for_source_voltage: true
   T5_source_voltage_does_not_substitute_for_Mi4_or_C3: true
+  Mi1_Tm3_summary_tables_do_not_substitute_for_Mi4_or_C3: true
   no_curve_digitization: true
   no_cross_paper_field_or_modality_imputation: true
   no_threshold_label_split_denominator_or_failure_rule_change: true

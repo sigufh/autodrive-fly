@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 6
+    assert summary["audited_candidate_count"] == 7
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -41,6 +41,10 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert matrix["Kohn_Portes_2021"]["directly_measured_required_sources"] == []
     assert matrix["Gruntman_2021"]["target_neurons"] == ["T4", "T5"]
     assert matrix["Borst_2025"]["experimental_membrane_voltage"] is False
+    molina_obando = matrix["Molina_Obando_2019"]
+    assert molina_obando["target_neurons"] == ["Mi1", "Tm3"]
+    assert molina_obando["directly_measured_required_sources"] == []
+    assert molina_obando["experimental_membrane_voltage"] is False
     assert not any(
         item["qualifies_as_independent_Mi4_C3_numeric_membrane_voltage"]
         for item in matrix.values()

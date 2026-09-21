@@ -35,6 +35,17 @@ def test_C3_numeric_external_evidence_still_fails_fixed_gate_and_unit() -> None:
     assert c3["independent_fixed_robustness_passed"] is False
 
 
+def test_official_2019_attachments_do_not_supply_Mi4_C3_source_dynamics() -> None:
+    evidence = json.loads(REPORT.read_text())["official_source_data_attachments"]
+    assert evidence["paper"]["doi"] == "10.7554/eLife.49373"
+    assert evidence["attachment_count"] == 11
+    assert evidence["all_mean_plus_minus_sem_tables"] is True
+    assert evidence["Mi1_Tm3_GCaMP_summary_evidence_found"] is True
+    assert evidence["Mi4_or_C3_attachment_payload_found"] is False
+    assert evidence["individual_source_dynamics_payload_found"] is False
+    assert evidence["experimental_membrane_voltage_payload_found"] is False
+
+
 def test_inhibitory_source_transfer_and_downstream_remain_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert report["both_inhibitory_sources_have_transferable_external_validation"] is False

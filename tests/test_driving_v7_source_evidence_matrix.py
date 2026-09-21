@@ -88,6 +88,18 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert report["matrix"][source]["evidence_components"][
             "C2C3_version_of_record_calcium_STRF_with_Flyname_verified"
         ] is False
+    for source in ("Mi1", "Tm3", "Mi4", "C3"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Ketkar_2019_official_attachment_count"] == 11
+        assert components["Ketkar_2019_experimental_membrane_voltage_payload_found"] is False
+    for source in ("Mi1", "Tm3"):
+        assert report["matrix"][source]["evidence_components"][
+            "Ketkar_2019_Mi1_Tm3_GCaMP_summary_evidence_found"
+        ] is True
+    for source in ("Mi4", "C3"):
+        assert report["matrix"][source]["evidence_components"][
+            "Ketkar_2019_Mi4_or_C3_attachment_payload_found"
+        ] is False
     for source in ("Mi1", "Tm3"):
         assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
         assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][

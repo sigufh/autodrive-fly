@@ -229,6 +229,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T4_state_mapping_held_out_outside_fraction_by_source",
         "T4_author_minmax_semantics_match_v7_state",
         "T4_millivolts_to_v7_state_mapping_available",
+        "Ketkar_2019_official_source_data_attachment_count",
+        "Ketkar_2019_attachments_are_mean_SEM_tables",
+        "Ketkar_2019_Mi1_Tm3_GCaMP_summary_found",
+        "Ketkar_2019_Mi4_C3_payload_found",
+        "Ketkar_2019_individual_source_dynamics_found",
+        "Ketkar_2019_membrane_voltage_found",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1016,7 +1022,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 6
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 7
+    assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
+    assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
+    assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
+    assert visual["observations"]["Ketkar_2019_Mi4_C3_payload_found"] is False
+    assert visual["observations"]["Ketkar_2019_individual_source_dynamics_found"] is False
+    assert visual["observations"]["Ketkar_2019_membrane_voltage_found"] is False
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

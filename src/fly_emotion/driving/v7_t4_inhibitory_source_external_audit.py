@@ -44,6 +44,18 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
         name: json.loads((root / path).read_text(encoding="utf-8"))
         for name, path in c3_paths.items()
     }
+    attachment_paths = {
+        name: Path(path) for name, path in config["attachment_evidence"].items()
+    }
+    attachments = {
+        name: json.loads((root / path).read_text(encoding="utf-8"))
+        for name, path in attachment_paths.items()
+    }
+    molina_obando = attachments["Molina_Obando_2019"]
+    if molina_obando["attachment_count"] != 11:
+        raise ValueError("Molina-Obando attachment count changed")
+    if molina_obando["Mi4_or_C3_attachment_payload_found"]:
+        raise ValueError("Molina-Obando attachments now appear to cover Mi4 or C3")
     c3_strf = c3["STRF"]
     c3_flash = c3["independent_flash"]
     allowed_units = contract["allowed_response_units"]
@@ -95,12 +107,35 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
                 str(contract_path): _sha256(root / contract_path),
                 **{str(path): _sha256(root / path) for path in c3_paths.values()},
+                **{
+                    str(path): _sha256(root / path)
+                    for path in attachment_paths.values()
+                },
             },
             "Mi4_paper": {**mi4, "source_actual_sha256": _sha256(source_path)},
             "parameter_fit": False,
             "runtime_modified": False,
         },
         "source_evidence": rows,
+        "official_source_data_attachments": {
+            "paper": molina_obando["paper"],
+            "attachment_count": molina_obando["attachment_count"],
+            "all_mean_plus_minus_sem_tables": molina_obando[
+                "all_attachments_describe_mean_plus_minus_sem_tables"
+            ],
+            "Mi1_Tm3_GCaMP_summary_evidence_found": molina_obando[
+                "Mi1_Tm3_GCaMP_summary_evidence_found"
+            ],
+            "Mi4_or_C3_attachment_payload_found": molina_obando[
+                "Mi4_or_C3_attachment_payload_found"
+            ],
+            "individual_source_dynamics_payload_found": molina_obando[
+                "individual_source_dynamics_payload_found"
+            ],
+            "experimental_membrane_voltage_payload_found": molina_obando[
+                "experimental_membrane_voltage_payload_found"
+            ],
+        },
         "both_inhibitory_sources_have_transferable_external_validation": complete,
         "authorize_T4_source_dynamics_fit": False,
         "authorize_T4_functional_precheck": False,

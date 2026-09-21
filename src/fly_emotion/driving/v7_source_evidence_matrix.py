@@ -39,6 +39,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     matulis_mi1 = evidence["matulis_mi1_voltage_availability"]
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     mi4_c3_candidates = evidence["mi4_c3_whole_cell_candidates"]
+    ketkar_attachments = evidence["ketkar_2019_source_data_attachments"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -375,6 +376,21 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and mi4_c3_candidates["transfer_gates"][
                     "independent_Mi4_C3_numeric_membrane_voltage_candidate_found"
                 ]
+            ),
+            "Ketkar_2019_official_attachment_count": (
+                ketkar_attachments["attachment_count"] if family == "T4" else 0
+            ),
+            "Ketkar_2019_Mi1_Tm3_GCaMP_summary_evidence_found": (
+                source in {"Mi1", "Tm3"}
+                and ketkar_attachments["Mi1_Tm3_GCaMP_summary_evidence_found"]
+            ),
+            "Ketkar_2019_Mi4_or_C3_attachment_payload_found": (
+                source in {"Mi4", "C3"}
+                and ketkar_attachments["Mi4_or_C3_attachment_payload_found"]
+            ),
+            "Ketkar_2019_experimental_membrane_voltage_payload_found": (
+                family == "T4"
+                and ketkar_attachments["experimental_membrane_voltage_payload_found"]
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources
