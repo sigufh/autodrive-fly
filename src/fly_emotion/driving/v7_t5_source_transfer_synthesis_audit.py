@@ -37,6 +37,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     measured_kernel = evidence["measured_kernel_identifiability"]
     measured_kernel_substeps = evidence["measured_kernel_substep_sensitivity"]
     measured_kernel_support = evidence["measured_kernel_support_coverage"]
+    measured_kernel_full_support = evidence["measured_kernel_full_support"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -149,8 +150,27 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_full_L1_support_covered": measured_kernel_support[
             "coverage_gate"
         ]["all_population_kernel_L1_mass_coverage_passed"],
-        "measured_kernel_full_support_negative_conclusion_authorized": (
+        "measured_kernel_prefix_alone_full_support_negative_authorized": (
             measured_kernel_support["full_support_negative_conclusion_authorized"]
+        ),
+        "measured_kernel_zero_tail_full_support_evaluated": (
+            measured_kernel_full_support["full_kernel_support_evaluated"]
+        ),
+        "measured_kernel_zero_tail_cross_substep_identifiability_passed": (
+            measured_kernel_full_support[
+                "cross_substep_temporal_identifiability_passed"
+            ]
+        ),
+        "measured_kernel_zero_tail_all_candidates_failed_every_update_count": (
+            measured_kernel_full_support[
+                "all_candidates_failed_every_update_count"
+            ]
+        ),
+        "measured_kernel_zero_tail_direction_scoring_authorized": (
+            measured_kernel_full_support["direction_scoring_authorized"]
+        ),
+        "measured_kernel_zero_tail_direction_scoring_performed": (
+            measured_kernel_full_support["direction_scoring_performed"]
         ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
@@ -221,6 +241,12 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                 item["scored_prefix_L1_mass_fraction"]
                 for item in measured_kernel_support["source_results"].values()
             ),
+            "measured_kernel_zero_tail_samples": measured_kernel_full_support[
+                "full_support_contract"
+            ]["zero_tail_samples"],
+            "measured_kernel_full_support_output_samples": measured_kernel_full_support[
+                "full_support_contract"
+            ]["output_samples"],
         },
         "gates": gates,
         "T5_source_transfer_ready": False,

@@ -744,9 +744,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "measured_kernel_full_L1_support_covered"
                     ]
                 ),
-                "T5_measured_kernel_full_support_negative_authorized": (
+                "T5_measured_kernel_prefix_alone_full_support_negative_authorized": (
                     t5_source_transfer_synthesis_audit["gates"][
-                        "measured_kernel_full_support_negative_conclusion_authorized"
+                        "measured_kernel_prefix_alone_full_support_negative_authorized"
                     ]
                 ),
                 "T5_measured_kernel_trace_samples": t5_source_transfer_synthesis_audit[
@@ -760,6 +760,39 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T5_measured_kernel_maximum_prefix_L1_mass_fraction": (
                     t5_source_transfer_synthesis_audit["incremental_evidence"][
                         "measured_kernel_maximum_prefix_L1_mass_fraction"
+                    ]
+                ),
+                "T5_measured_kernel_zero_tail_full_support_evaluated": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_zero_tail_full_support_evaluated"
+                    ]
+                ),
+                "T5_measured_kernel_zero_tail_cross_substep_identifiability_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_zero_tail_cross_substep_identifiability_passed"
+                    ]
+                ),
+                "T5_measured_kernel_zero_tail_all_candidates_failed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_zero_tail_all_candidates_failed_every_update_count"
+                    ]
+                ),
+                "T5_measured_kernel_zero_tail_direction_scoring_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_zero_tail_direction_scoring_authorized"
+                    ]
+                ),
+                "T5_measured_kernel_zero_tail_direction_scoring_performed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_zero_tail_direction_scoring_performed"
+                    ]
+                ),
+                "T5_measured_kernel_zero_tail_samples": t5_source_transfer_synthesis_audit[
+                    "incremental_evidence"
+                ]["measured_kernel_zero_tail_samples"],
+                "T5_measured_kernel_full_support_output_samples": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "measured_kernel_full_support_output_samples"
                     ]
                 ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
@@ -3214,10 +3247,17 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_measured_kernel_causal_index_zero_supported",
                     "T5_measured_kernel_all_population_peaks_covered",
                     "T5_measured_kernel_full_L1_support_covered",
-                    "T5_measured_kernel_full_support_negative_authorized",
+                    "T5_measured_kernel_prefix_alone_full_support_negative_authorized",
                     "T5_measured_kernel_trace_samples",
                     "T5_measured_kernel_minimum_prefix_L1_mass_fraction",
                     "T5_measured_kernel_maximum_prefix_L1_mass_fraction",
+                    "T5_measured_kernel_zero_tail_full_support_evaluated",
+                    "T5_measured_kernel_zero_tail_cross_substep_identifiability_passed",
+                    "T5_measured_kernel_zero_tail_all_candidates_failed",
+                    "T5_measured_kernel_zero_tail_direction_scoring_authorized",
+                    "T5_measured_kernel_zero_tail_direction_scoring_performed",
+                    "T5_measured_kernel_zero_tail_samples",
+                    "T5_measured_kernel_full_support_output_samples",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

@@ -1,0 +1,167 @@
+{
+  "protocol": {
+    "name": "v7-t5-measured-kernel-full-support-identifiability-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-measured-kernel-full-support-identifiability.yaml": "38936c52686bc62324ec5138e08681994adae5e68eaf04b7f28671a66cea64c5",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_full_support_identifiability.py": "672ab7db7e8ced517f2923357ed425528c14c7a501898e30ea619a4ea195192e",
+      "artifacts/v7-t5-measured-kernel-identifiability.json": "25611865c51301ad34b112c16ea8a45c667c81649fc987b72bca571e9753d918",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "artifacts/v7-t5-measured-kernel-substep-sensitivity.json": "f306325839b5718c1c03085ba479e9496975dd8cd4cccb2cdae447a93d2402d3",
+      "artifacts/v7-t5-measured-kernel-support-coverage-audit.json": "df8e6701525e03b6fabaf0c92f36dbc04de48f9ac411ae68ad6ab47d869ff799",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "src/fly_emotion/driving/v7_t5_typed_spatial_pair_precheck.py": "22a5fd7edea824dc2e65524e4732fd1bf923f373eb04bb751af8778011f9c8d3",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count_per_mode": 120,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "full_support_contract": {
+    "source_input_samples": 27,
+    "kernel_samples": 499,
+    "zero_tail_samples": 498,
+    "output_samples": 525,
+    "source_drive_extension": "zero_after_observed_post_baseline_trace",
+    "neural_network_advanced_during_zero_tail": false,
+    "tested_brain_updates_per_frame": [
+      1,
+      4
+    ],
+    "fixed_target_denominator": 6719,
+    "valid_target_count": 6715
+  },
+  "candidate_results": {
+    "summed_filtered_source_centroid_projection": {
+      "by_brain_updates_per_frame": {
+        "1": {
+          "ordered_mean_absolute_energy": 0.39485764939870155,
+          "static_mean_absolute_energy": 0.3948081331069777,
+          "ordered_minus_static_mean_absolute_energy": 0.09342017370041504,
+          "shuffle_minus_static_mean_absolute_energy": 0.2088165957145218,
+          "shuffle_to_ordered_residual_energy_ratio": 2.235240927555609,
+          "static_to_ordered_energy_ratio": 0.9998745971065794,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "4": {
+          "ordered_mean_absolute_energy": 0.3976262634664974,
+          "static_mean_absolute_energy": 0.3974156411788868,
+          "ordered_minus_static_mean_absolute_energy": 0.08869850625221037,
+          "shuffle_minus_static_mean_absolute_energy": 0.19398724790530036,
+          "shuffle_to_ordered_residual_energy_ratio": 2.1870407530168094,
+          "static_to_ordered_energy_ratio": 0.9994703008655053,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        }
+      },
+      "passed_every_update_count": false
+    },
+    "fast_pool_vs_Tm9_centroid_difference": {
+      "by_brain_updates_per_frame": {
+        "1": {
+          "ordered_mean_absolute_energy": 0.0007607799240626751,
+          "static_mean_absolute_energy": 0.0006023170925407339,
+          "ordered_minus_static_mean_absolute_energy": 0.0005903941459226856,
+          "shuffle_minus_static_mean_absolute_energy": 0.0008517966851889897,
+          "shuffle_to_ordered_residual_energy_ratio": 1.4427593685871942,
+          "static_to_ordered_energy_ratio": 0.7917100247917601,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "4": {
+          "ordered_mean_absolute_energy": 0.001045059288335115,
+          "static_mean_absolute_energy": 0.0007969862391485131,
+          "ordered_minus_static_mean_absolute_energy": 0.0008208332494481073,
+          "shuffle_minus_static_mean_absolute_energy": 0.001239991670571096,
+          "shuffle_to_ordered_residual_energy_ratio": 1.5106499053307265,
+          "static_to_ordered_energy_ratio": 0.7626229899532233,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        }
+      },
+      "passed_every_update_count": false
+    },
+    "temporal_difference_filtered_Tm_pair_reichardt": {
+      "by_brain_updates_per_frame": {
+        "1": {
+          "ordered_mean_absolute_energy": 0.0003386087219444441,
+          "static_mean_absolute_energy": 0.0002019228511406415,
+          "ordered_minus_static_mean_absolute_energy": 0.0003554351483540338,
+          "shuffle_minus_static_mean_absolute_energy": 0.00035245224612927105,
+          "shuffle_to_ordered_residual_energy_ratio": 0.9916077454956942,
+          "static_to_ordered_energy_ratio": 0.5963309213687981,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "4": {
+          "ordered_mean_absolute_energy": 0.0005970384230948838,
+          "static_mean_absolute_energy": 0.0003949267043943118,
+          "ordered_minus_static_mean_absolute_energy": 0.0005977089536341032,
+          "shuffle_minus_static_mean_absolute_energy": 0.0007153740410188271,
+          "shuffle_to_ordered_residual_energy_ratio": 1.1968601719437424,
+          "static_to_ordered_energy_ratio": 0.6614761950279847,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        }
+      },
+      "passed_every_update_count": false
+    }
+  },
+  "full_kernel_support_evaluated": true,
+  "all_candidates_failed_every_update_count": true,
+  "cross_substep_temporal_identifiability_passed": false,
+  "direction_scoring_authorized": false,
+  "direction_scoring_performed": false,
+  "authorize_T5_functional_precheck": false,
+  "authorize_physical_source_dynamics_transfer": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "no_full_support_candidate_passed_both_substep_resolutions",
+  "boundary": {
+    "tuning_only": true,
+    "zero_tail_is_not_additional_visual_stimulus": true,
+    "neural_network_not_advanced_during_zero_tail": true,
+    "measured_kernel_shape_only_not_absolute_gain": true,
+    "source_activity_driven_only_from_R1_R6_propagation": true,
+    "subtype_and_direction_labels_not_read_by_dynamics": true,
+    "target_activity_injection": false,
+    "parameter_fit": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "physical_source_dynamics_transfer_not_authorized": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

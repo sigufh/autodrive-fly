@@ -115,10 +115,17 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_measured_kernel_causal_index_zero_supported",
         "T5_measured_kernel_all_population_peaks_covered",
         "T5_measured_kernel_full_L1_support_covered",
-        "T5_measured_kernel_full_support_negative_authorized",
+        "T5_measured_kernel_prefix_alone_full_support_negative_authorized",
         "T5_measured_kernel_trace_samples",
         "T5_measured_kernel_minimum_prefix_L1_mass_fraction",
         "T5_measured_kernel_maximum_prefix_L1_mass_fraction",
+        "T5_measured_kernel_zero_tail_full_support_evaluated",
+        "T5_measured_kernel_zero_tail_cross_substep_identifiability_passed",
+        "T5_measured_kernel_zero_tail_all_candidates_failed",
+        "T5_measured_kernel_zero_tail_direction_scoring_authorized",
+        "T5_measured_kernel_zero_tail_direction_scoring_performed",
+        "T5_measured_kernel_zero_tail_samples",
+        "T5_measured_kernel_full_support_output_samples",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -496,7 +503,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T5_measured_kernel_all_population_peaks_covered"] is True
     assert visual["observations"]["T5_measured_kernel_full_L1_support_covered"] is False
     assert (
-        visual["observations"]["T5_measured_kernel_full_support_negative_authorized"]
+        visual["observations"][
+            "T5_measured_kernel_prefix_alone_full_support_negative_authorized"
+        ]
         is False
     )
     assert visual["observations"]["T5_measured_kernel_trace_samples"] == 27
@@ -508,6 +517,27 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["T5_measured_kernel_maximum_prefix_L1_mass_fraction"],
         0.47168529082482163,
     )
+    assert visual["observations"]["T5_measured_kernel_zero_tail_full_support_evaluated"] is True
+    assert (
+        visual["observations"][
+            "T5_measured_kernel_zero_tail_cross_substep_identifiability_passed"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_zero_tail_all_candidates_failed"]
+        is True
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_zero_tail_direction_scoring_authorized"]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_measured_kernel_zero_tail_direction_scoring_performed"]
+        is False
+    )
+    assert visual["observations"]["T5_measured_kernel_zero_tail_samples"] == 498
+    assert visual["observations"]["T5_measured_kernel_full_support_output_samples"] == 525
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_ready"] is False

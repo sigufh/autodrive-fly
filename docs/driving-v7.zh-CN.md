@@ -1958,6 +1958,13 @@ Tm1/Tm2/Tm4/Tm9 群体核的绝对峰 60/50/70/80 ms 均落在窗口内，但前
 43.61%/40.82%/46.84%/47.17%，均未达到预注册的 95% 完整支持门。因此前述结果只构成
 early-support 负证据，不能外推为完整 4.99 s kernel-support 模型的负结论，也不解锁方向评分。
 证据见 `artifacts/v7-t5-measured-kernel-support-coverage-audit.json`。
+随后保持 27 个已观测 source-drive 样本不变，在 FIR 层追加 498 个零 source 样本，对完整
+525 点卷积输出复算同一三个候选；零尾期间不推进神经网络，也不添加视觉输入。1-update
+下三个候选的 shuffle/static 比为 `2.235/0.9999`、`1.443/0.7917`、`0.992/0.5963`；
+4-update 下为 `2.187/0.9995`、`1.511/0.7626`、`1.197/0.6615`。所有候选在两种
+分辨率下仍未同时满足两个 ≤0.50 门，方向评分保持未授权、未执行。该结果排除的是
+“观测 source drive 后归零”的完整 FIR 响应，不等于持续推进网络或新的生物验证。证据见
+`artifacts/v7-t5-measured-kernel-full-support-identifiability.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

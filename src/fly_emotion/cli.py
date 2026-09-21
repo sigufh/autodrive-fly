@@ -370,6 +370,9 @@ from .driving.v7_t5_direction_code_provenance_audit import (
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_lamina_scalar_precheck import evaluate_v7_t5_lamina_scalar_precheck
 from .driving.v7_t5_lamina_split import evaluate_v7_t5_lamina_split
+from .driving.v7_t5_measured_kernel_full_support_identifiability import (
+    evaluate_v7_t5_measured_kernel_full_support_identifiability,
+)
 from .driving.v7_t5_measured_kernel_identifiability import (
     evaluate_v7_t5_measured_kernel_identifiability,
 )
@@ -684,6 +687,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-source-axis")
     subparsers.add_parser("v7-audit-t5-source-mapping-scope")
     subparsers.add_parser("v7-audit-t5-measured-kernel-identifiability")
+    subparsers.add_parser("v7-audit-t5-measured-kernel-full-support")
     subparsers.add_parser("v7-audit-t5-measured-kernel-substep-sensitivity")
     subparsers.add_parser("v7-audit-t5-measured-kernel-support-coverage")
     subparsers.add_parser("v7-audit-t5-source-transfer-synthesis")
@@ -1414,6 +1418,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-measured-kernel-identifiability":
         report = evaluate_v7_t5_measured_kernel_identifiability(root)
         target = root / "artifacts/v7-t5-measured-kernel-identifiability.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-measured-kernel-full-support":
+        report = evaluate_v7_t5_measured_kernel_full_support_identifiability(root)
+        target = root / "artifacts/v7-t5-measured-kernel-full-support-identifiability.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

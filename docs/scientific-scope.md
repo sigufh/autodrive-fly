@@ -341,6 +341,14 @@ All population-kernel absolute peaks fall inside the window, but the prefix cove
 only 43.61%, 40.82%, 46.84%, and 47.17% of Tm1/Tm2/Tm4/Tm9 L1 mass. The result
 therefore rejects those readouts over early support only; a full-support negative
 conclusion and direction scoring remain unauthorized.
+The same fixed candidates were then evaluated over complete 525-sample FIR outputs
+by appending 498 zero source-drive samples after each observed 27-sample trace. No
+visual input was added and the neural network was not advanced during the tail. The
+shuffle/static ratios at one update per frame were 2.235/0.9999, 1.443/0.7917, and
+0.992/0.5963; at four updates they were 2.187/0.9995, 1.511/0.7626, and
+1.197/0.6615. No candidate passed both frozen 0.50 limits at either resolution.
+This excludes the zero-source-tail full-FIR variant only; it is not evidence for a
+continued network response or an independently validated biological source model.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

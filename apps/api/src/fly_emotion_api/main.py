@@ -365,8 +365,8 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_measured_kernel_full_L1_support_covered": visual[
                     "T5_measured_kernel_full_L1_support_covered"
                 ],
-                "T5_measured_kernel_full_support_negative_authorized": visual[
-                    "T5_measured_kernel_full_support_negative_authorized"
+                "T5_measured_kernel_prefix_alone_full_support_negative_authorized": visual[
+                    "T5_measured_kernel_prefix_alone_full_support_negative_authorized"
                 ],
                 "T5_measured_kernel_trace_samples": visual[
                     "T5_measured_kernel_trace_samples"
@@ -376,6 +376,27 @@ def _verified_v7_status(root: Path) -> dict:
                 ],
                 "T5_measured_kernel_maximum_prefix_L1_mass_fraction": visual[
                     "T5_measured_kernel_maximum_prefix_L1_mass_fraction"
+                ],
+                "T5_measured_kernel_zero_tail_full_support_evaluated": visual[
+                    "T5_measured_kernel_zero_tail_full_support_evaluated"
+                ],
+                "T5_measured_kernel_zero_tail_cross_substep_identifiability_passed": visual[
+                    "T5_measured_kernel_zero_tail_cross_substep_identifiability_passed"
+                ],
+                "T5_measured_kernel_zero_tail_all_candidates_failed": visual[
+                    "T5_measured_kernel_zero_tail_all_candidates_failed"
+                ],
+                "T5_measured_kernel_zero_tail_direction_scoring_authorized": visual[
+                    "T5_measured_kernel_zero_tail_direction_scoring_authorized"
+                ],
+                "T5_measured_kernel_zero_tail_direction_scoring_performed": visual[
+                    "T5_measured_kernel_zero_tail_direction_scoring_performed"
+                ],
+                "T5_measured_kernel_zero_tail_samples": visual[
+                    "T5_measured_kernel_zero_tail_samples"
+                ],
+                "T5_measured_kernel_full_support_output_samples": visual[
+                    "T5_measured_kernel_full_support_output_samples"
                 ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
