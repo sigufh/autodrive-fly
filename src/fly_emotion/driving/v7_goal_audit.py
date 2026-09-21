@@ -1122,6 +1122,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "increment_order_control_output_ratios_by_update"
                     ]
                 ),
+                "T5_increment_order_replication_input_validity_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_replication_input_validity_passed"
+                    ]
+                ),
+                "T5_increment_order_replication_same_candidate_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_replication_same_candidate_passed"
+                    ]
+                ),
+                "T5_increment_order_replication_gate_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_replication_gate_passed"
+                    ]
+                ),
+                "T5_increment_order_replication_direction_scoring_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_replication_direction_scoring_authorized"
+                    ]
+                ),
+                "T5_increment_order_replication_candidate_passes": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "increment_order_replication_candidate_passes"
+                    ]
+                ),
+                "T5_increment_order_replication_output_ratios": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "increment_order_replication_output_ratios_by_condition_and_update"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3652,6 +3682,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_increment_order_control_R1_R6_energy_ratio_summary",
                     "T5_increment_order_control_lamina_energy_ratios_by_update",
                     "T5_increment_order_control_output_ratios_by_update",
+                    "T5_increment_order_replication_input_validity_passed",
+                    "T5_increment_order_replication_same_candidate_passed",
+                    "T5_increment_order_replication_gate_passed",
+                    "T5_increment_order_replication_direction_scoring_authorized",
+                    "T5_increment_order_replication_candidate_passes",
+                    "T5_increment_order_replication_output_ratios",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

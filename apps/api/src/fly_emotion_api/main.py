@@ -599,6 +599,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_increment_order_control_output_ratios_by_update": visual[
                     "T5_increment_order_control_output_ratios_by_update"
                 ],
+                "T5_increment_order_replication_input_validity_passed": visual[
+                    "T5_increment_order_replication_input_validity_passed"
+                ],
+                "T5_increment_order_replication_same_candidate_passed": visual[
+                    "T5_increment_order_replication_same_candidate_passed"
+                ],
+                "T5_increment_order_replication_gate_passed": visual[
+                    "T5_increment_order_replication_gate_passed"
+                ],
+                "T5_increment_order_replication_direction_scoring_authorized": visual[
+                    "T5_increment_order_replication_direction_scoring_authorized"
+                ],
+                "T5_increment_order_replication_candidate_passes": visual[
+                    "T5_increment_order_replication_candidate_passes"
+                ],
+                "T5_increment_order_replication_output_ratios": visual[
+                    "T5_increment_order_replication_output_ratios"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

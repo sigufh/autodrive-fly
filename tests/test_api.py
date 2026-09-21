@@ -212,6 +212,21 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_increment_order_control_output_ratios_by_update"]["4"][
         "temporal_difference_filtered_Tm_pair_reichardt"
     ] == 1.3045208104632329
+    assert boundaries["T5_increment_order_replication_input_validity_passed"] is True
+    assert boundaries["T5_increment_order_replication_same_candidate_passed"] is False
+    assert boundaries["T5_increment_order_replication_gate_passed"] is False
+    assert (
+        boundaries["T5_increment_order_replication_direction_scoring_authorized"]
+        is False
+    )
+    assert boundaries["T5_increment_order_replication_candidate_passes"] == {
+        "summed_filtered_source_centroid_projection": False,
+        "fast_pool_vs_Tm9_centroid_difference": False,
+        "temporal_difference_filtered_Tm_pair_reichardt": False,
+    }
+    assert boundaries["T5_increment_order_replication_output_ratios"]["S1-T03"][
+        "4"
+    ]["temporal_difference_filtered_Tm_pair_reichardt"] == 1.2259874086367528
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

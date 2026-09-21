@@ -433,6 +433,16 @@ control-to-ordered residual ratios were 1.009–1.385 rather than attenuated. Be
 the control was discovered on S1-T01, it is not an independent validation and does
 not replace the existing temporal gate, define a new threshold, or authorize
 direction scoring (`artifacts/v7-t5-increment-order-control-discovery-audit.json`).
+That control was then frozen in commit `7a239d6` before evaluating S1-T02 and
+S1-T03. The preregistration fixed both conditions, one/four updates per frame, ten
+settle frames, seed 20260920, the three existing candidates, both inherited 0.50
+thresholds, and the requirement that one candidate pass every condition and update
+without pooling. All image, terminal-frame, pixel-increment, R1–R6-drive and R1–R6
+energy checks passed. Lamina-only aggregate energy ratios were 0.99816–1.00000.
+However, candidate control-to-ordered residual ratios remained 1.002–1.296, so no
+candidate passed and direction scoring was not run. This synthetic tuning
+replication is not external or biological validation and does not advance T5 or
+downstream gates (`artifacts/v7-t5-increment-order-control-replication.json`).
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

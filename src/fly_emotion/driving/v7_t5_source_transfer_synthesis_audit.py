@@ -51,6 +51,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     lamina_only_replacement = evidence["lamina_only_measured_kernel_replacement"]
     shuffle_input_energy = evidence["temporal_shuffle_input_energy"]
     increment_order = evidence["increment_order_control_discovery"]
+    increment_replication = evidence["increment_order_control_replication"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -341,6 +342,18 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "increment_order_control_replacement_authorized": bool(
             increment_order["existing_temporal_gate_replaced"]
         ),
+        "increment_order_replication_input_validity_passed": increment_replication[
+            "input_validity_passed_every_condition_and_update"
+        ],
+        "increment_order_replication_same_candidate_passed": increment_replication[
+            "same_candidate_passed_every_condition_and_update"
+        ],
+        "increment_order_replication_gate_passed": increment_replication[
+            "replication_gate_passed"
+        ],
+        "increment_order_replication_direction_scoring_authorized": (
+            increment_replication["direction_scoring_authorized"]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -522,6 +535,27 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                 }
                 for update, result in increment_order[
                     "by_brain_updates_per_frame"
+                ].items()
+            },
+            "increment_order_replication_candidate_passes": increment_replication[
+                "candidate_replication_passed_every_condition_and_update"
+            ],
+            "increment_order_replication_output_ratios_by_condition_and_update": {
+                condition: {
+                    update: {
+                        name: candidate[
+                            "shuffle_to_ordered_residual_energy_ratio"
+                        ]
+                        for name, candidate in result[
+                            "candidate_output_results"
+                        ].items()
+                    }
+                    for update, result in condition_result[
+                        "by_brain_updates_per_frame"
+                    ].items()
+                }
+                for condition, condition_result in increment_replication[
+                    "condition_results"
                 ].items()
             },
         },

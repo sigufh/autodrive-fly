@@ -186,6 +186,37 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
                 "temporal_difference_filtered_Tm_pair_reichardt": 1.3045208104632329,
             },
         },
+        "increment_order_replication_candidate_passes": {
+            "summed_filtered_source_centroid_projection": False,
+            "fast_pool_vs_Tm9_centroid_difference": False,
+            "temporal_difference_filtered_Tm_pair_reichardt": False,
+        },
+        "increment_order_replication_output_ratios_by_condition_and_update": {
+            "S1-T02": {
+                "1": {
+                    "summed_filtered_source_centroid_projection": 1.00284398318869,
+                    "fast_pool_vs_Tm9_centroid_difference": 1.0892274724774895,
+                    "temporal_difference_filtered_Tm_pair_reichardt": 1.2957417076195203,
+                },
+                "4": {
+                    "summed_filtered_source_centroid_projection": 1.0060882227106522,
+                    "fast_pool_vs_Tm9_centroid_difference": 1.084717718691444,
+                    "temporal_difference_filtered_Tm_pair_reichardt": 1.2366253578925497,
+                },
+            },
+            "S1-T03": {
+                "1": {
+                    "summed_filtered_source_centroid_projection": 1.0016376982747357,
+                    "fast_pool_vs_Tm9_centroid_difference": 1.066355733716158,
+                    "temporal_difference_filtered_Tm_pair_reichardt": 1.2714122216092767,
+                },
+                "4": {
+                    "summed_filtered_source_centroid_projection": 1.0036064852216553,
+                    "fast_pool_vs_Tm9_centroid_difference": 1.0688790749446417,
+                    "temporal_difference_filtered_Tm_pair_reichardt": 1.2259874086367528,
+                },
+            },
+        },
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -260,6 +291,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["increment_order_control_R1_R6_energy_matched"] is True
     assert gates["increment_order_control_independent_condition_evaluated"] is False
     assert gates["increment_order_control_replacement_authorized"] is False
+    assert gates["increment_order_replication_input_validity_passed"] is True
+    assert gates["increment_order_replication_same_candidate_passed"] is False
+    assert gates["increment_order_replication_gate_passed"] is False
+    assert gates["increment_order_replication_direction_scoring_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

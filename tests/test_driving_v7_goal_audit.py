@@ -193,6 +193,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_increment_order_control_R1_R6_energy_ratio_summary",
         "T5_increment_order_control_lamina_energy_ratios_by_update",
         "T5_increment_order_control_output_ratios_by_update",
+        "T5_increment_order_replication_input_validity_passed",
+        "T5_increment_order_replication_same_candidate_passed",
+        "T5_increment_order_replication_gate_passed",
+        "T5_increment_order_replication_direction_scoring_authorized",
+        "T5_increment_order_replication_candidate_passes",
+        "T5_increment_order_replication_output_ratios",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -835,6 +841,27 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
             "1"
         ]["summed_filtered_source_centroid_projection"],
         1.0087448156400647,
+    )
+    assert (
+        visual["observations"]["T5_increment_order_replication_input_validity_passed"]
+        is True
+    )
+    assert (
+        visual["observations"]["T5_increment_order_replication_same_candidate_passed"]
+        is False
+    )
+    assert visual["observations"]["T5_increment_order_replication_gate_passed"] is False
+    assert (
+        visual["observations"][
+            "T5_increment_order_replication_direction_scoring_authorized"
+        ]
+        is False
+    )
+    assert np.isclose(
+        visual["observations"]["T5_increment_order_replication_output_ratios"][
+            "S1-T02"
+        ]["1"]["fast_pool_vs_Tm9_centroid_difference"],
+        1.0892274724774895,
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "403c3aac0ee6958ffb36038f8d3074e4078e1b2c46155121444d775d1f2dd4fb",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "91423ecdeb5cbaddb60fdd9bbb8390ae6d8c7a2d9f4e4e639b17631c0e9ce7c8",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "eece4c89da3253f922c00f06106f7060a3f8b8951ea91187f040d6c6772e26d9",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "3011cede12ece3a045ddeb1fcab8b8883fbc393f3f39e804933eb020482a0761",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -26,6 +26,7 @@
       "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json": "112016edbeab5f14331e13d06734f70f37c8ec063f3bfab29ed3ce63ee0aaa76",
       "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json": "95677d75587b62ad8cccf675eaed9688d8508c29a54812096b30cb9aa89cd58b",
       "artifacts/v7-t5-increment-order-control-discovery-audit.json": "6d289abac121555b2456f21558c318b93c3174f9951cba50045efadbb4ec4866",
+      "artifacts/v7-t5-increment-order-control-replication.json": "76cca88180298980e24e988cee7c4108609062a4485d95855960bb7591f4e2b2",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
@@ -313,6 +314,37 @@
         "fast_pool_vs_Tm9_centroid_difference": 1.1262430557870489,
         "temporal_difference_filtered_Tm_pair_reichardt": 1.3045208104632329
       }
+    },
+    "increment_order_replication_candidate_passes": {
+      "summed_filtered_source_centroid_projection": false,
+      "fast_pool_vs_Tm9_centroid_difference": false,
+      "temporal_difference_filtered_Tm_pair_reichardt": false
+    },
+    "increment_order_replication_output_ratios_by_condition_and_update": {
+      "S1-T02": {
+        "1": {
+          "summed_filtered_source_centroid_projection": 1.00284398318869,
+          "fast_pool_vs_Tm9_centroid_difference": 1.0892274724774895,
+          "temporal_difference_filtered_Tm_pair_reichardt": 1.2957417076195203
+        },
+        "4": {
+          "summed_filtered_source_centroid_projection": 1.0060882227106522,
+          "fast_pool_vs_Tm9_centroid_difference": 1.084717718691444,
+          "temporal_difference_filtered_Tm_pair_reichardt": 1.2366253578925497
+        }
+      },
+      "S1-T03": {
+        "1": {
+          "summed_filtered_source_centroid_projection": 1.0016376982747357,
+          "fast_pool_vs_Tm9_centroid_difference": 1.066355733716158,
+          "temporal_difference_filtered_Tm_pair_reichardt": 1.2714122216092767
+        },
+        "4": {
+          "summed_filtered_source_centroid_projection": 1.0036064852216553,
+          "fast_pool_vs_Tm9_centroid_difference": 1.0688790749446417,
+          "temporal_difference_filtered_Tm_pair_reichardt": 1.2259874086367528
+        }
+      }
     }
   },
   "gates": {
@@ -388,6 +420,10 @@
     "increment_order_control_R1_R6_energy_matched": true,
     "increment_order_control_independent_condition_evaluated": false,
     "increment_order_control_replacement_authorized": false,
+    "increment_order_replication_input_validity_passed": true,
+    "increment_order_replication_same_candidate_passed": false,
+    "increment_order_replication_gate_passed": false,
+    "increment_order_replication_direction_scoring_authorized": false,
     "absolute_source_gain_available": false,
     "source_to_v7_state_mapping_available": false,
     "state_invariant_source_timing_available": false,

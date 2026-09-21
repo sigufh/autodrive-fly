@@ -206,6 +206,12 @@ export type V7Status = {
     T5_increment_order_control_R1_R6_energy_ratio_summary?: { minimum: number; median: number; maximum: number };
     T5_increment_order_control_lamina_energy_ratios_by_update?: Record<string, Record<string, number>>;
     T5_increment_order_control_output_ratios_by_update?: Record<string, Record<string, number>>;
+    T5_increment_order_replication_input_validity_passed?: boolean;
+    T5_increment_order_replication_same_candidate_passed?: boolean;
+    T5_increment_order_replication_gate_passed?: boolean;
+    T5_increment_order_replication_direction_scoring_authorized?: boolean;
+    T5_increment_order_replication_candidate_passes?: Record<string, boolean>;
+    T5_increment_order_replication_output_ratios?: Record<string, Record<string, Record<string, number>>>;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

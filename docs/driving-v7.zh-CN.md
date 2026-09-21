@@ -2036,6 +2036,14 @@ lamina-only Tm 正半波 preactivation 在 1-update 下放大 `4.710–4.908` �
 候选的 control/ordered residual 比仍为 `1.009–1.385`，没有衰减。由于该控制是在 S1-T01
 上发现，它不构成独立验证、不替换原时序门、不定义新阈值，也不授权方向评分。证据见
 `artifacts/v7-t5-increment-order-control-discovery-audit.json`。
+随后在 commit `7a239d6` 先冻结复制协议，再评估未参与发现的 S1-T02/T03。预注册固定了
+两条件、1/4 updates、10 个 settle 帧、seed 20260920、原三个候选、原有两个 `≤0.50`
+阈值，并要求同一候选不经条件池化地通过全部条件与更新率。图像、终帧、像素增量、R1–R6
+drive 多重集及 R1–R6 能量检查全部通过，lamina-only 聚合能量比为
+`0.99816–1.00000`；但三个候选的 control/ordered residual 比仍为 `1.002–1.296`，
+无候选通过，方向评分未运行。该 synthetic tuning replication 不是外部或生物独立验证，
+不推进 T5 或任何下游门。证据见
+`artifacts/v7-t5-increment-order-control-replication.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；
