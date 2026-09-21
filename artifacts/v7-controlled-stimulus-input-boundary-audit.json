@@ -151,6 +151,7 @@
       "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "97dc565a2b39beb6b6596d57246658d8587cbbfa186707eb05dc0f4d328e7dce",
       "src/fly_emotion/driving/v7_t4_source_identity_readiness_audit.py": "f6eb35eca4e1e6417455fd7c9188347053c6e61665fc42455a99f0e654e9e8a4",
       "src/fly_emotion/driving/v7_t4_source_pool_camera_frame_discovery.py": "53784df897c1eab37b9ede432e1b233ac9c9f00d1cf2f03ed98f4b174b702c80",
+      "src/fly_emotion/driving/v7_t4_source_pool_camera_frame_replication_preregistration.py": "9ebf784153733a2b42bc78a14ecf378a2baf9b9ed84e0087ed94bb4ee2f50af3",
       "src/fly_emotion/driving/v7_t4_source_pool_local.py": "58234449023bc1fc9d2ef5aab29f9d117cfb256b1fab95b215e9c61d03e7afbf",
       "src/fly_emotion/driving/v7_t4_source_resolved.py": "9dff4818ef3811f4284a4fdb5a3b83f1449863c0cf282fccc627803ae4ff0ee1",
       "src/fly_emotion/driving/v7_t4_state_unit_mapping_audit.py": "0055f6499be4ead7107237d947e09528137d873a6ef8c85f3e0ce11352c287ce",
@@ -438,7 +439,7 @@
     "dynamic_probe_advance_call_count": 340,
     "dynamic_nonretinal_drive_node_count": 0,
     "static_assignment_audit": {
-      "scanned_module_count": 211,
+      "scanned_module_count": 212,
       "drive_assignment_count": 57,
       "files_with_drive_assignments": 31,
       "index_expression_counts": {
@@ -448,7 +449,7 @@
       },
       "violations": [],
       "all_drive_subscript_assignments_target_retina_indices": true,
-      "module_inventory_sha256": "353c0238923cd7c272939c3f1d85b5db6ed74f1852bc74ae08bf988722bad99c"
+      "module_inventory_sha256": "999d3085e1c5a3f9bbbd0db14e3d784f1febdaf5167648070a7884679a33f66a"
     }
   },
   "gates": {

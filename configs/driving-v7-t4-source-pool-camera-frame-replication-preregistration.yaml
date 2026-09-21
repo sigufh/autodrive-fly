@@ -1,0 +1,56 @@
+version: 1
+name: v7-t4-source-pool-camera-frame-replication-preregistration
+observed_on: "2026-09-21"
+frozen_discovery_commit: 4d30a317de081cdab0c4086f33c2a4066a273650
+frozen_inputs:
+  - {path: artifacts/v7-t4-source-pool-camera-frame-discovery.json, sha256: 14f97659824dafc1d9a2bddcf08643906a1de04cfaf6f324d9ec3af9f1f2ede3}
+  - {path: configs/driving-v7-t4-source-pool-camera-frame-discovery.yaml, sha256: cc7c3ee47b65670682864418e146f1d89e171644d9dd291d823de4ca7684a5f6}
+  - {path: src/fly_emotion/driving/v7_t4_source_pool_camera_frame_discovery.py, sha256: 53784df897c1eab37b9ede432e1b233ac9c9f00d1cf2f03ed98f4b174b702c80}
+  - {path: src/fly_emotion/driving/v7_t4_source_pool_local.py, sha256: 58234449023bc1fc9d2ef5aab29f9d117cfb256b1fab95b215e9c61d03e7afbf}
+  - {path: configs/driving-v7-t4-source-pool-local.yaml, sha256: 8a9263c097163506623dbc784d53a10327820e886744697c71647e7d2bedf913}
+  - {path: configs/driving-v7-lplc-typed-screen.yaml, sha256: b53c1438f5b02325f1db7f97eac362975b9790fe95d4fa322f0937ed559100ba}
+  - {path: configs/driving-v7-stage1-scoring.yaml, sha256: 18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275}
+  - {path: configs/driving-v7-t4t5-local-edge-precheck.yaml, sha256: f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942}
+  - {path: src/fly_emotion/driving/v7_t4t5_local_edge_precheck.py, sha256: 2b57c4ab3c4bf8cc45d2fc2fea8d413c7fa643de726887b631884a03e69d7049}
+  - {path: configs/driving-v7-lplc2-radial-opponency.yaml, sha256: c69f7992fa826bf2c6b2789eb761f85c630335bb20dab766f8ef16d0a1fa2fac}
+  - {path: artifacts/v7-t4-source-audit.json, sha256: 9559ac5f57ce962c16ace9e7cd270bd9ce54416aa65ac1f8225fa11fd464135e}
+discovery_condition_id: LPLC-T01
+replication_condition_ids: [LPLC-T02, LPLC-T03]
+expected_duration_frames: {LPLC-T02: 40, LPLC-T03: 48}
+replication_variation:
+  used_by_local_edge_generator: [duration_frames]
+  not_used_by_local_edge_generator:
+    [seed, terminal_radius_pixels, start_radius_pixels, noise_standard_deviation]
+  local_edge_noise_standard_deviation: 0.0
+candidate:
+  readout: pairwise_distal_vector
+  target_populations: [T4d_L, T4d_R]
+  source_groups:
+    center: [Mi1, Tm3]
+    delayed: [Mi9]
+  source_coordinate_frame: camera_image_xy
+  temporal_reduction: maximum_projected_value
+ordered_gate:
+  scoring_threshold_source: configs/driving-v7-stage1-scoring.yaml
+  require_both_target_populations: true
+  fixed_whole_T4_population_denominator: 6861
+  no_denominator_restriction: true
+controls_after_ordered_gate:
+  modes: [temporal_shuffle, static_sham]
+  temporal_shuffle_seed: 20260917
+  require_no_bilateral_T4d_in_each_control: true
+replication_gate:
+  require_ordered_candidate_bilateral_in_every_replication_condition: true
+  evaluate_controls_only_after_ordered_replication_passes: true
+  require_controls_to_fail_in_every_replication_condition: true
+  do_not_change_candidate_thresholds_or_coordinates_after_replication: true
+boundary:
+  preregistered_before_replication_outputs: true
+  discovery_condition_excluded_from_replication_gate: true
+  tuning_conditions_only: true
+  replication_varies_duration_but_not_noise_or_edge_geometry: true
+  not_calibration_or_external_validation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen_until_gate: true
