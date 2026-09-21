@@ -229,6 +229,15 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T4_state_mapping_held_out_outside_fraction_by_source",
         "T4_author_minmax_semantics_match_v7_state",
         "T4_millivolts_to_v7_state_mapping_available",
+            "C2C3_version_of_record_DOI",
+            "C2C3_version_of_record_repository_revision",
+            "C2C3_version_of_record_new_payload_modality",
+            "C2C3_version_of_record_C3_fly_count",
+            "C2C3_version_of_record_Mi1_control_fly_count",
+            "C2C3_version_of_record_new_C3_Mi4_voltage_found",
+            "C2C3_version_of_record_new_Mi4_payload_found",
+            "C2C3_version_of_record_MaleCNS_crosswalk_found",
+            "C2C3_version_of_record_changed_T4_transfer_gate",
         "T5_record_specific_stimulus_logs_available",
         "Motyxia2_public_history_branch_count",
         "Motyxia2_public_history_commit_count",
@@ -1588,6 +1597,21 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_author_minmax_semantics_match_v7_state"] is False
     assert visual["observations"]["T4_millivolts_to_v7_state_mapping_available"] is False
     assert visual["observations"]["T4_source_dynamics_next_candidate_authorized"] is False
+    assert visual["observations"]["C2C3_version_of_record_DOI"] == (
+        "10.7554/eLife.108529.3"
+    )
+    assert visual["observations"]["C2C3_version_of_record_repository_revision"] == (
+        "745c6114b72a61dabc9389a1f024dbe22f679edf"
+    )
+    assert visual["observations"]["C2C3_version_of_record_new_payload_modality"] == (
+        "calcium_fluorescence_STRF"
+    )
+    assert visual["observations"]["C2C3_version_of_record_C3_fly_count"] == 8
+    assert visual["observations"]["C2C3_version_of_record_Mi1_control_fly_count"] == 7
+    assert visual["observations"]["C2C3_version_of_record_new_C3_Mi4_voltage_found"] is False
+    assert visual["observations"]["C2C3_version_of_record_new_Mi4_payload_found"] is False
+    assert visual["observations"]["C2C3_version_of_record_MaleCNS_crosswalk_found"] is False
+    assert visual["observations"]["C2C3_version_of_record_changed_T4_transfer_gate"] is False
     assert visual["observations"]["unified_model_package_files_verified"] is True
     assert visual["observations"]["unified_model_T4_target_parameters_available"] is True
     assert visual["observations"]["unified_model_MaleCNS_source_transfer_authorized"] is False

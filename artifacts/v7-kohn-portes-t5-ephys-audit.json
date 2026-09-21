@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
       "src/fly_emotion/driving/v7_kohn_portes_t5_ephys_audit.py": "673443bb17e97f161fdcd1ce2d45196e04513cf8d8b6f8771dc350097505fc6f",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35"
     },
     "paper": {
       "title": "Flexible filtering by neural inputs supports motion computation across states and stimuli",

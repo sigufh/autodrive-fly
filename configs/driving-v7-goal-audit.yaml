@@ -96,6 +96,7 @@ evidence:
   arenz_source_dynamics_audit: artifacts/v7-arenz-source-dynamics-audit.json
   arenz_t5_source_dynamics_audit: artifacts/v7-arenz-t5-source-dynamics-audit.json
   c3_strf_source_dynamics_audit: artifacts/v7-c3-strf-source-dynamics-audit.json
+  c2c3_version_of_record_data_audit: artifacts/v7-c2c3-version-of-record-data-audit.json
   c3_strf_flash_transfer: artifacts/v7-c3-strf-flash-transfer.json
   fig1_source_temporal_readiness_audit: artifacts/v7-fig1-source-temporal-readiness-audit.json
   c3_analytic_filter_precheck: artifacts/v7-c3-analytic-filter-precheck.json

@@ -7,7 +7,7 @@
       "src/fly_emotion/driving/v7_kohn_portes_t5_moving_bar_generalization_audit.py": "e4d9086ca2c80f9a8e9ee15baa1ad89c876fd1b29b5291da496660116236ca53",
       "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
       "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
-      "artifacts/v7-t5-direction-code-provenance-audit.json": "fd4ac09b1e04a6defe18525fe9d911a09734eda02626685c3983e13b810c3405",
+      "artifacts/v7-t5-direction-code-provenance-audit.json": "a5c1873d9f4fd633e4e28a7fb4dcfb0bae66c773f93a5c7e2ce3f6a1a613fb57",
       "data/raw/kohn-portes-flexible-filtering/history/text/figures_Fig5-LinearRegression.ipynb": "7017faae8d8b2ce24bf74713d56b91a9a503e544fac48d10c30b9872c01881d9",
       "data/raw/kohn-portes-flexible-filtering/history/text/plotting_linear_regression.py": "cfee74f8ada9927664eb9247722c83b360caa55e901ed151bad2f42791d433b8",
       "data/raw/kohn-portes-flexible-filtering/history/model-inputs/trace_data_2020-6-18.pickle": "29f8fa3443a1919539a9f1c8ecabfd78e639af671c4ab2801e5c3e02f1d7f9b7",

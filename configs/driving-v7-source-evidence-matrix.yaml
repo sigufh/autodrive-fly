@@ -1,6 +1,6 @@
-version: 18
+version: 19
 name: v7-source-evidence-matrix
-observed_on: "2026-09-20"
+observed_on: "2026-09-21"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 evidence:
   t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
@@ -36,6 +36,7 @@ evidence:
   braun_t5_calcium: artifacts/v7-braun-t5-source-data-audit.json
   ct1_compartment: artifacts/v7-timing-models-ct1-compartment-audit.json
   c3_dynamics: artifacts/v7-c3-strf-source-dynamics-audit.json
+  c2c3_version_of_record: artifacts/v7-c2c3-version-of-record-data-audit.json
   c3_external_flash: artifacts/v7-c3-strf-flash-transfer.json
   arenz_t4: artifacts/v7-arenz-source-dynamics-audit.json
   arenz_t5: artifacts/v7-arenz-t5-source-dynamics-audit.json

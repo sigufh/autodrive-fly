@@ -31,6 +31,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig3_robustness_path = Path(config["fig3_source_kernel_robustness_evidence"])
     arenz_path = Path(config["arenz_source_dynamics_evidence"])
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
+    c2c3_vor_path = Path(config["c2c3_version_of_record_evidence"])
     c3_strf_flash_path = Path(config["c3_strf_flash_transfer_evidence"])
     fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
@@ -61,6 +62,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     )
     arenz = json.loads((root / arenz_path).read_text(encoding="utf-8"))
     c3_strf = json.loads((root / c3_strf_path).read_text(encoding="utf-8"))
+    c2c3_vor = json.loads((root / c2c3_vor_path).read_text(encoding="utf-8"))
     c3_strf_flash = json.loads(
         (root / c3_strf_flash_path).read_text(encoding="utf-8")
     )
@@ -200,6 +202,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(fig3_robustness_path): _sha256(root / fig3_robustness_path),
                 str(arenz_path): _sha256(root / arenz_path),
                 str(c3_strf_path): _sha256(root / c3_strf_path),
+                str(c2c3_vor_path): _sha256(root / c2c3_vor_path),
                 str(c3_strf_flash_path): _sha256(root / c3_strf_flash_path),
                 str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
                 str(c3_filter_path): _sha256(root / c3_filter_path),
@@ -371,6 +374,35 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ]["C3_membrane_voltage_or_validated_deconvolved_kernel_available"],
             "source_filter_candidate_authorized": c3_strf[
                 "C3_source_filter_candidate_authorized"
+            ],
+        },
+        "C2C3_version_of_record_update": {
+            "doi": c2c3_vor["version_of_record"]["doi"],
+            "published_on": c2c3_vor["version_of_record"]["published_on"],
+            "repository_revision": c2c3_vor["protocol"][
+                "remote_head_observed"
+            ],
+            "repository_release_count": c2c3_vor["repository_release_count"],
+            "repository_tag_count": c2c3_vor["repository_tag_count"],
+            "new_payload_source_types": c2c3_vor["new_payload_source_types"],
+            "measurement_modality": c2c3_vor[
+                "new_payload_measurement_modality"
+            ],
+            "C3_unique_Flyname_count": c2c3_vor["C3_unique_Flyname_count"],
+            "Mi1_control_unique_Flyname_count": c2c3_vor[
+                "Mi1_control_unique_Flyname_count"
+            ],
+            "new_C3_or_Mi4_membrane_voltage_payload_found": c2c3_vor[
+                "new_C3_or_Mi4_membrane_voltage_payload_found"
+            ],
+            "new_Mi4_numerical_payload_found": c2c3_vor[
+                "new_Mi4_numerical_payload_found"
+            ],
+            "new_recording_to_MaleCNS_body_crosswalk_found": c2c3_vor[
+                "new_recording_to_MaleCNS_body_crosswalk_found"
+            ],
+            "source_dynamics_transfer_gate_changed": c2c3_vor[
+                "source_dynamics_transfer_gate_changed"
             ],
         },
         "verified_C3_STRF_to_independent_flash_transfer": {

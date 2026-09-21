@@ -73,6 +73,21 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert components["Edmond_Fig3_edge_baseline_window_declared"] is False
         row = report["matrix"][source]
         assert "T4_Fig3_verified_1khz_millivolt_array" in row["numerical_evidence_sources"]
+    for source in ("Mi1", "C3"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["C2C3_version_of_record_repository_revision_verified"] is True
+        assert components["C2C3_version_of_record_calcium_STRF_with_Flyname_verified"] is True
+        assert components["C2C3_version_of_record_MaleCNS_crosswalk_found"] is False
+    assert report["matrix"]["C3"]["evidence_components"][
+        "C2C3_version_of_record_new_C3_or_Mi4_voltage_found"
+    ] is False
+    assert report["matrix"]["Mi4"]["evidence_components"][
+        "C2C3_version_of_record_new_C3_or_Mi4_voltage_found"
+    ] is False
+    for source in ("Tm3", "Mi4"):
+        assert report["matrix"][source]["evidence_components"][
+            "C2C3_version_of_record_calcium_STRF_with_Flyname_verified"
+        ] is False
     for source in ("Mi1", "Tm3"):
         assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
         assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][

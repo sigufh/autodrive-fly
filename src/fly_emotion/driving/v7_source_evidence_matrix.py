@@ -90,6 +90,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
 
     c3_numerical = bool(evidence["c3_dynamics"]["C3_STRF_numerical_data_verified"])
     c3_ids = bool(evidence["c3_dynamics"]["C3_dataset"]["fly_count"] > 0)
+    c2c3_vor = evidence["c2c3_version_of_record"]
     c3_external_disjoint = bool(
         evidence["c3_external_flash"]["transfer_gates"]["source_and_external_fly_ids_disjoint"]
     )
@@ -626,6 +627,25 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and t5_direction_provenance["provenance_gates"][
                     "cross_dataset_direction_mapping_authorized"
                 ]
+            ),
+            "C2C3_version_of_record_repository_revision_verified": (
+                source in {"Mi1", "C3"}
+                and c2c3_vor["protocol"]["local_checked_out_revision"]
+                == c2c3_vor["protocol"]["remote_head_observed"]
+            ),
+            "C2C3_version_of_record_calcium_STRF_with_Flyname_verified": (
+                source == "C3"
+                and c2c3_vor["C3_unique_Flyname_count"] == 8
+                or source == "Mi1"
+                and c2c3_vor["Mi1_control_unique_Flyname_count"] == 7
+            ),
+            "C2C3_version_of_record_new_C3_or_Mi4_voltage_found": (
+                source in {"C3", "Mi4"}
+                and c2c3_vor["new_C3_or_Mi4_membrane_voltage_payload_found"]
+            ),
+            "C2C3_version_of_record_MaleCNS_crosswalk_found": (
+                source in {"Mi1", "C3"}
+                and c2c3_vor["new_recording_to_MaleCNS_body_crosswalk_found"]
             ),
         }
         numerical_sources = []

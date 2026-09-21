@@ -47,6 +47,9 @@ from .driving.v7_borst_2025_temporal_filtering_audit import (
     evaluate_v7_borst_2025_temporal_filtering_audit,
 )
 from .driving.v7_branched import evaluate_v7_branched_t4_candidate
+from .driving.v7_c2c3_version_of_record_data_audit import (
+    evaluate_v7_c2c3_version_of_record_data_audit,
+)
 from .driving.v7_c3_analytic_filter_precheck import (
     evaluate_v7_c3_analytic_filter_precheck,
 )
@@ -679,6 +682,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-arenz-t5-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
+    subparsers.add_parser("v7-audit-c2c3-version-of-record-data")
     subparsers.add_parser("v7-audit-c3-flash-preregistration")
     subparsers.add_parser("v7-audit-c3-strf-flash-transfer")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
@@ -1990,6 +1994,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-strf-source-dynamics":
         report = evaluate_v7_c3_strf_source_dynamics_audit(root)
         target = root / "artifacts/v7-c3-strf-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-c2c3-version-of-record-data":
+        report = evaluate_v7_c2c3_version_of_record_data_audit(root)
+        target = root / "artifacts/v7-c2c3-version-of-record-data-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

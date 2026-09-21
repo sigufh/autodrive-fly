@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-borst-2025-temporal-filtering-audit.yaml": "cd4200afadd4112081820d64315862868fe99550dd5264237170728b3bbb1f97",
       "src/fly_emotion/driving/v7_borst_2025_temporal_filtering_audit.py": "a22bc68f9fe769f01fd5e775998317ef10c3d2861987b8533cc7b1f1b4ba5faa",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35"
     },
     "paper": {
       "title": "Differential temporal filtering in the fly optic lobe",

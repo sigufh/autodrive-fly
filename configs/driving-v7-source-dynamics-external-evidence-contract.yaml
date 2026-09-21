@@ -1,8 +1,6 @@
-version: 1
+version: 2
 name: v7-source-dynamics-external-evidence-contract
-observed_on: "2026-09-18"
-readiness_evidence: artifacts/v7-t4t5-source-dynamics-readiness.json
-readiness_protocol: configs/driving-v7-t4t5-source-dynamics-readiness.yaml
+observed_on: "2026-09-21"
 required_families:
   T4:
     source_types: [Mi1, Tm3, Mi4, C3]
@@ -43,6 +41,7 @@ gates:
   forbid_target_T4_T5_response_as_source_kernel: true
 boundary:
   contract_only_no_external_payload_present: true
+  prerequisite_contract_does_not_depend_on_downstream_readiness: true
   no_parameter_fit: true
   no_target_activity_injection: true
   no_runtime_change: true

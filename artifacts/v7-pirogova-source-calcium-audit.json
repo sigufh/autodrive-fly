@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-pirogova-source-calcium-audit.yaml": "c0df7318983c974ffa8623e0878583fcde895bf0c1024d83a6520496a8b33d58",
       "src/fly_emotion/driving/v7_pirogova_source_calcium_audit.py": "cd629f5dcab1c47d2286c6611a1a3ebc9385260e2c8fa65ae2a05cae0d82fe26",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35"
     },
     "paper": {
       "title": "Contrast normalization affects response time-course of visual interneurons",

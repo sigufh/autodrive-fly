@@ -1,0 +1,175 @@
+{
+  "protocol": {
+    "name": "v7-c2c3-version-of-record-data-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-c2c3-version-of-record-data-audit.yaml": "dd82f32d94caec7c128633f7863ca1809042048cfd7e857a506b0371ceee7636",
+      "src/fly_emotion/driving/v7_c2c3_version_of_record_data_audit.py": "89a97f124fa57b6a7c8c53e40a4a0a213de3df65dea44a3bbea66a5c22c8fa26"
+    },
+    "repository_url": "https://github.com/silieslab/C2C3_feedback_Henning",
+    "local_checked_out_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf",
+    "remote_head_observed": "745c6114b72a61dabc9389a1f024dbe22f679edf",
+    "network_metadata_frozen_in_config": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "version_of_record": {
+    "doi": "10.7554/eLife.108529.3",
+    "title": "Inhibitory columnar feedback neurons are involved in motion processing in Drosophila",
+    "published_on": "2026-05-26",
+    "primary_url": "https://elifesciences.org/articles/108529",
+    "crossref_api": "https://api.crossref.org/works/10.7554/eLife.108529.3",
+    "supplementary_relation": {
+      "kind": "software_heritage_directory",
+      "archived_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf"
+    }
+  },
+  "supplementary_relation": {
+    "kind": "software_heritage_directory",
+    "archived_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf"
+  },
+  "repository_release_count": 0,
+  "repository_tag_count": 0,
+  "revision_commit_count": 4,
+  "tree_path_count_before_revision": 209,
+  "tree_path_count_at_version_of_record": 226,
+  "new_blob_count": 39,
+  "removed_blob_count": 22,
+  "declared_new_numerical_blobs_present": true,
+  "new_numerical_payloads": {
+    "Data/Figure3-SourceData3/RF_DATA_C2C3_posTime.mat": {
+      "bytes": 16593794,
+      "git_blob_sha1": "7933bd47daa9aec542755470d8ed264a15791820",
+      "sha256": "d35a64e1ee0daa1c0ec79f18153244a345981b87bca14d1e06fc34acc6615383",
+      "source_types": [
+        "C3"
+      ],
+      "inventory": {
+        "groups": {
+          "C2": 6,
+          "C3": 8
+        },
+        "unique_Flyname_count_by_group": {
+          "C2": 6,
+          "C3": 8
+        },
+        "axis_record_count_by_group": {
+          "C2": {
+            "Az": 6,
+            "El": 6
+          },
+          "C3": {
+            "Az": 7,
+            "El": 8
+          }
+        },
+        "axis_fields": [
+          "AV",
+          "Cluster",
+          "STRFs",
+          "Zdepth",
+          "corrcoefs",
+          "pred",
+          "roi_ind"
+        ],
+        "voltage_field_found": false,
+        "current_clamp_field_found": false,
+        "MaleCNS_body_field_found": false
+      }
+    },
+    "Data/Figure4-SourceData2/RF_DATA_Mi1_posTime.mat": {
+      "bytes": 6498492,
+      "git_blob_sha1": "e28b9924e8bab9bf7fced8344f397b3ccfe90f59",
+      "sha256": "19e59447c6140f7a18c29649c55933607caed10420b208c3fead163202086dbe",
+      "source_types": [
+        "Mi1"
+      ],
+      "inventory": {
+        "groups": {
+          "Control": 7,
+          "C2shi": 6
+        },
+        "unique_Flyname_count_by_group": {
+          "Control": 7,
+          "C2shi": 6
+        },
+        "axis_record_count_by_group": {
+          "Control": {
+            "Az": 0,
+            "El": 7
+          },
+          "C2shi": {
+            "Az": 0,
+            "El": 6
+          }
+        },
+        "axis_fields": [
+          "AV",
+          "Cluster",
+          "STRFs",
+          "Zdepth",
+          "corrcoefs",
+          "pred",
+          "roi_ind"
+        ],
+        "voltage_field_found": false,
+        "current_clamp_field_found": false,
+        "MaleCNS_body_field_found": false
+      }
+    }
+  },
+  "source_code_evidence": {
+    "PythonCode_for_STRF_analysis/rf_tools.py": {
+      "bytes": 35169,
+      "git_blob_sha1": "694ad1354c69f45ebdb27647951365332fda669f",
+      "sha256": "e53d1d5d502d562d254430d407ce7625d1189cf6ed3a56cc2321563637ad8c95",
+      "mentions_fluorescence": true,
+      "defines_delta_F_over_F": true
+    },
+    "Figure3_SourceCode3_STRFs_C2C3.m": {
+      "bytes": 4867,
+      "git_blob_sha1": "1e42a1dea6560775e8b1a5d4ab8a6255ec8e1be4",
+      "sha256": "774041cd146091c07c799959439ff16ad4945133f9f66c2e741701c7926308a2",
+      "mentions_fluorescence": false,
+      "defines_delta_F_over_F": false
+    },
+    "Figure4_SourceCode2_STRFs_Mi1.m": {
+      "bytes": 1799,
+      "git_blob_sha1": "987d431279b063355c753240ad238deba790ec1d",
+      "sha256": "8959fbf4c5744d5bb7f2821998074808ff1b17702cce7af1f03dfc7ab98d5bea",
+      "mentions_fluorescence": false,
+      "defines_delta_F_over_F": false
+    }
+  },
+  "C3_unique_Flyname_count": 8,
+  "Mi1_control_unique_Flyname_count": 7,
+  "new_payload_source_types": [
+    "C3",
+    "Mi1"
+  ],
+  "new_payload_measurement_modality": "calcium_fluorescence_STRF",
+  "new_C3_or_Mi4_membrane_voltage_payload_found": false,
+  "new_Mi4_numerical_payload_found": false,
+  "new_recording_to_MaleCNS_body_crosswalk_found": false,
+  "source_dynamics_transfer_gate_changed": false,
+  "authorize_new_T4_functional_candidate": false,
+  "advance_to_T4_calibration": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "version_of_record_adds_calcium_STRFs_but_no_transferable_C3_or_Mi4_voltage",
+  "boundary": {
+    "current_remote_head_checked_on_observed_date": true,
+    "version_of_record_supplement_points_to_current_repository_revision": true,
+    "final_article_XML_endpoint_timed_out_and_was_not_treated_as_absence": true,
+    "new_STRF_payloads_are_calcium_fluorescence_not_membrane_voltage": true,
+    "Flyname_is_stable_within_repository_but_not_a_MaleCNS_body_crosswalk": true,
+    "Mi4_not_present_in_new_STRF_payloads": true,
+    "no_new_C3_or_Mi4_whole_cell_voltage_payload": true,
+    "no_new_MaleCNS_recording_crosswalk": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

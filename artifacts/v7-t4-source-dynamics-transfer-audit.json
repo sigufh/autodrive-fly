@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-t4-source-dynamics-transfer-audit",
-    "observed_on": "2026-09-18",
+    "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "50009e903f4b83966fcdf2ef46d0cba251dfe7e1f864c8adf5b12cad8466d689",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "97dc565a2b39beb6b6596d57246658d8587cbbfa186707eb05dc0f4d328e7dce",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "1450399f9874fc93eee6050fe9cfe4902ba7896cfde6f54eb32b0daeb7f670b7",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "4e5ba00359d2587c529a9932d8781bbd59bd6e34bf459f492ee03657d7d7c0b1",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -19,6 +19,7 @@
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
+      "artifacts/v7-c2c3-version-of-record-data-audit.json": "e45e0649351f27030a3e3284b0d40095780365d6c5446fa35c2b1534b497128c",
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e",
       "artifacts/v7-c3-analytic-filter-precheck.json": "c500295463922199d074fdfcb3fc1511836bbc7e3c0c1a091cb937ec4ddc5da9",
@@ -182,6 +183,24 @@
     "all_required_sources_share_one_transferable_parameterization": false,
     "membrane_voltage_or_validated_deconvolved_kernel_available": false,
     "source_filter_candidate_authorized": false
+  },
+  "C2C3_version_of_record_update": {
+    "doi": "10.7554/eLife.108529.3",
+    "published_on": "2026-05-26",
+    "repository_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf",
+    "repository_release_count": 0,
+    "repository_tag_count": 0,
+    "new_payload_source_types": [
+      "C3",
+      "Mi1"
+    ],
+    "measurement_modality": "calcium_fluorescence_STRF",
+    "C3_unique_Flyname_count": 8,
+    "Mi1_control_unique_Flyname_count": 7,
+    "new_C3_or_Mi4_membrane_voltage_payload_found": false,
+    "new_Mi4_numerical_payload_found": false,
+    "new_recording_to_MaleCNS_body_crosswalk_found": false,
+    "source_dynamics_transfer_gate_changed": false
   },
   "verified_C3_STRF_to_independent_flash_transfer": {
     "source_fly_axis_unit_count": 7,

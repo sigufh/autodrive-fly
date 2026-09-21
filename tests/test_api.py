@@ -368,6 +368,19 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["v7_offline_frame_interval_milliseconds"] == 10.0
     assert boundaries["v7_offline_substep_interval_milliseconds"] == 2.5
     assert boundaries["T4_source_mapping_mode"] == "exact_type_average"
+    assert boundaries["C2C3_version_of_record_DOI"] == "10.7554/eLife.108529.3"
+    assert boundaries["C2C3_version_of_record_repository_revision"] == (
+        "745c6114b72a61dabc9389a1f024dbe22f679edf"
+    )
+    assert boundaries["C2C3_version_of_record_new_payload_modality"] == (
+        "calcium_fluorescence_STRF"
+    )
+    assert boundaries["C2C3_version_of_record_C3_fly_count"] == 8
+    assert boundaries["C2C3_version_of_record_Mi1_control_fly_count"] == 7
+    assert boundaries["C2C3_version_of_record_new_C3_Mi4_voltage_found"] is False
+    assert boundaries["C2C3_version_of_record_new_Mi4_payload_found"] is False
+    assert boundaries["C2C3_version_of_record_MaleCNS_crosswalk_found"] is False
+    assert boundaries["C2C3_version_of_record_changed_T4_transfer_gate"] is False
     assert boundaries["T4_source_pool_camera_frame_bilateral_readouts"] == [
         "pairwise_distal_vector"
     ]

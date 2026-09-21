@@ -1,12 +1,10 @@
 {
   "protocol": {
     "name": "v7-source-dynamics-external-evidence-contract",
-    "observed_on": "2026-09-18",
+    "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-source-dynamics-external-evidence-contract.yaml": "529c5b0afe574e5074c4539bfe4e8dcf4c935fef8fe297fc8ac6afd31e0dc249",
-      "src/fly_emotion/driving/v7_source_dynamics_external_evidence_contract.py": "15a713080d907d2b5aac53057da7fb2a4e1b24954f2842404b8b4d4d4c4e86f0",
-      "artifacts/v7-t4t5-source-dynamics-readiness.json": "fe54fb0d405166293e1cd9bc7abb2c654f1a9cbeb9bae948acd6e38c74fae770",
-      "configs/driving-v7-t4t5-source-dynamics-readiness.yaml": "42c27f92ff51db151ce09b03870496ecfb654cd89a587a88bc5b9283f13acfa3"
+      "configs/driving-v7-source-dynamics-external-evidence-contract.yaml": "a923887b1f0a88cce63e8d58a62c323f453f3f654ef238ddfc13d2c1e03eea48",
+      "src/fly_emotion/driving/v7_source_dynamics_external_evidence_contract.py": "507cd2f3bfcb715e7ff43ebfe0dfe89037485f806e1366827f6828f5aed060de"
     },
     "parameter_fit": false,
     "external_payload_evaluated": false,
@@ -117,6 +115,7 @@
   "stop_reason": "external_source_dynamics_payload_not_present",
   "boundary": {
     "contract_only_no_external_payload_present": true,
+    "prerequisite_contract_does_not_depend_on_downstream_readiness": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,
     "no_runtime_change": true,

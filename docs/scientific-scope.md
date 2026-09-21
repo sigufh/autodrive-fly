@@ -563,6 +563,19 @@ ordered replication gate therefore failed, and temporal-shuffle/static controls
 were not run under the preregistered stop rule. The candidate is not robust and no
 target formula or downstream stage is authorized
 (`artifacts/v7-t4-source-pool-camera-frame-replication.json`).
+The May 2026 Version of Record for the C2/C3 study was checked separately. Crossref
+links its software supplement to Software Heritage revision `745c611`, which is
+also the current GitHub `main` HEAD; the repository has no releases or tags. The
+four post-2025 revision commits add or reorganize connectivity tables, analysis
+code, and two numerical STRF MAT blobs. Those blobs contain eight unique C3 and
+seven unique Mi1-control `Flyname` values, but their nested fields are
+`AV/Cluster/STRFs/Zdepth/corrcoefs/pred/roi_ind`; the author code explicitly calls
+the signal ROI fluorescence and computes delta-F/F. No new Mi4 payload, C3/Mi4
+membrane-voltage field, or recording-to-MaleCNS body crosswalk was found. The final
+article XML endpoint timed out and is not treated as absence; the repository and
+Crossref evidence are sufficient only to show that the known calcium evidence was
+the Version-of-Record supplement. T4 source transfer remains blocked
+(`artifacts/v7-c2c3-version-of-record-data-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

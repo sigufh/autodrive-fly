@@ -1,0 +1,55 @@
+version: 1
+name: v7-c2c3-version-of-record-data-audit
+observed_on: "2026-09-21"
+paper:
+  doi: 10.7554/eLife.108529.3
+  title: Inhibitory columnar feedback neurons are involved in motion processing in Drosophila
+  published_on: "2026-05-26"
+  primary_url: https://elifesciences.org/articles/108529
+  crossref_api: https://api.crossref.org/works/10.7554/eLife.108529.3
+  supplementary_relation:
+    kind: software_heritage_directory
+    archived_revision: 745c6114b72a61dabc9389a1f024dbe22f679edf
+repository:
+  path: data/raw/t4-c3-strf/repository
+  url: https://github.com/silieslab/C2C3_feedback_Henning
+  current_remote_head: 745c6114b72a61dabc9389a1f024dbe22f679edf
+  last_push_utc: "2026-03-17T12:10:52Z"
+  release_count: 0
+  tag_count: 0
+  pre_revision_baseline: 267862c5324442f18e6b3a2dff5c02cd07e54b21
+  revision_commit_count: 4
+new_numerical_blobs:
+  - path: Data/Figure3-SourceData3/RF_DATA_C2C3_posTime.mat
+    bytes: 16593794
+    git_blob_sha1: 7933bd47daa9aec542755470d8ed264a15791820
+    sha256: d35a64e1ee0daa1c0ec79f18153244a345981b87bca14d1e06fc34acc6615383
+    groups: {C2: 6, C3: 8}
+    source_types: [C3]
+  - path: Data/Figure4-SourceData2/RF_DATA_Mi1_posTime.mat
+    bytes: 6498492
+    git_blob_sha1: e28b9924e8bab9bf7fced8344f397b3ccfe90f59
+    sha256: 19e59447c6140f7a18c29649c55933607caed10420b208c3fead163202086dbe
+    groups: {Control: 7, C2shi: 6}
+    source_types: [Mi1]
+source_code:
+  - {path: PythonCode_for_STRF_analysis/rf_tools.py, bytes: 35169, git_blob_sha1: 694ad1354c69f45ebdb27647951365332fda669f, sha256: e53d1d5d502d562d254430d407ce7625d1189cf6ed3a56cc2321563637ad8c95}
+  - {path: Figure3_SourceCode3_STRFs_C2C3.m, bytes: 4867, git_blob_sha1: 1e42a1dea6560775e8b1a5d4ab8a6255ec8e1be4, sha256: 774041cd146091c07c799959439ff16ad4945133f9f66c2e741701c7926308a2}
+  - {path: Figure4_SourceCode2_STRFs_Mi1.m, bytes: 1799, git_blob_sha1: 987d431279b063355c753240ad238deba790ec1d, sha256: 8959fbf4c5744d5bb7f2821998074808ff1b17702cce7af1f03dfc7ab98d5bea}
+expected_fields:
+  RF_DATA: [name, DATA]
+  record: [Flyname]
+  axis: [AV, Cluster, STRFs, Zdepth, corrcoefs, pred, roi_ind]
+boundary:
+  current_remote_head_checked_on_observed_date: true
+  version_of_record_supplement_points_to_current_repository_revision: true
+  final_article_XML_endpoint_timed_out_and_was_not_treated_as_absence: true
+  new_STRF_payloads_are_calcium_fluorescence_not_membrane_voltage: true
+  Flyname_is_stable_within_repository_but_not_a_MaleCNS_body_crosswalk: true
+  Mi4_not_present_in_new_STRF_payloads: true
+  no_new_C3_or_Mi4_whole_cell_voltage_payload: true
+  no_new_MaleCNS_recording_crosswalk: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

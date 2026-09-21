@@ -29,6 +29,12 @@ def test_source_dynamics_external_contract_is_hash_bound_and_complete() -> None:
     assert set(report["manifest_template"]["mapping_fields"]) == set(
         report["required_mapping_fields"]
     )
+    assert "artifacts/v7-t4t5-source-dynamics-readiness.json" not in report[
+        "protocol"
+    ]["dependencies_sha256"]
+    assert report["boundary"][
+        "prerequisite_contract_does_not_depend_on_downstream_readiness"
+    ] is True
 
 
 def test_missing_external_payload_keeps_every_advancement_closed() -> None:

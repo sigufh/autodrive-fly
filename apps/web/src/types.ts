@@ -236,6 +236,15 @@ export type V7Status = {
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;
     T4_source_mapping_mode: string;
+    C2C3_version_of_record_DOI?: string;
+    C2C3_version_of_record_repository_revision?: string;
+    C2C3_version_of_record_new_payload_modality?: string;
+    C2C3_version_of_record_C3_fly_count?: number;
+    C2C3_version_of_record_Mi1_control_fly_count?: number;
+    C2C3_version_of_record_new_C3_Mi4_voltage_found?: boolean;
+    C2C3_version_of_record_new_Mi4_payload_found?: boolean;
+    C2C3_version_of_record_MaleCNS_crosswalk_found?: boolean;
+    C2C3_version_of_record_changed_T4_transfer_gate?: boolean;
     T4_source_pool_camera_frame_bilateral_readouts?: string[];
     T4_source_pool_camera_frame_bilateral_subtypes?: Record<string, string[]>;
     T4_source_pool_camera_frame_post_hoc_candidate_discovered?: boolean;

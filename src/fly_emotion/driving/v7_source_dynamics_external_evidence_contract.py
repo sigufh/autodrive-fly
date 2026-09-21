@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import yaml
@@ -19,11 +18,6 @@ IMPLEMENTATION = Path(
 
 def evaluate_v7_source_dynamics_external_evidence_contract(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
-    readiness_path = Path(config["readiness_evidence"])
-    protocol_path = Path(config["readiness_protocol"])
-    readiness = json.loads((root / readiness_path).read_text())
-    if readiness["T4_T5_source_dynamics_ready"]:
-        raise ValueError("external evidence contract is only valid while readiness fails")
     expected_sources = {
         "T4": ["Mi1", "Tm3", "Mi4", "C3"],
         "T5": ["Tm1", "Tm2", "Tm4", "Tm9", "CT1"],
@@ -54,8 +48,6 @@ def evaluate_v7_source_dynamics_external_evidence_contract(root: Path) -> dict:
             "dependencies_sha256": {
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
-                str(readiness_path): _sha256(root / readiness_path),
-                str(protocol_path): _sha256(root / protocol_path),
             },
             "parameter_fit": False,
             "external_payload_evaluated": False,

@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-ct1-extreme-compartmentalization-audit.yaml": "7b8e93ffccd014b4fe0f67ff72e32311928c5b803e2b6846c468b0e19e94fb48",
       "src/fly_emotion/driving/v7_ct1_extreme_compartmentalization_audit.py": "58122b25492cfe784c4b42a1120c05988ae29cca73ab21a703d5c41888c9c332",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35"
     },
     "paper": {
       "title": "Extreme Compartmentalization in a Drosophila Amacrine Cell",

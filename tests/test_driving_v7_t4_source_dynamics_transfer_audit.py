@@ -99,6 +99,22 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert c3["all_required_sources_share_one_transferable_parameterization"] is False
     assert c3["membrane_voltage_or_validated_deconvolved_kernel_available"] is False
     assert c3["source_filter_candidate_authorized"] is False
+    version = report["C2C3_version_of_record_update"]
+    assert version["doi"] == "10.7554/eLife.108529.3"
+    assert version["published_on"] == "2026-05-26"
+    assert version["repository_revision"] == (
+        "745c6114b72a61dabc9389a1f024dbe22f679edf"
+    )
+    assert version["repository_release_count"] == 0
+    assert version["repository_tag_count"] == 0
+    assert version["new_payload_source_types"] == ["C3", "Mi1"]
+    assert version["measurement_modality"] == "calcium_fluorescence_STRF"
+    assert version["C3_unique_Flyname_count"] == 8
+    assert version["Mi1_control_unique_Flyname_count"] == 7
+    assert version["new_C3_or_Mi4_membrane_voltage_payload_found"] is False
+    assert version["new_Mi4_numerical_payload_found"] is False
+    assert version["new_recording_to_MaleCNS_body_crosswalk_found"] is False
+    assert version["source_dynamics_transfer_gate_changed"] is False
     flash = report["verified_C3_STRF_to_independent_flash_transfer"]
     assert flash["source_fly_axis_unit_count"] == 7
     assert flash["external_flash_fly_count"] == 22

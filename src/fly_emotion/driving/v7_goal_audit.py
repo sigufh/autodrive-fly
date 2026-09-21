@@ -2811,6 +2811,49 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_source_dynamics_next_candidate_authorized": (
                     t4_source_dynamics_transfer_audit["next_candidate_authorized"]
                 ),
+                "C2C3_version_of_record_DOI": t4_source_dynamics_transfer_audit[
+                    "C2C3_version_of_record_update"
+                ]["doi"],
+                "C2C3_version_of_record_repository_revision": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["repository_revision"]
+                ),
+                "C2C3_version_of_record_new_payload_modality": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["measurement_modality"]
+                ),
+                "C2C3_version_of_record_C3_fly_count": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["C3_unique_Flyname_count"]
+                ),
+                "C2C3_version_of_record_Mi1_control_fly_count": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["Mi1_control_unique_Flyname_count"]
+                ),
+                "C2C3_version_of_record_new_C3_Mi4_voltage_found": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["new_C3_or_Mi4_membrane_voltage_payload_found"]
+                ),
+                "C2C3_version_of_record_new_Mi4_payload_found": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["new_Mi4_numerical_payload_found"]
+                ),
+                "C2C3_version_of_record_MaleCNS_crosswalk_found": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["new_recording_to_MaleCNS_body_crosswalk_found"]
+                ),
+                "C2C3_version_of_record_changed_T4_transfer_gate": (
+                    t4_source_dynamics_transfer_audit[
+                        "C2C3_version_of_record_update"
+                    ]["source_dynamics_transfer_gate_changed"]
+                ),
                 "unified_model_package_files_verified": unified_model_package_audit[
                     "files_verified"
                 ],
@@ -3810,6 +3853,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_state_mapping_held_out_outside_fraction_by_source",
                     "T4_author_minmax_semantics_match_v7_state",
                     "T4_millivolts_to_v7_state_mapping_available",
+                    "C2C3_version_of_record_DOI",
+                    "C2C3_version_of_record_repository_revision",
+                    "C2C3_version_of_record_new_payload_modality",
+                    "C2C3_version_of_record_C3_fly_count",
+                    "C2C3_version_of_record_Mi1_control_fly_count",
+                    "C2C3_version_of_record_new_C3_Mi4_voltage_found",
+                    "C2C3_version_of_record_new_Mi4_payload_found",
+                    "C2C3_version_of_record_MaleCNS_crosswalk_found",
+                    "C2C3_version_of_record_changed_T4_transfer_gate",
                     "T5_record_specific_stimulus_logs_available",
                     "Motyxia2_public_history_branch_count",
                     "Motyxia2_public_history_commit_count",

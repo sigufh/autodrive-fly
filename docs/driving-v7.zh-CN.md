@@ -2143,6 +2143,15 @@ LPLC-T02/T03。T4d_L/R 的 ordered median signed contrast 在 T02 为
 `0.174–0.264`；因此 ordered replication gate 失败，temporal-shuffle/static controls
 按预注册 stop gate 未运行。该候选不稳健，不授权 target formula 或任何下游阶段。证据见
 `artifacts/v7-t4-source-pool-camera-frame-replication.json`。
+另对 2026 年 5 月的 C2/C3 Version of Record 做了增量核查。Crossref 将软件补充材料
+唯一关联到 Software Heritage revision `745c611`，它也仍是 GitHub `main` 当前 HEAD；
+仓库没有 release 或 tag。2025 数据上传后的四次修订新增或重组了 connectivity 表、分析代码
+和两个数值 STRF MAT。载荷中有 8 个 C3、7 个 Mi1 control 的唯一 `Flyname`，但内部字段
+仅为 `AV/Cluster/STRFs/Zdepth/corrcoefs/pred/roi_ind`；作者代码明确称其为 ROI
+fluorescence 并计算 ΔF/F。没有新增 Mi4 payload、C3/Mi4 膜电位字段或 recording→MaleCNS
+body crosswalk。最终文章 XML 端点超时，未被当作“不存在”的证据；仓库与 Crossref 只足以
+确认已知 calcium 数据就是 Version-of-Record 补充材料，T4 source transfer 仍受阻。证据见
+`artifacts/v7-c2c3-version-of-record-data-audit.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了不执行 pickle 的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

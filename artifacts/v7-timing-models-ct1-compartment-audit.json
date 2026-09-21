@@ -7,7 +7,7 @@
       "src/fly_emotion/driving/v7_timing_models_ct1_compartment_audit.py": "21adb640f5fc4fceb11e7c25558907f128e283b713aa1d6b6629b4fb14bd221d",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "configs/driving-v7-timing-models-source-filter-audit.yaml": "fffaa64fd43a4127c056da205d1f6eb3242b84ece34e0a77bcbff57f5bd02cb4",
-      "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221"
+      "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35"
     },
     "paper": {
       "doi": "10.1016/j.cub.2022.06.075",

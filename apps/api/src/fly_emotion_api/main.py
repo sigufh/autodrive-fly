@@ -683,6 +683,33 @@ def _verified_v7_status(root: Path) -> dict:
                 ],
                 "v7_horizontal_fov_degrees": visual["v7_horizontal_fov_degrees"],
                 "T4_source_mapping_mode": visual["T4_source_mapping_mode"],
+                "C2C3_version_of_record_DOI": visual[
+                    "C2C3_version_of_record_DOI"
+                ],
+                "C2C3_version_of_record_repository_revision": visual[
+                    "C2C3_version_of_record_repository_revision"
+                ],
+                "C2C3_version_of_record_new_payload_modality": visual[
+                    "C2C3_version_of_record_new_payload_modality"
+                ],
+                "C2C3_version_of_record_C3_fly_count": visual[
+                    "C2C3_version_of_record_C3_fly_count"
+                ],
+                "C2C3_version_of_record_Mi1_control_fly_count": visual[
+                    "C2C3_version_of_record_Mi1_control_fly_count"
+                ],
+                "C2C3_version_of_record_new_C3_Mi4_voltage_found": visual[
+                    "C2C3_version_of_record_new_C3_Mi4_voltage_found"
+                ],
+                "C2C3_version_of_record_new_Mi4_payload_found": visual[
+                    "C2C3_version_of_record_new_Mi4_payload_found"
+                ],
+                "C2C3_version_of_record_MaleCNS_crosswalk_found": visual[
+                    "C2C3_version_of_record_MaleCNS_crosswalk_found"
+                ],
+                "C2C3_version_of_record_changed_T4_transfer_gate": visual[
+                    "C2C3_version_of_record_changed_T4_transfer_gate"
+                ],
                 "T4_source_pool_camera_frame_bilateral_readouts": visual[
                     "T4_source_pool_camera_frame_bilateral_readouts"
                 ],
