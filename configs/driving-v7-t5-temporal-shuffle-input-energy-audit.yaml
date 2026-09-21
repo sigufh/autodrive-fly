@@ -1,0 +1,23 @@
+version: 1
+name: v7-t5-temporal-shuffle-input-energy-audit
+observed_on: "2026-09-21"
+measured_kernel_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+measured_kernel_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py
+lamina_only_replacement_evidence: artifacts/v7-t5-lamina-only-measured-kernel-replacement.json
+lamina_only_replacement_implementation: src/fly_emotion/driving/v7_t5_lamina_only_measured_kernel_replacement.py
+tested_brain_updates_per_frame: [1, 4]
+expected_stimulus_count: 120
+input_energy_metric: mean_absolute_value_over_time_and_units
+lamina_source_metric: positive_half_wave_of_signed_target_normalized_preactivation
+comparison: temporal_shuffle_to_ordered_ratio
+boundary:
+  read_only_control_diagnostic: true
+  no_new_acceptance_threshold_defined: true
+  frame_multiset_preservation_is_not_transition_energy_matching: true
+  unequal_input_energy_does_not_invalidate_observed_output_ratios: true
+  unequal_input_energy_limits_temporal_selectivity_interpretation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  direction_scoring_remains_frozen: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

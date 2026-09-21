@@ -183,6 +183,23 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_lamina_only_candidate_ratios_by_update"][
         "temporal_difference_filtered_Tm_pair_reichardt"
     ]["4"]["shuffle"] == 1.6277322953083266
+    assert boundaries["T5_temporal_shuffle_frame_multiset_preserved"] is True
+    assert boundaries["T5_temporal_shuffle_retinal_energy_preserved"] is False
+    assert boundaries["T5_temporal_shuffle_lamina_source_energy_preserved"] is False
+    assert boundaries["T5_temporal_shuffle_energy_matched_control_verified"] is False
+    assert (
+        boundaries[
+            "T5_equal_energy_temporal_selectivity_interpretation_authorized"
+        ]
+        is False
+    )
+    assert boundaries["T5_new_energy_normalized_gate_authorized"] is False
+    assert boundaries["T5_temporal_shuffle_input_energy_ratios_by_update"][
+        "1"
+    ]["R1_R6_signed_frame_difference"] == 5.837713478478663
+    assert boundaries["T5_static_sham_input_energy_ratios_by_update"]["4"][
+        "lamina_only_Tm_preactivation"
+    ]["Tm9"] == 0.4363820143500369
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

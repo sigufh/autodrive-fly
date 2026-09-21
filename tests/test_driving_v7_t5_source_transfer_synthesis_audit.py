@@ -111,6 +111,50 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
                 "4": {"shuffle": 1.6277322953083266, "static": 0.3327291401605626},
             },
         },
+        "temporal_shuffle_input_energy_ratios_by_update": {
+            "1": {
+                "pixel_temporal_difference": 6.93426194129865,
+                "R1_R6_signed_frame_difference": 5.837713478478663,
+                "lamina_only_Tm_preactivation": {
+                    "Tm1": 4.908033023142721,
+                    "Tm2": 4.905535265160078,
+                    "Tm4": 4.902718804860586,
+                    "Tm9": 4.710199918312225,
+                },
+            },
+            "4": {
+                "pixel_temporal_difference": 6.93426194129865,
+                "R1_R6_signed_frame_difference": 5.837713478478663,
+                "lamina_only_Tm_preactivation": {
+                    "Tm1": 5.158457721706764,
+                    "Tm2": 5.155179138220397,
+                    "Tm4": 5.148909292181183,
+                    "Tm9": 5.127327256460109,
+                },
+            },
+        },
+        "static_sham_input_energy_ratios_by_update": {
+            "1": {
+                "pixel_temporal_difference": 0.3333333416568422,
+                "R1_R6_signed_frame_difference": 0.45652174898942627,
+                "lamina_only_Tm_preactivation": {
+                    "Tm1": 0.4380513339747843,
+                    "Tm2": 0.4379028051340378,
+                    "Tm4": 0.43657969359191173,
+                    "Tm9": 0.45422753830080753,
+                },
+            },
+            "4": {
+                "pixel_temporal_difference": 0.3333333416568422,
+                "R1_R6_signed_frame_difference": 0.45652174898942627,
+                "lamina_only_Tm_preactivation": {
+                    "Tm1": 0.43223462778410937,
+                    "Tm2": 0.43199250364279845,
+                    "Tm4": 0.43063522424125444,
+                    "Tm9": 0.4363820143500369,
+                },
+            },
+        },
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -173,6 +217,12 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["lamina_only_measured_kernel_direction_scoring_authorized"] is False
     assert gates["lamina_only_measured_kernel_direction_scoring_performed"] is False
     assert gates["lamina_only_measured_kernel_physical_transfer_authorized"] is False
+    assert gates["temporal_shuffle_frame_multiset_preserved"] is True
+    assert gates["temporal_shuffle_retinal_energy_preserved"] is False
+    assert gates["temporal_shuffle_lamina_source_energy_preserved"] is False
+    assert gates["temporal_shuffle_energy_matched_control_verified"] is False
+    assert gates["equal_energy_temporal_selectivity_interpretation_authorized"] is False
+    assert gates["new_energy_normalized_gate_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

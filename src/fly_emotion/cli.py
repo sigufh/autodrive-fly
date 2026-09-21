@@ -418,6 +418,9 @@ from .driving.v7_t5_source_transfer_synthesis_audit import (
 )
 from .driving.v7_t5_spatial_order import evaluate_v7_t5_spatial_order
 from .driving.v7_t5_supplement_audit import evaluate_v7_t5_supplement_audit
+from .driving.v7_t5_temporal_shuffle_input_energy_audit import (
+    evaluate_v7_t5_temporal_shuffle_input_energy_audit,
+)
 from .driving.v7_t5_tm2_loo_full_support_sensitivity import (
     evaluate_v7_t5_tm2_loo_full_support_sensitivity,
 )
@@ -723,6 +726,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-population-kernel-robustness")
     subparsers.add_parser("v7-audit-t5-population-kernel-aggregation-semantics")
     subparsers.add_parser("v7-audit-t5-tm2-loo-full-support")
+    subparsers.add_parser("v7-audit-t5-temporal-shuffle-input-energy")
     subparsers.add_parser("v7-audit-t5-ct1-terminal-axis")
     subparsers.add_parser("v7-calibrate-t5-ct1-axis")
     subparsers.add_parser("v7-audit-t5-ct1-crossfit-axis")
@@ -1502,6 +1506,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-tm2-loo-full-support":
         report = evaluate_v7_t5_tm2_loo_full_support_sensitivity(root)
         target = root / "artifacts/v7-t5-tm2-loo-full-support-sensitivity.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-temporal-shuffle-input-energy":
+        report = evaluate_v7_t5_temporal_shuffle_input_energy_audit(root)
+        target = root / "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

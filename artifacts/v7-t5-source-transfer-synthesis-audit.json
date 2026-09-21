@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "0bdb93a0237f06c6caecb775c2dc7f51311e66c31e2ce7958d642ef095c2b1c2",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "4d9067b7e4614c83f1f610adc22d85ea134adf81f155fdf0f8b29429f0473e31",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "7b4bca0ddb08b275c06b7fc55a86d7baf00d5cd20c0bc288e7fe49e555c80db8",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "d5ca848bf19d7c0db3b4af4065d26c03705d476d0fc45a8e16b967f5bbe6c982",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -24,6 +24,7 @@
       "artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json": "5f21b06c9bb119f1b3f72be0c5fc1497d00c162d034fac4e70777173bd66f837",
       "artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json": "5ede208fc3c92dd9a0c3d75e7b4f30d629587a74f7230d907a59a3a0b6467644",
       "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json": "112016edbeab5f14331e13d06734f70f37c8ec063f3bfab29ed3ce63ee0aaa76",
+      "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json": "95677d75587b62ad8cccf675eaed9688d8508c29a54812096b30cb9aa89cd58b",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
@@ -236,6 +237,50 @@
           "static": 0.3327291401605626
         }
       }
+    },
+    "temporal_shuffle_input_energy_ratios_by_update": {
+      "1": {
+        "pixel_temporal_difference": 6.93426194129865,
+        "R1_R6_signed_frame_difference": 5.837713478478663,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 4.908033023142721,
+          "Tm2": 4.905535265160078,
+          "Tm4": 4.902718804860586,
+          "Tm9": 4.710199918312225
+        }
+      },
+      "4": {
+        "pixel_temporal_difference": 6.93426194129865,
+        "R1_R6_signed_frame_difference": 5.837713478478663,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 5.158457721706764,
+          "Tm2": 5.155179138220397,
+          "Tm4": 5.148909292181183,
+          "Tm9": 5.127327256460109
+        }
+      }
+    },
+    "static_sham_input_energy_ratios_by_update": {
+      "1": {
+        "pixel_temporal_difference": 0.3333333416568422,
+        "R1_R6_signed_frame_difference": 0.45652174898942627,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 0.4380513339747843,
+          "Tm2": 0.4379028051340378,
+          "Tm4": 0.43657969359191173,
+          "Tm9": 0.45422753830080753
+        }
+      },
+      "4": {
+        "pixel_temporal_difference": 0.3333333416568422,
+        "R1_R6_signed_frame_difference": 0.45652174898942627,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 0.43223462778410937,
+          "Tm2": 0.43199250364279845,
+          "Tm4": 0.43063522424125444,
+          "Tm9": 0.4363820143500369
+        }
+      }
     }
   },
   "gates": {
@@ -299,6 +344,12 @@
     "lamina_only_measured_kernel_direction_scoring_authorized": false,
     "lamina_only_measured_kernel_direction_scoring_performed": false,
     "lamina_only_measured_kernel_physical_transfer_authorized": false,
+    "temporal_shuffle_frame_multiset_preserved": true,
+    "temporal_shuffle_retinal_energy_preserved": false,
+    "temporal_shuffle_lamina_source_energy_preserved": false,
+    "temporal_shuffle_energy_matched_control_verified": false,
+    "equal_energy_temporal_selectivity_interpretation_authorized": false,
+    "new_energy_normalized_gate_authorized": false,
     "absolute_source_gain_available": false,
     "source_to_v7_state_mapping_available": false,
     "state_invariant_source_timing_available": false,

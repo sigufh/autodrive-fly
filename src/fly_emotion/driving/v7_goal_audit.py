@@ -1037,6 +1037,46 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "lamina_only_candidate_ratios_by_update"
                     ]
                 ),
+                "T5_temporal_shuffle_frame_multiset_preserved": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "temporal_shuffle_frame_multiset_preserved"
+                    ]
+                ),
+                "T5_temporal_shuffle_retinal_energy_preserved": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "temporal_shuffle_retinal_energy_preserved"
+                    ]
+                ),
+                "T5_temporal_shuffle_lamina_source_energy_preserved": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "temporal_shuffle_lamina_source_energy_preserved"
+                    ]
+                ),
+                "T5_temporal_shuffle_energy_matched_control_verified": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "temporal_shuffle_energy_matched_control_verified"
+                    ]
+                ),
+                "T5_equal_energy_temporal_selectivity_interpretation_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "equal_energy_temporal_selectivity_interpretation_authorized"
+                    ]
+                ),
+                "T5_new_energy_normalized_gate_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "new_energy_normalized_gate_authorized"
+                    ]
+                ),
+                "T5_temporal_shuffle_input_energy_ratios_by_update": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "temporal_shuffle_input_energy_ratios_by_update"
+                    ]
+                ),
+                "T5_static_sham_input_energy_ratios_by_update": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "static_sham_input_energy_ratios_by_update"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3550,6 +3590,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_lamina_only_replacement_physical_transfer_authorized",
                     "T5_lamina_only_source_coverage",
                     "T5_lamina_only_candidate_ratios_by_update",
+                    "T5_temporal_shuffle_frame_multiset_preserved",
+                    "T5_temporal_shuffle_retinal_energy_preserved",
+                    "T5_temporal_shuffle_lamina_source_energy_preserved",
+                    "T5_temporal_shuffle_energy_matched_control_verified",
+                    "T5_equal_energy_temporal_selectivity_interpretation_authorized",
+                    "T5_new_energy_normalized_gate_authorized",
+                    "T5_temporal_shuffle_input_energy_ratios_by_update",
+                    "T5_static_sham_input_energy_ratios_by_update",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

@@ -49,6 +49,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_source_input_decomposition"
     ]
     lamina_only_replacement = evidence["lamina_only_measured_kernel_replacement"]
+    shuffle_input_energy = evidence["temporal_shuffle_input_energy"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -301,6 +302,26 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "lamina_only_measured_kernel_physical_transfer_authorized": (
             lamina_only_replacement["authorize_physical_source_dynamics_transfer"]
         ),
+        "temporal_shuffle_frame_multiset_preserved": shuffle_input_energy[
+            "frame_multiset_preserved_for_every_shuffle"
+        ],
+        "temporal_shuffle_retinal_energy_preserved": shuffle_input_energy[
+            "retinal_temporal_energy_exactly_preserved"
+        ],
+        "temporal_shuffle_lamina_source_energy_preserved": shuffle_input_energy[
+            "lamina_only_source_energy_exactly_preserved"
+        ],
+        "temporal_shuffle_energy_matched_control_verified": shuffle_input_energy[
+            "energy_matched_temporal_shuffle_control_verified"
+        ],
+        "equal_energy_temporal_selectivity_interpretation_authorized": (
+            shuffle_input_energy[
+                "equal_energy_temporal_selectivity_interpretation_authorized"
+            ]
+        ),
+        "new_energy_normalized_gate_authorized": shuffle_input_energy[
+            "authorize_new_energy_normalized_gate"
+        ],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -451,6 +472,18 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                     for update, result in item["by_brain_updates_per_frame"].items()
                 }
                 for name, item in lamina_only_replacement["candidate_results"].items()
+            },
+            "temporal_shuffle_input_energy_ratios_by_update": {
+                update: result["temporal_shuffle_to_ordered_energy_ratio"]
+                for update, result in shuffle_input_energy[
+                    "by_brain_updates_per_frame"
+                ].items()
+            },
+            "static_sham_input_energy_ratios_by_update": {
+                update: result["static_sham_to_ordered_energy_ratio"]
+                for update, result in shuffle_input_energy[
+                    "by_brain_updates_per_frame"
+                ].items()
             },
         },
         "gates": gates,

@@ -2021,6 +2021,13 @@ preactivation，移除 Tm leak/tanh、其他视觉输入、Tm/T4/T5 recurrent/fe
 说明去除原 source recurrent/leak dynamics 后仍不能区分有序运动与乱序帧跳变。方向评分继续
 未授权、未执行；该结构干预没有外部 state/gain 标定，不授权物理 transfer。证据见
 `artifacts/v7-t5-lamina-only-measured-kernel-replacement.json`。
+还需限制 temporal-shuffle 负结果的解释：它逐一保持 baseline 后的帧多重集，却不保持
+signed-frame-difference 输入空间的相邻转移能量。相对 ordered，像素时间差的平均绝对能量
+在 1/4-update 下均放大 `6.934` 倍，R1–R6 signed-frame-difference 均放大 `5.838` 倍；
+lamina-only Tm 正半波 preactivation 在 1-update 下放大 `4.710–4.908` 倍，在 4-update 下放大
+`5.127–5.158` 倍。因此现有输出比仍是更强输入扰动下的有效观察，但不能单独证明等能时序
+选择性失败。本审计没有事后发明能量归一化接受门，方向评分及所有下游门继续冻结。证据见
+`artifacts/v7-t5-temporal-shuffle-input-energy-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

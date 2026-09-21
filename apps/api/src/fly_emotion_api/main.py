@@ -546,6 +546,32 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_lamina_only_candidate_ratios_by_update": visual[
                     "T5_lamina_only_candidate_ratios_by_update"
                 ],
+                "T5_temporal_shuffle_frame_multiset_preserved": visual[
+                    "T5_temporal_shuffle_frame_multiset_preserved"
+                ],
+                "T5_temporal_shuffle_retinal_energy_preserved": visual[
+                    "T5_temporal_shuffle_retinal_energy_preserved"
+                ],
+                "T5_temporal_shuffle_lamina_source_energy_preserved": visual[
+                    "T5_temporal_shuffle_lamina_source_energy_preserved"
+                ],
+                "T5_temporal_shuffle_energy_matched_control_verified": visual[
+                    "T5_temporal_shuffle_energy_matched_control_verified"
+                ],
+                "T5_equal_energy_temporal_selectivity_interpretation_authorized": (
+                    visual[
+                        "T5_equal_energy_temporal_selectivity_interpretation_authorized"
+                    ]
+                ),
+                "T5_new_energy_normalized_gate_authorized": visual[
+                    "T5_new_energy_normalized_gate_authorized"
+                ],
+                "T5_temporal_shuffle_input_energy_ratios_by_update": visual[
+                    "T5_temporal_shuffle_input_energy_ratios_by_update"
+                ],
+                "T5_static_sham_input_energy_ratios_by_update": visual[
+                    "T5_static_sham_input_energy_ratios_by_update"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

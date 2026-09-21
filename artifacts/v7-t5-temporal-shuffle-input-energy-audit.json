@@ -1,0 +1,224 @@
+{
+  "protocol": {
+    "name": "v7-t5-temporal-shuffle-input-energy-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-temporal-shuffle-input-energy-audit.yaml": "79e0dc8a718a4cdb8ecbd3d24ca8dc4bb6f2b531a0ebcdb9518a381b263f4e1c",
+      "src/fly_emotion/driving/v7_t5_temporal_shuffle_input_energy_audit.py": "68fe777764ebe7bc440c82c8a7595e4df240a5b6f7ccaabfe9da03300c77ac88",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json": "112016edbeab5f14331e13d06734f70f37c8ec063f3bfab29ed3ce63ee0aaa76",
+      "src/fly_emotion/driving/v7_t5_lamina_only_measured_kernel_replacement.py": "b4d93195f1038341526d5e9216bc902af2d4bee9daf6b04b096e148af0f31d24",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count": 120,
+    "input_energy_metric": "mean_absolute_value_over_time_and_units",
+    "lamina_source_metric": "positive_half_wave_of_signed_target_normalized_preactivation",
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "frame_multiset_preserved_for_every_shuffle": true,
+  "by_brain_updates_per_frame": {
+    "1": {
+      "mean_absolute_energy_by_mode": {
+        "ordered": {
+          "pixel_temporal_difference": 0.007367284123789629,
+          "R1_R6_signed_frame_difference": 0.010758573583369386,
+          "lamina_only_Tm_preactivation": {
+            "Tm1": 0.0003811123855720624,
+            "Tm2": 0.00043495509296892845,
+            "Tm4": 0.00028225506381341254,
+            "Tm9": 0.00028829918157861494
+          }
+        },
+        "temporal_shuffle": {
+          "pixel_temporal_difference": 0.05108667791032819,
+          "R1_R6_signed_frame_difference": 0.06280547001683995,
+          "lamina_only_Tm_preactivation": {
+            "Tm1": 0.0018705121739163839,
+            "Tm2": 0.002133687547320059,
+            "Tm4": 0.0013838172091251424,
+            "Tm9": 0.0013579467815210734
+          }
+        },
+        "static_sham": {
+          "pixel_temporal_difference": 0.0024557614359181977,
+          "R1_R6_signed_frame_difference": 0.004911522828911231,
+          "lamina_only_Tm_preactivation": {
+            "Tm1": 0.00016694678889415428,
+            "Tm2": 0.00019046805531842996,
+            "Tm4": 0.00012322682927442513,
+            "Tm9": 0.00013095342754259178
+          }
+        }
+      },
+      "temporal_shuffle_to_ordered_energy_ratio": {
+        "pixel_temporal_difference": 6.93426194129865,
+        "R1_R6_signed_frame_difference": 5.837713478478663,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 4.908033023142721,
+          "Tm2": 4.905535265160078,
+          "Tm4": 4.902718804860586,
+          "Tm9": 4.710199918312225
+        }
+      },
+      "static_sham_to_ordered_energy_ratio": {
+        "pixel_temporal_difference": 0.3333333416568422,
+        "R1_R6_signed_frame_difference": 0.45652174898942627,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 0.4380513339747843,
+          "Tm2": 0.4379028051340378,
+          "Tm4": 0.43657969359191173,
+          "Tm9": 0.45422753830080753
+        }
+      },
+      "per_stimulus_ratio_summary": {
+        "pixel_temporal_difference": {
+          "minimum": 6.455555762904494,
+          "median": 6.919413839469284,
+          "maximum": 7.5629626584338165
+        },
+        "R1_R6_signed_frame_difference": {
+          "minimum": 5.447463687436531,
+          "median": 5.825609085896085,
+          "maximum": 6.350241448837428
+        },
+        "lamina_only_Tm1_preactivation": {
+          "minimum": 3.349179597509814,
+          "median": 5.234999885170688,
+          "maximum": 6.37090155648846
+        },
+        "lamina_only_Tm2_preactivation": {
+          "minimum": 3.353124823750091,
+          "median": 5.21994595102937,
+          "maximum": 6.37947303637431
+        },
+        "lamina_only_Tm4_preactivation": {
+          "minimum": 3.304819930995405,
+          "median": 5.225821892281807,
+          "maximum": 6.428826129205108
+        },
+        "lamina_only_Tm9_preactivation": {
+          "minimum": 3.3992818922516235,
+          "median": 4.819290155708202,
+          "maximum": 5.881614348889222
+        }
+      }
+    },
+    "4": {
+      "mean_absolute_energy_by_mode": {
+        "ordered": {
+          "pixel_temporal_difference": 0.007367284123789629,
+          "R1_R6_signed_frame_difference": 0.010758573583369386,
+          "lamina_only_Tm_preactivation": {
+            "Tm1": 0.00038624117358147466,
+            "Tm2": 0.00044090617836454126,
+            "Tm4": 0.00028615131284818335,
+            "Tm9": 0.0003001170795335053
+          }
+        },
+        "temporal_shuffle": {
+          "pixel_temporal_difference": 0.05108667791032819,
+          "R1_R6_signed_frame_difference": 0.06280547001683995,
+          "lamina_only_Tm_preactivation": {
+            "Tm1": 0.0019924087643024405,
+            "Tm2": 0.002272950332617365,
+            "Tm4": 0.001473367153693856,
+            "Tm9": 0.0015387984820213483
+          }
+        },
+        "static_sham": {
+          "pixel_temporal_difference": 0.0024557614359181977,
+          "R1_R6_signed_frame_difference": 0.004911522828911231,
+          "lamina_only_Tm_preactivation": {
+            "Tm1": 0.0001669468098978863,
+            "Tm2": 0.00019046816386327644,
+            "Tm4": 0.00012322683477530678,
+            "Tm9": 0.00013096569570768127
+          }
+        }
+      },
+      "temporal_shuffle_to_ordered_energy_ratio": {
+        "pixel_temporal_difference": 6.93426194129865,
+        "R1_R6_signed_frame_difference": 5.837713478478663,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 5.158457721706764,
+          "Tm2": 5.155179138220397,
+          "Tm4": 5.148909292181183,
+          "Tm9": 5.127327256460109
+        }
+      },
+      "static_sham_to_ordered_energy_ratio": {
+        "pixel_temporal_difference": 0.3333333416568422,
+        "R1_R6_signed_frame_difference": 0.45652174898942627,
+        "lamina_only_Tm_preactivation": {
+          "Tm1": 0.43223462778410937,
+          "Tm2": 0.43199250364279845,
+          "Tm4": 0.43063522424125444,
+          "Tm9": 0.4363820143500369
+        }
+      },
+      "per_stimulus_ratio_summary": {
+        "pixel_temporal_difference": {
+          "minimum": 6.455555762904494,
+          "median": 6.919413839469284,
+          "maximum": 7.5629626584338165
+        },
+        "R1_R6_signed_frame_difference": {
+          "minimum": 5.447463687436531,
+          "median": 5.825609085896085,
+          "maximum": 6.350241448837428
+        },
+        "lamina_only_Tm1_preactivation": {
+          "minimum": 3.3177437774679945,
+          "median": 5.54358895327582,
+          "maximum": 6.8672836769636225
+        },
+        "lamina_only_Tm2_preactivation": {
+          "minimum": 3.306293387081612,
+          "median": 5.530873807397265,
+          "maximum": 6.876342482774345
+        },
+        "lamina_only_Tm4_preactivation": {
+          "minimum": 3.2627536136096538,
+          "median": 5.525977459677417,
+          "maximum": 6.925688710602353
+        },
+        "lamina_only_Tm9_preactivation": {
+          "minimum": 3.3008450405106324,
+          "median": 5.447952229830717,
+          "maximum": 6.811416845947904
+        }
+      }
+    }
+  },
+  "retinal_temporal_energy_exactly_preserved": false,
+  "lamina_only_source_energy_exactly_preserved": false,
+  "temporal_shuffle_input_energy_amplified": true,
+  "energy_matched_temporal_shuffle_control_verified": false,
+  "existing_output_ratios_recomputed": false,
+  "existing_output_ratios_invalidated": false,
+  "equal_energy_temporal_selectivity_interpretation_authorized": false,
+  "authorize_new_energy_normalized_gate": false,
+  "authorize_T5_functional_precheck": false,
+  "direction_scoring_authorized": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "shuffle_preserves_frames_but_not_retinal_or_lamina_input_energy",
+  "boundary": {
+    "read_only_control_diagnostic": true,
+    "no_new_acceptance_threshold_defined": true,
+    "frame_multiset_preservation_is_not_transition_energy_matching": true,
+    "unequal_input_energy_does_not_invalidate_observed_output_ratios": true,
+    "unequal_input_energy_limits_temporal_selectivity_interpretation": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "direction_scoring_remains_frozen": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

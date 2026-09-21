@@ -176,6 +176,14 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_lamina_only_replacement_physical_transfer_authorized",
         "T5_lamina_only_source_coverage",
         "T5_lamina_only_candidate_ratios_by_update",
+        "T5_temporal_shuffle_frame_multiset_preserved",
+        "T5_temporal_shuffle_retinal_energy_preserved",
+        "T5_temporal_shuffle_lamina_source_energy_preserved",
+        "T5_temporal_shuffle_energy_matched_control_verified",
+        "T5_equal_energy_temporal_selectivity_interpretation_authorized",
+        "T5_new_energy_normalized_gate_authorized",
+        "T5_temporal_shuffle_input_energy_ratios_by_update",
+        "T5_static_sham_input_energy_ratios_by_update",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -775,6 +783,24 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
             "shuffle"
         ],
         1.6277322953083266,
+    )
+    assert visual["observations"]["T5_temporal_shuffle_frame_multiset_preserved"] is True
+    assert visual["observations"]["T5_temporal_shuffle_retinal_energy_preserved"] is False
+    assert visual["observations"]["T5_temporal_shuffle_lamina_source_energy_preserved"] is False
+    assert visual["observations"]["T5_temporal_shuffle_energy_matched_control_verified"] is False
+    assert (
+        visual["observations"][
+            "T5_equal_energy_temporal_selectivity_interpretation_authorized"
+        ]
+        is False
+    )
+    assert visual["observations"]["T5_new_energy_normalized_gate_authorized"] is False
+    input_ratios = visual["observations"]["T5_temporal_shuffle_input_energy_ratios_by_update"]
+    assert np.isclose(input_ratios["1"]["pixel_temporal_difference"], 6.93426194129865)
+    assert np.isclose(input_ratios["1"]["R1_R6_signed_frame_difference"], 5.837713478478663)
+    assert np.isclose(
+        input_ratios["4"]["lamina_only_Tm_preactivation"]["Tm9"],
+        5.127327256460109,
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

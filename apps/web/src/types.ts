@@ -189,6 +189,14 @@ export type V7Status = {
     T5_lamina_only_replacement_physical_transfer_authorized?: boolean;
     T5_lamina_only_source_coverage?: Record<string, { source_node_count: number; source_node_with_lamina_input_count: number; source_node_without_lamina_input_count: number; source_node_with_lamina_input_fraction: number }>;
     T5_lamina_only_candidate_ratios_by_update?: Record<string, Record<string, { shuffle: number; static: number }>>;
+    T5_temporal_shuffle_frame_multiset_preserved?: boolean;
+    T5_temporal_shuffle_retinal_energy_preserved?: boolean;
+    T5_temporal_shuffle_lamina_source_energy_preserved?: boolean;
+    T5_temporal_shuffle_energy_matched_control_verified?: boolean;
+    T5_equal_energy_temporal_selectivity_interpretation_authorized?: boolean;
+    T5_new_energy_normalized_gate_authorized?: boolean;
+    T5_temporal_shuffle_input_energy_ratios_by_update?: Record<string, { pixel_temporal_difference: number; R1_R6_signed_frame_difference: number; lamina_only_Tm_preactivation: Record<string, number> }>;
+    T5_static_sham_input_energy_ratios_by_update?: Record<string, { pixel_temporal_difference: number; R1_R6_signed_frame_difference: number; lamina_only_Tm_preactivation: Record<string, number> }>;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

@@ -411,6 +411,16 @@ shuffle at both one and four updates per frame (shuffle ratios 1.570–2.361). T
 the original recurrent/leak cascade is not sufficient to explain the failure; the
 isolated lamina-only replacement also fails to distinguish ordered motion from
 shuffled frame transitions. No direction scoring or physical transfer is authorized.
+The temporal-shuffle control preserves the post-baseline frame multiset exactly,
+but it is not energy matched in the signed-frame-difference input space. Relative
+to ordered motion, mean absolute pixel transition energy is 6.934 times larger and
+R1–R6 signed-frame-difference energy is 5.838 times larger at both tested update
+counts. Positive-half-wave lamina-only Tm preactivation energy is 4.710–4.908 times larger at one
+update per frame and 5.127–5.158 times larger at four. The observed output ratios
+remain valid under this stronger perturbation, but they do not by themselves
+establish failure of equal-energy temporal selectivity. No post-hoc
+energy-normalized acceptance gate is introduced, and all downstream gates remain
+closed (`artifacts/v7-t5-temporal-shuffle-input-energy-audit.json`).
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but
