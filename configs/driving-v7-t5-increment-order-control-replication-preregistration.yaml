@@ -1,0 +1,58 @@
+version: 1
+name: v7-t5-increment-order-control-replication-preregistration
+observed_on: "2026-09-21"
+frozen_discovery_commit: ef1a3a92dc06a6a23eecef58c1f6d0ab1627f0f7
+frozen_inputs:
+  - path: configs/driving-v7-t5-increment-order-control-discovery-audit.yaml
+    sha256: f7cba940466d8ac16187d35b8f050c6de2420f22be3952f1c9ee282c6ea582a6
+  - path: src/fly_emotion/driving/v7_t5_increment_order_control_discovery_audit.py
+    sha256: 9aa2613ec95cfb11e463438a5c99521ff7237ed9da1aceb109a88034b98fac75
+  - path: artifacts/v7-t5-increment-order-control-discovery-audit.json
+    sha256: 6d289abac121555b2456f21558c318b93c3174f9951cba50045efadbb4ec4866
+  - path: configs/driving-v7-t5-lamina-only-measured-kernel-replacement.yaml
+    sha256: cd2c7abf834496128ccb23125b022534dc6e129fc47d056cefc877405fadadbc
+  - path: configs/driving-v7-stage1-nested.yaml
+    sha256: 9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163
+  - path: configs/driving-v7-t4t5-local-edge-precheck.yaml
+    sha256: f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942
+discovery_condition_id: S1-T01
+replication_condition_ids: [S1-T02, S1-T03]
+expected_edge_speeds_pixels_per_frame:
+  S1-T02: 1.25
+  S1-T03: 2.25
+tested_brain_updates_per_frame: [1, 4]
+settle_frames: 10
+control:
+  seed: 20260920
+  preserve_initialization_increment: true
+  permutation_algorithm: numpy_PCG64_default_rng_permutation_of_indices_1_through_N_minus_1
+  reconstruct_images_from_baseline_and_permuted_increments: true
+input_validity:
+  require_images_within_unit_interval: true
+  terminal_frame_absolute_tolerance: 0.00000002
+  require_pixel_increment_multiset_preserved: true
+  require_R1_R6_drive_multiset_preserved: true
+  R1_R6_energy_ratio_absolute_tolerance: 0.000000000001
+candidate_order:
+  - summed_filtered_source_centroid_projection
+  - fast_pool_vs_Tm9_centroid_difference
+  - temporal_difference_filtered_Tm_pair_reichardt
+inherited_output_thresholds:
+  source: configs/driving-v7-t5-lamina-only-measured-kernel-replacement.yaml
+  maximum_control_to_ordered_residual_energy_ratio: 0.50
+  maximum_static_to_ordered_energy_ratio: 0.50
+replication_gate:
+  require_all_input_validity_checks_every_stimulus_condition_and_update: true
+  require_same_candidate_to_pass_both_output_thresholds_every_condition_and_update: true
+  do_not_pool_conditions_before_scoring: true
+  do_not_select_seed_candidate_or_threshold_after_observing_replication: true
+  direction_scoring_only_if_replication_gate_passes: true
+boundary:
+  preregistered_before_replication_outputs: true
+  discovery_condition_excluded_from_replication_gate: true
+  tuning_conditions_only: true
+  not_external_final_validation: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

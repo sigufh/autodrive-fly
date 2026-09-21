@@ -373,6 +373,9 @@ from .driving.v7_t5_direction_code_provenance_audit import (
 from .driving.v7_t5_increment_order_control_discovery_audit import (
     evaluate_v7_t5_increment_order_control_discovery_audit,
 )
+from .driving.v7_t5_increment_order_control_replication_preregistration import (
+    evaluate_v7_t5_increment_order_control_replication_preregistration,
+)
 from .driving.v7_t5_label_audit import evaluate_v7_t5_label_audit
 from .driving.v7_t5_lamina_only_measured_kernel_replacement import (
     evaluate_v7_t5_lamina_only_measured_kernel_replacement,
@@ -731,6 +734,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-tm2-loo-full-support")
     subparsers.add_parser("v7-audit-t5-temporal-shuffle-input-energy")
     subparsers.add_parser("v7-audit-t5-increment-order-control-discovery")
+    subparsers.add_parser("v7-freeze-t5-increment-order-control-replication")
     subparsers.add_parser("v7-audit-t5-ct1-terminal-axis")
     subparsers.add_parser("v7-calibrate-t5-ct1-axis")
     subparsers.add_parser("v7-audit-t5-ct1-crossfit-axis")
@@ -1526,6 +1530,18 @@ def main() -> None:
     if args.command == "v7-audit-t5-increment-order-control-discovery":
         report = evaluate_v7_t5_increment_order_control_discovery_audit(root)
         target = root / "artifacts/v7-t5-increment-order-control-discovery-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-freeze-t5-increment-order-control-replication":
+        report = evaluate_v7_t5_increment_order_control_replication_preregistration(
+            root
+        )
+        target = root / (
+            "artifacts/v7-t5-increment-order-control-replication-preregistration.json"
+        )
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
