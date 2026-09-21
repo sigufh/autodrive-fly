@@ -39,6 +39,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["measured_kernel_to_stimulus_frame_alignment_verified"] is True
     assert gates["measured_kernel_to_probe_solver_alignment_verified"] is False
     assert gates["measured_kernel_physical_source_dynamics_transfer_authorized"] is False
+    assert gates["measured_kernel_standard_substep_negative_result_reproduced"] is True
+    assert gates["measured_kernel_cross_substep_temporal_identifiability_passed"] is False
+    assert gates["measured_kernel_cross_substep_direction_scoring_performed"] is False
+    assert gates["measured_kernel_cross_substep_direction_scoring_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

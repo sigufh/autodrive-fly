@@ -1,0 +1,166 @@
+{
+  "protocol": {
+    "name": "v7-t5-measured-kernel-substep-sensitivity-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-measured-kernel-substep-sensitivity.yaml": "54f596de7981af82c8b42ad89f1c9755070c5b843dbbaa6a01d97074d6989f2a",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_substep_sensitivity.py": "54ef4a70dfc696382b0c8016c4ad51b6e1c48086630144bfacb7d642b01e12a4",
+      "artifacts/v7-t5-measured-kernel-identifiability.json": "25611865c51301ad34b112c16ea8a45c667c81649fc987b72bca571e9753d918",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
+      "configs/driving-v7-stimulus-coordinate-contract.yaml": "cead97148c55c6244b5b7926c382380cda72b40237e2c0d901f9f82791894162",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "src/fly_emotion/driving/v7_t5_typed_spatial_pair_precheck.py": "22a5fd7edea824dc2e65524e4732fd1bf923f373eb04bb751af8778011f9c8d3",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count_per_mode": 120,
+    "position_count": 15,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "timebase_sensitivity": {
+    "stimulus_frame_interval_milliseconds": 10.0,
+    "kernel_sample_interval_milliseconds": 10.0,
+    "tested_brain_updates_per_frame": [
+      1,
+      4
+    ],
+    "reference_diagnostic_updates_per_frame": 1,
+    "standard_offline_updates_per_frame": 4,
+    "solver_interval_biologically_calibrated": false
+  },
+  "fixed_target_denominator": 6719,
+  "valid_target_count": 6715,
+  "candidate_results": {
+    "summed_filtered_source_centroid_projection": {
+      "by_brain_updates_per_frame": {
+        "1": {
+          "formula": "axis_dot(sum_source_filtered_x,sum_source_filtered_y)/(sum_absolute_xy+1e-9)",
+          "ordered_mean_absolute_energy": 0.3469810390784979,
+          "static_mean_absolute_energy": 0.34684518496399397,
+          "ordered_minus_static_mean_absolute_energy": 0.0007784280894925625,
+          "shuffle_minus_static_mean_absolute_energy": 0.02452627580254505,
+          "shuffle_to_ordered_residual_energy_ratio": 31.50743933011604,
+          "static_to_ordered_energy_ratio": 0.9996084681893145,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "4": {
+          "ordered_mean_absolute_energy": 0.3912160686651655,
+          "static_mean_absolute_energy": 0.39115984239045654,
+          "ordered_minus_static_mean_absolute_energy": 0.001697862863773031,
+          "shuffle_minus_static_mean_absolute_energy": 0.00871940927817634,
+          "shuffle_to_ordered_residual_energy_ratio": 5.1355203439692785,
+          "static_to_ordered_energy_ratio": 0.9998562782073322,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        }
+      },
+      "passed_every_update_count": false
+    },
+    "fast_pool_vs_Tm9_centroid_difference": {
+      "by_brain_updates_per_frame": {
+        "1": {
+          "formula": "axis_dot(fast_x*Tm9_mass-fast_mass*Tm9_x,fast_y*Tm9_mass-fast_mass*Tm9_y)/(sum_absolute_terms+1e-9)",
+          "ordered_mean_absolute_energy": 0.0009869651008185538,
+          "static_mean_absolute_energy": 0.001084934543917499,
+          "ordered_minus_static_mean_absolute_energy": 0.00037665788937711115,
+          "shuffle_minus_static_mean_absolute_energy": 0.0009632947541991355,
+          "shuffle_to_ordered_residual_energy_ratio": 2.557479297173785,
+          "static_to_ordered_energy_ratio": 1.0992633306058064,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "4": {
+          "ordered_mean_absolute_energy": 0.001724955498759629,
+          "static_mean_absolute_energy": 0.001600336354981638,
+          "ordered_minus_static_mean_absolute_energy": 0.0006515726444975151,
+          "shuffle_minus_static_mean_absolute_energy": 0.0015777748289257712,
+          "shuffle_to_ordered_residual_energy_ratio": 2.421487215968884,
+          "static_to_ordered_energy_ratio": 0.9277551543401545,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        }
+      },
+      "passed_every_update_count": false
+    },
+    "temporal_difference_filtered_Tm_pair_reichardt": {
+      "by_brain_updates_per_frame": {
+        "1": {
+          "formula": "first_difference(axis_dot(reichardt(Tm2,Tm9,x),reichardt(Tm9,Tm1,y)))",
+          "ordered_mean_absolute_energy": 0.00031495735663233807,
+          "static_mean_absolute_energy": 0.0003137860740508106,
+          "ordered_minus_static_mean_absolute_energy": 0.00019770821738288475,
+          "shuffle_minus_static_mean_absolute_energy": 0.00037985312852146613,
+          "shuffle_to_ordered_residual_energy_ratio": 1.9212814396370625,
+          "static_to_ordered_energy_ratio": 0.9962811391546738,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "4": {
+          "ordered_mean_absolute_energy": 0.0006303194081065275,
+          "static_mean_absolute_energy": 0.0006153559103441144,
+          "ordered_minus_static_mean_absolute_energy": 0.0003669648504082141,
+          "shuffle_minus_static_mean_absolute_energy": 0.0007900569906943837,
+          "shuffle_to_ordered_residual_energy_ratio": 2.1529500436227584,
+          "static_to_ordered_energy_ratio": 0.9762604521295588,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        }
+      },
+      "passed_every_update_count": false
+    }
+  },
+  "standard_substep_negative_result_reproduced": true,
+  "cross_substep_temporal_identifiability_passed": false,
+  "direction_scoring_authorized": false,
+  "direction_scoring_performed": false,
+  "authorize_T5_functional_precheck": false,
+  "authorize_physical_source_dynamics_transfer": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "no_measured_kernel_candidate_passed_both_substep_resolutions",
+  "boundary": {
+    "tuning_only": true,
+    "numerical_substep_sensitivity_only": true,
+    "does_not_calibrate_probe_solver_interval": true,
+    "does_not_establish_external_recording_to_solver_alignment": true,
+    "source_activity_driven_only_from_R1_R6_propagation": true,
+    "subtype_and_direction_labels_not_read_by_dynamics": true,
+    "target_activity_injection": false,
+    "parameter_fit": false,
+    "calibration_evaluated": false,
+    "final_evaluated": false,
+    "runtime_modified": false,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

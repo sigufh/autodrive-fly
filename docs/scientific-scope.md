@@ -326,6 +326,12 @@ discrete sampling alignment only: the diagnostic probe performs one brain update
 per frame, but that update has no independently calibrated biological solver
 interval. External-recording-to-probe-solver alignment and physical source-dynamics
 transfer therefore remain unauthorized.
+The same three candidates and 120-stimulus control battery were repeated with
+the standard offline four brain updates per frame. Their shuffle/static ratios
+were 5.136/0.9999, 2.421/0.9278, and 2.153/0.9763, respectively. All three
+therefore remained negative, and no candidate passed at both one and four updates
+per frame. Direction scoring remained stopped; this numerical-resolution check
+does not convert update counts into a biologically calibrated solver interval.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

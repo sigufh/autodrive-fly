@@ -72,6 +72,10 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         boundaries["T5_millivolts_or_filter_output_to_state_mapping_available"]
         is False
     )
+    assert (
+        boundaries["T5_measured_kernel_cross_substep_direction_scoring_authorized"]
+        is False
+    )
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0
@@ -200,6 +204,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_measured_kernel_frame_alignment_verified"] is True
     assert boundaries["T5_measured_kernel_probe_solver_alignment_verified"] is False
     assert boundaries["T5_measured_kernel_physical_transfer_authorized"] is False
+    assert boundaries["T5_measured_kernel_standard_substep_negative_reproduced"] is True
+    assert boundaries["T5_measured_kernel_cross_substep_identifiability_passed"] is False
+    assert (
+        boundaries["T5_measured_kernel_cross_substep_direction_scoring_performed"]
+        is False
+    )
     assert boundaries["T5_transfer_synthesis_CT1_complete"] is False
     assert boundaries["T5_transfer_synthesis_ready"] is False
     assert boundaries["v7_offline_horizontal_coordinate_contract_complete"] is True

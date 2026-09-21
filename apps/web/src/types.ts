@@ -121,6 +121,10 @@ export type V7Status = {
     T5_measured_kernel_frame_alignment_verified?: boolean;
     T5_measured_kernel_probe_solver_alignment_verified?: boolean;
     T5_measured_kernel_physical_transfer_authorized?: boolean;
+    T5_measured_kernel_standard_substep_negative_reproduced?: boolean;
+    T5_measured_kernel_cross_substep_identifiability_passed?: boolean;
+    T5_measured_kernel_cross_substep_direction_scoring_performed?: boolean;
+    T5_measured_kernel_cross_substep_direction_scoring_authorized?: boolean;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

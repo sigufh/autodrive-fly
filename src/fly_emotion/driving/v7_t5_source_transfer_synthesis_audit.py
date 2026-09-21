@@ -35,6 +35,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     model_identity = evidence["figure6_model_identity"]
     axolotl_availability = evidence["axolotl_availability"]
     measured_kernel = evidence["measured_kernel_identifiability"]
+    measured_kernel_substeps = evidence["measured_kernel_substep_sensitivity"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -124,6 +125,20 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_physical_source_dynamics_transfer_authorized": measured_kernel[
             "authorize_physical_source_dynamics_transfer"
         ],
+        "measured_kernel_standard_substep_negative_result_reproduced": (
+            measured_kernel_substeps["standard_substep_negative_result_reproduced"]
+        ),
+        "measured_kernel_cross_substep_temporal_identifiability_passed": (
+            measured_kernel_substeps[
+                "cross_substep_temporal_identifiability_passed"
+            ]
+        ),
+        "measured_kernel_cross_substep_direction_scoring_performed": (
+            measured_kernel_substeps["direction_scoring_performed"]
+        ),
+        "measured_kernel_cross_substep_direction_scoring_authorized": (
+            measured_kernel_substeps["direction_scoring_authorized"]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],

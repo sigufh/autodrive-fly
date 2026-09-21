@@ -1,0 +1,30 @@
+version: 1
+name: v7-t5-measured-kernel-substep-sensitivity-audit
+observed_on: "2026-09-21"
+reference_evidence: artifacts/v7-t5-measured-kernel-identifiability.json
+reference_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+reference_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py
+v7_contract: configs/driving-v7.yaml
+tested_brain_updates_per_frame: [1, 4]
+reference_brain_updates_per_frame: 1
+standard_offline_brain_updates_per_frame: 4
+required_candidate_order:
+  - summed_filtered_source_centroid_projection
+  - fast_pool_vs_Tm9_centroid_difference
+  - temporal_difference_filtered_Tm_pair_reichardt
+cross_substep_gate:
+  require_same_candidate_to_pass_every_update_count: true
+  evaluate_direction_only_after_cross_substep_temporal_identifiability: true
+boundary:
+  tuning_only: true
+  numerical_substep_sensitivity_only: true
+  does_not_calibrate_probe_solver_interval: true
+  does_not_establish_external_recording_to_solver_alignment: true
+  source_activity_driven_only_from_R1_R6_propagation: true
+  subtype_and_direction_labels_not_read_by_dynamics: true
+  target_activity_injection: false
+  parameter_fit: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

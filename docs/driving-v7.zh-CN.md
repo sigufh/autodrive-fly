@@ -1943,7 +1943,13 @@ shuffle/ordered residual 比为 31.507、static/ordered 为 0.9996；显式 fast
 建立 kernel 与刺激帧的离散采样对齐。诊断 probe 每帧执行一次 brain update，但该 update
 没有独立、经生物校准的 solver interval，因此不宣称 external recording 已与 probe solver
 对齐，也不授权物理 source dynamics transfer。
+另以标准离线 `4 updates/frame` 复算同一三个候选、同一 120 条刺激及同一控制门：
+sum centroid 的 shuffle/static 比为 `5.136/0.9999`，fast-vs-Tm9 centroid 为
+`2.421/0.9278`，Reichardt 时间差分为 `2.153/0.9763`。三个候选在标准更新数下仍
+全部失败，也没有候选能同时通过 1/4-update 门，因此该负结果不是单次 brain update
+特有的数值现象；方向评分继续不执行。此敏感性检查仍不把 update 次数解释为生物 solver。
 证据见 `artifacts/v7-t5-measured-kernel-identifiability.json`。
+数值分辨率证据见 `artifacts/v7-t5-measured-kernel-substep-sensitivity.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

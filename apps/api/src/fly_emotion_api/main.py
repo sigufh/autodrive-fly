@@ -344,6 +344,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_measured_kernel_physical_transfer_authorized": visual[
                     "T5_measured_kernel_physical_transfer_authorized"
                 ],
+                "T5_measured_kernel_standard_substep_negative_reproduced": visual[
+                    "T5_measured_kernel_standard_substep_negative_reproduced"
+                ],
+                "T5_measured_kernel_cross_substep_identifiability_passed": visual[
+                    "T5_measured_kernel_cross_substep_identifiability_passed"
+                ],
+                "T5_measured_kernel_cross_substep_direction_scoring_performed": visual[
+                    "T5_measured_kernel_cross_substep_direction_scoring_performed"
+                ],
+                "T5_measured_kernel_cross_substep_direction_scoring_authorized": visual[
+                    "T5_measured_kernel_cross_substep_direction_scoring_authorized"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],
