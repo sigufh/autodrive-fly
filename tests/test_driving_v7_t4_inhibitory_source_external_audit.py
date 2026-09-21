@@ -57,6 +57,16 @@ def test_gonzalez_suarez_Mi4_filter_is_independent_calcium_type_average() -> Non
     assert evidence["individual_cell_axis_available"] is False
     assert evidence["Mi4_experimental_membrane_voltage_available"] is False
     assert evidence["C3_source_dynamics_available"] is False
+    indexes = json.loads(REPORT.read_text())["additional_Mi4_evidence"][
+        "Strother_2018_public_indexes"
+    ]
+    assert indexes["PMC_attachment_inventory"] == {
+        "supplementary_PDF_count": 1,
+        "video_count": 1,
+        "numeric_data_attachment_count": 0,
+    }
+    assert indexes["local_numeric_Mi4_trace_payload_found"] is False
+    assert indexes["global_absence_claimed"] is False
 
 
 def test_yuan_C3_is_intervention_evidence_not_direct_source_recording() -> None:

@@ -600,6 +600,12 @@ full text or linked repository, and the publisher full-text and Fig. S1-S8 URLs
 currently return access-challenge pages. The inaccessible material is not treated
 as absent, but the available evidence cannot establish a direct C3 recording or
 numeric C3 source-dynamics payload (`artifacts/v7-yuan-c3-candidate-audit.json`).
+The later public-index check for Strother et al. 2018 found no DOI- or exact-title-
+linked numeric Mi4 trace in successful Crossref, DataCite, Zenodo, or GitHub
+queries. PMC still lists one supplementary PDF and one video, while the Figshare
+search endpoint returned HTTP 403 and is explicitly uninterpretable. This is a
+bounded index result, not a global absence claim
+(`artifacts/v7-strother-mi4-public-index-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

@@ -284,6 +284,9 @@ from .driving.v7_stage1_split import evaluate_v7_stage1_split
 from .driving.v7_stimulus_coordinate_contract import (
     evaluate_v7_stimulus_coordinate_contract,
 )
+from .driving.v7_strother_mi4_public_index_audit import (
+    evaluate_v7_strother_mi4_public_index_audit,
+)
 from .driving.v7_synapse_axis_calibration import evaluate_v7_synapse_axis_calibration
 from .driving.v7_synapse_spatial_audit import evaluate_v7_synapse_spatial_audit
 from .driving.v7_synchronous import evaluate_v7_synchronous_update
@@ -686,6 +689,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-ketkar-2019-source-data-attachments")
     subparsers.add_parser("v7-audit-gonzalez-suarez-mi4-evidence")
     subparsers.add_parser("v7-audit-yuan-c3-candidate")
+    subparsers.add_parser("v7-audit-strother-mi4-public-indexes")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
@@ -1988,6 +1992,14 @@ def main() -> None:
     if args.command == "v7-audit-yuan-c3-candidate":
         report = evaluate_v7_yuan_c3_candidate_audit(root)
         target = root / "artifacts/v7-yuan-c3-candidate-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-strother-mi4-public-indexes":
+        report = evaluate_v7_strother_mi4_public_index_audit(root)
+        target = root / "artifacts/v7-strother-mi4-public-index-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

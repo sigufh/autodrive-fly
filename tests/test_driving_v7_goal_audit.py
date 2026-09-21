@@ -244,6 +244,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Yuan_2020_C3_direct_recording_verified",
         "Yuan_2020_C3_numeric_source_dynamics_verified",
         "Yuan_2020_supplement_retrieved",
+        "Strother_2018_successful_index_Mi4_trace_found",
+        "Strother_2018_Figshare_search_interpretable",
+        "Strother_2018_global_absence_claimed",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1047,6 +1050,9 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Yuan_2020_C3_direct_recording_verified"] is False
     assert visual["observations"]["Yuan_2020_C3_numeric_source_dynamics_verified"] is False
     assert visual["observations"]["Yuan_2020_supplement_retrieved"] is False
+    assert visual["observations"]["Strother_2018_successful_index_Mi4_trace_found"] is False
+    assert visual["observations"]["Strother_2018_Figshare_search_interpretable"] is False
+    assert visual["observations"]["Strother_2018_global_absence_claimed"] is False
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

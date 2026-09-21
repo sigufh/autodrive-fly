@@ -1,4 +1,4 @@
-version: 4
+version: 5
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
 observed_on: "2026-09-21"
 required_sources: [Mi4, C3]
@@ -10,6 +10,7 @@ reference_document:
 evidence:
   groschner_T4_identity: artifacts/v7-t4-source-identity-readiness-audit.json
   strother_Mi4: artifacts/v7-t4-inhibitory-source-external-audit.json
+  strother_Mi4_public_indexes: artifacts/v7-strother-mi4-public-index-audit.json
   henning_C3: artifacts/v7-c3-strf-source-dynamics-audit.json
   kohn_portes_T5: artifacts/v7-kohn-portes-t5-ephys-audit.json
   gruntman_T4_T5: artifacts/v7-t5-data-audit.json

@@ -124,6 +124,11 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert c3_components["Yuan_2020_C3_intervention_candidate_verified"] is True
     assert c3_components["Yuan_2020_C3_direct_recording_candidate_verified"] is False
     assert c3_components["Yuan_2020_C3_public_numeric_source_dynamics_verified"] is False
+    assert mi4_components[
+        "Strother_2018_successful_public_indexes_numeric_Mi4_trace_found"
+    ] is False
+    assert mi4_components["Strother_2018_Figshare_search_interpretable"] is False
+    assert mi4_components["Strother_2018_global_absence_claimed"] is False
     for source in ("Mi1", "Tm3"):
         assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
         assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][

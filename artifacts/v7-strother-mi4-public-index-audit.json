@@ -1,0 +1,73 @@
+{
+  "protocol": {
+    "name": "v7-strother-mi4-public-index-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-strother-mi4-public-index-audit.yaml": "ccbb472970f012da860c5b378ec630e474aeb961fc05297c71eb955bbebe2476",
+      "src/fly_emotion/driving/v7_strother_mi4_public_index_audit.py": "02822e33a261f10d634c042634f67a3b3b187f6a8752c357b7c3498913aaf826"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/crossref-work.json": "5556196d1d558b9177fe8c00e23e6d526e4163cc558a377c48917fc9b565c27f",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/europepmc-search.json": "07be29573616c368aa0b100fce3f5db3eb669fc6ac3bbf49d2b78ae2b1b34618",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/openalex-work.json": "89d73b3ea6191ea42efeae038878db5fb0be8aff3c9cbaa6c0873000a61674b2",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/semanticscholar-work.json": "7ffc89ef9d5f4aa3fb3ee5c8198ffbb7296ce5ea9bc667119b40060e08984cbd",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/datacite-related.json": "ca6676bd6bc5e94461654c08e3880a3b9a373e7be2c2aea3f1b23f2beefd9a76",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/datacite-title.json": "bc803bc42933e14b6f12004006436fb4bc4b98606e2c4cf6f68058abf1a7f389",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/zenodo-doi-search.json": "ba1be535d36df5f15c4a59f284665d84621322305c10f033422e1d9c85c9ed57",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/zenodo-title-search.json": "6e5263959d8a463020fce23f664bd63d3e13ccbb3b72976fb97f482a3b46fe2d",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/github-doi-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/github-title-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/figshare-doi-search-response.html": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "data/raw/t4-inhibitory-source-external/PMC5776785.html": "2d1f4cbc18f4f9fa96ac0b105f20ec2376bea4140649e602a1d4b031666f302c"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
+    "doi": "10.1073/pnas.1703090115",
+    "pmid": 29255026,
+    "pmcid": "PMC5776785"
+  },
+  "audited_indexes": {
+    "Crossref_relation_count": 0,
+    "Crossref_numeric_data_links": [],
+    "Europe_PMC_has_supplement": true,
+    "Europe_PMC_has_database_cross_references": false,
+    "OpenAlex_repository_fulltext_available": true,
+    "Semantic_Scholar_open_access_location_is_article": true,
+    "DataCite_related_result_count": 0,
+    "DataCite_exact_title_result_count": 0,
+    "Zenodo_exact_DOI_result_count": 0,
+    "Zenodo_exact_title_result_count": 0,
+    "GitHub_exact_DOI_repository_count": 0,
+    "GitHub_exact_title_repository_count": 0,
+    "Figshare_search_status": 403,
+    "Figshare_search_interpretable": false
+  },
+  "PMC_attachment_inventory": {
+    "supplementary_PDF_count": 1,
+    "video_count": 1,
+    "numeric_data_attachment_count": 0
+  },
+  "Mi4_measurement_modality": "deltaF_over_F",
+  "local_numeric_Mi4_trace_payload_found_in_successful_indexes": false,
+  "global_absence_claimed": false,
+  "authorize_Mi4_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "successful_indexes_expose_no_linked_Mi4_trace_while_Figshare_is_inaccessible",
+  "boundary": {
+    "successful_zero_results_and_inaccessible_indexes_are_separate": true,
+    "indexed_article_or_supplement_metadata_is_not_a_numeric_trace_payload": true,
+    "figshare_403_is_not_proof_of_absence": true,
+    "bounded_index_audit_not_global_nonexistence": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

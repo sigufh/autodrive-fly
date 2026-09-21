@@ -166,6 +166,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "Yuan_2020_supplement_retrieved": visual[
                     "Yuan_2020_supplement_retrieved"
                 ],
+                "Strother_2018_successful_index_Mi4_trace_found": visual[
+                    "Strother_2018_successful_index_Mi4_trace_found"
+                ],
+                "Strother_2018_Figshare_search_interpretable": visual[
+                    "Strother_2018_Figshare_search_interpretable"
+                ],
+                "Strother_2018_global_absence_claimed": visual[
+                    "Strother_2018_global_absence_claimed"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

@@ -39,6 +39,7 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
         "independent_biological_study_from_reference_cohort"
     ] is False
     assert matrix["Strother_2018"]["response_unit"] == "deltaF_over_F"
+    assert matrix["Strother_2018"]["public_numeric_payload"] is False
     assert matrix["Henning_2025"]["response_unit"] == (
         "stimulus_response_correlation"
     )

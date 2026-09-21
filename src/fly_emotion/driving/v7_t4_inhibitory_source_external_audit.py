@@ -64,10 +64,17 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
         for name, path in additional_mi4_paths.items()
     }
     gonzalez_suarez = additional_mi4["Gonzalez_Suarez_2022"]
+    strother_indexes = additional_mi4["Strother_2018_public_indexes"]
     if not gonzalez_suarez["independent_Mi4_calcium_type_average_available"]:
         raise ValueError("Gonzalez-Suarez Mi4 calcium evidence changed")
     if gonzalez_suarez["independent_Mi4_experimental_membrane_voltage_available"]:
         raise ValueError("Gonzalez-Suarez Mi4 voltage boundary changed")
+    if strother_indexes["global_absence_claimed"]:
+        raise ValueError("Strother public-index scope boundary changed")
+    if strother_indexes[
+        "local_numeric_Mi4_trace_payload_found_in_successful_indexes"
+    ]:
+        raise ValueError("Strother indexes gained an unreviewed Mi4 payload")
     additional_c3_paths = {
         name: Path(path) for name, path in config["additional_C3_evidence"].items()
     }
@@ -189,7 +196,19 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
                 "C3_source_dynamics_available": gonzalez_suarez[
                     "independent_C3_source_dynamics_available"
                 ],
-            }
+            },
+            "Strother_2018_public_indexes": {
+                "audited_indexes": strother_indexes["audited_indexes"],
+                "PMC_attachment_inventory": strother_indexes[
+                    "PMC_attachment_inventory"
+                ],
+                "local_numeric_Mi4_trace_payload_found": strother_indexes[
+                    "local_numeric_Mi4_trace_payload_found_in_successful_indexes"
+                ],
+                "global_absence_claimed": strother_indexes[
+                    "global_absence_claimed"
+                ],
+            },
         },
         "additional_C3_evidence": {
             "Yuan_2020": {

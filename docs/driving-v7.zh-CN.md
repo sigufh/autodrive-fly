@@ -2290,7 +2290,12 @@ GCaMP6f/6s ΔF/F；作者还明确指出 Mi4 时程受慢钙指示器与 Chrimso
 C3 则已有本地 STRF 数值和 8-fly source / 22-fly 独立 flash cohort，均值相关约 0.973，
 但单位为 stimulus-response correlation 且固定 bootstrap p05 仅 0.107。因此 Mi4/C3 都有
 独立生理证据，却都没有同时满足允许单位和固定稳健性门；不能据此替换 Fig.3 电压核或推进
-功能拟合。证据见 `artifacts/v7-t4-inhibitory-source-external-audit.json`。
+功能拟合。证据见 `artifacts/v7-t4-inhibitory-source-external-audit.json`。对 Strother
+2018 的后续公开索引还做了独立审计：Crossref、DataCite、Zenodo 与 GitHub 的成功
+DOI/精确标题查询均未链接 Mi4 数值 trace，PMC 仍只列 1 个补充 PDF 和 1 个视频；
+Figshare 查询返回 403，故明确标记为不可解释，而不是缺失证明。该结果只说明已成功
+审计的索引没有命中，仍不作全球不存在声明。证据见
+`artifacts/v7-strother-mi4-public-index-audit.json`。
 
 进一步把最相关的 whole-cell 候选按 target neuron、测量模态、响应单位、数值载荷与
 cohort 独立性做成固定矩阵。八组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4

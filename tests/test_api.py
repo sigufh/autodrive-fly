@@ -65,6 +65,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Yuan_2020_C3_direct_recording_verified"] is False
     assert boundaries["Yuan_2020_C3_numeric_source_dynamics_verified"] is False
     assert boundaries["Yuan_2020_supplement_retrieved"] is False
+    assert boundaries["Strother_2018_successful_index_Mi4_trace_found"] is False
+    assert boundaries["Strother_2018_Figshare_search_interpretable"] is False
+    assert boundaries["Strother_2018_global_absence_claimed"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

@@ -1,4 +1,4 @@
-version: 4
+version: 5
 name: v7-t4-inhibitory-source-external-audit
 observed_on: "2026-09-21"
 required_contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -25,6 +25,7 @@ attachment_evidence:
   Molina_Obando_2019: artifacts/v7-ketkar-2019-source-data-attachment-audit.json
 additional_Mi4_evidence:
   Gonzalez_Suarez_2022: artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json
+  Strother_2018_public_indexes: artifacts/v7-strother-mi4-public-index-audit.json
 additional_C3_evidence:
   Yuan_2020: artifacts/v7-yuan-c3-candidate-audit.json
 boundary:
@@ -34,6 +35,7 @@ boundary:
   C3_mean_correlation_does_not_override_fixed_bootstrap_p05: true
   mean_SEM_Mi1_Tm3_GCaMP_tables_do_not_supply_Mi4_or_C3_dynamics: true
   type_average_Mi4_GCaMP_filter_is_not_individual_membrane_voltage: true
+  public_index_zero_results_do_not_prove_global_absence: true
   C3_intervention_is_not_direct_C3_source_recording: true
   no_curve_digitization: true
   no_threshold_or_label_change: true

@@ -133,6 +133,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "gonzalez_suarez_mi4_evidence_audit"
     ]
     yuan_c3_candidate_audit = reports["yuan_c3_candidate_audit"]
+    strother_mi4_public_index_audit = reports["strother_mi4_public_index_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -395,6 +396,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["ketkar_2019_source_data_attachment_audit"],
                 config["evidence"]["gonzalez_suarez_mi4_evidence_audit"],
                 config["evidence"]["yuan_c3_candidate_audit"],
+                config["evidence"]["strother_mi4_public_index_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1626,6 +1628,19 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     yuan_c3_candidate_audit["open_access_status"][
                         "publisher_fulltext_and_supplement_retrieved"
                     ]
+                ),
+                "Strother_2018_successful_index_Mi4_trace_found": (
+                    strother_mi4_public_index_audit[
+                        "local_numeric_Mi4_trace_payload_found_in_successful_indexes"
+                    ]
+                ),
+                "Strother_2018_Figshare_search_interpretable": (
+                    strother_mi4_public_index_audit["audited_indexes"][
+                        "Figshare_search_interpretable"
+                    ]
+                ),
+                "Strother_2018_global_absence_claimed": (
+                    strother_mi4_public_index_audit["global_absence_claimed"]
                 ),
                 "source_dynamics_external_contract_satisfied": (
                     source_dynamics_external_evidence_contract["contract_satisfied"]
@@ -3947,6 +3962,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Yuan_2020_C3_direct_recording_verified",
                     "Yuan_2020_C3_numeric_source_dynamics_verified",
                     "Yuan_2020_supplement_retrieved",
+                    "Strother_2018_successful_index_Mi4_trace_found",
+                    "Strother_2018_Figshare_search_interpretable",
+                    "Strother_2018_global_absence_claimed",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

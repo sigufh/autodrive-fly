@@ -61,6 +61,9 @@ export type V7Status = {
     Yuan_2020_C3_direct_recording_verified?: boolean;
     Yuan_2020_C3_numeric_source_dynamics_verified?: boolean;
     Yuan_2020_supplement_retrieved?: boolean;
+    Strother_2018_successful_index_Mi4_trace_found?: boolean;
+    Strother_2018_Figshare_search_interpretable?: boolean;
+    Strother_2018_global_absence_claimed?: boolean;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
     T5_voltage_derived_kernel_sources: string[];
     T5_voltage_derived_kernel_record_count: number;

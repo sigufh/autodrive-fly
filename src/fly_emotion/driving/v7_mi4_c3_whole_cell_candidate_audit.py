@@ -59,10 +59,17 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
         raise ValueError("Groschner source voltage unit boundary changed")
 
     strother = evidence["strother_Mi4"]["source_evidence"]["Mi4"]
+    strother_indexes = evidence["strother_Mi4_public_indexes"]
     if strother["measurement"]["response_unit"] != "deltaF_over_F":
         raise ValueError("Strother Mi4 modality changed")
     if strother["local_numeric_payload_verified"]:
         raise ValueError("Strother Mi4 numeric-payload boundary changed")
+    if strother_indexes[
+        "local_numeric_Mi4_trace_payload_found_in_successful_indexes"
+    ]:
+        raise ValueError("Strother public indexes gained an unreviewed payload")
+    if strother_indexes["global_absence_claimed"]:
+        raise ValueError("Strother public-index scope boundary changed")
 
     henning = evidence["henning_C3"]
     if henning["C3_dataset"]["STRF_units"] != "stimulus_response_correlation":
