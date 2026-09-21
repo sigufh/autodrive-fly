@@ -22,6 +22,7 @@ evidence:
   measured_kernel_source_input_decomposition: artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json
   lamina_only_measured_kernel_replacement: artifacts/v7-t5-lamina-only-measured-kernel-replacement.json
   temporal_shuffle_input_energy: artifacts/v7-t5-temporal-shuffle-input-energy-audit.json
+  increment_order_control_discovery: artifacts/v7-t5-increment-order-control-discovery-audit.json
   connectome_weights: artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json
   moving_bar_generalization: artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json
   source_mapping: artifacts/v7-t5-source-mapping-scope-audit.json

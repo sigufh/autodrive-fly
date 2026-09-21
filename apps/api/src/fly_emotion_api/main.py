@@ -572,6 +572,33 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_static_sham_input_energy_ratios_by_update": visual[
                     "T5_static_sham_input_energy_ratios_by_update"
                 ],
+                "T5_increment_order_control_images_valid": visual[
+                    "T5_increment_order_control_images_valid"
+                ],
+                "T5_increment_order_control_terminal_frame_preserved": visual[
+                    "T5_increment_order_control_terminal_frame_preserved"
+                ],
+                "T5_increment_order_control_R1_R6_drive_multiset_preserved": visual[
+                    "T5_increment_order_control_R1_R6_drive_multiset_preserved"
+                ],
+                "T5_increment_order_control_R1_R6_energy_matched": visual[
+                    "T5_increment_order_control_R1_R6_energy_matched"
+                ],
+                "T5_increment_order_control_independent_condition_evaluated": visual[
+                    "T5_increment_order_control_independent_condition_evaluated"
+                ],
+                "T5_increment_order_control_replacement_authorized": visual[
+                    "T5_increment_order_control_replacement_authorized"
+                ],
+                "T5_increment_order_control_R1_R6_energy_ratio_summary": visual[
+                    "T5_increment_order_control_R1_R6_energy_ratio_summary"
+                ],
+                "T5_increment_order_control_lamina_energy_ratios_by_update": visual[
+                    "T5_increment_order_control_lamina_energy_ratios_by_update"
+                ],
+                "T5_increment_order_control_output_ratios_by_update": visual[
+                    "T5_increment_order_control_output_ratios_by_update"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

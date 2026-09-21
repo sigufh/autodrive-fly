@@ -1077,6 +1077,51 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "static_sham_input_energy_ratios_by_update"
                     ]
                 ),
+                "T5_increment_order_control_images_valid": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_control_images_valid"
+                    ]
+                ),
+                "T5_increment_order_control_terminal_frame_preserved": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_control_terminal_frame_preserved"
+                    ]
+                ),
+                "T5_increment_order_control_R1_R6_drive_multiset_preserved": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_control_R1_R6_drive_multiset_preserved"
+                    ]
+                ),
+                "T5_increment_order_control_R1_R6_energy_matched": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_control_R1_R6_energy_matched"
+                    ]
+                ),
+                "T5_increment_order_control_independent_condition_evaluated": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_control_independent_condition_evaluated"
+                    ]
+                ),
+                "T5_increment_order_control_replacement_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "increment_order_control_replacement_authorized"
+                    ]
+                ),
+                "T5_increment_order_control_R1_R6_energy_ratio_summary": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "increment_order_control_R1_R6_energy_ratio_summary"
+                    ]
+                ),
+                "T5_increment_order_control_lamina_energy_ratios_by_update": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "increment_order_control_lamina_energy_ratios_by_update"
+                    ]
+                ),
+                "T5_increment_order_control_output_ratios_by_update": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "increment_order_control_output_ratios_by_update"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3598,6 +3643,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_new_energy_normalized_gate_authorized",
                     "T5_temporal_shuffle_input_energy_ratios_by_update",
                     "T5_static_sham_input_energy_ratios_by_update",
+                    "T5_increment_order_control_images_valid",
+                    "T5_increment_order_control_terminal_frame_preserved",
+                    "T5_increment_order_control_R1_R6_drive_multiset_preserved",
+                    "T5_increment_order_control_R1_R6_energy_matched",
+                    "T5_increment_order_control_independent_condition_evaluated",
+                    "T5_increment_order_control_replacement_authorized",
+                    "T5_increment_order_control_R1_R6_energy_ratio_summary",
+                    "T5_increment_order_control_lamina_energy_ratios_by_update",
+                    "T5_increment_order_control_output_ratios_by_update",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

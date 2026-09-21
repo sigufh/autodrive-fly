@@ -421,6 +421,18 @@ remain valid under this stronger perturbation, but they do not by themselves
 establish failure of equal-energy temporal selectivity. No post-hoc
 energy-normalized acceptance gate is introduced, and all downstream gates remain
 closed (`artifacts/v7-t5-temporal-shuffle-input-energy-audit.json`).
+As a post-hoc control discovery, the initialization transition was held fixed and
+the remaining 26 whole-image temporal increments were permuted before reconstructing
+the image sequence from baseline. Across all 120 S1-T01 stimuli, reconstructed
+images remained in [0, 1], terminal frames were preserved within 1.49e-8, and the
+pixel-increment and R1–R6 signed-drive multisets were preserved for every stimulus.
+R1–R6 mean absolute energy was 1.0 within 1e-12; after ten zero-drive settle frames,
+lamina-only source-energy ratios were 0.99904–0.99997 at one update and
+0.99997–1.00000 at four. Nevertheless, the three full-FIR candidates'
+control-to-ordered residual ratios were 1.009–1.385 rather than attenuated. Because
+the control was discovered on S1-T01, it is not an independent validation and does
+not replace the existing temporal gate, define a new threshold, or authorize
+direction scoring (`artifacts/v7-t5-increment-order-control-discovery-audit.json`).
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

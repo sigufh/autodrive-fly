@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "7b4bca0ddb08b275c06b7fc55a86d7baf00d5cd20c0bc288e7fe49e555c80db8",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "d5ca848bf19d7c0db3b4af4065d26c03705d476d0fc45a8e16b967f5bbe6c982",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "403c3aac0ee6958ffb36038f8d3074e4078e1b2c46155121444d775d1f2dd4fb",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "91423ecdeb5cbaddb60fdd9bbb8390ae6d8c7a2d9f4e4e639b17631c0e9ce7c8",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -25,6 +25,7 @@
       "artifacts/v7-t5-measured-kernel-source-input-decomposition-audit.json": "5ede208fc3c92dd9a0c3d75e7b4f30d629587a74f7230d907a59a3a0b6467644",
       "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json": "112016edbeab5f14331e13d06734f70f37c8ec063f3bfab29ed3ce63ee0aaa76",
       "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json": "95677d75587b62ad8cccf675eaed9688d8508c29a54812096b30cb9aa89cd58b",
+      "artifacts/v7-t5-increment-order-control-discovery-audit.json": "6d289abac121555b2456f21558c318b93c3174f9951cba50045efadbb4ec4866",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
@@ -281,6 +282,37 @@
           "Tm9": 0.4363820143500369
         }
       }
+    },
+    "increment_order_control_R1_R6_energy_ratio_summary": {
+      "minimum": 0.9999999999999997,
+      "median": 1.0,
+      "maximum": 1.0000000000000002
+    },
+    "increment_order_control_lamina_energy_ratios_by_update": {
+      "1": {
+        "Tm1": 0.9999434351017648,
+        "Tm2": 0.999972658081661,
+        "Tm4": 0.9998730547519342,
+        "Tm9": 0.9990375130061279
+      },
+      "4": {
+        "Tm1": 0.9999854541519411,
+        "Tm2": 0.9999951663982193,
+        "Tm4": 0.9999675661298183,
+        "Tm9": 0.9999731276000139
+      }
+    },
+    "increment_order_control_output_ratios_by_update": {
+      "1": {
+        "summed_filtered_source_centroid_projection": 1.0087448156400647,
+        "fast_pool_vs_Tm9_centroid_difference": 1.1383877639567048,
+        "temporal_difference_filtered_Tm_pair_reichardt": 1.3853597275054466
+      },
+      "4": {
+        "summed_filtered_source_centroid_projection": 1.0162011434360847,
+        "fast_pool_vs_Tm9_centroid_difference": 1.1262430557870489,
+        "temporal_difference_filtered_Tm_pair_reichardt": 1.3045208104632329
+      }
     }
   },
   "gates": {
@@ -350,6 +382,12 @@
     "temporal_shuffle_energy_matched_control_verified": false,
     "equal_energy_temporal_selectivity_interpretation_authorized": false,
     "new_energy_normalized_gate_authorized": false,
+    "increment_order_control_images_valid": true,
+    "increment_order_control_terminal_frame_preserved": true,
+    "increment_order_control_R1_R6_drive_multiset_preserved": true,
+    "increment_order_control_R1_R6_energy_matched": true,
+    "increment_order_control_independent_condition_evaluated": false,
+    "increment_order_control_replacement_authorized": false,
     "absolute_source_gain_available": false,
     "source_to_v7_state_mapping_available": false,
     "state_invariant_source_timing_available": false,

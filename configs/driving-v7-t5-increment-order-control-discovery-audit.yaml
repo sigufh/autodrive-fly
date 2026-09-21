@@ -1,0 +1,42 @@
+version: 1
+name: v7-t5-increment-order-control-discovery-audit
+observed_on: "2026-09-21"
+input_energy_evidence: artifacts/v7-t5-temporal-shuffle-input-energy-audit.json
+lamina_only_replacement_evidence: artifacts/v7-t5-lamina-only-measured-kernel-replacement.json
+lamina_only_replacement_config: configs/driving-v7-t5-lamina-only-measured-kernel-replacement.yaml
+lamina_only_replacement_implementation: src/fly_emotion/driving/v7_t5_lamina_only_measured_kernel_replacement.py
+measured_kernel_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+measured_kernel_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py
+full_support_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_full_support_identifiability.py
+discovery_condition_id: S1-T01
+tested_brain_updates_per_frame: [1, 4]
+settle_frames: 10
+control:
+  seed: 20260920
+  preserve_initialization_increment: true
+  shuffle_remaining_increment_count: 26
+  reconstruct_images_from_baseline_and_permuted_increments: true
+  require_images_within_unit_interval: true
+  require_terminal_frame_preserved: true
+  terminal_frame_absolute_tolerance: 0.00000002
+  require_pixel_increment_multiset_preserved: true
+  require_R1_R6_drive_multiset_preserved: true
+  require_R1_R6_mean_absolute_energy_preserved: true
+  energy_ratio_absolute_tolerance: 0.000000000001
+required_candidate_order:
+  - summed_filtered_source_centroid_projection
+  - fast_pool_vs_Tm9_centroid_difference
+  - temporal_difference_filtered_Tm_pair_reichardt
+boundary:
+  tuning_only: true
+  post_hoc_discovery_only: true
+  independent_condition_evaluation_performed: false
+  no_new_acceptance_threshold_defined: true
+  does_not_replace_existing_temporal_gate: true
+  no_parameter_fit: true
+  subtype_and_direction_labels_not_read_by_control: true
+  source_activity_driven_only_from_images_through_R1_R6_and_L1_L2_L3: true
+  target_activity_injection: false
+  runtime_modified: false
+  direction_scoring_remains_frozen: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

@@ -200,6 +200,18 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_static_sham_input_energy_ratios_by_update"]["4"][
         "lamina_only_Tm_preactivation"
     ]["Tm9"] == 0.4363820143500369
+    assert boundaries["T5_increment_order_control_images_valid"] is True
+    assert boundaries["T5_increment_order_control_terminal_frame_preserved"] is True
+    assert boundaries["T5_increment_order_control_R1_R6_drive_multiset_preserved"] is True
+    assert boundaries["T5_increment_order_control_R1_R6_energy_matched"] is True
+    assert boundaries["T5_increment_order_control_independent_condition_evaluated"] is False
+    assert boundaries["T5_increment_order_control_replacement_authorized"] is False
+    assert boundaries["T5_increment_order_control_R1_R6_energy_ratio_summary"][
+        "median"
+    ] == 1.0
+    assert boundaries["T5_increment_order_control_output_ratios_by_update"]["4"][
+        "temporal_difference_filtered_Tm_pair_reichardt"
+    ] == 1.3045208104632329
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

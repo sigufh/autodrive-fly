@@ -1,0 +1,242 @@
+{
+  "protocol": {
+    "name": "v7-t5-increment-order-control-discovery-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-increment-order-control-discovery-audit.yaml": "f7cba940466d8ac16187d35b8f050c6de2420f22be3952f1c9ee282c6ea582a6",
+      "src/fly_emotion/driving/v7_t5_increment_order_control_discovery_audit.py": "9aa2613ec95cfb11e463438a5c99521ff7237ed9da1aceb109a88034b98fac75",
+      "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json": "95677d75587b62ad8cccf675eaed9688d8508c29a54812096b30cb9aa89cd58b",
+      "artifacts/v7-t5-lamina-only-measured-kernel-replacement.json": "112016edbeab5f14331e13d06734f70f37c8ec063f3bfab29ed3ce63ee0aaa76",
+      "configs/driving-v7-t5-lamina-only-measured-kernel-replacement.yaml": "cd2c7abf834496128ccb23125b022534dc6e129fc47d056cefc877405fadadbc",
+      "src/fly_emotion/driving/v7_t5_lamina_only_measured_kernel_replacement.py": "b4d93195f1038341526d5e9216bc902af2d4bee9daf6b04b096e148af0f31d24",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_full_support_identifiability.py": "672ab7db7e8ced517f2923357ed425528c14c7a501898e30ea619a4ea195192e",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "discovery_condition_id": "S1-T01",
+    "stimulus_count": 120,
+    "settle_frames": 10,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "increment_order": [
+    0,
+    11,
+    9,
+    13,
+    8,
+    16,
+    3,
+    15,
+    14,
+    17,
+    18,
+    7,
+    22,
+    19,
+    12,
+    4,
+    2,
+    21,
+    1,
+    26,
+    25,
+    24,
+    20,
+    5,
+    23,
+    6,
+    10
+  ],
+  "increment_order_fixed_point_count": 1,
+  "preserved_forward_adjacency_count": 1,
+  "preserved_reverse_adjacency_count": 3,
+  "control_images_within_unit_interval": true,
+  "terminal_frame_preserved_for_every_control": true,
+  "terminal_frame_maximum_absolute_error": 1.4901161193847656e-08,
+  "pixel_increment_multiset_preserved_for_every_control": true,
+  "R1_R6_drive_multiset_preserved_for_every_control": true,
+  "R1_R6_mean_absolute_energy_ratio_summary": {
+    "minimum": 0.9999999999999997,
+    "median": 1.0,
+    "maximum": 1.0000000000000002
+  },
+  "R1_R6_mean_absolute_energy_preserved_within_tolerance": true,
+  "by_brain_updates_per_frame": {
+    "1": {
+      "lamina_only_source_energy_ratio": {
+        "Tm1": 0.9999434351017648,
+        "Tm2": 0.999972658081661,
+        "Tm4": 0.9998730547519342,
+        "Tm9": 0.9990375130061279
+      },
+      "lamina_only_source_per_stimulus_ratio_summary": {
+        "Tm1": {
+          "minimum": 0.9994864678726082,
+          "median": 0.9999580815841893,
+          "maximum": 1.0004711460576443
+        },
+        "Tm2": {
+          "minimum": 0.9991352559583896,
+          "median": 0.9999872119727184,
+          "maximum": 1.0005211091334598
+        },
+        "Tm4": {
+          "minimum": 0.9987692121274999,
+          "median": 0.99989129810546,
+          "maximum": 1.0002957673633877
+        },
+        "Tm9": {
+          "minimum": 0.9962719422447086,
+          "median": 0.999532598950948,
+          "maximum": 1.0007392454409971
+        }
+      },
+      "candidate_output_results": {
+        "summed_filtered_source_centroid_projection": {
+          "ordered_mean_absolute_energy": 0.038467848536814585,
+          "static_mean_absolute_energy": 0.019372745839370632,
+          "ordered_minus_static_mean_absolute_energy": 0.019097440481872795,
+          "shuffle_minus_static_mean_absolute_energy": 0.01926444407808388,
+          "shuffle_to_ordered_residual_energy_ratio": 1.0087448156400647,
+          "static_to_ordered_energy_ratio": 0.5036087687833772,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": false
+          },
+          "passed": false
+        },
+        "fast_pool_vs_Tm9_centroid_difference": {
+          "ordered_mean_absolute_energy": 0.00046358734494603555,
+          "static_mean_absolute_energy": 0.00020375410712990152,
+          "ordered_minus_static_mean_absolute_energy": 0.0002601906399887237,
+          "shuffle_minus_static_mean_absolute_energy": 0.00029619784085922713,
+          "shuffle_to_ordered_residual_energy_ratio": 1.1383877639567048,
+          "static_to_ordered_energy_ratio": 0.4395161113675779,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": true
+          },
+          "passed": false
+        },
+        "temporal_difference_filtered_Tm_pair_reichardt": {
+          "ordered_mean_absolute_energy": 0.00019473817531093183,
+          "static_mean_absolute_energy": 6.196846876574524e-05,
+          "ordered_minus_static_mean_absolute_energy": 0.00013282976271808248,
+          "shuffle_minus_static_mean_absolute_energy": 0.00018401700388373589,
+          "shuffle_to_ordered_residual_energy_ratio": 1.3853597275054466,
+          "static_to_ordered_energy_ratio": 0.3182142826736581,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": true
+          },
+          "passed": false
+        }
+      },
+      "scored_element_count_per_candidate": 431103000
+    },
+    "4": {
+      "lamina_only_source_energy_ratio": {
+        "Tm1": 0.9999854541519411,
+        "Tm2": 0.9999951663982193,
+        "Tm4": 0.9999675661298183,
+        "Tm9": 0.9999731276000139
+      },
+      "lamina_only_source_per_stimulus_ratio_summary": {
+        "Tm1": {
+          "minimum": 0.9997149183549413,
+          "median": 0.9999999875992,
+          "maximum": 1.000145007616949
+        },
+        "Tm2": {
+          "minimum": 0.9998334202028885,
+          "median": 0.9999999999998703,
+          "maximum": 1.0000088815589037
+        },
+        "Tm4": {
+          "minimum": 0.9996138703135459,
+          "median": 0.9999952966532353,
+          "maximum": 1.0002124094974072
+        },
+        "Tm9": {
+          "minimum": 0.9991099600497994,
+          "median": 1.0,
+          "maximum": 1.0002975419452165
+        }
+      },
+      "candidate_output_results": {
+        "summed_filtered_source_centroid_projection": {
+          "ordered_mean_absolute_energy": 0.03732330568011462,
+          "static_mean_absolute_energy": 0.01857586219176311,
+          "ordered_minus_static_mean_absolute_energy": 0.01874769852668235,
+          "shuffle_minus_static_mean_absolute_energy": 0.019051432679609605,
+          "shuffle_to_ordered_residual_energy_ratio": 1.0162011434360847,
+          "static_to_ordered_energy_ratio": 0.497701418812431,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": true
+          },
+          "passed": false
+        },
+        "fast_pool_vs_Tm9_centroid_difference": {
+          "ordered_mean_absolute_energy": 0.0004722087628253078,
+          "static_mean_absolute_energy": 0.00019872899500884389,
+          "ordered_minus_static_mean_absolute_energy": 0.00027350385580616224,
+          "shuffle_minus_static_mean_absolute_energy": 0.00030803181833267257,
+          "shuffle_to_ordered_residual_energy_ratio": 1.1262430557870489,
+          "static_to_ordered_energy_ratio": 0.4208498669525179,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": true
+          },
+          "passed": false
+        },
+        "temporal_difference_filtered_Tm_pair_reichardt": {
+          "ordered_mean_absolute_energy": 0.000259184853319438,
+          "static_mean_absolute_energy": 8.625306183460939e-05,
+          "ordered_minus_static_mean_absolute_energy": 0.00017293536674758343,
+          "shuffle_minus_static_mean_absolute_energy": 0.00022559778478731395,
+          "shuffle_to_ordered_residual_energy_ratio": 1.3045208104632329,
+          "static_to_ordered_energy_ratio": 0.3327858890284184,
+          "gates": {
+            "shuffle_residual_attenuated": false,
+            "static_energy_attenuated": true
+          },
+          "passed": false
+        }
+      },
+      "scored_element_count_per_candidate": 431103000
+    }
+  },
+  "existing_temporal_gate_replaced": false,
+  "independent_condition_evaluation_performed": false,
+  "new_acceptance_threshold_defined": false,
+  "direction_scoring_authorized": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "post_hoc_control_discovery_requires_frozen_independent_evaluation",
+  "boundary": {
+    "tuning_only": true,
+    "post_hoc_discovery_only": true,
+    "independent_condition_evaluation_performed": false,
+    "no_new_acceptance_threshold_defined": true,
+    "does_not_replace_existing_temporal_gate": true,
+    "no_parameter_fit": true,
+    "subtype_and_direction_labels_not_read_by_control": true,
+    "source_activity_driven_only_from_images_through_R1_R6_and_L1_L2_L3": true,
+    "target_activity_injection": false,
+    "runtime_modified": false,
+    "direction_scoring_remains_frozen": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

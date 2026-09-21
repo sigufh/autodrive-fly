@@ -155,6 +155,37 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
                 },
             },
         },
+        "increment_order_control_R1_R6_energy_ratio_summary": {
+            "minimum": 0.9999999999999997,
+            "median": 1.0,
+            "maximum": 1.0000000000000002,
+        },
+        "increment_order_control_lamina_energy_ratios_by_update": {
+            "1": {
+                "Tm1": 0.9999434351017648,
+                "Tm2": 0.999972658081661,
+                "Tm4": 0.9998730547519342,
+                "Tm9": 0.9990375130061279,
+            },
+            "4": {
+                "Tm1": 0.9999854541519411,
+                "Tm2": 0.9999951663982193,
+                "Tm4": 0.9999675661298183,
+                "Tm9": 0.9999731276000139,
+            },
+        },
+        "increment_order_control_output_ratios_by_update": {
+            "1": {
+                "summed_filtered_source_centroid_projection": 1.0087448156400647,
+                "fast_pool_vs_Tm9_centroid_difference": 1.1383877639567048,
+                "temporal_difference_filtered_Tm_pair_reichardt": 1.3853597275054466,
+            },
+            "4": {
+                "summed_filtered_source_centroid_projection": 1.0162011434360847,
+                "fast_pool_vs_Tm9_centroid_difference": 1.1262430557870489,
+                "temporal_difference_filtered_Tm_pair_reichardt": 1.3045208104632329,
+            },
+        },
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -223,6 +254,12 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["temporal_shuffle_energy_matched_control_verified"] is False
     assert gates["equal_energy_temporal_selectivity_interpretation_authorized"] is False
     assert gates["new_energy_normalized_gate_authorized"] is False
+    assert gates["increment_order_control_images_valid"] is True
+    assert gates["increment_order_control_terminal_frame_preserved"] is True
+    assert gates["increment_order_control_R1_R6_drive_multiset_preserved"] is True
+    assert gates["increment_order_control_R1_R6_energy_matched"] is True
+    assert gates["increment_order_control_independent_condition_evaluated"] is False
+    assert gates["increment_order_control_replacement_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

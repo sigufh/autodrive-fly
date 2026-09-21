@@ -184,6 +184,15 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_new_energy_normalized_gate_authorized",
         "T5_temporal_shuffle_input_energy_ratios_by_update",
         "T5_static_sham_input_energy_ratios_by_update",
+        "T5_increment_order_control_images_valid",
+        "T5_increment_order_control_terminal_frame_preserved",
+        "T5_increment_order_control_R1_R6_drive_multiset_preserved",
+        "T5_increment_order_control_R1_R6_energy_matched",
+        "T5_increment_order_control_independent_condition_evaluated",
+        "T5_increment_order_control_replacement_authorized",
+        "T5_increment_order_control_R1_R6_energy_ratio_summary",
+        "T5_increment_order_control_lamina_energy_ratios_by_update",
+        "T5_increment_order_control_output_ratios_by_update",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -801,6 +810,31 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert np.isclose(
         input_ratios["4"]["lamina_only_Tm_preactivation"]["Tm9"],
         5.127327256460109,
+    )
+    assert visual["observations"]["T5_increment_order_control_images_valid"] is True
+    assert (
+        visual["observations"]["T5_increment_order_control_terminal_frame_preserved"]
+        is True
+    )
+    assert (
+        visual["observations"]["T5_increment_order_control_R1_R6_energy_matched"]
+        is True
+    )
+    assert (
+        visual["observations"][
+            "T5_increment_order_control_independent_condition_evaluated"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["T5_increment_order_control_replacement_authorized"]
+        is False
+    )
+    assert np.isclose(
+        visual["observations"]["T5_increment_order_control_output_ratios_by_update"][
+            "1"
+        ]["summed_filtered_source_centroid_projection"],
+        1.0087448156400647,
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

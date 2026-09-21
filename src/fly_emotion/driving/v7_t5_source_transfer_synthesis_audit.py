@@ -50,6 +50,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     ]
     lamina_only_replacement = evidence["lamina_only_measured_kernel_replacement"]
     shuffle_input_energy = evidence["temporal_shuffle_input_energy"]
+    increment_order = evidence["increment_order_control_discovery"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -322,6 +323,24 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "new_energy_normalized_gate_authorized": shuffle_input_energy[
             "authorize_new_energy_normalized_gate"
         ],
+        "increment_order_control_images_valid": increment_order[
+            "control_images_within_unit_interval"
+        ],
+        "increment_order_control_terminal_frame_preserved": increment_order[
+            "terminal_frame_preserved_for_every_control"
+        ],
+        "increment_order_control_R1_R6_drive_multiset_preserved": increment_order[
+            "R1_R6_drive_multiset_preserved_for_every_control"
+        ],
+        "increment_order_control_R1_R6_energy_matched": increment_order[
+            "R1_R6_mean_absolute_energy_preserved_within_tolerance"
+        ],
+        "increment_order_control_independent_condition_evaluated": increment_order[
+            "independent_condition_evaluation_performed"
+        ],
+        "increment_order_control_replacement_authorized": bool(
+            increment_order["existing_temporal_gate_replaced"]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -482,6 +501,26 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             "static_sham_input_energy_ratios_by_update": {
                 update: result["static_sham_to_ordered_energy_ratio"]
                 for update, result in shuffle_input_energy[
+                    "by_brain_updates_per_frame"
+                ].items()
+            },
+            "increment_order_control_R1_R6_energy_ratio_summary": increment_order[
+                "R1_R6_mean_absolute_energy_ratio_summary"
+            ],
+            "increment_order_control_lamina_energy_ratios_by_update": {
+                update: result["lamina_only_source_energy_ratio"]
+                for update, result in increment_order[
+                    "by_brain_updates_per_frame"
+                ].items()
+            },
+            "increment_order_control_output_ratios_by_update": {
+                update: {
+                    name: candidate[
+                        "shuffle_to_ordered_residual_energy_ratio"
+                    ]
+                    for name, candidate in result["candidate_output_results"].items()
+                }
+                for update, result in increment_order[
                     "by_brain_updates_per_frame"
                 ].items()
             },

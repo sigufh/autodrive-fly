@@ -2028,6 +2028,14 @@ lamina-only Tm 正半波 preactivation 在 1-update 下放大 `4.710–4.908` �
 `5.127–5.158` 倍。因此现有输出比仍是更强输入扰动下的有效观察，但不能单独证明等能时序
 选择性失败。本审计没有事后发明能量归一化接受门，方向评分及所有下游门继续冻结。证据见
 `artifacts/v7-t5-temporal-shuffle-input-energy-audit.json`。
+作为事后控制发现，又固定初始化增量，只打乱其余 26 个整幅图像时间增量，再从 baseline
+累加重建图像。在全部 120 条 S1-T01 刺激上，重建图像始终落在 `[0,1]`，终帧最大误差
+`1.49e-8`，每条刺激的像素增量与 R1–R6 signed drive 多重集都保持；R1–R6 平均绝对
+能量在 `1e-12` 容差内为 `1.0`。加 10 个零输入 settle 帧后，lamina-only source 能量比
+在 1-update 为 `0.99904–0.99997`，4-update 为 `0.99997–1.00000`。但三个完整 FIR
+候选的 control/ordered residual 比仍为 `1.009–1.385`，没有衰减。由于该控制是在 S1-T01
+上发现，它不构成独立验证、不替换原时序门、不定义新阈值，也不授权方向评分。证据见
+`artifacts/v7-t5-increment-order-control-discovery-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；
