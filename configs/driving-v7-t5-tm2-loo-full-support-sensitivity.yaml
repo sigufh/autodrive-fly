@@ -1,0 +1,42 @@
+version: 1
+name: v7-t5-tm2-leave-one-recording-id-out-full-support-sensitivity
+observed_on: "2026-09-21"
+population_kernel_robustness_evidence: artifacts/v7-t5-population-kernel-robustness-audit.json
+reference_full_support_evidence: artifacts/v7-t5-measured-kernel-full-support-identifiability.json
+reference_full_support_config: configs/driving-v7-t5-measured-kernel-full-support-identifiability.yaml
+measured_kernel_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+measured_kernel_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py
+full_support_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_full_support_identifiability.py
+v7_contract: configs/driving-v7.yaml
+sensitivity_source: Tm2
+expected_fold_count: 5
+expected_other_sources_passing_robustness_gate: [Tm1, Tm4, Tm9]
+tested_brain_updates_per_frame: [1, 4]
+target_chunk_size: 512
+required_candidate_order:
+  - summed_filtered_source_centroid_projection
+  - fast_pool_vs_Tm9_centroid_difference
+  - temporal_difference_filtered_Tm_pair_reichardt
+controls:
+  maximum_shuffle_to_ordered_residual_energy_ratio: 0.50
+  maximum_static_to_ordered_energy_ratio: 0.50
+robust_gate:
+  require_every_Tm2_leave_one_recording_id_out_fold: true
+  require_same_candidate_to_pass_every_fold_and_update_count: true
+  evaluate_direction_only_after_robust_temporal_identifiability: true
+boundary:
+  tuning_only: true
+  only_failed_kernel_robustness_source_varied: true
+  all_other_population_kernels_frozen: true
+  recording_id_is_not_biological_individual_id: true
+  leave_one_recording_id_out_is_not_independent_validation: true
+  author_default_baseline_none_preserved: true
+  source_activity_driven_only_from_R1_R6_propagation: true
+  subtype_and_direction_labels_not_read_by_dynamics: true
+  target_activity_injection: false
+  parameter_fit: false
+  calibration_evaluated: false
+  final_evaluated: false
+  runtime_modified: false
+  physical_source_dynamics_transfer_not_authorized: true
+  LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

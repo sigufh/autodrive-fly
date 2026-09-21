@@ -458,6 +458,31 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_author_row_weighted_direction_scoring_performed": visual[
                     "T5_author_row_weighted_direction_scoring_performed"
                 ],
+                "T5_Tm2_LOO_full_support_all_evaluations_failed": visual[
+                    "T5_Tm2_LOO_full_support_all_evaluations_failed"
+                ],
+                "T5_Tm2_LOO_robust_temporal_identifiability_passed": visual[
+                    "T5_Tm2_LOO_robust_temporal_identifiability_passed"
+                ],
+                "T5_Tm2_LOO_direction_scoring_authorized": visual[
+                    "T5_Tm2_LOO_direction_scoring_authorized"
+                ],
+                "T5_Tm2_LOO_direction_scoring_performed": visual[
+                    "T5_Tm2_LOO_direction_scoring_performed"
+                ],
+                "T5_Tm2_LOO_independent_biological_validation_performed": visual[
+                    "T5_Tm2_LOO_independent_biological_validation_performed"
+                ],
+                "T5_Tm2_LOO_fold_count": visual["T5_Tm2_LOO_fold_count"],
+                "T5_Tm2_LOO_evaluation_count": visual[
+                    "T5_Tm2_LOO_evaluation_count"
+                ],
+                "T5_Tm2_LOO_passed_evaluation_count": visual[
+                    "T5_Tm2_LOO_passed_evaluation_count"
+                ],
+                "T5_Tm2_LOO_candidate_ratio_ranges": visual[
+                    "T5_Tm2_LOO_candidate_ratio_ranges"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

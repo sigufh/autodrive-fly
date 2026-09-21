@@ -35,6 +35,23 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
         "population_kernel_explicit_baseline_call_count": 0,
         "Tm1_row_vs_recording_id_weighted_correlation": 0.9995598341098436,
         "author_row_weighted_changed_sources": ["Tm1"],
+        "Tm2_LOO_fold_count": 5,
+        "Tm2_LOO_evaluation_count": 30,
+        "Tm2_LOO_passed_evaluation_count": 0,
+        "Tm2_LOO_candidate_ratio_ranges": {
+            "summed_filtered_source_centroid_projection": {
+                "shuffle": [2.101569895482767, 2.353461648721484],
+                "static": [0.9994170965302039, 0.9998918524707392],
+            },
+            "fast_pool_vs_Tm9_centroid_difference": {
+                "shuffle": [1.3648448324511815, 1.5063573039683826],
+                "static": [0.7466918261547935, 0.7940622246002749],
+            },
+            "temporal_difference_filtered_Tm_pair_reichardt": {
+                "shuffle": [0.9860891425025265, 1.2287928486318291],
+                "static": [0.5921415935025431, 0.6741595238667628],
+            },
+        },
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -77,6 +94,11 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["author_row_weighted_cross_substep_identifiability_passed"] is False
     assert gates["author_row_weighted_direction_scoring_authorized"] is False
     assert gates["author_row_weighted_direction_scoring_performed"] is False
+    assert gates["Tm2_LOO_full_support_all_evaluations_failed"] is True
+    assert gates["Tm2_LOO_robust_temporal_identifiability_passed"] is False
+    assert gates["Tm2_LOO_direction_scoring_authorized"] is False
+    assert gates["Tm2_LOO_direction_scoring_performed"] is False
+    assert gates["Tm2_LOO_independent_biological_validation_performed"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

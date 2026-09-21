@@ -146,6 +146,15 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_author_row_weighted_cross_substep_identifiability_passed",
         "T5_author_row_weighted_direction_scoring_authorized",
         "T5_author_row_weighted_direction_scoring_performed",
+        "T5_Tm2_LOO_full_support_all_evaluations_failed",
+        "T5_Tm2_LOO_robust_temporal_identifiability_passed",
+        "T5_Tm2_LOO_direction_scoring_authorized",
+        "T5_Tm2_LOO_direction_scoring_performed",
+        "T5_Tm2_LOO_independent_biological_validation_performed",
+        "T5_Tm2_LOO_fold_count",
+        "T5_Tm2_LOO_evaluation_count",
+        "T5_Tm2_LOO_passed_evaluation_count",
+        "T5_Tm2_LOO_candidate_ratio_ranges",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -629,6 +638,26 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert (
         visual["observations"]["T5_author_row_weighted_direction_scoring_performed"]
         is False
+    )
+    assert visual["observations"]["T5_Tm2_LOO_full_support_all_evaluations_failed"] is True
+    assert visual["observations"]["T5_Tm2_LOO_robust_temporal_identifiability_passed"] is False
+    assert visual["observations"]["T5_Tm2_LOO_direction_scoring_authorized"] is False
+    assert visual["observations"]["T5_Tm2_LOO_direction_scoring_performed"] is False
+    assert (
+        visual["observations"]["T5_Tm2_LOO_independent_biological_validation_performed"]
+        is False
+    )
+    assert visual["observations"]["T5_Tm2_LOO_fold_count"] == 5
+    assert visual["observations"]["T5_Tm2_LOO_evaluation_count"] == 30
+    assert visual["observations"]["T5_Tm2_LOO_passed_evaluation_count"] == 0
+    ranges = visual["observations"]["T5_Tm2_LOO_candidate_ratio_ranges"]
+    assert np.allclose(
+        ranges["temporal_difference_filtered_Tm_pair_reichardt"]["shuffle"],
+        [0.9860891425025265, 1.2287928486318291],
+    )
+    assert np.allclose(
+        ranges["temporal_difference_filtered_Tm_pair_reichardt"]["static"],
+        [0.5921415935025431, 0.6741595238667628],
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

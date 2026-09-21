@@ -373,6 +373,15 @@ shuffle/static ratios were 2.252/0.9999, 1.427/0.7920, and 0.986/0.5872 at one
 update per frame, and 2.215/0.9995, 1.499/0.7573, and 1.204/0.6581 at four updates.
 None passed both 0.50 limits, so row weighting did not rescue temporal
 identifiability and direction scoring remained unauthorized.
+The only source failing the inherited kernel-robustness gate, Tm2, was then varied
+across all five leave-one-recording-ID-out kernels while the other sources, full
+zero-tail FIR, three candidates, thresholds, and one/four-update conditions stayed
+fixed. None of the 30 candidate-by-fold-by-update evaluations passed. Across all
+folds and update counts, the three candidates' shuffle ratios ranged from
+2.102–2.353, 1.365–1.506, and 0.986–1.229; static ratios ranged from
+0.9994–0.9999, 0.7467–0.7941, and 0.5921–0.6742. Tm2 recording-ID omission did
+not rescue temporal identifiability. Because recording IDs are not verified fly
+identities, this remains a sensitivity analysis rather than independent validation.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

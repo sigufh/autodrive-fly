@@ -895,6 +895,47 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "author_row_weighted_direction_scoring_performed"
                     ]
                 ),
+                "T5_Tm2_LOO_full_support_all_evaluations_failed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_LOO_full_support_all_evaluations_failed"
+                    ]
+                ),
+                "T5_Tm2_LOO_robust_temporal_identifiability_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_LOO_robust_temporal_identifiability_passed"
+                    ]
+                ),
+                "T5_Tm2_LOO_direction_scoring_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_LOO_direction_scoring_authorized"
+                    ]
+                ),
+                "T5_Tm2_LOO_direction_scoring_performed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_LOO_direction_scoring_performed"
+                    ]
+                ),
+                "T5_Tm2_LOO_independent_biological_validation_performed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_LOO_independent_biological_validation_performed"
+                    ]
+                ),
+                "T5_Tm2_LOO_fold_count": t5_source_transfer_synthesis_audit[
+                    "incremental_evidence"
+                ]["Tm2_LOO_fold_count"],
+                "T5_Tm2_LOO_evaluation_count": t5_source_transfer_synthesis_audit[
+                    "incremental_evidence"
+                ]["Tm2_LOO_evaluation_count"],
+                "T5_Tm2_LOO_passed_evaluation_count": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_LOO_passed_evaluation_count"
+                    ]
+                ),
+                "T5_Tm2_LOO_candidate_ratio_ranges": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_LOO_candidate_ratio_ranges"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3378,6 +3419,15 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_author_row_weighted_cross_substep_identifiability_passed",
                     "T5_author_row_weighted_direction_scoring_authorized",
                     "T5_author_row_weighted_direction_scoring_performed",
+                    "T5_Tm2_LOO_full_support_all_evaluations_failed",
+                    "T5_Tm2_LOO_robust_temporal_identifiability_passed",
+                    "T5_Tm2_LOO_direction_scoring_authorized",
+                    "T5_Tm2_LOO_direction_scoring_performed",
+                    "T5_Tm2_LOO_independent_biological_validation_performed",
+                    "T5_Tm2_LOO_fold_count",
+                    "T5_Tm2_LOO_evaluation_count",
+                    "T5_Tm2_LOO_passed_evaluation_count",
+                    "T5_Tm2_LOO_candidate_ratio_ranges",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

@@ -127,6 +127,17 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_author_row_weighted_cross_substep_identifiability_passed"] is False
     assert boundaries["T5_author_row_weighted_direction_scoring_authorized"] is False
     assert boundaries["T5_author_row_weighted_direction_scoring_performed"] is False
+    assert boundaries["T5_Tm2_LOO_full_support_all_evaluations_failed"] is True
+    assert boundaries["T5_Tm2_LOO_robust_temporal_identifiability_passed"] is False
+    assert boundaries["T5_Tm2_LOO_direction_scoring_authorized"] is False
+    assert boundaries["T5_Tm2_LOO_direction_scoring_performed"] is False
+    assert boundaries["T5_Tm2_LOO_independent_biological_validation_performed"] is False
+    assert boundaries["T5_Tm2_LOO_fold_count"] == 5
+    assert boundaries["T5_Tm2_LOO_evaluation_count"] == 30
+    assert boundaries["T5_Tm2_LOO_passed_evaluation_count"] == 0
+    assert boundaries["T5_Tm2_LOO_candidate_ratio_ranges"][
+        "temporal_difference_filtered_Tm_pair_reichardt"
+    ]["static"] == [0.5921415935025431, 0.6741595238667628]
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

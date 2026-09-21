@@ -4,7 +4,7 @@
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "6dfeafdc267fa0d7a6d76cf5e2a33acfd0ca87ccfa1f4d1de464484a0d3101c7",
-      "src/fly_emotion/driving/v7_goal_audit.py": "a67b44d526a0547d3cb710c77897982ae4c46192e1ec1d1a26deddd7fe6ae58e",
+      "src/fly_emotion/driving/v7_goal_audit.py": "8c5ae823c0a563e74f550243683b6e9961f1fa16e924ce470e3859a8dfa28a01",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -145,10 +145,10 @@
       "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json": "170523ce0186bc0acc39caa77e414e90c47865781dcc0cea70f7980edcba484a",
       "artifacts/v7-t5-ct1-axis-sequence-identifiability.json": "d9aa5acd185e0c5666415ed379bcfc6f57b1a3e618d1638f33ff36e114d20261",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
-      "artifacts/v7-t5-source-transfer-synthesis-audit.json": "a01091f017b47d9641354bbbe0fc53df8eed762f130f06d7f9833902d25363f2",
+      "artifacts/v7-t5-source-transfer-synthesis-audit.json": "6679c69eb52c0a50e850100b02c95dd9dccc3886ee946eea84209e5a77d2b237",
       "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
       "artifacts/v7-controlled-stimulus-angular-grid.json": "c4fbbee972f67d22eef01ce2b72c26b1b86f53b42313afcfa9430ae41e80f5b7",
-      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "80a53f6967e0ddfb5c73045ee0bfd1468d3e7041a2f3a380528ecc1abefccf4a",
+      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "a8377fb60669564b5660b7052ff882ec4bb01e019ba8005926b4e2dab64194a4",
       "artifacts/v7-vertical-angular-coordinate-audit.json": "f130521f435002b08f30988c557cb1edba8f36805a08da1d3465ab1343a169fc",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "fe54fb0d405166293e1cd9bc7abb2c654f1a9cbeb9bae948acd6e38c74fae770",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
@@ -182,9 +182,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "8bd1a71ab1b74915ceb385cbb11cc6e16f67740e2e4741d375713da9539dec7d",
-      "apps/web/src/components/DrivingPanel.tsx": "fe6881b0c08e611c745f6edb95e91e5d18043907857b9681b998d16f9c3d749e",
-      "apps/web/src/types.ts": "a91e86ee1ca2585f62a58bc741f000b6cb213219e48faede7e78c2b60a41411c",
+      "apps/api/src/fly_emotion_api/main.py": "ba735ef2602de65abfb9cb6ead44fe1d547fbe0ef07b94d84c06340c6e111aa1",
+      "apps/web/src/components/DrivingPanel.tsx": "a583bda896163778965dbaf5871ecd59cf2dad25973515eff4686f705c5f5495",
+      "apps/web/src/types.ts": "e1df16ebac57acaa095da557f7dc05cf8a8ed4033c2a41c6bc49ba557cf5d9fe",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -547,6 +547,46 @@
         "T5_author_row_weighted_cross_substep_identifiability_passed": false,
         "T5_author_row_weighted_direction_scoring_authorized": false,
         "T5_author_row_weighted_direction_scoring_performed": false,
+        "T5_Tm2_LOO_full_support_all_evaluations_failed": true,
+        "T5_Tm2_LOO_robust_temporal_identifiability_passed": false,
+        "T5_Tm2_LOO_direction_scoring_authorized": false,
+        "T5_Tm2_LOO_direction_scoring_performed": false,
+        "T5_Tm2_LOO_independent_biological_validation_performed": false,
+        "T5_Tm2_LOO_fold_count": 5,
+        "T5_Tm2_LOO_evaluation_count": 30,
+        "T5_Tm2_LOO_passed_evaluation_count": 0,
+        "T5_Tm2_LOO_candidate_ratio_ranges": {
+          "summed_filtered_source_centroid_projection": {
+            "shuffle": [
+              2.101569895482767,
+              2.353461648721484
+            ],
+            "static": [
+              0.9994170965302039,
+              0.9998918524707392
+            ]
+          },
+          "fast_pool_vs_Tm9_centroid_difference": {
+            "shuffle": [
+              1.3648448324511815,
+              1.5063573039683826
+            ],
+            "static": [
+              0.7466918261547935,
+              0.7940622246002749
+            ]
+          },
+          "temporal_difference_filtered_Tm_pair_reichardt": {
+            "shuffle": [
+              0.9860891425025265,
+              1.2287928486318291
+            ],
+            "static": [
+              0.5921415935025431,
+              0.6741595238667628
+            ]
+          }
+        },
         "T5_transfer_synthesis_CT1_complete": false,
         "T5_transfer_synthesis_ready": false,
         "v7_offline_time_coordinate_contract_complete": true,
@@ -1938,6 +1978,15 @@
           "T5_author_row_weighted_cross_substep_identifiability_passed",
           "T5_author_row_weighted_direction_scoring_authorized",
           "T5_author_row_weighted_direction_scoring_performed",
+          "T5_Tm2_LOO_full_support_all_evaluations_failed",
+          "T5_Tm2_LOO_robust_temporal_identifiability_passed",
+          "T5_Tm2_LOO_direction_scoring_authorized",
+          "T5_Tm2_LOO_direction_scoring_performed",
+          "T5_Tm2_LOO_independent_biological_validation_performed",
+          "T5_Tm2_LOO_fold_count",
+          "T5_Tm2_LOO_evaluation_count",
+          "T5_Tm2_LOO_passed_evaluation_count",
+          "T5_Tm2_LOO_candidate_ratio_ranges",
           "T5_transfer_synthesis_CT1_complete",
           "T5_transfer_synthesis_ready",
           "v7_offline_horizontal_coordinate_contract_complete",

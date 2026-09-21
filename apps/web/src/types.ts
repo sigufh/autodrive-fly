@@ -159,6 +159,15 @@ export type V7Status = {
     T5_author_row_weighted_cross_substep_identifiability_passed?: boolean;
     T5_author_row_weighted_direction_scoring_authorized?: boolean;
     T5_author_row_weighted_direction_scoring_performed?: boolean;
+    T5_Tm2_LOO_full_support_all_evaluations_failed?: boolean;
+    T5_Tm2_LOO_robust_temporal_identifiability_passed?: boolean;
+    T5_Tm2_LOO_direction_scoring_authorized?: boolean;
+    T5_Tm2_LOO_direction_scoring_performed?: boolean;
+    T5_Tm2_LOO_independent_biological_validation_performed?: boolean;
+    T5_Tm2_LOO_fold_count?: number;
+    T5_Tm2_LOO_evaluation_count?: number;
+    T5_Tm2_LOO_passed_evaluation_count?: number;
+    T5_Tm2_LOO_candidate_ratio_ranges?: Record<string, { shuffle: number[]; static: number[] }>;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;
