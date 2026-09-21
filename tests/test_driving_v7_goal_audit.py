@@ -155,6 +155,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_Tm2_LOO_evaluation_count",
         "T5_Tm2_LOO_passed_evaluation_count",
         "T5_Tm2_LOO_candidate_ratio_ranges",
+        "T5_measured_kernel_typed_recurrent_cascade_verified",
+        "T5_measured_kernel_replaces_existing_source_dynamics",
+        "T5_measured_kernel_single_stage_biological_interpretation_authorized",
+        "T5_measured_kernel_external_state_mapping_available",
+        "T5_measured_kernel_source_leaks",
+        "T5_measured_kernel_source_node_counts",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -659,6 +665,30 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         ranges["temporal_difference_filtered_Tm_pair_reichardt"]["static"],
         [0.5921415935025431, 0.6741595238667628],
     )
+    assert (
+        visual["observations"]["T5_measured_kernel_typed_recurrent_cascade_verified"]
+        is True
+    )
+    assert visual["observations"]["T5_measured_kernel_replaces_existing_source_dynamics"] is False
+    assert (
+        visual["observations"][
+            "T5_measured_kernel_single_stage_biological_interpretation_authorized"
+        ]
+        is False
+    )
+    assert visual["observations"]["T5_measured_kernel_external_state_mapping_available"] is False
+    assert visual["observations"]["T5_measured_kernel_source_leaks"] == {
+        "Tm1": 0.28,
+        "Tm2": 0.55,
+        "Tm4": 0.34,
+        "Tm9": 0.16,
+    }
+    assert visual["observations"]["T5_measured_kernel_source_node_counts"] == {
+        "Tm1": 1777,
+        "Tm2": 1766,
+        "Tm4": 1670,
+        "Tm9": 1771,
+    }
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False
     assert visual["observations"]["T4_T5_source_dynamics_ready"] is False

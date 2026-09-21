@@ -168,6 +168,12 @@ export type V7Status = {
     T5_Tm2_LOO_evaluation_count?: number;
     T5_Tm2_LOO_passed_evaluation_count?: number;
     T5_Tm2_LOO_candidate_ratio_ranges?: Record<string, { shuffle: number[]; static: number[] }>;
+    T5_measured_kernel_typed_recurrent_cascade_verified?: boolean;
+    T5_measured_kernel_replaces_existing_source_dynamics?: boolean;
+    T5_measured_kernel_single_stage_biological_interpretation_authorized?: boolean;
+    T5_measured_kernel_external_state_mapping_available?: boolean;
+    T5_measured_kernel_source_leaks?: Record<string, number>;
+    T5_measured_kernel_source_node_counts?: Record<string, number>;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

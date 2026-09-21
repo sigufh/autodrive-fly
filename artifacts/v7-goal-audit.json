@@ -4,7 +4,7 @@
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
       "configs/driving-v7-goal-audit.yaml": "6dfeafdc267fa0d7a6d76cf5e2a33acfd0ca87ccfa1f4d1de464484a0d3101c7",
-      "src/fly_emotion/driving/v7_goal_audit.py": "8c5ae823c0a563e74f550243683b6e9961f1fa16e924ce470e3859a8dfa28a01",
+      "src/fly_emotion/driving/v7_goal_audit.py": "538eb07f8bc9e412ad14afd9fa04214985fddcaa17989ea94a916ce3b5768bae",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -145,10 +145,10 @@
       "artifacts/v7-t5-ct1-axis-aware-antisymmetric-precheck.json": "170523ce0186bc0acc39caa77e414e90c47865781dcc0cea70f7980edcba484a",
       "artifacts/v7-t5-ct1-axis-sequence-identifiability.json": "d9aa5acd185e0c5666415ed379bcfc6f57b1a3e618d1638f33ff36e114d20261",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
-      "artifacts/v7-t5-source-transfer-synthesis-audit.json": "6679c69eb52c0a50e850100b02c95dd9dccc3886ee946eea84209e5a77d2b237",
+      "artifacts/v7-t5-source-transfer-synthesis-audit.json": "cef2627adb4da2082883e5fe72cc2d59de0958acecba57f6958662caef0c8815",
       "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
       "artifacts/v7-controlled-stimulus-angular-grid.json": "c4fbbee972f67d22eef01ce2b72c26b1b86f53b42313afcfa9430ae41e80f5b7",
-      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "a8377fb60669564b5660b7052ff882ec4bb01e019ba8005926b4e2dab64194a4",
+      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "a005ca8e62c236dc182eaea93099b817c920711d94f15461a69042b1b6361a1c",
       "artifacts/v7-vertical-angular-coordinate-audit.json": "f130521f435002b08f30988c557cb1edba8f36805a08da1d3465ab1343a169fc",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "fe54fb0d405166293e1cd9bc7abb2c654f1a9cbeb9bae948acd6e38c74fae770",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
@@ -182,9 +182,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "ba735ef2602de65abfb9cb6ead44fe1d547fbe0ef07b94d84c06340c6e111aa1",
-      "apps/web/src/components/DrivingPanel.tsx": "a583bda896163778965dbaf5871ecd59cf2dad25973515eff4686f705c5f5495",
-      "apps/web/src/types.ts": "e1df16ebac57acaa095da557f7dc05cf8a8ed4033c2a41c6bc49ba557cf5d9fe",
+      "apps/api/src/fly_emotion_api/main.py": "67ab00b97519df3efb5f5f32a383e42985db7d8ee90d94bcce381027400413b4",
+      "apps/web/src/components/DrivingPanel.tsx": "70feab805ba36d76bcd93c0f153b780716d1335448b85a8b06ee56d968be3769",
+      "apps/web/src/types.ts": "3d0325fcbf622ef6340ad0f6068e4673cdc147b0bb11f65880edeb3aa954f82f",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -586,6 +586,22 @@
               0.6741595238667628
             ]
           }
+        },
+        "T5_measured_kernel_typed_recurrent_cascade_verified": true,
+        "T5_measured_kernel_replaces_existing_source_dynamics": false,
+        "T5_measured_kernel_single_stage_biological_interpretation_authorized": false,
+        "T5_measured_kernel_external_state_mapping_available": false,
+        "T5_measured_kernel_source_leaks": {
+          "Tm1": 0.28,
+          "Tm2": 0.55,
+          "Tm4": 0.34,
+          "Tm9": 0.16
+        },
+        "T5_measured_kernel_source_node_counts": {
+          "Tm1": 1777,
+          "Tm2": 1766,
+          "Tm4": 1670,
+          "Tm9": 1771
         },
         "T5_transfer_synthesis_CT1_complete": false,
         "T5_transfer_synthesis_ready": false,
@@ -1987,6 +2003,12 @@
           "T5_Tm2_LOO_evaluation_count",
           "T5_Tm2_LOO_passed_evaluation_count",
           "T5_Tm2_LOO_candidate_ratio_ranges",
+          "T5_measured_kernel_typed_recurrent_cascade_verified",
+          "T5_measured_kernel_replaces_existing_source_dynamics",
+          "T5_measured_kernel_single_stage_biological_interpretation_authorized",
+          "T5_measured_kernel_external_state_mapping_available",
+          "T5_measured_kernel_source_leaks",
+          "T5_measured_kernel_source_node_counts",
           "T5_transfer_synthesis_CT1_complete",
           "T5_transfer_synthesis_ready",
           "v7_offline_horizontal_coordinate_contract_complete",

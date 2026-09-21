@@ -52,6 +52,18 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
                 "static": [0.5921415935025431, 0.6741595238667628],
             },
         },
+        "measured_kernel_source_leaks": {
+            "Tm1": 0.28,
+            "Tm2": 0.55,
+            "Tm4": 0.34,
+            "Tm9": 0.16,
+        },
+        "measured_kernel_source_node_counts": {
+            "Tm1": 1777,
+            "Tm2": 1766,
+            "Tm4": 1670,
+            "Tm9": 1771,
+        },
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -99,6 +111,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["Tm2_LOO_direction_scoring_authorized"] is False
     assert gates["Tm2_LOO_direction_scoring_performed"] is False
     assert gates["Tm2_LOO_independent_biological_validation_performed"] is False
+    assert gates["measured_kernel_typed_recurrent_cascade_verified"] is True
+    assert gates["measured_kernel_replaces_existing_source_dynamics"] is False
+    assert gates["measured_kernel_single_stage_biological_interpretation_authorized"] is False
+    assert gates["measured_kernel_external_state_mapping_available"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

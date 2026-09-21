@@ -44,6 +44,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     ]
     author_row_weighted = evidence["author_row_weighted_full_support"]
     tm2_loo_full_support = evidence["tm2_loo_full_support"]
+    measured_kernel_cascade = evidence["measured_kernel_cascade_semantics"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -241,6 +242,24 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "Tm2_LOO_independent_biological_validation_performed": (
             tm2_loo_full_support["independent_biological_validation_performed"]
         ),
+        "measured_kernel_typed_recurrent_cascade_verified": (
+            measured_kernel_cascade[
+                "typed_recurrent_source_state_then_measured_kernel_cascade_verified"
+            ]
+        ),
+        "measured_kernel_replaces_existing_source_dynamics": (
+            measured_kernel_cascade[
+                "measured_kernel_replaces_existing_source_dynamics"
+            ]
+        ),
+        "measured_kernel_single_stage_biological_interpretation_authorized": (
+            measured_kernel_cascade[
+                "single_stage_biological_source_model_interpretation_authorized"
+            ]
+        ),
+        "measured_kernel_external_state_mapping_available": measured_kernel_cascade[
+            "external_recording_to_v7_source_state_mapping_available"
+        ],
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -362,6 +381,12 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                 }
                 for name, item in tm2_loo_full_support["candidate_results"].items()
             },
+            "measured_kernel_source_leaks": measured_kernel_cascade[
+                "configured_path"
+            ]["source_leaks"],
+            "measured_kernel_source_node_counts": measured_kernel_cascade[
+                "runtime_source_node_counts"
+            ],
         },
         "gates": gates,
         "T5_source_transfer_ready": False,

@@ -936,6 +936,34 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Tm2_LOO_candidate_ratio_ranges"
                     ]
                 ),
+                "T5_measured_kernel_typed_recurrent_cascade_verified": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_typed_recurrent_cascade_verified"
+                    ]
+                ),
+                "T5_measured_kernel_replaces_existing_source_dynamics": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_replaces_existing_source_dynamics"
+                    ]
+                ),
+                "T5_measured_kernel_single_stage_biological_interpretation_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_single_stage_biological_interpretation_authorized"
+                    ]
+                ),
+                "T5_measured_kernel_external_state_mapping_available": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "measured_kernel_external_state_mapping_available"
+                    ]
+                ),
+                "T5_measured_kernel_source_leaks": t5_source_transfer_synthesis_audit[
+                    "incremental_evidence"
+                ]["measured_kernel_source_leaks"],
+                "T5_measured_kernel_source_node_counts": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "measured_kernel_source_node_counts"
+                    ]
+                ),
                 "T5_transfer_synthesis_CT1_complete": (  # noqa: E501
                     t5_source_transfer_synthesis_audit["gates"][
                         "CT1_allowed_dynamics_and_mapping_complete"
@@ -3428,6 +3456,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Tm2_LOO_evaluation_count",
                     "T5_Tm2_LOO_passed_evaluation_count",
                     "T5_Tm2_LOO_candidate_ratio_ranges",
+                    "T5_measured_kernel_typed_recurrent_cascade_verified",
+                    "T5_measured_kernel_replaces_existing_source_dynamics",
+                    "T5_measured_kernel_single_stage_biological_interpretation_authorized",
+                    "T5_measured_kernel_external_state_mapping_available",
+                    "T5_measured_kernel_source_leaks",
+                    "T5_measured_kernel_source_node_counts",
                     "T5_transfer_synthesis_CT1_complete",
                     "T5_transfer_synthesis_ready",
                     "v7_offline_horizontal_coordinate_contract_complete",

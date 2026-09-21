@@ -1,0 +1,31 @@
+version: 1
+name: v7-t5-measured-kernel-cascade-semantics-audit
+observed_on: "2026-09-21"
+measured_kernel_evidence: artifacts/v7-t5-measured-kernel-identifiability.json
+measured_kernel_config: configs/driving-v7-t5-measured-kernel-identifiability.yaml
+measured_kernel_implementation: src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py
+lamina_split_config: configs/driving-v7-t5-lamina-split.yaml
+lamina_split_implementation: src/fly_emotion/driving/v7_t5_lamina_split.py
+nested_probe_implementation: src/fly_emotion/driving/v7_nested_neural_screen.py
+v7_contract: configs/driving-v7.yaml
+v7_implementation: src/fly_emotion/driving/v7.py
+state_mapping_evidence: artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json
+expected:
+  retinal_backend: signed_frame_difference
+  dynamics_backend: typed_visual_subgraph_v1
+  baseline_frames: 2
+  brain_updates_per_frame: 1
+  source_types: [Tm1, Tm2, Tm4, Tm9]
+  source_leaks: {Tm1: 0.28, Tm2: 0.55, Tm4: 0.34, Tm9: 0.16}
+boundary:
+  read_only_semantics_audit: true
+  source_state_is_not_instantaneous_synaptic_drive: true
+  measured_kernel_does_not_replace_existing_source_dynamics: true
+  cascade_is_not_single_stage_biological_source_model: true
+  leak_coefficients_are_not_biological_time_constants: true
+  baseline_subtraction_and_half_wave_rectification_are_engineering_transforms: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  direction_scoring_remains_frozen: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

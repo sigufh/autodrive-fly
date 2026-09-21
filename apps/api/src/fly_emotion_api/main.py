@@ -483,6 +483,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_Tm2_LOO_candidate_ratio_ranges": visual[
                     "T5_Tm2_LOO_candidate_ratio_ranges"
                 ],
+                "T5_measured_kernel_typed_recurrent_cascade_verified": visual[
+                    "T5_measured_kernel_typed_recurrent_cascade_verified"
+                ],
+                "T5_measured_kernel_replaces_existing_source_dynamics": visual[
+                    "T5_measured_kernel_replaces_existing_source_dynamics"
+                ],
+                "T5_measured_kernel_single_stage_biological_interpretation_authorized": visual[
+                    "T5_measured_kernel_single_stage_biological_interpretation_authorized"
+                ],
+                "T5_measured_kernel_external_state_mapping_available": visual[
+                    "T5_measured_kernel_external_state_mapping_available"
+                ],
+                "T5_measured_kernel_source_leaks": visual[
+                    "T5_measured_kernel_source_leaks"
+                ],
+                "T5_measured_kernel_source_node_counts": visual[
+                    "T5_measured_kernel_source_node_counts"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

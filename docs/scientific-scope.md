@@ -382,6 +382,16 @@ folds and update counts, the three candidates' shuffle ratios ranged from
 0.9994–0.9999, 0.7467–0.7941, and 0.5921–0.6742. Tm2 recording-ID omission did
 not rescue temporal identifiability. Because recording IDs are not verified fly
 identities, this remains a sensitivity analysis rather than independent validation.
+The measured-kernel path is also explicitly a cascade, not a replacement of the
+existing source dynamics. Signed frame-difference input first propagates from R1–R6
+through the typed visual subgraph's signed recurrent adjacency, tanh, and fixed
+Tm1/Tm2/Tm4/Tm9 leaks of 0.28/0.55/0.34/0.16. Baseline subtraction, positive
+half-wave rectification, and synaptic spatial moments are then computed before the
+measured FIR is applied. The delay and target-correlator backends are inactive in
+this diagnostic, but the typed recurrent/leak dynamics are not. Because no external
+mV or filter-output mapping to the v7 signed state exists, these negative results
+apply to that composite cascade and cannot be attributed to the measured kernel
+alone or interpreted as a single-stage biological source model.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

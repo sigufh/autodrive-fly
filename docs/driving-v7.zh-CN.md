@@ -1994,6 +1994,14 @@ population kernel、完整 zero-tail FIR、1/4-update、三个候选和阈值全
 为 `0.9994–0.9999`、`0.7467–0.7941`、`0.5921–0.6742`。因此 Tm2 单个 recording ID
 的留出不能挽救时序门；但 recording ID 仍不等于 fly ID，此结果不是独立生物验证。证据见
 `artifacts/v7-t5-tm2-loo-full-support-sensitivity.json`。
+还需明确，这些 measured-kernel 结果不是“以实测 kernel 替换 Tm source dynamics”。实际
+路径先由 signed frame difference 驱动 R1–R6，再经 `typed_visual_subgraph_v1` 的真实连接、
+递质符号、`tanh` 与 Tm1/Tm2/Tm4/Tm9=`0.28/0.55/0.34/0.16` leak 得到 source state，
+随后做 baseline subtraction、正半波和突触位置矩，最后再卷积实测 FIR。该级联不启用
+columnar delay/correlator，但确实叠加了人工 recurrent/leak 动态；而外部 mV/filter output
+到 v7 signed state 的映射仍不存在。因此现有负结果只针对这一复合级联，不能单独归因于
+实测 kernel，也不能解释为单阶段生物 source 模型。证据见
+`artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

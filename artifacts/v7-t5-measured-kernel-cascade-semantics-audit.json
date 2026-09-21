@@ -1,0 +1,97 @@
+{
+  "protocol": {
+    "name": "v7-t5-measured-kernel-cascade-semantics-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-measured-kernel-cascade-semantics-audit.yaml": "fca996ecbb57ad959393aab1ca899d9aae90926d1d1ac9ba273cd6f7df654caf",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_cascade_semantics_audit.py": "00d809e3a878e4e4f397b80fe97e790e589a82293131433f09889cfbd938ca0d",
+      "artifacts/v7-t5-measured-kernel-identifiability.json": "25611865c51301ad34b112c16ea8a45c667c81649fc987b72bca571e9753d918",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "src/fly_emotion/driving/v7_t5_lamina_split.py": "d8c3f00cbfe8bb0a6608bba022e9fbdb3607285875032bdb31b4164c65cab9ed",
+      "src/fly_emotion/driving/v7_nested_neural_screen.py": "1591f91d18db1a6e5a6b51e0ad30cfb95627019a50f7c9bc31fe0abcc2ab9d13",
+      "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
+      "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
+      "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4"
+    },
+    "parameter_fit": false,
+    "functional_stimulus_evaluated": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "configured_path": {
+    "retinal_backend": "signed_frame_difference",
+    "dynamics_backend": "typed_visual_subgraph_v1",
+    "baseline_frames": 2,
+    "brain_updates_per_frame": 1,
+    "source_types": [
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "source_leaks": {
+      "Tm1": 0.28,
+      "Tm2": 0.55,
+      "Tm4": 0.34,
+      "Tm9": 0.16
+    }
+  },
+  "runtime_source_node_counts": {
+    "Tm1": 1777,
+    "Tm2": 1766,
+    "Tm4": 1670,
+    "Tm9": 1771
+  },
+  "runtime_source_leaks": {
+    "Tm1": [
+      0.2800000011920929
+    ],
+    "Tm2": [
+      0.550000011920929
+    ],
+    "Tm4": [
+      0.3400000035762787
+    ],
+    "Tm9": [
+      0.1599999964237213
+    ]
+  },
+  "runtime_source_leaks_match_config": true,
+  "semantic_gates": {
+    "retinal_drive_uses_previous_frame_difference": true,
+    "source_sequence_calls_probe_advance": true,
+    "probe_advance_contains_recurrent_signed_adjacency": true,
+    "probe_advance_contains_tanh_and_leak": true,
+    "source_sequence_subtracts_recurrent_baseline_state": true,
+    "source_sequence_half_wave_rectifies_before_moments": true,
+    "measured_kernel_convolution_occurs_after_source_sequence": true,
+    "discrete_delay_backend_inactive": true,
+    "target_correlator_backend_inactive": true,
+    "source_state_mapping_available": false
+  },
+  "typed_recurrent_source_state_then_measured_kernel_cascade_verified": true,
+  "measured_kernel_replaces_existing_source_dynamics": false,
+  "single_stage_biological_source_model_interpretation_authorized": false,
+  "external_recording_to_v7_source_state_mapping_available": false,
+  "authorize_physical_source_dynamics_transfer": false,
+  "authorize_T5_functional_precheck": false,
+  "direction_scoring_authorized": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "measured_kernel_is_cascaded_after_uncalibrated_typed_recurrent_source_state",
+  "boundary": {
+    "read_only_semantics_audit": true,
+    "source_state_is_not_instantaneous_synaptic_drive": true,
+    "measured_kernel_does_not_replace_existing_source_dynamics": true,
+    "cascade_is_not_single_stage_biological_source_model": true,
+    "leak_coefficients_are_not_biological_time_constants": true,
+    "baseline_subtraction_and_half_wave_rectification_are_engineering_transforms": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "direction_scoring_remains_frozen": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

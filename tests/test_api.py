@@ -138,6 +138,25 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_Tm2_LOO_candidate_ratio_ranges"][
         "temporal_difference_filtered_Tm_pair_reichardt"
     ]["static"] == [0.5921415935025431, 0.6741595238667628]
+    assert boundaries["T5_measured_kernel_typed_recurrent_cascade_verified"] is True
+    assert boundaries["T5_measured_kernel_replaces_existing_source_dynamics"] is False
+    assert (
+        boundaries["T5_measured_kernel_single_stage_biological_interpretation_authorized"]
+        is False
+    )
+    assert boundaries["T5_measured_kernel_external_state_mapping_available"] is False
+    assert boundaries["T5_measured_kernel_source_leaks"] == {
+        "Tm1": 0.28,
+        "Tm2": 0.55,
+        "Tm4": 0.34,
+        "Tm9": 0.16,
+    }
+    assert boundaries["T5_measured_kernel_source_node_counts"] == {
+        "Tm1": 1777,
+        "Tm2": 1766,
+        "Tm4": 1670,
+        "Tm9": 1771,
+    }
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0
