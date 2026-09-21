@@ -50,6 +50,19 @@ def test_tm_recurrence_and_t5_feedback_are_present_before_measured_fir() -> None
     assert report["every_source_has_recurrent_or_target_feedback_input"] is True
 
 
+def test_lamina_direct_input_coverage_counts_only_stored_nonzero_edges() -> None:
+    report = json.loads(REPORT.read_text())
+    expected = {"Tm1": 1774, "Tm2": 1765, "Tm4": 1670, "Tm9": 1770}
+    for source, count in expected.items():
+        category = report["source_results"][source]["category_results"][
+            "overwritten_lamina_L1_L2_L3"
+        ]
+        assert category["target_count_with_any_direct_input"] == count
+        assert category["target_count_with_any_direct_input"] <= report[
+            "source_results"
+        ][source]["target_count"]
+
+
 def test_update_order_and_replacement_boundary_remain_explicit() -> None:
     report = json.loads(REPORT.read_text())
     assert set(report["update_ordering"].values()) == {True}

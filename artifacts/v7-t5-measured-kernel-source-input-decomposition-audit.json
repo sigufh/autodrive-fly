@@ -4,7 +4,7 @@
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
       "configs/driving-v7-t5-measured-kernel-source-input-decomposition-audit.yaml": "a114a8ed058ef09c524d81d9eea30d1474ab51f9773ded8bafe59648b64ce277",
-      "src/fly_emotion/driving/v7_t5_measured_kernel_source_input_decomposition_audit.py": "7eeb6029eb94e200431940d55629b7ea95363d43ef37b928f4902bd81384edec",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_source_input_decomposition_audit.py": "2b206d2cb868dec0a61f7a09a0b881de03ce3016ede1a820ef40d065acd37938",
       "artifacts/v7-t5-measured-kernel-cascade-semantics-audit.json": "5f21b06c9bb119f1b3f72be0c5fc1497d00c162d034fac4e70777173bd66f837",
       "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
       "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
@@ -37,25 +37,25 @@
           "edge_count": 0,
           "normalized_absolute_input_mass": 0.0,
           "normalized_absolute_input_fraction": 0.0,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 0
         },
         "overwritten_lamina_L1_L2_L3": {
           "edge_count": 2328,
           "normalized_absolute_input_mass": 542.8922236729413,
           "normalized_absolute_input_fraction": 0.30551053586959337,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 1774
         },
         "other_lamina_L4_L5": {
           "edge_count": 870,
           "normalized_absolute_input_mass": 3.2813266249140725,
           "normalized_absolute_input_fraction": 0.0018465540890572675,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 702
         },
         "same_Tm_type": {
           "edge_count": 331,
           "normalized_absolute_input_mass": 1.6198302487609908,
           "normalized_absolute_input_fraction": 0.000911553317099783,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 303
         },
         "other_Tm_type": {
           "edge_count": 16835,
@@ -67,19 +67,19 @@
           "edge_count": 738,
           "normalized_absolute_input_mass": 2.776050899294205,
           "normalized_absolute_input_fraction": 0.0015622120945235239,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 738
         },
         "T4": {
           "edge_count": 142,
           "normalized_absolute_input_mass": 0.4684393686475232,
           "normalized_absolute_input_fraction": 0.000263612474626521,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 133
         },
         "T5_feedback": {
           "edge_count": 635,
           "normalized_absolute_input_mass": 1.9370781320612878,
           "normalized_absolute_input_fraction": 0.001090083357878112,
-          "target_count_with_any_direct_input": 1777
+          "target_count_with_any_direct_input": 540
         },
         "other_visual_subgraph": {
           "edge_count": 100825,
@@ -101,25 +101,25 @@
           "edge_count": 0,
           "normalized_absolute_input_mass": 0.0,
           "normalized_absolute_input_fraction": 0.0,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 0
         },
         "overwritten_lamina_L1_L2_L3": {
           "edge_count": 3756,
           "normalized_absolute_input_mass": 609.6535600990755,
           "normalized_absolute_input_fraction": 0.34521719064109874,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 1765
         },
         "other_lamina_L4_L5": {
           "edge_count": 6561,
           "normalized_absolute_input_mass": 121.61572591494769,
           "normalized_absolute_input_fraction": 0.0688650768008527,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 1765
         },
         "same_Tm_type": {
           "edge_count": 485,
           "normalized_absolute_input_mass": 2.075539111625403,
           "normalized_absolute_input_fraction": 0.0011752769573995473,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 422
         },
         "other_Tm_type": {
           "edge_count": 13020,
@@ -131,19 +131,19 @@
           "edge_count": 334,
           "normalized_absolute_input_mass": 1.0978141862433404,
           "normalized_absolute_input_fraction": 0.0006216388356024374,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 334
         },
         "T4": {
           "edge_count": 184,
           "normalized_absolute_input_mass": 0.6135954346973449,
           "normalized_absolute_input_fraction": 0.0003474492827073747,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 166
         },
         "T5_feedback": {
           "edge_count": 1274,
           "normalized_absolute_input_mass": 3.7880256776697934,
           "normalized_absolute_input_fraction": 0.0021449748973974593,
-          "target_count_with_any_direct_input": 1766
+          "target_count_with_any_direct_input": 936
         },
         "other_visual_subgraph": {
           "edge_count": 99854,
@@ -165,7 +165,7 @@
           "edge_count": 0,
           "normalized_absolute_input_mass": 0.0,
           "normalized_absolute_input_fraction": 0.0,
-          "target_count_with_any_direct_input": 1670
+          "target_count_with_any_direct_input": 0
         },
         "overwritten_lamina_L1_L2_L3": {
           "edge_count": 11669,
@@ -183,7 +183,7 @@
           "edge_count": 9634,
           "normalized_absolute_input_mass": 42.8805533668492,
           "normalized_absolute_input_fraction": 0.025676977998550433,
-          "target_count_with_any_direct_input": 1670
+          "target_count_with_any_direct_input": 1668
         },
         "other_Tm_type": {
           "edge_count": 40178,
@@ -195,19 +195,19 @@
           "edge_count": 13,
           "normalized_absolute_input_mass": 0.0649182922206819,
           "normalized_absolute_input_fraction": 3.8873228775601475e-05,
-          "target_count_with_any_direct_input": 1670
+          "target_count_with_any_direct_input": 13
         },
         "T4": {
           "edge_count": 185,
           "normalized_absolute_input_mass": 0.4830315801082179,
           "normalized_absolute_input_fraction": 0.00028924046639361504,
-          "target_count_with_any_direct_input": 1670
+          "target_count_with_any_direct_input": 166
         },
         "T5_feedback": {
           "edge_count": 820,
           "normalized_absolute_input_mass": 2.0405428662197664,
           "normalized_absolute_input_fraction": 0.00122188195270657,
-          "target_count_with_any_direct_input": 1670
+          "target_count_with_any_direct_input": 635
         },
         "other_visual_subgraph": {
           "edge_count": 140733,
@@ -229,25 +229,25 @@
           "edge_count": 0,
           "normalized_absolute_input_mass": 0.0,
           "normalized_absolute_input_fraction": 0.0,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 0
         },
         "overwritten_lamina_L1_L2_L3": {
           "edge_count": 3518,
           "normalized_absolute_input_mass": 453.5605739126913,
           "normalized_absolute_input_fraction": 0.25610421902137703,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 1770
         },
         "other_lamina_L4_L5": {
           "edge_count": 2613,
           "normalized_absolute_input_mass": 52.36267830990255,
           "normalized_absolute_input_fraction": 0.029566729574265472,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 1521
         },
         "same_Tm_type": {
           "edge_count": 129,
           "normalized_absolute_input_mass": 2.4496078630909324,
           "normalized_absolute_input_fraction": 0.0013831777821285915,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 117
         },
         "other_Tm_type": {
           "edge_count": 19916,
@@ -259,19 +259,19 @@
           "edge_count": 1700,
           "normalized_absolute_input_mass": 160.6872105896473,
           "normalized_absolute_input_fraction": 0.09073247310668342,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 1700
         },
         "T4": {
           "edge_count": 146,
           "normalized_absolute_input_mass": 1.3737942050211132,
           "normalized_absolute_input_fraction": 0.0007757166566262272,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 135
         },
         "T5_feedback": {
           "edge_count": 1360,
           "normalized_absolute_input_mass": 18.30829967558384,
           "normalized_absolute_input_fraction": 0.010337831504127412,
-          "target_count_with_any_direct_input": 1771
+          "target_count_with_any_direct_input": 934
         },
         "other_visual_subgraph": {
           "edge_count": 27438,

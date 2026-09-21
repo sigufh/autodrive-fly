@@ -127,26 +127,22 @@ def evaluate_v7_t5_measured_kernel_source_input_decomposition_audit(
         if not np.all(membership == 1):
             raise ValueError(f"input categories overlap or omit edges: {target_type}")
         total = float(np.sum(weights))
-        category_results = {
-            name: {
+        category_results = {}
+        for name, mask in masks.items():
+            source_mask = np.zeros(probe.graph.node_count, dtype=np.float32)
+            source_mask[np.unique(sources[mask])] = 1.0
+            category_matrix = probe.adjacency[targets].multiply(source_mask).tocsr()
+            category_matrix.eliminate_zeros()
+            category_results[name] = {
                 "edge_count": int(np.count_nonzero(mask)),
                 "normalized_absolute_input_mass": float(np.sum(weights[mask])),
                 "normalized_absolute_input_fraction": float(
                     np.sum(weights[mask]) / total
                 ),
                 "target_count_with_any_direct_input": int(
-                    np.count_nonzero(
-                        np.asarray(
-                            probe.adjacency[targets].multiply(
-                                np.isin(np.arange(probe.graph.node_count), sources[mask])
-                            )
-                            .getnnz(axis=1)
-                        ).ravel()
-                    )
+                    np.count_nonzero(np.diff(category_matrix.indptr))
                 ),
             }
-            for name, mask in masks.items()
-        }
         fractions_sum = sum(
             item["normalized_absolute_input_fraction"]
             for item in category_results.values()
