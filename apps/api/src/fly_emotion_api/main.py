@@ -683,6 +683,27 @@ def _verified_v7_status(root: Path) -> dict:
                 ],
                 "v7_horizontal_fov_degrees": visual["v7_horizontal_fov_degrees"],
                 "T4_source_mapping_mode": visual["T4_source_mapping_mode"],
+                "T4_synapse_RF_axis_joint_valid_target_count": visual[
+                    "T4_synapse_RF_axis_joint_valid_target_count"
+                ],
+                "T4_synapse_RF_axis_identity_median_angle_degrees": visual[
+                    "T4_synapse_RF_axis_identity_median_angle_degrees"
+                ],
+                "T4_synapse_RF_axis_identity_cardinal_match_fraction": visual[
+                    "T4_synapse_RF_axis_identity_cardinal_match_fraction"
+                ],
+                "T4_synapse_RF_axis_descriptive_best_transform": visual[
+                    "T4_synapse_RF_axis_descriptive_best_transform"
+                ],
+                "T4_synapse_RF_axis_best_median_angle_degrees": visual[
+                    "T4_synapse_RF_axis_best_median_angle_degrees"
+                ],
+                "T4_source_RF_axis_interchangeability_verified": visual[
+                    "T4_source_RF_axis_interchangeability_verified"
+                ],
+                "T4_RF_axis_replacement_authorized": visual[
+                    "T4_RF_axis_replacement_authorized"
+                ],
                 "T4_source_recording_level_body_assignment": visual[
                     "T4_source_recording_level_body_assignment"
                 ],

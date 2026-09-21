@@ -1,0 +1,31 @@
+version: 1
+name: v7-t4-synapse-rf-axis-correspondence-audit
+observed_on: "2026-09-21"
+crossfit_precheck_config: configs/driving-v7-t4-synapse-crossfit-precheck.yaml
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+source_groups:
+  fast: [Mi1, Tm3]
+  delayed: [Mi4, C3]
+axis_definitions:
+  target_synapse_axis: crossfit_projected_fast_minus_delayed_postsynaptic_centroid
+  source_RF_axis: fast_minus_delayed_raw_weighted_source_optic_hex_centroid
+  source_RF_left_eye_transform: reflect_horizontal_into_common_image_frame
+comparison_transforms:
+  identity: [[1.0, 0.0], [0.0, 1.0]]
+  reflect_horizontal: [[-1.0, 0.0], [0.0, 1.0]]
+  reflect_vertical: [[1.0, 0.0], [0.0, -1.0]]
+  inversion: [[-1.0, 0.0], [0.0, -1.0]]
+boundary:
+  structure_only: true
+  target_synapse_axis_was_previously_crossfit_against_T4_labels: true
+  source_RF_axis_uses_no_target_subtype_or_direction_label: true
+  comparison_transform_is_descriptive_not_selected_for_dynamics: true
+  synapse_terminal_position_is_not_assumed_to_equal_source_receptive_field_position: true
+  no_parameter_fit_to_neural_response: true
+  no_functional_stimulus_evaluated: true
+  no_target_activity_injection: true
+  authorize_RF_axis_replacement: false
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

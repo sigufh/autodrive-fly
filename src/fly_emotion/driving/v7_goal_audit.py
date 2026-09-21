@@ -80,6 +80,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_synapse_correlator_precheck = reports["t4_synapse_correlator_precheck"]
     t4_synapse_antisymmetric_precheck = reports["t4_synapse_antisymmetric_precheck"]
     t4_synapse_crossfit_precheck = reports["t4_synapse_crossfit_precheck"]
+    t4_synapse_rf_axis_correspondence_audit = reports[
+        "t4_synapse_rf_axis_correspondence_audit"
+    ]
     t4_crossfit_sequence_identifiability = reports[
         "t4_crossfit_sequence_identifiability"
     ]
@@ -2599,6 +2602,43 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_synapse_crossfit_candidate_passed": t4_synapse_crossfit_precheck[
                     "candidate_passed"
                 ],
+                "T4_synapse_RF_axis_joint_valid_target_count": (
+                    t4_synapse_rf_axis_correspondence_audit[
+                        "joint_valid_target_count"
+                    ]
+                ),
+                "T4_synapse_RF_axis_identity_median_angle_degrees": (
+                    t4_synapse_rf_axis_correspondence_audit["comparison_results"][
+                        "identity"
+                    ]["median_angle_degrees"]
+                ),
+                "T4_synapse_RF_axis_identity_cardinal_match_fraction": (
+                    t4_synapse_rf_axis_correspondence_audit["comparison_results"][
+                        "identity"
+                    ]["same_cardinal_direction_fraction"]
+                ),
+                "T4_synapse_RF_axis_descriptive_best_transform": (
+                    t4_synapse_rf_axis_correspondence_audit[
+                        "descriptive_best_signed_permutation"
+                    ]
+                ),
+                "T4_synapse_RF_axis_best_median_angle_degrees": (
+                    t4_synapse_rf_axis_correspondence_audit["comparison_results"][
+                        t4_synapse_rf_axis_correspondence_audit[
+                            "descriptive_best_signed_permutation"
+                        ]
+                    ]["median_angle_degrees"]
+                ),
+                "T4_source_RF_axis_interchangeability_verified": (
+                    t4_synapse_rf_axis_correspondence_audit[
+                        "source_RF_axis_interchangeability_verified"
+                    ]
+                ),
+                "T4_RF_axis_replacement_authorized": (
+                    t4_synapse_rf_axis_correspondence_audit[
+                        "authorize_RF_axis_replacement"
+                    ]
+                ),
                 "T4_crossfit_sequence_maximum_direction_pass_count": (
                     t4_crossfit_sequence_identifiability[
                         "maximum_ordered_direction_pass_count"
@@ -3735,6 +3775,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Kohn_Portes_record_level_direction_code_available",
                     "T5_Kohn_Portes_record_level_physical_direction_available",
                     "T5_cross_dataset_direction_mapping_authorized",
+                    "T4_synapse_RF_axis_joint_valid_target_count",
+                    "T4_synapse_RF_axis_identity_median_angle_degrees",
+                    "T4_synapse_RF_axis_identity_cardinal_match_fraction",
+                    "T4_synapse_RF_axis_descriptive_best_transform",
+                    "T4_synapse_RF_axis_best_median_angle_degrees",
+                    "T4_source_RF_axis_interchangeability_verified",
+                    "T4_RF_axis_replacement_authorized",
                 ],
             },
         },

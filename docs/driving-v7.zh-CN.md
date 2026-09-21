@@ -2124,6 +2124,14 @@ kernel、source→MaleCNS 身份映射、物理 v7 采样间隔和 mV→归一�
 和 static positive-peak 仍分别出现双侧伪阳性。故受体数量不平衡不能解释 T4 方向失败，
 严格镜像输入也不能恢复有序时间特异性；这只是工程归因消融，不是生物视网膜重建，也不
 授权候选。证据见 `artifacts/v7-t4-crossfit-retinal-symmetry-audit.json`。
+另将 T4 靶细胞上的 fast/delayed 突触终末轴，与同一 Mi1/Tm3、Mi4/C3 source pool 的
+raw-edge-weighted optic-hex/RF centroid 差直接比较。6,749 个 conductance targets 均有
+两种轴，但原始两轴中位夹角为 `68.18°`，cardinal 同向率仅 `49.52%`；a/b 水平群体的
+中位夹角约 `140–143°`，而 c/d 为 `25–37°`。统一水平反射在描述性比较中最好，降至
+`21.11°`、cardinal 一致率 `87.49%`，但这个选择参照了此前用 T4 标签校准的靶处突触轴，
+不能当作无标签选择规则。因此靶处 terminal geometry 与 source RF geometry 不得直接互换，
+当前不授权 RF-axis replacement 或新功能候选。证据见
+`artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json`。
 
 对固定的 50 个 FlyVis optic-flow checkpoint 进一步做了不执行 pickle 的静态张量审计。
 其平均滤波连接组确实覆盖 T4 所需 Mi1/Tm3/Mi4/C3，以及 T5 所需

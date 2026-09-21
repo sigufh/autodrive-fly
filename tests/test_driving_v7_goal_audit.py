@@ -246,6 +246,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_Kohn_Portes_record_level_direction_code_available",
         "T5_Kohn_Portes_record_level_physical_direction_available",
         "T5_cross_dataset_direction_mapping_authorized",
+            "T4_synapse_RF_axis_joint_valid_target_count",
+            "T4_synapse_RF_axis_identity_median_angle_degrees",
+            "T4_synapse_RF_axis_identity_cardinal_match_fraction",
+            "T4_synapse_RF_axis_descriptive_best_transform",
+            "T4_synapse_RF_axis_best_median_angle_degrees",
+            "T4_source_RF_axis_interchangeability_verified",
+            "T4_RF_axis_replacement_authorized",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
@@ -1468,6 +1475,21 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_synapse_crossfit_polarity_pass_counts"] == [8] * 8
     assert visual["observations"]["T4_synapse_crossfit_controls_evaluated"] is False
     assert visual["observations"]["T4_synapse_crossfit_candidate_passed"] is False
+    assert visual["observations"]["T4_synapse_RF_axis_joint_valid_target_count"] == 6749
+    assert visual["observations"]["T4_synapse_RF_axis_identity_median_angle_degrees"] == (
+        68.18171979285492
+    )
+    assert visual["observations"]["T4_synapse_RF_axis_identity_cardinal_match_fraction"] == (
+        0.4951844717735961
+    )
+    assert visual["observations"]["T4_synapse_RF_axis_descriptive_best_transform"] == (
+        "reflect_horizontal"
+    )
+    assert visual["observations"]["T4_synapse_RF_axis_best_median_angle_degrees"] == (
+        21.112026999265463
+    )
+    assert visual["observations"]["T4_source_RF_axis_interchangeability_verified"] is False
+    assert visual["observations"]["T4_RF_axis_replacement_authorized"] is False
     assert visual["observations"]["T4_crossfit_sequence_maximum_direction_pass_count"] == 2
     assert all(
         not values

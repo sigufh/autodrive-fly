@@ -368,6 +368,21 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["v7_offline_frame_interval_milliseconds"] == 10.0
     assert boundaries["v7_offline_substep_interval_milliseconds"] == 2.5
     assert boundaries["T4_source_mapping_mode"] == "exact_type_average"
+    assert boundaries["T4_synapse_RF_axis_joint_valid_target_count"] == 6749
+    assert boundaries["T4_synapse_RF_axis_identity_median_angle_degrees"] == (
+        68.18171979285492
+    )
+    assert boundaries["T4_synapse_RF_axis_identity_cardinal_match_fraction"] == (
+        0.4951844717735961
+    )
+    assert boundaries["T4_synapse_RF_axis_descriptive_best_transform"] == (
+        "reflect_horizontal"
+    )
+    assert boundaries["T4_synapse_RF_axis_best_median_angle_degrees"] == (
+        21.112026999265463
+    )
+    assert boundaries["T4_source_RF_axis_interchangeability_verified"] is False
+    assert boundaries["T4_RF_axis_replacement_authorized"] is False
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T4_author_minmax_formula_reproduced"] is True

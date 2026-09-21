@@ -68,6 +68,7 @@ evidence:
   t4_synapse_correlator_precheck: artifacts/v7-t4-synapse-correlator-precheck.json
   t4_synapse_antisymmetric_precheck: artifacts/v7-t4-synapse-antisymmetric-precheck.json
   t4_synapse_crossfit_precheck: artifacts/v7-t4-synapse-crossfit-precheck.json
+  t4_synapse_rf_axis_correspondence_audit: artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json
   t4_crossfit_sequence_identifiability: artifacts/v7-t4-crossfit-sequence-identifiability.json
   t4_crossfit_retinal_symmetry_audit: artifacts/v7-t4-crossfit-retinal-symmetry-audit.json
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json

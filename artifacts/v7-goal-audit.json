@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "6dfeafdc267fa0d7a6d76cf5e2a33acfd0ca87ccfa1f4d1de464484a0d3101c7",
-      "src/fly_emotion/driving/v7_goal_audit.py": "be23b8a682df907f54584ea2e2d63ef9b63d9231a08587c367829015189e3b74",
+      "configs/driving-v7-goal-audit.yaml": "775457834670c5aa11880fb42ec15e3a9b58275f42d3bf3ffc2ad3b0b55ea9f3",
+      "src/fly_emotion/driving/v7_goal_audit.py": "b04fc611395df2bd1323550088c0cff3e68978faafd327ea4e6010d15cf6b778",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -63,6 +63,7 @@
       "artifacts/v7-t4-synapse-correlator-precheck.json": "7506cd0df65513f399ed22e69287a3559731aabedacedaf93f779a4796b3ef5d",
       "artifacts/v7-t4-synapse-antisymmetric-precheck.json": "2ddd9d90b0f5c8ad5737b7846ad4d495d4a6cedadf9dc8c35052a93a8bcc5857",
       "artifacts/v7-t4-synapse-crossfit-precheck.json": "1a52b2154ee31d6a7faeb69840b225ebd3f61ec39f0b87c91c0db90167321116",
+      "artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json": "f5d76e8c5d188d4356b7b550bc4ef0f2132b57e9376074b3c753d0ed1a7550be",
       "artifacts/v7-t4-crossfit-sequence-identifiability.json": "41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60",
       "artifacts/v7-t4-crossfit-retinal-symmetry-audit.json": "dd3e22253ca8587e299363f8d138836ee83b297816a251244cba55b70051b1ed",
       "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
@@ -148,7 +149,7 @@
       "artifacts/v7-t5-source-transfer-synthesis-audit.json": "fdc939470020f7c0d07cb597d2e9af23fe48e20bd120a48240c36ee355fd49f8",
       "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
       "artifacts/v7-controlled-stimulus-angular-grid.json": "c4fbbee972f67d22eef01ce2b72c26b1b86f53b42313afcfa9430ae41e80f5b7",
-      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "7aac8379e5b712412036dda63993ea581c69e31eeb2713316c01534c7bae3444",
+      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "cb5942b5315b20e7b21f21666435246ff417eb29cfde94ac543e0098c90e2536",
       "artifacts/v7-vertical-angular-coordinate-audit.json": "f130521f435002b08f30988c557cb1edba8f36805a08da1d3465ab1343a169fc",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "fe54fb0d405166293e1cd9bc7abb2c654f1a9cbeb9bae948acd6e38c74fae770",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "74e4a40f8185b22b4a2966f10c8e9e3bc667ac5559053d7a5446996bf7189221",
@@ -182,9 +183,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "643edc5558867dc07705eaae8f627aa2203a901cef65e4ec8cc014961df452ed",
-      "apps/web/src/components/DrivingPanel.tsx": "1a8aaa48104f63d5ee9250eebcf333a1db2a476a4e1302833b250aa2c1e16146",
-      "apps/web/src/types.ts": "fa108da4377ef397f0b10ae5e4d478004d439a9afd2fa25bf5bb064b0fcdeee2",
+      "apps/api/src/fly_emotion_api/main.py": "bd7d908dac0853779efbe0b2971252adb1ea647add58d08cf93c153c948ffa60",
+      "apps/web/src/components/DrivingPanel.tsx": "832a416c9309893bd723230449d1e622f08bfe11a70ed9a98cb7dcbfc331aa39",
+      "apps/web/src/types.ts": "e68859d21b048ea2d05db95e5b454b8252d2a34fb3aa159d7319e2d0193b76cf",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -1493,6 +1494,13 @@
         ],
         "T4_synapse_crossfit_controls_evaluated": false,
         "T4_synapse_crossfit_candidate_passed": false,
+        "T4_synapse_RF_axis_joint_valid_target_count": 6749,
+        "T4_synapse_RF_axis_identity_median_angle_degrees": 68.18171979285492,
+        "T4_synapse_RF_axis_identity_cardinal_match_fraction": 0.4951844717735961,
+        "T4_synapse_RF_axis_descriptive_best_transform": "reflect_horizontal",
+        "T4_synapse_RF_axis_best_median_angle_degrees": 21.112026999265463,
+        "T4_source_RF_axis_interchangeability_verified": false,
+        "T4_RF_axis_replacement_authorized": false,
         "T4_crossfit_sequence_maximum_direction_pass_count": 2,
         "T4_crossfit_sequence_ordered_bilateral_subtypes": {
           "positive_peak": [],
@@ -2291,7 +2299,14 @@
           "T5_Figure4_absolute_physical_direction_mapping_verified",
           "T5_Kohn_Portes_record_level_direction_code_available",
           "T5_Kohn_Portes_record_level_physical_direction_available",
-          "T5_cross_dataset_direction_mapping_authorized"
+          "T5_cross_dataset_direction_mapping_authorized",
+          "T4_synapse_RF_axis_joint_valid_target_count",
+          "T4_synapse_RF_axis_identity_median_angle_degrees",
+          "T4_synapse_RF_axis_identity_cardinal_match_fraction",
+          "T4_synapse_RF_axis_descriptive_best_transform",
+          "T4_synapse_RF_axis_best_median_angle_degrees",
+          "T4_source_RF_axis_interchangeability_verified",
+          "T4_RF_axis_replacement_authorized"
         ]
       }
     }

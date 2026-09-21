@@ -236,6 +236,13 @@ export type V7Status = {
     v7_offline_substep_interval_milliseconds: number;
     v7_horizontal_fov_degrees: number;
     T4_source_mapping_mode: string;
+    T4_synapse_RF_axis_joint_valid_target_count?: number;
+    T4_synapse_RF_axis_identity_median_angle_degrees?: number;
+    T4_synapse_RF_axis_identity_cardinal_match_fraction?: number;
+    T4_synapse_RF_axis_descriptive_best_transform?: string;
+    T4_synapse_RF_axis_best_median_angle_degrees?: number;
+    T4_source_RF_axis_interchangeability_verified?: boolean;
+    T4_RF_axis_replacement_authorized?: boolean;
     T4_source_recording_level_body_assignment: boolean;
     T4_exact_type_average_mapping_complete: boolean;
     T4_author_minmax_formula_reproduced: boolean;

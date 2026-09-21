@@ -535,6 +535,18 @@ polarity is 9/16 for linear luminance and 11/16 for frame difference, and mirror
 passing is 24/132 versus 4/132. Per-cell IDs, signed contrasts, denominators and
 invalid cells are retained. This blocks validation; OOD, reserved final and
 topology controls were not run (`artifacts/v7-stage1-development.json`).
+The T4 target-synapse axis was also compared directly with a separate, label-free
+source receptive-field proxy: the raw-edge-weighted optic-hex centroid difference
+between the same Mi1/Tm3 and Mi4/C3 source pools. All 6,749 conductance targets had
+both axes, but the unmodified axes had a 68.18-degree median disagreement and only
+49.52% shared the same cardinal direction. The mismatch was concentrated in the
+horizontal a/b populations (140–143-degree medians), whereas c/d medians were
+25–37 degrees. A global horizontal reflection was descriptively closest
+(21.11-degree median, 87.49% cardinal agreement), but that comparison references
+the previously label-calibrated target-synapse axis and is not a label-free
+selection rule. Therefore target-terminal geometry and source RF geometry are not
+treated as interchangeable, and no RF-axis replacement or functional candidate is
+authorized (`artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
