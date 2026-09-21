@@ -356,6 +356,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_measured_kernel_cross_substep_direction_scoring_authorized": visual[
                     "T5_measured_kernel_cross_substep_direction_scoring_authorized"
                 ],
+                "T5_measured_kernel_causal_index_zero_supported": visual[
+                    "T5_measured_kernel_causal_index_zero_supported"
+                ],
+                "T5_measured_kernel_all_population_peaks_covered": visual[
+                    "T5_measured_kernel_all_population_peaks_covered"
+                ],
+                "T5_measured_kernel_full_L1_support_covered": visual[
+                    "T5_measured_kernel_full_L1_support_covered"
+                ],
+                "T5_measured_kernel_full_support_negative_authorized": visual[
+                    "T5_measured_kernel_full_support_negative_authorized"
+                ],
+                "T5_measured_kernel_trace_samples": visual[
+                    "T5_measured_kernel_trace_samples"
+                ],
+                "T5_measured_kernel_minimum_prefix_L1_mass_fraction": visual[
+                    "T5_measured_kernel_minimum_prefix_L1_mass_fraction"
+                ],
+                "T5_measured_kernel_maximum_prefix_L1_mass_fraction": visual[
+                    "T5_measured_kernel_maximum_prefix_L1_mass_fraction"
+                ],
                 "T5_transfer_synthesis_CT1_complete": visual[
                     "T5_transfer_synthesis_CT1_complete"
                 ],

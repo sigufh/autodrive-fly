@@ -22,6 +22,9 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
         "exact_type_average_mapping_source_count": 4,
         "Figure5_training_fit_count": 168,
         "moving_bar_condition_count": 24,
+        "measured_kernel_trace_samples": 27,
+        "measured_kernel_minimum_prefix_L1_mass_fraction": 0.4082240394891599,
+        "measured_kernel_maximum_prefix_L1_mass_fraction": 0.47168529082482163,
     }
     gates = report["gates"]
     assert gates["four_Tm_voltage_derived_kernel_shapes_available"] is True
@@ -43,6 +46,10 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["measured_kernel_cross_substep_temporal_identifiability_passed"] is False
     assert gates["measured_kernel_cross_substep_direction_scoring_performed"] is False
     assert gates["measured_kernel_cross_substep_direction_scoring_authorized"] is False
+    assert gates["measured_kernel_causal_index_zero_supported"] is True
+    assert gates["measured_kernel_all_population_peaks_covered"] is True
+    assert gates["measured_kernel_full_L1_support_covered"] is False
+    assert gates["measured_kernel_full_support_negative_conclusion_authorized"] is False
     assert gates["absolute_source_gain_available"] is False
     assert gates["source_to_v7_state_mapping_available"] is False
     assert gates["state_invariant_source_timing_available"] is False

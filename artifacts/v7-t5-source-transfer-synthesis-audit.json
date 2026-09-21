@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "0651681b682ffd36195e4fb7f7e9afd3d7f9d22953903af763af78f4b340db53",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "7cc8a89eed9152c57889b0991cc2138eaf527a6e10e17f8ace2db7985769da93",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "3ad49c21bfefa9cf1ec1d7c5864f48cc4a7d3c5769713bffd20e2c94e84bc15f",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "84eed8765a0d4ef9434443b59a6cdee54396270b5fb4c3d803967f692c75dbae",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -15,6 +15,7 @@
       "artifacts/v7-kohn-portes-axolotl-availability-audit.json": "9dec0d31a4f9d8041d9e66b4f229a6de6d7b2be44a368aff9442e80c50a5740d",
       "artifacts/v7-t5-measured-kernel-identifiability.json": "25611865c51301ad34b112c16ea8a45c667c81649fc987b72bca571e9753d918",
       "artifacts/v7-t5-measured-kernel-substep-sensitivity.json": "f306325839b5718c1c03085ba479e9496975dd8cd4cccb2cdae447a93d2402d3",
+      "artifacts/v7-t5-measured-kernel-support-coverage-audit.json": "df8e6701525e03b6fabaf0c92f36dbc04de48f9ac411ae68ad6ab47d869ff799",
       "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "125437db2927b9efd8a30be5ef67fe79fcb563e246942fab3636a5f68aba1426",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "0d0cdb61ae8d6a8f2fb8bb5b938e984119bee0377105719a344fc6fbe49b5cec",
       "artifacts/v7-t5-source-mapping-scope-audit.json": "0f04adc6f985d3150913447d86af966ec0cf273665040c263ddfc84e5b9e8854"
@@ -98,7 +99,10 @@
     "voltage_derived_kernel_source_count": 4,
     "exact_type_average_mapping_source_count": 4,
     "Figure5_training_fit_count": 168,
-    "moving_bar_condition_count": 24
+    "moving_bar_condition_count": 24,
+    "measured_kernel_trace_samples": 27,
+    "measured_kernel_minimum_prefix_L1_mass_fraction": 0.4082240394891599,
+    "measured_kernel_maximum_prefix_L1_mass_fraction": 0.47168529082482163
   },
   "gates": {
     "four_Tm_voltage_derived_kernel_shapes_available": true,
@@ -120,6 +124,10 @@
     "measured_kernel_cross_substep_temporal_identifiability_passed": false,
     "measured_kernel_cross_substep_direction_scoring_performed": false,
     "measured_kernel_cross_substep_direction_scoring_authorized": false,
+    "measured_kernel_causal_index_zero_supported": true,
+    "measured_kernel_all_population_peaks_covered": true,
+    "measured_kernel_full_L1_support_covered": false,
+    "measured_kernel_full_support_negative_conclusion_authorized": false,
     "absolute_source_gain_available": false,
     "source_to_v7_state_mapping_available": false,
     "state_invariant_source_timing_available": false,

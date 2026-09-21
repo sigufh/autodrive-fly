@@ -332,6 +332,15 @@ were 5.136/0.9999, 2.421/0.9278, and 2.153/0.9763, respectively. All three
 therefore remained negative, and no candidate passed at both one and four updates
 per frame. Direction scoring remained stopped; this numerical-resolution check
 does not convert update counts into a biologically calibrated solver interval.
+An additional support-coverage audit verified that the author prediction path
+passes stored kernels to `lfilter` without reversal, supporting causal index zero.
+The exported module does not explicitly import `lfilter`, so self-contained
+execution is not claimed. Each local-edge trace has only 27 post-baseline samples
+(270 ms; maximum lag 260 ms), versus 499 coefficients (4.99 s nominal support).
+All population-kernel absolute peaks fall inside the window, but the prefix covers
+only 43.61%, 40.82%, 46.84%, and 47.17% of Tm1/Tm2/Tm4/Tm9 L1 mass. The result
+therefore rejects those readouts over early support only; a full-support negative
+conclusion and direction scoring remain unauthorized.
 
 Wienecke et al. (2018) measure relative T5 voltage with two-photon ASAP2f at
 about 15 Hz; this can constrain polarity, F1 and relative response amplitude but

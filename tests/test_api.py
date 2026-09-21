@@ -76,6 +76,17 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         boundaries["T5_measured_kernel_cross_substep_direction_scoring_authorized"]
         is False
     )
+    assert boundaries["T5_measured_kernel_causal_index_zero_supported"] is True
+    assert boundaries["T5_measured_kernel_all_population_peaks_covered"] is True
+    assert boundaries["T5_measured_kernel_full_L1_support_covered"] is False
+    assert boundaries["T5_measured_kernel_full_support_negative_authorized"] is False
+    assert boundaries["T5_measured_kernel_trace_samples"] == 27
+    assert boundaries["T5_measured_kernel_minimum_prefix_L1_mass_fraction"] == (
+        0.4082240394891599
+    )
+    assert boundaries["T5_measured_kernel_maximum_prefix_L1_mass_fraction"] == (
+        0.47168529082482163
+    )
     assert boundaries["T5_candidate_normalization_formula"] is None
     assert boundaries["T5_candidate_clipping_rule"] is None
     assert boundaries["T5_saline_fast_pooled_median_latency_ms"] == 50.0

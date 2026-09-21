@@ -112,6 +112,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_measured_kernel_cross_substep_identifiability_passed",
         "T5_measured_kernel_cross_substep_direction_scoring_performed",
         "T5_measured_kernel_cross_substep_direction_scoring_authorized",
+        "T5_measured_kernel_causal_index_zero_supported",
+        "T5_measured_kernel_all_population_peaks_covered",
+        "T5_measured_kernel_full_L1_support_covered",
+        "T5_measured_kernel_full_support_negative_authorized",
+        "T5_measured_kernel_trace_samples",
+        "T5_measured_kernel_minimum_prefix_L1_mass_fraction",
+        "T5_measured_kernel_maximum_prefix_L1_mass_fraction",
         "T5_transfer_synthesis_CT1_complete",
         "T5_transfer_synthesis_ready",
         "v7_offline_horizontal_coordinate_contract_complete",
@@ -484,6 +491,22 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
             "T5_measured_kernel_cross_substep_direction_scoring_authorized"
         ]
         is False
+    )
+    assert visual["observations"]["T5_measured_kernel_causal_index_zero_supported"] is True
+    assert visual["observations"]["T5_measured_kernel_all_population_peaks_covered"] is True
+    assert visual["observations"]["T5_measured_kernel_full_L1_support_covered"] is False
+    assert (
+        visual["observations"]["T5_measured_kernel_full_support_negative_authorized"]
+        is False
+    )
+    assert visual["observations"]["T5_measured_kernel_trace_samples"] == 27
+    assert np.isclose(
+        visual["observations"]["T5_measured_kernel_minimum_prefix_L1_mass_fraction"],
+        0.4082240394891599,
+    )
+    assert np.isclose(
+        visual["observations"]["T5_measured_kernel_maximum_prefix_L1_mass_fraction"],
+        0.47168529082482163,
     )
     assert visual["observations"]["T5_transfer_synthesis_CT1_complete"] is False
     assert visual["observations"]["T5_transfer_synthesis_ready"] is False

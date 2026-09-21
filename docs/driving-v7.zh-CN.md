@@ -1950,6 +1950,14 @@ sum centroid 的 shuffle/static 比为 `5.136/0.9999`，fast-vs-Tm9 centroid 为
 特有的数值现象；方向评分继续不执行。此敏感性检查仍不把 update 次数解释为生物 solver。
 证据见 `artifacts/v7-t5-measured-kernel-identifiability.json`。
 数值分辨率证据见 `artifacts/v7-t5-measured-kernel-substep-sensitivity.json`。
+另对 kernel 因果方向与实际支持覆盖做了只读审计。作者预测函数把存储 kernel 原序传给
+`lfilter`，支持 index 0 为最短延迟的因果解释；但导出的 `analysis_convolve.py` 没有显式
+导入 `lfilter`，不能据此声称该单文件可独立执行。当前 local edge 的 post-baseline trace
+固定为 27 samples/270 ms，最大可用 lag 为 260 ms，只消费 499 个系数中的 27 个。虽然
+Tm1/Tm2/Tm4/Tm9 群体核的绝对峰 60/50/70/80 ms 均落在窗口内，但前缀 L1 质量仅
+43.61%/40.82%/46.84%/47.17%，均未达到预注册的 95% 完整支持门。因此前述结果只构成
+early-support 负证据，不能外推为完整 4.99 s kernel-support 模型的负结论，也不解锁方向评分。
+证据见 `artifacts/v7-t5-measured-kernel-support-coverage-audit.json`。
 受控视觉输入现另有统一、只读边界审计。基础 battery 的 20 条数组覆盖亮/暗、ON/OFF
 水平与纵向边缘、looming/receding/static、左右平移和顺/逆时针模型旋转；四个冻结 split
 各有 172 条刺激，分别保留 development、validation、OOD 和未公开逐条内容的 final 角色；

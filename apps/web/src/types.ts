@@ -125,6 +125,13 @@ export type V7Status = {
     T5_measured_kernel_cross_substep_identifiability_passed?: boolean;
     T5_measured_kernel_cross_substep_direction_scoring_performed?: boolean;
     T5_measured_kernel_cross_substep_direction_scoring_authorized?: boolean;
+    T5_measured_kernel_causal_index_zero_supported?: boolean;
+    T5_measured_kernel_all_population_peaks_covered?: boolean;
+    T5_measured_kernel_full_L1_support_covered?: boolean;
+    T5_measured_kernel_full_support_negative_authorized?: boolean;
+    T5_measured_kernel_trace_samples?: number;
+    T5_measured_kernel_minimum_prefix_L1_mass_fraction?: number;
+    T5_measured_kernel_maximum_prefix_L1_mass_fraction?: number;
     T5_transfer_synthesis_CT1_complete?: boolean;
     T5_transfer_synthesis_ready?: boolean;
     v7_offline_horizontal_coordinate_contract_complete: boolean;

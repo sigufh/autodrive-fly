@@ -36,6 +36,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     axolotl_availability = evidence["axolotl_availability"]
     measured_kernel = evidence["measured_kernel_identifiability"]
     measured_kernel_substeps = evidence["measured_kernel_substep_sensitivity"]
+    measured_kernel_support = evidence["measured_kernel_support_coverage"]
     rows = {}
     for source in source_order:
         has_kernel = source in evidence["source_kernels"]["source_results"]
@@ -139,6 +140,18 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         "measured_kernel_cross_substep_direction_scoring_authorized": (
             measured_kernel_substeps["direction_scoring_authorized"]
         ),
+        "measured_kernel_causal_index_zero_supported": measured_kernel_support[
+            "author_convolution_semantics"
+        ]["causal_index_zero_interpretation_supported"],
+        "measured_kernel_all_population_peaks_covered": measured_kernel_support[
+            "coverage_gate"
+        ]["all_population_absolute_peaks_within_scored_trace"],
+        "measured_kernel_full_L1_support_covered": measured_kernel_support[
+            "coverage_gate"
+        ]["all_population_kernel_L1_mass_coverage_passed"],
+        "measured_kernel_full_support_negative_conclusion_authorized": (
+            measured_kernel_support["full_support_negative_conclusion_authorized"]
+        ),
         "absolute_source_gain_available": evidence["source_kernels"]["gates"][
             "raw_temporal_filter_absolute_gain_transferable"
         ],
@@ -196,6 +209,17 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             ),
             "moving_bar_condition_count": len(
                 evidence["moving_bar_generalization"]["condition_results"]
+            ),
+            "measured_kernel_trace_samples": measured_kernel_support["window"][
+                "post_baseline_trace_samples"
+            ],
+            "measured_kernel_minimum_prefix_L1_mass_fraction": min(
+                item["scored_prefix_L1_mass_fraction"]
+                for item in measured_kernel_support["source_results"].values()
+            ),
+            "measured_kernel_maximum_prefix_L1_mass_fraction": max(
+                item["scored_prefix_L1_mass_fraction"]
+                for item in measured_kernel_support["source_results"].values()
             ),
         },
         "gates": gates,

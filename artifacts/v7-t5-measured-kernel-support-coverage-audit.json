@@ -1,0 +1,106 @@
+{
+  "protocol": {
+    "name": "v7-t5-measured-kernel-support-coverage-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-measured-kernel-support-coverage-audit.yaml": "527f22917c128a7b7b0c9fefea8f009da4aff3c6e79fc0111d108a1cb05368d0",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_support_coverage_audit.py": "93ec4b1fe1d214ed643538215fbe454f88e3d675d7450c9514e14880e2527477",
+      "artifacts/v7-t5-measured-kernel-identifiability.json": "25611865c51301ad34b112c16ea8a45c667c81649fc987b72bca571e9753d918",
+      "configs/driving-v7-t5-measured-kernel-identifiability.yaml": "aa5df1873e72970f574b21b15e3a646e1810e35933d244fdccde2f5426cda208",
+      "src/fly_emotion/driving/v7_t5_measured_kernel_identifiability.py": "1e15f9715200ac90dca4a3d4b873cb792a9405fa5e9f99dc6b8a6669f1fa555e",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163",
+      "configs/driving-v7-t4t5-local-edge-precheck.yaml": "f7ee2a4e7f922572442414bffa945879c33e94dffe3ced033ec2e0d874f78942",
+      "configs/driving-v7-t5-lamina-split.yaml": "1ed222fdaf76ade35a47f27a20fc85bc8306af93398b0d8d688d341fe1c4d356",
+      "data/raw/kohn-portes-flexible-filtering/history/text/analysis_convolve.py": "9cdfefe1236cba70fb155c2eec9f258b9965e49abca1eec57a8210201a9087c2",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count": 120,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "author_convolution_semantics": {
+    "stored_kernel_passed_to_lfilter_without_reversal": true,
+    "lfilter_explicitly_imported_in_exported_module": false,
+    "exported_module_self_contained_execution_verified": false,
+    "causal_index_zero_interpretation_supported": true
+  },
+  "window": {
+    "kernel_length_samples": 499,
+    "kernel_sample_interval_milliseconds": 10.0,
+    "kernel_nominal_support_milliseconds": 4990.0,
+    "kernel_maximum_discrete_lag_milliseconds": 4980.0,
+    "post_baseline_trace_samples": 27,
+    "post_baseline_trace_duration_milliseconds": 270.0,
+    "maximum_kernel_lag_used_milliseconds": 260.0,
+    "kernel_coefficient_count_used": 27,
+    "kernel_coefficient_fraction_used": 0.05410821643286573
+  },
+  "coverage_gate": {
+    "minimum_population_kernel_L1_mass_fraction": 0.95,
+    "all_population_absolute_peaks_within_scored_trace": true,
+    "all_population_kernel_L1_mass_coverage_passed": false
+  },
+  "source_results": {
+    "Tm1": {
+      "recording_id_count": 7,
+      "population_kernel_absolute_peak_index": 6,
+      "population_kernel_absolute_peak_lag_milliseconds": 60.0,
+      "absolute_peak_within_scored_trace": true,
+      "scored_prefix_L1_mass_fraction": 0.43612465935266687,
+      "unscored_tail_L1_mass_fraction": 0.5638753406473331,
+      "full_support_coverage_passed": false
+    },
+    "Tm2": {
+      "recording_id_count": 5,
+      "population_kernel_absolute_peak_index": 5,
+      "population_kernel_absolute_peak_lag_milliseconds": 50.0,
+      "absolute_peak_within_scored_trace": true,
+      "scored_prefix_L1_mass_fraction": 0.4082240394891599,
+      "unscored_tail_L1_mass_fraction": 0.5917759605108401,
+      "full_support_coverage_passed": false
+    },
+    "Tm4": {
+      "recording_id_count": 6,
+      "population_kernel_absolute_peak_index": 7,
+      "population_kernel_absolute_peak_lag_milliseconds": 70.0,
+      "absolute_peak_within_scored_trace": true,
+      "scored_prefix_L1_mass_fraction": 0.4683527541643401,
+      "unscored_tail_L1_mass_fraction": 0.5316472458356599,
+      "full_support_coverage_passed": false
+    },
+    "Tm9": {
+      "recording_id_count": 6,
+      "population_kernel_absolute_peak_index": 8,
+      "population_kernel_absolute_peak_lag_milliseconds": 80.0,
+      "absolute_peak_within_scored_trace": true,
+      "scored_prefix_L1_mass_fraction": 0.47168529082482163,
+      "unscored_tail_L1_mass_fraction": 0.5283147091751783,
+      "full_support_coverage_passed": false
+    }
+  },
+  "early_support_negative_result_available": true,
+  "full_kernel_support_evaluated": false,
+  "full_support_negative_conclusion_authorized": false,
+  "direction_scoring_authorized": false,
+  "direction_scoring_performed": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "local_edge_trace_does_not_cover_full_measured_kernel_support",
+  "boundary": {
+    "read_only_audit": true,
+    "author_lfilter_call_does_not_prove_self_contained_executability": true,
+    "peak_in_window_does_not_imply_full_kernel_support": true,
+    "short_window_negative_result_does_not_reject_full_support_model": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "direction_scoring_remains_frozen": true,
+    "LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}
