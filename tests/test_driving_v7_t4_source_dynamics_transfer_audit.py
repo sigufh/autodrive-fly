@@ -142,6 +142,17 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert timing["current_source_coverage_fraction"] == 0.75
     assert timing["missing_current_sources"] == ["C3"]
     assert timing["complete_source_filter_candidate_authorized"] is False
+    independent_mi4 = report[
+        "verified_Gonzalez_Suarez_independent_Mi4_readiness"
+    ]
+    assert independent_mi4["doi"] == "10.1016/j.cub.2022.06.075"
+    assert independent_mi4["Mi4_GCaMP6f_fly_count"] == 15
+    assert independent_mi4["Mi4_type_average_filter_available"] is True
+    assert independent_mi4["filter_sample_interval_seconds"] == 1 / 30
+    assert independent_mi4["individual_cell_axis_available"] is False
+    assert independent_mi4["Mi4_experimental_membrane_voltage_available"] is False
+    assert independent_mi4["C3_source_dynamics_available"] is False
+    assert independent_mi4["Mi4_C3_voltage_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

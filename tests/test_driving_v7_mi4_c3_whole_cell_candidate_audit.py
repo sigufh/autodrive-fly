@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 7
+    assert summary["audited_candidate_count"] == 8
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -27,6 +27,9 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["claim_scope"] == (
         "bounded_audited_candidate_set_not_global_nonexistence"
     )
+    assert summary["independent_Mi4_type_average_calcium_candidates"] == [
+        "Gonzalez_Suarez_2022"
+    ]
 
 
 def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
@@ -45,6 +48,10 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert molina_obando["target_neurons"] == ["Mi1", "Tm3"]
     assert molina_obando["directly_measured_required_sources"] == []
     assert molina_obando["experimental_membrane_voltage"] is False
+    gonzalez_suarez = matrix["Gonzalez_Suarez_2022"]
+    assert gonzalez_suarez["directly_measured_required_sources"] == ["Mi4"]
+    assert gonzalez_suarez["response_unit"] == "normalized_type_average_filter"
+    assert gonzalez_suarez["experimental_membrane_voltage"] is False
     assert not any(
         item["qualifies_as_independent_Mi4_C3_numeric_membrane_voltage"]
         for item in matrix.values()

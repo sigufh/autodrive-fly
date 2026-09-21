@@ -3,12 +3,13 @@
     "name": "v7-t4-inhibitory-source-external-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "3247a8881bcbb598559fb2e3f40903ea35ddd711672b4bd14a0917dd3cf5e464",
-      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "2b24d6fd7f07e9ff8bd016eb5f352996b949c5da00c6684196c17c0d498a806a",
+      "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "7e012fb27e7c55ea54408c1ebb4621b4955c995e3e1bb8d906cecb22d7de424e",
+      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "8858210976dfbd95d39953cf7e3909d1a452b776224c9eb5d19f11604ff9eb6d",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
-      "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f"
+      "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
+      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b"
     },
     "Mi4_paper": {
       "title": "Behavioral state modulates the ON visual motion pathway of Drosophila",
@@ -84,6 +85,23 @@
     "individual_source_dynamics_payload_found": false,
     "experimental_membrane_voltage_payload_found": false
   },
+  "additional_Mi4_evidence": {
+    "Gonzalez_Suarez_2022": {
+      "paper": {
+        "title": "Excitatory and inhibitory neural dynamics jointly tune motion detection",
+        "doi": "10.1016/j.cub.2022.06.075",
+        "pmid": 35868321,
+        "pmcid": "PMC9474608",
+        "preprint_doi": "10.1101/2021.11.02.466844"
+      },
+      "Mi4_GCaMP6f_fly_count": 15,
+      "Mi4_type_average_filter_available": true,
+      "filter_sample_interval_seconds": 0.03333333333333333,
+      "individual_cell_axis_available": false,
+      "Mi4_experimental_membrane_voltage_available": false,
+      "C3_source_dynamics_available": false
+    }
+  },
   "both_inhibitory_sources_have_transferable_external_validation": false,
   "authorize_T4_source_dynamics_fit": false,
   "authorize_T4_functional_precheck": false,
@@ -96,6 +114,7 @@
     "published_Mi4_kinetics_are_indicator_and_stimulus_limited": true,
     "C3_mean_correlation_does_not_override_fixed_bootstrap_p05": true,
     "mean_SEM_Mi1_Tm3_GCaMP_tables_do_not_supply_Mi4_or_C3_dynamics": true,
+    "type_average_Mi4_GCaMP_filter_is_not_individual_membrane_voltage": true,
     "no_curve_digitization": true,
     "no_threshold_or_label_change": true,
     "no_parameter_fit": true,

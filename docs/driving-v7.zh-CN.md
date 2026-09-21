@@ -2293,11 +2293,16 @@ C3 则已有本地 STRF 数值和 8-fly source / 22-fly 独立 flash cohort，�
 功能拟合。证据见 `artifacts/v7-t4-inhibitory-source-external-audit.json`。
 
 进一步把最相关的 whole-cell 候选按 target neuron、测量模态、响应单位、数值载荷与
-cohort 独立性做成固定矩阵。七组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4
+cohort 独立性做成固定矩阵。八组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4
 和 C3、使用实验膜电位且有本地核验数值载荷的研究；但它正是当前 Fig.3 参考 cohort，
 不是独立验证。Strother 2018 的 Mi4 与 Henning 2025 的 C3 是钙/STRF；Kohn–Portes
 2021 记录的是 Tm1/Tm2/Tm4/Tm9；Gruntman 2021 记录的是 T4/T5；Borst 2025 的
-Mi4 目标则是钙派生的参数化模型尺度。另核验了 eLife 49373 页面公开的 11 份官方
+Mi4 目标则是钙派生的参数化模型尺度。Gonzalez-Suarez 等 2022 也作为独立 Mi4 候选
+单列：论文对 15 flies 的 Mi4 使用 GCaMP6f；ArcLight 电压只测 Mi1/Tm3。作者公开的
+`ClarkLabCode/TimingModels` 当前 remote HEAD 仍为 `100bb2f`，三个 MAT 含 1/30 s
+时间轴和 Mi4 type-average `filterMat/filterSem`，但没有逐个体轴或 C3。PMC 唯一补充
+PDF 直链当前返回 proof-of-work HTML，因此只记为未取回，不推断补充内容不存在。证据见
+`artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json`。另核验了 eLife 49373 页面公开的 11 份官方
 DOCX source-data 附件：全部是有效 OOXML，均自述为 mean±SEM 汇总表，且无嵌入对象；
 全文能检出 Mi1/Tm3/GCaMP，却没有 Mi4、C3、voltage、individual 或逐 fly 标识。
 所以这些附件是可复现的 Mi1/Tm3 钙成像汇总证据，不是 Mi4/C3 个体时序或膜电位载荷。

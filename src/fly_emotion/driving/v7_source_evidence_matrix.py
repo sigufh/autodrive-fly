@@ -40,6 +40,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     inhibitory_external = evidence["t4_inhibitory_external"]["source_evidence"]
     mi4_c3_candidates = evidence["mi4_c3_whole_cell_candidates"]
     ketkar_attachments = evidence["ketkar_2019_source_data_attachments"]
+    gonzalez_suarez = evidence["gonzalez_suarez_Mi4"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -123,6 +124,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             or source in pirogova_sources
             or source in braun_sources
             or (source == "C3" and c3_numerical)
+            or (
+                source == "Mi4"
+                and gonzalez_suarez["repository_evidence"][
+                    "Mi4_type_average_filter_available"
+                ]
+            )
         )
         local_spatial_calcium = source in t5_spatial
         local_type_average_deconvolved = source == "CT1" and ct1_type_average
@@ -391,6 +398,28 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Ketkar_2019_experimental_membrane_voltage_payload_found": (
                 family == "T4"
                 and ketkar_attachments["experimental_membrane_voltage_payload_found"]
+            ),
+            "Gonzalez_Suarez_2022_independent_Mi4_type_average_filter_available": (
+                source == "Mi4"
+                and gonzalez_suarez["repository_evidence"][
+                    "Mi4_type_average_filter_available"
+                ]
+            ),
+            "Gonzalez_Suarez_2022_individual_cell_axis_available": (
+                source == "Mi4"
+                and gonzalez_suarez["repository_evidence"][
+                    "individual_cell_axis_available"
+                ]
+            ),
+            "Gonzalez_Suarez_2022_experimental_Mi4_voltage_available": (
+                source == "Mi4"
+                and gonzalez_suarez[
+                    "independent_Mi4_experimental_membrane_voltage_available"
+                ]
+            ),
+            "Gonzalez_Suarez_2022_C3_source_dynamics_available": (
+                source == "C3"
+                and gonzalez_suarez["independent_C3_source_dynamics_available"]
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources
@@ -703,6 +732,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             numerical_sources.append("Pirogova_2023_historical_GCaMP6f_time_series")
         if source in braun_sources:
             numerical_sources.append("Braun_2023_GCaMP7f_edge_time_series")
+        if source == "Mi4" and gonzalez_suarez["repository_evidence"][
+            "Mi4_type_average_filter_available"
+        ]:
+            numerical_sources.append(
+                "Gonzalez_Suarez_2022_type_average_deconvolved_GCaMP6f_filter"
+            )
 
         missing = []
         if not allowed_numerical:

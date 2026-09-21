@@ -1,0 +1,130 @@
+{
+  "protocol": {
+    "name": "v7-gonzalez-suarez-mi4-evidence-audit",
+    "observed_on": "2026-09-21",
+    "dependencies_sha256": {
+      "configs/driving-v7-gonzalez-suarez-mi4-evidence-audit.yaml": "7d8490e3dc98147649bb2aceb44a64bb0347d7e9df4d943c1a65106c27da0af3",
+      "src/fly_emotion/driving/v7_gonzalez_suarez_mi4_evidence_audit.py": "c6409a8d9a5f16eac5ea283212623210dfd3bcc8a404fae1964aeabf8f283e62",
+      "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/PMC9474608.html": "178916d6afa843aa49f0b971a48b7ef99fea200656a82efef034f1ae6b82ea23",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/crossref-work.json": "ea1666c47ec5261b5be73e907d1fd91b95a0bee90b99c18f742f138c4fa69563",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/europepmc-search.json": "25f79a6fce6923b8ae85c6facba428e98b3a9aea05e1ebc37e3189f2b9bca115",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/datacite-related.json": "e004d8a0c39a389eed275b1f4dfb1dcc762cd47aa7f1c2a727d7fade32addb06",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/zenodo-doi-search.json": "3ae4b250670dc72957e6fc4d8f11516e044124b1d50a3cae982d64bf818e8cc8",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/NIHMS1820265-supplement-1.pdf": "d3d7f7f065f189774a4dc293685e3abfd52b09b82c51f84940b1fb9469a99c5f"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Excitatory and inhibitory neural dynamics jointly tune motion detection",
+    "doi": "10.1016/j.cub.2022.06.075",
+    "pmid": 35868321,
+    "pmcid": "PMC9474608",
+    "preprint_doi": "10.1101/2021.11.02.466844"
+  },
+  "paper_measurement_evidence": {
+    "Mi4_GCaMP6f_fly_count": 15,
+    "Mi4_measurement_modality": "two_photon_GCaMP6f_calcium_imaging",
+    "ArcLight_voltage_source_types": [
+      "Mi1",
+      "Tm3"
+    ],
+    "Mi4_experimental_membrane_voltage_measured": false,
+    "C3_measured": false
+  },
+  "public_indexes": {
+    "Crossref_preprint_relation": [
+      "10.1101/2021.11.02.466844"
+    ],
+    "Crossref_numeric_data_links": [],
+    "Europe_PMC_has_supplement": true,
+    "Europe_PMC_has_database_cross_references": false,
+    "DataCite_related_result_count": 0,
+    "Zenodo_exact_DOI_result_count": 0,
+    "PMC_supplement_content_retrieved": false,
+    "PMC_supplement_response_is_proof_of_work_HTML": true
+  },
+  "repository_evidence": {
+    "url": "https://github.com/ClarkLabCode/TimingModels",
+    "local_and_remote_head": "100bb2f52cb9628477c3883e4b17774b0b244e67",
+    "commit_count": 10,
+    "tree_file_count": 42,
+    "numerical_files": [
+      "CircuitModel/filterData_200ms_deconv_20220206.mat",
+      "CircuitModel/filterData_250ms_deconv_20220206.mat",
+      "CircuitModel/filterData_300ms_deconv_20220206.mat",
+      "CircuitModel/utils/blueRedColorMap.mat"
+    ],
+    "filter_dataset_fields": {
+      "filterData_200ms_deconv_20220206.mat": [
+        "dtFilter",
+        "filterLabel",
+        "filterList",
+        "filterMat",
+        "filterSem",
+        "tSec"
+      ],
+      "filterData_250ms_deconv_20220206.mat": [
+        "dtFilter",
+        "filterLabel",
+        "filterList",
+        "filterMat",
+        "filterSem",
+        "tSec"
+      ],
+      "filterData_300ms_deconv_20220206.mat": [
+        "dtFilter",
+        "filterLabel",
+        "filterList",
+        "filterMat",
+        "filterSem",
+        "tSec"
+      ]
+    },
+    "filter_source_types": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "CT1",
+      "Mi9",
+      "Mi1_Slo",
+      "Mi1_SloRNAi",
+      "Tm3_Slo",
+      "Tm3_SloRNAi",
+      "Mi4_CacRNAi",
+      "CT1_CacRNAi",
+      "Mi9_CacRNAi"
+    ],
+    "filter_sample_interval_seconds": 0.03333333333333333,
+    "Mi4_type_average_filter_available": true,
+    "C3_filter_available": false,
+    "individual_cell_axis_available": false,
+    "stable_biological_individual_ID_available": false
+  },
+  "independent_Mi4_calcium_type_average_available": true,
+  "independent_Mi4_experimental_membrane_voltage_available": false,
+  "independent_Mi4_individual_numeric_dynamics_available": false,
+  "independent_C3_source_dynamics_available": false,
+  "authorize_Mi4_C3_voltage_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "independent_Mi4_evidence_is_type_average_GCaMP6f_and_C3_is_absent",
+  "boundary": {
+    "Mi4_measurement_is_GCaMP6f_not_experimental_membrane_voltage": true,
+    "ArcLight_measurements_are_Mi1_and_Tm3_not_Mi4_or_C3": true,
+    "public_filter_MATs_are_type_average_not_individual_cells": true,
+    "public_filter_MATs_have_no_C3": true,
+    "inaccessible_supplement_content_is_not_classified_as_absent": true,
+    "successful_index_zero_results_are_not_global_nonexistence": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

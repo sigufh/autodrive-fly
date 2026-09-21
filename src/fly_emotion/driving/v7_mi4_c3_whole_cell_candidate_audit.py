@@ -103,6 +103,14 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if molina_obando["experimental_membrane_voltage_payload_found"]:
         raise ValueError("Molina-Obando attachments now appear to contain voltage")
 
+    gonzalez_suarez = evidence["gonzalez_suarez_Mi4"]
+    if not gonzalez_suarez["repository_evidence"]["Mi4_type_average_filter_available"]:
+        raise ValueError("Gonzalez-Suarez Mi4 filter availability changed")
+    if gonzalez_suarez["repository_evidence"]["C3_filter_available"]:
+        raise ValueError("Gonzalez-Suarez C3 coverage changed")
+    if gonzalez_suarez["independent_Mi4_experimental_membrane_voltage_available"]:
+        raise ValueError("Gonzalez-Suarez Mi4 voltage boundary changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -169,6 +177,9 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
                 independent_direct_voltage
             ),
             "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence",
+            "independent_Mi4_type_average_calcium_candidates": [
+                "Gonzalez_Suarez_2022"
+            ],
         },
         "transfer_gates": gates,
         "independent_Mi4_C3_voltage_transfer_authorized": authorized,

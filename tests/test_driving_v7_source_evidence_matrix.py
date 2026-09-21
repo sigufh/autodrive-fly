@@ -100,6 +100,26 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert report["matrix"][source]["evidence_components"][
             "Ketkar_2019_Mi4_or_C3_attachment_payload_found"
         ] is False
+    mi4_components = report["matrix"]["Mi4"]["evidence_components"]
+    assert mi4_components[
+        "Gonzalez_Suarez_2022_independent_Mi4_type_average_filter_available"
+    ] is True
+    assert mi4_components[
+        "Gonzalez_Suarez_2022_individual_cell_axis_available"
+    ] is False
+    assert mi4_components[
+        "Gonzalez_Suarez_2022_experimental_Mi4_voltage_available"
+    ] is False
+    assert report["matrix"]["Mi4"][
+        "local_numerical_calcium_or_deconvolved_calcium"
+    ] is True
+    assert (
+        "Gonzalez_Suarez_2022_type_average_deconvolved_GCaMP6f_filter"
+        in report["matrix"]["Mi4"]["numerical_evidence_sources"]
+    )
+    assert report["matrix"]["C3"]["evidence_components"][
+        "Gonzalez_Suarez_2022_C3_source_dynamics_available"
+    ] is False
     for source in ("Mi1", "Tm3"):
         assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
         assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][

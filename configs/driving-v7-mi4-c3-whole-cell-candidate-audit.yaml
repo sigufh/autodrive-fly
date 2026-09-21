@@ -1,4 +1,4 @@
-version: 2
+version: 3
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
 observed_on: "2026-09-21"
 required_sources: [Mi4, C3]
@@ -15,6 +15,7 @@ evidence:
   gruntman_T4_T5: artifacts/v7-t5-data-audit.json
   borst_parameterized: artifacts/v7-borst-2025-temporal-filtering-audit.json
   molina_obando_source_data: artifacts/v7-ketkar-2019-source-data-attachment-audit.json
+  gonzalez_suarez_Mi4: artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json
 candidates:
   Groschner_2022:
     title: A biophysical account of multiplication by a single neuron
@@ -100,6 +101,18 @@ candidates:
     local_numeric_payload_verified: true
     independent_biological_study_from_reference_cohort: true
     exclusion_reason: official_attachments_have_Mi1_Tm3_GCaMP_summaries_but_no_Mi4_C3_individual_voltage
+  Gonzalez_Suarez_2022:
+    title: Excitatory and inhibitory neural dynamics jointly tune motion detection
+    doi: 10.1016/j.cub.2022.06.075
+    target_neurons: [Mi1, Tm3, Mi4, CT1]
+    directly_measured_required_sources: [Mi4]
+    measurement_modality: two_photon_GCaMP6f_calcium_with_type_average_deconvolved_filters
+    response_unit: normalized_type_average_filter
+    experimental_membrane_voltage: false
+    public_numeric_payload: true
+    local_numeric_payload_verified: true
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: Mi4_payload_is_type_average_calcium_and_C3_is_absent
 boundary:
   bounded_audited_candidate_set_not_global_nonexistence: true
   both_required_source_types_must_be_directly_measured: true

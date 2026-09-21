@@ -139,6 +139,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "Ketkar_2019_membrane_voltage_found": visual[
                     "Ketkar_2019_membrane_voltage_found"
                 ],
+                "Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count": visual[
+                    "Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count"
+                ],
+                "Gonzalez_Suarez_2022_Mi4_type_average_filter_available": visual[
+                    "Gonzalez_Suarez_2022_Mi4_type_average_filter_available"
+                ],
+                "Gonzalez_Suarez_2022_individual_cell_axis_available": visual[
+                    "Gonzalez_Suarez_2022_individual_cell_axis_available"
+                ],
+                "Gonzalez_Suarez_2022_Mi4_voltage_available": visual[
+                    "Gonzalez_Suarez_2022_Mi4_voltage_available"
+                ],
+                "Gonzalez_Suarez_2022_C3_dynamics_available": visual[
+                    "Gonzalez_Suarez_2022_C3_dynamics_available"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

@@ -3,16 +3,17 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "5f55679d8accb6771c049037854f7efc54e51cc10e33ef69b8ed4486e39b4f74",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "44c108c623db38e4cf4a6347749cc4dd934c2f88a34c8b30d1915c107ba410f1",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "bba17fbf51456bc9fd79032bba31d9187d801b85c9b2a5217d75d938737042f5",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "1616176bef293b4a6b3eee3f388ffceeb63659dc4dd132c583ddca16eaf5b1a4",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
-      "artifacts/v7-t4-inhibitory-source-external-audit.json": "86f012294aef24463f5982bca15def7803f902dff8501be657ce87763d4d53e4",
+      "artifacts/v7-t4-inhibitory-source-external-audit.json": "89b40880ed1c37d194c5b15e3007e2ce72f362f015226f6339fd7b4670846e18",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "7909260ddcfddf6c6332fd3befbabe640ce2b4a4b1988d72c670fd79aebdc5e7",
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "3c831e511ebc9fbeba031ea8eebe272d4607c25c3e403853dacfb09ab6906ef6",
-      "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f"
+      "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
+      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -171,15 +172,39 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "official_attachments_have_Mi1_Tm3_GCaMP_summaries_but_no_Mi4_C3_individual_voltage",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Gonzalez_Suarez_2022": {
+      "title": "Excitatory and inhibitory neural dynamics jointly tune motion detection",
+      "doi": "10.1016/j.cub.2022.06.075",
+      "target_neurons": [
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "CT1"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4"
+      ],
+      "measurement_modality": "two_photon_GCaMP6f_calcium_with_type_average_deconvolved_filters",
+      "response_unit": "normalized_type_average_filter",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "Mi4_payload_is_type_average_calcium_and_C3_is_absent",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 7,
+    "audited_candidate_count": 8,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
     "independent_direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [],
-    "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence"
+    "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence",
+    "independent_Mi4_type_average_calcium_candidates": [
+      "Gonzalez_Suarez_2022"
+    ]
   },
   "transfer_gates": {
     "bounded_candidate_set_audited": true,

@@ -46,6 +46,19 @@ def test_official_2019_attachments_do_not_supply_Mi4_C3_source_dynamics() -> Non
     assert evidence["experimental_membrane_voltage_payload_found"] is False
 
 
+def test_gonzalez_suarez_Mi4_filter_is_independent_calcium_type_average() -> None:
+    evidence = json.loads(REPORT.read_text())["additional_Mi4_evidence"][
+        "Gonzalez_Suarez_2022"
+    ]
+    assert evidence["paper"]["doi"] == "10.1016/j.cub.2022.06.075"
+    assert evidence["Mi4_GCaMP6f_fly_count"] == 15
+    assert evidence["Mi4_type_average_filter_available"] is True
+    assert evidence["filter_sample_interval_seconds"] == 1 / 30
+    assert evidence["individual_cell_axis_available"] is False
+    assert evidence["Mi4_experimental_membrane_voltage_available"] is False
+    assert evidence["C3_source_dynamics_available"] is False
+
+
 def test_inhibitory_source_transfer_and_downstream_remain_closed() -> None:
     report = json.loads(REPORT.read_text())
     assert report["both_inhibitory_sources_have_transferable_external_validation"] is False

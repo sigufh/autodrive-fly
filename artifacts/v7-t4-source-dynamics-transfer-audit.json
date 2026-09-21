@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "1450399f9874fc93eee6050fe9cfe4902ba7896cfde6f54eb32b0daeb7f670b7",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "4e5ba00359d2587c529a9932d8781bbd59bd6e34bf459f492ee03657d7d7c0b1",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "14d6558ddb50a1c416c42f6ca2052ad3e0eb08097395ed6a6c09303bf50e2907",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0bbac54f3486ac0844ed56ab66635bb6cbb82b2f3922f529b4a43bec596d6ec3",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -24,6 +24,7 @@
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e",
       "artifacts/v7-c3-analytic-filter-precheck.json": "c500295463922199d074fdfcb3fc1511836bbc7e3c0c1a091cb937ec4ddc5da9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
+      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
@@ -235,6 +236,16 @@
     ],
     "complete_source_filter_candidate_authorized": false
   },
+  "verified_Gonzalez_Suarez_independent_Mi4_readiness": {
+    "doi": "10.1016/j.cub.2022.06.075",
+    "Mi4_GCaMP6f_fly_count": 15,
+    "Mi4_type_average_filter_available": true,
+    "filter_sample_interval_seconds": 0.03333333333333333,
+    "individual_cell_axis_available": false,
+    "Mi4_experimental_membrane_voltage_available": false,
+    "C3_source_dynamics_available": false,
+    "Mi4_C3_voltage_transfer_authorized": false
+  },
   "verified_FlyVis_C3_time_constant_readiness": {
     "repository_commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
     "pretrained_model_count": 50,
@@ -350,6 +361,7 @@
     "connect_to_navigation": false,
     "exact_type_average_mapping_is_not_recording_level_body_identity": true,
     "T5_and_LPLC_remain_frozen": true,
-    "prohibit_further_target_formula_scan_without_new_source_dynamics_evidence": true
+    "prohibit_further_target_formula_scan_without_new_source_dynamics_evidence": true,
+    "independent_type_average_Mi4_calcium_is_not_individual_voltage": true
   }
 }

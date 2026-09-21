@@ -235,6 +235,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Ketkar_2019_Mi4_C3_payload_found",
         "Ketkar_2019_individual_source_dynamics_found",
         "Ketkar_2019_membrane_voltage_found",
+        "Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count",
+        "Gonzalez_Suarez_2022_Mi4_type_average_filter_available",
+        "Gonzalez_Suarez_2022_individual_cell_axis_available",
+        "Gonzalez_Suarez_2022_Mi4_voltage_available",
+        "Gonzalez_Suarez_2022_C3_dynamics_available",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1022,13 +1027,18 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 7
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 8
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
     assert visual["observations"]["Ketkar_2019_Mi4_C3_payload_found"] is False
     assert visual["observations"]["Ketkar_2019_individual_source_dynamics_found"] is False
     assert visual["observations"]["Ketkar_2019_membrane_voltage_found"] is False
+    assert visual["observations"]["Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count"] == 15
+    assert visual["observations"]["Gonzalez_Suarez_2022_Mi4_type_average_filter_available"] is True
+    assert visual["observations"]["Gonzalez_Suarez_2022_individual_cell_axis_available"] is False
+    assert visual["observations"]["Gonzalez_Suarez_2022_Mi4_voltage_available"] is False
+    assert visual["observations"]["Gonzalez_Suarez_2022_C3_dynamics_available"] is False
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

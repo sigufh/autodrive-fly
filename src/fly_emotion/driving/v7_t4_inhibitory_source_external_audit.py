@@ -56,6 +56,18 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
         raise ValueError("Molina-Obando attachment count changed")
     if molina_obando["Mi4_or_C3_attachment_payload_found"]:
         raise ValueError("Molina-Obando attachments now appear to cover Mi4 or C3")
+    additional_mi4_paths = {
+        name: Path(path) for name, path in config["additional_Mi4_evidence"].items()
+    }
+    additional_mi4 = {
+        name: json.loads((root / path).read_text(encoding="utf-8"))
+        for name, path in additional_mi4_paths.items()
+    }
+    gonzalez_suarez = additional_mi4["Gonzalez_Suarez_2022"]
+    if not gonzalez_suarez["independent_Mi4_calcium_type_average_available"]:
+        raise ValueError("Gonzalez-Suarez Mi4 calcium evidence changed")
+    if gonzalez_suarez["independent_Mi4_experimental_membrane_voltage_available"]:
+        raise ValueError("Gonzalez-Suarez Mi4 voltage boundary changed")
     c3_strf = c3["STRF"]
     c3_flash = c3["independent_flash"]
     allowed_units = contract["allowed_response_units"]
@@ -111,6 +123,10 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
                     str(path): _sha256(root / path)
                     for path in attachment_paths.values()
                 },
+                **{
+                    str(path): _sha256(root / path)
+                    for path in additional_mi4_paths.values()
+                },
             },
             "Mi4_paper": {**mi4, "source_actual_sha256": _sha256(source_path)},
             "parameter_fit": False,
@@ -135,6 +151,29 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
             "experimental_membrane_voltage_payload_found": molina_obando[
                 "experimental_membrane_voltage_payload_found"
             ],
+        },
+        "additional_Mi4_evidence": {
+            "Gonzalez_Suarez_2022": {
+                "paper": gonzalez_suarez["paper"],
+                "Mi4_GCaMP6f_fly_count": gonzalez_suarez[
+                    "paper_measurement_evidence"
+                ]["Mi4_GCaMP6f_fly_count"],
+                "Mi4_type_average_filter_available": gonzalez_suarez[
+                    "repository_evidence"
+                ]["Mi4_type_average_filter_available"],
+                "filter_sample_interval_seconds": gonzalez_suarez[
+                    "repository_evidence"
+                ]["filter_sample_interval_seconds"],
+                "individual_cell_axis_available": gonzalez_suarez[
+                    "repository_evidence"
+                ]["individual_cell_axis_available"],
+                "Mi4_experimental_membrane_voltage_available": gonzalez_suarez[
+                    "independent_Mi4_experimental_membrane_voltage_available"
+                ],
+                "C3_source_dynamics_available": gonzalez_suarez[
+                    "independent_C3_source_dynamics_available"
+                ],
+            }
         },
         "both_inhibitory_sources_have_transferable_external_validation": complete,
         "authorize_T4_source_dynamics_fit": False,

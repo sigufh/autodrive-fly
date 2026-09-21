@@ -56,6 +56,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Ketkar_2019_Mi4_C3_payload_found"] is False
     assert boundaries["Ketkar_2019_individual_source_dynamics_found"] is False
     assert boundaries["Ketkar_2019_membrane_voltage_found"] is False
+    assert boundaries["Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count"] == 15
+    assert boundaries["Gonzalez_Suarez_2022_Mi4_type_average_filter_available"] is True
+    assert boundaries["Gonzalez_Suarez_2022_individual_cell_axis_available"] is False
+    assert boundaries["Gonzalez_Suarez_2022_Mi4_voltage_available"] is False
+    assert boundaries["Gonzalez_Suarez_2022_C3_dynamics_available"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

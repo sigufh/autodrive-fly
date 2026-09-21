@@ -584,6 +584,15 @@ per-fly terms. They therefore do not provide Mi4/C3 individual source dynamics o
 experimental membrane voltage, and they do not change the T4 transfer gate. This
 is a bounded attachment result, not a claim of global nonexistence
 (`artifacts/v7-ketkar-2019-source-data-attachment-audit.json`).
+Gonzalez-Suarez et al. 2022 was added explicitly as an independent Mi4 candidate.
+The paper reports Mi4 GCaMP6f recordings from 15 flies; its ArcLight voltage
+measurements are limited to Mi1 and Tm3. The current `ClarkLabCode/TimingModels`
+remote revision provides 1/30-s type-average Mi4 filter and SEM arrays, but no
+individual-cell axis and no C3 filter. The sole PMC supplementary-PDF request
+currently returns proof-of-work HTML, which is recorded as inaccessible rather
+than classified as absent. This strengthens independent Mi4 calcium timing
+evidence but does not satisfy the independent Mi4/C3 voltage-transfer contract
+(`artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

@@ -130,6 +130,9 @@ from .driving.v7_fusion_nested_eval import evaluate_v7_fusion_nested_candidate
 from .driving.v7_gain_audit import evaluate_v7_normalization_gain
 from .driving.v7_geometry_sign import evaluate_v7_geometry_sign
 from .driving.v7_goal_audit import evaluate_v7_goal_coverage
+from .driving.v7_gonzalez_suarez_mi4_evidence_audit import (
+    evaluate_v7_gonzalez_suarez_mi4_evidence_audit,
+)
 from .driving.v7_gou_dandi_identity_audit import (
     evaluate_v7_gou_dandi_identity_audit,
 )
@@ -680,6 +683,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-inhibitory-source-external")
     subparsers.add_parser("v7-audit-mi4-c3-whole-cell-candidates")
     subparsers.add_parser("v7-audit-ketkar-2019-source-data-attachments")
+    subparsers.add_parser("v7-audit-gonzalez-suarez-mi4-evidence")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
@@ -1966,6 +1970,14 @@ def main() -> None:
     if args.command == "v7-audit-ketkar-2019-source-data-attachments":
         report = evaluate_v7_ketkar_2019_source_data_attachment_audit(root)
         target = root / "artifacts/v7-ketkar-2019-source-data-attachment-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-gonzalez-suarez-mi4-evidence":
+        report = evaluate_v7_gonzalez_suarez_mi4_evidence_audit(root)
+        target = root / "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
