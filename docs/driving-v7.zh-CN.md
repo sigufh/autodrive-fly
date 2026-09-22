@@ -2335,6 +2335,14 @@ C2/C3/Lawf。因而不下载与 C3 无关的 49.6 GB 大载荷，也不把 recur
 误作 C3 生理证据。该图谱是有界覆盖，不是全球文献穷尽。证据见
 `artifacts/v7-c3-citation-graph-audit.json`。
 
+引用图谱还暴露出 Hao 等 2026 的 ASAP7y 预印本（DOI
+`10.64898/2026.05.27.728040`）。Crossref 摘要可确认它在果蝇个体神经元上进行了毫秒级、
+亚细胞、亚阈值 two-photon voltage imaging，并引用 Groschner 2022；但摘要不列实验细胞
+类型。bioRxiv HTML/JATS 当前返回 429，HighWire 返回 403，Europe PMC 正文端点返回
+500 且记录不在 PMC，OpenAlex 标记 closed，openRxiv 尚无 MECA 映射。因此该项保留为
+`unresolved_high_value_candidate`，既不算 Mi4/C3 命中，也不算排除，不授权载荷下载或拟合。
+证据见 `artifacts/v7-hao-asap7y-candidate-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

@@ -146,6 +146,9 @@ from .driving.v7_gou_moving_bar_direction_audit import (
 from .driving.v7_gou_sparsity_source_dynamics_audit import (
     evaluate_v7_gou_sparsity_source_dynamics_audit,
 )
+from .driving.v7_hao_asap7y_candidate_audit import (
+    evaluate_v7_hao_asap7y_candidate_audit,
+)
 from .driving.v7_heading_ring import evaluate_v7_heading_ring
 from .driving.v7_ketkar_2019_source_data_attachment_audit import (
     evaluate_v7_ketkar_2019_source_data_attachment_audit,
@@ -689,6 +692,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-mi4-c3-whole-cell-candidates")
     subparsers.add_parser("v7-audit-ketkar-2019-source-data-attachments")
     subparsers.add_parser("v7-audit-gonzalez-suarez-mi4-evidence")
+    subparsers.add_parser("v7-audit-hao-asap7y-candidate")
     subparsers.add_parser("v7-audit-yuan-c3-candidate")
     subparsers.add_parser("v7-audit-strother-mi4-public-indexes")
     subparsers.add_parser("v7-audit-unified-model-package")
@@ -1986,6 +1990,14 @@ def main() -> None:
     if args.command == "v7-audit-gonzalez-suarez-mi4-evidence":
         report = evaluate_v7_gonzalez_suarez_mi4_evidence_audit(root)
         target = root / "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-hao-asap7y-candidate":
+        report = evaluate_v7_hao_asap7y_candidate_audit(root)
+        target = root / "artifacts/v7-hao-asap7y-candidate-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

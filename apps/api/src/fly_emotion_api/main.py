@@ -197,6 +197,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Pang_2025_new_C3_direct_recording_found": visual[
                     "Pang_2025_new_C3_direct_recording_found"
                 ],
+                "Hao_2026_ASAP7y_candidate_classification": visual[
+                    "Hao_2026_ASAP7y_candidate_classification"
+                ],
+                "Hao_2026_ASAP7y_experimental_cell_types": visual[
+                    "Hao_2026_ASAP7y_experimental_cell_types"
+                ],
+                "Hao_2026_ASAP7y_Drosophila_voltage_verified": visual[
+                    "Hao_2026_ASAP7y_Drosophila_voltage_verified"
+                ],
+                "Hao_2026_ASAP7y_public_numeric_payload_verified": visual[
+                    "Hao_2026_ASAP7y_public_numeric_payload_verified"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

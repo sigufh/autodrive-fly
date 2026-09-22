@@ -44,6 +44,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     yuan = evidence["yuan_C3"]
     strother_indexes = evidence["strother_Mi4_public_indexes"]
     c3_citation_graph = evidence["c3_citation_graph"]
+    hao_asap7y = evidence["hao_ASAP7y_unresolved"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -468,6 +469,21 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 len(c3_citation_graph["Dryad"]["filename_hits"]["C3"])
                 if source == "C3"
                 else 0
+            ),
+            "Hao_2026_ASAP7y_Drosophila_voltage_candidate_unresolved": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["cell_type_resolution"]["candidate_classification"]
+                == "unresolved_high_value_candidate"
+            ),
+            "Hao_2026_ASAP7y_required_source_direct_recording_verified": (
+                source == "Mi4"
+                and hao_asap7y["cell_type_resolution"]["Mi4_direct_recording_verified"]
+                or source == "C3"
+                and hao_asap7y["cell_type_resolution"]["C3_direct_recording_verified"]
+            ),
+            "Hao_2026_ASAP7y_public_numeric_payload_verified": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["public_numeric_payload_verified"]
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources

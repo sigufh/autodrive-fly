@@ -617,6 +617,14 @@ and 240 unique works in the union. The highest-relevance new candidate, Pang et 
 ASAP2f payloads and no C2/C3/Lawf payload. A 49.6-GB bulk download was therefore not
 authorized for a C3 audit. This is bounded citation coverage, not global literature
 exhaustion (`artifacts/v7-c3-citation-graph-audit.json`).
+The 2026 ASAP7y preprint (`10.64898/2026.05.27.728040`) is retained as an
+unresolved high-value candidate. Accessible metadata verifies millisecond,
+subcellular, subthreshold in-vivo voltage imaging in individual Drosophila neurons
+and a citation to Groschner 2022, but does not name the experimentally imaged fly
+cell types. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text routes return
+429, 403, and 500 respectively; OpenAlex marks it closed and openRxiv has no MECA
+mapping. It is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
+source transfer (`artifacts/v7-hao-asap7y-candidate-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

@@ -1,0 +1,28 @@
+version: 1
+name: v7-hao-asap7y-candidate-audit
+observed_on: "2026-09-22"
+paper:
+  title: Ultrasensitive voltage imaging reveals distinct electrical microdomains in neurons
+  doi: 10.64898/2026.05.27.728040
+  posted_on: "2026-05-31"
+snapshots:
+  crossref: {path: data/raw/t4-inhibitory-source-external/hao-2026/crossref.json, bytes: 20635, sha256: e3750320cdb38c7b3d0396eff20ab3cb30dc03d50d70f0f00c55635b3f77e464}
+  openalex: {path: data/raw/t4-inhibitory-source-external/hao-2026/openalex.json, bytes: 39898, sha256: 7f4cb018bddcda0759f0253ad2f6e4019be9e0fa185d1061356279b6bc1f07a4}
+  semanticscholar: {path: data/raw/t4-inhibitory-source-external/hao-2026/semanticscholar.json, bytes: 2047, sha256: 530c30a4d3e61fd82c3516ddc2221b3cc3e62be912e45c686ce6c605a2da7b62}
+  biorxiv_api: {path: data/raw/t4-inhibitory-source-external/hao-2026/biorxiv-doi.json, bytes: 2478, sha256: a6c3cc99f73f3c4ffbb236a99d8239480c1b76b3e17fdff1fde0a736ac996646}
+  europe_pmc: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc.json, bytes: 1075, sha256: d4adc99e4db37d072d563d35ee47e760a09a705d5cb5744b0c30881670af774e}
+  kavli_mirror: {path: data/raw/t4-inhibitory-source-external/hao-2026/kavli.html, bytes: 49005, sha256: a72b1725099806d2bc37f6d272385b45ad1d259a22369573314f167447b43862}
+  biorxiv_HTML_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/preprint.html, bytes: 17, sha256: e395ad55dd18b1bf23944d00b156714accfae4ec834df208053575542dfae602}
+  biorxiv_JATS_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/source.xml, bytes: 17, sha256: e395ad55dd18b1bf23944d00b156714accfae4ec834df208053575542dfae602}
+  highwire_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/highwire.xml, bytes: 121, sha256: 3b920530accd5b38d8bab6747e8850f951b2b97581a5359e70b3e40e3db118dd}
+  europe_pmc_fulltext_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc-full.xml, bytes: 150, sha256: ee2a52e3a9c5b05254518ecd944a5e186d1ad25673ed9a3e51c09aadf3ccee9d}
+  openrxiv_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/openrxiv.json, bytes: 61, sha256: d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340}
+boundary:
+  high_value_candidate_kept_unresolved_until_cell_types_are_verified: true
+  Drosophila_visual_voltage_does_not_imply_Mi4_or_C3: true
+  inaccessible_fulltext_is_not_absence: true
+  unresolved_candidate_does_not_authorize_fit_or_download: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

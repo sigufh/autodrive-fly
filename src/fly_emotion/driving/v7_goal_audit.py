@@ -135,6 +135,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     yuan_c3_candidate_audit = reports["yuan_c3_candidate_audit"]
     strother_mi4_public_index_audit = reports["strother_mi4_public_index_audit"]
     c3_citation_graph_audit = reports["c3_citation_graph_audit"]
+    hao_asap7y_candidate_audit = reports["hao_asap7y_candidate_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -399,6 +400,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["yuan_c3_candidate_audit"],
                 config["evidence"]["strother_mi4_public_index_audit"],
                 config["evidence"]["c3_citation_graph_audit"],
+                config["evidence"]["hao_asap7y_candidate_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1676,6 +1678,20 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Pang_2025_new_C3_direct_recording_found": c3_citation_graph_audit[
                     "new_independent_C3_direct_recording_candidate_found"
                 ],
+                "Hao_2026_ASAP7y_candidate_classification": hao_asap7y_candidate_audit[
+                    "cell_type_resolution"
+                ]["candidate_classification"],
+                "Hao_2026_ASAP7y_experimental_cell_types": hao_asap7y_candidate_audit[
+                    "cell_type_resolution"
+                ]["experimental_Drosophila_cell_types_named_in_accessible_sources"],
+                "Hao_2026_ASAP7y_Drosophila_voltage_verified": (
+                    hao_asap7y_candidate_audit["verified_scope"][
+                        "Drosophila_in_vivo_voltage_imaging"
+                    ]
+                ),
+                "Hao_2026_ASAP7y_public_numeric_payload_verified": (
+                    hao_asap7y_candidate_audit["public_numeric_payload_verified"]
+                ),
                 "source_dynamics_external_contract_satisfied": (
                     source_dynamics_external_evidence_contract["contract_satisfied"]
                 ),
@@ -4007,6 +4023,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Pang_2025_directly_recorded_neuron_types",
                     "Pang_2025_Dryad_file_count",
                     "Pang_2025_new_C3_direct_recording_found",
+                    "Hao_2026_ASAP7y_candidate_classification",
+                    "Hao_2026_ASAP7y_experimental_cell_types",
+                    "Hao_2026_ASAP7y_Drosophila_voltage_verified",
+                    "Hao_2026_ASAP7y_public_numeric_payload_verified",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

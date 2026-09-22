@@ -95,6 +95,7 @@ evidence:
   yuan_c3_candidate_audit: artifacts/v7-yuan-c3-candidate-audit.json
   strother_mi4_public_index_audit: artifacts/v7-strother-mi4-public-index-audit.json
   c3_citation_graph_audit: artifacts/v7-c3-citation-graph-audit.json
+  hao_asap7y_candidate_audit: artifacts/v7-hao-asap7y-candidate-audit.json
   unified_model_package_audit: artifacts/v7-unified-model-package-audit.json
   fig3_source_kernel_audit: artifacts/v7-fig3-source-kernel-audit.json
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json

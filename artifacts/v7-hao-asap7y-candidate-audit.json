@@ -1,0 +1,71 @@
+{
+  "protocol": {
+    "name": "v7-hao-asap7y-candidate-audit",
+    "observed_on": "2026-09-22",
+    "dependencies_sha256": {
+      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "74cae204932b621157df4a39bc54ee31213f41f903d1c949fed0fc9bfc2a63ad",
+      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "1892bc46810ccf87d78a7c65a1f77cb28f1df1bed2b2d42e2a0d88fac5e611e5"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/hao-2026/crossref.json": "e3750320cdb38c7b3d0396eff20ab3cb30dc03d50d70f0f00c55635b3f77e464",
+      "data/raw/t4-inhibitory-source-external/hao-2026/openalex.json": "7f4cb018bddcda0759f0253ad2f6e4019be9e0fa185d1061356279b6bc1f07a4",
+      "data/raw/t4-inhibitory-source-external/hao-2026/semanticscholar.json": "530c30a4d3e61fd82c3516ddc2221b3cc3e62be912e45c686ce6c605a2da7b62",
+      "data/raw/t4-inhibitory-source-external/hao-2026/biorxiv-doi.json": "a6c3cc99f73f3c4ffbb236a99d8239480c1b76b3e17fdff1fde0a736ac996646",
+      "data/raw/t4-inhibitory-source-external/hao-2026/europepmc.json": "d4adc99e4db37d072d563d35ee47e760a09a705d5cb5744b0c30881670af774e",
+      "data/raw/t4-inhibitory-source-external/hao-2026/kavli.html": "a72b1725099806d2bc37f6d272385b45ad1d259a22369573314f167447b43862",
+      "data/raw/t4-inhibitory-source-external/hao-2026/preprint.html": "e395ad55dd18b1bf23944d00b156714accfae4ec834df208053575542dfae602",
+      "data/raw/t4-inhibitory-source-external/hao-2026/source.xml": "e395ad55dd18b1bf23944d00b156714accfae4ec834df208053575542dfae602",
+      "data/raw/t4-inhibitory-source-external/hao-2026/highwire.xml": "3b920530accd5b38d8bab6747e8850f951b2b97581a5359e70b3e40e3db118dd",
+      "data/raw/t4-inhibitory-source-external/hao-2026/europepmc-full.xml": "ee2a52e3a9c5b05254518ecd944a5e186d1ad25673ed9a3e51c09aadf3ccee9d",
+      "data/raw/t4-inhibitory-source-external/hao-2026/openrxiv.json": "d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Ultrasensitive voltage imaging reveals distinct electrical microdomains in neurons",
+    "doi": "10.64898/2026.05.27.728040",
+    "posted_on": "2026-05-31"
+  },
+  "verified_scope": {
+    "Drosophila_in_vivo_voltage_imaging": true,
+    "measurement_modality": "two_photon_ASAP7y_voltage_imaging",
+    "millisecond_subcellular_subthreshold_resolution": true,
+    "visual_system_model_cell_type_count": 717,
+    "cites_Groschner_2022": true
+  },
+  "cell_type_resolution": {
+    "full_text_retrieved": false,
+    "experimental_Drosophila_cell_types_named_in_accessible_sources": [],
+    "Mi4_direct_recording_verified": false,
+    "C3_direct_recording_verified": false,
+    "candidate_classification": "unresolved_high_value_candidate"
+  },
+  "access_boundaries": {
+    "bioRxiv_HTML_status": 429,
+    "bioRxiv_JATS_status": 429,
+    "HighWire_status": 403,
+    "Europe_PMC_fulltext_status": 500,
+    "Europe_PMC_in_PMC": false,
+    "OpenAlex_status": "closed",
+    "openRxiv_mapping_found": false
+  },
+  "public_numeric_payload_verified": false,
+  "authorize_Mi4_C3_candidate_classification": false,
+  "authorize_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "experimental_Drosophila_cell_types_not_resolved_from_accessible_sources",
+  "boundary": {
+    "high_value_candidate_kept_unresolved_until_cell_types_are_verified": true,
+    "Drosophila_visual_voltage_does_not_imply_Mi4_or_C3": true,
+    "inaccessible_fulltext_is_not_absence": true,
+    "unresolved_candidate_does_not_authorize_fit_or_download": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

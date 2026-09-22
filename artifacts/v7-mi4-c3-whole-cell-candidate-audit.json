@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "c7516826684fda39203a7b0e983531f006d841ee2674f6547c3e875117bf688a",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "baa8d4d24bccf2e1f57aad12b5417a8e7e9d28a3d1add083c73eee99e9c7adf1",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "231b6e9d5a79c14bb1ca681d3383f2e28b4a53341b50f74baa6a9d2a036a7fb9",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "452b1db82b7394bd5aec0b3278aa6ced2d025116d789f323f850ccabc065ad7b",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "049538a605c70407261ea0e5acc4a1eafdbc7bca7a9ec72158c3fa0777e1b6cd",
@@ -16,7 +16,8 @@
       "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
-      "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880"
+      "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
+      "artifacts/v7-hao-asap7y-candidate-audit.json": "795d835f2fb6152bc7b4e906148cb3a1e90ce3e0e25f87ae01f85b0bd30bc9dc"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -252,7 +253,11 @@
     ],
     "citation_graph_exclusion_candidates": [
       "Pang_2025"
-    ]
+    ],
+    "unresolved_high_value_candidates": [
+      "Hao_2026_ASAP7y"
+    ],
+    "unresolved_candidates_in_audited_candidate_count": false
   },
   "transfer_gates": {
     "bounded_candidate_set_audited": true,
@@ -286,6 +291,7 @@
     "Mi1_Tm3_summary_tables_do_not_substitute_for_Mi4_or_C3": true,
     "C3_intervention_does_not_substitute_for_direct_C3_recording": true,
     "L1_L2_voltage_does_not_substitute_for_Mi4_or_C3": true,
+    "unresolved_cell_type_scope_is_not_counted_as_a_positive_or_negative_candidate": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

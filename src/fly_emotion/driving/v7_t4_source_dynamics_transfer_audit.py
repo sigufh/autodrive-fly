@@ -40,6 +40,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     yuan_c3_path = Path(config["yuan_c3_candidate_evidence"])
     strother_index_path = Path(config["strother_mi4_public_index_evidence"])
     c3_citation_graph_path = Path(config["c3_citation_graph_evidence"])
+    hao_asap7y_path = Path(config["hao_ASAP7y_candidate_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -87,6 +88,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_citation_graph = json.loads(
         (root / c3_citation_graph_path).read_text(encoding="utf-8")
     )
+    hao_asap7y = json.loads((root / hao_asap7y_path).read_text(encoding="utf-8"))
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
@@ -225,6 +227,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(yuan_c3_path): _sha256(root / yuan_c3_path),
                 str(strother_index_path): _sha256(root / strother_index_path),
                 str(c3_citation_graph_path): _sha256(root / c3_citation_graph_path),
+                str(hao_asap7y_path): _sha256(root / hao_asap7y_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -587,6 +590,27 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ),
             "C3_source_dynamics_transfer_authorized": c3_citation_graph[
                 "authorize_C3_source_dynamics_transfer"
+            ],
+        },
+        "unresolved_Hao_2026_ASAP7y_candidate": {
+            "doi": hao_asap7y["paper"]["doi"],
+            "Drosophila_in_vivo_voltage_imaging": hao_asap7y["verified_scope"][
+                "Drosophila_in_vivo_voltage_imaging"
+            ],
+            "measurement_modality": hao_asap7y["verified_scope"][
+                "measurement_modality"
+            ],
+            "experimental_cell_types": hao_asap7y["cell_type_resolution"][
+                "experimental_Drosophila_cell_types_named_in_accessible_sources"
+            ],
+            "candidate_classification": hao_asap7y["cell_type_resolution"][
+                "candidate_classification"
+            ],
+            "public_numeric_payload_verified": hao_asap7y[
+                "public_numeric_payload_verified"
+            ],
+            "source_dynamics_fit_authorized": hao_asap7y[
+                "authorize_source_dynamics_fit"
             ],
         },
         "verified_FlyVis_C3_time_constant_readiness": {

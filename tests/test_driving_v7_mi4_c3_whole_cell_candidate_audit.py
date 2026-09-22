@@ -32,6 +32,8 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     ]
     assert summary["independent_C3_intervention_only_candidates"] == ["Yuan_2020"]
     assert summary["citation_graph_exclusion_candidates"] == ["Pang_2025"]
+    assert summary["unresolved_high_value_candidates"] == ["Hao_2026_ASAP7y"]
+    assert summary["unresolved_candidates_in_audited_candidate_count"] is False
 
 
 def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:

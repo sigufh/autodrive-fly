@@ -255,6 +255,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Pang_2025_directly_recorded_neuron_types",
         "Pang_2025_Dryad_file_count",
         "Pang_2025_new_C3_direct_recording_found",
+        "Hao_2026_ASAP7y_candidate_classification",
+        "Hao_2026_ASAP7y_experimental_cell_types",
+        "Hao_2026_ASAP7y_Drosophila_voltage_verified",
+        "Hao_2026_ASAP7y_public_numeric_payload_verified",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1074,6 +1078,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Pang_2025_directly_recorded_neuron_types"] == ["L1", "L2"]
     assert visual["observations"]["Pang_2025_Dryad_file_count"] == 75
     assert visual["observations"]["Pang_2025_new_C3_direct_recording_found"] is False
+    assert visual["observations"]["Hao_2026_ASAP7y_candidate_classification"] == (
+        "unresolved_high_value_candidate"
+    )
+    assert visual["observations"]["Hao_2026_ASAP7y_experimental_cell_types"] == []
+    assert visual["observations"]["Hao_2026_ASAP7y_Drosophila_voltage_verified"] is True
+    assert visual["observations"]["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

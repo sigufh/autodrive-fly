@@ -131,6 +131,16 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if pang["C3_direct_recording_found"]:
         raise ValueError("Pang now appears to contain direct C3 recording")
 
+    hao = evidence["hao_ASAP7y_unresolved"]
+    if not hao["verified_scope"]["Drosophila_in_vivo_voltage_imaging"]:
+        raise ValueError("Hao ASAP7y Drosophila voltage scope changed")
+    if hao["cell_type_resolution"]["candidate_classification"] != (
+        "unresolved_high_value_candidate"
+    ):
+        raise ValueError("Hao ASAP7y candidate classification changed")
+    if hao["authorize_Mi4_C3_candidate_classification"]:
+        raise ValueError("Hao ASAP7y candidate was classified without cell types")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -202,6 +212,8 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             ],
             "independent_C3_intervention_only_candidates": ["Yuan_2020"],
             "citation_graph_exclusion_candidates": ["Pang_2025"],
+            "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],
+            "unresolved_candidates_in_audited_candidate_count": False,
         },
         "transfer_gates": gates,
         "independent_Mi4_C3_voltage_transfer_authorized": authorized,

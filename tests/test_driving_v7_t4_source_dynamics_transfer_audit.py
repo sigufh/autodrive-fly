@@ -179,6 +179,14 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert graph["Dryad_total_declared_bytes"] == 49_600_989_798
     assert graph["new_independent_C3_direct_recording_candidate_found"] is False
     assert graph["C3_source_dynamics_transfer_authorized"] is False
+    hao = report["unresolved_Hao_2026_ASAP7y_candidate"]
+    assert hao["doi"] == "10.64898/2026.05.27.728040"
+    assert hao["Drosophila_in_vivo_voltage_imaging"] is True
+    assert hao["measurement_modality"] == "two_photon_ASAP7y_voltage_imaging"
+    assert hao["experimental_cell_types"] == []
+    assert hao["candidate_classification"] == "unresolved_high_value_candidate"
+    assert hao["public_numeric_payload_verified"] is False
+    assert hao["source_dynamics_fit_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

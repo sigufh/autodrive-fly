@@ -1,4 +1,4 @@
-version: 6
+version: 7
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
 observed_on: "2026-09-21"
 required_sources: [Mi4, C3]
@@ -19,6 +19,7 @@ evidence:
   gonzalez_suarez_Mi4: artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json
   yuan_C3: artifacts/v7-yuan-c3-candidate-audit.json
   c3_citation_graph: artifacts/v7-c3-citation-graph-audit.json
+  hao_ASAP7y_unresolved: artifacts/v7-hao-asap7y-candidate-audit.json
 candidates:
   Groschner_2022:
     title: A biophysical account of multiplication by a single neuron
@@ -150,6 +151,7 @@ boundary:
   Mi1_Tm3_summary_tables_do_not_substitute_for_Mi4_or_C3: true
   C3_intervention_does_not_substitute_for_direct_C3_recording: true
   L1_L2_voltage_does_not_substitute_for_Mi4_or_C3: true
+  unresolved_cell_type_scope_is_not_counted_as_a_positive_or_negative_candidate: true
   no_curve_digitization: true
   no_cross_paper_field_or_modality_imputation: true
   no_threshold_label_split_denominator_or_failure_rule_change: true
