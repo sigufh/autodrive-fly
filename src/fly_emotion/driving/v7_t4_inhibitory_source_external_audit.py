@@ -211,6 +211,9 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
             },
             "Strother_2018_public_indexes": {
                 "audited_indexes": strother_indexes["audited_indexes"],
+                "author_repository_index": strother_indexes[
+                    "author_repository_index"
+                ],
                 "PMC_attachment_inventory": strother_indexes[
                     "PMC_attachment_inventory"
                 ],

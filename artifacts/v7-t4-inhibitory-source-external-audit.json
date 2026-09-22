@@ -4,13 +4,13 @@
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
       "configs/driving-v7-t4-inhibitory-source-external-audit.yaml": "7519ecc209314e09f0c82e7bc2a0459b270949c7f5ca1f8e04e74c9131e1485a",
-      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "e2ee2ded721117e04047ee1fcf061baa1a03c943b31e26763ff4637dee49fbca",
+      "src/fly_emotion/driving/v7_t4_inhibitory_source_external_audit.py": "f9b09ae1affb99e0e95783c5a96d5a9dad65acdcf09c527eecde32cebfa8d128",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
       "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
-      "artifacts/v7-strother-mi4-public-index-audit.json": "085e81df2be4aec189e6099b8261d46c88539b3ba941a0feed48b61c16d8b269",
+      "artifacts/v7-strother-mi4-public-index-audit.json": "0313bc6be14cde7e64302a50682d82a40d65942031bcc37f2be365b1c1065a56",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0"
     },
     "Mi4_paper": {
@@ -122,7 +122,49 @@
         "GitHub_exact_DOI_repository_count": 0,
         "GitHub_exact_title_repository_count": 0,
         "Figshare_search_status": 403,
-        "Figshare_search_interpretable": false
+        "Figshare_search_interpretable": false,
+        "Reiser_Lab_GitHub_API_rate_limited": true,
+        "Reiser_Lab_GitHub_HTML_repository_count": 42,
+        "Reiser_Lab_GitHub_paper_term_repository_name_hits": []
+      },
+      "author_repository_index": {
+        "Bitbucket_workspace_owner_display_name": "James Strother",
+        "Bitbucket_public_repository_count": 2,
+        "Bitbucket_public_repositories": [
+          "jastrother/larval_proving_grounds",
+          "jastrother/neuron_image_analysis"
+        ],
+        "Bitbucket_downloads_status": 402,
+        "Bitbucket_downloads_interpretable": false,
+        "repositories": {
+          "neuron_image_analysis": {
+            "path": "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/neuron_image_analysis",
+            "head": "bbc5e73280357fa7e80847a7753b75fb4b12c404",
+            "branch": "master",
+            "tracked_file_count": 185,
+            "numeric_payload_paths": [],
+            "paper_term_filename_hits": [],
+            "paper_term_text_hits": [],
+            "complete_history_audited": true,
+            "commit_count": 188,
+            "history_numeric_payload_paths": [],
+            "history_paper_term_filename_hits": [],
+            "history_paper_term_text_hits": []
+          },
+          "larval_proving_grounds": {
+            "path": "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/larval_proving_grounds",
+            "head": "7c93772c4a8f7d6d8c1b5f2d701b1f66d9a05cd2",
+            "branch": "master",
+            "tracked_file_count": 75,
+            "numeric_payload_paths": [],
+            "paper_term_filename_hits": [],
+            "paper_term_text_hits": [],
+            "complete_history_audited": false
+          }
+        },
+        "visualpathways_repository_scope": "2025_2026_MaleCNS_connectome_preprint_not_Strother_2018_imaging",
+        "paper_linked_numeric_repository_verified": false,
+        "bounded_index_not_global_repository_absence": true
       },
       "PMC_attachment_inventory": {
         "supplementary_PDF_count": 1,

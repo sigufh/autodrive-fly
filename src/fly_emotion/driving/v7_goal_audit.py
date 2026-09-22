@@ -1673,6 +1673,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Strother_2018_global_absence_claimed": (
                     strother_mi4_public_index_audit["global_absence_claimed"]
                 ),
+                "Strother_2018_author_public_repository_count": (
+                    strother_mi4_public_index_audit["author_repository_index"][
+                        "Bitbucket_public_repository_count"
+                    ]
+                ),
+                "Strother_2018_author_repository_numeric_payload_verified": (
+                    strother_mi4_public_index_audit["author_repository_index"][
+                        "paper_linked_numeric_repository_verified"
+                    ]
+                ),
+                "Strother_2018_author_repository_search_is_bounded": (
+                    strother_mi4_public_index_audit["author_repository_index"][
+                        "bounded_index_not_global_repository_absence"
+                    ]
+                ),
                 "Strother_2018_supplement_bundle_entry_count": (
                     strother_mi4_public_index_audit["PMC_attachment_inventory"][
                         "bundle_entry_count"
@@ -4234,6 +4249,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Strother_2018_successful_index_Mi4_trace_found",
                     "Strother_2018_Figshare_search_interpretable",
                     "Strother_2018_global_absence_claimed",
+                    "Strother_2018_author_public_repository_count",
+                    "Strother_2018_author_repository_numeric_payload_verified",
+                    "Strother_2018_author_repository_search_is_bounded",
                     "Strother_2018_supplement_bundle_entry_count",
                     "Strother_2018_Mi4_moving_grating_figure_verified",
                     "Strother_2018_Mi4_moving_grating_fly_count",

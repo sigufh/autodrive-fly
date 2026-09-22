@@ -190,6 +190,10 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert strother["PMC_numeric_data_attachment_count"] == 0
     assert strother["Figshare_search_interpretable"] is False
     assert strother["global_absence_claimed"] is False
+    assert strother["author_public_repository_count"] == 2
+    assert strother["author_repository_numeric_payload_verified"] is False
+    assert strother["author_repository_search_is_bounded"] is True
+    assert strother["neuron_image_analysis_complete_history_audited"] is True
     assert strother["supplementary_bundle_entry_count"] == 16
     assert strother["moving_grating_trace_figure_present"] is True
     assert strother["moving_grating_fly_count"] == 5

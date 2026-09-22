@@ -623,6 +623,20 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 "Figshare_search_interpretable"
             ],
             "global_absence_claimed": strother_index["global_absence_claimed"],
+            "author_public_repository_count": strother_index[
+                "author_repository_index"
+            ]["Bitbucket_public_repository_count"],
+            "author_repository_numeric_payload_verified": strother_index[
+                "author_repository_index"
+            ]["paper_linked_numeric_repository_verified"],
+            "author_repository_search_is_bounded": strother_index[
+                "author_repository_index"
+            ]["bounded_index_not_global_repository_absence"],
+            "neuron_image_analysis_complete_history_audited": strother_index[
+                "author_repository_index"
+            ]["repositories"]["neuron_image_analysis"][
+                "complete_history_audited"
+            ],
             "supplementary_bundle_entry_count": strother_index[
                 "PMC_attachment_inventory"
             ]["bundle_entry_count"],

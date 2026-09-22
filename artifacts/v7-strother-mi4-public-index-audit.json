@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-strother-mi4-public-index-audit",
-    "observed_on": "2026-09-21",
+    "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-strother-mi4-public-index-audit.yaml": "b44df1ef0940bf537de97ffd11cbec5dfe082d197674a112692c76e4f00c815d",
-      "src/fly_emotion/driving/v7_strother_mi4_public_index_audit.py": "1f44482db47d0c87d3214f13bf6195299cebe41b8192a2a14f4e7a87297f7210"
+      "configs/driving-v7-strother-mi4-public-index-audit.yaml": "eee605913e4fdcb4d6deec861afa20c5ce91268d8ffb74cf80f8bffe4c913d45",
+      "src/fly_emotion/driving/v7_strother_mi4_public_index_audit.py": "04d140dc6749213c82527dede88c478bb3689b76b65956e6842b7ef9af936221"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/strother-2018-index/crossref-work.json": "5556196d1d558b9177fe8c00e23e6d526e4163cc558a377c48917fc9b565c27f",
@@ -20,6 +20,15 @@
       "data/raw/t4-inhibitory-source-external/strother-2018-index/figshare-doi-search-response.html": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
       "data/raw/t4-inhibitory-source-external/strother-2018-index/supplement/supplementaryFiles.zip": "3203f0b06f45a479dc1a876aac216074735530ceaecf6cd5742ccb48e028eb05",
       "data/raw/t4-inhibitory-source-external/strother-2018-index/supplement/pnas.201703090SI.pdf": "8690f278744e52f6b53516d169e08355ee45245d62f83e486e6f49955f52c021",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/jastrother-bitbucket.json": "7973b80c3894f6737ae6b2a8fa2f877f12b6f09a8a496ebf7db44ede33d5edd6",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/reiserlab-repos.json": "65d3c145dd6df3e0ffa4694fe39613b1ab24686dd6890e2fbec8b8e4aa556307",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/reiserlab-github-repositories.html": "b867c60b7c9b40c2657399500098e0e8fc68474605f524364dbadeea0a26e3fd",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/reiserlab-github-repositories-page2.html": "3deb26a47ebb13a35886ee06f56e319944169d89b838a1a55daa01d527e2f837",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/reiserlab-visualpathways-README-main.md": "a709832878a9bac44c3bff97178ef935f35b27a0a58e2d650662317398812766",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/neuron_image_analysis-downloads-response.json": "3c5d7eaba758704cd3710487fba879a87fe159af1ba2a0e0a4dea2079ae6fafe",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/larval_proving_grounds-downloads-response.json": "3c5d7eaba758704cd3710487fba879a87fe159af1ba2a0e0a4dea2079ae6fafe",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/neuron_image_analysis-downloads.headers": "8c2eecb5e6d66d60d41b5f5bef36f923af001f4237052f333e3352fe3cd925d2",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/larval_proving_grounds-downloads.headers": "a1b02797b868ae632e2e4abc72660eab069c3124db0991210bd2ecf9185007d0",
       "data/raw/t4-inhibitory-source-external/PMC5776785.html": "2d1f4cbc18f4f9fa96ac0b105f20ec2376bea4140649e602a1d4b031666f302c"
     },
     "parameter_fit": false,
@@ -46,7 +55,49 @@
     "GitHub_exact_DOI_repository_count": 0,
     "GitHub_exact_title_repository_count": 0,
     "Figshare_search_status": 403,
-    "Figshare_search_interpretable": false
+    "Figshare_search_interpretable": false,
+    "Reiser_Lab_GitHub_API_rate_limited": true,
+    "Reiser_Lab_GitHub_HTML_repository_count": 42,
+    "Reiser_Lab_GitHub_paper_term_repository_name_hits": []
+  },
+  "author_repository_index": {
+    "Bitbucket_workspace_owner_display_name": "James Strother",
+    "Bitbucket_public_repository_count": 2,
+    "Bitbucket_public_repositories": [
+      "jastrother/larval_proving_grounds",
+      "jastrother/neuron_image_analysis"
+    ],
+    "Bitbucket_downloads_status": 402,
+    "Bitbucket_downloads_interpretable": false,
+    "repositories": {
+      "neuron_image_analysis": {
+        "path": "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/neuron_image_analysis",
+        "head": "bbc5e73280357fa7e80847a7753b75fb4b12c404",
+        "branch": "master",
+        "tracked_file_count": 185,
+        "numeric_payload_paths": [],
+        "paper_term_filename_hits": [],
+        "paper_term_text_hits": [],
+        "complete_history_audited": true,
+        "commit_count": 188,
+        "history_numeric_payload_paths": [],
+        "history_paper_term_filename_hits": [],
+        "history_paper_term_text_hits": []
+      },
+      "larval_proving_grounds": {
+        "path": "data/raw/t4-inhibitory-source-external/strother-2018-index/repository-search/larval_proving_grounds",
+        "head": "7c93772c4a8f7d6d8c1b5f2d701b1f66d9a05cd2",
+        "branch": "master",
+        "tracked_file_count": 75,
+        "numeric_payload_paths": [],
+        "paper_term_filename_hits": [],
+        "paper_term_text_hits": [],
+        "complete_history_audited": false
+      }
+    },
+    "visualpathways_repository_scope": "2025_2026_MaleCNS_connectome_preprint_not_Strother_2018_imaging",
+    "paper_linked_numeric_repository_verified": false,
+    "bounded_index_not_global_repository_absence": true
   },
   "PMC_attachment_inventory": {
     "supplementary_PDF_count": 1,
@@ -74,13 +125,16 @@
   "advance_to_T4_functional_precheck": false,
   "advance_to_LPLC_mechanism_repair": false,
   "advance_to_runtime_integration": false,
-  "stop_reason": "successful_indexes_expose_no_linked_Mi4_trace_while_Figshare_is_inaccessible",
+  "stop_reason": "successful_indexes_and_bounded_author_repository_trees_expose_no_linked_Mi4_trace_while_some_endpoints_remain_inaccessible",
   "boundary": {
     "successful_zero_results_and_inaccessible_indexes_are_separate": true,
     "indexed_article_or_supplement_metadata_is_not_a_numeric_trace_payload": true,
     "figshare_403_is_not_proof_of_absence": true,
     "figure_level_traces_are_not_public_numeric_trace_payloads": true,
     "data_available_upon_request_is_not_public_local_payload": true,
+    "repository_name_and_general_purpose_code_are_not_paper_linkage": true,
+    "rate_limited_or_payment_required_API_is_not_an_empty_index": true,
+    "shallow_default_branch_audit_is_not_full_history_coverage": true,
     "bounded_index_audit_not_global_nonexistence": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

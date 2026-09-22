@@ -74,6 +74,10 @@ def test_gonzalez_suarez_Mi4_filter_is_independent_calcium_type_average() -> Non
     }
     assert indexes["local_numeric_Mi4_trace_payload_found"] is False
     assert indexes["global_absence_claimed"] is False
+    author = indexes["author_repository_index"]
+    assert author["Bitbucket_public_repository_count"] == 2
+    assert author["paper_linked_numeric_repository_verified"] is False
+    assert author["bounded_index_not_global_repository_absence"] is True
 
 
 def test_yuan_C3_is_intervention_evidence_not_direct_source_recording() -> None:

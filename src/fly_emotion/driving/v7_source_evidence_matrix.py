@@ -480,6 +480,25 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Strother_2018_global_absence_claimed": (
                 source == "Mi4" and strother_indexes["global_absence_claimed"]
             ),
+            "Strother_2018_author_public_repository_count": (
+                strother_indexes["author_repository_index"][
+                    "Bitbucket_public_repository_count"
+                ]
+                if source == "Mi4"
+                else 0
+            ),
+            "Strother_2018_author_repository_numeric_payload_verified": (
+                source == "Mi4"
+                and strother_indexes["author_repository_index"][
+                    "paper_linked_numeric_repository_verified"
+                ]
+            ),
+            "Strother_2018_author_repository_search_is_bounded": (
+                source == "Mi4"
+                and strother_indexes["author_repository_index"][
+                    "bounded_index_not_global_repository_absence"
+                ]
+            ),
             "Strother_2018_official_supplement_Mi4_moving_grating_figure_verified": (
                 source == "Mi4"
                 and strother_indexes["supplementary_Mi4_evidence"][

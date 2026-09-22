@@ -2296,6 +2296,15 @@ DOI/精确标题查询均未链接 Mi4 数值 trace，PMC 仍只列 1 个补充 
 Figshare 查询返回 403，故明确标记为不可解释，而不是缺失证明。该结果只说明已成功
 审计的索引没有命中，仍不作全球不存在声明。证据见
 `artifacts/v7-strother-mi4-public-index-audit.json`。
+随后又核验了作者公开仓库索引：Bitbucket workspace 的 display name 为
+`James Strother`，当前只列出两个公开仓库；其默认树分别是通用神经成像 MATLAB 工具和
+幼虫追踪/相机工具，均无常见数值数据文件，也无 Mi4、GCaMP6、论文 DOI 或题名命中。
+其中 `neuron_image_analysis` 的 188 个提交历史可完整读取，历史文件名与文本也无上述
+论文关联；较大的幼虫仓库只完成当前默认树核验，不能外推到完整历史。Reiser Lab GitHub
+两页 HTML 列表覆盖页面声明的全部 42 个仓库，没有论文专属仓库名；唯一宽泛名称
+`visualpathways` 的 README 明确对应后来的 MaleCNS connectome 预印本。GitHub API 限流和
+Bitbucket downloads 端点的 HTTP 402 继续单列为不可解释边界，因此仍只是不支持 transfer
+的有界结果。
 
 进一步把最相关的 whole-cell 候选按 target neuron、测量模态、响应单位、数值载荷与
 cohort 独立性做成固定矩阵。八组候选中，Groschner 等 2022 是唯一同时直接记录 Mi4

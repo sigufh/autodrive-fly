@@ -164,6 +164,14 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     ] is False
     assert mi4_components["Strother_2018_Figshare_search_interpretable"] is False
     assert mi4_components["Strother_2018_global_absence_claimed"] is False
+    assert mi4_components["Strother_2018_author_public_repository_count"] == 2
+    assert (
+        mi4_components[
+            "Strother_2018_author_repository_numeric_payload_verified"
+        ]
+        is False
+    )
+    assert mi4_components["Strother_2018_author_repository_search_is_bounded"] is True
     assert (
         mi4_components[
             "Strother_2018_official_supplement_Mi4_moving_grating_figure_verified"

@@ -617,6 +617,18 @@ queries. PMC still lists one supplementary PDF and one video, while the Figshare
 search endpoint returned HTTP 403 and is explicitly uninterpretable. This is a
 bounded index result, not a global absence claim
 (`artifacts/v7-strother-mi4-public-index-audit.json`).
+The bounded author-repository follow-up separately verified the public Bitbucket
+workspace display name `James Strother`. Its two repositories expose general
+neuronal-image and larval-tracking code; their current trees contain no common
+numeric-data files or paper-specific Mi4, GCaMP6, DOI, or title terms. The complete
+188-commit history of `neuron_image_analysis` has the same filename/text boundary,
+whereas the larger larval repository was checked only at its current default tree.
+The two-page Reiser Lab GitHub HTML listing covers all 42 repositories declared by
+the page and has no paper-specific repository name. The broad `visualpathways` name
+was resolved to the later MaleCNS connectome preprint, not this 2018 imaging study.
+GitHub API rate limiting and the Bitbucket downloads endpoints' HTTP 402 responses
+remain uninterpretable;
+therefore this narrows the public repository search without asserting global absence.
 A bounded OpenAlex graph rooted at Groschner 2022 and Henning 2026 contains 134
 unique reference IDs (132 resolved, two explicitly unresolved), 110 citing records,
 and 240 unique works in the union. The highest-relevance new candidate, Pang et al.

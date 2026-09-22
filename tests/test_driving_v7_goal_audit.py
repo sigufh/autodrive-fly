@@ -250,6 +250,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Strother_2018_successful_index_Mi4_trace_found",
         "Strother_2018_Figshare_search_interpretable",
         "Strother_2018_global_absence_claimed",
+        "Strother_2018_author_public_repository_count",
+        "Strother_2018_author_repository_numeric_payload_verified",
+        "Strother_2018_author_repository_search_is_bounded",
         "Strother_2018_supplement_bundle_entry_count",
         "Strother_2018_Mi4_moving_grating_figure_verified",
         "Strother_2018_Mi4_moving_grating_fly_count",
@@ -1117,6 +1120,17 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Strother_2018_successful_index_Mi4_trace_found"] is False
     assert visual["observations"]["Strother_2018_Figshare_search_interpretable"] is False
     assert visual["observations"]["Strother_2018_global_absence_claimed"] is False
+    assert visual["observations"]["Strother_2018_author_public_repository_count"] == 2
+    assert (
+        visual["observations"][
+            "Strother_2018_author_repository_numeric_payload_verified"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["Strother_2018_author_repository_search_is_bounded"]
+        is True
+    )
     assert visual["observations"]["Strother_2018_supplement_bundle_entry_count"] == 16
     assert visual["observations"]["Strother_2018_Mi4_moving_grating_figure_verified"] is True
     assert visual["observations"]["Strother_2018_Mi4_moving_grating_fly_count"] == 5

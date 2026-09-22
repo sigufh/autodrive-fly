@@ -184,6 +184,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "Strother_2018_global_absence_claimed": visual[
                     "Strother_2018_global_absence_claimed"
                 ],
+                "Strother_2018_author_public_repository_count": visual[
+                    "Strother_2018_author_public_repository_count"
+                ],
+                "Strother_2018_author_repository_numeric_payload_verified": visual[
+                    "Strother_2018_author_repository_numeric_payload_verified"
+                ],
+                "Strother_2018_author_repository_search_is_bounded": visual[
+                    "Strother_2018_author_repository_search_is_bounded"
+                ],
                 "Strother_2018_supplement_bundle_entry_count": visual[
                     "Strother_2018_supplement_bundle_entry_count"
                 ],

@@ -58,3 +58,26 @@ def test_official_supplement_has_figure_level_mi4_traces_but_no_numeric_attachme
     assert evidence["GCaMP6f_photoactivation_brain_count_per_condition"] == 3
     assert evidence["data_availability"] == "upon_request"
     assert evidence["public_numeric_trace_attachment_verified"] is False
+
+
+def test_bounded_author_repository_index_has_no_paper_linked_numeric_payload() -> None:
+    report = json.loads(REPORT.read_text())
+    indexes = report["audited_indexes"]
+    assert indexes["Reiser_Lab_GitHub_API_rate_limited"] is True
+    assert indexes["Reiser_Lab_GitHub_HTML_repository_count"] == 42
+    assert indexes["Reiser_Lab_GitHub_paper_term_repository_name_hits"] == []
+    author = report["author_repository_index"]
+    assert author["Bitbucket_workspace_owner_display_name"] == "James Strother"
+    assert author["Bitbucket_public_repository_count"] == 2
+    assert author["Bitbucket_downloads_status"] == 402
+    assert author["Bitbucket_downloads_interpretable"] is False
+    assert author["paper_linked_numeric_repository_verified"] is False
+    assert author["bounded_index_not_global_repository_absence"] is True
+    repositories = author["repositories"]
+    assert repositories["neuron_image_analysis"]["commit_count"] == 188
+    assert repositories["neuron_image_analysis"]["complete_history_audited"] is True
+    assert repositories["larval_proving_grounds"]["complete_history_audited"] is False
+    for repository in repositories.values():
+        assert repository["numeric_payload_paths"] == []
+        assert repository["paper_term_filename_hits"] == []
+        assert repository["paper_term_text_hits"] == []
