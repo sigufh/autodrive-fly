@@ -43,6 +43,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     hao_asap7y_path = Path(config["hao_ASAP7y_candidate_evidence"])
     stable_contrast_path = Path(config["stable_contrast_source_scope_evidence"])
     tanaka_mi4_path = Path(config["tanaka_Mi4_calcium_evidence"])
+    afterimages_mi4_path = Path(config["afterimages_Mi4_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -95,6 +96,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / stable_contrast_path).read_text(encoding="utf-8")
     )
     tanaka_mi4 = json.loads((root / tanaka_mi4_path).read_text(encoding="utf-8"))
+    afterimages_mi4 = json.loads(
+        (root / afterimages_mi4_path).read_text(encoding="utf-8")
+    )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
@@ -236,6 +240,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(hao_asap7y_path): _sha256(root / hao_asap7y_path),
                 str(stable_contrast_path): _sha256(root / stable_contrast_path),
                 str(tanaka_mi4_path): _sha256(root / tanaka_mi4_path),
+                str(afterimages_mi4_path): _sha256(root / afterimages_mi4_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -687,6 +692,23 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 "recording_to_MaleCNS_body_crosswalk_found"
             ],
             "source_dynamics_transfer_authorized": tanaka_mi4[
+                "authorize_Mi4_source_dynamics_transfer"
+            ],
+        },
+        "verified_Wu_2026_afterimages_Mi4_phenotype": {
+            "doi": afterimages_mi4["paper"]["doi"],
+            "measurement_modality": afterimages_mi4["measurement"][
+                "Mi4_measurement_modality"
+            ],
+            "fly_count": afterimages_mi4["measurement"]["Mi4_fly_count"],
+            "ROI_count": afterimages_mi4["measurement"]["Mi4_ROI_count"],
+            "public_numeric_payload_verified": afterimages_mi4[
+                "public_numeric_Mi4_payload_verified"
+            ],
+            "experimental_membrane_voltage": afterimages_mi4[
+                "experimental_membrane_voltage"
+            ],
+            "source_dynamics_transfer_authorized": afterimages_mi4[
                 "authorize_Mi4_source_dynamics_transfer"
             ],
         },

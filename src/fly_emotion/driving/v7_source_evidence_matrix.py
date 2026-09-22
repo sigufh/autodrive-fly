@@ -47,6 +47,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
     stable_contrast = evidence["stable_contrast_scope"]
     tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
+    afterimages_mi4 = evidence["afterimages_Mi4"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -524,6 +525,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Mi4"
                 and tanaka_mi4["recording_to_MaleCNS_body_crosswalk_found"]
             ),
+            "Wu_2026_afterimages_Mi4_GCaMP6f_phenotype_verified": (
+                source == "Mi4"
+                and afterimages_mi4["measurement"]["Mi4_fly_count"] == 6
+                and afterimages_mi4["measurement"]["Mi4_ROI_count"] == 113
+            ),
+            "Wu_2026_afterimages_public_numeric_Mi4_payload_verified": (
+                source == "Mi4"
+                and afterimages_mi4["public_numeric_Mi4_payload_verified"]
+            ),
+            "Wu_2026_afterimages_experimental_membrane_voltage": (
+                source == "Mi4" and afterimages_mi4["experimental_membrane_voltage"]
+            ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources
             ),
@@ -827,6 +840,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             phenotype_sources.append("Matulis_2020_Mi1_whole_cell_voltage_phenotype")
         if published_voltage:
             phenotype_sources.append("Yang_2016_optical_voltage_figure")
+        if source == "Mi4" and afterimages_mi4["measurement"]["Mi4_fly_count"] == 6:
+            phenotype_sources.append("Wu_2026_afterimages_Mi4_GCaMP6f_figure")
         if source == "CT1" and ct1_lobula_phenotype:
             phenotype_sources.append("TimingModels_lobula_Lo1_CT1_supplement_figure")
         if source in borst_2025_sources:

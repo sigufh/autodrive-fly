@@ -258,6 +258,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "Tanaka_2023_Mi4_source_dynamics_transfer_authorized": visual[
                     "Tanaka_2023_Mi4_source_dynamics_transfer_authorized"
                 ],
+                "Wu_2026_afterimages_Mi4_fly_count": visual[
+                    "Wu_2026_afterimages_Mi4_fly_count"
+                ],
+                "Wu_2026_afterimages_Mi4_ROI_count": visual[
+                    "Wu_2026_afterimages_Mi4_ROI_count"
+                ],
+                "Wu_2026_afterimages_Mi4_response_unit": visual[
+                    "Wu_2026_afterimages_Mi4_response_unit"
+                ],
+                "Wu_2026_afterimages_public_numeric_Mi4_payload_verified": visual[
+                    "Wu_2026_afterimages_public_numeric_Mi4_payload_verified"
+                ],
+                "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized": visual[
+                    "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

@@ -155,6 +155,14 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if tanaka["experimental_membrane_voltage"] or tanaka["C3_direct_recording_found"]:
         raise ValueError("Tanaka Mi4/C3 voltage boundary changed")
 
+    afterimages = evidence["afterimages_Mi4"]
+    if afterimages["measurement"]["Mi4_measurement_modality"] != (
+        "two_photon_GCaMP6f_calcium"
+    ):
+        raise ValueError("afterimage Mi4 modality changed")
+    if afterimages["public_numeric_Mi4_payload_verified"]:
+        raise ValueError("afterimage Mi4 numeric-payload boundary changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -225,6 +233,9 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
                 "Gonzalez_Suarez_2022"
             ],
             "independent_Mi4_individual_calcium_candidates": ["Tanaka_2023"],
+            "independent_Mi4_figure_level_calcium_candidates": [
+                "Wu_2026_afterimages"
+            ],
             "independent_C3_intervention_only_candidates": ["Yuan_2020"],
             "citation_graph_exclusion_candidates": ["Pang_2025"],
             "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],

@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "a0d921c47cb1d6c54df3325b1b6e029840264248de97fd67b096c8f349eb729f",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "48435193b21e0358f28be79ddb3c8b1301cc0e47945cb5d5eaaa567d83ee017b",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "1c623422ca91dadeed1d3fa20da997d8624648bdea88a7c8d13eb039390aea0f",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "71b070218c373c92f2aea0a1fd46cf4e9f33881ade93b98b52dddfd9f91a5d3f",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "049538a605c70407261ea0e5acc4a1eafdbc7bca7a9ec72158c3fa0777e1b6cd",
@@ -19,7 +19,8 @@
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
       "artifacts/v7-hao-asap7y-candidate-audit.json": "9137f6ad1bfafeffc1144e76b35510d60540892cdd4b0ea42cd2148440a3b5f7",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
-      "artifacts/v7-tanaka-mi4-calcium-audit.json": "c5fbf770f25c8c6595b8f35988266af559edde677d242456ef324da22cbe7fe6"
+      "artifacts/v7-tanaka-mi4-calcium-audit.json": "c5fbf770f25c8c6595b8f35988266af559edde677d242456ef324da22cbe7fe6",
+      "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -281,10 +282,36 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "individual_Mi4_calcium_is_not_Mi4_C3_membrane_voltage",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Wu_2026_afterimages": {
+      "title": "Afterimages drive a shared visual motion-reversal illusion in Drosophila",
+      "doi": "10.64898/2026.01.19.700413",
+      "target_neurons": [
+        "T4",
+        "T5",
+        "HS",
+        "Mi1",
+        "Tm3",
+        "Tm1",
+        "Tm2",
+        "Mi4",
+        "Mi9"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4"
+      ],
+      "measurement_modality": "two_photon_GCaMP6f_calcium",
+      "response_unit": "deltaF_over_F",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "Mi4_measurement_is_figure_level_calcium_without_numeric_payload",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 12,
+    "audited_candidate_count": 13,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -295,6 +322,9 @@
     ],
     "independent_Mi4_individual_calcium_candidates": [
       "Tanaka_2023"
+    ],
+    "independent_Mi4_figure_level_calcium_candidates": [
+      "Wu_2026_afterimages"
     ],
     "independent_C3_intervention_only_candidates": [
       "Yuan_2020"

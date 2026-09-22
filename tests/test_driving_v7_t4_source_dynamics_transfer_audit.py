@@ -216,6 +216,14 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert tanaka["experimental_membrane_voltage"] is False
     assert tanaka["recording_to_MaleCNS_body_crosswalk_found"] is False
     assert tanaka["source_dynamics_transfer_authorized"] is False
+    afterimages = report["verified_Wu_2026_afterimages_Mi4_phenotype"]
+    assert afterimages["doi"] == "10.64898/2026.01.19.700413"
+    assert afterimages["measurement_modality"] == "two_photon_GCaMP6f_calcium"
+    assert afterimages["fly_count"] == 6
+    assert afterimages["ROI_count"] == 113
+    assert afterimages["public_numeric_payload_verified"] is False
+    assert afterimages["experimental_membrane_voltage"] is False
+    assert afterimages["source_dynamics_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

@@ -1,4 +1,4 @@
-version: 9
+version: 10
 name: v7-t4-source-dynamics-transfer-audit
 observed_on: "2026-09-22"
 electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
@@ -29,6 +29,7 @@ c3_citation_graph_evidence: artifacts/v7-c3-citation-graph-audit.json
 hao_ASAP7y_candidate_evidence: artifacts/v7-hao-asap7y-candidate-audit.json
 stable_contrast_source_scope_evidence: artifacts/v7-stable-contrast-source-scope-audit.json
 tanaka_Mi4_calcium_evidence: artifacts/v7-tanaka-mi4-calcium-audit.json
+afterimages_Mi4_evidence: artifacts/v7-afterimages-mi4-candidate-audit.json
 flyvis_c3_time_constant_evidence: artifacts/v7-flyvis-c3-time-constant-audit.json
 flyvis_visual_source_time_constants_evidence: artifacts/v7-flyvis-visual-source-time-constants.json
 flyvis_c3_effective_dynamics_evidence: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
@@ -87,3 +88,4 @@ boundary:
   unresolved_ASAP7y_cell_types_do_not_authorize_source_transfer: true
   stable_contrast_proofreading_tables_do_not_authorize_source_transfer: true
   independent_Mi4_calcium_does_not_authorize_membrane_voltage_transfer: true
+  figure_level_Mi4_calcium_does_not_authorize_source_transfer: true

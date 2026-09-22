@@ -192,6 +192,10 @@ v7-audit-stable-contrast-source-scope:
 v7-audit-tanaka-mi4-calcium:
 	.venv/bin/autodrive-fly v7-audit-tanaka-mi4-calcium
 
+.PHONY: v7-audit-afterimages-mi4-candidate
+v7-audit-afterimages-mi4-candidate:
+	.venv/bin/autodrive-fly v7-audit-afterimages-mi4-candidate
+
 v7-audit-gou-dandi-identity:
 	.venv/bin/autodrive-fly v7-audit-gou-dandi-identity
 

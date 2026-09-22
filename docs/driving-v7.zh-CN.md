@@ -2378,6 +2378,14 @@ fig7_mi4.mat 与对应脚本。CRC 和仓库哈希通过；载荷保留 10 个�
 但不是膜电位、没有 C3、没有 recording-to-MaleCNS body crosswalk，也没有方向标记的 source
 dynamics，不能解锁 T4 transfer。证据见 artifacts/v7-tanaka-mi4-calcium-audit.json。
 
+Wu 等 2026 的 afterimage 预印本（DOI 10.64898/2026.01.19.700413）也直接记录了
+Mi4，但模态仍为 GCaMP6f。Europe PMC XML 与唯一补充 PDF 可验证 Mi4 为 6 flies、
+113 ROIs，记录约 13 Hz，刺激为不同 interleave luminance 的 sinusoidal
+pattern-uniform 条件；结果是 Mi4/Mi9 没有强 afterimage-like response。PMC 附件包
+只含正文图像和该 6 页 PDF，PDF 无嵌入附件，正文未列数据仓库链接。因此这里只记录
+独立 Mi4 calcium phenotype，不声称数值载荷全局不存在，也不授权 source transfer。证据见
+artifacts/v7-afterimages-mi4-candidate-audit.json。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

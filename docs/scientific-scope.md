@@ -663,6 +663,15 @@ is imported from Arenz 2017 rather than fitted to Figure 7. This is independent
 individual-fly numerical calcium evidence, not membrane voltage, C3 evidence,
 direction-labelled source dynamics, or a recording-to-MaleCNS crosswalk; it does not
 authorize T4 source transfer (artifacts/v7-tanaka-mi4-calcium-audit.json).
+Wu et al. 2026 (10.64898/2026.01.19.700413) independently images Mi4 with
+GCaMP6f. Europe PMC XML and the sole six-page supplement verify 113 Mi4 ROIs from
+six flies, approximately 13-Hz acquisition, and sinusoidal pattern-uniform stimuli
+with varied interleave luminance; Mi4 and Mi9 lack strong afterimage-like responses.
+The PMC supplementary bundle contains article figures and that PDF, the PDF has no
+embedded numeric attachment, and the body has no data-repository link. This is a
+figure-level calcium phenotype, not a verified numeric payload or membrane voltage,
+and no global absence claim is made
+(artifacts/v7-afterimages-mi4-candidate-audit.json).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

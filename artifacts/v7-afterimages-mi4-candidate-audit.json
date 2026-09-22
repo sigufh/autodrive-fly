@@ -1,0 +1,77 @@
+{
+  "protocol": {
+    "name": "v7-afterimages-mi4-candidate-audit",
+    "observed_on": "2026-09-22",
+    "dependencies_sha256": {
+      "configs/driving-v7-afterimages-mi4-candidate-audit.yaml": "84bb7cd3f81d445c0002bd8a5a38b1340efc62c7d2dc260b5a062fa0efca952c",
+      "src/fly_emotion/driving/v7_afterimages_mi4_candidate_audit.py": "9f192a222517614fbe84492c18f03503b384401ee31d2f466e5feac4ef319d23"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/afterimages-2026/PMC12871661.html": "a7228c5a0e3c65c4ccfd5fbcf403e1bbd533e2065f24d989be6fc5283e8c4f2b",
+      "data/raw/t4-inhibitory-source-external/afterimages-2026/fulltext.xml": "59aa6c8cff1ea3bb45fd6c2696a04dd4bbc07ef8fd909e5a594729acfcc4bc06",
+      "data/raw/t4-inhibitory-source-external/afterimages-2026/pubmed-summary.json": "eafebfbda7ebc08c6a2b768678492447734f470d411b7d300dbe035df869c679",
+      "data/raw/t4-inhibitory-source-external/afterimages-2026/supplementary-files.zip": "d45018eaa284e053d50e4ab55dbe89b7526bc0092f7845dda94fbbe7290b98c7",
+      "data/raw/t4-inhibitory-source-external/afterimages-2026/supplement-1-valid.pdf": "6387805fcf1b49652c415bc564e10eeebb6e711e3c1e594888fd302bbaa336e6"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Afterimages drive a shared visual motion-reversal illusion in Drosophila",
+    "doi": "10.64898/2026.01.19.700413",
+    "pmid": 41648562,
+    "pmcid": "PMC12871661",
+    "version": 1
+  },
+  "measurement": {
+    "directly_recorded_neuron_types": [
+      "T4",
+      "T5",
+      "HS",
+      "Mi1",
+      "Tm3",
+      "Tm1",
+      "Tm2",
+      "Mi4",
+      "Mi9"
+    ],
+    "Mi4_measurement_modality": "two_photon_GCaMP6f_calcium",
+    "Mi4_response_unit": "deltaF_over_F",
+    "Mi4_fly_count": 6,
+    "Mi4_ROI_count": 113,
+    "Mi4_and_Mi9_afterimage_like_response_strong": false,
+    "acquisition_rate_hz_approximate": 13.0,
+    "right_optic_lobe_only": true,
+    "ROI_identity_handling": "pooled_across_flies_after_probe_selection"
+  },
+  "supplement": {
+    "bundle_entry_count": 11,
+    "PDF_count": 1,
+    "PDF_pages": 6,
+    "embedded_attachment_count": 0,
+    "numeric_attachment_count": 0
+  },
+  "public_repository_links_in_body": [],
+  "public_numeric_Mi4_payload_verified": false,
+  "experimental_membrane_voltage": false,
+  "C3_direct_recording_found": false,
+  "recording_to_MaleCNS_body_crosswalk_found": false,
+  "global_payload_absence_claimed": false,
+  "authorize_Mi4_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "Mi4_evidence_is_GCaMP6f_figure_level_without_numeric_payload",
+  "boundary": {
+    "Mi4_GCaMP6f_is_calcium_not_membrane_voltage": true,
+    "figure_level_mean_SEM_is_not_a_numeric_training_payload": true,
+    "PMC_supplement_has_no_embedded_numeric_attachment": true,
+    "no_repository_link_is_not_global_payload_absence": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

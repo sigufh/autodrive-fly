@@ -1,0 +1,31 @@
+version: 1
+name: v7-afterimages-mi4-candidate-audit
+observed_on: "2026-09-22"
+paper:
+  title: Afterimages drive a shared visual motion-reversal illusion in Drosophila
+  doi: 10.64898/2026.01.19.700413
+  pmid: 41648562
+  pmcid: PMC12871661
+  version: 1
+snapshots:
+  pmc_html: {path: data/raw/t4-inhibitory-source-external/afterimages-2026/PMC12871661.html, bytes: 307220, sha256: a7228c5a0e3c65c4ccfd5fbcf403e1bbd533e2065f24d989be6fc5283e8c4f2b}
+  europe_pmc_fulltext: {path: data/raw/t4-inhibitory-source-external/afterimages-2026/fulltext.xml, bytes: 211493, sha256: 59aa6c8cff1ea3bb45fd6c2696a04dd4bbc07ef8fd909e5a594729acfcc4bc06}
+  pubmed_summary: {path: data/raw/t4-inhibitory-source-external/afterimages-2026/pubmed-summary.json, bytes: 1774, sha256: eafebfbda7ebc08c6a2b768678492447734f470d411b7d300dbe035df869c679}
+  supplementary_bundle: {path: data/raw/t4-inhibitory-source-external/afterimages-2026/supplementary-files.zip, bytes: 2697404, sha256: d45018eaa284e053d50e4ab55dbe89b7526bc0092f7845dda94fbbe7290b98c7}
+  supplementary_pdf: {path: data/raw/t4-inhibitory-source-external/afterimages-2026/supplement-1-valid.pdf, bytes: 2095464, sha256: 6387805fcf1b49652c415bc564e10eeebb6e711e3c1e594888fd302bbaa336e6}
+expected:
+  supplementary_bundle_entry_count: 11
+  supplementary_pdf_pages: 6
+  Mi4_fly_count: 6
+  Mi4_ROI_count: 113
+  Mi9_fly_count: 7
+  Mi9_ROI_count: 105
+boundary:
+  Mi4_GCaMP6f_is_calcium_not_membrane_voltage: true
+  figure_level_mean_SEM_is_not_a_numeric_training_payload: true
+  PMC_supplement_has_no_embedded_numeric_attachment: true
+  no_repository_link_is_not_global_payload_absence: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

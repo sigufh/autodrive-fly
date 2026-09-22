@@ -140,6 +140,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "stable_contrast_source_scope_audit"
     ]
     tanaka_mi4_calcium_audit = reports["tanaka_mi4_calcium_audit"]
+    afterimages_mi4_candidate_audit = reports["afterimages_mi4_candidate_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -407,6 +408,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["hao_asap7y_candidate_audit"],
                 config["evidence"]["stable_contrast_source_scope_audit"],
                 config["evidence"]["tanaka_mi4_calcium_audit"],
+                config["evidence"]["afterimages_mi4_candidate_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1773,6 +1775,27 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "Tanaka_2023_Mi4_source_dynamics_transfer_authorized": (
                     tanaka_mi4_calcium_audit["authorize_Mi4_source_dynamics_transfer"]
+                ),
+                "Wu_2026_afterimages_Mi4_fly_count": (
+                    afterimages_mi4_candidate_audit["measurement"]["Mi4_fly_count"]
+                ),
+                "Wu_2026_afterimages_Mi4_ROI_count": (
+                    afterimages_mi4_candidate_audit["measurement"]["Mi4_ROI_count"]
+                ),
+                "Wu_2026_afterimages_Mi4_response_unit": (
+                    afterimages_mi4_candidate_audit["measurement"][
+                        "Mi4_response_unit"
+                    ]
+                ),
+                "Wu_2026_afterimages_public_numeric_Mi4_payload_verified": (
+                    afterimages_mi4_candidate_audit[
+                        "public_numeric_Mi4_payload_verified"
+                    ]
+                ),
+                "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized": (
+                    afterimages_mi4_candidate_audit[
+                        "authorize_Mi4_source_dynamics_transfer"
+                    ]
                 ),
                 "source_dynamics_external_contract_satisfied": (
                     source_dynamics_external_evidence_contract["contract_satisfied"]
@@ -4126,6 +4149,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Tanaka_2023_Mi4_response_unit",
                     "Tanaka_2023_Mi4_experimental_membrane_voltage",
                     "Tanaka_2023_Mi4_source_dynamics_transfer_authorized",
+                    "Wu_2026_afterimages_Mi4_fly_count",
+                    "Wu_2026_afterimages_Mi4_ROI_count",
+                    "Wu_2026_afterimages_Mi4_response_unit",
+                    "Wu_2026_afterimages_public_numeric_Mi4_payload_verified",
+                    "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

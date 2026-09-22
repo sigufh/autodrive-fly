@@ -276,6 +276,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "Tanaka_2023_Mi4_response_unit",
             "Tanaka_2023_Mi4_experimental_membrane_voltage",
             "Tanaka_2023_Mi4_source_dynamics_transfer_authorized",
+            "Wu_2026_afterimages_Mi4_fly_count",
+            "Wu_2026_afterimages_Mi4_ROI_count",
+            "Wu_2026_afterimages_Mi4_response_unit",
+            "Wu_2026_afterimages_public_numeric_Mi4_payload_verified",
+            "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1063,7 +1068,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 12
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 13
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1139,6 +1144,23 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Tanaka_2023_Mi4_experimental_membrane_voltage"] is False
     assert (
         visual["observations"]["Tanaka_2023_Mi4_source_dynamics_transfer_authorized"]
+        is False
+    )
+    assert visual["observations"]["Wu_2026_afterimages_Mi4_fly_count"] == 6
+    assert visual["observations"]["Wu_2026_afterimages_Mi4_ROI_count"] == 113
+    assert visual["observations"]["Wu_2026_afterimages_Mi4_response_unit"] == (
+        "deltaF_over_F"
+    )
+    assert (
+        visual["observations"][
+            "Wu_2026_afterimages_public_numeric_Mi4_payload_verified"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized"
+        ]
         is False
     )
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [

@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "12f9fd4eb9d54e1c2e87cfb5ffe4ab577769a684fc8bffb22a0080c0e6d65c32",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "4adf437db8b79e14db20096892b7f1a43583decbe5fc1cffb2507b370d36038c",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "bfdfd9c3a525fb9237b61ce25590a1dd42226c096404a9b3c669aeee354bd463",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "d2c4dd690f72c413e5048f7cbd6cf3e62e2f09a9671cc9b0f7e7eea9d3ad20a2",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -31,6 +31,7 @@
       "artifacts/v7-hao-asap7y-candidate-audit.json": "9137f6ad1bfafeffc1144e76b35510d60540892cdd4b0ea42cd2148440a3b5f7",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "c5fbf770f25c8c6595b8f35988266af559edde677d242456ef324da22cbe7fe6",
+      "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
@@ -338,6 +339,15 @@
     "recording_to_MaleCNS_body_crosswalk_found": false,
     "source_dynamics_transfer_authorized": false
   },
+  "verified_Wu_2026_afterimages_Mi4_phenotype": {
+    "doi": "10.64898/2026.01.19.700413",
+    "measurement_modality": "two_photon_GCaMP6f_calcium",
+    "fly_count": 6,
+    "ROI_count": 113,
+    "public_numeric_payload_verified": false,
+    "experimental_membrane_voltage": false,
+    "source_dynamics_transfer_authorized": false
+  },
   "verified_FlyVis_C3_time_constant_readiness": {
     "repository_commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
     "pretrained_model_count": 50,
@@ -460,6 +470,7 @@
     "citation_graph_exclusions_do_not_prove_global_C3_absence": true,
     "unresolved_ASAP7y_cell_types_do_not_authorize_source_transfer": true,
     "stable_contrast_proofreading_tables_do_not_authorize_source_transfer": true,
-    "independent_Mi4_calcium_does_not_authorize_membrane_voltage_transfer": true
+    "independent_Mi4_calcium_does_not_authorize_membrane_voltage_transfer": true,
+    "figure_level_Mi4_calcium_does_not_authorize_source_transfer": true
   }
 }

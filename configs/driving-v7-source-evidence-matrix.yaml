@@ -1,4 +1,4 @@
-version: 27
+version: 28
 name: v7-source-evidence-matrix
 observed_on: "2026-09-22"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -20,6 +20,7 @@ evidence:
   hao_ASAP7y_unresolved: artifacts/v7-hao-asap7y-candidate-audit.json
   stable_contrast_scope: artifacts/v7-stable-contrast-source-scope-audit.json
   tanaka_Mi4_calcium: artifacts/v7-tanaka-mi4-calcium-audit.json
+  afterimages_Mi4: artifacts/v7-afterimages-mi4-candidate-audit.json
   borst_2025_temporal_filtering: artifacts/v7-borst-2025-temporal-filtering-audit.json
   pirogova_source_calcium: artifacts/v7-pirogova-source-calcium-audit.json
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json

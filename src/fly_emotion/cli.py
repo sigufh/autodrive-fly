@@ -31,6 +31,9 @@ from .driving.v7 import (
     evaluate_v7_typed_visual_candidate,
     write_v7_manifest,
 )
+from .driving.v7_afterimages_mi4_candidate_audit import (
+    evaluate_v7_afterimages_mi4_candidate_audit,
+)
 from .driving.v7_arenz_source_dynamics_audit import (
     evaluate_v7_arenz_source_dynamics_audit,
 )
@@ -662,6 +665,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4t5-local-edge-backends")
     subparsers.add_parser("v7-audit-t4t5-source-dynamics-readiness")
     subparsers.add_parser("v7-audit-tanaka-mi4-calcium")
+    subparsers.add_parser("v7-audit-afterimages-mi4-candidate")
     subparsers.add_parser("v7-evaluate-t4-local-correlator-precheck")
     subparsers.add_parser("v7-evaluate-t4-continuous-pair-precheck")
     subparsers.add_parser("v7-audit-t4-pair-lags")
@@ -1420,6 +1424,14 @@ def main() -> None:
     if args.command == "v7-audit-tanaka-mi4-calcium":
         report = evaluate_v7_tanaka_mi4_calcium_audit(root)
         target = root / "artifacts/v7-tanaka-mi4-calcium-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-afterimages-mi4-candidate":
+        report = evaluate_v7_afterimages_mi4_candidate_audit(root)
+        target = root / "artifacts/v7-afterimages-mi4-candidate-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
