@@ -4,7 +4,7 @@
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
       "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "5cf0c1f1b475d329739bdde0945858033634a6a91067482b2afa8175db03d610",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "6a93e84bfe1330e8798346c74dbfabce0a1f2229e3c0b5c12b0449b78e5684a0",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "d4966eec59fb8cfb8619a2e792f0e5a17a02da4e8c37ebaafc3e9b4ef832e97c",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -29,7 +29,7 @@
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
       "artifacts/v7-strother-mi4-public-index-audit.json": "0313bc6be14cde7e64302a50682d82a40d65942031bcc37f2be365b1c1065a56",
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
-      "artifacts/v7-legacy-c3-candidate-audit.json": "0e67d8572fc35abf67d3364d117f0a770b60ec3132fd7b010177432ad25b4a6f",
+      "artifacts/v7-legacy-c3-candidate-audit.json": "5ff9350e6fe9d3e8dbc8dbc2b1b6d6bcfbf673563ad6cd0ab38df45d2ba0ef1e",
       "artifacts/v7-hao-asap7y-candidate-audit.json": "e4e2d232cc94f1be5d949eaa34604257562c6bbefc5a2a92ce97a0d21365d074",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
@@ -330,9 +330,12 @@
       "Tuthill_2013"
     ],
     "direct_source_dynamics_candidates": [],
-    "unresolved_fulltext_candidates": [
-      "Ramos_Traslosheros_2020"
+    "unresolved_fulltext_candidates": [],
+    "Ramos_2020_fulltext_scope_resolved": true,
+    "Ramos_2020_direct_recording_targets": [
+      "Tm9"
     ],
+    "Ramos_2020_C3_direct_recording_verified": false,
     "source_dynamics_transfer_authorized": false
   },
   "unresolved_Hao_2026_ASAP7y_candidate": {

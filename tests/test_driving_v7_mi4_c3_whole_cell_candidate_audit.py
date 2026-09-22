@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 15
+    assert summary["audited_candidate_count"] == 16
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -38,14 +38,14 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
         "Yuan_2020",
         "Tuthill_2013",
     ]
+    assert summary["independent_C3_perturbation_with_downstream_readout_candidates"] == [
+        "Ramos_Traslosheros_2020"
+    ]
     assert summary["citation_graph_exclusion_candidates"] == [
         "Pang_2025",
         "Maisak_2018",
     ]
-    assert summary["unresolved_high_value_candidates"] == [
-        "Hao_2026_ASAP7y",
-        "Ramos_Traslosheros_2020",
-    ]
+    assert summary["unresolved_high_value_candidates"] == ["Hao_2026_ASAP7y"]
     assert summary["unresolved_candidates_in_audited_candidate_count"] is False
     assert summary["anatomy_only_named_source_candidates"] == ["Gur_2024"]
 
@@ -79,6 +79,13 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert pang["target_neurons"] == ["L1", "L2"]
     assert pang["directly_measured_required_sources"] == []
     assert pang["experimental_membrane_voltage"] is False
+    ramos = matrix["Ramos_Traslosheros_2020"]
+    assert ramos["directly_measured_required_sources"] == []
+    assert ramos["measurement_modality"] == (
+        "Tm9_GCaMP6f_readout_with_C3_CsChrimson_perturbation"
+    )
+    assert ramos["public_numeric_payload"] is False
+    assert ramos["local_numeric_payload_verified"] is False
     gur = matrix["Gur_2024"]
     assert gur["directly_measured_required_sources"] == []
     assert gur["experimental_membrane_voltage"] is False

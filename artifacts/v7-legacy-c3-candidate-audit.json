@@ -3,8 +3,10 @@
     "name": "v7-legacy-c3-candidate-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-legacy-c3-candidate-audit.yaml": "cd5458c4ac24d50f957aa9221ae34fa371b097d04cd3dc2d127ceacd9f519838",
-      "src/fly_emotion/driving/v7_legacy_c3_candidate_audit.py": "e19639e45014f59d8f4a7e10a638eb19f848dcdbea562c347fcb5415bbf2d5ec"
+      "configs/driving-v7-legacy-c3-candidate-audit.yaml": "fd8a302a6786e5afc7b6dd77dcafdf069d4a298f6979c5ac390caafe7be19623",
+      "src/fly_emotion/driving/v7_legacy_c3_candidate_audit.py": "c20dea13097759591e0d680f0e229d68145827cabf4a307e5bfc40be033afa80",
+      "artifacts/v7-t5-contrast-opponency-source-data-audit.json": "4da548e6de71ff5dd54fd5374d16012ddfe46f6663e30565d6e6deee8416848a",
+      "data/raw/t5-contrast-opponency/41467_2021_24986_MOESM4_ESM.xls": "a7fa28438b16ba9a3316e25fde9d173f39d24469b0d6e58f9333cfdc583a0bb8"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/tuthill-2013/europepmc-core.json": "b56d81d3c19a8520401f9935049abdfc7d92af6690ea0537f32fa8f98076bfc3",
@@ -13,7 +15,8 @@
       "data/raw/t4-inhibitory-source-external/thesis-candidates/Maisak_Matthew.pdf": "5860e939219ab0f927d45d288b25ac037518a7e247f84a0b1fc24fffc0e6c8aa",
       "data/raw/t4-inhibitory-source-external/thesis-candidates/openalex-goediss-8344.json": "f2fd6059655a56573e5cde1239eb154842cf2fa7be76332d67a49c755c7a52c6",
       "data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-oai.xml": "0dd5f8c61a6aabe069cf3a1bae9fe6135fe9505d1b83993adfe7f4181001056d",
-      "data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-xMetaDissPlus.xml": "9088d63c09254a76dabdbb366bce806ea6258a567fef0d865f530a0d4cae67bf"
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-xMetaDissPlus.xml": "9088d63c09254a76dabdbb366bce806ea6258a567fef0d865f530a0d4cae67bf",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-retrieval/RamosTrashlosheros-PhDthesis.pdf": "f3d97c4f9baa080c42fc7d000a4e3a47a16922ffece8da8ff93877688d06ce7d"
     },
     "parameter_fit": false,
     "target_activity_injection": false,
@@ -43,8 +46,22 @@
       "doi": "10.53846/goediss-8344",
       "OAI_metadata_retrieved": true,
       "official_PDF_locator_found": true,
-      "fulltext_probe_status": 403,
-      "fulltext_retrieved": false,
+      "initial_fulltext_probe_status": 403,
+      "fulltext_retrieved_after_official_proof_of_work": true,
+      "page_count": 153,
+      "embedded_attachment_count": 0,
+      "Mi4_exact_term_pages": [
+        24,
+        26,
+        60
+      ],
+      "C3_exact_term_pages": [
+        24,
+        60,
+        66,
+        67,
+        130
+      ],
       "abstract_named_direct_imaging_types": [
         "Tm9",
         "Dm4",
@@ -52,8 +69,25 @@
         "Dm20"
       ],
       "abstract_names_C3_or_Mi4_direct_recording": false,
-      "complete_fulltext_scope_resolved": false,
-      "classification": "unresolved_beyond_abstract_scope"
+      "direct_neural_recording_targets_in_relevant_C3_experiment": [
+        "Tm9"
+      ],
+      "C3_role_in_relevant_experiment": "CsChrimson_optogenetic_stimulation",
+      "C3_direct_neural_recording_verified": false,
+      "Mi4_direct_neural_recording_verified": false,
+      "complete_fulltext_scope_resolved": true,
+      "classification": "C3_perturbation_with_Tm9_calcium_readout",
+      "related_2021_public_workbook_source_types": [
+        "Tm4",
+        "Tm9",
+        "CT1"
+      ],
+      "related_2021_public_workbook_sheet_count": 32,
+      "related_2021_workbook_Mi4_C3_exact_cell_hits": {
+        "Mi4": [],
+        "C3": []
+      },
+      "related_2021_workbook_contains_Mi4_or_C3_source_block": false
     }
   },
   "audited_candidate_count": 3,
@@ -61,9 +95,7 @@
     "Tuthill_2013"
   ],
   "direct_C3_or_Mi4_source_dynamics_candidates": [],
-  "unresolved_fulltext_candidates": [
-    "Ramos_Traslosheros_2020"
-  ],
+  "unresolved_fulltext_candidates": [],
   "authorize_Mi4_C3_source_dynamics_transfer": false,
   "authorize_T4_source_dynamics_fit": false,
   "advance_to_T4_functional_precheck": false,
@@ -75,6 +107,8 @@
     "anatomical_mention_is_not_direct_source_recording": true,
     "abstract_scope_is_not_fulltext_scope": true,
     "HTTP_403_is_not_source_absence": true,
+    "presynaptic_optogenetic_perturbation_is_not_direct_source_recording": true,
+    "Tm9_calcium_readout_is_not_C3_or_Mi4_source_activity": true,
     "no_global_absence_claim": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

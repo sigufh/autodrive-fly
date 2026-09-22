@@ -86,7 +86,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["legacy_C3_candidate_count"] == 3
     assert boundaries["Tuthill_2013_C3_intervention_only_verified"] is True
     assert boundaries["Maisak_2018_direct_C3_Mi4_recording_verified"] is False
-    assert boundaries["Ramos_2020_fulltext_scope_resolved"] is False
+    assert boundaries["Ramos_2020_fulltext_scope_resolved"] is True
+    assert boundaries["Ramos_2020_direct_recording_targets"] == ["Tm9"]
+    assert boundaries["Ramos_2020_C3_direct_recording_verified"] is False
     assert boundaries["Hao_2026_ASAP7y_candidate_classification"] == (
         "unresolved_high_value_candidate"
     )

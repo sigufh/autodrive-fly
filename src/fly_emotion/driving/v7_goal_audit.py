@@ -1744,6 +1744,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Ramos_Traslosheros_2020"
                     ]["complete_fulltext_scope_resolved"]
                 ),
+                "Ramos_2020_direct_recording_targets": (
+                    legacy_c3_candidate_audit["candidates"][
+                        "Ramos_Traslosheros_2020"
+                    ]["direct_neural_recording_targets_in_relevant_C3_experiment"]
+                ),
+                "Ramos_2020_C3_direct_recording_verified": (
+                    legacy_c3_candidate_audit["candidates"][
+                        "Ramos_Traslosheros_2020"
+                    ]["C3_direct_neural_recording_verified"]
+                ),
                 "Hao_2026_ASAP7y_candidate_classification": hao_asap7y_candidate_audit[
                     "cell_type_resolution"
                 ]["candidate_classification"],
@@ -4265,6 +4275,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Tuthill_2013_C3_intervention_only_verified",
                     "Maisak_2018_direct_C3_Mi4_recording_verified",
                     "Ramos_2020_fulltext_scope_resolved",
+                    "Ramos_2020_direct_recording_targets",
+                    "Ramos_2020_C3_direct_recording_verified",
                     "Hao_2026_ASAP7y_candidate_classification",
                     "Hao_2026_ASAP7y_paper_source_experimental_cell_types",
                     "Hao_2026_ASAP7y_public_author_figure_named_examples",

@@ -168,10 +168,15 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
         raise ValueError("legacy audit gained an unreviewed direct source candidate")
     if legacy["candidates"]["Tuthill_2013"]["direct_C3_neural_recording_verified"]:
         raise ValueError("Tuthill now appears to contain direct C3 recording")
-    if legacy["candidates"]["Ramos_Traslosheros_2020"][
-        "complete_fulltext_scope_resolved"
-    ]:
-        raise ValueError("Ramos thesis scope changed and requires review")
+    ramos = legacy["candidates"]["Ramos_Traslosheros_2020"]
+    if (
+        not ramos["complete_fulltext_scope_resolved"]
+        or ramos["direct_neural_recording_targets_in_relevant_C3_experiment"]
+        != ["Tm9"]
+        or ramos["C3_direct_neural_recording_verified"]
+        or ramos["Mi4_direct_neural_recording_verified"]
+    ):
+        raise ValueError("Ramos thesis source-recording boundary changed")
 
     candidates = config["candidates"]
     for name, candidate in candidates.items():
@@ -250,11 +255,11 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
                 "Yuan_2020",
                 "Tuthill_2013",
             ],
-            "citation_graph_exclusion_candidates": ["Pang_2025", "Maisak_2018"],
-            "unresolved_high_value_candidates": [
-                "Hao_2026_ASAP7y",
-                "Ramos_Traslosheros_2020",
+            "independent_C3_perturbation_with_downstream_readout_candidates": [
+                "Ramos_Traslosheros_2020"
             ],
+            "citation_graph_exclusion_candidates": ["Pang_2025", "Maisak_2018"],
+            "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],
             "unresolved_candidates_in_audited_candidate_count": False,
             "anatomy_only_named_source_candidates": ["Gur_2024"],
         },

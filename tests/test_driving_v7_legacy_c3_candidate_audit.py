@@ -26,9 +26,30 @@ def test_legacy_candidates_preserve_modality_and_access_boundaries() -> None:
     )
     assert candidates["Maisak_2018"]["direct_C3_or_Mi4_recording_verified"] is False
     ramos = candidates["Ramos_Traslosheros_2020"]
-    assert ramos["fulltext_probe_status"] == 403
-    assert ramos["fulltext_retrieved"] is False
-    assert ramos["complete_fulltext_scope_resolved"] is False
-    assert ramos["classification"] == "unresolved_beyond_abstract_scope"
+    assert ramos["initial_fulltext_probe_status"] == 403
+    assert ramos["fulltext_retrieved_after_official_proof_of_work"] is True
+    assert ramos["page_count"] == 153
+    assert ramos["embedded_attachment_count"] == 0
+    assert ramos["Mi4_exact_term_pages"] == [24, 26, 60]
+    assert ramos["C3_exact_term_pages"] == [24, 60, 66, 67, 130]
+    assert ramos["direct_neural_recording_targets_in_relevant_C3_experiment"] == [
+        "Tm9"
+    ]
+    assert ramos["C3_direct_neural_recording_verified"] is False
+    assert ramos["Mi4_direct_neural_recording_verified"] is False
+    assert ramos["related_2021_public_workbook_source_types"] == [
+        "Tm4",
+        "Tm9",
+        "CT1",
+    ]
+    assert ramos["related_2021_public_workbook_sheet_count"] == 32
+    assert ramos["related_2021_workbook_Mi4_C3_exact_cell_hits"] == {
+        "Mi4": [],
+        "C3": [],
+    }
+    assert ramos["related_2021_workbook_contains_Mi4_or_C3_source_block"] is False
+    assert ramos["complete_fulltext_scope_resolved"] is True
+    assert ramos["classification"] == "C3_perturbation_with_Tm9_calcium_readout"
+    assert report["unresolved_fulltext_candidates"] == []
     assert report["direct_C3_or_Mi4_source_dynamics_candidates"] == []
     assert report["authorize_Mi4_C3_source_dynamics_transfer"] is False

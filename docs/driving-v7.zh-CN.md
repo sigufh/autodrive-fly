@@ -2425,9 +2425,14 @@ recording→MaleCNS body crosswalk，也不能定义方向特异 source kernel �
 （DOI `10.1016/j.neuron.2013.05.024`）的可读全文明确将 C3 作为 Kir2.1 激活/沉默对象、
 测量飞行转向行为，并指出仍需未来的 C2/C3 生理记录；因此是独立 intervention-only
 证据。Maisak 2018 博士论文全文中 C3 与 Mi4 各仅有一次精确术语命中，均处于解剖
-候选讨论，未验证直接记录。Ramos-Traslosheros 2020 博士论文的官方 OAI 摘要将直接
-成像范围列为 Tm9、Dm4、Dm12、Dm20；OAI 给出的 PDF 当前返回 403，故只把摘要范围
-记为无 C3/Mi4 命中，完整全文保持 unresolved，而非声称不存在。证据见
+候选讨论，未验证直接记录。Ramos-Traslosheros 2020 博士论文最初返回 HTTP 403，随后
+按站点公开 proof-of-work 流程成功取得官方 153 页 PDF；PDF 无 embedded attachments。
+全文中 Mi4 仅见于背景生理与连接关系；相关 C3 实验让 C3 表达 CsChrimson 并接受
+光遗传刺激，实际记录对象是表达 GCaMP6f 的 Tm9。因此其时序是下游 Tm9 钙读出，不是
+直接 C3 活动，更不是 Mi4/C3 source dynamics。该全文范围现已解析为
+`C3_perturbation_with_Tm9_calcium_readout`，不再列作 unresolved。相关 2021 正式论文的
+官方 XLS 已在 T5 审计中覆盖，其中是 Tm4/Tm9 时间钙数据和 CT1 空间钙数据，没有
+Mi4/C3 source block。证据见
 `artifacts/v7-legacy-c3-candidate-audit.json`。
 
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交

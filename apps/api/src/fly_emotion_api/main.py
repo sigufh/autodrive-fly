@@ -228,6 +228,12 @@ def _verified_v7_status(root: Path) -> dict:
                 "Ramos_2020_fulltext_scope_resolved": visual[
                     "Ramos_2020_fulltext_scope_resolved"
                 ],
+                "Ramos_2020_direct_recording_targets": visual[
+                    "Ramos_2020_direct_recording_targets"
+                ],
+                "Ramos_2020_C3_direct_recording_verified": visual[
+                    "Ramos_2020_C3_direct_recording_verified"
+                ],
                 "Hao_2026_ASAP7y_candidate_classification": visual[
                     "Hao_2026_ASAP7y_candidate_classification"
                 ],

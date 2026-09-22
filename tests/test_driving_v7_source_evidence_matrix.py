@@ -89,7 +89,7 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert c3_components["Henning_C3_directional_experimental_membrane_voltage"] is False
     assert c3_components["Tuthill_2013_C3_intervention_only_verified"] is True
     assert c3_components["Maisak_2018_direct_C3_or_Mi4_recording_verified"] is False
-    assert c3_components["Ramos_2020_complete_fulltext_scope_resolved"] is False
+    assert c3_components["Ramos_2020_complete_fulltext_scope_resolved"] is True
     assert "Henning_C3_directional_edge_GCaMP6f" in report["matrix"]["C3"][
         "numerical_evidence_sources"
     ]
@@ -187,6 +187,11 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert c3_components["C3_citation_graph_union_unique_work_count"] == 240
     assert c3_components["Pang_2025_L1_L2_voltage_not_C3"] is True
     assert c3_components["Pang_2025_Dryad_C3_filename_hit_count"] == 0
+    for source in ("Mi4", "C3"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Ramos_2020_complete_fulltext_scope_resolved"] is True
+        assert components["Ramos_2020_required_source_direct_recording_verified"] is False
+    assert c3_components["Ramos_2020_C3_perturbation_with_Tm9_calcium_readout"] is True
     for source in ("Mi4", "C3"):
         components = report["matrix"][source]["evidence_components"]
         assert components["Hao_2026_ASAP7y_Drosophila_voltage_candidate_unresolved"] is True

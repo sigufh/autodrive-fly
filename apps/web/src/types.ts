@@ -83,6 +83,8 @@ export type V7Status = {
     Tuthill_2013_C3_intervention_only_verified?: boolean;
     Maisak_2018_direct_C3_Mi4_recording_verified?: boolean;
     Ramos_2020_fulltext_scope_resolved?: boolean;
+    Ramos_2020_direct_recording_targets?: string[];
+    Ramos_2020_C3_direct_recording_verified?: boolean;
     Hao_2026_ASAP7y_candidate_classification?: string;
     Hao_2026_ASAP7y_paper_source_experimental_cell_types?: string[];
     Hao_2026_ASAP7y_public_author_figure_named_examples?: string[];

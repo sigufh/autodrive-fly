@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "a629706e2e14d0fa7fdfeb905eace2449e3bfa97c879ff13dc4f265ea0ba35e7",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "87e0d75da910b131721c3e861ddb9ec158b07d510a3bb4bf6b13005469037ae9",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "2d16683be0f96fe2949232b4841de393a5851764e50d0a1b360013dc043face4",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "5f31fe9d5d15c14768f86ab8dbf4a903a3b48e05f365cc9e7dd27d203738eabc",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "1d8c016d96a38307dd69837ceb9dfadf0a12a7540a4cbefb0f891e6139b1f425",
@@ -21,7 +21,7 @@
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
       "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
-      "artifacts/v7-legacy-c3-candidate-audit.json": "0e67d8572fc35abf67d3364d117f0a770b60ec3132fd7b010177432ad25b4a6f"
+      "artifacts/v7-legacy-c3-candidate-audit.json": "5ff9350e6fe9d3e8dbc8dbc2b1b6d6bcfbf673563ad6cd0ab38df45d2ba0ef1e"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -345,10 +345,34 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "Mi4_C3_are_anatomical_candidates_not_direct_recordings",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Ramos_Traslosheros_2020": {
+      "title": "Receptive field organization of motion computation in the fly: a study of cell types and their variability",
+      "doi": "10.53846/goediss-8344",
+      "target_neurons": [
+        "Tm9",
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Dm4",
+        "Dm12",
+        "Dm20",
+        "T4",
+        "T5"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "Tm9_GCaMP6f_readout_with_C3_CsChrimson_perturbation",
+      "response_unit": "downstream_Tm9_deltaF_over_F",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "C3_is_perturbed_but_Tm9_is_recorded_and_Mi4_is_context_only",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 15,
+    "audited_candidate_count": 16,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -367,13 +391,15 @@
       "Yuan_2020",
       "Tuthill_2013"
     ],
+    "independent_C3_perturbation_with_downstream_readout_candidates": [
+      "Ramos_Traslosheros_2020"
+    ],
     "citation_graph_exclusion_candidates": [
       "Pang_2025",
       "Maisak_2018"
     ],
     "unresolved_high_value_candidates": [
-      "Hao_2026_ASAP7y",
-      "Ramos_Traslosheros_2020"
+      "Hao_2026_ASAP7y"
     ],
     "unresolved_candidates_in_audited_candidate_count": false,
     "anatomy_only_named_source_candidates": [
@@ -416,7 +442,7 @@
     "connectome_proofreading_tables_do_not_substitute_for_source_recordings": true,
     "individual_Mi4_calcium_does_not_substitute_for_Mi4_C3_voltage": true,
     "legacy_C3_intervention_and_anatomical_mentions_do_not_substitute_for_recording": true,
-    "unresolved_thesis_fulltext_is_not_negative_evidence": true,
+    "downstream_Tm9_calcium_after_C3_perturbation_is_not_C3_source_activity": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

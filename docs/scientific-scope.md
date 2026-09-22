@@ -720,10 +720,17 @@ dynamics. Tuthill et al. 2013 (10.1016/j.neuron.2013.05.024) explicitly treats C
 as a Kir2.1 activation/silencing target and measures flight steering behavior; the
 paper states that physiological recordings from C2/C3 remain future work. The full
 Maisak 2018 dissertation contains only anatomical-candidate mentions of C3 and Mi4.
-The official OAI abstract for the Ramos-Traslosheros 2020 dissertation names Tm9,
-Dm4, Dm12, and Dm20 as its direct imaging scope, but its OAI-advertised PDF currently
-returns HTTP 403. Its full scope therefore remains unresolved rather than being treated
-as negative evidence (`artifacts/v7-legacy-c3-candidate-audit.json`).
+The Ramos-Traslosheros 2020 dissertation initially returned HTTP 403, but its
+published proof-of-work flow subsequently yielded the official 153-page PDF. The
+document has no embedded attachments. All exact Mi4 mentions are background
+physiology or connectomic context. In the relevant C3 experiment, C3 expresses
+CsChrimson and is optogenetically stimulated while Tm9 expressing GCaMP6f is the
+recorded neural target; the reported time course is therefore downstream Tm9 calcium,
+not direct C3 activity. The full-text scope is now resolved as a C3 perturbation with
+Tm9 readout, not an independent Mi4/C3 source recording. The linked 2021 paper's
+official XLS is already audited separately and contains Tm4/Tm9 temporal calcium
+blocks and CT1 spatial calcium blocks, but no Mi4/C3 source block
+(`artifacts/v7-legacy-c3-candidate-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

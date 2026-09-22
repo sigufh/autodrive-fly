@@ -1,6 +1,7 @@
-version: 1
+version: 2
 name: v7-legacy-c3-candidate-audit
 observed_on: "2026-09-22"
+related_T5_source_data_evidence: artifacts/v7-t5-contrast-opponency-source-data-audit.json
 candidates:
   Tuthill_2013:
     title: Contributions of the 12 neuron classes in the fly lamina to motion vision
@@ -22,6 +23,7 @@ candidates:
       openalex: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/openalex-goediss-8344.json, bytes: 22829, sha256: f2fd6059655a56573e5cde1239eb154842cf2fa7be76332d67a49c755c7a52c6}
       oai_dc: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-oai.xml, bytes: 5248, sha256: 0dd5f8c61a6aabe069cf3a1bae9fe6135fe9505d1b83993adfe7f4181001056d}
       xMetaDissPlus: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-xMetaDissPlus.xml, bytes: 7846, sha256: 9088d63c09254a76dabdbb366bce806ea6258a567fef0d865f530a0d4cae67bf}
+      dissertation: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-retrieval/RamosTrashlosheros-PhDthesis.pdf, bytes: 27472102, sha256: f3d97c4f9baa080c42fc7d000a4e3a47a16922ffece8da8ff93877688d06ce7d}
     fulltext_url: http://ediss.uni-goettingen.de/bitstream/handle/21.11130/00-1735-0000-0005-1507-C/RamosTrashlosheros-PhDthesis.pdf?sequence=1&isAllowed=y
     fulltext_probe_status: 403
 boundary:
@@ -29,6 +31,8 @@ boundary:
   anatomical_mention_is_not_direct_source_recording: true
   abstract_scope_is_not_fulltext_scope: true
   HTTP_403_is_not_source_absence: true
+  presynaptic_optogenetic_perturbation_is_not_direct_source_recording: true
+  Tm9_calcium_readout_is_not_C3_or_Mi4_source_activity: true
   no_global_absence_claim: true
   no_parameter_fit: true
   no_target_activity_injection: true

@@ -212,9 +212,10 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert legacy["audited_candidate_count"] == 3
     assert legacy["intervention_only_candidates"] == ["Tuthill_2013"]
     assert legacy["direct_source_dynamics_candidates"] == []
-    assert legacy["unresolved_fulltext_candidates"] == [
-        "Ramos_Traslosheros_2020"
-    ]
+    assert legacy["unresolved_fulltext_candidates"] == []
+    assert legacy["Ramos_2020_fulltext_scope_resolved"] is True
+    assert legacy["Ramos_2020_direct_recording_targets"] == ["Tm9"]
+    assert legacy["Ramos_2020_C3_direct_recording_verified"] is False
     assert legacy["source_dynamics_transfer_authorized"] is False
     assert graph["C3_source_dynamics_transfer_authorized"] is False
     hao = report["unresolved_Hao_2026_ASAP7y_candidate"]

@@ -548,6 +548,23 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "complete_fulltext_scope_resolved"
                 ]
             ),
+            "Ramos_2020_required_source_direct_recording_verified": (
+                source == "Mi4"
+                and legacy_c3["candidates"]["Ramos_Traslosheros_2020"][
+                    "Mi4_direct_neural_recording_verified"
+                ]
+                or source == "C3"
+                and legacy_c3["candidates"]["Ramos_Traslosheros_2020"][
+                    "C3_direct_neural_recording_verified"
+                ]
+            ),
+            "Ramos_2020_C3_perturbation_with_Tm9_calcium_readout": (
+                source == "C3"
+                and legacy_c3["candidates"]["Ramos_Traslosheros_2020"][
+                    "classification"
+                ]
+                == "C3_perturbation_with_Tm9_calcium_readout"
+            ),
             "Hao_2026_ASAP7y_Drosophila_voltage_candidate_unresolved": (
                 source in {"Mi4", "C3"}
                 and hao_asap7y["cell_type_resolution"]["candidate_classification"]

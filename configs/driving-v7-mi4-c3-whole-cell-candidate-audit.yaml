@@ -1,4 +1,4 @@
-version: 11
+version: 12
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
 observed_on: "2026-09-22"
 required_sources: [Mi4, C3]
@@ -205,6 +205,18 @@ candidates:
     local_numeric_payload_verified: false
     independent_biological_study_from_reference_cohort: true
     exclusion_reason: Mi4_C3_are_anatomical_candidates_not_direct_recordings
+  Ramos_Traslosheros_2020:
+    title: "Receptive field organization of motion computation in the fly: a study of cell types and their variability"
+    doi: 10.53846/goediss-8344
+    target_neurons: [Tm9, Tm1, Tm2, Tm4, Dm4, Dm12, Dm20, T4, T5]
+    directly_measured_required_sources: []
+    measurement_modality: Tm9_GCaMP6f_readout_with_C3_CsChrimson_perturbation
+    response_unit: downstream_Tm9_deltaF_over_F
+    experimental_membrane_voltage: false
+    public_numeric_payload: false
+    local_numeric_payload_verified: false
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: C3_is_perturbed_but_Tm9_is_recorded_and_Mi4_is_context_only
 boundary:
   bounded_audited_candidate_set_not_global_nonexistence: true
   both_required_source_types_must_be_directly_measured: true
@@ -219,7 +231,7 @@ boundary:
   connectome_proofreading_tables_do_not_substitute_for_source_recordings: true
   individual_Mi4_calcium_does_not_substitute_for_Mi4_C3_voltage: true
   legacy_C3_intervention_and_anatomical_mentions_do_not_substitute_for_recording: true
-  unresolved_thesis_fulltext_is_not_negative_evidence: true
+  downstream_Tm9_calcium_after_C3_perturbation_is_not_C3_source_activity: true
   no_curve_digitization: true
   no_cross_paper_field_or_modality_imputation: true
   no_threshold_label_split_denominator_or_failure_rule_change: true

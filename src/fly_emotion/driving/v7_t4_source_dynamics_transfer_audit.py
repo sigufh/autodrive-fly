@@ -693,6 +693,15 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "unresolved_fulltext_candidates": legacy_c3[
                 "unresolved_fulltext_candidates"
             ],
+            "Ramos_2020_fulltext_scope_resolved": legacy_c3["candidates"][
+                "Ramos_Traslosheros_2020"
+            ]["complete_fulltext_scope_resolved"],
+            "Ramos_2020_direct_recording_targets": legacy_c3["candidates"][
+                "Ramos_Traslosheros_2020"
+            ]["direct_neural_recording_targets_in_relevant_C3_experiment"],
+            "Ramos_2020_C3_direct_recording_verified": legacy_c3["candidates"][
+                "Ramos_Traslosheros_2020"
+            ]["C3_direct_neural_recording_verified"],
             "source_dynamics_transfer_authorized": legacy_c3[
                 "authorize_Mi4_C3_source_dynamics_transfer"
             ],

@@ -30,6 +30,47 @@ def _flat_html(path: Path) -> str:
 
 def evaluate_v7_legacy_c3_candidate_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
+    related_path = Path(config["related_T5_source_data_evidence"])
+    related = json.loads((root / related_path).read_text(encoding="utf-8"))
+    if (
+        related["protocol"]["paper"]["doi"] != "10.1038/s41467-021-24986-w"
+        or set(related["verified_dynamic_blocks"])
+        != {"Tm4_full_field", "Tm9_full_field", "Tm9_control_full_field"}
+        or set(related["verified_spatial_blocks"])
+        != {"CT1_OFF_horizontal", "CT1_ON_horizontal"}
+    ):
+        raise ValueError("Ramos-Traslosheros related source-data scope changed")
+    try:
+        import xlrd
+    except ImportError as exc:
+        raise RuntimeError(
+            "the Ramos related-workbook audit requires xlrd"
+        ) from exc
+    workbook_spec = related["protocol"]["source_data"]
+    workbook_path = root / workbook_spec["path"]
+    if (
+        workbook_path.stat().st_size != int(workbook_spec["bytes"])
+        or _sha256(workbook_path) != workbook_spec["sha256"]
+    ):
+        raise ValueError("Ramos related source-data workbook changed")
+    workbook = xlrd.open_workbook(workbook_path, on_demand=True)
+    workbook_required_source_hits = {"Mi4": [], "C3": []}
+    for sheet_name in workbook.sheet_names():
+        sheet = workbook.sheet_by_name(sheet_name)
+        for row in range(sheet.nrows):
+            for column in range(sheet.ncols):
+                value = sheet.cell_value(row, column)
+                if not isinstance(value, str):
+                    continue
+                for source in workbook_required_source_hits:
+                    if re.search(
+                        rf"(?<![A-Za-z0-9]){source}(?![A-Za-z0-9])", value
+                    ):
+                        workbook_required_source_hits[source].append(
+                            {"sheet": sheet_name, "row": row + 1, "column": column + 1}
+                        )
+    if any(workbook_required_source_hits.values()):
+        raise ValueError("Ramos related workbook gained a Mi4/C3 source block")
     verified_paths = {}
     for candidate in config["candidates"].values():
         for spec in candidate["snapshots"].values():
@@ -84,6 +125,14 @@ def evaluate_v7_legacy_c3_candidate_audit(root: Path) -> dict:
     xmeta_text = (
         root / ramos_spec["snapshots"]["xMetaDissPlus"]["path"]
     ).read_text()
+    ramos_reader = PdfReader(
+        root / ramos_spec["snapshots"]["dissertation"]["path"], strict=False
+    )
+    ramos_pages = [
+        " ".join((page.extract_text() or "").split())
+        for page in ramos_reader.pages
+    ]
+    ramos_text = " ".join(ramos_pages)
     ramos_phrases = (
         "we map the functional circuit organization",
         "We focus on Tm9",
@@ -95,8 +144,27 @@ def evaluate_v7_legacy_c3_candidate_audit(root: Path) -> dict:
         != f"https://doi.org/{ramos_spec['doi']}".lower()
         or any(phrase not in oai_text for phrase in ramos_phrases)
         or ramos_spec["fulltext_url"] not in unescape(xmeta_text)
+        or len(ramos_reader.pages) != 153
+        or len(ramos_reader.attachments) != 0
     ):
         raise ValueError("Ramos-Traslosheros thesis metadata changed")
+    ramos_experiment_phrases = (
+        "We recorded Tm9 responses to full-ﬁeld optogenetic stimulation",
+        "other columnar neurons like Tm1, Mi9, and C3",
+        "Tm9-lexAp65attP40,lexAop-GCaMP6fattP5",
+        "C3-splitGAL4(R35A03-AD)",
+        "responses elicited by C3 were initially negative",
+    )
+    if any(phrase not in ramos_text for phrase in ramos_experiment_phrases):
+        raise ValueError("Ramos-Traslosheros experiment scope changed")
+    ramos_term_pages = {
+        term: [
+            index
+            for index, page in enumerate(ramos_pages, start=1)
+            if re.search(rf"(?<![A-Za-z0-9]){term}(?![A-Za-z0-9])", page)
+        ]
+        for term in ("Mi4", "C3")
+    }
 
     candidates = {
         "Tuthill_2013": {
@@ -126,12 +194,26 @@ def evaluate_v7_legacy_c3_candidate_audit(root: Path) -> dict:
             "doi": ramos_spec["doi"],
             "OAI_metadata_retrieved": True,
             "official_PDF_locator_found": True,
-            "fulltext_probe_status": int(ramos_spec["fulltext_probe_status"]),
-            "fulltext_retrieved": False,
+            "initial_fulltext_probe_status": int(ramos_spec["fulltext_probe_status"]),
+            "fulltext_retrieved_after_official_proof_of_work": True,
+            "page_count": len(ramos_reader.pages),
+            "embedded_attachment_count": len(ramos_reader.attachments),
+            "Mi4_exact_term_pages": ramos_term_pages["Mi4"],
+            "C3_exact_term_pages": ramos_term_pages["C3"],
             "abstract_named_direct_imaging_types": ["Tm9", "Dm4", "Dm12", "Dm20"],
             "abstract_names_C3_or_Mi4_direct_recording": False,
-            "complete_fulltext_scope_resolved": False,
-            "classification": "unresolved_beyond_abstract_scope",
+            "direct_neural_recording_targets_in_relevant_C3_experiment": ["Tm9"],
+            "C3_role_in_relevant_experiment": "CsChrimson_optogenetic_stimulation",
+            "C3_direct_neural_recording_verified": False,
+            "Mi4_direct_neural_recording_verified": False,
+            "complete_fulltext_scope_resolved": True,
+            "classification": "C3_perturbation_with_Tm9_calcium_readout",
+            "related_2021_public_workbook_source_types": ["Tm4", "Tm9", "CT1"],
+            "related_2021_public_workbook_sheet_count": len(workbook.sheet_names()),
+            "related_2021_workbook_Mi4_C3_exact_cell_hits": (
+                workbook_required_source_hits
+            ),
+            "related_2021_workbook_contains_Mi4_or_C3_source_block": False,
         },
     }
     return {
@@ -141,6 +223,8 @@ def evaluate_v7_legacy_c3_candidate_audit(root: Path) -> dict:
             "dependencies_sha256": {
                 str(CONFIG): _sha256(root / CONFIG),
                 str(IMPLEMENTATION): _sha256(root / IMPLEMENTATION),
+                str(related_path): _sha256(root / related_path),
+                workbook_spec["path"]: _sha256(workbook_path),
             },
             "raw_snapshot_identity": verified_paths,
             "parameter_fit": False,
@@ -151,7 +235,7 @@ def evaluate_v7_legacy_c3_candidate_audit(root: Path) -> dict:
         "audited_candidate_count": len(candidates),
         "independent_C3_intervention_only_candidates": ["Tuthill_2013"],
         "direct_C3_or_Mi4_source_dynamics_candidates": [],
-        "unresolved_fulltext_candidates": ["Ramos_Traslosheros_2020"],
+        "unresolved_fulltext_candidates": [],
         "authorize_Mi4_C3_source_dynamics_transfer": False,
         "authorize_T4_source_dynamics_fit": False,
         "advance_to_T4_functional_precheck": False,
