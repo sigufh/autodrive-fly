@@ -39,6 +39,15 @@ def test_unretrieved_supplement_is_not_treated_as_absence_and_gates_stay_closed(
     indexes = report["public_indexes"]
     assert indexes["PMC_supplement_content_retrieved"] is False
     assert indexes["PMC_supplement_response_is_proof_of_work_HTML"] is True
+    assert indexes["bioRxiv_full_document_with_supplement_retrieved"] is True
+    preprint = report["preprint_evidence"]
+    assert preprint["pages"] == 61
+    assert preprint["embedded_attachment_names"] == []
+    assert preprint["data_availability"] == "upon_request"
+    assert preprint["individual_flies_are_statistical_units"] is True
+    assert preprint["public_individual_fly_numeric_payload_attached"] is False
+    assert preprint["Mi4_GCaMP6f_fly_count"] == 15
+    assert preprint["ArcLight_voltage_source_types"] == ["Mi1", "Tm3"]
     assert report["independent_Mi4_calcium_type_average_available"] is True
     assert report["independent_Mi4_experimental_membrane_voltage_available"] is False
     assert report["independent_Mi4_individual_numeric_dynamics_available"] is False

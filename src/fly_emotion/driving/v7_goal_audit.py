@@ -1613,6 +1613,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "independent_C3_source_dynamics_available"
                     ]
                 ),
+                "Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved": (
+                    gonzalez_suarez_mi4_evidence_audit["public_indexes"][
+                        "bioRxiv_full_document_with_supplement_retrieved"
+                    ]
+                ),
+                "Gonzalez_Suarez_2022_individual_flies_are_statistical_units": (
+                    gonzalez_suarez_mi4_evidence_audit["preprint_evidence"][
+                        "individual_flies_are_statistical_units"
+                    ]
+                ),
+                "Gonzalez_Suarez_2022_public_individual_numeric_payload": (
+                    gonzalez_suarez_mi4_evidence_audit["preprint_evidence"][
+                        "public_individual_fly_numeric_payload_attached"
+                    ]
+                ),
                 "Yuan_2020_C3_intervention_candidate_verified": (
                     yuan_c3_candidate_audit["C3_intervention_candidate_verified"]
                 ),
@@ -3958,6 +3973,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gonzalez_Suarez_2022_individual_cell_axis_available",
                     "Gonzalez_Suarez_2022_Mi4_voltage_available",
                     "Gonzalez_Suarez_2022_C3_dynamics_available",
+                    "Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved",
+                    "Gonzalez_Suarez_2022_individual_flies_are_statistical_units",
+                    "Gonzalez_Suarez_2022_public_individual_numeric_payload",
                     "Yuan_2020_C3_intervention_candidate_verified",
                     "Yuan_2020_C3_direct_recording_verified",
                     "Yuan_2020_C3_numeric_source_dynamics_verified",

@@ -514,6 +514,15 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "Mi4_C3_voltage_transfer_authorized": gonzalez_suarez[
                 "authorize_Mi4_C3_voltage_transfer"
             ],
+            "bioRxiv_supplement_retrieved": gonzalez_suarez["public_indexes"][
+                "bioRxiv_full_document_with_supplement_retrieved"
+            ],
+            "individual_flies_are_statistical_units": gonzalez_suarez[
+                "preprint_evidence"
+            ]["individual_flies_are_statistical_units"],
+            "public_individual_fly_numeric_payload_attached": gonzalez_suarez[
+                "preprint_evidence"
+            ]["public_individual_fly_numeric_payload_attached"],
         },
         "verified_Yuan_C3_intervention_boundary": {
             "doi": yuan_c3["paper"]["doi"],

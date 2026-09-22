@@ -196,6 +196,18 @@ def evaluate_v7_t4_inhibitory_source_external_audit(root: Path) -> dict:
                 "C3_source_dynamics_available": gonzalez_suarez[
                     "independent_C3_source_dynamics_available"
                 ],
+                "bioRxiv_supplement_retrieved": gonzalez_suarez[
+                    "public_indexes"
+                ]["bioRxiv_full_document_with_supplement_retrieved"],
+                "individual_flies_are_statistical_units": gonzalez_suarez[
+                    "preprint_evidence"
+                ]["individual_flies_are_statistical_units"],
+                "public_individual_fly_numeric_payload_attached": gonzalez_suarez[
+                    "preprint_evidence"
+                ]["public_individual_fly_numeric_payload_attached"],
+                "data_availability": gonzalez_suarez["preprint_evidence"][
+                    "data_availability"
+                ],
             },
             "Strother_2018_public_indexes": {
                 "audited_indexes": strother_indexes["audited_indexes"],

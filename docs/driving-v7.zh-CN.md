@@ -2305,8 +2305,11 @@ cohort 独立性做成固定矩阵。八组候选中，Groschner 等 2022 是唯
 Mi4 目标则是钙派生的参数化模型尺度。Gonzalez-Suarez 等 2022 也作为独立 Mi4 候选
 单列：论文对 15 flies 的 Mi4 使用 GCaMP6f；ArcLight 电压只测 Mi1/Tm3。作者公开的
 `ClarkLabCode/TimingModels` 当前 remote HEAD 仍为 `100bb2f`，三个 MAT 含 1/30 s
-时间轴和 Mi4 type-average `filterMat/filterSem`，但没有逐个体轴或 C3。PMC 唯一补充
-PDF 直链当前返回 proof-of-work HTML，因此只记为未取回，不推断补充内容不存在。证据见
+时间轴和 Mi4 type-average `filterMat/filterSem`，但没有逐个体轴或 C3。期刊 PMC 补充
+PDF 直链返回 proof-of-work HTML，但 bioRxiv v1 的 61 页完整 PDF 已成功取回并含补充图。
+预印本明确以 individual fly 为统计单位，同时声明 data available upon request；PDF 无 embedded
+attachment，公开仓库也没有逐 fly 数值数组。补充 Figure S5 的 ArcLight 电压仅列 Mi1/Tm3，
+Mi4 仍是 GCaMP6f。因此“逐 fly 被实验统计”不等于“逐 fly 数值数据已公开”。证据见
 `artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json`。另核验了 eLife 49373 页面公开的 11 份官方
 DOCX source-data 附件：全部是有效 OOXML，均自述为 mean±SEM 汇总表，且无嵌入对象；
 全文能检出 Mi1/Tm3/GCaMP，却没有 Mi4、C3、voltage、individual 或逐 fly 标识。

@@ -57,6 +57,9 @@ export type V7Status = {
     Gonzalez_Suarez_2022_individual_cell_axis_available?: boolean;
     Gonzalez_Suarez_2022_Mi4_voltage_available?: boolean;
     Gonzalez_Suarez_2022_C3_dynamics_available?: boolean;
+    Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved?: boolean;
+    Gonzalez_Suarez_2022_individual_flies_are_statistical_units?: boolean;
+    Gonzalez_Suarez_2022_public_individual_numeric_payload?: boolean;
     Yuan_2020_C3_intervention_candidate_verified?: boolean;
     Yuan_2020_C3_direct_recording_verified?: boolean;
     Yuan_2020_C3_numeric_source_dynamics_verified?: boolean;

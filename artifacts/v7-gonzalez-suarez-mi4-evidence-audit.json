@@ -3,8 +3,8 @@
     "name": "v7-gonzalez-suarez-mi4-evidence-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-gonzalez-suarez-mi4-evidence-audit.yaml": "7d8490e3dc98147649bb2aceb44a64bb0347d7e9df4d943c1a65106c27da0af3",
-      "src/fly_emotion/driving/v7_gonzalez_suarez_mi4_evidence_audit.py": "c6409a8d9a5f16eac5ea283212623210dfd3bcc8a404fae1964aeabf8f283e62",
+      "configs/driving-v7-gonzalez-suarez-mi4-evidence-audit.yaml": "18a16baf4da178ff123ba0668c4b88d7b54544d6731e069f478bf04ff423eba4",
+      "src/fly_emotion/driving/v7_gonzalez_suarez_mi4_evidence_audit.py": "27cb298261a208a6115bb46679431a6a5a48c5775081c9ac6b2d73000f431dd0",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c"
     },
     "raw_snapshot_identity": {
@@ -13,7 +13,9 @@
       "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/europepmc-search.json": "25f79a6fce6923b8ae85c6facba428e98b3a9aea05e1ebc37e3189f2b9bca115",
       "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/datacite-related.json": "e004d8a0c39a389eed275b1f4dfb1dcc762cd47aa7f1c2a727d7fade32addb06",
       "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/zenodo-doi-search.json": "3ae4b250670dc72957e6fc4d8f11516e044124b1d50a3cae982d64bf818e8cc8",
-      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/NIHMS1820265-supplement-1.pdf": "d3d7f7f065f189774a4dc293685e3abfd52b09b82c51f84940b1fb9469a99c5f"
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/NIHMS1820265-supplement-1.pdf": "d3d7f7f065f189774a4dc293685e3abfd52b09b82c51f84940b1fb9469a99c5f",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/crossref-preprint.json": "44b24fe349a5d1ebf083f2cc485ee8ff9de0a30065ab6088ebc717e5231419b9",
+      "data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/biorxiv-v1.pdf": "c99396b536af45fe6daa747a62086262148cd5d77b9c9f41247576ad37e47564"
     },
     "parameter_fit": false,
     "target_activity_injection": false,
@@ -46,7 +48,20 @@
     "DataCite_related_result_count": 0,
     "Zenodo_exact_DOI_result_count": 0,
     "PMC_supplement_content_retrieved": false,
-    "PMC_supplement_response_is_proof_of_work_HTML": true
+    "PMC_supplement_response_is_proof_of_work_HTML": true,
+    "bioRxiv_full_document_with_supplement_retrieved": true
+  },
+  "preprint_evidence": {
+    "pages": 61,
+    "embedded_attachment_names": [],
+    "data_availability": "upon_request",
+    "individual_flies_are_statistical_units": true,
+    "public_individual_fly_numeric_payload_attached": false,
+    "Mi4_GCaMP6f_fly_count": 15,
+    "ArcLight_voltage_source_types": [
+      "Mi1",
+      "Tm3"
+    ]
   },
   "repository_evidence": {
     "url": "https://github.com/ClarkLabCode/TimingModels",
@@ -121,6 +136,7 @@
     "public_filter_MATs_are_type_average_not_individual_cells": true,
     "public_filter_MATs_have_no_C3": true,
     "inaccessible_supplement_content_is_not_classified_as_absent": true,
+    "accessible_preprint_supplement_is_not_a_public_individual_data_payload": true,
     "successful_index_zero_results_are_not_global_nonexistence": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

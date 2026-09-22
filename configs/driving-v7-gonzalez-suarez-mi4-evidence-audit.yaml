@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-gonzalez-suarez-mi4-evidence-audit
 observed_on: "2026-09-21"
 paper:
@@ -14,6 +14,12 @@ snapshots:
   datacite_related: {path: data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/datacite-related.json, bytes: 204, sha256: e004d8a0c39a389eed275b1f4dfb1dcc762cd47aa7f1c2a727d7fade32addb06}
   zenodo_doi_search: {path: data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/zenodo-doi-search.json, bytes: 457, sha256: 3ae4b250670dc72957e6fc4d8f11516e044124b1d50a3cae982d64bf818e8cc8}
   pmc_supplement_response: {path: data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/NIHMS1820265-supplement-1.pdf, bytes: 1817, sha256: d3d7f7f065f189774a4dc293685e3abfd52b09b82c51f84940b1fb9469a99c5f}
+  crossref_preprint: {path: data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/crossref-preprint.json, bytes: 19792, sha256: 44b24fe349a5d1ebf083f2cc485ee8ff9de0a30065ab6088ebc717e5231419b9}
+preprint_document:
+  path: data/raw/t4-inhibitory-source-external/gonzalez-suarez-2022/biorxiv-v1.pdf
+  bytes: 11806084
+  sha256: c99396b536af45fe6daa747a62086262148cd5d77b9c9f41247576ad37e47564
+  pages: 61
 repository:
   path: data/raw/t4-external-models/TimingModels
   url: https://github.com/ClarkLabCode/TimingModels
@@ -28,6 +34,7 @@ boundary:
   public_filter_MATs_are_type_average_not_individual_cells: true
   public_filter_MATs_have_no_C3: true
   inaccessible_supplement_content_is_not_classified_as_absent: true
+  accessible_preprint_supplement_is_not_a_public_individual_data_payload: true
   successful_index_zero_results_are_not_global_nonexistence: true
   no_parameter_fit: true
   no_target_activity_injection: true

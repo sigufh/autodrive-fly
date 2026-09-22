@@ -57,6 +57,10 @@ def test_gonzalez_suarez_Mi4_filter_is_independent_calcium_type_average() -> Non
     assert evidence["individual_cell_axis_available"] is False
     assert evidence["Mi4_experimental_membrane_voltage_available"] is False
     assert evidence["C3_source_dynamics_available"] is False
+    assert evidence["bioRxiv_supplement_retrieved"] is True
+    assert evidence["individual_flies_are_statistical_units"] is True
+    assert evidence["public_individual_fly_numeric_payload_attached"] is False
+    assert evidence["data_availability"] == "upon_request"
     indexes = json.loads(REPORT.read_text())["additional_Mi4_evidence"][
         "Strother_2018_public_indexes"
     ]

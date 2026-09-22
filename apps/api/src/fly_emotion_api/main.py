@@ -154,6 +154,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gonzalez_Suarez_2022_C3_dynamics_available": visual[
                     "Gonzalez_Suarez_2022_C3_dynamics_available"
                 ],
+                "Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved": visual[
+                    "Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved"
+                ],
+                "Gonzalez_Suarez_2022_individual_flies_are_statistical_units": visual[
+                    "Gonzalez_Suarez_2022_individual_flies_are_statistical_units"
+                ],
+                "Gonzalez_Suarez_2022_public_individual_numeric_payload": visual[
+                    "Gonzalez_Suarez_2022_public_individual_numeric_payload"
+                ],
                 "Yuan_2020_C3_intervention_candidate_verified": visual[
                     "Yuan_2020_C3_intervention_candidate_verified"
                 ],

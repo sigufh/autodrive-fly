@@ -4,7 +4,7 @@
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
       "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "a5b2e520c12420ff6183ad6004f7114e53377b9e578bde0a1095eb3dcd9402a5",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0172df6fee996f47859a2552b861b8a31851c8d89ccb6dc0b05f5b2d670565ff",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "ab7b1b7f317587dd1c89f8fcb23e1d2606e9bcd664cda27b95f16a9d2b9fa79e",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -24,7 +24,7 @@
       "artifacts/v7-fig1-source-temporal-readiness-audit.json": "f1bdbe732a32f32d93e5859e8bc8583ed5f2271372cc8034128367e3f72e164e",
       "artifacts/v7-c3-analytic-filter-precheck.json": "c500295463922199d074fdfcb3fc1511836bbc7e3c0c1a091cb937ec4ddc5da9",
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
-      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "c3ba3378186f483f878f703b1d43fc392bb462a4a466b7982e713ba639022e0b",
+      "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
       "artifacts/v7-strother-mi4-public-index-audit.json": "f247cfc31fa5fa40d2a5a5314f31b4865a0e3570cd8daf7d88f33f8b0e3ca3ff",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
@@ -246,7 +246,10 @@
     "individual_cell_axis_available": false,
     "Mi4_experimental_membrane_voltage_available": false,
     "C3_source_dynamics_available": false,
-    "Mi4_C3_voltage_transfer_authorized": false
+    "Mi4_C3_voltage_transfer_authorized": false,
+    "bioRxiv_supplement_retrieved": true,
+    "individual_flies_are_statistical_units": true,
+    "public_individual_fly_numeric_payload_attached": false
   },
   "verified_Yuan_C3_intervention_boundary": {
     "doi": "10.1111/jnc.15036",

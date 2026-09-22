@@ -153,6 +153,9 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert independent_mi4["Mi4_experimental_membrane_voltage_available"] is False
     assert independent_mi4["C3_source_dynamics_available"] is False
     assert independent_mi4["Mi4_C3_voltage_transfer_authorized"] is False
+    assert independent_mi4["bioRxiv_supplement_retrieved"] is True
+    assert independent_mi4["individual_flies_are_statistical_units"] is True
+    assert independent_mi4["public_individual_fly_numeric_payload_attached"] is False
     yuan = report["verified_Yuan_C3_intervention_boundary"]
     assert yuan["doi"] == "10.1111/jnc.15036"
     assert yuan["C3_intervention_candidate_verified"] is True

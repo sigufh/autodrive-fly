@@ -240,6 +240,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Gonzalez_Suarez_2022_individual_cell_axis_available",
         "Gonzalez_Suarez_2022_Mi4_voltage_available",
         "Gonzalez_Suarez_2022_C3_dynamics_available",
+        "Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved",
+        "Gonzalez_Suarez_2022_individual_flies_are_statistical_units",
+        "Gonzalez_Suarez_2022_public_individual_numeric_payload",
         "Yuan_2020_C3_intervention_candidate_verified",
         "Yuan_2020_C3_direct_recording_verified",
         "Yuan_2020_C3_numeric_source_dynamics_verified",
@@ -1046,6 +1049,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Gonzalez_Suarez_2022_individual_cell_axis_available"] is False
     assert visual["observations"]["Gonzalez_Suarez_2022_Mi4_voltage_available"] is False
     assert visual["observations"]["Gonzalez_Suarez_2022_C3_dynamics_available"] is False
+    assert visual["observations"]["Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved"] is True
+    assert (
+        visual["observations"][
+            "Gonzalez_Suarez_2022_individual_flies_are_statistical_units"
+        ]
+        is True
+    )
+    assert visual["observations"]["Gonzalez_Suarez_2022_public_individual_numeric_payload"] is False
     assert visual["observations"]["Yuan_2020_C3_intervention_candidate_verified"] is True
     assert visual["observations"]["Yuan_2020_C3_direct_recording_verified"] is False
     assert visual["observations"]["Yuan_2020_C3_numeric_source_dynamics_verified"] is False

@@ -9,6 +9,7 @@ from pathlib import Path
 
 import h5py
 import yaml
+from pypdf import PdfReader
 
 from fly_emotion.driving.v7_geometry_sign import _sha256
 
@@ -84,6 +85,33 @@ def evaluate_v7_gonzalez_suarez_mi4_evidence_audit(root: Path) -> dict:
     )
     if not supplement_inaccessible:
         raise ValueError("PMC supplement access boundary changed")
+    preprint = json.loads(snapshot_paths["crossref_preprint"].read_text())[
+        "message"
+    ]
+    if preprint["DOI"] != paper["preprint_doi"]:
+        raise ValueError("Gonzalez-Suarez preprint identity changed")
+    article_relations = [
+        item["id"]
+        for item in preprint.get("relation", {}).get("is-preprint-of", [])
+    ]
+    if article_relations != [paper["doi"]]:
+        raise ValueError("Gonzalez-Suarez preprint article relation changed")
+    preprint_spec = config["preprint_document"]
+    preprint_path = _verified_path(root, preprint_spec)
+    reader = PdfReader(preprint_path, strict=False)
+    if len(reader.pages) != int(preprint_spec["pages"]):
+        raise ValueError("Gonzalez-Suarez preprint page count changed")
+    preprint_text = " ".join((page.extract_text() or "") for page in reader.pages)
+    preprint_phrases = (
+        "Data is available upon request to the Lead Contact, Damon Clark",
+        "Mi4 > GC6f, n = 15 flies",
+        "Linear filters are normalized to the maximum response of each fly’s mean filter",
+        "For statistical purposes, individual flies were considered independent measurements",
+        "Voltage filters of Mi1 expressing the bacterial, voltage-gated Na+ channel",
+        "Tm3 > ArcLD, slo-RNAi",
+    )
+    if any(phrase not in preprint_text for phrase in preprint_phrases):
+        raise ValueError("Gonzalez-Suarez preprint evidence text changed")
 
     repository = root / config["repository"]["path"]
     local_head = subprocess.run(
@@ -153,7 +181,8 @@ def evaluate_v7_gonzalez_suarez_mi4_evidence_audit(root: Path) -> dict:
             "raw_snapshot_identity": {
                 str(path.relative_to(root)): _sha256(path)
                 for path in snapshot_paths.values()
-            },
+            }
+            | {preprint_spec["path"]: _sha256(preprint_path)},
             "parameter_fit": False,
             "target_activity_injection": False,
             "runtime_modified": False,
@@ -177,6 +206,16 @@ def evaluate_v7_gonzalez_suarez_mi4_evidence_audit(root: Path) -> dict:
             "Zenodo_exact_DOI_result_count": zenodo["hits"]["total"],
             "PMC_supplement_content_retrieved": False,
             "PMC_supplement_response_is_proof_of_work_HTML": supplement_inaccessible,
+            "bioRxiv_full_document_with_supplement_retrieved": True,
+        },
+        "preprint_evidence": {
+            "pages": len(reader.pages),
+            "embedded_attachment_names": sorted(reader.attachments or {}),
+            "data_availability": "upon_request",
+            "individual_flies_are_statistical_units": True,
+            "public_individual_fly_numeric_payload_attached": False,
+            "Mi4_GCaMP6f_fly_count": 15,
+            "ArcLight_voltage_source_types": ["Mi1", "Tm3"],
         },
         "repository_evidence": {
             "url": config["repository"]["url"],

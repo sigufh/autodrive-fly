@@ -588,9 +588,12 @@ Gonzalez-Suarez et al. 2022 was added explicitly as an independent Mi4 candidate
 The paper reports Mi4 GCaMP6f recordings from 15 flies; its ArcLight voltage
 measurements are limited to Mi1 and Tm3. The current `ClarkLabCode/TimingModels`
 remote revision provides 1/30-s type-average Mi4 filter and SEM arrays, but no
-individual-cell axis and no C3 filter. The sole PMC supplementary-PDF request
-currently returns proof-of-work HTML, which is recorded as inaccessible rather
-than classified as absent. This strengthens independent Mi4 calcium timing
+individual-cell axis and no C3 filter. The PMC supplementary-PDF request returns
+proof-of-work HTML, but the 61-page bioRxiv v1 PDF with supplementary figures was
+retrieved. It confirms that individual flies are the statistical units and that
+data remain available upon request; the PDF has no embedded files and the public
+repository has no per-fly arrays. Supplementary ArcLight voltage is limited to
+Mi1/Tm3, while Mi4 remains GCaMP6f. This strengthens independent Mi4 calcium timing
 evidence but does not satisfy the independent Mi4/C3 voltage-transfer contract
 (`artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json`).
 Yuan et al. 2020 was separately classified as a C3 intervention candidate. Its
