@@ -71,6 +71,10 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Strother_2018_successful_index_Mi4_trace_found"] is False
     assert boundaries["Strother_2018_Figshare_search_interpretable"] is False
     assert boundaries["Strother_2018_global_absence_claimed"] is False
+    assert boundaries["Strother_2018_supplement_bundle_entry_count"] == 16
+    assert boundaries["Strother_2018_Mi4_moving_grating_figure_verified"] is True
+    assert boundaries["Strother_2018_Mi4_moving_grating_fly_count"] == 5
+    assert boundaries["Strother_2018_public_numeric_trace_attachment_verified"] is False
     assert boundaries["C3_citation_graph_union_unique_work_count"] == 240
     assert boundaries["C3_citation_graph_unresolved_reference_ID_count"] == 2
     assert boundaries["Pang_2025_directly_recorded_neuron_types"] == ["L1", "L2"]

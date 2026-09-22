@@ -623,6 +623,21 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 "Figshare_search_interpretable"
             ],
             "global_absence_claimed": strother_index["global_absence_claimed"],
+            "supplementary_bundle_entry_count": strother_index[
+                "PMC_attachment_inventory"
+            ]["bundle_entry_count"],
+            "moving_grating_trace_figure_present": strother_index[
+                "supplementary_Mi4_evidence"
+            ]["moving_grating_axonal_trace_figure_present"],
+            "moving_grating_fly_count": strother_index[
+                "supplementary_Mi4_evidence"
+            ]["moving_grating_fly_count"],
+            "moving_grating_speed_degrees_per_second": strother_index[
+                "supplementary_Mi4_evidence"
+            ]["moving_grating_speed_degrees_per_second"],
+            "supplement_public_numeric_trace_attachment_verified": strother_index[
+                "supplementary_Mi4_evidence"
+            ]["public_numeric_trace_attachment_verified"],
             "Mi4_source_dynamics_transfer_authorized": strother_index[
                 "authorize_Mi4_source_dynamics_transfer"
             ],

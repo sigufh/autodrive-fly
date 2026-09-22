@@ -164,6 +164,18 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     ] is False
     assert mi4_components["Strother_2018_Figshare_search_interpretable"] is False
     assert mi4_components["Strother_2018_global_absence_claimed"] is False
+    assert (
+        mi4_components[
+            "Strother_2018_official_supplement_Mi4_moving_grating_figure_verified"
+        ]
+        is True
+    )
+    assert (
+        mi4_components[
+            "Strother_2018_supplement_public_numeric_trace_attachment_verified"
+        ]
+        is False
+    )
     assert c3_components["C3_citation_graph_union_unique_work_count"] == 240
     assert c3_components["Pang_2025_L1_L2_voltage_not_C3"] is True
     assert c3_components["Pang_2025_Dryad_C3_filename_hit_count"] == 0

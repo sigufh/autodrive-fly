@@ -603,6 +603,14 @@ full text or linked repository, and the publisher full-text and Fig. S1-S8 URLs
 currently return access-challenge pages. The inaccessible material is not treated
 as absent, but the available evidence cannot establish a direct C3 recording or
 numeric C3 source-dynamics payload (`artifacts/v7-yuan-c3-candidate-audit.json`).
+The official Europe PMC supplementary bundle for Strother et al. 2018 was also
+verified at file level. Its 16 members comprise article images, one ten-page PDF, and
+one video; there are no MAT/CSV/NPY attachments and the PDF has no embedded files.
+The PDF confirms figure-level Mi4 axonal delta-F/F traces for a 90 deg/s, 3-Hz moving
+grating in five flies, plus Mi4 photoactivation traces in three or six brains. Data and
+code are available only upon request. This strengthens the independent Mi4 directional
+calcium phenotype but does not establish a public individual-fly numeric trace payload
+(`artifacts/v7-strother-mi4-public-index-audit.json`).
 The later public-index check for Strother et al. 2018 found no DOI- or exact-title-
 linked numeric Mi4 trace in successful Crossref, DataCite, Zenodo, or GitHub
 queries. PMC still lists one supplementary PDF and one video, while the Figshare

@@ -39,3 +39,22 @@ def test_inaccessible_figshare_is_not_absence_and_gates_stay_closed() -> None:
     assert report["authorize_T4_source_dynamics_fit"] is False
     assert report["advance_to_T4_functional_precheck"] is False
     assert report["boundary"]["figshare_403_is_not_proof_of_absence"] is True
+
+
+def test_official_supplement_has_figure_level_mi4_traces_but_no_numeric_attachment() -> None:
+    report = json.loads(REPORT.read_text())
+    inventory = report["PMC_attachment_inventory"]
+    assert inventory["bundle_entry_count"] == 16
+    assert inventory["supplementary_PDF_count"] == 1
+    assert inventory["supplementary_PDF_pages"] == 10
+    assert inventory["video_count"] == 1
+    assert inventory["numeric_data_attachment_count"] == 0
+    assert inventory["PDF_embedded_attachment_count"] == 0
+    evidence = report["supplementary_Mi4_evidence"]
+    assert evidence["moving_grating_axonal_trace_figure_present"] is True
+    assert evidence["moving_grating_speed_degrees_per_second"] == 90.0
+    assert evidence["moving_grating_temporal_frequency_hz"] == 3.0
+    assert evidence["moving_grating_fly_count"] == 5
+    assert evidence["GCaMP6f_photoactivation_brain_count_per_condition"] == 3
+    assert evidence["data_availability"] == "upon_request"
+    assert evidence["public_numeric_trace_attachment_verified"] is False

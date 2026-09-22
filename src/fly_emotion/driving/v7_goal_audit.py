@@ -1673,6 +1673,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Strother_2018_global_absence_claimed": (
                     strother_mi4_public_index_audit["global_absence_claimed"]
                 ),
+                "Strother_2018_supplement_bundle_entry_count": (
+                    strother_mi4_public_index_audit["PMC_attachment_inventory"][
+                        "bundle_entry_count"
+                    ]
+                ),
+                "Strother_2018_Mi4_moving_grating_figure_verified": (
+                    strother_mi4_public_index_audit["supplementary_Mi4_evidence"][
+                        "moving_grating_axonal_trace_figure_present"
+                    ]
+                ),
+                "Strother_2018_Mi4_moving_grating_fly_count": (
+                    strother_mi4_public_index_audit["supplementary_Mi4_evidence"][
+                        "moving_grating_fly_count"
+                    ]
+                ),
+                "Strother_2018_public_numeric_trace_attachment_verified": (
+                    strother_mi4_public_index_audit["supplementary_Mi4_evidence"][
+                        "public_numeric_trace_attachment_verified"
+                    ]
+                ),
                 "C3_citation_graph_union_unique_work_count": (c3_citation_graph_audit[
                     "citation_graph"
                 ]["union_unique_work_count"]),
@@ -4214,6 +4234,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Strother_2018_successful_index_Mi4_trace_found",
                     "Strother_2018_Figshare_search_interpretable",
                     "Strother_2018_global_absence_claimed",
+                    "Strother_2018_supplement_bundle_entry_count",
+                    "Strother_2018_Mi4_moving_grating_figure_verified",
+                    "Strother_2018_Mi4_moving_grating_fly_count",
+                    "Strother_2018_public_numeric_trace_attachment_verified",
                     "C3_citation_graph_union_unique_work_count",
                     "C3_citation_graph_unresolved_reference_ID_count",
                     "Pang_2025_directly_recorded_neuron_types",

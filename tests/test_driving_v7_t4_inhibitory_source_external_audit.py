@@ -68,6 +68,9 @@ def test_gonzalez_suarez_Mi4_filter_is_independent_calcium_type_average() -> Non
         "supplementary_PDF_count": 1,
         "video_count": 1,
         "numeric_data_attachment_count": 0,
+        "bundle_entry_count": 16,
+        "supplementary_PDF_pages": 10,
+        "PDF_embedded_attachment_count": 0,
     }
     assert indexes["local_numeric_Mi4_trace_payload_found"] is False
     assert indexes["global_absence_claimed"] is False

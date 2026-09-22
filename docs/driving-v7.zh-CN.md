@@ -2324,6 +2324,12 @@ DOCX source-data 附件：全部是有效 OOXML，均自述为 mean±SEM 汇总�
 证明直接记录了 C3 source dynamics。Europe PMC 标记为非 PMC、无补充和无数据库交叉
 引用，OpenAlex 标记 closed；Wiley 正文与 Fig S1–S8 请求当前均返回访问挑战页。因此只把
 它列为独立 C3 intervention-only 候选，不把不可访问内容解释为不存在，也不解锁任何门。
+Strother 等 2018 的 Europe PMC 官方补充包现已文件级核验：ZIP 共 16 个成员，仅含
+正文图像、一个 10 页补充 PDF 和一个视频，没有 MAT/CSV/NPY 等数值附件；PDF 也无
+embedded attachments。补充图明确展示 n=5 的 Mi4 轴突对 90°/s、3 Hz moving grating
+的 ΔF/F 时间轨迹，以及 n=3/6 的 Mi4 光激活响应，但 Data Availability 为 upon request。
+因此它加强了独立 Mi4 方向刺激的 figure-level calcium phenotype，不等于公开逐 fly 数值
+trace，也不授权 transfer。证据见 `artifacts/v7-strother-mi4-public-index-audit.json`。
 证据见 `artifacts/v7-yuan-c3-candidate-audit.json`。
 
 又以 Groschner 2022 与 Henning 2026 为根建立了有界 OpenAlex 引用图谱：两篇根论文、

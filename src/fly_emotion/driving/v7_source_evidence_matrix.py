@@ -480,6 +480,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Strother_2018_global_absence_claimed": (
                 source == "Mi4" and strother_indexes["global_absence_claimed"]
             ),
+            "Strother_2018_official_supplement_Mi4_moving_grating_figure_verified": (
+                source == "Mi4"
+                and strother_indexes["supplementary_Mi4_evidence"][
+                    "moving_grating_axonal_trace_figure_present"
+                ]
+            ),
+            "Strother_2018_supplement_public_numeric_trace_attachment_verified": (
+                source == "Mi4"
+                and strother_indexes["supplementary_Mi4_evidence"][
+                    "public_numeric_trace_attachment_verified"
+                ]
+            ),
             "C3_citation_graph_union_unique_work_count": (
                 c3_citation_graph["citation_graph"]["union_unique_work_count"]
                 if source == "C3"

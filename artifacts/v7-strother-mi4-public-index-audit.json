@@ -3,8 +3,8 @@
     "name": "v7-strother-mi4-public-index-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-strother-mi4-public-index-audit.yaml": "ccbb472970f012da860c5b378ec630e474aeb961fc05297c71eb955bbebe2476",
-      "src/fly_emotion/driving/v7_strother_mi4_public_index_audit.py": "02822e33a261f10d634c042634f67a3b3b187f6a8752c357b7c3498913aaf826"
+      "configs/driving-v7-strother-mi4-public-index-audit.yaml": "b44df1ef0940bf537de97ffd11cbec5dfe082d197674a112692c76e4f00c815d",
+      "src/fly_emotion/driving/v7_strother_mi4_public_index_audit.py": "1f44482db47d0c87d3214f13bf6195299cebe41b8192a2a14f4e7a87297f7210"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/strother-2018-index/crossref-work.json": "5556196d1d558b9177fe8c00e23e6d526e4163cc558a377c48917fc9b565c27f",
@@ -18,6 +18,8 @@
       "data/raw/t4-inhibitory-source-external/strother-2018-index/github-doi-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
       "data/raw/t4-inhibitory-source-external/strother-2018-index/github-title-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
       "data/raw/t4-inhibitory-source-external/strother-2018-index/figshare-doi-search-response.html": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/supplement/supplementaryFiles.zip": "3203f0b06f45a479dc1a876aac216074735530ceaecf6cd5742ccb48e028eb05",
+      "data/raw/t4-inhibitory-source-external/strother-2018-index/supplement/pnas.201703090SI.pdf": "8690f278744e52f6b53516d169e08355ee45245d62f83e486e6f49955f52c021",
       "data/raw/t4-inhibitory-source-external/PMC5776785.html": "2d1f4cbc18f4f9fa96ac0b105f20ec2376bea4140649e602a1d4b031666f302c"
     },
     "parameter_fit": false,
@@ -49,7 +51,20 @@
   "PMC_attachment_inventory": {
     "supplementary_PDF_count": 1,
     "video_count": 1,
-    "numeric_data_attachment_count": 0
+    "numeric_data_attachment_count": 0,
+    "bundle_entry_count": 16,
+    "supplementary_PDF_pages": 10,
+    "PDF_embedded_attachment_count": 0
+  },
+  "supplementary_Mi4_evidence": {
+    "moving_grating_axonal_trace_figure_present": true,
+    "moving_grating_speed_degrees_per_second": 90.0,
+    "moving_grating_temporal_frequency_hz": 3.0,
+    "moving_grating_fly_count": 5,
+    "L5_photoactivation_dendritic_trace_figure_present": true,
+    "GCaMP6f_photoactivation_brain_count_per_condition": 3,
+    "data_availability": "upon_request",
+    "public_numeric_trace_attachment_verified": false
   },
   "Mi4_measurement_modality": "deltaF_over_F",
   "local_numeric_Mi4_trace_payload_found_in_successful_indexes": false,
@@ -64,6 +79,8 @@
     "successful_zero_results_and_inaccessible_indexes_are_separate": true,
     "indexed_article_or_supplement_metadata_is_not_a_numeric_trace_payload": true,
     "figshare_403_is_not_proof_of_absence": true,
+    "figure_level_traces_are_not_public_numeric_trace_payloads": true,
+    "data_available_upon_request_is_not_public_local_payload": true,
     "bounded_index_audit_not_global_nonexistence": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

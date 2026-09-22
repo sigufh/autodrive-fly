@@ -10,7 +10,7 @@
       "artifacts/v7-c3-strf-flash-transfer.json": "f2e5cb1c86ced7c535863aee9576c09109e63a0192637a4dea72f0812f4ac2ea",
       "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
-      "artifacts/v7-strother-mi4-public-index-audit.json": "f247cfc31fa5fa40d2a5a5314f31b4865a0e3570cd8daf7d88f33f8b0e3ca3ff",
+      "artifacts/v7-strother-mi4-public-index-audit.json": "085e81df2be4aec189e6099b8261d46c88539b3ba941a0feed48b61c16d8b269",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0"
     },
     "Mi4_paper": {
@@ -127,7 +127,10 @@
       "PMC_attachment_inventory": {
         "supplementary_PDF_count": 1,
         "video_count": 1,
-        "numeric_data_attachment_count": 0
+        "numeric_data_attachment_count": 0,
+        "bundle_entry_count": 16,
+        "supplementary_PDF_pages": 10,
+        "PDF_embedded_attachment_count": 0
       },
       "local_numeric_Mi4_trace_payload_found": false,
       "global_absence_claimed": false

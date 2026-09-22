@@ -184,6 +184,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Strother_2018_global_absence_claimed": visual[
                     "Strother_2018_global_absence_claimed"
                 ],
+                "Strother_2018_supplement_bundle_entry_count": visual[
+                    "Strother_2018_supplement_bundle_entry_count"
+                ],
+                "Strother_2018_Mi4_moving_grating_figure_verified": visual[
+                    "Strother_2018_Mi4_moving_grating_figure_verified"
+                ],
+                "Strother_2018_Mi4_moving_grating_fly_count": visual[
+                    "Strother_2018_Mi4_moving_grating_fly_count"
+                ],
+                "Strother_2018_public_numeric_trace_attachment_verified": visual[
+                    "Strother_2018_public_numeric_trace_attachment_verified"
+                ],
                 "C3_citation_graph_union_unique_work_count": visual[
                     "C3_citation_graph_union_unique_work_count"
                 ],

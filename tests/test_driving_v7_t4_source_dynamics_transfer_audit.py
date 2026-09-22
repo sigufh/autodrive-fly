@@ -190,6 +190,11 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert strother["PMC_numeric_data_attachment_count"] == 0
     assert strother["Figshare_search_interpretable"] is False
     assert strother["global_absence_claimed"] is False
+    assert strother["supplementary_bundle_entry_count"] == 16
+    assert strother["moving_grating_trace_figure_present"] is True
+    assert strother["moving_grating_fly_count"] == 5
+    assert strother["moving_grating_speed_degrees_per_second"] == 90.0
+    assert strother["supplement_public_numeric_trace_attachment_verified"] is False
     assert strother["Mi4_source_dynamics_transfer_authorized"] is False
     graph = report["verified_C3_citation_graph_boundary"]
     assert graph["union_unique_work_count"] == 240

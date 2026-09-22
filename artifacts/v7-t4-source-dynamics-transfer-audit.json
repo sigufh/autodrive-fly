@@ -4,7 +4,7 @@
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
       "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "5cf0c1f1b475d329739bdde0945858033634a6a91067482b2afa8175db03d610",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "2ba39cf4e2f270a4717ba532358ddeb33279e05faf397740bb1c59ef5454ed22",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "0ddc131e1cbcfdead65e91e55d51145e7def85bc9f40eeb09a6b2a4a8ae11b72",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -27,7 +27,7 @@
       "artifacts/v7-timing-models-source-filter-audit.json": "0afb4dcafaa041dab7ca451c60d8d1d66216f9587b99b0cf3bc418225620442c",
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
-      "artifacts/v7-strother-mi4-public-index-audit.json": "f247cfc31fa5fa40d2a5a5314f31b4865a0e3570cd8daf7d88f33f8b0e3ca3ff",
+      "artifacts/v7-strother-mi4-public-index-audit.json": "085e81df2be4aec189e6099b8261d46c88539b3ba941a0feed48b61c16d8b269",
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
       "artifacts/v7-legacy-c3-candidate-audit.json": "0e67d8572fc35abf67d3364d117f0a770b60ec3132fd7b010177432ad25b4a6f",
       "artifacts/v7-hao-asap7y-candidate-audit.json": "e4e2d232cc94f1be5d949eaa34604257562c6bbefc5a2a92ce97a0d21365d074",
@@ -300,6 +300,11 @@
     "PMC_numeric_data_attachment_count": 0,
     "Figshare_search_interpretable": false,
     "global_absence_claimed": false,
+    "supplementary_bundle_entry_count": 16,
+    "moving_grating_trace_figure_present": true,
+    "moving_grating_fly_count": 5,
+    "moving_grating_speed_degrees_per_second": 90.0,
+    "supplement_public_numeric_trace_attachment_verified": false,
     "Mi4_source_dynamics_transfer_authorized": false
   },
   "verified_C3_citation_graph_boundary": {

@@ -67,6 +67,10 @@ export type V7Status = {
     Strother_2018_successful_index_Mi4_trace_found?: boolean;
     Strother_2018_Figshare_search_interpretable?: boolean;
     Strother_2018_global_absence_claimed?: boolean;
+    Strother_2018_supplement_bundle_entry_count?: number;
+    Strother_2018_Mi4_moving_grating_figure_verified?: boolean;
+    Strother_2018_Mi4_moving_grating_fly_count?: number;
+    Strother_2018_public_numeric_trace_attachment_verified?: boolean;
     C3_citation_graph_union_unique_work_count?: number;
     C3_citation_graph_unresolved_reference_ID_count?: number;
     Pang_2025_directly_recorded_neuron_types?: string[];
