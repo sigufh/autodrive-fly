@@ -200,6 +200,10 @@ v7-audit-afterimages-mi4-candidate:
 v7-audit-c3-directional-edges:
 	.venv/bin/autodrive-fly v7-audit-c3-directional-edges
 
+.PHONY: v7-audit-legacy-c3-candidates
+v7-audit-legacy-c3-candidates:
+	.venv/bin/autodrive-fly v7-audit-legacy-c3-candidates
+
 v7-audit-gou-dandi-identity:
 	.venv/bin/autodrive-fly v7-audit-gou-dandi-identity
 

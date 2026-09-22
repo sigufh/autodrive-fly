@@ -87,6 +87,9 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert c3_components["Henning_C3_directional_cohort_independent"] is False
     assert c3_components["Henning_C3_direction_specific_source_kernel_verified"] is False
     assert c3_components["Henning_C3_directional_experimental_membrane_voltage"] is False
+    assert c3_components["Tuthill_2013_C3_intervention_only_verified"] is True
+    assert c3_components["Maisak_2018_direct_C3_or_Mi4_recording_verified"] is False
+    assert c3_components["Ramos_2020_complete_fulltext_scope_resolved"] is False
     assert "Henning_C3_directional_edge_GCaMP6f" in report["matrix"]["C3"][
         "numerical_evidence_sources"
     ]

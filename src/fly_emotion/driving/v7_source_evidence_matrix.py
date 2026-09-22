@@ -44,6 +44,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     yuan = evidence["yuan_C3"]
     strother_indexes = evidence["strother_Mi4_public_indexes"]
     c3_citation_graph = evidence["c3_citation_graph"]
+    legacy_c3 = evidence["legacy_C3_candidates"]
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
     stable_contrast = evidence["stable_contrast_scope"]
     tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
@@ -498,6 +499,23 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 len(c3_citation_graph["Dryad"]["filename_hits"]["C3"])
                 if source == "C3"
                 else 0
+            ),
+            "Tuthill_2013_C3_intervention_only_verified": (
+                source == "C3"
+                and legacy_c3["candidates"]["Tuthill_2013"]["classification"]
+                == "independent_C3_intervention_only"
+            ),
+            "Maisak_2018_direct_C3_or_Mi4_recording_verified": (
+                source in {"C3", "Mi4"}
+                and legacy_c3["candidates"]["Maisak_2018"][
+                    "direct_C3_or_Mi4_recording_verified"
+                ]
+            ),
+            "Ramos_2020_complete_fulltext_scope_resolved": (
+                source in {"C3", "Mi4"}
+                and legacy_c3["candidates"]["Ramos_Traslosheros_2020"][
+                    "complete_fulltext_scope_resolved"
+                ]
             ),
             "Hao_2026_ASAP7y_Drosophila_voltage_candidate_unresolved": (
                 source in {"Mi4", "C3"}

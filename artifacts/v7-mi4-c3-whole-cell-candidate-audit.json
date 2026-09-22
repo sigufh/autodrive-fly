@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "1c623422ca91dadeed1d3fa20da997d8624648bdea88a7c8d13eb039390aea0f",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "71b070218c373c92f2aea0a1fd46cf4e9f33881ade93b98b52dddfd9f91a5d3f",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "a629706e2e14d0fa7fdfeb905eace2449e3bfa97c879ff13dc4f265ea0ba35e7",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "87e0d75da910b131721c3e861ddb9ec158b07d510a3bb4bf6b13005469037ae9",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "049538a605c70407261ea0e5acc4a1eafdbc7bca7a9ec72158c3fa0777e1b6cd",
@@ -20,7 +20,8 @@
       "artifacts/v7-hao-asap7y-candidate-audit.json": "9137f6ad1bfafeffc1144e76b35510d60540892cdd4b0ea42cd2148440a3b5f7",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
-      "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4"
+      "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
+      "artifacts/v7-legacy-c3-candidate-audit.json": "0e67d8572fc35abf67d3364d117f0a770b60ec3132fd7b010177432ad25b4a6f"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -308,10 +309,46 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "Mi4_measurement_is_figure_level_calcium_without_numeric_payload",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Tuthill_2013": {
+      "title": "Contributions of the 12 neuron classes in the fly lamina to motion vision",
+      "doi": "10.1016/j.neuron.2013.05.024",
+      "target_neurons": [
+        "C2",
+        "C3"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "behavioral_flight_steering_with_C3_activation_and_silencing",
+      "response_unit": "wing_steering_behavior",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "C3_is_manipulated_but_paper_explicitly_defers_C3_physiological_recording",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Maisak_2018": {
+      "title": "Functional imaging of the neural components of Drosophila motion detection",
+      "doi": "10.5282/edoc.24916",
+      "target_neurons": [
+        "T4",
+        "T5",
+        "L4",
+        "Tm2"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "dissertation_with_anatomical_Mi4_C3_mentions",
+      "response_unit": "mixed_reviewed_experiments",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "Mi4_C3_are_anatomical_candidates_not_direct_recordings",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 13,
+    "audited_candidate_count": 15,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -327,13 +364,16 @@
       "Wu_2026_afterimages"
     ],
     "independent_C3_intervention_only_candidates": [
-      "Yuan_2020"
+      "Yuan_2020",
+      "Tuthill_2013"
     ],
     "citation_graph_exclusion_candidates": [
-      "Pang_2025"
+      "Pang_2025",
+      "Maisak_2018"
     ],
     "unresolved_high_value_candidates": [
-      "Hao_2026_ASAP7y"
+      "Hao_2026_ASAP7y",
+      "Ramos_Traslosheros_2020"
     ],
     "unresolved_candidates_in_audited_candidate_count": false,
     "anatomy_only_named_source_candidates": [
@@ -375,6 +415,8 @@
     "unresolved_cell_type_scope_is_not_counted_as_a_positive_or_negative_candidate": true,
     "connectome_proofreading_tables_do_not_substitute_for_source_recordings": true,
     "individual_Mi4_calcium_does_not_substitute_for_Mi4_C3_voltage": true,
+    "legacy_C3_intervention_and_anatomical_mentions_do_not_substitute_for_recording": true,
+    "unresolved_thesis_fulltext_is_not_negative_evidence": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

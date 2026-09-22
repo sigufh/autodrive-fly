@@ -197,6 +197,16 @@ def _verified_v7_status(root: Path) -> dict:
                 "Pang_2025_new_C3_direct_recording_found": visual[
                     "Pang_2025_new_C3_direct_recording_found"
                 ],
+                "legacy_C3_candidate_count": visual["legacy_C3_candidate_count"],
+                "Tuthill_2013_C3_intervention_only_verified": visual[
+                    "Tuthill_2013_C3_intervention_only_verified"
+                ],
+                "Maisak_2018_direct_C3_Mi4_recording_verified": visual[
+                    "Maisak_2018_direct_C3_Mi4_recording_verified"
+                ],
+                "Ramos_2020_fulltext_scope_resolved": visual[
+                    "Ramos_2020_fulltext_scope_resolved"
+                ],
                 "Hao_2026_ASAP7y_candidate_classification": visual[
                     "Hao_2026_ASAP7y_candidate_classification"
                 ],

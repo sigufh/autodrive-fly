@@ -1,0 +1,36 @@
+version: 1
+name: v7-legacy-c3-candidate-audit
+observed_on: "2026-09-22"
+candidates:
+  Tuthill_2013:
+    title: Contributions of the 12 neuron classes in the fly lamina to motion vision
+    doi: 10.1016/j.neuron.2013.05.024
+    pmcid: PMC3806040
+    snapshots:
+      europe_pmc: {path: data/raw/t4-inhibitory-source-external/tuthill-2013/europepmc-core.json, bytes: 5372, sha256: b56d81d3c19a8520401f9935049abdfc7d92af6690ea0537f32fa8f98076bfc3}
+      fulltext: {path: data/raw/t4-inhibitory-source-external/tuthill-2013/PMC3806040-report.xml.html, bytes: 245440, sha256: bf2c9b88f0e803bb2099dd97dd65122f724cd081d7b93626ff6ba6e528e3adc2}
+  Maisak_2018:
+    title: Functional imaging of the neural components of Drosophila motion detection
+    doi: 10.5282/edoc.24916
+    snapshots:
+      openalex: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/openalex-edoc-24916.json, bytes: 17195, sha256: d09dce0591710e63f006e9c7a1e3a4f1e99188e5af4d13bb897a269163067e99}
+      dissertation: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/Maisak_Matthew.pdf, bytes: 10048387, sha256: 5860e939219ab0f927d45d288b25ac037518a7e247f84a0b1fc24fffc0e6c8aa}
+  Ramos_Traslosheros_2020:
+    title: "Receptive field organization of motion computation in the fly: a study of cell types and their variability"
+    doi: 10.53846/goediss-8344
+    snapshots:
+      openalex: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/openalex-goediss-8344.json, bytes: 22829, sha256: f2fd6059655a56573e5cde1239eb154842cf2fa7be76332d67a49c755c7a52c6}
+      oai_dc: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-oai.xml, bytes: 5248, sha256: 0dd5f8c61a6aabe069cf3a1bae9fe6135fe9505d1b83993adfe7f4181001056d}
+      xMetaDissPlus: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-xMetaDissPlus.xml, bytes: 7846, sha256: 9088d63c09254a76dabdbb366bce806ea6258a567fef0d865f530a0d4cae67bf}
+    fulltext_url: http://ediss.uni-goettingen.de/bitstream/handle/21.11130/00-1735-0000-0005-1507-C/RamosTrashlosheros-PhDthesis.pdf?sequence=1&isAllowed=y
+    fulltext_probe_status: 403
+boundary:
+  intervention_is_not_direct_source_recording: true
+  anatomical_mention_is_not_direct_source_recording: true
+  abstract_scope_is_not_fulltext_scope: true
+  HTTP_403_is_not_source_absence: true
+  no_global_absence_claim: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

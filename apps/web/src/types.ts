@@ -72,6 +72,10 @@ export type V7Status = {
     Pang_2025_directly_recorded_neuron_types?: string[];
     Pang_2025_Dryad_file_count?: number;
     Pang_2025_new_C3_direct_recording_found?: boolean;
+    legacy_C3_candidate_count?: number;
+    Tuthill_2013_C3_intervention_only_verified?: boolean;
+    Maisak_2018_direct_C3_Mi4_recording_verified?: boolean;
+    Ramos_2020_fulltext_scope_resolved?: boolean;
     Hao_2026_ASAP7y_candidate_classification?: string;
     Hao_2026_ASAP7y_paper_source_experimental_cell_types?: string[];
     Hao_2026_ASAP7y_public_author_figure_named_examples?: string[];

@@ -1,0 +1,84 @@
+{
+  "protocol": {
+    "name": "v7-legacy-c3-candidate-audit",
+    "observed_on": "2026-09-22",
+    "dependencies_sha256": {
+      "configs/driving-v7-legacy-c3-candidate-audit.yaml": "cd5458c4ac24d50f957aa9221ae34fa371b097d04cd3dc2d127ceacd9f519838",
+      "src/fly_emotion/driving/v7_legacy_c3_candidate_audit.py": "e19639e45014f59d8f4a7e10a638eb19f848dcdbea562c347fcb5415bbf2d5ec"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/tuthill-2013/europepmc-core.json": "b56d81d3c19a8520401f9935049abdfc7d92af6690ea0537f32fa8f98076bfc3",
+      "data/raw/t4-inhibitory-source-external/tuthill-2013/PMC3806040-report.xml.html": "bf2c9b88f0e803bb2099dd97dd65122f724cd081d7b93626ff6ba6e528e3adc2",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/openalex-edoc-24916.json": "d09dce0591710e63f006e9c7a1e3a4f1e99188e5af4d13bb897a269163067e99",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/Maisak_Matthew.pdf": "5860e939219ab0f927d45d288b25ac037518a7e247f84a0b1fc24fffc0e6c8aa",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/openalex-goediss-8344.json": "f2fd6059655a56573e5cde1239eb154842cf2fa7be76332d67a49c755c7a52c6",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-oai.xml": "0dd5f8c61a6aabe069cf3a1bae9fe6135fe9505d1b83993adfe7f4181001056d",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/ramos-xMetaDissPlus.xml": "9088d63c09254a76dabdbb366bce806ea6258a567fef0d865f530a0d4cae67bf"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "candidates": {
+    "Tuthill_2013": {
+      "doi": "10.1016/j.neuron.2013.05.024",
+      "fulltext_retrieved": true,
+      "C3_role": "genetic_activation_and_silencing_target",
+      "measurement_object": "flight_steering_behavior",
+      "direct_C3_neural_recording_verified": false,
+      "explicit_future_need_for_C3_physiology": true,
+      "classification": "independent_C3_intervention_only"
+    },
+    "Maisak_2018": {
+      "doi": "10.5282/edoc.24916",
+      "fulltext_retrieved": true,
+      "page_count": 100,
+      "embedded_attachment_count": 0,
+      "C3_exact_term_count": 1,
+      "Mi4_exact_term_count": 1,
+      "direct_C3_or_Mi4_recording_verified": false,
+      "classification": "anatomical_candidate_mentions_only"
+    },
+    "Ramos_Traslosheros_2020": {
+      "doi": "10.53846/goediss-8344",
+      "OAI_metadata_retrieved": true,
+      "official_PDF_locator_found": true,
+      "fulltext_probe_status": 403,
+      "fulltext_retrieved": false,
+      "abstract_named_direct_imaging_types": [
+        "Tm9",
+        "Dm4",
+        "Dm12",
+        "Dm20"
+      ],
+      "abstract_names_C3_or_Mi4_direct_recording": false,
+      "complete_fulltext_scope_resolved": false,
+      "classification": "unresolved_beyond_abstract_scope"
+    }
+  },
+  "audited_candidate_count": 3,
+  "independent_C3_intervention_only_candidates": [
+    "Tuthill_2013"
+  ],
+  "direct_C3_or_Mi4_source_dynamics_candidates": [],
+  "unresolved_fulltext_candidates": [
+    "Ramos_Traslosheros_2020"
+  ],
+  "authorize_Mi4_C3_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "legacy_candidates_add_intervention_or_bounded_scope_not_direct_source_dynamics",
+  "boundary": {
+    "intervention_is_not_direct_source_recording": true,
+    "anatomical_mention_is_not_direct_source_recording": true,
+    "abstract_scope_is_not_fulltext_scope": true,
+    "HTTP_403_is_not_source_absence": true,
+    "no_global_absence_claim": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

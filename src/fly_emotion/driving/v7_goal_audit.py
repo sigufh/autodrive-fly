@@ -135,6 +135,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     yuan_c3_candidate_audit = reports["yuan_c3_candidate_audit"]
     strother_mi4_public_index_audit = reports["strother_mi4_public_index_audit"]
     c3_citation_graph_audit = reports["c3_citation_graph_audit"]
+    legacy_c3_candidate_audit = reports["legacy_c3_candidate_audit"]
     hao_asap7y_candidate_audit = reports["hao_asap7y_candidate_audit"]
     stable_contrast_source_scope_audit = reports[
         "stable_contrast_source_scope_audit"
@@ -406,6 +407,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["yuan_c3_candidate_audit"],
                 config["evidence"]["strother_mi4_public_index_audit"],
                 config["evidence"]["c3_citation_graph_audit"],
+                config["evidence"]["legacy_c3_candidate_audit"],
                 config["evidence"]["hao_asap7y_candidate_audit"],
                 config["evidence"]["stable_contrast_source_scope_audit"],
                 config["evidence"]["tanaka_mi4_calcium_audit"],
@@ -1688,6 +1690,25 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Pang_2025_new_C3_direct_recording_found": c3_citation_graph_audit[
                     "new_independent_C3_direct_recording_candidate_found"
                 ],
+                "legacy_C3_candidate_count": legacy_c3_candidate_audit[
+                    "audited_candidate_count"
+                ],
+                "Tuthill_2013_C3_intervention_only_verified": (
+                    legacy_c3_candidate_audit["candidates"]["Tuthill_2013"][
+                        "classification"
+                    ]
+                    == "independent_C3_intervention_only"
+                ),
+                "Maisak_2018_direct_C3_Mi4_recording_verified": (
+                    legacy_c3_candidate_audit["candidates"]["Maisak_2018"][
+                        "direct_C3_or_Mi4_recording_verified"
+                    ]
+                ),
+                "Ramos_2020_fulltext_scope_resolved": (
+                    legacy_c3_candidate_audit["candidates"][
+                        "Ramos_Traslosheros_2020"
+                    ]["complete_fulltext_scope_resolved"]
+                ),
                 "Hao_2026_ASAP7y_candidate_classification": hao_asap7y_candidate_audit[
                     "cell_type_resolution"
                 ]["candidate_classification"],
@@ -4178,6 +4199,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Pang_2025_directly_recorded_neuron_types",
                     "Pang_2025_Dryad_file_count",
                     "Pang_2025_new_C3_direct_recording_found",
+                    "legacy_C3_candidate_count",
+                    "Tuthill_2013_C3_intervention_only_verified",
+                    "Maisak_2018_direct_C3_Mi4_recording_verified",
+                    "Ramos_2020_fulltext_scope_resolved",
                     "Hao_2026_ASAP7y_candidate_classification",
                     "Hao_2026_ASAP7y_paper_source_experimental_cell_types",
                     "Hao_2026_ASAP7y_public_author_figure_named_examples",

@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 13
+    assert summary["audited_candidate_count"] == 15
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -34,9 +34,18 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["independent_Mi4_figure_level_calcium_candidates"] == [
         "Wu_2026_afterimages"
     ]
-    assert summary["independent_C3_intervention_only_candidates"] == ["Yuan_2020"]
-    assert summary["citation_graph_exclusion_candidates"] == ["Pang_2025"]
-    assert summary["unresolved_high_value_candidates"] == ["Hao_2026_ASAP7y"]
+    assert summary["independent_C3_intervention_only_candidates"] == [
+        "Yuan_2020",
+        "Tuthill_2013",
+    ]
+    assert summary["citation_graph_exclusion_candidates"] == [
+        "Pang_2025",
+        "Maisak_2018",
+    ]
+    assert summary["unresolved_high_value_candidates"] == [
+        "Hao_2026_ASAP7y",
+        "Ramos_Traslosheros_2020",
+    ]
     assert summary["unresolved_candidates_in_audited_candidate_count"] is False
     assert summary["anatomy_only_named_source_candidates"] == ["Gur_2024"]
 
@@ -86,6 +95,16 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert afterimages["response_unit"] == "deltaF_over_F"
     assert afterimages["experimental_membrane_voltage"] is False
     assert afterimages["local_numeric_payload_verified"] is False
+    tuthill = matrix["Tuthill_2013"]
+    assert tuthill["directly_measured_required_sources"] == []
+    assert tuthill["measurement_modality"] == (
+        "behavioral_flight_steering_with_C3_activation_and_silencing"
+    )
+    maisak = matrix["Maisak_2018"]
+    assert maisak["directly_measured_required_sources"] == []
+    assert maisak["measurement_modality"] == (
+        "dissertation_with_anatomical_Mi4_C3_mentions"
+    )
     assert not any(
         item["qualifies_as_independent_Mi4_C3_numeric_membrane_voltage"]
         for item in matrix.values()

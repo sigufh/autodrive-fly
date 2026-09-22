@@ -199,6 +199,14 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert graph["Dryad_file_count"] == 75
     assert graph["Dryad_total_declared_bytes"] == 49_600_989_798
     assert graph["new_independent_C3_direct_recording_candidate_found"] is False
+    legacy = report["verified_legacy_C3_candidate_boundary"]
+    assert legacy["audited_candidate_count"] == 3
+    assert legacy["intervention_only_candidates"] == ["Tuthill_2013"]
+    assert legacy["direct_source_dynamics_candidates"] == []
+    assert legacy["unresolved_fulltext_candidates"] == [
+        "Ramos_Traslosheros_2020"
+    ]
+    assert legacy["source_dynamics_transfer_authorized"] is False
     assert graph["C3_source_dynamics_transfer_authorized"] is False
     hao = report["unresolved_Hao_2026_ASAP7y_candidate"]
     assert hao["doi"] == "10.64898/2026.05.27.728040"

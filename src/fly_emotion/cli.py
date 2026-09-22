@@ -199,6 +199,9 @@ from .driving.v7_lamina_goal import evaluate_v7_lamina_goal
 from .driving.v7_lamina_goal_symmetry import evaluate_v7_lamina_goal_symmetry
 from .driving.v7_lc4_input_speed_precheck import evaluate_v7_lc4_input_speed_precheck
 from .driving.v7_lc4_position_speed_precheck import evaluate_v7_lc4_position_speed_precheck
+from .driving.v7_legacy_c3_candidate_audit import (
+    evaluate_v7_legacy_c3_candidate_audit,
+)
 from .driving.v7_local_input_audit import (
     evaluate_v7_local_input_audit,
     evaluate_v7_receptor_mask_audit,
@@ -719,6 +722,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-c3-flash-preregistration")
     subparsers.add_parser("v7-audit-c3-strf-flash-transfer")
     subparsers.add_parser("v7-audit-c3-directional-edges")
+    subparsers.add_parser("v7-audit-legacy-c3-candidates")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-c3-measured-filter-robustness")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
@@ -2132,6 +2136,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-directional-edges":
         report = evaluate_v7_c3_directional_edge_audit(root)
         target = root / "artifacts/v7-c3-directional-edge-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-legacy-c3-candidates":
+        report = evaluate_v7_legacy_c3_candidate_audit(root)
+        target = root / "artifacts/v7-legacy-c3-candidate-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

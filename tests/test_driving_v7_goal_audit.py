@@ -255,6 +255,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Pang_2025_directly_recorded_neuron_types",
         "Pang_2025_Dryad_file_count",
         "Pang_2025_new_C3_direct_recording_found",
+            "legacy_C3_candidate_count",
+            "Tuthill_2013_C3_intervention_only_verified",
+            "Maisak_2018_direct_C3_Mi4_recording_verified",
+            "Ramos_2020_fulltext_scope_resolved",
         "Hao_2026_ASAP7y_candidate_classification",
         "Hao_2026_ASAP7y_paper_source_experimental_cell_types",
         "Hao_2026_ASAP7y_public_author_figure_named_examples",
@@ -1078,7 +1082,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 13
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 15
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1110,6 +1114,10 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Pang_2025_directly_recorded_neuron_types"] == ["L1", "L2"]
     assert visual["observations"]["Pang_2025_Dryad_file_count"] == 75
     assert visual["observations"]["Pang_2025_new_C3_direct_recording_found"] is False
+    assert visual["observations"]["legacy_C3_candidate_count"] == 3
+    assert visual["observations"]["Tuthill_2013_C3_intervention_only_verified"] is True
+    assert visual["observations"]["Maisak_2018_direct_C3_Mi4_recording_verified"] is False
+    assert visual["observations"]["Ramos_2020_fulltext_scope_resolved"] is False
     assert visual["observations"]["Hao_2026_ASAP7y_candidate_classification"] == (
         "unresolved_high_value_candidate"
     )

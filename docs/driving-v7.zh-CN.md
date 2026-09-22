@@ -2403,6 +2403,15 @@ C3 钙数据的方向、角速度和物理时间字段，但不是独立 cohort�
 recording→MaleCNS body crosswalk，也不能定义方向特异 source kernel 或解锁 transfer。证据见
 `artifacts/v7-c3-directional-edge-audit.json`。
 
+对较早 C3/Mi4 文献的增量核查没有发现新的直接 source-dynamics。Tuthill 等 2013
+（DOI `10.1016/j.neuron.2013.05.024`）的可读全文明确将 C3 作为 Kir2.1 激活/沉默对象、
+测量飞行转向行为，并指出仍需未来的 C2/C3 生理记录；因此是独立 intervention-only
+证据。Maisak 2018 博士论文全文中 C3 与 Mi4 各仅有一次精确术语命中，均处于解剖
+候选讨论，未验证直接记录。Ramos-Traslosheros 2020 博士论文的官方 OAI 摘要将直接
+成像范围列为 Tm9、Dm4、Dm12、Dm20；OAI 给出的 PDF 当前返回 403，故只把摘要范围
+记为无 C3/Mi4 命中，完整全文保持 unresolved，而非声称不存在。证据见
+`artifacts/v7-legacy-c3-candidate-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

@@ -691,6 +691,16 @@ fields to the C3 calcium evidence, but they are neither an independent cohort no
 membrane voltage and do not supply a direction-specific kernel or recording-to-MaleCNS
 crosswalk (`artifacts/v7-c3-directional-edge-audit.json`).
 
+A bounded legacy-literature audit found no additional direct C3/Mi4 source
+dynamics. Tuthill et al. 2013 (10.1016/j.neuron.2013.05.024) explicitly treats C3
+as a Kir2.1 activation/silencing target and measures flight steering behavior; the
+paper states that physiological recordings from C2/C3 remain future work. The full
+Maisak 2018 dissertation contains only anatomical-candidate mentions of C3 and Mi4.
+The official OAI abstract for the Ramos-Traslosheros 2020 dissertation names Tm9,
+Dm4, Dm12, and Dm20 as its direct imaging scope, but its OAI-advertised PDF currently
+returns HTTP 403. Its full scope therefore remains unresolved rather than being treated
+as negative evidence (`artifacts/v7-legacy-c3-candidate-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

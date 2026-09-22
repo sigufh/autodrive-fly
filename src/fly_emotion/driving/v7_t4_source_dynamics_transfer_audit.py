@@ -41,6 +41,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     yuan_c3_path = Path(config["yuan_c3_candidate_evidence"])
     strother_index_path = Path(config["strother_mi4_public_index_evidence"])
     c3_citation_graph_path = Path(config["c3_citation_graph_evidence"])
+    legacy_c3_path = Path(config["legacy_C3_candidate_evidence"])
     hao_asap7y_path = Path(config["hao_ASAP7y_candidate_evidence"])
     stable_contrast_path = Path(config["stable_contrast_source_scope_evidence"])
     tanaka_mi4_path = Path(config["tanaka_Mi4_calcium_evidence"])
@@ -95,6 +96,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_citation_graph = json.loads(
         (root / c3_citation_graph_path).read_text(encoding="utf-8")
     )
+    legacy_c3 = json.loads((root / legacy_c3_path).read_text(encoding="utf-8"))
     hao_asap7y = json.loads((root / hao_asap7y_path).read_text(encoding="utf-8"))
     stable_contrast = json.loads(
         (root / stable_contrast_path).read_text(encoding="utf-8")
@@ -242,6 +244,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(yuan_c3_path): _sha256(root / yuan_c3_path),
                 str(strother_index_path): _sha256(root / strother_index_path),
                 str(c3_citation_graph_path): _sha256(root / c3_citation_graph_path),
+                str(legacy_c3_path): _sha256(root / legacy_c3_path),
                 str(hao_asap7y_path): _sha256(root / hao_asap7y_path),
                 str(stable_contrast_path): _sha256(root / stable_contrast_path),
                 str(tanaka_mi4_path): _sha256(root / tanaka_mi4_path),
@@ -648,6 +651,21 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ),
             "C3_source_dynamics_transfer_authorized": c3_citation_graph[
                 "authorize_C3_source_dynamics_transfer"
+            ],
+        },
+        "verified_legacy_C3_candidate_boundary": {
+            "audited_candidate_count": legacy_c3["audited_candidate_count"],
+            "intervention_only_candidates": legacy_c3[
+                "independent_C3_intervention_only_candidates"
+            ],
+            "direct_source_dynamics_candidates": legacy_c3[
+                "direct_C3_or_Mi4_source_dynamics_candidates"
+            ],
+            "unresolved_fulltext_candidates": legacy_c3[
+                "unresolved_fulltext_candidates"
+            ],
+            "source_dynamics_transfer_authorized": legacy_c3[
+                "authorize_Mi4_C3_source_dynamics_transfer"
             ],
         },
         "unresolved_Hao_2026_ASAP7y_candidate": {
