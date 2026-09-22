@@ -3,8 +3,8 @@
     "name": "v7-hao-asap7y-candidate-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "37e986afd3e00b6f1b0f81a8281333cd1c7c5726dd081760a932248e9f1c5166",
-      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "ffa9bd0bc4a7cd057a3cb7cc9f797656a5d054447ad21d7a45c2727176edd090"
+      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "010821d39d94e7f9ed55da1dd763ed2bb7ef7f04780059164b8ca7f45c1898a3",
+      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "822acc852d594e970a62bbd3498ca1c908a99b5dcd4ccdfc0962d3ff6983071e"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/hao-2026/crossref.json": "e3750320cdb38c7b3d0396eff20ab3cb30dc03d50d70f0f00c55635b3f77e464",
@@ -18,6 +18,7 @@
       "data/raw/t4-inhibitory-source-external/hao-2026/highwire.xml": "3b920530accd5b38d8bab6747e8850f951b2b97581a5359e70b3e40e3db118dd",
       "data/raw/t4-inhibitory-source-external/hao-2026/europepmc-full.xml": "ee2a52e3a9c5b05254518ecd944a5e186d1ad25673ed9a3e51c09aadf3ccee9d",
       "data/raw/t4-inhibitory-source-external/hao-2026/openrxiv.json": "d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340",
+      "data/raw/t4-inhibitory-source-external/hao-2026/europepmc-annotations.json": "336dcb5a5ba7f6d7fdf4cc3cd06709603e44089caa5139afed30abf130db6304",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/resolve.json": "10787de9ef5dbe7bf1e30fcde9db3a45b8aa928a44028e19a04f6dffc9b54149",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/thread-full.json": "e09128960100f06ad418c98483c5a287befcc004a8aeeb663b7038d2d1b7fd27",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-8.jpg": "866bd4baee183975167fd3e029efc75753996e12a1cfbf69696ae19d33db822b",
@@ -106,6 +107,22 @@
     "OpenAlex_status": "closed",
     "openRxiv_mapping_found": false
   },
+  "Europe_PMC_text_mining": {
+    "article_id": "PPR:PPR1242681",
+    "annotation_count": 6,
+    "exact_terms": [
+      "membranes",
+      "organization",
+      "mice",
+      "flies",
+      "photon",
+      "Drosophila"
+    ],
+    "Mi4_annotation_hit": false,
+    "C3_annotation_hit": false,
+    "annotation_scope": "abstract_only_because_in_PMC_is_false",
+    "resolves_complete_experimental_cell_type_set": false
+  },
   "public_numeric_payload_verified": false,
   "authorize_Mi4_C3_candidate_classification": false,
   "authorize_source_dynamics_fit": false,
@@ -123,6 +140,8 @@
     "author_dissertation_abstract_does_not_substitute_for_restricted_fulltext": true,
     "related_dissertation_is_not_assumed_to_be_the_same_experimental_cohort": true,
     "successful_public_index_zero_results_are_not_global_payload_absence": true,
+    "Europe_PMC_annotations_are_abstract_level_not_fulltext": true,
+    "abstract_annotation_zero_hits_do_not_exclude_Mi4_or_C3": true,
     "HTTP_401_403_404_429_and_500_are_not_source_absence": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

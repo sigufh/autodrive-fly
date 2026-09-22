@@ -72,6 +72,24 @@ def test_successful_public_indexes_do_not_overclaim_global_payload_absence() -> 
     }
 
 
+def test_europe_pmc_annotations_are_abstract_only_locator_evidence() -> None:
+    text_mining = json.loads(REPORT.read_text())["Europe_PMC_text_mining"]
+    assert text_mining["article_id"] == "PPR:PPR1242681"
+    assert text_mining["annotation_count"] == 6
+    assert text_mining["exact_terms"] == [
+        "membranes",
+        "organization",
+        "mice",
+        "flies",
+        "photon",
+        "Drosophila",
+    ]
+    assert text_mining["Mi4_annotation_hit"] is False
+    assert text_mining["C3_annotation_hit"] is False
+    assert text_mining["annotation_scope"] == "abstract_only_because_in_PMC_is_false"
+    assert text_mining["resolves_complete_experimental_cell_type_set"] is False
+
+
 def test_unresolved_candidate_does_not_change_transfer_or_downstream_gates() -> None:
     report = json.loads(REPORT.read_text())
     assert report["public_numeric_payload_verified"] is False

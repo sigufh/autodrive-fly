@@ -1755,6 +1755,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "global_payload_absence_claimed"
                     ]
                 ),
+                "Hao_2026_Europe_PMC_annotation_count": (
+                    hao_asap7y_candidate_audit["Europe_PMC_text_mining"][
+                        "annotation_count"
+                    ]
+                ),
+                "Hao_2026_Europe_PMC_Mi4_annotation_hit": (
+                    hao_asap7y_candidate_audit["Europe_PMC_text_mining"][
+                        "Mi4_annotation_hit"
+                    ]
+                ),
+                "Hao_2026_Europe_PMC_C3_annotation_hit": (
+                    hao_asap7y_candidate_audit["Europe_PMC_text_mining"][
+                        "C3_annotation_hit"
+                    ]
+                ),
+                "Hao_2026_Europe_PMC_annotation_scope": (
+                    hao_asap7y_candidate_audit["Europe_PMC_text_mining"][
+                        "annotation_scope"
+                    ]
+                ),
                 "Gur_2024_directly_recorded_neuron_types": (
                     stable_contrast_source_scope_audit["directly_recorded_neuron_types"]
                 ),
@@ -4213,6 +4233,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2025_dissertation_public_abstract_names_cell_types",
                     "Hao_2026_ASAP7y_successful_index_numeric_payload_found",
                     "Hao_2026_ASAP7y_global_payload_absence_claimed",
+                    "Hao_2026_Europe_PMC_annotation_count",
+                    "Hao_2026_Europe_PMC_Mi4_annotation_hit",
+                    "Hao_2026_Europe_PMC_C3_annotation_hit",
+                    "Hao_2026_Europe_PMC_annotation_scope",
                     "Gur_2024_directly_recorded_neuron_types",
                     "Gur_2024_Mi4_proofreading_row_count",
                     "Gur_2024_C3_proofreading_row_count",

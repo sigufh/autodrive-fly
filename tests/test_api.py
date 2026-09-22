@@ -95,6 +95,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Hao_2025_dissertation_public_abstract_names_cell_types"] is False
     assert boundaries["Hao_2026_ASAP7y_successful_index_numeric_payload_found"] is False
     assert boundaries["Hao_2026_ASAP7y_global_payload_absence_claimed"] is False
+    assert boundaries["Hao_2026_Europe_PMC_annotation_count"] == 6
+    assert boundaries["Hao_2026_Europe_PMC_Mi4_annotation_hit"] is False
+    assert boundaries["Hao_2026_Europe_PMC_C3_annotation_hit"] is False
+    assert boundaries["Hao_2026_Europe_PMC_annotation_scope"] == (
+        "abstract_only_because_in_PMC_is_false"
+    )
     assert boundaries["Gur_2024_directly_recorded_neuron_types"] == [
         "L1",
         "L2",

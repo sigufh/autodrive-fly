@@ -628,6 +628,10 @@ numeric payload. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text route
 mapping. The named examples are not Mi4/C3, but the complete set remains unresolved;
 it is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
 source transfer (`artifacts/v7-hao-asap7y-candidate-audit.json`).
+Europe PMC's annotations endpoint returns six abstract-level entities
+(`membranes`, `organization`, `mice`, `flies`, `photon`, and `Drosophila`) and no
+Mi4/C3 hit. Because the record is not in PMC, these annotations do not cover the full
+text and cannot exclude either cell type.
 The first author's 2025 Stanford dissertation, *Voltage imaging for revealing
 neuronal dynamics across scales*, adds a bounded author-source lead. Public MODS and
 IIIF metadata confirm one dissertation PDF, and its abstract confirms dendritic

@@ -237,6 +237,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_ASAP7y_global_payload_absence_claimed": visual[
                     "Hao_2026_ASAP7y_global_payload_absence_claimed"
                 ],
+                "Hao_2026_Europe_PMC_annotation_count": visual[
+                    "Hao_2026_Europe_PMC_annotation_count"
+                ],
+                "Hao_2026_Europe_PMC_Mi4_annotation_hit": visual[
+                    "Hao_2026_Europe_PMC_Mi4_annotation_hit"
+                ],
+                "Hao_2026_Europe_PMC_C3_annotation_hit": visual[
+                    "Hao_2026_Europe_PMC_C3_annotation_hit"
+                ],
+                "Hao_2026_Europe_PMC_annotation_scope": visual[
+                    "Hao_2026_Europe_PMC_annotation_scope"
+                ],
                 "Gur_2024_directly_recorded_neuron_types": visual[
                     "Gur_2024_directly_recorded_neuron_types"
                 ],

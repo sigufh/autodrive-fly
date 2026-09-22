@@ -269,6 +269,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Hao_2025_dissertation_public_abstract_names_cell_types",
         "Hao_2026_ASAP7y_successful_index_numeric_payload_found",
         "Hao_2026_ASAP7y_global_payload_absence_claimed",
+        "Hao_2026_Europe_PMC_annotation_count",
+        "Hao_2026_Europe_PMC_Mi4_annotation_hit",
+        "Hao_2026_Europe_PMC_C3_annotation_hit",
+        "Hao_2026_Europe_PMC_annotation_scope",
             "Gur_2024_directly_recorded_neuron_types",
             "Gur_2024_Mi4_proofreading_row_count",
             "Gur_2024_C3_proofreading_row_count",
@@ -1147,6 +1151,12 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert (
         visual["observations"]["Hao_2026_ASAP7y_global_payload_absence_claimed"]
         is False
+    )
+    assert visual["observations"]["Hao_2026_Europe_PMC_annotation_count"] == 6
+    assert visual["observations"]["Hao_2026_Europe_PMC_Mi4_annotation_hit"] is False
+    assert visual["observations"]["Hao_2026_Europe_PMC_C3_annotation_hit"] is False
+    assert visual["observations"]["Hao_2026_Europe_PMC_annotation_scope"] == (
+        "abstract_only_because_in_PMC_is_false"
     )
     assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(
         visual["observations"]["Gur_2024_directly_recorded_neuron_types"]

@@ -691,6 +691,18 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "public_numeric_payload_verified": hao_asap7y[
                 "public_numeric_payload_verified"
             ],
+            "Europe_PMC_annotation_count": hao_asap7y[
+                "Europe_PMC_text_mining"
+            ]["annotation_count"],
+            "Europe_PMC_Mi4_annotation_hit": hao_asap7y[
+                "Europe_PMC_text_mining"
+            ]["Mi4_annotation_hit"],
+            "Europe_PMC_C3_annotation_hit": hao_asap7y[
+                "Europe_PMC_text_mining"
+            ]["C3_annotation_hit"],
+            "Europe_PMC_annotation_scope": hao_asap7y[
+                "Europe_PMC_text_mining"
+            ]["annotation_scope"],
             "author_dissertation_restricted_until": hao_asap7y[
                 "author_dissertation"
             ]["restricted_until"],

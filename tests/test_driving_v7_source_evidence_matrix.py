@@ -172,6 +172,13 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert components["Hao_2026_ASAP7y_Drosophila_voltage_candidate_unresolved"] is True
         assert components["Hao_2026_ASAP7y_required_source_direct_recording_verified"] is False
         assert components["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
+        assert components["Hao_2026_Europe_PMC_annotation_hit"] is False
+        assert (
+            components[
+                "Hao_2026_Europe_PMC_annotations_resolve_complete_cell_types"
+            ]
+            is False
+        )
     assert report["matrix"]["Mi4"]["evidence_components"][
         "Gur_2024_Mi4_C3_proofreading_table_row_count"
     ] == 723

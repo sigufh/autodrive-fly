@@ -532,6 +532,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in {"Mi4", "C3"}
                 and hao_asap7y["public_numeric_payload_verified"]
             ),
+            "Hao_2026_Europe_PMC_annotation_hit": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["Europe_PMC_text_mining"][
+                    f"{source}_annotation_hit"
+                ]
+            ),
+            "Hao_2026_Europe_PMC_annotations_resolve_complete_cell_types": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["Europe_PMC_text_mining"][
+                    "resolves_complete_experimental_cell_type_set"
+                ]
+            ),
             "Gur_2024_Mi4_C3_proofreading_table_row_count": (
                 stable_contrast["proofreading_workbooks"][source]["row_count"]
                 if source in {"Mi4", "C3"}

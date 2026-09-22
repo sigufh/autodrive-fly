@@ -86,6 +86,10 @@ export type V7Status = {
     Hao_2025_dissertation_public_abstract_names_cell_types?: boolean;
     Hao_2026_ASAP7y_successful_index_numeric_payload_found?: boolean;
     Hao_2026_ASAP7y_global_payload_absence_claimed?: boolean;
+    Hao_2026_Europe_PMC_annotation_count?: number;
+    Hao_2026_Europe_PMC_Mi4_annotation_hit?: boolean;
+    Hao_2026_Europe_PMC_C3_annotation_hit?: boolean;
+    Hao_2026_Europe_PMC_annotation_scope?: string;
     Gur_2024_directly_recorded_neuron_types?: string[];
     Gur_2024_Mi4_proofreading_row_count?: number;
     Gur_2024_C3_proofreading_row_count?: number;

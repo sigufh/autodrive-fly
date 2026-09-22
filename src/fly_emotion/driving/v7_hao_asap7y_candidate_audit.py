@@ -71,6 +71,23 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
         raise ValueError("ASAP7y HighWire access response changed")
     if json.loads(paths["europe_pmc_fulltext_response"].read_text())["status"] != 500:
         raise ValueError("ASAP7y Europe PMC full-text response changed")
+    annotations = json.loads(paths["europe_pmc_annotations"].read_text())
+    if (
+        len(annotations) != 1
+        or annotations[0]["source"] != "PPR"
+        or annotations[0]["extId"] != "PPR1242681"
+    ):
+        raise ValueError("ASAP7y Europe PMC annotation identity changed")
+    annotation_terms = [item["exact"] for item in annotations[0]["annotations"]]
+    if annotation_terms != [
+        "membranes",
+        "organization",
+        "mice",
+        "flies",
+        "photon",
+        "Drosophila",
+    ]:
+        raise ValueError("ASAP7y Europe PMC annotation inventory changed")
     thread_spec = config["public_author_thread"]
     thread_paths = {
         "resolve": _verify(root, thread_spec["resolve"]),
@@ -240,6 +257,15 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             "Europe_PMC_in_PMC": False,
             "OpenAlex_status": "closed",
             "openRxiv_mapping_found": False,
+        },
+        "Europe_PMC_text_mining": {
+            "article_id": "PPR:PPR1242681",
+            "annotation_count": len(annotation_terms),
+            "exact_terms": annotation_terms,
+            "Mi4_annotation_hit": "Mi4" in annotation_terms,
+            "C3_annotation_hit": "C3" in annotation_terms,
+            "annotation_scope": "abstract_only_because_in_PMC_is_false",
+            "resolves_complete_experimental_cell_type_set": False,
         },
         "public_numeric_payload_verified": False,
         "authorize_Mi4_C3_candidate_classification": False,

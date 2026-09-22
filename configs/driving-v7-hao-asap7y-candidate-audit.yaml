@@ -1,4 +1,4 @@
-version: 3
+version: 4
 name: v7-hao-asap7y-candidate-audit
 observed_on: "2026-09-22"
 paper:
@@ -17,6 +17,7 @@ snapshots:
   highwire_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/highwire.xml, bytes: 121, sha256: 3b920530accd5b38d8bab6747e8850f951b2b97581a5359e70b3e40e3db118dd}
   europe_pmc_fulltext_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc-full.xml, bytes: 150, sha256: ee2a52e3a9c5b05254518ecd944a5e186d1ad25673ed9a3e51c09aadf3ccee9d}
   openrxiv_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/openrxiv.json, bytes: 61, sha256: d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340}
+  europe_pmc_annotations: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc-annotations.json, bytes: 2185, sha256: 336dcb5a5ba7f6d7fdf4cc3cd06709603e44089caa5139afed30abf130db6304}
 public_author_thread:
   author_handle: michaelzlin.bsky.social
   author_did: did:plc:bexnuogium744jj6ibk4bhy3
@@ -56,6 +57,8 @@ boundary:
   author_dissertation_abstract_does_not_substitute_for_restricted_fulltext: true
   related_dissertation_is_not_assumed_to_be_the_same_experimental_cohort: true
   successful_public_index_zero_results_are_not_global_payload_absence: true
+  Europe_PMC_annotations_are_abstract_level_not_fulltext: true
+  abstract_annotation_zero_hits_do_not_exclude_Mi4_or_C3: true
   HTTP_401_403_404_429_and_500_are_not_source_absence: true
   no_parameter_fit: true
   no_target_activity_injection: true

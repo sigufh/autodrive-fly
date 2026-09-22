@@ -2343,6 +2343,9 @@ C2/C3/Lawf。因而不下载与 C3 无关的 49.6 GB 大载荷，也不把 recur
 500 且记录不在 PMC，OpenAlex 标记 closed，openRxiv 尚无 MECA 映射。因此该项保留为
 `unresolved_high_value_candidate`：已知示例不含 Mi4/C3，但完整集合仍未解析，故既不算
 Mi4/C3 命中，也不算排除，不授权载荷下载或拟合。
+Europe PMC 的文本挖掘接口另返回 6 个实体（`membranes/organization/mice/flies/photon/
+Drosophila`），Mi4 与 C3 均零命中；但该记录 `inPMC=false`，注释只覆盖摘要，不能据此
+排除正文中的实验细胞类型。
 证据见 `artifacts/v7-hao-asap7y-candidate-audit.json`。
 
 随后找到第一作者 Yukun Hao 的 Stanford 2025 博士论文《Voltage imaging for
