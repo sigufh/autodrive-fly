@@ -183,7 +183,9 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert hao["doi"] == "10.64898/2026.05.27.728040"
     assert hao["Drosophila_in_vivo_voltage_imaging"] is True
     assert hao["measurement_modality"] == "two_photon_ASAP7y_voltage_imaging"
-    assert hao["experimental_cell_types"] == []
+    assert hao["paper_source_experimental_cell_types"] == []
+    assert hao["public_author_figure_named_examples"] == ["Dm9", "MeLo13"]
+    assert hao["complete_experimental_cell_type_set_resolved"] is False
     assert hao["candidate_classification"] == "unresolved_high_value_candidate"
     assert hao["public_numeric_payload_verified"] is False
     assert hao["source_dynamics_fit_authorized"] is False

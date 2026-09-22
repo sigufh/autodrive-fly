@@ -25,10 +25,17 @@ def test_ASAP7y_is_real_fly_voltage_evidence_but_cell_types_are_unresolved() -> 
     assert scope["cites_Groschner_2022"] is True
     cell_types = report["cell_type_resolution"]
     assert cell_types["full_text_retrieved"] is False
-    assert cell_types["experimental_Drosophila_cell_types_named_in_accessible_sources"] == []
+    assert cell_types["public_author_figure_named_examples"] == ["Dm9", "MeLo13"]
+    assert cell_types["complete_experimental_cell_type_set_resolved"] is False
+    assert cell_types["experimental_Drosophila_cell_types_named_in_paper_sources"] == []
     assert cell_types["Mi4_direct_recording_verified"] is False
     assert cell_types["C3_direct_recording_verified"] is False
     assert cell_types["candidate_classification"] == "unresolved_high_value_candidate"
+    locator = report["locator_evidence"]
+    assert locator["author_handle"] == "michaelzlin.bsky.social"
+    assert locator["post_11_visual_labels"] == ["Dm9", "MeLo13"]
+    assert locator["counts_as_numeric_payload"] is False
+    assert locator["resolves_complete_paper_cell_type_set"] is False
 
 
 def test_unresolved_candidate_does_not_change_transfer_or_downstream_gates() -> None:

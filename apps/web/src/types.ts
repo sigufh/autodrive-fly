@@ -73,7 +73,9 @@ export type V7Status = {
     Pang_2025_Dryad_file_count?: number;
     Pang_2025_new_C3_direct_recording_found?: boolean;
     Hao_2026_ASAP7y_candidate_classification?: string;
-    Hao_2026_ASAP7y_experimental_cell_types?: string[];
+    Hao_2026_ASAP7y_paper_source_experimental_cell_types?: string[];
+    Hao_2026_ASAP7y_public_author_figure_named_examples?: string[];
+    Hao_2026_ASAP7y_complete_cell_type_set_resolved?: boolean;
     Hao_2026_ASAP7y_Drosophila_voltage_verified?: boolean;
     Hao_2026_ASAP7y_public_numeric_payload_verified?: boolean;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };

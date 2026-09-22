@@ -621,9 +621,12 @@ The 2026 ASAP7y preprint (`10.64898/2026.05.27.728040`) is retained as an
 unresolved high-value candidate. Accessible metadata verifies millisecond,
 subcellular, subthreshold in-vivo voltage imaging in individual Drosophila neurons
 and a citation to Groschner 2022, but does not name the experimentally imaged fly
-cell types. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text routes return
+cell types. A public author Bluesky figure visibly labels Dm9 and MeLo13 examples,
+but this is locator evidence rather than a complete paper cell-type inventory or
+numeric payload. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text routes return
 429, 403, and 500 respectively; OpenAlex marks it closed and openRxiv has no MECA
-mapping. It is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
+mapping. The named examples are not Mi4/C3, but the complete set remains unresolved;
+it is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
 source transfer (`artifacts/v7-hao-asap7y-candidate-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while

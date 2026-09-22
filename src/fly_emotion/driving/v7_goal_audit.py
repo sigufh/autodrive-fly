@@ -1681,9 +1681,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Hao_2026_ASAP7y_candidate_classification": hao_asap7y_candidate_audit[
                     "cell_type_resolution"
                 ]["candidate_classification"],
-                "Hao_2026_ASAP7y_experimental_cell_types": hao_asap7y_candidate_audit[
-                    "cell_type_resolution"
-                ]["experimental_Drosophila_cell_types_named_in_accessible_sources"],
+                "Hao_2026_ASAP7y_paper_source_experimental_cell_types": (
+                    hao_asap7y_candidate_audit["cell_type_resolution"][
+                        "experimental_Drosophila_cell_types_named_in_paper_sources"
+                    ]
+                ),
+                "Hao_2026_ASAP7y_public_author_figure_named_examples": (
+                    hao_asap7y_candidate_audit["cell_type_resolution"][
+                        "public_author_figure_named_examples"
+                    ]
+                ),
+                "Hao_2026_ASAP7y_complete_cell_type_set_resolved": (
+                    hao_asap7y_candidate_audit["cell_type_resolution"][
+                        "complete_experimental_cell_type_set_resolved"
+                    ]
+                ),
                 "Hao_2026_ASAP7y_Drosophila_voltage_verified": (
                     hao_asap7y_candidate_audit["verified_scope"][
                         "Drosophila_in_vivo_voltage_imaging"
@@ -4024,7 +4036,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Pang_2025_Dryad_file_count",
                     "Pang_2025_new_C3_direct_recording_found",
                     "Hao_2026_ASAP7y_candidate_classification",
-                    "Hao_2026_ASAP7y_experimental_cell_types",
+                    "Hao_2026_ASAP7y_paper_source_experimental_cell_types",
+                    "Hao_2026_ASAP7y_public_author_figure_named_examples",
+                    "Hao_2026_ASAP7y_complete_cell_type_set_resolved",
                     "Hao_2026_ASAP7y_Drosophila_voltage_verified",
                     "Hao_2026_ASAP7y_public_numeric_payload_verified",
                     "C2C3_version_of_record_DOI",

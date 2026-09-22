@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-hao-asap7y-candidate-audit
 observed_on: "2026-09-22"
 paper:
@@ -17,11 +17,23 @@ snapshots:
   highwire_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/highwire.xml, bytes: 121, sha256: 3b920530accd5b38d8bab6747e8850f951b2b97581a5359e70b3e40e3db118dd}
   europe_pmc_fulltext_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc-full.xml, bytes: 150, sha256: ee2a52e3a9c5b05254518ecd944a5e186d1ad25673ed9a3e51c09aadf3ccee9d}
   openrxiv_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/openrxiv.json, bytes: 61, sha256: d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340}
+public_author_thread:
+  author_handle: michaelzlin.bsky.social
+  author_did: did:plc:bexnuogium744jj6ibk4bhy3
+  resolve: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/resolve.json, bytes: 42, sha256: 10787de9ef5dbe7bf1e30fcde9db3a45b8aa928a44028e19a04f6dffc9b54149}
+  thread: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/thread-full.json, bytes: 38728, sha256: e09128960100f06ad418c98483c5a287befcc004a8aeeb663b7038d2d1b7fd27}
+  images:
+    post_8: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-8.jpg, bytes: 164114, sha256: 866bd4baee183975167fd3e029efc75753996e12a1cfbf69696ae19d33db822b}
+    post_10: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-10.jpg, bytes: 74491, sha256: 376776c886cfd109fd0825d5eea4cb81c9c3227acdd8db4c04ceccc71b0a9a19}
+    post_11: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-11.jpg, bytes: 114428, sha256: c852d06333c32c030ddacf0d2f8650a27cdaad74c018666ea6f7a65be87d8a2d}
+  visually_verified_post_11_labels: [Dm9, MeLo13]
 boundary:
   high_value_candidate_kept_unresolved_until_cell_types_are_verified: true
   Drosophila_visual_voltage_does_not_imply_Mi4_or_C3: true
   inaccessible_fulltext_is_not_absence: true
   unresolved_candidate_does_not_authorize_fit_or_download: true
+  public_author_figure_is_locator_evidence_not_numeric_payload: true
+  partial_named_examples_do_not_resolve_complete_experimental_cell_type_set: true
   no_parameter_fit: true
   no_target_activity_injection: true
   runtime_modified: false

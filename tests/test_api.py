@@ -79,7 +79,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Hao_2026_ASAP7y_candidate_classification"] == (
         "unresolved_high_value_candidate"
     )
-    assert boundaries["Hao_2026_ASAP7y_experimental_cell_types"] == []
+    assert boundaries["Hao_2026_ASAP7y_paper_source_experimental_cell_types"] == []
+    assert boundaries["Hao_2026_ASAP7y_public_author_figure_named_examples"] == [
+        "Dm9",
+        "MeLo13",
+    ]
+    assert boundaries["Hao_2026_ASAP7y_complete_cell_type_set_resolved"] is False
     assert boundaries["Hao_2026_ASAP7y_Drosophila_voltage_verified"] is True
     assert boundaries["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
     assert boundaries["T5_voltage_field_counts"] == {

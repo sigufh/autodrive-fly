@@ -600,9 +600,15 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "measurement_modality": hao_asap7y["verified_scope"][
                 "measurement_modality"
             ],
-            "experimental_cell_types": hao_asap7y["cell_type_resolution"][
-                "experimental_Drosophila_cell_types_named_in_accessible_sources"
-            ],
+            "paper_source_experimental_cell_types": hao_asap7y[
+                "cell_type_resolution"
+            ]["experimental_Drosophila_cell_types_named_in_paper_sources"],
+            "public_author_figure_named_examples": hao_asap7y[
+                "cell_type_resolution"
+            ]["public_author_figure_named_examples"],
+            "complete_experimental_cell_type_set_resolved": hao_asap7y[
+                "cell_type_resolution"
+            ]["complete_experimental_cell_type_set_resolved"],
             "candidate_classification": hao_asap7y["cell_type_resolution"][
                 "candidate_classification"
             ],

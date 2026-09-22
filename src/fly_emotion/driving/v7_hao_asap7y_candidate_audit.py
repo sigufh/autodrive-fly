@@ -70,6 +70,25 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
         raise ValueError("ASAP7y HighWire access response changed")
     if json.loads(paths["europe_pmc_fulltext_response"].read_text())["status"] != 500:
         raise ValueError("ASAP7y Europe PMC full-text response changed")
+    thread_spec = config["public_author_thread"]
+    thread_paths = {
+        "resolve": _verify(root, thread_spec["resolve"]),
+        "thread": _verify(root, thread_spec["thread"]),
+        **{
+            name: _verify(root, spec) for name, spec in thread_spec["images"].items()
+        },
+    }
+    if json.loads(thread_paths["resolve"].read_text())["did"] != thread_spec["author_did"]:
+        raise ValueError("ASAP7y author-thread DID identity changed")
+    thread = json.loads(thread_paths["thread"].read_text())
+    thread_text = json.dumps(thread, ensure_ascii=False)
+    thread_phrases = (
+        "ASAP7y recordings with analysis of the EM connectome of 717 neuron types",
+        "most of the ASAP7y paper is in flies",
+    )
+    if any(phrase not in thread_text for phrase in thread_phrases):
+        raise ValueError("ASAP7y public author-thread text changed")
+    visually_verified_examples = thread_spec["visually_verified_post_11_labels"]
 
     return {
         "protocol": {
@@ -81,6 +100,10 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             },
             "raw_snapshot_identity": {
                 str(path.relative_to(root)): _sha256(path) for path in paths.values()
+            }
+            | {
+                str(path.relative_to(root)): _sha256(path)
+                for path in thread_paths.values()
             },
             "parameter_fit": False,
             "target_activity_injection": False,
@@ -96,10 +119,19 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
         },
         "cell_type_resolution": {
             "full_text_retrieved": False,
-            "experimental_Drosophila_cell_types_named_in_accessible_sources": [],
+            "public_author_figure_named_examples": visually_verified_examples,
+            "complete_experimental_cell_type_set_resolved": False,
+            "experimental_Drosophila_cell_types_named_in_paper_sources": [],
             "Mi4_direct_recording_verified": False,
             "C3_direct_recording_verified": False,
             "candidate_classification": "unresolved_high_value_candidate",
+        },
+        "locator_evidence": {
+            "source": "public_author_Bluesky_thread",
+            "author_handle": thread_spec["author_handle"],
+            "post_11_visual_labels": visually_verified_examples,
+            "counts_as_numeric_payload": False,
+            "resolves_complete_paper_cell_type_set": False,
         },
         "access_boundaries": {
             "bioRxiv_HTML_status": 429,

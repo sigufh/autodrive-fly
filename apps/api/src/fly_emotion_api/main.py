@@ -200,8 +200,14 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_ASAP7y_candidate_classification": visual[
                     "Hao_2026_ASAP7y_candidate_classification"
                 ],
-                "Hao_2026_ASAP7y_experimental_cell_types": visual[
-                    "Hao_2026_ASAP7y_experimental_cell_types"
+                "Hao_2026_ASAP7y_paper_source_experimental_cell_types": visual[
+                    "Hao_2026_ASAP7y_paper_source_experimental_cell_types"
+                ],
+                "Hao_2026_ASAP7y_public_author_figure_named_examples": visual[
+                    "Hao_2026_ASAP7y_public_author_figure_named_examples"
+                ],
+                "Hao_2026_ASAP7y_complete_cell_type_set_resolved": visual[
+                    "Hao_2026_ASAP7y_complete_cell_type_set_resolved"
                 ],
                 "Hao_2026_ASAP7y_Drosophila_voltage_verified": visual[
                     "Hao_2026_ASAP7y_Drosophila_voltage_verified"
