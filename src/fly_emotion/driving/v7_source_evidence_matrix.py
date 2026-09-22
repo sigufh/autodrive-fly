@@ -547,6 +547,15 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Mi4"
                 and tanaka_mi4["recording_to_MaleCNS_body_crosswalk_found"]
             ),
+            "Tanaka_2023_Figure_6_named_Mi4_C3_files_are_behavioral": (
+                source in {"Mi4", "C3"}
+                and not tanaka_mi4["Figure_6_named_Mi4_C3_members"][
+                    "neural_activity_recording"
+                ]
+                and not tanaka_mi4["Figure_6_named_Mi4_C3_members"][
+                    "source_dynamics_payload"
+                ]
+            ),
             "Wu_2026_afterimages_Mi4_GCaMP6f_phenotype_verified": (
                 source == "Mi4"
                 and afterimages_mi4["measurement"]["Mi4_fly_count"] == 6

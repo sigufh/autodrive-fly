@@ -1778,6 +1778,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Tanaka_2023_Mi4_source_dynamics_transfer_authorized": (
                     tanaka_mi4_calcium_audit["authorize_Mi4_source_dynamics_transfer"]
                 ),
+                "Tanaka_2023_Figure_6_named_Mi4_C3_member_count": len(
+                    tanaka_mi4_calcium_audit["Figure_6_named_Mi4_C3_members"][
+                        "members"
+                    ]
+                ),
+                "Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording": (
+                    tanaka_mi4_calcium_audit["Figure_6_named_Mi4_C3_members"][
+                        "neural_activity_recording"
+                    ]
+                ),
+                "Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload": (
+                    tanaka_mi4_calcium_audit["Figure_6_named_Mi4_C3_members"][
+                        "source_dynamics_payload"
+                    ]
+                ),
                 "Wu_2026_afterimages_Mi4_fly_count": (
                     afterimages_mi4_candidate_audit["measurement"]["Mi4_fly_count"]
                 ),
@@ -4184,6 +4199,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Tanaka_2023_Mi4_response_unit",
                     "Tanaka_2023_Mi4_experimental_membrane_voltage",
                     "Tanaka_2023_Mi4_source_dynamics_transfer_authorized",
+                    "Tanaka_2023_Figure_6_named_Mi4_C3_member_count",
+                    "Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording",
+                    "Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload",
                     "Wu_2026_afterimages_Mi4_fly_count",
                     "Wu_2026_afterimages_Mi4_ROI_count",
                     "Wu_2026_afterimages_Mi4_response_unit",

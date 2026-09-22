@@ -3,8 +3,8 @@
     "name": "v7-tanaka-mi4-calcium-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-tanaka-mi4-calcium-audit.yaml": "c8387390dc6ea56005798474b7992047ad7f65aa50eabb1d0f6147f995a9ef91",
-      "src/fly_emotion/driving/v7_tanaka_mi4_calcium_audit.py": "f1e387a46b6b983c61007e84f28eba9563b7cc09025ab8d32c4d9af45f2bf65d"
+      "configs/driving-v7-tanaka-mi4-calcium-audit.yaml": "247f33cb5b7c076f3829e75a97f767ea462704ac9558ef0da55066590d6d014b",
+      "src/fly_emotion/driving/v7_tanaka_mi4_calcium_audit.py": "ae0791cd71e68bb96cceccf078ea2e5b8a55ae125f02817191e6dd7bcd364652"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/PMC10848174.html": "3a9bda9184312f93399866276f294398e985906d0afb597f66cd4f0464436fd8",
@@ -14,7 +14,8 @@
       "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/central-directory.bin": "35f87d0b30a27a3ac4f68166c37c18ccfb43582a57ace1c4e79f564e589beab8",
       "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/archive-readme.md": "7ce0816e4e5b2159974f43cfd93eec206bd452469131333bb792affaec059182",
       "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.m": "3f83c5ea9e01b5e0f19103fba4914db3e7d22fae241c86f80e863bf18aaad848",
-      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.mat": "a027dc9bc9eae95156617deaca21d841aa664e9d87863fa8e41a838b3a5e5896"
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.mat": "a027dc9bc9eae95156617deaca21d841aa664e9d87863fa8e41a838b3a5e5896",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig6-scripts-range.bin": "a136deac9099fc4bc51fe78ab102c41f48e22feb4edd5734123f61601378c368"
     },
     "parameter_fit": false,
     "target_activity_injection": false,
@@ -113,6 +114,41 @@
     "individual_fly_axis_available": true,
     "trial_and_ROI_axes_available": true
   },
+  "Figure_6_named_Mi4_C3_members": {
+    "members": {
+      "counterevidence_data_upload/counterevidence_dryad_data/data/fig6/screen/C3.mat": {
+        "compressed_bytes": 262710188,
+        "uncompressed_bytes": 263329323,
+        "local_header_offset": 6537446434,
+        "crc32": "0xd9ec44bf"
+      },
+      "counterevidence_data_upload/counterevidence_dryad_data/data/fig6/screen/Mi4.mat": {
+        "compressed_bytes": 134732102,
+        "uncompressed_bytes": 135202387,
+        "local_header_offset": 11492470219,
+        "crc32": "0xeb029cd8"
+      },
+      "counterevidence_data_upload/counterevidence_dryad_data/data/fig6/replication/C3.mat": {
+        "compressed_bytes": 197987466,
+        "uncompressed_bytes": 198704886,
+        "local_header_offset": 4953176870,
+        "crc32": "0x17f4ed9f"
+      },
+      "counterevidence_data_upload/counterevidence_dryad_data/data/fig6/replication/Mi4.mat": {
+        "compressed_bytes": 207713044,
+        "uncompressed_bytes": 208544357,
+        "local_header_offset": 5615974145,
+        "crc32": "0xd1c007fa"
+      }
+    },
+    "combined_uncompressed_bytes": 805780953,
+    "measurement_object": "walking_turning_angular_velocity",
+    "manipulation": "Mi4_or_C3_targeted_shibire_ts_silencing",
+    "neural_activity_recording": false,
+    "source_dynamics_payload": false,
+    "large_MAT_members_downloaded": false,
+    "classification_supported_by_author_scripts": true
+  },
   "ROI_selection": {
     "selected_by_flash_probe_response_consistency": true,
     "response_consistency_threshold": 0.4,
@@ -141,6 +177,8 @@
     "trial_and_ROI_sorting_does_not_preserve_recording_unit_identity_in_quantile_summaries": true,
     "dataset_fly_IDs_are_not_MaleCNS_body_IDs": true,
     "stationary_and_flicker_checkerboards_do_not_supply_direction_labeled_source_dynamics": true,
+    "Figure_6_Mi4_C3_named_files_are_behavioral_silencing_data_not_neural_recordings": true,
+    "Figure_6_large_behavioral_MAT_members_not_downloaded": true,
     "model_tau_is_imported_from_Arenz_2017_not_fit_from_Figure_7": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

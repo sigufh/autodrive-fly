@@ -258,6 +258,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "Tanaka_2023_Mi4_source_dynamics_transfer_authorized": visual[
                     "Tanaka_2023_Mi4_source_dynamics_transfer_authorized"
                 ],
+                "Tanaka_2023_Figure_6_named_Mi4_C3_member_count": visual[
+                    "Tanaka_2023_Figure_6_named_Mi4_C3_member_count"
+                ],
+                "Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording": visual[
+                    "Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording"
+                ],
+                "Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload": visual[
+                    "Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload"
+                ],
                 "Wu_2026_afterimages_Mi4_fly_count": visual[
                     "Wu_2026_afterimages_Mi4_fly_count"
                 ],

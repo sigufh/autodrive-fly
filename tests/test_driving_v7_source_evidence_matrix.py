@@ -137,6 +137,10 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert mi4_components["Tanaka_2023_Mi4_individual_fly_axis_available"] is True
     assert mi4_components["Tanaka_2023_Mi4_experimental_membrane_voltage"] is False
     assert mi4_components["Tanaka_2023_recording_to_MaleCNS_body_crosswalk_found"] is False
+    assert mi4_components["Tanaka_2023_Figure_6_named_Mi4_C3_files_are_behavioral"] is True
+    assert report["matrix"]["C3"]["evidence_components"][
+        "Tanaka_2023_Figure_6_named_Mi4_C3_files_are_behavioral"
+    ] is True
     assert mi4_components["Wu_2026_afterimages_Mi4_GCaMP6f_phenotype_verified"] is True
     assert mi4_components[
         "Wu_2026_afterimages_public_numeric_Mi4_payload_verified"

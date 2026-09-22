@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import struct
@@ -137,6 +138,41 @@ def _crc32(path: Path) -> str:
     return f"0x{checksum & 0xFFFFFFFF:08x}"
 
 
+def _local_zip_members(payload: bytes, expected_names: set[str]) -> dict[str, dict]:
+    offset = 0
+    members = {}
+    while offset + 30 <= len(payload) and payload[offset : offset + 4] == b"PK\x03\x04":
+        values = struct.unpack_from("<4s5H3L2H", payload, offset)
+        method = values[3]
+        crc32, compressed, uncompressed = values[6:9]
+        name_size, extra_size = values[9:11]
+        name_start = offset + 30
+        name = payload[name_start : name_start + name_size].decode("utf-8")
+        data_start = name_start + name_size + extra_size
+        compressed_payload = payload[data_start : data_start + compressed]
+        if len(compressed_payload) != compressed:
+            raise ValueError("Tanaka Figure 6 script range is truncated")
+        if method == 8:
+            content = zlib.decompress(compressed_payload, -15)
+        elif method == 0:
+            content = compressed_payload
+        else:
+            raise ValueError(f"unsupported ZIP compression method: {method}")
+        if len(content) != uncompressed or zlib.crc32(content) & 0xFFFFFFFF != crc32:
+            raise ValueError(f"Tanaka Figure 6 script CRC changed: {name}")
+        members[name] = {
+            "compressed_bytes": compressed,
+            "uncompressed_bytes": uncompressed,
+            "crc32": f"0x{crc32:08x}",
+            "sha256": hashlib.sha256(content).hexdigest(),
+            "text": content.decode("utf-8"),
+        }
+        offset = data_start + compressed
+        if expected_names <= set(members):
+            break
+    return members
+
+
 def evaluate_v7_tanaka_mi4_calcium_audit(root: Path) -> dict:
     config = yaml.safe_load((root / CONFIG).read_text(encoding="utf-8"))
     paths = {name: _verify(root, spec) for name, spec in config["snapshots"].items()}
@@ -191,6 +227,58 @@ def evaluate_v7_tanaka_mi4_calcium_audit(root: Path) -> dict:
         raise ValueError("Tanaka Figure 7 ZIP member identity changed")
     if _crc32(paths["figure7_payload"]) != figure7_entry["crc32"]:
         raise ValueError("Tanaka extracted Figure 7 payload CRC changed")
+
+    behavior_entries = {}
+    for expected_entry in spec["figure6_behavior_members"]:
+        entry = entries[expected_entry["path"]]
+        if any(
+            entry[key] != expected_entry[key]
+            for key in ("compressed_bytes", "uncompressed_bytes", "crc32")
+        ):
+            raise ValueError("Tanaka Figure 6 behavioral member identity changed")
+        behavior_entries[expected_entry["path"]] = entry
+
+    expected_scripts = {item["path"]: item for item in spec["figure6_script_members"]}
+    extracted_scripts = _local_zip_members(
+        paths["figure6_scripts_range"].read_bytes(), set(expected_scripts)
+    )
+    if set(extracted_scripts) != set(expected_scripts):
+        raise ValueError("Tanaka Figure 6 script range inventory changed")
+    for name, expected_entry in expected_scripts.items():
+        observed = extracted_scripts[name]
+        central = entries[name]
+        if any(
+            observed[key] != expected_entry[key]
+            for key in ("compressed_bytes", "uncompressed_bytes", "crc32", "sha256")
+        ) or any(
+            central[key] != expected_entry[key]
+            for key in ("compressed_bytes", "uncompressed_bytes", "crc32")
+        ):
+            raise ValueError("Tanaka Figure 6 script identity changed")
+    screen_script = extracted_scripts[
+        "counterevidence_data_upload/counterevidence_dryad_data/scripts/fig6_01_screen_distplot.m"
+    ]["text"]
+    replication_script = extracted_scripts[
+        "counterevidence_data_upload/counterevidence_dryad_data/scripts/fig6_02_replication.m"
+    ]["text"]
+    if any(
+        phrase not in screen_script
+        for phrase in (
+            "'C2';'C3';'Mi1';'Tm3(a)';'Tm3(b)'",
+            "cells_b = {'Dm1';'Dm2';'Dm3';'Dm4'",
+            "'Dm16';'Dm17';'Dm9Dm13Dm18';'Mi4';'Mi9';'Tm1';'Tm2';'Tm4';'Tm9'}",
+            "meanResps_a{gg,1}(ff,:)= mean(mat(isStim,:,1))",
+            "Gal4/shi fractional turn",
+        )
+    ) or any(
+        phrase not in replication_script
+        for phrase in (
+            "cellnames  = {'C3';'Mi4';'Mi9';'Tm3(a)'",
+            "meanResps{gg,1}(ff,:)= mean(mat(isStim,:,1))",
+            "angular velocity (deg/s)",
+        )
+    ):
+        raise ValueError("Tanaka Figure 6 behavioral semantics changed")
 
     script = paths["figure7_script"].read_text(encoding="utf-8")
     script_phrases = (
@@ -295,6 +383,18 @@ def evaluate_v7_tanaka_mi4_calcium_audit(root: Path) -> dict:
             "Figure_7_member_range_extracted": True,
         },
         "payload_inventory": payload,
+        "Figure_6_named_Mi4_C3_members": {
+            "members": behavior_entries,
+            "combined_uncompressed_bytes": sum(
+                item["uncompressed_bytes"] for item in behavior_entries.values()
+            ),
+            "measurement_object": "walking_turning_angular_velocity",
+            "manipulation": "Mi4_or_C3_targeted_shibire_ts_silencing",
+            "neural_activity_recording": False,
+            "source_dynamics_payload": False,
+            "large_MAT_members_downloaded": False,
+            "classification_supported_by_author_scripts": True,
+        },
         "ROI_selection": {
             "selected_by_flash_probe_response_consistency": True,
             "response_consistency_threshold": 0.4,

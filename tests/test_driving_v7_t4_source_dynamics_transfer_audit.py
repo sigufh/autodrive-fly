@@ -171,6 +171,12 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert independent_mi4["bioRxiv_supplement_retrieved"] is True
     assert independent_mi4["individual_flies_are_statistical_units"] is True
     assert independent_mi4["public_individual_fly_numeric_payload_attached"] is False
+    tanaka = report["verified_Tanaka_2023_independent_Mi4_calcium"]
+    assert tanaka["Figure_6_named_Mi4_C3_member_count"] == 4
+    assert tanaka["Figure_6_measurement_object"] == "walking_turning_angular_velocity"
+    assert tanaka["Figure_6_neural_activity_recording"] is False
+    assert tanaka["Figure_6_source_dynamics_payload"] is False
+    assert tanaka["Figure_6_large_MAT_members_downloaded"] is False
     yuan = report["verified_Yuan_C3_intervention_boundary"]
     assert yuan["doi"] == "10.1111/jnc.15036"
     assert yuan["C3_intervention_candidate_verified"] is True

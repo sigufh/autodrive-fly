@@ -739,6 +739,21 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "source_dynamics_transfer_authorized": tanaka_mi4[
                 "authorize_Mi4_source_dynamics_transfer"
             ],
+            "Figure_6_named_Mi4_C3_member_count": len(
+                tanaka_mi4["Figure_6_named_Mi4_C3_members"]["members"]
+            ),
+            "Figure_6_measurement_object": tanaka_mi4[
+                "Figure_6_named_Mi4_C3_members"
+            ]["measurement_object"],
+            "Figure_6_neural_activity_recording": tanaka_mi4[
+                "Figure_6_named_Mi4_C3_members"
+            ]["neural_activity_recording"],
+            "Figure_6_source_dynamics_payload": tanaka_mi4[
+                "Figure_6_named_Mi4_C3_members"
+            ]["source_dynamics_payload"],
+            "Figure_6_large_MAT_members_downloaded": tanaka_mi4[
+                "Figure_6_named_Mi4_C3_members"
+            ]["large_MAT_members_downloaded"],
         },
         "verified_Wu_2026_afterimages_Mi4_phenotype": {
             "doi": afterimages_mi4["paper"]["doi"],

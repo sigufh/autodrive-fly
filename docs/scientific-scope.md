@@ -663,6 +663,13 @@ is imported from Arenz 2017 rather than fitted to Figure 7. This is independent
 individual-fly numerical calcium evidence, not membrane voltage, C3 evidence,
 direction-labelled source dynamics, or a recording-to-MaleCNS crosswalk; it does not
 authorize T4 source transfer (artifacts/v7-tanaka-mi4-calcium-audit.json).
+The same archive has four `Mi4.mat`/`C3.mat` members under Figure 6 screen and
+replication directories, totaling 805,780,953 uncompressed bytes. Three author
+scripts were retrieved by exact byte range and verified by CRC/SHA-256. They treat
+the named neurons as Gal4/shibirets manipulation groups and measure per-fly walking
+turning angular velocity to compute stationary/uniform fractional turning. These are
+behavioral intervention payloads, not Mi4/C3 neural recordings; the four large MAT
+members were therefore not downloaded or counted as source dynamics.
 Wu et al. 2026 (10.64898/2026.01.19.700413) independently images Mi4 with
 GCaMP6f. Europe PMC XML and the sole six-page supplement verify 113 Mi4 ROIs from
 six flies, approximately 13-Hz acquisition, and sinusoidal pattern-uniform stimuli

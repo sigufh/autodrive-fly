@@ -10,6 +10,19 @@ def test_tanaka_mi4_audit_is_hash_and_revision_bound() -> None:
     report = json.loads(REPORT.read_text())
     for path, digest in report["protocol"]["dependencies_sha256"].items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+
+
+def test_tanaka_figure6_mi4_c3_named_payloads_are_behavioral() -> None:
+    report = json.loads(REPORT.read_text())
+    figure6 = report["Figure_6_named_Mi4_C3_members"]
+    assert len(figure6["members"]) == 4
+    assert figure6["combined_uncompressed_bytes"] == 805_780_953
+    assert figure6["measurement_object"] == "walking_turning_angular_velocity"
+    assert figure6["manipulation"] == "Mi4_or_C3_targeted_shibire_ts_silencing"
+    assert figure6["neural_activity_recording"] is False
+    assert figure6["source_dynamics_payload"] is False
+    assert figure6["large_MAT_members_downloaded"] is False
+    assert figure6["classification_supported_by_author_scripts"] is True
     for path, digest in report["protocol"]["raw_snapshot_identity"].items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
     assert report["model_boundary"]["repository_revision"] == (

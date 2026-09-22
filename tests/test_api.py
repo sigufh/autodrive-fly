@@ -112,6 +112,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Tanaka_2023_Mi4_response_unit"] == "deltaF_over_F"
     assert boundaries["Tanaka_2023_Mi4_experimental_membrane_voltage"] is False
     assert boundaries["Tanaka_2023_Mi4_source_dynamics_transfer_authorized"] is False
+    assert boundaries["Tanaka_2023_Figure_6_named_Mi4_C3_member_count"] == 4
+    assert boundaries["Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording"] is False
+    assert boundaries["Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload"] is False
     assert boundaries["Wu_2026_afterimages_Mi4_fly_count"] == 6
     assert boundaries["Wu_2026_afterimages_Mi4_ROI_count"] == 113
     assert boundaries["Wu_2026_afterimages_Mi4_response_unit"] == "deltaF_over_F"

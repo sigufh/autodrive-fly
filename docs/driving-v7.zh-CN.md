@@ -2377,6 +2377,12 @@ fig7_mi4.mat 与对应脚本。CRC 和仓库哈希通过；载荷保留 10 个�
 2017，并非由这批 Figure 7 数据拟合。因此这是一条强的独立、逐 fly Mi4 数值钙动态证据，
 但不是膜电位、没有 C3、没有 recording-to-MaleCNS body crosswalk，也没有方向标记的 source
 dynamics，不能解锁 T4 transfer。证据见 artifacts/v7-tanaka-mi4-calcium-audit.json。
+同一归档还包含 Figure 6 `screen`/`replication` 下各一份 `Mi4.mat` 与 `C3.mat`；
+ZIP64 目录记录的四个成员解压后合计 805,780,953 bytes。三个对应作者脚本经精确
+Range 读取及 CRC/SHA-256 校验，明确把这些文件作为 Gal4/shibirets 操作组，读取逐 fly
+walking turning angular velocity 并计算 stationary/uniform fractional turning。它们是
+行为干预数据，不是 Mi4/C3 神经活动载荷；因此没有下载四个大 MAT，也不把文件名计为
+source-dynamics 命中。
 
 Wu 等 2026 的 afterimage 预印本（DOI 10.64898/2026.01.19.700413）也直接记录了
 Mi4，但模态仍为 GCaMP6f。Europe PMC XML 与唯一补充 PDF 可验证 Mi4 为 6 flies、

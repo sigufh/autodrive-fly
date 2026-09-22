@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-tanaka-mi4-calcium-audit
 observed_on: "2026-09-22"
 paper:
@@ -16,6 +16,7 @@ snapshots:
   archive_readme: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/archive-readme.md, bytes: 931, sha256: 7ce0816e4e5b2159974f43cfd93eec206bd452469131333bb792affaec059182}
   figure7_script: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.m, bytes: 8839, sha256: 3f83c5ea9e01b5e0f19103fba4914db3e7d22fae241c86f80e863bf18aaad848}
   figure7_payload: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.mat, bytes: 298840406, sha256: a027dc9bc9eae95156617deaca21d841aa664e9d87863fa8e41a838b3a5e5896}
+  figure6_scripts_range: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig6-scripts-range.bin, bytes: 7471, sha256: a136deac9099fc4bc51fe78ab102c41f48e22feb4edd5734123f61601378c368}
 dryad:
   doi: 10.5061/dryad.bcc2fqzjz
   version_id: 262243
@@ -31,6 +32,15 @@ dryad:
   figure7_payload_uncompressed_bytes: 298840406
   figure7_payload_crc32: "0x21578d7a"
   figure7_script_path: counterevidence_data_upload/counterevidence_dryad_data/scripts/fig7_mi4.m
+  figure6_behavior_members:
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/data/fig6/screen/C3.mat, compressed_bytes: 262710188, uncompressed_bytes: 263329323, crc32: "0xd9ec44bf"}
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/data/fig6/screen/Mi4.mat, compressed_bytes: 134732102, uncompressed_bytes: 135202387, crc32: "0xeb029cd8"}
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/data/fig6/replication/C3.mat, compressed_bytes: 197987466, uncompressed_bytes: 198704886, crc32: "0x17f4ed9f"}
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/data/fig6/replication/Mi4.mat, compressed_bytes: 207713044, uncompressed_bytes: 208544357, crc32: "0xd1c007fa"}
+  figure6_script_members:
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/scripts/fig6_01_screen_distplot.m, compressed_bytes: 2897, uncompressed_bytes: 8415, crc32: "0x821eaf6c", sha256: d263377e373069f79de87d580df06956553d92fd0af5ac2345caca5d8dc943a1}
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/scripts/fig6_02_replication.m, compressed_bytes: 1854, uncompressed_bytes: 4579, crc32: "0xef414f2c", sha256: f92a366482c952e43a4369583ba0cda4b3d961ec08c4cff98d8dd6e885fdac6a}
+    - {path: counterevidence_data_upload/counterevidence_dryad_data/scripts/fig6_03_NTsplit.m, compressed_bytes: 1547, uncompressed_bytes: 3557, crc32: "0x3bced028", sha256: 05e3df8189c7bb07c8475b2671b5e7fed52dedfc0d2dc9bcb24b74c310972cf4}
 repository:
   path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/Mi4Decoder
   url: https://github.com/ClarkLabCode/Mi4Decoder
@@ -53,6 +63,8 @@ boundary:
   trial_and_ROI_sorting_does_not_preserve_recording_unit_identity_in_quantile_summaries: true
   dataset_fly_IDs_are_not_MaleCNS_body_IDs: true
   stationary_and_flicker_checkerboards_do_not_supply_direction_labeled_source_dynamics: true
+  Figure_6_Mi4_C3_named_files_are_behavioral_silencing_data_not_neural_recordings: true
+  Figure_6_large_behavioral_MAT_members_not_downloaded: true
   model_tau_is_imported_from_Arenz_2017_not_fit_from_Figure_7: true
   no_parameter_fit: true
   no_target_activity_injection: true

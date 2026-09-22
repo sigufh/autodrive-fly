@@ -93,6 +93,9 @@ export type V7Status = {
     Tanaka_2023_Mi4_response_unit?: string;
     Tanaka_2023_Mi4_experimental_membrane_voltage?: boolean;
     Tanaka_2023_Mi4_source_dynamics_transfer_authorized?: boolean;
+    Tanaka_2023_Figure_6_named_Mi4_C3_member_count?: number;
+    Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording?: boolean;
+    Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload?: boolean;
     Wu_2026_afterimages_Mi4_fly_count?: number;
     Wu_2026_afterimages_Mi4_ROI_count?: number;
     Wu_2026_afterimages_Mi4_response_unit?: string;
