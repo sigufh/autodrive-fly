@@ -46,6 +46,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     c3_citation_graph = evidence["c3_citation_graph"]
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
     stable_contrast = evidence["stable_contrast_scope"]
+    tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -134,6 +135,10 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and gonzalez_suarez["repository_evidence"][
                     "Mi4_type_average_filter_available"
                 ]
+            )
+            or (
+                source == "Mi4"
+                and tanaka_mi4["independent_Mi4_numerical_calcium_dynamics_verified"]
             )
         )
         local_spatial_calcium = source in t5_spatial
@@ -499,6 +504,26 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Mi4" and stable_contrast["Mi4_direct_physiology_found"]
                 or source == "C3" and stable_contrast["C3_direct_physiology_found"]
             ),
+            "Tanaka_2023_independent_Mi4_numerical_calcium_dynamics_verified": (
+                source == "Mi4"
+                and tanaka_mi4["independent_Mi4_numerical_calcium_dynamics_verified"]
+            ),
+            "Tanaka_2023_Mi4_fly_count": (
+                tanaka_mi4["payload_inventory"]["fly_count"]
+                if source == "Mi4"
+                else 0
+            ),
+            "Tanaka_2023_Mi4_individual_fly_axis_available": (
+                source == "Mi4"
+                and tanaka_mi4["payload_inventory"]["individual_fly_axis_available"]
+            ),
+            "Tanaka_2023_Mi4_experimental_membrane_voltage": (
+                source == "Mi4" and tanaka_mi4["experimental_membrane_voltage"]
+            ),
+            "Tanaka_2023_recording_to_MaleCNS_body_crosswalk_found": (
+                source == "Mi4"
+                and tanaka_mi4["recording_to_MaleCNS_body_crosswalk_found"]
+            ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources
             ),
@@ -816,6 +841,10 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             numerical_sources.append(
                 "Gonzalez_Suarez_2022_type_average_deconvolved_GCaMP6f_filter"
             )
+        if source == "Mi4" and tanaka_mi4[
+            "independent_Mi4_numerical_calcium_dynamics_verified"
+        ]:
+            numerical_sources.append("Tanaka_2023_individual_jGCaMP7b_time_series")
 
         missing = []
         if not allowed_numerical:

@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "951e5452a3bb604cc556de00ca9a0f7b5e8ce1116b2ee856559a4cc0e0510d56",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "f77101c9aa7819fae886ce5bc3bbd3d2d9bcf5a41b1b618c2e59b89eca9c2f46",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "a0d921c47cb1d6c54df3325b1b6e029840264248de97fd67b096c8f349eb729f",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "48435193b21e0358f28be79ddb3c8b1301cc0e47945cb5d5eaaa567d83ee017b",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "049538a605c70407261ea0e5acc4a1eafdbc7bca7a9ec72158c3fa0777e1b6cd",
@@ -18,7 +18,8 @@
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
       "artifacts/v7-hao-asap7y-candidate-audit.json": "9137f6ad1bfafeffc1144e76b35510d60540892cdd4b0ea42cd2148440a3b5f7",
-      "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55"
+      "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
+      "artifacts/v7-tanaka-mi4-calcium-audit.json": "c5fbf770f25c8c6595b8f35988266af559edde677d242456ef324da22cbe7fe6"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -262,10 +263,28 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "Mi4_C3_named_files_are_FAFB_proofreading_tables_not_physiology",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Tanaka_2023": {
+      "title": "Neural mechanisms to incorporate visual counterevidence in self movement estimation",
+      "doi": "10.1016/j.cub.2023.10.011",
+      "target_neurons": [
+        "Mi4"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4"
+      ],
+      "measurement_modality": "two_photon_jGCaMP7b_calcium",
+      "response_unit": "deltaF_over_F",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "individual_Mi4_calcium_is_not_Mi4_C3_membrane_voltage",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 11,
+    "audited_candidate_count": 12,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -273,6 +292,9 @@
     "claim_scope": "bounded_audited_candidate_set_not_global_nonexistence",
     "independent_Mi4_type_average_calcium_candidates": [
       "Gonzalez_Suarez_2022"
+    ],
+    "independent_Mi4_individual_calcium_candidates": [
+      "Tanaka_2023"
     ],
     "independent_C3_intervention_only_candidates": [
       "Yuan_2020"
@@ -322,6 +344,7 @@
     "L1_L2_voltage_does_not_substitute_for_Mi4_or_C3": true,
     "unresolved_cell_type_scope_is_not_counted_as_a_positive_or_negative_candidate": true,
     "connectome_proofreading_tables_do_not_substitute_for_source_recordings": true,
+    "individual_Mi4_calcium_does_not_substitute_for_Mi4_C3_voltage": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

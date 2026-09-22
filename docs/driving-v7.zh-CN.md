@@ -2366,6 +2366,18 @@ directory（635 entries），并精确抽取 Mi4/C3 命名的两个工作簿：M
 该有界检查不授权 Mi4/C3 source-dynamics transfer 或任何拟合。证据见
 `artifacts/v7-stable-contrast-source-scope-audit.json`。
 
+另一个此前未单列的独立 Mi4 数据源是 Tanaka 等 2023（DOI
+10.1016/j.cub.2023.10.011）。论文在 M10 的 Mi4 轴突使用 jGCaMP7b，以 8.46 Hz
+记录 stationary 与 15-Hz flickering checkerboard；Figure 7 为 10 flies。Dryad v4 的
+13.8-GB ZIP 经 Zenodo 镜像做 ZIP64 范围读取，只抽取 298,840,406-byte
+fig7_mi4.mat 与对应脚本。CRC 和仓库哈希通过；载荷保留 10 个稳定 fliesUsed ID、
+201 个筛选后 ROI、每个条件/ROI 10 次重复、93 点时间轴（约 118.15 ms 间隔），并保留
+未筛选数据。ROI 按 flash probe response consistency >= 0.4 选择，Figure 7 的排序汇总会在
+每只 fly 内混合 trial 与 ROI 身份。作者 Mi4Decoder 中 300-ms 时间常数明确引用 Arenz
+2017，并非由这批 Figure 7 数据拟合。因此这是一条强的独立、逐 fly Mi4 数值钙动态证据，
+但不是膜电位、没有 C3、没有 recording-to-MaleCNS body crosswalk，也没有方向标记的 source
+dynamics，不能解锁 T4 transfer。证据见 artifacts/v7-tanaka-mi4-calcium-audit.json。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

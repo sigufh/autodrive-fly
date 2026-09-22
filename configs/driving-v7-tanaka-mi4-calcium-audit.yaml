@@ -1,0 +1,60 @@
+version: 1
+name: v7-tanaka-mi4-calcium-audit
+observed_on: "2026-09-22"
+paper:
+  title: Neural mechanisms to incorporate visual counterevidence in self movement estimation
+  doi: 10.1016/j.cub.2023.10.011
+  pmid: 37918398
+  pmcid: PMC10848174
+  publication_date: "2023-11-01"
+snapshots:
+  pmc_article: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/PMC10848174.html, bytes: 425780, sha256: 3a9bda9184312f93399866276f294398e985906d0afb597f66cd4f0464436fd8}
+  dryad_dataset: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/dryad-dataset.json, bytes: 5049, sha256: 1f90df4db646a7b920bb4a7b81d566330c6c92c32290cfe07a5c4a593c044ccf}
+  dryad_files: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/dryad-files.json, bytes: 1537, sha256: 18bbc94d29a1de4c52743d3a36f399bb6efc7919264ed831b5d98d61443f8218}
+  zenodo_mirror: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/zenodo.json, bytes: 5826, sha256: 0e5dcd6c3a501596eba81487d7881db64fb58c69dce461f104224a9c91f9bb2a}
+  zip_central_directory: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/central-directory.bin, bytes: 12324, sha256: 35f87d0b30a27a3ac4f68166c37c18ccfb43582a57ace1c4e79f564e589beab8}
+  archive_readme: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/archive-readme.md, bytes: 931, sha256: 7ce0816e4e5b2159974f43cfd93eec206bd452469131333bb792affaec059182}
+  figure7_script: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.m, bytes: 8839, sha256: 3f83c5ea9e01b5e0f19103fba4914db3e7d22fae241c86f80e863bf18aaad848}
+  figure7_payload: {path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.mat, bytes: 298840406, sha256: a027dc9bc9eae95156617deaca21d841aa664e9d87863fa8e41a838b3a5e5896}
+dryad:
+  doi: 10.5061/dryad.bcc2fqzjz
+  version_id: 262243
+  version_number: 4
+  dataset_bytes: 13803001615
+  archive_name: counterevidence_data_upload.zip
+  archive_bytes: 13802993103
+  archive_sha256: 78ea8e56618ea0805b8a3c19bf28b032c06473c8a5241c01f83889a659ca4ab5
+  archive_md5: c792d2af1ab088e5772e66247666c5d3
+  zip_entry_count: 92
+  figure7_payload_path: counterevidence_data_upload/counterevidence_dryad_data/data/fig7_mi4.mat
+  figure7_payload_compressed_bytes: 298900295
+  figure7_payload_uncompressed_bytes: 298840406
+  figure7_payload_crc32: "0x21578d7a"
+  figure7_script_path: counterevidence_data_upload/counterevidence_dryad_data/scripts/fig7_mi4.m
+repository:
+  path: data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/Mi4Decoder
+  url: https://github.com/ClarkLabCode/Mi4Decoder
+  revision: a0f50210404229ae3a1465cf65a8b6bc31a0b0fe
+  commit_count: 11
+  tree_file_count: 11
+expected_payload:
+  fly_ids: [9176, 9178, 9179, 9180, 9186, 9187, 9188, 9189, 9191, 9192]
+  selected_roi_counts: [9, 12, 23, 30, 7, 16, 19, 41, 28, 16]
+  selected_epoch_labels: [2_S, 2_F]
+  selected_epoch_count: 2
+  time_sample_count: 93
+  time_start_milliseconds: -2362.9433767878622
+  time_end_milliseconds: 8506.596156436304
+  median_sample_interval_milliseconds: 118.14716883939309
+  repetitions_per_selected_epoch_and_roi: 10
+boundary:
+  Mi4_jGCaMP7b_is_calcium_not_membrane_voltage: true
+  selected_ROIs_are_conditioned_on_flash_probe_response_consistency: true
+  trial_and_ROI_sorting_does_not_preserve_recording_unit_identity_in_quantile_summaries: true
+  dataset_fly_IDs_are_not_MaleCNS_body_IDs: true
+  stationary_and_flicker_checkerboards_do_not_supply_direction_labeled_source_dynamics: true
+  model_tau_is_imported_from_Arenz_2017_not_fit_from_Figure_7: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

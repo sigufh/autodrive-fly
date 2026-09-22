@@ -97,6 +97,7 @@ evidence:
   c3_citation_graph_audit: artifacts/v7-c3-citation-graph-audit.json
   hao_asap7y_candidate_audit: artifacts/v7-hao-asap7y-candidate-audit.json
   stable_contrast_source_scope_audit: artifacts/v7-stable-contrast-source-scope-audit.json
+  tanaka_mi4_calcium_audit: artifacts/v7-tanaka-mi4-calcium-audit.json
   unified_model_package_audit: artifacts/v7-unified-model-package-audit.json
   fig3_source_kernel_audit: artifacts/v7-fig3-source-kernel-audit.json
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json

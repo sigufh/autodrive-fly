@@ -205,6 +205,17 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert stable["Mi4_C3_files_are_connectome_proofreading_only"] is True
     assert stable["external_recording_to_MaleCNS_crosswalk_found"] is False
     assert stable["source_dynamics_transfer_authorized"] is False
+    tanaka = report["verified_Tanaka_2023_independent_Mi4_calcium"]
+    assert tanaka["doi"] == "10.1016/j.cub.2023.10.011"
+    assert tanaka["measurement_modality"] == "two_photon_jGCaMP7b_calcium"
+    assert tanaka["response_unit"] == "deltaF_over_F"
+    assert tanaka["fly_count"] == 10
+    assert tanaka["selected_ROI_count"] == 201
+    assert tanaka["individual_fly_axis_available"] is True
+    assert tanaka["trial_and_ROI_axes_available"] is True
+    assert tanaka["experimental_membrane_voltage"] is False
+    assert tanaka["recording_to_MaleCNS_body_crosswalk_found"] is False
+    assert tanaka["source_dynamics_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

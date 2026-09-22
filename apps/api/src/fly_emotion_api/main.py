@@ -242,6 +242,22 @@ def _verified_v7_status(root: Path) -> dict:
                 "Gur_2024_Mi4_C3_direct_physiology_found": visual[
                     "Gur_2024_Mi4_C3_direct_physiology_found"
                 ],
+                "Tanaka_2023_Mi4_fly_count": visual["Tanaka_2023_Mi4_fly_count"],
+                "Tanaka_2023_Mi4_selected_ROI_count": visual[
+                    "Tanaka_2023_Mi4_selected_ROI_count"
+                ],
+                "Tanaka_2023_Mi4_individual_fly_axis_available": visual[
+                    "Tanaka_2023_Mi4_individual_fly_axis_available"
+                ],
+                "Tanaka_2023_Mi4_response_unit": visual[
+                    "Tanaka_2023_Mi4_response_unit"
+                ],
+                "Tanaka_2023_Mi4_experimental_membrane_voltage": visual[
+                    "Tanaka_2023_Mi4_experimental_membrane_voltage"
+                ],
+                "Tanaka_2023_Mi4_source_dynamics_transfer_authorized": visual[
+                    "Tanaka_2023_Mi4_source_dynamics_transfer_authorized"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

@@ -149,6 +149,12 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     ]:
         raise ValueError("stable-contrast direct inhibitory-source coverage changed")
 
+    tanaka = evidence["tanaka_Mi4_calcium"]
+    if not tanaka["independent_Mi4_numerical_calcium_dynamics_verified"]:
+        raise ValueError("Tanaka independent Mi4 calcium evidence changed")
+    if tanaka["experimental_membrane_voltage"] or tanaka["C3_direct_recording_found"]:
+        raise ValueError("Tanaka Mi4/C3 voltage boundary changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -218,6 +224,7 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "independent_Mi4_type_average_calcium_candidates": [
                 "Gonzalez_Suarez_2022"
             ],
+            "independent_Mi4_individual_calcium_candidates": ["Tanaka_2023"],
             "independent_C3_intervention_only_candidates": ["Yuan_2020"],
             "citation_graph_exclusion_candidates": ["Pang_2025"],
             "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],

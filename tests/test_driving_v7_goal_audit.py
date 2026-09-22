@@ -270,6 +270,12 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "Gur_2024_C3_proofreading_row_count",
             "Gur_2024_Mi4_C3_files_are_proofreading_only",
             "Gur_2024_Mi4_C3_direct_physiology_found",
+            "Tanaka_2023_Mi4_fly_count",
+            "Tanaka_2023_Mi4_selected_ROI_count",
+            "Tanaka_2023_Mi4_individual_fly_axis_available",
+            "Tanaka_2023_Mi4_response_unit",
+            "Tanaka_2023_Mi4_experimental_membrane_voltage",
+            "Tanaka_2023_Mi4_source_dynamics_transfer_authorized",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1057,7 +1063,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 11
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 12
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1126,6 +1132,15 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Gur_2024_C3_proofreading_row_count"] == 678
     assert visual["observations"]["Gur_2024_Mi4_C3_files_are_proofreading_only"] is True
     assert visual["observations"]["Gur_2024_Mi4_C3_direct_physiology_found"] is False
+    assert visual["observations"]["Tanaka_2023_Mi4_fly_count"] == 10
+    assert visual["observations"]["Tanaka_2023_Mi4_selected_ROI_count"] == 201
+    assert visual["observations"]["Tanaka_2023_Mi4_individual_fly_axis_available"] is True
+    assert visual["observations"]["Tanaka_2023_Mi4_response_unit"] == "deltaF_over_F"
+    assert visual["observations"]["Tanaka_2023_Mi4_experimental_membrane_voltage"] is False
+    assert (
+        visual["observations"]["Tanaka_2023_Mi4_source_dynamics_transfer_authorized"]
+        is False
+    )
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

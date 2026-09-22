@@ -87,6 +87,12 @@ export type V7Status = {
     Gur_2024_C3_proofreading_row_count?: number;
     Gur_2024_Mi4_C3_files_are_proofreading_only?: boolean;
     Gur_2024_Mi4_C3_direct_physiology_found?: boolean;
+    Tanaka_2023_Mi4_fly_count?: number;
+    Tanaka_2023_Mi4_selected_ROI_count?: number;
+    Tanaka_2023_Mi4_individual_fly_axis_available?: boolean;
+    Tanaka_2023_Mi4_response_unit?: string;
+    Tanaka_2023_Mi4_experimental_membrane_voltage?: boolean;
+    Tanaka_2023_Mi4_source_dynamics_transfer_authorized?: boolean;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
     T5_voltage_derived_kernel_sources: string[];
     T5_voltage_derived_kernel_record_count: number;

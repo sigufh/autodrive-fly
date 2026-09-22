@@ -188,6 +188,10 @@ v7-audit-goal-coverage:
 v7-audit-stable-contrast-source-scope:
 	.venv/bin/autodrive-fly v7-audit-stable-contrast-source-scope
 
+.PHONY: v7-audit-tanaka-mi4-calcium
+v7-audit-tanaka-mi4-calcium:
+	.venv/bin/autodrive-fly v7-audit-tanaka-mi4-calcium
+
 v7-audit-gou-dandi-identity:
 	.venv/bin/autodrive-fly v7-audit-gou-dandi-identity
 

@@ -139,6 +139,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     stable_contrast_source_scope_audit = reports[
         "stable_contrast_source_scope_audit"
     ]
+    tanaka_mi4_calcium_audit = reports["tanaka_mi4_calcium_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -405,6 +406,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["c3_citation_graph_audit"],
                 config["evidence"]["hao_asap7y_candidate_audit"],
                 config["evidence"]["stable_contrast_source_scope_audit"],
+                config["evidence"]["tanaka_mi4_calcium_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1751,6 +1753,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     or stable_contrast_source_scope_audit[
                         "C3_direct_physiology_found"
                     ]
+                ),
+                "Tanaka_2023_Mi4_fly_count": tanaka_mi4_calcium_audit[
+                    "payload_inventory"
+                ]["fly_count"],
+                "Tanaka_2023_Mi4_selected_ROI_count": tanaka_mi4_calcium_audit[
+                    "payload_inventory"
+                ]["selected_roi_count"],
+                "Tanaka_2023_Mi4_individual_fly_axis_available": (
+                    tanaka_mi4_calcium_audit["payload_inventory"][
+                        "individual_fly_axis_available"
+                    ]
+                ),
+                "Tanaka_2023_Mi4_response_unit": tanaka_mi4_calcium_audit[
+                    "measurement"
+                ]["response_unit"],
+                "Tanaka_2023_Mi4_experimental_membrane_voltage": (
+                    tanaka_mi4_calcium_audit["experimental_membrane_voltage"]
+                ),
+                "Tanaka_2023_Mi4_source_dynamics_transfer_authorized": (
+                    tanaka_mi4_calcium_audit["authorize_Mi4_source_dynamics_transfer"]
                 ),
                 "source_dynamics_external_contract_satisfied": (
                     source_dynamics_external_evidence_contract["contract_satisfied"]
@@ -4098,6 +4120,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Gur_2024_C3_proofreading_row_count",
                     "Gur_2024_Mi4_C3_files_are_proofreading_only",
                     "Gur_2024_Mi4_C3_direct_physiology_found",
+                    "Tanaka_2023_Mi4_fly_count",
+                    "Tanaka_2023_Mi4_selected_ROI_count",
+                    "Tanaka_2023_Mi4_individual_fly_axis_available",
+                    "Tanaka_2023_Mi4_response_unit",
+                    "Tanaka_2023_Mi4_experimental_membrane_voltage",
+                    "Tanaka_2023_Mi4_source_dynamics_transfer_authorized",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

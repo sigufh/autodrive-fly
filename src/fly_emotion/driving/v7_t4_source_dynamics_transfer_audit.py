@@ -42,6 +42,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_citation_graph_path = Path(config["c3_citation_graph_evidence"])
     hao_asap7y_path = Path(config["hao_ASAP7y_candidate_evidence"])
     stable_contrast_path = Path(config["stable_contrast_source_scope_evidence"])
+    tanaka_mi4_path = Path(config["tanaka_Mi4_calcium_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -93,6 +94,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     stable_contrast = json.loads(
         (root / stable_contrast_path).read_text(encoding="utf-8")
     )
+    tanaka_mi4 = json.loads((root / tanaka_mi4_path).read_text(encoding="utf-8"))
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
@@ -233,6 +235,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_citation_graph_path): _sha256(root / c3_citation_graph_path),
                 str(hao_asap7y_path): _sha256(root / hao_asap7y_path),
                 str(stable_contrast_path): _sha256(root / stable_contrast_path),
+                str(tanaka_mi4_path): _sha256(root / tanaka_mi4_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -661,6 +664,30 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "source_dynamics_transfer_authorized": stable_contrast[
                 "authorize_Mi4_C3_source_dynamics_transfer"
+            ],
+        },
+        "verified_Tanaka_2023_independent_Mi4_calcium": {
+            "doi": tanaka_mi4["paper"]["doi"],
+            "measurement_modality": tanaka_mi4["measurement"]["modality"],
+            "response_unit": tanaka_mi4["measurement"]["response_unit"],
+            "fly_count": tanaka_mi4["payload_inventory"]["fly_count"],
+            "selected_ROI_count": tanaka_mi4["payload_inventory"][
+                "selected_roi_count"
+            ],
+            "individual_fly_axis_available": tanaka_mi4["payload_inventory"][
+                "individual_fly_axis_available"
+            ],
+            "trial_and_ROI_axes_available": tanaka_mi4["payload_inventory"][
+                "trial_and_ROI_axes_available"
+            ],
+            "experimental_membrane_voltage": tanaka_mi4[
+                "experimental_membrane_voltage"
+            ],
+            "recording_to_MaleCNS_body_crosswalk_found": tanaka_mi4[
+                "recording_to_MaleCNS_body_crosswalk_found"
+            ],
+            "source_dynamics_transfer_authorized": tanaka_mi4[
+                "authorize_Mi4_source_dynamics_transfer"
             ],
         },
         "verified_FlyVis_C3_time_constant_readiness": {

@@ -1,0 +1,150 @@
+{
+  "protocol": {
+    "name": "v7-tanaka-mi4-calcium-audit",
+    "observed_on": "2026-09-22",
+    "dependencies_sha256": {
+      "configs/driving-v7-tanaka-mi4-calcium-audit.yaml": "c8387390dc6ea56005798474b7992047ad7f65aa50eabb1d0f6147f995a9ef91",
+      "src/fly_emotion/driving/v7_tanaka_mi4_calcium_audit.py": "f1e387a46b6b983c61007e84f28eba9563b7cc09025ab8d32c4d9af45f2bf65d"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/PMC10848174.html": "3a9bda9184312f93399866276f294398e985906d0afb597f66cd4f0464436fd8",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/dryad-dataset.json": "1f90df4db646a7b920bb4a7b81d566330c6c92c32290cfe07a5c4a593c044ccf",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/dryad-files.json": "18bbc94d29a1de4c52743d3a36f399bb6efc7919264ed831b5d98d61443f8218",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/zenodo.json": "0e5dcd6c3a501596eba81487d7881db64fb58c69dce461f104224a9c91f9bb2a",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/central-directory.bin": "35f87d0b30a27a3ac4f68166c37c18ccfb43582a57ace1c4e79f564e589beab8",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/archive-readme.md": "7ce0816e4e5b2159974f43cfd93eec206bd452469131333bb792affaec059182",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.m": "3f83c5ea9e01b5e0f19103fba4914db3e7d22fae241c86f80e863bf18aaad848",
+      "data/raw/t4-inhibitory-source-external/tanaka-2024-mi4/fig7_mi4.mat": "a027dc9bc9eae95156617deaca21d841aa664e9d87863fa8e41a838b3a5e5896"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Neural mechanisms to incorporate visual counterevidence in self movement estimation",
+    "doi": "10.1016/j.cub.2023.10.011",
+    "pmid": 37918398,
+    "pmcid": "PMC10848174",
+    "publication_date": "2023-11-01"
+  },
+  "measurement": {
+    "source_type": "Mi4",
+    "compartment": "medulla_layer_M10_axons",
+    "modality": "two_photon_jGCaMP7b_calcium",
+    "response_unit": "deltaF_over_F",
+    "acquisition_rate_hz": 8.46,
+    "stimulus_conditions": [
+      "stationary_checkerboard",
+      "flickering_checkerboard_15_Hz"
+    ],
+    "stimulus_duration_seconds": 5.0,
+    "baseline_window_seconds": [
+      -0.5,
+      0.0
+    ],
+    "right_optic_lobe_only": true
+  },
+  "Dryad": {
+    "doi": "10.5061/dryad.bcc2fqzjz",
+    "version_id": 262243,
+    "version_number": 4,
+    "dataset_bytes": 13803001615,
+    "top_level_file_count": 2,
+    "archive_bytes": 13802993103,
+    "declared_archive_sha256": "78ea8e56618ea0805b8a3c19bf28b032c06473c8a5241c01f83889a659ca4ab5",
+    "declared_Zenodo_archive_md5": "md5:c792d2af1ab088e5772e66247666c5d3",
+    "full_archive_sha256_locally_verified": false,
+    "ZIP_entry_count": 92,
+    "Figure_7_payload_entry": {
+      "compressed_bytes": 298900295,
+      "uncompressed_bytes": 298840406,
+      "local_header_offset": 13504036253,
+      "crc32": "0x21578d7a"
+    },
+    "Figure_7_extracted_payload_crc32_verified": true,
+    "full_archive_downloaded": false,
+    "Figure_7_member_range_extracted": true
+  },
+  "payload_inventory": {
+    "top_level_variables": [
+      "data",
+      "data_nonselected"
+    ],
+    "fly_ids": [
+      9176,
+      9178,
+      9179,
+      9180,
+      9186,
+      9187,
+      9188,
+      9189,
+      9191,
+      9192
+    ],
+    "fly_count": 10,
+    "selected_roi_counts_by_fly": [
+      9,
+      12,
+      23,
+      30,
+      7,
+      16,
+      19,
+      41,
+      28,
+      16
+    ],
+    "selected_roi_count": 201,
+    "selected_epoch_labels": [
+      "2_S",
+      "2_F"
+    ],
+    "selected_epoch_count": 2,
+    "time_sample_count": 93,
+    "time_start_milliseconds": -2362.9433767878622,
+    "time_end_milliseconds": 8506.596156436304,
+    "median_sample_interval_milliseconds": 118.14716883939309,
+    "repetition_counts": [
+      10
+    ],
+    "all_selected_response_values_finite": true,
+    "stable_within_dataset_fly_IDs_available": true,
+    "individual_fly_axis_available": true,
+    "trial_and_ROI_axes_available": true
+  },
+  "ROI_selection": {
+    "selected_by_flash_probe_response_consistency": true,
+    "response_consistency_threshold": 0.4,
+    "unselected_payload_retained": true
+  },
+  "model_boundary": {
+    "repository_url": "https://github.com/ClarkLabCode/Mi4Decoder",
+    "repository_revision": "a0f50210404229ae3a1465cf65a8b6bc31a0b0fe",
+    "temporal_filter_tau_seconds": 0.3,
+    "tau_source": "Arenz_2017_not_Figure_7_fit",
+    "Figure_7_payload_used_to_fit_tau": false
+  },
+  "independent_Mi4_numerical_calcium_dynamics_verified": true,
+  "experimental_membrane_voltage": false,
+  "C3_direct_recording_found": false,
+  "recording_to_MaleCNS_body_crosswalk_found": false,
+  "authorize_Mi4_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "Mi4_payload_is_individual_calcium_not_allowed_membrane_voltage",
+  "boundary": {
+    "Mi4_jGCaMP7b_is_calcium_not_membrane_voltage": true,
+    "selected_ROIs_are_conditioned_on_flash_probe_response_consistency": true,
+    "trial_and_ROI_sorting_does_not_preserve_recording_unit_identity_in_quantile_summaries": true,
+    "dataset_fly_IDs_are_not_MaleCNS_body_IDs": true,
+    "stationary_and_flicker_checkerboards_do_not_supply_direction_labeled_source_dynamics": true,
+    "model_tau_is_imported_from_Arenz_2017_not_fit_from_Figure_7": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

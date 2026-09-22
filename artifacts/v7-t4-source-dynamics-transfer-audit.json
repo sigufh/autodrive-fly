@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "3013e4706d86d5851fd1f8c732fcbb21a3a956744c18de974a1de400ed236ab4",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "e33b4202aae03a4778600af134b9a9d9675d3e451d5aa4dc27d8804804fed749",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "12f9fd4eb9d54e1c2e87cfb5ffe4ab577769a684fc8bffb22a0080c0e6d65c32",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "4adf437db8b79e14db20096892b7f1a43583decbe5fc1cffb2507b370d36038c",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -30,6 +30,7 @@
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
       "artifacts/v7-hao-asap7y-candidate-audit.json": "9137f6ad1bfafeffc1144e76b35510d60540892cdd4b0ea42cd2148440a3b5f7",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
+      "artifacts/v7-tanaka-mi4-calcium-audit.json": "c5fbf770f25c8c6595b8f35988266af559edde677d242456ef324da22cbe7fe6",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
@@ -325,6 +326,18 @@
     "external_recording_to_MaleCNS_crosswalk_found": false,
     "source_dynamics_transfer_authorized": false
   },
+  "verified_Tanaka_2023_independent_Mi4_calcium": {
+    "doi": "10.1016/j.cub.2023.10.011",
+    "measurement_modality": "two_photon_jGCaMP7b_calcium",
+    "response_unit": "deltaF_over_F",
+    "fly_count": 10,
+    "selected_ROI_count": 201,
+    "individual_fly_axis_available": true,
+    "trial_and_ROI_axes_available": true,
+    "experimental_membrane_voltage": false,
+    "recording_to_MaleCNS_body_crosswalk_found": false,
+    "source_dynamics_transfer_authorized": false
+  },
   "verified_FlyVis_C3_time_constant_readiness": {
     "repository_commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
     "pretrained_model_count": 50,
@@ -446,6 +459,7 @@
     "public_index_zero_results_do_not_prove_Mi4_payload_absence": true,
     "citation_graph_exclusions_do_not_prove_global_C3_absence": true,
     "unresolved_ASAP7y_cell_types_do_not_authorize_source_transfer": true,
-    "stable_contrast_proofreading_tables_do_not_authorize_source_transfer": true
+    "stable_contrast_proofreading_tables_do_not_authorize_source_transfer": true,
+    "independent_Mi4_calcium_does_not_authorize_membrane_voltage_transfer": true
   }
 }

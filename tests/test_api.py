@@ -106,6 +106,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Gur_2024_C3_proofreading_row_count"] == 678
     assert boundaries["Gur_2024_Mi4_C3_files_are_proofreading_only"] is True
     assert boundaries["Gur_2024_Mi4_C3_direct_physiology_found"] is False
+    assert boundaries["Tanaka_2023_Mi4_fly_count"] == 10
+    assert boundaries["Tanaka_2023_Mi4_selected_ROI_count"] == 201
+    assert boundaries["Tanaka_2023_Mi4_individual_fly_axis_available"] is True
+    assert boundaries["Tanaka_2023_Mi4_response_unit"] == "deltaF_over_F"
+    assert boundaries["Tanaka_2023_Mi4_experimental_membrane_voltage"] is False
+    assert boundaries["Tanaka_2023_Mi4_source_dynamics_transfer_authorized"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

@@ -117,6 +117,17 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         "Gonzalez_Suarez_2022_type_average_deconvolved_GCaMP6f_filter"
         in report["matrix"]["Mi4"]["numerical_evidence_sources"]
     )
+    assert (
+        "Tanaka_2023_individual_jGCaMP7b_time_series"
+        in report["matrix"]["Mi4"]["numerical_evidence_sources"]
+    )
+    assert mi4_components[
+        "Tanaka_2023_independent_Mi4_numerical_calcium_dynamics_verified"
+    ] is True
+    assert mi4_components["Tanaka_2023_Mi4_fly_count"] == 10
+    assert mi4_components["Tanaka_2023_Mi4_individual_fly_axis_available"] is True
+    assert mi4_components["Tanaka_2023_Mi4_experimental_membrane_voltage"] is False
+    assert mi4_components["Tanaka_2023_recording_to_MaleCNS_body_crosswalk_found"] is False
     assert report["matrix"]["C3"]["evidence_components"][
         "Gonzalez_Suarez_2022_C3_source_dynamics_available"
     ] is False

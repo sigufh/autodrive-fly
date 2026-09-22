@@ -650,6 +650,19 @@ proofreading tables, not source dynamics and not an external-recording-to-MaleCN
 crosswalk. The 41-GB raw ZIP was not downloaded, and this bounded scope result does
 not authorize transfer or fitting
 (`artifacts/v7-stable-contrast-source-scope-audit.json`).
+Tanaka et al. 2023 (10.1016/j.cub.2023.10.011) provides a stronger but still
+non-transferable independent Mi4 result. The paper records M10 Mi4 axons with
+jGCaMP7b at 8.46 Hz under stationary and 15-Hz flickering checkerboards (10 flies).
+Range access to the Zenodo mirror of the 13.8-GB Dryad archive allowed the 92-entry
+ZIP64 directory, the Figure 7 script, and only the 298,840,406-byte Mi4 MAT member to
+be verified. That payload retains ten stable within-dataset fly IDs, 201 selected
+ROIs, ten repetitions per condition and ROI, and a 93-sample time axis. The ROI set is
+conditioned on flash-probe response consistency, and the published quantile summary
+sorts trials and ROIs within each fly. The 300-ms Mi4 constant in the companion model
+is imported from Arenz 2017 rather than fitted to Figure 7. This is independent
+individual-fly numerical calcium evidence, not membrane voltage, C3 evidence,
+direction-labelled source dynamics, or a recording-to-MaleCNS crosswalk; it does not
+authorize T4 source transfer (artifacts/v7-tanaka-mi4-calcium-audit.json).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
