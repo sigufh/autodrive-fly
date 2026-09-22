@@ -2386,6 +2386,17 @@ pattern-uniform 条件；结果是 Mi4/Mi9 没有强 afterimage-like response。
 独立 Mi4 calcium phenotype，不声称数值载荷全局不存在，也不授权 source transfer。证据见
 artifacts/v7-afterimages-mi4-candidate-audit.json。
 
+Henning 等同一 Figure 3 的方向 edge 载荷也已补做字段级核验。冻结 revision
+`745c6114…` 中的 `processed_Data_manualROIs_C3.mat` 含 77 个 C3 ROI，公开载荷只含
+6 个 fly（逐 fly ROI 为 12/10/15/13/13/14），而 Version of Record 图注报告 8 flies；
+该差异保留，不用图注计数回填文件。作者代码给出 8 个绝对刺激方向
+`90/45/0/315/270/225/180/135°`，正文 Methods 给出 edge 速度 20°/s，响应为
+GCaMP6f ΔF/F 并在逐 fly 聚合前插值到 10 Hz。六只方向实验 fly 全部也存在于同研究的
+flash 和 STRF 数据中，且正文结论是 C3 对运动方向没有偏好。因此这批数据补齐了
+C3 钙数据的方向、角速度和物理时间字段，但不是独立 cohort、不是膜电位、没有
+recording→MaleCNS body crosswalk，也不能定义方向特异 source kernel 或解锁 transfer。证据见
+`artifacts/v7-c3-directional-edge-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

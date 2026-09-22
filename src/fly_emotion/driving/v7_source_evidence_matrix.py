@@ -106,6 +106,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     c3_robustness = bool(
         evidence["c3_external_flash"]["transfer_gates"]["bootstrap_correlation_p05"]
     )
+    c3_directional = evidence["c3_directional_edges"]
     ct1_type_average = bool(evidence["ct1_compartment"]["CT1_type_average_dynamics_verified"])
     ct1_lobula_phenotype = bool(
         evidence["ct1_compartment"]["T5_lobula_CT1_dynamic_phenotype_published"]
@@ -278,6 +279,27 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "C3" and c3_external_disjoint
             ),
             "fixed_external_robustness_gate_passed": (source == "C3" and c3_robustness),
+            "Henning_C3_directional_numeric_calcium_verified": (
+                source == "C3"
+                and c3_directional["measurement"]["aggregate_all_finite"]
+                and c3_directional["measurement"]["direction_count"] == 8
+            ),
+            "Henning_C3_directional_fly_count_in_public_payload": (
+                c3_directional["measurement"]["fly_count_in_public_payload"]
+                if source == "C3"
+                else 0
+            ),
+            "Henning_C3_directional_cohort_independent": (
+                source == "C3"
+                and c3_directional["cohort_relationship"]["independent_cohort"]
+            ),
+            "Henning_C3_direction_specific_source_kernel_verified": (
+                source == "C3"
+                and c3_directional["direction_specific_C3_source_kernel_verified"]
+            ),
+            "Henning_C3_directional_experimental_membrane_voltage": (
+                source == "C3" and c3_directional["experimental_membrane_voltage"]
+            ),
             "fixed_T4_individual_split_passed_for_ON_and_OFF": (
                 family == "T4"
                 and all(
@@ -828,6 +850,8 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             numerical_sources.append("Ramos_Traslosheros_spatial_calcium_workbook")
         if source == "C3" and c3_numerical:
             numerical_sources.append("C3_STRF_calcium_repository")
+        if source == "C3" and c3_directional["measurement"]["aggregate_all_finite"]:
+            numerical_sources.append("Henning_C3_directional_edge_GCaMP6f")
         if local_type_average_deconvolved:
             numerical_sources.append("TimingModels_uncompartmented_type_average_CT1_filter")
         if source in arenz_t4 or source in arenz_t5:

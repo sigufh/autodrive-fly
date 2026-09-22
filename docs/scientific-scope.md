@@ -673,6 +673,17 @@ figure-level calcium phenotype, not a verified numeric payload or membrane volta
 and no global absence claim is made
 (artifacts/v7-afterimages-mi4-candidate-audit.json).
 
+The remaining Henning Figure 3 directional-edge payload was audited separately.
+`processed_Data_manualROIs_C3.mat` contains 77 C3 ROIs from six named flies, while
+the Version-of-Record caption reports eight flies; the discrepancy is retained rather
+than replacing the file-level count. The author code and paper establish eight absolute
+directions, 20 deg/s edges, delta-F/F responses, and 10-Hz interpolation. All six
+payload flies overlap both the same-study flash and STRF cohorts, and the paper reports
+no C3 direction preference. These data add direction, angular-speed, and physical-time
+fields to the C3 calcium evidence, but they are neither an independent cohort nor
+membrane voltage and do not supply a direction-specific kernel or recording-to-MaleCNS
+crosswalk (`artifacts/v7-c3-directional-edge-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

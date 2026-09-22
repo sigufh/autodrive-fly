@@ -273,6 +273,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized": visual[
                     "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized"
                 ],
+                "Henning_C3_directional_payload_fly_count": visual[
+                    "Henning_C3_directional_payload_fly_count"
+                ],
+                "Henning_C3_directional_caption_fly_count": visual[
+                    "Henning_C3_directional_caption_fly_count"
+                ],
+                "Henning_C3_directional_ROI_count": visual[
+                    "Henning_C3_directional_ROI_count"
+                ],
+                "Henning_C3_directional_edge_speed_degrees_per_second": visual[
+                    "Henning_C3_directional_edge_speed_degrees_per_second"
+                ],
+                "Henning_C3_directional_cohort_independent": visual[
+                    "Henning_C3_directional_cohort_independent"
+                ],
+                "Henning_C3_direction_specific_source_kernel_verified": visual[
+                    "Henning_C3_direction_specific_source_kernel_verified"
+                ],
+                "Henning_C3_directional_source_transfer_authorized": visual[
+                    "Henning_C3_directional_source_transfer_authorized"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

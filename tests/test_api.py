@@ -117,6 +117,13 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Wu_2026_afterimages_Mi4_response_unit"] == "deltaF_over_F"
     assert boundaries["Wu_2026_afterimages_public_numeric_Mi4_payload_verified"] is False
     assert boundaries["Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized"] is False
+    assert boundaries["Henning_C3_directional_payload_fly_count"] == 6
+    assert boundaries["Henning_C3_directional_caption_fly_count"] == 8
+    assert boundaries["Henning_C3_directional_ROI_count"] == 77
+    assert boundaries["Henning_C3_directional_edge_speed_degrees_per_second"] == 20.0
+    assert boundaries["Henning_C3_directional_cohort_independent"] is False
+    assert boundaries["Henning_C3_direction_specific_source_kernel_verified"] is False
+    assert boundaries["Henning_C3_directional_source_transfer_authorized"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

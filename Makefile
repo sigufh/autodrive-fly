@@ -196,6 +196,10 @@ v7-audit-tanaka-mi4-calcium:
 v7-audit-afterimages-mi4-candidate:
 	.venv/bin/autodrive-fly v7-audit-afterimages-mi4-candidate
 
+.PHONY: v7-audit-c3-directional-edges
+v7-audit-c3-directional-edges:
+	.venv/bin/autodrive-fly v7-audit-c3-directional-edges
+
 v7-audit-gou-dandi-identity:
 	.venv/bin/autodrive-fly v7-audit-gou-dandi-identity
 

@@ -33,6 +33,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
     c2c3_vor_path = Path(config["c2c3_version_of_record_evidence"])
     c3_strf_flash_path = Path(config["c3_strf_flash_transfer_evidence"])
+    c3_directional_path = Path(config["c3_directional_edge_evidence"])
     fig1_temporal_path = Path(config["fig1_source_temporal_readiness_evidence"])
     c3_filter_path = Path(config["c3_analytic_filter_evidence"])
     timing_models_path = Path(config["timing_models_source_filter_evidence"])
@@ -73,6 +74,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c2c3_vor = json.loads((root / c2c3_vor_path).read_text(encoding="utf-8"))
     c3_strf_flash = json.loads(
         (root / c3_strf_flash_path).read_text(encoding="utf-8")
+    )
+    c3_directional = json.loads(
+        (root / c3_directional_path).read_text(encoding="utf-8")
     )
     fig1_temporal = json.loads(
         (root / fig1_temporal_path).read_text(encoding="utf-8")
@@ -230,6 +234,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_strf_path): _sha256(root / c3_strf_path),
                 str(c2c3_vor_path): _sha256(root / c2c3_vor_path),
                 str(c3_strf_flash_path): _sha256(root / c3_strf_flash_path),
+                str(c3_directional_path): _sha256(root / c3_directional_path),
                 str(fig1_temporal_path): _sha256(root / fig1_temporal_path),
                 str(c3_filter_path): _sha256(root / c3_filter_path),
                 str(timing_models_path): _sha256(root / timing_models_path),
@@ -458,6 +463,46 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "transfer_passed": c3_strf_flash["C3_STRF_to_flash_transfer_passed"],
             "source_kernel_candidate_authorized": c3_strf_flash[
                 "C3_source_kernel_candidate_authorized"
+            ],
+        },
+        "verified_C3_directional_edge_boundary": {
+            "response_unit": c3_directional["measurement"]["response_unit"],
+            "fly_count_in_public_payload": c3_directional["measurement"][
+                "fly_count_in_public_payload"
+            ],
+            "fly_count_in_version_of_record_caption": c3_directional[
+                "measurement"
+            ]["fly_count_in_version_of_record_caption"],
+            "ROI_count": c3_directional["measurement"]["ROI_count"],
+            "direction_degrees": c3_directional["measurement"][
+                "direction_degrees"
+            ],
+            "edge_velocity_degrees_per_second": c3_directional["measurement"][
+                "edge_velocity_degrees_per_second"
+            ],
+            "sample_interval_seconds": c3_directional["measurement"][
+                "interpolated_sample_interval_seconds"
+            ],
+            "paper_reports_direction_preference": c3_directional["measurement"][
+                "paper_reports_direction_preference"
+            ],
+            "every_directional_fly_in_flash_cohort": c3_directional[
+                "cohort_relationship"
+            ]["every_directional_fly_in_flash_cohort"],
+            "every_directional_fly_in_STRF_cohort": c3_directional[
+                "cohort_relationship"
+            ]["every_directional_fly_in_STRF_cohort"],
+            "independent_cohort": c3_directional["cohort_relationship"][
+                "independent_cohort"
+            ],
+            "experimental_membrane_voltage": c3_directional[
+                "experimental_membrane_voltage"
+            ],
+            "direction_specific_source_kernel_verified": c3_directional[
+                "direction_specific_C3_source_kernel_verified"
+            ],
+            "source_dynamics_transfer_authorized": c3_directional[
+                "authorize_C3_source_dynamics_transfer"
             ],
         },
         "verified_Fig1_source_temporal_readiness": {

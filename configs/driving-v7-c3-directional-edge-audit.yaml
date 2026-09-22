@@ -1,0 +1,58 @@
+version: 1
+name: v7-c3-directional-edge-audit
+observed_on: "2026-09-22"
+paper:
+  doi: 10.7554/eLife.108529
+  title: Inhibitory columnar feedback neurons are involved in motion processing in Drosophila
+  version_of_record_xml: {path: data/raw/t4-c3-strf/elife-108529.xml, bytes: 332798, sha256: 1dd5430627b064c322b26af32a53edc29692c41f371e74028f27be56f3e6183c}
+repository:
+  path: data/raw/t4-c3-strf/repository
+  url: https://github.com/silieslab/C2C3_feedback_Henning
+  archived_revision: 745c6114b72a61dabc9389a1f024dbe22f679edf
+source_data:
+  path: Data/Figure3-SourceData2/processed_Data_manualROIs_C3.mat
+  bytes: 826810
+  git_blob_sha1: 4d21bbfbe5d0c800f035029b3022ad03f37bed04
+  sha256: f159c40368875e4e1ec4a5922429b517897997b40ee1a6d5f271170913243264
+source_code:
+  path: Figure3_SourceCode2_Polarplots_C2C3.m
+  bytes: 2860
+  git_blob_sha1: e48a61ceac7910e05b219803d419e6aef663c146
+  sha256: d7f7ae5757b1563cf3713699f5407e7b6b8aaec3d858b24766f364067f803266
+related_evidence:
+  flash: artifacts/v7-c3-flash-preregistration.json
+  strf: artifacts/v7-c3-strf-source-dynamics-audit.json
+author_analysis_contract:
+  source_struct: C2C3_Me1
+  aggregate_struct: C2C3_Me1_agg
+  response_field: iAV_ROI_resp
+  aggregate_response_field: MeanOF_Cells
+  direction_degrees: [90, 45, 0, 315, 270, 225, 180, 135]
+  direction_count: 8
+  OFF_sample_slice_zero_based_half_open: [0, 40]
+  ON_sample_slice_zero_based_half_open: [40, 80]
+  response_reduction: maximum_within_contrast_slice
+  interpolated_rate_hz: 10
+  edge_velocity_degrees_per_second: 20
+  response_unit: deltaF_over_F
+expected:
+  record_count: 77
+  unique_fly_count_in_payload: 6
+  paper_reported_fly_count: 8
+  ROI_count: 77
+  aggregate_shape: [6, 8, 80]
+  payload_fly_ids: [522, 523, 524, 526, 527, 528]
+  normalized_fly_names: [200121_Fly3, 200121_Fly4, 200121_Fly5, 200121_Fly7, 200121_Fly8, 200121_Fly9]
+boundary:
+  same_paper_as_flash_and_STRF_evidence: true
+  every_directional_fly_overlaps_flash_cohort: true
+  every_directional_fly_overlaps_STRF_cohort: true
+  paper_reports_no_C3_direction_preference: true
+  payload_fly_count_differs_from_version_of_record_caption: true
+  directional_calcium_does_not_define_a_direction_specific_source_kernel: true
+  calcium_is_not_membrane_voltage: true
+  no_recording_to_MaleCNS_body_crosswalk: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

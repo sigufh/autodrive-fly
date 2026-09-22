@@ -1,0 +1,158 @@
+{
+  "protocol": {
+    "name": "v7-c3-directional-edge-audit",
+    "observed_on": "2026-09-22",
+    "dependencies_sha256": {
+      "configs/driving-v7-c3-directional-edge-audit.yaml": "e822ce0aed4effe8cab8111f0e5be662be71f40a91291620d0b24cc501e8a5e7",
+      "src/fly_emotion/driving/v7_c3_directional_edge_audit.py": "81a1b273267f3a0d2a4e1d260a0675dd26d6e6d172f635a861ac85ddc91a6270",
+      "artifacts/v7-c3-flash-preregistration.json": "d1d75b92cdbe7fc480ddf378e635d199ec1a50380512a47969623ea1b494bc74",
+      "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a"
+    },
+    "repository_url": "https://github.com/silieslab/C2C3_feedback_Henning",
+    "archived_revision": "745c6114b72a61dabc9389a1f024dbe22f679edf",
+    "source_data": {
+      "path": "Data/Figure3-SourceData2/processed_Data_manualROIs_C3.mat",
+      "bytes": 826810,
+      "git_blob_sha1": "4d21bbfbe5d0c800f035029b3022ad03f37bed04",
+      "sha256": "f159c40368875e4e1ec4a5922429b517897997b40ee1a6d5f271170913243264"
+    },
+    "source_code": {
+      "path": "Figure3_SourceCode2_Polarplots_C2C3.m",
+      "bytes": 2860,
+      "git_blob_sha1": "e48a61ceac7910e05b219803d419e6aef663c146",
+      "sha256": "d7f7ae5757b1563cf3713699f5407e7b6b8aaec3d858b24766f364067f803266"
+    },
+    "version_of_record_xml": {
+      "path": "data/raw/t4-c3-strf/elife-108529.xml",
+      "bytes": 332798,
+      "sha256": "1dd5430627b064c322b26af32a53edc29692c41f371e74028f27be56f3e6183c"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "measurement": {
+    "source_type": "C3",
+    "modality": "two_photon_GCaMP6f_calcium",
+    "response_unit": "deltaF_over_F",
+    "record_count": 77,
+    "ROI_count": 77,
+    "fly_count_in_public_payload": 6,
+    "fly_count_in_version_of_record_caption": 8,
+    "fly_ids": [
+      522,
+      523,
+      524,
+      526,
+      527,
+      528
+    ],
+    "ROI_count_by_fly_id": {
+      "522": 12,
+      "523": 10,
+      "524": 15,
+      "526": 13,
+      "527": 13,
+      "528": 14
+    },
+    "normalized_fly_names": [
+      "200121_Fly3",
+      "200121_Fly4",
+      "200121_Fly5",
+      "200121_Fly7",
+      "200121_Fly8",
+      "200121_Fly9"
+    ],
+    "raw_ROI_response_shapes": {
+      "8x81": 54,
+      "8x80": 23
+    },
+    "aggregate_shape": [
+      6,
+      8,
+      80
+    ],
+    "aggregate_all_finite": true,
+    "aggregate_value_range": [
+      -0.3508248716958886,
+      1.064431961764853
+    ],
+    "direction_degrees": [
+      90,
+      45,
+      0,
+      315,
+      270,
+      225,
+      180,
+      135
+    ],
+    "direction_count": 8,
+    "edge_contrasts": [
+      "OFF",
+      "ON"
+    ],
+    "edge_velocity_degrees_per_second": 20.0,
+    "interpolated_sample_rate_hz": 10.0,
+    "interpolated_sample_interval_seconds": 0.1,
+    "author_response_reduction": "maximum_within_contrast_slice",
+    "paper_reports_direction_preference": false
+  },
+  "cohort_relationship": {
+    "flash_overlap_fly_names": [
+      "200121_Fly3",
+      "200121_Fly4",
+      "200121_Fly5",
+      "200121_Fly7",
+      "200121_Fly8",
+      "200121_Fly9"
+    ],
+    "flash_overlap_count": 6,
+    "STRF_overlap_fly_names": [
+      "200121_Fly3",
+      "200121_Fly4",
+      "200121_Fly5",
+      "200121_Fly7",
+      "200121_Fly8",
+      "200121_Fly9"
+    ],
+    "STRF_overlap_count": 6,
+    "every_directional_fly_in_flash_cohort": true,
+    "every_directional_fly_in_STRF_cohort": true,
+    "independent_study": false,
+    "independent_cohort": false
+  },
+  "source_contract_fields_added": {
+    "stimulus_polarity": true,
+    "stimulus_direction": true,
+    "stimulus_angular_speed_degrees_per_second": true,
+    "time_seconds": true,
+    "sample_interval_seconds": true,
+    "response_values": true,
+    "biological_individual_id": true
+  },
+  "experimental_membrane_voltage": false,
+  "direction_specific_C3_source_kernel_verified": false,
+  "recording_to_MaleCNS_body_crosswalk_found": false,
+  "independent_dynamic_validation_available": false,
+  "authorize_C3_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "direction_fields_found_but_same_study_cohort_and_calcium_unit_do_not_satisfy_transfer_contract",
+  "boundary": {
+    "same_paper_as_flash_and_STRF_evidence": true,
+    "every_directional_fly_overlaps_flash_cohort": true,
+    "every_directional_fly_overlaps_STRF_cohort": true,
+    "paper_reports_no_C3_direction_preference": true,
+    "payload_fly_count_differs_from_version_of_record_caption": true,
+    "directional_calcium_does_not_define_a_direction_specific_source_kernel": true,
+    "calcium_is_not_membrane_voltage": true,
+    "no_recording_to_MaleCNS_body_crosswalk": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

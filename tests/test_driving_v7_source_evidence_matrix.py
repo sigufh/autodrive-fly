@@ -81,6 +81,15 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert report["matrix"]["C3"]["evidence_components"][
         "C2C3_version_of_record_new_C3_or_Mi4_voltage_found"
     ] is False
+    c3_components = report["matrix"]["C3"]["evidence_components"]
+    assert c3_components["Henning_C3_directional_numeric_calcium_verified"] is True
+    assert c3_components["Henning_C3_directional_fly_count_in_public_payload"] == 6
+    assert c3_components["Henning_C3_directional_cohort_independent"] is False
+    assert c3_components["Henning_C3_direction_specific_source_kernel_verified"] is False
+    assert c3_components["Henning_C3_directional_experimental_membrane_voltage"] is False
+    assert "Henning_C3_directional_edge_GCaMP6f" in report["matrix"]["C3"][
+        "numerical_evidence_sources"
+    ]
     assert report["matrix"]["Mi4"]["evidence_components"][
         "C2C3_version_of_record_new_C3_or_Mi4_voltage_found"
     ] is False

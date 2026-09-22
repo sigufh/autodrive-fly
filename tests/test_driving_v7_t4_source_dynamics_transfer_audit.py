@@ -123,6 +123,21 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert flash["bootstrap_correlation_p05"] < 0.12
     assert flash["transfer_passed"] is False
     assert flash["source_kernel_candidate_authorized"] is False
+    directional = report["verified_C3_directional_edge_boundary"]
+    assert directional["response_unit"] == "deltaF_over_F"
+    assert directional["fly_count_in_public_payload"] == 6
+    assert directional["fly_count_in_version_of_record_caption"] == 8
+    assert directional["ROI_count"] == 77
+    assert directional["direction_degrees"] == [90, 45, 0, 315, 270, 225, 180, 135]
+    assert directional["edge_velocity_degrees_per_second"] == 20.0
+    assert directional["sample_interval_seconds"] == 0.1
+    assert directional["paper_reports_direction_preference"] is False
+    assert directional["every_directional_fly_in_flash_cohort"] is True
+    assert directional["every_directional_fly_in_STRF_cohort"] is True
+    assert directional["independent_cohort"] is False
+    assert directional["experimental_membrane_voltage"] is False
+    assert directional["direction_specific_source_kernel_verified"] is False
+    assert directional["source_dynamics_transfer_authorized"] is False
     fig1 = report["verified_Fig1_source_temporal_readiness"]
     assert fig1["workbooks_verified"] is True
     assert fig1["source_average_tables_have_time_axis"] is False

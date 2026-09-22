@@ -281,6 +281,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "Wu_2026_afterimages_Mi4_response_unit",
             "Wu_2026_afterimages_public_numeric_Mi4_payload_verified",
             "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized",
+            "Henning_C3_directional_payload_fly_count",
+            "Henning_C3_directional_caption_fly_count",
+            "Henning_C3_directional_ROI_count",
+            "Henning_C3_directional_edge_speed_degrees_per_second",
+            "Henning_C3_directional_cohort_independent",
+            "Henning_C3_direction_specific_source_kernel_verified",
+            "Henning_C3_directional_source_transfer_authorized",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1161,6 +1168,26 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"][
             "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized"
         ]
+        is False
+    )
+    assert visual["observations"]["Henning_C3_directional_payload_fly_count"] == 6
+    assert visual["observations"]["Henning_C3_directional_caption_fly_count"] == 8
+    assert visual["observations"]["Henning_C3_directional_ROI_count"] == 77
+    assert (
+        visual["observations"][
+            "Henning_C3_directional_edge_speed_degrees_per_second"
+        ]
+        == 20.0
+    )
+    assert visual["observations"]["Henning_C3_directional_cohort_independent"] is False
+    assert (
+        visual["observations"][
+            "Henning_C3_direction_specific_source_kernel_verified"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["Henning_C3_directional_source_transfer_authorized"]
         is False
     )
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [

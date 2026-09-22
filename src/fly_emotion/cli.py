@@ -57,6 +57,9 @@ from .driving.v7_c3_analytic_filter_precheck import (
     evaluate_v7_c3_analytic_filter_precheck,
 )
 from .driving.v7_c3_citation_graph_audit import evaluate_v7_c3_citation_graph_audit
+from .driving.v7_c3_directional_edge_audit import (
+    evaluate_v7_c3_directional_edge_audit,
+)
 from .driving.v7_c3_flash_preregistration import (
     evaluate_v7_c3_flash_preregistration,
 )
@@ -715,6 +718,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-c2c3-version-of-record-data")
     subparsers.add_parser("v7-audit-c3-flash-preregistration")
     subparsers.add_parser("v7-audit-c3-strf-flash-transfer")
+    subparsers.add_parser("v7-audit-c3-directional-edges")
     subparsers.add_parser("v7-precheck-c3-analytic-filter")
     subparsers.add_parser("v7-audit-c3-measured-filter-robustness")
     subparsers.add_parser("v7-audit-timing-models-source-filters")
@@ -2120,6 +2124,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-strf-flash-transfer":
         report = evaluate_v7_c3_strf_flash_transfer(root)
         target = root / "artifacts/v7-c3-strf-flash-transfer.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-c3-directional-edges":
+        report = evaluate_v7_c3_directional_edge_audit(root)
+        target = root / "artifacts/v7-c3-directional-edge-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

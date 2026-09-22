@@ -99,6 +99,7 @@ evidence:
   stable_contrast_source_scope_audit: artifacts/v7-stable-contrast-source-scope-audit.json
   tanaka_mi4_calcium_audit: artifacts/v7-tanaka-mi4-calcium-audit.json
   afterimages_mi4_candidate_audit: artifacts/v7-afterimages-mi4-candidate-audit.json
+  c3_directional_edge_audit: artifacts/v7-c3-directional-edge-audit.json
   unified_model_package_audit: artifacts/v7-unified-model-package-audit.json
   fig3_source_kernel_audit: artifacts/v7-fig3-source-kernel-audit.json
   fig3_source_kernel_robustness: artifacts/v7-fig3-source-kernel-robustness.json

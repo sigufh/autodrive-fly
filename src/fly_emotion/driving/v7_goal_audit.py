@@ -141,6 +141,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     tanaka_mi4_calcium_audit = reports["tanaka_mi4_calcium_audit"]
     afterimages_mi4_candidate_audit = reports["afterimages_mi4_candidate_audit"]
+    c3_directional_edge_audit = reports["c3_directional_edge_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -409,6 +410,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["stable_contrast_source_scope_audit"],
                 config["evidence"]["tanaka_mi4_calcium_audit"],
                 config["evidence"]["afterimages_mi4_candidate_audit"],
+                config["evidence"]["c3_directional_edge_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1795,6 +1797,39 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized": (
                     afterimages_mi4_candidate_audit[
                         "authorize_Mi4_source_dynamics_transfer"
+                    ]
+                ),
+                "Henning_C3_directional_payload_fly_count": (
+                    c3_directional_edge_audit["measurement"][
+                        "fly_count_in_public_payload"
+                    ]
+                ),
+                "Henning_C3_directional_caption_fly_count": (
+                    c3_directional_edge_audit["measurement"][
+                        "fly_count_in_version_of_record_caption"
+                    ]
+                ),
+                "Henning_C3_directional_ROI_count": (
+                    c3_directional_edge_audit["measurement"]["ROI_count"]
+                ),
+                "Henning_C3_directional_edge_speed_degrees_per_second": (
+                    c3_directional_edge_audit["measurement"][
+                        "edge_velocity_degrees_per_second"
+                    ]
+                ),
+                "Henning_C3_directional_cohort_independent": (
+                    c3_directional_edge_audit["cohort_relationship"][
+                        "independent_cohort"
+                    ]
+                ),
+                "Henning_C3_direction_specific_source_kernel_verified": (
+                    c3_directional_edge_audit[
+                        "direction_specific_C3_source_kernel_verified"
+                    ]
+                ),
+                "Henning_C3_directional_source_transfer_authorized": (
+                    c3_directional_edge_audit[
+                        "authorize_C3_source_dynamics_transfer"
                     ]
                 ),
                 "source_dynamics_external_contract_satisfied": (
@@ -4154,6 +4189,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Wu_2026_afterimages_Mi4_response_unit",
                     "Wu_2026_afterimages_public_numeric_Mi4_payload_verified",
                     "Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized",
+                    "Henning_C3_directional_payload_fly_count",
+                    "Henning_C3_directional_caption_fly_count",
+                    "Henning_C3_directional_ROI_count",
+                    "Henning_C3_directional_edge_speed_degrees_per_second",
+                    "Henning_C3_directional_cohort_independent",
+                    "Henning_C3_direction_specific_source_kernel_verified",
+                    "Henning_C3_directional_source_transfer_authorized",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

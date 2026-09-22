@@ -1,4 +1,4 @@
-version: 28
+version: 29
 name: v7-source-evidence-matrix
 observed_on: "2026-09-22"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -47,6 +47,7 @@ evidence:
   c3_dynamics: artifacts/v7-c3-strf-source-dynamics-audit.json
   c2c3_version_of_record: artifacts/v7-c2c3-version-of-record-data-audit.json
   c3_external_flash: artifacts/v7-c3-strf-flash-transfer.json
+  c3_directional_edges: artifacts/v7-c3-directional-edge-audit.json
   arenz_t4: artifacts/v7-arenz-source-dynamics-audit.json
   arenz_t5: artifacts/v7-arenz-t5-source-dynamics-audit.json
   malecns_mapping: artifacts/v7-malecns-source-mapping-readiness-audit.json

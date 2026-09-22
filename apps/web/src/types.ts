@@ -98,6 +98,13 @@ export type V7Status = {
     Wu_2026_afterimages_Mi4_response_unit?: string;
     Wu_2026_afterimages_public_numeric_Mi4_payload_verified?: boolean;
     Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized?: boolean;
+    Henning_C3_directional_payload_fly_count?: number;
+    Henning_C3_directional_caption_fly_count?: number;
+    Henning_C3_directional_ROI_count?: number;
+    Henning_C3_directional_edge_speed_degrees_per_second?: number;
+    Henning_C3_directional_cohort_independent?: boolean;
+    Henning_C3_direction_specific_source_kernel_verified?: boolean;
+    Henning_C3_directional_source_transfer_authorized?: boolean;
     T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
     T5_voltage_derived_kernel_sources: string[];
     T5_voltage_derived_kernel_record_count: number;
