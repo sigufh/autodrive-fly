@@ -184,6 +184,10 @@ v7-extract-t5-phenotype:
 v7-audit-goal-coverage:
 	.venv/bin/autodrive-fly v7-audit-goal-coverage
 
+.PHONY: v7-audit-stable-contrast-source-scope
+v7-audit-stable-contrast-source-scope:
+	.venv/bin/autodrive-fly v7-audit-stable-contrast-source-scope
+
 v7-audit-gou-dandi-identity:
 	.venv/bin/autodrive-fly v7-audit-gou-dandi-identity
 

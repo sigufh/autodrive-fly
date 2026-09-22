@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 10
+    assert summary["audited_candidate_count"] == 11
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -34,6 +34,7 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["citation_graph_exclusion_candidates"] == ["Pang_2025"]
     assert summary["unresolved_high_value_candidates"] == ["Hao_2026_ASAP7y"]
     assert summary["unresolved_candidates_in_audited_candidate_count"] is False
+    assert summary["anatomy_only_named_source_candidates"] == ["Gur_2024"]
 
 
 def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
@@ -65,6 +66,12 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert pang["target_neurons"] == ["L1", "L2"]
     assert pang["directly_measured_required_sources"] == []
     assert pang["experimental_membrane_voltage"] is False
+    gur = matrix["Gur_2024"]
+    assert gur["directly_measured_required_sources"] == []
+    assert gur["experimental_membrane_voltage"] is False
+    assert gur["exclusion_reason"] == (
+        "Mi4_C3_named_files_are_FAFB_proofreading_tables_not_physiology"
+    )
     assert not any(
         item["qualifies_as_independent_Mi4_C3_numeric_membrane_voltage"]
         for item in matrix.values()

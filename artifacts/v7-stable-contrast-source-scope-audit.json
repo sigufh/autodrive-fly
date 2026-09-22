@@ -1,0 +1,163 @@
+{
+  "protocol": {
+    "name": "v7-stable-contrast-source-scope-audit",
+    "observed_on": "2026-09-22",
+    "dependencies_sha256": {
+      "configs/driving-v7-stable-contrast-source-scope-audit.yaml": "be3b8a340bbe3b573b4a9857f1d143709e8e79452c6b9dc112bdea893ab21842",
+      "src/fly_emotion/driving/v7_stable_contrast_source_scope_audit.py": "6ab576633a95acc42e6eb64f93bc7ffebdcb093aec58c7e8341eab2f165fc0e5"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/PMC11450186.html": "f5064de86534b541e50728e1ccd56dc0e75ac1646a0b9dbd234136d4914f5845",
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/crossref.json": "3b5b88c4cfb256e3be80cbeb1bb8a752f423805e32a28f7b5d4c52f13685b104",
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/openalex.json": "19ddea8b7bef6e78cc9434bf3c643a206abe680ff5d0c608a969d3a7feaaef75",
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/zenodo.json": "b997d5d0abc448312aea36f6d0ed9ebfc789ae158d672ff30f9eabc92ef6cdfd",
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/processed-central-directory.bin": "5468f8af8a3bf91119929238ec7dc2a6545e7bbc70d850ffc7d0e936b3f2b252",
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/C3-proofreadings.xlsx": "4413238be65ff6524b71a1ae877946c59ec792369a74864c9af420c6079ddd05",
+      "data/raw/t4-inhibitory-source-external/stable-contrast-2024/Mi4-proofreadings.xlsx": "4d3a7bc1832822b3519e60b05c856e9c1a3414ec42370d6c5bbe9c1c4f6fb091"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Neural pathways and computations that achieve stable contrast processing tuned to natural scenes",
+    "doi": "10.1038/s41467-024-52724-5",
+    "pmid": 39362859,
+    "pmcid": "PMC11450186"
+  },
+  "paper_source_term_hits": {
+    "Mi4": 0,
+    "C3": 0,
+    "Tm1": 83,
+    "Tm2": 15,
+    "Tm4": 13,
+    "Tm9": 129,
+    "Dm12": 50
+  },
+  "directly_recorded_neuron_types": [
+    "L1",
+    "L2",
+    "L3",
+    "Tm1",
+    "Tm2",
+    "Tm4",
+    "Tm9",
+    "Dm12",
+    "T4/T5"
+  ],
+  "measurement_modalities": [
+    "GCaMP6f_calcium",
+    "iGluSnFR_glutamate"
+  ],
+  "Mi4_direct_physiology_found": false,
+  "C3_direct_physiology_found": false,
+  "Zenodo": {
+    "concept_doi": "10.5281/zenodo.13327244",
+    "record_doi": "10.5281/zenodo.13327245",
+    "top_level_files": {
+      "processed_data.zip": {
+        "bytes": 627776672,
+        "checksum": "md5:cd78d8a421c24298c5f72d1073514122"
+      },
+      "raw_data.zip": {
+        "bytes": 41003505398,
+        "checksum": "md5:8abf912945c64cfe50ef2b275de184b6"
+      }
+    },
+    "processed_ZIP_entry_count": 635,
+    "processed_source_paths": {
+      "Mi4": [
+        "__MACOSX/processed_data/EM_data/database/._Mi4 proofreadings.xlsx",
+        "processed_data/EM_data/database/._Mi4 proofreadings.xlsx",
+        "processed_data/EM_data/database/Mi4 proofreadings.xlsx"
+      ],
+      "C3": [
+        "__MACOSX/processed_data/EM_data/database/._C3 proofreadings.xlsx",
+        "processed_data/EM_data/database/._C3 proofreadings.xlsx",
+        "processed_data/EM_data/database/C3 proofreadings.xlsx"
+      ]
+    },
+    "full_processed_archive_downloaded": false,
+    "full_raw_archive_downloaded": false
+  },
+  "proofreading_workbooks": {
+    "Mi4": {
+      "sheet_names": [
+        "Sheet1"
+      ],
+      "fields": [
+        "symbol",
+        "hemisphere",
+        "seg_id",
+        "Updated_seg_id",
+        "optic_lobe_id",
+        "backbone proofread (Y/N)"
+      ],
+      "row_count": 723,
+      "hemispheres": [
+        "R"
+      ],
+      "unique_segment_ID_count": 723,
+      "unique_optic_lobe_ID_count": 723,
+      "proofreading_statuses": [
+        "Y"
+      ],
+      "all_fields_complete": true,
+      "time_field_found": false,
+      "response_field_found": false,
+      "stimulus_field_found": false,
+      "recording_term_found_in_values": false
+    },
+    "C3": {
+      "sheet_names": [
+        "Sheet1"
+      ],
+      "fields": [
+        "symbol",
+        "hemisphere",
+        "seg_id",
+        "Updated_seg_id",
+        "optic_lobe_id",
+        "backbone proofread (Y/N)"
+      ],
+      "row_count": 678,
+      "hemispheres": [
+        "R"
+      ],
+      "unique_segment_ID_count": 678,
+      "unique_optic_lobe_ID_count": 678,
+      "proofreading_statuses": [
+        "Y"
+      ],
+      "all_fields_complete": true,
+      "time_field_found": false,
+      "response_field_found": false,
+      "stimulus_field_found": false,
+      "recording_term_found_in_values": false
+    }
+  },
+  "Mi4_C3_files_are_connectome_proofreading_only": true,
+  "external_recording_to_MaleCNS_crosswalk_found": false,
+  "repository": {
+    "url": "https://github.com/silieslab/Gur-etal-2024",
+    "local_and_remote_head": "529eefa8399bc849c0bfe8001bcaccf4ca72ec65",
+    "commit_count": 15,
+    "tree_file_count": 158
+  },
+  "authorize_Mi4_C3_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "Mi4_C3_named_files_are_anatomical_proofreading_not_physiology",
+  "boundary": {
+    "Mi4_C3_proofreading_tables_are_anatomy_not_source_dynamics": true,
+    "FAFB_segment_IDs_are_not_external_recording_to_MaleCNS_crosswalks": true,
+    "T5_source_calcium_does_not_substitute_for_T4_inhibitory_sources": true,
+    "full_raw_archive_download_not_required_for_source_scope": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "runtime_modified": false,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

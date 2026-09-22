@@ -2345,6 +2345,17 @@ C2/C3/Lawf。因而不下载与 C3 无关的 49.6 GB 大载荷，也不把 recur
 Mi4/C3 命中，也不算排除，不授权载荷下载或拟合。
 证据见 `artifacts/v7-hao-asap7y-candidate-audit.json`。
 
+Gür 等 2024 的 stable-contrast 论文及其 Zenodo 数据也做了独立 source-scope
+核验。正文直接记录的类型是 L1/L2/L3、Tm1/Tm2/Tm4/Tm9、Dm12 与 T4/T5，
+模态为 GCaMP6f 钙成像和 iGluSnFR 谷氨酸成像，正文没有 Mi4 或 C3。为避免仅凭
+文件名判断，审计通过 HTTP Range 读取 627,776,672-byte processed ZIP 的 central
+directory（635 entries），并精确抽取 Mi4/C3 命名的两个工作簿：Mi4 723 行、C3
+678 行，字段仅包含 symbol、hemisphere、segment/optic-lobe ID 和 proofreading
+状态。它们是 FAFB connectome proofreading 表，不含时间、刺激、响应、荧光或
+电压字段，也不能充当 external recording→MaleCNS crosswalk。41-GB raw ZIP 未下载；
+该有界检查不授权 Mi4/C3 source-dynamics transfer 或任何拟合。证据见
+`artifacts/v7-stable-contrast-source-scope-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

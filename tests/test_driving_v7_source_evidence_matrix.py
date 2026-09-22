@@ -137,6 +137,16 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert components["Hao_2026_ASAP7y_Drosophila_voltage_candidate_unresolved"] is True
         assert components["Hao_2026_ASAP7y_required_source_direct_recording_verified"] is False
         assert components["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
+    assert report["matrix"]["Mi4"]["evidence_components"][
+        "Gur_2024_Mi4_C3_proofreading_table_row_count"
+    ] == 723
+    assert report["matrix"]["C3"]["evidence_components"][
+        "Gur_2024_Mi4_C3_proofreading_table_row_count"
+    ] == 678
+    for source in ("Mi4", "C3"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["Gur_2024_Mi4_C3_named_files_are_proofreading_only"] is True
+        assert components["Gur_2024_required_source_direct_physiology_found"] is False
     for source in ("Mi1", "Tm3"):
         assert report["matrix"][source]["published_optical_voltage_phenotype"] is True
         assert "Yang_2016_optical_voltage_figure" in report["matrix"][source][

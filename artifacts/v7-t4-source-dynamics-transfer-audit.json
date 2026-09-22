@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-t4-source-dynamics-transfer-audit",
-    "observed_on": "2026-09-21",
+    "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "230c1dd29792594438c85e4de82915720da437a02ac48f372bb1315c91998411",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "3714b8313d4d30c76751e789e65dbc558ac0ec957a6f2e0594deef57b89d9d2f",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "3013e4706d86d5851fd1f8c732fcbb21a3a956744c18de974a1de400ed236ab4",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "2b8bcfa66d1f7f6020d01955840a0021e0712ab042d609f21b721c4e055b6d20",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -29,6 +29,7 @@
       "artifacts/v7-strother-mi4-public-index-audit.json": "f247cfc31fa5fa40d2a5a5314f31b4865a0e3570cd8daf7d88f33f8b0e3ca3ff",
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
       "artifacts/v7-hao-asap7y-candidate-audit.json": "edf00a21997f1eb5deb2499180813f9c145b2f923febba6287e295b3939ecdde",
+      "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
       "artifacts/v7-flyvis-c3-effective-dynamics-audit.json": "65d4f2a5fff3f261d09afa31e3aff03e7f1063e57373ab0446cc4c29d4a9f45b",
@@ -299,6 +300,27 @@
     "public_numeric_payload_verified": false,
     "source_dynamics_fit_authorized": false
   },
+  "verified_Gur_2024_stable_contrast_source_scope": {
+    "doi": "10.1038/s41467-024-52724-5",
+    "directly_recorded_neuron_types": [
+      "L1",
+      "L2",
+      "L3",
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9",
+      "Dm12",
+      "T4/T5"
+    ],
+    "Mi4_direct_physiology_found": false,
+    "C3_direct_physiology_found": false,
+    "Mi4_proofreading_row_count": 723,
+    "C3_proofreading_row_count": 678,
+    "Mi4_C3_files_are_connectome_proofreading_only": true,
+    "external_recording_to_MaleCNS_crosswalk_found": false,
+    "source_dynamics_transfer_authorized": false
+  },
   "verified_FlyVis_C3_time_constant_readiness": {
     "repository_commit": "92b3845cc426dd309a1a0e1b3890156c42e14021",
     "pretrained_model_count": 50,
@@ -419,6 +441,7 @@
     "C3_intervention_is_not_direct_C3_source_dynamics": true,
     "public_index_zero_results_do_not_prove_Mi4_payload_absence": true,
     "citation_graph_exclusions_do_not_prove_global_C3_absence": true,
-    "unresolved_ASAP7y_cell_types_do_not_authorize_source_transfer": true
+    "unresolved_ASAP7y_cell_types_do_not_authorize_source_transfer": true,
+    "stable_contrast_proofreading_tables_do_not_authorize_source_transfer": true
   }
 }

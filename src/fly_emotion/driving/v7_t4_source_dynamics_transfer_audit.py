@@ -41,6 +41,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     strother_index_path = Path(config["strother_mi4_public_index_evidence"])
     c3_citation_graph_path = Path(config["c3_citation_graph_evidence"])
     hao_asap7y_path = Path(config["hao_ASAP7y_candidate_evidence"])
+    stable_contrast_path = Path(config["stable_contrast_source_scope_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -89,6 +90,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / c3_citation_graph_path).read_text(encoding="utf-8")
     )
     hao_asap7y = json.loads((root / hao_asap7y_path).read_text(encoding="utf-8"))
+    stable_contrast = json.loads(
+        (root / stable_contrast_path).read_text(encoding="utf-8")
+    )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
     flyvis_effective = json.loads(
@@ -228,6 +232,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(strother_index_path): _sha256(root / strother_index_path),
                 str(c3_citation_graph_path): _sha256(root / c3_citation_graph_path),
                 str(hao_asap7y_path): _sha256(root / hao_asap7y_path),
+                str(stable_contrast_path): _sha256(root / stable_contrast_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -617,6 +622,33 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "source_dynamics_fit_authorized": hao_asap7y[
                 "authorize_source_dynamics_fit"
+            ],
+        },
+        "verified_Gur_2024_stable_contrast_source_scope": {
+            "doi": stable_contrast["paper"]["doi"],
+            "directly_recorded_neuron_types": stable_contrast[
+                "directly_recorded_neuron_types"
+            ],
+            "Mi4_direct_physiology_found": stable_contrast[
+                "Mi4_direct_physiology_found"
+            ],
+            "C3_direct_physiology_found": stable_contrast[
+                "C3_direct_physiology_found"
+            ],
+            "Mi4_proofreading_row_count": stable_contrast[
+                "proofreading_workbooks"
+            ]["Mi4"]["row_count"],
+            "C3_proofreading_row_count": stable_contrast[
+                "proofreading_workbooks"
+            ]["C3"]["row_count"],
+            "Mi4_C3_files_are_connectome_proofreading_only": stable_contrast[
+                "Mi4_C3_files_are_connectome_proofreading_only"
+            ],
+            "external_recording_to_MaleCNS_crosswalk_found": stable_contrast[
+                "external_recording_to_MaleCNS_crosswalk_found"
+            ],
+            "source_dynamics_transfer_authorized": stable_contrast[
+                "authorize_Mi4_C3_source_dynamics_transfer"
             ],
         },
         "verified_FlyVis_C3_time_constant_readiness": {

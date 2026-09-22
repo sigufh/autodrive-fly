@@ -189,6 +189,18 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert hao["candidate_classification"] == "unresolved_high_value_candidate"
     assert hao["public_numeric_payload_verified"] is False
     assert hao["source_dynamics_fit_authorized"] is False
+    stable = report["verified_Gur_2024_stable_contrast_source_scope"]
+    assert stable["doi"] == "10.1038/s41467-024-52724-5"
+    assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(
+        stable["directly_recorded_neuron_types"]
+    )
+    assert stable["Mi4_direct_physiology_found"] is False
+    assert stable["C3_direct_physiology_found"] is False
+    assert stable["Mi4_proofreading_row_count"] == 723
+    assert stable["C3_proofreading_row_count"] == 678
+    assert stable["Mi4_C3_files_are_connectome_proofreading_only"] is True
+    assert stable["external_recording_to_MaleCNS_crosswalk_found"] is False
+    assert stable["source_dynamics_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

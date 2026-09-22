@@ -215,6 +215,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_ASAP7y_public_numeric_payload_verified": visual[
                     "Hao_2026_ASAP7y_public_numeric_payload_verified"
                 ],
+                "Gur_2024_directly_recorded_neuron_types": visual[
+                    "Gur_2024_directly_recorded_neuron_types"
+                ],
+                "Gur_2024_Mi4_proofreading_row_count": visual[
+                    "Gur_2024_Mi4_proofreading_row_count"
+                ],
+                "Gur_2024_C3_proofreading_row_count": visual[
+                    "Gur_2024_C3_proofreading_row_count"
+                ],
+                "Gur_2024_Mi4_C3_files_are_proofreading_only": visual[
+                    "Gur_2024_Mi4_C3_files_are_proofreading_only"
+                ],
+                "Gur_2024_Mi4_C3_direct_physiology_found": visual[
+                    "Gur_2024_Mi4_C3_direct_physiology_found"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

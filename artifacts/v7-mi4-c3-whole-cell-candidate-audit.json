@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
-    "observed_on": "2026-09-21",
+    "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "231b6e9d5a79c14bb1ca681d3383f2e28b4a53341b50f74baa6a9d2a036a7fb9",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "452b1db82b7394bd5aec0b3278aa6ced2d025116d789f323f850ccabc065ad7b",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "951e5452a3bb604cc556de00ca9a0f7b5e8ce1116b2ee856559a4cc0e0510d56",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "f77101c9aa7819fae886ce5bc3bbd3d2d9bcf5a41b1b618c2e59b89eca9c2f46",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "049538a605c70407261ea0e5acc4a1eafdbc7bca7a9ec72158c3fa0777e1b6cd",
@@ -17,7 +17,8 @@
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
-      "artifacts/v7-hao-asap7y-candidate-audit.json": "edf00a21997f1eb5deb2499180813f9c145b2f923febba6287e295b3939ecdde"
+      "artifacts/v7-hao-asap7y-candidate-audit.json": "edf00a21997f1eb5deb2499180813f9c145b2f923febba6287e295b3939ecdde",
+      "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -236,10 +237,35 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "direct_voltage_imaging_targets_are_L1_L2_not_Mi4_or_C3",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Gur_2024": {
+      "title": "Neural pathways and computations that achieve stable contrast processing tuned to natural scenes",
+      "doi": "10.1038/s41467-024-52724-5",
+      "target_neurons": [
+        "L1",
+        "L2",
+        "L3",
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+        "Dm12",
+        "T4",
+        "T5"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "GCaMP6f_calcium_and_iGluSnFR_glutamate",
+      "response_unit": "optical_calcium_and_glutamate_signals",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "Mi4_C3_named_files_are_FAFB_proofreading_tables_not_physiology",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 10,
+    "audited_candidate_count": 11,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -257,7 +283,10 @@
     "unresolved_high_value_candidates": [
       "Hao_2026_ASAP7y"
     ],
-    "unresolved_candidates_in_audited_candidate_count": false
+    "unresolved_candidates_in_audited_candidate_count": false,
+    "anatomy_only_named_source_candidates": [
+      "Gur_2024"
+    ]
   },
   "transfer_gates": {
     "bounded_candidate_set_audited": true,
@@ -292,6 +321,7 @@
     "C3_intervention_does_not_substitute_for_direct_C3_recording": true,
     "L1_L2_voltage_does_not_substitute_for_Mi4_or_C3": true,
     "unresolved_cell_type_scope_is_not_counted_as_a_positive_or_negative_candidate": true,
+    "connectome_proofreading_tables_do_not_substitute_for_source_recordings": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

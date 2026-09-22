@@ -1,6 +1,6 @@
-version: 7
+version: 8
 name: v7-t4-source-dynamics-transfer-audit
-observed_on: "2026-09-21"
+observed_on: "2026-09-22"
 electrophysiology_evidence: artifacts/v7-electrophysiology-audit.json
 electrophysiology_interface: artifacts/v7-ephys-interface.json
 timebase_evidence: artifacts/v7-timebase-audit.json
@@ -27,6 +27,7 @@ yuan_c3_candidate_evidence: artifacts/v7-yuan-c3-candidate-audit.json
 strother_mi4_public_index_evidence: artifacts/v7-strother-mi4-public-index-audit.json
 c3_citation_graph_evidence: artifacts/v7-c3-citation-graph-audit.json
 hao_ASAP7y_candidate_evidence: artifacts/v7-hao-asap7y-candidate-audit.json
+stable_contrast_source_scope_evidence: artifacts/v7-stable-contrast-source-scope-audit.json
 flyvis_c3_time_constant_evidence: artifacts/v7-flyvis-c3-time-constant-audit.json
 flyvis_visual_source_time_constants_evidence: artifacts/v7-flyvis-visual-source-time-constants.json
 flyvis_c3_effective_dynamics_evidence: artifacts/v7-flyvis-c3-effective-dynamics-audit.json
@@ -83,3 +84,4 @@ boundary:
   public_index_zero_results_do_not_prove_Mi4_payload_absence: true
   citation_graph_exclusions_do_not_prove_global_C3_absence: true
   unresolved_ASAP7y_cell_types_do_not_authorize_source_transfer: true
+  stable_contrast_proofreading_tables_do_not_authorize_source_transfer: true

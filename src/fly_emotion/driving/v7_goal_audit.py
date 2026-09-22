@@ -136,6 +136,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     strother_mi4_public_index_audit = reports["strother_mi4_public_index_audit"]
     c3_citation_graph_audit = reports["c3_citation_graph_audit"]
     hao_asap7y_candidate_audit = reports["hao_asap7y_candidate_audit"]
+    stable_contrast_source_scope_audit = reports[
+        "stable_contrast_source_scope_audit"
+    ]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -401,6 +404,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["strother_mi4_public_index_audit"],
                 config["evidence"]["c3_citation_graph_audit"],
                 config["evidence"]["hao_asap7y_candidate_audit"],
+                config["evidence"]["stable_contrast_source_scope_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1703,6 +1707,30 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 ),
                 "Hao_2026_ASAP7y_public_numeric_payload_verified": (
                     hao_asap7y_candidate_audit["public_numeric_payload_verified"]
+                ),
+                "Gur_2024_directly_recorded_neuron_types": (
+                    stable_contrast_source_scope_audit["directly_recorded_neuron_types"]
+                ),
+                "Gur_2024_Mi4_proofreading_row_count": (
+                    stable_contrast_source_scope_audit["proofreading_workbooks"][
+                        "Mi4"
+                    ]["row_count"]
+                ),
+                "Gur_2024_C3_proofreading_row_count": (
+                    stable_contrast_source_scope_audit["proofreading_workbooks"][
+                        "C3"
+                    ]["row_count"]
+                ),
+                "Gur_2024_Mi4_C3_files_are_proofreading_only": (
+                    stable_contrast_source_scope_audit[
+                        "Mi4_C3_files_are_connectome_proofreading_only"
+                    ]
+                ),
+                "Gur_2024_Mi4_C3_direct_physiology_found": bool(
+                    stable_contrast_source_scope_audit["Mi4_direct_physiology_found"]
+                    or stable_contrast_source_scope_audit[
+                        "C3_direct_physiology_found"
+                    ]
                 ),
                 "source_dynamics_external_contract_satisfied": (
                     source_dynamics_external_evidence_contract["contract_satisfied"]
@@ -4041,6 +4069,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2026_ASAP7y_complete_cell_type_set_resolved",
                     "Hao_2026_ASAP7y_Drosophila_voltage_verified",
                     "Hao_2026_ASAP7y_public_numeric_payload_verified",
+                    "Gur_2024_directly_recorded_neuron_types",
+                    "Gur_2024_Mi4_proofreading_row_count",
+                    "Gur_2024_C3_proofreading_row_count",
+                    "Gur_2024_Mi4_C3_files_are_proofreading_only",
+                    "Gur_2024_Mi4_C3_direct_physiology_found",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",

@@ -87,6 +87,21 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Hao_2026_ASAP7y_complete_cell_type_set_resolved"] is False
     assert boundaries["Hao_2026_ASAP7y_Drosophila_voltage_verified"] is True
     assert boundaries["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
+    assert boundaries["Gur_2024_directly_recorded_neuron_types"] == [
+        "L1",
+        "L2",
+        "L3",
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+        "Dm12",
+        "T4/T5",
+    ]
+    assert boundaries["Gur_2024_Mi4_proofreading_row_count"] == 723
+    assert boundaries["Gur_2024_C3_proofreading_row_count"] == 678
+    assert boundaries["Gur_2024_Mi4_C3_files_are_proofreading_only"] is True
+    assert boundaries["Gur_2024_Mi4_C3_direct_physiology_found"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

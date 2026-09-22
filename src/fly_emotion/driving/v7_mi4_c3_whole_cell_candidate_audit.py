@@ -141,6 +141,14 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if hao["authorize_Mi4_C3_candidate_classification"]:
         raise ValueError("Hao ASAP7y candidate was classified without cell types")
 
+    stable_contrast = evidence["stable_contrast_scope"]
+    if not stable_contrast["Mi4_C3_files_are_connectome_proofreading_only"]:
+        raise ValueError("stable-contrast Mi4/C3 file scope changed")
+    if stable_contrast["Mi4_direct_physiology_found"] or stable_contrast[
+        "C3_direct_physiology_found"
+    ]:
+        raise ValueError("stable-contrast direct inhibitory-source coverage changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -214,6 +222,7 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "citation_graph_exclusion_candidates": ["Pang_2025"],
             "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],
             "unresolved_candidates_in_audited_candidate_count": False,
+            "anatomy_only_named_source_candidates": ["Gur_2024"],
         },
         "transfer_gates": gates,
         "independent_Mi4_C3_voltage_transfer_authorized": authorized,

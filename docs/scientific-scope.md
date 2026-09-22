@@ -628,6 +628,17 @@ numeric payload. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text route
 mapping. The named examples are not Mi4/C3, but the complete set remains unresolved;
 it is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
 source transfer (`artifacts/v7-hao-asap7y-candidate-audit.json`).
+The Gür et al. 2024 stable-contrast release was separately audited at source scope.
+Its paper directly records L1/L2/L3, Tm1/Tm2/Tm4/Tm9, Dm12, and T4/T5 using
+GCaMP6f calcium or iGluSnFR glutamate imaging; Mi4 and C3 do not occur in the paper
+text. A range-read of the 627,776,672-byte processed ZIP central directory found 635
+entries. The only Mi4/C3-named payloads are proofreading workbooks with 723 and 678
+rows respectively, containing anatomy identifiers and proofreading status but no time,
+stimulus, response, fluorescence, or voltage fields. They are FAFB connectome
+proofreading tables, not source dynamics and not an external-recording-to-MaleCNS
+crosswalk. The 41-GB raw ZIP was not downloaded, and this bounded scope result does
+not authorize transfer or fitting
+(`artifacts/v7-stable-contrast-source-scope-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

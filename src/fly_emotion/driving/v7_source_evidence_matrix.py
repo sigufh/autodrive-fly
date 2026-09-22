@@ -45,6 +45,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     strother_indexes = evidence["strother_Mi4_public_indexes"]
     c3_citation_graph = evidence["c3_citation_graph"]
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
+    stable_contrast = evidence["stable_contrast_scope"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -484,6 +485,19 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "Hao_2026_ASAP7y_public_numeric_payload_verified": (
                 source in {"Mi4", "C3"}
                 and hao_asap7y["public_numeric_payload_verified"]
+            ),
+            "Gur_2024_Mi4_C3_proofreading_table_row_count": (
+                stable_contrast["proofreading_workbooks"][source]["row_count"]
+                if source in {"Mi4", "C3"}
+                else 0
+            ),
+            "Gur_2024_Mi4_C3_named_files_are_proofreading_only": (
+                source in {"Mi4", "C3"}
+                and stable_contrast["Mi4_C3_files_are_connectome_proofreading_only"]
+            ),
+            "Gur_2024_required_source_direct_physiology_found": (
+                source == "Mi4" and stable_contrast["Mi4_direct_physiology_found"]
+                or source == "C3" and stable_contrast["C3_direct_physiology_found"]
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources

@@ -279,6 +279,9 @@ from .driving.v7_source_type_temporal_identifiability import (
 )
 from .driving.v7_spectral_controls import evaluate_v7_spectral_controls
 from .driving.v7_stability import evaluate_v7_background_stability, evaluate_v7_feedback_cut
+from .driving.v7_stable_contrast_source_scope_audit import (
+    evaluate_v7_stable_contrast_source_scope_audit,
+)
 from .driving.v7_stage1_development import evaluate_v7_stage1_development
 from .driving.v7_stage1_geometry_ab import evaluate_v7_stage1_geometry_ab
 from .driving.v7_stage1_input_audit import evaluate_v7_stage1_input_audit
@@ -695,6 +698,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-hao-asap7y-candidate")
     subparsers.add_parser("v7-audit-yuan-c3-candidate")
     subparsers.add_parser("v7-audit-strother-mi4-public-indexes")
+    subparsers.add_parser("v7-audit-stable-contrast-source-scope")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
@@ -2014,6 +2018,14 @@ def main() -> None:
     if args.command == "v7-audit-strother-mi4-public-indexes":
         report = evaluate_v7_strother_mi4_public_index_audit(root)
         target = root / "artifacts/v7-strother-mi4-public-index-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-stable-contrast-source-scope":
+        report = evaluate_v7_stable_contrast_source_scope_audit(root)
+        target = root / "artifacts/v7-stable-contrast-source-scope-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

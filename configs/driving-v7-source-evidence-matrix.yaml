@@ -1,6 +1,6 @@
-version: 25
+version: 26
 name: v7-source-evidence-matrix
-observed_on: "2026-09-21"
+observed_on: "2026-09-22"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 evidence:
   t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
@@ -18,6 +18,7 @@ evidence:
   strother_Mi4_public_indexes: artifacts/v7-strother-mi4-public-index-audit.json
   c3_citation_graph: artifacts/v7-c3-citation-graph-audit.json
   hao_ASAP7y_unresolved: artifacts/v7-hao-asap7y-candidate-audit.json
+  stable_contrast_scope: artifacts/v7-stable-contrast-source-scope-audit.json
   borst_2025_temporal_filtering: artifacts/v7-borst-2025-temporal-filtering-audit.json
   pirogova_source_calcium: artifacts/v7-pirogova-source-calcium-audit.json
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json
