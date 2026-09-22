@@ -4,7 +4,7 @@
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
       "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "3013e4706d86d5851fd1f8c732fcbb21a3a956744c18de974a1de400ed236ab4",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "2b8bcfa66d1f7f6020d01955840a0021e0712ab042d609f21b721c4e055b6d20",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "e33b4202aae03a4778600af134b9a9d9675d3e451d5aa4dc27d8804804fed749",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -28,7 +28,7 @@
       "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
       "artifacts/v7-strother-mi4-public-index-audit.json": "f247cfc31fa5fa40d2a5a5314f31b4865a0e3570cd8daf7d88f33f8b0e3ca3ff",
       "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880",
-      "artifacts/v7-hao-asap7y-candidate-audit.json": "edf00a21997f1eb5deb2499180813f9c145b2f923febba6287e295b3939ecdde",
+      "artifacts/v7-hao-asap7y-candidate-audit.json": "9137f6ad1bfafeffc1144e76b35510d60540892cdd4b0ea42cd2148440a3b5f7",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-flyvis-c3-time-constant-audit.json": "6602cba338724cf38265a000800d6e7d2616b1eeefd492dad21d219eddad2789",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",
@@ -298,6 +298,10 @@
     "complete_experimental_cell_type_set_resolved": false,
     "candidate_classification": "unresolved_high_value_candidate",
     "public_numeric_payload_verified": false,
+    "author_dissertation_restricted_until": "2027-03-14",
+    "author_dissertation_public_abstract_names_cell_types": false,
+    "successful_public_index_numeric_payload_found": false,
+    "global_payload_absence_claimed": false,
     "source_dynamics_fit_authorized": false
   },
   "verified_Gur_2024_stable_contrast_source_scope": {

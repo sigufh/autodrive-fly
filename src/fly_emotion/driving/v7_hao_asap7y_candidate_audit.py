@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import yaml
@@ -90,6 +91,70 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
         raise ValueError("ASAP7y public author-thread text changed")
     visually_verified_examples = thread_spec["visually_verified_post_11_labels"]
 
+    dissertation_spec = config["stanford_dissertation"]
+    dissertation_paths = {
+        name: _verify(root, spec)
+        for name, spec in dissertation_spec["snapshots"].items()
+    }
+    mods_root = ET.fromstring(dissertation_paths["mods"].read_text(encoding="utf-8"))
+    mods_ns = {"mods": "http://www.loc.gov/mods/v3"}
+    dissertation_title = mods_root.findtext(
+        "mods:titleInfo/mods:title", namespaces=mods_ns
+    )
+    dissertation_abstract = mods_root.findtext(
+        "mods:abstract[@type='summary']", namespaces=mods_ns
+    )
+    if dissertation_title != dissertation_spec["title"]:
+        raise ValueError("Stanford dissertation identity changed")
+    dissertation_phrases = (
+        "dendritic voltage dynamics in visual neurons in intact fly brains",
+        "heterogeneity in dendritic electrical compartmentalization",
+        "dendritic compartments displaying inverted voltage polarities",
+    )
+    if dissertation_abstract is None or any(
+        phrase not in dissertation_abstract for phrase in dissertation_phrases
+    ):
+        raise ValueError("Stanford dissertation abstract evidence changed")
+    manifest = json.loads(dissertation_paths["iiif_manifest"].read_text())
+    bodies = [
+        annotation["body"]
+        for canvas in manifest["items"]
+        for page in canvas["items"]
+        for annotation in page["items"]
+    ]
+    if len(bodies) != 1 or bodies[0]["label"]["en"] != [
+        dissertation_spec["fulltext_filename"]
+    ]:
+        raise ValueError("Stanford dissertation file inventory changed")
+    auth_probe = json.loads(dissertation_paths["auth_probe"].read_text())
+    restricted_heading = auth_probe["heading"]["en"]
+    expected_restriction = (
+        "Access is restricted to Stanford-affiliated patrons until "
+        f"{dissertation_spec['restricted_until']}."
+    )
+    if auth_probe["status"] != 401 or restricted_heading != [expected_restriction]:
+        raise ValueError("Stanford dissertation access condition changed")
+
+    index_paths = {
+        name: _verify(root, spec)
+        for name, spec in config["public_index_snapshots"].items()
+    }
+    indexes = {name: json.loads(path.read_text()) for name, path in index_paths.items()}
+    if indexes["openrxiv_location"].get("error") != "No works found":
+        raise ValueError("openRxiv MECA-location result changed")
+    if any(
+        indexes[name].get("total_count") != 0
+        or indexes[name].get("incomplete_results") is not False
+        for name in ("github_ASAP7y_repositories", "github_title_repositories")
+    ):
+        raise ValueError("GitHub repository search result changed")
+    if indexes["datacite_DOI"]["meta"]["total"] != 0:
+        raise ValueError("DataCite related-object result changed")
+    if indexes["dryad_DOI"]["total"] != 0:
+        raise ValueError("Dryad related-dataset result changed")
+    if indexes["zenodo_ASAP7y"]["hits"]["total"] != 0:
+        raise ValueError("Zenodo ASAP7y result changed")
+
     return {
         "protocol": {
             "name": config["name"],
@@ -104,6 +169,14 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             | {
                 str(path.relative_to(root)): _sha256(path)
                 for path in thread_paths.values()
+            }
+            | {
+                str(path.relative_to(root)): _sha256(path)
+                for path in dissertation_paths.values()
+            }
+            | {
+                str(path.relative_to(root)): _sha256(path)
+                for path in index_paths.values()
             },
             "parameter_fit": False,
             "target_activity_injection": False,
@@ -133,6 +206,32 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             "counts_as_numeric_payload": False,
             "resolves_complete_paper_cell_type_set": False,
         },
+        "author_dissertation": {
+            "purl": dissertation_spec["purl"],
+            "title": dissertation_title,
+            "author": dissertation_spec["author"],
+            "thesis_year": dissertation_spec["thesis_year"],
+            "record_published_on": dissertation_spec["record_published_on"],
+            "fulltext_filename": bodies[0]["label"]["en"][0],
+            "fulltext_file_count": len(bodies),
+            "access_probe_status": auth_probe["status"],
+            "restricted_until": dissertation_spec["restricted_until"],
+            "public_abstract_confirms_fly_visual_dendritic_voltage": True,
+            "public_abstract_names_experimental_cell_types": False,
+            "fulltext_retrieved": False,
+            "same_experimental_cohort_as_preprint_verified": False,
+            "resolves_complete_preprint_cell_type_set": False,
+        },
+        "public_repository_indexes": {
+            "openRxiv_MECA_location_found": False,
+            "GitHub_ASAP7y_repository_count": 0,
+            "GitHub_exact_title_repository_count": 0,
+            "DataCite_DOI_related_object_count": 0,
+            "Dryad_DOI_dataset_count": 0,
+            "Zenodo_ASAP7y_record_count": 0,
+            "successful_index_numeric_payload_found": False,
+            "global_payload_absence_claimed": False,
+        },
         "access_boundaries": {
             "bioRxiv_HTML_status": 429,
             "bioRxiv_JATS_status": 429,
@@ -148,6 +247,9 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
         "advance_to_T4_functional_precheck": False,
         "advance_to_LPLC_mechanism_repair": False,
         "advance_to_runtime_integration": False,
-        "stop_reason": "experimental_Drosophila_cell_types_not_resolved_from_accessible_sources",
+        "stop_reason": (
+            "experimental_Drosophila_cell_types_not_resolved_from_accessible_sources"
+            "_and_author_dissertation_fulltext_restricted_until_2027_03_14"
+        ),
         "boundary": config["boundary"],
     }

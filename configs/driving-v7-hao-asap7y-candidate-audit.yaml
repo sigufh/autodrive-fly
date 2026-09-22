@@ -1,4 +1,4 @@
-version: 2
+version: 3
 name: v7-hao-asap7y-candidate-audit
 observed_on: "2026-09-22"
 paper:
@@ -27,6 +27,25 @@ public_author_thread:
     post_10: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-10.jpg, bytes: 74491, sha256: 376776c886cfd109fd0825d5eea4cb81c9c3227acdd8db4c04ceccc71b0a9a19}
     post_11: {path: data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-11.jpg, bytes: 114428, sha256: c852d06333c32c030ddacf0d2f8650a27cdaad74c018666ea6f7a65be87d8a2d}
   visually_verified_post_11_labels: [Dm9, MeLo13]
+stanford_dissertation:
+  title: Voltage imaging for revealing neuronal dynamics across scales
+  purl: https://purl.stanford.edu/cg111nm7996
+  author: Hao, Yukun
+  thesis_year: 2025
+  record_published_on: "2026-07-13"
+  fulltext_filename: PhDThesis_YKH_final-augmented.pdf
+  restricted_until: "2027-03-14"
+  snapshots:
+    mods: {path: data/raw/t4-inhibitory-source-external/hao-2026/stanford-thesis/mods.xml, bytes: 5076, sha256: d4a281210c7cd9af55c830fdd00de02b57f23be9f9439994045fed9c550eed51}
+    iiif_manifest: {path: data/raw/t4-inhibitory-source-external/hao-2026/stanford-thesis/iiif-manifest.json, bytes: 9684, sha256: c11a9b29d753e263329f947e9e93529bcaf1cee5bfce0d23cf1175bccdd998d2}
+    auth_probe: {path: data/raw/t4-inhibitory-source-external/hao-2026/stanford-thesis/auth-probe.json, bytes: 676, sha256: f755737a50af421588c6924d1d0ba3e95954ba2ddde1c275dc93ab053d27861e}
+public_index_snapshots:
+  openrxiv_location: {path: data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/openrxiv-location.json, bytes: 61, sha256: d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340}
+  github_ASAP7y_repositories: {path: data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/github-asap7y-repositories.json, bytes: 73, sha256: 08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2}
+  github_title_repositories: {path: data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/github-title-repositories.json, bytes: 73, sha256: 08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2}
+  datacite_DOI: {path: data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/datacite-doi.json, bytes: 158, sha256: a706c700cea2feea1bef6f4c257f106e702a82c0d051789ec5f38a1f6fc02e35}
+  dryad_DOI: {path: data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/dryad-doi.json, bytes: 325, sha256: 455fa5b769743344d65652fac46ef8adddac9b1c1d22133f33707283b942a582}
+  zenodo_ASAP7y: {path: data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/zenodo-asap7y.json, bytes: 432, sha256: 3f4c8a861eee3b6f5a926d63cf94843b92b32675c97147fb93ac38c4f8d5b347}
 boundary:
   high_value_candidate_kept_unresolved_until_cell_types_are_verified: true
   Drosophila_visual_voltage_does_not_imply_Mi4_or_C3: true
@@ -34,6 +53,10 @@ boundary:
   unresolved_candidate_does_not_authorize_fit_or_download: true
   public_author_figure_is_locator_evidence_not_numeric_payload: true
   partial_named_examples_do_not_resolve_complete_experimental_cell_type_set: true
+  author_dissertation_abstract_does_not_substitute_for_restricted_fulltext: true
+  related_dissertation_is_not_assumed_to_be_the_same_experimental_cohort: true
+  successful_public_index_zero_results_are_not_global_payload_absence: true
+  HTTP_401_403_404_429_and_500_are_not_source_absence: true
   no_parameter_fit: true
   no_target_activity_injection: true
   runtime_modified: false

@@ -188,6 +188,10 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert hao["complete_experimental_cell_type_set_resolved"] is False
     assert hao["candidate_classification"] == "unresolved_high_value_candidate"
     assert hao["public_numeric_payload_verified"] is False
+    assert hao["author_dissertation_restricted_until"] == "2027-03-14"
+    assert hao["author_dissertation_public_abstract_names_cell_types"] is False
+    assert hao["successful_public_index_numeric_payload_found"] is False
+    assert hao["global_payload_absence_claimed"] is False
     assert hao["source_dynamics_fit_authorized"] is False
     stable = report["verified_Gur_2024_stable_contrast_source_scope"]
     assert stable["doi"] == "10.1038/s41467-024-52724-5"

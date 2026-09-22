@@ -215,6 +215,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_ASAP7y_public_numeric_payload_verified": visual[
                     "Hao_2026_ASAP7y_public_numeric_payload_verified"
                 ],
+                "Hao_2025_dissertation_restricted_until": visual[
+                    "Hao_2025_dissertation_restricted_until"
+                ],
+                "Hao_2025_dissertation_public_abstract_names_cell_types": visual[
+                    "Hao_2025_dissertation_public_abstract_names_cell_types"
+                ],
+                "Hao_2026_ASAP7y_successful_index_numeric_payload_found": visual[
+                    "Hao_2026_ASAP7y_successful_index_numeric_payload_found"
+                ],
+                "Hao_2026_ASAP7y_global_payload_absence_claimed": visual[
+                    "Hao_2026_ASAP7y_global_payload_absence_claimed"
+                ],
                 "Gur_2024_directly_recorded_neuron_types": visual[
                     "Gur_2024_directly_recorded_neuron_types"
                 ],

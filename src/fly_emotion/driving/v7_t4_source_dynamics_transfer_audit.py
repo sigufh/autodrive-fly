@@ -620,6 +620,18 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "public_numeric_payload_verified": hao_asap7y[
                 "public_numeric_payload_verified"
             ],
+            "author_dissertation_restricted_until": hao_asap7y[
+                "author_dissertation"
+            ]["restricted_until"],
+            "author_dissertation_public_abstract_names_cell_types": hao_asap7y[
+                "author_dissertation"
+            ]["public_abstract_names_experimental_cell_types"],
+            "successful_public_index_numeric_payload_found": hao_asap7y[
+                "public_repository_indexes"
+            ]["successful_index_numeric_payload_found"],
+            "global_payload_absence_claimed": hao_asap7y[
+                "public_repository_indexes"
+            ]["global_payload_absence_claimed"],
             "source_dynamics_fit_authorized": hao_asap7y[
                 "authorize_source_dynamics_fit"
             ],

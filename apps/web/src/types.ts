@@ -78,6 +78,10 @@ export type V7Status = {
     Hao_2026_ASAP7y_complete_cell_type_set_resolved?: boolean;
     Hao_2026_ASAP7y_Drosophila_voltage_verified?: boolean;
     Hao_2026_ASAP7y_public_numeric_payload_verified?: boolean;
+    Hao_2025_dissertation_restricted_until?: string;
+    Hao_2025_dissertation_public_abstract_names_cell_types?: boolean;
+    Hao_2026_ASAP7y_successful_index_numeric_payload_found?: boolean;
+    Hao_2026_ASAP7y_global_payload_absence_claimed?: boolean;
     Gur_2024_directly_recorded_neuron_types?: string[];
     Gur_2024_Mi4_proofreading_row_count?: number;
     Gur_2024_C3_proofreading_row_count?: number;

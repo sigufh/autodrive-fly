@@ -1708,6 +1708,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Hao_2026_ASAP7y_public_numeric_payload_verified": (
                     hao_asap7y_candidate_audit["public_numeric_payload_verified"]
                 ),
+                "Hao_2025_dissertation_restricted_until": (
+                    hao_asap7y_candidate_audit["author_dissertation"][
+                        "restricted_until"
+                    ]
+                ),
+                "Hao_2025_dissertation_public_abstract_names_cell_types": (
+                    hao_asap7y_candidate_audit["author_dissertation"][
+                        "public_abstract_names_experimental_cell_types"
+                    ]
+                ),
+                "Hao_2026_ASAP7y_successful_index_numeric_payload_found": (
+                    hao_asap7y_candidate_audit["public_repository_indexes"][
+                        "successful_index_numeric_payload_found"
+                    ]
+                ),
+                "Hao_2026_ASAP7y_global_payload_absence_claimed": (
+                    hao_asap7y_candidate_audit["public_repository_indexes"][
+                        "global_payload_absence_claimed"
+                    ]
+                ),
                 "Gur_2024_directly_recorded_neuron_types": (
                     stable_contrast_source_scope_audit["directly_recorded_neuron_types"]
                 ),
@@ -4069,6 +4089,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2026_ASAP7y_complete_cell_type_set_resolved",
                     "Hao_2026_ASAP7y_Drosophila_voltage_verified",
                     "Hao_2026_ASAP7y_public_numeric_payload_verified",
+                    "Hao_2025_dissertation_restricted_until",
+                    "Hao_2025_dissertation_public_abstract_names_cell_types",
+                    "Hao_2026_ASAP7y_successful_index_numeric_payload_found",
+                    "Hao_2026_ASAP7y_global_payload_absence_claimed",
                     "Gur_2024_directly_recorded_neuron_types",
                     "Gur_2024_Mi4_proofreading_row_count",
                     "Gur_2024_C3_proofreading_row_count",

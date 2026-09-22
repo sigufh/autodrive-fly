@@ -3,8 +3,8 @@
     "name": "v7-hao-asap7y-candidate-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "8c42e83739e7b23f3521b695f54518bcb52474fce82819c84593c3b5de6a4bc1",
-      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "85df2111322c83280cb8fd29a18ec96631ca2c3e52799c0bb1c3022f0ef58c73"
+      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "37e986afd3e00b6f1b0f81a8281333cd1c7c5726dd081760a932248e9f1c5166",
+      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "ffa9bd0bc4a7cd057a3cb7cc9f797656a5d054447ad21d7a45c2727176edd090"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/hao-2026/crossref.json": "e3750320cdb38c7b3d0396eff20ab3cb30dc03d50d70f0f00c55635b3f77e464",
@@ -22,7 +22,16 @@
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/thread-full.json": "e09128960100f06ad418c98483c5a287befcc004a8aeeb663b7038d2d1b7fd27",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-8.jpg": "866bd4baee183975167fd3e029efc75753996e12a1cfbf69696ae19d33db822b",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-10.jpg": "376776c886cfd109fd0825d5eea4cb81c9c3227acdd8db4c04ceccc71b0a9a19",
-      "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-11.jpg": "c852d06333c32c030ddacf0d2f8650a27cdaad74c018666ea6f7a65be87d8a2d"
+      "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-11.jpg": "c852d06333c32c030ddacf0d2f8650a27cdaad74c018666ea6f7a65be87d8a2d",
+      "data/raw/t4-inhibitory-source-external/hao-2026/stanford-thesis/mods.xml": "d4a281210c7cd9af55c830fdd00de02b57f23be9f9439994045fed9c550eed51",
+      "data/raw/t4-inhibitory-source-external/hao-2026/stanford-thesis/iiif-manifest.json": "c11a9b29d753e263329f947e9e93529bcaf1cee5bfce0d23cf1175bccdd998d2",
+      "data/raw/t4-inhibitory-source-external/hao-2026/stanford-thesis/auth-probe.json": "f755737a50af421588c6924d1d0ba3e95954ba2ddde1c275dc93ab053d27861e",
+      "data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/openrxiv-location.json": "d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340",
+      "data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/github-asap7y-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
+      "data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/github-title-repositories.json": "08c082fdf7ca87ba911a2aabb0f0cf2d3e482a6feeaac9713e4578c20b2600b2",
+      "data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/datacite-doi.json": "a706c700cea2feea1bef6f4c257f106e702a82c0d051789ec5f38a1f6fc02e35",
+      "data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/dryad-doi.json": "455fa5b769743344d65652fac46ef8adddac9b1c1d22133f33707283b942a582",
+      "data/raw/t4-inhibitory-source-external/hao-2026/public-indexes/zenodo-asap7y.json": "3f4c8a861eee3b6f5a926d63cf94843b92b32675c97147fb93ac38c4f8d5b347"
     },
     "parameter_fit": false,
     "target_activity_injection": false,
@@ -62,6 +71,32 @@
     "counts_as_numeric_payload": false,
     "resolves_complete_paper_cell_type_set": false
   },
+  "author_dissertation": {
+    "purl": "https://purl.stanford.edu/cg111nm7996",
+    "title": "Voltage imaging for revealing neuronal dynamics across scales",
+    "author": "Hao, Yukun",
+    "thesis_year": 2025,
+    "record_published_on": "2026-07-13",
+    "fulltext_filename": "PhDThesis_YKH_final-augmented.pdf",
+    "fulltext_file_count": 1,
+    "access_probe_status": 401,
+    "restricted_until": "2027-03-14",
+    "public_abstract_confirms_fly_visual_dendritic_voltage": true,
+    "public_abstract_names_experimental_cell_types": false,
+    "fulltext_retrieved": false,
+    "same_experimental_cohort_as_preprint_verified": false,
+    "resolves_complete_preprint_cell_type_set": false
+  },
+  "public_repository_indexes": {
+    "openRxiv_MECA_location_found": false,
+    "GitHub_ASAP7y_repository_count": 0,
+    "GitHub_exact_title_repository_count": 0,
+    "DataCite_DOI_related_object_count": 0,
+    "Dryad_DOI_dataset_count": 0,
+    "Zenodo_ASAP7y_record_count": 0,
+    "successful_index_numeric_payload_found": false,
+    "global_payload_absence_claimed": false
+  },
   "access_boundaries": {
     "bioRxiv_HTML_status": 429,
     "bioRxiv_JATS_status": 429,
@@ -77,7 +112,7 @@
   "advance_to_T4_functional_precheck": false,
   "advance_to_LPLC_mechanism_repair": false,
   "advance_to_runtime_integration": false,
-  "stop_reason": "experimental_Drosophila_cell_types_not_resolved_from_accessible_sources",
+  "stop_reason": "experimental_Drosophila_cell_types_not_resolved_from_accessible_sources_and_author_dissertation_fulltext_restricted_until_2027_03_14",
   "boundary": {
     "high_value_candidate_kept_unresolved_until_cell_types_are_verified": true,
     "Drosophila_visual_voltage_does_not_imply_Mi4_or_C3": true,
@@ -85,6 +120,10 @@
     "unresolved_candidate_does_not_authorize_fit_or_download": true,
     "public_author_figure_is_locator_evidence_not_numeric_payload": true,
     "partial_named_examples_do_not_resolve_complete_experimental_cell_type_set": true,
+    "author_dissertation_abstract_does_not_substitute_for_restricted_fulltext": true,
+    "related_dissertation_is_not_assumed_to_be_the_same_experimental_cohort": true,
+    "successful_public_index_zero_results_are_not_global_payload_absence": true,
+    "HTTP_401_403_404_429_and_500_are_not_source_absence": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,
     "runtime_modified": false,

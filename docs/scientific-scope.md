@@ -628,6 +628,17 @@ numeric payload. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text route
 mapping. The named examples are not Mi4/C3, but the complete set remains unresolved;
 it is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
 source transfer (`artifacts/v7-hao-asap7y-candidate-audit.json`).
+The first author's 2025 Stanford dissertation, *Voltage imaging for revealing
+neuronal dynamics across scales*, adds a bounded author-source lead. Public MODS and
+IIIF metadata confirm one dissertation PDF, and its abstract confirms dendritic
+voltage recording in visual neurons in intact fly brains, but names no experimental
+cell types. The official IIIF Auth Probe returns 401 and states that full text is
+restricted to Stanford-affiliated patrons until 2027-03-14. The abstract therefore
+cannot substitute for the restricted full text, and cohort identity with the 2026
+preprint is not assumed. Successful openRxiv MECA-locator, GitHub repository,
+DataCite, Dryad, and Zenodo searches found no linked numeric payload; these bounded
+zero results are not a global absence claim. Hao 2026 remains an unresolved
+high-value candidate with a concrete future recheck date.
 The Gür et al. 2024 stable-contrast release was separately audited at source scope.
 Its paper directly records L1/L2/L3, Tm1/Tm2/Tm4/Tm9, Dm12, and T4/T5 using
 GCaMP6f calcium or iGluSnFR glutamate imaging; Mi4 and C3 do not occur in the paper

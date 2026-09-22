@@ -38,6 +38,40 @@ def test_ASAP7y_is_real_fly_voltage_evidence_but_cell_types_are_unresolved() -> 
     assert locator["resolves_complete_paper_cell_type_set"] is False
 
 
+def test_author_dissertation_has_a_bounded_access_date_not_a_cell_type_resolution() -> None:
+    report = json.loads(REPORT.read_text())
+    dissertation = report["author_dissertation"]
+    assert dissertation["purl"] == "https://purl.stanford.edu/cg111nm7996"
+    assert dissertation["title"] == (
+        "Voltage imaging for revealing neuronal dynamics across scales"
+    )
+    assert dissertation["fulltext_filename"] == (
+        "PhDThesis_YKH_final-augmented.pdf"
+    )
+    assert dissertation["fulltext_file_count"] == 1
+    assert dissertation["access_probe_status"] == 401
+    assert dissertation["restricted_until"] == "2027-03-14"
+    assert dissertation["public_abstract_confirms_fly_visual_dendritic_voltage"] is True
+    assert dissertation["public_abstract_names_experimental_cell_types"] is False
+    assert dissertation["fulltext_retrieved"] is False
+    assert dissertation["same_experimental_cohort_as_preprint_verified"] is False
+    assert dissertation["resolves_complete_preprint_cell_type_set"] is False
+
+
+def test_successful_public_indexes_do_not_overclaim_global_payload_absence() -> None:
+    indexes = json.loads(REPORT.read_text())["public_repository_indexes"]
+    assert indexes == {
+        "openRxiv_MECA_location_found": False,
+        "GitHub_ASAP7y_repository_count": 0,
+        "GitHub_exact_title_repository_count": 0,
+        "DataCite_DOI_related_object_count": 0,
+        "Dryad_DOI_dataset_count": 0,
+        "Zenodo_ASAP7y_record_count": 0,
+        "successful_index_numeric_payload_found": False,
+        "global_payload_absence_claimed": False,
+    }
+
+
 def test_unresolved_candidate_does_not_change_transfer_or_downstream_gates() -> None:
     report = json.loads(REPORT.read_text())
     assert report["public_numeric_payload_verified"] is False
@@ -48,4 +82,7 @@ def test_unresolved_candidate_does_not_change_transfer_or_downstream_gates() -> 
     assert report["advance_to_runtime_integration"] is False
     assert report["boundary"][
         "high_value_candidate_kept_unresolved_until_cell_types_are_verified"
+    ] is True
+    assert report["boundary"][
+        "author_dissertation_abstract_does_not_substitute_for_restricted_fulltext"
     ] is True

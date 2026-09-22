@@ -2345,6 +2345,16 @@ C2/C3/Lawf。因而不下载与 C3 无关的 49.6 GB 大载荷，也不把 recur
 Mi4/C3 命中，也不算排除，不授权载荷下载或拟合。
 证据见 `artifacts/v7-hao-asap7y-candidate-audit.json`。
 
+随后找到第一作者 Yukun Hao 的 Stanford 2025 博士论文《Voltage imaging for
+revealing neuronal dynamics across scales》。公开 MODS/IIIF 元数据与摘要确认其在完整
+果蝇脑中记录视觉神经元树突电压，并观察到跨细胞类型的电隔离差异；但摘要没有列出实验
+细胞类型。IIIF manifest 仅列一个 `PhDThesis_YKH_final-augmented.pdf`，官方 Auth
+Probe 返回 401，并明确全文只向 Stanford affiliated patrons 开放至 `2027-03-14`。因此
+不能用摘要替代受限全文，也不能假定论文与 2026 预印本使用完全相同的实验 cohort。另对
+openRxiv MECA locator、GitHub repository search、DataCite、Dryad 和 Zenodo 做成功查询：
+均未命中 DOI-linked/ASAP7y 数值载荷；这些是有界零结果，不是全局不存在声明。Hao 项仍为
+`unresolved_high_value_candidate`，但现在有一个可复查的公开时间点。
+
 Gür 等 2024 的 stable-contrast 论文及其 Zenodo 数据也做了独立 source-scope
 核验。正文直接记录的类型是 L1/L2/L3、Tm1/Tm2/Tm4/Tm9、Dm12 与 T4/T5，
 模态为 GCaMP6f 钙成像和 iGluSnFR 谷氨酸成像，正文没有 Mi4 或 C3。为避免仅凭
