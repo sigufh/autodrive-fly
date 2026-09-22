@@ -39,6 +39,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     gonzalez_suarez_path = Path(config["gonzalez_suarez_mi4_evidence"])
     yuan_c3_path = Path(config["yuan_c3_candidate_evidence"])
     strother_index_path = Path(config["strother_mi4_public_index_evidence"])
+    c3_citation_graph_path = Path(config["c3_citation_graph_evidence"])
     flyvis_path = Path(config["flyvis_c3_time_constant_evidence"])
     flyvis_visual_path = Path(config["flyvis_visual_source_time_constants_evidence"])
     flyvis_effective_path = Path(config["flyvis_c3_effective_dynamics_evidence"])
@@ -82,6 +83,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     yuan_c3 = json.loads((root / yuan_c3_path).read_text(encoding="utf-8"))
     strother_index = json.loads(
         (root / strother_index_path).read_text(encoding="utf-8")
+    )
+    c3_citation_graph = json.loads(
+        (root / c3_citation_graph_path).read_text(encoding="utf-8")
     )
     flyvis = json.loads((root / flyvis_path).read_text(encoding="utf-8"))
     flyvis_visual = json.loads((root / flyvis_visual_path).read_text(encoding="utf-8"))
@@ -220,6 +224,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(gonzalez_suarez_path): _sha256(root / gonzalez_suarez_path),
                 str(yuan_c3_path): _sha256(root / yuan_c3_path),
                 str(strother_index_path): _sha256(root / strother_index_path),
+                str(c3_citation_graph_path): _sha256(root / c3_citation_graph_path),
                 str(flyvis_path): _sha256(root / flyvis_path),
                 str(flyvis_visual_path): _sha256(root / flyvis_visual_path),
                 str(flyvis_effective_path): _sha256(root / flyvis_effective_path),
@@ -556,6 +561,32 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "global_absence_claimed": strother_index["global_absence_claimed"],
             "Mi4_source_dynamics_transfer_authorized": strother_index[
                 "authorize_Mi4_source_dynamics_transfer"
+            ],
+        },
+        "verified_C3_citation_graph_boundary": {
+            "union_unique_work_count": c3_citation_graph["citation_graph"][
+                "union_unique_work_count"
+            ],
+            "unresolved_reference_ID_count": c3_citation_graph["citation_graph"][
+                "unresolved_reference_ID_count"
+            ],
+            "high_relevance_candidate": c3_citation_graph[
+                "high_relevance_candidate"
+            ]["name"],
+            "directly_recorded_neuron_types": c3_citation_graph[
+                "high_relevance_candidate"
+            ]["directly_recorded_neuron_types"],
+            "Dryad_file_count": c3_citation_graph["Dryad"]["file_count"],
+            "Dryad_total_declared_bytes": c3_citation_graph["Dryad"][
+                "total_declared_bytes"
+            ],
+            "new_independent_C3_direct_recording_candidate_found": (
+                c3_citation_graph[
+                    "new_independent_C3_direct_recording_candidate_found"
+                ]
+            ),
+            "C3_source_dynamics_transfer_authorized": c3_citation_graph[
+                "authorize_C3_source_dynamics_transfer"
             ],
         },
         "verified_FlyVis_C3_time_constant_readiness": {

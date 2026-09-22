@@ -1,4 +1,4 @@
-version: 23
+version: 24
 name: v7-source-evidence-matrix
 observed_on: "2026-09-21"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
@@ -16,6 +16,7 @@ evidence:
   gonzalez_suarez_Mi4: artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json
   yuan_C3: artifacts/v7-yuan-c3-candidate-audit.json
   strother_Mi4_public_indexes: artifacts/v7-strother-mi4-public-index-audit.json
+  c3_citation_graph: artifacts/v7-c3-citation-graph-audit.json
   borst_2025_temporal_filtering: artifacts/v7-borst-2025-temporal-filtering-audit.json
   pirogova_source_calcium: artifacts/v7-pirogova-source-calcium-audit.json
   gou_partial: artifacts/v7-gou-sparsity-source-dynamics-audit.json

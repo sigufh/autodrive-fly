@@ -71,6 +71,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Strother_2018_successful_index_Mi4_trace_found"] is False
     assert boundaries["Strother_2018_Figshare_search_interpretable"] is False
     assert boundaries["Strother_2018_global_absence_claimed"] is False
+    assert boundaries["C3_citation_graph_union_unique_work_count"] == 240
+    assert boundaries["C3_citation_graph_unresolved_reference_ID_count"] == 2
+    assert boundaries["Pang_2025_directly_recorded_neuron_types"] == ["L1", "L2"]
+    assert boundaries["Pang_2025_Dryad_file_count"] == 75
+    assert boundaries["Pang_2025_new_C3_direct_recording_found"] is False
     assert boundaries["T5_voltage_field_counts"] == {
         "aggregated_full_field_OFF_flash": 7,
         "raw_white_noise": 8,

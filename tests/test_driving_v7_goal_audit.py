@@ -250,6 +250,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Strother_2018_successful_index_Mi4_trace_found",
         "Strother_2018_Figshare_search_interpretable",
         "Strother_2018_global_absence_claimed",
+        "C3_citation_graph_union_unique_work_count",
+        "C3_citation_graph_unresolved_reference_ID_count",
+        "Pang_2025_directly_recorded_neuron_types",
+        "Pang_2025_Dryad_file_count",
+        "Pang_2025_new_C3_direct_recording_found",
             "C2C3_version_of_record_DOI",
             "C2C3_version_of_record_repository_revision",
             "C2C3_version_of_record_new_payload_modality",
@@ -1037,7 +1042,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 9
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 10
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1064,6 +1069,11 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Strother_2018_successful_index_Mi4_trace_found"] is False
     assert visual["observations"]["Strother_2018_Figshare_search_interpretable"] is False
     assert visual["observations"]["Strother_2018_global_absence_claimed"] is False
+    assert visual["observations"]["C3_citation_graph_union_unique_work_count"] == 240
+    assert visual["observations"]["C3_citation_graph_unresolved_reference_ID_count"] == 2
+    assert visual["observations"]["Pang_2025_directly_recorded_neuron_types"] == ["L1", "L2"]
+    assert visual["observations"]["Pang_2025_Dryad_file_count"] == 75
+    assert visual["observations"]["Pang_2025_new_C3_direct_recording_found"] is False
     assert visual["observations"]["Mi4_C3_direct_numeric_voltage_candidates"] == [
         "Groschner_2022"
     ]

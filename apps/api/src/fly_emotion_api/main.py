@@ -184,6 +184,19 @@ def _verified_v7_status(root: Path) -> dict:
                 "Strother_2018_global_absence_claimed": visual[
                     "Strother_2018_global_absence_claimed"
                 ],
+                "C3_citation_graph_union_unique_work_count": visual[
+                    "C3_citation_graph_union_unique_work_count"
+                ],
+                "C3_citation_graph_unresolved_reference_ID_count": visual[
+                    "C3_citation_graph_unresolved_reference_ID_count"
+                ],
+                "Pang_2025_directly_recorded_neuron_types": visual[
+                    "Pang_2025_directly_recorded_neuron_types"
+                ],
+                "Pang_2025_Dryad_file_count": visual["Pang_2025_Dryad_file_count"],
+                "Pang_2025_new_C3_direct_recording_found": visual[
+                    "Pang_2025_new_C3_direct_recording_found"
+                ],
                 "T5_voltage_field_counts": visual[
                     "T5_voltage_modality_field_counts"
                 ],

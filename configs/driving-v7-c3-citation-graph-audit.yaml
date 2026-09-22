@@ -1,0 +1,47 @@
+version: 1
+name: v7-c3-citation-graph-audit
+observed_on: "2026-09-22"
+roots:
+  Groschner_2022:
+    doi: 10.1038/s41586-022-04428-3
+    openalex_id: W4213435196
+    snapshot: {path: data/raw/t4-inhibitory-source-external/c3-citation-graph/openalex-groschner.json, bytes: 28232, sha256: fddec8439e018e8da591ac0bd74676c6e7a7179788449626f588ffd8425c16d4}
+  Henning_2026:
+    doi: 10.7554/eLife.108529.3
+    openalex_id: W7162472054
+    snapshot: {path: data/raw/t4-inhibitory-source-external/c3-citation-graph/openalex-henning.json, bytes: 22817, sha256: 7bb4214a85dc061d18a58af78d0feb2528a670aaaac216a87cc0c3c4b468d02d}
+graph_snapshots:
+  Groschner_citing: {path: data/raw/t4-inhibitory-source-external/c3-citation-graph/openalex-cites-groschner.json, bytes: 922580, sha256: 308edee1878de32d17207569fa430afff77ea7ce12d07aea97697383a55e80e7}
+  Henning_citing: {path: data/raw/t4-inhibitory-source-external/c3-citation-graph/openalex-cites-henning.json, bytes: 7944, sha256: d4a8e6738e68050985d3405dbb3bd081cd5c0f1296449f7f88eb47307d7389f0}
+  references_page_1: {path: data/raw/t4-inhibitory-source-external/c3-citation-graph/openalex-references-0.json, bytes: 26197, sha256: bba6eec89445f5388fcf50e063c83e87a835472ac51b5bee0cd3b7ce2ef980a3}
+  references_page_2: {path: data/raw/t4-inhibitory-source-external/c3-citation-graph/openalex-references-1.json, bytes: 13420, sha256: f6b3470b6b3930504088d48132f23adfc86e03b72ee638589e76fa9ce3b1261c}
+high_relevance_candidate:
+  name: Pang_2025
+  preprint_doi: 10.1101/2024.04.19.590352
+  final_doi: 10.1016/j.cub.2024.11.064
+  title: A recurrent neural circuit in Drosophila temporally sharpens visual inputs
+  pmc_source: {path: data/raw/t4-inhibitory-source-external/pang-2024/PMC11071408.html, bytes: 278937, sha256: 4baa50471dd3f97c5a2f9316d55f35fa8e07f1e3a36b03a04f15efb42894acc5}
+  crossref_final: {path: data/raw/t4-inhibitory-source-external/pang-2024/crossref-final.json, bytes: 34907, sha256: 038c11c900777fe9bf72a3c8b0c8c58193e1e75e2919f7f8c94e0568ab6f6eee}
+  dryad_doi: 10.5061/dryad.ngf1vhj4c
+  dryad_snapshots:
+    dataset: {path: data/raw/t4-inhibitory-source-external/pang-2024/dryad/dataset.json, bytes: 7243, sha256: 4e9f12dd9cc10c49d353dcab5ad5779f8455a82fe432d6a45fc4bb86aed1d581}
+    files_1: {path: data/raw/t4-inhibitory-source-external/pang-2024/dryad/files.json, bytes: 12773, sha256: 5e102cf170437530ed68e86306aaae4aaace9aa6e6e0bfc94e40ce1e3e4c10bf}
+    files_2: {path: data/raw/t4-inhibitory-source-external/pang-2024/dryad/files-2.json, bytes: 12842, sha256: 18879407f5090b17fd43c53fc82ae31eea11abd0d340f3d709cc83b0b62ee1f3}
+    files_3: {path: data/raw/t4-inhibitory-source-external/pang-2024/dryad/files-3.json, bytes: 12893, sha256: 10cf110ba9378e1559bc18e087e4c21c57fa15ff6c77187a2daefbd7477fa98f}
+    files_4: {path: data/raw/t4-inhibitory-source-external/pang-2024/dryad/files-4.json, bytes: 9629, sha256: e6665e0f90fb76ee5ac87f3683cb6df578538f3ca8a7fffe44f4f9b16d1eddeb}
+  repository:
+    path: data/raw/t4-inhibitory-source-external/pang-2024/L1L2-deblur
+    url: https://github.com/ClandininLab/L1L2-deblur
+    current_remote_head: 7fa5829e37d566e02beaaa87efd6a0f1de4e48c0
+    commit_count: 2
+    tree_file_count: 361
+boundary:
+  citation_graph_is_bounded_not_global_literature_exhaustion: true
+  unresolved_OpenAlex_reference_IDs_are_not_classified_as_absent: true
+  recurrent_feedback_topic_does_not_imply_C3_measurement: true
+  L1_L2_voltage_does_not_substitute_for_C3_source_dynamics: true
+  large_unrelated_Dryad_download_not_authorized: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  runtime_modified: false
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

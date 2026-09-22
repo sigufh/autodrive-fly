@@ -53,6 +53,7 @@ from .driving.v7_c2c3_version_of_record_data_audit import (
 from .driving.v7_c3_analytic_filter_precheck import (
     evaluate_v7_c3_analytic_filter_precheck,
 )
+from .driving.v7_c3_citation_graph_audit import evaluate_v7_c3_citation_graph_audit
 from .driving.v7_c3_flash_preregistration import (
     evaluate_v7_c3_flash_preregistration,
 )
@@ -696,6 +697,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-arenz-t5-source-dynamics")
     subparsers.add_parser("v7-audit-c3-strf-source-dynamics")
+    subparsers.add_parser("v7-audit-c3-citation-graph")
     subparsers.add_parser("v7-audit-c2c3-version-of-record-data")
     subparsers.add_parser("v7-audit-c3-flash-preregistration")
     subparsers.add_parser("v7-audit-c3-strf-flash-transfer")
@@ -2040,6 +2042,14 @@ def main() -> None:
     if args.command == "v7-audit-c3-strf-source-dynamics":
         report = evaluate_v7_c3_strf_source_dynamics_audit(root)
         target = root / "artifacts/v7-c3-strf-source-dynamics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-c3-citation-graph":
+        report = evaluate_v7_c3_citation_graph_audit(root)
+        target = root / "artifacts/v7-c3-citation-graph-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -124,6 +124,13 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     if yuan["C3_direct_recording_candidate_verified"]:
         raise ValueError("Yuan C3 direct-recording boundary changed")
 
+    citation_graph = evidence["c3_citation_graph"]
+    pang = citation_graph["high_relevance_candidate"]
+    if pang["directly_recorded_neuron_types"] != ["L1", "L2"]:
+        raise ValueError("Pang directly recorded neuron types changed")
+    if pang["C3_direct_recording_found"]:
+        raise ValueError("Pang now appears to contain direct C3 recording")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -194,6 +201,7 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
                 "Gonzalez_Suarez_2022"
             ],
             "independent_C3_intervention_only_candidates": ["Yuan_2020"],
+            "citation_graph_exclusion_candidates": ["Pang_2025"],
         },
         "transfer_gates": gates,
         "independent_Mi4_C3_voltage_transfer_authorized": authorized,

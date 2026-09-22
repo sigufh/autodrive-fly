@@ -1,4 +1,4 @@
-version: 5
+version: 6
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
 observed_on: "2026-09-21"
 required_sources: [Mi4, C3]
@@ -18,6 +18,7 @@ evidence:
   molina_obando_source_data: artifacts/v7-ketkar-2019-source-data-attachment-audit.json
   gonzalez_suarez_Mi4: artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json
   yuan_C3: artifacts/v7-yuan-c3-candidate-audit.json
+  c3_citation_graph: artifacts/v7-c3-citation-graph-audit.json
 candidates:
   Groschner_2022:
     title: A biophysical account of multiplication by a single neuron
@@ -127,6 +128,18 @@ candidates:
     local_numeric_payload_verified: false
     independent_biological_study_from_reference_cohort: true
     exclusion_reason: C3_is_manipulated_but_not_a_verified_direct_recording_source
+  Pang_2025:
+    title: A recurrent neural circuit in Drosophila temporally sharpens visual inputs
+    doi: 10.1016/j.cub.2024.11.064
+    target_neurons: [L1, L2]
+    directly_measured_required_sources: []
+    measurement_modality: two_photon_ASAP2f_voltage_imaging
+    response_unit: optical_voltage_indicator_signal
+    experimental_membrane_voltage: false
+    public_numeric_payload: true
+    local_numeric_payload_verified: false
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: direct_voltage_imaging_targets_are_L1_L2_not_Mi4_or_C3
 boundary:
   bounded_audited_candidate_set_not_global_nonexistence: true
   both_required_source_types_must_be_directly_measured: true
@@ -136,6 +149,7 @@ boundary:
   T5_source_voltage_does_not_substitute_for_Mi4_or_C3: true
   Mi1_Tm3_summary_tables_do_not_substitute_for_Mi4_or_C3: true
   C3_intervention_does_not_substitute_for_direct_C3_recording: true
+  L1_L2_voltage_does_not_substitute_for_Mi4_or_C3: true
   no_curve_digitization: true
   no_cross_paper_field_or_modality_imputation: true
   no_threshold_label_split_denominator_or_failure_rule_change: true

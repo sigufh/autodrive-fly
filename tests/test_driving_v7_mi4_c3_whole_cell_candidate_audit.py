@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 9
+    assert summary["audited_candidate_count"] == 10
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -31,6 +31,7 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
         "Gonzalez_Suarez_2022"
     ]
     assert summary["independent_C3_intervention_only_candidates"] == ["Yuan_2020"]
+    assert summary["citation_graph_exclusion_candidates"] == ["Pang_2025"]
 
 
 def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
@@ -58,6 +59,10 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert yuan["directly_measured_required_sources"] == []
     assert yuan["experimental_membrane_voltage"] is False
     assert yuan["local_numeric_payload_verified"] is False
+    pang = matrix["Pang_2025"]
+    assert pang["target_neurons"] == ["L1", "L2"]
+    assert pang["directly_measured_required_sources"] == []
+    assert pang["experimental_membrane_voltage"] is False
     assert not any(
         item["qualifies_as_independent_Mi4_C3_numeric_membrane_voltage"]
         for item in matrix.values()

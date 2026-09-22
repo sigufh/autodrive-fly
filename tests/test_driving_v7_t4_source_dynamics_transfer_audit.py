@@ -170,6 +170,15 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert strother["Figshare_search_interpretable"] is False
     assert strother["global_absence_claimed"] is False
     assert strother["Mi4_source_dynamics_transfer_authorized"] is False
+    graph = report["verified_C3_citation_graph_boundary"]
+    assert graph["union_unique_work_count"] == 240
+    assert graph["unresolved_reference_ID_count"] == 2
+    assert graph["high_relevance_candidate"] == "Pang_2025"
+    assert graph["directly_recorded_neuron_types"] == ["L1", "L2"]
+    assert graph["Dryad_file_count"] == 75
+    assert graph["Dryad_total_declared_bytes"] == 49_600_989_798
+    assert graph["new_independent_C3_direct_recording_candidate_found"] is False
+    assert graph["C3_source_dynamics_transfer_authorized"] is False
     flyvis = report["verified_FlyVis_C3_time_constant_readiness"]
     assert flyvis["repository_commit"] == "92b3845cc426dd309a1a0e1b3890156c42e14021"
     assert flyvis["pretrained_model_count"] == 50

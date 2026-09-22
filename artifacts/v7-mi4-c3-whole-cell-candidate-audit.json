@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "e69de45f271b8ce16320917abad34cc291e5e7ba063e4b61c019e003635d12e0",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "79f207fa3a7541286e4737f55050b7dd6c92e6179399cfbc5e4edf364f3231b9",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "c7516826684fda39203a7b0e983531f006d841ee2674f6547c3e875117bf688a",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "baa8d4d24bccf2e1f57aad12b5417a8e7e9d28a3d1add083c73eee99e9c7adf1",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "049538a605c70407261ea0e5acc4a1eafdbc7bca7a9ec72158c3fa0777e1b6cd",
@@ -15,7 +15,8 @@
       "artifacts/v7-borst-2025-temporal-filtering-audit.json": "3c831e511ebc9fbeba031ea8eebe272d4607c25c3e403853dacfb09ab6906ef6",
       "artifacts/v7-ketkar-2019-source-data-attachment-audit.json": "b6ec309a0bca7e5c3f5badc5109b8b9ecd05c48ddf109d28627834df4be5217f",
       "artifacts/v7-gonzalez-suarez-mi4-evidence-audit.json": "66a6f1f7a5a6c6fca77f23de0348f768b96e5c4e6f271bd7f330fdc8abbdade7",
-      "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0"
+      "artifacts/v7-yuan-c3-candidate-audit.json": "7bfdfd28ba7a980752708cc976a1fa4ea065dce367814747715a0bf86563e0c0",
+      "artifacts/v7-c3-citation-graph-audit.json": "4069820e16fc55cd2c6ab87fd954217a53c7919315a50ab4cce622561bb87880"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -217,10 +218,27 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "C3_is_manipulated_but_not_a_verified_direct_recording_source",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Pang_2025": {
+      "title": "A recurrent neural circuit in Drosophila temporally sharpens visual inputs",
+      "doi": "10.1016/j.cub.2024.11.064",
+      "target_neurons": [
+        "L1",
+        "L2"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "two_photon_ASAP2f_voltage_imaging",
+      "response_unit": "optical_voltage_indicator_signal",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "direct_voltage_imaging_targets_are_L1_L2_not_Mi4_or_C3",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 9,
+    "audited_candidate_count": 10,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -231,6 +249,9 @@
     ],
     "independent_C3_intervention_only_candidates": [
       "Yuan_2020"
+    ],
+    "citation_graph_exclusion_candidates": [
+      "Pang_2025"
     ]
   },
   "transfer_gates": {
@@ -264,6 +285,7 @@
     "T5_source_voltage_does_not_substitute_for_Mi4_or_C3": true,
     "Mi1_Tm3_summary_tables_do_not_substitute_for_Mi4_or_C3": true,
     "C3_intervention_does_not_substitute_for_direct_C3_recording": true,
+    "L1_L2_voltage_does_not_substitute_for_Mi4_or_C3": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

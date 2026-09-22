@@ -43,6 +43,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     gonzalez_suarez = evidence["gonzalez_suarez_Mi4"]
     yuan = evidence["yuan_C3"]
     strother_indexes = evidence["strother_Mi4_public_indexes"]
+    c3_citation_graph = evidence["c3_citation_graph"]
     borst_2025 = evidence["borst_2025_temporal_filtering"]
     borst_2025_sources = set(borst_2025["v7_source_coverage"]["covered_sources"])
     pirogova = evidence["pirogova_source_calcium"]
@@ -447,6 +448,26 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             ),
             "Strother_2018_global_absence_claimed": (
                 source == "Mi4" and strother_indexes["global_absence_claimed"]
+            ),
+            "C3_citation_graph_union_unique_work_count": (
+                c3_citation_graph["citation_graph"]["union_unique_work_count"]
+                if source == "C3"
+                else 0
+            ),
+            "Pang_2025_L1_L2_voltage_not_C3": (
+                source == "C3"
+                and c3_citation_graph["high_relevance_candidate"][
+                    "directly_recorded_neuron_types"
+                ]
+                == ["L1", "L2"]
+                and not c3_citation_graph["high_relevance_candidate"][
+                    "C3_direct_recording_found"
+                ]
+            ),
+            "Pang_2025_Dryad_C3_filename_hit_count": (
+                len(c3_citation_graph["Dryad"]["filename_hits"]["C3"])
+                if source == "C3"
+                else 0
             ),
             "Borst_2025_parameterized_calcium_derived_target": (
                 source in borst_2025_sources

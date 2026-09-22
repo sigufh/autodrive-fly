@@ -609,6 +609,14 @@ queries. PMC still lists one supplementary PDF and one video, while the Figshare
 search endpoint returned HTTP 403 and is explicitly uninterpretable. This is a
 bounded index result, not a global absence claim
 (`artifacts/v7-strother-mi4-public-index-audit.json`).
+A bounded OpenAlex graph rooted at Groschner 2022 and Henning 2026 contains 134
+unique reference IDs (132 resolved, two explicitly unresolved), 110 citing records,
+and 240 unique works in the union. The highest-relevance new candidate, Pang et al.
+2025, directly records L1/L2 with ASAP2f rather than C3. Its Dryad v3 inventory has
+75 SHA-256-described files totaling 49,600,989,798 bytes; filenames include L1/L2
+ASAP2f payloads and no C2/C3/Lawf payload. A 49.6-GB bulk download was therefore not
+authorized for a C3 audit. This is bounded citation coverage, not global literature
+exhaustion (`artifacts/v7-c3-citation-graph-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

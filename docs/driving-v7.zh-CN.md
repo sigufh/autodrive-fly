@@ -2326,6 +2326,15 @@ DOCX source-data 附件：全部是有效 OOXML，均自述为 mean±SEM 汇总�
 它列为独立 C3 intervention-only 候选，不把不可访问内容解释为不存在，也不解锁任何门。
 证据见 `artifacts/v7-yuan-c3-candidate-audit.json`。
 
+又以 Groschner 2022 与 Henning 2026 为根建立了有界 OpenAlex 引用图谱：两篇根论文、
+134 个唯一 reference ID（132 个可解析、2 个保留为未解析）与 110 条 citing 记录，合并后
+共 240 个去重工作。高相关新增项 Pang 等 2025 的最终论文和 Dryad v3 经核验后，直接
+记录对象是 L1/L2 ASAP2f voltage；全文对 C2/C3/Lawf1/Lawf2 均零命中。其 Dryad
+确有 75 个文件、总计 49,600,989,798 bytes，文件名明确含 L1/L2 ASAP2f 数据而没有
+C2/C3/Lawf。因而不下载与 C3 无关的 49.6 GB 大载荷，也不把 recurrent feedback 主题
+误作 C3 生理证据。该图谱是有界覆盖，不是全球文献穷尽。证据见
+`artifacts/v7-c3-citation-graph-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

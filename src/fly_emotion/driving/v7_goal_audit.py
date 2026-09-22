@@ -134,6 +134,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     yuan_c3_candidate_audit = reports["yuan_c3_candidate_audit"]
     strother_mi4_public_index_audit = reports["strother_mi4_public_index_audit"]
+    c3_citation_graph_audit = reports["c3_citation_graph_audit"]
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
@@ -397,6 +398,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["gonzalez_suarez_mi4_evidence_audit"],
                 config["evidence"]["yuan_c3_candidate_audit"],
                 config["evidence"]["strother_mi4_public_index_audit"],
+                config["evidence"]["c3_citation_graph_audit"],
                 config["evidence"]["unified_model_package_audit"],
                 config["evidence"]["fig3_source_kernel_audit"],
                 config["evidence"]["fig3_source_kernel_robustness"],
@@ -1657,6 +1659,23 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Strother_2018_global_absence_claimed": (
                     strother_mi4_public_index_audit["global_absence_claimed"]
                 ),
+                "C3_citation_graph_union_unique_work_count": (c3_citation_graph_audit[
+                    "citation_graph"
+                ]["union_unique_work_count"]),
+                "C3_citation_graph_unresolved_reference_ID_count": (
+                    c3_citation_graph_audit["citation_graph"][
+                        "unresolved_reference_ID_count"
+                    ]
+                ),
+                "Pang_2025_directly_recorded_neuron_types": c3_citation_graph_audit[
+                    "high_relevance_candidate"
+                ]["directly_recorded_neuron_types"],
+                "Pang_2025_Dryad_file_count": c3_citation_graph_audit["Dryad"][
+                    "file_count"
+                ],
+                "Pang_2025_new_C3_direct_recording_found": c3_citation_graph_audit[
+                    "new_independent_C3_direct_recording_candidate_found"
+                ],
                 "source_dynamics_external_contract_satisfied": (
                     source_dynamics_external_evidence_contract["contract_satisfied"]
                 ),
@@ -3983,6 +4002,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Strother_2018_successful_index_Mi4_trace_found",
                     "Strother_2018_Figshare_search_interpretable",
                     "Strother_2018_global_absence_claimed",
+                    "C3_citation_graph_union_unique_work_count",
+                    "C3_citation_graph_unresolved_reference_ID_count",
+                    "Pang_2025_directly_recorded_neuron_types",
+                    "Pang_2025_Dryad_file_count",
+                    "Pang_2025_new_C3_direct_recording_found",
                     "C2C3_version_of_record_DOI",
                     "C2C3_version_of_record_repository_revision",
                     "C2C3_version_of_record_new_payload_modality",
