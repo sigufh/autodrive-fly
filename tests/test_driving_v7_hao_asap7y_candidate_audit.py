@@ -67,9 +67,27 @@ def test_successful_public_indexes_do_not_overclaim_global_payload_absence() -> 
         "DataCite_DOI_related_object_count": 0,
         "Dryad_DOI_dataset_count": 0,
         "Zenodo_ASAP7y_record_count": 0,
+        "ClandininLab_public_repository_count": 31,
+        "ClandininLab_paper_specific_name_or_description_hits": [],
+        "ClandininLab_listing_resolves_paper_payload": False,
         "successful_index_numeric_payload_found": False,
         "global_payload_absence_claimed": False,
     }
+
+
+def test_wayback_capture_is_abstract_only_and_does_not_resolve_cell_types() -> None:
+    archived = json.loads(REPORT.read_text())["archived_biorxiv_page"]
+    assert archived["capture_status"] == 200
+    assert archived["capture_mimetype"] == "text/html"
+    assert archived["captured_view"] == "abstract_only"
+    assert archived["required_source_term_hits"] == {"Mi4": False, "C3": False}
+    assert archived["linked_routes_present"] == {
+        "full_text": True,
+        "PDF": True,
+        "supplementary_material": True,
+    }
+    assert archived["linked_route_contents_retrieved"] is False
+    assert archived["resolves_complete_paper_cell_type_set"] is False
 
 
 def test_europe_pmc_annotations_are_abstract_only_locator_evidence() -> None:

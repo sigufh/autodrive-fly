@@ -100,6 +100,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Hao_2026_ASAP7y_complete_cell_type_set_resolved"] is False
     assert boundaries["Hao_2026_ASAP7y_Drosophila_voltage_verified"] is True
     assert boundaries["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
+    assert boundaries["Hao_2026_Wayback_capture_view"] == "abstract_only"
+    assert boundaries["Hao_2026_Wayback_linked_route_contents_retrieved"] is False
+    assert boundaries["Hao_2026_Wayback_resolves_complete_cell_types"] is False
+    assert boundaries["Hao_2026_ClandininLab_public_repository_count"] == 31
+    assert boundaries["Hao_2026_ClandininLab_paper_repository_hits"] == []
     assert boundaries["Hao_2025_dissertation_restricted_until"] == "2027-03-14"
     assert boundaries["Hao_2025_dissertation_public_abstract_names_cell_types"] is False
     assert boundaries["Hao_2026_ASAP7y_successful_index_numeric_payload_found"] is False

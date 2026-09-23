@@ -227,6 +227,11 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert hao["complete_experimental_cell_type_set_resolved"] is False
     assert hao["candidate_classification"] == "unresolved_high_value_candidate"
     assert hao["public_numeric_payload_verified"] is False
+    assert hao["Wayback_capture_view"] == "abstract_only"
+    assert hao["Wayback_linked_route_contents_retrieved"] is False
+    assert hao["Wayback_resolves_complete_cell_types"] is False
+    assert hao["ClandininLab_public_repository_count"] == 31
+    assert hao["ClandininLab_paper_repository_hits"] == []
     assert hao["Europe_PMC_annotation_count"] == 6
     assert hao["Europe_PMC_Mi4_annotation_hit"] is False
     assert hao["Europe_PMC_C3_annotation_hit"] is False

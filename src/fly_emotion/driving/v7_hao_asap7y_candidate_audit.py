@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import gzip
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -88,6 +89,75 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
         "Drosophila",
     ]:
         raise ValueError("ASAP7y Europe PMC annotation inventory changed")
+
+    wayback_cdx = json.loads(paths["wayback_CDX"].read_text(encoding="utf-8"))
+    if (
+        wayback_cdx[0] != [
+            "timestamp",
+            "original",
+            "statuscode",
+            "mimetype",
+            "digest",
+            "length",
+        ]
+        or len(wayback_cdx) != 2
+        or wayback_cdx[1][2:4] != ["200", "text/html"]
+    ):
+        raise ValueError("ASAP7y Wayback capture identity changed")
+    archived_html = gzip.decompress(paths["wayback_biorxiv_page"].read_bytes()).decode(
+        "utf-8", errors="replace"
+    )
+    archived_text = " ".join(re.sub(r"<[^>]+>", " ", archived_html).split())
+    if (
+        paper["title"] not in archived_text
+        or 'class="article abstract-view ' not in archived_html
+        or '<div class="section abstract" id="abstract-1">' not in archived_html
+    ):
+        raise ValueError("ASAP7y archived page scope changed")
+    archived_required_source_hits = {
+        source: bool(
+            re.search(rf"(?<![A-Za-z0-9]){source}(?![A-Za-z0-9])", archived_text)
+        )
+        for source in ("Mi4", "C3")
+    }
+    if any(archived_required_source_hits.values()):
+        raise ValueError("ASAP7y archived abstract gained a Mi4/C3 hit")
+    archived_routes = {
+        "full_text": "v1.full-text" in archived_html,
+        "PDF": "v1.full.pdf" in archived_html,
+        "supplementary_material": "v1.supplementary-material" in archived_html,
+    }
+    if not all(archived_routes.values()):
+        raise ValueError("ASAP7y archived page route inventory changed")
+
+    lab_repositories = json.loads(
+        paths["clandininlab_repositories"].read_text(encoding="utf-8")
+    )
+    if (
+        len(lab_repositories) != 31
+        or {item["owner"]["login"] for item in lab_repositories}
+        != {"ClandininLab"}
+        or any(item["private"] for item in lab_repositories)
+    ):
+        raise ValueError("ClandininLab repository listing changed")
+    lab_repository_search_terms = (
+        "asap7y",
+        "ultrasensitive voltage",
+        "electrical microdomains",
+        "yukun hao",
+        "lorna jayne",
+    )
+    lab_repository_hits = sorted(
+        item["full_name"]
+        for item in lab_repositories
+        if any(
+            term
+            in f"{item.get('name', '')} {item.get('description') or ''}".lower()
+            for term in lab_repository_search_terms
+        )
+    )
+    if lab_repository_hits:
+        raise ValueError("ClandininLab listing gained an unreviewed paper candidate")
     thread_spec = config["public_author_thread"]
     thread_paths = {
         "resolve": _verify(root, thread_spec["resolve"]),
@@ -223,6 +293,16 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             "counts_as_numeric_payload": False,
             "resolves_complete_paper_cell_type_set": False,
         },
+        "archived_biorxiv_page": {
+            "capture_timestamp": wayback_cdx[1][0],
+            "capture_status": int(wayback_cdx[1][2]),
+            "capture_mimetype": wayback_cdx[1][3],
+            "captured_view": "abstract_only",
+            "required_source_term_hits": archived_required_source_hits,
+            "linked_routes_present": archived_routes,
+            "linked_route_contents_retrieved": False,
+            "resolves_complete_paper_cell_type_set": False,
+        },
         "author_dissertation": {
             "purl": dissertation_spec["purl"],
             "title": dissertation_title,
@@ -246,6 +326,11 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             "DataCite_DOI_related_object_count": 0,
             "Dryad_DOI_dataset_count": 0,
             "Zenodo_ASAP7y_record_count": 0,
+            "ClandininLab_public_repository_count": len(lab_repositories),
+            "ClandininLab_paper_specific_name_or_description_hits": (
+                lab_repository_hits
+            ),
+            "ClandininLab_listing_resolves_paper_payload": False,
             "successful_index_numeric_payload_found": False,
             "global_payload_absence_claimed": False,
         },

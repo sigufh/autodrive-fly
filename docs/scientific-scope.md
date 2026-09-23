@@ -648,6 +648,14 @@ numeric payload. The bioRxiv HTML/JATS, HighWire, and Europe PMC full-text route
 mapping. The named examples are not Mi4/C3, but the complete set remains unresolved;
 it is therefore neither a Mi4/C3 hit nor an exclusion, and cannot authorize
 source transfer (`artifacts/v7-hao-asap7y-candidate-audit.json`).
+An archived bioRxiv capture was also validated at file level. It is a successful
+HTML capture, but its only article body is explicitly `abstract-view`; it merely
+links to full-text, PDF, and supplementary routes whose contents were not recovered.
+The archived abstract has no Mi4/C3 term hit and cannot resolve the full experimental
+cell-type set. A separate successful listing of all 31 public `ClandininLab` GitHub
+repositories has no ASAP7y, exact-title, Hao, or Jayne match in repository names or
+descriptions. This is a bounded name/description index, not evidence that code or data
+do not exist elsewhere or inside a generally named repository.
 Europe PMC's annotations endpoint returns six abstract-level entities
 (`membranes`, `organization`, `mice`, `flies`, `photon`, and `Drosophila`) and no
 Mi4/C3 hit. Because the record is not in PMC, these annotations do not cover the full

@@ -1,6 +1,6 @@
-version: 4
+version: 5
 name: v7-hao-asap7y-candidate-audit
-observed_on: "2026-09-22"
+observed_on: "2026-09-23"
 paper:
   title: Ultrasensitive voltage imaging reveals distinct electrical microdomains in neurons
   doi: 10.64898/2026.05.27.728040
@@ -18,6 +18,9 @@ snapshots:
   europe_pmc_fulltext_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc-full.xml, bytes: 150, sha256: ee2a52e3a9c5b05254518ecd944a5e186d1ad25673ed9a3e51c09aadf3ccee9d}
   openrxiv_response: {path: data/raw/t4-inhibitory-source-external/hao-2026/openrxiv.json, bytes: 61, sha256: d01fc34ccffa710c1fe094bb1a29bcd1283f05460f09cdc3cf7c3e8f59fb5340}
   europe_pmc_annotations: {path: data/raw/t4-inhibitory-source-external/hao-2026/europepmc-annotations.json, bytes: 2185, sha256: 336dcb5a5ba7f6d7fdf4cc3cd06709603e44089caa5139afed30abf130db6304}
+  wayback_CDX: {path: data/raw/t4-inhibitory-source-external/hao-2026/wayback-cdx.json, bytes: 213, sha256: 8c1713af793420c6141675779c2c31554b5d1f24f6a827834a8d2f9a15beaabd}
+  wayback_biorxiv_page: {path: data/raw/t4-inhibitory-source-external/hao-2026/wayback-article.html, bytes: 29250, sha256: fb6f5cda6f0d98ccbbdbcb6c0f58b0400cd7bb4384bae9133f70e0dbe6371f5c}
+  clandininlab_repositories: {path: data/raw/t4-inhibitory-source-external/hao-2026/clandinin-repos.json, bytes: 195215, sha256: ca5eb940d695a0b9ad0f0ce25f450dbe26b0a33dccce1793c1291d0e150cea4e}
 public_author_thread:
   author_handle: michaelzlin.bsky.social
   author_did: did:plc:bexnuogium744jj6ibk4bhy3
@@ -59,6 +62,8 @@ boundary:
   successful_public_index_zero_results_are_not_global_payload_absence: true
   Europe_PMC_annotations_are_abstract_level_not_fulltext: true
   abstract_annotation_zero_hits_do_not_exclude_Mi4_or_C3: true
+  archived_abstract_page_is_not_fulltext: true
+  laboratory_repository_name_and_description_search_is_bounded: true
   HTTP_401_403_404_429_and_500_are_not_source_absence: true
   no_parameter_fit: true
   no_target_activity_injection: true

@@ -580,6 +580,32 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in {"Mi4", "C3"}
                 and hao_asap7y["public_numeric_payload_verified"]
             ),
+            "Hao_2026_Wayback_capture_is_abstract_only": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["archived_biorxiv_page"]["captured_view"]
+                == "abstract_only"
+            ),
+            "Hao_2026_Wayback_resolves_complete_cell_types": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["archived_biorxiv_page"][
+                    "resolves_complete_paper_cell_type_set"
+                ]
+            ),
+            "Hao_2026_ClandininLab_public_repository_count": (
+                hao_asap7y["public_repository_indexes"][
+                    "ClandininLab_public_repository_count"
+                ]
+                if source in {"Mi4", "C3"}
+                else 0
+            ),
+            "Hao_2026_ClandininLab_paper_repository_hit": (
+                source in {"Mi4", "C3"}
+                and bool(
+                    hao_asap7y["public_repository_indexes"][
+                        "ClandininLab_paper_specific_name_or_description_hits"
+                    ]
+                )
+            ),
             "Hao_2026_Europe_PMC_annotation_hit": (
                 source in {"Mi4", "C3"}
                 and hao_asap7y["Europe_PMC_text_mining"][

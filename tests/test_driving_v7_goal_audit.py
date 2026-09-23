@@ -274,6 +274,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Hao_2026_ASAP7y_complete_cell_type_set_resolved",
         "Hao_2026_ASAP7y_Drosophila_voltage_verified",
         "Hao_2026_ASAP7y_public_numeric_payload_verified",
+        "Hao_2026_Wayback_capture_view",
+        "Hao_2026_Wayback_linked_route_contents_retrieved",
+        "Hao_2026_Wayback_resolves_complete_cell_types",
+        "Hao_2026_ClandininLab_public_repository_count",
+        "Hao_2026_ClandininLab_paper_repository_hits",
         "Hao_2025_dissertation_restricted_until",
         "Hao_2025_dissertation_public_abstract_names_cell_types",
         "Hao_2026_ASAP7y_successful_index_numeric_payload_found",
@@ -1164,6 +1169,14 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Hao_2026_ASAP7y_complete_cell_type_set_resolved"] is False
     assert visual["observations"]["Hao_2026_ASAP7y_Drosophila_voltage_verified"] is True
     assert visual["observations"]["Hao_2026_ASAP7y_public_numeric_payload_verified"] is False
+    assert visual["observations"]["Hao_2026_Wayback_capture_view"] == "abstract_only"
+    assert (
+        visual["observations"]["Hao_2026_Wayback_linked_route_contents_retrieved"]
+        is False
+    )
+    assert visual["observations"]["Hao_2026_Wayback_resolves_complete_cell_types"] is False
+    assert visual["observations"]["Hao_2026_ClandininLab_public_repository_count"] == 31
+    assert visual["observations"]["Hao_2026_ClandininLab_paper_repository_hits"] == []
     assert visual["observations"]["Hao_2025_dissertation_restricted_until"] == (
         "2027-03-14"
     )

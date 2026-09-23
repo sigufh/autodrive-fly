@@ -1780,6 +1780,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Hao_2026_ASAP7y_public_numeric_payload_verified": (
                     hao_asap7y_candidate_audit["public_numeric_payload_verified"]
                 ),
+                "Hao_2026_Wayback_capture_view": (
+                    hao_asap7y_candidate_audit["archived_biorxiv_page"][
+                        "captured_view"
+                    ]
+                ),
+                "Hao_2026_Wayback_linked_route_contents_retrieved": (
+                    hao_asap7y_candidate_audit["archived_biorxiv_page"][
+                        "linked_route_contents_retrieved"
+                    ]
+                ),
+                "Hao_2026_Wayback_resolves_complete_cell_types": (
+                    hao_asap7y_candidate_audit["archived_biorxiv_page"][
+                        "resolves_complete_paper_cell_type_set"
+                    ]
+                ),
+                "Hao_2026_ClandininLab_public_repository_count": (
+                    hao_asap7y_candidate_audit["public_repository_indexes"][
+                        "ClandininLab_public_repository_count"
+                    ]
+                ),
+                "Hao_2026_ClandininLab_paper_repository_hits": (
+                    hao_asap7y_candidate_audit["public_repository_indexes"][
+                        "ClandininLab_paper_specific_name_or_description_hits"
+                    ]
+                ),
                 "Hao_2025_dissertation_restricted_until": (
                     hao_asap7y_candidate_audit["author_dissertation"][
                         "restricted_until"
@@ -4283,6 +4308,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2026_ASAP7y_complete_cell_type_set_resolved",
                     "Hao_2026_ASAP7y_Drosophila_voltage_verified",
                     "Hao_2026_ASAP7y_public_numeric_payload_verified",
+                    "Hao_2026_Wayback_capture_view",
+                    "Hao_2026_Wayback_linked_route_contents_retrieved",
+                    "Hao_2026_Wayback_resolves_complete_cell_types",
+                    "Hao_2026_ClandininLab_public_repository_count",
+                    "Hao_2026_ClandininLab_paper_repository_hits",
                     "Hao_2025_dissertation_restricted_until",
                     "Hao_2025_dissertation_public_abstract_names_cell_types",
                     "Hao_2026_ASAP7y_successful_index_numeric_payload_found",

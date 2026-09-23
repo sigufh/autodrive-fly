@@ -91,6 +91,11 @@ export type V7Status = {
     Hao_2026_ASAP7y_complete_cell_type_set_resolved?: boolean;
     Hao_2026_ASAP7y_Drosophila_voltage_verified?: boolean;
     Hao_2026_ASAP7y_public_numeric_payload_verified?: boolean;
+    Hao_2026_Wayback_capture_view?: string;
+    Hao_2026_Wayback_linked_route_contents_retrieved?: boolean;
+    Hao_2026_Wayback_resolves_complete_cell_types?: boolean;
+    Hao_2026_ClandininLab_public_repository_count?: number;
+    Hao_2026_ClandininLab_paper_repository_hits?: string[];
     Hao_2025_dissertation_restricted_until?: string;
     Hao_2025_dissertation_public_abstract_names_cell_types?: boolean;
     Hao_2026_ASAP7y_successful_index_numeric_payload_found?: boolean;

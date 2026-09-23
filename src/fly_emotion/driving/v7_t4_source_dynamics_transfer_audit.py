@@ -729,6 +729,21 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "public_numeric_payload_verified": hao_asap7y[
                 "public_numeric_payload_verified"
             ],
+            "Wayback_capture_view": hao_asap7y["archived_biorxiv_page"][
+                "captured_view"
+            ],
+            "Wayback_linked_route_contents_retrieved": hao_asap7y[
+                "archived_biorxiv_page"
+            ]["linked_route_contents_retrieved"],
+            "Wayback_resolves_complete_cell_types": hao_asap7y[
+                "archived_biorxiv_page"
+            ]["resolves_complete_paper_cell_type_set"],
+            "ClandininLab_public_repository_count": hao_asap7y[
+                "public_repository_indexes"
+            ]["ClandininLab_public_repository_count"],
+            "ClandininLab_paper_repository_hits": hao_asap7y[
+                "public_repository_indexes"
+            ]["ClandininLab_paper_specific_name_or_description_hits"],
             "Europe_PMC_annotation_count": hao_asap7y[
                 "Europe_PMC_text_mining"
             ]["annotation_count"],

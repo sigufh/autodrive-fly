@@ -2358,6 +2358,11 @@ C2/C3/Lawf。因而不下载与 C3 无关的 49.6 GB 大载荷，也不把 recur
 500 且记录不在 PMC，OpenAlex 标记 closed，openRxiv 尚无 MECA 映射。因此该项保留为
 `unresolved_high_value_candidate`：已知示例不含 Mi4/C3，但完整集合仍未解析，故既不算
 Mi4/C3 命中，也不算排除，不授权载荷下载或拟合。
+另对 Wayback 快照做了文件级核验：它是成功捕获的 bioRxiv HTML，但论文内容明确只有
+`abstract-view`，正文、PDF 与 supplement 仅作为链接出现，路由内容并未取回；摘要中
+Mi4/C3 零命中仍不能外推至正文。ClandininLab 的 31 个公开 GitHub 仓库目录也已成功
+枚举，仓库名/描述中没有 ASAP7y、精确题名、Hao 或 Jayne 命中；这只是有界目录搜索，
+不证明通用名称仓库内部或其他位置没有代码/数据。
 Europe PMC 的文本挖掘接口另返回 6 个实体（`membranes/organization/mice/flies/photon/
 Drosophila`），Mi4 与 C3 均零命中；但该记录 `inPMC=false`，注释只覆盖摘要，不能据此
 排除正文中的实验细胞类型。

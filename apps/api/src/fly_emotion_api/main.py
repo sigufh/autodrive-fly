@@ -252,6 +252,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_ASAP7y_public_numeric_payload_verified": visual[
                     "Hao_2026_ASAP7y_public_numeric_payload_verified"
                 ],
+                "Hao_2026_Wayback_capture_view": visual[
+                    "Hao_2026_Wayback_capture_view"
+                ],
+                "Hao_2026_Wayback_linked_route_contents_retrieved": visual[
+                    "Hao_2026_Wayback_linked_route_contents_retrieved"
+                ],
+                "Hao_2026_Wayback_resolves_complete_cell_types": visual[
+                    "Hao_2026_Wayback_resolves_complete_cell_types"
+                ],
+                "Hao_2026_ClandininLab_public_repository_count": visual[
+                    "Hao_2026_ClandininLab_public_repository_count"
+                ],
+                "Hao_2026_ClandininLab_paper_repository_hits": visual[
+                    "Hao_2026_ClandininLab_paper_repository_hits"
+                ],
                 "Hao_2025_dissertation_restricted_until": visual[
                     "Hao_2025_dissertation_restricted_until"
                 ],
