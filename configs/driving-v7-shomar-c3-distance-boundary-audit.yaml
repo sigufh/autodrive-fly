@@ -1,0 +1,42 @@
+version: 1
+name: v7-shomar-c3-distance-boundary-audit
+observed_on: "2026-09-23"
+paper:
+  title: Visual circuitry for distance estimation in Drosophila
+  doi: 10.1016/j.cub.2025.09.008
+  pmid: 41015039
+  pmcid: PMC12652897
+snapshots:
+  full_text: {path: data/raw/t4-inhibitory-source-external/shomar-2025/PMC12652897.html, bytes: 377253, sha256: 6ea152631a47a23ca3f7712ee9f8206e52a5f6c6df5fc0866263960d0c6e5d00}
+  crossref: {path: data/raw/t4-inhibitory-source-external/shomar-2025/crossref.json, bytes: 33750, sha256: 70f09b0aa21868cee22a1c58fdd9bfec3d79cfd5a464edee5559604e6d5500aa}
+  github_tree: {path: data/raw/t4-inhibitory-source-external/shomar-2025/github-tree.json, bytes: 46804, sha256: 8295f06d4c2cfa7dfd7a097920185b0c76c3d2373184944ac1a4f5d73858d78e}
+  github_readme: {path: data/raw/t4-inhibitory-source-external/shomar-2025/github-README.md, bytes: 3744, sha256: fe4f99ba50c098c3735bdc7d417c034ccd83b93c1e58d56c4655600a3a06aa79}
+  dryad_dataset: {path: data/raw/t4-inhibitory-source-external/shomar-2025/dryad/dataset.json, bytes: 5945, sha256: ab3c859de0b497d4f09be87856192d5c41b8aaad01e6352218b92425cbd43d2b}
+  dryad_files: {path: data/raw/t4-inhibitory-source-external/shomar-2025/dryad/files-1.json, bytes: 4121, sha256: 7f2d3e95807507aeebfbeac37501e1a12daa47feb06fc4813d6a4729d48bd5f9}
+  dryad_readme_download_headers: {path: data/raw/t4-inhibitory-source-external/shomar-2025/dryad/readme-download.headers, bytes: 3043, sha256: 907cea5faa1a68cb717bbd8122fc45254f327e836f221ebf99c74d730601ee0b}
+  dryad_readme_download_body: {path: data/raw/t4-inhibitory-source-external/shomar-2025/dryad/readme-download.body, bytes: 56, sha256: 1ac025323ea66e58c9a8a0b960db5a839ef812e1ff8bfea2f3aff74dc3961296}
+repository:
+  url: https://github.com/ClarkLabCode/Gap_Crossing
+  head_commit: 7d550627e67899ed135a5aa8ce366ba823aebef0
+  commit_count: 162
+  tree_entry_count: 137
+  tracked_file_count: 116
+dryad:
+  doi: 10.5061/dryad.kkwh70sgw
+  version_number: 4
+  file_count: 6
+  total_declared_bytes: 214370930562
+  readme_download_status: 401
+expected:
+  full_text_term_hits: {Mi4: 0, C3: 9, GCaMP6f: 3, LC15: 65}
+  github_tree_filename_hits: {C3: 0, LC15: 18, imaging: 18, calcium: 0, GCaMP6f: 0}
+boundary:
+  same_paper_C3_behavior_and_LC15_imaging_are_not_C3_recording: true
+  C3_silencing_is_not_source_activity: true
+  Dryad_archive_names_bound_scope_but_do_not_prove_internal_absence: true
+  HTTP_401_is_not_payload_absence: true
+  large_behavior_archive_not_downloaded_for_source_recording_audit: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

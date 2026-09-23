@@ -2465,6 +2465,15 @@ silencing 或未来实验建议，没有直接 C3 记录。因此两者都不授
 transfer；详见 `artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json` 与
 `artifacts/v7-drews-mi4-contrast-phenotype-audit.json`。
 
+Shomar 等 2025（DOI `10.1016/j.cub.2025.09.008`）也是 C3 干预候选，而不是 C3
+直接记录候选。全文把 C3 用于 gap-crossing 的 shibire<sup>ts</sup> 行为沉默筛查，并明确
+说明后续研究选择 LC15；文中的两光子 GCaMP6f 方法与神经数据对象都是 LC15。关联
+Dryad v4 清单有 6 个文件、总计约 214 GB，两个 imaging 归档都以 LC15 命名；本次
+source-recording 审计没有下载其中 169 GB 的行为归档。完整 GitHub tree 有 116 个文件，
+18 个 LC15/imaging 文件名命中、0 个 C3 文件名命中。Dryad README 下载返回 HTTP 401，
+该结果仅作为访问边界保留，不作为载荷不存在的证明。详见
+`artifacts/v7-shomar-c3-distance-boundary-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

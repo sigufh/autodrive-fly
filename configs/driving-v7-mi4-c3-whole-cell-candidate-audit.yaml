@@ -1,4 +1,4 @@
-version: 14
+version: 15
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
 observed_on: "2026-09-23"
 required_sources: [Mi4, C3]
@@ -26,6 +26,7 @@ evidence:
   legacy_C3_candidates: artifacts/v7-legacy-c3-candidate-audit.json
   fendl_receptor_boundary: artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json
   drews_Mi4_sporar_C3_boundary: artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json
+  shomar_C3_distance_boundary: artifacts/v7-shomar-c3-distance-boundary-audit.json
 candidates:
   Groschner_2022:
     title: A biophysical account of multiplication by a single neuron
@@ -255,6 +256,18 @@ candidates:
     local_numeric_payload_verified: false
     independent_biological_study_from_reference_cohort: true
     exclusion_reason: C3_is_context_and_future_experiment_candidate_not_direct_recording
+  Shomar_2025:
+    title: Visual circuitry for distance estimation in Drosophila
+    doi: 10.1016/j.cub.2025.09.008
+    target_neurons: [T4, T5, C3, LC15, LC20]
+    directly_measured_required_sources: []
+    measurement_modality: C3_shibire_ts_gap_crossing_behavior_with_separate_LC15_GCaMP6f_imaging
+    response_unit: behavior_and_non_C3_calcium
+    experimental_membrane_voltage: false
+    public_numeric_payload: true
+    local_numeric_payload_verified: false
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: C3_is_silenced_in_behavior_but_only_LC15_is_directly_imaged
 boundary:
   bounded_audited_candidate_set_not_global_nonexistence: true
   both_required_source_types_must_be_directly_measured: true
@@ -273,6 +286,7 @@ boundary:
   target_receptor_localization_does_not_substitute_for_source_activity: true
   individual_Mi4_calcium_does_not_supply_C3_or_membrane_voltage: true
   C3_future_experiment_proposal_does_not_substitute_for_recording: true
+  same_paper_C3_behavior_and_LC15_imaging_do_not_combine_into_C3_recording: true
   no_curve_digitization: true
   no_cross_paper_field_or_modality_imputation: true
   no_threshold_label_split_denominator_or_failure_rule_change: true

@@ -146,6 +146,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     drews_mi4_contrast_phenotype_audit = reports[
         "drews_mi4_contrast_phenotype_audit"
     ]
+    shomar_c3_distance_boundary_audit = reports[
+        "shomar_c3_distance_boundary_audit"
+    ]
     stable_contrast_source_scope_audit = reports[
         "stable_contrast_source_scope_audit"
     ]
@@ -1931,6 +1934,27 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Sporar_2020_C3_direct_recording_verified": (
                     drews_mi4_sporar_c3_boundary_audit["Sporar_2020"][
                         "C3_direct_neural_recording_verified"
+                    ]
+                ),
+                "Shomar_2025_C3_behavioral_silencing_verified": (
+                    shomar_c3_distance_boundary_audit["experimental_scope"][
+                        "C3_manipulation"
+                    ]
+                    == "shibire_ts_silencing_in_gap_crossing_behavior"
+                ),
+                "Shomar_2025_direct_neural_imaging_cell_types": (
+                    shomar_c3_distance_boundary_audit["experimental_scope"][
+                        "direct_neural_imaging_cell_types"
+                    ]
+                ),
+                "Shomar_2025_C3_direct_recording_verified": (
+                    shomar_c3_distance_boundary_audit["experimental_scope"][
+                        "C3_direct_neural_recording_verified"
+                    ]
+                ),
+                "Shomar_2025_C3_numeric_source_dynamics_verified": (
+                    shomar_c3_distance_boundary_audit[
+                        "C3_public_numeric_source_dynamics_verified"
                     ]
                 ),
                 "Gur_2024_directly_recorded_neuron_types": (
@@ -4425,6 +4449,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Drews_2020_recording_to_MaleCNS_body_crosswalk_found",
                     "Sporar_2020_C3_exact_term_count",
                     "Sporar_2020_C3_direct_recording_verified",
+                    "Shomar_2025_C3_behavioral_silencing_verified",
+                    "Shomar_2025_direct_neural_imaging_cell_types",
+                    "Shomar_2025_C3_direct_recording_verified",
+                    "Shomar_2025_C3_numeric_source_dynamics_verified",
                     "Gur_2024_directly_recorded_neuron_types",
                     "Gur_2024_Mi4_proofreading_row_count",
                     "Gur_2024_C3_proofreading_row_count",

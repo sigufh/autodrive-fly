@@ -271,6 +271,14 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert sporar["C3_exact_term_count"] == 9
     assert sporar["C3_direct_recording_verified"] is False
     assert sporar["source_dynamics_transfer_authorized"] is False
+    shomar = report["verified_Shomar_2025_C3_distance_boundary"]
+    assert shomar["doi"] == "10.1016/j.cub.2025.09.008"
+    assert shomar["direct_neural_imaging_cell_types"] == ["LC15"]
+    assert shomar["C3_direct_recording_verified"] is False
+    assert shomar["C3_public_numeric_source_dynamics_verified"] is False
+    assert shomar["Dryad_total_declared_bytes"] == 214_370_930_562
+    assert shomar["Dryad_bulk_download_performed"] is False
+    assert shomar["source_dynamics_transfer_authorized"] is False
     stable = report["verified_Gur_2024_stable_contrast_source_scope"]
     assert stable["doi"] == "10.1038/s41467-024-52724-5"
     assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(

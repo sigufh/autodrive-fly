@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 19
+    assert summary["audited_candidate_count"] == 20
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -40,6 +40,7 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["independent_C3_intervention_only_candidates"] == [
         "Yuan_2020",
         "Tuthill_2013",
+        "Shomar_2025",
     ]
     assert summary["independent_C3_perturbation_with_downstream_readout_candidates"] == [
         "Ramos_Traslosheros_2020"
@@ -105,6 +106,12 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     sporar = matrix["Sporar_2020"]
     assert sporar["directly_measured_required_sources"] == []
     assert sporar["local_numeric_payload_verified"] is False
+    shomar = matrix["Shomar_2025"]
+    assert shomar["directly_measured_required_sources"] == []
+    assert shomar["experimental_membrane_voltage"] is False
+    assert shomar["measurement_modality"] == (
+        "C3_shibire_ts_gap_crossing_behavior_with_separate_LC15_GCaMP6f_imaging"
+    )
     gur = matrix["Gur_2024"]
     assert gur["directly_measured_required_sources"] == []
     assert gur["experimental_membrane_voltage"] is False

@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "d36c63788fd9248ad0f23284fa1f566afc50ff2f6db1abb5146b4b44a0231fbc",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "e5a9e64789cb9103f0b07a13a0749e8bdbe0ee42e13965278bfcd5dc1a8a5c20",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "d85babe3085673229f87bcfec1ec2224b8f8f621ededd87a467c61db00b7168e",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "44e6c93f33f9ca6729b38009f7701d1990da9c7fc221db763830c524c78e988c",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -34,6 +34,7 @@
       "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json": "32a4c397d98970e6ffe3974f351131db8b6fe4608982610de61184040ccd736b",
       "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json": "76a661cc2773d483a64f9bc83741b62887b32e7fdc846dd3323dabcedb707acc",
       "artifacts/v7-drews-mi4-contrast-phenotype-audit.json": "3219c0dbcdffa8901c796779d12b16781b0ab11b9b09189343f771bfc963598e",
+      "artifacts/v7-shomar-c3-distance-boundary-audit.json": "255411d41e4844793260b7ce03e563a688e69353aea0ade34a67b006073f43e0",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
       "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
@@ -409,6 +410,19 @@
     "C3_exact_term_count": 9,
     "C3_direct_recording_verified": false,
     "classification": "C3_anatomy_prior_intervention_and_future_experiment_context_only",
+    "source_dynamics_transfer_authorized": false
+  },
+  "verified_Shomar_2025_C3_distance_boundary": {
+    "doi": "10.1016/j.cub.2025.09.008",
+    "classification": "C3_behavioral_silencing_with_LC15_calcium_imaging",
+    "C3_manipulation": "shibire_ts_silencing_in_gap_crossing_behavior",
+    "direct_neural_imaging_cell_types": [
+      "LC15"
+    ],
+    "C3_direct_recording_verified": false,
+    "C3_public_numeric_source_dynamics_verified": false,
+    "Dryad_total_declared_bytes": 214370930562,
+    "Dryad_bulk_download_performed": false,
     "source_dynamics_transfer_authorized": false
   },
   "verified_Gur_2024_stable_contrast_source_scope": {

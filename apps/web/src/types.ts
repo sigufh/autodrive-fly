@@ -120,6 +120,10 @@ export type V7Status = {
     Drews_2020_recording_to_MaleCNS_body_crosswalk_found?: boolean;
     Sporar_2020_C3_exact_term_count?: number;
     Sporar_2020_C3_direct_recording_verified?: boolean;
+    Shomar_2025_C3_behavioral_silencing_verified?: boolean;
+    Shomar_2025_direct_neural_imaging_cell_types?: string[];
+    Shomar_2025_C3_direct_recording_verified?: boolean;
+    Shomar_2025_C3_numeric_source_dynamics_verified?: boolean;
     Gur_2024_directly_recorded_neuron_types?: string[];
     Gur_2024_Mi4_proofreading_row_count?: number;
     Gur_2024_C3_proofreading_row_count?: number;

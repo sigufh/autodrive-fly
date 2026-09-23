@@ -1,0 +1,100 @@
+{
+  "protocol": {
+    "name": "v7-shomar-c3-distance-boundary-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-shomar-c3-distance-boundary-audit.yaml": "ddcd1f0ea6d4220da9ae68a7da547584000a3979ef7113998227dff374284c5e",
+      "src/fly_emotion/driving/v7_shomar_c3_distance_boundary_audit.py": "2a85847ddce178858fdd5987aeb255129e8467b420ed15b0801abc5a5ba12f02"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/shomar-2025/PMC12652897.html": "6ea152631a47a23ca3f7712ee9f8206e52a5f6c6df5fc0866263960d0c6e5d00",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/crossref.json": "70f09b0aa21868cee22a1c58fdd9bfec3d79cfd5a464edee5559604e6d5500aa",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/github-tree.json": "8295f06d4c2cfa7dfd7a097920185b0c76c3d2373184944ac1a4f5d73858d78e",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/github-README.md": "fe4f99ba50c098c3735bdc7d417c034ccd83b93c1e58d56c4655600a3a06aa79",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/dryad/dataset.json": "ab3c859de0b497d4f09be87856192d5c41b8aaad01e6352218b92425cbd43d2b",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/dryad/files-1.json": "7f2d3e95807507aeebfbeac37501e1a12daa47feb06fc4813d6a4729d48bd5f9",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/dryad/readme-download.headers": "907cea5faa1a68cb717bbd8122fc45254f327e836f221ebf99c74d730601ee0b",
+      "data/raw/t4-inhibitory-source-external/shomar-2025/dryad/readme-download.body": "1ac025323ea66e58c9a8a0b960db5a839ef812e1ff8bfea2f3aff74dc3961296"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Visual circuitry for distance estimation in Drosophila",
+    "doi": "10.1016/j.cub.2025.09.008",
+    "pmid": 41015039,
+    "pmcid": "PMC12652897"
+  },
+  "full_text_term_hits": {
+    "Mi4": 0,
+    "C3": 9,
+    "GCaMP6f": 3,
+    "LC15": 65
+  },
+  "experimental_scope": {
+    "C3_manipulation": "shibire_ts_silencing_in_gap_crossing_behavior",
+    "direct_neural_imaging_cell_types": [
+      "LC15"
+    ],
+    "imaging_modality": "two_photon_GCaMP6f_calcium",
+    "C3_direct_neural_recording_verified": false,
+    "Mi4_direct_neural_recording_verified": false
+  },
+  "GitHub": {
+    "url": "https://github.com/ClarkLabCode/Gap_Crossing",
+    "head_commit": "7d550627e67899ed135a5aa8ce366ba823aebef0",
+    "commit_count": 162,
+    "tree_entry_count": 137,
+    "tracked_file_count": 116,
+    "filename_term_hits": {
+      "C3": 0,
+      "LC15": 18,
+      "imaging": 18,
+      "calcium": 0,
+      "GCaMP6f": 0
+    },
+    "C3_imaging_script_found": false,
+    "LC15_imaging_script_count": 18
+  },
+  "Dryad": {
+    "doi": "10.5061/dryad.kkwh70sgw",
+    "version_number": 4,
+    "file_count": 6,
+    "total_declared_bytes": 214370930562,
+    "filenames": [
+      "Behavior_Data.zip",
+      "Figure_Generation_Scripts.zip",
+      "LC15_Imaging_Data.zip",
+      "LC15_Imaging_and_Behavior_Data.zip",
+      "Processed_Behav_Data_WS.mat",
+      "README.md"
+    ],
+    "all_files_have_SHA256": true,
+    "imaging_archives": [
+      "LC15_Imaging_Data.zip",
+      "LC15_Imaging_and_Behavior_Data.zip"
+    ],
+    "C3_named_archive_found": false,
+    "README_download_status": 401,
+    "bulk_download_performed": false
+  },
+  "classification": "C3_behavioral_silencing_with_LC15_calcium_imaging",
+  "C3_public_numeric_source_dynamics_verified": false,
+  "authorize_C3_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "C3_is_manipulated_in_behavior_but_only_LC15_is_imaged",
+  "boundary": {
+    "same_paper_C3_behavior_and_LC15_imaging_are_not_C3_recording": true,
+    "C3_silencing_is_not_source_activity": true,
+    "Dryad_archive_names_bound_scope_but_do_not_prove_internal_absence": true,
+    "HTTP_401_is_not_payload_absence": true,
+    "large_behavior_archive_not_downloaded_for_source_recording_audit": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

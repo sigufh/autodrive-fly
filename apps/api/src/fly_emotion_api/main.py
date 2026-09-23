@@ -339,6 +339,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Sporar_2020_C3_direct_recording_verified": visual[
                     "Sporar_2020_C3_direct_recording_verified"
                 ],
+                "Shomar_2025_C3_behavioral_silencing_verified": visual[
+                    "Shomar_2025_C3_behavioral_silencing_verified"
+                ],
+                "Shomar_2025_direct_neural_imaging_cell_types": visual[
+                    "Shomar_2025_direct_neural_imaging_cell_types"
+                ],
+                "Shomar_2025_C3_direct_recording_verified": visual[
+                    "Shomar_2025_C3_direct_recording_verified"
+                ],
+                "Shomar_2025_C3_numeric_source_dynamics_verified": visual[
+                    "Shomar_2025_C3_numeric_source_dynamics_verified"
+                ],
                 "Gur_2024_directly_recorded_neuron_types": visual[
                     "Gur_2024_directly_recorded_neuron_types"
                 ],

@@ -212,6 +212,16 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
         or sporar["term_evidence"]["C3"]["exact_term_count"] != 9
     ):
         raise ValueError("Sporar C3 context boundary changed")
+    shomar = evidence["shomar_C3_distance_boundary"]
+    if (
+        shomar["classification"]
+        != "C3_behavioral_silencing_with_LC15_calcium_imaging"
+        or shomar["experimental_scope"]["direct_neural_imaging_cell_types"]
+        != ["LC15"]
+        or shomar["experimental_scope"]["C3_direct_neural_recording_verified"]
+        or shomar["C3_public_numeric_source_dynamics_verified"]
+    ):
+        raise ValueError("Shomar C3 behavior/LC15 imaging boundary changed")
 
     candidates = config["candidates"]
     for name, candidate in candidates.items():
@@ -292,6 +302,7 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "independent_C3_intervention_only_candidates": [
                 "Yuan_2020",
                 "Tuthill_2013",
+                "Shomar_2025",
             ],
             "independent_C3_perturbation_with_downstream_readout_candidates": [
                 "Ramos_Traslosheros_2020"

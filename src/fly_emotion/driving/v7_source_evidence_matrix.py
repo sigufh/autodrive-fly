@@ -49,6 +49,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     fendl = evidence["fendl_receptor_boundary"]
     drews_sporar = evidence["drews_Mi4_sporar_C3_boundary"]
     drews_phenotype = evidence["drews_Mi4_contrast_phenotype"]
+    shomar = evidence["shomar_C3_distance_boundary"]
     stable_contrast = evidence["stable_contrast_scope"]
     tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
     afterimages_mi4 = evidence["afterimages_Mi4"]
@@ -705,6 +706,22 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and drews_sporar["Sporar_2020"][
                     "C3_direct_neural_recording_verified"
                 ]
+            ),
+            "Shomar_2025_C3_behavioral_silencing_verified": (
+                source == "C3"
+                and shomar["experimental_scope"]["C3_manipulation"]
+                == "shibire_ts_silencing_in_gap_crossing_behavior"
+            ),
+            "Shomar_2025_direct_imaging_is_LC15_not_C3": (
+                source == "C3"
+                and shomar["experimental_scope"]["direct_neural_imaging_cell_types"]
+                == ["LC15"]
+                and not shomar["experimental_scope"][
+                    "C3_direct_neural_recording_verified"
+                ]
+            ),
+            "Shomar_2025_C3_numeric_source_dynamics_verified": (
+                source == "C3" and shomar["C3_public_numeric_source_dynamics_verified"]
             ),
             "Gur_2024_Mi4_C3_proofreading_table_row_count": (
                 stable_contrast["proofreading_workbooks"][source]["row_count"]

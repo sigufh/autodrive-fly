@@ -46,6 +46,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fendl_path = Path(config["fendl_receptor_boundary_evidence"])
     drews_sporar_path = Path(config["drews_Mi4_sporar_C3_boundary_evidence"])
     drews_phenotype_path = Path(config["drews_Mi4_contrast_phenotype_evidence"])
+    shomar_path = Path(config["shomar_C3_distance_boundary_evidence"])
     stable_contrast_path = Path(config["stable_contrast_source_scope_evidence"])
     tanaka_mi4_path = Path(config["tanaka_Mi4_calcium_evidence"])
     afterimages_mi4_path = Path(config["afterimages_Mi4_evidence"])
@@ -106,6 +107,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     drews_phenotype = json.loads(
         (root / drews_phenotype_path).read_text(encoding="utf-8")
     )
+    shomar = json.loads((root / shomar_path).read_text(encoding="utf-8"))
     stable_contrast = json.loads(
         (root / stable_contrast_path).read_text(encoding="utf-8")
     )
@@ -257,6 +259,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(fendl_path): _sha256(root / fendl_path),
                 str(drews_sporar_path): _sha256(root / drews_sporar_path),
                 str(drews_phenotype_path): _sha256(root / drews_phenotype_path),
+                str(shomar_path): _sha256(root / shomar_path),
                 str(stable_contrast_path): _sha256(root / stable_contrast_path),
                 str(tanaka_mi4_path): _sha256(root / tanaka_mi4_path),
                 str(afterimages_mi4_path): _sha256(root / afterimages_mi4_path),
@@ -871,6 +874,27 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "classification": drews_sporar["Sporar_2020"]["classification"],
             "source_dynamics_transfer_authorized": drews_sporar["Sporar_2020"][
                 "authorize_Mi4_C3_source_dynamics_transfer"
+            ],
+        },
+        "verified_Shomar_2025_C3_distance_boundary": {
+            "doi": shomar["paper"]["doi"],
+            "classification": shomar["classification"],
+            "C3_manipulation": shomar["experimental_scope"]["C3_manipulation"],
+            "direct_neural_imaging_cell_types": shomar["experimental_scope"][
+                "direct_neural_imaging_cell_types"
+            ],
+            "C3_direct_recording_verified": shomar["experimental_scope"][
+                "C3_direct_neural_recording_verified"
+            ],
+            "C3_public_numeric_source_dynamics_verified": shomar[
+                "C3_public_numeric_source_dynamics_verified"
+            ],
+            "Dryad_total_declared_bytes": shomar["Dryad"]["total_declared_bytes"],
+            "Dryad_bulk_download_performed": shomar["Dryad"][
+                "bulk_download_performed"
+            ],
+            "source_dynamics_transfer_authorized": shomar[
+                "authorize_C3_source_dynamics_transfer"
             ],
         },
         "verified_Gur_2024_stable_contrast_source_scope": {

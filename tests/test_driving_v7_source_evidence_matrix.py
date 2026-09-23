@@ -232,6 +232,10 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert "Drews_2020_individual_GCaMP6f_time_series" in report["matrix"][
         "Mi4"
     ]["numerical_evidence_sources"]
+    c3_components = report["matrix"]["C3"]["evidence_components"]
+    assert c3_components["Shomar_2025_C3_behavioral_silencing_verified"] is True
+    assert c3_components["Shomar_2025_direct_imaging_is_LC15_not_C3"] is True
+    assert c3_components["Shomar_2025_C3_numeric_source_dynamics_verified"] is False
     assert report["matrix"]["Mi4"]["evidence_components"][
         "Gur_2024_Mi4_C3_proofreading_table_row_count"
     ] == 723

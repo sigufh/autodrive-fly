@@ -284,6 +284,9 @@ from .driving.v7_r1r6_multi import (
     evaluate_v7_r1r6_multi_tuning,
 )
 from .driving.v7_retina_audit import evaluate_v7_retina_column_audit
+from .driving.v7_shomar_c3_distance_boundary_audit import (
+    evaluate_v7_shomar_c3_distance_boundary_audit,
+)
 from .driving.v7_source_audit import evaluate_v7_t4_source_audit
 from .driving.v7_source_dynamics_external_evidence_contract import (
     evaluate_v7_source_dynamics_external_evidence_contract,
@@ -720,6 +723,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-fendl-mi4-c3-receptor-boundary")
     subparsers.add_parser("v7-audit-drews-mi4-sporar-c3-boundary")
     subparsers.add_parser("v7-audit-drews-mi4-contrast-phenotype")
+    subparsers.add_parser("v7-audit-shomar-c3-distance-boundary")
     subparsers.add_parser("v7-audit-yuan-c3-candidate")
     subparsers.add_parser("v7-audit-strother-mi4-public-indexes")
     subparsers.add_parser("v7-audit-stable-contrast-source-scope")
@@ -2068,6 +2072,14 @@ def main() -> None:
     if args.command == "v7-audit-drews-mi4-contrast-phenotype":
         report = evaluate_v7_drews_mi4_contrast_phenotype_audit(root)
         target = root / "artifacts/v7-drews-mi4-contrast-phenotype-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-shomar-c3-distance-boundary":
+        report = evaluate_v7_shomar_c3_distance_boundary_audit(root)
+        target = root / "artifacts/v7-shomar-c3-distance-boundary-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

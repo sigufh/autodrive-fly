@@ -774,6 +774,17 @@ direct C3 recording. Neither result authorizes T4 source fitting or transfer
 (`artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json` and
 `artifacts/v7-drews-mi4-contrast-phenotype-audit.json`).
 
+Shomar et al. 2025 (`10.1016/j.cub.2025.09.008`) is another C3 intervention
+candidate, not a C3 recording candidate. The full text reports C3 silencing in
+the gap-crossing screen and explicitly says that subsequent investigation
+focused on LC15. Its two-photon GCaMP6f methods and neural data concern LC15.
+The linked Dryad version 4 inventory contains six files totaling about 214 GB;
+both imaging archives are LC15-named, while the 169 GB behavior archive was not
+downloaded for this source-recording audit. The complete GitHub tree has 116
+files and 18 LC15/imaging filename hits but no C3 filename hit. A Dryad README
+download returned HTTP 401, which is retained as an access boundary and not as
+evidence of payload absence (`artifacts/v7-shomar-c3-distance-boundary-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

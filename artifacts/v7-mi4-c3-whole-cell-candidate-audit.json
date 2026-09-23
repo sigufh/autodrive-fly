@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "f816d2f8484013e6d2c037ef99f4a27874e6008afeb35f309929af0162c745f8",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "3d93f1ea29eea565c830a0959e3ebb3e9c9fe64f2bc23eab0e8d67c3b292c1e8",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "028d7bacd0a5d136481846f881ae5a510287a95fdb9da336d95daaf70c1a22d4",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "ec77008c29841de399f6fca7a784deab1336875138de14fd81c78e90b2e940b6",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "1d8c016d96a38307dd69837ceb9dfadf0a12a7540a4cbefb0f891e6139b1f425",
@@ -23,7 +23,8 @@
       "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
       "artifacts/v7-legacy-c3-candidate-audit.json": "5ff9350e6fe9d3e8dbc8dbc2b1b6d6bcfbf673563ad6cd0ab38df45d2ba0ef1e",
       "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json": "32a4c397d98970e6ffe3974f351131db8b6fe4608982610de61184040ccd736b",
-      "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json": "76a661cc2773d483a64f9bc83741b62887b32e7fdc846dd3323dabcedb707acc"
+      "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json": "76a661cc2773d483a64f9bc83741b62887b32e7fdc846dd3323dabcedb707acc",
+      "artifacts/v7-shomar-c3-distance-boundary-audit.json": "255411d41e4844793260b7ce03e563a688e69353aea0ade34a67b006073f43e0"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -440,10 +441,30 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "C3_is_context_and_future_experiment_candidate_not_direct_recording",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Shomar_2025": {
+      "title": "Visual circuitry for distance estimation in Drosophila",
+      "doi": "10.1016/j.cub.2025.09.008",
+      "target_neurons": [
+        "T4",
+        "T5",
+        "C3",
+        "LC15",
+        "LC20"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "C3_shibire_ts_gap_crossing_behavior_with_separate_LC15_GCaMP6f_imaging",
+      "response_unit": "behavior_and_non_C3_calcium",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "C3_is_silenced_in_behavior_but_only_LC15_is_directly_imaged",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 19,
+    "audited_candidate_count": 20,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -461,7 +482,8 @@
     ],
     "independent_C3_intervention_only_candidates": [
       "Yuan_2020",
-      "Tuthill_2013"
+      "Tuthill_2013",
+      "Shomar_2025"
     ],
     "independent_C3_perturbation_with_downstream_readout_candidates": [
       "Ramos_Traslosheros_2020"
@@ -522,6 +544,7 @@
     "target_receptor_localization_does_not_substitute_for_source_activity": true,
     "individual_Mi4_calcium_does_not_supply_C3_or_membrane_voltage": true,
     "C3_future_experiment_proposal_does_not_substitute_for_recording": true,
+    "same_paper_C3_behavior_and_LC15_imaging_do_not_combine_into_C3_recording": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,
