@@ -1,6 +1,6 @@
-version: 1
+version: 2
 name: v7-objective-coverage-audit
-observed_on: "2026-09-18"
+observed_on: "2026-09-23"
 objective_items:
   "0": version_and_claim_boundaries
   "1": controlled_causal_visual_chain
@@ -98,6 +98,7 @@ evidence:
   legacy_c3_candidate_audit: artifacts/v7-legacy-c3-candidate-audit.json
   hao_asap7y_candidate_audit: artifacts/v7-hao-asap7y-candidate-audit.json
   fendl_mi4_c3_receptor_boundary_audit: artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json
+  drews_mi4_sporar_c3_boundary_audit: artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json
   stable_contrast_source_scope_audit: artifacts/v7-stable-contrast-source-scope-audit.json
   tanaka_mi4_calcium_audit: artifacts/v7-tanaka-mi4-calcium-audit.json
   afterimages_mi4_candidate_audit: artifacts/v7-afterimages-mi4-candidate-audit.json

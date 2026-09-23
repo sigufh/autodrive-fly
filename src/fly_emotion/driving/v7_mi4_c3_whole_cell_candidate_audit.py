@@ -191,6 +191,28 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     ):
         raise ValueError("Fendl target-receptor/source boundary changed")
 
+    drews_sporar = evidence["drews_Mi4_sporar_C3_boundary"]
+    drews = drews_sporar["Drews_2020"]
+    if (
+        not drews["Mi4_payload"][
+            "individual_ROI_trial_numeric_time_series_verified"
+        ]
+        or not drews["Mi4_payload"][
+            "paper_reported_20_cells_13_flies_reconstructed"
+        ]
+        or not drews["Mi4_direct_neural_recording_verified"]
+        or drews["C3_direct_neural_recording_verified"]
+        or drews["experimental_membrane_voltage_verified"]
+    ):
+        raise ValueError("Drews individual Mi4 calcium boundary changed")
+    sporar = drews_sporar["Sporar_2020"]
+    if (
+        sporar["C3_direct_neural_recording_verified"]
+        or sporar["Mi4_direct_neural_recording_verified"]
+        or sporar["term_evidence"]["C3"]["exact_term_count"] != 9
+    ):
+        raise ValueError("Sporar C3 context boundary changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -260,7 +282,10 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "independent_Mi4_type_average_calcium_candidates": [
                 "Gonzalez_Suarez_2022"
             ],
-            "independent_Mi4_individual_calcium_candidates": ["Tanaka_2023"],
+            "independent_Mi4_individual_calcium_candidates": [
+                "Tanaka_2023",
+                "Drews_2020",
+            ],
             "independent_Mi4_figure_level_calcium_candidates": [
                 "Wu_2026_afterimages"
             ],
@@ -271,7 +296,11 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "independent_C3_perturbation_with_downstream_readout_candidates": [
                 "Ramos_Traslosheros_2020"
             ],
-            "citation_graph_exclusion_candidates": ["Pang_2025", "Maisak_2018"],
+            "citation_graph_exclusion_candidates": [
+                "Pang_2025",
+                "Maisak_2018",
+                "Sporar_2020",
+            ],
             "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],
             "unresolved_candidates_in_audited_candidate_count": False,
             "anatomy_only_named_source_candidates": ["Gur_2024"],

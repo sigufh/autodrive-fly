@@ -1,6 +1,6 @@
-version: 13
+version: 14
 name: v7-mi4-c3-whole-cell-candidate-exclusion-audit
-observed_on: "2026-09-22"
+observed_on: "2026-09-23"
 required_sources: [Mi4, C3]
 reference_cohort: Groschner_2022
 reference_document:
@@ -25,6 +25,7 @@ evidence:
   afterimages_Mi4: artifacts/v7-afterimages-mi4-candidate-audit.json
   legacy_C3_candidates: artifacts/v7-legacy-c3-candidate-audit.json
   fendl_receptor_boundary: artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json
+  drews_Mi4_sporar_C3_boundary: artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json
 candidates:
   Groschner_2022:
     title: A biophysical account of multiplication by a single neuron
@@ -230,6 +231,30 @@ candidates:
     local_numeric_payload_verified: false
     independent_biological_study_from_reference_cohort: true
     exclusion_reason: target_Rdl_localization_and_pooled_GABAergic_sign_are_not_source_dynamics
+  Drews_2020:
+    title: Dynamic Signal Compression for Robust Motion Vision in Flies
+    doi: 10.1016/j.cub.2019.10.035
+    target_neurons: [L1, L2, L3, L4, L5, Mi1, Tm3, Mi4, Mi9, Tm1, Tm2, Tm4, Tm9, T4, T5]
+    directly_measured_required_sources: [Mi4]
+    measurement_modality: two_photon_GCaMP6f_individual_ROI_trial_time_series
+    response_unit: deltaF_over_F
+    experimental_membrane_voltage: false
+    public_numeric_payload: true
+    local_numeric_payload_verified: true
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: individual_Mi4_calcium_is_not_Mi4_C3_membrane_voltage_and_C3_is_absent
+  Sporar_2020:
+    title: Characterization of distinct contrast- and luminance-sensitive pathways in the Drosophila visual system
+    doi: 10.53846/goediss-7817
+    target_neurons: [L2, L3]
+    directly_measured_required_sources: []
+    measurement_modality: dissertation_with_C3_anatomy_prior_intervention_and_future_experiment_context
+    response_unit: mixed_non_C3_experiments
+    experimental_membrane_voltage: false
+    public_numeric_payload: false
+    local_numeric_payload_verified: false
+    independent_biological_study_from_reference_cohort: true
+    exclusion_reason: C3_is_context_and_future_experiment_candidate_not_direct_recording
 boundary:
   bounded_audited_candidate_set_not_global_nonexistence: true
   both_required_source_types_must_be_directly_measured: true
@@ -246,6 +271,8 @@ boundary:
   legacy_C3_intervention_and_anatomical_mentions_do_not_substitute_for_recording: true
   downstream_Tm9_calcium_after_C3_perturbation_is_not_C3_source_activity: true
   target_receptor_localization_does_not_substitute_for_source_activity: true
+  individual_Mi4_calcium_does_not_supply_C3_or_membrane_voltage: true
+  C3_future_experiment_proposal_does_not_substitute_for_recording: true
   no_curve_digitization: true
   no_cross_paper_field_or_modality_imputation: true
   no_threshold_label_split_denominator_or_failure_rule_change: true

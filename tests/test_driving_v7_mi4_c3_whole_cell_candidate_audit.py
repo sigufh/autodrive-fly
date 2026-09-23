@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 17
+    assert summary["audited_candidate_count"] == 19
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -30,7 +30,10 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["independent_Mi4_type_average_calcium_candidates"] == [
         "Gonzalez_Suarez_2022"
     ]
-    assert summary["independent_Mi4_individual_calcium_candidates"] == ["Tanaka_2023"]
+    assert summary["independent_Mi4_individual_calcium_candidates"] == [
+        "Tanaka_2023",
+        "Drews_2020",
+    ]
     assert summary["independent_Mi4_figure_level_calcium_candidates"] == [
         "Wu_2026_afterimages"
     ]
@@ -44,6 +47,7 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["citation_graph_exclusion_candidates"] == [
         "Pang_2025",
         "Maisak_2018",
+        "Sporar_2020",
     ]
     assert summary["unresolved_high_value_candidates"] == ["Hao_2026_ASAP7y"]
     assert summary["unresolved_candidates_in_audited_candidate_count"] is False
@@ -93,6 +97,14 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     assert fendl["directly_measured_required_sources"] == []
     assert fendl["experimental_membrane_voltage"] is False
     assert fendl["local_numeric_payload_verified"] is False
+    drews = matrix["Drews_2020"]
+    assert drews["directly_measured_required_sources"] == ["Mi4"]
+    assert drews["response_unit"] == "deltaF_over_F"
+    assert drews["local_numeric_payload_verified"] is True
+    assert drews["experimental_membrane_voltage"] is False
+    sporar = matrix["Sporar_2020"]
+    assert sporar["directly_measured_required_sources"] == []
+    assert sporar["local_numeric_payload_verified"] is False
     gur = matrix["Gur_2024"]
     assert gur["directly_measured_required_sources"] == []
     assert gur["experimental_membrane_voltage"] is False

@@ -1,0 +1,210 @@
+{
+  "protocol": {
+    "name": "v7-drews-mi4-sporar-c3-boundary-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-drews-mi4-sporar-c3-boundary-audit.yaml": "c727a02266397119510af4acba6f083333b2a7a364b14d6ec8fc932af676d82e",
+      "src/fly_emotion/driving/v7_drews_mi4_sporar_c3_boundary_audit.py": "a877b456e02662f7b1eaf5c77d623b0d248072b4c0d62ef4a01da7754f10d61b"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-25808/landing.html": "3f5bbdeca81f0f8acad155761ea1447a438a10d5b9e862f8fd74a605182d8243",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-25808/Schuetzenberger_Anna.pdf": "9fe77b1ae467e2a6ebdb9217caa40e6d10580f1c91271c72eaf0e50e724fa3fe",
+      "data/raw/t4-inhibitory-source-external/drews-2020/S0960982219313752-mmc6.pdf": "d5cd8d5cfe30acf9ad102fa4b057682f2d89df0062dcee879ea267a03a7646dd",
+      "data/raw/t4-inhibitory-source-external/drews-2020/S0960982219313752-mmc1.pdf": "9f6161d0aece2c7ce0e29cbf24976a8b07d2a8b86fb0b998513f12c4aad3bc67",
+      "data/raw/t4-inhibitory-source-external/drews-2020/normalization_paper/calcium_data_README.txt": "ac4f84949cf5e0ccc0e13c249372f3862f9594137d896620ad798f030ac30ac4",
+      "data/raw/t4-inhibitory-source-external/drews-2020/normalization_paper/calcium_data_fig3.pkl": "f10e396d8a87abf73f93c2d065744dd598d6e5ea78d159fce791319e2f47d055",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/sporar-7817/oai.xml": "935cca2be0cc18fa1e7ee60321a2f8b451fe8e3e7a9eb6c9b07daa877e0d13a5",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/sporar-7817/PhD_thesis_Sporar_191202_online_adobe_pro.pdf": "df49ecaf8b88c40790a7406c23c758d907a8e3ab45af617561b10790441554e1"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "Drews_2020": {
+    "article_doi": "10.1016/j.cub.2019.10.035",
+    "dissertation_doi": "10.5282/edoc.25808",
+    "dissertation_page_count": 118,
+    "dissertation_term_evidence": {
+      "Mi4": {
+        "exact_term_pages": [
+          28,
+          55,
+          56,
+          57,
+          68,
+          69,
+          72,
+          78,
+          98,
+          99
+        ],
+        "exact_term_count": 15
+      },
+      "C3": {
+        "exact_term_pages": [
+          27,
+          28,
+          98,
+          99
+        ],
+        "exact_term_count": 5
+      }
+    },
+    "repository": {
+      "url": "https://github.com/borstlab/normalization_paper",
+      "head_commit": "f3d29fefd532eb01be18dbf6d4e181ea5c3c4d92",
+      "data_commit": "5a828e68cba6f1a5b5c3e5cf66b3cb2175e107c4",
+      "commit_count": 12,
+      "branch": "master",
+      "tracked_file_count": 16
+    },
+    "pickle_security": {
+      "restricted_unpickler_used": true,
+      "globals_used": [
+        "__builtin__ slice",
+        "numpy dtype",
+        "numpy ndarray",
+        "numpy.core.multiarray _reconstruct",
+        "pandas.core.frame DataFrame",
+        "pandas.core.indexes.base Index",
+        "pandas.core.indexes.base _new_Index",
+        "pandas.core.indexes.frozen FrozenNDArray",
+        "pandas.core.indexes.multi MultiIndex",
+        "pandas.core.indexes.numeric Float64Index",
+        "pandas.core.indexes.numeric Int64Index",
+        "pandas.core.internals.managers BlockManager"
+      ],
+      "arbitrary_repository_code_executed": false
+    },
+    "Mi4_payload": {
+      "shape": [
+        210600,
+        2
+      ],
+      "ROI_count": 20,
+      "pseudonymous_fly_count": 13,
+      "ROI_labels": [
+        "fly10_acq3_ROI2",
+        "fly11_acq2_ROI0",
+        "fly12_acq1_ROI1",
+        "fly12_acq2_ROI1",
+        "fly13_acq1_ROI1",
+        "fly13_acq3_ROI0",
+        "fly13_acq4_ROI1",
+        "fly14_acq1_ROI1",
+        "fly1_acq1_ROI1",
+        "fly1_acq2_ROI0",
+        "fly2_acq1_ROI0",
+        "fly3_acq1_ROI1",
+        "fly4_acq1_ROI1",
+        "fly5_acq1_ROI1",
+        "fly6_acq1_ROI1",
+        "fly7_acq1_ROI0",
+        "fly7_acq2_ROI0",
+        "fly7_acq4_ROI1",
+        "fly7_acq5_ROI0",
+        "fly9_acq2_ROI0"
+      ],
+      "pseudonymous_fly_labels": [
+        "fly1",
+        "fly10",
+        "fly11",
+        "fly12",
+        "fly13",
+        "fly14",
+        "fly2",
+        "fly3",
+        "fly4",
+        "fly5",
+        "fly6",
+        "fly7",
+        "fly9"
+      ],
+      "condition_count": 42,
+      "foreground_contrasts": [
+        0.016,
+        0.04,
+        0.08,
+        0.16,
+        0.32,
+        0.64,
+        1.0
+      ],
+      "background_contrasts": [
+        0.0,
+        0.08,
+        0.16,
+        0.32,
+        0.64,
+        1.0
+      ],
+      "trial_labels": [
+        0,
+        1,
+        2
+      ],
+      "time_sample_count": 84,
+      "time_minimum_seconds": -1.0982400000000003,
+      "time_maximum_seconds": 5.9136000000000015,
+      "sample_interval_seconds": 0.08448000000000011,
+      "effective_sample_rate_hz": 11.837121212121197,
+      "missing_signal_count": 5964,
+      "finite_signal_count": 204636,
+      "response_modality": "two_photon_GCaMP6f_calcium_imaging",
+      "response_unit": "deltaF_over_F",
+      "individual_ROI_trial_numeric_time_series_verified": true,
+      "paper_reported_20_cells_13_flies_reconstructed": true,
+      "stable_pseudonymous_fly_axis_available": true,
+      "recording_to_MaleCNS_body_crosswalk_found": false
+    },
+    "Mi4_direct_neural_recording_verified": true,
+    "C3_direct_neural_recording_verified": false,
+    "experimental_membrane_voltage_verified": false,
+    "classification": "public_individual_Mi4_GCaMP6f_time_series",
+    "authorize_Mi4_C3_voltage_transfer": false,
+    "authorize_T4_source_dynamics_fit": false
+  },
+  "Sporar_2020": {
+    "doi": "10.53846/goediss-7817",
+    "page_count": 134,
+    "term_evidence": {
+      "Mi4": {
+        "exact_term_pages": [],
+        "exact_term_count": 0
+      },
+      "C3": {
+        "exact_term_pages": [
+          15,
+          20,
+          101,
+          114
+        ],
+        "exact_term_count": 9
+      }
+    },
+    "directly_recorded_neural_activity_sources_in_C3_context": [],
+    "C3_direct_neural_recording_verified": false,
+    "Mi4_direct_neural_recording_verified": false,
+    "classification": "C3_anatomy_prior_intervention_and_future_experiment_context_only",
+    "authorize_Mi4_C3_source_dynamics_transfer": false
+  },
+  "independent_Mi4_numeric_calcium_dynamics_verified": true,
+  "independent_C3_numeric_dynamics_verified": false,
+  "independent_Mi4_C3_numeric_membrane_voltage_verified": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "Mi4_calcium_is_not_Mi4_C3_numeric_membrane_voltage_and_C3_is_unmeasured",
+  "boundary": {
+    "Drews_public_payload_is_individual_ROI_trial_GCaMP6f_calcium": true,
+    "ROI_name_fly_prefixes_are_pseudonymous_labels_not_MaleCNS_body_IDs": true,
+    "calcium_dynamics_do_not_supply_experimental_membrane_voltage": true,
+    "Drews_has_no_C3_direct_recording": true,
+    "Sporar_C3_context_and_future_experiment_mentions_are_not_direct_recordings": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

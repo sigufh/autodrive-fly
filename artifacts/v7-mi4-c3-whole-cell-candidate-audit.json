@@ -1,10 +1,10 @@
 {
   "protocol": {
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
-    "observed_on": "2026-09-22",
+    "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "664e7e707a88ae804cb97d38ef9be82d7e9083fde24b63b49ed1f64d1f9c3ce4",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "e22c349274256e03c80b9164a1a5bf7d9d33136063bc3716afcdfaf843d908f2",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "f816d2f8484013e6d2c037ef99f4a27874e6008afeb35f309929af0162c745f8",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "3d93f1ea29eea565c830a0959e3ebb3e9c9fe64f2bc23eab0e8d67c3b292c1e8",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "1d8c016d96a38307dd69837ceb9dfadf0a12a7540a4cbefb0f891e6139b1f425",
@@ -22,7 +22,8 @@
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
       "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
       "artifacts/v7-legacy-c3-candidate-audit.json": "5ff9350e6fe9d3e8dbc8dbc2b1b6d6bcfbf673563ad6cd0ab38df45d2ba0ef1e",
-      "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json": "32a4c397d98970e6ffe3974f351131db8b6fe4608982610de61184040ccd736b"
+      "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json": "32a4c397d98970e6ffe3974f351131db8b6fe4608982610de61184040ccd736b",
+      "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json": "76a661cc2773d483a64f9bc83741b62887b32e7fdc846dd3323dabcedb707acc"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -390,10 +391,59 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "target_Rdl_localization_and_pooled_GABAergic_sign_are_not_source_dynamics",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Drews_2020": {
+      "title": "Dynamic Signal Compression for Robust Motion Vision in Flies",
+      "doi": "10.1016/j.cub.2019.10.035",
+      "target_neurons": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "Mi1",
+        "Tm3",
+        "Mi4",
+        "Mi9",
+        "Tm1",
+        "Tm2",
+        "Tm4",
+        "Tm9",
+        "T4",
+        "T5"
+      ],
+      "directly_measured_required_sources": [
+        "Mi4"
+      ],
+      "measurement_modality": "two_photon_GCaMP6f_individual_ROI_trial_time_series",
+      "response_unit": "deltaF_over_F",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": true,
+      "local_numeric_payload_verified": true,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "individual_Mi4_calcium_is_not_Mi4_C3_membrane_voltage_and_C3_is_absent",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Sporar_2020": {
+      "title": "Characterization of distinct contrast- and luminance-sensitive pathways in the Drosophila visual system",
+      "doi": "10.53846/goediss-7817",
+      "target_neurons": [
+        "L2",
+        "L3"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "dissertation_with_C3_anatomy_prior_intervention_and_future_experiment_context",
+      "response_unit": "mixed_non_C3_experiments",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "C3_is_context_and_future_experiment_candidate_not_direct_recording",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 17,
+    "audited_candidate_count": 19,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -403,7 +453,8 @@
       "Gonzalez_Suarez_2022"
     ],
     "independent_Mi4_individual_calcium_candidates": [
-      "Tanaka_2023"
+      "Tanaka_2023",
+      "Drews_2020"
     ],
     "independent_Mi4_figure_level_calcium_candidates": [
       "Wu_2026_afterimages"
@@ -417,7 +468,8 @@
     ],
     "citation_graph_exclusion_candidates": [
       "Pang_2025",
-      "Maisak_2018"
+      "Maisak_2018",
+      "Sporar_2020"
     ],
     "unresolved_high_value_candidates": [
       "Hao_2026_ASAP7y"
@@ -468,6 +520,8 @@
     "legacy_C3_intervention_and_anatomical_mentions_do_not_substitute_for_recording": true,
     "downstream_Tm9_calcium_after_C3_perturbation_is_not_C3_source_activity": true,
     "target_receptor_localization_does_not_substitute_for_source_activity": true,
+    "individual_Mi4_calcium_does_not_supply_C3_or_membrane_voltage": true,
+    "C3_future_experiment_proposal_does_not_substitute_for_recording": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

@@ -1,6 +1,6 @@
-version: 31
+version: 32
 name: v7-source-evidence-matrix
-observed_on: "2026-09-22"
+observed_on: "2026-09-23"
 contract: artifacts/v7-source-dynamics-external-evidence-contract.json
 evidence:
   t4_voltage: artifacts/v7-t4-source-identity-readiness-audit.json
@@ -20,6 +20,7 @@ evidence:
   legacy_C3_candidates: artifacts/v7-legacy-c3-candidate-audit.json
   hao_ASAP7y_unresolved: artifacts/v7-hao-asap7y-candidate-audit.json
   fendl_receptor_boundary: artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json
+  drews_Mi4_sporar_C3_boundary: artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json
   stable_contrast_scope: artifacts/v7-stable-contrast-source-scope-audit.json
   tanaka_Mi4_calcium: artifacts/v7-tanaka-mi4-calcium-audit.json
   afterimages_Mi4: artifacts/v7-afterimages-mi4-candidate-audit.json

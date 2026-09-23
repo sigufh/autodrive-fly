@@ -1,0 +1,71 @@
+version: 1
+name: v7-drews-mi4-sporar-c3-boundary-audit
+observed_on: "2026-09-23"
+drews_2020:
+  article:
+    title: Dynamic Signal Compression for Robust Motion Vision in Flies
+    doi: 10.1016/j.cub.2019.10.035
+    pmid: 31928873
+    pii: S0960982219313752
+    open_article_pdf: {path: data/raw/t4-inhibitory-source-external/drews-2020/S0960982219313752-mmc6.pdf, bytes: 6725713, sha256: d5cd8d5cfe30acf9ad102fa4b057682f2d89df0062dcee879ea267a03a7646dd}
+    supplement_pdf: {path: data/raw/t4-inhibitory-source-external/drews-2020/S0960982219313752-mmc1.pdf, bytes: 2913080, sha256: 9f6161d0aece2c7ce0e29cbf24976a8b07d2a8b86fb0b998513f12c4aad3bc67}
+  dissertation:
+    title: Investigation of the Drosophila motion vision circuit using remote-focusing two-photon microscopy
+    author: Anna Schützenberger
+    doi: 10.5282/edoc.25808
+    landing_page: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-25808/landing.html, bytes: 20974, sha256: 3f5bbdeca81f0f8acad155761ea1447a438a10d5b9e862f8fd74a605182d8243}
+    pdf: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-25808/Schuetzenberger_Anna.pdf, bytes: 15691908, sha256: 9fe77b1ae467e2a6ebdb9217caa40e6d10580f1c91271c72eaf0e50e724fa3fe, md5: c9af93c13c3a0fe6b2774d26de3d298e}
+    expected_page_count: 118
+    expected_attachment_count: 0
+    Mi4_exact_term_pages: [28, 55, 56, 57, 68, 69, 72, 78, 98, 99]
+    Mi4_exact_term_count: 15
+    C3_exact_term_pages: [27, 28, 98, 99]
+    C3_exact_term_count: 5
+  repository:
+    url: https://github.com/borstlab/normalization_paper
+    head_commit: f3d29fefd532eb01be18dbf6d4e181ea5c3c4d92
+    data_commit: 5a828e68cba6f1a5b5c3e5cf66b3cb2175e107c4
+    commit_count: 12
+    branch: master
+    tracked_file_count: 16
+    readme: {path: data/raw/t4-inhibitory-source-external/drews-2020/normalization_paper/calcium_data_README.txt, bytes: 3648, sha256: ac4f84949cf5e0ccc0e13c249372f3862f9594137d896620ad798f030ac30ac4, git_blob: e5475c449a972c222147a6c93340397c706baf50}
+    figure3_payload: {path: data/raw/t4-inhibitory-source-external/drews-2020/normalization_paper/calcium_data_fig3.pkl, bytes: 71025101, sha256: f10e396d8a87abf73f93c2d065744dd598d6e5ea78d159fce791319e2f47d055, git_blob: f41b9d6045180ebea1c3a090e8a03761489eaca1}
+  expected_payload:
+    full_shape: [3228228, 2]
+    index_names: [fg_contrast, bg_contrast, cell_type, name, trial]
+    columns: [time, signal]
+    Mi4_shape: [210600, 2]
+    Mi4_roi_count: 20
+    Mi4_fly_count: 13
+    condition_count: 42
+    trial_labels: [0, 1, 2]
+    foreground_contrasts: [0.016, 0.04, 0.08, 0.16, 0.32, 0.64, 1.0]
+    background_contrasts: [0.0, 0.08, 0.16, 0.32, 0.64, 1.0]
+    time_sample_count: 84
+    sample_interval_seconds: 0.08448
+    time_minimum_seconds: -1.0982400000000003
+    time_maximum_seconds: 5.9136000000000015
+    missing_signal_count: 5964
+    finite_signal_count: 204636
+sporar_2020:
+  title: Characterization of distinct contrast- and luminance-sensitive pathways in the Drosophila visual system
+  author: Katja Sporar
+  doi: 10.53846/goediss-7817
+  metadata: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/sporar-7817/oai.xml, bytes: 4276, sha256: 935cca2be0cc18fa1e7ee60321a2f8b451fe8e3e7a9eb6c9b07daa877e0d13a5}
+  pdf: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/sporar-7817/PhD_thesis_Sporar_191202_online_adobe_pro.pdf, bytes: 5214924, sha256: df49ecaf8b88c40790a7406c23c758d907a8e3ab45af617561b10790441554e1}
+  expected_page_count: 134
+  expected_attachment_count: 0
+  Mi4_exact_term_pages: []
+  Mi4_exact_term_count: 0
+  C3_exact_term_pages: [15, 20, 101, 114]
+  C3_exact_term_count: 9
+boundary:
+  Drews_public_payload_is_individual_ROI_trial_GCaMP6f_calcium: true
+  ROI_name_fly_prefixes_are_pseudonymous_labels_not_MaleCNS_body_IDs: true
+  calcium_dynamics_do_not_supply_experimental_membrane_voltage: true
+  Drews_has_no_C3_direct_recording: true
+  Sporar_C3_context_and_future_experiment_mentions_are_not_direct_recordings: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

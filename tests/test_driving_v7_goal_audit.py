@@ -293,6 +293,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
         "Fendl_2021_source_specific_contact_resolved",
         "Fendl_2021_Mi4_C3_direct_recording_verified",
+        "Drews_2020_Mi4_ROI_count",
+        "Drews_2020_Mi4_pseudonymous_fly_count",
+        "Drews_2020_Mi4_individual_numeric_calcium_verified",
+        "Drews_2020_Mi4_experimental_membrane_voltage",
+        "Drews_2020_recording_to_MaleCNS_body_crosswalk_found",
+        "Sporar_2020_C3_exact_term_count",
+        "Sporar_2020_C3_direct_recording_verified",
             "Gur_2024_directly_recorded_neuron_types",
             "Gur_2024_Mi4_proofreading_row_count",
             "Gur_2024_C3_proofreading_row_count",
@@ -1106,7 +1113,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 17
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 19
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1217,6 +1224,24 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     )
     assert visual["observations"]["Fendl_2021_source_specific_contact_resolved"] is False
     assert visual["observations"]["Fendl_2021_Mi4_C3_direct_recording_verified"] is False
+    assert visual["observations"]["Drews_2020_Mi4_ROI_count"] == 20
+    assert visual["observations"]["Drews_2020_Mi4_pseudonymous_fly_count"] == 13
+    assert (
+        visual["observations"]["Drews_2020_Mi4_individual_numeric_calcium_verified"]
+        is True
+    )
+    assert (
+        visual["observations"]["Drews_2020_Mi4_experimental_membrane_voltage"]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "Drews_2020_recording_to_MaleCNS_body_crosswalk_found"
+        ]
+        is False
+    )
+    assert visual["observations"]["Sporar_2020_C3_exact_term_count"] == 9
+    assert visual["observations"]["Sporar_2020_C3_direct_recording_verified"] is False
     assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(
         visual["observations"]["Gur_2024_directly_recorded_neuron_types"]
     )

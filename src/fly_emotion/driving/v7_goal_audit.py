@@ -140,6 +140,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     fendl_mi4_c3_receptor_boundary_audit = reports[
         "fendl_mi4_c3_receptor_boundary_audit"
     ]
+    drews_mi4_sporar_c3_boundary_audit = reports[
+        "drews_mi4_sporar_c3_boundary_audit"
+    ]
     stable_contrast_source_scope_audit = reports[
         "stable_contrast_source_scope_audit"
     ]
@@ -1878,6 +1881,37 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Mi4_direct_neural_recording_verified"
                     ]
                     or fendl_mi4_c3_receptor_boundary_audit[
+                        "C3_direct_neural_recording_verified"
+                    ]
+                ),
+                "Drews_2020_Mi4_ROI_count": drews_mi4_sporar_c3_boundary_audit[
+                    "Drews_2020"
+                ]["Mi4_payload"]["ROI_count"],
+                "Drews_2020_Mi4_pseudonymous_fly_count": (
+                    drews_mi4_sporar_c3_boundary_audit["Drews_2020"][
+                        "Mi4_payload"
+                    ]["pseudonymous_fly_count"]
+                ),
+                "Drews_2020_Mi4_individual_numeric_calcium_verified": (
+                    drews_mi4_sporar_c3_boundary_audit[
+                        "independent_Mi4_numeric_calcium_dynamics_verified"
+                    ]
+                ),
+                "Drews_2020_Mi4_experimental_membrane_voltage": (
+                    drews_mi4_sporar_c3_boundary_audit["Drews_2020"][
+                        "experimental_membrane_voltage_verified"
+                    ]
+                ),
+                "Drews_2020_recording_to_MaleCNS_body_crosswalk_found": (
+                    drews_mi4_sporar_c3_boundary_audit["Drews_2020"][
+                        "Mi4_payload"
+                    ]["recording_to_MaleCNS_body_crosswalk_found"]
+                ),
+                "Sporar_2020_C3_exact_term_count": drews_mi4_sporar_c3_boundary_audit[
+                    "Sporar_2020"
+                ]["term_evidence"]["C3"]["exact_term_count"],
+                "Sporar_2020_C3_direct_recording_verified": (
+                    drews_mi4_sporar_c3_boundary_audit["Sporar_2020"][
                         "C3_direct_neural_recording_verified"
                     ]
                 ),
@@ -4363,6 +4397,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
                     "Fendl_2021_source_specific_contact_resolved",
                     "Fendl_2021_Mi4_C3_direct_recording_verified",
+                    "Drews_2020_Mi4_ROI_count",
+                    "Drews_2020_Mi4_pseudonymous_fly_count",
+                    "Drews_2020_Mi4_individual_numeric_calcium_verified",
+                    "Drews_2020_Mi4_experimental_membrane_voltage",
+                    "Drews_2020_recording_to_MaleCNS_body_crosswalk_found",
+                    "Sporar_2020_C3_exact_term_count",
+                    "Sporar_2020_C3_direct_recording_verified",
                     "Gur_2024_directly_recorded_neuron_types",
                     "Gur_2024_Mi4_proofreading_row_count",
                     "Gur_2024_C3_proofreading_row_count",

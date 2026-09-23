@@ -47,6 +47,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     legacy_c3 = evidence["legacy_C3_candidates"]
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
     fendl = evidence["fendl_receptor_boundary"]
+    drews_sporar = evidence["drews_Mi4_sporar_C3_boundary"]
     stable_contrast = evidence["stable_contrast_scope"]
     tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
     afterimages_mi4 = evidence["afterimages_Mi4"]
@@ -653,6 +654,41 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Mi4" and fendl["Mi4_direct_neural_recording_verified"]
                 or source == "C3" and fendl["C3_direct_neural_recording_verified"]
             ),
+            "Drews_2020_individual_Mi4_numeric_GCaMP6f_verified": (
+                source == "Mi4"
+                and drews_sporar["Drews_2020"]["Mi4_payload"][
+                    "individual_ROI_trial_numeric_time_series_verified"
+                ]
+            ),
+            "Drews_2020_Mi4_pseudonymous_fly_count": (
+                drews_sporar["Drews_2020"]["Mi4_payload"][
+                    "pseudonymous_fly_count"
+                ]
+                if source == "Mi4"
+                else 0
+            ),
+            "Drews_2020_Mi4_experimental_membrane_voltage": (
+                source == "Mi4"
+                and drews_sporar["Drews_2020"][
+                    "experimental_membrane_voltage_verified"
+                ]
+            ),
+            "Drews_2020_recording_to_MaleCNS_body_crosswalk_found": (
+                source == "Mi4"
+                and drews_sporar["Drews_2020"]["Mi4_payload"][
+                    "recording_to_MaleCNS_body_crosswalk_found"
+                ]
+            ),
+            "Sporar_2020_required_source_direct_recording_verified": (
+                source == "Mi4"
+                and drews_sporar["Sporar_2020"][
+                    "Mi4_direct_neural_recording_verified"
+                ]
+                or source == "C3"
+                and drews_sporar["Sporar_2020"][
+                    "C3_direct_neural_recording_verified"
+                ]
+            ),
             "Gur_2024_Mi4_C3_proofreading_table_row_count": (
                 stable_contrast["proofreading_workbooks"][source]["row_count"]
                 if source in {"Mi4", "C3"}
@@ -1032,6 +1068,10 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
             "independent_Mi4_numerical_calcium_dynamics_verified"
         ]:
             numerical_sources.append("Tanaka_2023_individual_jGCaMP7b_time_series")
+        if source == "Mi4" and drews_sporar[
+            "independent_Mi4_numeric_calcium_dynamics_verified"
+        ]:
+            numerical_sources.append("Drews_2020_individual_GCaMP6f_time_series")
 
         missing = []
         if not allowed_numerical:

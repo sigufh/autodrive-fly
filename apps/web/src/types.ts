@@ -110,6 +110,13 @@ export type V7Status = {
     Fendl_2021_pooled_GABAergic_T4_input_sign_supported?: boolean;
     Fendl_2021_source_specific_contact_resolved?: boolean;
     Fendl_2021_Mi4_C3_direct_recording_verified?: boolean;
+    Drews_2020_Mi4_ROI_count?: number;
+    Drews_2020_Mi4_pseudonymous_fly_count?: number;
+    Drews_2020_Mi4_individual_numeric_calcium_verified?: boolean;
+    Drews_2020_Mi4_experimental_membrane_voltage?: boolean;
+    Drews_2020_recording_to_MaleCNS_body_crosswalk_found?: boolean;
+    Sporar_2020_C3_exact_term_count?: number;
+    Sporar_2020_C3_direct_recording_verified?: boolean;
     Gur_2024_directly_recorded_neuron_types?: string[];
     Gur_2024_Mi4_proofreading_row_count?: number;
     Gur_2024_C3_proofreading_row_count?: number;

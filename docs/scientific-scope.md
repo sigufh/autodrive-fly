@@ -753,6 +753,19 @@ target-side receptor/input-sign constraint, but neither resolves source-specific
 Mi4 versus C3 contacts nor records either source's neural dynamics
 (`artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json`).
 
+Drews et al. 2020 (`10.1016/j.cub.2019.10.035`) adds a stronger independent
+Mi4 calcium result. The author-linked `borstlab/normalization_paper` repository
+contains the 71 MB Figure 3 pandas payload. A restricted unpickler recovers
+210,600 Mi4 rows: 20 ROI labels grouped under 13 pseudonymous fly prefixes, 42
+foreground/background contrast conditions, three trials, and an 84.48 ms time
+step. These are public individual-ROI GCaMP6f delta-F/F time series, not
+experimental membrane voltage, and the labels do not provide a
+recording-to-MaleCNS body crosswalk. The related Sporar 2020 dissertation
+(`10.53846/goediss-7817`) has nine exact C3 mentions but only in anatomy, prior
+behavioral-silencing, and proposed future-experiment contexts; it contains no
+direct C3 recording. Neither result authorizes T4 source fitting or transfer
+(`artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

@@ -2449,6 +2449,16 @@ GABAergic 输入，并与 T4 dendrite 上的 Rdl 定位相符。这支持 target
 但不能区分 Mi4 与 C3 各自的受体接触，也没有记录两者的 source dynamics。证据见
 `artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json`。
 
+Drews 等 2020（DOI `10.1016/j.cub.2019.10.035`）提供了更强的独立 Mi4 钙证据。
+论文 Key Resources Table 指向的 `borstlab/normalization_paper` 仓库包含约 71 MB 的
+Figure 3 pandas 载荷；受限反序列化后得到 210,600 行 Mi4 数据、20 个 ROI、13 个
+pseudonymous fly 前缀、42 个前景/背景对比度条件、每条件 3 次 trial，时间步长
+84.48 ms。这是公开逐 ROI/trial 的 GCaMP6f `ΔF/F` 数值时序，不是实验膜电位，
+且标签不能作为 recording→MaleCNS body crosswalk。Sporar 2020 博士论文（DOI
+`10.53846/goediss-7817`）全文有 9 次 C3 精确命中，但均属于解剖背景、既往行为
+silencing 或未来实验建议，没有直接 C3 记录。因此两者都不授权 T4 source fit 或
+transfer；详见 `artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

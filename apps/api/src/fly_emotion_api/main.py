@@ -309,6 +309,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "Fendl_2021_Mi4_C3_direct_recording_verified": visual[
                     "Fendl_2021_Mi4_C3_direct_recording_verified"
                 ],
+                "Drews_2020_Mi4_ROI_count": visual[
+                    "Drews_2020_Mi4_ROI_count"
+                ],
+                "Drews_2020_Mi4_pseudonymous_fly_count": visual[
+                    "Drews_2020_Mi4_pseudonymous_fly_count"
+                ],
+                "Drews_2020_Mi4_individual_numeric_calcium_verified": visual[
+                    "Drews_2020_Mi4_individual_numeric_calcium_verified"
+                ],
+                "Drews_2020_Mi4_experimental_membrane_voltage": visual[
+                    "Drews_2020_Mi4_experimental_membrane_voltage"
+                ],
+                "Drews_2020_recording_to_MaleCNS_body_crosswalk_found": visual[
+                    "Drews_2020_recording_to_MaleCNS_body_crosswalk_found"
+                ],
+                "Sporar_2020_C3_exact_term_count": visual[
+                    "Sporar_2020_C3_exact_term_count"
+                ],
+                "Sporar_2020_C3_direct_recording_verified": visual[
+                    "Sporar_2020_C3_direct_recording_verified"
+                ],
                 "Gur_2024_directly_recorded_neuron_types": visual[
                     "Gur_2024_directly_recorded_neuron_types"
                 ],

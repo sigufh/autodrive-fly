@@ -460,3 +460,8 @@ v7-audit-fendl-mi4-c3-receptor-boundary:
 	.venv/bin/autodrive-fly v7-audit-fendl-mi4-c3-receptor-boundary
 
 .PHONY: v7-audit-fendl-mi4-c3-receptor-boundary
+
+v7-audit-drews-mi4-sporar-c3-boundary:
+	.venv/bin/autodrive-fly v7-audit-drews-mi4-sporar-c3-boundary
+
+.PHONY: v7-audit-drews-mi4-sporar-c3-boundary

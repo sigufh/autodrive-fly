@@ -255,6 +255,19 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert fendl["Mi4_direct_recording_verified"] is False
     assert fendl["C3_direct_recording_verified"] is False
     assert fendl["source_dynamics_transfer_authorized"] is False
+    drews = report["verified_Drews_2020_independent_Mi4_calcium"]
+    assert drews["doi"] == "10.1016/j.cub.2019.10.035"
+    assert drews["ROI_count"] == 20
+    assert drews["pseudonymous_fly_count"] == 13
+    assert drews["individual_ROI_trial_numeric_time_series_verified"] is True
+    assert drews["experimental_membrane_voltage"] is False
+    assert drews["C3_direct_recording_verified"] is False
+    assert drews["recording_to_MaleCNS_body_crosswalk_found"] is False
+    assert drews["source_dynamics_fit_authorized"] is False
+    sporar = report["verified_Sporar_2020_C3_context_boundary"]
+    assert sporar["C3_exact_term_count"] == 9
+    assert sporar["C3_direct_recording_verified"] is False
+    assert sporar["source_dynamics_transfer_authorized"] is False
     stable = report["verified_Gur_2024_stable_contrast_source_scope"]
     assert stable["doi"] == "10.1038/s41467-024-52724-5"
     assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(
