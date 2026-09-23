@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-source-type-average-mapping-contract
 observed_on: "2026-09-19"
 external_contract: artifacts/v7-source-dynamics-external-evidence-contract.json

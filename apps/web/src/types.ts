@@ -424,6 +424,10 @@ export type V7Status = {
     CT1_PuRe_archive_contents_verified: boolean;
     CT1_PuRe_new_numerical_payload_verified: boolean;
     Tm9_official_synapse_coordinate: [number, number];
+    MaleCNS_Tm3_same_type_native_coordinate_validation_available: boolean;
+    MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction: number;
+    MaleCNS_one_hop_coordinates_native_equivalent: boolean;
+    MaleCNS_coordinate_rule_as_experimental_mapping_authorized: boolean;
     CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean;
     CT1_complete_official_LO_column_coverage: boolean;
   };

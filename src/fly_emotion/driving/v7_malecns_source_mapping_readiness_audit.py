@@ -39,6 +39,10 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
     synapse_column = json.loads((root / synapse_column_path).read_text(encoding="utf-8"))
     ct1_columnar_path = Path(config["official_CT1_columnar_evidence"])
     ct1_columnar = json.loads((root / ct1_columnar_path).read_text(encoding="utf-8"))
+    one_hop_validation_path = Path(config["one_hop_coordinate_validation_evidence"])
+    one_hop_validation = json.loads(
+        (root / one_hop_validation_path).read_text(encoding="utf-8")
+    )
     expected_families = {
         "Mi1": "T4",
         "Tm3": "T4",
@@ -147,6 +151,22 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
             "columnar_retinotopy_available": bool(
                 source_type != "CT1" and len(unlocated_body_ids) == 0
             ),
+            "one_hop_same_type_blind_validation_available": (
+                one_hop_validation["source_results"][source_type][
+                    "same_type_native_validation_available"
+                ]
+                if source_type != "CT1"
+                else False
+            ),
+            "one_hop_blind_replay_rounded_exact_fraction": (
+                one_hop_validation["source_results"][source_type]["overall"][
+                    "rounded_exact_fraction"
+                ]
+                if source_type != "CT1"
+                and one_hop_validation["source_results"][source_type]["overall"]
+                is not None
+                else None
+            ),
         }
     ct1_ids = sorted(graph.body_ids[np.flatnonzero(node_types == "CT1")].astype(int).tolist())
     if ct1_ids != config["CT1_expected_body_ids"]:
@@ -165,6 +185,14 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
         "every_source_body_has_columnar_retinotopic_coordinate": coordinate_complete,
         "external_recording_declares_explicit_type_average_or_body_mapping": False,
         "external_recording_to_specific_MaleCNS_body_identified": False,
+        "every_non_CT1_inference_dependent_source_has_same_type_blind_validation": (
+            one_hop_validation[
+                "every_inference_dependent_source_has_same_type_native_validation"
+            ]
+        ),
+        "one_hop_coordinates_are_native_equivalent": one_hop_validation[
+            "one_hop_coordinates_are_native_equivalent"
+        ],
     }
     ready = all(gates.values())
     return {
@@ -182,6 +210,7 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 str(ONE_HOP_IMPLEMENTATION): _sha256(root / ONE_HOP_IMPLEMENTATION),
                 str(synapse_column_path): _sha256(root / synapse_column_path),
                 str(ct1_columnar_path): _sha256(root / ct1_columnar_path),
+                str(one_hop_validation_path): _sha256(root / one_hop_validation_path),
             },
             "MaleCNS_release": manifest["datasets"]["malecns"]["release"],
             "parameter_fit": False,

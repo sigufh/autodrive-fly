@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-fib19-to-malecns-t5-input-weight-transfer-audit
 observed_on: "2026-09-20"
 author_model_evidence: artifacts/v7-kohn-portes-tm-to-t5-model-audit.json

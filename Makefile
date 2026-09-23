@@ -495,3 +495,8 @@ v7-audit-t5-cross-state-recording-pool:
 	.venv/bin/autodrive-fly v7-audit-t5-cross-state-recording-pool
 
 .PHONY: v7-audit-t5-cross-state-recording-pool
+
+v7-audit-malecns-one-hop-coordinate-validation:
+	.venv/bin/autodrive-fly v7-audit-malecns-one-hop-coordinate-validation
+
+.PHONY: v7-audit-malecns-one-hop-coordinate-validation

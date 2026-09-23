@@ -2505,6 +2505,13 @@ near-equal partition 的 p05 只从 0.7695 上升到 0.7734，仍低于冻结的
 cohort 来补样本数。`recording_id` 也仍只是记录键，不提升为 biological fly ID。详见
 `artifacts/v7-t5-cross-state-recording-pool-audit.json`。
 
+MaleCNS one-hop optic-hex fallback 也做了按 source type 的盲重放：每次先隐藏该类型全部
+native 坐标，再仅用其他有 native 坐标的直接输入重建。Mi1、Mi4、C3、Tm1、Tm2、Tm9
+的 rounded-exact 为 99.1%–100%，但 Tm4 仅 266/833（31.9%，p95 六角欧氏误差
+1.013），Tm3 则完全没有同型 native 参考可验证。因此“有推断坐标”不等于 native
+annotation，也不能代替 experimental recording→body 映射；现有坐标值和 transfer gate
+均不改变。详见 `artifacts/v7-malecns-one-hop-coordinate-validation-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

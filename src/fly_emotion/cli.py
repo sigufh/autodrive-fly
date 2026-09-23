@@ -231,6 +231,9 @@ from .driving.v7_lplc_typed_screen import evaluate_v7_lplc_typed_screen
 from .driving.v7_malecns_ct1_columnar_audit import (
     evaluate_v7_malecns_ct1_columnar_audit,
 )
+from .driving.v7_malecns_one_hop_coordinate_validation_audit import (
+    evaluate_v7_malecns_one_hop_coordinate_validation_audit,
+)
 from .driving.v7_malecns_source_mapping_readiness_audit import (
     evaluate_v7_malecns_source_mapping_readiness_audit,
 )
@@ -629,6 +632,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-neural-spectra")
     subparsers.add_parser("v7-audit-electrophysiology")
     subparsers.add_parser("v7-audit-malecns-source-mapping-readiness")
+    subparsers.add_parser("v7-audit-malecns-one-hop-coordinate-validation")
     subparsers.add_parser("v7-audit-timebase")
     subparsers.add_parser("v7-audit-stimulus-coordinates")
     subparsers.add_parser("v7-audit-controlled-stimulus-angular-grid")
@@ -1112,6 +1116,14 @@ def main() -> None:
     if args.command == "v7-audit-malecns-source-mapping-readiness":
         report = evaluate_v7_malecns_source_mapping_readiness_audit(root)
         target = root / "artifacts/v7-malecns-source-mapping-readiness-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-malecns-one-hop-coordinate-validation":
+        report = evaluate_v7_malecns_one_hop_coordinate_validation_audit(root)
+        target = root / "artifacts/v7-malecns-one-hop-coordinate-validation-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

@@ -1,4 +1,4 @@
-version: 8
+version: 9
 name: v7-objective-coverage-audit
 observed_on: "2026-09-23"
 objective_items:
@@ -146,6 +146,7 @@ evidence:
   borst_2025_temporal_filtering_audit: artifacts/v7-borst-2025-temporal-filtering-audit.json
   pirogova_source_calcium_audit: artifacts/v7-pirogova-source-calcium-audit.json
   malecns_source_mapping_readiness_audit: artifacts/v7-malecns-source-mapping-readiness-audit.json
+  malecns_one_hop_coordinate_validation_audit: artifacts/v7-malecns-one-hop-coordinate-validation-audit.json
   source_evidence_matrix: artifacts/v7-source-evidence-matrix.json
   source_type_average_mapping_contract: artifacts/v7-source-type-average-mapping-contract.json
   tm9_coordinate_identifiability_audit: artifacts/v7-tm9-coordinate-identifiability-audit.json

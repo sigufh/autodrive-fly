@@ -900,6 +900,12 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "current_object_matches_frozen_local_annotation"
                 ]
             ),
+            "MaleCNS_one_hop_same_type_blind_validation_available": bool(
+                map_row["one_hop_same_type_blind_validation_available"]
+            ),
+            "MaleCNS_one_hop_blind_replay_rounded_exact_fraction": map_row[
+                "one_hop_blind_replay_rounded_exact_fraction"
+            ],
             "CT1_native_per_synapse_Lo1_columnar_retinotopy_available": (
                 source == "CT1"
                 and malecns_ct1_columnar[

@@ -1,0 +1,353 @@
+{
+  "protocol": {
+    "name": "v7-malecns-one-hop-coordinate-validation-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-malecns-one-hop-coordinate-validation-audit.yaml": "6dba1a026e87ae7118927afa9a36f269e66e6a227d18310797e3820a57c02ee7",
+      "src/fly_emotion/driving/v7_malecns_one_hop_coordinate_validation_audit.py": "b4da804f3b44dbdb4f24e7c87294b2031983a939631a42352581f5521fd61f14",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "f5f82014d7f16d1e0f94be81232e044602630ba8cafdf4a532d03c8f7ea2d09e",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
+      "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
+      "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
+      "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "validation_design": {
+    "method": "leave_entire_source_type_native_coordinates_out_then_replay_one_hop_weighted_input_centroid",
+    "inference_dependent_source_types": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "C3",
+      "Tm1",
+      "Tm2",
+      "Tm4",
+      "Tm9"
+    ],
+    "source_types_without_same_type_native_reference": [
+      "Tm3"
+    ],
+    "acceptance_threshold_defined": false
+  },
+  "source_results": {
+    "Mi1": {
+      "body_count": 1773,
+      "native_reference_count": 1762,
+      "blind_replay_evaluable_count": 1762,
+      "blind_replay_coverage_fraction": 1.0,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1773,
+      "overall": {
+        "evaluated_count": 1762,
+        "rounded_exact_count": 1760,
+        "rounded_exact_fraction": 0.9988649262202043,
+        "median_euclidean_hex_error": 0.026022238964760743,
+        "p90_euclidean_hex_error": 0.06677402201828014,
+        "p95_euclidean_hex_error": 0.0866633506615654,
+        "maximum_euclidean_hex_error": 0.8485281374238578
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 875,
+          "rounded_exact_count": 874,
+          "rounded_exact_fraction": 0.9988571428571429,
+          "median_euclidean_hex_error": 0.0280483375892363,
+          "p90_euclidean_hex_error": 0.07115522993774342,
+          "p95_euclidean_hex_error": 0.09167062757188131,
+          "maximum_euclidean_hex_error": 0.8485281374238578
+        },
+        "R": {
+          "evaluated_count": 887,
+          "rounded_exact_count": 886,
+          "rounded_exact_fraction": 0.9988726042841037,
+          "median_euclidean_hex_error": 0.024845199749997576,
+          "p90_euclidean_hex_error": 0.061226673260159056,
+          "p95_euclidean_hex_error": 0.08099404287086882,
+          "maximum_euclidean_hex_error": 0.6418511624535694
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 1762,
+      "current_mapping_one_hop_inferred_count": 11
+    },
+    "Tm3": {
+      "body_count": 2054,
+      "native_reference_count": 0,
+      "blind_replay_evaluable_count": 0,
+      "blind_replay_coverage_fraction": null,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 2054,
+      "overall": null,
+      "per_side": {},
+      "same_type_native_validation_available": false,
+      "current_mapping_native_count": 0,
+      "current_mapping_one_hop_inferred_count": 2054
+    },
+    "Mi4": {
+      "body_count": 1772,
+      "native_reference_count": 1758,
+      "blind_replay_evaluable_count": 1758,
+      "blind_replay_coverage_fraction": 1.0,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1772,
+      "overall": {
+        "evaluated_count": 1758,
+        "rounded_exact_count": 1754,
+        "rounded_exact_fraction": 0.9977246871444824,
+        "median_euclidean_hex_error": 0.10626551566359627,
+        "p90_euclidean_hex_error": 0.20465609954476585,
+        "p95_euclidean_hex_error": 0.23970654124571003,
+        "maximum_euclidean_hex_error": 1.4568627181693656
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 869,
+          "rounded_exact_count": 867,
+          "rounded_exact_fraction": 0.997698504027618,
+          "median_euclidean_hex_error": 0.10400316174417644,
+          "p90_euclidean_hex_error": 0.20001952648395474,
+          "p95_euclidean_hex_error": 0.23420071390933866,
+          "maximum_euclidean_hex_error": 1.4568627181693656
+        },
+        "R": {
+          "evaluated_count": 889,
+          "rounded_exact_count": 887,
+          "rounded_exact_fraction": 0.9977502812148481,
+          "median_euclidean_hex_error": 0.10822920661314363,
+          "p90_euclidean_hex_error": 0.2077247180581487,
+          "p95_euclidean_hex_error": 0.2413074734576203,
+          "maximum_euclidean_hex_error": 1.2628108955915331
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 1758,
+      "current_mapping_one_hop_inferred_count": 14
+    },
+    "C3": {
+      "body_count": 1779,
+      "native_reference_count": 1770,
+      "blind_replay_evaluable_count": 1770,
+      "blind_replay_coverage_fraction": 1.0,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1779,
+      "overall": {
+        "evaluated_count": 1770,
+        "rounded_exact_count": 1768,
+        "rounded_exact_fraction": 0.9988700564971752,
+        "median_euclidean_hex_error": 0.08752969246617752,
+        "p90_euclidean_hex_error": 0.17298313365483017,
+        "p95_euclidean_hex_error": 0.2153921848199542,
+        "maximum_euclidean_hex_error": 1.0430199542674148
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 878,
+          "rounded_exact_count": 876,
+          "rounded_exact_fraction": 0.9977220956719818,
+          "median_euclidean_hex_error": 0.07446808510638281,
+          "p90_euclidean_hex_error": 0.15118618565875397,
+          "p95_euclidean_hex_error": 0.19218341333818684,
+          "maximum_euclidean_hex_error": 1.0430199542674148
+        },
+        "R": {
+          "evaluated_count": 892,
+          "rounded_exact_count": 892,
+          "rounded_exact_fraction": 1.0,
+          "median_euclidean_hex_error": 0.10205664883104773,
+          "p90_euclidean_hex_error": 0.18716786552600517,
+          "p95_euclidean_hex_error": 0.22556011323871242,
+          "maximum_euclidean_hex_error": 0.6894291116568848
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 1770,
+      "current_mapping_one_hop_inferred_count": 9
+    },
+    "Tm1": {
+      "body_count": 1777,
+      "native_reference_count": 1767,
+      "blind_replay_evaluable_count": 1767,
+      "blind_replay_coverage_fraction": 1.0,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1777,
+      "overall": {
+        "evaluated_count": 1767,
+        "rounded_exact_count": 1767,
+        "rounded_exact_fraction": 1.0,
+        "median_euclidean_hex_error": 0.006410256410255499,
+        "p90_euclidean_hex_error": 0.03684798496599224,
+        "p95_euclidean_hex_error": 0.06829649794003928,
+        "maximum_euclidean_hex_error": 0.47189125764840617
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 877,
+          "rounded_exact_count": 877,
+          "rounded_exact_fraction": 1.0,
+          "median_euclidean_hex_error": 0.0058139534883725474,
+          "p90_euclidean_hex_error": 0.03549891772130985,
+          "p95_euclidean_hex_error": 0.0621491685918043,
+          "maximum_euclidean_hex_error": 0.47189125764840617
+        },
+        "R": {
+          "evaluated_count": 890,
+          "rounded_exact_count": 890,
+          "rounded_exact_fraction": 1.0,
+          "median_euclidean_hex_error": 0.007352941176471006,
+          "p90_euclidean_hex_error": 0.03958092620122674,
+          "p95_euclidean_hex_error": 0.06870285630100358,
+          "maximum_euclidean_hex_error": 0.4188601043095967
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 1767,
+      "current_mapping_one_hop_inferred_count": 10
+    },
+    "Tm2": {
+      "body_count": 1766,
+      "native_reference_count": 1758,
+      "blind_replay_evaluable_count": 1758,
+      "blind_replay_coverage_fraction": 1.0,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1766,
+      "overall": {
+        "evaluated_count": 1758,
+        "rounded_exact_count": 1751,
+        "rounded_exact_fraction": 0.9960182025028441,
+        "median_euclidean_hex_error": 0.014285714285714235,
+        "p90_euclidean_hex_error": 0.09478892867058361,
+        "p95_euclidean_hex_error": 0.18027756377319898,
+        "maximum_euclidean_hex_error": 0.8260869565217384
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 875,
+          "rounded_exact_count": 873,
+          "rounded_exact_fraction": 0.9977142857142857,
+          "median_euclidean_hex_error": 0.013605442176871207,
+          "p90_euclidean_hex_error": 0.08471352906913074,
+          "p95_euclidean_hex_error": 0.1402725501982946,
+          "maximum_euclidean_hex_error": 0.8260869565217384
+        },
+        "R": {
+          "evaluated_count": 883,
+          "rounded_exact_count": 878,
+          "rounded_exact_fraction": 0.9943374858437146,
+          "median_euclidean_hex_error": 0.015206597444873233,
+          "p90_euclidean_hex_error": 0.10758857707929106,
+          "p95_euclidean_hex_error": 0.22546539209600974,
+          "maximum_euclidean_hex_error": 0.7615603143717744
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 1758,
+      "current_mapping_one_hop_inferred_count": 8
+    },
+    "Tm4": {
+      "body_count": 1670,
+      "native_reference_count": 833,
+      "blind_replay_evaluable_count": 833,
+      "blind_replay_coverage_fraction": 1.0,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1670,
+      "overall": {
+        "evaluated_count": 833,
+        "rounded_exact_count": 266,
+        "rounded_exact_fraction": 0.31932773109243695,
+        "median_euclidean_hex_error": 0.7218381724612689,
+        "p90_euclidean_hex_error": 0.9117558642802146,
+        "p95_euclidean_hex_error": 1.0132126071098273,
+        "maximum_euclidean_hex_error": 3.676186970746344
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 0,
+          "rounded_exact_count": 0,
+          "rounded_exact_fraction": null,
+          "median_euclidean_hex_error": null,
+          "p90_euclidean_hex_error": null,
+          "p95_euclidean_hex_error": null,
+          "maximum_euclidean_hex_error": null
+        },
+        "R": {
+          "evaluated_count": 833,
+          "rounded_exact_count": 266,
+          "rounded_exact_fraction": 0.31932773109243695,
+          "median_euclidean_hex_error": 0.7218381724612689,
+          "p90_euclidean_hex_error": 0.9117558642802146,
+          "p95_euclidean_hex_error": 1.0132126071098273,
+          "maximum_euclidean_hex_error": 3.676186970746344
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 833,
+      "current_mapping_one_hop_inferred_count": 837
+    },
+    "Tm9": {
+      "body_count": 1771,
+      "native_reference_count": 1743,
+      "blind_replay_evaluable_count": 1742,
+      "blind_replay_coverage_fraction": 0.9994262765347103,
+      "same_type_native_coordinates_hidden": true,
+      "one_hop_inferred_count_during_blind_replay": 1769,
+      "overall": {
+        "evaluated_count": 1742,
+        "rounded_exact_count": 1727,
+        "rounded_exact_fraction": 0.9913892078071183,
+        "median_euclidean_hex_error": 0.07034768605195121,
+        "p90_euclidean_hex_error": 0.19945054841238827,
+        "p95_euclidean_hex_error": 0.264623929279411,
+        "maximum_euclidean_hex_error": 0.9751056480867838
+      },
+      "per_side": {
+        "L": {
+          "evaluated_count": 855,
+          "rounded_exact_count": 846,
+          "rounded_exact_fraction": 0.9894736842105263,
+          "median_euclidean_hex_error": 0.0798595706249938,
+          "p90_euclidean_hex_error": 0.2095840718749914,
+          "p95_euclidean_hex_error": 0.27132590359316633,
+          "maximum_euclidean_hex_error": 0.9751056480867838
+        },
+        "R": {
+          "evaluated_count": 887,
+          "rounded_exact_count": 881,
+          "rounded_exact_fraction": 0.9932356257046223,
+          "median_euclidean_hex_error": 0.06189844605901707,
+          "p90_euclidean_hex_error": 0.19137243819039226,
+          "p95_euclidean_hex_error": 0.2550380271456835,
+          "maximum_euclidean_hex_error": 0.8587947046129262
+        }
+      },
+      "same_type_native_validation_available": true,
+      "current_mapping_native_count": 1743,
+      "current_mapping_one_hop_inferred_count": 27
+    }
+  },
+  "every_inference_dependent_source_has_same_type_native_validation": false,
+  "Tm3_same_type_native_validation_available": false,
+  "Tm4_blind_replay_rounded_exact_fraction": 0.31932773109243695,
+  "one_hop_coordinates_are_native_equivalent": false,
+  "authorize_coordinate_rule_as_experimental_mapping": false,
+  "authorize_source_dynamics_fit": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "Tm3_has_no_same_type_native_reference_and_Tm4_blind_replay_is_not_native_equivalent",
+  "boundary": {
+    "leave_source_type_coordinates_out_before_replay": true,
+    "other_type_native_coordinates_remain_available": true,
+    "replay_is_diagnostic_not_an_acceptance_threshold": true,
+    "inferred_coordinate_is_not_promoted_to_native_annotation": true,
+    "no_nearest_neighbor_or_tissue_xyz_conversion": true,
+    "no_existing_coordinate_changed": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

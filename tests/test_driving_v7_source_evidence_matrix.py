@@ -41,6 +41,18 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             ]
             is False
         )
+        components = report["matrix"][source]["evidence_components"]
+        if source == "Tm3":
+            assert components[
+                "MaleCNS_one_hop_same_type_blind_validation_available"
+            ] is False
+            assert components[
+                "MaleCNS_one_hop_blind_replay_rounded_exact_fraction"
+            ] is None
+        else:
+            assert components[
+                "MaleCNS_one_hop_same_type_blind_validation_available"
+            ] is True
         assert (
             report["matrix"][source]["evidence_components"][
                 "fixed_T4_individual_split_passed_for_ON_and_OFF"
@@ -78,6 +90,9 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert components["C2C3_version_of_record_repository_revision_verified"] is True
         assert components["C2C3_version_of_record_calcium_STRF_with_Flyname_verified"] is True
         assert components["C2C3_version_of_record_MaleCNS_crosswalk_found"] is False
+    tm4_mapping = report["matrix"]["Tm4"]["evidence_components"]
+    assert tm4_mapping["MaleCNS_one_hop_same_type_blind_validation_available"] is True
+    assert tm4_mapping["MaleCNS_one_hop_blind_replay_rounded_exact_fraction"] < 0.32
     assert report["matrix"]["C3"]["evidence_components"][
         "C2C3_version_of_record_new_C3_or_Mi4_voltage_found"
     ] is False

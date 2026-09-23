@@ -595,6 +595,10 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["CT1_incremental_2025_2026_candidate_count"] == 3
     assert boundaries["CT1_direct_experimental_voltage_candidate_found"] is False
     assert boundaries["Tm9_official_synapse_coordinate"] == [15, 2]
+    assert boundaries["MaleCNS_Tm3_same_type_native_coordinate_validation_available"] is False
+    assert boundaries["MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction"] < 0.32
+    assert boundaries["MaleCNS_one_hop_coordinates_native_equivalent"] is False
+    assert boundaries["MaleCNS_coordinate_rule_as_experimental_mapping_authorized"] is False
     assert boundaries["CT1_per_synapse_Lo1_columnar_retinotopy_available"] is True
     assert boundaries["CT1_complete_official_LO_column_coverage"] is False
 

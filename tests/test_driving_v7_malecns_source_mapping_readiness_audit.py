@@ -61,6 +61,10 @@ def test_one_hop_coordinates_close_columnar_gaps_without_fabrication() -> None:
         "10157": 802,
     }
     assert report["boundary"]["incomplete_Tm9_coordinate_is_not_imputed"] is True
+    assert mapping["Tm3"]["one_hop_same_type_blind_validation_available"] is False
+    assert mapping["Tm3"]["one_hop_blind_replay_rounded_exact_fraction"] is None
+    assert mapping["Tm4"]["one_hop_same_type_blind_validation_available"] is True
+    assert mapping["Tm4"]["one_hop_blind_replay_rounded_exact_fraction"] < 0.32
 
 
 def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:
@@ -73,6 +77,13 @@ def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:
     assert gates["every_source_body_has_columnar_retinotopic_coordinate"] is False
     assert gates["external_recording_declares_explicit_type_average_or_body_mapping"] is False
     assert gates["external_recording_to_specific_MaleCNS_body_identified"] is False
+    assert (
+        gates[
+            "every_non_CT1_inference_dependent_source_has_same_type_blind_validation"
+        ]
+        is False
+    )
+    assert gates["one_hop_coordinates_are_native_equivalent"] is False
     assert report["external_source_mapping_contract_satisfied"] is False
     assert report["authorize_external_source_payload"] is False
     assert report["advance_to_T4_T5_functional_precheck"] is False

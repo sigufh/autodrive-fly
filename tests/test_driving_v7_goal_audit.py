@@ -317,6 +317,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Hao_2026_Europe_PMC_Mi4_annotation_hit",
         "Hao_2026_Europe_PMC_C3_annotation_hit",
         "Hao_2026_Europe_PMC_annotation_scope",
+        "MaleCNS_one_hop_inference_dependent_source_types",
+        "MaleCNS_Tm3_same_type_native_coordinate_validation_available",
+        "MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction",
+        "MaleCNS_one_hop_coordinates_native_equivalent",
+        "MaleCNS_coordinate_rule_as_experimental_mapping_authorized",
         "Fendl_2021_target_Rdl_localization_verified",
         "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
         "Fendl_2021_source_specific_contact_resolved",
@@ -1636,6 +1641,25 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     ] == []
     assert visual["observations"]["MaleCNS_nine_source_type_body_sets_available"] is True
     assert visual["observations"]["MaleCNS_external_source_mapping_contract_satisfied"] is False
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm3_same_type_native_coordinate_validation_available"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction"
+        ]
+        < 0.32
+    )
+    assert visual["observations"]["MaleCNS_one_hop_coordinates_native_equivalent"] is False
+    assert (
+        visual["observations"][
+            "MaleCNS_coordinate_rule_as_experimental_mapping_authorized"
+        ]
+        is False
+    )
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 0
     assert visual["observations"]["MaleCNS_Tm9_532266_existing_rule_identifiable"] is False
     assert visual["observations"]["MaleCNS_Tm9_532266_post_hoc_repair_authorized"] is False

@@ -827,6 +827,14 @@ invalid. The OA-only IDs therefore do not enlarge the saline cohort, and
 `recording_id` remains a recording key rather than a verified biological fly ID
 (`artifacts/v7-t5-cross-state-recording-pool-audit.json`).
 
+The MaleCNS one-hop optic-hex fallback was also tested by hiding every native
+coordinate of one source type at a time before replay. Mi1, Mi4, C3, Tm1, Tm2,
+and Tm9 achieve 99.1--100% rounded-exact recovery, but Tm4 reaches only 266/833
+(31.9%; p95 Euclidean hex error 1.013), and Tm3 has no same-type native reference
+at all. Therefore coordinate availability remains useful for structural analysis
+but is not equivalent to native annotation or an experimental recording-to-body
+mapping (`artifacts/v7-malecns-one-hop-coordinate-validation-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

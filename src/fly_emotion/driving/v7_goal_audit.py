@@ -235,6 +235,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     malecns_source_mapping_readiness_audit = reports[
         "malecns_source_mapping_readiness_audit"
     ]
+    malecns_one_hop_coordinate_validation_audit = reports[
+        "malecns_one_hop_coordinate_validation_audit"
+    ]
     source_evidence_matrix = reports["source_evidence_matrix"]
     source_type_average_mapping_contract = reports[
         "source_type_average_mapping_contract"
@@ -2725,6 +2728,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "external_source_mapping_contract_satisfied"
                     ]
                 ),
+                "MaleCNS_one_hop_inference_dependent_source_types": (
+                    malecns_one_hop_coordinate_validation_audit[
+                        "validation_design"
+                    ]["inference_dependent_source_types"]
+                ),
+                "MaleCNS_Tm3_same_type_native_coordinate_validation_available": (
+                    malecns_one_hop_coordinate_validation_audit[
+                        "Tm3_same_type_native_validation_available"
+                    ]
+                ),
+                "MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction": (
+                    malecns_one_hop_coordinate_validation_audit[
+                        "Tm4_blind_replay_rounded_exact_fraction"
+                    ]
+                ),
+                "MaleCNS_one_hop_coordinates_native_equivalent": (
+                    malecns_one_hop_coordinate_validation_audit[
+                        "one_hop_coordinates_are_native_equivalent"
+                    ]
+                ),
+                "MaleCNS_coordinate_rule_as_experimental_mapping_authorized": (
+                    malecns_one_hop_coordinate_validation_audit[
+                        "authorize_coordinate_rule_as_experimental_mapping"
+                    ]
+                ),
                 "MaleCNS_Tm9_unlocated_source_body_count": len(
                     malecns_source_mapping_readiness_audit["source_mapping"]["Tm9"][
                         "unlocated_body_ids"
@@ -4609,6 +4637,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2026_Europe_PMC_Mi4_annotation_hit",
                     "Hao_2026_Europe_PMC_C3_annotation_hit",
                     "Hao_2026_Europe_PMC_annotation_scope",
+                    "MaleCNS_one_hop_inference_dependent_source_types",
+                    "MaleCNS_Tm3_same_type_native_coordinate_validation_available",
+                    "MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction",
+                    "MaleCNS_one_hop_coordinates_native_equivalent",
+                    "MaleCNS_coordinate_rule_as_experimental_mapping_authorized",
                     "Fendl_2021_target_Rdl_localization_verified",
                     "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
                     "Fendl_2021_source_specific_contact_resolved",
