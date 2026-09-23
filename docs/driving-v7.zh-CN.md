@@ -2363,6 +2363,9 @@ Mi4/C3 命中，也不算排除，不授权载荷下载或拟合。
 Mi4/C3 零命中仍不能外推至正文。ClandininLab 的 31 个公开 GitHub 仓库目录也已成功
 枚举，仓库名/描述中没有 ASAP7y、精确题名、Hao 或 Jayne 命中；这只是有界目录搜索，
 不证明通用名称仓库内部或其他位置没有代码/数据。
+官方 `biorxiv-src-monthly` TDM bucket 的匿名探测返回 `AccessDenied`，并明确说明
+requester-pays 请求需要认证。因此这里只能确认 TDM 访问边界，不能据此判断该论文的
+MECA 对象或数值载荷存在与否。
 Europe PMC 的文本挖掘接口另返回 6 个实体（`membranes/organization/mice/flies/photon/
 Drosophila`），Mi4 与 C3 均零命中；但该记录 `inPMC=false`，注释只覆盖摘要，不能据此
 排除正文中的实验细胞类型。

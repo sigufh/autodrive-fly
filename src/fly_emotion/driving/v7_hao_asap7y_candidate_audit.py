@@ -158,6 +158,13 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
     )
     if lab_repository_hits:
         raise ValueError("ClandininLab listing gained an unreviewed paper candidate")
+    tdm_probe = paths["biorxiv_TDM_requester_pays_probe"].read_text(encoding="utf-8")
+    if (
+        "<Code>AccessDenied</Code>" not in tdm_probe
+        or "Anonymous users cannot invoke requests against Requester Pays buckets"
+        not in tdm_probe
+    ):
+        raise ValueError("bioRxiv TDM requester-pays boundary changed")
     thread_spec = config["public_author_thread"]
     thread_paths = {
         "resolve": _verify(root, thread_spec["resolve"]),
@@ -342,6 +349,10 @@ def evaluate_v7_hao_asap7y_candidate_audit(root: Path) -> dict:
             "Europe_PMC_in_PMC": False,
             "OpenAlex_status": "closed",
             "openRxiv_mapping_found": False,
+            "bioRxiv_TDM_bucket": "biorxiv-src-monthly",
+            "bioRxiv_TDM_probe_status": 403,
+            "bioRxiv_TDM_requester_pays_authentication_required": True,
+            "bioRxiv_TDM_payload_inventory_readable": False,
         },
         "Europe_PMC_text_mining": {
             "article_id": "PPR:PPR1242681",

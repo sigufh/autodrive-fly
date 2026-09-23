@@ -606,6 +606,18 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     ]
                 )
             ),
+            "Hao_2026_bioRxiv_TDM_requester_pays_required": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["access_boundaries"][
+                    "bioRxiv_TDM_requester_pays_authentication_required"
+                ]
+            ),
+            "Hao_2026_bioRxiv_TDM_payload_inventory_readable": (
+                source in {"Mi4", "C3"}
+                and hao_asap7y["access_boundaries"][
+                    "bioRxiv_TDM_payload_inventory_readable"
+                ]
+            ),
             "Hao_2026_Europe_PMC_annotation_hit": (
                 source in {"Mi4", "C3"}
                 and hao_asap7y["Europe_PMC_text_mining"][

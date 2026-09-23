@@ -744,6 +744,12 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "ClandininLab_paper_repository_hits": hao_asap7y[
                 "public_repository_indexes"
             ]["ClandininLab_paper_specific_name_or_description_hits"],
+            "bioRxiv_TDM_requester_pays_required": hao_asap7y[
+                "access_boundaries"
+            ]["bioRxiv_TDM_requester_pays_authentication_required"],
+            "bioRxiv_TDM_payload_inventory_readable": hao_asap7y[
+                "access_boundaries"
+            ]["bioRxiv_TDM_payload_inventory_readable"],
             "Europe_PMC_annotation_count": hao_asap7y[
                 "Europe_PMC_text_mining"
             ]["annotation_count"],

@@ -96,6 +96,8 @@ export type V7Status = {
     Hao_2026_Wayback_resolves_complete_cell_types?: boolean;
     Hao_2026_ClandininLab_public_repository_count?: number;
     Hao_2026_ClandininLab_paper_repository_hits?: string[];
+    Hao_2026_bioRxiv_TDM_requester_pays_required?: boolean;
+    Hao_2026_bioRxiv_TDM_payload_inventory_readable?: boolean;
     Hao_2025_dissertation_restricted_until?: string;
     Hao_2025_dissertation_public_abstract_names_cell_types?: boolean;
     Hao_2026_ASAP7y_successful_index_numeric_payload_found?: boolean;

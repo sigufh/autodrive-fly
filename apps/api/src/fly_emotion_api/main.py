@@ -267,6 +267,12 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_ClandininLab_paper_repository_hits": visual[
                     "Hao_2026_ClandininLab_paper_repository_hits"
                 ],
+                "Hao_2026_bioRxiv_TDM_requester_pays_required": visual[
+                    "Hao_2026_bioRxiv_TDM_requester_pays_required"
+                ],
+                "Hao_2026_bioRxiv_TDM_payload_inventory_readable": visual[
+                    "Hao_2026_bioRxiv_TDM_payload_inventory_readable"
+                ],
                 "Hao_2025_dissertation_restricted_until": visual[
                     "Hao_2025_dissertation_restricted_until"
                 ],

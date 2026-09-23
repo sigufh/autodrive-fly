@@ -21,6 +21,7 @@ snapshots:
   wayback_CDX: {path: data/raw/t4-inhibitory-source-external/hao-2026/wayback-cdx.json, bytes: 213, sha256: 8c1713af793420c6141675779c2c31554b5d1f24f6a827834a8d2f9a15beaabd}
   wayback_biorxiv_page: {path: data/raw/t4-inhibitory-source-external/hao-2026/wayback-article.html, bytes: 29250, sha256: fb6f5cda6f0d98ccbbdbcb6c0f58b0400cd7bb4384bae9133f70e0dbe6371f5c}
   clandininlab_repositories: {path: data/raw/t4-inhibitory-source-external/hao-2026/clandinin-repos.json, bytes: 195215, sha256: ca5eb940d695a0b9ad0f0ce25f450dbe26b0a33dccce1793c1291d0e150cea4e}
+  biorxiv_TDM_requester_pays_probe: {path: data/raw/t4-inhibitory-source-external/hao-2026/tdm/1.body, bytes: 321, sha256: c63c9ffac7cf6e5ded3d74233226ec483ecd3deb729be25144a8229400f38ad4}
 public_author_thread:
   author_handle: michaelzlin.bsky.social
   author_did: did:plc:bexnuogium744jj6ibk4bhy3
@@ -64,6 +65,7 @@ boundary:
   abstract_annotation_zero_hits_do_not_exclude_Mi4_or_C3: true
   archived_abstract_page_is_not_fulltext: true
   laboratory_repository_name_and_description_search_is_bounded: true
+  requester_pays_access_denial_is_not_payload_absence: true
   HTTP_401_403_404_429_and_500_are_not_source_absence: true
   no_parameter_fit: true
   no_target_activity_injection: true

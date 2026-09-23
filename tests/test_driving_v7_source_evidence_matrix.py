@@ -201,6 +201,8 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
         assert components["Hao_2026_Wayback_resolves_complete_cell_types"] is False
         assert components["Hao_2026_ClandininLab_public_repository_count"] == 31
         assert components["Hao_2026_ClandininLab_paper_repository_hit"] is False
+        assert components["Hao_2026_bioRxiv_TDM_requester_pays_required"] is True
+        assert components["Hao_2026_bioRxiv_TDM_payload_inventory_readable"] is False
         assert components["Hao_2026_Europe_PMC_annotation_hit"] is False
         assert (
             components[

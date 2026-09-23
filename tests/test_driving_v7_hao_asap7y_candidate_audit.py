@@ -90,6 +90,14 @@ def test_wayback_capture_is_abstract_only_and_does_not_resolve_cell_types() -> N
     assert archived["resolves_complete_paper_cell_type_set"] is False
 
 
+def test_official_tdm_bucket_requires_authenticated_requester_pays_access() -> None:
+    access = json.loads(REPORT.read_text())["access_boundaries"]
+    assert access["bioRxiv_TDM_bucket"] == "biorxiv-src-monthly"
+    assert access["bioRxiv_TDM_probe_status"] == 403
+    assert access["bioRxiv_TDM_requester_pays_authentication_required"] is True
+    assert access["bioRxiv_TDM_payload_inventory_readable"] is False
+
+
 def test_europe_pmc_annotations_are_abstract_only_locator_evidence() -> None:
     text_mining = json.loads(REPORT.read_text())["Europe_PMC_text_mining"]
     assert text_mining["article_id"] == "PPR:PPR1242681"

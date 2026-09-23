@@ -656,6 +656,10 @@ cell-type set. A separate successful listing of all 31 public `ClandininLab` Git
 repositories has no ASAP7y, exact-title, Hao, or Jayne match in repository names or
 descriptions. This is a bounded name/description index, not evidence that code or data
 do not exist elsewhere or inside a generally named repository.
+The official `biorxiv-src-monthly` TDM bucket was also probed directly. Amazon S3
+returned `AccessDenied` with the explicit message that anonymous users cannot invoke
+requests against requester-pays buckets. This verifies an authenticated billing
+boundary, not the presence or absence of this paper's MECA object or payload files.
 Europe PMC's annotations endpoint returns six abstract-level entities
 (`membranes`, `organization`, `mice`, `flies`, `photon`, and `Drosophila`) and no
 Mi4/C3 hit. Because the record is not in PMC, these annotations do not cover the full

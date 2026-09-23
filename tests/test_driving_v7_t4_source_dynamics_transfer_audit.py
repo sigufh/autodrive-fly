@@ -232,6 +232,8 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert hao["Wayback_resolves_complete_cell_types"] is False
     assert hao["ClandininLab_public_repository_count"] == 31
     assert hao["ClandininLab_paper_repository_hits"] == []
+    assert hao["bioRxiv_TDM_requester_pays_required"] is True
+    assert hao["bioRxiv_TDM_payload_inventory_readable"] is False
     assert hao["Europe_PMC_annotation_count"] == 6
     assert hao["Europe_PMC_Mi4_annotation_hit"] is False
     assert hao["Europe_PMC_C3_annotation_hit"] is False

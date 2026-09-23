@@ -3,8 +3,8 @@
     "name": "v7-hao-asap7y-candidate-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "3062b098a15adabebc2a3d8b0e0f65118aef43776ac11f515528a10f6eaab899",
-      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "320182b0127ff4d6938c8500b435a2dc081c861c50df028eef0465f782189a5c"
+      "configs/driving-v7-hao-asap7y-candidate-audit.yaml": "fec02965c19da26acea3960d21cc85bf6bb28683b1a3c9e5d18046ed5f91fe79",
+      "src/fly_emotion/driving/v7_hao_asap7y_candidate_audit.py": "1587e4113b5dc5973d0a889c93a90ca1cb4370fc8534d37aa63e946fa5f65a9a"
     },
     "raw_snapshot_identity": {
       "data/raw/t4-inhibitory-source-external/hao-2026/crossref.json": "e3750320cdb38c7b3d0396eff20ab3cb30dc03d50d70f0f00c55635b3f77e464",
@@ -22,6 +22,7 @@
       "data/raw/t4-inhibitory-source-external/hao-2026/wayback-cdx.json": "8c1713af793420c6141675779c2c31554b5d1f24f6a827834a8d2f9a15beaabd",
       "data/raw/t4-inhibitory-source-external/hao-2026/wayback-article.html": "fb6f5cda6f0d98ccbbdbcb6c0f58b0400cd7bb4384bae9133f70e0dbe6371f5c",
       "data/raw/t4-inhibitory-source-external/hao-2026/clandinin-repos.json": "ca5eb940d695a0b9ad0f0ce25f450dbe26b0a33dccce1793c1291d0e150cea4e",
+      "data/raw/t4-inhibitory-source-external/hao-2026/tdm/1.body": "c63c9ffac7cf6e5ded3d74233226ec483ecd3deb729be25144a8229400f38ad4",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/resolve.json": "10787de9ef5dbe7bf1e30fcde9db3a45b8aa928a44028e19a04f6dffc9b54149",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/thread-full.json": "e09128960100f06ad418c98483c5a287befcc004a8aeeb663b7038d2d1b7fd27",
       "data/raw/t4-inhibitory-source-external/hao-2026/bluesky/images/post-8.jpg": "866bd4baee183975167fd3e029efc75753996e12a1cfbf69696ae19d33db822b",
@@ -128,7 +129,11 @@
     "Europe_PMC_fulltext_status": 500,
     "Europe_PMC_in_PMC": false,
     "OpenAlex_status": "closed",
-    "openRxiv_mapping_found": false
+    "openRxiv_mapping_found": false,
+    "bioRxiv_TDM_bucket": "biorxiv-src-monthly",
+    "bioRxiv_TDM_probe_status": 403,
+    "bioRxiv_TDM_requester_pays_authentication_required": true,
+    "bioRxiv_TDM_payload_inventory_readable": false
   },
   "Europe_PMC_text_mining": {
     "article_id": "PPR:PPR1242681",
@@ -167,6 +172,7 @@
     "abstract_annotation_zero_hits_do_not_exclude_Mi4_or_C3": true,
     "archived_abstract_page_is_not_fulltext": true,
     "laboratory_repository_name_and_description_search_is_bounded": true,
+    "requester_pays_access_denial_is_not_payload_absence": true,
     "HTTP_401_403_404_429_and_500_are_not_source_absence": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

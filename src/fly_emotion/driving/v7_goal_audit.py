@@ -1805,6 +1805,16 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "ClandininLab_paper_specific_name_or_description_hits"
                     ]
                 ),
+                "Hao_2026_bioRxiv_TDM_requester_pays_required": (
+                    hao_asap7y_candidate_audit["access_boundaries"][
+                        "bioRxiv_TDM_requester_pays_authentication_required"
+                    ]
+                ),
+                "Hao_2026_bioRxiv_TDM_payload_inventory_readable": (
+                    hao_asap7y_candidate_audit["access_boundaries"][
+                        "bioRxiv_TDM_payload_inventory_readable"
+                    ]
+                ),
                 "Hao_2025_dissertation_restricted_until": (
                     hao_asap7y_candidate_audit["author_dissertation"][
                         "restricted_until"
@@ -4313,6 +4323,8 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2026_Wayback_resolves_complete_cell_types",
                     "Hao_2026_ClandininLab_public_repository_count",
                     "Hao_2026_ClandininLab_paper_repository_hits",
+                    "Hao_2026_bioRxiv_TDM_requester_pays_required",
+                    "Hao_2026_bioRxiv_TDM_payload_inventory_readable",
                     "Hao_2025_dissertation_restricted_until",
                     "Hao_2025_dissertation_public_abstract_names_cell_types",
                     "Hao_2026_ASAP7y_successful_index_numeric_payload_found",
