@@ -244,6 +244,24 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             components["T4_microstep_temporal_failure_retained_after_energy_audit"]
             is True
         )
+        assert (
+            components[
+                "Fig3_baseline_or_gain_mismatch_explains_robustness_failure"
+            ]
+            is False
+        )
+        assert (
+            components[
+                "Fig3_bounded_latency_jitter_explains_every_negative_cell"
+            ]
+            is False
+        )
+        assert (
+            components[
+                "Fig3_source_kernel_robustness_failure_retained_after_alignment_audit"
+            ]
+            is True
+        )
     assert report["matrix"]["Mi4"]["evidence_components"][
         "Gur_2024_Mi4_C3_proofreading_table_row_count"
     ] == 723

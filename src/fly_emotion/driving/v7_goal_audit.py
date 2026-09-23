@@ -161,6 +161,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     unified_model_package_audit = reports["unified_model_package_audit"]
     fig3_source_kernel_audit = reports["fig3_source_kernel_audit"]
     fig3_source_kernel_robustness = reports["fig3_source_kernel_robustness"]
+    fig3_source_kernel_alignment_failure = reports[
+        "fig3_source_kernel_alignment_failure"
+    ]
     arenz_source_dynamics_audit = reports["arenz_source_dynamics_audit"]
     arenz_t5_source_dynamics_audit = reports["arenz_t5_source_dynamics_audit"]
     c3_strf_source_dynamics_audit = reports["c3_strf_source_dynamics_audit"]
@@ -3429,6 +3432,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "all_source_kernel_robustness_gates_passed"
                     ]
                 ),
+                "fig3_source_kernel_baseline_or_gain_mismatch_explains_failure": (
+                    fig3_source_kernel_alignment_failure[
+                        "baseline_or_gain_mismatch_explains_original_failure"
+                    ]
+                ),
+                "fig3_source_kernel_oracle_lag_milliseconds": (
+                    fig3_source_kernel_alignment_failure["protocol"][
+                        "maximum_oracle_lag_milliseconds"
+                    ]
+                ),
+                "fig3_source_kernel_original_negative_LOO_cell_count": (
+                    fig3_source_kernel_alignment_failure[
+                        "original_negative_leave_one_out_cell_count"
+                    ]
+                ),
+                "fig3_source_kernel_oracle_shift_negative_LOO_cell_count": (
+                    fig3_source_kernel_alignment_failure[
+                        "oracle_shift_negative_leave_one_out_cell_count"
+                    ]
+                ),
+                "fig3_source_kernel_bounded_latency_explains_all_negative_cells": (
+                    fig3_source_kernel_alignment_failure[
+                        "bounded_latency_jitter_explains_every_negative_cell"
+                    ]
+                ),
+                "fig3_source_kernel_failure_retained_after_alignment_audit": (
+                    fig3_source_kernel_alignment_failure[
+                        "original_source_kernel_robustness_failure_retained"
+                    ]
+                ),
                 "Arenz_source_filter_parameters_verified": arenz_source_dynamics_audit[
                     "Arenz_filter_parameters_verified"
                 ],
@@ -4356,6 +4389,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_temporal_shuffle_source_energy_within_five_percent",
                     "T4_temporal_shuffle_input_mismatch_explains_failure",
                     "T4_temporal_shuffle_failure_retained_after_energy_audit",
+                    "fig3_source_kernel_baseline_or_gain_mismatch_explains_failure",
+                    "fig3_source_kernel_oracle_lag_milliseconds",
+                    "fig3_source_kernel_original_negative_LOO_cell_count",
+                    "fig3_source_kernel_oracle_shift_negative_LOO_cell_count",
+                    "fig3_source_kernel_bounded_latency_explains_all_negative_cells",
+                    "fig3_source_kernel_failure_retained_after_alignment_audit",
                     "T5_temporal_shuffle_retinal_energy_preserved",
                     "T5_temporal_shuffle_lamina_source_energy_preserved",
                     "T5_temporal_shuffle_energy_matched_control_verified",

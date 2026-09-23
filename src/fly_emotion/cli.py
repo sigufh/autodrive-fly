@@ -125,6 +125,9 @@ from .driving.v7_fib19_malecns_t5_weight_transfer_audit import (
 from .driving.v7_fig1_source_temporal_readiness_audit import (
     evaluate_v7_fig1_source_temporal_readiness_audit,
 )
+from .driving.v7_fig3_source_kernel_alignment_failure_audit import (
+    evaluate_v7_fig3_source_kernel_alignment_failure_audit,
+)
 from .driving.v7_fig3_source_kernel_audit import evaluate_v7_fig3_source_kernel_audit
 from .driving.v7_fig3_source_kernel_robustness import (
     evaluate_v7_fig3_source_kernel_robustness,
@@ -733,6 +736,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-stable-contrast-source-scope")
     subparsers.add_parser("v7-audit-unified-model-package")
     subparsers.add_parser("v7-audit-fig3-source-kernels")
+    subparsers.add_parser("v7-audit-fig3-source-kernel-alignment-failure")
     subparsers.add_parser("v7-audit-fig3-source-kernel-robustness")
     subparsers.add_parser("v7-audit-arenz-source-dynamics")
     subparsers.add_parser("v7-audit-arenz-t5-source-dynamics")
@@ -2131,6 +2135,14 @@ def main() -> None:
         report = evaluate_v7_fig3_source_kernel_audit(root)
         target = root / "artifacts/v7-fig3-source-kernel-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-fig3-source-kernel-alignment-failure":
+        report = evaluate_v7_fig3_source_kernel_alignment_failure_audit(root)
+        target = root / "artifacts/v7-fig3-source-kernel-alignment-failure-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-fig3-source-kernel-robustness":

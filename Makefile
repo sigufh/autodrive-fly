@@ -480,3 +480,8 @@ v7-audit-t4-temporal-shuffle-input-energy:
 	.venv/bin/autodrive-fly v7-audit-t4-temporal-shuffle-input-energy
 
 .PHONY: v7-audit-t4-temporal-shuffle-input-energy
+
+v7-audit-fig3-source-kernel-alignment-failure:
+	.venv/bin/autodrive-fly v7-audit-fig3-source-kernel-alignment-failure
+
+.PHONY: v7-audit-fig3-source-kernel-alignment-failure

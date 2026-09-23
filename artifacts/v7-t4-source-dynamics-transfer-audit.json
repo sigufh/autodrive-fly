@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "cb8e341d5555433d4a1262c10c3e5c98398204364212c62348f41552647e13b8",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b913adc147cece7c7ac1dbade39cdf40b660d9ed0de996f7caffc0bef572d702",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "71316fbae9b71d68aba31a144c5f6841760695ed1a8c1cb25ceb439bf136ddd6",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "214c1255f745f3b9bd2a36b8b0b07d364beefb940904ff81ae5c8a9cf4597d0e",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -18,6 +18,7 @@
       "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
       "artifacts/v7-fig3-source-kernel-robustness.json": "ffce4db78782bd8abb88128bdbe54b0aed4ddd3c3b8941bf062edaed6758bd12",
+      "artifacts/v7-fig3-source-kernel-alignment-failure-audit.json": "aedbb1bcd721c129e598d01adc87bec0514d7b0fe1ad37a8f556221d0b533df1",
       "artifacts/v7-arenz-source-dynamics-audit.json": "acb997def49e9a1c30c83e84484a3259faec9861efa4906635ad902b83860d9d",
       "artifacts/v7-c3-strf-source-dynamics-audit.json": "da65107af0ae78a5721f5606f9ccb1e08ebd8fe0ef2a1bdc736b8eb57755f69a",
       "artifacts/v7-c2c3-version-of-record-data-audit.json": "e45e0649351f27030a3e3284b0d40095780365d6c5446fa35c2b1534b497128c",
@@ -190,6 +191,16 @@
     "prior_two_pool_kernel_authorized": false,
     "source_specific_kernel_candidate_authorized": false,
     "cross_cell_robustness_passed": false
+  },
+  "verified_fig3_source_kernel_alignment_failure": {
+    "baseline_offset_removed": true,
+    "L2_gain_removed": true,
+    "maximum_oracle_lag_milliseconds": 250,
+    "original_negative_leave_one_out_cell_count": 12,
+    "oracle_shift_negative_leave_one_out_cell_count": 10,
+    "bounded_latency_jitter_explains_every_negative_cell": false,
+    "source_kernel_robustness_failure_retained": true,
+    "aligned_source_kernel_authorized": false
   },
   "verified_Arenz_source_filter_readiness": {
     "filter_parameters_verified": true,

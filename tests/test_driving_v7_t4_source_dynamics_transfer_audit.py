@@ -86,6 +86,15 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert fig3["prior_two_pool_kernel_authorized"] is False
     assert fig3["source_specific_kernel_candidate_authorized"] is False
     assert fig3["cross_cell_robustness_passed"] is False
+    alignment = report["verified_fig3_source_kernel_alignment_failure"]
+    assert alignment["baseline_offset_removed"] is True
+    assert alignment["L2_gain_removed"] is True
+    assert alignment["maximum_oracle_lag_milliseconds"] == 250
+    assert alignment["original_negative_leave_one_out_cell_count"] == 12
+    assert alignment["oracle_shift_negative_leave_one_out_cell_count"] == 10
+    assert alignment["bounded_latency_jitter_explains_every_negative_cell"] is False
+    assert alignment["source_kernel_robustness_failure_retained"] is True
+    assert alignment["aligned_source_kernel_authorized"] is False
     arenz = report["verified_Arenz_source_filter_readiness"]
     assert arenz["filter_parameters_verified"] is True
     assert arenz["current_source_coverage_fraction"] == 0.75

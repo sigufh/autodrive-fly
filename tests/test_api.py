@@ -140,6 +140,12 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T4_temporal_shuffle_source_energy_within_five_percent"] is True
     assert boundaries["T4_temporal_shuffle_input_mismatch_explains_failure"] is False
     assert boundaries["T4_temporal_shuffle_failure_retained_after_energy_audit"] is True
+    assert boundaries["fig3_source_kernel_baseline_or_gain_mismatch_explains_failure"] is False
+    assert boundaries["fig3_source_kernel_oracle_lag_milliseconds"] == 250
+    assert boundaries["fig3_source_kernel_original_negative_LOO_cell_count"] == 12
+    assert boundaries["fig3_source_kernel_oracle_shift_negative_LOO_cell_count"] == 10
+    assert boundaries["fig3_source_kernel_bounded_latency_explains_all_negative_cells"] is False
+    assert boundaries["fig3_source_kernel_failure_retained_after_alignment_audit"] is True
     assert boundaries["Gur_2024_directly_recorded_neuron_types"] == [
         "L1",
         "L2",

@@ -299,6 +299,12 @@ export type V7Status = {
     T4_temporal_shuffle_source_energy_within_five_percent?: boolean;
     T4_temporal_shuffle_input_mismatch_explains_failure?: boolean;
     T4_temporal_shuffle_failure_retained_after_energy_audit?: boolean;
+    fig3_source_kernel_baseline_or_gain_mismatch_explains_failure?: boolean;
+    fig3_source_kernel_oracle_lag_milliseconds?: number;
+    fig3_source_kernel_original_negative_LOO_cell_count?: number;
+    fig3_source_kernel_oracle_shift_negative_LOO_cell_count?: number;
+    fig3_source_kernel_bounded_latency_explains_all_negative_cells?: boolean;
+    fig3_source_kernel_failure_retained_after_alignment_audit?: boolean;
     T5_temporal_shuffle_retinal_energy_preserved?: boolean;
     T5_temporal_shuffle_lamina_source_energy_preserved?: boolean;
     T5_temporal_shuffle_energy_matched_control_verified?: boolean;

@@ -795,6 +795,16 @@ this T4 failure. The original negative temporal-identifiability gate remains in
 force; no post-hoc normalized gate was introduced
 (`artifacts/v7-t4-temporal-shuffle-input-energy-audit.json`).
 
+The independent Fig. 3 source-kernel robustness failure was decomposed without
+changing its preregistered gate. The existing comparison already removes each
+trace's baseline offset and L2 gain. Across ON/OFF Mi1/Tm3/Mi4/C3 there are 12
+negative leave-one-cell-out correlations. Even a retrospective, non-deployable
+oracle that chooses a separate shift within +/-250 ms from each held-out waveform
+leaves 10 negative correlations, including Mi1 ON and Mi4 ON/OFF cells. Thus
+baseline, gain, and bounded latency jitter do not explain the full failure; the
+original cross-cell robustness failure remains in force and no aligned kernel is
+authorized (`artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

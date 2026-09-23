@@ -30,6 +30,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     verified_unified_path = Path(config["verified_unified_model_evidence"])
     fig3_kernel_path = Path(config["fig3_source_kernel_evidence"])
     fig3_robustness_path = Path(config["fig3_source_kernel_robustness_evidence"])
+    fig3_alignment_path = Path(
+        config["fig3_source_kernel_alignment_failure_evidence"]
+    )
     arenz_path = Path(config["arenz_source_dynamics_evidence"])
     c3_strf_path = Path(config["c3_strf_source_dynamics_evidence"])
     c2c3_vor_path = Path(config["c2c3_version_of_record_evidence"])
@@ -77,6 +80,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     fig3_kernel = json.loads((root / fig3_kernel_path).read_text(encoding="utf-8"))
     fig3_robustness = json.loads(
         (root / fig3_robustness_path).read_text(encoding="utf-8")
+    )
+    fig3_alignment = json.loads(
+        (root / fig3_alignment_path).read_text(encoding="utf-8")
     )
     arenz = json.loads((root / arenz_path).read_text(encoding="utf-8"))
     c3_strf = json.loads((root / c3_strf_path).read_text(encoding="utf-8"))
@@ -247,6 +253,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(verified_unified_path): _sha256(root / verified_unified_path),
                 str(fig3_kernel_path): _sha256(root / fig3_kernel_path),
                 str(fig3_robustness_path): _sha256(root / fig3_robustness_path),
+                str(fig3_alignment_path): _sha256(root / fig3_alignment_path),
                 str(arenz_path): _sha256(root / arenz_path),
                 str(c3_strf_path): _sha256(root / c3_strf_path),
                 str(c2c3_vor_path): _sha256(root / c2c3_vor_path),
@@ -425,6 +432,32 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "cross_cell_robustness_passed": fig3_robustness[
                 "all_source_kernel_robustness_gates_passed"
+            ],
+        },
+        "verified_fig3_source_kernel_alignment_failure": {
+            "baseline_offset_removed": fig3_alignment[
+                "preexisting_normalization"
+            ]["baseline_offset_removed"],
+            "L2_gain_removed": fig3_alignment["preexisting_normalization"][
+                "L2_gain_removed"
+            ],
+            "maximum_oracle_lag_milliseconds": fig3_alignment["protocol"][
+                "maximum_oracle_lag_milliseconds"
+            ],
+            "original_negative_leave_one_out_cell_count": fig3_alignment[
+                "original_negative_leave_one_out_cell_count"
+            ],
+            "oracle_shift_negative_leave_one_out_cell_count": fig3_alignment[
+                "oracle_shift_negative_leave_one_out_cell_count"
+            ],
+            "bounded_latency_jitter_explains_every_negative_cell": fig3_alignment[
+                "bounded_latency_jitter_explains_every_negative_cell"
+            ],
+            "source_kernel_robustness_failure_retained": fig3_alignment[
+                "original_source_kernel_robustness_failure_retained"
+            ],
+            "aligned_source_kernel_authorized": fig3_alignment[
+                "authorize_aligned_source_kernel"
             ],
         },
         "verified_Arenz_source_filter_readiness": {

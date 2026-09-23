@@ -35,6 +35,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     edmond_retrieval = evidence["edmond_fig3_retrieval"]
     t4_fields = evidence["t4_recording_fields"]
     t4_shuffle_energy = evidence["t4_temporal_shuffle_input_energy"]
+    fig3_alignment = evidence["fig3_source_kernel_alignment_failure"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     behnia_availability = evidence["behnia_t4_fast_availability"]
     matulis_mi1 = evidence["matulis_mi1_voltage_availability"]
@@ -706,6 +707,24 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source in {"Mi1", "Tm3", "Mi4", "C3"}
                 and t4_shuffle_energy[
                     "original_temporal_identifiability_failure_retained"
+                ]
+            ),
+            "Fig3_baseline_or_gain_mismatch_explains_robustness_failure": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and fig3_alignment[
+                    "baseline_or_gain_mismatch_explains_original_failure"
+                ]
+            ),
+            "Fig3_bounded_latency_jitter_explains_every_negative_cell": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and fig3_alignment[
+                    "bounded_latency_jitter_explains_every_negative_cell"
+                ]
+            ),
+            "Fig3_source_kernel_robustness_failure_retained_after_alignment_audit": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and fig3_alignment[
+                    "original_source_kernel_robustness_failure_retained"
                 ]
             ),
             "Drews_2020_recording_to_MaleCNS_body_crosswalk_found": (

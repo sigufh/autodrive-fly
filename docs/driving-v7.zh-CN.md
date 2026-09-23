@@ -2481,6 +2481,14 @@ shuffle residual 仍是 ordered 的 1.917 倍。因此与此前 T5 shuffle 不�
 不能解释这项 T4 失败；原 temporal-identifiability 负门继续保留，也没有新增事后归一化
 门。详见 `artifacts/v7-t4-temporal-shuffle-input-energy-audit.json`。
 
+对 Fig.3 source-kernel 跨细胞稳健性失败也做了只读分解。原分析本来就逐 trace 去掉
+基线偏置并做 L2 归一化，所以失败不是简单的基线或增益不同。ON/OFF 四类 source 合计
+有 12 个负相关 leave-one-cell-out 个体；即使让每个 held-out 波形事后选择 ±250 ms 的
+最佳时移，这个不可部署的 oracle 上界仍留下 10 个负相关个体，其中包括 Mi1 ON 和
+Mi4 ON/OFF。因此有限 latency jitter 也不能解释全部失败；原 cross-cell robustness 负门
+继续保留，不授权 aligned kernel。详见
+`artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

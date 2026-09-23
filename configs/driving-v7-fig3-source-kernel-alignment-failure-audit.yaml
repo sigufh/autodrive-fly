@@ -1,0 +1,24 @@
+version: 1
+name: v7-fig3-source-kernel-alignment-failure-audit
+observed_on: "2026-09-23"
+source_protocol: configs/driving-v7-fig3-source-kernel-audit.yaml
+robustness_protocol: configs/driving-v7-fig3-source-kernel-robustness.yaml
+robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
+source_types: [Tm3, Mi1, Mi4, C3]
+maximum_oracle_lag_milliseconds: 250
+boundary:
+  retrospective_failure_decomposition_only: true
+  baseline_offset_removed_before_both_comparisons: true
+  L2_gain_removed_before_both_comparisons: true
+  oracle_lag_uses_held_out_waveform_and_is_not_deployable: true
+  oracle_lag_is_not_a_fitted_source_kernel: true
+  no_acceptance_threshold_defined: true
+  original_robustness_gate_retained: true
+  every_recorded_cell_retained: true
+  no_outlier_removal: true
+  no_T4_response_used: true
+  no_PD_ND_label_used: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

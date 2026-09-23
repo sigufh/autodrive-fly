@@ -870,6 +870,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_temporal_shuffle_failure_retained_after_energy_audit": visual[
                     "T4_temporal_shuffle_failure_retained_after_energy_audit"
                 ],
+                "fig3_source_kernel_baseline_or_gain_mismatch_explains_failure": visual[
+                    "fig3_source_kernel_baseline_or_gain_mismatch_explains_failure"
+                ],
+                "fig3_source_kernel_oracle_lag_milliseconds": visual[
+                    "fig3_source_kernel_oracle_lag_milliseconds"
+                ],
+                "fig3_source_kernel_original_negative_LOO_cell_count": visual[
+                    "fig3_source_kernel_original_negative_LOO_cell_count"
+                ],
+                "fig3_source_kernel_oracle_shift_negative_LOO_cell_count": visual[
+                    "fig3_source_kernel_oracle_shift_negative_LOO_cell_count"
+                ],
+                "fig3_source_kernel_bounded_latency_explains_all_negative_cells": visual[
+                    "fig3_source_kernel_bounded_latency_explains_all_negative_cells"
+                ],
+                "fig3_source_kernel_failure_retained_after_alignment_audit": visual[
+                    "fig3_source_kernel_failure_retained_after_alignment_audit"
+                ],
                 "T5_temporal_shuffle_retinal_energy_preserved": visual[
                     "T5_temporal_shuffle_retinal_energy_preserved"
                 ],
