@@ -110,6 +110,9 @@ from .driving.v7_ephys_audit import evaluate_v7_electrophysiology_audit
 from .driving.v7_ephys_interface import evaluate_v7_ephys_interface
 from .driving.v7_fc2_goal_memory import evaluate_v7_fc2_goal_memory
 from .driving.v7_fc2_pfl_dna import evaluate_v7_fc2_pfl_dna
+from .driving.v7_fendl_mi4_c3_receptor_boundary_audit import (
+    evaluate_v7_fendl_mi4_c3_receptor_boundary_audit,
+)
 from .driving.v7_fib19_malecns_t5_weight_transfer_audit import (
     evaluate_v7_fib19_malecns_t5_weight_transfer_audit,
 )
@@ -708,6 +711,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-ketkar-2019-source-data-attachments")
     subparsers.add_parser("v7-audit-gonzalez-suarez-mi4-evidence")
     subparsers.add_parser("v7-audit-hao-asap7y-candidate")
+    subparsers.add_parser("v7-audit-fendl-mi4-c3-receptor-boundary")
     subparsers.add_parser("v7-audit-yuan-c3-candidate")
     subparsers.add_parser("v7-audit-strother-mi4-public-indexes")
     subparsers.add_parser("v7-audit-stable-contrast-source-scope")
@@ -2032,6 +2036,14 @@ def main() -> None:
     if args.command == "v7-audit-hao-asap7y-candidate":
         report = evaluate_v7_hao_asap7y_candidate_audit(root)
         target = root / "artifacts/v7-hao-asap7y-candidate-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-fendl-mi4-c3-receptor-boundary":
+        report = evaluate_v7_fendl_mi4_c3_receptor_boundary_audit(root)
+        target = root / "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

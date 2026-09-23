@@ -137,6 +137,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     c3_citation_graph_audit = reports["c3_citation_graph_audit"]
     legacy_c3_candidate_audit = reports["legacy_c3_candidate_audit"]
     hao_asap7y_candidate_audit = reports["hao_asap7y_candidate_audit"]
+    fendl_mi4_c3_receptor_boundary_audit = reports[
+        "fendl_mi4_c3_receptor_boundary_audit"
+    ]
     stable_contrast_source_scope_audit = reports[
         "stable_contrast_source_scope_audit"
     ]
@@ -1853,6 +1856,29 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Hao_2026_Europe_PMC_annotation_scope": (
                     hao_asap7y_candidate_audit["Europe_PMC_text_mining"][
                         "annotation_scope"
+                    ]
+                ),
+                "Fendl_2021_target_Rdl_localization_verified": (
+                    fendl_mi4_c3_receptor_boundary_audit[
+                        "target_receptor_evidence"
+                    ]["Rdl_localized_on_T4_T5_dendrites"]
+                ),
+                "Fendl_2021_pooled_GABAergic_T4_input_sign_supported": (
+                    fendl_mi4_c3_receptor_boundary_audit[
+                        "target_receptor_evidence"
+                    ]["Mi4_C3_CT1_assigned_as_GABAergic_T4_inputs"]
+                ),
+                "Fendl_2021_source_specific_contact_resolved": (
+                    fendl_mi4_c3_receptor_boundary_audit[
+                        "target_receptor_evidence"
+                    ]["source_specific_Mi4_or_C3_receptor_contact_resolved"]
+                ),
+                "Fendl_2021_Mi4_C3_direct_recording_verified": bool(
+                    fendl_mi4_c3_receptor_boundary_audit[
+                        "Mi4_direct_neural_recording_verified"
+                    ]
+                    or fendl_mi4_c3_receptor_boundary_audit[
+                        "C3_direct_neural_recording_verified"
                     ]
                 ),
                 "Gur_2024_directly_recorded_neuron_types": (
@@ -4333,6 +4359,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Hao_2026_Europe_PMC_Mi4_annotation_hit",
                     "Hao_2026_Europe_PMC_C3_annotation_hit",
                     "Hao_2026_Europe_PMC_annotation_scope",
+                    "Fendl_2021_target_Rdl_localization_verified",
+                    "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
+                    "Fendl_2021_source_specific_contact_resolved",
+                    "Fendl_2021_Mi4_C3_direct_recording_verified",
                     "Gur_2024_directly_recorded_neuron_types",
                     "Gur_2024_Mi4_proofreading_row_count",
                     "Gur_2024_C3_proofreading_row_count",

@@ -245,6 +245,16 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert hao["successful_public_index_numeric_payload_found"] is False
     assert hao["global_payload_absence_claimed"] is False
     assert hao["source_dynamics_fit_authorized"] is False
+    fendl = report["verified_Fendl_2021_receptor_boundary"]
+    assert fendl["doi"] == "10.5282/edoc.27613"
+    assert fendl["direct_functional_imaging_cell_types"] == ["L1", "Mi9", "LPi4-3"]
+    assert fendl["target_receptor_localization_cell_types"] == ["T4", "T5"]
+    assert fendl["Rdl_localized_on_T4_T5_dendrites"] is True
+    assert fendl["pooled_Mi4_C3_CT1_GABAergic_T4_input_sign_supported"] is True
+    assert fendl["source_specific_Mi4_or_C3_contact_resolved"] is False
+    assert fendl["Mi4_direct_recording_verified"] is False
+    assert fendl["C3_direct_recording_verified"] is False
+    assert fendl["source_dynamics_transfer_authorized"] is False
     stable = report["verified_Gur_2024_stable_contrast_source_scope"]
     assert stable["doi"] == "10.1038/s41467-024-52724-5"
     assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(

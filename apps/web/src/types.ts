@@ -106,6 +106,10 @@ export type V7Status = {
     Hao_2026_Europe_PMC_Mi4_annotation_hit?: boolean;
     Hao_2026_Europe_PMC_C3_annotation_hit?: boolean;
     Hao_2026_Europe_PMC_annotation_scope?: string;
+    Fendl_2021_target_Rdl_localization_verified?: boolean;
+    Fendl_2021_pooled_GABAergic_T4_input_sign_supported?: boolean;
+    Fendl_2021_source_specific_contact_resolved?: boolean;
+    Fendl_2021_Mi4_C3_direct_recording_verified?: boolean;
     Gur_2024_directly_recorded_neuron_types?: string[];
     Gur_2024_Mi4_proofreading_row_count?: number;
     Gur_2024_C3_proofreading_row_count?: number;

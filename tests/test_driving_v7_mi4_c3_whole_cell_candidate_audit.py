@@ -17,7 +17,7 @@ def test_candidate_audit_is_hash_bound_and_read_only() -> None:
 def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     report = json.loads(REPORT.read_text())
     summary = report["candidate_summary"]
-    assert summary["audited_candidate_count"] == 16
+    assert summary["audited_candidate_count"] == 17
     assert summary[
         "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates"
     ] == ["Groschner_2022"]
@@ -48,6 +48,9 @@ def test_only_reference_cohort_has_direct_Mi4_C3_numeric_voltage() -> None:
     assert summary["unresolved_high_value_candidates"] == ["Hao_2026_ASAP7y"]
     assert summary["unresolved_candidates_in_audited_candidate_count"] is False
     assert summary["anatomy_only_named_source_candidates"] == ["Gur_2024"]
+    assert summary["target_receptor_or_input_sign_only_candidates"] == [
+        "Fendl_2021"
+    ]
 
 
 def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
@@ -86,6 +89,10 @@ def test_candidate_exclusions_preserve_target_and_modality_boundaries() -> None:
     )
     assert ramos["public_numeric_payload"] is False
     assert ramos["local_numeric_payload_verified"] is False
+    fendl = matrix["Fendl_2021"]
+    assert fendl["directly_measured_required_sources"] == []
+    assert fendl["experimental_membrane_voltage"] is False
+    assert fendl["local_numeric_payload_verified"] is False
     gur = matrix["Gur_2024"]
     assert gur["directly_measured_required_sources"] == []
     assert gur["experimental_membrane_voltage"] is False

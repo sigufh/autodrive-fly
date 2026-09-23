@@ -29,6 +29,7 @@ strother_mi4_public_index_evidence: artifacts/v7-strother-mi4-public-index-audit
 c3_citation_graph_evidence: artifacts/v7-c3-citation-graph-audit.json
 legacy_C3_candidate_evidence: artifacts/v7-legacy-c3-candidate-audit.json
 hao_ASAP7y_candidate_evidence: artifacts/v7-hao-asap7y-candidate-audit.json
+fendl_receptor_boundary_evidence: artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json
 stable_contrast_source_scope_evidence: artifacts/v7-stable-contrast-source-scope-audit.json
 tanaka_Mi4_calcium_evidence: artifacts/v7-tanaka-mi4-calcium-audit.json
 afterimages_Mi4_evidence: artifacts/v7-afterimages-mi4-candidate-audit.json

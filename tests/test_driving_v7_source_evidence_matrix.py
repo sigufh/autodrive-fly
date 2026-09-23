@@ -210,6 +210,10 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             ]
             is False
         )
+        assert components["Fendl_2021_target_Rdl_localization_verified"] is True
+        assert components["Fendl_2021_pooled_GABAergic_T4_input_sign_supported"] is True
+        assert components["Fendl_2021_source_specific_contact_resolved"] is False
+        assert components["Fendl_2021_required_source_direct_recording_verified"] is False
     assert report["matrix"]["Mi4"]["evidence_components"][
         "Gur_2024_Mi4_C3_proofreading_table_row_count"
     ] == 723

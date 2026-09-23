@@ -289,6 +289,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Hao_2026_Europe_PMC_Mi4_annotation_hit",
         "Hao_2026_Europe_PMC_C3_annotation_hit",
         "Hao_2026_Europe_PMC_annotation_scope",
+        "Fendl_2021_target_Rdl_localization_verified",
+        "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
+        "Fendl_2021_source_specific_contact_resolved",
+        "Fendl_2021_Mi4_C3_direct_recording_verified",
             "Gur_2024_directly_recorded_neuron_types",
             "Gur_2024_Mi4_proofreading_row_count",
             "Gur_2024_C3_proofreading_row_count",
@@ -1102,7 +1106,7 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_inhibitory_external_transfer_authorized"] is False
-    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 16
+    assert visual["observations"]["Mi4_C3_candidate_count_audited"] == 17
     assert visual["observations"]["Ketkar_2019_official_source_data_attachment_count"] == 11
     assert visual["observations"]["Ketkar_2019_attachments_are_mean_SEM_tables"] is True
     assert visual["observations"]["Ketkar_2019_Mi1_Tm3_GCaMP_summary_found"] is True
@@ -1206,6 +1210,13 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["Hao_2026_Europe_PMC_annotation_scope"] == (
         "abstract_only_because_in_PMC_is_false"
     )
+    assert visual["observations"]["Fendl_2021_target_Rdl_localization_verified"] is True
+    assert (
+        visual["observations"]["Fendl_2021_pooled_GABAergic_T4_input_sign_supported"]
+        is True
+    )
+    assert visual["observations"]["Fendl_2021_source_specific_contact_resolved"] is False
+    assert visual["observations"]["Fendl_2021_Mi4_C3_direct_recording_verified"] is False
     assert {"Tm1", "Tm2", "Tm4", "Tm9", "Dm12"} <= set(
         visual["observations"]["Gur_2024_directly_recorded_neuron_types"]
     )

@@ -743,6 +743,15 @@ Tm9 readout, not an independent Mi4/C3 source recording. The linked 2021 paper's
 official XLS is already audited separately and contains Tm4/Tm9 temporal calcium
 blocks and CT1 spatial calcium blocks, but no Mi4/C3 source block
 (`artifacts/v7-legacy-c3-candidate-audit.json`).
+Fendl's 2021 dissertation (`10.5282/edoc.27613`) was added as a separate
+target-receptor boundary rather than a source-dynamics candidate. Its official
+133-page PDF has no embedded attachments and contains nine exact mentions each of
+Mi4 and C3. The direct functional imaging described in the thesis covers L1, Mi9,
+and LPi4-3, while the Mi4/C3 evidence assigns them, together with CT1, as pooled
+GABAergic inputs corresponding to Rdl localization on T4 dendrites. This supports a
+target-side receptor/input-sign constraint, but neither resolves source-specific
+Mi4 versus C3 contacts nor records either source's neural dynamics
+(`artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

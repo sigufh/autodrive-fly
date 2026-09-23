@@ -178,6 +178,19 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
     ):
         raise ValueError("Ramos thesis source-recording boundary changed")
 
+    fendl = evidence["fendl_receptor_boundary"]
+    if (
+        fendl["classification"]
+        != "target_receptor_and_pooled_input_sign_evidence_only"
+        or not fendl["target_receptor_evidence"][
+            "Mi4_C3_CT1_assigned_as_GABAergic_T4_inputs"
+        ]
+        or fendl["Mi4_direct_neural_recording_verified"]
+        or fendl["C3_direct_neural_recording_verified"]
+        or fendl["Mi4_C3_source_numeric_payload_verified"]
+    ):
+        raise ValueError("Fendl target-receptor/source boundary changed")
+
     candidates = config["candidates"]
     for name, candidate in candidates.items():
         measured = set(candidate["directly_measured_required_sources"])
@@ -262,6 +275,7 @@ def evaluate_v7_mi4_c3_whole_cell_candidate_audit(root: Path) -> dict:
             "unresolved_high_value_candidates": ["Hao_2026_ASAP7y"],
             "unresolved_candidates_in_audited_candidate_count": False,
             "anatomy_only_named_source_candidates": ["Gur_2024"],
+            "target_receptor_or_input_sign_only_candidates": ["Fendl_2021"],
         },
         "transfer_gates": gates,
         "independent_Mi4_C3_voltage_transfer_authorized": authorized,

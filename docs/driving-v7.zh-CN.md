@@ -2442,6 +2442,12 @@ recording→MaleCNS body crosswalk，也不能定义方向特异 source kernel �
 官方 XLS 已在 T5 审计中覆盖，其中是 Tm4/Tm9 时间钙数据和 CT1 空间钙数据，没有
 Mi4/C3 source block。证据见
 `artifacts/v7-legacy-c3-candidate-audit.json`。
+另将 Fendl 2021 博士论文（DOI `10.5282/edoc.27613`）单列为 target-receptor 边界。
+官方 PDF 共 133 页、无 embedded attachment，Mi4/C3 各有 9 次精确命中。论文直接功能
+成像对象是 L1、Mi9 与 LPi4-3；Mi4/C3 的证据是它们与 CT1 一起被归为 T4 的 pooled
+GABAergic 输入，并与 T4 dendrite 上的 Rdl 定位相符。这支持 target-side receptor/input-sign，
+但不能区分 Mi4 与 C3 各自的受体接触，也没有记录两者的 source dynamics。证据见
+`artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json`。
 
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持

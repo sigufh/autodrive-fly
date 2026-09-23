@@ -1,0 +1,86 @@
+{
+  "protocol": {
+    "name": "v7-fendl-mi4-c3-receptor-boundary-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-fendl-mi4-c3-receptor-boundary-audit.yaml": "176c5c0033a5f507acd08e34d97c29722d60317d89538dbfe61f8099763e72d4",
+      "src/fly_emotion/driving/v7_fendl_mi4_c3_receptor_boundary_audit.py": "c9af0860b0b61839ee8f0b1ba6a80b095264b1d9bff627c3641e2f76254361fa"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-27613/1.body": "39c300596463b217ae3a81fcbd2c9650ceb3763b1a55b79af9018e1fbe766729",
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-27613/Fendl_Sandra.pdf": "d362e3b1dc0b4f2480198d6dbab35f23f4ba9e6380c0e6f2b5033e223c67904d"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "thesis": {
+    "title": "Neurotransmitters and receptors in the motion vision pathway of Drosophila",
+    "author": "Sandra Fendl",
+    "doi": "10.5282/edoc.27613",
+    "page_count": 133,
+    "embedded_attachment_count": 0
+  },
+  "required_source_term_evidence": {
+    "Mi4": {
+      "exact_term_count": 9,
+      "exact_term_pages": [
+        31,
+        34,
+        35,
+        70,
+        73,
+        75,
+        103,
+        106
+      ]
+    },
+    "C3": {
+      "exact_term_count": 9,
+      "exact_term_pages": [
+        31,
+        34,
+        35,
+        70,
+        73,
+        75,
+        103,
+        106
+      ]
+    }
+  },
+  "direct_functional_imaging_cell_types": [
+    "L1",
+    "Mi9",
+    "LPi4-3"
+  ],
+  "target_receptor_localization_cell_types": [
+    "T4",
+    "T5"
+  ],
+  "target_receptor_evidence": {
+    "Rdl_localized_on_T4_T5_dendrites": true,
+    "Mi4_C3_CT1_assigned_as_GABAergic_T4_inputs": true,
+    "source_specific_Mi4_or_C3_receptor_contact_resolved": false
+  },
+  "Mi4_direct_neural_recording_verified": false,
+  "C3_direct_neural_recording_verified": false,
+  "Mi4_C3_source_numeric_payload_verified": false,
+  "experimental_Mi4_C3_membrane_voltage_verified": false,
+  "classification": "target_receptor_and_pooled_input_sign_evidence_only",
+  "authorize_Mi4_C3_source_dynamics_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "target_receptor_localization_is_not_source_activity",
+  "boundary": {
+    "target_T4_T5_receptor_localization_is_not_Mi4_C3_source_recording": true,
+    "pooled_GABAergic_input_sign_does_not_identify_source_specific_dynamics": true,
+    "target_side_Rdl_localization_does_not_supply_source_time_series": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

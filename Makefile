@@ -455,3 +455,8 @@ test:
 	.venv/bin/ruff check src apps/api tests
 	npm_config_cache=.npm-cache npm --prefix apps/web test
 	npm_config_cache=.npm-cache npm --prefix apps/web run build
+
+v7-audit-fendl-mi4-c3-receptor-boundary:
+	.venv/bin/autodrive-fly v7-audit-fendl-mi4-c3-receptor-boundary
+
+.PHONY: v7-audit-fendl-mi4-c3-receptor-boundary

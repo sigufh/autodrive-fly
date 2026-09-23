@@ -3,8 +3,8 @@
     "name": "v7-mi4-c3-whole-cell-candidate-exclusion-audit",
     "observed_on": "2026-09-22",
     "dependencies_sha256": {
-      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "2d16683be0f96fe2949232b4841de393a5851764e50d0a1b360013dc043face4",
-      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "5f31fe9d5d15c14768f86ab8dbf4a903a3b48e05f365cc9e7dd27d203738eabc",
+      "configs/driving-v7-mi4-c3-whole-cell-candidate-audit.yaml": "664e7e707a88ae804cb97d38ef9be82d7e9083fde24b63b49ed1f64d1f9c3ce4",
+      "src/fly_emotion/driving/v7_mi4_c3_whole_cell_candidate_audit.py": "e22c349274256e03c80b9164a1a5bf7d9d33136063bc3716afcdfaf843d908f2",
       "data/raw/t4-fig3-source-dynamics/41586_2022_Article_4428.pdf": "f914da589446b2a3d51c0880597931928bc96c0705147699bb2af7d9b0442d8b",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-t4-inhibitory-source-external-audit.json": "1d8c016d96a38307dd69837ceb9dfadf0a12a7540a4cbefb0f891e6139b1f425",
@@ -21,7 +21,8 @@
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
       "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
-      "artifacts/v7-legacy-c3-candidate-audit.json": "5ff9350e6fe9d3e8dbc8dbc2b1b6d6bcfbf673563ad6cd0ab38df45d2ba0ef1e"
+      "artifacts/v7-legacy-c3-candidate-audit.json": "5ff9350e6fe9d3e8dbc8dbc2b1b6d6bcfbf673563ad6cd0ab38df45d2ba0ef1e",
+      "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json": "32a4c397d98970e6ffe3974f351131db8b6fe4608982610de61184040ccd736b"
     },
     "parameter_fit": false,
     "runtime_modified": false
@@ -369,10 +370,30 @@
       "independent_biological_study_from_reference_cohort": true,
       "exclusion_reason": "C3_is_perturbed_but_Tm9_is_recorded_and_Mi4_is_context_only",
       "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
+    },
+    "Fendl_2021": {
+      "title": "Neurotransmitters and receptors in the motion vision pathway of Drosophila",
+      "doi": "10.5282/edoc.27613",
+      "target_neurons": [
+        "T4",
+        "T5",
+        "L1",
+        "Mi9",
+        "LPi4-3"
+      ],
+      "directly_measured_required_sources": [],
+      "measurement_modality": "target_T4_T5_receptor_localization_and_other_source_imaging",
+      "response_unit": "molecular_localization_and_non_Mi4_C3_fluorescence",
+      "experimental_membrane_voltage": false,
+      "public_numeric_payload": false,
+      "local_numeric_payload_verified": false,
+      "independent_biological_study_from_reference_cohort": true,
+      "exclusion_reason": "target_Rdl_localization_and_pooled_GABAergic_sign_are_not_source_dynamics",
+      "qualifies_as_independent_Mi4_C3_numeric_membrane_voltage": false
     }
   },
   "candidate_summary": {
-    "audited_candidate_count": 16,
+    "audited_candidate_count": 17,
     "direct_Mi4_C3_numeric_experimental_membrane_voltage_candidates": [
       "Groschner_2022"
     ],
@@ -404,6 +425,9 @@
     "unresolved_candidates_in_audited_candidate_count": false,
     "anatomy_only_named_source_candidates": [
       "Gur_2024"
+    ],
+    "target_receptor_or_input_sign_only_candidates": [
+      "Fendl_2021"
     ]
   },
   "transfer_gates": {
@@ -443,6 +467,7 @@
     "individual_Mi4_calcium_does_not_substitute_for_Mi4_C3_voltage": true,
     "legacy_C3_intervention_and_anatomical_mentions_do_not_substitute_for_recording": true,
     "downstream_Tm9_calcium_after_C3_perturbation_is_not_C3_source_activity": true,
+    "target_receptor_localization_does_not_substitute_for_source_activity": true,
     "no_curve_digitization": true,
     "no_cross_paper_field_or_modality_imputation": true,
     "no_threshold_label_split_denominator_or_failure_rule_change": true,

@@ -117,6 +117,10 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Hao_2026_Europe_PMC_annotation_scope"] == (
         "abstract_only_because_in_PMC_is_false"
     )
+    assert boundaries["Fendl_2021_target_Rdl_localization_verified"] is True
+    assert boundaries["Fendl_2021_pooled_GABAergic_T4_input_sign_supported"] is True
+    assert boundaries["Fendl_2021_source_specific_contact_resolved"] is False
+    assert boundaries["Fendl_2021_Mi4_C3_direct_recording_verified"] is False
     assert boundaries["Gur_2024_directly_recorded_neuron_types"] == [
         "L1",
         "L2",

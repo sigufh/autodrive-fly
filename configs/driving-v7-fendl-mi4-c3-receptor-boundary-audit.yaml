@@ -1,0 +1,24 @@
+version: 1
+name: v7-fendl-mi4-c3-receptor-boundary-audit
+observed_on: "2026-09-23"
+thesis:
+  title: Neurotransmitters and receptors in the motion vision pathway of Drosophila
+  author: Sandra Fendl
+  doi: 10.5282/edoc.27613
+  landing_page: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-27613/1.body, bytes: 34831, sha256: 39c300596463b217ae3a81fcbd2c9650ceb3763b1a55b79af9018e1fbe766729}
+  dissertation: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-27613/Fendl_Sandra.pdf, bytes: 20040412, sha256: d362e3b1dc0b4f2480198d6dbab35f23f4ba9e6380c0e6f2b5033e223c67904d, md5: e01df1a16552f351c3d5eb7e05e17ef2}
+expected:
+  page_count: 133
+  embedded_attachment_count: 0
+  Mi4_exact_term_pages: [31, 34, 35, 70, 73, 75, 103, 106]
+  C3_exact_term_pages: [31, 34, 35, 70, 73, 75, 103, 106]
+  Mi4_exact_term_count: 9
+  C3_exact_term_count: 9
+boundary:
+  target_T4_T5_receptor_localization_is_not_Mi4_C3_source_recording: true
+  pooled_GABAergic_input_sign_does_not_identify_source_specific_dynamics: true
+  target_side_Rdl_localization_does_not_supply_source_time_series: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

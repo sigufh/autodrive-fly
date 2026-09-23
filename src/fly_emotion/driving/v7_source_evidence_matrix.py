@@ -46,6 +46,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     c3_citation_graph = evidence["c3_citation_graph"]
     legacy_c3 = evidence["legacy_C3_candidates"]
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
+    fendl = evidence["fendl_receptor_boundary"]
     stable_contrast = evidence["stable_contrast_scope"]
     tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
     afterimages_mi4 = evidence["afterimages_Mi4"]
@@ -629,6 +630,28 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 and hao_asap7y["Europe_PMC_text_mining"][
                     "resolves_complete_experimental_cell_type_set"
                 ]
+            ),
+            "Fendl_2021_target_Rdl_localization_verified": (
+                source in {"Mi4", "C3"}
+                and fendl["target_receptor_evidence"][
+                    "Rdl_localized_on_T4_T5_dendrites"
+                ]
+            ),
+            "Fendl_2021_pooled_GABAergic_T4_input_sign_supported": (
+                source in {"Mi4", "C3"}
+                and fendl["target_receptor_evidence"][
+                    "Mi4_C3_CT1_assigned_as_GABAergic_T4_inputs"
+                ]
+            ),
+            "Fendl_2021_source_specific_contact_resolved": (
+                source in {"Mi4", "C3"}
+                and fendl["target_receptor_evidence"][
+                    "source_specific_Mi4_or_C3_receptor_contact_resolved"
+                ]
+            ),
+            "Fendl_2021_required_source_direct_recording_verified": (
+                source == "Mi4" and fendl["Mi4_direct_neural_recording_verified"]
+                or source == "C3" and fendl["C3_direct_neural_recording_verified"]
             ),
             "Gur_2024_Mi4_C3_proofreading_table_row_count": (
                 stable_contrast["proofreading_workbooks"][source]["row_count"]

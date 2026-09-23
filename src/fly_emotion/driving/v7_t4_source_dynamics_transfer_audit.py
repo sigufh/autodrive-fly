@@ -43,6 +43,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     c3_citation_graph_path = Path(config["c3_citation_graph_evidence"])
     legacy_c3_path = Path(config["legacy_C3_candidate_evidence"])
     hao_asap7y_path = Path(config["hao_ASAP7y_candidate_evidence"])
+    fendl_path = Path(config["fendl_receptor_boundary_evidence"])
     stable_contrast_path = Path(config["stable_contrast_source_scope_evidence"])
     tanaka_mi4_path = Path(config["tanaka_Mi4_calcium_evidence"])
     afterimages_mi4_path = Path(config["afterimages_Mi4_evidence"])
@@ -98,6 +99,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     )
     legacy_c3 = json.loads((root / legacy_c3_path).read_text(encoding="utf-8"))
     hao_asap7y = json.loads((root / hao_asap7y_path).read_text(encoding="utf-8"))
+    fendl = json.loads((root / fendl_path).read_text(encoding="utf-8"))
     stable_contrast = json.loads(
         (root / stable_contrast_path).read_text(encoding="utf-8")
     )
@@ -246,6 +248,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                 str(c3_citation_graph_path): _sha256(root / c3_citation_graph_path),
                 str(legacy_c3_path): _sha256(root / legacy_c3_path),
                 str(hao_asap7y_path): _sha256(root / hao_asap7y_path),
+                str(fendl_path): _sha256(root / fendl_path),
                 str(stable_contrast_path): _sha256(root / stable_contrast_path),
                 str(tanaka_mi4_path): _sha256(root / tanaka_mi4_path),
                 str(afterimages_mi4_path): _sha256(root / afterimages_mi4_path),
@@ -776,6 +779,34 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ]["global_payload_absence_claimed"],
             "source_dynamics_fit_authorized": hao_asap7y[
                 "authorize_source_dynamics_fit"
+            ],
+        },
+        "verified_Fendl_2021_receptor_boundary": {
+            "doi": fendl["thesis"]["doi"],
+            "classification": fendl["classification"],
+            "direct_functional_imaging_cell_types": fendl[
+                "direct_functional_imaging_cell_types"
+            ],
+            "target_receptor_localization_cell_types": fendl[
+                "target_receptor_localization_cell_types"
+            ],
+            "Rdl_localized_on_T4_T5_dendrites": fendl[
+                "target_receptor_evidence"
+            ]["Rdl_localized_on_T4_T5_dendrites"],
+            "pooled_Mi4_C3_CT1_GABAergic_T4_input_sign_supported": fendl[
+                "target_receptor_evidence"
+            ]["Mi4_C3_CT1_assigned_as_GABAergic_T4_inputs"],
+            "source_specific_Mi4_or_C3_contact_resolved": fendl[
+                "target_receptor_evidence"
+            ]["source_specific_Mi4_or_C3_receptor_contact_resolved"],
+            "Mi4_direct_recording_verified": fendl[
+                "Mi4_direct_neural_recording_verified"
+            ],
+            "C3_direct_recording_verified": fendl[
+                "C3_direct_neural_recording_verified"
+            ],
+            "source_dynamics_transfer_authorized": fendl[
+                "authorize_Mi4_C3_source_dynamics_transfer"
             ],
         },
         "verified_Gur_2024_stable_contrast_source_scope": {

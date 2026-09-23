@@ -297,6 +297,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "Hao_2026_Europe_PMC_annotation_scope": visual[
                     "Hao_2026_Europe_PMC_annotation_scope"
                 ],
+                "Fendl_2021_target_Rdl_localization_verified": visual[
+                    "Fendl_2021_target_Rdl_localization_verified"
+                ],
+                "Fendl_2021_pooled_GABAergic_T4_input_sign_supported": visual[
+                    "Fendl_2021_pooled_GABAergic_T4_input_sign_supported"
+                ],
+                "Fendl_2021_source_specific_contact_resolved": visual[
+                    "Fendl_2021_source_specific_contact_resolved"
+                ],
+                "Fendl_2021_Mi4_C3_direct_recording_verified": visual[
+                    "Fendl_2021_Mi4_C3_direct_recording_verified"
+                ],
                 "Gur_2024_directly_recorded_neuron_types": visual[
                     "Gur_2024_directly_recorded_neuron_types"
                 ],
