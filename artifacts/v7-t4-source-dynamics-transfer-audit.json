@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "2333769069057e99ab20f051082335fe9f9556feb8c8330d5464691c36dad756",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "d6b48079c58e7c49101bf7f48c347e8aa0416cad5b1a3c83cc689212f5d89936",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "d36c63788fd9248ad0f23284fa1f566afc50ff2f6db1abb5146b4b44a0231fbc",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "e5a9e64789cb9103f0b07a13a0749e8bdbe0ee42e13965278bfcd5dc1a8a5c20",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -33,6 +33,7 @@
       "artifacts/v7-hao-asap7y-candidate-audit.json": "e3a14d40b49955cc6057b72c6c97a919e1eb24d4baca10388ebc325660f5e13d",
       "artifacts/v7-fendl-mi4-c3-receptor-boundary-audit.json": "32a4c397d98970e6ffe3974f351131db8b6fe4608982610de61184040ccd736b",
       "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json": "76a661cc2773d483a64f9bc83741b62887b32e7fdc846dd3323dabcedb707acc",
+      "artifacts/v7-drews-mi4-contrast-phenotype-audit.json": "3219c0dbcdffa8901c796779d12b16781b0ab11b9b09189343f771bfc963598e",
       "artifacts/v7-stable-contrast-source-scope-audit.json": "7e493a2865f774ac62840c1596d8eaed59cb45a1ccba8b903a1c01374bce9b55",
       "artifacts/v7-tanaka-mi4-calcium-audit.json": "5e5b4ab270156a286c93f9f95ad77761d6ac45f29413a97a9708066617d71f76",
       "artifacts/v7-afterimages-mi4-candidate-audit.json": "3c29d86a00a867a0d2bbe09fc1550f4ee42fc276cf62ac58b6af2ae8b96d19e4",
@@ -398,7 +399,10 @@
     "experimental_membrane_voltage": false,
     "C3_direct_recording_verified": false,
     "recording_to_MaleCNS_body_crosswalk_found": false,
-    "source_dynamics_fit_authorized": false
+    "source_dynamics_fit_authorized": false,
+    "tonic_weak_surround_phenotype_qualitatively_reproduced": true,
+    "preregistered_independent_dynamic_validation_available": false,
+    "full_temporal_kernel_identified": false
   },
   "verified_Sporar_2020_C3_context_boundary": {
     "doi": "10.53846/goediss-7817",

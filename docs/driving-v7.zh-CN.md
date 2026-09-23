@@ -2454,10 +2454,16 @@ Drews 等 2020（DOI `10.1016/j.cub.2019.10.035`）提供了更强的独立 Mi4 
 Figure 3 pandas 载荷；受限反序列化后得到 210,600 行 Mi4 数据、20 个 ROI、13 个
 pseudonymous fly 前缀、42 个前景/背景对比度条件、每条件 3 次 trial，时间步长
 84.48 ms。这是公开逐 ROI/trial 的 GCaMP6f `ΔF/F` 数值时序，不是实验膜电位，
-且标签不能作为 recording→MaleCNS body crosswalk。Sporar 2020 博士论文（DOI
+且标签不能作为 recording→MaleCNS body crosswalk。按论文定义的 0–4 s 运动窗与
+1 Hz Fourier amplitude 做只读复现后，Mi4 的 full-background 减 zero-background
+逐 fly 中位数为正，13 个 fly 标签中 12 个为正，且每次 leave-one-fly-out 中位数仍为正；
+同一载荷中的 transient ON 对照 Mi1/Tm3 则均为负。这支持论文报告的 tonic/弱 surround
+表型，但属于同论文数据的回顾性复现，不是预注册独立验证，也不能识别完整 temporal
+kernel。Sporar 2020 博士论文（DOI
 `10.53846/goediss-7817`）全文有 9 次 C3 精确命中，但均属于解剖背景、既往行为
 silencing 或未来实验建议，没有直接 C3 记录。因此两者都不授权 T4 source fit 或
-transfer；详见 `artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json`。
+transfer；详见 `artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json` 与
+`artifacts/v7-drews-mi4-contrast-phenotype-audit.json`。
 
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持

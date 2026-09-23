@@ -100,6 +100,9 @@ from .driving.v7_descending_propagation_precheck import (
     evaluate_v7_descending_propagation_precheck,
 )
 from .driving.v7_disinhibition import evaluate_v7_conductance_order, evaluate_v7_disinhibition
+from .driving.v7_drews_mi4_contrast_phenotype_audit import (
+    evaluate_v7_drews_mi4_contrast_phenotype_audit,
+)
 from .driving.v7_drews_mi4_sporar_c3_boundary_audit import (
     evaluate_v7_drews_mi4_sporar_c3_boundary_audit,
 )
@@ -716,6 +719,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-hao-asap7y-candidate")
     subparsers.add_parser("v7-audit-fendl-mi4-c3-receptor-boundary")
     subparsers.add_parser("v7-audit-drews-mi4-sporar-c3-boundary")
+    subparsers.add_parser("v7-audit-drews-mi4-contrast-phenotype")
     subparsers.add_parser("v7-audit-yuan-c3-candidate")
     subparsers.add_parser("v7-audit-strother-mi4-public-indexes")
     subparsers.add_parser("v7-audit-stable-contrast-source-scope")
@@ -2056,6 +2060,14 @@ def main() -> None:
     if args.command == "v7-audit-drews-mi4-sporar-c3-boundary":
         report = evaluate_v7_drews_mi4_sporar_c3_boundary_audit(root)
         target = root / "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-drews-mi4-contrast-phenotype":
+        report = evaluate_v7_drews_mi4_contrast_phenotype_audit(root)
+        target = root / "artifacts/v7-drews-mi4-contrast-phenotype-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

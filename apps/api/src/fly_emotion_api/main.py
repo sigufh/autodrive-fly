@@ -318,6 +318,15 @@ def _verified_v7_status(root: Path) -> dict:
                 "Drews_2020_Mi4_individual_numeric_calcium_verified": visual[
                     "Drews_2020_Mi4_individual_numeric_calcium_verified"
                 ],
+                "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced": visual[
+                    "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced"
+                ],
+                "Drews_2020_preregistered_independent_validation_available": visual[
+                    "Drews_2020_preregistered_independent_validation_available"
+                ],
+                "Drews_2020_Mi4_full_temporal_kernel_identified": visual[
+                    "Drews_2020_Mi4_full_temporal_kernel_identified"
+                ],
                 "Drews_2020_Mi4_experimental_membrane_voltage": visual[
                     "Drews_2020_Mi4_experimental_membrane_voltage"
                 ],

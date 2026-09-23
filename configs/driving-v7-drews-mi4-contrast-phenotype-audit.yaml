@@ -1,0 +1,37 @@
+version: 1
+name: v7-drews-mi4-contrast-phenotype-audit
+observed_on: "2026-09-23"
+source_boundary_evidence: artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json
+paper:
+  title: Dynamic Signal Compression for Robust Motion Vision in Flies
+  doi: 10.1016/j.cub.2019.10.035
+  dissertation: {path: data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-25808/Schuetzenberger_Anna.pdf, bytes: 15691908, sha256: 9fe77b1ae467e2a6ebdb9217caa40e6d10580f1c91271c72eaf0e50e724fa3fe}
+payload: {path: data/raw/t4-inhibitory-source-external/drews-2020/normalization_paper/calcium_data_fig3.pkl, bytes: 71025101, sha256: f10e396d8a87abf73f93c2d065744dd598d6e5ea78d159fce791319e2f47d055}
+analysis:
+  cell_types: [Mi1, Tm3, Mi4, Mi9]
+  foreground_contrasts: [0.016, 0.04, 0.08, 0.16, 0.32, 0.64, 1.0]
+  compared_background_contrasts: [0.0, 1.0]
+  trial_labels: [0, 1, 2]
+  stimulus_motion_window_seconds: [0.0, 4.0]
+  motion_window_right_open: true
+  stimulus_frequency_hz: 1.0
+  samples_per_trial_in_motion_window: 48
+  metric: per_fly_mean_of_ROI_foreground_paired_normalized_F1_bg100_minus_bg0
+  aggregation_order: [F1_per_trial, mean_trials, normalize_each_ROI_by_42_condition_maximum, mean_ROI_foreground_pairs_per_fly, median_flies]
+expected:
+  Mi1: {ROI_count: 20, pseudonymous_fly_count: 5, group_count: 2520, median_fly_delta: -0.1620578011809754, positive_fly_count: 0, negative_fly_count: 5, leave_one_fly_out_median_min: -0.16872622457035996, leave_one_fly_out_median_max: -0.15338744761579226}
+  Tm3: {ROI_count: 21, pseudonymous_fly_count: 8, group_count: 2646, median_fly_delta: -0.19882990277726104, positive_fly_count: 1, negative_fly_count: 7, leave_one_fly_out_median_min: -0.19925263345278657, leave_one_fly_out_median_max: -0.19840717210173547}
+  Mi4: {ROI_count: 20, pseudonymous_fly_count: 13, group_count: 2520, median_fly_delta: 0.1518529252470126, positive_fly_count: 12, negative_fly_count: 1, leave_one_fly_out_median_min: 0.14352459463267148, leave_one_fly_out_median_max: 0.15185292524701263}
+  Mi9: {ROI_count: 21, pseudonymous_fly_count: 9, group_count: 2646, median_fly_delta: 0.047367006523523714, positive_fly_count: 8, negative_fly_count: 1, leave_one_fly_out_median_min: 0.04455875450458599, leave_one_fly_out_median_max: 0.08812381768347538}
+boundary:
+  retrospective_descriptive_reproduction_not_preregistered_validation: true
+  zero_sign_comparison_has_no_tuned_threshold: true
+  pseudonymous_fly_labels_are_statistical_units_not_public_per_fly_values: true
+  cross_study_biological_ID_disjointness_not_proven: true
+  one_hertz_grating_response_does_not_identify_a_full_temporal_kernel: true
+  calcium_response_does_not_supply_experimental_membrane_voltage: true
+  same_publication_payload_does_not_independently_validate_its_published_fit: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

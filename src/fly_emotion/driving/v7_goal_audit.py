@@ -143,6 +143,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     drews_mi4_sporar_c3_boundary_audit = reports[
         "drews_mi4_sporar_c3_boundary_audit"
     ]
+    drews_mi4_contrast_phenotype_audit = reports[
+        "drews_mi4_contrast_phenotype_audit"
+    ]
     stable_contrast_source_scope_audit = reports[
         "stable_contrast_source_scope_audit"
     ]
@@ -1895,6 +1898,21 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "Drews_2020_Mi4_individual_numeric_calcium_verified": (
                     drews_mi4_sporar_c3_boundary_audit[
                         "independent_Mi4_numeric_calcium_dynamics_verified"
+                    ]
+                ),
+                "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced": (
+                    drews_mi4_contrast_phenotype_audit[
+                        "Mi4_tonic_weak_surround_suppression_qualitatively_reproduced"
+                    ]
+                ),
+                "Drews_2020_preregistered_independent_validation_available": (
+                    drews_mi4_contrast_phenotype_audit[
+                        "preregistered_independent_dynamic_validation_available"
+                    ]
+                ),
+                "Drews_2020_Mi4_full_temporal_kernel_identified": (
+                    drews_mi4_contrast_phenotype_audit[
+                        "full_Mi4_temporal_kernel_identified"
                     ]
                 ),
                 "Drews_2020_Mi4_experimental_membrane_voltage": (
@@ -4400,6 +4418,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "Drews_2020_Mi4_ROI_count",
                     "Drews_2020_Mi4_pseudonymous_fly_count",
                     "Drews_2020_Mi4_individual_numeric_calcium_verified",
+                    "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced",
+                    "Drews_2020_preregistered_independent_validation_available",
+                    "Drews_2020_Mi4_full_temporal_kernel_identified",
                     "Drews_2020_Mi4_experimental_membrane_voltage",
                     "Drews_2020_recording_to_MaleCNS_body_crosswalk_found",
                     "Sporar_2020_C3_exact_term_count",

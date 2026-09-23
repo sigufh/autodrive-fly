@@ -465,3 +465,8 @@ v7-audit-drews-mi4-sporar-c3-boundary:
 	.venv/bin/autodrive-fly v7-audit-drews-mi4-sporar-c3-boundary
 
 .PHONY: v7-audit-drews-mi4-sporar-c3-boundary
+
+v7-audit-drews-mi4-contrast-phenotype:
+	.venv/bin/autodrive-fly v7-audit-drews-mi4-contrast-phenotype
+
+.PHONY: v7-audit-drews-mi4-contrast-phenotype

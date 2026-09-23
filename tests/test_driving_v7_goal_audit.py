@@ -296,6 +296,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "Drews_2020_Mi4_ROI_count",
         "Drews_2020_Mi4_pseudonymous_fly_count",
         "Drews_2020_Mi4_individual_numeric_calcium_verified",
+        "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced",
+        "Drews_2020_preregistered_independent_validation_available",
+        "Drews_2020_Mi4_full_temporal_kernel_identified",
         "Drews_2020_Mi4_experimental_membrane_voltage",
         "Drews_2020_recording_to_MaleCNS_body_crosswalk_found",
         "Sporar_2020_C3_exact_term_count",
@@ -1229,6 +1232,22 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert (
         visual["observations"]["Drews_2020_Mi4_individual_numeric_calcium_verified"]
         is True
+    )
+    assert (
+        visual["observations"][
+            "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced"
+        ]
+        is True
+    )
+    assert (
+        visual["observations"][
+            "Drews_2020_preregistered_independent_validation_available"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["Drews_2020_Mi4_full_temporal_kernel_identified"]
+        is False
     )
     assert (
         visual["observations"]["Drews_2020_Mi4_experimental_membrane_voltage"]

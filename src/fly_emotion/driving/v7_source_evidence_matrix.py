@@ -48,6 +48,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     hao_asap7y = evidence["hao_ASAP7y_unresolved"]
     fendl = evidence["fendl_receptor_boundary"]
     drews_sporar = evidence["drews_Mi4_sporar_C3_boundary"]
+    drews_phenotype = evidence["drews_Mi4_contrast_phenotype"]
     stable_contrast = evidence["stable_contrast_scope"]
     tanaka_mi4 = evidence["tanaka_Mi4_calcium"]
     afterimages_mi4 = evidence["afterimages_Mi4"]
@@ -671,6 +672,22 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Mi4"
                 and drews_sporar["Drews_2020"][
                     "experimental_membrane_voltage_verified"
+                ]
+            ),
+            "Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced": (
+                source == "Mi4"
+                and drews_phenotype[
+                    "Mi4_tonic_weak_surround_suppression_qualitatively_reproduced"
+                ]
+            ),
+            "Drews_2020_Mi4_full_temporal_kernel_identified": (
+                source == "Mi4"
+                and drews_phenotype["full_Mi4_temporal_kernel_identified"]
+            ),
+            "Drews_2020_preregistered_independent_validation_available": (
+                source == "Mi4"
+                and drews_phenotype[
+                    "preregistered_independent_dynamic_validation_available"
                 ]
             ),
             "Drews_2020_recording_to_MaleCNS_body_crosswalk_found": (

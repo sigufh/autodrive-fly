@@ -113,6 +113,9 @@ export type V7Status = {
     Drews_2020_Mi4_ROI_count?: number;
     Drews_2020_Mi4_pseudonymous_fly_count?: number;
     Drews_2020_Mi4_individual_numeric_calcium_verified?: boolean;
+    Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced?: boolean;
+    Drews_2020_preregistered_independent_validation_available?: boolean;
+    Drews_2020_Mi4_full_temporal_kernel_identified?: boolean;
     Drews_2020_Mi4_experimental_membrane_voltage?: boolean;
     Drews_2020_recording_to_MaleCNS_body_crosswalk_found?: boolean;
     Sporar_2020_C3_exact_term_count?: number;

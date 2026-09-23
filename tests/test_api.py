@@ -124,6 +124,9 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Drews_2020_Mi4_ROI_count"] == 20
     assert boundaries["Drews_2020_Mi4_pseudonymous_fly_count"] == 13
     assert boundaries["Drews_2020_Mi4_individual_numeric_calcium_verified"] is True
+    assert boundaries["Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced"] is True
+    assert boundaries["Drews_2020_preregistered_independent_validation_available"] is False
+    assert boundaries["Drews_2020_Mi4_full_temporal_kernel_identified"] is False
     assert boundaries["Drews_2020_Mi4_experimental_membrane_voltage"] is False
     assert boundaries["Drews_2020_recording_to_MaleCNS_body_crosswalk_found"] is False
     assert boundaries["Sporar_2020_C3_exact_term_count"] == 9

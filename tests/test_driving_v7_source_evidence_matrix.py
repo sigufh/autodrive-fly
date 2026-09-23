@@ -219,6 +219,15 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert mi4_components["Drews_2020_individual_Mi4_numeric_GCaMP6f_verified"] is True
     assert mi4_components["Drews_2020_Mi4_pseudonymous_fly_count"] == 13
     assert mi4_components["Drews_2020_Mi4_experimental_membrane_voltage"] is False
+    assert (
+        mi4_components["Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced"]
+        is True
+    )
+    assert mi4_components["Drews_2020_Mi4_full_temporal_kernel_identified"] is False
+    assert (
+        mi4_components["Drews_2020_preregistered_independent_validation_available"]
+        is False
+    )
     assert mi4_components["Drews_2020_recording_to_MaleCNS_body_crosswalk_found"] is False
     assert "Drews_2020_individual_GCaMP6f_time_series" in report["matrix"][
         "Mi4"

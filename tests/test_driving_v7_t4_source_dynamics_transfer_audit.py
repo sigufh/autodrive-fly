@@ -264,6 +264,9 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert drews["C3_direct_recording_verified"] is False
     assert drews["recording_to_MaleCNS_body_crosswalk_found"] is False
     assert drews["source_dynamics_fit_authorized"] is False
+    assert drews["tonic_weak_surround_phenotype_qualitatively_reproduced"] is True
+    assert drews["preregistered_independent_dynamic_validation_available"] is False
+    assert drews["full_temporal_kernel_identified"] is False
     sporar = report["verified_Sporar_2020_C3_context_boundary"]
     assert sporar["C3_exact_term_count"] == 9
     assert sporar["C3_direct_recording_verified"] is False

@@ -1,0 +1,148 @@
+{
+  "protocol": {
+    "name": "v7-drews-mi4-contrast-phenotype-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-drews-mi4-contrast-phenotype-audit.yaml": "a557529bf81a7a15900f35f09dc8cd8192d83028f7ba7c32b305dae3345f90aa",
+      "src/fly_emotion/driving/v7_drews_mi4_contrast_phenotype_audit.py": "3179844df0b0cd49e01c5f90d22b8bf9c452711fa98db1ef931eba5f742e2b6a",
+      "src/fly_emotion/driving/v7_drews_mi4_sporar_c3_boundary_audit.py": "a877b456e02662f7b1eaf5c77d623b0d248072b4c0d62ef4a01da7754f10d61b",
+      "artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json": "76a661cc2773d483a64f9bc83741b62887b32e7fdc846dd3323dabcedb707acc"
+    },
+    "raw_snapshot_identity": {
+      "data/raw/t4-inhibitory-source-external/thesis-candidates/edoc-25808/Schuetzenberger_Anna.pdf": "9fe77b1ae467e2a6ebdb9217caa40e6d10580f1c91271c72eaf0e50e724fa3fe",
+      "data/raw/t4-inhibitory-source-external/drews-2020/normalization_paper/calcium_data_fig3.pkl": "f10e396d8a87abf73f93c2d065744dd598d6e5ea78d159fce791319e2f47d055"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "paper": {
+    "title": "Dynamic Signal Compression for Robust Motion Vision in Flies",
+    "doi": "10.1016/j.cub.2019.10.035"
+  },
+  "analysis_contract": {
+    "cell_types": [
+      "Mi1",
+      "Tm3",
+      "Mi4",
+      "Mi9"
+    ],
+    "foreground_contrasts": [
+      0.016,
+      0.04,
+      0.08,
+      0.16,
+      0.32,
+      0.64,
+      1.0
+    ],
+    "compared_background_contrasts": [
+      0.0,
+      1.0
+    ],
+    "trial_labels": [
+      0,
+      1,
+      2
+    ],
+    "stimulus_motion_window_seconds": [
+      0.0,
+      4.0
+    ],
+    "motion_window_right_open": true,
+    "stimulus_frequency_hz": 1.0,
+    "samples_per_trial_in_motion_window": 48,
+    "metric": "per_fly_mean_of_ROI_foreground_paired_normalized_F1_bg100_minus_bg0",
+    "aggregation_order": [
+      "F1_per_trial",
+      "mean_trials",
+      "normalize_each_ROI_by_42_condition_maximum",
+      "mean_ROI_foreground_pairs_per_fly",
+      "median_flies"
+    ]
+  },
+  "pickle_security": {
+    "restricted_unpickler_used": true,
+    "globals_used": [
+      "__builtin__ slice",
+      "numpy dtype",
+      "numpy ndarray",
+      "numpy.core.multiarray _reconstruct",
+      "pandas.core.frame DataFrame",
+      "pandas.core.indexes.base Index",
+      "pandas.core.indexes.base _new_Index",
+      "pandas.core.indexes.frozen FrozenNDArray",
+      "pandas.core.indexes.multi MultiIndex",
+      "pandas.core.indexes.numeric Float64Index",
+      "pandas.core.indexes.numeric Int64Index",
+      "pandas.core.internals.managers BlockManager"
+    ],
+    "arbitrary_repository_code_executed": false
+  },
+  "cell_type_results": {
+    "Mi1": {
+      "ROI_count": 20,
+      "pseudonymous_fly_count": 5,
+      "condition_trial_group_count": 2520,
+      "median_fly_delta": -0.1620578011809754,
+      "positive_fly_count": 0,
+      "negative_fly_count": 5,
+      "leave_one_fly_out_median_min": -0.16872622457035996,
+      "leave_one_fly_out_median_max": -0.15338744761579226
+    },
+    "Tm3": {
+      "ROI_count": 21,
+      "pseudonymous_fly_count": 8,
+      "condition_trial_group_count": 2646,
+      "median_fly_delta": -0.19882990277726104,
+      "positive_fly_count": 1,
+      "negative_fly_count": 7,
+      "leave_one_fly_out_median_min": -0.19925263345278657,
+      "leave_one_fly_out_median_max": -0.19840717210173547
+    },
+    "Mi4": {
+      "ROI_count": 20,
+      "pseudonymous_fly_count": 13,
+      "condition_trial_group_count": 2520,
+      "median_fly_delta": 0.1518529252470126,
+      "positive_fly_count": 12,
+      "negative_fly_count": 1,
+      "leave_one_fly_out_median_min": 0.14352459463267148,
+      "leave_one_fly_out_median_max": 0.15185292524701263
+    },
+    "Mi9": {
+      "ROI_count": 21,
+      "pseudonymous_fly_count": 9,
+      "condition_trial_group_count": 2646,
+      "median_fly_delta": 0.047367006523523714,
+      "positive_fly_count": 8,
+      "negative_fly_count": 1,
+      "leave_one_fly_out_median_min": 0.04455875450458599,
+      "leave_one_fly_out_median_max": 0.08812381768347538
+    }
+  },
+  "Mi4_tonic_weak_surround_suppression_qualitatively_reproduced": true,
+  "independent_study_Mi4_calcium_phenotype_available": true,
+  "preregistered_independent_dynamic_validation_available": false,
+  "full_Mi4_temporal_kernel_identified": false,
+  "experimental_Mi4_membrane_voltage_available": false,
+  "C3_direct_recording_available": false,
+  "recording_to_MaleCNS_body_crosswalk_found": false,
+  "authorize_Mi4_source_kernel_transfer": false,
+  "authorize_T4_source_dynamics_fit": false,
+  "advance_to_T4_functional_precheck": false,
+  "stop_reason": "retrospective_single_frequency_calcium_phenotype_is_not_a_full_Mi4_C3_voltage_kernel_validation",
+  "boundary": {
+    "retrospective_descriptive_reproduction_not_preregistered_validation": true,
+    "zero_sign_comparison_has_no_tuned_threshold": true,
+    "pseudonymous_fly_labels_are_statistical_units_not_public_per_fly_values": true,
+    "cross_study_biological_ID_disjointness_not_proven": true,
+    "one_hertz_grating_response_does_not_identify_a_full_temporal_kernel": true,
+    "calcium_response_does_not_supply_experimental_membrane_voltage": true,
+    "same_publication_payload_does_not_independently_validate_its_published_fit": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

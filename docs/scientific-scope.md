@@ -760,11 +760,19 @@ contains the 71 MB Figure 3 pandas payload. A restricted unpickler recovers
 foreground/background contrast conditions, three trials, and an 84.48 ms time
 step. These are public individual-ROI GCaMP6f delta-F/F time series, not
 experimental membrane voltage, and the labels do not provide a
-recording-to-MaleCNS body crosswalk. The related Sporar 2020 dissertation
+recording-to-MaleCNS body crosswalk. A read-only reproduction using the paper's
+0--4 s motion window and 1 Hz Fourier amplitude also recovers the qualitative
+contrast phenotype: the median full-background minus zero-background response
+is positive for Mi4 (12/13 fly labels; positive under every leave-one-fly-out
+median), while it is negative for the transient ON controls Mi1 and Tm3. This
+supports the reported tonic/weak-surround classification, but it is a
+retrospective same-paper reproduction, not a preregistered independent test or
+a full temporal-kernel estimate. The related Sporar 2020 dissertation
 (`10.53846/goediss-7817`) has nine exact C3 mentions but only in anatomy, prior
 behavioral-silencing, and proposed future-experiment contexts; it contains no
 direct C3 recording. Neither result authorizes T4 source fitting or transfer
-(`artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json`).
+(`artifacts/v7-drews-mi4-sporar-c3-boundary-audit.json` and
+`artifacts/v7-drews-mi4-contrast-phenotype-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
