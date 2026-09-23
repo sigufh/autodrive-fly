@@ -1,4 +1,4 @@
-version: 2
+version: 3
 name: v7-malecns-source-mapping-readiness-audit
 observed_on: "2026-09-19"
 data_manifest: configs/data-manifest.yaml
@@ -9,6 +9,7 @@ graph_metadata: data/processed/malecns-v1.0/graph.json
 official_synapse_column_evidence: artifacts/v7-malecns-synapse-column-audit.json
 official_CT1_columnar_evidence: artifacts/v7-malecns-ct1-columnar-audit.json
 one_hop_coordinate_validation_evidence: artifacts/v7-malecns-one-hop-coordinate-validation-audit.json
+Tm4_synapse_column_boundary_evidence: artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json
 required_sources:
   Mi1: {family: T4, count: 1773, left: 886, right: 887, native: 1762, inferred: 11, unlocated: 0}
   Tm3: {family: T4, count: 2054, left: 1017, right: 1037, native: 0, inferred: 2054, unlocated: 0}
@@ -35,6 +36,7 @@ boundary:
   official_synapse_column_coordinate_is_not_geometric_imputation: true
   inferred_coordinate_availability_is_not_native_equivalence: true
   source_type_specific_blind_replay_is_required_for_inference_validation: true
+  bounded_Tm4_synapse_count_candidates_are_not_native_writebacks: true
   no_parameter_fit: true
   no_target_activity_injection: true
   no_runtime_change: true

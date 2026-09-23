@@ -65,6 +65,14 @@ def test_one_hop_coordinates_close_columnar_gaps_without_fabrication() -> None:
     assert mapping["Tm3"]["one_hop_blind_replay_rounded_exact_fraction"] is None
     assert mapping["Tm4"]["one_hop_same_type_blind_validation_available"] is True
     assert mapping["Tm4"]["one_hop_blind_replay_rounded_exact_fraction"] < 0.32
+    assert mapping["Tm4"]["official_synapse_count_validation_exact_fraction"] == 28 / 48
+    assert (
+        mapping["Tm4"][
+            "official_synapse_count_missing_side_unique_candidate_fraction"
+        ]
+        == 1.0
+    )
+    assert mapping["Tm4"]["official_synapse_count_candidate_native_equivalent"] is False
 
 
 def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:

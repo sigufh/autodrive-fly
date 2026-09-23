@@ -2512,6 +2512,13 @@ native 坐标，再仅用其他有 native 坐标的直接输入重建。Mi1、Mi
 annotation，也不能代替 experimental recording→body 映射；现有坐标值和 transfer gate
 均不改变。详见 `artifacts/v7-malecns-one-hop-coordinate-validation-audit.json`。
 
+Tm4 的 native hex 缺失呈严格侧别：左侧 837 个全部为空，右侧 833 个全部存在。进一步
+按官方 `synapse_count` 算法冻结了一个有界样本：右侧按坐标分层取 48 个作盲验证，左侧按
+body ID 分层取 48 个检查候选可用性。两侧 48/48 都得到唯一候选，但右侧仅 28/48
+（58.3%）精确复现 native annotation。因此左侧 48/48 的唯一候选只保留为结构候选，
+不授权写回 native 坐标，也不改变 mapping gate。详见
+`artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

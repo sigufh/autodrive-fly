@@ -3,10 +3,10 @@
     "name": "v7-t4-t5-source-dynamics-readiness-gate",
     "observed_on": "2026-09-18",
     "dependencies_sha256": {
-      "configs/driving-v7-t4t5-source-dynamics-readiness.yaml": "dd64ce70f53e7cc5e296f3d5539db71228cb219b9d334e99d7c0588f3e52297f",
+      "configs/driving-v7-t4t5-source-dynamics-readiness.yaml": "027d120e4c752f37949ee88286a83235cab0f1111db9091a17c0a218f65f007d",
       "src/fly_emotion/driving/v7_t4t5_source_dynamics_readiness.py": "18a3bb5972006ab3ff59dfff47d995ba9cbbaed356c264c7ba514b37cf533d49",
-      "artifacts/v7-t4-source-dynamics-transfer-audit.json": "69895d9fc3c027a9135117c972a5493c6daadcfddff9b2f79d018a56685e3968",
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "d2462f3f42a13e9139856e6ced628e89f4aa181e36b2d87f715ebb667f314974",
+      "artifacts/v7-t4-source-dynamics-transfer-audit.json": "213872f8ab2d67f44f9ac6b1c2f5ea4b427fb8099c3eb32a17f6095da92e7ec2",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "943602f6230c37f29ff6e9cf80603c147f53122f77059e93c28a0a6100835396",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "configs/driving-v7-t5-physical-time-transfer-audit.yaml": "c1020651628ccbe1d44be8a18d41db70b800564210ed2298db8350ffe9504451",
       "artifacts/v7-flyvis-visual-source-time-constants.json": "5076c2b6edb8cf6a2942bbdc5de21807e991093bc11acac239bdd78e4aff3865",

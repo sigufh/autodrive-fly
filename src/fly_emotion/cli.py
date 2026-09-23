@@ -240,6 +240,9 @@ from .driving.v7_malecns_source_mapping_readiness_audit import (
 from .driving.v7_malecns_synapse_column_audit import (
     evaluate_v7_malecns_synapse_column_audit,
 )
+from .driving.v7_malecns_tm4_synapse_column_boundary_audit import (
+    evaluate_v7_malecns_tm4_synapse_column_boundary_audit,
+)
 from .driving.v7_matulis_mi1_voltage_availability_audit import (
     evaluate_v7_matulis_mi1_voltage_availability_audit,
 )
@@ -633,6 +636,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-electrophysiology")
     subparsers.add_parser("v7-audit-malecns-source-mapping-readiness")
     subparsers.add_parser("v7-audit-malecns-one-hop-coordinate-validation")
+    subparsers.add_parser("v7-audit-malecns-tm4-synapse-column-boundary")
     subparsers.add_parser("v7-audit-timebase")
     subparsers.add_parser("v7-audit-stimulus-coordinates")
     subparsers.add_parser("v7-audit-controlled-stimulus-angular-grid")
@@ -1124,6 +1128,14 @@ def main() -> None:
     if args.command == "v7-audit-malecns-one-hop-coordinate-validation":
         report = evaluate_v7_malecns_one_hop_coordinate_validation_audit(root)
         target = root / "artifacts/v7-malecns-one-hop-coordinate-validation-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-malecns-tm4-synapse-column-boundary":
+        report = evaluate_v7_malecns_tm4_synapse_column_boundary_audit(root)
+        target = root / "artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

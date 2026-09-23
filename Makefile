@@ -500,3 +500,8 @@ v7-audit-malecns-one-hop-coordinate-validation:
 	.venv/bin/autodrive-fly v7-audit-malecns-one-hop-coordinate-validation
 
 .PHONY: v7-audit-malecns-one-hop-coordinate-validation
+
+v7-audit-malecns-tm4-synapse-column-boundary:
+	.venv/bin/autodrive-fly v7-audit-malecns-tm4-synapse-column-boundary
+
+.PHONY: v7-audit-malecns-tm4-synapse-column-boundary

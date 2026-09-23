@@ -238,6 +238,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     malecns_one_hop_coordinate_validation_audit = reports[
         "malecns_one_hop_coordinate_validation_audit"
     ]
+    malecns_tm4_synapse_column_boundary_audit = reports[
+        "malecns_Tm4_synapse_column_boundary_audit"
+    ]
     source_evidence_matrix = reports["source_evidence_matrix"]
     source_type_average_mapping_contract = reports[
         "source_type_average_mapping_contract"
@@ -2753,6 +2756,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "authorize_coordinate_rule_as_experimental_mapping"
                     ]
                 ),
+                "MaleCNS_Tm4_native_count_by_side": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "Tm4_annotation_coverage"
+                    ]["native_count_by_side"]
+                ),
+                "MaleCNS_Tm4_synapse_count_right_exact_fraction": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "right_native_validation_exact_fraction"
+                    ]
+                ),
+                "MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "left_missing_unique_candidate_fraction"
+                    ]
+                ),
+                "MaleCNS_Tm4_synapse_count_candidate_native_equivalent": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "official_synapse_count_candidate_is_native_equivalent_for_Tm4"
+                    ]
+                ),
+                "MaleCNS_Tm4_left_coordinate_writeback_authorized": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "authorize_left_Tm4_coordinate_writeback"
+                    ]
+                ),
                 "MaleCNS_Tm9_unlocated_source_body_count": len(
                     malecns_source_mapping_readiness_audit["source_mapping"]["Tm9"][
                         "unlocated_body_ids"
@@ -4642,6 +4670,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction",
                     "MaleCNS_one_hop_coordinates_native_equivalent",
                     "MaleCNS_coordinate_rule_as_experimental_mapping_authorized",
+                    "MaleCNS_Tm4_native_count_by_side",
+                    "MaleCNS_Tm4_synapse_count_right_exact_fraction",
+                    "MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction",
+                    "MaleCNS_Tm4_synapse_count_candidate_native_equivalent",
+                    "MaleCNS_Tm4_left_coordinate_writeback_authorized",
                     "Fendl_2021_target_Rdl_localization_verified",
                     "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
                     "Fendl_2021_source_specific_contact_resolved",

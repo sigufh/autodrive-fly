@@ -1,0 +1,1277 @@
+{
+  "protocol": {
+    "name": "v7-malecns-tm4-synapse-column-boundary-audit",
+    "observed_on": "2026-09-24",
+    "dependencies_sha256": {
+      "configs/driving-v7-malecns-tm4-synapse-column-boundary-audit.yaml": "709d9e9f45e8abd08b2dbd96afa25b0703e87eb997bb144a9edeb69a2927352c",
+      "src/fly_emotion/driving/v7_malecns_tm4_synapse_column_boundary_audit.py": "74c9787538f475d71f577d6c5d9b81aed090160ffce54ee6165f10a9aa5d72e0",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+      "data/raw/malecns-v1.0/optic-column-audit/tm4-synapse-count-sample.json": "6110a5633593374b77fbe11e7be0c1ee7c75da46729f786c34cff9724361f9d2",
+      "data/raw/malecns-v1.0/official-code-v1.0/src/utils/ol_neuron.py": "a7c74dc7eec4554edfb98ff5bac156a234281489c15860f313708ff3ff3ce4be",
+      "data/raw/malecns-v1.0/official-code-v1.0/src/queries/ol_neuron.py": "0eed2f7f59f5726b034d74958e34d0652c2c6717a183baf465b06e5bc5c67c41",
+      "scripts/inspect_malecns_optic_columns.py": "bf3579cd83c3eb0cf8a330f4848d5382738cd14154ed70e12391863710d5efb2"
+    },
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "Tm4_annotation_coverage": {
+    "body_count_by_side": {
+      "L": 837,
+      "R": 833
+    },
+    "native_count_by_side": {
+      "L": 0,
+      "R": 833
+    },
+    "strictly_one_sided_native_coverage": true
+  },
+  "sample_results": {
+    "R": {
+      "sample_count": 48,
+      "sample_body_ids": [
+        130822,
+        96602,
+        114133,
+        92126,
+        91453,
+        133855,
+        74136,
+        99852,
+        77524,
+        73704,
+        74998,
+        55813,
+        76099,
+        81827,
+        74681,
+        73001,
+        65391,
+        96284,
+        66349,
+        65361,
+        101029,
+        64862,
+        93758,
+        67559,
+        99874,
+        74790,
+        67673,
+        83437,
+        64660,
+        76623,
+        78994,
+        68025,
+        78832,
+        68204,
+        93851,
+        117110,
+        112588,
+        79537,
+        84996,
+        70218,
+        87514,
+        84128,
+        72027,
+        117525,
+        75623,
+        76511,
+        95560,
+        112920
+      ],
+      "native_coordinate_available": true,
+      "unique_candidate_count": 48,
+      "unique_candidate_fraction": 1.0,
+      "exact_native_match_count": 28,
+      "exact_native_match_fraction": 0.5833333333333334,
+      "records": [
+        {
+          "body_id": 130822,
+          "native_hex": [
+            1,
+            8
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            1,
+            8
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 96602,
+          "native_hex": [
+            3,
+            14
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            3,
+            15
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 114133,
+          "native_hex": [
+            4,
+            18
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            4,
+            18
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 92126,
+          "native_hex": [
+            5,
+            20
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            6,
+            21
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 91453,
+          "native_hex": [
+            6,
+            18
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            6,
+            17
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 133855,
+          "native_hex": [
+            7,
+            15
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            7,
+            15
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 74136,
+          "native_hex": [
+            8,
+            9
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            9,
+            10
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 99852,
+          "native_hex": [
+            9,
+            1
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            10,
+            2
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 77524,
+          "native_hex": [
+            9,
+            19
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            9,
+            19
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 73704,
+          "native_hex": [
+            10,
+            9
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            10,
+            9
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 74998,
+          "native_hex": [
+            10,
+            27
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            10,
+            27
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 55813,
+          "native_hex": [
+            11,
+            16
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            11,
+            16
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 76099,
+          "native_hex": [
+            12,
+            4
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            12,
+            4
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 81827,
+          "native_hex": [
+            12,
+            22
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            13,
+            23
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 74681,
+          "native_hex": [
+            13,
+            10
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            13,
+            10
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 73001,
+          "native_hex": [
+            13,
+            28
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            14,
+            29
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 65391,
+          "native_hex": [
+            14,
+            14
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            14,
+            14
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 96284,
+          "native_hex": [
+            14,
+            32
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            16,
+            33
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 66349,
+          "native_hex": [
+            15,
+            18
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            16,
+            19
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 65361,
+          "native_hex": [
+            16,
+            5
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            17,
+            6
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 101029,
+          "native_hex": [
+            16,
+            23
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            16,
+            23
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 64862,
+          "native_hex": [
+            17,
+            12
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            18,
+            13
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 93758,
+          "native_hex": [
+            17,
+            29
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            18,
+            30
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 67559,
+          "native_hex": [
+            18,
+            17
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            18,
+            16
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 99874,
+          "native_hex": [
+            18,
+            34
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            19,
+            35
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 74790,
+          "native_hex": [
+            19,
+            23
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            20,
+            24
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 67673,
+          "native_hex": [
+            20,
+            10
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            20,
+            10
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 83437,
+          "native_hex": [
+            20,
+            28
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            20,
+            28
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 64660,
+          "native_hex": [
+            21,
+            17
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            21,
+            17
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 76623,
+          "native_hex": [
+            21,
+            34
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            21,
+            34
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 78994,
+          "native_hex": [
+            22,
+            24
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            23,
+            25
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 68025,
+          "native_hex": [
+            23,
+            13
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            23,
+            13
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 78832,
+          "native_hex": [
+            23,
+            30
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            23,
+            30
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 68204,
+          "native_hex": [
+            24,
+            20
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            24,
+            20
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 93851,
+          "native_hex": [
+            25,
+            10
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            10
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 117110,
+          "native_hex": [
+            25,
+            28
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            28
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 112588,
+          "native_hex": [
+            26,
+            17
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            26,
+            17
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 79537,
+          "native_hex": [
+            26,
+            35
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            27,
+            36
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 84996,
+          "native_hex": [
+            27,
+            26
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            28,
+            27
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 70218,
+          "native_hex": [
+            28,
+            19
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            28,
+            19
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 87514,
+          "native_hex": [
+            28,
+            37
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            28,
+            37
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 84128,
+          "native_hex": [
+            29,
+            29
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            29,
+            29
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 72027,
+          "native_hex": [
+            30,
+            23
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            30,
+            23
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 117525,
+          "native_hex": [
+            31,
+            21
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            31,
+            21
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 75623,
+          "native_hex": [
+            32,
+            21
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            32,
+            21
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 76511,
+          "native_hex": [
+            33,
+            23
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            33,
+            23
+          ],
+          "candidate_matches_native": true
+        },
+        {
+          "body_id": 95560,
+          "native_hex": [
+            34,
+            28
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            35,
+            28
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 112920,
+          "native_hex": [
+            36,
+            33
+          ],
+          "unique_candidate": true,
+          "candidate_hex": [
+            36,
+            34
+          ],
+          "candidate_matches_native": false
+        }
+      ]
+    },
+    "L": {
+      "sample_count": 48,
+      "sample_body_ids": [
+        15529,
+        26149,
+        31493,
+        36583,
+        43019,
+        47679,
+        55344,
+        61209,
+        67059,
+        70197,
+        71945,
+        73825,
+        76555,
+        79315,
+        81225,
+        82991,
+        85577,
+        87435,
+        91305,
+        94320,
+        101504,
+        107465,
+        113859,
+        123069,
+        129953,
+        136473,
+        145535,
+        165651,
+        511897,
+        514386,
+        515564,
+        516683,
+        517951,
+        519434,
+        522875,
+        525732,
+        527080,
+        530121,
+        531279,
+        532611,
+        533941,
+        535586,
+        537430,
+        539634,
+        542713,
+        544997,
+        560342,
+        559502441
+      ],
+      "native_coordinate_available": false,
+      "unique_candidate_count": 48,
+      "unique_candidate_fraction": 1.0,
+      "exact_native_match_count": null,
+      "exact_native_match_fraction": null,
+      "records": [
+        {
+          "body_id": 15529,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            28
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 26149,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            21,
+            8
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 31493,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            17,
+            17
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 36583,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            10
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 43019,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            9,
+            3
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 47679,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            17,
+            11
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 55344,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            27,
+            21
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 61209,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            30,
+            32
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 67059,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            16,
+            7
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 70197,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            22,
+            19
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 71945,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            4,
+            16
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 73825,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            15,
+            15
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 76555,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            27,
+            23
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 79315,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            13,
+            5
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 81225,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            12,
+            14
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 82991,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            29,
+            16
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 85577,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            8,
+            16
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 87435,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            29,
+            29
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 91305,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            32,
+            34
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 94320,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            7,
+            19
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 101504,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            34,
+            29
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 107465,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            5,
+            16
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 113859,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            13,
+            30
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 123069,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            2,
+            8
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 129953,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            3,
+            10
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 136473,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            23,
+            21
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 145535,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            28,
+            36
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 165651,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            26,
+            26
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 511897,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            18,
+            21
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 514386,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            23,
+            23
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 515564,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            30
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 516683,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            11,
+            25
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 517951,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            19,
+            26
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 519434,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            19,
+            18
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 522875,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            22,
+            28
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 525732,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            24,
+            15
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 527080,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            10,
+            25
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 530121,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            17,
+            7
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 531279,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            24,
+            11
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 532611,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            15,
+            22
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 533941,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            27,
+            25
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 535586,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            33
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 537430,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            35,
+            31
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 539634,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            12,
+            23
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 542713,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            16,
+            25
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 544997,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            31,
+            32
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 560342,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            8,
+            15
+          ],
+          "candidate_matches_native": false
+        },
+        {
+          "body_id": 559502441,
+          "native_hex": null,
+          "unique_candidate": true,
+          "candidate_hex": [
+            25,
+            16
+          ],
+          "candidate_matches_native": false
+        }
+      ]
+    }
+  },
+  "right_native_validation_exact_fraction": 0.5833333333333334,
+  "left_missing_unique_candidate_fraction": 1.0,
+  "official_synapse_count_candidate_is_native_equivalent_for_Tm4": false,
+  "authorize_left_Tm4_coordinate_writeback": false,
+  "authorize_source_mapping_gate_change": false,
+  "authorize_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "right_native_validation_exact_fraction_is_28_of_48_so_left_unique_candidates_are_not_authorized_as_native_writebacks",
+  "boundary": {
+    "official_synapse_count_method_is_a_fallback_not_manual_assignment": true,
+    "right_native_sample_is_validation_only": true,
+    "left_missing_sample_is_candidate_only": true,
+    "bounded_sample_is_not_full_population_validation": true,
+    "candidate_coordinate_is_not_written_to_annotation": true,
+    "no_acceptance_threshold_defined": true,
+    "no_nearest_neighbor_or_tissue_xyz_conversion": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

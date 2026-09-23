@@ -3,17 +3,18 @@
     "name": "v7-malecns-source-mapping-readiness-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "f5f82014d7f16d1e0f94be81232e044602630ba8cafdf4a532d03c8f7ea2d09e",
-      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "0ff35b6aeb87786a43aa25b6243dbc3e499c4fac06ef654e7915d737303b7d62",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b98cf56bf431f77a2ab16b1fb778bd5b5206e14a0e0d68a821ada66cbeae587a",
+      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "acefcbc5353ade91431304d6c6c0aa3e49c50f1dcff2fa0d0b3a05b63b3be8f2",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
-      "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6",
+      "artifacts/v7-malecns-synapse-column-audit.json": "0ab36394d6c8939edde171127f09a91d614bd5284d3ac38561c7fbd9ac7548b5",
       "artifacts/v7-malecns-ct1-columnar-audit.json": "27682ba74d97a56cc76e5b1668c4f12007288f394b45216420b70e33f617a9f0",
-      "artifacts/v7-malecns-one-hop-coordinate-validation-audit.json": "7d017ac07d7a9d6f79cbdf5f7c88538cf4b3f92ec6c023d3f67b32e9d6f9c5ee"
+      "artifacts/v7-malecns-one-hop-coordinate-validation-audit.json": "deba28809c0abb814a65c3347e5e0796ab65e1dbfe7171d64b40670587f4dab3",
+      "artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json": "9c358d4524c358f363a4211f7439116dee6002673038a5dbd0b62954bff0005d"
     },
     "MaleCNS_release": "v1.0",
     "parameter_fit": false,
@@ -46,7 +47,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 0.9988649262202043
+      "one_hop_blind_replay_rounded_exact_fraction": 0.9988649262202043,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "Tm3": {
       "family": "T4",
@@ -70,7 +74,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": false,
-      "one_hop_blind_replay_rounded_exact_fraction": null
+      "one_hop_blind_replay_rounded_exact_fraction": null,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "Mi4": {
       "family": "T4",
@@ -94,7 +101,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 0.9977246871444824
+      "one_hop_blind_replay_rounded_exact_fraction": 0.9977246871444824,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "C3": {
       "family": "T4",
@@ -118,7 +128,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 0.9988700564971752
+      "one_hop_blind_replay_rounded_exact_fraction": 0.9988700564971752,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "Tm1": {
       "family": "T5",
@@ -142,7 +155,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 1.0
+      "one_hop_blind_replay_rounded_exact_fraction": 1.0,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "Tm2": {
       "family": "T5",
@@ -166,7 +182,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 0.9960182025028441
+      "one_hop_blind_replay_rounded_exact_fraction": 0.9960182025028441,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "Tm4": {
       "family": "T5",
@@ -190,7 +209,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 0.31932773109243695
+      "one_hop_blind_replay_rounded_exact_fraction": 0.31932773109243695,
+      "official_synapse_count_validation_exact_fraction": 0.5833333333333334,
+      "official_synapse_count_missing_side_unique_candidate_fraction": 1.0,
+      "official_synapse_count_candidate_native_equivalent": false
     },
     "Tm9": {
       "family": "T5",
@@ -223,7 +245,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": true,
       "one_hop_same_type_blind_validation_available": true,
-      "one_hop_blind_replay_rounded_exact_fraction": 0.9913892078071183
+      "one_hop_blind_replay_rounded_exact_fraction": 0.9913892078071183,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     },
     "CT1": {
       "family": "T5",
@@ -247,7 +272,10 @@
       "unlocated_body_ids": [],
       "columnar_retinotopy_available": false,
       "one_hop_same_type_blind_validation_available": false,
-      "one_hop_blind_replay_rounded_exact_fraction": null
+      "one_hop_blind_replay_rounded_exact_fraction": null,
+      "official_synapse_count_validation_exact_fraction": null,
+      "official_synapse_count_missing_side_unique_candidate_fraction": null,
+      "official_synapse_count_candidate_native_equivalent": null
     }
   },
   "CT1": {
@@ -305,6 +333,7 @@
     "official_synapse_column_coordinate_is_not_geometric_imputation": true,
     "inferred_coordinate_availability_is_not_native_equivalence": true,
     "source_type_specific_blind_replay_is_required_for_inference_validation": true,
+    "bounded_Tm4_synapse_count_candidates_are_not_native_writebacks": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,
     "no_runtime_change": true,

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 name: v7-t4-t5-source-dynamics-readiness-gate
 observed_on: "2026-09-18"
 t4_transfer_evidence: artifacts/v7-t4-source-dynamics-transfer-audit.json

@@ -322,6 +322,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction",
         "MaleCNS_one_hop_coordinates_native_equivalent",
         "MaleCNS_coordinate_rule_as_experimental_mapping_authorized",
+        "MaleCNS_Tm4_native_count_by_side",
+        "MaleCNS_Tm4_synapse_count_right_exact_fraction",
+        "MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction",
+        "MaleCNS_Tm4_synapse_count_candidate_native_equivalent",
+        "MaleCNS_Tm4_left_coordinate_writeback_authorized",
         "Fendl_2021_target_Rdl_localization_verified",
         "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
         "Fendl_2021_source_specific_contact_resolved",
@@ -1658,6 +1663,30 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"][
             "MaleCNS_coordinate_rule_as_experimental_mapping_authorized"
         ]
+        is False
+    )
+    assert visual["observations"]["MaleCNS_Tm4_native_count_by_side"] == {
+        "L": 0,
+        "R": 833,
+    }
+    assert (
+        visual["observations"]["MaleCNS_Tm4_synapse_count_right_exact_fraction"]
+        == 28 / 48
+    )
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction"
+        ]
+        == 1.0
+    )
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm4_synapse_count_candidate_native_equivalent"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"]["MaleCNS_Tm4_left_coordinate_writeback_authorized"]
         is False
     )
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 0

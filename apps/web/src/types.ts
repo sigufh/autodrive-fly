@@ -428,6 +428,11 @@ export type V7Status = {
     MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction: number;
     MaleCNS_one_hop_coordinates_native_equivalent: boolean;
     MaleCNS_coordinate_rule_as_experimental_mapping_authorized: boolean;
+    MaleCNS_Tm4_native_count_by_side: { L: number; R: number };
+    MaleCNS_Tm4_synapse_count_right_exact_fraction: number;
+    MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction: number;
+    MaleCNS_Tm4_synapse_count_candidate_native_equivalent: boolean;
+    MaleCNS_Tm4_left_coordinate_writeback_authorized: boolean;
     CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean;
     CT1_complete_official_LO_column_coverage: boolean;
   };

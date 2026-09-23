@@ -1,4 +1,4 @@
-version: 2
+version: 3
 name: v7-t5-source-to-malecns-mapping-scope-audit
 observed_on: "2026-09-20"
 source_kernel_evidence: artifacts/v7-kohn-portes-t5-source-kernel-audit.json

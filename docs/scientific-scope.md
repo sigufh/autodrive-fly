@@ -835,6 +835,16 @@ at all. Therefore coordinate availability remains useful for structural analysis
 but is not equivalent to native annotation or an experimental recording-to-body
 mapping (`artifacts/v7-malecns-one-hop-coordinate-validation-audit.json`).
 
+Tm4's missing native coordinates are strictly lateralized: all 837 left-side
+bodies lack assigned hexes while all 833 right-side bodies have them. A bounded
+official `synapse_count` replay used 48 coordinate-stratified right-side native
+bodies for validation and 48 body-ID-stratified left-side missing bodies for
+candidate availability. Every sample produced a unique candidate, but only 28/48
+(58.3%) right-side candidates exactly matched the native annotation. Therefore
+the 48/48 unique left-side candidates are retained only as structural candidates;
+no native-coordinate writeback or mapping-gate change is authorized
+(`artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

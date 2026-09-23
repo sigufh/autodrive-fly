@@ -3,7 +3,7 @@
     "name": "v7-tm9-coordinate-identifiability-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "3340f7851810229c9943a0316c1e24f875220b052ff19d6c3fb8874f16c56a1b",
+      "configs/driving-v7-tm9-coordinate-identifiability-audit.yaml": "b862ceef40851236838bcf6b3b0fc1f6e755451da9399f8cbc875ae526b29ee5",
       "src/fly_emotion/driving/v7_tm9_coordinate_identifiability_audit.py": "604488eb3990e16df953de177eea95ecb451ecf11dd532e9b1209a2d3ece374d",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
@@ -12,12 +12,12 @@
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",
       "data/processed/malecns-v1.0/graph.json": "775aaaeb938029287932b48593544bcba8d49828c91fe29574925412643da79a",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "1e20b53936cece90891bf989e7a4faf958a7cd73930ebe83b38c5ced93f65b27",
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "f5f82014d7f16d1e0f94be81232e044602630ba8cafdf4a532d03c8f7ea2d09e",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "1b0fce460e3ab3ac7c36e463d232dd5a31e7fb64d3c9b4d43911a5355d222fda",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b98cf56bf431f77a2ab16b1fb778bd5b5206e14a0e0d68a821ada66cbeae587a",
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
       "data/raw/malecns-v1.0/current-release-audit/neuprint-male-cns-datasets.json": "c47435822733836038c86b8d5f74d0138f39b3be687bfc7bf9a367b4b4c7c724",
       "data/raw/malecns-v1.0/current-release-audit/annotation-object-observation.json": "c7f91f53aff463903efc9135860b4d61d6748ce456d16cfce2e49ca4b6db00dd",
-      "artifacts/v7-malecns-synapse-column-audit.json": "ada8a572af07baa287359a9592cf10e8a889195fc67e0c76eafef92502775ac6"
+      "artifacts/v7-malecns-synapse-column-audit.json": "0ab36394d6c8939edde171127f09a91d614bd5284d3ac38561c7fbd9ac7548b5"
     },
     "parameter_fit": false,
     "runtime_modified": false

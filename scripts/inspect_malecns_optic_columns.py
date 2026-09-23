@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -46,12 +47,22 @@ def http_reader(directory_url: str):
         cache_key = (shard_name, start, end)
         if cache_key in cache:
             return cache[cache_key]
-        request = Request(
-            f"{directory_url}/{shard_name}",
-            headers={"Range": f"bytes={start}-{end - 1}"},
-        )
-        with urlopen(request, timeout=60) as response:  # noqa: S310
-            payload = response.read()
+        payload = None
+        for attempt in range(3):
+            request = Request(
+                f"{directory_url}/{shard_name}",
+                headers={"Range": f"bytes={start}-{end - 1}"},
+            )
+            try:
+                with urlopen(request, timeout=90) as response:  # noqa: S310
+                    payload = response.read()
+                break
+            except (TimeoutError, OSError):
+                if attempt == 2:
+                    raise
+                time.sleep(1.0 + attempt)
+        if payload is None:
+            raise ValueError(f"missing HTTP payload for {shard_name}")
         if len(payload) != end - start:
             raise ValueError(f"short HTTP range read for {shard_name}")
         cache[cache_key] = payload
@@ -486,6 +497,136 @@ def map_column_ids(path: Path) -> None:
     print(json.dumps(output, indent=2))
 
 
+def freeze_tm4_synapse_count_sample(output: Path) -> None:
+    """Freeze a bounded bilateral Tm4 sample for an offline audit."""
+    annotations = feather.read_table(
+        RAW / "body-annotations.feather",
+        columns=[
+            "bodyId",
+            "type",
+            "somaSide",
+            "assignedOlHex1",
+            "assignedOlHex2",
+        ],
+    ).to_pandas()
+    tm4 = annotations.loc[annotations["type"].eq("Tm4")].copy()
+    right = tm4.loc[
+        tm4["somaSide"].eq("R")
+        & tm4["assignedOlHex1"].notna()
+        & tm4["assignedOlHex2"].notna()
+    ].sort_values(["assignedOlHex1", "assignedOlHex2", "bodyId"])
+    left = tm4.loc[tm4["somaSide"].eq("L")].sort_values("bodyId")
+
+    def spaced(frame, count: int):
+        indices = sorted(
+            {round(index * (len(frame) - 1) / (count - 1)) for index in range(count)}
+        )
+        if len(indices) != count:
+            raise ValueError("Tm4 deterministic sample contains duplicate indices")
+        return frame.iloc[indices]
+
+    selected = [
+        *spaced(right, 48).itertuples(index=False),
+        *spaced(left, 48).itertuples(index=False),
+    ]
+    synapse_info = json.loads((RAW / "optic-column-pins/synapses-info.json").read_text())
+    synapse_relations = {item["id"]: item for item in synapse_info["relationships"]}
+    readers = {
+        relationship: http_reader(
+            f"{SYNAPSE_URL}/{synapse_relations[relationship]['key']}"
+        )
+        for relationship in ("body_pre", "body_post")
+    }
+
+    def inspect(row):
+        result = {
+            "body_id": int(row.bodyId),
+            "side": str(row.somaSide),
+            "native_hex": (
+                [int(row.assignedOlHex1), int(row.assignedOlHex2)]
+                if row.assignedOlHex1 == row.assignedOlHex1
+                else None
+            ),
+        }
+        for relationship in ("body_pre", "body_post"):
+            relation = synapse_relations[relationship]
+            payload, provenance = read_sharded_value(
+                result["body_id"],
+                ShardingSpec.from_json(relation["sharding"]),
+                readers[relationship],
+            )
+            rows = decode_synapse_annotations(payload or b"")
+            result[f"{relationship}_roi_column"] = dict(
+                sorted(
+                    Counter(
+                        f"{item['primary_roi']}:{item['optic_column']}"
+                        for item in rows
+                    ).items()
+                )
+            )
+            result[f"{relationship}_payload_sha256"] = hashlib.sha256(
+                payload or b""
+            ).hexdigest()
+            result[f"{relationship}_provenance"] = provenance
+        return result
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        rows = list(executor.map(inspect, selected))
+    column_ids = sorted(
+        {
+            int(pair.split(":")[1])
+            for row in rows
+            for relationship in ("body_pre", "body_post")
+            for pair in row[f"{relationship}_roi_column"]
+            if int(pair.split(":")[1])
+        }
+    )
+    pin_info = json.loads((RAW / "optic-column-pins/info.json").read_text())
+    pin_relations = {item["id"]: item for item in pin_info["relationships"]}
+    pin_map = {}
+    for column_id in column_ids:
+        matches = []
+        for side in ("L", "R"):
+            for neuropil in ("ME", "LO", "LOP"):
+                name = f"{neuropil}({side})_column_segment"
+                relation = pin_relations[name]
+                local_key = relation["key"].replace(f"({side})", f"_{side}")
+                payload, _ = read_sharded_value(
+                    column_id,
+                    ShardingSpec.from_json(relation["sharding"]),
+                    local_reader(RAW / "optic-column-pins" / local_key),
+                )
+                if payload is not None:
+                    pins = decode_column_pin_annotations(payload)
+                    matches.append(
+                        {
+                            "relationship": name,
+                            "hexes": [
+                                list(value)
+                                for value in sorted(
+                                    {(pin["hex1"], pin["hex2"]) for pin in pins}
+                                )
+                            ],
+                        }
+                    )
+        pin_map[str(column_id)] = matches
+    payload = {
+        "protocol": {
+            "name": "bounded-Tm4-official-synapse-count-sample",
+            "selection": {
+                "R": "48 evenly spaced after native_hex1_hex2_body_id sort",
+                "L": "48 evenly spaced after body_id sort",
+            },
+            "sample_count_per_side": 48,
+            "synapse_source": SYNAPSE_URL,
+        },
+        "rows": rows,
+        "column_pin_map": pin_map,
+    }
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 if __name__ == "__main__":
     if sys.argv[1:] == ["--shard-peers"]:
         shard_peers()
@@ -499,5 +640,7 @@ if __name__ == "__main__":
         validation_column_ids(Path(sys.argv[2]))
     elif len(sys.argv) == 3 and sys.argv[1] == "--map-column-ids":
         map_column_ids(Path(sys.argv[2]))
+    elif len(sys.argv) == 3 and sys.argv[1] == "--freeze-tm4-synapse-count-sample":
+        freeze_tm4_synapse_count_sample(Path(sys.argv[2]))
     else:
         main()

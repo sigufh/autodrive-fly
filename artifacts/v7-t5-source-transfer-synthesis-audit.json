@@ -3,7 +3,7 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "ccd22ac6664a76d12e8fc4b171e00bbc83997f72dbd7779137151da57aad43f6",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "d49901b59e57a3250c80d0ac12f8adb32ad6bfd849003b11937a4cd72567ede6",
       "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "ede0af10916f73c23cf3b698ddf38293d36a17e184dd0b95aa63a988ada3832b",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
@@ -29,9 +29,9 @@
       "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json": "95677d75587b62ad8cccf675eaed9688d8508c29a54812096b30cb9aa89cd58b",
       "artifacts/v7-t5-increment-order-control-discovery-audit.json": "6d289abac121555b2456f21558c318b93c3174f9951cba50045efadbb4ec4866",
       "artifacts/v7-t5-increment-order-control-replication.json": "76cca88180298980e24e988cee7c4108609062a4485d95855960bb7591f4e2b2",
-      "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "71ae244d8aedaa98c3a05601ad4762ec32cb8ceaf3dcd81736a15f9f7a78f237",
+      "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "1db0681c0b081d39062abdc4e07810361317e6453c9b219bbff5168b8128e32b",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "4eb0194a5cbe6a4241c7e4a34402c2a3002210dfb750fe252a2bdcc6ceaadc54",
-      "artifacts/v7-t5-source-mapping-scope-audit.json": "5af1354ea2f47a57c76a0675d24a9f53777d57eadfbe768c05a5f4f2d79219ef"
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "1f256836161694adb1d4eeafc831181040e44fcc46997da38d11756e52cfee47"
     },
     "parameter_fit": false,
     "functional_stimulus_evaluated": false,

@@ -3,11 +3,11 @@
     "name": "v7-fib19-to-malecns-t5-input-weight-transfer-audit",
     "observed_on": "2026-09-20",
     "dependencies_sha256": {
-      "configs/driving-v7-fib19-malecns-t5-weight-transfer-audit.yaml": "8dab720d197080078595c60f63d0e7b89d69081ef79f72771e6095de9d2b2a81",
+      "configs/driving-v7-fib19-malecns-t5-weight-transfer-audit.yaml": "06a5d5846e04061167a71e37cb906351ca9d51f3d2c43579f0dd76d11b136f4f",
       "src/fly_emotion/driving/v7_fib19_malecns_t5_weight_transfer_audit.py": "3196f480c7aefc818bc07974b79c90f3f50b0f1fa323fa6d3fed9962d6231512",
       "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
       "artifacts/v7-visual-target-input-audit.json": "6b37ff019b74d1fa7c6a5a7317959f89541a34196e9d4334f1e256192f5d749e",
-      "artifacts/v7-t5-source-mapping-scope-audit.json": "5af1354ea2f47a57c76a0675d24a9f53777d57eadfbe768c05a5f4f2d79219ef",
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "1f256836161694adb1d4eeafc831181040e44fcc46997da38d11756e52cfee47",
       "data/raw/kohn-portes-flexible-filtering/history/model-inputs/T5_input_Lo1.csv": "49b23a4eae5420053d639d540ec4a378686d3dfe03bc7f704b53be5d4d60b152"
     },
     "parameter_fit": false,

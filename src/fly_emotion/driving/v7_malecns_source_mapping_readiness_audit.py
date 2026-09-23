@@ -43,6 +43,8 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
     one_hop_validation = json.loads(
         (root / one_hop_validation_path).read_text(encoding="utf-8")
     )
+    tm4_synapse_path = Path(config["Tm4_synapse_column_boundary_evidence"])
+    tm4_synapse = json.loads((root / tm4_synapse_path).read_text(encoding="utf-8"))
     expected_families = {
         "Mi1": "T4",
         "Tm3": "T4",
@@ -167,6 +169,23 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 is not None
                 else None
             ),
+            "official_synapse_count_validation_exact_fraction": (
+                tm4_synapse["right_native_validation_exact_fraction"]
+                if source_type == "Tm4"
+                else None
+            ),
+            "official_synapse_count_missing_side_unique_candidate_fraction": (
+                tm4_synapse["left_missing_unique_candidate_fraction"]
+                if source_type == "Tm4"
+                else None
+            ),
+            "official_synapse_count_candidate_native_equivalent": (
+                tm4_synapse[
+                    "official_synapse_count_candidate_is_native_equivalent_for_Tm4"
+                ]
+                if source_type == "Tm4"
+                else None
+            ),
         }
     ct1_ids = sorted(graph.body_ids[np.flatnonzero(node_types == "CT1")].astype(int).tolist())
     if ct1_ids != config["CT1_expected_body_ids"]:
@@ -211,6 +230,7 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 str(synapse_column_path): _sha256(root / synapse_column_path),
                 str(ct1_columnar_path): _sha256(root / ct1_columnar_path),
                 str(one_hop_validation_path): _sha256(root / one_hop_validation_path),
+                str(tm4_synapse_path): _sha256(root / tm4_synapse_path),
             },
             "MaleCNS_release": manifest["datasets"]["malecns"]["release"],
             "parameter_fit": False,
