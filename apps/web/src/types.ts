@@ -304,6 +304,10 @@ export type V7Status = {
     fig3_source_kernel_original_negative_LOO_cell_count?: number;
     fig3_source_kernel_oracle_shift_negative_LOO_cell_count?: number;
     fig3_source_kernel_bounded_latency_explains_all_negative_cells?: boolean;
+    fig3_source_kernel_high_SNR_negative_LOO_cell_count?: number;
+    fig3_source_kernel_low_SNR_explains_all_negative_cells?: boolean;
+    fig3_source_kernel_ON_OFF_negative_cell_intersection_count?: number;
+    fig3_source_kernel_post_hoc_cell_exclusion_authorized?: boolean;
     fig3_source_kernel_failure_retained_after_alignment_audit?: boolean;
     T5_temporal_shuffle_retinal_energy_preserved?: boolean;
     T5_temporal_shuffle_lamina_source_energy_preserved?: boolean;

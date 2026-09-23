@@ -60,7 +60,9 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
         float, robustness_protocol["baseline_seconds"]
     )
     maximum_lag_milliseconds = int(config["maximum_oracle_lag_milliseconds"])
+    reference_minimum_cell_snr = float(config["reference_minimum_cell_SNR"])
     conditions = {}
+    cell_diagnostics = {}
     original_negative_count = 0
     oracle_negative_count = 0
     for condition_name, condition in robustness_protocol["conditions"].items():
@@ -87,6 +89,7 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
             zero_lag = []
             oracle = []
             best_lags = []
+            cell_snr = []
             for cell_index in range(oriented.shape[1]):
                 held_out = _unit(oriented[:, cell_index])
                 training = _unit(
@@ -100,12 +103,18 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
                 best_index = int(np.nanargmax(candidates))
                 oracle.append(candidates[best_index])
                 best_lags.append(best_index - maximum_lag_samples)
+                baseline_std = float(np.std(values[baseline_mask, cell_index], ddof=1))
+                cell_snr.append(
+                    float(np.max(oriented[:, cell_index]))
+                    / max(baseline_std, 1e-12)
+                )
             original = robustness["conditions"][condition_name]["sources"][
                 source_type
             ]
             zero_array = np.asarray(zero_lag)
             oracle_array = np.asarray(oracle)
             lag_array = np.asarray(best_lags)
+            snr_array = np.asarray(cell_snr)
             if not math.isclose(
                 float(np.median(zero_array)),
                 float(original["median_leave_one_cell_out_correlation"]),
@@ -124,6 +133,19 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
             source_oracle_negative_count = int(np.count_nonzero(oracle_array < 0.0))
             original_negative_count += source_original_negative_count
             oracle_negative_count += source_oracle_negative_count
+            negative_mask = zero_array < 0.0
+            oracle_negative_mask = oracle_array < 0.0
+            high_snr_negative_count = int(
+                np.count_nonzero(negative_mask & (snr_array >= reference_minimum_cell_snr))
+            )
+            cell_diagnostics.setdefault(source_type, {})[condition_name] = {
+                str(name): {
+                    "zero_lag_correlation": float(zero_array[index]),
+                    "oracle_shift_correlation": float(oracle_array[index]),
+                    "cell_SNR": float(snr_array[index]),
+                }
+                for index, name in enumerate(columns)
+            }
             source_results[source_type] = {
                 "cell_count": int(oriented.shape[1]),
                 "sample_interval_milliseconds": sample_interval_milliseconds,
@@ -135,6 +157,20 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
                 "oracle_shift_negative_cell_count": source_oracle_negative_count,
                 "negative_cells_rescued_by_oracle_shift": (
                     source_original_negative_count - source_oracle_negative_count
+                ),
+                "negative_cell_ids": [
+                    str(columns[index])
+                    for index in np.flatnonzero(negative_mask)
+                ],
+                "oracle_shift_negative_cell_ids": [
+                    str(columns[index])
+                    for index in np.flatnonzero(oracle_negative_mask)
+                ],
+                "negative_cells_at_or_above_reference_SNR": high_snr_negative_count,
+                "maximum_negative_cell_SNR": (
+                    float(np.max(snr_array[negative_mask]))
+                    if np.any(negative_mask)
+                    else None
                 ),
                 "best_lag_milliseconds": {
                     "median": float(np.median(lag_array) * sample_interval_milliseconds),
@@ -156,6 +192,44 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
                 robustness["conditions"][condition_name]["all_sources_passed"]
             ),
         }
+    cross_condition = {}
+    for source_type in config["source_types"]:
+        on = cell_diagnostics[source_type]["on"]
+        off = cell_diagnostics[source_type]["off"]
+        if set(on) != set(off):
+            raise ValueError(f"{source_type} ON/OFF cell identities differ")
+        ordered_ids = sorted(on, key=lambda name: int(name.rsplit("-", 1)[1]))
+        on_negative = {
+            name for name in ordered_ids if on[name]["zero_lag_correlation"] < 0.0
+        }
+        off_negative = {
+            name for name in ordered_ids if off[name]["zero_lag_correlation"] < 0.0
+        }
+        on_scores = np.asarray(
+            [on[name]["zero_lag_correlation"] for name in ordered_ids]
+        )
+        off_scores = np.asarray(
+            [off[name]["zero_lag_correlation"] for name in ordered_ids]
+        )
+        cross_condition[source_type] = {
+            "paired_cell_count": len(ordered_ids),
+            "ON_negative_cell_ids": sorted(on_negative),
+            "OFF_negative_cell_ids": sorted(off_negative),
+            "negative_cell_id_intersection": sorted(on_negative & off_negative),
+            "negative_cell_id_intersection_count": len(on_negative & off_negative),
+            "zero_lag_LOO_score_ON_OFF_correlation": _correlation(
+                on_scores, off_scores
+            ),
+        }
+    high_snr_negative_count = sum(
+        source["negative_cells_at_or_above_reference_SNR"]
+        for condition in conditions.values()
+        for source in condition["sources"].values()
+    )
+    negative_id_intersection_count = sum(
+        item["negative_cell_id_intersection_count"]
+        for item in cross_condition.values()
+    )
     return {
         "protocol": {
             "name": config["name"],
@@ -176,6 +250,7 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
                 "pyproject.toml": _sha256(root / "pyproject.toml"),
             },
             "maximum_oracle_lag_milliseconds": maximum_lag_milliseconds,
+            "reference_minimum_cell_SNR": reference_minimum_cell_snr,
             "parameter_fit": False,
             "target_activity_injection": False,
             "runtime_modified": False,
@@ -185,6 +260,7 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
             "L2_gain_removed": True,
         },
         "conditions": conditions,
+        "cross_condition_cell_consistency": cross_condition,
         "original_negative_leave_one_out_cell_count": original_negative_count,
         "oracle_shift_negative_leave_one_out_cell_count": oracle_negative_count,
         "bounded_oracle_shift_eliminates_all_negative_leave_one_out_cells": (
@@ -192,6 +268,15 @@ def evaluate_v7_fig3_source_kernel_alignment_failure_audit(root: Path) -> dict:
         ),
         "baseline_or_gain_mismatch_explains_original_failure": False,
         "bounded_latency_jitter_explains_every_negative_cell": False,
+        "negative_cells_at_or_above_reference_SNR_count": (
+            high_snr_negative_count
+        ),
+        "low_SNR_explains_every_negative_cell": high_snr_negative_count == 0,
+        "ON_OFF_negative_cell_id_intersection_count": (
+            negative_id_intersection_count
+        ),
+        "one_stable_bad_cell_set_explains_ON_OFF_failures": False,
+        "authorize_post_hoc_cell_exclusion": False,
         "original_source_kernel_robustness_failure_retained": True,
         "authorize_aligned_source_kernel": False,
         "authorize_T4_functional_precheck": False,

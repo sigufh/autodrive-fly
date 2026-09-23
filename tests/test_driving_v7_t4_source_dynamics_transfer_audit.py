@@ -93,6 +93,11 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert alignment["original_negative_leave_one_out_cell_count"] == 12
     assert alignment["oracle_shift_negative_leave_one_out_cell_count"] == 10
     assert alignment["bounded_latency_jitter_explains_every_negative_cell"] is False
+    assert alignment["negative_cells_at_or_above_reference_SNR_count"] == 11
+    assert alignment["low_SNR_explains_every_negative_cell"] is False
+    assert alignment["ON_OFF_negative_cell_id_intersection_count"] == 0
+    assert alignment["one_stable_bad_cell_set_explains_ON_OFF_failures"] is False
+    assert alignment["post_hoc_cell_exclusion_authorized"] is False
     assert alignment["source_kernel_robustness_failure_retained"] is True
     assert alignment["aligned_source_kernel_authorized"] is False
     arenz = report["verified_Arenz_source_filter_readiness"]

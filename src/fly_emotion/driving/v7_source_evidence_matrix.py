@@ -721,6 +721,28 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                     "bounded_latency_jitter_explains_every_negative_cell"
                 ]
             ),
+            "Fig3_negative_cells_at_or_above_reference_SNR_count": (
+                fig3_alignment[
+                    "negative_cells_at_or_above_reference_SNR_count"
+                ]
+                if source in {"Mi1", "Tm3", "Mi4", "C3"}
+                else 0
+            ),
+            "Fig3_low_SNR_explains_every_negative_cell": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and fig3_alignment["low_SNR_explains_every_negative_cell"]
+            ),
+            "Fig3_ON_OFF_negative_cell_id_intersection_count": (
+                fig3_alignment["cross_condition_cell_consistency"][source][
+                    "negative_cell_id_intersection_count"
+                ]
+                if source in {"Mi1", "Tm3", "Mi4", "C3"}
+                else 0
+            ),
+            "Fig3_post_hoc_cell_exclusion_authorized": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and fig3_alignment["authorize_post_hoc_cell_exclusion"]
+            ),
             "Fig3_source_kernel_robustness_failure_retained_after_alignment_audit": (
                 source in {"Mi1", "Tm3", "Mi4", "C3"}
                 and fig3_alignment[

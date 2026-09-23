@@ -2486,7 +2486,9 @@ shuffle residual 仍是 ordered 的 1.917 倍。因此与此前 T5 shuffle 不�
 有 12 个负相关 leave-one-cell-out 个体；即使让每个 held-out 波形事后选择 ±250 ms 的
 最佳时移，这个不可部署的 oracle 上界仍留下 10 个负相关个体，其中包括 Mi1 ON 和
 Mi4 ON/OFF。因此有限 latency jitter 也不能解释全部失败；原 cross-cell robustness 负门
-继续保留，不授权 aligned kernel。详见
+继续保留，不授权 aligned kernel。原 12 个负相关个体中有 11 个达到既有 SNR≥3 参考线，
+且没有任何 cell ordinal 在 ON 与 OFF 两个条件中都呈负相关；因此低 SNR 和一个可稳定
+剔除的“坏个体集合”也都不能解释失败，不授权事后排除个体。详见
 `artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`。
 
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交

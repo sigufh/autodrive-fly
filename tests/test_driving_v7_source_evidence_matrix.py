@@ -262,6 +262,10 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
             ]
             is True
         )
+        assert components["Fig3_negative_cells_at_or_above_reference_SNR_count"] == 11
+        assert components["Fig3_low_SNR_explains_every_negative_cell"] is False
+        assert components["Fig3_ON_OFF_negative_cell_id_intersection_count"] == 0
+        assert components["Fig3_post_hoc_cell_exclusion_authorized"] is False
     assert report["matrix"]["Mi4"]["evidence_components"][
         "Gur_2024_Mi4_C3_proofreading_table_row_count"
     ] == 723

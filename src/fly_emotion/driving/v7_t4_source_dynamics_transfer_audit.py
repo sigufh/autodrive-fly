@@ -453,6 +453,21 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             "bounded_latency_jitter_explains_every_negative_cell": fig3_alignment[
                 "bounded_latency_jitter_explains_every_negative_cell"
             ],
+            "negative_cells_at_or_above_reference_SNR_count": fig3_alignment[
+                "negative_cells_at_or_above_reference_SNR_count"
+            ],
+            "low_SNR_explains_every_negative_cell": fig3_alignment[
+                "low_SNR_explains_every_negative_cell"
+            ],
+            "ON_OFF_negative_cell_id_intersection_count": fig3_alignment[
+                "ON_OFF_negative_cell_id_intersection_count"
+            ],
+            "one_stable_bad_cell_set_explains_ON_OFF_failures": fig3_alignment[
+                "one_stable_bad_cell_set_explains_ON_OFF_failures"
+            ],
+            "post_hoc_cell_exclusion_authorized": fig3_alignment[
+                "authorize_post_hoc_cell_exclusion"
+            ],
             "source_kernel_robustness_failure_retained": fig3_alignment[
                 "original_source_kernel_robustness_failure_retained"
             ],

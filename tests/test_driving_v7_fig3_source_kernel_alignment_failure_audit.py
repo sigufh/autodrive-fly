@@ -11,6 +11,7 @@ def test_alignment_failure_audit_is_hash_bound_and_read_only() -> None:
     for path, digest in report["protocol"]["dependencies_sha256"].items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
     assert report["protocol"]["maximum_oracle_lag_milliseconds"] == 250
+    assert report["protocol"]["reference_minimum_cell_SNR"] == 3.0
     assert report["protocol"]["parameter_fit"] is False
     assert report["protocol"]["target_activity_injection"] is False
     assert report["protocol"]["runtime_modified"] is False
@@ -44,6 +45,20 @@ def test_bounded_oracle_alignment_does_not_rescue_every_negative_cell() -> None:
         is False
     )
     assert report["bounded_latency_jitter_explains_every_negative_cell"] is False
+    assert report["negative_cells_at_or_above_reference_SNR_count"] == 11
+    assert report["low_SNR_explains_every_negative_cell"] is False
+    assert report["ON_OFF_negative_cell_id_intersection_count"] == 0
+    assert report["one_stable_bad_cell_set_explains_ON_OFF_failures"] is False
+    assert report["authorize_post_hoc_cell_exclusion"] is False
+    assert report["conditions"]["on"]["sources"]["Mi4"][
+        "maximum_negative_cell_SNR"
+    ] > 25.0
+    assert report["conditions"]["on"]["sources"]["Mi1"][
+        "maximum_negative_cell_SNR"
+    ] > 70.0
+    assert report["cross_condition_cell_consistency"]["Mi4"][
+        "negative_cell_id_intersection"
+    ] == []
     assert report["original_source_kernel_robustness_failure_retained"] is True
     assert report["authorize_aligned_source_kernel"] is False
     assert report["authorize_T4_functional_precheck"] is False

@@ -3457,6 +3457,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "bounded_latency_jitter_explains_every_negative_cell"
                     ]
                 ),
+                "fig3_source_kernel_high_SNR_negative_LOO_cell_count": (
+                    fig3_source_kernel_alignment_failure[
+                        "negative_cells_at_or_above_reference_SNR_count"
+                    ]
+                ),
+                "fig3_source_kernel_low_SNR_explains_all_negative_cells": (
+                    fig3_source_kernel_alignment_failure[
+                        "low_SNR_explains_every_negative_cell"
+                    ]
+                ),
+                "fig3_source_kernel_ON_OFF_negative_cell_intersection_count": (
+                    fig3_source_kernel_alignment_failure[
+                        "ON_OFF_negative_cell_id_intersection_count"
+                    ]
+                ),
+                "fig3_source_kernel_post_hoc_cell_exclusion_authorized": (
+                    fig3_source_kernel_alignment_failure[
+                        "authorize_post_hoc_cell_exclusion"
+                    ]
+                ),
                 "fig3_source_kernel_failure_retained_after_alignment_audit": (
                     fig3_source_kernel_alignment_failure[
                         "original_source_kernel_robustness_failure_retained"
@@ -4394,6 +4414,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "fig3_source_kernel_original_negative_LOO_cell_count",
                     "fig3_source_kernel_oracle_shift_negative_LOO_cell_count",
                     "fig3_source_kernel_bounded_latency_explains_all_negative_cells",
+                    "fig3_source_kernel_high_SNR_negative_LOO_cell_count",
+                    "fig3_source_kernel_low_SNR_explains_all_negative_cells",
+                    "fig3_source_kernel_ON_OFF_negative_cell_intersection_count",
+                    "fig3_source_kernel_post_hoc_cell_exclusion_authorized",
                     "fig3_source_kernel_failure_retained_after_alignment_audit",
                     "T5_temporal_shuffle_retinal_energy_preserved",
                     "T5_temporal_shuffle_lamina_source_energy_preserved",

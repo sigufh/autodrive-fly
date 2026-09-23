@@ -187,6 +187,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "fig3_source_kernel_original_negative_LOO_cell_count",
         "fig3_source_kernel_oracle_shift_negative_LOO_cell_count",
         "fig3_source_kernel_bounded_latency_explains_all_negative_cells",
+        "fig3_source_kernel_high_SNR_negative_LOO_cell_count",
+        "fig3_source_kernel_low_SNR_explains_all_negative_cells",
+        "fig3_source_kernel_ON_OFF_negative_cell_intersection_count",
+        "fig3_source_kernel_post_hoc_cell_exclusion_authorized",
         "fig3_source_kernel_failure_retained_after_alignment_audit",
         "T5_temporal_shuffle_retinal_energy_preserved",
         "T5_temporal_shuffle_lamina_source_energy_preserved",
@@ -1946,6 +1950,30 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert (
         visual["observations"][
             "fig3_source_kernel_bounded_latency_explains_all_negative_cells"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "fig3_source_kernel_high_SNR_negative_LOO_cell_count"
+        ]
+        == 11
+    )
+    assert (
+        visual["observations"][
+            "fig3_source_kernel_low_SNR_explains_all_negative_cells"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "fig3_source_kernel_ON_OFF_negative_cell_intersection_count"
+        ]
+        == 0
+    )
+    assert (
+        visual["observations"][
+            "fig3_source_kernel_post_hoc_cell_exclusion_authorized"
         ]
         is False
     )

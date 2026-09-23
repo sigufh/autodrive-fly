@@ -803,7 +803,11 @@ oracle that chooses a separate shift within +/-250 ms from each held-out wavefor
 leaves 10 negative correlations, including Mi1 ON and Mi4 ON/OFF cells. Thus
 baseline, gain, and bounded latency jitter do not explain the full failure; the
 original cross-cell robustness failure remains in force and no aligned kernel is
-authorized (`artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`).
+authorized. Eleven of the original 12 negative cells also meet the pre-existing
+SNR >= 3 reference, and no cell ordinal is negative in both ON and OFF; neither
+low SNR nor a stable removable "bad-cell" set explains the failure, so no
+post-hoc cell exclusion is authorized
+(`artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`).
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

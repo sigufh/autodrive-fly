@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-fig3-source-kernel-alignment-failure-audit
 observed_on: "2026-09-23"
 source_protocol: configs/driving-v7-fig3-source-kernel-audit.yaml
@@ -6,6 +6,7 @@ robustness_protocol: configs/driving-v7-fig3-source-kernel-robustness.yaml
 robustness_evidence: artifacts/v7-fig3-source-kernel-robustness.json
 source_types: [Tm3, Mi1, Mi4, C3]
 maximum_oracle_lag_milliseconds: 250
+reference_minimum_cell_SNR: 3.0
 boundary:
   retrospective_failure_decomposition_only: true
   baseline_offset_removed_before_both_comparisons: true
@@ -16,6 +17,8 @@ boundary:
   original_robustness_gate_retained: true
   every_recorded_cell_retained: true
   no_outlier_removal: true
+  reference_SNR_is_diagnostic_only_not_an_exclusion_rule: true
+  condition_specific_failure_is_not_a_stable_bad_cell_identity: true
   no_T4_response_used: true
   no_PD_ND_label_used: true
   no_parameter_fit: true

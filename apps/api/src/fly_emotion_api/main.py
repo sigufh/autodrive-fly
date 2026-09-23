@@ -885,6 +885,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "fig3_source_kernel_bounded_latency_explains_all_negative_cells": visual[
                     "fig3_source_kernel_bounded_latency_explains_all_negative_cells"
                 ],
+                "fig3_source_kernel_high_SNR_negative_LOO_cell_count": visual[
+                    "fig3_source_kernel_high_SNR_negative_LOO_cell_count"
+                ],
+                "fig3_source_kernel_low_SNR_explains_all_negative_cells": visual[
+                    "fig3_source_kernel_low_SNR_explains_all_negative_cells"
+                ],
+                "fig3_source_kernel_ON_OFF_negative_cell_intersection_count": visual[
+                    "fig3_source_kernel_ON_OFF_negative_cell_intersection_count"
+                ],
+                "fig3_source_kernel_post_hoc_cell_exclusion_authorized": visual[
+                    "fig3_source_kernel_post_hoc_cell_exclusion_authorized"
+                ],
                 "fig3_source_kernel_failure_retained_after_alignment_audit": visual[
                     "fig3_source_kernel_failure_retained_after_alignment_audit"
                 ],
