@@ -42,6 +42,7 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     population_kernel_alignment = evidence[
         "population_kernel_alignment_failure"
     ]
+    cross_state_pool = evidence["cross_state_recording_pool"]
     population_kernel_aggregation = evidence[
         "population_kernel_aggregation_semantics"
     ]
@@ -210,6 +211,15 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                 "authorize_oracle_aligned_population_kernel"
             ]
         ),
+        "Tm2_OA_only_recordings_expand_saline_cohort": cross_state_pool[
+            "Tm2_OA_only_ids_expand_saline_cohort"
+        ],
+        "saline_and_OA_kernels_exchangeable": cross_state_pool[
+            "saline_and_OA_kernels_exchangeable"
+        ],
+        "cross_state_recording_pool_authorized": cross_state_pool[
+            "authorize_cross_state_recording_pool"
+        ],
         "population_kernel_independent_biological_validation_available": (
             population_kernel_robustness[
                 "independent_biological_validation_available"
@@ -474,6 +484,18 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
                     "maximum_oracle_lag_milliseconds"
                 ]
             ),
+            "Tm2_OA_only_recording_ids": cross_state_pool[
+                "Tm2_OA_only_recording_ids"
+            ],
+            "Tm2_shared_saline_OA_recording_id_count": cross_state_pool[
+                "source_results"
+            ]["Tm2"]["shared_recording_id_count"],
+            "Tm2_paired_saline_OA_shape_correlation_summary": cross_state_pool[
+                "source_results"
+            ]["Tm2"]["paired_shape_correlation_summary"],
+            "Tm2_paired_OA_to_saline_peak_ratio_summary": cross_state_pool[
+                "source_results"
+            ]["Tm2"]["paired_OA_to_saline_absolute_peak_ratio_summary"],
             "population_kernel_author_call_count": population_kernel_aggregation[
                 "call_summary"
             ]["call_count"],

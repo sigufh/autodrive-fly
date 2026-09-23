@@ -256,6 +256,14 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T5_Tm2_oracle_alignment_all_shape_gates_passed"] is False
     assert boundaries["T5_Tm2_bounded_latency_explains_robustness_failure"] is False
     assert boundaries["T5_Tm2_oracle_aligned_kernel_authorized"] is False
+    assert boundaries["T5_Tm2_OA_only_recording_ids"] == ["210718", "210719"]
+    assert boundaries["T5_Tm2_shared_saline_OA_recording_id_count"] == 3
+    assert boundaries["T5_Tm2_paired_saline_OA_shape_correlation_summary"][
+        "minimum"
+    ] < 0.43
+    assert boundaries["T5_Tm2_OA_only_recordings_expand_saline_cohort"] is False
+    assert boundaries["T5_saline_and_OA_kernels_exchangeable"] is False
+    assert boundaries["T5_cross_state_recording_pool_authorized"] is False
     assert boundaries["T5_population_kernel_author_default_baseline_verified"] is True
     assert boundaries["T5_population_kernel_no_baseline_matches_author_default"] is True
     assert (

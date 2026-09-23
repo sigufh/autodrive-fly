@@ -1,0 +1,30 @@
+version: 1
+name: v7-t5-cross-state-recording-pool-audit
+observed_on: "2026-09-23"
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+source_kernel_protocol: configs/driving-v7-kohn-portes-t5-source-kernel-audit.yaml
+identity_history_evidence: artifacts/v7-kohn-portes-identity-history-audit.json
+source_order: [Tm1, Tm2, Tm4, Tm9]
+kernel_length: 499
+states:
+  saline: white_noise_files
+  OA: white_noise_OA_files
+expected:
+  shared_recording_ids:
+    Tm1: ["190701", "190708", "190715", "190722"]
+    Tm2: ["201013", "201119", "210721"]
+    Tm4: ["200209", "200703", "200706"]
+    Tm9: ["190812", "191203", "200115"]
+  Tm2_saline_only_ids: ["200927", "201125"]
+  Tm2_OA_only_ids: ["210718", "210719"]
+boundary:
+  paired_recording_id_analysis_is_descriptive: true
+  recording_id_is_not_promoted_to_biological_individual_id: true
+  OA_only_recordings_do_not_expand_the_saline_cohort: true
+  state_dependent_kernels_must_not_be_pooled_as_exchangeable_samples: true
+  no_cross_state_imputation: true
+  no_new_acceptance_threshold_defined: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

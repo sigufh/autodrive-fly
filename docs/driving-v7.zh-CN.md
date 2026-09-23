@@ -2498,6 +2498,13 @@ near-equal partition 的 p05 只从 0.7695 上升到 0.7734，仍低于冻结的
 或 T5 functional precheck。详见
 `artifacts/v7-t5-population-kernel-alignment-failure-audit.json`。
 
+完整仓库中另有两个 Tm2 recording ID，但它们仅存在于 octopamine（OA）状态，并不是
+额外 saline kernel。三个 saline/OA 共享 ID 的作者缩放 kernel 配对相关为 0.425–0.763，
+绝对峰值 OA/saline 比为 0.389–0.701。这里只描述结果，不增设阈值；论文研究的本来就是
+状态依赖过滤，且同 ID 的波形与幅度确有明显变化，所以不能把 OA-only ID 合并进 saline
+cohort 来补样本数。`recording_id` 也仍只是记录键，不提升为 biological fly ID。详见
+`artifacts/v7-t5-cross-state-recording-pool-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

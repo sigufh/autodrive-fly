@@ -3,8 +3,8 @@
     "name": "v7-t5-source-transfer-evidence-synthesis-audit",
     "observed_on": "2026-09-21",
     "dependencies_sha256": {
-      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "ca3ec09342bd0cb25d168a26f0e31b8774d9f243b475c76c46219a4e134b1525",
-      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "cecc7df5fc66384153a3e5b7fb06d9875ec660fd1db235e3da2c514c658c403b",
+      "configs/driving-v7-t5-source-transfer-synthesis-audit.yaml": "40d47856b5e22faef8c627e57e920a01362e47a5e09c07c7c0720eb231221b8d",
+      "src/fly_emotion/driving/v7_t5_source_transfer_synthesis_audit.py": "ede0af10916f73c23cf3b698ddf38293d36a17e184dd0b95aa63a988ada3832b",
       "artifacts/v7-t5-physical-time-transfer-audit.json": "8b1eda26f1d863cc39b6b1f1ddc25a82df39c8f04cfefbfb806c2de2ba482093",
       "artifacts/v7-kohn-portes-t5-source-kernel-audit.json": "7ae62597c5fd7211ef46a8d698974bee924814dfef494dc8357bb1966ff58f92",
       "artifacts/v7-kohn-portes-t5-state-unit-mapping-audit.json": "a22da8476d3975da7be661d6e63390d708348d287ea5068817f03840ec6180d4",
@@ -19,6 +19,7 @@
       "artifacts/v7-t5-measured-kernel-full-support-identifiability.json": "24269a0ae0f66ae19b7519b0bc435e4c917edb4a353e7ea51fa86df4f69eebba",
       "artifacts/v7-t5-population-kernel-robustness-audit.json": "73135140e8621afb93ec94ffbd1cfcb4fc3c39a0175da73825f864565418e6db",
       "artifacts/v7-t5-population-kernel-alignment-failure-audit.json": "5ca1bfb4b8cc453fc90cb70ad82f8b5dfbf50204fed520eb89dfc5d05a26c0e3",
+      "artifacts/v7-t5-cross-state-recording-pool-audit.json": "9eb9e391181028345b9d48de67811aa12116c1f9b81868a7c944ca9b8838b6bb",
       "artifacts/v7-t5-population-kernel-aggregation-semantics-audit.json": "af57d1adaa9b7165f04f18ec1a27447be7021d68314acc01034859363e61dd52",
       "artifacts/v7-t5-author-row-weighted-full-support-sensitivity.json": "5e1b58351ba76355fca18f62a932d2260e1f281bc67e6713b3f9b6ea3f1b877a",
       "artifacts/v7-t5-tm2-loo-full-support-sensitivity.json": "9d2f064abbfefe027b4d210b59d63c1f160a75da79bf9ccff41e9e1fb0119bb7",
@@ -126,6 +127,23 @@
     "Tm2_oracle_shift_LOO_median_correlation": 0.806123379293452,
     "Tm2_oracle_shift_partition_correlation_p05": 0.7733722055598051,
     "Tm2_oracle_maximum_lag_milliseconds": 250,
+    "Tm2_OA_only_recording_ids": [
+      "210718",
+      "210719"
+    ],
+    "Tm2_shared_saline_OA_recording_id_count": 3,
+    "Tm2_paired_saline_OA_shape_correlation_summary": {
+      "count": 3,
+      "minimum": 0.42512584528400427,
+      "median": 0.6857241270117792,
+      "maximum": 0.7626203422030818
+    },
+    "Tm2_paired_OA_to_saline_peak_ratio_summary": {
+      "count": 3,
+      "minimum": 0.38877584540507204,
+      "median": 0.48238285999475966,
+      "maximum": 0.7012955613934025
+    },
     "population_kernel_author_call_count": 9,
     "population_kernel_explicit_baseline_call_count": 0,
     "Tm1_row_vs_recording_id_weighted_correlation": 0.9995598341098436,
@@ -385,6 +403,9 @@
     "Tm2_oracle_alignment_all_shape_gates_passed": false,
     "Tm2_bounded_latency_jitter_explains_robustness_failure": false,
     "Tm2_oracle_aligned_population_kernel_authorized": false,
+    "Tm2_OA_only_recordings_expand_saline_cohort": false,
+    "saline_and_OA_kernels_exchangeable": false,
+    "cross_state_recording_pool_authorized": false,
     "population_kernel_independent_biological_validation_available": false,
     "population_kernel_transfer_authorized": false,
     "population_kernel_author_default_baseline_verified": true,

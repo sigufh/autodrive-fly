@@ -140,6 +140,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_Tm2_oracle_alignment_all_shape_gates_passed",
         "T5_Tm2_bounded_latency_explains_robustness_failure",
         "T5_Tm2_oracle_aligned_kernel_authorized",
+        "T5_Tm2_OA_only_recording_ids",
+        "T5_Tm2_shared_saline_OA_recording_id_count",
+        "T5_Tm2_paired_saline_OA_shape_correlation_summary",
+        "T5_Tm2_paired_OA_to_saline_peak_ratio_summary",
+        "T5_Tm2_OA_only_recordings_expand_saline_cohort",
+        "T5_saline_and_OA_kernels_exchangeable",
+        "T5_cross_state_recording_pool_authorized",
         "T5_population_kernel_author_default_baseline_verified",
         "T5_population_kernel_no_baseline_matches_author_default",
         "T5_population_kernel_author_row_weighting_exactly_reproduced",
@@ -811,6 +818,23 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T5_Tm2_oracle_aligned_kernel_authorized"] is False
+    assert visual["observations"]["T5_Tm2_OA_only_recording_ids"] == [
+        "210718",
+        "210719",
+    ]
+    assert visual["observations"]["T5_Tm2_shared_saline_OA_recording_id_count"] == 3
+    assert (
+        visual["observations"][
+            "T5_Tm2_paired_saline_OA_shape_correlation_summary"
+        ]["minimum"]
+        < 0.43
+    )
+    assert (
+        visual["observations"]["T5_Tm2_OA_only_recordings_expand_saline_cohort"]
+        is False
+    )
+    assert visual["observations"]["T5_saline_and_OA_kernels_exchangeable"] is False
+    assert visual["observations"]["T5_cross_state_recording_pool_authorized"] is False
     assert (
         visual["observations"]["T5_population_kernel_author_default_baseline_verified"]
         is True

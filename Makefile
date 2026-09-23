@@ -490,3 +490,8 @@ v7-audit-t5-population-kernel-alignment-failure:
 	.venv/bin/autodrive-fly v7-audit-t5-population-kernel-alignment-failure
 
 .PHONY: v7-audit-t5-population-kernel-alignment-failure
+
+v7-audit-t5-cross-state-recording-pool:
+	.venv/bin/autodrive-fly v7-audit-t5-cross-state-recording-pool
+
+.PHONY: v7-audit-t5-cross-state-recording-pool

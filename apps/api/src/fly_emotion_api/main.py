@@ -746,6 +746,27 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_Tm2_oracle_aligned_kernel_authorized": visual[
                     "T5_Tm2_oracle_aligned_kernel_authorized"
                 ],
+                "T5_Tm2_OA_only_recording_ids": visual[
+                    "T5_Tm2_OA_only_recording_ids"
+                ],
+                "T5_Tm2_shared_saline_OA_recording_id_count": visual[
+                    "T5_Tm2_shared_saline_OA_recording_id_count"
+                ],
+                "T5_Tm2_paired_saline_OA_shape_correlation_summary": visual[
+                    "T5_Tm2_paired_saline_OA_shape_correlation_summary"
+                ],
+                "T5_Tm2_paired_OA_to_saline_peak_ratio_summary": visual[
+                    "T5_Tm2_paired_OA_to_saline_peak_ratio_summary"
+                ],
+                "T5_Tm2_OA_only_recordings_expand_saline_cohort": visual[
+                    "T5_Tm2_OA_only_recordings_expand_saline_cohort"
+                ],
+                "T5_saline_and_OA_kernels_exchangeable": visual[
+                    "T5_saline_and_OA_kernels_exchangeable"
+                ],
+                "T5_cross_state_recording_pool_authorized": visual[
+                    "T5_cross_state_recording_pool_authorized"
+                ],
                 "T5_population_kernel_author_default_baseline_verified": visual[
                     "T5_population_kernel_author_default_baseline_verified"
                 ],

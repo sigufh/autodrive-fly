@@ -1,4 +1,4 @@
-version: 3
+version: 4
 name: v7-t5-source-transfer-evidence-synthesis-audit
 observed_on: "2026-09-21"
 evidence:
@@ -16,6 +16,7 @@ evidence:
   measured_kernel_full_support: artifacts/v7-t5-measured-kernel-full-support-identifiability.json
   population_kernel_robustness: artifacts/v7-t5-population-kernel-robustness-audit.json
   population_kernel_alignment_failure: artifacts/v7-t5-population-kernel-alignment-failure-audit.json
+  cross_state_recording_pool: artifacts/v7-t5-cross-state-recording-pool-audit.json
   population_kernel_aggregation_semantics: artifacts/v7-t5-population-kernel-aggregation-semantics-audit.json
   author_row_weighted_full_support: artifacts/v7-t5-author-row-weighted-full-support-sensitivity.json
   tm2_loo_full_support: artifacts/v7-t5-tm2-loo-full-support-sensitivity.json

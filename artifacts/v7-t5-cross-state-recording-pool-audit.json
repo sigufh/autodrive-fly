@@ -1,0 +1,321 @@
+{
+  "protocol": {
+    "name": "v7-t5-cross-state-recording-pool-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-cross-state-recording-pool-audit.yaml": "22c22c2d94f56d337546e3c986aacf39e23d616b7dfe2f8d65d49951b662266a",
+      "src/fly_emotion/driving/v7_t5_cross_state_recording_pool_audit.py": "75f26754fbe4a68d19292779151c26c669883fba7f6ab07f6b0324382559cbad",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-kohn-portes-t5-source-kernel-audit.yaml": "608e6546344b9c2027ebd3dfc63842d8d8bbce678a7543f80d4f77e0490addcf",
+      "artifacts/v7-kohn-portes-identity-history-audit.json": "9fccf4d4f79183903c721326f5f05e287d3824bd4b74de880e0fab7b66403b05",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_OA.pickle": "60697091eb983d51e81bd7917277e077daa6463cc741ecb5b5ecbf85ee139268",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_OA.pickle": "a6fe13c364394003c14d265a4f8b3b6523b115653671a2e645f376f499bbe490",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_OA.pickle": "0c2c41038618db6fdb6d9668be1895d3131fa0e103eee1d4cf3a752008bb92c2",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_OA.pickle": "52cd60bc002a43525f8ff60c49950c50a5d3da916542eac52fdadd0508b8c9c9"
+    },
+    "kernel_length": 499,
+    "kernel_sample_interval_milliseconds": 10.0,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "source_results": {
+    "Tm1": {
+      "saline_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722",
+        "190729",
+        "201201",
+        "210126"
+      ],
+      "OA_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722"
+      ],
+      "shared_recording_ids": [
+        "190701",
+        "190708",
+        "190715",
+        "190722"
+      ],
+      "shared_recording_id_count": 4,
+      "saline_only_recording_ids": [
+        "190729",
+        "201201",
+        "210126"
+      ],
+      "OA_only_recording_ids": [],
+      "paired_recording_results": [
+        {
+          "recording_id": "190701",
+          "shape_correlation": 0.595438195294957,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -10.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.9046732673345587
+        },
+        {
+          "recording_id": "190708",
+          "shape_correlation": 0.5323757771499925,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -30.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 1.4476286672912606
+        },
+        {
+          "recording_id": "190715",
+          "shape_correlation": 0.2425535802732831,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -20.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.7773601090549042
+        },
+        {
+          "recording_id": "190722",
+          "shape_correlation": 0.6552349330137268,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": 0.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.41963450661773194
+        }
+      ],
+      "paired_shape_correlation_summary": {
+        "count": 4,
+        "minimum": 0.2425535802732831,
+        "median": 0.5639069862224748,
+        "maximum": 0.6552349330137268
+      },
+      "paired_OA_to_saline_absolute_peak_ratio_summary": {
+        "count": 4,
+        "minimum": 0.41963450661773194,
+        "median": 0.8410166881947314,
+        "maximum": 1.4476286672912606
+      },
+      "peak_sign_preserved_for_every_shared_recording_id": true
+    },
+    "Tm2": {
+      "saline_recording_ids": [
+        "200927",
+        "201013",
+        "201119",
+        "201125",
+        "210721"
+      ],
+      "OA_recording_ids": [
+        "201013",
+        "201119",
+        "210718",
+        "210719",
+        "210721"
+      ],
+      "shared_recording_ids": [
+        "201013",
+        "201119",
+        "210721"
+      ],
+      "shared_recording_id_count": 3,
+      "saline_only_recording_ids": [
+        "200927",
+        "201125"
+      ],
+      "OA_only_recording_ids": [
+        "210718",
+        "210719"
+      ],
+      "paired_recording_results": [
+        {
+          "recording_id": "201013",
+          "shape_correlation": 0.42512584528400427,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": 10.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.38877584540507204
+        },
+        {
+          "recording_id": "201119",
+          "shape_correlation": 0.6857241270117792,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": 0.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.7012955613934025
+        },
+        {
+          "recording_id": "210721",
+          "shape_correlation": 0.7626203422030818,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -20.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.48238285999475966
+        }
+      ],
+      "paired_shape_correlation_summary": {
+        "count": 3,
+        "minimum": 0.42512584528400427,
+        "median": 0.6857241270117792,
+        "maximum": 0.7626203422030818
+      },
+      "paired_OA_to_saline_absolute_peak_ratio_summary": {
+        "count": 3,
+        "minimum": 0.38877584540507204,
+        "median": 0.48238285999475966,
+        "maximum": 0.7012955613934025
+      },
+      "peak_sign_preserved_for_every_shared_recording_id": true
+    },
+    "Tm4": {
+      "saline_recording_ids": [
+        "200209",
+        "200621",
+        "200703",
+        "200706",
+        "200823",
+        "200826"
+      ],
+      "OA_recording_ids": [
+        "200209",
+        "200703",
+        "200706",
+        "210803"
+      ],
+      "shared_recording_ids": [
+        "200209",
+        "200703",
+        "200706"
+      ],
+      "shared_recording_id_count": 3,
+      "saline_only_recording_ids": [
+        "200621",
+        "200823",
+        "200826"
+      ],
+      "OA_only_recording_ids": [
+        "210803"
+      ],
+      "paired_recording_results": [
+        {
+          "recording_id": "200209",
+          "shape_correlation": 0.8568103185888334,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -30.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.5450734991034284
+        },
+        {
+          "recording_id": "200703",
+          "shape_correlation": 0.8659810383612396,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": 10.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 0.6503282659900523
+        },
+        {
+          "recording_id": "200706",
+          "shape_correlation": 0.7665502536212222,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -10.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 1.1681134646563724
+        }
+      ],
+      "paired_shape_correlation_summary": {
+        "count": 3,
+        "minimum": 0.7665502536212222,
+        "median": 0.8568103185888334,
+        "maximum": 0.8659810383612396
+      },
+      "paired_OA_to_saline_absolute_peak_ratio_summary": {
+        "count": 3,
+        "minimum": 0.5450734991034284,
+        "median": 0.6503282659900523,
+        "maximum": 1.1681134646563724
+      },
+      "peak_sign_preserved_for_every_shared_recording_id": true
+    },
+    "Tm9": {
+      "saline_recording_ids": [
+        "190812",
+        "191112",
+        "191203",
+        "191209",
+        "200115",
+        "200720"
+      ],
+      "OA_recording_ids": [
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "shared_recording_ids": [
+        "190812",
+        "191203",
+        "200115"
+      ],
+      "shared_recording_id_count": 3,
+      "saline_only_recording_ids": [
+        "191112",
+        "191209",
+        "200720"
+      ],
+      "OA_only_recording_ids": [],
+      "paired_recording_results": [
+        {
+          "recording_id": "190812",
+          "shape_correlation": 0.781969790945713,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -30.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 2.2545862007943827
+        },
+        {
+          "recording_id": "191203",
+          "shape_correlation": 0.7752580290986479,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -80.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 1.7431343591355588
+        },
+        {
+          "recording_id": "200115",
+          "shape_correlation": 0.6888750906263369,
+          "OA_minus_saline_absolute_peak_latency_milliseconds": -30.0,
+          "peak_sign_preserved": true,
+          "OA_to_saline_absolute_peak_ratio": 2.346679736678859
+        }
+      ],
+      "paired_shape_correlation_summary": {
+        "count": 3,
+        "minimum": 0.6888750906263369,
+        "median": 0.7752580290986479,
+        "maximum": 0.781969790945713
+      },
+      "paired_OA_to_saline_absolute_peak_ratio_summary": {
+        "count": 3,
+        "minimum": 1.7431343591355588,
+        "median": 2.2545862007943827,
+        "maximum": 2.346679736678859
+      },
+      "peak_sign_preserved_for_every_shared_recording_id": true
+    }
+  },
+  "Tm2_OA_only_recording_ids": [
+    "210718",
+    "210719"
+  ],
+  "Tm2_OA_only_ids_expand_saline_cohort": false,
+  "recording_id_is_biological_individual_id": false,
+  "saline_and_OA_kernels_exchangeable": false,
+  "authorize_cross_state_recording_pool": false,
+  "authorize_T5_source_dynamics_fit": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "OA_only_Tm2_recordings_do_not_expand_saline_cohort_and_recording_identity_is_not_biological_identity",
+  "boundary": {
+    "paired_recording_id_analysis_is_descriptive": true,
+    "recording_id_is_not_promoted_to_biological_individual_id": true,
+    "OA_only_recordings_do_not_expand_the_saline_cohort": true,
+    "state_dependent_kernels_must_not_be_pooled_as_exchangeable_samples": true,
+    "no_cross_state_imputation": true,
+    "no_new_acceptance_threshold_defined": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

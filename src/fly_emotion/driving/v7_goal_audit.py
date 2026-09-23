@@ -920,6 +920,41 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Tm2_oracle_aligned_population_kernel_authorized"
                     ]
                 ),
+                "T5_Tm2_OA_only_recording_ids": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_OA_only_recording_ids"
+                    ]
+                ),
+                "T5_Tm2_shared_saline_OA_recording_id_count": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_shared_saline_OA_recording_id_count"
+                    ]
+                ),
+                "T5_Tm2_paired_saline_OA_shape_correlation_summary": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_paired_saline_OA_shape_correlation_summary"
+                    ]
+                ),
+                "T5_Tm2_paired_OA_to_saline_peak_ratio_summary": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_paired_OA_to_saline_peak_ratio_summary"
+                    ]
+                ),
+                "T5_Tm2_OA_only_recordings_expand_saline_cohort": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_OA_only_recordings_expand_saline_cohort"
+                    ]
+                ),
+                "T5_saline_and_OA_kernels_exchangeable": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "saline_and_OA_kernels_exchangeable"
+                    ]
+                ),
+                "T5_cross_state_recording_pool_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "cross_state_recording_pool_authorized"
+                    ]
+                ),
                 "T5_population_kernel_author_default_baseline_verified": (
                     t5_source_transfer_synthesis_audit["gates"][
                         "population_kernel_author_default_baseline_verified"
@@ -4397,6 +4432,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_Tm2_oracle_alignment_all_shape_gates_passed",
                     "T5_Tm2_bounded_latency_explains_robustness_failure",
                     "T5_Tm2_oracle_aligned_kernel_authorized",
+                    "T5_Tm2_OA_only_recording_ids",
+                    "T5_Tm2_shared_saline_OA_recording_id_count",
+                    "T5_Tm2_paired_saline_OA_shape_correlation_summary",
+                    "T5_Tm2_paired_OA_to_saline_peak_ratio_summary",
+                    "T5_Tm2_OA_only_recordings_expand_saline_cohort",
+                    "T5_saline_and_OA_kernels_exchangeable",
+                    "T5_cross_state_recording_pool_authorized",
                     "T5_population_kernel_author_default_baseline_verified",
                     "T5_population_kernel_no_baseline_matches_author_default",
                     "T5_population_kernel_author_row_weighting_exactly_reproduced",

@@ -817,6 +817,16 @@ and remains below the frozen 0.80 threshold. The original all-gates result
 therefore remains false; no aligned Tm2 kernel or T5 functional precheck is
 authorized (`artifacts/v7-t5-population-kernel-alignment-failure-audit.json`).
 
+The two additional Tm2 recording IDs visible in the complete repository are
+octopamine-only, not additional saline kernels. Among the three Tm2 IDs shared
+between saline and octopamine, paired author-rescaled kernel correlations range
+from 0.425 to 0.763 and absolute peak ratios from 0.389 to 0.701. These values are
+reported descriptively without a new threshold: the paper's state manipulation
+and the observed within-ID changes make cross-state pooling scientifically
+invalid. The OA-only IDs therefore do not enlarge the saline cohort, and
+`recording_id` remains a recording key rather than a verified biological fly ID
+(`artifacts/v7-t5-cross-state-recording-pool-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

@@ -400,6 +400,9 @@ from .driving.v7_t5_continuous_moment_precheck import (
 from .driving.v7_t5_contrast_opponency_source_data_audit import (
     evaluate_v7_t5_contrast_opponency_source_data_audit,
 )
+from .driving.v7_t5_cross_state_recording_pool_audit import (
+    evaluate_v7_t5_cross_state_recording_pool_audit,
+)
 from .driving.v7_t5_ct1_axis_aware_antisymmetric_precheck import (
     evaluate_v7_t5_ct1_axis_aware_antisymmetric_precheck,
 )
@@ -804,6 +807,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-lamina-only-measured-kernel-replacement")
     subparsers.add_parser("v7-evaluate-t5-lamina-scalar-precheck")
     subparsers.add_parser("v7-audit-t5-source-axis")
+    subparsers.add_parser("v7-audit-t5-cross-state-recording-pool")
     subparsers.add_parser("v7-audit-t5-source-mapping-scope")
     subparsers.add_parser("v7-audit-t5-author-row-weighted-full-support")
     subparsers.add_parser("v7-audit-t5-measured-kernel-identifiability")
@@ -1648,6 +1652,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-population-kernel-alignment-failure":
         report = evaluate_v7_t5_population_kernel_alignment_failure_audit(root)
         target = root / "artifacts/v7-t5-population-kernel-alignment-failure-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-cross-state-recording-pool":
+        report = evaluate_v7_t5_cross_state_recording_pool_audit(root)
+        target = root / "artifacts/v7-t5-cross-state-recording-pool-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

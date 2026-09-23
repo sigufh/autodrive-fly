@@ -257,6 +257,13 @@ export type V7Status = {
     T5_Tm2_oracle_alignment_all_shape_gates_passed?: boolean;
     T5_Tm2_bounded_latency_explains_robustness_failure?: boolean;
     T5_Tm2_oracle_aligned_kernel_authorized?: boolean;
+    T5_Tm2_OA_only_recording_ids?: string[];
+    T5_Tm2_shared_saline_OA_recording_id_count?: number;
+    T5_Tm2_paired_saline_OA_shape_correlation_summary?: { count: number; minimum: number; median: number; maximum: number };
+    T5_Tm2_paired_OA_to_saline_peak_ratio_summary?: { count: number; minimum: number; median: number; maximum: number };
+    T5_Tm2_OA_only_recordings_expand_saline_cohort?: boolean;
+    T5_saline_and_OA_kernels_exchangeable?: boolean;
+    T5_cross_state_recording_pool_authorized?: boolean;
     T5_population_kernel_author_default_baseline_verified?: boolean;
     T5_population_kernel_no_baseline_matches_author_default?: boolean;
     T5_population_kernel_author_row_weighting_exactly_reproduced?: boolean;
