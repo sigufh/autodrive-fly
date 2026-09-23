@@ -177,6 +177,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "T5_lamina_only_source_coverage",
         "T5_lamina_only_candidate_ratios_by_update",
         "T5_temporal_shuffle_frame_multiset_preserved",
+        "T4_temporal_shuffle_frame_multiset_preserved",
+        "T4_temporal_shuffle_R1_R6_energy_preserved",
+        "T4_temporal_shuffle_source_energy_within_five_percent",
+        "T4_temporal_shuffle_input_mismatch_explains_failure",
+        "T4_temporal_shuffle_failure_retained_after_energy_audit",
         "T5_temporal_shuffle_retinal_energy_preserved",
         "T5_temporal_shuffle_lamina_source_energy_preserved",
         "T5_temporal_shuffle_energy_matched_control_verified",
@@ -1899,6 +1904,22 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_synapse_microstep_static_energy_ratio"] > 0.53
     assert visual["observations"]["T4_synapse_microstep_temporal_identifiability_passed"] is False
     assert visual["observations"]["T4_synapse_microstep_direction_scoring_performed"] is False
+    assert visual["observations"]["T4_temporal_shuffle_frame_multiset_preserved"] is True
+    assert visual["observations"]["T4_temporal_shuffle_R1_R6_energy_preserved"] is True
+    assert (
+        visual["observations"]["T4_temporal_shuffle_source_energy_within_five_percent"]
+        is True
+    )
+    assert (
+        visual["observations"]["T4_temporal_shuffle_input_mismatch_explains_failure"]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "T4_temporal_shuffle_failure_retained_after_energy_audit"
+        ]
+        is True
+    )
     assert visual["observations"]["T4_source_dynamics_transfer_fields_available"] == {
         "direction_independent_source_kernel": False,
         "source_to_MaleCNS_identity_mapping": True,

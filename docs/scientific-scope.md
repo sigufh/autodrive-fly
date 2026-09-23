@@ -785,6 +785,16 @@ files and 18 LC15/imaging filename hits but no C3 filename hit. A Dryad README
 download returned HTTP 401, which is retained as an access boundary and not as
 evidence of payload absence (`artifacts/v7-shomar-c3-distance-boundary-audit.json`).
 
+The T4 microstep temporal-shuffle failure was also checked against its input
+energy. The shuffle preserves the moving-frame multiset and exactly preserves
+mean absolute R1--R6 drive under the active linear-luminance encoder. Centered
+Mi1/Tm3/Mi4/C3 state energies differ from ordered input by only 2.6--4.0%, while
+the correlator shuffle residual remains 1.917 times the ordered residual. Thus,
+unlike the previously audited T5 shuffle, input-energy inflation does not explain
+this T4 failure. The original negative temporal-identifiability gate remains in
+force; no post-hoc normalized gate was introduced
+(`artifacts/v7-t4-temporal-shuffle-input-energy-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

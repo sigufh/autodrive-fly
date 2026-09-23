@@ -3,8 +3,8 @@
     "name": "v7-t4-source-dynamics-transfer-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "d85babe3085673229f87bcfec1ec2224b8f8f621ededd87a467c61db00b7168e",
-      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "44e6c93f33f9ca6729b38009f7701d1990da9c7fc221db763830c524c78e988c",
+      "configs/driving-v7-t4-source-dynamics-transfer-audit.yaml": "cb8e341d5555433d4a1262c10c3e5c98398204364212c62348f41552647e13b8",
+      "src/fly_emotion/driving/v7_t4_source_dynamics_transfer_audit.py": "b913adc147cece7c7ac1dbade39cdf40b660d9ed0de996f7caffc0bef572d702",
       "artifacts/v7-electrophysiology-audit.json": "2cd7b036faff78768c8986d86c8b77c935433df7804288bb689b5cd35d2b7ea6",
       "artifacts/v7-ephys-interface.json": "5993dca2ca0124358608bf415c8a3267fcd12f2e317d3f609e152be61ff29cf1",
       "artifacts/v7-timebase-audit.json": "083769ee3c3527964a7eb5ea17b06fbf7bc24289a36ab80a25d9610939d7e6fa",
@@ -13,6 +13,7 @@
       "artifacts/v7-malecns-source-mapping-readiness-audit.json": "9b3a67d651346596282568f276801505a8d4ae45d67481cb6771ad0ea7184389",
       "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "d19d808f503dc007a23c0ca5d9bd4ff0ea0a864e98fe02036b05773aa7ef5831",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
+      "artifacts/v7-t4-temporal-shuffle-input-energy-audit.json": "4df2b4f85cc072b648779f6f5c07ae9870ec553938fbe2a08d9627d217aeea05",
       "artifacts/v7-t5-data-audit.json": "91940a28e70fef4171baf00112bb9c50d6854c71c7ae74ce147e1bf3b9187019",
       "artifacts/v7-unified-model-package-audit.json": "993c2920d8fe3154a9f8090b8799eab1814df0c6d219645beca176a6ef4f6d2b",
       "artifacts/v7-fig3-source-kernel-audit.json": "1bc94ae7012f4b66544f05cb8224bfecfebb88e7dbef8594593375ab0572b306",
@@ -173,6 +174,15 @@
     "cardinal_diagonal_to_subtype_mapping_available": false,
     "independent_cell_holdout_available": false,
     "MaleCNS_source_kernel_transfer_authorized": false
+  },
+  "verified_T4_temporal_shuffle_input_energy": {
+    "frame_multiset_preserved": true,
+    "R1_R6_mean_absolute_energy_preserved": true,
+    "all_source_state_energy_ratios_within_five_percent": true,
+    "shuffle_to_ordered_output_ratio": 1.9173851345602673,
+    "input_energy_mismatch_explains_output_failure": false,
+    "temporal_identifiability_failure_retained": true,
+    "new_energy_normalized_gate_authorized": false
   },
   "verified_fig3_source_kernel_readiness": {
     "source_workbook_verified": true,

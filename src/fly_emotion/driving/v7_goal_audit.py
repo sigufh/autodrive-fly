@@ -97,6 +97,9 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
+    t4_temporal_shuffle_input_energy_audit = reports[
+        "t4_temporal_shuffle_input_energy_audit"
+    ]
     t4_source_dynamics_transfer_audit = reports["t4_source_dynamics_transfer_audit"]
     t4_state_unit_mapping_audit = reports["t4_state_unit_mapping_audit"]
     t4_source_identity_readiness_audit = reports[
@@ -3278,6 +3281,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_synapse_microstep_direction_scoring_performed": (
                     t4_synapse_microstep_precheck["direction_scoring_performed"]
                 ),
+                "T4_temporal_shuffle_frame_multiset_preserved": (
+                    t4_temporal_shuffle_input_energy_audit[
+                        "frame_multiset_preserved_for_every_shuffle"
+                    ]
+                ),
+                "T4_temporal_shuffle_R1_R6_energy_preserved": (
+                    t4_temporal_shuffle_input_energy_audit[
+                        "R1_R6_mean_absolute_energy_preserved"
+                    ]
+                ),
+                "T4_temporal_shuffle_source_energy_within_five_percent": (
+                    t4_temporal_shuffle_input_energy_audit[
+                        "all_source_state_energy_ratios_within_five_percent"
+                    ]
+                ),
+                "T4_temporal_shuffle_input_mismatch_explains_failure": (
+                    t4_temporal_shuffle_input_energy_audit[
+                        "input_energy_mismatch_explains_original_output_failure"
+                    ]
+                ),
+                "T4_temporal_shuffle_failure_retained_after_energy_audit": (
+                    t4_temporal_shuffle_input_energy_audit[
+                        "original_temporal_identifiability_failure_retained"
+                    ]
+                ),
                 "source_type_temporal_passing_counts": {
                     family: {
                         "passed": item["passing_source_population_count"],
@@ -4323,6 +4351,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_lamina_only_source_coverage",
                     "T5_lamina_only_candidate_ratios_by_update",
                     "T5_temporal_shuffle_frame_multiset_preserved",
+                    "T4_temporal_shuffle_frame_multiset_preserved",
+                    "T4_temporal_shuffle_R1_R6_energy_preserved",
+                    "T4_temporal_shuffle_source_energy_within_five_percent",
+                    "T4_temporal_shuffle_input_mismatch_explains_failure",
+                    "T4_temporal_shuffle_failure_retained_after_energy_audit",
                     "T5_temporal_shuffle_retinal_energy_preserved",
                     "T5_temporal_shuffle_lamina_source_energy_preserved",
                     "T5_temporal_shuffle_energy_matched_control_verified",

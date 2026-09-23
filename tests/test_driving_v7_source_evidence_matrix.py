@@ -236,6 +236,14 @@ def test_T4_has_numerical_voltage_but_no_complete_source() -> None:
     assert c3_components["Shomar_2025_C3_behavioral_silencing_verified"] is True
     assert c3_components["Shomar_2025_direct_imaging_is_LC15_not_C3"] is True
     assert c3_components["Shomar_2025_C3_numeric_source_dynamics_verified"] is False
+    for source in ("Mi1", "Tm3", "Mi4", "C3"):
+        components = report["matrix"][source]["evidence_components"]
+        assert components["T4_microstep_shuffle_R1_R6_energy_preserved"] is True
+        assert components["T4_microstep_shuffle_source_energy_within_five_percent"] is True
+        assert (
+            components["T4_microstep_temporal_failure_retained_after_energy_audit"]
+            is True
+        )
     assert report["matrix"]["Mi4"]["evidence_components"][
         "Gur_2024_Mi4_C3_proofreading_table_row_count"
     ] == 723

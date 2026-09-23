@@ -855,6 +855,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_temporal_shuffle_frame_multiset_preserved": visual[
                     "T5_temporal_shuffle_frame_multiset_preserved"
                 ],
+                "T4_temporal_shuffle_frame_multiset_preserved": visual[
+                    "T4_temporal_shuffle_frame_multiset_preserved"
+                ],
+                "T4_temporal_shuffle_R1_R6_energy_preserved": visual[
+                    "T4_temporal_shuffle_R1_R6_energy_preserved"
+                ],
+                "T4_temporal_shuffle_source_energy_within_five_percent": visual[
+                    "T4_temporal_shuffle_source_energy_within_five_percent"
+                ],
+                "T4_temporal_shuffle_input_mismatch_explains_failure": visual[
+                    "T4_temporal_shuffle_input_mismatch_explains_failure"
+                ],
+                "T4_temporal_shuffle_failure_retained_after_energy_audit": visual[
+                    "T4_temporal_shuffle_failure_retained_after_energy_audit"
+                ],
                 "T5_temporal_shuffle_retinal_energy_preserved": visual[
                     "T5_temporal_shuffle_retinal_energy_preserved"
                 ],

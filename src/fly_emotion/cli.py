@@ -379,6 +379,9 @@ from .driving.v7_t4_synapse_microstep_precheck import (
 from .driving.v7_t4_synapse_rf_axis_correspondence_audit import (
     evaluate_v7_t4_synapse_rf_axis_correspondence_audit,
 )
+from .driving.v7_t4_temporal_shuffle_input_energy_audit import (
+    evaluate_v7_t4_temporal_shuffle_input_energy_audit,
+)
 from .driving.v7_t4t5_local_edge_backends import evaluate_v7_t4t5_local_edge_backends
 from .driving.v7_t4t5_local_edge_precheck import evaluate_v7_t4t5_local_edge_precheck
 from .driving.v7_t4t5_source_dynamics_readiness import (
@@ -704,6 +707,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
     subparsers.add_parser("v7-audit-t4-synapse-rf-axis-correspondence")
     subparsers.add_parser("v7-audit-t4-source-dynamics-transfer")
+    subparsers.add_parser("v7-audit-t4-temporal-shuffle-input-energy")
     subparsers.add_parser("v7-audit-t4-state-unit-mapping")
     subparsers.add_parser("v7-audit-edmond-fig3-retrieval")
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
@@ -1923,6 +1927,14 @@ def main() -> None:
         report = evaluate_v7_t4_source_dynamics_transfer_audit(root)
         target = root / "artifacts/v7-t4-source-dynamics-transfer-audit.json"
         target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print(target)
+        return
+    if args.command == "v7-audit-t4-temporal-shuffle-input-energy":
+        report = evaluate_v7_t4_temporal_shuffle_input_energy_audit(root)
+        target = root / "artifacts/v7-t4-temporal-shuffle-input-energy-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
         print(target)
         return
     if args.command == "v7-audit-t4-state-unit-mapping":

@@ -135,6 +135,11 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["Shomar_2025_direct_neural_imaging_cell_types"] == ["LC15"]
     assert boundaries["Shomar_2025_C3_direct_recording_verified"] is False
     assert boundaries["Shomar_2025_C3_numeric_source_dynamics_verified"] is False
+    assert boundaries["T4_temporal_shuffle_frame_multiset_preserved"] is True
+    assert boundaries["T4_temporal_shuffle_R1_R6_energy_preserved"] is True
+    assert boundaries["T4_temporal_shuffle_source_energy_within_five_percent"] is True
+    assert boundaries["T4_temporal_shuffle_input_mismatch_explains_failure"] is False
+    assert boundaries["T4_temporal_shuffle_failure_retained_after_energy_audit"] is True
     assert boundaries["Gur_2024_directly_recorded_neuron_types"] == [
         "L1",
         "L2",

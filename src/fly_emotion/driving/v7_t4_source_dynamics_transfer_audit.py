@@ -25,6 +25,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
     malecns_mapping_path = Path(config["malecns_mapping_evidence"])
     malecns_mapping_protocol_path = Path(config["malecns_mapping_protocol"])
     microstep_path = Path(config["microstep_evidence"])
+    microstep_energy_path = Path(config["microstep_input_energy_evidence"])
     unified_path = Path(config["official_unified_model_evidence"])
     verified_unified_path = Path(config["verified_unified_model_evidence"])
     fig3_kernel_path = Path(config["fig3_source_kernel_evidence"])
@@ -66,6 +67,9 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
         (root / malecns_mapping_path).read_text(encoding="utf-8")
     )
     microstep = json.loads((root / microstep_path).read_text(encoding="utf-8"))
+    microstep_energy = json.loads(
+        (root / microstep_energy_path).read_text(encoding="utf-8")
+    )
     unified = json.loads((root / unified_path).read_text(encoding="utf-8"))
     verified_unified = json.loads(
         (root / verified_unified_path).read_text(encoding="utf-8")
@@ -238,6 +242,7 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
                     root / malecns_mapping_protocol_path
                 ),
                 str(microstep_path): _sha256(root / microstep_path),
+                str(microstep_energy_path): _sha256(root / microstep_energy_path),
                 str(unified_path): _sha256(root / unified_path),
                 str(verified_unified_path): _sha256(root / verified_unified_path),
                 str(fig3_kernel_path): _sha256(root / fig3_kernel_path),
@@ -382,6 +387,29 @@ def evaluate_v7_t4_source_dynamics_transfer_audit(root: Path) -> dict:
             ],
             "MaleCNS_source_kernel_transfer_authorized": verified_unified[
                 "MaleCNS_source_kernel_transfer_authorized"
+            ],
+        },
+        "verified_T4_temporal_shuffle_input_energy": {
+            "frame_multiset_preserved": microstep_energy[
+                "frame_multiset_preserved_for_every_shuffle"
+            ],
+            "R1_R6_mean_absolute_energy_preserved": microstep_energy[
+                "R1_R6_mean_absolute_energy_preserved"
+            ],
+            "all_source_state_energy_ratios_within_five_percent": microstep_energy[
+                "all_source_state_energy_ratios_within_five_percent"
+            ],
+            "shuffle_to_ordered_output_ratio": microstep_energy[
+                "original_shuffle_output_ratio"
+            ],
+            "input_energy_mismatch_explains_output_failure": microstep_energy[
+                "input_energy_mismatch_explains_original_output_failure"
+            ],
+            "temporal_identifiability_failure_retained": microstep_energy[
+                "original_temporal_identifiability_failure_retained"
+            ],
+            "new_energy_normalized_gate_authorized": microstep_energy[
+                "authorize_new_energy_normalized_gate"
             ],
         },
         "verified_fig3_source_kernel_readiness": {

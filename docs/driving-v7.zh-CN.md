@@ -2474,6 +2474,13 @@ source-recording 审计没有下载其中 169 GB 的行为归档。完整 GitHub
 该结果仅作为访问边界保留，不作为载荷不存在的证明。详见
 `artifacts/v7-shomar-c3-distance-boundary-audit.json`。
 
+另对 T4 microstep temporal-shuffle 的失败做了逐层输入能量核验。shuffle 保持 moving
+frame 多重集，在当前 linear-luminance 编码下也精确保持 R1–R6 mean-absolute drive；
+Mi1/Tm3/Mi4/C3 centered source-state 能量相对 ordered 只高约 2.6%–4.0%，但 correlator
+shuffle residual 仍是 ordered 的 1.917 倍。因此与此前 T5 shuffle 不同，输入能量放大
+不能解释这项 T4 失败；原 temporal-identifiability 负门继续保留，也没有新增事后归一化
+门。详见 `artifacts/v7-t4-temporal-shuffle-input-energy-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

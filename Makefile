@@ -475,3 +475,8 @@ v7-audit-shomar-c3-distance-boundary:
 	.venv/bin/autodrive-fly v7-audit-shomar-c3-distance-boundary
 
 .PHONY: v7-audit-shomar-c3-distance-boundary
+
+v7-audit-t4-temporal-shuffle-input-energy:
+	.venv/bin/autodrive-fly v7-audit-t4-temporal-shuffle-input-energy
+
+.PHONY: v7-audit-t4-temporal-shuffle-input-energy

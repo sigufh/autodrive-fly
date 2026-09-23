@@ -294,6 +294,11 @@ export type V7Status = {
     T5_lamina_only_source_coverage?: Record<string, { source_node_count: number; source_node_with_lamina_input_count: number; source_node_without_lamina_input_count: number; source_node_with_lamina_input_fraction: number }>;
     T5_lamina_only_candidate_ratios_by_update?: Record<string, Record<string, { shuffle: number; static: number }>>;
     T5_temporal_shuffle_frame_multiset_preserved?: boolean;
+    T4_temporal_shuffle_frame_multiset_preserved?: boolean;
+    T4_temporal_shuffle_R1_R6_energy_preserved?: boolean;
+    T4_temporal_shuffle_source_energy_within_five_percent?: boolean;
+    T4_temporal_shuffle_input_mismatch_explains_failure?: boolean;
+    T4_temporal_shuffle_failure_retained_after_energy_audit?: boolean;
     T5_temporal_shuffle_retinal_energy_preserved?: boolean;
     T5_temporal_shuffle_lamina_source_energy_preserved?: boolean;
     T5_temporal_shuffle_energy_matched_control_verified?: boolean;

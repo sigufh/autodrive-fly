@@ -1,0 +1,96 @@
+{
+  "protocol": {
+    "name": "v7-t4-temporal-shuffle-input-energy-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-temporal-shuffle-input-energy-audit.yaml": "73d9ad7c7ebcd021144608b3bea6e6611a21caf0e4af71fc71246f819ad06ab8",
+      "src/fly_emotion/driving/v7_t4_temporal_shuffle_input_energy_audit.py": "13187ba16336bf5af0d3a6e0f5bd9ab2fd7b43bf39f02951fa9e07eb3d112efa",
+      "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
+      "configs/driving-v7-t4-synapse-microstep-precheck.yaml": "ca4273d0c57beb014adf0f9644834b9031231c196f44bbb56b03f3e8f1cd94eb",
+      "configs/driving-v7-t4-conductance.yaml": "47d358b4c49908f5f155e6e55f46c4ca57fc97b4a9802b3d06ce47f2bf77c841",
+      "configs/driving-v7-stage1-nested.yaml": "9b7660f7ff1e756195e8c10ad36891ec09c0b23cf34a2208dcfbde499ec0d163"
+    },
+    "condition_id": "S1-T01",
+    "stimulus_count": 8,
+    "brain_substeps_per_frame": 4,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "mean_absolute_energy_by_mode": {
+    "ordered": {
+      "pixel_temporal_difference": 0.03174620775729551,
+      "R1_R6_drive": 0.49999999856025207,
+      "centered_source_state": {
+        "Mi1": 0.38039632104618304,
+        "Tm3": 0.39629777247719167,
+        "Mi4": 0.3905416138636176,
+        "C3": 0.3862689482797029
+      }
+    },
+    "temporal_shuffle": {
+      "pixel_temporal_difference": 0.22091761161100337,
+      "R1_R6_drive": 0.49999999856025207,
+      "centered_source_state": {
+        "Mi1": 0.3956284534916766,
+        "Tm3": 0.41133069836216957,
+        "Mi4": 0.40084599322721515,
+        "C3": 0.40121827536251725
+      }
+    },
+    "static_sham": {
+      "pixel_temporal_difference": 0.00462063975418554,
+      "R1_R6_drive": 0.5,
+      "centered_source_state": {
+        "Mi1": 0.19388923932270155,
+        "Tm3": 0.18298951642784955,
+        "Mi4": 0.21200818076586836,
+        "C3": 0.20158498121750384
+      }
+    }
+  },
+  "energy_ratios": {
+    "temporal_shuffle_to_ordered": {
+      "pixel_temporal_difference": 6.958866183323421,
+      "R1_R6_drive": 1.0,
+      "centered_source_state": {
+        "Mi1": 1.0400427964276875,
+        "Tm3": 1.0379334099987734,
+        "Mi4": 1.0263848435040164,
+        "C3": 1.038701860839172
+      }
+    },
+    "static_sham_to_ordered": {
+      "pixel_temporal_difference": 0.14554934527963212,
+      "R1_R6_drive": 1.000000002879496,
+      "centered_source_state": {
+        "Mi1": 0.5097032452613071,
+        "Tm3": 0.4617475270779657,
+        "Mi4": 0.5428568255978593,
+        "C3": 0.521877262242507
+      }
+    }
+  },
+  "frame_multiset_preserved_for_every_shuffle": true,
+  "R1_R6_mean_absolute_energy_preserved": true,
+  "all_source_state_energy_ratios_within_five_percent": true,
+  "original_shuffle_output_ratio": 1.9173851345602673,
+  "original_shuffle_output_gate_passed": false,
+  "input_energy_mismatch_explains_original_output_failure": false,
+  "original_temporal_identifiability_failure_retained": true,
+  "authorize_new_energy_normalized_gate": false,
+  "authorize_T4_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "shuffle_output_exceeds_ordered_despite_matched_R1_R6_and_near_matched_source_energy",
+  "boundary": {
+    "input_energy_audit_does_not_replace_output_temporal_gate": true,
+    "exact_R1_R6_mean_absolute_energy_does_not_prove_equal_temporal_structure": true,
+    "modest_source_state_energy_difference_does_not_rescue_failed_shuffle_output": true,
+    "no_new_acceptance_threshold_defined": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

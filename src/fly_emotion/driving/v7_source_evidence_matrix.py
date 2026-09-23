@@ -34,6 +34,7 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
     t4_split = evidence["t4_individual_split"]
     edmond_retrieval = evidence["edmond_fig3_retrieval"]
     t4_fields = evidence["t4_recording_fields"]
+    t4_shuffle_energy = evidence["t4_temporal_shuffle_input_energy"]
     behnia_fast_sources = set(evidence["behnia_t4_fast"]["source_evidence"])
     behnia_availability = evidence["behnia_t4_fast_availability"]
     matulis_mi1 = evidence["matulis_mi1_voltage_availability"]
@@ -689,6 +690,22 @@ def evaluate_v7_source_evidence_matrix(root: Path) -> dict:
                 source == "Mi4"
                 and drews_phenotype[
                     "preregistered_independent_dynamic_validation_available"
+                ]
+            ),
+            "T4_microstep_shuffle_R1_R6_energy_preserved": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and t4_shuffle_energy["R1_R6_mean_absolute_energy_preserved"]
+            ),
+            "T4_microstep_shuffle_source_energy_within_five_percent": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and t4_shuffle_energy[
+                    "all_source_state_energy_ratios_within_five_percent"
+                ]
+            ),
+            "T4_microstep_temporal_failure_retained_after_energy_audit": (
+                source in {"Mi1", "Tm3", "Mi4", "C3"}
+                and t4_shuffle_energy[
+                    "original_temporal_identifiability_failure_retained"
                 ]
             ),
             "Drews_2020_recording_to_MaleCNS_body_crosswalk_found": (

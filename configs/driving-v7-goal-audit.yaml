@@ -1,4 +1,4 @@
-version: 4
+version: 5
 name: v7-objective-coverage-audit
 observed_on: "2026-09-23"
 objective_items:
@@ -75,6 +75,7 @@ evidence:
   t4_crossfit_retinal_symmetry_audit: artifacts/v7-t4-crossfit-retinal-symmetry-audit.json
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json
   t4_synapse_microstep_precheck: artifacts/v7-t4-synapse-microstep-precheck.json
+  t4_temporal_shuffle_input_energy_audit: artifacts/v7-t4-temporal-shuffle-input-energy-audit.json
   t4_source_dynamics_transfer_audit: artifacts/v7-t4-source-dynamics-transfer-audit.json
   t4_state_unit_mapping_audit: artifacts/v7-t4-state-unit-mapping-audit.json
   t4_source_identity_readiness_audit: artifacts/v7-t4-source-identity-readiness-audit.json

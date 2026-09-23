@@ -1,0 +1,30 @@
+version: 1
+name: v7-t4-temporal-shuffle-input-energy-audit
+observed_on: "2026-09-23"
+microstep_evidence: artifacts/v7-t4-synapse-microstep-precheck.json
+microstep_config: configs/driving-v7-t4-synapse-microstep-precheck.yaml
+conductance_config: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+source_types: [Mi1, Tm3, Mi4, C3]
+expected:
+  stimulus_count: 8
+  brain_substeps_per_frame: 4
+  frame_multiset_preserved: true
+  temporal_shuffle_to_ordered:
+    pixel_temporal_difference: 6.958866119384766
+    R1_R6_drive: 1.0
+    centered_source_state: {Mi1: 1.0400427964276875, Tm3: 1.0379334099987734, Mi4: 1.0263848435040164, C3: 1.038701860839172}
+  static_sham_to_ordered:
+    pixel_temporal_difference: 0.14554934203624725
+    R1_R6_drive: 1.000000238418579
+    centered_source_state: {Mi1: 0.5097032452613071, Tm3: 0.4617475270779657, Mi4: 0.5428568255978593, C3: 0.521877262242507}
+  maximum_shuffle_source_energy_relative_error: 0.05
+boundary:
+  input_energy_audit_does_not_replace_output_temporal_gate: true
+  exact_R1_R6_mean_absolute_energy_does_not_prove_equal_temporal_structure: true
+  modest_source_state_energy_difference_does_not_rescue_failed_shuffle_output: true
+  no_new_acceptance_threshold_defined: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

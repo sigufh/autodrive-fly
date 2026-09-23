@@ -317,6 +317,18 @@ def test_T4_source_recordings_do_not_supply_label_blind_transfer_contract() -> N
     assert 0.066 < flyvis["C3_median_time_constant_seconds"] < 0.068
     assert flyvis["C3_models_at_or_below_solver_dt"] == 21
     assert flyvis["C3_time_constant_transfer_authorized"] is False
+
+
+def test_t4_shuffle_energy_does_not_rescue_temporal_failure() -> None:
+    report = json.loads(REPORT.read_text())
+    energy = report["verified_T4_temporal_shuffle_input_energy"]
+    assert energy["frame_multiset_preserved"] is True
+    assert energy["R1_R6_mean_absolute_energy_preserved"] is True
+    assert energy["all_source_state_energy_ratios_within_five_percent"] is True
+    assert energy["shuffle_to_ordered_output_ratio"] > 1.9
+    assert energy["input_energy_mismatch_explains_output_failure"] is False
+    assert energy["temporal_identifiability_failure_retained"] is True
+    assert energy["new_energy_normalized_gate_authorized"] is False
     effective = report["verified_FlyVis_C3_effective_dynamics_readiness"]
     assert effective["pretrained_model_count"] == 50
     assert effective["fixed_denominator"] == 50
