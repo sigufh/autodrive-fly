@@ -1,0 +1,411 @@
+{
+  "protocol": {
+    "name": "v7-t5-population-kernel-alignment-failure-audit",
+    "observed_on": "2026-09-23",
+    "dependencies_sha256": {
+      "configs/driving-v7-t5-population-kernel-alignment-failure-audit.yaml": "9da94c82a9533deda150c499f05612e471f05b76a55f5cb4e7e7eb31520ce51a",
+      "src/fly_emotion/driving/v7_t5_population_kernel_alignment_failure_audit.py": "0ce1f9f9c4e8e1c19f071df64f7710999a77b6472ae460205ce55089a5a78af3",
+      "configs/driving-v7-kohn-portes-t5-ephys-audit.yaml": "6d36f3016dbfeb6dd0200e06df62efe2a9c2c0ab06934423fd8844e64502f904",
+      "configs/driving-v7-t5-population-kernel-robustness-audit.yaml": "e369746d6b70b2dcc105cf392a2a964beb9b6ee963bf1ff071838e4844be3479",
+      "artifacts/v7-t5-population-kernel-robustness-audit.json": "73135140e8621afb93ec94ffbd1cfcb4fc3c39a0175da73825f864565418e6db",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm1_SA.pickle": "7cd3cec1d4ba72516649aeec1bf80ca3e69f78a05dfcdd09e85ee8765a067584",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm2_SA.pickle": "d60d65590b7f8c7147fbeb7655c41c39422246e91f10bf9b01e976e7d6402e98",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm4_SA.pickle": "21652fc78b359c62d9e86ba764dfaf5a7b1dfd09ca2931510aa21cb829bbf73d",
+      "data/raw/kohn-portes-flexible-filtering/wn_Tm9_SA.pickle": "cb03948ce06729220bcb72266e58bbe63a96b9ab02a3878efdffbe8efabb3eb3"
+    },
+    "kernel_sample_interval_milliseconds": 10.0,
+    "maximum_oracle_lag_milliseconds": 250,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "thresholds": {
+    "minimum_mean_median_kernel_correlation": 0.8,
+    "minimum_median_leave_one_recording_id_out_correlation": 0.8,
+    "minimum_leave_one_recording_id_out_correlation": 0.0,
+    "minimum_partition_correlation_p05": 0.8,
+    "require_every_source": true
+  },
+  "source_results": {
+    "Tm1": {
+      "recording_id_count": 7,
+      "leave_one_recording_id_out": {
+        "folds": [
+          {
+            "held_out_recording_id": "190701",
+            "zero_lag_correlation": 0.928380852155633,
+            "oracle_shift_correlation": 0.9327375170763066,
+            "oracle_lag_milliseconds": 10.0
+          },
+          {
+            "held_out_recording_id": "190708",
+            "zero_lag_correlation": 0.870974175447607,
+            "oracle_shift_correlation": 0.9073919022994196,
+            "oracle_lag_milliseconds": 20.0
+          },
+          {
+            "held_out_recording_id": "190715",
+            "zero_lag_correlation": 0.9623867802334253,
+            "oracle_shift_correlation": 0.9623867802334253,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "190722",
+            "zero_lag_correlation": 0.9433005043103034,
+            "oracle_shift_correlation": 0.9542365454061116,
+            "oracle_lag_milliseconds": 10.0
+          },
+          {
+            "held_out_recording_id": "190729",
+            "zero_lag_correlation": 0.8687298508933518,
+            "oracle_shift_correlation": 0.9313032610630904,
+            "oracle_lag_milliseconds": 30.0
+          },
+          {
+            "held_out_recording_id": "201201",
+            "zero_lag_correlation": 0.8071397855736252,
+            "oracle_shift_correlation": 0.939767481779984,
+            "oracle_lag_milliseconds": -30.0
+          },
+          {
+            "held_out_recording_id": "210126",
+            "zero_lag_correlation": 0.7498781432736034,
+            "oracle_shift_correlation": 0.9170405406714669,
+            "oracle_lag_milliseconds": -40.0
+          }
+        ],
+        "zero_lag_summary": {
+          "count": 7,
+          "minimum": 0.7498781432736034,
+          "p05": 0.76705663596361,
+          "median": 0.870974175447607,
+          "maximum": 0.9623867802334253
+        },
+        "oracle_shift_summary": {
+          "count": 7,
+          "minimum": 0.9073919022994196,
+          "p05": 0.9102864938110338,
+          "median": 0.9327375170763066,
+          "maximum": 0.9623867802334253
+        }
+      },
+      "near_equal_partitions": {
+        "partition_count": 35,
+        "zero_lag_summary": {
+          "count": 35,
+          "minimum": 0.8138958780244046,
+          "p05": 0.8415390174658499,
+          "median": 0.9303607667492315,
+          "maximum": 0.9654945894508927
+        },
+        "oracle_shift_summary": {
+          "count": 35,
+          "minimum": 0.9463320781501886,
+          "p05": 0.9473159700704706,
+          "median": 0.9562878574207082,
+          "maximum": 0.9654945894508927
+        }
+      },
+      "oracle_lag_boundary_fraction": 0.0,
+      "original_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "oracle_diagnostic_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "oracle_all_shape_gates_passed": true
+    },
+    "Tm2": {
+      "recording_id_count": 5,
+      "leave_one_recording_id_out": {
+        "folds": [
+          {
+            "held_out_recording_id": "200927",
+            "zero_lag_correlation": 0.7662639157468818,
+            "oracle_shift_correlation": 0.806123379293452,
+            "oracle_lag_milliseconds": -30.0
+          },
+          {
+            "held_out_recording_id": "201013",
+            "zero_lag_correlation": 0.6463991254279933,
+            "oracle_shift_correlation": 0.6463991254279933,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "201119",
+            "zero_lag_correlation": 0.8730192790524275,
+            "oracle_shift_correlation": 0.8730192790524275,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "201125",
+            "zero_lag_correlation": 0.795254815536567,
+            "oracle_shift_correlation": 0.795254815536567,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "210721",
+            "zero_lag_correlation": 0.785694273562359,
+            "oracle_shift_correlation": 0.8332030947393206,
+            "oracle_lag_milliseconds": 20.0
+          }
+        ],
+        "zero_lag_summary": {
+          "count": 5,
+          "minimum": 0.6463991254279933,
+          "p05": 0.670372083491771,
+          "median": 0.785694273562359,
+          "maximum": 0.8730192790524275
+        },
+        "oracle_shift_summary": {
+          "count": 5,
+          "minimum": 0.6463991254279933,
+          "p05": 0.676170263449708,
+          "median": 0.806123379293452,
+          "maximum": 0.8730192790524275
+        }
+      },
+      "near_equal_partitions": {
+        "partition_count": 10,
+        "zero_lag_summary": {
+          "count": 10,
+          "minimum": 0.7510123657134844,
+          "p05": 0.76950266256901,
+          "median": 0.8133070262646118,
+          "maximum": 0.8622501558720058
+        },
+        "oracle_shift_summary": {
+          "count": 10,
+          "minimum": 0.7510123657134844,
+          "p05": 0.7733722055598051,
+          "median": 0.8232780210900885,
+          "maximum": 0.8622501558720058
+        }
+      },
+      "oracle_lag_boundary_fraction": 0.0,
+      "original_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": false,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": false
+      },
+      "oracle_diagnostic_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": false
+      },
+      "oracle_all_shape_gates_passed": false
+    },
+    "Tm4": {
+      "recording_id_count": 6,
+      "leave_one_recording_id_out": {
+        "folds": [
+          {
+            "held_out_recording_id": "200209",
+            "zero_lag_correlation": 0.9344767704925224,
+            "oracle_shift_correlation": 0.9344767704925224,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "200621",
+            "zero_lag_correlation": 0.9288476992260797,
+            "oracle_shift_correlation": 0.9453569139294449,
+            "oracle_lag_milliseconds": -10.0
+          },
+          {
+            "held_out_recording_id": "200703",
+            "zero_lag_correlation": 0.943685374498285,
+            "oracle_shift_correlation": 0.944313689127004,
+            "oracle_lag_milliseconds": 10.0
+          },
+          {
+            "held_out_recording_id": "200706",
+            "zero_lag_correlation": 0.9431670419086869,
+            "oracle_shift_correlation": 0.945166838165055,
+            "oracle_lag_milliseconds": 10.0
+          },
+          {
+            "held_out_recording_id": "200823",
+            "zero_lag_correlation": 0.9479294932314132,
+            "oracle_shift_correlation": 0.9479294932314132,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "200826",
+            "zero_lag_correlation": 0.876058815401695,
+            "oracle_shift_correlation": 0.933413220219501,
+            "oracle_lag_milliseconds": -20.0
+          }
+        ],
+        "zero_lag_summary": {
+          "count": 6,
+          "minimum": 0.876058815401695,
+          "p05": 0.8892560363577912,
+          "median": 0.9388219062006047,
+          "maximum": 0.9479294932314132
+        },
+        "oracle_shift_summary": {
+          "count": 6,
+          "minimum": 0.933413220219501,
+          "p05": 0.9336791077877564,
+          "median": 0.9447402636460295,
+          "maximum": 0.9479294932314132
+        }
+      },
+      "near_equal_partitions": {
+        "partition_count": 10,
+        "zero_lag_summary": {
+          "count": 10,
+          "minimum": 0.9180813637535853,
+          "p05": 0.9371672351651636,
+          "median": 0.9653934013234634,
+          "maximum": 0.9748969366934284
+        },
+        "oracle_shift_summary": {
+          "count": 10,
+          "minimum": 0.9334591935418323,
+          "p05": 0.9456250415486994,
+          "median": 0.9665574079134163,
+          "maximum": 0.9748969366934284
+        }
+      },
+      "oracle_lag_boundary_fraction": 0.0,
+      "original_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "oracle_diagnostic_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "oracle_all_shape_gates_passed": true
+    },
+    "Tm9": {
+      "recording_id_count": 6,
+      "leave_one_recording_id_out": {
+        "folds": [
+          {
+            "held_out_recording_id": "190812",
+            "zero_lag_correlation": 0.8796735902345538,
+            "oracle_shift_correlation": 0.8816613273110728,
+            "oracle_lag_milliseconds": 10.0
+          },
+          {
+            "held_out_recording_id": "191112",
+            "zero_lag_correlation": 0.865629499462066,
+            "oracle_shift_correlation": 0.865629499462066,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "191203",
+            "zero_lag_correlation": 0.949355116330283,
+            "oracle_shift_correlation": 0.9514169286736371,
+            "oracle_lag_milliseconds": -10.0
+          },
+          {
+            "held_out_recording_id": "191209",
+            "zero_lag_correlation": 0.8478525671341767,
+            "oracle_shift_correlation": 0.9196642800367534,
+            "oracle_lag_milliseconds": -50.0
+          },
+          {
+            "held_out_recording_id": "200115",
+            "zero_lag_correlation": 0.9534416876445798,
+            "oracle_shift_correlation": 0.9534416876445798,
+            "oracle_lag_milliseconds": 0.0
+          },
+          {
+            "held_out_recording_id": "200720",
+            "zero_lag_correlation": 0.8924004292616471,
+            "oracle_shift_correlation": 0.9074631816009939,
+            "oracle_lag_milliseconds": 20.0
+          }
+        ],
+        "zero_lag_summary": {
+          "count": 6,
+          "minimum": 0.8478525671341767,
+          "p05": 0.8522968002161491,
+          "median": 0.8860370097481005,
+          "maximum": 0.9534416876445798
+        },
+        "oracle_shift_summary": {
+          "count": 6,
+          "minimum": 0.865629499462066,
+          "p05": 0.8696374564243177,
+          "median": 0.9135637308188737,
+          "maximum": 0.9534416876445798
+        }
+      },
+      "near_equal_partitions": {
+        "partition_count": 10,
+        "zero_lag_summary": {
+          "count": 10,
+          "minimum": 0.913217640725426,
+          "p05": 0.9202411553154414,
+          "median": 0.9394029463024116,
+          "maximum": 0.968542940701161
+        },
+        "oracle_shift_summary": {
+          "count": 10,
+          "minimum": 0.9334974059506889,
+          "p05": 0.9351071513256101,
+          "median": 0.9468267982016745,
+          "maximum": 0.968542940701161
+        }
+      },
+      "oracle_lag_boundary_fraction": 0.0,
+      "original_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "oracle_diagnostic_gates": {
+        "mean_median_kernel_correlation": true,
+        "median_leave_one_recording_id_out_correlation": true,
+        "minimum_leave_one_recording_id_out_correlation": true,
+        "partition_correlation_p05": true
+      },
+      "oracle_all_shape_gates_passed": true
+    }
+  },
+  "Tm2_zero_lag_LOO_median": 0.785694273562359,
+  "Tm2_oracle_shift_LOO_median": 0.806123379293452,
+  "Tm2_zero_lag_partition_p05": 0.76950266256901,
+  "Tm2_oracle_shift_partition_p05": 0.7733722055598051,
+  "Tm2_oracle_all_shape_gates_passed": false,
+  "bounded_latency_jitter_explains_Tm2_robustness_failure": false,
+  "original_population_kernel_robustness_failure_retained": true,
+  "authorize_oracle_aligned_population_kernel": false,
+  "authorize_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_runtime_integration": false,
+  "stop_reason": "Tm2_partition_p05_remains_below_frozen_threshold_after_bounded_oracle_alignment",
+  "boundary": {
+    "retrospective_failure_decomposition_only": true,
+    "oracle_lag_uses_both_compared_waveforms": true,
+    "oracle_lag_is_not_deployable": true,
+    "oracle_lag_is_not_a_fitted_source_kernel": true,
+    "original_thresholds_reused_without_change": true,
+    "original_robustness_gate_retained": true,
+    "every_recording_id_retained": true,
+    "no_outlier_removal": true,
+    "recording_id_is_not_biological_individual_id": true,
+    "no_direction_or_subtype_label_used": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

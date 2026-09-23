@@ -2491,6 +2491,13 @@ Mi4 ON/OFF。因此有限 latency jitter 也不能解释全部失败；原 cross
 剔除的“坏个体集合”也都不能解释失败，不授权事后排除个体。详见
 `artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`。
 
+T5 的 Tm2 recording-ID 稳健性失败也使用同样的有界时移诊断复核。逐比较事后选择
+±250 ms 的不可部署 oracle 时移后，LOO 中位相关从 0.7857 上升到 0.8061，但 exhaustive
+near-equal partition 的 p05 只从 0.7695 上升到 0.7734，仍低于冻结的 0.80 阈值。因而
+完整 gate 仍失败，不能只凭越线的中位数宣布 Tm2 稳定，也不授权 aligned Tm2 kernel
+或 T5 functional precheck。详见
+`artifacts/v7-t5-population-kernel-alignment-failure-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

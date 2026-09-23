@@ -39,6 +39,9 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
     measured_kernel_support = evidence["measured_kernel_support_coverage"]
     measured_kernel_full_support = evidence["measured_kernel_full_support"]
     population_kernel_robustness = evidence["population_kernel_robustness"]
+    population_kernel_alignment = evidence[
+        "population_kernel_alignment_failure"
+    ]
     population_kernel_aggregation = evidence[
         "population_kernel_aggregation_semantics"
     ]
@@ -193,6 +196,19 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
         ),
         "Tm2_population_kernel_recording_id_robustness_passed": (
             population_kernel_robustness["source_results"]["Tm2"]["passed"]
+        ),
+        "Tm2_oracle_alignment_all_shape_gates_passed": (
+            population_kernel_alignment["Tm2_oracle_all_shape_gates_passed"]
+        ),
+        "Tm2_bounded_latency_jitter_explains_robustness_failure": (
+            population_kernel_alignment[
+                "bounded_latency_jitter_explains_Tm2_robustness_failure"
+            ]
+        ),
+        "Tm2_oracle_aligned_population_kernel_authorized": (
+            population_kernel_alignment[
+                "authorize_oracle_aligned_population_kernel"
+            ]
         ),
         "population_kernel_independent_biological_validation_available": (
             population_kernel_robustness[
@@ -445,6 +461,19 @@ def evaluate_v7_t5_source_transfer_synthesis_audit(root: Path) -> dict:
             ]["Tm2"]["exhaustive_near_equal_recording_id_partitions"][
                 "summary"
             ]["p05"],
+            "Tm2_oracle_shift_LOO_median_correlation": (
+                population_kernel_alignment["Tm2_oracle_shift_LOO_median"]
+            ),
+            "Tm2_oracle_shift_partition_correlation_p05": (
+                population_kernel_alignment[
+                    "Tm2_oracle_shift_partition_p05"
+                ]
+            ),
+            "Tm2_oracle_maximum_lag_milliseconds": (
+                population_kernel_alignment["protocol"][
+                    "maximum_oracle_lag_milliseconds"
+                ]
+            ),
             "population_kernel_author_call_count": population_kernel_aggregation[
                 "call_summary"
             ]["call_count"],

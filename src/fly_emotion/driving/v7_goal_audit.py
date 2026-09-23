@@ -890,6 +890,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "Tm2_partition_correlation_p05"
                     ]
                 ),
+                "T5_Tm2_oracle_shift_LOO_median_correlation": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_oracle_shift_LOO_median_correlation"
+                    ]
+                ),
+                "T5_Tm2_oracle_shift_partition_correlation_p05": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_oracle_shift_partition_correlation_p05"
+                    ]
+                ),
+                "T5_Tm2_oracle_maximum_lag_milliseconds": (
+                    t5_source_transfer_synthesis_audit["incremental_evidence"][
+                        "Tm2_oracle_maximum_lag_milliseconds"
+                    ]
+                ),
+                "T5_Tm2_oracle_alignment_all_shape_gates_passed": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_oracle_alignment_all_shape_gates_passed"
+                    ]
+                ),
+                "T5_Tm2_bounded_latency_explains_robustness_failure": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_bounded_latency_jitter_explains_robustness_failure"
+                    ]
+                ),
+                "T5_Tm2_oracle_aligned_kernel_authorized": (
+                    t5_source_transfer_synthesis_audit["gates"][
+                        "Tm2_oracle_aligned_population_kernel_authorized"
+                    ]
+                ),
                 "T5_population_kernel_author_default_baseline_verified": (
                     t5_source_transfer_synthesis_audit["gates"][
                         "population_kernel_author_default_baseline_verified"
@@ -4361,6 +4391,12 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T5_population_kernel_robustness_failing_sources",
                     "T5_Tm2_recording_id_vs_rest_median_correlation",
                     "T5_Tm2_partition_correlation_p05",
+                    "T5_Tm2_oracle_shift_LOO_median_correlation",
+                    "T5_Tm2_oracle_shift_partition_correlation_p05",
+                    "T5_Tm2_oracle_maximum_lag_milliseconds",
+                    "T5_Tm2_oracle_alignment_all_shape_gates_passed",
+                    "T5_Tm2_bounded_latency_explains_robustness_failure",
+                    "T5_Tm2_oracle_aligned_kernel_authorized",
                     "T5_population_kernel_author_default_baseline_verified",
                     "T5_population_kernel_no_baseline_matches_author_default",
                     "T5_population_kernel_author_row_weighting_exactly_reproduced",

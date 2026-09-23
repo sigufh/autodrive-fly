@@ -1,0 +1,24 @@
+version: 1
+name: v7-t5-population-kernel-alignment-failure-audit
+observed_on: "2026-09-23"
+source_config: configs/driving-v7-kohn-portes-t5-ephys-audit.yaml
+robustness_protocol: configs/driving-v7-t5-population-kernel-robustness-audit.yaml
+robustness_evidence: artifacts/v7-t5-population-kernel-robustness-audit.json
+source_order: [Tm1, Tm2, Tm4, Tm9]
+kernel_length: 499
+maximum_oracle_lag_milliseconds: 250
+boundary:
+  retrospective_failure_decomposition_only: true
+  oracle_lag_uses_both_compared_waveforms: true
+  oracle_lag_is_not_deployable: true
+  oracle_lag_is_not_a_fitted_source_kernel: true
+  original_thresholds_reused_without_change: true
+  original_robustness_gate_retained: true
+  every_recording_id_retained: true
+  no_outlier_removal: true
+  recording_id_is_not_biological_individual_id: true
+  no_direction_or_subtype_label_used: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

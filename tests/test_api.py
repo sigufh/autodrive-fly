@@ -246,6 +246,16 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         0.785694273562359
     )
     assert boundaries["T5_Tm2_partition_correlation_p05"] == 0.76950266256901
+    assert boundaries["T5_Tm2_oracle_shift_LOO_median_correlation"] == (
+        0.806123379293452
+    )
+    assert boundaries["T5_Tm2_oracle_shift_partition_correlation_p05"] == (
+        0.7733722055598051
+    )
+    assert boundaries["T5_Tm2_oracle_maximum_lag_milliseconds"] == 250
+    assert boundaries["T5_Tm2_oracle_alignment_all_shape_gates_passed"] is False
+    assert boundaries["T5_Tm2_bounded_latency_explains_robustness_failure"] is False
+    assert boundaries["T5_Tm2_oracle_aligned_kernel_authorized"] is False
     assert boundaries["T5_population_kernel_author_default_baseline_verified"] is True
     assert boundaries["T5_population_kernel_no_baseline_matches_author_default"] is True
     assert (

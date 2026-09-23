@@ -31,6 +31,9 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
         "population_kernel_robustness_failing_sources": ["Tm2"],
         "Tm2_recording_id_vs_rest_median_correlation": 0.785694273562359,
         "Tm2_partition_correlation_p05": 0.76950266256901,
+        "Tm2_oracle_shift_LOO_median_correlation": 0.806123379293452,
+        "Tm2_oracle_shift_partition_correlation_p05": 0.7733722055598051,
+        "Tm2_oracle_maximum_lag_milliseconds": 250,
         "population_kernel_author_call_count": 9,
         "population_kernel_explicit_baseline_call_count": 0,
         "Tm1_row_vs_recording_id_weighted_correlation": 0.9995598341098436,
@@ -249,6 +252,9 @@ def test_incremental_shape_evidence_is_kept_separate_from_transfer_gates() -> No
     assert gates["measured_kernel_zero_tail_direction_scoring_performed"] is False
     assert gates["population_kernel_recording_id_robustness_passed"] is False
     assert gates["Tm2_population_kernel_recording_id_robustness_passed"] is False
+    assert gates["Tm2_oracle_alignment_all_shape_gates_passed"] is False
+    assert gates["Tm2_bounded_latency_jitter_explains_robustness_failure"] is False
+    assert gates["Tm2_oracle_aligned_population_kernel_authorized"] is False
     assert gates["population_kernel_independent_biological_validation_available"] is False
     assert gates["population_kernel_transfer_authorized"] is False
     assert gates["population_kernel_author_default_baseline_verified"] is True

@@ -485,3 +485,8 @@ v7-audit-fig3-source-kernel-alignment-failure:
 	.venv/bin/autodrive-fly v7-audit-fig3-source-kernel-alignment-failure
 
 .PHONY: v7-audit-fig3-source-kernel-alignment-failure
+
+v7-audit-t5-population-kernel-alignment-failure:
+	.venv/bin/autodrive-fly v7-audit-t5-population-kernel-alignment-failure
+
+.PHONY: v7-audit-t5-population-kernel-alignment-failure

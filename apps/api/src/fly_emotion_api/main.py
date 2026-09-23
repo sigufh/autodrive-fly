@@ -728,6 +728,24 @@ def _verified_v7_status(root: Path) -> dict:
                 "T5_Tm2_partition_correlation_p05": visual[
                     "T5_Tm2_partition_correlation_p05"
                 ],
+                "T5_Tm2_oracle_shift_LOO_median_correlation": visual[
+                    "T5_Tm2_oracle_shift_LOO_median_correlation"
+                ],
+                "T5_Tm2_oracle_shift_partition_correlation_p05": visual[
+                    "T5_Tm2_oracle_shift_partition_correlation_p05"
+                ],
+                "T5_Tm2_oracle_maximum_lag_milliseconds": visual[
+                    "T5_Tm2_oracle_maximum_lag_milliseconds"
+                ],
+                "T5_Tm2_oracle_alignment_all_shape_gates_passed": visual[
+                    "T5_Tm2_oracle_alignment_all_shape_gates_passed"
+                ],
+                "T5_Tm2_bounded_latency_explains_robustness_failure": visual[
+                    "T5_Tm2_bounded_latency_explains_robustness_failure"
+                ],
+                "T5_Tm2_oracle_aligned_kernel_authorized": visual[
+                    "T5_Tm2_oracle_aligned_kernel_authorized"
+                ],
                 "T5_population_kernel_author_default_baseline_verified": visual[
                     "T5_population_kernel_author_default_baseline_verified"
                 ],

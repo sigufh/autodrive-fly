@@ -471,6 +471,9 @@ from .driving.v7_t5_physical_time_transfer_audit import (
 from .driving.v7_t5_population_kernel_aggregation_semantics_audit import (
     evaluate_v7_t5_population_kernel_aggregation_semantics_audit,
 )
+from .driving.v7_t5_population_kernel_alignment_failure_audit import (
+    evaluate_v7_t5_population_kernel_alignment_failure_audit,
+)
 from .driving.v7_t5_population_kernel_robustness_audit import (
     evaluate_v7_t5_population_kernel_robustness_audit,
 )
@@ -816,6 +819,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t5-physical-time-transfer")
     subparsers.add_parser("v7-audit-t5-population-kernel-robustness")
     subparsers.add_parser("v7-audit-t5-population-kernel-aggregation-semantics")
+    subparsers.add_parser("v7-audit-t5-population-kernel-alignment-failure")
     subparsers.add_parser("v7-audit-t5-tm2-loo-full-support")
     subparsers.add_parser("v7-audit-t5-temporal-shuffle-input-energy")
     subparsers.add_parser("v7-audit-t5-increment-order-control-discovery")
@@ -1636,6 +1640,14 @@ def main() -> None:
     if args.command == "v7-audit-t5-population-kernel-aggregation-semantics":
         report = evaluate_v7_t5_population_kernel_aggregation_semantics_audit(root)
         target = root / "artifacts/v7-t5-population-kernel-aggregation-semantics-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t5-population-kernel-alignment-failure":
+        report = evaluate_v7_t5_population_kernel_alignment_failure_audit(root)
+        target = root / "artifacts/v7-t5-population-kernel-alignment-failure-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

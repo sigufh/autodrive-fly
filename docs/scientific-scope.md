@@ -809,6 +809,14 @@ low SNR nor a stable removable "bad-cell" set explains the failure, so no
 post-hoc cell exclusion is authorized
 (`artifacts/v7-fig3-source-kernel-alignment-failure-audit.json`).
 
+The T5 Tm2 recording-ID robustness failure was checked with the same bounded
+alignment diagnostic. A non-deployable per-comparison oracle shift within
++/-250 ms raises the leave-one-recording-ID-out median from 0.7857 to 0.8061,
+but the exhaustive near-equal-partition p05 only changes from 0.7695 to 0.7734
+and remains below the frozen 0.80 threshold. The original all-gates result
+therefore remains false; no aligned Tm2 kernel or T5 functional precheck is
+authorized (`artifacts/v7-t5-population-kernel-alignment-failure-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

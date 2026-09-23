@@ -251,6 +251,12 @@ export type V7Status = {
     T5_population_kernel_robustness_failing_sources?: string[];
     T5_Tm2_recording_id_vs_rest_median_correlation?: number;
     T5_Tm2_partition_correlation_p05?: number;
+    T5_Tm2_oracle_shift_LOO_median_correlation?: number;
+    T5_Tm2_oracle_shift_partition_correlation_p05?: number;
+    T5_Tm2_oracle_maximum_lag_milliseconds?: number;
+    T5_Tm2_oracle_alignment_all_shape_gates_passed?: boolean;
+    T5_Tm2_bounded_latency_explains_robustness_failure?: boolean;
+    T5_Tm2_oracle_aligned_kernel_authorized?: boolean;
     T5_population_kernel_author_default_baseline_verified?: boolean;
     T5_population_kernel_no_baseline_matches_author_default?: boolean;
     T5_population_kernel_author_row_weighting_exactly_reproduced?: boolean;
