@@ -1268,6 +1268,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "MaleCNS_Tm4_left_coordinate_writeback_authorized": visual[
                     "MaleCNS_Tm4_left_coordinate_writeback_authorized"
                 ],
+                "MaleCNS_Tm4_synapse_count_right_hex_distance_counts": visual[
+                    "MaleCNS_Tm4_synapse_count_right_hex_distance_counts"
+                ],
+                "MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction": visual[
+                    "MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction"
+                ],
+                "MaleCNS_Tm4_synapse_count_left_distinct_candidate_count": visual[
+                    "MaleCNS_Tm4_synapse_count_left_distinct_candidate_count"
+                ],
+                "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized": visual[
+                    "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized"
+                ],
                 "CT1_per_synapse_Lo1_columnar_retinotopy_available": visual[
                     "MaleCNS_CT1_columnar_Lo1_retinotopy_available"
                 ],

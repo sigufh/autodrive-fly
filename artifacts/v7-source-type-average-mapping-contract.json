@@ -6,7 +6,7 @@
       "configs/driving-v7-source-type-average-mapping-contract.yaml": "6a08e1db2f0330341ae43dde2ea254ce066890db10ce0a457384a359fd968c84",
       "src/fly_emotion/driving/v7_source_type_average_mapping_contract.py": "61a50955dd01dac1d04e9b3dd9c61914f8f6a736444d2d600a20b90beabd5bf3",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
-      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "1b0fce460e3ab3ac7c36e463d232dd5a31e7fb64d3c9b4d43911a5355d222fda",
+      "artifacts/v7-malecns-source-mapping-readiness-audit.json": "1a3d968f36555e8677c93c66c3138a8c789e64b791e8d81a69d296b64231750f",
       "artifacts/v7-t4-source-identity-readiness-audit.json": "2c912cc31cfd73d5e29128ddc232048c4786792f80b8e36c05830ecce7f087e8",
       "artifacts/v7-kohn-portes-t5-ephys-audit.json": "7909260ddcfddf6c6332fd3befbabe640ce2b4a4b1988d72c670fd79aebdc5e7"
     },

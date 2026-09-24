@@ -27,8 +27,17 @@ def test_right_validation_blocks_left_candidate_writeback() -> None:
     assert report["sample_results"]["R"]["unique_candidate_count"] == 48
     assert report["sample_results"]["R"]["exact_native_match_count"] == 28
     assert report["right_native_validation_exact_fraction"] == 28 / 48
+    assert report["right_native_candidate_hex_distance_counts"] == {
+        "0": 28,
+        "1": 5,
+        "2": 14,
+        "3": 1,
+    }
+    assert report["right_native_candidate_within_one_hex_fraction"] == 33 / 48
     assert report["sample_results"]["L"]["unique_candidate_count"] == 48
     assert report["left_missing_unique_candidate_fraction"] == 1.0
+    assert report["left_missing_distinct_candidate_hex_count"] == 48
+    assert report["authorize_post_hoc_hex_distance_tolerance"] is False
     assert report["official_synapse_count_candidate_is_native_equivalent_for_Tm4"] is False
     assert report["authorize_left_Tm4_coordinate_writeback"] is False
     assert report["authorize_source_mapping_gate_change"] is False

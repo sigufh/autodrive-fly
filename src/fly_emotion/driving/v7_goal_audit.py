@@ -2781,6 +2781,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "authorize_left_Tm4_coordinate_writeback"
                     ]
                 ),
+                "MaleCNS_Tm4_synapse_count_right_hex_distance_counts": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "right_native_candidate_hex_distance_counts"
+                    ]
+                ),
+                "MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "right_native_candidate_within_one_hex_fraction"
+                    ]
+                ),
+                "MaleCNS_Tm4_synapse_count_left_distinct_candidate_count": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "left_missing_distinct_candidate_hex_count"
+                    ]
+                ),
+                "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized": (
+                    malecns_tm4_synapse_column_boundary_audit[
+                        "authorize_post_hoc_hex_distance_tolerance"
+                    ]
+                ),
                 "MaleCNS_Tm9_unlocated_source_body_count": len(
                     malecns_source_mapping_readiness_audit["source_mapping"]["Tm9"][
                         "unlocated_body_ids"
@@ -4675,6 +4695,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction",
                     "MaleCNS_Tm4_synapse_count_candidate_native_equivalent",
                     "MaleCNS_Tm4_left_coordinate_writeback_authorized",
+                    "MaleCNS_Tm4_synapse_count_right_hex_distance_counts",
+                    "MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction",
+                    "MaleCNS_Tm4_synapse_count_left_distinct_candidate_count",
+                    "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized",
                     "Fendl_2021_target_Rdl_localization_verified",
                     "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
                     "Fendl_2021_source_specific_contact_resolved",

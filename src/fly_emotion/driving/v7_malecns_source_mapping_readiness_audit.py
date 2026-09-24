@@ -186,6 +186,16 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 if source_type == "Tm4"
                 else None
             ),
+            "official_synapse_count_validation_hex_distance_counts": (
+                tm4_synapse["right_native_candidate_hex_distance_counts"]
+                if source_type == "Tm4"
+                else None
+            ),
+            "official_synapse_count_missing_side_distinct_candidate_count": (
+                tm4_synapse["left_missing_distinct_candidate_hex_count"]
+                if source_type == "Tm4"
+                else None
+            ),
         }
     ct1_ids = sorted(graph.body_ids[np.flatnonzero(node_types == "CT1")].astype(int).tolist())
     if ct1_ids != config["CT1_expected_body_ids"]:

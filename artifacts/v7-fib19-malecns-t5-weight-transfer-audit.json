@@ -7,7 +7,7 @@
       "src/fly_emotion/driving/v7_fib19_malecns_t5_weight_transfer_audit.py": "3196f480c7aefc818bc07974b79c90f3f50b0f1fa323fa6d3fed9962d6231512",
       "artifacts/v7-kohn-portes-tm-to-t5-model-audit.json": "3829ffc6d607daf9522a8ee21bdba9f437b4f97ab12af9f6177e93be06877f37",
       "artifacts/v7-visual-target-input-audit.json": "6b37ff019b74d1fa7c6a5a7317959f89541a34196e9d4334f1e256192f5d749e",
-      "artifacts/v7-t5-source-mapping-scope-audit.json": "1f256836161694adb1d4eeafc831181040e44fcc46997da38d11756e52cfee47",
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "72c790d522dae639949aef8003d13fcfa8d53c6f5d4cde1d7a608783f666713b",
       "data/raw/kohn-portes-flexible-filtering/history/model-inputs/T5_input_Lo1.csv": "49b23a4eae5420053d639d540ec4a378686d3dfe03bc7f704b53be5d4d60b152"
     },
     "parameter_fit": false,

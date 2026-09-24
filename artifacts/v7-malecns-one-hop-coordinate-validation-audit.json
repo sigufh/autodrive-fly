@@ -5,7 +5,7 @@
     "dependencies_sha256": {
       "configs/driving-v7-malecns-one-hop-coordinate-validation-audit.yaml": "6dba1a026e87ae7118927afa9a36f269e66e6a227d18310797e3820a57c02ee7",
       "src/fly_emotion/driving/v7_malecns_one_hop_coordinate_validation_audit.py": "b4da804f3b44dbdb4f24e7c87294b2031983a939631a42352581f5521fd61f14",
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "b98cf56bf431f77a2ab16b1fb778bd5b5206e14a0e0d68a821ada66cbeae587a",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "57927d6f693391c94d8442b84637fa6ca99b784af5f8edc85d761823f3548a15",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
       "data/processed/malecns-v1.0/body_ids.npy": "ab90597b7b0ce07cbc22cb39a65b70bea2ac73cc7fd225951bd9d73f2fc8dd3f",

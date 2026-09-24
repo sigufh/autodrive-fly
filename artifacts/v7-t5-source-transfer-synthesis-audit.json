@@ -29,9 +29,9 @@
       "artifacts/v7-t5-temporal-shuffle-input-energy-audit.json": "95677d75587b62ad8cccf675eaed9688d8508c29a54812096b30cb9aa89cd58b",
       "artifacts/v7-t5-increment-order-control-discovery-audit.json": "6d289abac121555b2456f21558c318b93c3174f9951cba50045efadbb4ec4866",
       "artifacts/v7-t5-increment-order-control-replication.json": "76cca88180298980e24e988cee7c4108609062a4485d95855960bb7591f4e2b2",
-      "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "1db0681c0b081d39062abdc4e07810361317e6453c9b219bbff5168b8128e32b",
+      "artifacts/v7-fib19-malecns-t5-weight-transfer-audit.json": "2df3bca7fd80a9be2105a03ab34280e1f26c794a248d8ba4bd563de4a86d4abd",
       "artifacts/v7-kohn-portes-t5-moving-bar-generalization-audit.json": "4eb0194a5cbe6a4241c7e4a34402c2a3002210dfb750fe252a2bdcc6ceaadc54",
-      "artifacts/v7-t5-source-mapping-scope-audit.json": "1f256836161694adb1d4eeafc831181040e44fcc46997da38d11756e52cfee47"
+      "artifacts/v7-t5-source-mapping-scope-audit.json": "72c790d522dae639949aef8003d13fcfa8d53c6f5d4cde1d7a608783f666713b"
     },
     "parameter_fit": false,
     "functional_stimulus_evaluated": false,

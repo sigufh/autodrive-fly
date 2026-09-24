@@ -1,4 +1,4 @@
-version: 1
+version: 2
 name: v7-malecns-tm4-synapse-column-boundary-audit
 observed_on: "2026-09-24"
 annotations: data/raw/malecns-v1.0/body-annotations.feather
@@ -15,7 +15,9 @@ expected:
   sample_count_by_side: 48
   right_unique_candidate_count: 48
   right_exact_candidate_count: 28
+  right_hex_distance_counts: {0: 28, 1: 5, 2: 14, 3: 1}
   left_unique_candidate_count: 48
+  left_distinct_candidate_count: 48
 boundary:
   official_synapse_count_method_is_a_fallback_not_manual_assignment: true
   right_native_sample_is_validation_only: true
@@ -23,6 +25,7 @@ boundary:
   bounded_sample_is_not_full_population_validation: true
   candidate_coordinate_is_not_written_to_annotation: true
   no_acceptance_threshold_defined: true
+  no_post_hoc_hex_distance_tolerance_defined: true
   no_nearest_neighbor_or_tissue_xyz_conversion: true
   no_parameter_fit: true
   no_target_activity_injection: true

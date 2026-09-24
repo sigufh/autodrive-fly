@@ -844,6 +844,11 @@ candidate availability. Every sample produced a unique candidate, but only 28/48
 the 48/48 unique left-side candidates are retained only as structural candidates;
 no native-coordinate writeback or mapping-gate change is authorized
 (`artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json`).
+Of the 20 non-exact right-side candidates, five are one hex away, fourteen are
+two hexes away, and one is three hexes away; only 33/48 are exact or adjacent.
+All 48 left-side candidates are mutually distinct, but collision-free candidates
+do not repair the insufficient right-side validation. No post-hoc distance
+tolerance is introduced.
 
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.

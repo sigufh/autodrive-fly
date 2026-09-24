@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from pathlib import Path
 
 import pyarrow.feather as feather
@@ -29,6 +30,12 @@ def _spaced_body_ids(frame, count: int, sort_columns: list[str]) -> list[int]:
     if len(indices) != count:
         raise ValueError("Tm4 deterministic sample contains duplicate indices")
     return ordered.iloc[indices]["bodyId"].astype(int).tolist()
+
+
+def _hex_distance(first: list[int], second: list[int]) -> int:
+    delta_q = int(first[0]) - int(second[0])
+    delta_r = int(first[1]) - int(second[1])
+    return max(abs(delta_q), abs(delta_r), abs(delta_q + delta_r))
 
 
 def evaluate_v7_malecns_tm4_synapse_column_boundary_audit(root: Path) -> dict:
@@ -129,6 +136,11 @@ def evaluate_v7_malecns_tm4_synapse_column_boundary_audit(root: Path) -> dict:
                         and candidate["unique_mode"]
                         and candidate["recovered_hex"] == native
                     ),
+                    "candidate_to_native_hex_distance": (
+                        _hex_distance(candidate["recovered_hex"], native)
+                        if native is not None and candidate["unique_mode"]
+                        else None
+                    ),
                 }
             )
         unique_count = sum(item["unique_candidate"] for item in records)
@@ -143,6 +155,27 @@ def evaluate_v7_malecns_tm4_synapse_column_boundary_audit(root: Path) -> dict:
             "exact_native_match_fraction": (
                 exact_count / unique_count if side == "R" and unique_count else None
             ),
+            "candidate_to_native_hex_distance_counts": (
+                {
+                    str(distance): count
+                    for distance, count in sorted(
+                        Counter(
+                            item["candidate_to_native_hex_distance"]
+                            for item in records
+                            if item["candidate_to_native_hex_distance"] is not None
+                        ).items()
+                    )
+                }
+                if side == "R"
+                else None
+            ),
+            "distinct_candidate_hex_count": len(
+                {
+                    tuple(item["candidate_hex"])
+                    for item in records
+                    if item["unique_candidate"]
+                }
+            ),
             "records": records,
         }
     if results["R"]["unique_candidate_count"] != int(
@@ -155,6 +188,16 @@ def evaluate_v7_malecns_tm4_synapse_column_boundary_audit(root: Path) -> dict:
         expected["left_unique_candidate_count"]
     ):
         raise ValueError("left Tm4 synapse-count availability changed")
+    expected_distances = {
+        str(distance): int(count)
+        for distance, count in expected["right_hex_distance_counts"].items()
+    }
+    if results["R"]["candidate_to_native_hex_distance_counts"] != expected_distances:
+        raise ValueError("right Tm4 hex-distance distribution changed")
+    if results["L"]["distinct_candidate_hex_count"] != int(
+        expected["left_distinct_candidate_count"]
+    ):
+        raise ValueError("left Tm4 candidate collision count changed")
 
     return {
         "protocol": {
@@ -185,6 +228,20 @@ def evaluate_v7_malecns_tm4_synapse_column_boundary_audit(root: Path) -> dict:
         "left_missing_unique_candidate_fraction": results["L"][
             "unique_candidate_fraction"
         ],
+        "right_native_candidate_hex_distance_counts": results["R"][
+            "candidate_to_native_hex_distance_counts"
+        ],
+        "right_native_candidate_within_one_hex_fraction": (
+            (
+                results["R"]["candidate_to_native_hex_distance_counts"]["0"]
+                + results["R"]["candidate_to_native_hex_distance_counts"]["1"]
+            )
+            / results["R"]["sample_count"]
+        ),
+        "left_missing_distinct_candidate_hex_count": results["L"][
+            "distinct_candidate_hex_count"
+        ],
+        "authorize_post_hoc_hex_distance_tolerance": False,
         "official_synapse_count_candidate_is_native_equivalent_for_Tm4": False,
         "authorize_left_Tm4_coordinate_writeback": False,
         "authorize_source_mapping_gate_change": False,

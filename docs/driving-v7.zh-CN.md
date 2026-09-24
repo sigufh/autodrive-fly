@@ -2518,6 +2518,9 @@ body ID 分层取 48 个检查候选可用性。两侧 48/48 都得到唯一候�
 （58.3%）精确复现 native annotation。因此左侧 48/48 的唯一候选只保留为结构候选，
 不授权写回 native 坐标，也不改变 mapping gate。详见
 `artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json`。
+右侧 20 个非精确候选中，距 native 1/2/3 列的数量分别为 5/14/1，只有 33/48
+属于精确或相邻列；左侧 48 个候选彼此无碰撞，但这不能弥补右侧验证不足。因此不新增
+“容许相差一列或两列”的事后阈值。
 
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持

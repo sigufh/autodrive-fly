@@ -73,6 +73,18 @@ def test_one_hop_coordinates_close_columnar_gaps_without_fabrication() -> None:
         == 1.0
     )
     assert mapping["Tm4"]["official_synapse_count_candidate_native_equivalent"] is False
+    assert mapping["Tm4"]["official_synapse_count_validation_hex_distance_counts"] == {
+        "0": 28,
+        "1": 5,
+        "2": 14,
+        "3": 1,
+    }
+    assert (
+        mapping["Tm4"][
+            "official_synapse_count_missing_side_distinct_candidate_count"
+        ]
+        == 48
+    )
 
 
 def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:

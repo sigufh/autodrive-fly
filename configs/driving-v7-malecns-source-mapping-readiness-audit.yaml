@@ -1,4 +1,4 @@
-version: 3
+version: 4
 name: v7-malecns-source-mapping-readiness-audit
 observed_on: "2026-09-19"
 data_manifest: configs/data-manifest.yaml

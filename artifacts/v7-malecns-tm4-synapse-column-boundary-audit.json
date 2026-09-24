@@ -3,8 +3,8 @@
     "name": "v7-malecns-tm4-synapse-column-boundary-audit",
     "observed_on": "2026-09-24",
     "dependencies_sha256": {
-      "configs/driving-v7-malecns-tm4-synapse-column-boundary-audit.yaml": "709d9e9f45e8abd08b2dbd96afa25b0703e87eb997bb144a9edeb69a2927352c",
-      "src/fly_emotion/driving/v7_malecns_tm4_synapse_column_boundary_audit.py": "74c9787538f475d71f577d6c5d9b81aed090160ffce54ee6165f10a9aa5d72e0",
+      "configs/driving-v7-malecns-tm4-synapse-column-boundary-audit.yaml": "80ab669a78c67abfd0c29648b1d615716941f8d144da48ea7656d33ee72db123",
+      "src/fly_emotion/driving/v7_malecns_tm4_synapse_column_boundary_audit.py": "ff429d5ab51351bf208a126de87573b9458589b2f25619d28a3448794b2daf90",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/raw/malecns-v1.0/optic-column-audit/tm4-synapse-count-sample.json": "6110a5633593374b77fbe11e7be0c1ee7c75da46729f786c34cff9724361f9d2",
       "data/raw/malecns-v1.0/official-code-v1.0/src/utils/ol_neuron.py": "a7c74dc7eec4554edfb98ff5bac156a234281489c15860f313708ff3ff3ce4be",
@@ -84,6 +84,13 @@
       "unique_candidate_fraction": 1.0,
       "exact_native_match_count": 28,
       "exact_native_match_fraction": 0.5833333333333334,
+      "candidate_to_native_hex_distance_counts": {
+        "0": 28,
+        "1": 5,
+        "2": 14,
+        "3": 1
+      },
+      "distinct_candidate_hex_count": 48,
       "records": [
         {
           "body_id": 130822,
@@ -96,7 +103,8 @@
             1,
             8
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 96602,
@@ -109,7 +117,8 @@
             3,
             15
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 1
         },
         {
           "body_id": 114133,
@@ -122,7 +131,8 @@
             4,
             18
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 92126,
@@ -135,7 +145,8 @@
             6,
             21
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 91453,
@@ -148,7 +159,8 @@
             6,
             17
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 1
         },
         {
           "body_id": 133855,
@@ -161,7 +173,8 @@
             7,
             15
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 74136,
@@ -174,7 +187,8 @@
             9,
             10
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 99852,
@@ -187,7 +201,8 @@
             10,
             2
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 77524,
@@ -200,7 +215,8 @@
             9,
             19
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 73704,
@@ -213,7 +229,8 @@
             10,
             9
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 74998,
@@ -226,7 +243,8 @@
             10,
             27
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 55813,
@@ -239,7 +257,8 @@
             11,
             16
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 76099,
@@ -252,7 +271,8 @@
             12,
             4
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 81827,
@@ -265,7 +285,8 @@
             13,
             23
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 74681,
@@ -278,7 +299,8 @@
             13,
             10
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 73001,
@@ -291,7 +313,8 @@
             14,
             29
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 65391,
@@ -304,7 +327,8 @@
             14,
             14
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 96284,
@@ -317,7 +341,8 @@
             16,
             33
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 3
         },
         {
           "body_id": 66349,
@@ -330,7 +355,8 @@
             16,
             19
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 65361,
@@ -343,7 +369,8 @@
             17,
             6
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 101029,
@@ -356,7 +383,8 @@
             16,
             23
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 64862,
@@ -369,7 +397,8 @@
             18,
             13
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 93758,
@@ -382,7 +411,8 @@
             18,
             30
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 67559,
@@ -395,7 +425,8 @@
             18,
             16
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 1
         },
         {
           "body_id": 99874,
@@ -408,7 +439,8 @@
             19,
             35
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 74790,
@@ -421,7 +453,8 @@
             20,
             24
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 67673,
@@ -434,7 +467,8 @@
             20,
             10
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 83437,
@@ -447,7 +481,8 @@
             20,
             28
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 64660,
@@ -460,7 +495,8 @@
             21,
             17
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 76623,
@@ -473,7 +509,8 @@
             21,
             34
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 78994,
@@ -486,7 +523,8 @@
             23,
             25
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 68025,
@@ -499,7 +537,8 @@
             23,
             13
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 78832,
@@ -512,7 +551,8 @@
             23,
             30
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 68204,
@@ -525,7 +565,8 @@
             24,
             20
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 93851,
@@ -538,7 +579,8 @@
             25,
             10
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 117110,
@@ -551,7 +593,8 @@
             25,
             28
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 112588,
@@ -564,7 +607,8 @@
             26,
             17
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 79537,
@@ -577,7 +621,8 @@
             27,
             36
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 84996,
@@ -590,7 +635,8 @@
             28,
             27
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 2
         },
         {
           "body_id": 70218,
@@ -603,7 +649,8 @@
             28,
             19
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 87514,
@@ -616,7 +663,8 @@
             28,
             37
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 84128,
@@ -629,7 +677,8 @@
             29,
             29
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 72027,
@@ -642,7 +691,8 @@
             30,
             23
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 117525,
@@ -655,7 +705,8 @@
             31,
             21
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 75623,
@@ -668,7 +719,8 @@
             32,
             21
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 76511,
@@ -681,7 +733,8 @@
             33,
             23
           ],
-          "candidate_matches_native": true
+          "candidate_matches_native": true,
+          "candidate_to_native_hex_distance": 0
         },
         {
           "body_id": 95560,
@@ -694,7 +747,8 @@
             35,
             28
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 1
         },
         {
           "body_id": 112920,
@@ -707,7 +761,8 @@
             36,
             34
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": 1
         }
       ]
     },
@@ -768,6 +823,8 @@
       "unique_candidate_fraction": 1.0,
       "exact_native_match_count": null,
       "exact_native_match_fraction": null,
+      "candidate_to_native_hex_distance_counts": null,
+      "distinct_candidate_hex_count": 48,
       "records": [
         {
           "body_id": 15529,
@@ -777,7 +834,8 @@
             25,
             28
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 26149,
@@ -787,7 +845,8 @@
             21,
             8
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 31493,
@@ -797,7 +856,8 @@
             17,
             17
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 36583,
@@ -807,7 +867,8 @@
             25,
             10
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 43019,
@@ -817,7 +878,8 @@
             9,
             3
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 47679,
@@ -827,7 +889,8 @@
             17,
             11
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 55344,
@@ -837,7 +900,8 @@
             27,
             21
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 61209,
@@ -847,7 +911,8 @@
             30,
             32
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 67059,
@@ -857,7 +922,8 @@
             16,
             7
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 70197,
@@ -867,7 +933,8 @@
             22,
             19
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 71945,
@@ -877,7 +944,8 @@
             4,
             16
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 73825,
@@ -887,7 +955,8 @@
             15,
             15
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 76555,
@@ -897,7 +966,8 @@
             27,
             23
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 79315,
@@ -907,7 +977,8 @@
             13,
             5
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 81225,
@@ -917,7 +988,8 @@
             12,
             14
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 82991,
@@ -927,7 +999,8 @@
             29,
             16
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 85577,
@@ -937,7 +1010,8 @@
             8,
             16
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 87435,
@@ -947,7 +1021,8 @@
             29,
             29
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 91305,
@@ -957,7 +1032,8 @@
             32,
             34
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 94320,
@@ -967,7 +1043,8 @@
             7,
             19
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 101504,
@@ -977,7 +1054,8 @@
             34,
             29
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 107465,
@@ -987,7 +1065,8 @@
             5,
             16
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 113859,
@@ -997,7 +1076,8 @@
             13,
             30
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 123069,
@@ -1007,7 +1087,8 @@
             2,
             8
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 129953,
@@ -1017,7 +1098,8 @@
             3,
             10
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 136473,
@@ -1027,7 +1109,8 @@
             23,
             21
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 145535,
@@ -1037,7 +1120,8 @@
             28,
             36
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 165651,
@@ -1047,7 +1131,8 @@
             26,
             26
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 511897,
@@ -1057,7 +1142,8 @@
             18,
             21
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 514386,
@@ -1067,7 +1153,8 @@
             23,
             23
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 515564,
@@ -1077,7 +1164,8 @@
             25,
             30
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 516683,
@@ -1087,7 +1175,8 @@
             11,
             25
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 517951,
@@ -1097,7 +1186,8 @@
             19,
             26
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 519434,
@@ -1107,7 +1197,8 @@
             19,
             18
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 522875,
@@ -1117,7 +1208,8 @@
             22,
             28
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 525732,
@@ -1127,7 +1219,8 @@
             24,
             15
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 527080,
@@ -1137,7 +1230,8 @@
             10,
             25
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 530121,
@@ -1147,7 +1241,8 @@
             17,
             7
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 531279,
@@ -1157,7 +1252,8 @@
             24,
             11
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 532611,
@@ -1167,7 +1263,8 @@
             15,
             22
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 533941,
@@ -1177,7 +1274,8 @@
             27,
             25
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 535586,
@@ -1187,7 +1285,8 @@
             25,
             33
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 537430,
@@ -1197,7 +1296,8 @@
             35,
             31
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 539634,
@@ -1207,7 +1307,8 @@
             12,
             23
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 542713,
@@ -1217,7 +1318,8 @@
             16,
             25
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 544997,
@@ -1227,7 +1329,8 @@
             31,
             32
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 560342,
@@ -1237,7 +1340,8 @@
             8,
             15
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         },
         {
           "body_id": 559502441,
@@ -1247,13 +1351,23 @@
             25,
             16
           ],
-          "candidate_matches_native": false
+          "candidate_matches_native": false,
+          "candidate_to_native_hex_distance": null
         }
       ]
     }
   },
   "right_native_validation_exact_fraction": 0.5833333333333334,
   "left_missing_unique_candidate_fraction": 1.0,
+  "right_native_candidate_hex_distance_counts": {
+    "0": 28,
+    "1": 5,
+    "2": 14,
+    "3": 1
+  },
+  "right_native_candidate_within_one_hex_fraction": 0.6875,
+  "left_missing_distinct_candidate_hex_count": 48,
+  "authorize_post_hoc_hex_distance_tolerance": false,
   "official_synapse_count_candidate_is_native_equivalent_for_Tm4": false,
   "authorize_left_Tm4_coordinate_writeback": false,
   "authorize_source_mapping_gate_change": false,
@@ -1268,6 +1382,7 @@
     "bounded_sample_is_not_full_population_validation": true,
     "candidate_coordinate_is_not_written_to_annotation": true,
     "no_acceptance_threshold_defined": true,
+    "no_post_hoc_hex_distance_tolerance_defined": true,
     "no_nearest_neighbor_or_tissue_xyz_conversion": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,

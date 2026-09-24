@@ -433,6 +433,10 @@ export type V7Status = {
     MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction: number;
     MaleCNS_Tm4_synapse_count_candidate_native_equivalent: boolean;
     MaleCNS_Tm4_left_coordinate_writeback_authorized: boolean;
+    MaleCNS_Tm4_synapse_count_right_hex_distance_counts: Record<string, number>;
+    MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction: number;
+    MaleCNS_Tm4_synapse_count_left_distinct_candidate_count: number;
+    MaleCNS_Tm4_post_hoc_hex_tolerance_authorized: boolean;
     CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean;
     CT1_complete_official_LO_column_coverage: boolean;
   };

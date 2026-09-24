@@ -604,6 +604,17 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction"] == 1.0
     assert boundaries["MaleCNS_Tm4_synapse_count_candidate_native_equivalent"] is False
     assert boundaries["MaleCNS_Tm4_left_coordinate_writeback_authorized"] is False
+    assert boundaries["MaleCNS_Tm4_synapse_count_right_hex_distance_counts"] == {
+        "0": 28,
+        "1": 5,
+        "2": 14,
+        "3": 1,
+    }
+    assert boundaries["MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction"] == (
+        33 / 48
+    )
+    assert boundaries["MaleCNS_Tm4_synapse_count_left_distinct_candidate_count"] == 48
+    assert boundaries["MaleCNS_Tm4_post_hoc_hex_tolerance_authorized"] is False
     assert boundaries["CT1_per_synapse_Lo1_columnar_retinotopy_available"] is True
     assert boundaries["CT1_complete_official_LO_column_coverage"] is False
 
