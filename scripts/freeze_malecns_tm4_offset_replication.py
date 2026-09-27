@@ -80,6 +80,30 @@ def _http_reader(directory_url: str):
     return read
 
 
+def _load_cached_part(
+    part_path: Path,
+    body_id: int,
+    preregistration_sha256: str,
+    retrieval_implementation_sha256: str,
+) -> dict | None:
+    if not part_path.exists():
+        return None
+    cached = json.loads(part_path.read_text(encoding="utf-8"))
+    if int(cached["body_id"]) != body_id:
+        raise ValueError(f"Tm4 replication part identity mismatch: {part_path}")
+    if cached["preregistration_sha256"] != preregistration_sha256:
+        raise ValueError(f"Tm4 replication part preregistration mismatch: {part_path}")
+    if cached["retrieval_implementation_sha256"] != retrieval_implementation_sha256:
+        raise ValueError(f"Tm4 replication part implementation mismatch: {part_path}")
+    return cached
+
+
+def _write_json_atomic(path: Path, payload: dict) -> None:
+    temporary = path.with_suffix(f"{path.suffix}.part")
+    temporary.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(path)
+
+
 def freeze(output: Path, preregistration_path: Path) -> None:
     preregistration_sha256 = hashlib.sha256(
         preregistration_path.read_bytes()
@@ -109,21 +133,13 @@ def freeze(output: Path, preregistration_path: Path) -> None:
 
     def inspect(body_id: int) -> dict:
         part_path = parts_directory / f"{body_id}.json"
-        if part_path.exists():
-            cached = json.loads(part_path.read_text(encoding="utf-8"))
-            if int(cached["body_id"]) != body_id:
-                raise ValueError(f"Tm4 replication part identity mismatch: {part_path}")
-            if cached["preregistration_sha256"] != preregistration_sha256:
-                raise ValueError(
-                    f"Tm4 replication part preregistration mismatch: {part_path}"
-                )
-            if (
-                cached["retrieval_implementation_sha256"]
-                != retrieval_implementation_sha256
-            ):
-                raise ValueError(
-                    f"Tm4 replication part implementation mismatch: {part_path}"
-                )
+        cached = _load_cached_part(
+            part_path,
+            body_id,
+            preregistration_sha256,
+            retrieval_implementation_sha256,
+        )
+        if cached is not None:
             return cached
         print(f"fetching Tm4 replication body {body_id}", file=sys.stderr, flush=True)
         row = {
@@ -152,9 +168,7 @@ def freeze(output: Path, preregistration_path: Path) -> None:
                 payload or b""
             ).hexdigest()
             row[f"{relationship}_provenance"] = provenance
-        temporary = part_path.with_suffix(".json.part")
-        temporary.write_text(json.dumps(row, indent=2) + "\n", encoding="utf-8")
-        temporary.replace(part_path)
+        _write_json_atomic(part_path, row)
         return row
 
     rows = []
@@ -222,11 +236,7 @@ def freeze(output: Path, preregistration_path: Path) -> None:
         "column_pin_map": pin_map,
     }
     output.parent.mkdir(parents=True, exist_ok=True)
-    temporary_output = output.with_suffix(f"{output.suffix}.part")
-    temporary_output.write_text(
-        json.dumps(payload, indent=2) + "\n", encoding="utf-8"
-    )
-    temporary_output.replace(output)
+    _write_json_atomic(output, payload)
 
 
 if __name__ == "__main__":
