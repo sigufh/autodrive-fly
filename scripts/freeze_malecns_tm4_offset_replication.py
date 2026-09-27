@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 import sys
 import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from urllib.request import Request, urlopen
 
 from fly_emotion.driving.v7_neuroglancer_sharded import (
     ShardingSpec,
@@ -46,20 +46,34 @@ def _http_reader(directory_url: str):
         if cache_key in cache:
             return cache[cache_key]
         for attempt in range(3):
-            request = Request(
-                f"{directory_url}/{shard_name}",
-                headers={"Range": f"bytes={start}-{end - 1}"},
-            )
             try:
-                with urlopen(request, timeout=15) as response:  # noqa: S310
-                    payload = response.read()
+                result = subprocess.run(
+                    [
+                        "curl",
+                        "--fail",
+                        "--silent",
+                        "--show-error",
+                        "--location",
+                        "--connect-timeout",
+                        "5",
+                        "--max-time",
+                        "20",
+                        "--range",
+                        f"{start}-{end - 1}",
+                        f"{directory_url}/{shard_name}",
+                    ],
+                    check=True,
+                    capture_output=True,
+                    timeout=25,
+                )
+                payload = result.stdout
+                if len(payload) != end - start:
+                    raise ValueError(f"short HTTP range read for {shard_name}")
                 break
-            except (TimeoutError, OSError):
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, ValueError):
                 if attempt == 2:
                     raise
                 time.sleep(1.0 + attempt)
-        if len(payload) != end - start:
-            raise ValueError(f"short HTTP range read for {shard_name}")
         cache[cache_key] = payload
         return payload
 
