@@ -1,0 +1,27 @@
+version: 1
+name: v7-t4-source-pair-audit
+observed_on: "2026-09-29"
+preregistration_evidence: artifacts/v7-t4-source-pair-preregistration.json
+preregistration_commit: 9581fe0038cc10629459ede209b03d71702cdd00
+preregistration_sha256: 39bbc31789607cdd4c90fcea5b5741c4fbe5b2356559d015d93b2b305cd56b72
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t4-synapse-crossfit-axis-audit.yaml
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+pair_outputs_observed: false
+boundary:
+  preregistered_before_pair_outputs: true
+  descriptive_pair_decomposition_only: true
+  crossfit_axes_unchanged: true
+  missing_pair_inputs_count_as_invalid: true
+  fixed_whole_population_denominators: true
+  no_pair_candidate_selection: true
+  no_source_removal_authorization: true
+  no_new_acceptance_threshold: true
+  no_direction_or_subtype_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true
