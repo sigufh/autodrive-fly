@@ -13,6 +13,56 @@ from fly_emotion.driving.v7_malecns_tm4_offset_replication import (
     _summarize_records,
 )
 
+ROOT = Path(__file__).parents[1]
+REPORT = ROOT / "artifacts/v7-malecns-tm4-offset-replication.json"
+
+
+def test_observed_replication_is_hash_bound_and_preregistered() -> None:
+    report = json.loads(REPORT.read_text())
+    for path, digest in report["protocol"]["dependencies_sha256"].items():
+        assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+    assert report["protocol"]["preregistration_commit"] == (
+        "26faa2cbbfbb13d32aafc59372788c7eae3d4799"
+    )
+    assert report["protocol"]["preregistration_sha256"] == (
+        "fcf3bd63813b01005bd89ef1aeefd6428df565c58b7cba19e8a28316c7923c2f"
+    )
+    assert report["protocol"]["discovery_body_ids_excluded"] is True
+    assert report["protocol"]["parameter_fit"] is False
+    assert report["protocol"]["target_activity_injection"] is False
+    assert report["protocol"]["runtime_modified"] is False
+
+
+def test_observed_replication_fails_every_required_improvement_gate() -> None:
+    report = json.loads(REPORT.read_text())
+    assert report["replication_evaluated"] is True
+    assert report["sample_count"] == 96
+    assert report["unique_candidate_count"] == 95
+    assert report["uncorrected_exact_count"] == 51
+    assert report["corrected_exact_count"] == 32
+    assert report["paired_exact_outcomes"] == {
+        "incorrect_to_correct": 32,
+        "correct_to_incorrect": 51,
+        "discordant_count": 83,
+        "one_sided_exact_sign_test_pvalue": 0.9862329109938527,
+        "alpha": 0.01,
+    }
+    assert report["gates"] == {
+        "all_sampled_bodies_retrieved": True,
+        "unique_synapse_count_candidate_for_every_body": False,
+        "corrected_exact_count_greater_than_uncorrected_exact_count": False,
+        "no_correct_to_incorrect_pairs": False,
+        "paired_one_sided_exact_sign_test_passed": False,
+        "no_distance_tolerance_used": True,
+    }
+    assert report["replication_gate_passed"] is False
+    assert report["authorize_post_hoc_hex_distance_tolerance"] is False
+    assert report["authorize_left_Tm4_coordinate_writeback"] is False
+    assert report["authorize_source_mapping_gate_change"] is False
+    assert report["advance_to_T4_T5_functional_precheck"] is False
+    assert report["advance_to_LPLC_mechanism_repair"] is False
+    assert report["advance_to_vehicle_experiments"] is False
+
 
 def test_one_sided_exact_sign_test_uses_only_discordant_pairs() -> None:
     assert _one_sided_exact_sign_pvalue(7, 0) == 0.0078125

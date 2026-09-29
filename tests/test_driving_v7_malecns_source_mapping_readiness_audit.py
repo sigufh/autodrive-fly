@@ -85,6 +85,15 @@ def test_one_hop_coordinates_close_columnar_gaps_without_fabrication() -> None:
         ]
         == 48
     )
+    assert mapping["Tm4"]["offset_replication_sample_count"] == 96
+    assert mapping["Tm4"]["offset_replication_unique_candidate_count"] == 95
+    assert mapping["Tm4"]["offset_replication_uncorrected_exact_count"] == 51
+    assert mapping["Tm4"]["offset_replication_corrected_exact_count"] == 32
+    assert (
+        mapping["Tm4"]["offset_replication_one_sided_sign_test_pvalue"]
+        == 0.9862329109938527
+    )
+    assert mapping["Tm4"]["offset_replication_gate_passed"] is False
 
 
 def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:
@@ -104,6 +113,7 @@ def test_type_body_availability_does_not_fabricate_recording_mapping() -> None:
         is False
     )
     assert gates["one_hop_coordinates_are_native_equivalent"] is False
+    assert gates["Tm4_offset_replication_passed"] is False
     assert report["external_source_mapping_contract_satisfied"] is False
     assert report["authorize_external_source_payload"] is False
     assert report["advance_to_T4_T5_functional_precheck"] is False

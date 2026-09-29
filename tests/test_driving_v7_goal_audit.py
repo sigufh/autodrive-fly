@@ -331,6 +331,14 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
         "MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction",
         "MaleCNS_Tm4_synapse_count_left_distinct_candidate_count",
         "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized",
+        "MaleCNS_Tm4_offset_replication_sample_count",
+        "MaleCNS_Tm4_offset_replication_unique_candidate_count",
+        "MaleCNS_Tm4_offset_replication_uncorrected_exact_count",
+        "MaleCNS_Tm4_offset_replication_corrected_exact_count",
+        "MaleCNS_Tm4_offset_replication_correct_to_incorrect_count",
+        "MaleCNS_Tm4_offset_replication_incorrect_to_correct_count",
+        "MaleCNS_Tm4_offset_replication_sign_test_pvalue",
+        "MaleCNS_Tm4_offset_replication_gate_passed",
         "Fendl_2021_target_Rdl_localization_verified",
         "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
         "Fendl_2021_source_specific_contact_resolved",
@@ -1709,6 +1717,39 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         == 48
     )
     assert visual["observations"]["MaleCNS_Tm4_post_hoc_hex_tolerance_authorized"] is False
+    assert visual["observations"]["MaleCNS_Tm4_offset_replication_sample_count"] == 96
+    assert (
+        visual["observations"]["MaleCNS_Tm4_offset_replication_unique_candidate_count"]
+        == 95
+    )
+    assert (
+        visual["observations"]["MaleCNS_Tm4_offset_replication_uncorrected_exact_count"]
+        == 51
+    )
+    assert (
+        visual["observations"]["MaleCNS_Tm4_offset_replication_corrected_exact_count"]
+        == 32
+    )
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm4_offset_replication_correct_to_incorrect_count"
+        ]
+        == 51
+    )
+    assert (
+        visual["observations"][
+            "MaleCNS_Tm4_offset_replication_incorrect_to_correct_count"
+        ]
+        == 32
+    )
+    assert (
+        visual["observations"]["MaleCNS_Tm4_offset_replication_sign_test_pvalue"]
+        == 0.9862329109938527
+    )
+    assert (
+        visual["observations"]["MaleCNS_Tm4_offset_replication_gate_passed"]
+        is False
+    )
     assert visual["observations"]["MaleCNS_Tm9_unlocated_source_body_count"] == 0
     assert visual["observations"]["MaleCNS_Tm9_532266_existing_rule_identifiable"] is False
     assert visual["observations"]["MaleCNS_Tm9_532266_post_hoc_repair_authorized"] is False

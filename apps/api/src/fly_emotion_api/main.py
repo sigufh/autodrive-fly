@@ -1280,6 +1280,30 @@ def _verified_v7_status(root: Path) -> dict:
                 "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized": visual[
                     "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized"
                 ],
+                "MaleCNS_Tm4_offset_replication_sample_count": visual[
+                    "MaleCNS_Tm4_offset_replication_sample_count"
+                ],
+                "MaleCNS_Tm4_offset_replication_unique_candidate_count": visual[
+                    "MaleCNS_Tm4_offset_replication_unique_candidate_count"
+                ],
+                "MaleCNS_Tm4_offset_replication_uncorrected_exact_count": visual[
+                    "MaleCNS_Tm4_offset_replication_uncorrected_exact_count"
+                ],
+                "MaleCNS_Tm4_offset_replication_corrected_exact_count": visual[
+                    "MaleCNS_Tm4_offset_replication_corrected_exact_count"
+                ],
+                "MaleCNS_Tm4_offset_replication_correct_to_incorrect_count": visual[
+                    "MaleCNS_Tm4_offset_replication_correct_to_incorrect_count"
+                ],
+                "MaleCNS_Tm4_offset_replication_incorrect_to_correct_count": visual[
+                    "MaleCNS_Tm4_offset_replication_incorrect_to_correct_count"
+                ],
+                "MaleCNS_Tm4_offset_replication_sign_test_pvalue": visual[
+                    "MaleCNS_Tm4_offset_replication_sign_test_pvalue"
+                ],
+                "MaleCNS_Tm4_offset_replication_gate_passed": visual[
+                    "MaleCNS_Tm4_offset_replication_gate_passed"
+                ],
                 "CT1_per_synapse_Lo1_columnar_retinotopy_available": visual[
                     "MaleCNS_CT1_columnar_Lo1_retinotopy_available"
                 ],

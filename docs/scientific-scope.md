@@ -850,6 +850,18 @@ All 48 left-side candidates are mutually distinct, but collision-free candidates
 do not repair the insufficient right-side validation. No post-hoc distance
 tolerance is introduced.
 
+The discovery-only `(+1,+1)` error mode was then tested under a separately
+committed replication protocol. All 48 discovery right-side IDs were excluded,
+and 96 new right-side native Tm4 bodies were frozen before their synapse payloads
+were retrieved. The preregistered `[-1,-1]` correction failed: 95/96 bodies had a
+unique candidate, uncorrected exact matches were 51/96, and corrected exact
+matches fell to 32/96. Paired outcomes were 32 incorrect-to-correct versus 51
+correct-to-incorrect, giving a one-sided exact sign-test p-value of
+0.9862329109938527. The replication gate therefore fails; the offset hypothesis
+is rejected for writeback, no distance tolerance is introduced, and all source
+mapping and downstream gates remain closed
+(`artifacts/v7-malecns-tm4-offset-replication.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

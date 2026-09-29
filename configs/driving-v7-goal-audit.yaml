@@ -148,6 +148,7 @@ evidence:
   malecns_source_mapping_readiness_audit: artifacts/v7-malecns-source-mapping-readiness-audit.json
   malecns_one_hop_coordinate_validation_audit: artifacts/v7-malecns-one-hop-coordinate-validation-audit.json
   malecns_Tm4_synapse_column_boundary_audit: artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json
+  malecns_Tm4_offset_replication: artifacts/v7-malecns-tm4-offset-replication.json
   source_evidence_matrix: artifacts/v7-source-evidence-matrix.json
   source_type_average_mapping_contract: artifacts/v7-source-type-average-mapping-contract.json
   tm9_coordinate_identifiability_audit: artifacts/v7-tm9-coordinate-identifiability-audit.json

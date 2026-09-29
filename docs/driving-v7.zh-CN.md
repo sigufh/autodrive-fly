@@ -2522,6 +2522,14 @@ body ID 分层取 48 个检查候选可用性。两侧 48/48 都得到唯一候�
 属于精确或相邻列；左侧 48 个候选彼此无碰撞，但这不能弥补右侧验证不足。因此不新增
 “容许相差一列或两列”的事后阈值。
 
+随后把 discovery 中 20 个非精确样本里出现 14 次的 `(+1,+1)` 偏移只当作待复制假设，
+先单独提交预注册，再排除全部 48 个 discovery 右侧 ID，从剩余右侧 native Tm4 中冻结
+96 个新 body。预注册的 `[-1,-1]` 校正复制明确失败：96/96 payload 均取回，但仅
+95/96 有唯一候选；未校正 exact 为 51/96，校正后反而降到 32/96。配对变化为
+错误→正确 32、正确→错误 51，单侧精确 sign-test `p=0.9862329109938527`。因此不把
+discovery 偏移写回左侧 Tm4，不引入距离容差，也不改变 source mapping、T4/T5、LPLC
+或 vehicle gate。详见 `artifacts/v7-malecns-tm4-offset-replication.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

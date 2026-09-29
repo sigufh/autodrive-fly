@@ -1,444 +1,731 @@
 export type Vec3 = [number, number, number]
-export type SkeletonResponse = { body_id: number; units: string; source_vertices: number; source_edges: number; display_edges: number; segments: [Vec3, Vec3][] }
-export type CnsOverview = { release: string; canonical_nodes: number; positioned_nodes: number; units: string; body_ids: number[]; positions: Vec3[]; class_ids: number[]; classes: string[] }
-export type Pathway = { source?: number; target?: number; pre?: number; post?: number; edge_count?: number; synapse_weight?: number; weight?: number; from: Vec3 | null; to: Vec3 | null; positioned?: boolean }
+export type SkeletonResponse = {
+  body_id: number
+  units: string
+  source_vertices: number
+  source_edges: number
+  display_edges: number
+  segments: [Vec3, Vec3][]
+}
+export type CnsOverview = {
+  release: string
+  canonical_nodes: number
+  positioned_nodes: number
+  units: string
+  body_ids: number[]
+  positions: Vec3[]
+  class_ids: number[]
+  classes: string[]
+}
+export type Pathway = {
+  source?: number
+  target?: number
+  pre?: number
+  post?: number
+  edge_count?: number
+  synapse_weight?: number
+  weight?: number
+  from: Vec3 | null
+  to: Vec3 | null
+  positioned?: boolean
+}
 export type PathwayOverview = {
-  release: string; all_edges_accounted: number; all_synapse_weight_accounted: number;
-  bundled_paths: Pathway[]; strong_paths: Pathway[]; strong_path_policy: string;
-  topology_nodes: { id: number; name: string; neurons: number; positioned: boolean }[];
-  exported_bundle_edges: number; exported_bundle_weight: number;
+  release: string
+  all_edges_accounted: number
+  all_synapse_weight_accounted: number
+  bundled_paths: Pathway[]
+  strong_paths: Pathway[]
+  strong_path_policy: string
+  topology_nodes: {
+    id: number
+    name: string
+    neurons: number
+    positioned: boolean
+  }[]
+  exported_bundle_edges: number
+  exported_bundle_weight: number
 }
 export type NeuronActivity = { body_id: number; value: number }
 export type EdgeActivity = { pre: number; post: number; value: number }
 export type ActivityFrame = {
-  type: 'activity'; step: number; total_steps: number; elapsed_ms: number;
-  units: string; neurons: NeuronActivity[]; pathways: EdgeActivity[]; group_activity?: Record<string, number>;
-  statistics: { all_nodes: number; active_nodes: number; positioned_nodes: number; unpositioned_active_nodes: number; displayed_nodes: number; displayed_edges: number; max_abs_state: number; display_max_abs_state: number }
+  type: 'activity'
+  step: number
+  total_steps: number
+  elapsed_ms: number
+  units: string
+  neurons: NeuronActivity[]
+  pathways: EdgeActivity[]
+  group_activity?: Record<string, number>
+  statistics: {
+    all_nodes: number
+    active_nodes: number
+    positioned_nodes: number
+    unpositioned_active_nodes: number
+    displayed_nodes: number
+    displayed_edges: number
+    max_abs_state: number
+    display_max_abs_state: number
+  }
 }
 export type DrivingState = {
-  scenario: 'highway' | 'city';
-  control_mode: 'assisted' | 'neural';
-  sensory_profile: 'front' | 'panorama' | 'panorama_flow' | 'panorama_flow_body';
+  scenario: 'highway' | 'city'
+  control_mode: 'assisted' | 'neural'
+  sensory_profile: 'front' | 'panorama' | 'panorama_flow' | 'panorama_flow_body'
   environment: {
-    road_half_width: number; road_length: number; pair_seed: number; mirror: number;
-    vehicle: { x: number; y: number; heading: number; speed: number; steering: number; world_x?: number; world_y?: number; world_heading?: number };
-    obstacles: { x: number; y: number; radius: number }[]; sensor_rays: number[]; obstacle_rays: number[]; wall_rays: number[];
-    trajectory: [number, number][]; projected_trajectory: [number, number][];
-    step: number; done: boolean; success: boolean; total_reward: number; terminal_reason: string | null; obstacles_passed: number; first_obstacle_passed: boolean; first_obstacle_side: 'left' | 'right' | null;
-    city?: { scenario: string; name: string; map_bounds: [number, number, number, number]; centerline: [number, number][]; world_trajectory: [number, number][]; actors: { id: number; x: number; y: number; route_progress: number; lane_offset: number; radius: number }[]; road: string; next_maneuver: string; speed_limit_mps: number; traffic_light: 'red' | 'green'; stop_line_progress: number | null; distance_to_stop_line: number | null; rule_status: string; violations: string[]; intersections: { name: string; progress: number; signal: 'red' | 'green' }[] };
-  };
-  action: { steering: number; throttle: number; reverse: number; drive: number }; reward: number; safety_signal: number; learning: boolean; sensory_learning?: boolean; elapsed_ms?: number;
-  raw_action: { steering: number; throttle: number; reverse: number; drive: number };
-  lane_constraint: { active: boolean; blend: number; correction: number; neural_steering?: number; visual_avoidance?: number; road_recovery?: number; route_steering?: number };
-  control_statistics: { mean_abs_steering: number; mean_abs_steering_change: number; far_mean_abs_steering: number; far_steps: number; steering_sign_changes: number; max_abs_lateral: number; constraint_rate: number; mean_abs_constraint: number };
-  policy_checkpoint: { loaded: boolean; path: string; kind: string; rejection: string | null };
-  dopamine: { rule: string; dopamine: number; lateral_dopamine: [number, number]; plastic_synapses: number; changed_synapses: number; mean_gain: number; min_gain: number; max_gain: number; updates: number };
-  retina: { mapped_receptors: number; source_type: string; mapping: string; width: number; height: number; stimulus: number[][]; neural_stimulus_width?: number; horizontal_fov_degrees?: number };
-  motor: { body_ids: number[]; names: string[]; mapping: string; brain_substeps_per_action: number; neural_adapter?: { type: string; steering_gain: number; adaptation_rate: number; steering_baseline: number }; sensory_projection?: { profile: string; last_flow: number; last_flow_regions?: number[]; last_yaw_rate: number; T4_T5_horizontal_flow: number; T4_T5_spatially_mapped?: number; T4_T5_spatially_unmapped?: number; haltere_yaw_rate: number; ascending_proprioception: number; haltere_by_side: [number, number]; proprioception_by_side: [number, number]; body_mapped_unique?: number; body_unmapped?: number; pathway_plasticity?: { rule: string; group_names: string[]; group_gains: number[]; unique_source_neurons: number; existing_outgoing_synapses: number; updates: number } } };
-  dopamine_neurons: { body_ids: number[]; type: string; signal: string };
-  activity: ActivityFrame;
+    road_half_width: number
+    road_length: number
+    pair_seed: number
+    mirror: number
+    vehicle: {
+      x: number
+      y: number
+      heading: number
+      speed: number
+      steering: number
+      world_x?: number
+      world_y?: number
+      world_heading?: number
+    }
+    obstacles: { x: number; y: number; radius: number }[]
+    sensor_rays: number[]
+    obstacle_rays: number[]
+    wall_rays: number[]
+    trajectory: [number, number][]
+    projected_trajectory: [number, number][]
+    step: number
+    done: boolean
+    success: boolean
+    total_reward: number
+    terminal_reason: string | null
+    obstacles_passed: number
+    first_obstacle_passed: boolean
+    first_obstacle_side: 'left' | 'right' | null
+    city?: {
+      scenario: string
+      name: string
+      map_bounds: [number, number, number, number]
+      centerline: [number, number][]
+      world_trajectory: [number, number][]
+      actors: {
+        id: number
+        x: number
+        y: number
+        route_progress: number
+        lane_offset: number
+        radius: number
+      }[]
+      road: string
+      next_maneuver: string
+      speed_limit_mps: number
+      traffic_light: 'red' | 'green'
+      stop_line_progress: number | null
+      distance_to_stop_line: number | null
+      rule_status: string
+      violations: string[]
+      intersections: {
+        name: string
+        progress: number
+        signal: 'red' | 'green'
+      }[]
+    }
+  }
+  action: {
+    steering: number
+    throttle: number
+    reverse: number
+    drive: number
+  }
+  reward: number
+  safety_signal: number
+  learning: boolean
+  sensory_learning?: boolean
+  elapsed_ms?: number
+  raw_action: {
+    steering: number
+    throttle: number
+    reverse: number
+    drive: number
+  }
+  lane_constraint: {
+    active: boolean
+    blend: number
+    correction: number
+    neural_steering?: number
+    visual_avoidance?: number
+    road_recovery?: number
+    route_steering?: number
+  }
+  control_statistics: {
+    mean_abs_steering: number
+    mean_abs_steering_change: number
+    far_mean_abs_steering: number
+    far_steps: number
+    steering_sign_changes: number
+    max_abs_lateral: number
+    constraint_rate: number
+    mean_abs_constraint: number
+  }
+  policy_checkpoint: {
+    loaded: boolean
+    path: string
+    kind: string
+    rejection: string | null
+  }
+  dopamine: {
+    rule: string
+    dopamine: number
+    lateral_dopamine: [number, number]
+    plastic_synapses: number
+    changed_synapses: number
+    mean_gain: number
+    min_gain: number
+    max_gain: number
+    updates: number
+  }
+  retina: {
+    mapped_receptors: number
+    source_type: string
+    mapping: string
+    width: number
+    height: number
+    stimulus: number[][]
+    neural_stimulus_width?: number
+    horizontal_fov_degrees?: number
+  }
+  motor: {
+    body_ids: number[]
+    names: string[]
+    mapping: string
+    brain_substeps_per_action: number
+    neural_adapter?: {
+      type: string
+      steering_gain: number
+      adaptation_rate: number
+      steering_baseline: number
+    }
+    sensory_projection?: {
+      profile: string
+      last_flow: number
+      last_flow_regions?: number[]
+      last_yaw_rate: number
+      T4_T5_horizontal_flow: number
+      T4_T5_spatially_mapped?: number
+      T4_T5_spatially_unmapped?: number
+      haltere_yaw_rate: number
+      ascending_proprioception: number
+      haltere_by_side: [number, number]
+      proprioception_by_side: [number, number]
+      body_mapped_unique?: number
+      body_unmapped?: number
+      pathway_plasticity?: {
+        rule: string
+        group_names: string[]
+        group_gains: number[]
+        unique_source_neurons: number
+        existing_outgoing_synapses: number
+        updates: number
+      }
+    }
+  }
+  dopamine_neurons: { body_ids: number[]; type: string; signal: string }
+  activity: ActivityFrame
 }
 export type DrivingEvent = ({ type: 'driving_state' } & DrivingState) | { type: 'done' } | { type: 'error'; message: string }
 export type V7Status = {
-  version: 'v7-experimental'; source: 'hash-verified-offline-goal-audit'; current_stage: string; objective_complete: boolean; deployment_enabled: boolean; default_runtime_changed: boolean; audit_sha256: string;
-  gates: { T4_T5_direction_and_ON_OFF: boolean; LPLC1_near_collision: boolean; LPLC2_radial_opponency: boolean; LC4_angular_speed: boolean; EPG_PEN_PEG_heading: boolean; PFL3_DNa_transparent_mapping: boolean; causal_visual_navigation: boolean; external_final: boolean };
+  version: 'v7-experimental'
+  source: 'hash-verified-offline-goal-audit'
+  current_stage: string
+  objective_complete: boolean
+  deployment_enabled: boolean
+  default_runtime_changed: boolean
+  audit_sha256: string
+  gates: {
+    T4_T5_direction_and_ON_OFF: boolean
+    LPLC1_near_collision: boolean
+    LPLC2_radial_opponency: boolean
+    LC4_angular_speed: boolean
+    EPG_PEN_PEG_heading: boolean
+    PFL3_DNa_transparent_mapping: boolean
+    causal_visual_navigation: boolean
+    external_final: boolean
+  }
   evidence_boundaries: {
-    nine_source_contract_complete: boolean;
-    Mi4_C3_direct_numeric_voltage_candidates: string[];
-    Mi4_C3_independent_numeric_voltage_candidate_count: number;
-    Ketkar_2019_official_source_data_attachment_count?: number;
-    Ketkar_2019_attachments_are_mean_SEM_tables?: boolean;
-    Ketkar_2019_Mi1_Tm3_GCaMP_summary_found?: boolean;
-    Ketkar_2019_Mi4_C3_payload_found?: boolean;
-    Ketkar_2019_individual_source_dynamics_found?: boolean;
-    Ketkar_2019_membrane_voltage_found?: boolean;
-    Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count?: number;
-    Gonzalez_Suarez_2022_Mi4_type_average_filter_available?: boolean;
-    Gonzalez_Suarez_2022_individual_cell_axis_available?: boolean;
-    Gonzalez_Suarez_2022_Mi4_voltage_available?: boolean;
-    Gonzalez_Suarez_2022_C3_dynamics_available?: boolean;
-    Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved?: boolean;
-    Gonzalez_Suarez_2022_individual_flies_are_statistical_units?: boolean;
-    Gonzalez_Suarez_2022_public_individual_numeric_payload?: boolean;
-    Yuan_2020_C3_intervention_candidate_verified?: boolean;
-    Yuan_2020_C3_direct_recording_verified?: boolean;
-    Yuan_2020_C3_numeric_source_dynamics_verified?: boolean;
-    Yuan_2020_supplement_retrieved?: boolean;
-    Strother_2018_successful_index_Mi4_trace_found?: boolean;
-    Strother_2018_Figshare_search_interpretable?: boolean;
-    Strother_2018_global_absence_claimed?: boolean;
-    Strother_2018_author_public_repository_count?: number;
-    Strother_2018_author_repository_numeric_payload_verified?: boolean;
-    Strother_2018_author_repository_search_is_bounded?: boolean;
-    Strother_2018_supplement_bundle_entry_count?: number;
-    Strother_2018_Mi4_moving_grating_figure_verified?: boolean;
-    Strother_2018_Mi4_moving_grating_fly_count?: number;
-    Strother_2018_public_numeric_trace_attachment_verified?: boolean;
-    C3_citation_graph_union_unique_work_count?: number;
-    C3_citation_graph_unresolved_reference_ID_count?: number;
-    Pang_2025_directly_recorded_neuron_types?: string[];
-    Pang_2025_Dryad_file_count?: number;
-    Pang_2025_new_C3_direct_recording_found?: boolean;
-    legacy_C3_candidate_count?: number;
-    Tuthill_2013_C3_intervention_only_verified?: boolean;
-    Maisak_2018_direct_C3_Mi4_recording_verified?: boolean;
-    Ramos_2020_fulltext_scope_resolved?: boolean;
-    Ramos_2020_direct_recording_targets?: string[];
-    Ramos_2020_C3_direct_recording_verified?: boolean;
-    Hao_2026_ASAP7y_candidate_classification?: string;
-    Hao_2026_ASAP7y_paper_source_experimental_cell_types?: string[];
-    Hao_2026_ASAP7y_public_author_figure_named_examples?: string[];
-    Hao_2026_ASAP7y_complete_cell_type_set_resolved?: boolean;
-    Hao_2026_ASAP7y_Drosophila_voltage_verified?: boolean;
-    Hao_2026_ASAP7y_public_numeric_payload_verified?: boolean;
-    Hao_2026_Wayback_capture_view?: string;
-    Hao_2026_Wayback_linked_route_contents_retrieved?: boolean;
-    Hao_2026_Wayback_resolves_complete_cell_types?: boolean;
-    Hao_2026_ClandininLab_public_repository_count?: number;
-    Hao_2026_ClandininLab_paper_repository_hits?: string[];
-    Hao_2026_bioRxiv_TDM_requester_pays_required?: boolean;
-    Hao_2026_bioRxiv_TDM_payload_inventory_readable?: boolean;
-    Hao_2025_dissertation_restricted_until?: string;
-    Hao_2025_dissertation_public_abstract_names_cell_types?: boolean;
-    Hao_2026_ASAP7y_successful_index_numeric_payload_found?: boolean;
-    Hao_2026_ASAP7y_global_payload_absence_claimed?: boolean;
-    Hao_2026_Europe_PMC_annotation_count?: number;
-    Hao_2026_Europe_PMC_Mi4_annotation_hit?: boolean;
-    Hao_2026_Europe_PMC_C3_annotation_hit?: boolean;
-    Hao_2026_Europe_PMC_annotation_scope?: string;
-    Fendl_2021_target_Rdl_localization_verified?: boolean;
-    Fendl_2021_pooled_GABAergic_T4_input_sign_supported?: boolean;
-    Fendl_2021_source_specific_contact_resolved?: boolean;
-    Fendl_2021_Mi4_C3_direct_recording_verified?: boolean;
-    Drews_2020_Mi4_ROI_count?: number;
-    Drews_2020_Mi4_pseudonymous_fly_count?: number;
-    Drews_2020_Mi4_individual_numeric_calcium_verified?: boolean;
-    Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced?: boolean;
-    Drews_2020_preregistered_independent_validation_available?: boolean;
-    Drews_2020_Mi4_full_temporal_kernel_identified?: boolean;
-    Drews_2020_Mi4_experimental_membrane_voltage?: boolean;
-    Drews_2020_recording_to_MaleCNS_body_crosswalk_found?: boolean;
-    Sporar_2020_C3_exact_term_count?: number;
-    Sporar_2020_C3_direct_recording_verified?: boolean;
-    Shomar_2025_C3_behavioral_silencing_verified?: boolean;
-    Shomar_2025_direct_neural_imaging_cell_types?: string[];
-    Shomar_2025_C3_direct_recording_verified?: boolean;
-    Shomar_2025_C3_numeric_source_dynamics_verified?: boolean;
-    Gur_2024_directly_recorded_neuron_types?: string[];
-    Gur_2024_Mi4_proofreading_row_count?: number;
-    Gur_2024_C3_proofreading_row_count?: number;
-    Gur_2024_Mi4_C3_files_are_proofreading_only?: boolean;
-    Gur_2024_Mi4_C3_direct_physiology_found?: boolean;
-    Tanaka_2023_Mi4_fly_count?: number;
-    Tanaka_2023_Mi4_selected_ROI_count?: number;
-    Tanaka_2023_Mi4_individual_fly_axis_available?: boolean;
-    Tanaka_2023_Mi4_response_unit?: string;
-    Tanaka_2023_Mi4_experimental_membrane_voltage?: boolean;
-    Tanaka_2023_Mi4_source_dynamics_transfer_authorized?: boolean;
-    Tanaka_2023_Figure_6_named_Mi4_C3_member_count?: number;
-    Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording?: boolean;
-    Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload?: boolean;
-    Wu_2026_afterimages_Mi4_fly_count?: number;
-    Wu_2026_afterimages_Mi4_ROI_count?: number;
-    Wu_2026_afterimages_Mi4_response_unit?: string;
-    Wu_2026_afterimages_public_numeric_Mi4_payload_verified?: boolean;
-    Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized?: boolean;
-    Henning_C3_directional_payload_fly_count?: number;
-    Henning_C3_directional_caption_fly_count?: number;
-    Henning_C3_directional_ROI_count?: number;
-    Henning_C3_directional_edge_speed_degrees_per_second?: number;
-    Henning_C3_directional_cohort_independent?: boolean;
-    Henning_C3_direction_specific_source_kernel_verified?: boolean;
-    Henning_C3_directional_source_transfer_authorized?: boolean;
-    T5_voltage_field_counts: { aggregated_full_field_OFF_flash: number; raw_white_noise: number; raw_drifting_grating: number };
-    T5_voltage_derived_kernel_sources: string[];
-    T5_voltage_derived_kernel_record_count: number;
-    T5_kernel_sample_interval_seconds: number;
-    T5_raw_kernel_gain_transferable: boolean;
-    T5_kernel_stimulus_invariant: boolean;
-    T5_source_kernel_transfer_authorized: boolean;
-    T5_state_unit_record_count?: number;
-    T5_exact_volts_to_millivolts_scale_verified?: boolean;
-    T5_millivolts_or_filter_output_to_state_mapping_available?: boolean;
-    T5_candidate_normalization_formula?: string | null;
-    T5_candidate_clipping_rule?: string | null;
-    T5_saline_fast_pooled_median_latency_ms?: number;
-    T5_saline_Tm9_median_latency_ms?: number;
-    T5_OA_fast_pooled_median_latency_ms?: number;
-    T5_OA_Tm9_median_latency_ms?: number;
-    T5_saline_Tm9_relative_delay_supported?: boolean;
-    T5_Tm9_delay_ordering_state_invariant?: boolean;
-    T5_source_delay_transfer_authorized?: boolean;
-    T5_saline_record_median_preferred_frequency_hz?: { Tm1: number; Tm2: number; Tm4: number; Tm9: number };
-    T5_OA_record_median_preferred_frequency_hz?: { Tm1: number; Tm2: number; Tm4: number; Tm9: number };
-    T5_preferred_frequency_summary_invariant?: boolean;
-    T5_source_frequency_transfer_authorized?: boolean;
-    T5_Tm_to_T5_model_inputs_git_blob_verified?: boolean;
-    T5_Tm_to_T5_Figure5_training_fit_count?: number;
-    T5_Tm_to_T5_fit_score_samples_disjoint?: boolean;
-    T5_Tm_to_T5_independent_validation_available?: boolean;
-    T5_Figure6_Tm2_ND_source_reference_correct?: boolean;
-    T5_Tm_to_T5_model_transfer_authorized?: boolean;
-    T5_FIB19_MaleCNS_population_source_rank_matches?: boolean;
-    T5_FIB19_MaleCNS_maximum_population_ratio_difference?: number;
-    T5_MaleCNS_Tm9_fraction_outside_FIB19_range?: number;
-    T5_FIB19_to_MaleCNS_weight_transfer_authorized?: boolean;
-    T5_moving_bar_condition_count?: number;
-    T5_moving_bar_gain_free_DSI_available?: boolean;
-    T5_moving_bar_gain_fit_score_samples_disjoint?: boolean;
-    T5_moving_bar_validation_available?: boolean;
-    T5_moving_bar_transfer_authorized?: boolean;
-    T5_four_Tm_exact_type_average_mapping_complete: boolean;
-    T5_all_five_source_mapping_complete: boolean;
-    T5_CT1_mapping_Lo1_column_count_by_body: { "10009": number; "10157": number };
-    Braun_calcium_fly_counts?: { Tm2: number; Tm9: number; CT1: number };
-    Braun_calcium_condition_grids_complete?: boolean;
-    Braun_calcium_allowed_voltage_sources?: string[];
-    Gou_Dryad_archive_hash_locally_verified: boolean;
-    Gou_Dryad_local_processed_calcium_sources: string[];
-    Gou_Dryad_flash_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
-    Gou_Dryad_moving_bar_fly_axis_sizes: { Mi1: number; Tm3: number; Tm1: number; Tm2: number };
-    Gou_Dryad_Mi1_Tm3_direction_axis_identifiable: boolean;
-    Gou_Dryad_direction_invariance_evaluated: boolean;
-    Gou_DANDI_all_assets_stimulus_metadata_indexed: boolean;
-    Gou_DANDI_Mi1_Tm3_asset_counts: { Mi1: number; Tm3: number };
-    Gou_DANDI_Mi1_Tm3_stimulus_metadata_available: boolean;
-    Gou_Dryad_stable_biological_individual_IDs_verified: boolean;
-    Gou_DANDI_asset_level_stable_participant_IDs_verified: boolean;
-    Gou_DANDI_unique_subject_ID_count: number;
-    Gou_Dryad_distinct_fliesUsed_label_count: number;
-    Gou_Dryad_DANDI_identity_crosswalk_match_count: number;
-    Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified: boolean;
-    Gou_Dryad_experimental_membrane_voltage: boolean;
-    v7_offline_time_coordinate_contract_complete: boolean;
-    T5_transfer_synthesis_kernel_shape_source_count?: number;
-    T5_transfer_synthesis_mapping_source_count?: number;
-    T5_transfer_synthesis_positive_shape_evidence_count?: number;
-    T5_transfer_synthesis_absolute_gain_available?: boolean;
-    T5_transfer_synthesis_official_target_model_available?: boolean;
-    T5_transfer_synthesis_target_to_source_mapping_available?: boolean;
-    T5_transfer_synthesis_Figure6_axolotl_source_available?: boolean;
-    T5_transfer_synthesis_related_axolotl_project_identified?: boolean;
-    T5_transfer_synthesis_axolotl_repository_readable?: boolean;
-    T5_measured_kernel_temporal_identifiability_passed?: boolean;
-    T5_measured_kernel_direction_scoring_performed?: boolean;
-    T5_measured_kernel_frame_alignment_verified?: boolean;
-    T5_measured_kernel_probe_solver_alignment_verified?: boolean;
-    T5_measured_kernel_physical_transfer_authorized?: boolean;
-    T5_measured_kernel_standard_substep_negative_reproduced?: boolean;
-    T5_measured_kernel_cross_substep_identifiability_passed?: boolean;
-    T5_measured_kernel_cross_substep_direction_scoring_performed?: boolean;
-    T5_measured_kernel_cross_substep_direction_scoring_authorized?: boolean;
-    T5_measured_kernel_causal_index_zero_supported?: boolean;
-    T5_measured_kernel_all_population_peaks_covered?: boolean;
-    T5_measured_kernel_full_L1_support_covered?: boolean;
-    T5_measured_kernel_prefix_alone_full_support_negative_authorized?: boolean;
-    T5_measured_kernel_trace_samples?: number;
-    T5_measured_kernel_minimum_prefix_L1_mass_fraction?: number;
-    T5_measured_kernel_maximum_prefix_L1_mass_fraction?: number;
-    T5_measured_kernel_zero_tail_full_support_evaluated?: boolean;
-    T5_measured_kernel_zero_tail_cross_substep_identifiability_passed?: boolean;
-    T5_measured_kernel_zero_tail_all_candidates_failed?: boolean;
-    T5_measured_kernel_zero_tail_direction_scoring_authorized?: boolean;
-    T5_measured_kernel_zero_tail_direction_scoring_performed?: boolean;
-    T5_measured_kernel_zero_tail_samples?: number;
-    T5_measured_kernel_full_support_output_samples?: number;
-    T5_population_kernel_recording_id_robustness_passed?: boolean;
-    T5_Tm2_population_kernel_recording_id_robustness_passed?: boolean;
-    T5_population_kernel_independent_validation_available?: boolean;
-    T5_population_kernel_transfer_authorized?: boolean;
-    T5_population_kernel_robustness_passing_source_count?: number;
-    T5_population_kernel_robustness_failing_sources?: string[];
-    T5_Tm2_recording_id_vs_rest_median_correlation?: number;
-    T5_Tm2_partition_correlation_p05?: number;
-    T5_Tm2_oracle_shift_LOO_median_correlation?: number;
-    T5_Tm2_oracle_shift_partition_correlation_p05?: number;
-    T5_Tm2_oracle_maximum_lag_milliseconds?: number;
-    T5_Tm2_oracle_alignment_all_shape_gates_passed?: boolean;
-    T5_Tm2_bounded_latency_explains_robustness_failure?: boolean;
-    T5_Tm2_oracle_aligned_kernel_authorized?: boolean;
-    T5_Tm2_OA_only_recording_ids?: string[];
-    T5_Tm2_shared_saline_OA_recording_id_count?: number;
-    T5_Tm2_paired_saline_OA_shape_correlation_summary?: { count: number; minimum: number; median: number; maximum: number };
-    T5_Tm2_paired_OA_to_saline_peak_ratio_summary?: { count: number; minimum: number; median: number; maximum: number };
-    T5_Tm2_OA_only_recordings_expand_saline_cohort?: boolean;
-    T5_saline_and_OA_kernels_exchangeable?: boolean;
-    T5_cross_state_recording_pool_authorized?: boolean;
-    T5_population_kernel_author_default_baseline_verified?: boolean;
-    T5_population_kernel_no_baseline_matches_author_default?: boolean;
-    T5_population_kernel_author_row_weighting_exactly_reproduced?: boolean;
-    T5_population_kernel_tail_baseline_variant_authorized?: boolean;
-    T5_population_kernel_author_call_count?: number;
-    T5_population_kernel_explicit_baseline_call_count?: number;
-    T5_Tm1_row_vs_recording_id_weighted_correlation?: number;
-    T5_author_row_weighted_changed_sources?: string[];
-    T5_author_row_weighted_full_support_all_candidates_failed?: boolean;
-    T5_author_row_weighted_cross_substep_identifiability_passed?: boolean;
-    T5_author_row_weighted_direction_scoring_authorized?: boolean;
-    T5_author_row_weighted_direction_scoring_performed?: boolean;
-    T5_Tm2_LOO_full_support_all_evaluations_failed?: boolean;
-    T5_Tm2_LOO_robust_temporal_identifiability_passed?: boolean;
-    T5_Tm2_LOO_direction_scoring_authorized?: boolean;
-    T5_Tm2_LOO_direction_scoring_performed?: boolean;
-    T5_Tm2_LOO_independent_biological_validation_performed?: boolean;
-    T5_Tm2_LOO_fold_count?: number;
-    T5_Tm2_LOO_evaluation_count?: number;
-    T5_Tm2_LOO_passed_evaluation_count?: number;
-    T5_Tm2_LOO_candidate_ratio_ranges?: Record<string, { shuffle: number[]; static: number[] }>;
-    T5_measured_kernel_typed_recurrent_cascade_verified?: boolean;
-    T5_measured_kernel_replaces_existing_source_dynamics?: boolean;
-    T5_measured_kernel_single_stage_biological_interpretation_authorized?: boolean;
-    T5_measured_kernel_external_state_mapping_available?: boolean;
-    T5_measured_kernel_source_leaks?: Record<string, number>;
-    T5_measured_kernel_source_node_counts?: Record<string, number>;
-    T5_measured_kernel_source_inputs_partitioned_exactly_once?: boolean;
-    T5_measured_kernel_every_source_has_recurrent_or_feedback_input?: boolean;
-    T5_measured_kernel_feedforward_only_source_drive_available?: boolean;
-    T5_measured_kernel_source_dynamics_replacement_evaluated?: boolean;
-    T5_measured_kernel_source_dynamics_replacement_authorized?: boolean;
-    T5_measured_kernel_recurrent_or_feedback_fraction_by_source?: Record<string, number>;
-    T5_measured_kernel_Tm9_CT1_input_fraction?: number;
-    T5_lamina_only_replacement_evaluated?: boolean;
-    T5_lamina_only_replacement_all_candidates_failed?: boolean;
-    T5_lamina_only_replacement_temporal_identifiability_passed?: boolean;
-    T5_lamina_only_replacement_direction_scoring_authorized?: boolean;
-    T5_lamina_only_replacement_direction_scoring_performed?: boolean;
-    T5_lamina_only_replacement_physical_transfer_authorized?: boolean;
-    T5_lamina_only_source_coverage?: Record<string, { source_node_count: number; source_node_with_lamina_input_count: number; source_node_without_lamina_input_count: number; source_node_with_lamina_input_fraction: number }>;
-    T5_lamina_only_candidate_ratios_by_update?: Record<string, Record<string, { shuffle: number; static: number }>>;
-    T5_temporal_shuffle_frame_multiset_preserved?: boolean;
-    T4_temporal_shuffle_frame_multiset_preserved?: boolean;
-    T4_temporal_shuffle_R1_R6_energy_preserved?: boolean;
-    T4_temporal_shuffle_source_energy_within_five_percent?: boolean;
-    T4_temporal_shuffle_input_mismatch_explains_failure?: boolean;
-    T4_temporal_shuffle_failure_retained_after_energy_audit?: boolean;
-    fig3_source_kernel_baseline_or_gain_mismatch_explains_failure?: boolean;
-    fig3_source_kernel_oracle_lag_milliseconds?: number;
-    fig3_source_kernel_original_negative_LOO_cell_count?: number;
-    fig3_source_kernel_oracle_shift_negative_LOO_cell_count?: number;
-    fig3_source_kernel_bounded_latency_explains_all_negative_cells?: boolean;
-    fig3_source_kernel_high_SNR_negative_LOO_cell_count?: number;
-    fig3_source_kernel_low_SNR_explains_all_negative_cells?: boolean;
-    fig3_source_kernel_ON_OFF_negative_cell_intersection_count?: number;
-    fig3_source_kernel_post_hoc_cell_exclusion_authorized?: boolean;
-    fig3_source_kernel_failure_retained_after_alignment_audit?: boolean;
-    T5_temporal_shuffle_retinal_energy_preserved?: boolean;
-    T5_temporal_shuffle_lamina_source_energy_preserved?: boolean;
-    T5_temporal_shuffle_energy_matched_control_verified?: boolean;
-    T5_equal_energy_temporal_selectivity_interpretation_authorized?: boolean;
-    T5_new_energy_normalized_gate_authorized?: boolean;
-    T5_temporal_shuffle_input_energy_ratios_by_update?: Record<string, { pixel_temporal_difference: number; R1_R6_signed_frame_difference: number; lamina_only_Tm_preactivation: Record<string, number> }>;
-    T5_static_sham_input_energy_ratios_by_update?: Record<string, { pixel_temporal_difference: number; R1_R6_signed_frame_difference: number; lamina_only_Tm_preactivation: Record<string, number> }>;
-    T5_increment_order_control_images_valid?: boolean;
-    T5_increment_order_control_terminal_frame_preserved?: boolean;
-    T5_increment_order_control_R1_R6_drive_multiset_preserved?: boolean;
-    T5_increment_order_control_R1_R6_energy_matched?: boolean;
-    T5_increment_order_control_independent_condition_evaluated?: boolean;
-    T5_increment_order_control_replacement_authorized?: boolean;
-    T5_increment_order_control_R1_R6_energy_ratio_summary?: { minimum: number; median: number; maximum: number };
-    T5_increment_order_control_lamina_energy_ratios_by_update?: Record<string, Record<string, number>>;
-    T5_increment_order_control_output_ratios_by_update?: Record<string, Record<string, number>>;
-    T5_increment_order_replication_input_validity_passed?: boolean;
-    T5_increment_order_replication_same_candidate_passed?: boolean;
-    T5_increment_order_replication_gate_passed?: boolean;
-    T5_increment_order_replication_direction_scoring_authorized?: boolean;
-    T5_increment_order_replication_candidate_passes?: Record<string, boolean>;
-    T5_increment_order_replication_output_ratios?: Record<string, Record<string, Record<string, number>>>;
-    T5_transfer_synthesis_CT1_complete?: boolean;
-    T5_transfer_synthesis_ready?: boolean;
-    v7_offline_horizontal_coordinate_contract_complete: boolean;
-    v7_offline_two_dimensional_angular_calibration_complete: boolean;
-    v7_vertical_camera_ray_angles_declared: boolean;
-    v7_vertical_FOV_declared: boolean;
-    v7_vertical_pixel_to_angle_formula_declared: boolean;
-    v7_vertical_motion_has_physical_angular_units: boolean;
-    v7_looming_radius_has_physical_angular_units: boolean;
-    v7_retinal_v_has_physical_angular_units: boolean;
-    v7_offline_2D_engineering_angular_grid_complete: boolean;
-    v7_offline_engineering_vertical_FOV_degrees: number;
-    v7_offline_engineering_angular_pixel_pitch_degrees: number;
-    v7_offline_engineering_grid_biologically_calibrated: boolean;
-    v7_controlled_stimulus_and_R1_R6_input_boundary_complete?: boolean;
-    v7_controlled_base_stimulus_count?: number;
-    v7_controlled_stimuli_per_independent_split?: number;
-    v7_typed_LPLC_LC4_stimulus_count?: number;
-    v7_external_drive_non_R1_R6_node_count?: number;
-    v7_target_direct_external_drive_overlap?: number;
-    v7_offline_frame_interval_milliseconds: number;
-    v7_offline_substep_interval_milliseconds: number;
-    v7_horizontal_fov_degrees: number;
-    T4_source_mapping_mode: string;
-    C2C3_version_of_record_DOI?: string;
-    C2C3_version_of_record_repository_revision?: string;
-    C2C3_version_of_record_new_payload_modality?: string;
-    C2C3_version_of_record_C3_fly_count?: number;
-    C2C3_version_of_record_Mi1_control_fly_count?: number;
-    C2C3_version_of_record_new_C3_Mi4_voltage_found?: boolean;
-    C2C3_version_of_record_new_Mi4_payload_found?: boolean;
-    C2C3_version_of_record_MaleCNS_crosswalk_found?: boolean;
-    C2C3_version_of_record_changed_T4_transfer_gate?: boolean;
-    T4_source_pool_camera_frame_bilateral_readouts?: string[];
-    T4_source_pool_camera_frame_bilateral_subtypes?: Record<string, string[]>;
-    T4_source_pool_camera_frame_post_hoc_candidate_discovered?: boolean;
-    T4_source_pool_camera_frame_replication_preregistered?: boolean;
-    T4_source_pool_camera_frame_replication_evaluated?: boolean;
-    T4_source_pool_camera_frame_target_formula_authorized?: boolean;
-    T4_source_pool_camera_frame_ordered_replication_passed?: boolean;
-    T4_source_pool_camera_frame_controls_evaluated?: boolean;
-    T4_source_pool_camera_frame_replication_gate_passed?: boolean;
-    T4_source_pool_camera_frame_replication_results?: Record<string, unknown>;
-    T4_synapse_RF_axis_joint_valid_target_count?: number;
-    T4_synapse_RF_axis_identity_median_angle_degrees?: number;
-    T4_synapse_RF_axis_identity_cardinal_match_fraction?: number;
-    T4_synapse_RF_axis_descriptive_best_transform?: string;
-    T4_synapse_RF_axis_best_median_angle_degrees?: number;
-    T4_source_RF_axis_interchangeability_verified?: boolean;
-    T4_RF_axis_replacement_authorized?: boolean;
-    T4_source_recording_level_body_assignment: boolean;
-    T4_exact_type_average_mapping_complete: boolean;
-    T4_author_minmax_formula_reproduced: boolean;
-    T4_state_mapping_held_out_outside_fraction_by_source: { Mi1: number; Tm3: number; Mi4: number; C3: number };
-    T4_author_minmax_semantics_match_v7_state: boolean;
-    T4_millivolts_to_v7_state_mapping_available: boolean;
-    T5_record_specific_stimulus_logs_available: boolean;
-    Motyxia2_public_history_branch_count: number;
-    Motyxia2_public_history_commit_count: number;
-    T5_record_log_found_in_Motyxia2_public_history: boolean;
-    T5_external_successful_indexes_linked_log_found: boolean;
-    T5_PMC_supplement_content_inspected: boolean;
-    T5_publisher_supplements_inspected: boolean;
-    T5_publisher_supplements_contain_record_log: boolean;
-    T5_Figshare_search_accessible: boolean;
-    T5_stimulus_log_global_absence_claimed: boolean;
-    T5_generator_defaults_used_as_record_fields: boolean;
-    T5_stimulus_provenance_complete: boolean;
-    T5_Figure4_relative_PD_ND_mapping_verified: boolean;
-    T5_Figure4_native_coordinate_motion_mapping_verified: boolean;
-    T5_Figure4_absolute_physical_direction_mapping_verified: boolean;
-    T5_Kohn_Portes_record_level_direction_code_available: boolean;
-    T5_Kohn_Portes_record_level_physical_direction_available: boolean;
-    T5_cross_dataset_direction_mapping_authorized: boolean;
-    CT1_audited_candidate_count: number;
-    CT1_incremental_2025_2026_candidate_count: number;
-    CT1_direct_experimental_voltage_candidate_found: boolean;
-    CT1_PuRe_archive_contents_verified: boolean;
-    CT1_PuRe_new_numerical_payload_verified: boolean;
-    Tm9_official_synapse_coordinate: [number, number];
-    MaleCNS_Tm3_same_type_native_coordinate_validation_available: boolean;
-    MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction: number;
-    MaleCNS_one_hop_coordinates_native_equivalent: boolean;
-    MaleCNS_coordinate_rule_as_experimental_mapping_authorized: boolean;
-    MaleCNS_Tm4_native_count_by_side: { L: number; R: number };
-    MaleCNS_Tm4_synapse_count_right_exact_fraction: number;
-    MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction: number;
-    MaleCNS_Tm4_synapse_count_candidate_native_equivalent: boolean;
-    MaleCNS_Tm4_left_coordinate_writeback_authorized: boolean;
-    MaleCNS_Tm4_synapse_count_right_hex_distance_counts: Record<string, number>;
-    MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction: number;
-    MaleCNS_Tm4_synapse_count_left_distinct_candidate_count: number;
-    MaleCNS_Tm4_post_hoc_hex_tolerance_authorized: boolean;
-    CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean;
-    CT1_complete_official_LO_column_coverage: boolean;
-  };
-  contributions: { upper_planner: { status: string; active_in_default_runtime: boolean }; fly_local_core: { status: string; active_v7_in_default_runtime: boolean }; engineering_executor: { status: string; v7_deployment_enabled: boolean } };
+    nine_source_contract_complete: boolean
+    Mi4_C3_direct_numeric_voltage_candidates: string[]
+    Mi4_C3_independent_numeric_voltage_candidate_count: number
+    Ketkar_2019_official_source_data_attachment_count?: number
+    Ketkar_2019_attachments_are_mean_SEM_tables?: boolean
+    Ketkar_2019_Mi1_Tm3_GCaMP_summary_found?: boolean
+    Ketkar_2019_Mi4_C3_payload_found?: boolean
+    Ketkar_2019_individual_source_dynamics_found?: boolean
+    Ketkar_2019_membrane_voltage_found?: boolean
+    Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count?: number
+    Gonzalez_Suarez_2022_Mi4_type_average_filter_available?: boolean
+    Gonzalez_Suarez_2022_individual_cell_axis_available?: boolean
+    Gonzalez_Suarez_2022_Mi4_voltage_available?: boolean
+    Gonzalez_Suarez_2022_C3_dynamics_available?: boolean
+    Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved?: boolean
+    Gonzalez_Suarez_2022_individual_flies_are_statistical_units?: boolean
+    Gonzalez_Suarez_2022_public_individual_numeric_payload?: boolean
+    Yuan_2020_C3_intervention_candidate_verified?: boolean
+    Yuan_2020_C3_direct_recording_verified?: boolean
+    Yuan_2020_C3_numeric_source_dynamics_verified?: boolean
+    Yuan_2020_supplement_retrieved?: boolean
+    Strother_2018_successful_index_Mi4_trace_found?: boolean
+    Strother_2018_Figshare_search_interpretable?: boolean
+    Strother_2018_global_absence_claimed?: boolean
+    Strother_2018_author_public_repository_count?: number
+    Strother_2018_author_repository_numeric_payload_verified?: boolean
+    Strother_2018_author_repository_search_is_bounded?: boolean
+    Strother_2018_supplement_bundle_entry_count?: number
+    Strother_2018_Mi4_moving_grating_figure_verified?: boolean
+    Strother_2018_Mi4_moving_grating_fly_count?: number
+    Strother_2018_public_numeric_trace_attachment_verified?: boolean
+    C3_citation_graph_union_unique_work_count?: number
+    C3_citation_graph_unresolved_reference_ID_count?: number
+    Pang_2025_directly_recorded_neuron_types?: string[]
+    Pang_2025_Dryad_file_count?: number
+    Pang_2025_new_C3_direct_recording_found?: boolean
+    legacy_C3_candidate_count?: number
+    Tuthill_2013_C3_intervention_only_verified?: boolean
+    Maisak_2018_direct_C3_Mi4_recording_verified?: boolean
+    Ramos_2020_fulltext_scope_resolved?: boolean
+    Ramos_2020_direct_recording_targets?: string[]
+    Ramos_2020_C3_direct_recording_verified?: boolean
+    Hao_2026_ASAP7y_candidate_classification?: string
+    Hao_2026_ASAP7y_paper_source_experimental_cell_types?: string[]
+    Hao_2026_ASAP7y_public_author_figure_named_examples?: string[]
+    Hao_2026_ASAP7y_complete_cell_type_set_resolved?: boolean
+    Hao_2026_ASAP7y_Drosophila_voltage_verified?: boolean
+    Hao_2026_ASAP7y_public_numeric_payload_verified?: boolean
+    Hao_2026_Wayback_capture_view?: string
+    Hao_2026_Wayback_linked_route_contents_retrieved?: boolean
+    Hao_2026_Wayback_resolves_complete_cell_types?: boolean
+    Hao_2026_ClandininLab_public_repository_count?: number
+    Hao_2026_ClandininLab_paper_repository_hits?: string[]
+    Hao_2026_bioRxiv_TDM_requester_pays_required?: boolean
+    Hao_2026_bioRxiv_TDM_payload_inventory_readable?: boolean
+    Hao_2025_dissertation_restricted_until?: string
+    Hao_2025_dissertation_public_abstract_names_cell_types?: boolean
+    Hao_2026_ASAP7y_successful_index_numeric_payload_found?: boolean
+    Hao_2026_ASAP7y_global_payload_absence_claimed?: boolean
+    Hao_2026_Europe_PMC_annotation_count?: number
+    Hao_2026_Europe_PMC_Mi4_annotation_hit?: boolean
+    Hao_2026_Europe_PMC_C3_annotation_hit?: boolean
+    Hao_2026_Europe_PMC_annotation_scope?: string
+    Fendl_2021_target_Rdl_localization_verified?: boolean
+    Fendl_2021_pooled_GABAergic_T4_input_sign_supported?: boolean
+    Fendl_2021_source_specific_contact_resolved?: boolean
+    Fendl_2021_Mi4_C3_direct_recording_verified?: boolean
+    Drews_2020_Mi4_ROI_count?: number
+    Drews_2020_Mi4_pseudonymous_fly_count?: number
+    Drews_2020_Mi4_individual_numeric_calcium_verified?: boolean
+    Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced?: boolean
+    Drews_2020_preregistered_independent_validation_available?: boolean
+    Drews_2020_Mi4_full_temporal_kernel_identified?: boolean
+    Drews_2020_Mi4_experimental_membrane_voltage?: boolean
+    Drews_2020_recording_to_MaleCNS_body_crosswalk_found?: boolean
+    Sporar_2020_C3_exact_term_count?: number
+    Sporar_2020_C3_direct_recording_verified?: boolean
+    Shomar_2025_C3_behavioral_silencing_verified?: boolean
+    Shomar_2025_direct_neural_imaging_cell_types?: string[]
+    Shomar_2025_C3_direct_recording_verified?: boolean
+    Shomar_2025_C3_numeric_source_dynamics_verified?: boolean
+    Gur_2024_directly_recorded_neuron_types?: string[]
+    Gur_2024_Mi4_proofreading_row_count?: number
+    Gur_2024_C3_proofreading_row_count?: number
+    Gur_2024_Mi4_C3_files_are_proofreading_only?: boolean
+    Gur_2024_Mi4_C3_direct_physiology_found?: boolean
+    Tanaka_2023_Mi4_fly_count?: number
+    Tanaka_2023_Mi4_selected_ROI_count?: number
+    Tanaka_2023_Mi4_individual_fly_axis_available?: boolean
+    Tanaka_2023_Mi4_response_unit?: string
+    Tanaka_2023_Mi4_experimental_membrane_voltage?: boolean
+    Tanaka_2023_Mi4_source_dynamics_transfer_authorized?: boolean
+    Tanaka_2023_Figure_6_named_Mi4_C3_member_count?: number
+    Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording?: boolean
+    Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload?: boolean
+    Wu_2026_afterimages_Mi4_fly_count?: number
+    Wu_2026_afterimages_Mi4_ROI_count?: number
+    Wu_2026_afterimages_Mi4_response_unit?: string
+    Wu_2026_afterimages_public_numeric_Mi4_payload_verified?: boolean
+    Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized?: boolean
+    Henning_C3_directional_payload_fly_count?: number
+    Henning_C3_directional_caption_fly_count?: number
+    Henning_C3_directional_ROI_count?: number
+    Henning_C3_directional_edge_speed_degrees_per_second?: number
+    Henning_C3_directional_cohort_independent?: boolean
+    Henning_C3_direction_specific_source_kernel_verified?: boolean
+    Henning_C3_directional_source_transfer_authorized?: boolean
+    T5_voltage_field_counts: {
+      aggregated_full_field_OFF_flash: number
+      raw_white_noise: number
+      raw_drifting_grating: number
+    }
+    T5_voltage_derived_kernel_sources: string[]
+    T5_voltage_derived_kernel_record_count: number
+    T5_kernel_sample_interval_seconds: number
+    T5_raw_kernel_gain_transferable: boolean
+    T5_kernel_stimulus_invariant: boolean
+    T5_source_kernel_transfer_authorized: boolean
+    T5_state_unit_record_count?: number
+    T5_exact_volts_to_millivolts_scale_verified?: boolean
+    T5_millivolts_or_filter_output_to_state_mapping_available?: boolean
+    T5_candidate_normalization_formula?: string | null
+    T5_candidate_clipping_rule?: string | null
+    T5_saline_fast_pooled_median_latency_ms?: number
+    T5_saline_Tm9_median_latency_ms?: number
+    T5_OA_fast_pooled_median_latency_ms?: number
+    T5_OA_Tm9_median_latency_ms?: number
+    T5_saline_Tm9_relative_delay_supported?: boolean
+    T5_Tm9_delay_ordering_state_invariant?: boolean
+    T5_source_delay_transfer_authorized?: boolean
+    T5_saline_record_median_preferred_frequency_hz?: {
+      Tm1: number
+      Tm2: number
+      Tm4: number
+      Tm9: number
+    }
+    T5_OA_record_median_preferred_frequency_hz?: {
+      Tm1: number
+      Tm2: number
+      Tm4: number
+      Tm9: number
+    }
+    T5_preferred_frequency_summary_invariant?: boolean
+    T5_source_frequency_transfer_authorized?: boolean
+    T5_Tm_to_T5_model_inputs_git_blob_verified?: boolean
+    T5_Tm_to_T5_Figure5_training_fit_count?: number
+    T5_Tm_to_T5_fit_score_samples_disjoint?: boolean
+    T5_Tm_to_T5_independent_validation_available?: boolean
+    T5_Figure6_Tm2_ND_source_reference_correct?: boolean
+    T5_Tm_to_T5_model_transfer_authorized?: boolean
+    T5_FIB19_MaleCNS_population_source_rank_matches?: boolean
+    T5_FIB19_MaleCNS_maximum_population_ratio_difference?: number
+    T5_MaleCNS_Tm9_fraction_outside_FIB19_range?: number
+    T5_FIB19_to_MaleCNS_weight_transfer_authorized?: boolean
+    T5_moving_bar_condition_count?: number
+    T5_moving_bar_gain_free_DSI_available?: boolean
+    T5_moving_bar_gain_fit_score_samples_disjoint?: boolean
+    T5_moving_bar_validation_available?: boolean
+    T5_moving_bar_transfer_authorized?: boolean
+    T5_four_Tm_exact_type_average_mapping_complete: boolean
+    T5_all_five_source_mapping_complete: boolean
+    T5_CT1_mapping_Lo1_column_count_by_body: {
+      '10009': number
+      '10157': number
+    }
+    Braun_calcium_fly_counts?: { Tm2: number; Tm9: number; CT1: number }
+    Braun_calcium_condition_grids_complete?: boolean
+    Braun_calcium_allowed_voltage_sources?: string[]
+    Gou_Dryad_archive_hash_locally_verified: boolean
+    Gou_Dryad_local_processed_calcium_sources: string[]
+    Gou_Dryad_flash_fly_axis_sizes: {
+      Mi1: number
+      Tm3: number
+      Tm1: number
+      Tm2: number
+    }
+    Gou_Dryad_moving_bar_fly_axis_sizes: {
+      Mi1: number
+      Tm3: number
+      Tm1: number
+      Tm2: number
+    }
+    Gou_Dryad_Mi1_Tm3_direction_axis_identifiable: boolean
+    Gou_Dryad_direction_invariance_evaluated: boolean
+    Gou_DANDI_all_assets_stimulus_metadata_indexed: boolean
+    Gou_DANDI_Mi1_Tm3_asset_counts: { Mi1: number; Tm3: number }
+    Gou_DANDI_Mi1_Tm3_stimulus_metadata_available: boolean
+    Gou_Dryad_stable_biological_individual_IDs_verified: boolean
+    Gou_DANDI_asset_level_stable_participant_IDs_verified: boolean
+    Gou_DANDI_unique_subject_ID_count: number
+    Gou_Dryad_distinct_fliesUsed_label_count: number
+    Gou_Dryad_DANDI_identity_crosswalk_match_count: number
+    Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified: boolean
+    Gou_Dryad_experimental_membrane_voltage: boolean
+    v7_offline_time_coordinate_contract_complete: boolean
+    T5_transfer_synthesis_kernel_shape_source_count?: number
+    T5_transfer_synthesis_mapping_source_count?: number
+    T5_transfer_synthesis_positive_shape_evidence_count?: number
+    T5_transfer_synthesis_absolute_gain_available?: boolean
+    T5_transfer_synthesis_official_target_model_available?: boolean
+    T5_transfer_synthesis_target_to_source_mapping_available?: boolean
+    T5_transfer_synthesis_Figure6_axolotl_source_available?: boolean
+    T5_transfer_synthesis_related_axolotl_project_identified?: boolean
+    T5_transfer_synthesis_axolotl_repository_readable?: boolean
+    T5_measured_kernel_temporal_identifiability_passed?: boolean
+    T5_measured_kernel_direction_scoring_performed?: boolean
+    T5_measured_kernel_frame_alignment_verified?: boolean
+    T5_measured_kernel_probe_solver_alignment_verified?: boolean
+    T5_measured_kernel_physical_transfer_authorized?: boolean
+    T5_measured_kernel_standard_substep_negative_reproduced?: boolean
+    T5_measured_kernel_cross_substep_identifiability_passed?: boolean
+    T5_measured_kernel_cross_substep_direction_scoring_performed?: boolean
+    T5_measured_kernel_cross_substep_direction_scoring_authorized?: boolean
+    T5_measured_kernel_causal_index_zero_supported?: boolean
+    T5_measured_kernel_all_population_peaks_covered?: boolean
+    T5_measured_kernel_full_L1_support_covered?: boolean
+    T5_measured_kernel_prefix_alone_full_support_negative_authorized?: boolean
+    T5_measured_kernel_trace_samples?: number
+    T5_measured_kernel_minimum_prefix_L1_mass_fraction?: number
+    T5_measured_kernel_maximum_prefix_L1_mass_fraction?: number
+    T5_measured_kernel_zero_tail_full_support_evaluated?: boolean
+    T5_measured_kernel_zero_tail_cross_substep_identifiability_passed?: boolean
+    T5_measured_kernel_zero_tail_all_candidates_failed?: boolean
+    T5_measured_kernel_zero_tail_direction_scoring_authorized?: boolean
+    T5_measured_kernel_zero_tail_direction_scoring_performed?: boolean
+    T5_measured_kernel_zero_tail_samples?: number
+    T5_measured_kernel_full_support_output_samples?: number
+    T5_population_kernel_recording_id_robustness_passed?: boolean
+    T5_Tm2_population_kernel_recording_id_robustness_passed?: boolean
+    T5_population_kernel_independent_validation_available?: boolean
+    T5_population_kernel_transfer_authorized?: boolean
+    T5_population_kernel_robustness_passing_source_count?: number
+    T5_population_kernel_robustness_failing_sources?: string[]
+    T5_Tm2_recording_id_vs_rest_median_correlation?: number
+    T5_Tm2_partition_correlation_p05?: number
+    T5_Tm2_oracle_shift_LOO_median_correlation?: number
+    T5_Tm2_oracle_shift_partition_correlation_p05?: number
+    T5_Tm2_oracle_maximum_lag_milliseconds?: number
+    T5_Tm2_oracle_alignment_all_shape_gates_passed?: boolean
+    T5_Tm2_bounded_latency_explains_robustness_failure?: boolean
+    T5_Tm2_oracle_aligned_kernel_authorized?: boolean
+    T5_Tm2_OA_only_recording_ids?: string[]
+    T5_Tm2_shared_saline_OA_recording_id_count?: number
+    T5_Tm2_paired_saline_OA_shape_correlation_summary?: {
+      count: number
+      minimum: number
+      median: number
+      maximum: number
+    }
+    T5_Tm2_paired_OA_to_saline_peak_ratio_summary?: {
+      count: number
+      minimum: number
+      median: number
+      maximum: number
+    }
+    T5_Tm2_OA_only_recordings_expand_saline_cohort?: boolean
+    T5_saline_and_OA_kernels_exchangeable?: boolean
+    T5_cross_state_recording_pool_authorized?: boolean
+    T5_population_kernel_author_default_baseline_verified?: boolean
+    T5_population_kernel_no_baseline_matches_author_default?: boolean
+    T5_population_kernel_author_row_weighting_exactly_reproduced?: boolean
+    T5_population_kernel_tail_baseline_variant_authorized?: boolean
+    T5_population_kernel_author_call_count?: number
+    T5_population_kernel_explicit_baseline_call_count?: number
+    T5_Tm1_row_vs_recording_id_weighted_correlation?: number
+    T5_author_row_weighted_changed_sources?: string[]
+    T5_author_row_weighted_full_support_all_candidates_failed?: boolean
+    T5_author_row_weighted_cross_substep_identifiability_passed?: boolean
+    T5_author_row_weighted_direction_scoring_authorized?: boolean
+    T5_author_row_weighted_direction_scoring_performed?: boolean
+    T5_Tm2_LOO_full_support_all_evaluations_failed?: boolean
+    T5_Tm2_LOO_robust_temporal_identifiability_passed?: boolean
+    T5_Tm2_LOO_direction_scoring_authorized?: boolean
+    T5_Tm2_LOO_direction_scoring_performed?: boolean
+    T5_Tm2_LOO_independent_biological_validation_performed?: boolean
+    T5_Tm2_LOO_fold_count?: number
+    T5_Tm2_LOO_evaluation_count?: number
+    T5_Tm2_LOO_passed_evaluation_count?: number
+    T5_Tm2_LOO_candidate_ratio_ranges?: Record<string, { shuffle: number[]; static: number[] }>
+    T5_measured_kernel_typed_recurrent_cascade_verified?: boolean
+    T5_measured_kernel_replaces_existing_source_dynamics?: boolean
+    T5_measured_kernel_single_stage_biological_interpretation_authorized?: boolean
+    T5_measured_kernel_external_state_mapping_available?: boolean
+    T5_measured_kernel_source_leaks?: Record<string, number>
+    T5_measured_kernel_source_node_counts?: Record<string, number>
+    T5_measured_kernel_source_inputs_partitioned_exactly_once?: boolean
+    T5_measured_kernel_every_source_has_recurrent_or_feedback_input?: boolean
+    T5_measured_kernel_feedforward_only_source_drive_available?: boolean
+    T5_measured_kernel_source_dynamics_replacement_evaluated?: boolean
+    T5_measured_kernel_source_dynamics_replacement_authorized?: boolean
+    T5_measured_kernel_recurrent_or_feedback_fraction_by_source?: Record<string, number>
+    T5_measured_kernel_Tm9_CT1_input_fraction?: number
+    T5_lamina_only_replacement_evaluated?: boolean
+    T5_lamina_only_replacement_all_candidates_failed?: boolean
+    T5_lamina_only_replacement_temporal_identifiability_passed?: boolean
+    T5_lamina_only_replacement_direction_scoring_authorized?: boolean
+    T5_lamina_only_replacement_direction_scoring_performed?: boolean
+    T5_lamina_only_replacement_physical_transfer_authorized?: boolean
+    T5_lamina_only_source_coverage?: Record<
+      string,
+      {
+        source_node_count: number
+        source_node_with_lamina_input_count: number
+        source_node_without_lamina_input_count: number
+        source_node_with_lamina_input_fraction: number
+      }
+    >
+    T5_lamina_only_candidate_ratios_by_update?: Record<string, Record<string, { shuffle: number; static: number }>>
+    T5_temporal_shuffle_frame_multiset_preserved?: boolean
+    T4_temporal_shuffle_frame_multiset_preserved?: boolean
+    T4_temporal_shuffle_R1_R6_energy_preserved?: boolean
+    T4_temporal_shuffle_source_energy_within_five_percent?: boolean
+    T4_temporal_shuffle_input_mismatch_explains_failure?: boolean
+    T4_temporal_shuffle_failure_retained_after_energy_audit?: boolean
+    fig3_source_kernel_baseline_or_gain_mismatch_explains_failure?: boolean
+    fig3_source_kernel_oracle_lag_milliseconds?: number
+    fig3_source_kernel_original_negative_LOO_cell_count?: number
+    fig3_source_kernel_oracle_shift_negative_LOO_cell_count?: number
+    fig3_source_kernel_bounded_latency_explains_all_negative_cells?: boolean
+    fig3_source_kernel_high_SNR_negative_LOO_cell_count?: number
+    fig3_source_kernel_low_SNR_explains_all_negative_cells?: boolean
+    fig3_source_kernel_ON_OFF_negative_cell_intersection_count?: number
+    fig3_source_kernel_post_hoc_cell_exclusion_authorized?: boolean
+    fig3_source_kernel_failure_retained_after_alignment_audit?: boolean
+    T5_temporal_shuffle_retinal_energy_preserved?: boolean
+    T5_temporal_shuffle_lamina_source_energy_preserved?: boolean
+    T5_temporal_shuffle_energy_matched_control_verified?: boolean
+    T5_equal_energy_temporal_selectivity_interpretation_authorized?: boolean
+    T5_new_energy_normalized_gate_authorized?: boolean
+    T5_temporal_shuffle_input_energy_ratios_by_update?: Record<
+      string,
+      {
+        pixel_temporal_difference: number
+        R1_R6_signed_frame_difference: number
+        lamina_only_Tm_preactivation: Record<string, number>
+      }
+    >
+    T5_static_sham_input_energy_ratios_by_update?: Record<
+      string,
+      {
+        pixel_temporal_difference: number
+        R1_R6_signed_frame_difference: number
+        lamina_only_Tm_preactivation: Record<string, number>
+      }
+    >
+    T5_increment_order_control_images_valid?: boolean
+    T5_increment_order_control_terminal_frame_preserved?: boolean
+    T5_increment_order_control_R1_R6_drive_multiset_preserved?: boolean
+    T5_increment_order_control_R1_R6_energy_matched?: boolean
+    T5_increment_order_control_independent_condition_evaluated?: boolean
+    T5_increment_order_control_replacement_authorized?: boolean
+    T5_increment_order_control_R1_R6_energy_ratio_summary?: {
+      minimum: number
+      median: number
+      maximum: number
+    }
+    T5_increment_order_control_lamina_energy_ratios_by_update?: Record<string, Record<string, number>>
+    T5_increment_order_control_output_ratios_by_update?: Record<string, Record<string, number>>
+    T5_increment_order_replication_input_validity_passed?: boolean
+    T5_increment_order_replication_same_candidate_passed?: boolean
+    T5_increment_order_replication_gate_passed?: boolean
+    T5_increment_order_replication_direction_scoring_authorized?: boolean
+    T5_increment_order_replication_candidate_passes?: Record<string, boolean>
+    T5_increment_order_replication_output_ratios?: Record<string, Record<string, Record<string, number>>>
+    T5_transfer_synthesis_CT1_complete?: boolean
+    T5_transfer_synthesis_ready?: boolean
+    v7_offline_horizontal_coordinate_contract_complete: boolean
+    v7_offline_two_dimensional_angular_calibration_complete: boolean
+    v7_vertical_camera_ray_angles_declared: boolean
+    v7_vertical_FOV_declared: boolean
+    v7_vertical_pixel_to_angle_formula_declared: boolean
+    v7_vertical_motion_has_physical_angular_units: boolean
+    v7_looming_radius_has_physical_angular_units: boolean
+    v7_retinal_v_has_physical_angular_units: boolean
+    v7_offline_2D_engineering_angular_grid_complete: boolean
+    v7_offline_engineering_vertical_FOV_degrees: number
+    v7_offline_engineering_angular_pixel_pitch_degrees: number
+    v7_offline_engineering_grid_biologically_calibrated: boolean
+    v7_controlled_stimulus_and_R1_R6_input_boundary_complete?: boolean
+    v7_controlled_base_stimulus_count?: number
+    v7_controlled_stimuli_per_independent_split?: number
+    v7_typed_LPLC_LC4_stimulus_count?: number
+    v7_external_drive_non_R1_R6_node_count?: number
+    v7_target_direct_external_drive_overlap?: number
+    v7_offline_frame_interval_milliseconds: number
+    v7_offline_substep_interval_milliseconds: number
+    v7_horizontal_fov_degrees: number
+    T4_source_mapping_mode: string
+    C2C3_version_of_record_DOI?: string
+    C2C3_version_of_record_repository_revision?: string
+    C2C3_version_of_record_new_payload_modality?: string
+    C2C3_version_of_record_C3_fly_count?: number
+    C2C3_version_of_record_Mi1_control_fly_count?: number
+    C2C3_version_of_record_new_C3_Mi4_voltage_found?: boolean
+    C2C3_version_of_record_new_Mi4_payload_found?: boolean
+    C2C3_version_of_record_MaleCNS_crosswalk_found?: boolean
+    C2C3_version_of_record_changed_T4_transfer_gate?: boolean
+    T4_source_pool_camera_frame_bilateral_readouts?: string[]
+    T4_source_pool_camera_frame_bilateral_subtypes?: Record<string, string[]>
+    T4_source_pool_camera_frame_post_hoc_candidate_discovered?: boolean
+    T4_source_pool_camera_frame_replication_preregistered?: boolean
+    T4_source_pool_camera_frame_replication_evaluated?: boolean
+    T4_source_pool_camera_frame_target_formula_authorized?: boolean
+    T4_source_pool_camera_frame_ordered_replication_passed?: boolean
+    T4_source_pool_camera_frame_controls_evaluated?: boolean
+    T4_source_pool_camera_frame_replication_gate_passed?: boolean
+    T4_source_pool_camera_frame_replication_results?: Record<string, unknown>
+    T4_synapse_RF_axis_joint_valid_target_count?: number
+    T4_synapse_RF_axis_identity_median_angle_degrees?: number
+    T4_synapse_RF_axis_identity_cardinal_match_fraction?: number
+    T4_synapse_RF_axis_descriptive_best_transform?: string
+    T4_synapse_RF_axis_best_median_angle_degrees?: number
+    T4_source_RF_axis_interchangeability_verified?: boolean
+    T4_RF_axis_replacement_authorized?: boolean
+    T4_source_recording_level_body_assignment: boolean
+    T4_exact_type_average_mapping_complete: boolean
+    T4_author_minmax_formula_reproduced: boolean
+    T4_state_mapping_held_out_outside_fraction_by_source: {
+      Mi1: number
+      Tm3: number
+      Mi4: number
+      C3: number
+    }
+    T4_author_minmax_semantics_match_v7_state: boolean
+    T4_millivolts_to_v7_state_mapping_available: boolean
+    T5_record_specific_stimulus_logs_available: boolean
+    Motyxia2_public_history_branch_count: number
+    Motyxia2_public_history_commit_count: number
+    T5_record_log_found_in_Motyxia2_public_history: boolean
+    T5_external_successful_indexes_linked_log_found: boolean
+    T5_PMC_supplement_content_inspected: boolean
+    T5_publisher_supplements_inspected: boolean
+    T5_publisher_supplements_contain_record_log: boolean
+    T5_Figshare_search_accessible: boolean
+    T5_stimulus_log_global_absence_claimed: boolean
+    T5_generator_defaults_used_as_record_fields: boolean
+    T5_stimulus_provenance_complete: boolean
+    T5_Figure4_relative_PD_ND_mapping_verified: boolean
+    T5_Figure4_native_coordinate_motion_mapping_verified: boolean
+    T5_Figure4_absolute_physical_direction_mapping_verified: boolean
+    T5_Kohn_Portes_record_level_direction_code_available: boolean
+    T5_Kohn_Portes_record_level_physical_direction_available: boolean
+    T5_cross_dataset_direction_mapping_authorized: boolean
+    CT1_audited_candidate_count: number
+    CT1_incremental_2025_2026_candidate_count: number
+    CT1_direct_experimental_voltage_candidate_found: boolean
+    CT1_PuRe_archive_contents_verified: boolean
+    CT1_PuRe_new_numerical_payload_verified: boolean
+    Tm9_official_synapse_coordinate: [number, number]
+    MaleCNS_Tm3_same_type_native_coordinate_validation_available: boolean
+    MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction: number
+    MaleCNS_one_hop_coordinates_native_equivalent: boolean
+    MaleCNS_coordinate_rule_as_experimental_mapping_authorized: boolean
+    MaleCNS_Tm4_native_count_by_side: { L: number; R: number }
+    MaleCNS_Tm4_synapse_count_right_exact_fraction: number
+    MaleCNS_Tm4_synapse_count_left_unique_candidate_fraction: number
+    MaleCNS_Tm4_synapse_count_candidate_native_equivalent: boolean
+    MaleCNS_Tm4_left_coordinate_writeback_authorized: boolean
+    MaleCNS_Tm4_synapse_count_right_hex_distance_counts: Record<string, number>
+    MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction: number
+    MaleCNS_Tm4_synapse_count_left_distinct_candidate_count: number
+    MaleCNS_Tm4_post_hoc_hex_tolerance_authorized: boolean
+    MaleCNS_Tm4_offset_replication_sample_count: number
+    MaleCNS_Tm4_offset_replication_unique_candidate_count: number
+    MaleCNS_Tm4_offset_replication_uncorrected_exact_count: number
+    MaleCNS_Tm4_offset_replication_corrected_exact_count: number
+    MaleCNS_Tm4_offset_replication_correct_to_incorrect_count: number
+    MaleCNS_Tm4_offset_replication_incorrect_to_correct_count: number
+    MaleCNS_Tm4_offset_replication_sign_test_pvalue: number
+    MaleCNS_Tm4_offset_replication_gate_passed: boolean
+    CT1_per_synapse_Lo1_columnar_retinotopy_available: boolean
+    CT1_complete_official_LO_column_coverage: boolean
+  }
+  contributions: {
+    upper_planner: { status: string; active_in_default_runtime: boolean }
+    fly_local_core: { status: string; active_v7_in_default_runtime: boolean }
+    engineering_executor: { status: string; v7_deployment_enabled: boolean }
+  }
 }

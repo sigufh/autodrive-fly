@@ -45,6 +45,10 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
     )
     tm4_synapse_path = Path(config["Tm4_synapse_column_boundary_evidence"])
     tm4_synapse = json.loads((root / tm4_synapse_path).read_text(encoding="utf-8"))
+    tm4_replication_path = Path(config["Tm4_offset_replication_evidence"])
+    tm4_replication = json.loads(
+        (root / tm4_replication_path).read_text(encoding="utf-8")
+    )
     expected_families = {
         "Mi1": "T4",
         "Tm3": "T4",
@@ -196,6 +200,36 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 if source_type == "Tm4"
                 else None
             ),
+            "offset_replication_sample_count": (
+                tm4_replication["sample_count"] if source_type == "Tm4" else None
+            ),
+            "offset_replication_unique_candidate_count": (
+                tm4_replication["unique_candidate_count"]
+                if source_type == "Tm4"
+                else None
+            ),
+            "offset_replication_uncorrected_exact_count": (
+                tm4_replication["uncorrected_exact_count"]
+                if source_type == "Tm4"
+                else None
+            ),
+            "offset_replication_corrected_exact_count": (
+                tm4_replication["corrected_exact_count"]
+                if source_type == "Tm4"
+                else None
+            ),
+            "offset_replication_one_sided_sign_test_pvalue": (
+                tm4_replication["paired_exact_outcomes"][
+                    "one_sided_exact_sign_test_pvalue"
+                ]
+                if source_type == "Tm4"
+                else None
+            ),
+            "offset_replication_gate_passed": (
+                tm4_replication["replication_gate_passed"]
+                if source_type == "Tm4"
+                else None
+            ),
         }
     ct1_ids = sorted(graph.body_ids[np.flatnonzero(node_types == "CT1")].astype(int).tolist())
     if ct1_ids != config["CT1_expected_body_ids"]:
@@ -222,6 +256,9 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
         "one_hop_coordinates_are_native_equivalent": one_hop_validation[
             "one_hop_coordinates_are_native_equivalent"
         ],
+        "Tm4_offset_replication_passed": tm4_replication[
+            "replication_gate_passed"
+        ],
     }
     ready = all(gates.values())
     return {
@@ -241,6 +278,7 @@ def evaluate_v7_malecns_source_mapping_readiness_audit(root: Path) -> dict:
                 str(ct1_columnar_path): _sha256(root / ct1_columnar_path),
                 str(one_hop_validation_path): _sha256(root / one_hop_validation_path),
                 str(tm4_synapse_path): _sha256(root / tm4_synapse_path),
+                str(tm4_replication_path): _sha256(root / tm4_replication_path),
             },
             "MaleCNS_release": manifest["datasets"]["malecns"]["release"],
             "parameter_fit": False,

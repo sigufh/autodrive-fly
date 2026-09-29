@@ -3,8 +3,8 @@
     "name": "v7-malecns-source-mapping-readiness-audit",
     "observed_on": "2026-09-19",
     "dependencies_sha256": {
-      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "57927d6f693391c94d8442b84637fa6ca99b784af5f8edc85d761823f3548a15",
-      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "899d0157d1047e81dbdc530278c82c1ac26c058ae147fbe760b1e3333af55e6f",
+      "configs/driving-v7-malecns-source-mapping-readiness-audit.yaml": "720bbdd20eb6320d6d3baa5f5b75da1ee062370e4731771a60a9475a4fa6101e",
+      "src/fly_emotion/driving/v7_malecns_source_mapping_readiness_audit.py": "7d2cf948a2672e019377c2a1dcfe2697b02b5da37e6fa7fea3c6d1cff496588a",
       "configs/data-manifest.yaml": "c3191694b8af22bddc6f1b47d642f47377c839aecd48736f3028087b000e320c",
       "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
       "data/processed/malecns-v1.0/adjacency_raw.npz": "fcd0c3842e7914e372cc6a691e96b47ac5d7a1bce2e6effa36555a3caf350675",
@@ -13,8 +13,9 @@
       "src/fly_emotion/driving/v7_lplc1_input_structure.py": "f6b92a5c8f297c84d8d0c20205822e56c5606b63506f701d9676e2db0f47cfe7",
       "artifacts/v7-malecns-synapse-column-audit.json": "0ab36394d6c8939edde171127f09a91d614bd5284d3ac38561c7fbd9ac7548b5",
       "artifacts/v7-malecns-ct1-columnar-audit.json": "27682ba74d97a56cc76e5b1668c4f12007288f394b45216420b70e33f617a9f0",
-      "artifacts/v7-malecns-one-hop-coordinate-validation-audit.json": "f4d53789b61dfe192f3f897890622933cf088ad80ef1256d39109e5ccc803284",
-      "artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json": "2828a584780f2cab5e5bbf7be22b2ca5f9d886096be0bb566502ebd99699732e"
+      "artifacts/v7-malecns-one-hop-coordinate-validation-audit.json": "32e713957e456cb77c7d141a71152467900cee978818ec729f4b01b56e1eb177",
+      "artifacts/v7-malecns-tm4-synapse-column-boundary-audit.json": "2828a584780f2cab5e5bbf7be22b2ca5f9d886096be0bb566502ebd99699732e",
+      "artifacts/v7-malecns-tm4-offset-replication.json": "43b8445c2ef73bd9c3a93d363d34e55224919cea054cb135cb1a00a3fe0644cc"
     },
     "MaleCNS_release": "v1.0",
     "parameter_fit": false,
@@ -52,7 +53,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "Tm3": {
       "family": "T4",
@@ -81,7 +88,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "Mi4": {
       "family": "T4",
@@ -110,7 +123,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "C3": {
       "family": "T4",
@@ -139,7 +158,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "Tm1": {
       "family": "T5",
@@ -168,7 +193,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "Tm2": {
       "family": "T5",
@@ -197,7 +228,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "Tm4": {
       "family": "T5",
@@ -231,7 +268,13 @@
         "2": 14,
         "3": 1
       },
-      "official_synapse_count_missing_side_distinct_candidate_count": 48
+      "official_synapse_count_missing_side_distinct_candidate_count": 48,
+      "offset_replication_sample_count": 96,
+      "offset_replication_unique_candidate_count": 95,
+      "offset_replication_uncorrected_exact_count": 51,
+      "offset_replication_corrected_exact_count": 32,
+      "offset_replication_one_sided_sign_test_pvalue": 0.9862329109938527,
+      "offset_replication_gate_passed": false
     },
     "Tm9": {
       "family": "T5",
@@ -269,7 +312,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     },
     "CT1": {
       "family": "T5",
@@ -298,7 +347,13 @@
       "official_synapse_count_missing_side_unique_candidate_fraction": null,
       "official_synapse_count_candidate_native_equivalent": null,
       "official_synapse_count_validation_hex_distance_counts": null,
-      "official_synapse_count_missing_side_distinct_candidate_count": null
+      "official_synapse_count_missing_side_distinct_candidate_count": null,
+      "offset_replication_sample_count": null,
+      "offset_replication_unique_candidate_count": null,
+      "offset_replication_uncorrected_exact_count": null,
+      "offset_replication_corrected_exact_count": null,
+      "offset_replication_one_sided_sign_test_pvalue": null,
+      "offset_replication_gate_passed": null
     }
   },
   "CT1": {
@@ -328,7 +383,8 @@
     "external_recording_declares_explicit_type_average_or_body_mapping": false,
     "external_recording_to_specific_MaleCNS_body_identified": false,
     "every_non_CT1_inference_dependent_source_has_same_type_blind_validation": false,
-    "one_hop_coordinates_are_native_equivalent": false
+    "one_hop_coordinates_are_native_equivalent": false,
+    "Tm4_offset_replication_passed": false
   },
   "MaleCNS_type_average_body_sets_available": true,
   "external_source_mapping_contract_satisfied": false,
@@ -341,7 +397,8 @@
     "external_recording_declares_explicit_type_average_or_body_mapping",
     "external_recording_to_specific_MaleCNS_body_identified",
     "every_non_CT1_inference_dependent_source_has_same_type_blind_validation",
-    "one_hop_coordinates_are_native_equivalent"
+    "one_hop_coordinates_are_native_equivalent",
+    "Tm4_offset_replication_passed"
   ],
   "stop_reason": "MaleCNS_type_body_sets_exist_but_external_recording_identity_and_columnar_mapping_do_not",
   "boundary": {
@@ -357,6 +414,7 @@
     "inferred_coordinate_availability_is_not_native_equivalence": true,
     "source_type_specific_blind_replay_is_required_for_inference_validation": true,
     "bounded_Tm4_synapse_count_candidates_are_not_native_writebacks": true,
+    "failed_Tm4_offset_replication_does_not_authorize_writeback": true,
     "no_parameter_fit": true,
     "no_target_activity_injection": true,
     "no_runtime_change": true,

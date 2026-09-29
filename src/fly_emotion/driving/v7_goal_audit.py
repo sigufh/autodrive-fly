@@ -241,6 +241,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     malecns_tm4_synapse_column_boundary_audit = reports[
         "malecns_Tm4_synapse_column_boundary_audit"
     ]
+    malecns_tm4_offset_replication = reports["malecns_Tm4_offset_replication"]
     source_evidence_matrix = reports["source_evidence_matrix"]
     source_type_average_mapping_contract = reports[
         "source_type_average_mapping_contract"
@@ -2801,6 +2802,36 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "authorize_post_hoc_hex_distance_tolerance"
                     ]
                 ),
+                "MaleCNS_Tm4_offset_replication_sample_count": (
+                    malecns_tm4_offset_replication["sample_count"]
+                ),
+                "MaleCNS_Tm4_offset_replication_unique_candidate_count": (
+                    malecns_tm4_offset_replication["unique_candidate_count"]
+                ),
+                "MaleCNS_Tm4_offset_replication_uncorrected_exact_count": (
+                    malecns_tm4_offset_replication["uncorrected_exact_count"]
+                ),
+                "MaleCNS_Tm4_offset_replication_corrected_exact_count": (
+                    malecns_tm4_offset_replication["corrected_exact_count"]
+                ),
+                "MaleCNS_Tm4_offset_replication_correct_to_incorrect_count": (
+                    malecns_tm4_offset_replication["paired_exact_outcomes"][
+                        "correct_to_incorrect"
+                    ]
+                ),
+                "MaleCNS_Tm4_offset_replication_incorrect_to_correct_count": (
+                    malecns_tm4_offset_replication["paired_exact_outcomes"][
+                        "incorrect_to_correct"
+                    ]
+                ),
+                "MaleCNS_Tm4_offset_replication_sign_test_pvalue": (
+                    malecns_tm4_offset_replication["paired_exact_outcomes"][
+                        "one_sided_exact_sign_test_pvalue"
+                    ]
+                ),
+                "MaleCNS_Tm4_offset_replication_gate_passed": (
+                    malecns_tm4_offset_replication["replication_gate_passed"]
+                ),
                 "MaleCNS_Tm9_unlocated_source_body_count": len(
                     malecns_source_mapping_readiness_audit["source_mapping"]["Tm9"][
                         "unlocated_body_ids"
@@ -4699,6 +4730,14 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "MaleCNS_Tm4_synapse_count_right_within_one_hex_fraction",
                     "MaleCNS_Tm4_synapse_count_left_distinct_candidate_count",
                     "MaleCNS_Tm4_post_hoc_hex_tolerance_authorized",
+                    "MaleCNS_Tm4_offset_replication_sample_count",
+                    "MaleCNS_Tm4_offset_replication_unique_candidate_count",
+                    "MaleCNS_Tm4_offset_replication_uncorrected_exact_count",
+                    "MaleCNS_Tm4_offset_replication_corrected_exact_count",
+                    "MaleCNS_Tm4_offset_replication_correct_to_incorrect_count",
+                    "MaleCNS_Tm4_offset_replication_incorrect_to_correct_count",
+                    "MaleCNS_Tm4_offset_replication_sign_test_pvalue",
+                    "MaleCNS_Tm4_offset_replication_gate_passed",
                     "Fendl_2021_target_Rdl_localization_verified",
                     "Fendl_2021_pooled_GABAergic_T4_input_sign_supported",
                     "Fendl_2021_source_specific_contact_resolved",

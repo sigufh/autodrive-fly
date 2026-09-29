@@ -615,6 +615,23 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     )
     assert boundaries["MaleCNS_Tm4_synapse_count_left_distinct_candidate_count"] == 48
     assert boundaries["MaleCNS_Tm4_post_hoc_hex_tolerance_authorized"] is False
+    assert boundaries["MaleCNS_Tm4_offset_replication_sample_count"] == 96
+    assert boundaries["MaleCNS_Tm4_offset_replication_unique_candidate_count"] == 95
+    assert boundaries["MaleCNS_Tm4_offset_replication_uncorrected_exact_count"] == 51
+    assert boundaries["MaleCNS_Tm4_offset_replication_corrected_exact_count"] == 32
+    assert (
+        boundaries["MaleCNS_Tm4_offset_replication_correct_to_incorrect_count"]
+        == 51
+    )
+    assert (
+        boundaries["MaleCNS_Tm4_offset_replication_incorrect_to_correct_count"]
+        == 32
+    )
+    assert (
+        boundaries["MaleCNS_Tm4_offset_replication_sign_test_pvalue"]
+        == 0.9862329109938527
+    )
+    assert boundaries["MaleCNS_Tm4_offset_replication_gate_passed"] is False
     assert boundaries["CT1_per_synapse_Lo1_columnar_retinotopy_available"] is True
     assert boundaries["CT1_complete_official_LO_column_coverage"] is False
 

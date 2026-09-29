@@ -1,130 +1,1053 @@
 import { useEffect, useRef } from 'react'
 import type { DrivingState, V7Status } from '../types'
 
-function fmt(value: number, digits = 2) { return Number.isFinite(value) ? value.toFixed(digits) : '—' }
+function fmt(value: number, digits = 2) {
+  return Number.isFinite(value) ? value.toFixed(digits) : '—'
+}
 
-export function DrivingPanel({ state, v7Status, v7StatusError, running, learning, explore, safetyConstraints, controlMode, onControlMode, onLearning, onExplore, onSafetyConstraints, onRun, onStep, onReset }: {
-  state?: DrivingState; running: boolean; learning: boolean; explore: boolean; safetyConstraints: boolean; onLearning: (value: boolean) => void; onExplore: (value: boolean) => void; onSafetyConstraints: (value: boolean) => void;
-  v7Status?: V7Status;
-  v7StatusError: boolean;
-  controlMode: 'assisted' | 'neural'; onControlMode: (value: 'assisted' | 'neural') => void; onRun: () => void; onStep: () => void; onReset: (keep: boolean) => void;
-}) {
-  const road = useRef<HTMLCanvasElement>(null), retina = useRef<HTMLCanvasElement>(null)
+export function DrivingPanel({ state, v7Status, v7StatusError, running, learning, explore, safetyConstraints, controlMode, onControlMode, onLearning, onExplore, onSafetyConstraints, onRun, onStep, onReset }: { state?: DrivingState; running: boolean; learning: boolean; explore: boolean; safetyConstraints: boolean; onLearning: (value: boolean) => void; onExplore: (value: boolean) => void; onSafetyConstraints: (value: boolean) => void; v7Status?: V7Status; v7StatusError: boolean; controlMode: 'assisted' | 'neural'; onControlMode: (value: 'assisted' | 'neural') => void; onRun: () => void; onStep: () => void; onReset: (keep: boolean) => void }) {
+  const road = useRef<HTMLCanvasElement>(null),
+    retina = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
     if (!state || !road.current) return
-    const canvas = road.current, ctx = canvas.getContext('2d')!, { environment: env } = state
-    const sx = canvas.width / (env.road_half_width * 2 + 5), sy = canvas.height / env.road_length
-    const px = (x: number) => canvas.width / 2 + x * sx, py = (y: number) => canvas.height - y * sy
-    ctx.fillStyle = '#07110f'; ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.fillStyle = '#172c29'; ctx.fillRect(px(-env.road_half_width), 0, env.road_half_width * 2 * sx, canvas.height)
-    ctx.strokeStyle = '#8eb5aa'; ctx.lineWidth = 2; ctx.setLineDash([8, 10]); ctx.beginPath(); ctx.moveTo(px(0), 0); ctx.lineTo(px(0), canvas.height); ctx.stroke(); ctx.setLineDash([])
-    if (env.trajectory.length > 1) { ctx.strokeStyle = '#71e4b3'; ctx.lineWidth = 2; ctx.beginPath(); env.trajectory.forEach(([x, y], i) => i ? ctx.lineTo(px(x), py(y)) : ctx.moveTo(px(x), py(y))); ctx.stroke() }
-    if (env.projected_trajectory.length) { ctx.strokeStyle = '#ffe276'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(px(env.vehicle.x), py(env.vehicle.y)); env.projected_trajectory.forEach(([x, y]) => ctx.lineTo(px(x), py(y))); ctx.stroke(); ctx.setLineDash([]) }
-    ctx.fillStyle = '#ff735f'; for (const o of env.obstacles) { ctx.beginPath(); ctx.arc(px(o.x), py(o.y), Math.max(3, o.radius * sx), 0, Math.PI * 2); ctx.fill() }
-    ctx.save(); ctx.translate(px(env.vehicle.x), py(env.vehicle.y)); ctx.rotate(env.vehicle.heading); ctx.fillStyle = '#73f0bb'; ctx.beginPath(); ctx.moveTo(0, -9); ctx.lineTo(-6, 8); ctx.lineTo(6, 8); ctx.closePath(); ctx.fill(); ctx.restore()
+    const canvas = road.current,
+      ctx = canvas.getContext('2d')!,
+      { environment: env } = state
+    const sx = canvas.width / (env.road_half_width * 2 + 5),
+      sy = canvas.height / env.road_length
+    const px = (x: number) => canvas.width / 2 + x * sx,
+      py = (y: number) => canvas.height - y * sy
+    ctx.fillStyle = '#07110f'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = '#172c29'
+    ctx.fillRect(px(-env.road_half_width), 0, env.road_half_width * 2 * sx, canvas.height)
+    ctx.strokeStyle = '#8eb5aa'
+    ctx.lineWidth = 2
+    ctx.setLineDash([8, 10])
+    ctx.beginPath()
+    ctx.moveTo(px(0), 0)
+    ctx.lineTo(px(0), canvas.height)
+    ctx.stroke()
+    ctx.setLineDash([])
+    if (env.trajectory.length > 1) {
+      ctx.strokeStyle = '#71e4b3'
+      ctx.lineWidth = 2
+      ctx.beginPath()
+      env.trajectory.forEach(([x, y], i) => (i ? ctx.lineTo(px(x), py(y)) : ctx.moveTo(px(x), py(y))))
+      ctx.stroke()
+    }
+    if (env.projected_trajectory.length) {
+      ctx.strokeStyle = '#ffe276'
+      ctx.lineWidth = 1.5
+      ctx.setLineDash([4, 4])
+      ctx.beginPath()
+      ctx.moveTo(px(env.vehicle.x), py(env.vehicle.y))
+      env.projected_trajectory.forEach(([x, y]) => ctx.lineTo(px(x), py(y)))
+      ctx.stroke()
+      ctx.setLineDash([])
+    }
+    ctx.fillStyle = '#ff735f'
+    for (const o of env.obstacles) {
+      ctx.beginPath()
+      ctx.arc(px(o.x), py(o.y), Math.max(3, o.radius * sx), 0, Math.PI * 2)
+      ctx.fill()
+    }
+    ctx.save()
+    ctx.translate(px(env.vehicle.x), py(env.vehicle.y))
+    ctx.rotate(env.vehicle.heading)
+    ctx.fillStyle = '#73f0bb'
+    ctx.beginPath()
+    ctx.moveTo(0, -9)
+    ctx.lineTo(-6, 8)
+    ctx.lineTo(6, 8)
+    ctx.closePath()
+    ctx.fill()
+    ctx.restore()
   }, [state])
   useEffect(() => {
     if (!state || !retina.current) return
-    const image = state.retina.stimulus, canvas = retina.current, ctx = canvas.getContext('2d')!
-    canvas.width = state.retina.width; canvas.height = state.retina.height
+    const image = state.retina.stimulus,
+      canvas = retina.current,
+      ctx = canvas.getContext('2d')!
+    canvas.width = state.retina.width
+    canvas.height = state.retina.height
     const data = ctx.createImageData(canvas.width, canvas.height)
-    image.flat().forEach((value, index) => { const v = Math.round(Math.min(1, Math.max(0, value)) * 255); data.data[index * 4] = v; data.data[index * 4 + 1] = v; data.data[index * 4 + 2] = v; data.data[index * 4 + 3] = 255 })
+    image.flat().forEach((value, index) => {
+      const v = Math.round(Math.min(1, Math.max(0, value)) * 255)
+      data.data[index * 4] = v
+      data.data[index * 4 + 1] = v
+      data.data[index * 4 + 2] = v
+      data.data[index * 4 + 3] = 255
+    })
     ctx.putImageData(data, 0, 0)
   }, [state])
-  return <section className="driving-panel" aria-label="果蝇视觉驾驶">
-    <header><div><span className="eyebrow">CLOSED LOOP / MALECNS</span><h2>障碍驾驶实验</h2></div><span className={`mode ${running ? 'active' : ''}`}>{running ? 'RUNNING' : state?.environment.done ? 'ENDED' : 'PAUSED'}</span></header>
-    <div className="sim-grid"><div><h3>神经控制轨迹 · 绿=已行驶 / 黄=短时投影</h3><canvas ref={road} className="road-canvas" width={320} height={500} /></div><div><h3>复眼刺激</h3><canvas ref={retina} className="retina-canvas" aria-label="48乘24视觉刺激" /><small>{state?.retina.mapped_receptors.toLocaleString() ?? '…'} R1–R6 · optic-hex proxy</small><small>PPL101 {state?.dopamine_neurons.body_ids.join(' / ') ?? '…'} · RPE gate</small></div></div>
-    <section className="causal-chain" aria-label="实时因果链"><h3>当前运行链 · {controlMode === 'neural' ? 'neural-v6-front' : 'assisted-v5'}</h3><div><span>视觉输入</span><strong>R1–R6 {state?.retina.mapped_receptors.toLocaleString() ?? '…'}</strong><i>→</i><span>神经响应</span><strong>T4/T5 flow {fmt(state?.motor.sensory_projection?.T4_T5_horizontal_flow ?? 0, 3)} · |x|max {state?.activity?.statistics.max_abs_state.toExponential(2) ?? '…'}</strong><i>→</i><span>神经意图</span><strong>{fmt(state?.raw_action.steering ?? 0)}</strong>{controlMode === 'assisted' && <><i>＋</i><span>工程辅助</span><strong>障碍 {fmt(state?.lane_constraint.visual_avoidance ?? 0)} · 道路 {fmt(state?.lane_constraint.road_recovery ?? 0)}</strong></>}<i>→</i><span>固定映射</span><strong>{state?.motor.mapping ?? '…'}</strong><i>→</i><span>安全约束差值</span><strong>{fmt((state?.action.steering ?? 0) - (state?.raw_action.steering ?? 0))}</strong><i>→</i><span>执行动作</span><strong>{fmt(state?.action.steering ?? 0)}</strong></div></section>
-    <section className="v7-status-card" aria-label="v7 离线验证状态"><header><div><span className="eyebrow">V7 OFFLINE EVIDENCE</span><h3>模块门状态</h3></div><strong>{v7Status ? v7Status.deployment_enabled ? '已部署' : '未部署' : v7StatusError ? '证据不可用' : '读取中'}</strong></header><p>{v7StatusError ? '哈希验证证据不可用；不显示推断状态。' : `当前阶段：${v7Status?.current_stage ?? '读取审计…'} · 默认服务${v7Status?.default_runtime_changed ? '已改变' : '未改变'}`}</p><div className="gate-grid">{v7Status ? Object.entries(v7Status.gates).map(([name, passed]) => <span key={name} className={passed ? 'gate-pass' : 'gate-fail'}>{name} · {passed ? 'PASS' : 'STOP'}</span>) : !v7StatusError && <span>读取哈希验证证据…</span>}</div>{v7Status && <div className="evidence-boundaries" aria-label="v7 证据边界"><strong>九源合同：{v7Status.evidence_boundaries.nine_source_contract_complete ? 'COMPLETE' : 'INCOMPLETE'}</strong><span>MaleCNS 柱映射：Tm9 532266 → [{v7Status.evidence_boundaries.Tm9_official_synapse_coordinate.join(', ')}]；CT1 Lo1 逐突触列{v7Status.evidence_boundaries.CT1_per_synapse_Lo1_columnar_retinotopy_available ? '可用' : '不可用'}，全官方 LO 覆盖{v7Status.evidence_boundaries.CT1_complete_official_LO_column_coverage ? '完整' : '不完整'}</span><span>Mi4/C3 直接数值电压：{v7Status.evidence_boundaries.Mi4_C3_direct_numeric_voltage_candidates.join(' / ') || '无'}；独立候选 {v7Status.evidence_boundaries.Mi4_C3_independent_numeric_voltage_candidate_count}</span><span>CT1 电压候选：审计 {v7Status.evidence_boundaries.CT1_audited_candidate_count}；2025–2026 新候选 {v7Status.evidence_boundaries.CT1_incremental_2025_2026_candidate_count}；直接实验电压{v7Status.evidence_boundaries.CT1_direct_experimental_voltage_candidate_found ? '命中' : '未命中'}</span><span>T5 字段：flash {v7Status.evidence_boundaries.T5_voltage_field_counts.aggregated_full_field_OFF_flash}/15 · white-noise {v7Status.evidence_boundaries.T5_voltage_field_counts.raw_white_noise}/15 · grating {v7Status.evidence_boundaries.T5_voltage_field_counts.raw_drifting_grating}/15</span><span>Motyxia2 历史：{v7Status.evidence_boundaries.Motyxia2_public_history_branch_count} branches / {v7Status.evidence_boundaries.Motyxia2_public_history_commit_count} commits；逐记录日志{v7Status.evidence_boundaries.T5_record_log_found_in_Motyxia2_public_history ? '已找到' : '未命中'}</span><span>外部索引：linked log {v7Status.evidence_boundaries.T5_external_successful_indexes_linked_log_found ? '命中' : '未命中'}；publisher supplements {v7Status.evidence_boundaries.T5_publisher_supplements_inspected ? '已检查' : '未检查'} / record log {v7Status.evidence_boundaries.T5_publisher_supplements_contain_record_log ? '命中' : '未命中'}；PMC endpoint {v7Status.evidence_boundaries.T5_PMC_supplement_content_inspected ? '已检查' : '不可访问'}；Figshare {v7Status.evidence_boundaries.T5_Figshare_search_accessible ? '可访问' : '不可访问'}；全局不存在{v7Status.evidence_boundaries.T5_stimulus_log_global_absence_claimed ? '已声明' : '未声明'}</span><span>生成器默认值{v7Status.evidence_boundaries.T5_generator_defaults_used_as_record_fields ? '已代填' : '未代填'}</span></div>}<div className="contribution-grid"><span>上层规划：{v7Status?.contributions.upper_planner.status === 'paused' ? '暂停' : '未知'}</span><span>果蝇局部核：{v7Status?.contributions.fly_local_core.status === 'component_only_not_release_authorized' ? '组件证据，未获发布授权' : '未知'}</span><span>工程执行器：{v7Status?.contributions.engineering_executor.status === 'transparent_fixed_mapping_component_passed' ? '固定透明映射；v7 未接入' : '未知'}</span></div></section>
-    {v7Status && <small className="v7-evidence-note">MaleCNS one-hop 坐标盲重放：Tm3 同型 native 参考{v7Status.evidence_boundaries.MaleCNS_Tm3_same_type_native_coordinate_validation_available ? '存在' : '不存在'}；Tm4 rounded-exact {fmt((v7Status.evidence_boundaries.MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction ?? 0) * 100, 1)}%；推断坐标{v7Status.evidence_boundaries.MaleCNS_one_hop_coordinates_native_equivalent ? '可视为 native' : '不可视为 native'}，实验映射{v7Status.evidence_boundaries.MaleCNS_coordinate_rule_as_experimental_mapping_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status && <small className="v7-evidence-note">MaleCNS Tm4 官方 synapse-count 样本：native hex 左/右 {v7Status.evidence_boundaries.MaleCNS_Tm4_native_count_by_side.L}/{v7Status.evidence_boundaries.MaleCNS_Tm4_native_count_by_side.R}；右侧 48 个 native 样本 exact {fmt(v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_right_exact_fraction * 100, 1)}%，距 native 0/1/2/3 列为 {Object.values(v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_right_hex_distance_counts).join('/')}；左侧 48 个缺失样本唯一且互异候选 {v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_left_distinct_candidate_count}。候选{v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_candidate_native_equivalent ? '可视为 native' : '不可视为 native'}，距离容差{v7Status.evidence_boundaries.MaleCNS_Tm4_post_hoc_hex_tolerance_authorized ? '已授权' : '未授权'}，左侧写回{v7Status.evidence_boundaries.MaleCNS_Tm4_left_coordinate_writeback_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status && <small className="v7-evidence-note">eLife 49373 官方附件：{v7Status.evidence_boundaries.Ketkar_2019_official_source_data_attachment_count} 份；mean±SEM 表{v7Status.evidence_boundaries.Ketkar_2019_attachments_are_mean_SEM_tables ? '已确认' : '未确认'}，Mi1/Tm3 GCaMP 摘要{v7Status.evidence_boundaries.Ketkar_2019_Mi1_Tm3_GCaMP_summary_found ? '存在' : '未命中'}；Mi4/C3 载荷{v7Status.evidence_boundaries.Ketkar_2019_Mi4_C3_payload_found ? '存在' : '未命中'}，个体时序{v7Status.evidence_boundaries.Ketkar_2019_individual_source_dynamics_found ? '存在' : '未命中'}，膜电位{v7Status.evidence_boundaries.Ketkar_2019_membrane_voltage_found ? '存在' : '未命中'}。</small>}
-    {v7Status && <small className="v7-evidence-note">Gonzalez-Suarez 2022 Mi4：GCaMP6f {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count} flies；bioRxiv 补充{v7Status.evidence_boundaries.Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved ? '已取回' : '未取回'}，逐 fly 是统计单位{v7Status.evidence_boundaries.Gonzalez_Suarez_2022_individual_flies_are_statistical_units ? '已确认' : '未确认'}、公开逐 fly 数值载荷{v7Status.evidence_boundaries.Gonzalez_Suarez_2022_public_individual_numeric_payload ? '存在' : '不存在'}；公开 type-average filter {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_Mi4_type_average_filter_available ? '存在' : '未命中'}，Mi4 实验膜电位{v7Status.evidence_boundaries.Gonzalez_Suarez_2022_Mi4_voltage_available ? '存在' : '未命中'}，C3 dynamics {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_C3_dynamics_available ? '存在' : '未命中'}。</small>}
-    {v7Status && <small className="v7-evidence-note">Yuan 2020 C3：遗传干预{v7Status.evidence_boundaries.Yuan_2020_C3_intervention_candidate_verified ? '已验证' : '未验证'}；直接 C3 记录{v7Status.evidence_boundaries.Yuan_2020_C3_direct_recording_verified ? '已验证' : '未验证'}，公开数值 source dynamics {v7Status.evidence_boundaries.Yuan_2020_C3_numeric_source_dynamics_verified ? '已验证' : '未验证'}；受限补充材料{v7Status.evidence_boundaries.Yuan_2020_supplement_retrieved ? '已取回' : '未取回，未作缺失推断'}。</small>}
-    {v7Status && <small className="v7-evidence-note">Strother 2018 Mi4 公开索引：成功查询中数值 trace {v7Status.evidence_boundaries.Strother_2018_successful_index_Mi4_trace_found ? '命中' : '未命中'}；Figshare 搜索{v7Status.evidence_boundaries.Strother_2018_Figshare_search_interpretable ? '可解释' : '403，不可解释'}；全局不存在{v7Status.evidence_boundaries.Strother_2018_global_absence_claimed ? '已声明' : '未声明'}。</small>}
-    {v7Status?.evidence_boundaries.Strother_2018_author_public_repository_count !== undefined && <small className="v7-evidence-note">Strother 作者仓库索引：Bitbucket 公开仓库 {v7Status.evidence_boundaries.Strother_2018_author_public_repository_count} 个；论文关联数值载荷{v7Status.evidence_boundaries.Strother_2018_author_repository_numeric_payload_verified ? '已验证' : '未验证'}；结论{v7Status.evidence_boundaries.Strother_2018_author_repository_search_is_bounded ? '仅限有界公开索引' : '范围异常'}。</small>}
-    {v7Status?.evidence_boundaries.Strother_2018_supplement_bundle_entry_count !== undefined && <small className="v7-evidence-note">Strother 官方补充包：{v7Status.evidence_boundaries.Strother_2018_supplement_bundle_entry_count} 个成员；Mi4 moving-grating 图级轨迹{v7Status.evidence_boundaries.Strother_2018_Mi4_moving_grating_figure_verified ? '已核验' : '未核验'}（{v7Status.evidence_boundaries.Strother_2018_Mi4_moving_grating_fly_count} flies），公开数值 trace 附件{v7Status.evidence_boundaries.Strother_2018_public_numeric_trace_attachment_verified ? '存在' : '不存在'}。</small>}
-    {v7Status && <small className="v7-evidence-note">C3 引用图谱：{v7Status.evidence_boundaries.C3_citation_graph_union_unique_work_count} 个去重工作，{v7Status.evidence_boundaries.C3_citation_graph_unresolved_reference_ID_count} 个 reference ID 未解析；Pang 2025 Dryad {v7Status.evidence_boundaries.Pang_2025_Dryad_file_count} 文件，直接记录 {v7Status.evidence_boundaries.Pang_2025_directly_recorded_neuron_types?.join('/') ?? '未知'}，C3 direct recording {v7Status.evidence_boundaries.Pang_2025_new_C3_direct_recording_found ? '命中' : '未命中'}。</small>}
-    {v7Status?.evidence_boundaries.legacy_C3_candidate_count !== undefined && <small className="v7-evidence-note">早期 C3 候选：审计 {v7Status.evidence_boundaries.legacy_C3_candidate_count} 项；Tuthill 2013 {v7Status.evidence_boundaries.Tuthill_2013_C3_intervention_only_verified ? '仅行为干预' : '范围未确认'}，Maisak 2018 直接 C3/Mi4 记录{v7Status.evidence_boundaries.Maisak_2018_direct_C3_Mi4_recording_verified ? '已验证' : '未验证'}；Ramos 2020 全文{v7Status.evidence_boundaries.Ramos_2020_fulltext_scope_resolved ? '已解析' : '未解析'}，C3 实验的直接记录对象 {v7Status.evidence_boundaries.Ramos_2020_direct_recording_targets?.join('/') || '未知'}，直接 C3 记录{v7Status.evidence_boundaries.Ramos_2020_C3_direct_recording_verified ? '已验证' : '未验证'}。</small>}
-    {v7Status && <small className="v7-evidence-note">Hao 2026 ASAP7y：果蝇体内亚细胞电压{v7Status.evidence_boundaries.Hao_2026_ASAP7y_Drosophila_voltage_verified ? '已验证' : '未验证'}；作者公开配图示例 {v7Status.evidence_boundaries.Hao_2026_ASAP7y_public_author_figure_named_examples?.join('/') || '无'}，论文来源命名类型 {v7Status.evidence_boundaries.Hao_2026_ASAP7y_paper_source_experimental_cell_types?.join('/') || '正文不可访问'}，完整集合{v7Status.evidence_boundaries.Hao_2026_ASAP7y_complete_cell_type_set_resolved ? '已解析' : '未解析'}；作者 2025 博士论文全文限制至 {v7Status.evidence_boundaries.Hao_2025_dissertation_restricted_until ?? '未知'}，公开摘要{v7Status.evidence_boundaries.Hao_2025_dissertation_public_abstract_names_cell_types ? '列出' : '未列出'}实验类型；成功查询索引中的数值载荷{v7Status.evidence_boundaries.Hao_2026_ASAP7y_successful_index_numeric_payload_found ? '命中' : '未命中'}，不作全球不存在声明。候选状态 {v7Status.evidence_boundaries.Hao_2026_ASAP7y_candidate_classification}，公开数值载荷{v7Status.evidence_boundaries.Hao_2026_ASAP7y_public_numeric_payload_verified ? '已验证' : '未验证'}。</small>}
-    {v7Status?.evidence_boundaries.Hao_2026_Europe_PMC_annotation_count !== undefined && <small className="v7-evidence-note">Hao Europe PMC 文本挖掘：{v7Status.evidence_boundaries.Hao_2026_Europe_PMC_annotation_count} 个摘要级实体；Mi4/C3 命中 {v7Status.evidence_boundaries.Hao_2026_Europe_PMC_Mi4_annotation_hit ? '是' : '否'}/{v7Status.evidence_boundaries.Hao_2026_Europe_PMC_C3_annotation_hit ? '是' : '否'}。范围为 {v7Status.evidence_boundaries.Hao_2026_Europe_PMC_annotation_scope}，不据此排除正文细胞类型。</small>}
-    {v7Status?.evidence_boundaries.Hao_2026_Wayback_capture_view !== undefined && <small className="v7-evidence-note">Hao 公开存档/代码索引：Wayback 捕获为 {v7Status.evidence_boundaries.Hao_2026_Wayback_capture_view}，正文/PDF/补充路由内容{v7Status.evidence_boundaries.Hao_2026_Wayback_linked_route_contents_retrieved ? '已取回' : '未取回'}，完整细胞类型{v7Status.evidence_boundaries.Hao_2026_Wayback_resolves_complete_cell_types ? '已解析' : '未解析'}；ClandininLab 公开仓库 {v7Status.evidence_boundaries.Hao_2026_ClandininLab_public_repository_count} 个，论文专属名称/描述命中 {v7Status.evidence_boundaries.Hao_2026_ClandininLab_paper_repository_hits?.length ?? 0}；bioRxiv TDM {v7Status.evidence_boundaries.Hao_2026_bioRxiv_TDM_requester_pays_required ? '需认证 requester-pays' : '无需认证'}，载荷清单{v7Status.evidence_boundaries.Hao_2026_bioRxiv_TDM_payload_inventory_readable ? '可读' : '不可读'}。</small>}
-    {v7Status?.evidence_boundaries.Fendl_2021_target_Rdl_localization_verified !== undefined && <small className="v7-evidence-note">Fendl 2021 分子边界：T4/T5 dendrite 的 Rdl 定位{v7Status.evidence_boundaries.Fendl_2021_target_Rdl_localization_verified ? '已验证' : '未验证'}，Mi4/C3/CT1 pooled GABAergic 输入符号{v7Status.evidence_boundaries.Fendl_2021_pooled_GABAergic_T4_input_sign_supported ? '有支持' : '无支持'}；source-specific 接触{v7Status.evidence_boundaries.Fendl_2021_source_specific_contact_resolved ? '已解析' : '未解析'}，Mi4/C3 直接记录{v7Status.evidence_boundaries.Fendl_2021_Mi4_C3_direct_recording_verified ? '已验证' : '未验证'}。</small>}
-    {v7Status?.evidence_boundaries.Drews_2020_Mi4_ROI_count !== undefined && <small className="v7-evidence-note">Drews 2020 Mi4：官方仓库逐 ROI/trial GCaMP6f 数值时序{v7Status.evidence_boundaries.Drews_2020_Mi4_individual_numeric_calcium_verified ? '已验证' : '未验证'}，{v7Status.evidence_boundaries.Drews_2020_Mi4_ROI_count} cells / {v7Status.evidence_boundaries.Drews_2020_Mi4_pseudonymous_fly_count} 个 pseudonymous fly labels；按论文 0–4 s、1 Hz F1 规则的 tonic/弱 surround 表型{v7Status.evidence_boundaries.Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced ? '已复现' : '未复现'}，完整 temporal kernel {v7Status.evidence_boundaries.Drews_2020_Mi4_full_temporal_kernel_identified ? '已识别' : '未识别'}，预注册独立验证{v7Status.evidence_boundaries.Drews_2020_preregistered_independent_validation_available ? '可用' : '不可用'}；实验膜电位{v7Status.evidence_boundaries.Drews_2020_Mi4_experimental_membrane_voltage ? '是' : '否'}，recording→MaleCNS crosswalk {v7Status.evidence_boundaries.Drews_2020_recording_to_MaleCNS_body_crosswalk_found ? '存在' : '不存在'}。Sporar 2020 的 C3 共 {v7Status.evidence_boundaries.Sporar_2020_C3_exact_term_count} 次命中，直接 C3 记录{v7Status.evidence_boundaries.Sporar_2020_C3_direct_recording_verified ? '已验证' : '未验证'}。</small>}
-    {v7Status?.evidence_boundaries.Shomar_2025_C3_behavioral_silencing_verified !== undefined && <small className="v7-evidence-note">Shomar 2025 C3：gap-crossing shibire<sup>ts</sup> 行为沉默{v7Status.evidence_boundaries.Shomar_2025_C3_behavioral_silencing_verified ? '已验证' : '未验证'}；同篇直接 GCaMP6f 成像对象为 {v7Status.evidence_boundaries.Shomar_2025_direct_neural_imaging_cell_types?.join('/') || '未知'}，C3 直接记录{v7Status.evidence_boundaries.Shomar_2025_C3_direct_recording_verified ? '已验证' : '未验证'}，公开 C3 数值 dynamics {v7Status.evidence_boundaries.Shomar_2025_C3_numeric_source_dynamics_verified ? '已验证' : '未验证'}。</small>}
-    {v7Status && <small className="v7-evidence-note">Gür 2024 stable-contrast：直接记录类型 {v7Status.evidence_boundaries.Gur_2024_directly_recorded_neuron_types?.join('/') || '未知'}；Mi4/C3 命名文件分别为 {v7Status.evidence_boundaries.Gur_2024_Mi4_proofreading_row_count}/{v7Status.evidence_boundaries.Gur_2024_C3_proofreading_row_count} 行 proofreading，{v7Status.evidence_boundaries.Gur_2024_Mi4_C3_files_are_proofreading_only ? '仅解剖校对' : '范围未确认'}；Mi4/C3 直接生理记录{v7Status.evidence_boundaries.Gur_2024_Mi4_C3_direct_physiology_found ? '命中' : '未命中'}，不作为 recording→MaleCNS crosswalk。</small>}
-    {v7Status && <small className="v7-evidence-note">Tanaka 2023 Mi4：独立 jGCaMP7b 数据含 {v7Status.evidence_boundaries.Tanaka_2023_Mi4_fly_count} flies、{v7Status.evidence_boundaries.Tanaka_2023_Mi4_selected_ROI_count} 个筛选后 ROI，逐 fly 轴{v7Status.evidence_boundaries.Tanaka_2023_Mi4_individual_fly_axis_available ? '存在' : '不存在'}；响应单位 {v7Status.evidence_boundaries.Tanaka_2023_Mi4_response_unit}，实验膜电位{v7Status.evidence_boundaries.Tanaka_2023_Mi4_experimental_membrane_voltage ? '是' : '否'}，source transfer {v7Status.evidence_boundaries.Tanaka_2023_Mi4_source_dynamics_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.Tanaka_2023_Figure_6_named_Mi4_C3_member_count !== undefined && <small className="v7-evidence-note">Tanaka Figure 6：ZIP 中 {v7Status.evidence_boundaries.Tanaka_2023_Figure_6_named_Mi4_C3_member_count} 个 Mi4/C3 命名 MAT 经作者脚本确认为 shibire<sup>ts</sup> 行为筛选；神经活动记录{v7Status.evidence_boundaries.Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording ? '是' : '否'}，source-dynamics 载荷{v7Status.evidence_boundaries.Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload ? '是' : '否'}。</small>}
-    {v7Status && <small className="v7-evidence-note">Wu 2026 afterimage Mi4：补充图确认 {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_fly_count} flies / {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_ROI_count} ROIs，响应单位 {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_response_unit}；公开数值载荷{v7Status.evidence_boundaries.Wu_2026_afterimages_public_numeric_Mi4_payload_verified ? '已验证' : '未验证'}，source transfer {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.Henning_C3_directional_payload_fly_count !== undefined && <small className="v7-evidence-note">Henning C3 方向 edge：公开 MAT 含 {v7Status.evidence_boundaries.Henning_C3_directional_payload_fly_count} flies / {v7Status.evidence_boundaries.Henning_C3_directional_ROI_count} ROIs（正文图注为 {v7Status.evidence_boundaries.Henning_C3_directional_caption_fly_count} flies），8 方向、{v7Status.evidence_boundaries.Henning_C3_directional_edge_speed_degrees_per_second}°/s；该 cohort {v7Status.evidence_boundaries.Henning_C3_directional_cohort_independent ? '独立' : '与同研究 flash/STRF 重叠'}，方向特异 source kernel {v7Status.evidence_boundaries.Henning_C3_direction_specific_source_kernel_verified ? '已验证' : '未验证'}，transfer {v7Status.evidence_boundaries.Henning_C3_directional_source_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status && <small className="v7-evidence-note">PuRe ZIP：{v7Status.evidence_boundaries.CT1_PuRe_archive_contents_verified ? '已核验' : '未核验'}；新增数值载荷{v7Status.evidence_boundaries.CT1_PuRe_new_numerical_payload_verified ? '命中' : '未命中'}</small>}
-    {v7Status?.evidence_boundaries.Braun_calcium_fly_counts && <small className="v7-evidence-note">Braun 钙载荷：Tm2 {v7Status.evidence_boundaries.Braun_calcium_fly_counts.Tm2} flies · Tm9 {v7Status.evidence_boundaries.Braun_calcium_fly_counts.Tm9} · CT1 {v7Status.evidence_boundaries.Braun_calcium_fly_counts.CT1}；条件网格{v7Status.evidence_boundaries.Braun_calcium_condition_grids_complete ? '完整' : '不完整'}；合规电压源 {v7Status.evidence_boundaries.Braun_calcium_allowed_voltage_sources?.length ?? 0}</small>}
-    {v7Status && <small className="v7-evidence-note">Gou Dryad v4：归档哈希{v7Status.evidence_boundaries.Gou_Dryad_archive_hash_locally_verified ? '已本地核验' : '未核验'}；处理后 GCaMP6f 数值源 {v7Status.evidence_boundaries.Gou_Dryad_local_processed_calcium_sources.join(' / ')}；flash flies Mi1/Tm3/Tm1/Tm2 = {Object.values(v7Status.evidence_boundaries.Gou_Dryad_flash_fly_axis_sizes).join('/')}, moving-bar = {Object.values(v7Status.evidence_boundaries.Gou_Dryad_moving_bar_fly_axis_sizes).join('/')}；稳定生物个体 ID {v7Status.evidence_boundaries.Gou_Dryad_stable_biological_individual_IDs_verified ? '已验证' : '未验证'}；实验膜电位{v7Status.evidence_boundaries.Gou_Dryad_experimental_membrane_voltage ? '是' : '否'}</small>}
-    {v7Status && <small className="v7-evidence-note">Gou Fig.6 方向轴：Mi1/Tm3 逐记录标签{v7Status.evidence_boundaries.Gou_Dryad_Mi1_Tm3_direction_axis_identifiable ? '可识别' : '不可识别'}；方向不变性检验{v7Status.evidence_boundaries.Gou_Dryad_direction_invariance_evaluated ? '已执行' : '未执行'}。6 列是 sparsity，未标注的 12 列不猜作方向。</small>}
-    {v7Status && <small className="v7-evidence-note">Gou DANDI NWB：{v7Status.evidence_boundaries.Gou_DANDI_all_assets_stimulus_metadata_indexed ? '282/282 已索引' : '索引不完整'}；Mi1/Tm3 assets {v7Status.evidence_boundaries.Gou_DANDI_Mi1_Tm3_asset_counts.Mi1}/{v7Status.evidence_boundaries.Gou_DANDI_Mi1_Tm3_asset_counts.Tm3}；stimulus/interval metadata {v7Status.evidence_boundaries.Gou_DANDI_Mi1_Tm3_stimulus_metadata_available ? '存在' : '未保留'}，不能回填 Dryad 方向标签。</small>}
-    {v7Status && <small className="v7-evidence-note">T5 方向码：Figure 4 的 0→ND / 1→PD {v7Status.evidence_boundaries.T5_Figure4_relative_PD_ND_mapping_verified ? '已验证' : '未验证'}；0/1 到原生感受野坐标递减/递增{v7Status.evidence_boundaries.T5_Figure4_native_coordinate_motion_mapping_verified ? '可追踪' : '不可追踪'}，但绝对屏幕或身体方向{v7Status.evidence_boundaries.T5_Figure4_absolute_physical_direction_mapping_verified ? '已验证' : '未验证'}。Kohn–Portes 逐记录方向码/物理方向 {v7Status.evidence_boundaries.T5_Kohn_Portes_record_level_direction_code_available ? '有' : '无'}/{v7Status.evidence_boundaries.T5_Kohn_Portes_record_level_physical_direction_available ? '有' : '无'}，跨数据集映射{v7Status.evidence_boundaries.T5_cross_dataset_direction_mapping_authorized ? '允许' : '禁止'}。</small>}
-    {v7Status && <small className="v7-evidence-note">T5 source kernel：Kohn–Portes {v7Status.evidence_boundaries.T5_voltage_derived_kernel_sources.join('/')} 共 {v7Status.evidence_boundaries.T5_voltage_derived_kernel_record_count} 条 whole-cell white-noise 记录，核步长 {v7Status.evidence_boundaries.T5_kernel_sample_interval_seconds * 1000} ms；绝对增益{v7Status.evidence_boundaries.T5_raw_kernel_gain_transferable ? '可转移' : '不可转移'}、跨刺激不变性{v7Status.evidence_boundaries.T5_kernel_stimulus_invariant ? '已验证' : '未验证'}，完整 source transfer {v7Status.evidence_boundaries.T5_source_kernel_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_state_unit_record_count !== undefined && <small className="v7-evidence-note">T5 状态单位：{v7Status.evidence_boundaries.T5_state_unit_record_count} 条 saline/OA white-noise 记录；volts→mV 精确换算{v7Status.evidence_boundaries.T5_exact_volts_to_millivolts_scale_verified ? '已验证' : '未验证'}。mV/filter output→v7 signed-tanh 映射{v7Status.evidence_boundaries.T5_millivolts_or_filter_output_to_state_mapping_available ? '存在' : '不存在'}；归一化公式/裁剪规则 {v7Status.evidence_boundaries.T5_candidate_normalization_formula ?? '无'}/{v7Status.evidence_boundaries.T5_candidate_clipping_rule ?? '无'}。</small>}
-    {v7Status?.evidence_boundaries.T5_saline_Tm9_median_latency_ms !== undefined && <small className="v7-evidence-note">T5 核峰时：saline fast/Tm9 中位数 {v7Status.evidence_boundaries.T5_saline_fast_pooled_median_latency_ms}/{v7Status.evidence_boundaries.T5_saline_Tm9_median_latency_ms} ms，OA 为 {v7Status.evidence_boundaries.T5_OA_fast_pooled_median_latency_ms}/{v7Status.evidence_boundaries.T5_OA_Tm9_median_latency_ms} ms；saline 相对慢序{v7Status.evidence_boundaries.T5_saline_Tm9_relative_delay_supported ? '支持' : '不支持'}，跨状态不变性{v7Status.evidence_boundaries.T5_Tm9_delay_ordering_state_invariant ? '成立' : '不成立'}，v7 delay transfer {v7Status.evidence_boundaries.T5_source_delay_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_saline_record_median_preferred_frequency_hz && <small className="v7-evidence-note">T5 频率形状：逐记录 preferred-frequency 中位数 saline Tm1/Tm2/Tm4/Tm9 = {Object.values(v7Status.evidence_boundaries.T5_saline_record_median_preferred_frequency_hz).join('/')} Hz，OA = {Object.values(v7Status.evidence_boundaries.T5_OA_record_median_preferred_frequency_hz ?? {}).join('/')} Hz；摘要口径不变性{v7Status.evidence_boundaries.T5_preferred_frequency_summary_invariant ? '成立' : '不成立'}，频率 transfer {v7Status.evidence_boundaries.T5_source_frequency_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_Tm_to_T5_Figure5_training_fit_count !== undefined && <small className="v7-evidence-note">Tm→T5 作者模型：固定 Git blob {v7Status.evidence_boundaries.T5_Tm_to_T5_model_inputs_git_blob_verified ? '已核验' : '未核验'}，Figure 5 训练内拟合 {v7Status.evidence_boundaries.T5_Tm_to_T5_Figure5_training_fit_count} 次；fit/score 样本{v7Status.evidence_boundaries.T5_Tm_to_T5_fit_score_samples_disjoint ? '分离' : '未分离'}，独立 cell 验证{v7Status.evidence_boundaries.T5_Tm_to_T5_independent_validation_available ? '存在' : '不存在'}，Figure 6 Tm2-ND 引用{v7Status.evidence_boundaries.T5_Figure6_Tm2_ND_source_reference_correct ? '正确' : '错误'}，v7 transfer {v7Status.evidence_boundaries.T5_Tm_to_T5_model_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_FIB19_MaleCNS_maximum_population_ratio_difference !== undefined && <small className="v7-evidence-note">T5 connectome 权重：FIB19/MaleCNS 四源总体排序{v7Status.evidence_boundaries.T5_FIB19_MaleCNS_population_source_rank_matches ? '一致' : '不一致'}，最大总体比例差 {fmt(v7Status.evidence_boundaries.T5_FIB19_MaleCNS_maximum_population_ratio_difference * 100, 2)} 个百分点；MaleCNS Tm9 比例落在 FIB19 样本范围外 {fmt((v7Status.evidence_boundaries.T5_MaleCNS_Tm9_fraction_outside_FIB19_range ?? 0) * 100, 1)}%，权重 transfer {v7Status.evidence_boundaries.T5_FIB19_to_MaleCNS_weight_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_moving_bar_condition_count !== undefined && <small className="v7-evidence-note">T5 static→moving-bar：{v7Status.evidence_boundaries.T5_moving_bar_condition_count} 个 measured-flash 条件，gain-free DSI {v7Status.evidence_boundaries.T5_moving_bar_gain_free_DSI_available ? '可复算' : '不可复算'}；moving-bar gain 的 fit/score 样本{v7Status.evidence_boundaries.T5_moving_bar_gain_fit_score_samples_disjoint ? '分离' : '未分离'}，独立验证{v7Status.evidence_boundaries.T5_moving_bar_validation_available ? '存在' : '不存在'}，v7 transfer {v7Status.evidence_boundaries.T5_moving_bar_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_transfer_synthesis_kernel_shape_source_count !== undefined && <small className="v7-evidence-note">T5 transfer 汇总：电压派生 kernel shape {v7Status.evidence_boundaries.T5_transfer_synthesis_kernel_shape_source_count}/5 源、exact-type-average mapping {v7Status.evidence_boundaries.T5_transfer_synthesis_mapping_source_count}/5 源、正向 shape 证据 {v7Status.evidence_boundaries.T5_transfer_synthesis_positive_shape_evidence_count}/4 类；绝对 gain {v7Status.evidence_boundaries.T5_transfer_synthesis_absolute_gain_available ? '有' : '无'}、CT1 {v7Status.evidence_boundaries.T5_transfer_synthesis_CT1_complete ? '完整' : '不完整'}，总体 transfer {v7Status.evidence_boundaries.T5_transfer_synthesis_ready ? '通过' : '未通过'}。</small>}
-    {v7Status?.evidence_boundaries.T5_transfer_synthesis_related_axolotl_project_identified !== undefined && <small className="v7-evidence-note">Figure 6 源码：官方 MATLAB T5 target model {v7Status.evidence_boundaries.T5_transfer_synthesis_official_target_model_available ? '已验证' : '未验证'}；相关 rbehnialab/axolotl 项目{v7Status.evidence_boundaries.T5_transfer_synthesis_related_axolotl_project_identified ? '已定位' : '未定位'}，匿名 repository {v7Status.evidence_boundaries.T5_transfer_synthesis_axolotl_repository_readable ? '可读' : '不可读'}，Python axolotl.tmodel 源码{v7Status.evidence_boundaries.T5_transfer_synthesis_Figure6_axolotl_source_available ? '已恢复' : '未恢复'}；目标模型不替代 source model。</small>}
-    {v7Status?.evidence_boundaries.T5_measured_kernel_temporal_identifiability_passed !== undefined && <small className="v7-evidence-note">T5 measured-kernel 时序控制：{v7Status.evidence_boundaries.T5_measured_kernel_temporal_identifiability_passed ? '通过' : '未通过'}；kernel↔刺激帧{v7Status.evidence_boundaries.T5_measured_kernel_frame_alignment_verified ? '已对齐' : '未对齐'}、recording↔probe solver {v7Status.evidence_boundaries.T5_measured_kernel_probe_solver_alignment_verified ? '已对齐' : '未验证'}；方向评分{v7Status.evidence_boundaries.T5_measured_kernel_direction_scoring_performed ? '已执行' : '按 stop gate 未执行'}，物理 source transfer {v7Status.evidence_boundaries.T5_measured_kernel_physical_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_measured_kernel_standard_substep_negative_reproduced !== undefined && <small className="v7-evidence-note">T5 measured-kernel 数值分辨率：1/4 updates per frame；标准 4-update 负结果{v7Status.evidence_boundaries.T5_measured_kernel_standard_substep_negative_reproduced ? '已复现' : '未复现'}，跨分辨率时序门{v7Status.evidence_boundaries.T5_measured_kernel_cross_substep_identifiability_passed ? '通过' : '未通过'}；方向评分{v7Status.evidence_boundaries.T5_measured_kernel_cross_substep_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_measured_kernel_cross_substep_direction_scoring_performed ? '已执行' : '未执行'}。</small>}
-    {v7Status?.evidence_boundaries.T5_measured_kernel_trace_samples !== undefined && <small className="v7-evidence-note">T5 kernel 支持覆盖：作者 causal index-0 {v7Status.evidence_boundaries.T5_measured_kernel_causal_index_zero_supported ? '有源码调用支持' : '未确认'}；当前 {v7Status.evidence_boundaries.T5_measured_kernel_trace_samples} 个样本覆盖全部群体核绝对峰，但 L1 质量仅 {fmt((v7Status.evidence_boundaries.T5_measured_kernel_minimum_prefix_L1_mass_fraction ?? 0) * 100, 1)}%–{fmt((v7Status.evidence_boundaries.T5_measured_kernel_maximum_prefix_L1_mass_fraction ?? 0) * 100, 1)}%；完整支持{v7Status.evidence_boundaries.T5_measured_kernel_full_L1_support_covered ? '已覆盖' : '未覆盖'}，仅凭此前短前缀授权完整负结论{v7Status.evidence_boundaries.T5_measured_kernel_prefix_alone_full_support_negative_authorized ? '是' : '否'}。</small>}
-    {v7Status?.evidence_boundaries.T5_measured_kernel_zero_tail_full_support_evaluated !== undefined && <small className="v7-evidence-note">T5 zero-tail 完整 FIR：27 个 source 样本后补 {v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_samples} 个零值，评分 {v7Status.evidence_boundaries.T5_measured_kernel_full_support_output_samples} 点；全部候选跨 1/4-update {v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_all_candidates_failed ? '均失败' : '未全部失败'}，时序门{v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_cross_substep_identifiability_passed ? '通过' : '未通过'}；方向评分{v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_direction_scoring_performed ? '已执行' : '未执行'}。零尾不等于继续运行神经网络。</small>}
-    {v7Status?.evidence_boundaries.T5_population_kernel_robustness_passing_source_count !== undefined && <small className="v7-evidence-note">T5 population kernel 稳健性：{v7Status.evidence_boundaries.T5_population_kernel_robustness_passing_source_count}/4 source 通过 recording-ID 门；失败源 {v7Status.evidence_boundaries.T5_population_kernel_robustness_failing_sources?.join('/') || '无'}，Tm2 held-out-vs-rest median / partition p05 = {fmt(v7Status.evidence_boundaries.T5_Tm2_recording_id_vs_rest_median_correlation ?? 0, 3)} / {fmt(v7Status.evidence_boundaries.T5_Tm2_partition_correlation_p05 ?? 0, 3)}。recording ID 不等同 fly ID，独立生物验证{v7Status.evidence_boundaries.T5_population_kernel_independent_validation_available ? '存在' : '不存在'}，kernel transfer {v7Status.evidence_boundaries.T5_population_kernel_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_Tm2_oracle_shift_LOO_median_correlation !== undefined && <small className="v7-evidence-note">T5 Tm2 kernel 时移诊断：逐比较事后选择 ±{v7Status.evidence_boundaries.T5_Tm2_oracle_maximum_lag_milliseconds} ms 后，LOO median / partition p05 = {fmt(v7Status.evidence_boundaries.T5_Tm2_oracle_shift_LOO_median_correlation, 3)} / {fmt(v7Status.evidence_boundaries.T5_Tm2_oracle_shift_partition_correlation_p05 ?? 0, 3)}；完整 shape gate {v7Status.evidence_boundaries.T5_Tm2_oracle_alignment_all_shape_gates_passed ? '通过' : '仍失败'}，有限 latency jitter {v7Status.evidence_boundaries.T5_Tm2_bounded_latency_explains_robustness_failure ? '可解释' : '不能解释'}原失败，oracle-aligned kernel {v7Status.evidence_boundaries.T5_Tm2_oracle_aligned_kernel_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_Tm2_OA_only_recording_ids !== undefined && <small className="v7-evidence-note">T5 saline/OA recording pool：Tm2 共有 {v7Status.evidence_boundaries.T5_Tm2_shared_saline_OA_recording_id_count} 个共享 recording ID，OA-only IDs 为 {v7Status.evidence_boundaries.T5_Tm2_OA_only_recording_ids.join('/')}；配对 kernel 相关范围 {fmt(v7Status.evidence_boundaries.T5_Tm2_paired_saline_OA_shape_correlation_summary?.minimum ?? 0, 3)}–{fmt(v7Status.evidence_boundaries.T5_Tm2_paired_saline_OA_shape_correlation_summary?.maximum ?? 0, 3)}。OA-only 记录{v7Status.evidence_boundaries.T5_Tm2_OA_only_recordings_expand_saline_cohort ? '可' : '不可'}补充 saline cohort，跨状态池化{v7Status.evidence_boundaries.T5_cross_state_recording_pool_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_population_kernel_author_call_count !== undefined && <small className="v7-evidence-note">T5 kernel 聚合语义：已核查 {v7Status.evidence_boundaries.T5_population_kernel_author_call_count} 个作者调用，显式 baseline 参数 {v7Status.evidence_boundaries.T5_population_kernel_explicit_baseline_call_count} 个；当前不减尾部 baseline {v7Status.evidence_boundaries.T5_population_kernel_no_baseline_matches_author_default ? '符合作者默认' : '不符合作者默认'}。Tm1 等行权重与等 recording-ID 权重相关 {fmt(v7Status.evidence_boundaries.T5_Tm1_row_vs_recording_id_weighted_correlation ?? 0, 5)}，但精确复现{v7Status.evidence_boundaries.T5_population_kernel_author_row_weighting_exactly_reproduced ? '成立' : '不成立'}；tail-baseline 变体{v7Status.evidence_boundaries.T5_population_kernel_tail_baseline_variant_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_author_row_weighted_changed_sources !== undefined && <small className="v7-evidence-note">T5 作者等行聚合敏感性：变化 source {v7Status.evidence_boundaries.T5_author_row_weighted_changed_sources.join('/') || '无'}；完整 FIR 三候选跨 1/4-update {v7Status.evidence_boundaries.T5_author_row_weighted_full_support_all_candidates_failed ? '均失败' : '未全部失败'}，时序门{v7Status.evidence_boundaries.T5_author_row_weighted_cross_substep_identifiability_passed ? '通过' : '未通过'}；方向评分{v7Status.evidence_boundaries.T5_author_row_weighted_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_author_row_weighted_direction_scoring_performed ? '已执行' : '未执行'}。</small>}
-    {v7Status?.evidence_boundaries.T5_Tm2_LOO_fold_count !== undefined && <small className="v7-evidence-note">T5 Tm2 recording-ID LOO：{v7Status.evidence_boundaries.T5_Tm2_LOO_fold_count} folds × 2 updates × 3 candidates = {v7Status.evidence_boundaries.T5_Tm2_LOO_evaluation_count} 项，时间门通过 {v7Status.evidence_boundaries.T5_Tm2_LOO_passed_evaluation_count} 项；全部失败{v7Status.evidence_boundaries.T5_Tm2_LOO_full_support_all_evaluations_failed ? '是' : '否'}，方向评分{v7Status.evidence_boundaries.T5_Tm2_LOO_direction_scoring_authorized ? '已授权' : '未授权'}。该 LOO {v7Status.evidence_boundaries.T5_Tm2_LOO_independent_biological_validation_performed ? '属于' : '不属于'}独立 fly 验证。</small>}
-    {v7Status?.evidence_boundaries.T5_measured_kernel_typed_recurrent_cascade_verified !== undefined && <small className="v7-evidence-note">T5 measured-kernel 级联：typed recurrent source state → baseline subtraction/正半波/空间矩 → measured FIR {v7Status.evidence_boundaries.T5_measured_kernel_typed_recurrent_cascade_verified ? '已确认' : '未确认'}；Tm1/Tm2/Tm4/Tm9 leak = {Object.values(v7Status.evidence_boundaries.T5_measured_kernel_source_leaks ?? {}).join('/')}。measured FIR {v7Status.evidence_boundaries.T5_measured_kernel_replaces_existing_source_dynamics ? '替换' : '未替换'}原 source dynamics，external state mapping {v7Status.evidence_boundaries.T5_measured_kernel_external_state_mapping_available ? '存在' : '不存在'}，单阶段生物解释{v7Status.evidence_boundaries.T5_measured_kernel_single_stage_biological_interpretation_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_measured_kernel_recurrent_or_feedback_fraction_by_source !== undefined && <small className="v7-evidence-note">T5 source 输入分解：Tm1/Tm2/Tm4/Tm9 recurrent-or-feedback 质量占比 {Object.values(v7Status.evidence_boundaries.T5_measured_kernel_recurrent_or_feedback_fraction_by_source).map(value => fmt(value * 100, 2)).join('/')}%，Tm9 的 CT1 输入 {fmt((v7Status.evidence_boundaries.T5_measured_kernel_Tm9_CT1_input_fraction ?? 0) * 100, 2)}%；当前 trace {v7Status.evidence_boundaries.T5_measured_kernel_feedforward_only_source_drive_available ? '可' : '不可'}作为纯 feed-forward drive，source-dynamics replacement {v7Status.evidence_boundaries.T5_measured_kernel_source_dynamics_replacement_evaluated ? '已评估' : '未评估'}/{v7Status.evidence_boundaries.T5_measured_kernel_source_dynamics_replacement_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_lamina_only_replacement_evaluated !== undefined && <small className="v7-evidence-note">T5 lamina-only replacement：仅保留 R1–R6→L1/L2/L3→Tm preactivation，再接 measured FIR；三候选跨 1/4-update {v7Status.evidence_boundaries.T5_lamina_only_replacement_all_candidates_failed ? '均失败' : '未全部失败'}，时序门{v7Status.evidence_boundaries.T5_lamina_only_replacement_temporal_identifiability_passed ? '通过' : '未通过'}；方向评分{v7Status.evidence_boundaries.T5_lamina_only_replacement_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_lamina_only_replacement_direction_scoring_performed ? '已执行' : '未执行'}，物理 transfer {v7Status.evidence_boundaries.T5_lamina_only_replacement_physical_transfer_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_temporal_shuffle_frame_multiset_preserved !== undefined && <small className="v7-evidence-note">T5 temporal-shuffle 输入能量：帧多重集{v7Status.evidence_boundaries.T5_temporal_shuffle_frame_multiset_preserved ? '保持' : '未保持'}，但 R1–R6 signed-frame-difference 能量{v7Status.evidence_boundaries.T5_temporal_shuffle_retinal_energy_preserved ? '保持' : '未保持'}、lamina-only Tm preactivation 能量{v7Status.evidence_boundaries.T5_temporal_shuffle_lamina_source_energy_preserved ? '保持' : '未保持'}；等能控制{v7Status.evidence_boundaries.T5_temporal_shuffle_energy_matched_control_verified ? '已验证' : '未验证'}，因此等能时序选择性解释{v7Status.evidence_boundaries.T5_equal_energy_temporal_selectivity_interpretation_authorized ? '已授权' : '未授权'}。未新增事后能量归一化门。</small>}
-    {v7Status?.evidence_boundaries.T4_temporal_shuffle_frame_multiset_preserved !== undefined && <small className="v7-evidence-note">T4 temporal-shuffle 输入审计：帧多重集{v7Status.evidence_boundaries.T4_temporal_shuffle_frame_multiset_preserved ? '保持' : '未保持'}，R1–R6 mean-absolute drive 能量{v7Status.evidence_boundaries.T4_temporal_shuffle_R1_R6_energy_preserved ? '保持' : '未保持'}，Mi1/Tm3/Mi4/C3 source-state 能量均在 5% 内{v7Status.evidence_boundaries.T4_temporal_shuffle_source_energy_within_five_percent ? '是' : '否'}；输入能量失配{v7Status.evidence_boundaries.T4_temporal_shuffle_input_mismatch_explains_failure ? '可解释' : '不能解释'}原 output 失败，因此原 temporal gate {v7Status.evidence_boundaries.T4_temporal_shuffle_failure_retained_after_energy_audit ? '继续失败' : '已变更'}。</small>}
-    {v7Status?.evidence_boundaries.fig3_source_kernel_original_negative_LOO_cell_count !== undefined && <small className="v7-evidence-note">T4 Fig.3 source-kernel 失败分解：原分析已去基线/增益，负相关 LOO 个体 {v7Status.evidence_boundaries.fig3_source_kernel_original_negative_LOO_cell_count} 个，其中 {v7Status.evidence_boundaries.fig3_source_kernel_high_SNR_negative_LOO_cell_count} 个达到既有 SNR 参考线；允许每个 held-out 波形事后选择 ±{v7Status.evidence_boundaries.fig3_source_kernel_oracle_lag_milliseconds} ms 的不可部署 oracle 时移后仍有 {v7Status.evidence_boundaries.fig3_source_kernel_oracle_shift_negative_LOO_cell_count} 个。ON/OFF 负相关个体交集为 {v7Status.evidence_boundaries.fig3_source_kernel_ON_OFF_negative_cell_intersection_count}；有限 latency jitter 与低 SNR 均不能解释全部失败，也不授权事后剔除个体，原 robustness gate {v7Status.evidence_boundaries.fig3_source_kernel_failure_retained_after_alignment_audit ? '继续失败' : '已变更'}。</small>}
-    {v7Status?.evidence_boundaries.T5_increment_order_control_images_valid !== undefined && <small className="v7-evidence-note">T5 increment-order 探索控制：重建图像{v7Status.evidence_boundaries.T5_increment_order_control_images_valid ? '合法' : '不合法'}，终帧{v7Status.evidence_boundaries.T5_increment_order_control_terminal_frame_preserved ? '保持' : '未保持'}，R1–R6 drive 多重集{v7Status.evidence_boundaries.T5_increment_order_control_R1_R6_drive_multiset_preserved ? '保持' : '未保持'}且能量{v7Status.evidence_boundaries.T5_increment_order_control_R1_R6_energy_matched ? '匹配' : '不匹配'}。该控制为 S1-T01 事后发现，独立条件{v7Status.evidence_boundaries.T5_increment_order_control_independent_condition_evaluated ? '已评估' : '未评估'}，替换原时序门{v7Status.evidence_boundaries.T5_increment_order_control_replacement_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T5_increment_order_replication_gate_passed !== undefined && <small className="v7-evidence-note">T5 increment-order 预注册复制：S1-T02/T03 × 1/4 updates 输入合法性{v7Status.evidence_boundaries.T5_increment_order_replication_input_validity_passed ? '通过' : '失败'}；同一候选跨全部条件/更新率{v7Status.evidence_boundaries.T5_increment_order_replication_same_candidate_passed ? '通过' : '未通过'}，复制门{v7Status.evidence_boundaries.T5_increment_order_replication_gate_passed ? '通过' : '失败'}，方向评分{v7Status.evidence_boundaries.T5_increment_order_replication_direction_scoring_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status && <small className="v7-evidence-note">T5 source→MaleCNS：Tm1/Tm2/Tm4/Tm9 exact-type-average {v7Status.evidence_boundaries.T5_four_Tm_exact_type_average_mapping_complete ? '完整' : '不完整'}；五源总体{v7Status.evidence_boundaries.T5_all_five_source_mapping_complete ? '完整' : '不完整'}。CT1 10009/10157 的 Lo1 列覆盖 {v7Status.evidence_boundaries.T5_CT1_mapping_Lo1_column_count_by_body['10009']}/{v7Status.evidence_boundaries.T5_CT1_mapping_Lo1_column_count_by_body['10157']}，逐突触列不折叠成单一 body 坐标。</small>}
-    {v7Status && <small className="v7-evidence-note">Gou ↔ DANDI 身份：DANDI 资产级 participant {v7Status.evidence_boundaries.Gou_DANDI_asset_level_stable_participant_IDs_verified ? v7Status.evidence_boundaries.Gou_DANDI_unique_subject_ID_count + ' 个唯一 ID' : '未验证'}；Dryad fliesUsed {v7Status.evidence_boundaries.Gou_Dryad_distinct_fliesUsed_label_count} 个标签，精确交叉键 {v7Status.evidence_boundaries.Gou_Dryad_DANDI_identity_crosswalk_match_count}；处理行到 subject 映射{v7Status.evidence_boundaries.Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified ? '已验证' : '未验证'}。</small>}
-    {v7Status && <small className="v7-evidence-note">离线刺激坐标：{v7Status.evidence_boundaries.v7_offline_frame_interval_milliseconds} ms/frame · {v7Status.evidence_boundaries.v7_offline_substep_interval_milliseconds} ms/substep · 横向 FOV {fmt(v7Status.evidence_boundaries.v7_horizontal_fov_degrees, 2)}°；时间/横向坐标{v7Status.evidence_boundaries.v7_offline_time_coordinate_contract_complete && v7Status.evidence_boundaries.v7_offline_horizontal_coordinate_contract_complete ? '已冻结' : '未完成'}，二维角标定{v7Status.evidence_boundaries.v7_offline_two_dimensional_angular_calibration_complete ? '完整' : '不完整'}；未经生物校准且未接入默认运行时。</small>}
-    {v7Status && <small className="v7-evidence-note">纵向角坐标：camera rays {v7Status.evidence_boundaries.v7_vertical_camera_ray_angles_declared ? '已声明' : '未声明'} · vertical FOV {v7Status.evidence_boundaries.v7_vertical_FOV_declared ? '已声明' : '未声明'} · pixel→degree {v7Status.evidence_boundaries.v7_vertical_pixel_to_angle_formula_declared ? '已声明' : '未声明'}；上下运动/looming 半径物理角单位 {v7Status.evidence_boundaries.v7_vertical_motion_has_physical_angular_units || v7Status.evidence_boundaries.v7_looming_radius_has_physical_angular_units ? '存在' : '均不存在'}，retinal_v 仍是归一化六角拓扑坐标。</small>}
-    {v7Status && <small className="v7-evidence-note">离线二维工程角栅格：{v7Status.evidence_boundaries.v7_offline_2D_engineering_angular_grid_complete ? '完整' : '不完整'} · {fmt(v7Status.evidence_boundaries.v7_offline_engineering_angular_pixel_pitch_degrees, 3)}°/pixel · vertical FOV {fmt(v7Status.evidence_boundaries.v7_offline_engineering_vertical_FOV_degrees, 3)}°；{v7Status.evidence_boundaries.v7_offline_engineering_grid_biologically_calibrated ? '已生物标定' : '仅模型声明，未生物标定'}。</small>}
-    {v7Status?.evidence_boundaries.v7_controlled_base_stimulus_count !== undefined && <small className="v7-evidence-note">受控刺激与输入边界：基础 {v7Status.evidence_boundaries.v7_controlled_base_stimulus_count} 条 · development/validation/OOD/final 各 {v7Status.evidence_boundaries.v7_controlled_stimuli_per_independent_split} 条 · typed LPLC/LC4 {v7Status.evidence_boundaries.v7_typed_LPLC_LC4_stimulus_count} 条；统一覆盖{v7Status.evidence_boundaries.v7_controlled_stimulus_and_R1_R6_input_boundary_complete ? '完整' : '不完整'}。外部 drive 落到非 R1–R6 节点 {v7Status.evidence_boundaries.v7_external_drive_non_R1_R6_node_count}，与 T4/T5/LPLC/LC 目标重叠 {v7Status.evidence_boundaries.v7_target_direct_external_drive_overlap}；覆盖完整不代表响应门通过。</small>}
-    {v7Status && <small className="v7-evidence-note">T4 source→MaleCNS：{v7Status.evidence_boundaries.T4_source_mapping_mode} 四源{v7Status.evidence_boundaries.T4_exact_type_average_mapping_complete ? '完整' : '不完整'}；逐记录 body 指派{v7Status.evidence_boundaries.T4_source_recording_level_body_assignment ? '存在' : '不存在'}，因此仅按同型总体均值广播。</small>}
-    {v7Status?.evidence_boundaries.C2C3_version_of_record_DOI !== undefined && <small className="v7-evidence-note">C2/C3 Version of Record（{v7Status.evidence_boundaries.C2C3_version_of_record_DOI}）：仓库 revision {v7Status.evidence_boundaries.C2C3_version_of_record_repository_revision?.slice(0, 7)}；新增载荷是 {v7Status.evidence_boundaries.C2C3_version_of_record_new_payload_modality}，C3/Mi1 control 各 {v7Status.evidence_boundaries.C2C3_version_of_record_C3_fly_count}/{v7Status.evidence_boundaries.C2C3_version_of_record_Mi1_control_fly_count} 个 Flyname。新增 C3/Mi4 膜电位{v7Status.evidence_boundaries.C2C3_version_of_record_new_C3_Mi4_voltage_found ? '存在' : '不存在'}，MaleCNS crosswalk {v7Status.evidence_boundaries.C2C3_version_of_record_MaleCNS_crosswalk_found ? '存在' : '不存在'}，T4 transfer gate {v7Status.evidence_boundaries.C2C3_version_of_record_changed_T4_transfer_gate ? '已改变' : '未改变'}。</small>}
-    {v7Status?.evidence_boundaries.T4_source_pool_camera_frame_post_hoc_candidate_discovered !== undefined && <small className="v7-evidence-note">T4 source-pool 相机坐标探索：按既有 retinal 映射补入纵轴反转后，双侧候选为 {v7Status.evidence_boundaries.T4_source_pool_camera_frame_bilateral_readouts?.join('/') || '无'}，亚型 {Object.values(v7Status.evidence_boundaries.T4_source_pool_camera_frame_bilateral_subtypes ?? {}).flat().join('/') || '无'}；这是 post-hoc 单条件结果，复制{v7Status.evidence_boundaries.T4_source_pool_camera_frame_replication_evaluated ? '已完成' : '未执行'}，新 target formula {v7Status.evidence_boundaries.T4_source_pool_camera_frame_target_formula_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status?.evidence_boundaries.T4_source_pool_camera_frame_replication_gate_passed !== undefined && <small className="v7-evidence-note">T4 source-pool 预注册复制：LPLC-T02/T03 ordered T4d 双侧{v7Status.evidence_boundaries.T4_source_pool_camera_frame_ordered_replication_passed ? '通过' : '失败'}；controls {v7Status.evidence_boundaries.T4_source_pool_camera_frame_controls_evaluated ? '已执行' : '按 stop gate 未执行'}，复制门{v7Status.evidence_boundaries.T4_source_pool_camera_frame_replication_gate_passed ? '通过' : '失败'}。</small>}
-    {v7Status?.evidence_boundaries.T4_synapse_RF_axis_joint_valid_target_count !== undefined && <small className="v7-evidence-note">T4 空间轴对应：{v7Status.evidence_boundaries.T4_synapse_RF_axis_joint_valid_target_count} 个 target 的靶处突触轴与 source RF/optic-hex 轴原始中位夹角 {fmt(v7Status.evidence_boundaries.T4_synapse_RF_axis_identity_median_angle_degrees ?? 0, 2)}°、cardinal 一致率 {fmt((v7Status.evidence_boundaries.T4_synapse_RF_axis_identity_cardinal_match_fraction ?? 0) * 100, 2)}%；描述性最佳变换为 {v7Status.evidence_boundaries.T4_synapse_RF_axis_descriptive_best_transform ?? '无'}（中位 {fmt(v7Status.evidence_boundaries.T4_synapse_RF_axis_best_median_angle_degrees ?? 0, 2)}°）。两种轴{v7Status.evidence_boundaries.T4_source_RF_axis_interchangeability_verified ? '可互换' : '不可直接互换'}，RF-axis replacement {v7Status.evidence_boundaries.T4_RF_axis_replacement_authorized ? '已授权' : '未授权'}。</small>}
-    {v7Status && <small className="v7-evidence-note">T4 mV→state：作者全 cohort min–max {v7Status.evidence_boundaries.T4_author_minmax_formula_reproduced ? '已复现' : '未复现'}；训练个体冻结后 held-out 越界率 Mi1/Tm3/Mi4/C3 = {Object.values(v7Status.evidence_boundaries.T4_state_mapping_held_out_outside_fraction_by_source).map(value => `${fmt(value * 100, 1)}%`).join('/')}; 与 v7 signed-tanh 状态语义{v7Status.evidence_boundaries.T4_author_minmax_semantics_match_v7_state ? '一致' : '不一致'}，映射门{v7Status.evidence_boundaries.T4_millivolts_to_v7_state_mapping_available ? '通过' : '未通过'}。</small>}
-    <div className="telemetry">
-      <div><small>里程</small><strong>{fmt(state?.environment.vehicle.y ?? 0, 1)} m</strong></div>
-      <div><small>速度</small><strong>{fmt(state?.environment.vehicle.speed ?? 0, 1)}</strong></div>
-      <div><small>纵向指令</small><strong>{fmt(state?.action.drive ?? 0)}</strong></div>
-      <div><small>MDN 后退</small><strong>{fmt(state?.action.reverse ?? 0)}</strong></div>
-      <div><small>转向</small><strong>{fmt(state?.action.steering ?? 0)}</strong></div>
-      <div><small>神经原始转向</small><strong>{fmt(state?.raw_action.steering ?? 0)}</strong></div>
-      <div><small>安全介入</small><strong>{fmt(state?.lane_constraint.blend ?? 0)}</strong></div>
-      <div><small>累计介入率</small><strong>{fmt((state?.control_statistics.constraint_rate ?? 0) * 100, 1)}%</strong></div>
-      <div><small>奖励</small><strong>{fmt(state?.reward ?? 0, 3)}</strong></div>
-      <div><small>已通过障碍</small><strong>{state?.environment.obstacles_passed ?? 0}/{state?.environment.obstacles.length ?? 0}</strong></div>
-      <div><small>道路配对</small><strong>{state?.environment.pair_seed ?? '—'} / {state?.environment.mirror === -1 ? '镜像' : '原向'}</strong></div>
-      <div><small>首障碍侧别</small><strong>{state?.environment.first_obstacle_side === 'left' ? '左' : state?.environment.first_obstacle_side === 'right' ? '右' : '—'}</strong></div>
-      <div><small>首障碍通过</small><strong>{state?.environment.first_obstacle_passed ? '已通过' : '未通过'}</strong></div>
-      <div><small>终止原因</small><strong>{({ obstacle: '碰撞障碍', road_boundary: '驶出道路', success: '通关', timeout: '超时' } as Record<string, string>)[state?.environment.terminal_reason ?? ''] ?? '—'}</strong></div>
-      <div><small>多巴胺 RPE</small><strong className={(state?.dopamine.dopamine ?? 0) < 0 ? 'negative' : ''}>{fmt(state?.dopamine.dopamine ?? 0, 3)}</strong></div>
-      <div><small>已变突触</small><strong>{state?.dopamine.changed_synapses ?? 0}/{state?.dopamine.plastic_synapses ?? 0}</strong></div>
-      <div><small>双侧 PPL101</small><strong>{fmt(state?.dopamine.lateral_dopamine?.[0] ?? 0, 2)} / {fmt(state?.dopamine.lateral_dopamine?.[1] ?? 0, 2)}</strong></div>
-      <div><small>控制模式</small><strong>{controlMode === 'neural' ? 'MaleCNS v6' : '工程基线 v5'}</strong></div>
-      {controlMode === 'neural' && <div><small>DNp20 运动适应</small><strong>{fmt((state?.motor.neural_adapter?.adaptation_rate ?? 0) * 100, 0)}% / step</strong></div>}
-      {controlMode === 'neural' && <div><small>神经感觉档位</small><strong>{state?.sensory_profile === 'front' ? `前视 ${fmt(state?.retina.horizontal_fov_degrees ?? 0, 0)}°` : state?.sensory_profile ?? '—'}</strong></div>}
-    </div>
-    <div className="driving-controls"><label>控制模式 <select aria-label="控制模式" value={controlMode} disabled={running} onChange={e => onControlMode(e.target.value as 'assisted' | 'neural')}><option value="assisted">工程避障基线（v5）</option><option value="neural">纯 MaleCNS 决策实验</option></select></label><label><input type="checkbox" checked={learning} onChange={e => onLearning(e.target.checked)} /> 在线可塑性（实验）</label><label><input type="checkbox" checked={explore} onChange={e => onExplore(e.target.checked)} /> 探索噪声</label><label><input type="checkbox" checked={safetyConstraints} disabled={controlMode === 'neural'} onChange={e => onSafetyConstraints(e.target.checked)} /> 道路安全约束</label><button onClick={onRun}>{running ? '暂停' : '连续运行'}</button><button disabled={running} onClick={onStep}>单步</button><button disabled={running} onClick={() => onReset(true)}>新场景</button><button disabled={running} onClick={() => onReset(false)}>恢复发布策略</button></div>
-    <p className="scientific-note">{controlMode === 'neural' ? state?.policy_checkpoint.loaded ? '已加载发布态 MaleCNS v6，默认服务与 v5/v6 检查点未改变。v7 仅离线实验：R1–R6 神经闭环、EPG/PEN/PEG 航向环和 FC2/PFL3/DNa02 透明链已有组件级实测与因果对照，但新布局的留一镜像对验证失败；严格 T4/T5 方向与 ON/OFF、LPLC1/LPLC2/LC4 分型也未通过。v7 未部署、未进入 MB 学习或外部 final。' : '纯神经决策：DNp20/DNpe017/MDN 输出直接映射为车辆动作；障碍、道路和规则仅作为视觉刺激、奖励与结果反馈。' : state?.policy_checkpoint.loaded ? `工程避障基线：已加载 ${state.policy_checkpoint.kind === 'frozen_calibrated' ? '冻结校准' : '实验学习'}策略。` : state?.policy_checkpoint.rejection ? '旧检查点已停用，当前策略未校准。' : '当前为未训练策略。'}</p>
-  </section>
+  return (
+    <section className="driving-panel" aria-label="果蝇视觉驾驶">
+      <header>
+        <div>
+          <span className="eyebrow">CLOSED LOOP / MALECNS</span>
+          <h2>障碍驾驶实验</h2>
+        </div>
+        <span className={`mode ${running ? 'active' : ''}`}>{running ? 'RUNNING' : state?.environment.done ? 'ENDED' : 'PAUSED'}</span>
+      </header>
+      <div className="sim-grid">
+        <div>
+          <h3>神经控制轨迹 · 绿=已行驶 / 黄=短时投影</h3>
+          <canvas ref={road} className="road-canvas" width={320} height={500} />
+        </div>
+        <div>
+          <h3>复眼刺激</h3>
+          <canvas ref={retina} className="retina-canvas" aria-label="48乘24视觉刺激" />
+          <small>{state?.retina.mapped_receptors.toLocaleString() ?? '…'} R1–R6 · optic-hex proxy</small>
+          <small>PPL101 {state?.dopamine_neurons.body_ids.join(' / ') ?? '…'} · RPE gate</small>
+        </div>
+      </div>
+      <section className="causal-chain" aria-label="实时因果链">
+        <h3>当前运行链 · {controlMode === 'neural' ? 'neural-v6-front' : 'assisted-v5'}</h3>
+        <div>
+          <span>视觉输入</span>
+          <strong>R1–R6 {state?.retina.mapped_receptors.toLocaleString() ?? '…'}</strong>
+          <i>→</i>
+          <span>神经响应</span>
+          <strong>
+            T4/T5 flow {fmt(state?.motor.sensory_projection?.T4_T5_horizontal_flow ?? 0, 3)} · |x|max {state?.activity?.statistics.max_abs_state.toExponential(2) ?? '…'}
+          </strong>
+          <i>→</i>
+          <span>神经意图</span>
+          <strong>{fmt(state?.raw_action.steering ?? 0)}</strong>
+          {controlMode === 'assisted' && (
+            <>
+              <i>＋</i>
+              <span>工程辅助</span>
+              <strong>
+                障碍 {fmt(state?.lane_constraint.visual_avoidance ?? 0)} · 道路 {fmt(state?.lane_constraint.road_recovery ?? 0)}
+              </strong>
+            </>
+          )}
+          <i>→</i>
+          <span>固定映射</span>
+          <strong>{state?.motor.mapping ?? '…'}</strong>
+          <i>→</i>
+          <span>安全约束差值</span>
+          <strong>{fmt((state?.action.steering ?? 0) - (state?.raw_action.steering ?? 0))}</strong>
+          <i>→</i>
+          <span>执行动作</span>
+          <strong>{fmt(state?.action.steering ?? 0)}</strong>
+        </div>
+      </section>
+      <section className="v7-status-card" aria-label="v7 离线验证状态">
+        <header>
+          <div>
+            <span className="eyebrow">V7 OFFLINE EVIDENCE</span>
+            <h3>模块门状态</h3>
+          </div>
+          <strong>{v7Status ? (v7Status.deployment_enabled ? '已部署' : '未部署') : v7StatusError ? '证据不可用' : '读取中'}</strong>
+        </header>
+        <p>{v7StatusError ? '哈希验证证据不可用；不显示推断状态。' : `当前阶段：${v7Status?.current_stage ?? '读取审计…'} · 默认服务${v7Status?.default_runtime_changed ? '已改变' : '未改变'}`}</p>
+        <div className="gate-grid">
+          {v7Status
+            ? Object.entries(v7Status.gates).map(([name, passed]) => (
+                <span key={name} className={passed ? 'gate-pass' : 'gate-fail'}>
+                  {name} · {passed ? 'PASS' : 'STOP'}
+                </span>
+              ))
+            : !v7StatusError && <span>读取哈希验证证据…</span>}
+        </div>
+        {v7Status && (
+          <div className="evidence-boundaries" aria-label="v7 证据边界">
+            <strong>
+              九源合同：
+              {v7Status.evidence_boundaries.nine_source_contract_complete ? 'COMPLETE' : 'INCOMPLETE'}
+            </strong>
+            <span>
+              MaleCNS 柱映射：Tm9 532266 → [{v7Status.evidence_boundaries.Tm9_official_synapse_coordinate.join(', ')}
+              ]；CT1 Lo1 逐突触列
+              {v7Status.evidence_boundaries.CT1_per_synapse_Lo1_columnar_retinotopy_available ? '可用' : '不可用'}
+              ，全官方 LO 覆盖
+              {v7Status.evidence_boundaries.CT1_complete_official_LO_column_coverage ? '完整' : '不完整'}
+            </span>
+            <span>
+              Mi4/C3 直接数值电压：
+              {v7Status.evidence_boundaries.Mi4_C3_direct_numeric_voltage_candidates.join(' / ') || '无'}
+              ；独立候选 {v7Status.evidence_boundaries.Mi4_C3_independent_numeric_voltage_candidate_count}
+            </span>
+            <span>
+              CT1 电压候选：审计 {v7Status.evidence_boundaries.CT1_audited_candidate_count}
+              ；2025–2026 新候选 {v7Status.evidence_boundaries.CT1_incremental_2025_2026_candidate_count}
+              ；直接实验电压
+              {v7Status.evidence_boundaries.CT1_direct_experimental_voltage_candidate_found ? '命中' : '未命中'}
+            </span>
+            <span>
+              T5 字段：flash {v7Status.evidence_boundaries.T5_voltage_field_counts.aggregated_full_field_OFF_flash}
+              /15 · white-noise {v7Status.evidence_boundaries.T5_voltage_field_counts.raw_white_noise}
+              /15 · grating {v7Status.evidence_boundaries.T5_voltage_field_counts.raw_drifting_grating}
+              /15
+            </span>
+            <span>
+              Motyxia2 历史：
+              {v7Status.evidence_boundaries.Motyxia2_public_history_branch_count} branches / {v7Status.evidence_boundaries.Motyxia2_public_history_commit_count} commits；逐记录日志
+              {v7Status.evidence_boundaries.T5_record_log_found_in_Motyxia2_public_history ? '已找到' : '未命中'}
+            </span>
+            <span>
+              外部索引：linked log {v7Status.evidence_boundaries.T5_external_successful_indexes_linked_log_found ? '命中' : '未命中'}
+              ；publisher supplements {v7Status.evidence_boundaries.T5_publisher_supplements_inspected ? '已检查' : '未检查'} / record log {v7Status.evidence_boundaries.T5_publisher_supplements_contain_record_log ? '命中' : '未命中'}
+              ；PMC endpoint {v7Status.evidence_boundaries.T5_PMC_supplement_content_inspected ? '已检查' : '不可访问'}
+              ；Figshare {v7Status.evidence_boundaries.T5_Figshare_search_accessible ? '可访问' : '不可访问'}
+              ；全局不存在
+              {v7Status.evidence_boundaries.T5_stimulus_log_global_absence_claimed ? '已声明' : '未声明'}
+            </span>
+            <span>
+              生成器默认值
+              {v7Status.evidence_boundaries.T5_generator_defaults_used_as_record_fields ? '已代填' : '未代填'}
+            </span>
+          </div>
+        )}
+        <div className="contribution-grid">
+          <span>
+            上层规划：
+            {v7Status?.contributions.upper_planner.status === 'paused' ? '暂停' : '未知'}
+          </span>
+          <span>
+            果蝇局部核：
+            {v7Status?.contributions.fly_local_core.status === 'component_only_not_release_authorized' ? '组件证据，未获发布授权' : '未知'}
+          </span>
+          <span>
+            工程执行器：
+            {v7Status?.contributions.engineering_executor.status === 'transparent_fixed_mapping_component_passed' ? '固定透明映射；v7 未接入' : '未知'}
+          </span>
+        </div>
+      </section>
+      {v7Status && (
+        <small className="v7-evidence-note">
+          MaleCNS one-hop 坐标盲重放：Tm3 同型 native 参考
+          {v7Status.evidence_boundaries.MaleCNS_Tm3_same_type_native_coordinate_validation_available ? '存在' : '不存在'}
+          ；Tm4 rounded-exact {fmt((v7Status.evidence_boundaries.MaleCNS_Tm4_one_hop_blind_replay_rounded_exact_fraction ?? 0) * 100, 1)}
+          %；推断坐标
+          {v7Status.evidence_boundaries.MaleCNS_one_hop_coordinates_native_equivalent ? '可视为 native' : '不可视为 native'}
+          ，实验映射
+          {v7Status.evidence_boundaries.MaleCNS_coordinate_rule_as_experimental_mapping_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          MaleCNS Tm4 官方 synapse-count 样本：native hex 左/右 {v7Status.evidence_boundaries.MaleCNS_Tm4_native_count_by_side.L}/{v7Status.evidence_boundaries.MaleCNS_Tm4_native_count_by_side.R}
+          ；右侧 48 个 native 样本 exact {fmt(v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_right_exact_fraction * 100, 1)}
+          %，距 native 0/1/2/3 列为 {Object.values(v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_right_hex_distance_counts).join('/')}
+          ；左侧 48 个缺失样本唯一且互异候选 {v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_left_distinct_candidate_count}
+          。候选
+          {v7Status.evidence_boundaries.MaleCNS_Tm4_synapse_count_candidate_native_equivalent ? '可视为 native' : '不可视为 native'}
+          ，距离容差
+          {v7Status.evidence_boundaries.MaleCNS_Tm4_post_hoc_hex_tolerance_authorized ? '已授权' : '未授权'}
+          ，左侧写回
+          {v7Status.evidence_boundaries.MaleCNS_Tm4_left_coordinate_writeback_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Tm4 (+1,+1) discovery 偏移的独立复制：排除 discovery IDs 后取 {v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_sample_count} 个右侧 native body，唯一候选 {v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_unique_candidate_count}
+          ；未校正 exact {v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_uncorrected_exact_count}
+          ，冻结 [-1,-1] 校正后 {v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_corrected_exact_count}
+          ；错误→正确/正确→错误 {v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_incorrect_to_correct_count}/{v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_correct_to_incorrect_count}
+          ，单侧 sign-test p=
+          {fmt(v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_sign_test_pvalue, 4)}
+          。复制门
+          {v7Status.evidence_boundaries.MaleCNS_Tm4_offset_replication_gate_passed ? '通过' : '失败'}
+          ；左侧写回仍未授权。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          eLife 49373 官方附件：
+          {v7Status.evidence_boundaries.Ketkar_2019_official_source_data_attachment_count} 份；mean±SEM 表{v7Status.evidence_boundaries.Ketkar_2019_attachments_are_mean_SEM_tables ? '已确认' : '未确认'}
+          ，Mi1/Tm3 GCaMP 摘要
+          {v7Status.evidence_boundaries.Ketkar_2019_Mi1_Tm3_GCaMP_summary_found ? '存在' : '未命中'}
+          ；Mi4/C3 载荷
+          {v7Status.evidence_boundaries.Ketkar_2019_Mi4_C3_payload_found ? '存在' : '未命中'}
+          ，个体时序
+          {v7Status.evidence_boundaries.Ketkar_2019_individual_source_dynamics_found ? '存在' : '未命中'}
+          ，膜电位
+          {v7Status.evidence_boundaries.Ketkar_2019_membrane_voltage_found ? '存在' : '未命中'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Gonzalez-Suarez 2022 Mi4：GCaMP6f {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_Mi4_GCaMP6f_fly_count} flies；bioRxiv 补充
+          {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_bioRxiv_supplement_retrieved ? '已取回' : '未取回'}
+          ，逐 fly 是统计单位
+          {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_individual_flies_are_statistical_units ? '已确认' : '未确认'}
+          、公开逐 fly 数值载荷
+          {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_public_individual_numeric_payload ? '存在' : '不存在'}
+          ；公开 type-average filter {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_Mi4_type_average_filter_available ? '存在' : '未命中'}
+          ，Mi4 实验膜电位
+          {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_Mi4_voltage_available ? '存在' : '未命中'}
+          ，C3 dynamics {v7Status.evidence_boundaries.Gonzalez_Suarez_2022_C3_dynamics_available ? '存在' : '未命中'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Yuan 2020 C3：遗传干预
+          {v7Status.evidence_boundaries.Yuan_2020_C3_intervention_candidate_verified ? '已验证' : '未验证'}
+          ；直接 C3 记录
+          {v7Status.evidence_boundaries.Yuan_2020_C3_direct_recording_verified ? '已验证' : '未验证'}
+          ，公开数值 source dynamics {v7Status.evidence_boundaries.Yuan_2020_C3_numeric_source_dynamics_verified ? '已验证' : '未验证'}
+          ；受限补充材料
+          {v7Status.evidence_boundaries.Yuan_2020_supplement_retrieved ? '已取回' : '未取回，未作缺失推断'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Strother 2018 Mi4 公开索引：成功查询中数值 trace {v7Status.evidence_boundaries.Strother_2018_successful_index_Mi4_trace_found ? '命中' : '未命中'}
+          ；Figshare 搜索
+          {v7Status.evidence_boundaries.Strother_2018_Figshare_search_interpretable ? '可解释' : '403，不可解释'}
+          ；全局不存在
+          {v7Status.evidence_boundaries.Strother_2018_global_absence_claimed ? '已声明' : '未声明'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Strother_2018_author_public_repository_count !== undefined && (
+        <small className="v7-evidence-note">
+          Strother 作者仓库索引：Bitbucket 公开仓库 {v7Status.evidence_boundaries.Strother_2018_author_public_repository_count} 个；论文关联数值载荷
+          {v7Status.evidence_boundaries.Strother_2018_author_repository_numeric_payload_verified ? '已验证' : '未验证'}
+          ；结论
+          {v7Status.evidence_boundaries.Strother_2018_author_repository_search_is_bounded ? '仅限有界公开索引' : '范围异常'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Strother_2018_supplement_bundle_entry_count !== undefined && (
+        <small className="v7-evidence-note">
+          Strother 官方补充包：
+          {v7Status.evidence_boundaries.Strother_2018_supplement_bundle_entry_count} 个成员；Mi4 moving-grating 图级轨迹
+          {v7Status.evidence_boundaries.Strother_2018_Mi4_moving_grating_figure_verified ? '已核验' : '未核验'}（{v7Status.evidence_boundaries.Strother_2018_Mi4_moving_grating_fly_count} flies），公开数值 trace 附件
+          {v7Status.evidence_boundaries.Strother_2018_public_numeric_trace_attachment_verified ? '存在' : '不存在'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          C3 引用图谱：
+          {v7Status.evidence_boundaries.C3_citation_graph_union_unique_work_count} 个去重工作，
+          {v7Status.evidence_boundaries.C3_citation_graph_unresolved_reference_ID_count} 个 reference ID 未解析；Pang 2025 Dryad {v7Status.evidence_boundaries.Pang_2025_Dryad_file_count} 文件，直接记录 {v7Status.evidence_boundaries.Pang_2025_directly_recorded_neuron_types?.join('/') ?? '未知'}
+          ，C3 direct recording {v7Status.evidence_boundaries.Pang_2025_new_C3_direct_recording_found ? '命中' : '未命中'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.legacy_C3_candidate_count !== undefined && (
+        <small className="v7-evidence-note">
+          早期 C3 候选：审计 {v7Status.evidence_boundaries.legacy_C3_candidate_count} 项；Tuthill 2013 {v7Status.evidence_boundaries.Tuthill_2013_C3_intervention_only_verified ? '仅行为干预' : '范围未确认'}
+          ，Maisak 2018 直接 C3/Mi4 记录
+          {v7Status.evidence_boundaries.Maisak_2018_direct_C3_Mi4_recording_verified ? '已验证' : '未验证'}
+          ；Ramos 2020 全文
+          {v7Status.evidence_boundaries.Ramos_2020_fulltext_scope_resolved ? '已解析' : '未解析'}
+          ，C3 实验的直接记录对象 {v7Status.evidence_boundaries.Ramos_2020_direct_recording_targets?.join('/') || '未知'}
+          ，直接 C3 记录
+          {v7Status.evidence_boundaries.Ramos_2020_C3_direct_recording_verified ? '已验证' : '未验证'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Hao 2026 ASAP7y：果蝇体内亚细胞电压
+          {v7Status.evidence_boundaries.Hao_2026_ASAP7y_Drosophila_voltage_verified ? '已验证' : '未验证'}
+          ；作者公开配图示例 {v7Status.evidence_boundaries.Hao_2026_ASAP7y_public_author_figure_named_examples?.join('/') || '无'}
+          ，论文来源命名类型 {v7Status.evidence_boundaries.Hao_2026_ASAP7y_paper_source_experimental_cell_types?.join('/') || '正文不可访问'}
+          ，完整集合
+          {v7Status.evidence_boundaries.Hao_2026_ASAP7y_complete_cell_type_set_resolved ? '已解析' : '未解析'}
+          ；作者 2025 博士论文全文限制至 {v7Status.evidence_boundaries.Hao_2025_dissertation_restricted_until ?? '未知'}
+          ，公开摘要
+          {v7Status.evidence_boundaries.Hao_2025_dissertation_public_abstract_names_cell_types ? '列出' : '未列出'}
+          实验类型；成功查询索引中的数值载荷
+          {v7Status.evidence_boundaries.Hao_2026_ASAP7y_successful_index_numeric_payload_found ? '命中' : '未命中'}
+          ，不作全球不存在声明。候选状态 {v7Status.evidence_boundaries.Hao_2026_ASAP7y_candidate_classification}
+          ，公开数值载荷
+          {v7Status.evidence_boundaries.Hao_2026_ASAP7y_public_numeric_payload_verified ? '已验证' : '未验证'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Hao_2026_Europe_PMC_annotation_count !== undefined && (
+        <small className="v7-evidence-note">
+          Hao Europe PMC 文本挖掘：
+          {v7Status.evidence_boundaries.Hao_2026_Europe_PMC_annotation_count} 个摘要级实体；Mi4/C3 命中 {v7Status.evidence_boundaries.Hao_2026_Europe_PMC_Mi4_annotation_hit ? '是' : '否'}/{v7Status.evidence_boundaries.Hao_2026_Europe_PMC_C3_annotation_hit ? '是' : '否'}
+          。范围为 {v7Status.evidence_boundaries.Hao_2026_Europe_PMC_annotation_scope}
+          ，不据此排除正文细胞类型。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Hao_2026_Wayback_capture_view !== undefined && (
+        <small className="v7-evidence-note">
+          Hao 公开存档/代码索引：Wayback 捕获为 {v7Status.evidence_boundaries.Hao_2026_Wayback_capture_view}
+          ，正文/PDF/补充路由内容
+          {v7Status.evidence_boundaries.Hao_2026_Wayback_linked_route_contents_retrieved ? '已取回' : '未取回'}
+          ，完整细胞类型
+          {v7Status.evidence_boundaries.Hao_2026_Wayback_resolves_complete_cell_types ? '已解析' : '未解析'}
+          ；ClandininLab 公开仓库 {v7Status.evidence_boundaries.Hao_2026_ClandininLab_public_repository_count} 个，论文专属名称/描述命中 {v7Status.evidence_boundaries.Hao_2026_ClandininLab_paper_repository_hits?.length ?? 0}
+          ；bioRxiv TDM {v7Status.evidence_boundaries.Hao_2026_bioRxiv_TDM_requester_pays_required ? '需认证 requester-pays' : '无需认证'}
+          ，载荷清单
+          {v7Status.evidence_boundaries.Hao_2026_bioRxiv_TDM_payload_inventory_readable ? '可读' : '不可读'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Fendl_2021_target_Rdl_localization_verified !== undefined && (
+        <small className="v7-evidence-note">
+          Fendl 2021 分子边界：T4/T5 dendrite 的 Rdl 定位
+          {v7Status.evidence_boundaries.Fendl_2021_target_Rdl_localization_verified ? '已验证' : '未验证'}
+          ，Mi4/C3/CT1 pooled GABAergic 输入符号
+          {v7Status.evidence_boundaries.Fendl_2021_pooled_GABAergic_T4_input_sign_supported ? '有支持' : '无支持'}
+          ；source-specific 接触
+          {v7Status.evidence_boundaries.Fendl_2021_source_specific_contact_resolved ? '已解析' : '未解析'}
+          ，Mi4/C3 直接记录
+          {v7Status.evidence_boundaries.Fendl_2021_Mi4_C3_direct_recording_verified ? '已验证' : '未验证'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Drews_2020_Mi4_ROI_count !== undefined && (
+        <small className="v7-evidence-note">
+          Drews 2020 Mi4：官方仓库逐 ROI/trial GCaMP6f 数值时序
+          {v7Status.evidence_boundaries.Drews_2020_Mi4_individual_numeric_calcium_verified ? '已验证' : '未验证'}，{v7Status.evidence_boundaries.Drews_2020_Mi4_ROI_count} cells / {v7Status.evidence_boundaries.Drews_2020_Mi4_pseudonymous_fly_count} 个 pseudonymous fly labels；按论文 0–4 s、1 Hz F1 规则的 tonic/弱 surround 表型
+          {v7Status.evidence_boundaries.Drews_2020_Mi4_tonic_weak_surround_phenotype_reproduced ? '已复现' : '未复现'}
+          ，完整 temporal kernel {v7Status.evidence_boundaries.Drews_2020_Mi4_full_temporal_kernel_identified ? '已识别' : '未识别'}
+          ，预注册独立验证
+          {v7Status.evidence_boundaries.Drews_2020_preregistered_independent_validation_available ? '可用' : '不可用'}
+          ；实验膜电位
+          {v7Status.evidence_boundaries.Drews_2020_Mi4_experimental_membrane_voltage ? '是' : '否'}
+          ，recording→MaleCNS crosswalk {v7Status.evidence_boundaries.Drews_2020_recording_to_MaleCNS_body_crosswalk_found ? '存在' : '不存在'}
+          。Sporar 2020 的 C3 共 {v7Status.evidence_boundaries.Sporar_2020_C3_exact_term_count} 次命中，直接 C3 记录
+          {v7Status.evidence_boundaries.Sporar_2020_C3_direct_recording_verified ? '已验证' : '未验证'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Shomar_2025_C3_behavioral_silencing_verified !== undefined && (
+        <small className="v7-evidence-note">
+          Shomar 2025 C3：gap-crossing shibire<sup>ts</sup> 行为沉默
+          {v7Status.evidence_boundaries.Shomar_2025_C3_behavioral_silencing_verified ? '已验证' : '未验证'}
+          ；同篇直接 GCaMP6f 成像对象为 {v7Status.evidence_boundaries.Shomar_2025_direct_neural_imaging_cell_types?.join('/') || '未知'}
+          ，C3 直接记录
+          {v7Status.evidence_boundaries.Shomar_2025_C3_direct_recording_verified ? '已验证' : '未验证'}
+          ，公开 C3 数值 dynamics {v7Status.evidence_boundaries.Shomar_2025_C3_numeric_source_dynamics_verified ? '已验证' : '未验证'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Gür 2024 stable-contrast：直接记录类型 {v7Status.evidence_boundaries.Gur_2024_directly_recorded_neuron_types?.join('/') || '未知'}
+          ；Mi4/C3 命名文件分别为 {v7Status.evidence_boundaries.Gur_2024_Mi4_proofreading_row_count}/{v7Status.evidence_boundaries.Gur_2024_C3_proofreading_row_count} 行 proofreading，
+          {v7Status.evidence_boundaries.Gur_2024_Mi4_C3_files_are_proofreading_only ? '仅解剖校对' : '范围未确认'}
+          ；Mi4/C3 直接生理记录
+          {v7Status.evidence_boundaries.Gur_2024_Mi4_C3_direct_physiology_found ? '命中' : '未命中'}
+          ，不作为 recording→MaleCNS crosswalk。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Tanaka 2023 Mi4：独立 jGCaMP7b 数据含 {v7Status.evidence_boundaries.Tanaka_2023_Mi4_fly_count} flies、
+          {v7Status.evidence_boundaries.Tanaka_2023_Mi4_selected_ROI_count} 个筛选后 ROI，逐 fly 轴{v7Status.evidence_boundaries.Tanaka_2023_Mi4_individual_fly_axis_available ? '存在' : '不存在'}
+          ；响应单位 {v7Status.evidence_boundaries.Tanaka_2023_Mi4_response_unit}
+          ，实验膜电位
+          {v7Status.evidence_boundaries.Tanaka_2023_Mi4_experimental_membrane_voltage ? '是' : '否'}
+          ，source transfer {v7Status.evidence_boundaries.Tanaka_2023_Mi4_source_dynamics_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Tanaka_2023_Figure_6_named_Mi4_C3_member_count !== undefined && (
+        <small className="v7-evidence-note">
+          Tanaka Figure 6：ZIP 中 {v7Status.evidence_boundaries.Tanaka_2023_Figure_6_named_Mi4_C3_member_count} 个 Mi4/C3 命名 MAT 经作者脚本确认为 shibire<sup>ts</sup> 行为筛选；神经活动记录
+          {v7Status.evidence_boundaries.Tanaka_2023_Figure_6_Mi4_C3_neural_activity_recording ? '是' : '否'}
+          ，source-dynamics 载荷
+          {v7Status.evidence_boundaries.Tanaka_2023_Figure_6_Mi4_C3_source_dynamics_payload ? '是' : '否'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Wu 2026 afterimage Mi4：补充图确认 {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_fly_count} flies / {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_ROI_count} ROIs，响应单位 {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_response_unit}
+          ；公开数值载荷
+          {v7Status.evidence_boundaries.Wu_2026_afterimages_public_numeric_Mi4_payload_verified ? '已验证' : '未验证'}
+          ，source transfer {v7Status.evidence_boundaries.Wu_2026_afterimages_Mi4_source_dynamics_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Henning_C3_directional_payload_fly_count !== undefined && (
+        <small className="v7-evidence-note">
+          Henning C3 方向 edge：公开 MAT 含 {v7Status.evidence_boundaries.Henning_C3_directional_payload_fly_count} flies / {v7Status.evidence_boundaries.Henning_C3_directional_ROI_count} ROIs（正文图注为 {v7Status.evidence_boundaries.Henning_C3_directional_caption_fly_count} flies），8 方向、
+          {v7Status.evidence_boundaries.Henning_C3_directional_edge_speed_degrees_per_second}
+          °/s；该 cohort {v7Status.evidence_boundaries.Henning_C3_directional_cohort_independent ? '独立' : '与同研究 flash/STRF 重叠'}
+          ，方向特异 source kernel {v7Status.evidence_boundaries.Henning_C3_direction_specific_source_kernel_verified ? '已验证' : '未验证'}
+          ，transfer {v7Status.evidence_boundaries.Henning_C3_directional_source_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          PuRe ZIP：
+          {v7Status.evidence_boundaries.CT1_PuRe_archive_contents_verified ? '已核验' : '未核验'}
+          ；新增数值载荷
+          {v7Status.evidence_boundaries.CT1_PuRe_new_numerical_payload_verified ? '命中' : '未命中'}
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.Braun_calcium_fly_counts && (
+        <small className="v7-evidence-note">
+          Braun 钙载荷：Tm2 {v7Status.evidence_boundaries.Braun_calcium_fly_counts.Tm2} flies · Tm9 {v7Status.evidence_boundaries.Braun_calcium_fly_counts.Tm9} · CT1 {v7Status.evidence_boundaries.Braun_calcium_fly_counts.CT1}；条件网格
+          {v7Status.evidence_boundaries.Braun_calcium_condition_grids_complete ? '完整' : '不完整'}
+          ；合规电压源 {v7Status.evidence_boundaries.Braun_calcium_allowed_voltage_sources?.length ?? 0}
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Gou Dryad v4：归档哈希
+          {v7Status.evidence_boundaries.Gou_Dryad_archive_hash_locally_verified ? '已本地核验' : '未核验'}
+          ；处理后 GCaMP6f 数值源 {v7Status.evidence_boundaries.Gou_Dryad_local_processed_calcium_sources.join(' / ')}
+          ；flash flies Mi1/Tm3/Tm1/Tm2 = {Object.values(v7Status.evidence_boundaries.Gou_Dryad_flash_fly_axis_sizes).join('/')}, moving-bar = {Object.values(v7Status.evidence_boundaries.Gou_Dryad_moving_bar_fly_axis_sizes).join('/')}
+          ；稳定生物个体 ID {v7Status.evidence_boundaries.Gou_Dryad_stable_biological_individual_IDs_verified ? '已验证' : '未验证'}
+          ；实验膜电位
+          {v7Status.evidence_boundaries.Gou_Dryad_experimental_membrane_voltage ? '是' : '否'}
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Gou Fig.6 方向轴：Mi1/Tm3 逐记录标签
+          {v7Status.evidence_boundaries.Gou_Dryad_Mi1_Tm3_direction_axis_identifiable ? '可识别' : '不可识别'}
+          ；方向不变性检验
+          {v7Status.evidence_boundaries.Gou_Dryad_direction_invariance_evaluated ? '已执行' : '未执行'}
+          。6 列是 sparsity，未标注的 12 列不猜作方向。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Gou DANDI NWB：
+          {v7Status.evidence_boundaries.Gou_DANDI_all_assets_stimulus_metadata_indexed ? '282/282 已索引' : '索引不完整'}
+          ；Mi1/Tm3 assets {v7Status.evidence_boundaries.Gou_DANDI_Mi1_Tm3_asset_counts.Mi1}/{v7Status.evidence_boundaries.Gou_DANDI_Mi1_Tm3_asset_counts.Tm3}
+          ；stimulus/interval metadata {v7Status.evidence_boundaries.Gou_DANDI_Mi1_Tm3_stimulus_metadata_available ? '存在' : '未保留'}
+          ，不能回填 Dryad 方向标签。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          T5 方向码：Figure 4 的 0→ND / 1→PD {v7Status.evidence_boundaries.T5_Figure4_relative_PD_ND_mapping_verified ? '已验证' : '未验证'}
+          ；0/1 到原生感受野坐标递减/递增
+          {v7Status.evidence_boundaries.T5_Figure4_native_coordinate_motion_mapping_verified ? '可追踪' : '不可追踪'}
+          ，但绝对屏幕或身体方向
+          {v7Status.evidence_boundaries.T5_Figure4_absolute_physical_direction_mapping_verified ? '已验证' : '未验证'}
+          。Kohn–Portes 逐记录方向码/物理方向 {v7Status.evidence_boundaries.T5_Kohn_Portes_record_level_direction_code_available ? '有' : '无'}/{v7Status.evidence_boundaries.T5_Kohn_Portes_record_level_physical_direction_available ? '有' : '无'}
+          ，跨数据集映射
+          {v7Status.evidence_boundaries.T5_cross_dataset_direction_mapping_authorized ? '允许' : '禁止'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          T5 source kernel：Kohn–Portes {v7Status.evidence_boundaries.T5_voltage_derived_kernel_sources.join('/')} 共 {v7Status.evidence_boundaries.T5_voltage_derived_kernel_record_count} 条 whole-cell white-noise 记录，核步长 {v7Status.evidence_boundaries.T5_kernel_sample_interval_seconds * 1000} ms；绝对增益
+          {v7Status.evidence_boundaries.T5_raw_kernel_gain_transferable ? '可转移' : '不可转移'}
+          、跨刺激不变性
+          {v7Status.evidence_boundaries.T5_kernel_stimulus_invariant ? '已验证' : '未验证'}
+          ，完整 source transfer {v7Status.evidence_boundaries.T5_source_kernel_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_state_unit_record_count !== undefined && (
+        <small className="v7-evidence-note">
+          T5 状态单位：{v7Status.evidence_boundaries.T5_state_unit_record_count} 条 saline/OA white-noise 记录；volts→mV 精确换算
+          {v7Status.evidence_boundaries.T5_exact_volts_to_millivolts_scale_verified ? '已验证' : '未验证'}
+          。mV/filter output→v7 signed-tanh 映射
+          {v7Status.evidence_boundaries.T5_millivolts_or_filter_output_to_state_mapping_available ? '存在' : '不存在'}
+          ；归一化公式/裁剪规则 {v7Status.evidence_boundaries.T5_candidate_normalization_formula ?? '无'}/{v7Status.evidence_boundaries.T5_candidate_clipping_rule ?? '无'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_saline_Tm9_median_latency_ms !== undefined && (
+        <small className="v7-evidence-note">
+          T5 核峰时：saline fast/Tm9 中位数 {v7Status.evidence_boundaries.T5_saline_fast_pooled_median_latency_ms}/{v7Status.evidence_boundaries.T5_saline_Tm9_median_latency_ms} ms，OA 为 {v7Status.evidence_boundaries.T5_OA_fast_pooled_median_latency_ms}/{v7Status.evidence_boundaries.T5_OA_Tm9_median_latency_ms} ms；saline 相对慢序
+          {v7Status.evidence_boundaries.T5_saline_Tm9_relative_delay_supported ? '支持' : '不支持'}
+          ，跨状态不变性
+          {v7Status.evidence_boundaries.T5_Tm9_delay_ordering_state_invariant ? '成立' : '不成立'}
+          ，v7 delay transfer {v7Status.evidence_boundaries.T5_source_delay_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_saline_record_median_preferred_frequency_hz && (
+        <small className="v7-evidence-note">
+          T5 频率形状：逐记录 preferred-frequency 中位数 saline Tm1/Tm2/Tm4/Tm9 = {Object.values(v7Status.evidence_boundaries.T5_saline_record_median_preferred_frequency_hz).join('/')} Hz，OA = {Object.values(v7Status.evidence_boundaries.T5_OA_record_median_preferred_frequency_hz ?? {}).join('/')} Hz；摘要口径不变性
+          {v7Status.evidence_boundaries.T5_preferred_frequency_summary_invariant ? '成立' : '不成立'}
+          ，频率 transfer {v7Status.evidence_boundaries.T5_source_frequency_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_Tm_to_T5_Figure5_training_fit_count !== undefined && (
+        <small className="v7-evidence-note">
+          Tm→T5 作者模型：固定 Git blob {v7Status.evidence_boundaries.T5_Tm_to_T5_model_inputs_git_blob_verified ? '已核验' : '未核验'}
+          ，Figure 5 训练内拟合 {v7Status.evidence_boundaries.T5_Tm_to_T5_Figure5_training_fit_count} 次；fit/score 样本
+          {v7Status.evidence_boundaries.T5_Tm_to_T5_fit_score_samples_disjoint ? '分离' : '未分离'}
+          ，独立 cell 验证
+          {v7Status.evidence_boundaries.T5_Tm_to_T5_independent_validation_available ? '存在' : '不存在'}
+          ，Figure 6 Tm2-ND 引用
+          {v7Status.evidence_boundaries.T5_Figure6_Tm2_ND_source_reference_correct ? '正确' : '错误'}
+          ，v7 transfer {v7Status.evidence_boundaries.T5_Tm_to_T5_model_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_FIB19_MaleCNS_maximum_population_ratio_difference !== undefined && (
+        <small className="v7-evidence-note">
+          T5 connectome 权重：FIB19/MaleCNS 四源总体排序
+          {v7Status.evidence_boundaries.T5_FIB19_MaleCNS_population_source_rank_matches ? '一致' : '不一致'}
+          ，最大总体比例差 {fmt(v7Status.evidence_boundaries.T5_FIB19_MaleCNS_maximum_population_ratio_difference * 100, 2)} 个百分点；MaleCNS Tm9 比例落在 FIB19 样本范围外 {fmt((v7Status.evidence_boundaries.T5_MaleCNS_Tm9_fraction_outside_FIB19_range ?? 0) * 100, 1)}
+          %，权重 transfer {v7Status.evidence_boundaries.T5_FIB19_to_MaleCNS_weight_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_moving_bar_condition_count !== undefined && (
+        <small className="v7-evidence-note">
+          T5 static→moving-bar：
+          {v7Status.evidence_boundaries.T5_moving_bar_condition_count} 个 measured-flash 条件，gain-free DSI {v7Status.evidence_boundaries.T5_moving_bar_gain_free_DSI_available ? '可复算' : '不可复算'}
+          ；moving-bar gain 的 fit/score 样本
+          {v7Status.evidence_boundaries.T5_moving_bar_gain_fit_score_samples_disjoint ? '分离' : '未分离'}
+          ，独立验证
+          {v7Status.evidence_boundaries.T5_moving_bar_validation_available ? '存在' : '不存在'}
+          ，v7 transfer {v7Status.evidence_boundaries.T5_moving_bar_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_transfer_synthesis_kernel_shape_source_count !== undefined && (
+        <small className="v7-evidence-note">
+          T5 transfer 汇总：电压派生 kernel shape {v7Status.evidence_boundaries.T5_transfer_synthesis_kernel_shape_source_count}
+          /5 源、exact-type-average mapping {v7Status.evidence_boundaries.T5_transfer_synthesis_mapping_source_count}
+          /5 源、正向 shape 证据 {v7Status.evidence_boundaries.T5_transfer_synthesis_positive_shape_evidence_count}
+          /4 类；绝对 gain {v7Status.evidence_boundaries.T5_transfer_synthesis_absolute_gain_available ? '有' : '无'}
+          、CT1 {v7Status.evidence_boundaries.T5_transfer_synthesis_CT1_complete ? '完整' : '不完整'}
+          ，总体 transfer {v7Status.evidence_boundaries.T5_transfer_synthesis_ready ? '通过' : '未通过'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_transfer_synthesis_related_axolotl_project_identified !== undefined && (
+        <small className="v7-evidence-note">
+          Figure 6 源码：官方 MATLAB T5 target model {v7Status.evidence_boundaries.T5_transfer_synthesis_official_target_model_available ? '已验证' : '未验证'}
+          ；相关 rbehnialab/axolotl 项目
+          {v7Status.evidence_boundaries.T5_transfer_synthesis_related_axolotl_project_identified ? '已定位' : '未定位'}
+          ，匿名 repository {v7Status.evidence_boundaries.T5_transfer_synthesis_axolotl_repository_readable ? '可读' : '不可读'}
+          ，Python axolotl.tmodel 源码
+          {v7Status.evidence_boundaries.T5_transfer_synthesis_Figure6_axolotl_source_available ? '已恢复' : '未恢复'}
+          ；目标模型不替代 source model。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_measured_kernel_temporal_identifiability_passed !== undefined && (
+        <small className="v7-evidence-note">
+          T5 measured-kernel 时序控制：
+          {v7Status.evidence_boundaries.T5_measured_kernel_temporal_identifiability_passed ? '通过' : '未通过'}
+          ；kernel↔刺激帧
+          {v7Status.evidence_boundaries.T5_measured_kernel_frame_alignment_verified ? '已对齐' : '未对齐'}
+          、recording↔probe solver {v7Status.evidence_boundaries.T5_measured_kernel_probe_solver_alignment_verified ? '已对齐' : '未验证'}
+          ；方向评分
+          {v7Status.evidence_boundaries.T5_measured_kernel_direction_scoring_performed ? '已执行' : '按 stop gate 未执行'}
+          ，物理 source transfer {v7Status.evidence_boundaries.T5_measured_kernel_physical_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_measured_kernel_standard_substep_negative_reproduced !== undefined && (
+        <small className="v7-evidence-note">
+          T5 measured-kernel 数值分辨率：1/4 updates per frame；标准 4-update 负结果
+          {v7Status.evidence_boundaries.T5_measured_kernel_standard_substep_negative_reproduced ? '已复现' : '未复现'}
+          ，跨分辨率时序门
+          {v7Status.evidence_boundaries.T5_measured_kernel_cross_substep_identifiability_passed ? '通过' : '未通过'}
+          ；方向评分
+          {v7Status.evidence_boundaries.T5_measured_kernel_cross_substep_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_measured_kernel_cross_substep_direction_scoring_performed ? '已执行' : '未执行'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_measured_kernel_trace_samples !== undefined && (
+        <small className="v7-evidence-note">
+          T5 kernel 支持覆盖：作者 causal index-0 {v7Status.evidence_boundaries.T5_measured_kernel_causal_index_zero_supported ? '有源码调用支持' : '未确认'}
+          ；当前 {v7Status.evidence_boundaries.T5_measured_kernel_trace_samples} 个样本覆盖全部群体核绝对峰，但 L1 质量仅 {fmt((v7Status.evidence_boundaries.T5_measured_kernel_minimum_prefix_L1_mass_fraction ?? 0) * 100, 1)}
+          %–
+          {fmt((v7Status.evidence_boundaries.T5_measured_kernel_maximum_prefix_L1_mass_fraction ?? 0) * 100, 1)}
+          %；完整支持
+          {v7Status.evidence_boundaries.T5_measured_kernel_full_L1_support_covered ? '已覆盖' : '未覆盖'}
+          ，仅凭此前短前缀授权完整负结论
+          {v7Status.evidence_boundaries.T5_measured_kernel_prefix_alone_full_support_negative_authorized ? '是' : '否'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_measured_kernel_zero_tail_full_support_evaluated !== undefined && (
+        <small className="v7-evidence-note">
+          T5 zero-tail 完整 FIR：27 个 source 样本后补 {v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_samples} 个零值，评分 {v7Status.evidence_boundaries.T5_measured_kernel_full_support_output_samples} 点；全部候选跨 1/4-update {v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_all_candidates_failed ? '均失败' : '未全部失败'}
+          ，时序门
+          {v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_cross_substep_identifiability_passed ? '通过' : '未通过'}
+          ；方向评分
+          {v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_measured_kernel_zero_tail_direction_scoring_performed ? '已执行' : '未执行'}
+          。零尾不等于继续运行神经网络。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_population_kernel_robustness_passing_source_count !== undefined && (
+        <small className="v7-evidence-note">
+          T5 population kernel 稳健性：
+          {v7Status.evidence_boundaries.T5_population_kernel_robustness_passing_source_count}
+          /4 source 通过 recording-ID 门；失败源 {v7Status.evidence_boundaries.T5_population_kernel_robustness_failing_sources?.join('/') || '无'}
+          ，Tm2 held-out-vs-rest median / partition p05 = {fmt(v7Status.evidence_boundaries.T5_Tm2_recording_id_vs_rest_median_correlation ?? 0, 3)} / {fmt(v7Status.evidence_boundaries.T5_Tm2_partition_correlation_p05 ?? 0, 3)}
+          。recording ID 不等同 fly ID，独立生物验证
+          {v7Status.evidence_boundaries.T5_population_kernel_independent_validation_available ? '存在' : '不存在'}
+          ，kernel transfer {v7Status.evidence_boundaries.T5_population_kernel_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_Tm2_oracle_shift_LOO_median_correlation !== undefined && (
+        <small className="v7-evidence-note">
+          T5 Tm2 kernel 时移诊断：逐比较事后选择 ±{v7Status.evidence_boundaries.T5_Tm2_oracle_maximum_lag_milliseconds} ms 后，LOO median / partition p05 = {fmt(v7Status.evidence_boundaries.T5_Tm2_oracle_shift_LOO_median_correlation, 3)} / {fmt(v7Status.evidence_boundaries.T5_Tm2_oracle_shift_partition_correlation_p05 ?? 0, 3)}
+          ；完整 shape gate {v7Status.evidence_boundaries.T5_Tm2_oracle_alignment_all_shape_gates_passed ? '通过' : '仍失败'}
+          ，有限 latency jitter {v7Status.evidence_boundaries.T5_Tm2_bounded_latency_explains_robustness_failure ? '可解释' : '不能解释'}
+          原失败，oracle-aligned kernel {v7Status.evidence_boundaries.T5_Tm2_oracle_aligned_kernel_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_Tm2_OA_only_recording_ids !== undefined && (
+        <small className="v7-evidence-note">
+          T5 saline/OA recording pool：Tm2 共有 {v7Status.evidence_boundaries.T5_Tm2_shared_saline_OA_recording_id_count} 个共享 recording ID，OA-only IDs 为 {v7Status.evidence_boundaries.T5_Tm2_OA_only_recording_ids.join('/')}
+          ；配对 kernel 相关范围 {fmt(v7Status.evidence_boundaries.T5_Tm2_paired_saline_OA_shape_correlation_summary?.minimum ?? 0, 3)}–{fmt(v7Status.evidence_boundaries.T5_Tm2_paired_saline_OA_shape_correlation_summary?.maximum ?? 0, 3)}
+          。OA-only 记录
+          {v7Status.evidence_boundaries.T5_Tm2_OA_only_recordings_expand_saline_cohort ? '可' : '不可'}
+          补充 saline cohort，跨状态池化
+          {v7Status.evidence_boundaries.T5_cross_state_recording_pool_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_population_kernel_author_call_count !== undefined && (
+        <small className="v7-evidence-note">
+          T5 kernel 聚合语义：已核查 {v7Status.evidence_boundaries.T5_population_kernel_author_call_count} 个作者调用，显式 baseline 参数 {v7Status.evidence_boundaries.T5_population_kernel_explicit_baseline_call_count} 个；当前不减尾部 baseline {v7Status.evidence_boundaries.T5_population_kernel_no_baseline_matches_author_default ? '符合作者默认' : '不符合作者默认'}
+          。Tm1 等行权重与等 recording-ID 权重相关 {fmt(v7Status.evidence_boundaries.T5_Tm1_row_vs_recording_id_weighted_correlation ?? 0, 5)}
+          ，但精确复现
+          {v7Status.evidence_boundaries.T5_population_kernel_author_row_weighting_exactly_reproduced ? '成立' : '不成立'}
+          ；tail-baseline 变体
+          {v7Status.evidence_boundaries.T5_population_kernel_tail_baseline_variant_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_author_row_weighted_changed_sources !== undefined && (
+        <small className="v7-evidence-note">
+          T5 作者等行聚合敏感性：变化 source {v7Status.evidence_boundaries.T5_author_row_weighted_changed_sources.join('/') || '无'}
+          ；完整 FIR 三候选跨 1/4-update {v7Status.evidence_boundaries.T5_author_row_weighted_full_support_all_candidates_failed ? '均失败' : '未全部失败'}
+          ，时序门
+          {v7Status.evidence_boundaries.T5_author_row_weighted_cross_substep_identifiability_passed ? '通过' : '未通过'}
+          ；方向评分
+          {v7Status.evidence_boundaries.T5_author_row_weighted_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_author_row_weighted_direction_scoring_performed ? '已执行' : '未执行'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_Tm2_LOO_fold_count !== undefined && (
+        <small className="v7-evidence-note">
+          T5 Tm2 recording-ID LOO：
+          {v7Status.evidence_boundaries.T5_Tm2_LOO_fold_count} folds × 2 updates × 3 candidates = {v7Status.evidence_boundaries.T5_Tm2_LOO_evaluation_count} 项，时间门通过 {v7Status.evidence_boundaries.T5_Tm2_LOO_passed_evaluation_count} 项；全部失败
+          {v7Status.evidence_boundaries.T5_Tm2_LOO_full_support_all_evaluations_failed ? '是' : '否'}
+          ，方向评分
+          {v7Status.evidence_boundaries.T5_Tm2_LOO_direction_scoring_authorized ? '已授权' : '未授权'}
+          。该 LOO {v7Status.evidence_boundaries.T5_Tm2_LOO_independent_biological_validation_performed ? '属于' : '不属于'}
+          独立 fly 验证。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_measured_kernel_typed_recurrent_cascade_verified !== undefined && (
+        <small className="v7-evidence-note">
+          T5 measured-kernel 级联：typed recurrent source state → baseline subtraction/正半波/空间矩 → measured FIR {v7Status.evidence_boundaries.T5_measured_kernel_typed_recurrent_cascade_verified ? '已确认' : '未确认'}
+          ；Tm1/Tm2/Tm4/Tm9 leak = {Object.values(v7Status.evidence_boundaries.T5_measured_kernel_source_leaks ?? {}).join('/')}
+          。measured FIR {v7Status.evidence_boundaries.T5_measured_kernel_replaces_existing_source_dynamics ? '替换' : '未替换'}原 source dynamics，external state mapping {v7Status.evidence_boundaries.T5_measured_kernel_external_state_mapping_available ? '存在' : '不存在'}
+          ，单阶段生物解释
+          {v7Status.evidence_boundaries.T5_measured_kernel_single_stage_biological_interpretation_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_measured_kernel_recurrent_or_feedback_fraction_by_source !== undefined && (
+        <small className="v7-evidence-note">
+          T5 source 输入分解：Tm1/Tm2/Tm4/Tm9 recurrent-or-feedback 质量占比{' '}
+          {Object.values(v7Status.evidence_boundaries.T5_measured_kernel_recurrent_or_feedback_fraction_by_source)
+            .map((value) => fmt(value * 100, 2))
+            .join('/')}
+          %，Tm9 的 CT1 输入 {fmt((v7Status.evidence_boundaries.T5_measured_kernel_Tm9_CT1_input_fraction ?? 0) * 100, 2)}
+          %；当前 trace {v7Status.evidence_boundaries.T5_measured_kernel_feedforward_only_source_drive_available ? '可' : '不可'}
+          作为纯 feed-forward drive，source-dynamics replacement {v7Status.evidence_boundaries.T5_measured_kernel_source_dynamics_replacement_evaluated ? '已评估' : '未评估'}/{v7Status.evidence_boundaries.T5_measured_kernel_source_dynamics_replacement_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_lamina_only_replacement_evaluated !== undefined && (
+        <small className="v7-evidence-note">
+          T5 lamina-only replacement：仅保留 R1–R6→L1/L2/L3→Tm preactivation，再接 measured FIR；三候选跨 1/4-update {v7Status.evidence_boundaries.T5_lamina_only_replacement_all_candidates_failed ? '均失败' : '未全部失败'}
+          ，时序门
+          {v7Status.evidence_boundaries.T5_lamina_only_replacement_temporal_identifiability_passed ? '通过' : '未通过'}
+          ；方向评分
+          {v7Status.evidence_boundaries.T5_lamina_only_replacement_direction_scoring_authorized ? '已授权' : '未授权'}且{v7Status.evidence_boundaries.T5_lamina_only_replacement_direction_scoring_performed ? '已执行' : '未执行'}
+          ，物理 transfer {v7Status.evidence_boundaries.T5_lamina_only_replacement_physical_transfer_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_temporal_shuffle_frame_multiset_preserved !== undefined && (
+        <small className="v7-evidence-note">
+          T5 temporal-shuffle 输入能量：帧多重集
+          {v7Status.evidence_boundaries.T5_temporal_shuffle_frame_multiset_preserved ? '保持' : '未保持'}
+          ，但 R1–R6 signed-frame-difference 能量
+          {v7Status.evidence_boundaries.T5_temporal_shuffle_retinal_energy_preserved ? '保持' : '未保持'}
+          、lamina-only Tm preactivation 能量
+          {v7Status.evidence_boundaries.T5_temporal_shuffle_lamina_source_energy_preserved ? '保持' : '未保持'}
+          ；等能控制
+          {v7Status.evidence_boundaries.T5_temporal_shuffle_energy_matched_control_verified ? '已验证' : '未验证'}
+          ，因此等能时序选择性解释
+          {v7Status.evidence_boundaries.T5_equal_energy_temporal_selectivity_interpretation_authorized ? '已授权' : '未授权'}
+          。未新增事后能量归一化门。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T4_temporal_shuffle_frame_multiset_preserved !== undefined && (
+        <small className="v7-evidence-note">
+          T4 temporal-shuffle 输入审计：帧多重集
+          {v7Status.evidence_boundaries.T4_temporal_shuffle_frame_multiset_preserved ? '保持' : '未保持'}
+          ，R1–R6 mean-absolute drive 能量
+          {v7Status.evidence_boundaries.T4_temporal_shuffle_R1_R6_energy_preserved ? '保持' : '未保持'}
+          ，Mi1/Tm3/Mi4/C3 source-state 能量均在 5% 内{v7Status.evidence_boundaries.T4_temporal_shuffle_source_energy_within_five_percent ? '是' : '否'}
+          ；输入能量失配
+          {v7Status.evidence_boundaries.T4_temporal_shuffle_input_mismatch_explains_failure ? '可解释' : '不能解释'}原 output 失败，因此原 temporal gate {v7Status.evidence_boundaries.T4_temporal_shuffle_failure_retained_after_energy_audit ? '继续失败' : '已变更'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.fig3_source_kernel_original_negative_LOO_cell_count !== undefined && (
+        <small className="v7-evidence-note">
+          T4 Fig.3 source-kernel 失败分解：原分析已去基线/增益，负相关 LOO 个体 {v7Status.evidence_boundaries.fig3_source_kernel_original_negative_LOO_cell_count} 个，其中 {v7Status.evidence_boundaries.fig3_source_kernel_high_SNR_negative_LOO_cell_count} 个达到既有 SNR 参考线；允许每个 held-out 波形事后选择 ±{v7Status.evidence_boundaries.fig3_source_kernel_oracle_lag_milliseconds} ms 的不可部署 oracle 时移后仍有 {v7Status.evidence_boundaries.fig3_source_kernel_oracle_shift_negative_LOO_cell_count} 个。ON/OFF 负相关个体交集为 {v7Status.evidence_boundaries.fig3_source_kernel_ON_OFF_negative_cell_intersection_count}
+          ；有限 latency jitter 与低 SNR 均不能解释全部失败，也不授权事后剔除个体，原 robustness gate {v7Status.evidence_boundaries.fig3_source_kernel_failure_retained_after_alignment_audit ? '继续失败' : '已变更'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_increment_order_control_images_valid !== undefined && (
+        <small className="v7-evidence-note">
+          T5 increment-order 探索控制：重建图像
+          {v7Status.evidence_boundaries.T5_increment_order_control_images_valid ? '合法' : '不合法'}
+          ，终帧
+          {v7Status.evidence_boundaries.T5_increment_order_control_terminal_frame_preserved ? '保持' : '未保持'}
+          ，R1–R6 drive 多重集
+          {v7Status.evidence_boundaries.T5_increment_order_control_R1_R6_drive_multiset_preserved ? '保持' : '未保持'}
+          且能量
+          {v7Status.evidence_boundaries.T5_increment_order_control_R1_R6_energy_matched ? '匹配' : '不匹配'}
+          。该控制为 S1-T01 事后发现，独立条件
+          {v7Status.evidence_boundaries.T5_increment_order_control_independent_condition_evaluated ? '已评估' : '未评估'}
+          ，替换原时序门
+          {v7Status.evidence_boundaries.T5_increment_order_control_replacement_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T5_increment_order_replication_gate_passed !== undefined && (
+        <small className="v7-evidence-note">
+          T5 increment-order 预注册复制：S1-T02/T03 × 1/4 updates 输入合法性
+          {v7Status.evidence_boundaries.T5_increment_order_replication_input_validity_passed ? '通过' : '失败'}
+          ；同一候选跨全部条件/更新率
+          {v7Status.evidence_boundaries.T5_increment_order_replication_same_candidate_passed ? '通过' : '未通过'}
+          ，复制门
+          {v7Status.evidence_boundaries.T5_increment_order_replication_gate_passed ? '通过' : '失败'}
+          ，方向评分
+          {v7Status.evidence_boundaries.T5_increment_order_replication_direction_scoring_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          T5 source→MaleCNS：Tm1/Tm2/Tm4/Tm9 exact-type-average {v7Status.evidence_boundaries.T5_four_Tm_exact_type_average_mapping_complete ? '完整' : '不完整'}
+          ；五源总体
+          {v7Status.evidence_boundaries.T5_all_five_source_mapping_complete ? '完整' : '不完整'}
+          。CT1 10009/10157 的 Lo1 列覆盖 {v7Status.evidence_boundaries.T5_CT1_mapping_Lo1_column_count_by_body['10009']}/{v7Status.evidence_boundaries.T5_CT1_mapping_Lo1_column_count_by_body['10157']}
+          ，逐突触列不折叠成单一 body 坐标。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          Gou ↔ DANDI 身份：DANDI 资产级 participant {v7Status.evidence_boundaries.Gou_DANDI_asset_level_stable_participant_IDs_verified ? v7Status.evidence_boundaries.Gou_DANDI_unique_subject_ID_count + ' 个唯一 ID' : '未验证'}
+          ；Dryad fliesUsed {v7Status.evidence_boundaries.Gou_Dryad_distinct_fliesUsed_label_count} 个标签，精确交叉键 {v7Status.evidence_boundaries.Gou_Dryad_DANDI_identity_crosswalk_match_count}
+          ；处理行到 subject 映射
+          {v7Status.evidence_boundaries.Gou_Dryad_rows_to_DANDI_subject_crosswalk_verified ? '已验证' : '未验证'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          离线刺激坐标：
+          {v7Status.evidence_boundaries.v7_offline_frame_interval_milliseconds} ms/frame · {v7Status.evidence_boundaries.v7_offline_substep_interval_milliseconds} ms/substep · 横向 FOV {fmt(v7Status.evidence_boundaries.v7_horizontal_fov_degrees, 2)}
+          °；时间/横向坐标
+          {v7Status.evidence_boundaries.v7_offline_time_coordinate_contract_complete && v7Status.evidence_boundaries.v7_offline_horizontal_coordinate_contract_complete ? '已冻结' : '未完成'}
+          ，二维角标定
+          {v7Status.evidence_boundaries.v7_offline_two_dimensional_angular_calibration_complete ? '完整' : '不完整'}
+          ；未经生物校准且未接入默认运行时。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          纵向角坐标：camera rays {v7Status.evidence_boundaries.v7_vertical_camera_ray_angles_declared ? '已声明' : '未声明'} · vertical FOV {v7Status.evidence_boundaries.v7_vertical_FOV_declared ? '已声明' : '未声明'} · pixel→degree {v7Status.evidence_boundaries.v7_vertical_pixel_to_angle_formula_declared ? '已声明' : '未声明'}
+          ；上下运动/looming 半径物理角单位 {v7Status.evidence_boundaries.v7_vertical_motion_has_physical_angular_units || v7Status.evidence_boundaries.v7_looming_radius_has_physical_angular_units ? '存在' : '均不存在'}
+          ，retinal_v 仍是归一化六角拓扑坐标。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          离线二维工程角栅格：
+          {v7Status.evidence_boundaries.v7_offline_2D_engineering_angular_grid_complete ? '完整' : '不完整'} · {fmt(v7Status.evidence_boundaries.v7_offline_engineering_angular_pixel_pitch_degrees, 3)}
+          °/pixel · vertical FOV {fmt(v7Status.evidence_boundaries.v7_offline_engineering_vertical_FOV_degrees, 3)}
+          °；
+          {v7Status.evidence_boundaries.v7_offline_engineering_grid_biologically_calibrated ? '已生物标定' : '仅模型声明，未生物标定'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.v7_controlled_base_stimulus_count !== undefined && (
+        <small className="v7-evidence-note">
+          受控刺激与输入边界：基础 {v7Status.evidence_boundaries.v7_controlled_base_stimulus_count} 条 · development/validation/OOD/final 各 {v7Status.evidence_boundaries.v7_controlled_stimuli_per_independent_split} 条 · typed LPLC/LC4 {v7Status.evidence_boundaries.v7_typed_LPLC_LC4_stimulus_count} 条；统一覆盖
+          {v7Status.evidence_boundaries.v7_controlled_stimulus_and_R1_R6_input_boundary_complete ? '完整' : '不完整'}
+          。外部 drive 落到非 R1–R6 节点 {v7Status.evidence_boundaries.v7_external_drive_non_R1_R6_node_count}
+          ，与 T4/T5/LPLC/LC 目标重叠 {v7Status.evidence_boundaries.v7_target_direct_external_drive_overlap}
+          ；覆盖完整不代表响应门通过。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          T4 source→MaleCNS：
+          {v7Status.evidence_boundaries.T4_source_mapping_mode} 四源
+          {v7Status.evidence_boundaries.T4_exact_type_average_mapping_complete ? '完整' : '不完整'}
+          ；逐记录 body 指派
+          {v7Status.evidence_boundaries.T4_source_recording_level_body_assignment ? '存在' : '不存在'}
+          ，因此仅按同型总体均值广播。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.C2C3_version_of_record_DOI !== undefined && (
+        <small className="v7-evidence-note">
+          C2/C3 Version of Record（
+          {v7Status.evidence_boundaries.C2C3_version_of_record_DOI}）：仓库 revision {v7Status.evidence_boundaries.C2C3_version_of_record_repository_revision?.slice(0, 7)}
+          ；新增载荷是 {v7Status.evidence_boundaries.C2C3_version_of_record_new_payload_modality}
+          ，C3/Mi1 control 各 {v7Status.evidence_boundaries.C2C3_version_of_record_C3_fly_count}/{v7Status.evidence_boundaries.C2C3_version_of_record_Mi1_control_fly_count} 个 Flyname。新增 C3/Mi4 膜电位
+          {v7Status.evidence_boundaries.C2C3_version_of_record_new_C3_Mi4_voltage_found ? '存在' : '不存在'}
+          ，MaleCNS crosswalk {v7Status.evidence_boundaries.C2C3_version_of_record_MaleCNS_crosswalk_found ? '存在' : '不存在'}
+          ，T4 transfer gate {v7Status.evidence_boundaries.C2C3_version_of_record_changed_T4_transfer_gate ? '已改变' : '未改变'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T4_source_pool_camera_frame_post_hoc_candidate_discovered !== undefined && (
+        <small className="v7-evidence-note">
+          T4 source-pool 相机坐标探索：按既有 retinal 映射补入纵轴反转后，双侧候选为 {v7Status.evidence_boundaries.T4_source_pool_camera_frame_bilateral_readouts?.join('/') || '无'}
+          ，亚型{' '}
+          {Object.values(v7Status.evidence_boundaries.T4_source_pool_camera_frame_bilateral_subtypes ?? {})
+            .flat()
+            .join('/') || '无'}
+          ；这是 post-hoc 单条件结果，复制
+          {v7Status.evidence_boundaries.T4_source_pool_camera_frame_replication_evaluated ? '已完成' : '未执行'}
+          ，新 target formula {v7Status.evidence_boundaries.T4_source_pool_camera_frame_target_formula_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T4_source_pool_camera_frame_replication_gate_passed !== undefined && (
+        <small className="v7-evidence-note">
+          T4 source-pool 预注册复制：LPLC-T02/T03 ordered T4d 双侧
+          {v7Status.evidence_boundaries.T4_source_pool_camera_frame_ordered_replication_passed ? '通过' : '失败'}
+          ；controls {v7Status.evidence_boundaries.T4_source_pool_camera_frame_controls_evaluated ? '已执行' : '按 stop gate 未执行'}
+          ，复制门
+          {v7Status.evidence_boundaries.T4_source_pool_camera_frame_replication_gate_passed ? '通过' : '失败'}。
+        </small>
+      )}
+      {v7Status?.evidence_boundaries.T4_synapse_RF_axis_joint_valid_target_count !== undefined && (
+        <small className="v7-evidence-note">
+          T4 空间轴对应：
+          {v7Status.evidence_boundaries.T4_synapse_RF_axis_joint_valid_target_count} 个 target 的靶处突触轴与 source RF/optic-hex 轴原始中位夹角 {fmt(v7Status.evidence_boundaries.T4_synapse_RF_axis_identity_median_angle_degrees ?? 0, 2)}
+          °、cardinal 一致率 {fmt((v7Status.evidence_boundaries.T4_synapse_RF_axis_identity_cardinal_match_fraction ?? 0) * 100, 2)}
+          %；描述性最佳变换为 {v7Status.evidence_boundaries.T4_synapse_RF_axis_descriptive_best_transform ?? '无'}
+          （中位 {fmt(v7Status.evidence_boundaries.T4_synapse_RF_axis_best_median_angle_degrees ?? 0, 2)}
+          °）。两种轴
+          {v7Status.evidence_boundaries.T4_source_RF_axis_interchangeability_verified ? '可互换' : '不可直接互换'}
+          ，RF-axis replacement {v7Status.evidence_boundaries.T4_RF_axis_replacement_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
+      {v7Status && (
+        <small className="v7-evidence-note">
+          T4 mV→state：作者全 cohort min–max {v7Status.evidence_boundaries.T4_author_minmax_formula_reproduced ? '已复现' : '未复现'}
+          ；训练个体冻结后 held-out 越界率 Mi1/Tm3/Mi4/C3 ={' '}
+          {Object.values(v7Status.evidence_boundaries.T4_state_mapping_held_out_outside_fraction_by_source)
+            .map((value) => `${fmt(value * 100, 1)}%`)
+            .join('/')}
+          ; 与 v7 signed-tanh 状态语义
+          {v7Status.evidence_boundaries.T4_author_minmax_semantics_match_v7_state ? '一致' : '不一致'}
+          ，映射门
+          {v7Status.evidence_boundaries.T4_millivolts_to_v7_state_mapping_available ? '通过' : '未通过'}。
+        </small>
+      )}
+      <div className="telemetry">
+        <div>
+          <small>里程</small>
+          <strong>{fmt(state?.environment.vehicle.y ?? 0, 1)} m</strong>
+        </div>
+        <div>
+          <small>速度</small>
+          <strong>{fmt(state?.environment.vehicle.speed ?? 0, 1)}</strong>
+        </div>
+        <div>
+          <small>纵向指令</small>
+          <strong>{fmt(state?.action.drive ?? 0)}</strong>
+        </div>
+        <div>
+          <small>MDN 后退</small>
+          <strong>{fmt(state?.action.reverse ?? 0)}</strong>
+        </div>
+        <div>
+          <small>转向</small>
+          <strong>{fmt(state?.action.steering ?? 0)}</strong>
+        </div>
+        <div>
+          <small>神经原始转向</small>
+          <strong>{fmt(state?.raw_action.steering ?? 0)}</strong>
+        </div>
+        <div>
+          <small>安全介入</small>
+          <strong>{fmt(state?.lane_constraint.blend ?? 0)}</strong>
+        </div>
+        <div>
+          <small>累计介入率</small>
+          <strong>{fmt((state?.control_statistics.constraint_rate ?? 0) * 100, 1)}%</strong>
+        </div>
+        <div>
+          <small>奖励</small>
+          <strong>{fmt(state?.reward ?? 0, 3)}</strong>
+        </div>
+        <div>
+          <small>已通过障碍</small>
+          <strong>
+            {state?.environment.obstacles_passed ?? 0}/{state?.environment.obstacles.length ?? 0}
+          </strong>
+        </div>
+        <div>
+          <small>道路配对</small>
+          <strong>
+            {state?.environment.pair_seed ?? '—'} / {state?.environment.mirror === -1 ? '镜像' : '原向'}
+          </strong>
+        </div>
+        <div>
+          <small>首障碍侧别</small>
+          <strong>{state?.environment.first_obstacle_side === 'left' ? '左' : state?.environment.first_obstacle_side === 'right' ? '右' : '—'}</strong>
+        </div>
+        <div>
+          <small>首障碍通过</small>
+          <strong>{state?.environment.first_obstacle_passed ? '已通过' : '未通过'}</strong>
+        </div>
+        <div>
+          <small>终止原因</small>
+          <strong>
+            {(
+              {
+                obstacle: '碰撞障碍',
+                road_boundary: '驶出道路',
+                success: '通关',
+                timeout: '超时',
+              } as Record<string, string>
+            )[state?.environment.terminal_reason ?? ''] ?? '—'}
+          </strong>
+        </div>
+        <div>
+          <small>多巴胺 RPE</small>
+          <strong className={(state?.dopamine.dopamine ?? 0) < 0 ? 'negative' : ''}>{fmt(state?.dopamine.dopamine ?? 0, 3)}</strong>
+        </div>
+        <div>
+          <small>已变突触</small>
+          <strong>
+            {state?.dopamine.changed_synapses ?? 0}/{state?.dopamine.plastic_synapses ?? 0}
+          </strong>
+        </div>
+        <div>
+          <small>双侧 PPL101</small>
+          <strong>
+            {fmt(state?.dopamine.lateral_dopamine?.[0] ?? 0, 2)} / {fmt(state?.dopamine.lateral_dopamine?.[1] ?? 0, 2)}
+          </strong>
+        </div>
+        <div>
+          <small>控制模式</small>
+          <strong>{controlMode === 'neural' ? 'MaleCNS v6' : '工程基线 v5'}</strong>
+        </div>
+        {controlMode === 'neural' && (
+          <div>
+            <small>DNp20 运动适应</small>
+            <strong>{fmt((state?.motor.neural_adapter?.adaptation_rate ?? 0) * 100, 0)}% / step</strong>
+          </div>
+        )}
+        {controlMode === 'neural' && (
+          <div>
+            <small>神经感觉档位</small>
+            <strong>{state?.sensory_profile === 'front' ? `前视 ${fmt(state?.retina.horizontal_fov_degrees ?? 0, 0)}°` : (state?.sensory_profile ?? '—')}</strong>
+          </div>
+        )}
+      </div>
+      <div className="driving-controls">
+        <label>
+          控制模式{' '}
+          <select aria-label="控制模式" value={controlMode} disabled={running} onChange={(e) => onControlMode(e.target.value as 'assisted' | 'neural')}>
+            <option value="assisted">工程避障基线（v5）</option>
+            <option value="neural">纯 MaleCNS 决策实验</option>
+          </select>
+        </label>
+        <label>
+          <input type="checkbox" checked={learning} onChange={(e) => onLearning(e.target.checked)} /> 在线可塑性（实验）
+        </label>
+        <label>
+          <input type="checkbox" checked={explore} onChange={(e) => onExplore(e.target.checked)} /> 探索噪声
+        </label>
+        <label>
+          <input type="checkbox" checked={safetyConstraints} disabled={controlMode === 'neural'} onChange={(e) => onSafetyConstraints(e.target.checked)} /> 道路安全约束
+        </label>
+        <button onClick={onRun}>{running ? '暂停' : '连续运行'}</button>
+        <button disabled={running} onClick={onStep}>
+          单步
+        </button>
+        <button disabled={running} onClick={() => onReset(true)}>
+          新场景
+        </button>
+        <button disabled={running} onClick={() => onReset(false)}>
+          恢复发布策略
+        </button>
+      </div>
+      <p className="scientific-note">{controlMode === 'neural' ? (state?.policy_checkpoint.loaded ? '已加载发布态 MaleCNS v6，默认服务与 v5/v6 检查点未改变。v7 仅离线实验：R1–R6 神经闭环、EPG/PEN/PEG 航向环和 FC2/PFL3/DNa02 透明链已有组件级实测与因果对照，但新布局的留一镜像对验证失败；严格 T4/T5 方向与 ON/OFF、LPLC1/LPLC2/LC4 分型也未通过。v7 未部署、未进入 MB 学习或外部 final。' : '纯神经决策：DNp20/DNpe017/MDN 输出直接映射为车辆动作；障碍、道路和规则仅作为视觉刺激、奖励与结果反馈。') : state?.policy_checkpoint.loaded ? `工程避障基线：已加载 ${state.policy_checkpoint.kind === 'frozen_calibrated' ? '冻结校准' : '实验学习'}策略。` : state?.policy_checkpoint.rejection ? '旧检查点已停用，当前策略未校准。' : '当前为未训练策略。'}</p>
+    </section>
+  )
 }

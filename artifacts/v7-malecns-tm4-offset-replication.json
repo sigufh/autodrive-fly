@@ -1,0 +1,2752 @@
+{
+  "protocol": {
+    "name": "v7-malecns-tm4-offset-replication",
+    "observed_on": "2026-09-29",
+    "dependencies_sha256": {
+      "configs/driving-v7-malecns-tm4-offset-replication.yaml": "d956cf388442c3427f00b20296a789466832e4f7d8c952816b99a9e213c88842",
+      "src/fly_emotion/driving/v7_malecns_tm4_offset_replication.py": "fede71977e74c0af849be62e7c3bdfe6226fcba765e1f32de128951b0f4d25f0",
+      "artifacts/v7-malecns-tm4-offset-replication-preregistration.json": "fcf3bd63813b01005bd89ef1aeefd6428df565c58b7cba19e8a28316c7923c2f",
+      "scripts/freeze_malecns_tm4_offset_replication.py": "1c5d6ec448c1cf2b1a481741322b11058df925925caf8b05873af354ec3595d7",
+      "data/raw/malecns-v1.0/optic-column-audit/tm4-offset-replication.json": "a13e53f965ab86ebed664ef71c81777d3e3e79caeafe72642a8cbfb0d95f9fe9",
+      "data/raw/malecns-v1.0/body-annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2"
+    },
+    "preregistration_commit": "26faa2cbbfbb13d32aafc59372788c7eae3d4799",
+    "preregistration_sha256": "fcf3bd63813b01005bd89ef1aeefd6428df565c58b7cba19e8a28316c7923c2f",
+    "discovery_body_ids_excluded": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "replication_evaluated": true,
+  "sample_count": 96,
+  "unique_candidate_count": 95,
+  "uncorrected_exact_count": 51,
+  "corrected_exact_count": 32,
+  "paired_exact_outcomes": {
+    "incorrect_to_correct": 32,
+    "correct_to_incorrect": 51,
+    "discordant_count": 83,
+    "one_sided_exact_sign_test_pvalue": 0.9862329109938527,
+    "alpha": 0.01
+  },
+  "gates": {
+    "all_sampled_bodies_retrieved": true,
+    "unique_synapse_count_candidate_for_every_body": false,
+    "corrected_exact_count_greater_than_uncorrected_exact_count": false,
+    "no_correct_to_incorrect_pairs": false,
+    "paired_one_sided_exact_sign_test_passed": false,
+    "no_distance_tolerance_used": true
+  },
+  "replication_gate_passed": false,
+  "uncorrected_hex_distance_counts": {
+    "0": 51,
+    "1": 11,
+    "2": 32,
+    "3": 1
+  },
+  "corrected_hex_distance_counts": {
+    "0": 32,
+    "1": 6,
+    "2": 52,
+    "3": 5
+  },
+  "records": [
+    {
+      "body_id": 112432,
+      "native_hex": [
+        1,
+        10
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        2,
+        9
+      ],
+      "uncorrected": {
+        "hex": [
+          2,
+          9
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          1,
+          8
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 110576,
+      "native_hex": [
+        3,
+        5
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        3,
+        5
+      ],
+      "uncorrected": {
+        "hex": [
+          3,
+          5
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          2,
+          4
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 110591,
+      "native_hex": [
+        3,
+        15
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        4,
+        16
+      ],
+      "uncorrected": {
+        "hex": [
+          4,
+          16
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          3,
+          15
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 91064,
+      "native_hex": [
+        4,
+        10
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        5,
+        11
+      ],
+      "uncorrected": {
+        "hex": [
+          5,
+          11
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          4,
+          10
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 156261,
+      "native_hex": [
+        5,
+        2
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        6,
+        2
+      ],
+      "uncorrected": {
+        "hex": [
+          6,
+          2
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          5,
+          1
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      }
+    },
+    {
+      "body_id": 76464,
+      "native_hex": [
+        5,
+        11
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        5,
+        11
+      ],
+      "uncorrected": {
+        "hex": [
+          5,
+          11
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          4,
+          10
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 105358,
+      "native_hex": [
+        5,
+        20
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        6,
+        22
+      ],
+      "uncorrected": {
+        "hex": [
+          6,
+          22
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 3
+      },
+      "corrected": {
+        "hex": [
+          5,
+          21
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      }
+    },
+    {
+      "body_id": 116321,
+      "native_hex": [
+        6,
+        8
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        7,
+        9
+      ],
+      "uncorrected": {
+        "hex": [
+          7,
+          9
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          6,
+          8
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 99110,
+      "native_hex": [
+        6,
+        16
+      ],
+      "unique_candidate": false,
+      "raw_candidate_hex": null,
+      "uncorrected": {
+        "hex": null,
+        "exact_native_match": false,
+        "hex_distance_to_native": null
+      },
+      "corrected": {
+        "hex": null,
+        "exact_native_match": false,
+        "hex_distance_to_native": null
+      }
+    },
+    {
+      "body_id": 85655,
+      "native_hex": [
+        7,
+        5
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        7,
+        5
+      ],
+      "uncorrected": {
+        "hex": [
+          7,
+          5
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          6,
+          4
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 84133,
+      "native_hex": [
+        7,
+        14
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        8,
+        15
+      ],
+      "uncorrected": {
+        "hex": [
+          8,
+          15
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          7,
+          14
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 91119,
+      "native_hex": [
+        7,
+        23
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        7,
+        23
+      ],
+      "uncorrected": {
+        "hex": [
+          7,
+          23
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          6,
+          22
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 81528,
+      "native_hex": [
+        8,
+        8
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        9,
+        9
+      ],
+      "uncorrected": {
+        "hex": [
+          9,
+          9
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          8,
+          8
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 90350,
+      "native_hex": [
+        8,
+        17
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        8,
+        17
+      ],
+      "uncorrected": {
+        "hex": [
+          8,
+          17
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          7,
+          16
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 87320,
+      "native_hex": [
+        8,
+        26
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        8,
+        26
+      ],
+      "uncorrected": {
+        "hex": [
+          8,
+          26
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          7,
+          25
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 74251,
+      "native_hex": [
+        9,
+        9
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        10,
+        10
+      ],
+      "uncorrected": {
+        "hex": [
+          10,
+          10
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          9,
+          9
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 80117,
+      "native_hex": [
+        9,
+        17
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        10,
+        18
+      ],
+      "uncorrected": {
+        "hex": [
+          10,
+          18
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          9,
+          17
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 81773,
+      "native_hex": [
+        9,
+        26
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        10,
+        27
+      ],
+      "uncorrected": {
+        "hex": [
+          10,
+          27
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          9,
+          26
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 72976,
+      "native_hex": [
+        10,
+        8
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        10,
+        8
+      ],
+      "uncorrected": {
+        "hex": [
+          10,
+          8
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          9,
+          7
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 80188,
+      "native_hex": [
+        10,
+        17
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        10,
+        17
+      ],
+      "uncorrected": {
+        "hex": [
+          10,
+          17
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          9,
+          16
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 78917,
+      "native_hex": [
+        10,
+        25
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        11,
+        26
+      ],
+      "uncorrected": {
+        "hex": [
+          11,
+          26
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          10,
+          25
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 75387,
+      "native_hex": [
+        11,
+        5
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        11,
+        5
+      ],
+      "uncorrected": {
+        "hex": [
+          11,
+          5
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          10,
+          4
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 74003,
+      "native_hex": [
+        11,
+        14
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        11,
+        14
+      ],
+      "uncorrected": {
+        "hex": [
+          11,
+          14
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          10,
+          13
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 71222,
+      "native_hex": [
+        11,
+        23
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        12,
+        24
+      ],
+      "uncorrected": {
+        "hex": [
+          12,
+          24
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          11,
+          23
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 80187,
+      "native_hex": [
+        12,
+        2
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        13,
+        3
+      ],
+      "uncorrected": {
+        "hex": [
+          13,
+          3
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          12,
+          2
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 66565,
+      "native_hex": [
+        12,
+        11
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        13,
+        12
+      ],
+      "uncorrected": {
+        "hex": [
+          13,
+          12
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          12,
+          11
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 73271,
+      "native_hex": [
+        12,
+        20
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        12,
+        20
+      ],
+      "uncorrected": {
+        "hex": [
+          12,
+          20
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          11,
+          19
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 70944,
+      "native_hex": [
+        12,
+        29
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        13,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          13,
+          30
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          12,
+          29
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 70013,
+      "native_hex": [
+        13,
+        7
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        13,
+        7
+      ],
+      "uncorrected": {
+        "hex": [
+          13,
+          7
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          12,
+          6
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 76649,
+      "native_hex": [
+        13,
+        16
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        13,
+        16
+      ],
+      "uncorrected": {
+        "hex": [
+          13,
+          16
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          12,
+          15
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 68274,
+      "native_hex": [
+        13,
+        25
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        13,
+        25
+      ],
+      "uncorrected": {
+        "hex": [
+          13,
+          25
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          12,
+          24
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 80287,
+      "native_hex": [
+        14,
+        3
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        14,
+        3
+      ],
+      "uncorrected": {
+        "hex": [
+          14,
+          3
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          13,
+          2
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 81402,
+      "native_hex": [
+        14,
+        11
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        14,
+        11
+      ],
+      "uncorrected": {
+        "hex": [
+          14,
+          11
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          13,
+          10
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 71644,
+      "native_hex": [
+        14,
+        20
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        14,
+        20
+      ],
+      "uncorrected": {
+        "hex": [
+          14,
+          20
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          13,
+          19
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 80939,
+      "native_hex": [
+        14,
+        29
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        15,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          15,
+          30
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          14,
+          29
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 71706,
+      "native_hex": [
+        15,
+        7
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        16,
+        7
+      ],
+      "uncorrected": {
+        "hex": [
+          16,
+          7
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          15,
+          6
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      }
+    },
+    {
+      "body_id": 105589,
+      "native_hex": [
+        15,
+        14
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        16,
+        15
+      ],
+      "uncorrected": {
+        "hex": [
+          16,
+          15
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          15,
+          14
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 69466,
+      "native_hex": [
+        15,
+        23
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        15,
+        23
+      ],
+      "uncorrected": {
+        "hex": [
+          15,
+          23
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          14,
+          22
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 87283,
+      "native_hex": [
+        16,
+        3
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        17,
+        4
+      ],
+      "uncorrected": {
+        "hex": [
+          17,
+          4
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          16,
+          3
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 71754,
+      "native_hex": [
+        16,
+        11
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        16,
+        10
+      ],
+      "uncorrected": {
+        "hex": [
+          16,
+          10
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          15,
+          9
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 3
+      }
+    },
+    {
+      "body_id": 65218,
+      "native_hex": [
+        16,
+        19
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        16,
+        19
+      ],
+      "uncorrected": {
+        "hex": [
+          16,
+          19
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          15,
+          18
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 120487,
+      "native_hex": [
+        16,
+        28
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        16,
+        28
+      ],
+      "uncorrected": {
+        "hex": [
+          16,
+          28
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          15,
+          27
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 63400,
+      "native_hex": [
+        17,
+        8
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        17,
+        8
+      ],
+      "uncorrected": {
+        "hex": [
+          17,
+          8
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          16,
+          7
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 103240,
+      "native_hex": [
+        17,
+        17
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        17,
+        17
+      ],
+      "uncorrected": {
+        "hex": [
+          17,
+          17
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          16,
+          16
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 71594,
+      "native_hex": [
+        17,
+        25
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        18,
+        26
+      ],
+      "uncorrected": {
+        "hex": [
+          18,
+          26
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          17,
+          25
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 75205,
+      "native_hex": [
+        18,
+        4
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        18,
+        4
+      ],
+      "uncorrected": {
+        "hex": [
+          18,
+          4
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          17,
+          3
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 101001,
+      "native_hex": [
+        18,
+        13
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        18,
+        12
+      ],
+      "uncorrected": {
+        "hex": [
+          18,
+          12
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          17,
+          11
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 3
+      }
+    },
+    {
+      "body_id": 70997,
+      "native_hex": [
+        18,
+        22
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        18,
+        21
+      ],
+      "uncorrected": {
+        "hex": [
+          18,
+          21
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          17,
+          20
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 3
+      }
+    },
+    {
+      "body_id": 123677,
+      "native_hex": [
+        18,
+        30
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        18,
+        29
+      ],
+      "uncorrected": {
+        "hex": [
+          18,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          17,
+          28
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 3
+      }
+    },
+    {
+      "body_id": 70704,
+      "native_hex": [
+        19,
+        9
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        19,
+        9
+      ],
+      "uncorrected": {
+        "hex": [
+          19,
+          9
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          18,
+          8
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 71372,
+      "native_hex": [
+        19,
+        18
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        20,
+        19
+      ],
+      "uncorrected": {
+        "hex": [
+          20,
+          19
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          19,
+          18
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 83249,
+      "native_hex": [
+        19,
+        27
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        20,
+        28
+      ],
+      "uncorrected": {
+        "hex": [
+          20,
+          28
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          19,
+          27
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 127337,
+      "native_hex": [
+        20,
+        5
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        21,
+        6
+      ],
+      "uncorrected": {
+        "hex": [
+          21,
+          6
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          20,
+          5
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 72381,
+      "native_hex": [
+        20,
+        14
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        20,
+        14
+      ],
+      "uncorrected": {
+        "hex": [
+          20,
+          14
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          19,
+          13
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 71809,
+      "native_hex": [
+        20,
+        23
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        21,
+        24
+      ],
+      "uncorrected": {
+        "hex": [
+          21,
+          24
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          20,
+          23
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 79718,
+      "native_hex": [
+        20,
+        32
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        21,
+        33
+      ],
+      "uncorrected": {
+        "hex": [
+          21,
+          33
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          20,
+          32
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 62773,
+      "native_hex": [
+        21,
+        11
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        21,
+        11
+      ],
+      "uncorrected": {
+        "hex": [
+          21,
+          11
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          20,
+          10
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 108268,
+      "native_hex": [
+        21,
+        20
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        21,
+        20
+      ],
+      "uncorrected": {
+        "hex": [
+          21,
+          20
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          20,
+          19
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 84422,
+      "native_hex": [
+        21,
+        29
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        22,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          22,
+          30
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          21,
+          29
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 65362,
+      "native_hex": [
+        22,
+        9
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        22,
+        10
+      ],
+      "uncorrected": {
+        "hex": [
+          22,
+          10
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          21,
+          9
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      }
+    },
+    {
+      "body_id": 109656,
+      "native_hex": [
+        22,
+        18
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        22,
+        18
+      ],
+      "uncorrected": {
+        "hex": [
+          22,
+          18
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          21,
+          17
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 73136,
+      "native_hex": [
+        22,
+        27
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        22,
+        27
+      ],
+      "uncorrected": {
+        "hex": [
+          22,
+          27
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          21,
+          26
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 95003,
+      "native_hex": [
+        22,
+        36
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        22,
+        36
+      ],
+      "uncorrected": {
+        "hex": [
+          22,
+          36
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          21,
+          35
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 60726,
+      "native_hex": [
+        23,
+        16
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        23,
+        16
+      ],
+      "uncorrected": {
+        "hex": [
+          23,
+          16
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          22,
+          15
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 121791,
+      "native_hex": [
+        23,
+        24
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        23,
+        24
+      ],
+      "uncorrected": {
+        "hex": [
+          23,
+          24
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          22,
+          23
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 81855,
+      "native_hex": [
+        23,
+        33
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        24,
+        34
+      ],
+      "uncorrected": {
+        "hex": [
+          24,
+          34
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          23,
+          33
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 103171,
+      "native_hex": [
+        24,
+        14
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        24,
+        14
+      ],
+      "uncorrected": {
+        "hex": [
+          24,
+          14
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          23,
+          13
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 118795,
+      "native_hex": [
+        24,
+        23
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        24,
+        23
+      ],
+      "uncorrected": {
+        "hex": [
+          24,
+          23
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          23,
+          22
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 75540,
+      "native_hex": [
+        24,
+        31
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        25,
+        32
+      ],
+      "uncorrected": {
+        "hex": [
+          25,
+          32
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          24,
+          31
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 60800,
+      "native_hex": [
+        25,
+        12
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        25,
+        12
+      ],
+      "uncorrected": {
+        "hex": [
+          25,
+          12
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          24,
+          11
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 115074,
+      "native_hex": [
+        25,
+        21
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        26,
+        22
+      ],
+      "uncorrected": {
+        "hex": [
+          26,
+          22
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          25,
+          21
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 69128,
+      "native_hex": [
+        25,
+        30
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        25,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          25,
+          30
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          24,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 129178,
+      "native_hex": [
+        25,
+        38
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        25,
+        38
+      ],
+      "uncorrected": {
+        "hex": [
+          25,
+          38
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          24,
+          37
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 114870,
+      "native_hex": [
+        26,
+        19
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        27,
+        20
+      ],
+      "uncorrected": {
+        "hex": [
+          27,
+          20
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          26,
+          19
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 86713,
+      "native_hex": [
+        26,
+        28
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        27,
+        29
+      ],
+      "uncorrected": {
+        "hex": [
+          27,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          26,
+          28
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 92485,
+      "native_hex": [
+        26,
+        37
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        27,
+        38
+      ],
+      "uncorrected": {
+        "hex": [
+          27,
+          38
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          26,
+          37
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 108246,
+      "native_hex": [
+        27,
+        18
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        27,
+        18
+      ],
+      "uncorrected": {
+        "hex": [
+          27,
+          18
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          26,
+          17
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 83370,
+      "native_hex": [
+        27,
+        27
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        27,
+        27
+      ],
+      "uncorrected": {
+        "hex": [
+          27,
+          27
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          26,
+          26
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 79731,
+      "native_hex": [
+        27,
+        36
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        27,
+        36
+      ],
+      "uncorrected": {
+        "hex": [
+          27,
+          36
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          26,
+          35
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 123754,
+      "native_hex": [
+        28,
+        21
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        28,
+        21
+      ],
+      "uncorrected": {
+        "hex": [
+          28,
+          21
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          27,
+          20
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 90565,
+      "native_hex": [
+        28,
+        29
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        29,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          29,
+          30
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          28,
+          29
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 111055,
+      "native_hex": [
+        28,
+        39
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        28,
+        39
+      ],
+      "uncorrected": {
+        "hex": [
+          28,
+          39
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          27,
+          38
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 73253,
+      "native_hex": [
+        29,
+        21
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        29,
+        21
+      ],
+      "uncorrected": {
+        "hex": [
+          29,
+          21
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          28,
+          20
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 80775,
+      "native_hex": [
+        29,
+        30
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        29,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          29,
+          30
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          28,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 113016,
+      "native_hex": [
+        29,
+        39
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        29,
+        39
+      ],
+      "uncorrected": {
+        "hex": [
+          29,
+          39
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          28,
+          38
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 76778,
+      "native_hex": [
+        30,
+        24
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        30,
+        24
+      ],
+      "uncorrected": {
+        "hex": [
+          30,
+          24
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          29,
+          23
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 75081,
+      "native_hex": [
+        30,
+        33
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        31,
+        34
+      ],
+      "uncorrected": {
+        "hex": [
+          31,
+          34
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          30,
+          33
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 109283,
+      "native_hex": [
+        31,
+        22
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        32,
+        23
+      ],
+      "uncorrected": {
+        "hex": [
+          32,
+          23
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      },
+      "corrected": {
+        "hex": [
+          31,
+          22
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      }
+    },
+    {
+      "body_id": 87721,
+      "native_hex": [
+        31,
+        30
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        31,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          31,
+          30
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          30,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 76359,
+      "native_hex": [
+        32,
+        19
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        32,
+        20
+      ],
+      "uncorrected": {
+        "hex": [
+          32,
+          20
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          31,
+          19
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      }
+    },
+    {
+      "body_id": 80561,
+      "native_hex": [
+        32,
+        30
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        32,
+        30
+      ],
+      "uncorrected": {
+        "hex": [
+          32,
+          30
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          31,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 85295,
+      "native_hex": [
+        33,
+        22
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        33,
+        22
+      ],
+      "uncorrected": {
+        "hex": [
+          33,
+          22
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          32,
+          21
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 78469,
+      "native_hex": [
+        33,
+        31
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        33,
+        31
+      ],
+      "uncorrected": {
+        "hex": [
+          33,
+          31
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          32,
+          30
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 79643,
+      "native_hex": [
+        34,
+        26
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        34,
+        26
+      ],
+      "uncorrected": {
+        "hex": [
+          34,
+          26
+        ],
+        "exact_native_match": true,
+        "hex_distance_to_native": 0
+      },
+      "corrected": {
+        "hex": [
+          33,
+          25
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 2
+      }
+    },
+    {
+      "body_id": 74967,
+      "native_hex": [
+        35,
+        29
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        34,
+        29
+      ],
+      "uncorrected": {
+        "hex": [
+          34,
+          29
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          33,
+          28
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 3
+      }
+    },
+    {
+      "body_id": 142675,
+      "native_hex": [
+        36,
+        31
+      ],
+      "unique_candidate": true,
+      "raw_candidate_hex": [
+        36,
+        32
+      ],
+      "uncorrected": {
+        "hex": [
+          36,
+          32
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      },
+      "corrected": {
+        "hex": [
+          35,
+          31
+        ],
+        "exact_native_match": false,
+        "hex_distance_to_native": 1
+      }
+    }
+  ],
+  "authorize_post_hoc_hex_distance_tolerance": false,
+  "authorize_left_Tm4_coordinate_writeback": false,
+  "authorize_source_mapping_gate_change": false,
+  "advance_to_T4_T5_functional_precheck": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "preregistered_Tm4_offset_replication_gate_failed",
+  "boundary": {
+    "preregistered_before_replication_synapse_outputs": true,
+    "discovery_body_ids_excluded": true,
+    "discovery_offset_mode_is_not_refit_on_replication": true,
+    "replication_is_same_dataset_internal_validation_not_external_biology": true,
+    "replication_pass_does_not_authorize_left_Tm4_writeback": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "T4_T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}
