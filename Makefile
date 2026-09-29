@@ -506,6 +506,11 @@ v7-preregister-t4-source-pair:
 
 .PHONY: v7-preregister-t4-source-pair
 
+v7-audit-t4-source-pair:
+	.venv/bin/autodrive-fly v7-audit-t4-source-pair
+
+.PHONY: v7-audit-t4-source-pair
+
 v7-audit-fig3-source-kernel-alignment-failure:
 	.venv/bin/autodrive-fly v7-audit-fig3-source-kernel-alignment-failure
 

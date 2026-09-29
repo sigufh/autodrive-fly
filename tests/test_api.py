@@ -612,6 +612,19 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T4_source_LOO_any_complete_direction_polarity_condition"] is False
     assert boundaries["T4_source_LOO_has_ordered_bilateral_absent_from_controls"] is True
     assert boundaries["T4_source_LOO_source_removal_authorized"] is False
+    assert boundaries["T4_source_pair_summary"]["Tm3_x_C3"] == {
+        "fast_source": "Tm3",
+        "delayed_source": "C3",
+        "valid_target_count": 6749,
+        "ordered_maximum_direction_pass_count": 7,
+        "ordered_maximum_polarity_pass_count": 7,
+        "control_maximum_direction_pass_count": 2,
+        "ordered_minus_max_control_direction_pass_count": 5,
+        "ordered_bilateral_direction_subtypes": ["a", "b", "c"],
+        "control_bilateral_direction_subtypes": ["a"],
+    }
+    assert boundaries["T4_source_pair_any_complete_direction_polarity_condition"] is False
+    assert boundaries["T4_source_pair_candidate_authorized"] is False
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T4_author_minmax_formula_reproduced"] is True

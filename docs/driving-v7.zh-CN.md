@@ -2556,6 +2556,12 @@ crossfit axis、刺激、阈值和分母。drop Mi1 的 ordered positive-peak �
 四种删源均未同时通过 8/8 direction 与 8/8 polarity。因此这些结果只定位各源贡献，
 不授权删除任何生物输入，也不选择新模型。详见 `artifacts/v7-t4-source-loo.json`。
 
+最后按预注册的完整笛卡尔积拆分四个 fast×delayed 对。`Mi1×Mi4`、`Mi1×C3`、
+`Tm3×Mi4` 的 ordered direction 最大通过数分别只有 2/8、4/8、1/8。`Tm3×C3`
+达到 ordered direction/polarity 7/8 与 bilateral `a/b/c`，但 temporal-shuffle
+control 同样出现 bilateral `a`。没有任何 pair 同时达到 8/8 direction 与 8/8
+polarity，因此不选择或授权任何 pair candidate。详见 `artifacts/v7-t4-source-pair.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

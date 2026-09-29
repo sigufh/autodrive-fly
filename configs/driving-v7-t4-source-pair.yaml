@@ -10,7 +10,7 @@ synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
 conductance_protocol: configs/driving-v7-t4-conductance.yaml
 stage1_protocol: configs/driving-v7-stage1-nested.yaml
 scoring_config: configs/driving-v7-stage1-scoring.yaml
-pair_outputs_observed: false
+pair_outputs_observed: true
 boundary:
   preregistered_before_pair_outputs: true
   descriptive_pair_decomposition_only: true

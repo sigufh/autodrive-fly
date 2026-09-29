@@ -442,6 +442,9 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "T4_source_LOO_any_complete_direction_polarity_condition",
             "T4_source_LOO_has_ordered_bilateral_absent_from_controls",
             "T4_source_LOO_source_removal_authorized",
+            "T4_source_pair_summary",
+            "T4_source_pair_any_complete_direction_polarity_condition",
+            "T4_source_pair_candidate_authorized",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
@@ -2154,6 +2157,30 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is True
     )
     assert visual["observations"]["T4_source_LOO_source_removal_authorized"] is False
+    source_pairs = visual["observations"]["T4_source_pair_summary"]
+    assert source_pairs["Mi1_x_Mi4"]["ordered_maximum_direction_pass_count"] == 2
+    assert source_pairs["Mi1_x_C3"]["ordered_bilateral_direction_subtypes"] == [
+        "a"
+    ]
+    assert source_pairs["Tm3_x_Mi4"]["ordered_maximum_direction_pass_count"] == 1
+    assert source_pairs["Tm3_x_C3"] == {
+        "fast_source": "Tm3",
+        "delayed_source": "C3",
+        "valid_target_count": 6749,
+        "ordered_maximum_direction_pass_count": 7,
+        "ordered_maximum_polarity_pass_count": 7,
+        "control_maximum_direction_pass_count": 2,
+        "ordered_minus_max_control_direction_pass_count": 5,
+        "ordered_bilateral_direction_subtypes": ["a", "b", "c"],
+        "control_bilateral_direction_subtypes": ["a"],
+    }
+    assert (
+        visual["observations"][
+            "T4_source_pair_any_complete_direction_polarity_condition"
+        ]
+        is False
+    )
+    assert visual["observations"]["T4_source_pair_candidate_authorized"] is False
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

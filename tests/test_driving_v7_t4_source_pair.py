@@ -19,7 +19,7 @@ def test_T4_source_pair_audit_is_preregistered_and_hash_bound() -> None:
     for path, digest in report["protocol"]["dependencies_sha256"].items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
     assert report["protocol"]["preregistration_commit"] == (
-        "9581fe0"
+        "9581fe0038cc10629459ede209b03d71702cdd00"
     )
     assert report["protocol"]["parameter_fit"] is False
     assert report["protocol"]["target_activity_injection"] is False
@@ -48,6 +48,52 @@ def test_T4_source_pair_grid_and_denominators_are_preserved() -> None:
 
 def test_T4_source_pair_audit_never_authorizes_selection_or_downstream_stage() -> None:
     report = json.loads(REPORT.read_text())
+    assert report["pair_summary"] == {
+        "Mi1_x_Mi4": {
+            "fast_source": "Mi1",
+            "delayed_source": "Mi4",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 2,
+            "ordered_maximum_polarity_pass_count": 0,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": 0,
+            "ordered_bilateral_direction_subtypes": [],
+            "control_bilateral_direction_subtypes": [],
+        },
+        "Mi1_x_C3": {
+            "fast_source": "Mi1",
+            "delayed_source": "C3",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 4,
+            "ordered_maximum_polarity_pass_count": 1,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": 2,
+            "ordered_bilateral_direction_subtypes": ["a"],
+            "control_bilateral_direction_subtypes": ["a"],
+        },
+        "Tm3_x_Mi4": {
+            "fast_source": "Tm3",
+            "delayed_source": "Mi4",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 1,
+            "ordered_maximum_polarity_pass_count": 4,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": -1,
+            "ordered_bilateral_direction_subtypes": [],
+            "control_bilateral_direction_subtypes": [],
+        },
+        "Tm3_x_C3": {
+            "fast_source": "Tm3",
+            "delayed_source": "C3",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 7,
+            "ordered_maximum_polarity_pass_count": 7,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": 5,
+            "ordered_bilateral_direction_subtypes": ["a", "b", "c"],
+            "control_bilateral_direction_subtypes": ["a"],
+        },
+    }
     assert report["pair_evaluated"] is True
     assert report["descriptive_pair_decomposition_only"] is True
     assert report["any_pair_satisfies_all_eight_direction_and_polarity_populations"] is False

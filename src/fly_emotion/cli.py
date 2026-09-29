@@ -369,6 +369,7 @@ from .driving.v7_t4_source_loo import evaluate_v7_t4_source_loo
 from .driving.v7_t4_source_loo_preregistration import (
     evaluate_v7_t4_source_loo_preregistration,
 )
+from .driving.v7_t4_source_pair import evaluate_v7_t4_source_pair
 from .driving.v7_t4_source_pair_preregistration import (
     evaluate_v7_t4_source_pair_preregistration,
 )
@@ -753,6 +754,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
     subparsers.add_parser("v7-preregister-t4-source-loo")
     subparsers.add_parser("v7-preregister-t4-source-pair")
+    subparsers.add_parser("v7-audit-t4-source-pair")
     subparsers.add_parser("v7-audit-t4-source-loo")
     subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-t4-individual-split-1khz")
@@ -2010,6 +2012,14 @@ def main() -> None:
     if args.command == "v7-preregister-t4-source-pair":
         report = evaluate_v7_t4_source_pair_preregistration(root)
         target = root / "artifacts/v7-t4-source-pair-preregistration.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t4-source-pair":
+        report = evaluate_v7_t4_source_pair(root)
+        target = root / "artifacts/v7-t4-source-pair.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

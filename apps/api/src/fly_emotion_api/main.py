@@ -1197,6 +1197,13 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_source_LOO_source_removal_authorized": visual[
                     "T4_source_LOO_source_removal_authorized"
                 ],
+                "T4_source_pair_summary": visual["T4_source_pair_summary"],
+                "T4_source_pair_any_complete_direction_polarity_condition": visual[
+                    "T4_source_pair_any_complete_direction_polarity_condition"
+                ],
+                "T4_source_pair_candidate_authorized": visual[
+                    "T4_source_pair_candidate_authorized"
+                ],
                 "T4_source_recording_level_body_assignment": visual[
                     "T4_source_recording_level_body_assignment"
                 ],

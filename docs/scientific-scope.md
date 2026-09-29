@@ -898,6 +898,14 @@ passes all eight direction and polarity populations. These are diagnostic source
 contributions, not evidence to delete a biological input or select a new model
 (`artifacts/v7-t4-source-loo.json`).
 
+The complete preregistered fast-by-delayed Cartesian product was then evaluated
+without the conductance base. `Mi1×Mi4`, `Mi1×C3`, and `Tm3×Mi4` reach at most
+2/8, 4/8, and 1/8 ordered direction populations. `Tm3×C3` reaches 7/8 ordered
+direction and 7/8 polarity populations with bilateral `a/b/c`, but its temporal
+shuffle control also produces bilateral `a`. No pair reaches 8/8 direction and
+8/8 polarity, and no pair is selected or authorized as a functional candidate
+(`artifacts/v7-t4-source-pair.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

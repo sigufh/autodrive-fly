@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "4d40624242f75bd41981725fd6eb10eeb066e111f921c2bebe2a6c853c4ea9e3",
-      "src/fly_emotion/driving/v7_goal_audit.py": "468abd9961a6fcdc2f40c2118eb37580984f93ec2a34156d5c6e7d33d605e279",
+      "configs/driving-v7-goal-audit.yaml": "bf5979fd0d30262c67bd5c15398b2e84bdd4c966dae83c2afccd61dd56f08a6e",
+      "src/fly_emotion/driving/v7_goal_audit.py": "3381020ed7e32cad1c070c8ef1dab1c1984bf16b1187a8fd7c8beaa1f793afa9",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -71,6 +71,7 @@
       "artifacts/v7-t4-frozen-candidate-family-audit.json": "e6f2ade65b99b4517f1e14447017a1c4402b3b1b2c3f0c4ad564b0ef7532dc5b",
       "artifacts/v7-t4-crossfit-base-only-ablation.json": "d4c77299bc16f227f70e86b078919ceb9d7523f532a2119ef4ffa7d8c88eea15",
       "artifacts/v7-t4-source-loo.json": "1ce56497862e2590b91eacebafb065f25b5d76df55297618b88a432cd2e0fd33",
+      "artifacts/v7-t4-source-pair.json": "33f150faab21e86537e032a39dbac9359b890afd348f9018a91fbfcbb7d90747",
       "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t4-temporal-shuffle-input-energy-audit.json": "4df2b4f85cc072b648779f6f5c07ae9870ec553938fbe2a08d9627d217aeea05",
@@ -175,7 +176,7 @@
       "artifacts/v7-t5-source-transfer-synthesis-audit.json": "dc87014aa87e56cf6efc30fb102e1afab8667288cf32a1dad05a60f485dbfd7a",
       "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
       "artifacts/v7-controlled-stimulus-angular-grid.json": "c4fbbee972f67d22eef01ce2b72c26b1b86f53b42313afcfa9430ae41e80f5b7",
-      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "81e25d2612958db6afa8d3f5a6b54090ebc2247f12d428647eda46f0e5f9905c",
+      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "f30ed02d0ab9aac984de24a44e93181548930836561d982a16cab8e55453f62a",
       "artifacts/v7-vertical-angular-coordinate-audit.json": "f130521f435002b08f30988c557cb1edba8f36805a08da1d3465ab1343a169fc",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "e67d0caae165fac6325895faf65dd33e5da00869882a30f856bbf23ca4bf1c06",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
@@ -209,9 +210,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "ce07101c4d835d61e84b602c46f4b6c0a70f2ea266d6d9146e112588a0983860",
-      "apps/web/src/components/DrivingPanel.tsx": "8beeb79ed4d07ced4c0f8d4d871782141753ce3969845f055845e0caf670dab0",
-      "apps/web/src/types.ts": "f2e628ce3aad1feb5c74765d81dd0a407bd91262a773d5afc0a2b1ad0c909d7c",
+      "apps/api/src/fly_emotion_api/main.py": "ed0645133c431300c39dd830db4b6dc96fd8e28d869a36a779707635b10c3713",
+      "apps/web/src/components/DrivingPanel.tsx": "e2e780857dcf2ed971f40e03d807d5773201b76c55675c588f0dcb6777367244",
+      "apps/web/src/types.ts": "2328305ff626986a6e7c8a5bdb2d717a0ccdbcf267956b79a9755d9b92d7b67e",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -287,6 +288,7 @@
         "artifacts/v7-t4-frozen-candidate-family-audit.json",
         "artifacts/v7-t4-crossfit-base-only-ablation.json",
         "artifacts/v7-t4-source-loo.json",
+        "artifacts/v7-t4-source-pair.json",
         "artifacts/v7-t4-synapse-centered-precheck.json",
         "artifacts/v7-t4-synapse-microstep-precheck.json",
         "artifacts/v7-source-type-temporal-identifiability.json",
@@ -1914,6 +1916,64 @@
         "T4_source_LOO_any_complete_direction_polarity_condition": false,
         "T4_source_LOO_has_ordered_bilateral_absent_from_controls": true,
         "T4_source_LOO_source_removal_authorized": false,
+        "T4_source_pair_summary": {
+          "Mi1_x_Mi4": {
+            "fast_source": "Mi1",
+            "delayed_source": "Mi4",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 2,
+            "ordered_maximum_polarity_pass_count": 0,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": 0,
+            "ordered_bilateral_direction_subtypes": [],
+            "control_bilateral_direction_subtypes": []
+          },
+          "Mi1_x_C3": {
+            "fast_source": "Mi1",
+            "delayed_source": "C3",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 4,
+            "ordered_maximum_polarity_pass_count": 1,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": 2,
+            "ordered_bilateral_direction_subtypes": [
+              "a"
+            ],
+            "control_bilateral_direction_subtypes": [
+              "a"
+            ]
+          },
+          "Tm3_x_Mi4": {
+            "fast_source": "Tm3",
+            "delayed_source": "Mi4",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 1,
+            "ordered_maximum_polarity_pass_count": 4,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": -1,
+            "ordered_bilateral_direction_subtypes": [],
+            "control_bilateral_direction_subtypes": []
+          },
+          "Tm3_x_C3": {
+            "fast_source": "Tm3",
+            "delayed_source": "C3",
+            "valid_target_count": 6749,
+            "ordered_maximum_direction_pass_count": 7,
+            "ordered_maximum_polarity_pass_count": 7,
+            "control_maximum_direction_pass_count": 2,
+            "ordered_minus_max_control_direction_pass_count": 5,
+            "ordered_bilateral_direction_subtypes": [
+              "a",
+              "b",
+              "c"
+            ],
+            "control_bilateral_direction_subtypes": [
+              "a"
+            ]
+          }
+        },
+        "T4_source_pair_any_complete_direction_polarity_condition": false,
+        "T4_source_pair_candidate_authorized": false,
         "T4_synapse_centered_direction_pass_counts": [
           2,
           2,
@@ -2921,7 +2981,10 @@
           "T4_source_LOO_condition_summary",
           "T4_source_LOO_any_complete_direction_polarity_condition",
           "T4_source_LOO_has_ordered_bilateral_absent_from_controls",
-          "T4_source_LOO_source_removal_authorized"
+          "T4_source_LOO_source_removal_authorized",
+          "T4_source_pair_summary",
+          "T4_source_pair_any_complete_direction_polarity_condition",
+          "T4_source_pair_candidate_authorized"
         ]
       }
     }
