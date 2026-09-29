@@ -1,0 +1,51 @@
+version: 1
+name: v7-t4-source-pair-preregistration
+observed_on: "2026-09-29"
+frozen_LOO_commit: 2acd1ed8b9b77295ec017bd54b365a44273c53e1
+frozen_inputs:
+  - path: artifacts/v7-t4-source-loo.json
+    sha256: 1ce56497862e2590b91eacebafb065f25b5d76df55297618b88a432cd2e0fd33
+  - path: artifacts/v7-t4-source-loo-preregistration.json
+    sha256: ede38392ce650b4c21da6c35a09db10c2f9dac2b0c115ec7a36519c062efe622
+  - path: artifacts/v7-t4-crossfit-sequence-identifiability.json
+    sha256: 41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60
+  - path: configs/driving-v7-t4-synapse-crossfit-precheck.yaml
+    sha256: 68eb847e240e56e7fbdf5c409309ef169defa26b9f45417913dbe74cf806bd24
+  - path: configs/driving-v7-stage1-scoring.yaml
+    sha256: 18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275
+condition_id: S1-T01
+fast_sources: [Mi1, Tm3]
+delayed_sources: [Mi4, C3]
+pair_conditions:
+  - {name: Mi1_x_Mi4, fast: Mi1, delayed: Mi4}
+  - {name: Mi1_x_C3, fast: Mi1, delayed: C3}
+  - {name: Tm3_x_Mi4, fast: Tm3, delayed: Mi4}
+  - {name: Tm3_x_C3, fast: Tm3, delayed: C3}
+modes: [ordered, temporal_shuffle, static_sham]
+temporal_reductions: [positive_peak, signed_mean]
+temporal_shuffle_seed: 20260918
+scoring_contract:
+  source: configs/driving-v7-stage1-scoring.yaml
+  fixed_T4_population_denominator: 6861
+  valid_crossfit_target_count: 6749
+analysis_outputs:
+  - direction_passing_populations
+  - polarity_passing_populations
+  - bilateral_direction_subtypes
+  - ordered_minus_max_control_direction_pass_count
+interpretation:
+  descriptive_pair_decomposition_only: true
+  no_new_acceptance_threshold: true
+  no_pair_candidate_selection: true
+  no_source_removal_authorization: true
+boundary:
+  preregistered_before_pair_outputs: true
+  pair_conditions_are_complete_fast_by_delayed_cartesian_product: true
+  each_condition_retains_only_one_fast_and_one_delayed_source_type: true
+  conductance_base_excluded: true
+  labels_used_only_for_posthoc_scoring: true
+  no_direction_or_subtype_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true
