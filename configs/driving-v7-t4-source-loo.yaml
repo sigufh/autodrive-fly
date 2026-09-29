@@ -1,0 +1,25 @@
+version: 1
+name: v7-t4-source-leave-one-out-audit
+observed_on: "2026-09-29"
+preregistration_evidence: artifacts/v7-t4-source-loo-preregistration.json
+preregistration_commit: d885110da55fed14bc4599dae81e777213b99363
+preregistration_sha256: ede38392ce650b4c21da6c35a09db10c2f9dac2b0c115ec7a36519c062efe622
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t4-synapse-crossfit-axis-audit.yaml
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+boundary:
+  preregistered_before_ablation_outputs: true
+  descriptive_source_sequence_ablation_only: true
+  intact_result_must_match_frozen_evidence: true
+  conductance_base_excluded: true
+  no_source_removal_authorization: true
+  no_candidate_selection: true
+  no_new_acceptance_threshold: true
+  no_direction_or_subtype_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

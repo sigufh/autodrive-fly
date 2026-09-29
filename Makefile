@@ -496,6 +496,11 @@ v7-preregister-t4-source-loo:
 
 .PHONY: v7-preregister-t4-source-loo
 
+v7-audit-t4-source-loo:
+	.venv/bin/autodrive-fly v7-audit-t4-source-loo
+
+.PHONY: v7-audit-t4-source-loo
+
 v7-audit-fig3-source-kernel-alignment-failure:
 	.venv/bin/autodrive-fly v7-audit-fig3-source-kernel-alignment-failure
 

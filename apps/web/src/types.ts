@@ -676,6 +676,10 @@ export type V7Status = {
     T4_source_sequence_only_control_maximum_direction_pass_count?: number
     T4_source_sequence_overlay_expands_bilateral_direction_passes?: boolean
     T4_source_sequence_removal_authorized?: boolean
+    T4_source_LOO_condition_summary?: Record<string, { ordered_maximum_direction_pass_count: number; ordered_maximum_polarity_pass_count: number; control_maximum_direction_pass_count: number; ordered_minus_max_control_direction_pass_count: number; ordered_bilateral_direction_subtypes: string[]; control_bilateral_direction_subtypes: string[] }>
+    T4_source_LOO_any_complete_direction_polarity_condition?: boolean
+    T4_source_LOO_has_ordered_bilateral_absent_from_controls?: boolean
+    T4_source_LOO_source_removal_authorized?: boolean
     T4_source_recording_level_body_assignment: boolean
     T4_exact_type_average_mapping_complete: boolean
     T4_author_minmax_formula_reproduced: boolean

@@ -869,6 +869,11 @@ export function DrivingPanel({ state, v7Status, v7StatusError, running, learning
           T4 base/source 分解：gain=0 的 conductance base 在 ordered 下通过 {v7Status.evidence_boundaries.T4_base_only_ordered_direction_passing_populations?.join('/')}，而 shuffle/static 最大通过数为 {v7Status.evidence_boundaries.T4_base_only_control_maximum_direction_pass_count}；source-sequence-only controls 最大通过数为 {v7Status.evidence_boundaries.T4_source_sequence_only_control_maximum_direction_pass_count}，当前 overlay {v7Status.evidence_boundaries.T4_source_sequence_overlay_expands_bilateral_direction_passes ? '扩展了' : '未扩展'} bilateral direction。该消融不授权删除 source sequence（{v7Status.evidence_boundaries.T4_source_sequence_removal_authorized ? '已授权' : '未授权'}）。
         </small>
       )}
+      {v7Status?.evidence_boundaries.T4_source_LOO_condition_summary !== undefined && (
+        <small className="v7-evidence-note">
+          T4 source LOO：drop Mi1 的 ordered direction/polarity 最大通过数为 {v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi1.ordered_maximum_direction_pass_count}/{v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi1.ordered_maximum_polarity_pass_count}，bilateral {v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi1.ordered_bilateral_direction_subtypes.join('/') || '无'}；drop Mi4 为 {v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi4.ordered_maximum_direction_pass_count}/{v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi4.ordered_maximum_polarity_pass_count}，ordered/control bilateral {v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi4.ordered_bilateral_direction_subtypes.join('/') || '无'}/{v7Status.evidence_boundaries.T4_source_LOO_condition_summary.drop_Mi4.control_bilateral_direction_subtypes.join('/') || '无'}。没有删源条件同时通过 8/8 direction 与 polarity；删源{v7Status.evidence_boundaries.T4_source_LOO_source_removal_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
       {v7Status?.evidence_boundaries.C2C3_version_of_record_DOI !== undefined && (
         <small className="v7-evidence-note">
           C2/C3 Version of Record（

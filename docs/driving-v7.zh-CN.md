@@ -2549,6 +2549,13 @@ additive gain，不改方向/亚型标签，也不排除机制上真正不同的
 这个消融只用于定位，不证明生物机制，也不授权删除 source sequence。详见
 `artifacts/v7-t4-crossfit-base-only-ablation.json`。
 
+再按预注册协议对 source-sequence 做 Mi1、Tm3、Mi4、C3 逐类 leave-one-out，保持同一
+crossfit axis、刺激、阈值和分母。drop Mi1 的 ordered positive-peak 出现 bilateral `b`，
+但 direction/polarity 仅通过 3/8 与 6/8；drop Mi4 达到 direction 5/8 和 bilateral
+`a/c`，但 polarity 仅 3/8，而且 temporal-shuffle control 同样出现 bilateral `a`。
+四种删源均未同时通过 8/8 direction 与 8/8 polarity。因此这些结果只定位各源贡献，
+不授权删除任何生物输入，也不选择新模型。详见 `artifacts/v7-t4-source-loo.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

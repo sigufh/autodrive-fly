@@ -888,6 +888,16 @@ This ablation is diagnostic only: it neither proves a biological mechanism nor
 authorizes removal of the source sequence
 (`artifacts/v7-t4-crossfit-base-only-ablation.json`).
 
+A separately preregistered source-sequence leave-one-out diagnostic then zeroed
+the Mi1, Tm3, Mi4, or C3 columns one type at a time while preserving the same
+cross-fit axes, stimuli, thresholds and denominators. Dropping Mi1 produces an
+ordered bilateral `b` response, but reaches only 3/8 direction and 6/8 polarity
+populations. Dropping Mi4 reaches 5/8 direction and bilateral `a/c`, but only 3/8
+polarity and its temporal-shuffle control also passes bilateral `a`. No ablation
+passes all eight direction and polarity populations. These are diagnostic source
+contributions, not evidence to delete a biological input or select a new model
+(`artifacts/v7-t4-source-loo.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

@@ -438,6 +438,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "T4_source_sequence_only_control_maximum_direction_pass_count",
             "T4_source_sequence_overlay_expands_bilateral_direction_passes",
             "T4_source_sequence_removal_authorized",
+            "T4_source_LOO_condition_summary",
+            "T4_source_LOO_any_complete_direction_polarity_condition",
+            "T4_source_LOO_has_ordered_bilateral_absent_from_controls",
+            "T4_source_LOO_source_removal_authorized",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
@@ -2120,6 +2124,36 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_source_sequence_removal_authorized"] is False
+    source_loo = visual["observations"]["T4_source_LOO_condition_summary"]
+    assert source_loo["drop_Mi1"] == {
+        "ordered_maximum_direction_pass_count": 3,
+        "ordered_maximum_polarity_pass_count": 6,
+        "control_maximum_direction_pass_count": 2,
+        "ordered_minus_max_control_direction_pass_count": 1,
+        "ordered_bilateral_direction_subtypes": ["b"],
+        "control_bilateral_direction_subtypes": [],
+    }
+    assert source_loo["drop_Mi4"] == {
+        "ordered_maximum_direction_pass_count": 5,
+        "ordered_maximum_polarity_pass_count": 3,
+        "control_maximum_direction_pass_count": 2,
+        "ordered_minus_max_control_direction_pass_count": 3,
+        "ordered_bilateral_direction_subtypes": ["a", "c"],
+        "control_bilateral_direction_subtypes": ["a"],
+    }
+    assert (
+        visual["observations"][
+            "T4_source_LOO_any_complete_direction_polarity_condition"
+        ]
+        is False
+    )
+    assert (
+        visual["observations"][
+            "T4_source_LOO_has_ordered_bilateral_absent_from_controls"
+        ]
+        is True
+    )
+    assert visual["observations"]["T4_source_LOO_source_removal_authorized"] is False
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

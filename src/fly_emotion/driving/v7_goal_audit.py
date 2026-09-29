@@ -97,6 +97,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     ]
     t4_frozen_candidate_family_audit = reports["t4_frozen_candidate_family_audit"]
     t4_crossfit_base_only_ablation = reports["t4_crossfit_base_only_ablation"]
+    t4_source_loo = reports["t4_source_loo"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_temporal_shuffle_input_energy_audit = reports[
@@ -413,6 +414,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_crossfit_retinal_symmetry_audit"],
                 config["evidence"]["t4_frozen_candidate_family_audit"],
                 config["evidence"]["t4_crossfit_base_only_ablation"],
+                config["evidence"]["t4_source_loo"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -3480,6 +3482,22 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "authorize_source_sequence_removal"
                     ]
                 ),
+                "T4_source_LOO_condition_summary": t4_source_loo[
+                    "condition_summary"
+                ],
+                "T4_source_LOO_any_complete_direction_polarity_condition": (
+                    t4_source_loo[
+                        "any_source_removal_satisfies_all_eight_direction_and_polarity_populations"
+                    ]
+                ),
+                "T4_source_LOO_has_ordered_bilateral_absent_from_controls": (
+                    t4_source_loo[
+                        "any_source_removal_has_ordered_bilateral_subtype_absent_from_controls"
+                    ]
+                ),
+                "T4_source_LOO_source_removal_authorized": t4_source_loo[
+                    "authorize_source_removal"
+                ],
                 "T4_synapse_centered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t4_synapse_centered_precheck["ordered_candidates"]
@@ -4895,6 +4913,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_source_sequence_only_control_maximum_direction_pass_count",
                     "T4_source_sequence_overlay_expands_bilateral_direction_passes",
                     "T4_source_sequence_removal_authorized",
+                    "T4_source_LOO_condition_summary",
+                    "T4_source_LOO_any_complete_direction_polarity_condition",
+                    "T4_source_LOO_has_ordered_bilateral_absent_from_controls",
+                    "T4_source_LOO_source_removal_authorized",
                 ],
             },
         },

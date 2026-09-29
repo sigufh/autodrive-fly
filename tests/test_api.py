@@ -598,6 +598,20 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
         is False
     )
     assert boundaries["T4_source_sequence_removal_authorized"] is False
+    assert boundaries["T4_source_LOO_condition_summary"]["drop_Mi1"][
+        "ordered_bilateral_direction_subtypes"
+    ] == ["b"]
+    assert boundaries["T4_source_LOO_condition_summary"]["drop_Mi4"] == {
+        "ordered_maximum_direction_pass_count": 5,
+        "ordered_maximum_polarity_pass_count": 3,
+        "control_maximum_direction_pass_count": 2,
+        "ordered_minus_max_control_direction_pass_count": 3,
+        "ordered_bilateral_direction_subtypes": ["a", "c"],
+        "control_bilateral_direction_subtypes": ["a"],
+    }
+    assert boundaries["T4_source_LOO_any_complete_direction_polarity_condition"] is False
+    assert boundaries["T4_source_LOO_has_ordered_bilateral_absent_from_controls"] is True
+    assert boundaries["T4_source_LOO_source_removal_authorized"] is False
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T4_author_minmax_formula_reproduced"] is True
