@@ -1,0 +1,50 @@
+version: 1
+name: v7-t4-source-leave-one-out-preregistration
+observed_on: "2026-09-29"
+frozen_diagnostic_commit: eadb28847f6e8714d77eaa674c7f9e922c2cb84d
+frozen_inputs:
+  - path: artifacts/v7-t4-crossfit-base-only-ablation.json
+    sha256: d4c77299bc16f227f70e86b078919ceb9d7523f532a2119ef4ffa7d8c88eea15
+  - path: artifacts/v7-t4-frozen-candidate-family-audit.json
+    sha256: e6f2ade65b99b4517f1e14447017a1c4402b3b1b2c3f0c4ad564b0ef7532dc5b
+  - path: artifacts/v7-t4-crossfit-sequence-identifiability.json
+    sha256: 41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60
+  - path: configs/driving-v7-t4-synapse-crossfit-precheck.yaml
+    sha256: 68eb847e240e56e7fbdf5c409309ef169defa26b9f45417913dbe74cf806bd24
+  - path: configs/driving-v7-stage1-scoring.yaml
+    sha256: 18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275
+condition_id: S1-T01
+source_types: [Mi1, Tm3, Mi4, C3]
+source_groups:
+  fast: [Mi1, Tm3]
+  delayed: [Mi4, C3]
+ablation_conditions: [intact, drop_Mi1, drop_Tm3, drop_Mi4, drop_C3]
+modes: [ordered, temporal_shuffle, static_sham]
+temporal_reductions: [positive_peak, signed_mean]
+temporal_shuffle_seed: 20260918
+scoring_contract:
+  source: configs/driving-v7-stage1-scoring.yaml
+  fixed_T4_population_denominator: 6861
+  valid_crossfit_target_count: 6749
+analysis_outputs:
+  - direction_passing_populations
+  - polarity_passing_populations
+  - bilateral_direction_subtypes
+  - per_population_direction_median_signed_contrast
+  - per_population_direction_positive_cell_fraction
+  - ordered_minus_max_control_direction_pass_count
+interpretation:
+  descriptive_ablation_only: true
+  no_new_acceptance_threshold: true
+  no_source_removal_authorization: true
+  no_candidate_selection: true
+boundary:
+  preregistered_before_ablation_outputs: true
+  source_type_ablation_zeros_only_that_types_source_sequence_columns: true
+  conductance_base_excluded: true
+  labels_used_only_for_posthoc_scoring: true
+  no_direction_or_subtype_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

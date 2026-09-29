@@ -365,6 +365,9 @@ from .driving.v7_t4_source_dynamics_transfer_audit import (
 from .driving.v7_t4_source_identity_readiness_audit import (
     evaluate_v7_t4_source_identity_readiness_audit,
 )
+from .driving.v7_t4_source_loo_preregistration import (
+    evaluate_v7_t4_source_loo_preregistration,
+)
 from .driving.v7_t4_source_pool_camera_frame_discovery import (
     evaluate_v7_t4_source_pool_camera_frame_discovery,
 )
@@ -744,6 +747,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-t4-state-unit-mapping")
     subparsers.add_parser("v7-audit-edmond-fig3-retrieval")
     subparsers.add_parser("v7-audit-t4-source-identity-readiness")
+    subparsers.add_parser("v7-preregister-t4-source-loo")
     subparsers.add_parser("v7-audit-t4-individual-split")
     subparsers.add_parser("v7-audit-t4-individual-split-1khz")
     subparsers.add_parser("v7-audit-t4-recording-fields")
@@ -1984,6 +1988,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-crossfit-base-only":
         report = evaluate_v7_t4_crossfit_base_only_ablation(root)
         target = root / "artifacts/v7-t4-crossfit-base-only-ablation.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-preregister-t4-source-loo":
+        report = evaluate_v7_t4_source_loo_preregistration(root)
+        target = root / "artifacts/v7-t4-source-loo-preregistration.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
