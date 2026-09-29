@@ -144,6 +144,11 @@ test('renders hash-verified offline v7 gates without presenting v7 as runtime', 
       T4_exact_mirror_retina_rescues_ordered_direction: false,
       T4_frozen_candidate_grid_failed: true,
       T4_post_hoc_additive_gain_expansion_authorized: false,
+      T4_base_only_ordered_direction_passing_populations: ['T4a_R', 'T4c_R'],
+      T4_base_only_control_maximum_direction_pass_count: 0,
+      T4_source_sequence_only_control_maximum_direction_pass_count: 3,
+      T4_source_sequence_overlay_expands_bilateral_direction_passes: false,
+      T4_source_sequence_removal_authorized: false,
       T4_source_recording_level_body_assignment: false,
       T4_exact_type_average_mapping_complete: true,
       T4_author_minmax_formula_reproduced: true,
@@ -218,6 +223,7 @@ test('renders hash-verified offline v7 gates without presenting v7 as runtime', 
   expect(screen.getByText(/离线二维工程角栅格：完整 · 3.048°\/pixel · vertical FOV 70.096°/)).toBeInTheDocument()
   expect(screen.getByText(/T4 source→MaleCNS：exact_type_average 四源完整/)).toBeInTheDocument()
   expect(screen.getByText('T4 冻结候选家族：4 类 / 32 个既有 candidate；方向通过频次 T4a_R/T4c_R=32/29，其余群体均为 0。bilateral subtype 全部缺失；精确镜像 retina 未救回方向门；继续事后扩大 additive gain 未授权。')).toBeInTheDocument()
+  expect(screen.getByText('T4 base/source 分解：gain=0 的 conductance base 在 ordered 下通过 T4a_R/T4c_R，而 shuffle/static 最大通过数为 0；source-sequence-only controls 最大通过数为 3，当前 overlay 未扩展 bilateral direction。该消融不授权删除 source sequence（未授权）。')).toBeInTheDocument()
   const stateMapping = screen.getByText((_content, element) => element?.tagName === 'SMALL' && Boolean(element.textContent?.includes('held-out 越界率 Mi1/Tm3/Mi4/C3 = 13.0%/17.5%/28.7%/18.8%')))
   expect(stateMapping).toHaveTextContent('T4 mV→state：作者全 cohort min–max 已复现')
   expect(stateMapping).toHaveTextContent('与 v7 signed-tanh 状态语义不一致，映射门未通过')

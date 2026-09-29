@@ -1,0 +1,30 @@
+version: 1
+name: v7-t4-crossfit-base-only-ablation
+observed_on: "2026-09-29"
+frozen_candidate_family_evidence: artifacts/v7-t4-frozen-candidate-family-audit.json
+source_sequence_evidence: artifacts/v7-t4-crossfit-sequence-identifiability.json
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+crossfit_axis_protocol: configs/driving-v7-t4-synapse-crossfit-axis-audit.yaml
+synapse_spatial_protocol: configs/driving-v7-synapse-spatial-audit.yaml
+conductance_protocol: configs/driving-v7-t4-conductance.yaml
+stage1_protocol: configs/driving-v7-stage1-nested.yaml
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+condition_id: S1-T01
+source_groups:
+  fast: [Mi1, Tm3]
+  delayed: [Mi4, C3]
+modes: [ordered, temporal_shuffle, static_sham]
+temporal_reductions: [positive_peak, signed_mean]
+source_sequence_gain: 0.0
+temporal_shuffle_seed: 20260918
+boundary:
+  post_failure_diagnostic_only: true
+  base_only_is_not_a_new_candidate: true
+  source_sequence_gain_fixed_to_zero: true
+  no_parameter_fit: true
+  no_threshold_change: true
+  no_direction_or_subtype_label_change: true
+  target_activity_injection: false
+  calibration_evaluated: false
+  runtime_modified: false
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

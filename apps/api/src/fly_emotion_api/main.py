@@ -1170,6 +1170,21 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_post_hoc_additive_gain_expansion_authorized": visual[
                     "T4_post_hoc_additive_gain_expansion_authorized"
                 ],
+                "T4_base_only_ordered_direction_passing_populations": visual[
+                    "T4_base_only_ordered_direction_passing_populations"
+                ],
+                "T4_base_only_control_maximum_direction_pass_count": visual[
+                    "T4_base_only_control_maximum_direction_pass_count"
+                ],
+                "T4_source_sequence_only_control_maximum_direction_pass_count": visual[
+                    "T4_source_sequence_only_control_maximum_direction_pass_count"
+                ],
+                "T4_source_sequence_overlay_expands_bilateral_direction_passes": visual[
+                    "T4_source_sequence_overlay_expands_bilateral_direction_passes"
+                ],
+                "T4_source_sequence_removal_authorized": visual[
+                    "T4_source_sequence_removal_authorized"
+                ],
                 "T4_source_recording_level_body_assignment": visual[
                     "T4_source_recording_level_body_assignment"
                 ],

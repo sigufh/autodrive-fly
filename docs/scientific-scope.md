@@ -875,6 +875,19 @@ authorized. This conclusion is limited to the frozen grid and does not alter
 direction labels or exclude a genuinely different causal mechanism
 (`artifacts/v7-t4-frozen-candidate-family-audit.json`).
 
+A zero-gain ablation then isolated the existing conductance target state from the
+cross-fit source-sequence overlay under the same S1-T01 stimuli, thresholds and
+fixed 6,861-cell denominator. The base alone reproduces the dominant ordered
+pass set (`T4a_R`, `T4c_R`) and passes all eight polarity populations, while its
+temporal-shuffle and static-sham direction pass maxima are both zero. In contrast,
+the source-sequence-only diagnostic passes `T4c_R` and `T4d_L` for ordered input
+but reaches as many as three direction populations in a control. At the Boolean
+gate level, the stable unilateral pattern is therefore already present in the
+conductance base and the current overlay does not create any bilateral subtype.
+This ablation is diagnostic only: it neither proves a biological mechanism nor
+authorizes removal of the source sequence
+(`artifacts/v7-t4-crossfit-base-only-ablation.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

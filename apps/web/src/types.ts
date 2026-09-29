@@ -671,6 +671,11 @@ export type V7Status = {
     T4_exact_mirror_retina_rescues_ordered_direction?: boolean
     T4_frozen_candidate_grid_failed?: boolean
     T4_post_hoc_additive_gain_expansion_authorized?: boolean
+    T4_base_only_ordered_direction_passing_populations?: string[]
+    T4_base_only_control_maximum_direction_pass_count?: number
+    T4_source_sequence_only_control_maximum_direction_pass_count?: number
+    T4_source_sequence_overlay_expands_bilateral_direction_passes?: boolean
+    T4_source_sequence_removal_authorized?: boolean
     T4_source_recording_level_body_assignment: boolean
     T4_exact_type_average_mapping_complete: boolean
     T4_author_minmax_formula_reproduced: boolean

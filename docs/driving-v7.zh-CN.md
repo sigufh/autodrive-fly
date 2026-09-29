@@ -2540,6 +2540,15 @@ direction subtype。`T4a_R` 在 32/32 候选中通过、`T4c_R` 在 29/32 中通
 additive gain，不改方向/亚型标签，也不排除机制上真正不同的新候选。详见
 `artifacts/v7-t4-frozen-candidate-family-audit.json`。
 
+随后在同一 `S1-T01`、相同阈值、相同 crossfit target axis 和固定 6,861 个 T4 分母下，
+把 source-sequence gain 严格置为 0，单独审计既有 conductance target state。base-only
+在 ordered 条件下恰好通过 `T4a_R/T4c_R`，并保持 8/8 polarity；其 temporal-shuffle
+与 static-sham 的方向通过数最大均为 0。相对地，source-sequence-only 的 ordered
+通过 `T4c_R/T4d_L`，但 control 条件下最大也会通过 3 个群体。因而在布尔 gate 层面，
+稳定的单侧模式已存在于 conductance base，当前 overlay 没有扩展出 bilateral subtype。
+这个消融只用于定位，不证明生物机制，也不授权删除 source sequence。详见
+`artifacts/v7-t4-crossfit-base-only-ablation.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

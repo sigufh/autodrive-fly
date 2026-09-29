@@ -433,6 +433,11 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "T4_exact_mirror_retina_rescues_ordered_direction",
             "T4_frozen_candidate_grid_failed",
             "T4_post_hoc_additive_gain_expansion_authorized",
+            "T4_base_only_ordered_direction_passing_populations",
+            "T4_base_only_control_maximum_direction_pass_count",
+            "T4_source_sequence_only_control_maximum_direction_pass_count",
+            "T4_source_sequence_overlay_expands_bilateral_direction_passes",
+            "T4_source_sequence_removal_authorized",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
@@ -2095,6 +2100,26 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         visual["observations"]["T4_post_hoc_additive_gain_expansion_authorized"]
         is False
     )
+    assert visual["observations"][
+        "T4_base_only_ordered_direction_passing_populations"
+    ] == ["T4a_R", "T4c_R"]
+    assert (
+        visual["observations"]["T4_base_only_control_maximum_direction_pass_count"]
+        == 0
+    )
+    assert (
+        visual["observations"][
+            "T4_source_sequence_only_control_maximum_direction_pass_count"
+        ]
+        == 3
+    )
+    assert (
+        visual["observations"][
+            "T4_source_sequence_overlay_expands_bilateral_direction_passes"
+        ]
+        is False
+    )
+    assert visual["observations"]["T4_source_sequence_removal_authorized"] is False
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

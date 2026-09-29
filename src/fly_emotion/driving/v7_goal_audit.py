@@ -96,6 +96,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
         "t4_crossfit_retinal_symmetry_audit"
     ]
     t4_frozen_candidate_family_audit = reports["t4_frozen_candidate_family_audit"]
+    t4_crossfit_base_only_ablation = reports["t4_crossfit_base_only_ablation"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_temporal_shuffle_input_energy_audit = reports[
@@ -411,6 +412,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_crossfit_sequence_identifiability"],
                 config["evidence"]["t4_crossfit_retinal_symmetry_audit"],
                 config["evidence"]["t4_frozen_candidate_family_audit"],
+                config["evidence"]["t4_crossfit_base_only_ablation"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -3453,6 +3455,31 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "authorize_post_hoc_additive_gain_expansion"
                     ]
                 ),
+                "T4_base_only_ordered_direction_passing_populations": (
+                    t4_crossfit_base_only_ablation[
+                        "ordered_direction_passing_populations"
+                    ]
+                ),
+                "T4_base_only_control_maximum_direction_pass_count": (
+                    t4_crossfit_base_only_ablation[
+                        "base_only_control_maximum_direction_pass_count"
+                    ]
+                ),
+                "T4_source_sequence_only_control_maximum_direction_pass_count": (
+                    t4_crossfit_base_only_ablation[
+                        "source_sequence_only_control_maximum_direction_pass_count"
+                    ]
+                ),
+                "T4_source_sequence_overlay_expands_bilateral_direction_passes": (
+                    t4_crossfit_base_only_ablation[
+                        "current_source_sequence_overlay_expands_bilateral_direction_passes"
+                    ]
+                ),
+                "T4_source_sequence_removal_authorized": (
+                    t4_crossfit_base_only_ablation[
+                        "authorize_source_sequence_removal"
+                    ]
+                ),
                 "T4_synapse_centered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t4_synapse_centered_precheck["ordered_candidates"]
@@ -4863,6 +4890,11 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_exact_mirror_retina_rescues_ordered_direction",
                     "T4_frozen_candidate_grid_failed",
                     "T4_post_hoc_additive_gain_expansion_authorized",
+                    "T4_base_only_ordered_direction_passing_populations",
+                    "T4_base_only_control_maximum_direction_pass_count",
+                    "T4_source_sequence_only_control_maximum_direction_pass_count",
+                    "T4_source_sequence_overlay_expands_bilateral_direction_passes",
+                    "T4_source_sequence_removal_authorized",
                 ],
             },
         },

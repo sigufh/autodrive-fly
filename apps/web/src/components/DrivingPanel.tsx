@@ -864,6 +864,11 @@ export function DrivingPanel({ state, v7Status, v7StatusError, running, learning
           T4 冻结候选家族：{v7Status.evidence_boundaries.T4_frozen_candidate_family_count} 类 / {v7Status.evidence_boundaries.T4_frozen_candidate_count} 个既有 candidate；方向通过频次 T4a_R/T4c_R={v7Status.evidence_boundaries.T4_frozen_candidate_direction_passing_population_frequency?.T4a_R}/{v7Status.evidence_boundaries.T4_frozen_candidate_direction_passing_population_frequency?.T4c_R}，其余群体均为 0。bilateral subtype {v7Status.evidence_boundaries.T4_frozen_candidate_all_lack_bilateral_direction_subtypes ? '全部缺失' : '存在'}；精确镜像 retina {v7Status.evidence_boundaries.T4_exact_mirror_retina_rescues_ordered_direction ? '救回方向门' : '未救回方向门'}；继续事后扩大 additive gain {v7Status.evidence_boundaries.T4_post_hoc_additive_gain_expansion_authorized ? '已授权' : '未授权'}。
         </small>
       )}
+      {v7Status?.evidence_boundaries.T4_base_only_control_maximum_direction_pass_count !== undefined && (
+        <small className="v7-evidence-note">
+          T4 base/source 分解：gain=0 的 conductance base 在 ordered 下通过 {v7Status.evidence_boundaries.T4_base_only_ordered_direction_passing_populations?.join('/')}，而 shuffle/static 最大通过数为 {v7Status.evidence_boundaries.T4_base_only_control_maximum_direction_pass_count}；source-sequence-only controls 最大通过数为 {v7Status.evidence_boundaries.T4_source_sequence_only_control_maximum_direction_pass_count}，当前 overlay {v7Status.evidence_boundaries.T4_source_sequence_overlay_expands_bilateral_direction_passes ? '扩展了' : '未扩展'} bilateral direction。该消融不授权删除 source sequence（{v7Status.evidence_boundaries.T4_source_sequence_removal_authorized ? '已授权' : '未授权'}）。
+        </small>
+      )}
       {v7Status?.evidence_boundaries.C2C3_version_of_record_DOI !== undefined && (
         <small className="v7-evidence-note">
           C2/C3 Version of Record（

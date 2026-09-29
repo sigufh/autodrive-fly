@@ -584,6 +584,20 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     assert boundaries["T4_exact_mirror_retina_rescues_ordered_direction"] is False
     assert boundaries["T4_frozen_candidate_grid_failed"] is True
     assert boundaries["T4_post_hoc_additive_gain_expansion_authorized"] is False
+    assert boundaries["T4_base_only_ordered_direction_passing_populations"] == [
+        "T4a_R",
+        "T4c_R",
+    ]
+    assert boundaries["T4_base_only_control_maximum_direction_pass_count"] == 0
+    assert (
+        boundaries["T4_source_sequence_only_control_maximum_direction_pass_count"]
+        == 3
+    )
+    assert (
+        boundaries["T4_source_sequence_overlay_expands_bilateral_direction_passes"]
+        is False
+    )
+    assert boundaries["T4_source_sequence_removal_authorized"] is False
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T4_author_minmax_formula_reproduced"] is True
