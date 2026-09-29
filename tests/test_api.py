@@ -625,6 +625,13 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     }
     assert boundaries["T4_source_pair_any_complete_direction_polarity_condition"] is False
     assert boundaries["T4_source_pair_candidate_authorized"] is False
+    assert boundaries["T4_source_pair_ordered_missing_populations"] == ["T4d_L"]
+    assert boundaries["T4_source_pair_control_bilateral_populations"] == [
+        "T4a_L",
+        "T4a_R",
+    ]
+    assert boundaries["T4_source_pair_ordered_control_failures_population_orthogonal"] is True
+    assert boundaries["T4_source_pair_post_hoc_T4d_L_repair_authorized"] is False
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T4_author_minmax_formula_reproduced"] is True

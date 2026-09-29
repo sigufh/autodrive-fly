@@ -1204,6 +1204,18 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_source_pair_candidate_authorized": visual[
                     "T4_source_pair_candidate_authorized"
                 ],
+                "T4_source_pair_ordered_missing_populations": visual[
+                    "T4_source_pair_ordered_missing_populations"
+                ],
+                "T4_source_pair_control_bilateral_populations": visual[
+                    "T4_source_pair_control_bilateral_populations"
+                ],
+                "T4_source_pair_ordered_control_failures_population_orthogonal": visual[
+                    "T4_source_pair_ordered_control_failures_population_orthogonal"
+                ],
+                "T4_source_pair_post_hoc_T4d_L_repair_authorized": visual[
+                    "T4_source_pair_post_hoc_T4d_L_repair_authorized"
+                ],
                 "T4_source_recording_level_body_assignment": visual[
                     "T4_source_recording_level_body_assignment"
                 ],

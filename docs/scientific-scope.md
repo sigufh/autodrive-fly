@@ -906,6 +906,14 @@ shuffle control also produces bilateral `a`. No pair reaches 8/8 direction and
 8/8 polarity, and no pair is selected or authorized as a functional candidate
 (`artifacts/v7-t4-source-pair.json`).
 
+The remaining `Tm3×C3` failures are population-orthogonal. Its ordered
+positive-peak response misses only `T4d_L` (median signed contrast 0.04787;
+positive-cell fraction 0.548 versus frozen 0.10/0.60 thresholds), whereas the
+temporal-shuffle false positive is bilateral `T4a_L/R`. A post-hoc `T4d_L` repair
+would therefore leave the control-specificity failure untouched, and ignoring
+the shuffled T4a response is not authorized
+(`artifacts/v7-t4-source-pair-failure-boundary-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

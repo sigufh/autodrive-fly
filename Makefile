@@ -511,6 +511,11 @@ v7-audit-t4-source-pair:
 
 .PHONY: v7-audit-t4-source-pair
 
+v7-audit-t4-source-pair-failure-boundary:
+	.venv/bin/autodrive-fly v7-audit-t4-source-pair-failure-boundary
+
+.PHONY: v7-audit-t4-source-pair-failure-boundary
+
 v7-audit-fig3-source-kernel-alignment-failure:
 	.venv/bin/autodrive-fly v7-audit-fig3-source-kernel-alignment-failure
 

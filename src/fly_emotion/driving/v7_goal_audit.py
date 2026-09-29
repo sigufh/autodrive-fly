@@ -99,6 +99,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_crossfit_base_only_ablation = reports["t4_crossfit_base_only_ablation"]
     t4_source_loo = reports["t4_source_loo"]
     t4_source_pair = reports["t4_source_pair"]
+    t4_source_pair_failure_boundary = reports["t4_source_pair_failure_boundary"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_temporal_shuffle_input_energy_audit = reports[
@@ -417,6 +418,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_crossfit_base_only_ablation"],
                 config["evidence"]["t4_source_loo"],
                 config["evidence"]["t4_source_pair"],
+                config["evidence"]["t4_source_pair_failure_boundary"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -3509,6 +3511,26 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 "T4_source_pair_candidate_authorized": t4_source_pair[
                     "authorize_source_pair_candidate"
                 ],
+                "T4_source_pair_ordered_missing_populations": (
+                    t4_source_pair_failure_boundary[
+                        "ordered_direction_missing_populations"
+                    ]
+                ),
+                "T4_source_pair_control_bilateral_populations": (
+                    t4_source_pair_failure_boundary[
+                        "control_bilateral_populations"
+                    ]
+                ),
+                "T4_source_pair_ordered_control_failures_population_orthogonal": (
+                    t4_source_pair_failure_boundary[
+                        "ordered_failure_and_control_failure_are_population_orthogonal"
+                    ]
+                ),
+                "T4_source_pair_post_hoc_T4d_L_repair_authorized": (
+                    t4_source_pair_failure_boundary[
+                        "authorize_post_hoc_T4d_L_repair"
+                    ]
+                ),
                 "T4_synapse_centered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t4_synapse_centered_precheck["ordered_candidates"]
@@ -4931,6 +4953,10 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_source_pair_summary",
                     "T4_source_pair_any_complete_direction_polarity_condition",
                     "T4_source_pair_candidate_authorized",
+                    "T4_source_pair_ordered_missing_populations",
+                    "T4_source_pair_control_bilateral_populations",
+                    "T4_source_pair_ordered_control_failures_population_orthogonal",
+                    "T4_source_pair_post_hoc_T4d_L_repair_authorized",
                 ],
             },
         },

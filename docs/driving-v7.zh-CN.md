@@ -2562,6 +2562,12 @@ crossfit axis、刺激、阈值和分母。drop Mi1 的 ordered positive-peak �
 control 同样出现 bilateral `a`。没有任何 pair 同时达到 8/8 direction 与 8/8
 polarity，因此不选择或授权任何 pair candidate。详见 `artifacts/v7-t4-source-pair.json`。
 
+`Tm3×C3` 剩余的 ordered 与 control 失败属于不同群体：ordered positive-peak 仅缺
+`T4d_L`（direction median contrast 0.04787、positive fraction 0.548，低于冻结的
+0.10/0.60 门），而 temporal-shuffle 的伪通过是 bilateral `T4a_L/R`。因此针对
+`T4d_L` 的事后修补不会解决 control specificity，也不授权忽略 shuffle T4a。详见
+`artifacts/v7-t4-source-pair-failure-boundary-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

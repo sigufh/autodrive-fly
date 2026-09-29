@@ -445,6 +445,10 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "T4_source_pair_summary",
             "T4_source_pair_any_complete_direction_polarity_condition",
             "T4_source_pair_candidate_authorized",
+            "T4_source_pair_ordered_missing_populations",
+            "T4_source_pair_control_bilateral_populations",
+            "T4_source_pair_ordered_control_failures_population_orthogonal",
+            "T4_source_pair_post_hoc_T4d_L_repair_authorized",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
@@ -2181,6 +2185,25 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
         is False
     )
     assert visual["observations"]["T4_source_pair_candidate_authorized"] is False
+    assert visual["observations"]["T4_source_pair_ordered_missing_populations"] == [
+        "T4d_L"
+    ]
+    assert visual["observations"]["T4_source_pair_control_bilateral_populations"] == [
+        "T4a_L",
+        "T4a_R",
+    ]
+    assert (
+        visual["observations"][
+            "T4_source_pair_ordered_control_failures_population_orthogonal"
+        ]
+        is True
+    )
+    assert (
+        visual["observations"][
+            "T4_source_pair_post_hoc_T4d_L_repair_authorized"
+        ]
+        is False
+    )
     assert visual["observations"][
         "T4_synapse_antisymmetric_three_condition_evaluation_performed"
     ] is False

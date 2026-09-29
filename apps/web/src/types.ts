@@ -683,6 +683,10 @@ export type V7Status = {
     T4_source_pair_summary?: Record<string, { fast_source: string; delayed_source: string; valid_target_count: number; ordered_maximum_direction_pass_count: number; ordered_maximum_polarity_pass_count: number; control_maximum_direction_pass_count: number; ordered_minus_max_control_direction_pass_count: number; ordered_bilateral_direction_subtypes: string[]; control_bilateral_direction_subtypes: string[] }>
     T4_source_pair_any_complete_direction_polarity_condition?: boolean
     T4_source_pair_candidate_authorized?: boolean
+    T4_source_pair_ordered_missing_populations?: string[]
+    T4_source_pair_control_bilateral_populations?: string[]
+    T4_source_pair_ordered_control_failures_population_orthogonal?: boolean
+    T4_source_pair_post_hoc_T4d_L_repair_authorized?: boolean
     T4_source_recording_level_body_assignment: boolean
     T4_exact_type_average_mapping_complete: boolean
     T4_author_minmax_formula_reproduced: boolean

@@ -879,6 +879,11 @@ export function DrivingPanel({ state, v7Status, v7StatusError, running, learning
           T4 fast×delayed 四对分解：Tm3×C3 的 ordered direction/polarity 最大通过数为 {v7Status.evidence_boundaries.T4_source_pair_summary.Tm3_x_C3.ordered_maximum_direction_pass_count}/{v7Status.evidence_boundaries.T4_source_pair_summary.Tm3_x_C3.ordered_maximum_polarity_pass_count}，ordered/control bilateral {v7Status.evidence_boundaries.T4_source_pair_summary.Tm3_x_C3.ordered_bilateral_direction_subtypes.join('/') || '无'}/{v7Status.evidence_boundaries.T4_source_pair_summary.Tm3_x_C3.control_bilateral_direction_subtypes.join('/') || '无'}；其余三对的 ordered direction 最大通过数为 {v7Status.evidence_boundaries.T4_source_pair_summary.Mi1_x_Mi4.ordered_maximum_direction_pass_count}/{v7Status.evidence_boundaries.T4_source_pair_summary.Mi1_x_C3.ordered_maximum_direction_pass_count}/{v7Status.evidence_boundaries.T4_source_pair_summary.Tm3_x_Mi4.ordered_maximum_direction_pass_count}。没有 pair 同时达到 8/8 direction 与 polarity；pair candidate {v7Status.evidence_boundaries.T4_source_pair_candidate_authorized ? '已授权' : '未授权'}。
         </small>
       )}
+      {v7Status?.evidence_boundaries.T4_source_pair_ordered_missing_populations !== undefined && (
+        <small className="v7-evidence-note">
+          Tm3×C3 失败边界：ordered 缺失群体 {v7Status.evidence_boundaries.T4_source_pair_ordered_missing_populations.join('/') || '无'}；control bilateral 群体 {v7Status.evidence_boundaries.T4_source_pair_control_bilateral_populations?.join('/') || '无'}，两类失败{v7Status.evidence_boundaries.T4_source_pair_ordered_control_failures_population_orthogonal ? '正交' : '重叠'}。针对 T4d_L 的事后修补{v7Status.evidence_boundaries.T4_source_pair_post_hoc_T4d_L_repair_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
       {v7Status?.evidence_boundaries.C2C3_version_of_record_DOI !== undefined && (
         <small className="v7-evidence-note">
           C2/C3 Version of Record（

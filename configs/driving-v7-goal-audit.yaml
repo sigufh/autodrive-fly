@@ -77,6 +77,7 @@ evidence:
   t4_crossfit_base_only_ablation: artifacts/v7-t4-crossfit-base-only-ablation.json
   t4_source_loo: artifacts/v7-t4-source-loo.json
   t4_source_pair: artifacts/v7-t4-source-pair.json
+  t4_source_pair_failure_boundary: artifacts/v7-t4-source-pair-failure-boundary-audit.json
   t4_synapse_centered_precheck: artifacts/v7-t4-synapse-centered-precheck.json
   t4_synapse_microstep_precheck: artifacts/v7-t4-synapse-microstep-precheck.json
   t4_temporal_shuffle_input_energy_audit: artifacts/v7-t4-temporal-shuffle-input-energy-audit.json
