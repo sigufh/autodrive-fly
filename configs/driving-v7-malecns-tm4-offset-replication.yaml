@@ -1,0 +1,28 @@
+version: 1
+name: v7-malecns-tm4-offset-replication
+observed_on: "2026-09-27"
+preregistration_evidence: artifacts/v7-malecns-tm4-offset-replication-preregistration.json
+preregistration_commit: 26faa2cbbfbb13d32aafc59372788c7eae3d4799
+preregistration_sha256: fcf3bd63813b01005bd89ef1aeefd6428df565c58b7cba19e8a28316c7923c2f
+retrieval_implementation: scripts/freeze_malecns_tm4_offset_replication.py
+retrieval_implementation_commit: 0155ec85f5c71056d12b231575d3f1afa446c085
+retrieval_implementation_sha256: 1c5d6ec448c1cf2b1a481741322b11058df925925caf8b05873af354ec3595d7
+annotations:
+  path: data/raw/malecns-v1.0/body-annotations.feather
+  bytes: 14483314
+  sha256: 2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2
+replication_snapshot:
+  path: data/raw/malecns-v1.0/optic-column-audit/tm4-offset-replication.json
+  observed: false
+  bytes: null
+  sha256: null
+candidate_rules:
+  uncorrected: [0, 0]
+  discovery_offset_mode_correction: [-1, -1]
+replication_gate:
+  require_all_sampled_bodies_retrieved: true
+  require_unique_synapse_count_candidate_for_every_body: true
+  require_corrected_exact_count_greater_than_uncorrected_exact_count: true
+  require_no_correct_to_incorrect_pairs: true
+  paired_one_sided_exact_sign_test_alpha: 0.01
+  no_distance_tolerance_acceptance_gate: true

@@ -510,3 +510,8 @@ v7-preregister-malecns-tm4-offset-replication:
 	.venv/bin/autodrive-fly v7-preregister-malecns-tm4-offset-replication
 
 .PHONY: v7-preregister-malecns-tm4-offset-replication
+
+v7-evaluate-malecns-tm4-offset-replication:
+	.venv/bin/autodrive-fly v7-evaluate-malecns-tm4-offset-replication
+
+.PHONY: v7-evaluate-malecns-tm4-offset-replication

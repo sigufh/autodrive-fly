@@ -240,6 +240,9 @@ from .driving.v7_malecns_source_mapping_readiness_audit import (
 from .driving.v7_malecns_synapse_column_audit import (
     evaluate_v7_malecns_synapse_column_audit,
 )
+from .driving.v7_malecns_tm4_offset_replication import (
+    evaluate_v7_malecns_tm4_offset_replication,
+)
 from .driving.v7_malecns_tm4_offset_replication_preregistration import (
     evaluate_v7_malecns_tm4_offset_replication_preregistration,
 )
@@ -641,6 +644,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-audit-malecns-one-hop-coordinate-validation")
     subparsers.add_parser("v7-audit-malecns-tm4-synapse-column-boundary")
     subparsers.add_parser("v7-preregister-malecns-tm4-offset-replication")
+    subparsers.add_parser("v7-evaluate-malecns-tm4-offset-replication")
     subparsers.add_parser("v7-audit-timebase")
     subparsers.add_parser("v7-audit-stimulus-coordinates")
     subparsers.add_parser("v7-audit-controlled-stimulus-angular-grid")
@@ -1148,6 +1152,14 @@ def main() -> None:
     if args.command == "v7-preregister-malecns-tm4-offset-replication":
         report = evaluate_v7_malecns_tm4_offset_replication_preregistration(root)
         target = root / "artifacts/v7-malecns-tm4-offset-replication-preregistration.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-evaluate-malecns-tm4-offset-replication":
+        report = evaluate_v7_malecns_tm4_offset_replication(root)
+        target = root / "artifacts/v7-malecns-tm4-offset-replication.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
