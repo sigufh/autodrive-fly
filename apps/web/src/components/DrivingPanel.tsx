@@ -859,6 +859,11 @@ export function DrivingPanel({ state, v7Status, v7StatusError, running, learning
           ，因此仅按同型总体均值广播。
         </small>
       )}
+      {v7Status?.evidence_boundaries.T4_frozen_candidate_count !== undefined && (
+        <small className="v7-evidence-note">
+          T4 冻结候选家族：{v7Status.evidence_boundaries.T4_frozen_candidate_family_count} 类 / {v7Status.evidence_boundaries.T4_frozen_candidate_count} 个既有 candidate；方向通过频次 T4a_R/T4c_R={v7Status.evidence_boundaries.T4_frozen_candidate_direction_passing_population_frequency?.T4a_R}/{v7Status.evidence_boundaries.T4_frozen_candidate_direction_passing_population_frequency?.T4c_R}，其余群体均为 0。bilateral subtype {v7Status.evidence_boundaries.T4_frozen_candidate_all_lack_bilateral_direction_subtypes ? '全部缺失' : '存在'}；精确镜像 retina {v7Status.evidence_boundaries.T4_exact_mirror_retina_rescues_ordered_direction ? '救回方向门' : '未救回方向门'}；继续事后扩大 additive gain {v7Status.evidence_boundaries.T4_post_hoc_additive_gain_expansion_authorized ? '已授权' : '未授权'}。
+        </small>
+      )}
       {v7Status?.evidence_boundaries.C2C3_version_of_record_DOI !== undefined && (
         <small className="v7-evidence-note">
           C2/C3 Version of Record（

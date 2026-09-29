@@ -1,0 +1,41 @@
+version: 1
+name: v7-t4-frozen-candidate-family-audit
+observed_on: "2026-09-29"
+candidate_families:
+  correlator:
+    evidence: artifacts/v7-t4-synapse-correlator-precheck.json
+    result_key: candidates
+  antisymmetric:
+    evidence: artifacts/v7-t4-synapse-antisymmetric-precheck.json
+    result_key: ordered_candidates
+  centered:
+    evidence: artifacts/v7-t4-synapse-centered-precheck.json
+    result_key: ordered_candidates
+  crossfit:
+    evidence: artifacts/v7-t4-synapse-crossfit-precheck.json
+    result_key: ordered_candidates
+retinal_symmetry_evidence: artifacts/v7-t4-crossfit-retinal-symmetry-audit.json
+crossfit_axis_evidence: artifacts/v7-t4-synapse-crossfit-axis-audit.json
+scoring_config: configs/driving-v7-stage1-scoring.yaml
+expected_candidate_grid:
+  temporal_reductions: [positive_peak, signed_mean]
+  additive_gains: [0.125, 0.5, 2.0, 8.0]
+expected_direction_populations:
+  T4a_L: left
+  T4a_R: right
+  T4b_L: right
+  T4b_R: left
+  T4c_L: up
+  T4c_R: up
+  T4d_L: down
+  T4d_R: down
+boundary:
+  existing_outputs_only: true
+  no_new_candidate_evaluated: true
+  no_threshold_change: true
+  no_direction_or_subtype_label_change: true
+  no_parameter_fit: true
+  no_target_activity_injection: true
+  no_runtime_change: true
+  conclusion_limited_to_frozen_candidate_grid: true
+  T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen: true

@@ -1,0 +1,558 @@
+{
+  "protocol": {
+    "name": "v7-t4-frozen-candidate-family-audit",
+    "observed_on": "2026-09-29",
+    "dependencies_sha256": {
+      "configs/driving-v7-t4-frozen-candidate-family-audit.yaml": "4929f7b1233adfcd8815dbee5ec6d6a0830271797f7faaa9b933067b8397c792",
+      "src/fly_emotion/driving/v7_t4_frozen_candidate_family_audit.py": "e1ff6eb41ae28c9f777b10f86731e6d71460c37290f3d531fa1c1c5c84e7bc1b",
+      "configs/driving-v7-stage1-scoring.yaml": "18544692e844704824de3e16db871b2d39aaa023124ccb58bed34fff927a4275",
+      "artifacts/v7-t4-synapse-correlator-precheck.json": "7506cd0df65513f399ed22e69287a3559731aabedacedaf93f779a4796b3ef5d",
+      "artifacts/v7-t4-synapse-antisymmetric-precheck.json": "2ddd9d90b0f5c8ad5737b7846ad4d495d4a6cedadf9dc8c35052a93a8bcc5857",
+      "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
+      "artifacts/v7-t4-synapse-crossfit-precheck.json": "1a52b2154ee31d6a7faeb69840b225ebd3f61ec39f0b87c91c0db90167321116",
+      "artifacts/v7-t4-crossfit-retinal-symmetry-audit.json": "dd3e22253ca8587e299363f8d138836ee83b297816a251244cba55b70051b1ed",
+      "artifacts/v7-t4-synapse-crossfit-axis-audit.json": "502767c85c7bc5a6ef68bb57b5d867332e0ef1993e9eb8119794e6bea66ba731"
+    },
+    "candidate_outputs_reused_without_recomputation": true,
+    "parameter_fit": false,
+    "target_activity_injection": false,
+    "runtime_modified": false
+  },
+  "candidate_family_count": 4,
+  "candidate_count": 32,
+  "candidate_grid": {
+    "temporal_reductions": [
+      "positive_peak",
+      "signed_mean"
+    ],
+    "additive_gains": [
+      0.125,
+      0.5,
+      2.0,
+      8.0
+    ]
+  },
+  "direction_population_mapping": {
+    "T4a_L": "left",
+    "T4a_R": "right",
+    "T4b_L": "right",
+    "T4b_R": "left",
+    "T4c_L": "up",
+    "T4c_R": "up",
+    "T4d_L": "down",
+    "T4d_R": "down"
+  },
+  "family_results": {
+    "correlator": {
+      "candidate_count": 8,
+      "candidates": [
+        {
+          "family": "correlator",
+          "name": "positive_peak:gain=0.125",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "positive_peak:gain=0.5",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "positive_peak:gain=2",
+          "temporal_reduction": "positive_peak",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "positive_peak:gain=8",
+          "temporal_reduction": "positive_peak",
+          "gain": 8.0,
+          "direction_pass_count": 1,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "signed_mean:gain=0.125",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "signed_mean:gain=0.5",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "signed_mean:gain=2",
+          "temporal_reduction": "signed_mean",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "correlator",
+          "name": "signed_mean:gain=8",
+          "temporal_reduction": "signed_mean",
+          "gain": 8.0,
+          "direction_pass_count": 1,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": true
+        }
+      ]
+    },
+    "antisymmetric": {
+      "candidate_count": 8,
+      "candidates": [
+        {
+          "family": "antisymmetric",
+          "name": "positive_peak:gain=0.125",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "positive_peak:gain=0.5",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "positive_peak:gain=2",
+          "temporal_reduction": "positive_peak",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "positive_peak:gain=8",
+          "temporal_reduction": "positive_peak",
+          "gain": 8.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "signed_mean:gain=0.125",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "signed_mean:gain=0.5",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "signed_mean:gain=2",
+          "temporal_reduction": "signed_mean",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "antisymmetric",
+          "name": "signed_mean:gain=8",
+          "temporal_reduction": "signed_mean",
+          "gain": 8.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        }
+      ]
+    },
+    "centered": {
+      "candidate_count": 8,
+      "candidates": [
+        {
+          "family": "centered",
+          "name": "positive_peak:gain=0.125",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "centered",
+          "name": "positive_peak:gain=0.5",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "centered",
+          "name": "positive_peak:gain=2",
+          "temporal_reduction": "positive_peak",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "centered",
+          "name": "positive_peak:gain=8",
+          "temporal_reduction": "positive_peak",
+          "gain": 8.0,
+          "direction_pass_count": 1,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": true
+        },
+        {
+          "family": "centered",
+          "name": "signed_mean:gain=0.125",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "centered",
+          "name": "signed_mean:gain=0.5",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "centered",
+          "name": "signed_mean:gain=2",
+          "temporal_reduction": "signed_mean",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "centered",
+          "name": "signed_mean:gain=8",
+          "temporal_reduction": "signed_mean",
+          "gain": 8.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        }
+      ]
+    },
+    "crossfit": {
+      "candidate_count": 8,
+      "candidates": [
+        {
+          "family": "crossfit",
+          "name": "positive_peak:gain=0.125",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "crossfit",
+          "name": "positive_peak:gain=0.5",
+          "temporal_reduction": "positive_peak",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "crossfit",
+          "name": "positive_peak:gain=2",
+          "temporal_reduction": "positive_peak",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "crossfit",
+          "name": "positive_peak:gain=8",
+          "temporal_reduction": "positive_peak",
+          "gain": 8.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": true
+        },
+        {
+          "family": "crossfit",
+          "name": "signed_mean:gain=0.125",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.125,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "crossfit",
+          "name": "signed_mean:gain=0.5",
+          "temporal_reduction": "signed_mean",
+          "gain": 0.5,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "crossfit",
+          "name": "signed_mean:gain=2",
+          "temporal_reduction": "signed_mean",
+          "gain": 2.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        },
+        {
+          "family": "crossfit",
+          "name": "signed_mean:gain=8",
+          "temporal_reduction": "signed_mean",
+          "gain": 8.0,
+          "direction_pass_count": 2,
+          "polarity_pass_count": 8,
+          "direction_passing_populations": [
+            "T4a_R",
+            "T4c_R"
+          ],
+          "bilateral_direction_subtypes": [],
+          "mirror_gate_passed": false
+        }
+      ]
+    }
+  },
+  "direction_passing_population_frequency": {
+    "T4a_L": 0,
+    "T4a_R": 32,
+    "T4b_L": 0,
+    "T4b_R": 0,
+    "T4c_L": 0,
+    "T4c_R": 29,
+    "T4d_L": 0,
+    "T4d_R": 0
+  },
+  "direction_pass_set_frequency": {
+    "T4a_R": 3,
+    "T4a_R|T4c_R": 29
+  },
+  "maximum_direction_pass_count": 2,
+  "all_candidates_pass_all_polarity_populations": true,
+  "all_candidates_lack_bilateral_direction_subtypes": true,
+  "mirror_gate_passing_candidate_count": 3,
+  "crossfit_anatomical_axis_gate_passed": true,
+  "crossfit_axis_minimum_population_accuracy": 0.9300947867298578,
+  "exact_mirror_retinal_control": {
+    "exact_mirror_drive": true,
+    "reference_maximum_ordered_direction_pass_count": 2,
+    "balanced_maximum_ordered_direction_pass_count": 0,
+    "retinal_sampling_imbalance_explains_direction_failure": false,
+    "did_not_rescue_ordered_direction": true
+  },
+  "frozen_candidate_grid_failed": true,
+  "authorize_post_hoc_additive_gain_expansion": false,
+  "authorize_direction_or_subtype_label_change": false,
+  "authorize_new_T4_functional_candidate": false,
+  "advance_to_T4_calibration": false,
+  "advance_to_LPLC_mechanism_repair": false,
+  "advance_to_vehicle_experiments": false,
+  "stop_reason": "frozen_32_candidate_grid_has_unilateral_T4a_R_T4c_R_pattern_and_exact_mirror_retina_does_not_rescue_ordered_direction",
+  "boundary": {
+    "existing_outputs_only": true,
+    "no_new_candidate_evaluated": true,
+    "no_threshold_change": true,
+    "no_direction_or_subtype_label_change": true,
+    "no_parameter_fit": true,
+    "no_target_activity_injection": true,
+    "no_runtime_change": true,
+    "conclusion_limited_to_frozen_candidate_grid": true,
+    "T5_LPLC_vehicle_MB_OOD_final_and_deployment_remain_frozen": true
+  }
+}

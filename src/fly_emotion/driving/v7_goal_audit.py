@@ -95,6 +95,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
     t4_crossfit_retinal_symmetry_audit = reports[
         "t4_crossfit_retinal_symmetry_audit"
     ]
+    t4_frozen_candidate_family_audit = reports["t4_frozen_candidate_family_audit"]
     t4_synapse_centered_precheck = reports["t4_synapse_centered_precheck"]
     t4_synapse_microstep_precheck = reports["t4_synapse_microstep_precheck"]
     t4_temporal_shuffle_input_energy_audit = reports[
@@ -409,6 +410,7 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                 config["evidence"]["t4_synapse_crossfit_precheck"],
                 config["evidence"]["t4_crossfit_sequence_identifiability"],
                 config["evidence"]["t4_crossfit_retinal_symmetry_audit"],
+                config["evidence"]["t4_frozen_candidate_family_audit"],
                 config["evidence"]["t4_synapse_centered_precheck"],
                 config["evidence"]["t4_synapse_microstep_precheck"],
                 config["evidence"]["source_type_temporal_identifiability"],
@@ -3422,6 +3424,35 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                         "retinal_sampling_imbalance_explains_direction_failure"
                     ]
                 ),
+                "T4_frozen_candidate_family_count": (
+                    t4_frozen_candidate_family_audit["candidate_family_count"]
+                ),
+                "T4_frozen_candidate_count": t4_frozen_candidate_family_audit[
+                    "candidate_count"
+                ],
+                "T4_frozen_candidate_direction_passing_population_frequency": (
+                    t4_frozen_candidate_family_audit[
+                        "direction_passing_population_frequency"
+                    ]
+                ),
+                "T4_frozen_candidate_all_lack_bilateral_direction_subtypes": (
+                    t4_frozen_candidate_family_audit[
+                        "all_candidates_lack_bilateral_direction_subtypes"
+                    ]
+                ),
+                "T4_exact_mirror_retina_rescues_ordered_direction": (
+                    not t4_frozen_candidate_family_audit[
+                        "exact_mirror_retinal_control"
+                    ]["did_not_rescue_ordered_direction"]
+                ),
+                "T4_frozen_candidate_grid_failed": (
+                    t4_frozen_candidate_family_audit["frozen_candidate_grid_failed"]
+                ),
+                "T4_post_hoc_additive_gain_expansion_authorized": (
+                    t4_frozen_candidate_family_audit[
+                        "authorize_post_hoc_additive_gain_expansion"
+                    ]
+                ),
                 "T4_synapse_centered_direction_pass_counts": [
                     item["direction_pass_count"]
                     for item in t4_synapse_centered_precheck["ordered_candidates"]
@@ -4825,6 +4856,13 @@ def evaluate_v7_goal_coverage(root: Path) -> dict:
                     "T4_synapse_RF_axis_best_median_angle_degrees",
                     "T4_source_RF_axis_interchangeability_verified",
                     "T4_RF_axis_replacement_authorized",
+                    "T4_frozen_candidate_family_count",
+                    "T4_frozen_candidate_count",
+                    "T4_frozen_candidate_direction_passing_population_frequency",
+                    "T4_frozen_candidate_all_lack_bilateral_direction_subtypes",
+                    "T4_exact_mirror_retina_rescues_ordered_direction",
+                    "T4_frozen_candidate_grid_failed",
+                    "T4_post_hoc_additive_gain_expansion_authorized",
                 ],
             },
         },

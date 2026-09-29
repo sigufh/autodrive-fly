@@ -426,6 +426,13 @@ def test_goal_audit_maps_every_numbered_item_without_unlocking_later_stages() ->
             "T4_synapse_RF_axis_best_median_angle_degrees",
             "T4_source_RF_axis_interchangeability_verified",
             "T4_RF_axis_replacement_authorized",
+            "T4_frozen_candidate_family_count",
+            "T4_frozen_candidate_count",
+            "T4_frozen_candidate_direction_passing_population_frequency",
+            "T4_frozen_candidate_all_lack_bilateral_direction_subtypes",
+            "T4_exact_mirror_retina_rescues_ordered_direction",
+            "T4_frozen_candidate_grid_failed",
+            "T4_post_hoc_additive_gain_expansion_authorized",
     ]
     checklist = {item["requirement"]: item for item in report["requirement_checklist"]}
     assert checklist["8.separate_planner_fly_core_executor_contributions"]["status"] == "passed"
@@ -2060,6 +2067,32 @@ def test_saved_goal_audit_is_hash_bound_and_matches_recalculation() -> None:
     assert visual["observations"]["T4_balanced_retina_ordered_direction_pass_count"] == 0
     assert (
         visual["observations"]["T4_retinal_sampling_imbalance_explains_direction_failure"]
+        is False
+    )
+    assert visual["observations"]["T4_frozen_candidate_family_count"] == 4
+    assert visual["observations"]["T4_frozen_candidate_count"] == 32
+    assert visual["observations"][
+        "T4_frozen_candidate_direction_passing_population_frequency"
+    ] == {
+        "T4a_L": 0,
+        "T4a_R": 32,
+        "T4b_L": 0,
+        "T4b_R": 0,
+        "T4c_L": 0,
+        "T4c_R": 29,
+        "T4d_L": 0,
+        "T4d_R": 0,
+    }
+    assert (
+        visual["observations"][
+            "T4_frozen_candidate_all_lack_bilateral_direction_subtypes"
+        ]
+        is True
+    )
+    assert visual["observations"]["T4_exact_mirror_retina_rescues_ordered_direction"] is False
+    assert visual["observations"]["T4_frozen_candidate_grid_failed"] is True
+    assert (
+        visual["observations"]["T4_post_hoc_additive_gain_expansion_authorized"]
         is False
     )
     assert visual["observations"][

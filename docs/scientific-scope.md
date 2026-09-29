@@ -862,6 +862,19 @@ is rejected for writeback, no distance tolerance is introduced, and all source
 mapping and downstream gates remain closed
 (`artifacts/v7-malecns-tm4-offset-replication.json`).
 
+Across the four already-frozen T4 synapse-axis candidate families
+(`correlator`, `antisymmetric`, `centered`, and two-fold `crossfit`), all 32
+reduction-by-gain candidates pass polarity for all eight T4 populations but none
+passes a bilateral direction subtype. `T4a_R` passes direction in 32/32 candidates
+and `T4c_R` in 29/32; the other six populations pass in 0/32. The structural
+cross-fit axis remains accurate (minimum per-population accuracy 0.930), while an
+exactly mirror-balanced retinal control reduces the maximum ordered direction
+pass count from 2 to 0. Thus retinal sample-count imbalance does not explain the
+failure, and further post-hoc expansion of the same additive-gain family is not
+authorized. This conclusion is limited to the frozen grid and does not alter
+direction labels or exclude a genuinely different causal mechanism
+(`artifacts/v7-t4-frozen-candidate-family-audit.json`).
+
 An anatomy-supported development A/B negates both continuous within-eye axes while
 holding stimuli, labels, normalization, parameters, dynamics and scoring fixed.
 All eight T4 direction medians move positively, but the full gate still fails.

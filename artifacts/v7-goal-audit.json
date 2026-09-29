@@ -3,8 +3,8 @@
     "name": "v7-objective-coverage-audit",
     "observed_on": "2026-09-23",
     "dependencies_sha256": {
-      "configs/driving-v7-goal-audit.yaml": "2f585b2e890097f39d780766e2cb3066b529814bdf8142b3eb6d6370ba3f6d7b",
-      "src/fly_emotion/driving/v7_goal_audit.py": "bb3cf8cca46ee52e11d70696204cc79045b4b0961857593971d86cb23dabccbd",
+      "configs/driving-v7-goal-audit.yaml": "163b4a8bd27cd63659232ef2192922a88d8a9156c3f5cac37297d2ec9d1e2636",
+      "src/fly_emotion/driving/v7_goal_audit.py": "01a1f979a3302465356a5854685f6453f0296c43a8d0f7755885a643e2a04fd7",
       "configs/driving-v7.yaml": "17b076b7863cdd7b09c976a46658358dccaaa8c4aa321552456e3b5db52c65bf",
       "src/fly_emotion/driving/v7.py": "1800d60cd99c7d2a0974c3c06c56dbd2cb9f749c7121bee8cf4c392716249a4e",
       "artifacts/v7-manifest.json": "f607da4c0650c66604cf4dec1a2030e98b0fec2d7732701fa3072d2e44c51eac",
@@ -68,6 +68,7 @@
       "artifacts/v7-t4-synapse-rf-axis-correspondence-audit.json": "f5d76e8c5d188d4356b7b550bc4ef0f2132b57e9376074b3c753d0ed1a7550be",
       "artifacts/v7-t4-crossfit-sequence-identifiability.json": "41596caa22dc55b8ffaf5df4cd074eafa0eb51b4b2faf3e080111fcffcf13d60",
       "artifacts/v7-t4-crossfit-retinal-symmetry-audit.json": "dd3e22253ca8587e299363f8d138836ee83b297816a251244cba55b70051b1ed",
+      "artifacts/v7-t4-frozen-candidate-family-audit.json": "e6f2ade65b99b4517f1e14447017a1c4402b3b1b2c3f0c4ad564b0ef7532dc5b",
       "artifacts/v7-t4-synapse-centered-precheck.json": "a68d367f9759b9485f2fcaf114ef0d08553835901393d4c6b3e51e837c608e1b",
       "artifacts/v7-t4-synapse-microstep-precheck.json": "c34e93cb2340af49aecaa5d98d1be6f5584786aa5b9f07e2661c0c60b917bcde",
       "artifacts/v7-t4-temporal-shuffle-input-energy-audit.json": "4df2b4f85cc072b648779f6f5c07ae9870ec553938fbe2a08d9627d217aeea05",
@@ -172,7 +173,7 @@
       "artifacts/v7-t5-source-transfer-synthesis-audit.json": "dc87014aa87e56cf6efc30fb102e1afab8667288cf32a1dad05a60f485dbfd7a",
       "artifacts/v7-stimulus-coordinate-contract.json": "cb86da1ff1d3eb18d2afc407c4c134ad273925be131820062a6f7ec62f52978b",
       "artifacts/v7-controlled-stimulus-angular-grid.json": "c4fbbee972f67d22eef01ce2b72c26b1b86f53b42313afcfa9430ae41e80f5b7",
-      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "5dce9aa9dd8dd6cddad29fa37a1bd95b83d6a58bdfdacaed8d0647e167165138",
+      "artifacts/v7-controlled-stimulus-input-boundary-audit.json": "400bd1ed332571de82acab25efbbec86fa110c500d5d20d7b0150d5739f09bf0",
       "artifacts/v7-vertical-angular-coordinate-audit.json": "f130521f435002b08f30988c557cb1edba8f36805a08da1d3465ab1343a169fc",
       "artifacts/v7-t4t5-source-dynamics-readiness.json": "e67d0caae165fac6325895faf65dd33e5da00869882a30f856bbf23ca4bf1c06",
       "artifacts/v7-source-dynamics-external-evidence-contract.json": "19240e110dc5297913fbb94e2b98750368f8567e18e747a627336981de9fbf35",
@@ -206,9 +207,9 @@
       "artifacts/v7-neural-goal-fusion.json": "f171a52d240c5c76a0e0d44afc675e9339a2ca670f20afe2eab37871ddd03042",
       "artifacts/v7-fusion-nested.json": "ced3eb6a88aec1909b5104d2498ff789d11de7ef23fdc211e6d9ebab8de09cd2",
       "artifacts/v7-fusion-nested-eval.json": "1ebf44db7c1cfda97406943f2b28df3e72324ff7d608ab35a6521eabf276bed5",
-      "apps/api/src/fly_emotion_api/main.py": "054691ad7efc345f4d1da2665adeff63c74cdab194cb90ba66174606480e1e1a",
-      "apps/web/src/components/DrivingPanel.tsx": "2c91594c37d4ec183b18e1f1c38641630c3bd4df715046549f66edb71d118e59",
-      "apps/web/src/types.ts": "9168362c871f92a3dbb47ecc94c31cb8e52486a6189684e5c7d59fb2cb87880c",
+      "apps/api/src/fly_emotion_api/main.py": "f3ea1a03967b0174596188eb31b29abb6da96446cb7a7b5312e5d22f6828423a",
+      "apps/web/src/components/DrivingPanel.tsx": "cb56dcfcddf8d5197dbdd175c1d73f013e1fa90307c79ecfbc397de9efcda5a2",
+      "apps/web/src/types.ts": "8ce28275d7d3ff9f270bb5837d499d870ae10078d089aa4e7f74e5c9b688dd8a",
       "apps/web/src/api.ts": "fed561d2ea0db1b5f795fab314c399c5dd38fa86a19378d55d8d12d3ae898eb9",
       "apps/web/src/App.tsx": "e0b8a31e928b5675843931dec77f871bf0550955ece914f87a1bf60a8f3d0899"
     }
@@ -281,6 +282,7 @@
         "artifacts/v7-t4-synapse-crossfit-precheck.json",
         "artifacts/v7-t4-crossfit-sequence-identifiability.json",
         "artifacts/v7-t4-crossfit-retinal-symmetry-audit.json",
+        "artifacts/v7-t4-frozen-candidate-family-audit.json",
         "artifacts/v7-t4-synapse-centered-precheck.json",
         "artifacts/v7-t4-synapse-microstep-precheck.json",
         "artifacts/v7-source-type-temporal-identifiability.json",
@@ -1828,6 +1830,22 @@
         "T4_crossfit_sequence_authorizes_functional_candidate": false,
         "T4_balanced_retina_ordered_direction_pass_count": 0,
         "T4_retinal_sampling_imbalance_explains_direction_failure": false,
+        "T4_frozen_candidate_family_count": 4,
+        "T4_frozen_candidate_count": 32,
+        "T4_frozen_candidate_direction_passing_population_frequency": {
+          "T4a_L": 0,
+          "T4a_R": 32,
+          "T4b_L": 0,
+          "T4b_R": 0,
+          "T4c_L": 0,
+          "T4c_R": 29,
+          "T4d_L": 0,
+          "T4d_R": 0
+        },
+        "T4_frozen_candidate_all_lack_bilateral_direction_subtypes": true,
+        "T4_exact_mirror_retina_rescues_ordered_direction": false,
+        "T4_frozen_candidate_grid_failed": true,
+        "T4_post_hoc_additive_gain_expansion_authorized": false,
         "T4_synapse_centered_direction_pass_counts": [
           2,
           2,
@@ -2819,7 +2837,14 @@
           "T4_synapse_RF_axis_descriptive_best_transform",
           "T4_synapse_RF_axis_best_median_angle_degrees",
           "T4_source_RF_axis_interchangeability_verified",
-          "T4_RF_axis_replacement_authorized"
+          "T4_RF_axis_replacement_authorized",
+          "T4_frozen_candidate_family_count",
+          "T4_frozen_candidate_count",
+          "T4_frozen_candidate_direction_passing_population_frequency",
+          "T4_frozen_candidate_all_lack_bilateral_direction_subtypes",
+          "T4_exact_mirror_retina_rescues_ordered_direction",
+          "T4_frozen_candidate_grid_failed",
+          "T4_post_hoc_additive_gain_expansion_authorized"
         ]
       }
     }

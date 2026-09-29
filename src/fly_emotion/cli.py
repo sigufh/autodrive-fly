@@ -342,6 +342,9 @@ from .driving.v7_t4_crossfit_retinal_symmetry_audit import (
 from .driving.v7_t4_crossfit_sequence_identifiability import (
     evaluate_v7_t4_crossfit_sequence_identifiability,
 )
+from .driving.v7_t4_frozen_candidate_family_audit import (
+    evaluate_v7_t4_frozen_candidate_family_audit,
+)
 from .driving.v7_t4_individual_split_1khz_audit import (
     evaluate_v7_t4_individual_split_1khz_audit,
 )
@@ -727,6 +730,7 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser("v7-evaluate-t4-synapse-crossfit-precheck")
     subparsers.add_parser("v7-audit-t4-crossfit-sequence-identifiability")
     subparsers.add_parser("v7-audit-t4-crossfit-retinal-symmetry")
+    subparsers.add_parser("v7-audit-t4-frozen-candidate-family")
     subparsers.add_parser("v7-evaluate-t4-synapse-antisymmetric-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-centered-precheck")
     subparsers.add_parser("v7-evaluate-t4-synapse-microstep-precheck")
@@ -1968,6 +1972,14 @@ def main() -> None:
     if args.command == "v7-audit-t4-crossfit-retinal-symmetry":
         report = evaluate_v7_t4_crossfit_retinal_symmetry_audit(root)
         target = root / "artifacts/v7-t4-crossfit-retinal-symmetry-audit.json"
+        target.write_text(
+            json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+        )
+        print(target)
+        return
+    if args.command == "v7-audit-t4-frozen-candidate-family":
+        report = evaluate_v7_t4_frozen_candidate_family_audit(root)
+        target = root / "artifacts/v7-t4-frozen-candidate-family-audit.json"
         target.write_text(
             json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )

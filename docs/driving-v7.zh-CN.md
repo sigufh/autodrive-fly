@@ -2530,6 +2530,16 @@ body ID 分层取 48 个检查候选可用性。两侧 48/48 都得到唯一候�
 discovery 偏移写回左侧 Tm4，不引入距离容差，也不改变 source mapping、T4/T5、LPLC
 或 vehicle gate。详见 `artifacts/v7-malecns-tm4-offset-replication.json`。
 
+对已经冻结的四类 T4 synapse-axis candidate（correlator、antisymmetric、centered、
+two-fold crossfit）又做了只读家族汇总。2 个 temporal reduction × 4 个 additive gain ×
+4 个 family 共 32 个候选都让 8/8 T4 群体通过 polarity，但没有任何候选形成 bilateral
+direction subtype。`T4a_R` 在 32/32 候选中通过、`T4c_R` 在 29/32 中通过，其余 6 个
+群体均为 0/32；同时解剖 crossfit axis 的最低群体准确率仍为 0.930。把 retina 改成
+严格等量、逐列精确镜像的工程控制后，ordered direction 最大通过数反而从 2 降到 0，
+所以受体数量不平衡不能解释失败。该结论只覆盖冻结网格：不授权继续事后扩大同一
+additive gain，不改方向/亚型标签，也不排除机制上真正不同的新候选。详见
+`artifacts/v7-t4-frozen-candidate-family-audit.json`。
+
 Kohn–Portes 论文指向的 Motyxia2 `whitenoise` 分支也冻结到提交
 `b589a224493cb66bda4c55f632b213cacb082b24` 并做了源码级核验。生成器确实支持
 drifting-grating 的方向、中心、半径和频率，并用未固定 seed 的随机生成与洗牌构造

@@ -1151,6 +1151,25 @@ def _verified_v7_status(root: Path) -> dict:
                 "T4_RF_axis_replacement_authorized": visual[
                     "T4_RF_axis_replacement_authorized"
                 ],
+                "T4_frozen_candidate_family_count": visual[
+                    "T4_frozen_candidate_family_count"
+                ],
+                "T4_frozen_candidate_count": visual["T4_frozen_candidate_count"],
+                "T4_frozen_candidate_direction_passing_population_frequency": visual[
+                    "T4_frozen_candidate_direction_passing_population_frequency"
+                ],
+                "T4_frozen_candidate_all_lack_bilateral_direction_subtypes": visual[
+                    "T4_frozen_candidate_all_lack_bilateral_direction_subtypes"
+                ],
+                "T4_exact_mirror_retina_rescues_ordered_direction": visual[
+                    "T4_exact_mirror_retina_rescues_ordered_direction"
+                ],
+                "T4_frozen_candidate_grid_failed": visual[
+                    "T4_frozen_candidate_grid_failed"
+                ],
+                "T4_post_hoc_additive_gain_expansion_authorized": visual[
+                    "T4_post_hoc_additive_gain_expansion_authorized"
+                ],
                 "T4_source_recording_level_body_assignment": visual[
                     "T4_source_recording_level_body_assignment"
                 ],

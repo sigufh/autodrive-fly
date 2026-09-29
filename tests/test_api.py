@@ -568,6 +568,22 @@ def test_v7_status_is_hash_verified_and_explicitly_not_deployed() -> None:
     )
     assert boundaries["T4_source_RF_axis_interchangeability_verified"] is False
     assert boundaries["T4_RF_axis_replacement_authorized"] is False
+    assert boundaries["T4_frozen_candidate_family_count"] == 4
+    assert boundaries["T4_frozen_candidate_count"] == 32
+    assert boundaries["T4_frozen_candidate_direction_passing_population_frequency"] == {
+        "T4a_L": 0,
+        "T4a_R": 32,
+        "T4b_L": 0,
+        "T4b_R": 0,
+        "T4c_L": 0,
+        "T4c_R": 29,
+        "T4d_L": 0,
+        "T4d_R": 0,
+    }
+    assert boundaries["T4_frozen_candidate_all_lack_bilateral_direction_subtypes"] is True
+    assert boundaries["T4_exact_mirror_retina_rescues_ordered_direction"] is False
+    assert boundaries["T4_frozen_candidate_grid_failed"] is True
+    assert boundaries["T4_post_hoc_additive_gain_expansion_authorized"] is False
     assert boundaries["T4_source_recording_level_body_assignment"] is False
     assert boundaries["T4_exact_type_average_mapping_complete"] is True
     assert boundaries["T4_author_minmax_formula_reproduced"] is True

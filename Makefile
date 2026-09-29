@@ -481,6 +481,11 @@ v7-audit-t4-temporal-shuffle-input-energy:
 
 .PHONY: v7-audit-t4-temporal-shuffle-input-energy
 
+v7-audit-t4-frozen-candidate-family:
+	.venv/bin/autodrive-fly v7-audit-t4-frozen-candidate-family
+
+.PHONY: v7-audit-t4-frozen-candidate-family
+
 v7-audit-fig3-source-kernel-alignment-failure:
 	.venv/bin/autodrive-fly v7-audit-fig3-source-kernel-alignment-failure
 
